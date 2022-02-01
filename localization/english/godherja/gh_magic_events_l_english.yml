@@ -1,0 +1,56 @@
+﻿l_english:
+ set_magic_tutor_effect.tt:0 "[THIS.Char.GetShortUIName] becomes [magic_tutor|E]"
+ fire_magic_tutor_effect.tt:0 "[THIS.Char.GetShortUIName] is no longer [magic_tutor|E]"
+ invalidate_magic_tutor_effect.t:1 "[invalidated_physician.GetShortUINameNoTooltip|U] is no longer your Court Magi"
+
+ magic.0001.t:0 "Court Magi"
+ magic.0001.fallback_reason.desc:0 "Without a learned Master, even the most talented Student will never amount to anything. I should hire a Court Magi to ensure no magical talent is wasted. \n\nI have asked around for recommendations, and have assembled a few options to chose from."
+ magic.0001.decision.desc:0 "Without a learned Master, even the most talented Student will never amount to anything. \n\nTo ensure no magical talent is wasted at my court, I have asked around for recommendations. Now my servants have returned to me with a few options to choose from."
+ magic.0001.a:0 "Apparently, [high_skill_option.GetFirstNameNoTooltip] is quite experienced."
+ magic.0001.b:0 "[low_skill_option.GetFirstNameNoTooltip] seems enthusiastic, if nothing else."
+ magic.0001.c:0 "[dead_magic_option.GetFirstNameNoTooltip] claims to be trained in the "dark arts.""
+ magic.0001.d.two:0 "Both of them fail to impress me."
+ magic.0001.d.more:0 "They all fail to impress me."
+ magic.0001.e:0 "[excellent_skill_option.GetFirstNameNoTooltip] is widely known in magical circles."
+ magic.0001.a.tt:0 "A skilled practicioner of [living_magic|E] joins our court as my [magic_tutor|E]"
+ magic.0001.b.tt:0 "A competent practicioner of [living_magic|E] joins our court as my [magic_tutor|E]"
+ magic.0001.c.tt:0 "An exotic practicioner of the rare [dead_magic|E] joins our court as my [magic_tutor|E]"
+ magic.0001.d.tt:0 "I do not recruit anyone as my [magic_tutor|E]"
+ magic.0001.e.tt:0 "A master of [living_magic|E] joins our court as my [magic_tutor|E]"
+
+ magic.0040.t:0 "A Look Into a Mind"
+ magic.0040.desc:0 "You are like a powerful [magi|E] and want to look into some minds? That's pretty based, bro. You have some options here, let's hope some of them have juicy secrets."
+ magic.0040.a:0 "Family Members"
+ magic.0040.b:0 "Vassals"
+
+ magic.41.t:0 "Terrible Nightmares"
+ magic.41.desc:0 "Oh no, [recipient.GetShortUIName|U] is having horrible nightmares. What could be causing this? "
+ magic.41.a:0 "How Sad"
+
+ magic.42.t:0 "Terrible Nightmares"
+ magic.42.desc:0 "It seems [recipient.GetShortUIName|U] is having pleaseant dreams. What could be causing this?"
+ magic.42.a:0 "I'm glad they are enjoying themsevles."
+
+
+
+ 
+ magic.0200.t:0 "Employing Catalcysmic Magic"
+ magic.0200.desc:0 "The time has come to employ the most deadly of my powers. I have chosen [county.GetName] as the the target. Now I need decide which spell is most approiate..."
+ magic.0200.a:0 "A plague will serve"
+ magic.0200.b:0 "Burn the cities"
+ magic.0200.c:0 "Maybe I should rethink this..."
+ 
+ magic.0201.t:0 "Infecting [county.GetName]"
+ magic.0201.desc:0 "They are now very sick"
+ magic.0201.a:0 "They had it coming"
+ magic.0201.a.one:0 "They shall suffer for years to come."
+ magic.0201.a.tt:0 "[county.GetName] will recieve the Plagued modifier for 5 years"
+
+ magic.0202.t:0 "Burning the Settlements of [county.GetName]"
+ magic.0202.desc:0 "Let this serve as a lesson"
+ magic.0202.a:0 "Burn baby burn"
+
+ magic.0203.t:0 "My Cities Burned"
+ magic.0203.desc:0 "Ouch [province.GetName] has been destroyed"
+ magic.0203.a:0 "Maybe magic isnt so great"
+
