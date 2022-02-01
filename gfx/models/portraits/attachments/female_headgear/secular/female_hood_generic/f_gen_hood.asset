@@ -1,0 +1,33 @@
+pdxmesh = {
+	name = "f_gen_hood_mesh"
+	file = "f_gen_hood.mesh"
+
+
+blend_shape = { id = "f_gen_hood_fat"		type = "f_gen_hood_fat.mesh" }
+
+	meshsettings = {
+		name = "female_hoodShape"
+		index = 0
+		texture_diffuse = "f_gen_hood_color.dds"
+		texture_normal = "f_gen_hood_normal.dds"
+		texture_specular = "f_gen_hood_properties.dds"
+		shader = "portrait_attachment_pattern"
+		shader_file = "gfx/FX/jomini/portrait.shader"
+	}
+}
+
+entity = {
+	name = "f_gen_hood_entity"
+	pdxmesh = "f_gen_hood_mesh"
+
+	attribute = { name = "bs_fat_1"					blend_shape = "f_gen_hood_fat" }
+	
+	
+	game_data = {
+		portrait_accessory = {
+			pattern_mask = "gfx/models/portraits/attachments/female_headgear/secular/female_hood_generic/f_gen_hood_mask.dds"	#Any 4-channel texture. Each channel will be used to mask a pattern from the variation object
+			variation = "female_hood_generic"	#A "variation" object in gfx/portraits/accessory_variations/
+		}
+	}
+}
+

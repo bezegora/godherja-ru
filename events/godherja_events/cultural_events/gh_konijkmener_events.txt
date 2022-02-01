@@ -1,0 +1,277 @@
+﻿namespace = konijkmener
+
+##################################################
+
+### Konijkmener Events
+
+# 0001 - Konijkmener Merchants Peddle Their Wares
+
+##################################################
+
+##################################################
+# Konijkmener Merchants Peddle Their Wares
+# by Hapchazzard
+##################################################
+
+konijkmener.0001 = {
+	title = konijkmener.0001.t
+	desc = konijkmener.0001.desc
+	
+	theme = stewardship
+	
+	immediate = {
+		random_list = {
+			1 = {
+				set_variable = {
+					name = potion_of_strength
+					days = 1
+				}
+			}
+			1 = {
+				set_variable = {
+					name = potion_of_skill
+					days = 1
+				}
+			}
+			1 = {
+				set_variable = {
+					name = potion_of_fertility
+					days = 1
+				}
+			}
+			#1 = {
+			#	trigger = {
+			#		can_access_magic = yes
+			#	}
+			#	set_variable = {
+			#		name = potion_of_magic
+			#		days = 1
+			#	}
+			#}
+			1 = {
+				set_variable = {
+					name = potion_of_experience
+					days = 1
+				}
+			}
+			1 = {
+				set_variable = {
+					name = potion_of_life
+					days = 1
+				}
+			}
+		}
+		create_character = {
+			template = konijkmener_merchant_template
+			save_scope_as = konijkmener_merchant
+			location = root.capital_province
+		}
+	}
+	
+	left_portrait = {
+		character = root
+		animation = personality_rational
+	}
+	
+	right_portrait = {
+		character = scope:konijkmener_merchant
+		animation = personality_dishonorable
+	}
+	
+	trigger = {
+		NOR = {
+			culture = culture:konijkmener
+			has_variable = robbed_konijkmener
+			is_ai = yes
+		}
+	}
+	
+	option = {
+		trigger = {
+			OR = {
+				has_variable = potion_of_strength
+				has_variable = potion_of_skill
+				has_variable = potion_of_fertility
+				has_variable = potion_of_magic
+				has_variable = potion_of_experience
+				has_variable = potion_of_life
+			}
+		}
+		remove_short_term_gold = medium_gold_value
+		name = {
+			trigger = {
+				has_variable = potion_of_strength
+			}
+			text = konijkmener.0001.a.strength_potion
+		}
+		name = {
+			trigger = {
+				has_variable = potion_of_skill
+			}
+			text = konijkmener.0001.a.skill
+		}
+		name = {
+			trigger = {
+				has_variable = potion_of_fertility
+			}
+			text = konijkmener.0001.a.fertility
+		}
+		name = {
+			trigger = {
+				has_variable = potion_of_magic
+			}
+			text = konijkmener.0001.a.magic
+		}
+		name = {
+			trigger = {
+				has_variable = potion_of_experience
+			}
+			text = konijkmener.0001.a.experience
+		}
+		name = {
+			trigger = {
+				has_variable = potion_of_life
+			}
+			text = konijkmener.0001.a.life
+		}
+		if = {
+			limit = { has_variable = potion_of_strength }
+			add_character_modifier = {
+				modifier = standard_potion_strength
+				years = 2
+			}
+		}
+		else_if = {
+			limit = { has_variable = potion_of_skill }
+			add_character_modifier = {
+				modifier = standard_potion_skill
+				years = 2
+			}
+		}
+		else_if = {
+			limit = { has_variable = potion_of_fertility }
+			add_character_modifier = {
+				modifier = standard_potion_fertility
+				years = 2
+			}
+		}
+		else_if = {
+			limit = { has_variable = potion_of_experience }
+			add_character_modifier = {
+				modifier = standard_potion_experience
+				years = 2
+			}
+		}
+		else_if = {
+			limit = { has_variable = potion_of_life }
+			add_character_modifier = {
+				modifier = standard_potion_life
+			}
+		}
+		hidden_effect = {
+			scope:konijkmener_merchant = {
+				death = {
+					death_reason = death_vanished
+				}
+			}
+		}
+	}
+	
+	option = {
+		name = konijkmener.0001.b
+		hidden_effect = {
+			scope:konijkmener_merchant = {
+				death = {
+					death_reason = death_vanished
+				}
+			}
+		}
+	}
+	
+	option = {
+		name = {
+			trigger = {
+				NOT = { has_trait = sadistic }
+			}
+			text = konijkmener.0001.c
+		}
+		name = {
+			trigger = {
+				has_trait = sadistic
+			}
+			text = konijkmener.0001.c.sadistic
+		}
+		trigger = {
+			OR = {
+				has_trait = greedy
+				has_trait = callous
+				has_trait = sadistic
+				has_trait = arbitrary
+			}
+		}
+		trait = greedy
+		trait = callous
+		trait = sadistic
+		trait = arbitrary
+		random_list = {
+			1 = {
+				add_character_modifier = {
+					modifier = standard_potion_strength
+					years = 2
+				}
+			}
+			1 = {
+				add_character_modifier = {
+					modifier = standard_potion_skill
+					years = 2
+				}
+			}
+			1 = {
+				add_character_modifier = {
+					modifier = standard_potion_fertility
+					years = 2
+				}
+			}
+			1 = {
+				add_character_modifier = {
+					modifier = standard_potion_experience
+					years = 2
+				}
+			}
+			1 = {
+				add_character_modifier = {
+					modifier = standard_potion_life
+				}
+			}
+		}
+		add_gold = minor_gold_value
+		scope:konijkmener_merchant = {
+			death = {
+				death_reason = death_execution
+				killer = root
+			}
+		}
+		stress_impact = {
+			sadistic = medium_stress_loss
+		}
+		if = {
+			limit = {
+				faith = {
+					OR = {
+						trait_is_virtue = greedy
+						trait_is_virtue = arbitrary
+					}
+				}
+			}
+			add_piety = minor_piety_gain
+		}
+		else = {
+			add_piety = medium_piety_loss
+		}
+		set_variable = {
+			name = robbed_konijkmener
+			years = 10
+		}
+		custom_tooltip = potion_merchants_will_not_visit_anymore_tt
+	}
+}

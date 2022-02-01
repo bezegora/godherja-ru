@@ -1,0 +1,62 @@
+﻿refound_east_mamur_decision = {
+	picture = "gfx/interface/illustrations/decisions/decision_personal_religious.dds"
+	major = yes
+
+	desc = refound_east_mamur_decision_desc
+	selection_tooltip = refound_east_mamur_decision_tooltip
+	is_shown = {
+		is_independent_ruler = yes
+		has_religion = religion:sarradonian_religion
+	}
+	is_valid = {
+		AND = {
+			completely_controls = title:e_kekhenemhat
+			completely_controls = title:e_uhtash
+			completely_controls = title:e_usfeh
+		}
+		piety_level >= 3
+	}
+	effect = {
+	}
+}
+
+refound_west_mamur_decision = {
+	picture = "gfx/interface/illustrations/decisions/decision_major_religion.dds"
+	major = yes
+
+	desc = refound_west_mamur_decision_desc
+	selection_tooltip = refound_west_mamur_decision_tooltip
+	is_shown = {
+		is_independent_ruler = yes
+		has_religion = religion:sarradonian_religion
+	}
+	is_valid = {
+		AND = {
+			completely_controls = title:e_ayyar
+			completely_controls = title:e_udhaliyya
+		}
+		piety_level >= 3
+	}
+	effect = {
+	}
+}
+refound_far_east_mamur_decision = {
+	picture = "gfx/interface/illustrations/decisions/decision_destiny_goal.dds"
+	major = yes
+
+	desc = refound_far_east_mamur_decision_desc
+	selection_tooltip = refound_far_east_mamur_decision_tooltip
+	is_shown = {
+		is_independent_ruler = yes
+		has_religion = religion:sarradonian_religion
+	}
+	is_valid = {
+		AND = {
+			completely_controls = title:e_ahradaban
+			completely_controls = title:e_kratemezin
+		}
+		piety_level >= 2
+	}
+	effect = {
+	}
+}

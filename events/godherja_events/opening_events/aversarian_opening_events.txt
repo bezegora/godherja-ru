@@ -1,0 +1,637 @@
+﻿namespace = opening_event
+
+opening_event.1 = { #Opener for the black sun
+	title = opening_event.1.t
+	desc = opening_event.1.desc
+	theme = battle
+	left_portrait = { 
+		character = root
+		animation = marshal
+	}
+
+	trigger = {
+		is_ai = no
+		has_title = title:k_epavarion
+	}
+
+	option = {
+		name = opening_event.1.a
+	}
+}
+
+opening_event.2 = { #Opener for the high king
+	title = opening_event.2.t
+	desc = opening_event.2.desc
+	theme = realm
+	left_portrait = { 
+		character = root
+		animation = anger
+	}
+
+	trigger = {
+		is_ai = no
+		has_title = title:k_high_kingdom_of_the_isles
+	}
+
+	option = {
+		name = opening_event.2.a
+	}
+}
+
+opening_event.3 = { #Opener for anyone in Aironoi
+	title = opening_event.3.t
+	desc = opening_event.3.desc
+	theme = realm
+	left_portrait = {
+		character = root
+	}
+	
+	trigger = {
+		is_ai = no
+		any_realm_county = {
+			OR = {
+				empire = title:e_aironoi
+			}
+		}
+		NOT = {
+			has_title = title:k_kalliados
+		}
+		NOT = {
+			has_title = title:d_phaistetus
+		}
+	}
+	
+	option = {
+		name = opening_event.3.a
+	}
+}
+
+opening_event.4 = { #Opener for Hecuba
+	title = opening_event.4.t
+	desc = opening_event.4.desc
+	theme = realm
+	left_portrait = { 
+		character = root
+		animation = personality_rational
+	}
+
+	trigger = {
+		is_ai = no
+		has_title = title:k_legio_lxi_anoterion
+	}
+
+	option = {
+		name = opening_event.4.a
+	}
+}
+
+opening_event.6 = { #Opener for Gorassos
+	title = opening_event.6.t
+	desc = opening_event.6.desc
+	theme = battle
+	left_portrait = { 
+		character = root
+		animation = rage
+	}
+
+	trigger = {
+		is_ai = no
+		has_title = title:k_the_bloodied_throne
+	}
+
+	option = {
+		name = opening_event.6.a
+	}
+}
+
+opening_event.7 = { #Opener for Magistos
+	title = opening_event.7.t
+	desc = opening_event.7.desc
+	theme = party
+	left_portrait = { 
+		character = root
+		animation = flirtation_left
+	}
+
+	trigger = {
+		is_ai = no
+		has_title = title:k_kasmiene
+	}
+
+	option = {
+		name = opening_event.7.a
+	}
+}
+
+opening_event.8 = { #Opener for Adriane
+	title = opening_event.8.t
+	desc = opening_event.8.desc
+	theme = war
+	left_portrait = { 
+		character = root
+		animation = dismissal
+	}
+
+	trigger = {
+		is_ai = no
+		has_title = title:c_sitrabis
+	}
+
+	option = {
+		name = opening_event.8.a
+	}
+}
+
+opening_event.9 = { #Opener for Heraklios
+	title = opening_event.9.t
+	desc = opening_event.9.desc
+	theme = party
+	left_portrait = { 
+		character = root
+		animation = personality_bold
+	}
+
+	trigger = {
+		is_ai = no
+		has_title = title:d_heraklios
+	}
+
+	option = {
+		name = opening_event.9.a
+	}
+}
+
+opening_event.10 = { #Opener for the Mamur
+	title = opening_event.10.t
+	desc = opening_event.10.desc
+	theme = learning_theology_focus
+	left_portrait = { 
+		character = root
+		animation = worry
+	}
+
+	trigger = {
+		is_ai = no
+		has_title = title:e_sihnamiyah
+	}
+
+	option = {
+		name = opening_event.10.a
+	}
+}
+
+opening_event.11 = { #Opener for Adalgar
+	title = opening_event.11.t
+	desc = opening_event.11.desc
+	theme = battle
+	left_portrait = { 
+		character = root
+		animation = war_defender
+	}
+
+	trigger = {
+		is_ai = no
+		has_title = title:d_hestfjoror
+	}
+
+	option = {
+		name = opening_event.11.a
+	}
+}
+
+opening_event.12 = { #Opener for Epghar-Argeadh
+	title = opening_event.12.t
+	desc = opening_event.12.desc
+	theme = war
+	left_portrait = { 
+		character = root
+		animation = worry
+	}
+
+	trigger = {
+		is_ai = no
+		has_title = title:k_calagonii
+	}
+
+	option = {
+		name = opening_event.12.a
+	}
+}
+
+opening_event.13 = { #Opener for Mathilde
+	title = opening_event.13.t
+	desc = opening_event.13.desc
+	theme = intrigue
+	left_portrait = { 
+		character = root
+		animation = scheme
+	}
+
+	trigger = {
+		is_ai = no
+		has_title = title:d_lalande
+	}
+
+	option = {
+		name = opening_event.13.a
+	}
+}
+
+opening_event.14 = { #Opener for Rene
+	title = opening_event.14.t
+	desc = opening_event.14.desc
+	theme = war
+	left_portrait = { 
+		character = root
+		animation = personality_bold
+	}
+
+	trigger = {
+		is_ai = no
+		has_title = title:d_the_band_of_bastards
+	}
+
+	option = {
+		name = opening_event.14.a
+	}
+}
+
+opening_event.15 = { #Opener for Cliement
+	title = opening_event.15.t
+	desc = opening_event.15.desc
+	theme = dynasty
+	left_portrait = { 
+		character = root
+		animation = idle
+	}
+
+	trigger = {
+		is_ai = no
+		has_title = title:k_varrdevet
+	}
+
+	option = {
+		name = opening_event.15.a
+	}
+}
+
+opening_event.16 = { #Opener for Ansfrei
+	title = opening_event.16.t
+	desc = opening_event.16.desc
+	theme = learning
+	left_portrait = { 
+		character = root
+		animation = personality_zealous
+	}
+
+	trigger = {
+		is_ai = no
+		has_title = title:k_marroux
+	}
+
+	option = {
+		name = opening_event.16.a
+	}
+}
+
+opening_event.17 = { #Opener for Benouet
+	title = opening_event.17.t
+	desc = opening_event.17.desc
+	theme = realm
+	left_portrait = { 
+		character = root
+		animation = personality_coward
+	}
+
+	trigger = {
+		is_ai = no
+		has_title = title:k_de_porte_de_bastione
+	}
+
+	option = {
+		name = opening_event.17.a
+	}
+}
+
+opening_event.18 = { #Opener for Cois
+	title = opening_event.18.t
+	desc = opening_event.18.desc
+	theme = realm
+	left_portrait = { 
+		character = root
+		animation = stress
+	}
+
+	trigger = {
+		is_ai = no
+		has_title = title:k_palitake
+	}
+
+	option = {
+		name = opening_event.18.a
+	}
+}
+
+opening_event.19 = { #Opener for Fenrus
+	title = opening_event.19.t
+	desc = opening_event.19.desc
+	theme = realm
+	left_portrait = { 
+		character = root
+		animation = anger
+	}
+
+	trigger = {
+		is_ai = no
+		has_title = title:d_phaistetus
+	}
+
+	option = {
+		name = opening_event.19.a
+	}
+}
+
+opening_event.20 = { #Opener for Kekropi
+	title = opening_event.20.t
+	desc = opening_event.20.desc
+	theme = war
+	left_portrait = { 
+		character = root
+		animation = disbelief
+	}
+
+	trigger = {
+		is_ai = no
+		has_title = title:d_ephoupoli
+	}
+
+	option = {
+		name = opening_event.20.a
+	}
+}
+
+opening_event.21 = { #Opener for Melane
+	title = opening_event.21.t
+	desc = opening_event.21.desc
+	theme = realm
+	left_portrait = { 
+		character = root
+		animation = personality_honorable
+	}
+
+	trigger = {
+		is_ai = no
+		has_title = title:d_eretithos
+	}
+
+	option = {
+		name = opening_event.21.a
+	}
+}
+
+opening_event.22 = { #Opener for Ulfirx
+	title = opening_event.22.t
+	desc = opening_event.22.desc
+	theme = party
+	left_portrait = { 
+		character = root
+		animation = personality_bold
+	}
+
+	trigger = {
+		is_ai = no
+		has_title = title:c_kathaeras
+	}
+
+	option = {
+		name = opening_event.22.a
+	}
+}
+
+opening_event.23 = { #Opener for Harthah
+	title = opening_event.23.t
+	desc = opening_event.23.desc
+	theme = battle
+	left_portrait = { 
+		character = root
+		animation = personality_vengeful
+	}
+
+	trigger = {
+		is_ai = no
+		has_title = title:k_khenemhat
+	}
+
+	option = {
+		name = opening_event.23.a
+	}
+}
+
+opening_event.24 = { #Opener for Hammart 
+	title = opening_event.24.t
+	desc = opening_event.24.desc
+	theme = witchcraft
+	left_portrait = { 
+		character = root
+		animation = scheme
+	}
+
+	trigger = {
+		is_ai = no
+		has_title = title:d_callesc
+	}
+
+	option = {
+		name = opening_event.24.a
+	}
+}
+
+opening_event.25 = { #Opener for Pejman 
+	title = opening_event.25.t
+	desc = opening_event.25.desc
+	theme = realm
+	left_portrait = { 
+		character = root
+		animation = personality_forgiving
+	}
+
+	trigger = {
+		is_ai = no
+		has_title = title:e_amsari
+	}
+
+	option = {
+		name = opening_event.25.a
+	}
+}
+
+opening_event.26 = { #Opener for Msamaki 
+	title = opening_event.26.t
+	desc = opening_event.26.desc
+	theme = witchcraft
+	left_portrait = { 
+		character = root
+		animation = scheme
+	}
+
+	trigger = {
+		is_ai = no
+		has_title = title:d_kamun
+	}
+
+	option = {
+		name = opening_event.26.a
+	}
+}
+
+opening_event.27 = { #Opener for Ogiers 
+	title = opening_event.27.t
+	desc = opening_event.27.desc
+	theme = war
+	left_portrait = { 
+		character = root
+		animation = personality_bold
+	}
+
+	trigger = {
+		is_ai = no
+		has_title = title:d_banereset
+	}
+
+	option = {
+		name = opening_event.27.a
+	}
+}
+
+opening_event.28 = { #Opener for Aeschraes 
+	title = opening_event.28.t
+	desc = opening_event.28.desc
+	theme = realm
+	left_portrait = { 
+		character = root
+		animation = personality_vengeful
+	}
+
+	trigger = {
+		is_ai = no
+		has_title = title:e_oraispol_aautokratia
+	}
+
+	option = {
+		name = opening_event.28.a
+	}
+}
+
+opening_event.29 { #Opener for Cenware
+	title = opening_event.29.t
+	desc = opening_event.29.desc
+	theme = war
+	left_portrait = { 
+		character = root
+		animation = personality_bold
+	}
+
+	trigger = {
+		is_ai = no
+		has_title = title:e_sjalvolki
+	}
+
+	option = {
+		name = opening_event.29.a
+	}
+}
+
+opening_event.30 { #Opener for Sigrun
+	title = opening_event.30.t
+	desc = opening_event.30.desc
+	theme = war
+	left_portrait = { 
+		character = root
+		animation = personality_bold
+	}
+
+	trigger = {
+		is_ai = no
+		has_title = title:d_zacope
+	}
+
+	option = {
+		name = opening_event.30.a
+	}
+}
+
+opening_event.31 { #Opener for Dragos
+	title = opening_event.31.t
+	desc = opening_event.31.desc
+	theme = witchcraft
+	left_portrait = { 
+		character = root
+		animation = personality_zealous
+	}
+
+	trigger = {
+		is_ai = no
+		has_title = title:k_artesmos
+	}
+
+	option = {
+		name = opening_event.31.a
+	}
+}
+
+opening_event.32 { #Opener for Isa
+	title = opening_event.32.t
+	desc = opening_event.32.desc
+	theme = realm
+	left_portrait = { 
+		character = root
+		animation = personality_zealous
+	}
+
+	trigger = {
+		is_ai = no
+		has_title = title:c_mecinpasa
+	}
+
+	option = {
+		name = opening_event.32.a
+	}
+}
+
+opening_event.33 { #Opener for Sirras
+	title = opening_event.33.t
+	desc = opening_event.33.desc
+	theme = war
+	left_portrait = { 
+		character = root
+		animation = personality_vengeful
+	}
+
+	trigger = {
+		is_ai = no
+		has_title = title:c_deris
+	}
+
+	option = {
+		name = opening_event.33.a
+	}
+}
+
+opening_event.34 { #Opener for Iordanes
+	title = opening_event.34.t
+	desc = opening_event.34.desc
+	theme = realm
+	left_portrait = { 
+		character = root
+		animation = personality_forgiving
+	}
+
+	trigger = {
+		is_ai = no
+		has_title = title:k_kyvernis_ti_opakhasia
+	}
+
+	option = {
+		name = opening_event.34.a
+	}
+}

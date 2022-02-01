@@ -1,0 +1,505 @@
+﻿# Duel
+
+###-------------------------------------------------------------------
+## duel starting effects
+
+
+set_start_vars = {
+	$CHALLENGED$ = {
+		add_character_flag = in_duel
+		add_character_flag = { flag = dueled_recently days = duel_cooldown_total }
+		set_variable = { name = OTHER value = $CHALLENGER$ }
+	}
+
+	$CHALLENGER$ = {
+		add_character_flag = in_duel
+		set_variable = { name = OTHER value = $CHALLENGED$ }
+	}
+}
+
+
+start_duel = {
+	# Uses $CHALLENGER$ and $CHALLENGED$: these must be scope:char1, etc
+	set_start_vars = {
+		CHALLENGER = $CHALLENGER$
+		CHALLENGED = $CHALLENGED$
+	}
+
+	$CHALLENGED$ = {
+		trigger_event = {
+			id = duel.001
+			days = 7
+		}
+	}
+}
+
+
+start_duel_shortened = {
+	set_start_vars = {
+		CHALLENGER = $CHALLENGER$
+		CHALLENGED = $CHALLENGED$
+	}
+
+	$CHALLENGER$ = {
+		trigger_event = duel.101
+	}
+
+	$CHALLENGED$ = {
+		trigger_event = duel.101
+	}
+}
+
+### -----------------------------------------------------------------------
+
+
+duel_round_one = {
+	var:OTHER = {
+		trigger_event = duel.050
+	}
+}
+
+
+duel_round_two = {
+	debug_log = "duel: it's a start"
+	if = {
+		limit = {
+			OR = {
+				has_character_flag = duel_cancelled
+				var:OTHER = {
+					has_character_flag = duel_cancelled
+				}
+			}
+		}
+
+		remove_character_flag = duel_cancelled
+		var:OTHER = {
+			remove_character_flag = duel_cancelled
+		}
+
+		debug_log = "duel: dammit"
+
+	}
+
+	else = {
+#		limit = { has_character_flag = next_round }
+#		remove_character_flag = next_round
+		duel_intro = yes
+		debug_log = "duel: let's a go"
+	}
+
+#	else = {
+#		var:OTHER = {
+#			trigger_event = duel.050
+#			add_character_flag = { flag = next_round months = 1 }
+#		}
+#	}
+}
+
+
+duel_intro = {
+	trigger_event = duel.101 # this one is the actual duel
+	var:OTHER = {
+		trigger_event = duel.101
+	}
+}
+
+
+set_personalised_results = {
+	save_temporary_scope_value_as = { name = getwoundzeroer value = {
+			value = 1
+			if = {
+				limit = { $RESULT$ > 0 }
+				value = 0
+			}
+	}}
+
+
+	random_list = {
+		16 = { # 0
+			modifier = {
+				add = {
+					value = $RESULT$
+					multiply = $RESULT$
+					multiply = -4
+				}
+			}
+			save_temporary_scope_value_as = { name = howmuchwound value = 0 }
+			debug_log = "duel: 0"
+		}
+
+		8 = { # 1
+			modifier = {
+				add = $RESULT$
+			}
+			save_temporary_scope_value_as = { name = howmuchwound value = 1 }
+			debug_log = "duel: 1"
+		}
+
+		4 = { # 2
+			modifier = {
+				add = {
+					value = $RESULT$
+					multiply = -1
+				}
+			}
+			save_temporary_scope_value_as = { name = howmuchwound value = 2 }
+			debug_log = "duel: 2"
+		}
+
+		2 = { # 3
+			modifier = {
+				add = {
+					value = $RESULT$
+					multiply = -2
+				}
+				factor = scope:getwoundzeroer
+			}
+			save_temporary_scope_value_as = { name = howmuchwound value = 3 }
+			debug_log = "duel: 3"
+		}
+
+		1 = { # 4
+			modifier = {
+				add = {
+					value = $RESULT$
+					multiply = $RESULT$
+				}
+				factor = scope:getwoundzeroer
+			}
+			save_temporary_scope_value_as = { name = howmuchwound value = 4 }
+			debug_log = "duel: 4"
+		}
+	}
+
+	set_variable = { name = howmuchwound value = scope:howmuchwound }
+
+	debug_log = "Varvalue: [THIS.GetVariable('howmuchwound').GetValue]"
+	# maimed?
+	random = {
+		chance = {
+			value = scope:howmuchwound
+			multiply = 15
+		}
+
+		add_character_flag = { flag = duel_maimed months = 1 }
+	}
+
+
+	# will we resist death today?
+	if = {
+		limit = {
+			NOT = { scope:howmuchwound = 4 }
+		}
+		set_local_variable = { name = go value = yes }
+		while = {
+			count = 10
+			limit = {
+				has_trait_rank = {
+					trait = wounded
+					rank >= { value = 4 subtract = var:howmuchwound }
+				}
+				local_var:go = yes
+			}
+			
+			random_list = {
+				0 = {
+					modifier = {
+						add = stubbornloop_chance
+					}
+					change_variable = { name = howmuchwound subtract = 1 }
+				}
+				
+
+				0 = {
+					modifier = {
+						add = stubbornloop_minus
+					}
+					set_local_variable = { name = go value = no }
+					add_character_flag = kill_him
+				}
+			}
+		}
+
+		remove_local_variable = go
+	}
+	else = {
+		add_character_flag = kill_him
+	}
+}
+
+
+duel_results = {
+	
+	debug_log = "duel: ah yeah baybe"
+	debug_log_scopes = yes
+	if = {
+		limit = { var:OTHER = { has_variable = stratchoice }} # checking if both have called the effect
+
+
+		debug_log = "duel: so far so good"
+		save_temporary_scope_value_as = {
+			name = bonus
+			value = duel_calc_adv
+		}
+
+		duel = {
+			skill = prowess
+			target = var:OTHER
+
+			2 = {
+				compare_modifier = {
+					value = { value = scope:duel_value multiply = scope:duel_value add = scope:bonus } # scope:duel_value ^2
+#					add = bonus
+					min = -2
+				}
+				save_temporary_scope_value_as = { name = result value = 2 }
+			}
+
+			15 = {
+				compare_modifier = {
+					value = { value = scope:duel_value add = scope:bonus }
+#					add = bonus
+					min = -15
+				}
+				save_temporary_scope_value_as = { name = result value = 1 }
+			}
+
+			15 = {
+				compare_modifier = {
+					value = { value = scope:duel_value add = scope:bonus }
+#					add = bonus
+					multiplier = -1
+					min = -15
+				}
+				save_temporary_scope_value_as = { name = result value = -1 }
+			}
+
+			2 = {
+				compare_modifier = {
+					value = { value = scope:duel_value multiply = scope:duel_value add = scope:bonus }
+#					add = bonus
+					multiplier = -1
+					min = -2
+				}
+				save_temporary_scope_value_as = { name = result value = -2 }
+			}
+		}
+
+		clear_saved_scope = bonus
+
+		set_personalised_results = { RESULT = scope:result }
+		var:OTHER = {
+			set_personalised_results = { RESULT = scope:result }
+		}
+
+		if = {
+			limit = {
+				OR = {
+					has_character_flag = kill_him
+					var:OTHER = {
+						has_character_flag = kill_him
+					}
+				}
+			}
+
+			if = {
+				limit = { # both die
+					has_character_flag = kill_him
+					var:OTHER = {
+						has_character_flag = kill_him
+					}
+				}
+				var:OTHER = {
+					trigger_event = duel.130
+				}
+				trigger_event = duel.130
+			}
+
+			else_if = {
+				limit = {
+					has_character_flag = kill_him
+				}
+				trigger_event = duel.128
+			}
+
+			else = {
+				var:OTHER = {
+					trigger_event = duel.128
+				}
+			}
+		}
+
+		else = {
+			if = {
+				limit = { scope:result < 0 }
+
+				trigger_event = duel.125
+			}
+			else = {
+				var:OTHER = {
+					trigger_event = duel.125
+				}
+			}
+		}
+	}
+}
+
+enact_duel_effects = {
+	save_temporary_scope_value_as = {
+		name = wounds
+		value = var:howmuchwound
+	}
+
+	while = {
+		limit = { scope:wounds > 0 }
+		increase_wounds_effect = {
+			REASON = duel
+		}
+		save_temporary_scope_value_as = {
+			name = wounds
+			value = {
+				value = scope:wounds
+				subtract = 1
+			}
+		}
+	}
+
+	if = {
+		limit = { has_character_flag = duel_maimed }
+		maimed_in_battle_effect = yes
+	}
+}
+
+
+duel_over_cleanup = { # call for both
+	remove_character_flag = hurt
+	remove_character_flag = reputation_tarnished
+	remove_character_flag = unequal_footing
+
+	remove_variable = stratchoice
+	remove_character_flag = in_duel
+	remove_variable = howmuchwound
+	remove_character_flag = duel_maimed
+	remove_character_flag = fled
+	remove_character_flag = duel_imprison
+	remove_character_flag = duel_from_battle
+
+	#?
+	remove_character_flag = kill_him
+	
+	remove_character_flag = already_in_duel
+
+	debug_log = "duel: cleaned up"
+}
+
+duel_cleanup = {
+	var:OTHER = {
+		duel_over_cleanup = yes
+	}
+	duel_over_cleanup = yes
+}
+
+
+trigger_events_loser = {
+	if = { # died
+		limit = { has_character_flag = kill_him }
+		trigger_event = duel.128
+	}
+	scope:title_duelling = {
+		remove_list_variable = {
+			name = potential_duellers
+			target = root
+		}
+		remove_list_variable = {
+			name = combatants
+			target = root
+		}
+	}
+#	else_if = {
+#		limit = { has_character_flag = fled }
+#		trigger_event = duel.126
+#		var:OTHER = {
+#			trigger_event = duel.121
+#		}
+#	}
+	else = { # this deals in the probabilities with whether you can flee
+		trigger_event = duel.125
+	}
+}
+
+##############
+# MAGIC DUEL #
+##############
+
+#magic_duel_setup = {	# Used to fetch your partner's magical prowess. Automatically called at the start of magic_duel itself, but should be called independently in the immediate clause so that the option displays the correct percentages for success
+#	$DUEL_PARTNER$ = {
+#		if = {
+#			limit = { has_variable = magical_prowess }
+#			$INSTIGATOR$ = {
+#				set_variable = {
+#					name = second_magical_prowess	
+#					value = prev.var:magical_prowess
+#					days = 3	# If an event chain breaks for some reason, have the value cleaned automatically
+#				}
+#			}
+#		}
+#		else = {
+#			$INSTIGATOR$ = {
+#				set_variable = {
+#					name = second_magical_prowess	
+#					value = 0
+#					days = 3	# If an event chain breaks for some reason, have the value cleaned automatically
+#				}
+#			}
+#		}
+#	}
+#}	
+#
+#magic_duel = {
+#	if = {
+#		limit = { NOT = { has_variable = second_magical_prowess } }
+#		magic_duel_setup = { INSTIGATOR = $INSTIGATOR$ DUEL_PARTNER = $DUEL_PARTNER$ }
+#	}
+#	if = {
+#		limit = { NOT = { has_variable = magical_prowess } }
+#		set_variable = { name = magical_prowess value = 0 }
+#	}
+#	random_list = {
+#		# Instigator wins
+#		1 = {
+#			compare_modifier = {
+#				value = $INSTIGATOR$.var:magical_prowess
+#			}
+#			trigger_event = {
+#				#id = aversarian_succession.0009
+#				id = $WINNER_EVENT_ID$
+#			}
+#			$DUEL_PARTNER$ = {
+#				add_trait = wounded_1
+#				trigger_event = {
+#					#id = aversarian_succession.0008
+#					id = $LOSER_EVENT_ID$
+#				}
+#			}
+#		}
+#		# Opponent wins
+#		1 = {
+#			compare_modifier = {
+#				value = $INSTIGATOR$.var:second_magical_prowess
+#			}
+#			add_trait = wounded_1
+#			trigger_event = {
+#				#id = aversarian_succession.0008
+#				id = $LOSER_EVENT_ID$
+#			}
+#			#adding my partner back to the variable list
+#			$DUEL_PARTNER$ = {
+#				trigger_event = {
+#					#id = aversarian_succession.0009
+#					id = $WINNER_EVENT_ID$
+#				}
+#			}
+#		}
+#	}
+#	remove_variable = second_magical_prowess	# Not needed anymore, and should disappear the next day anyway, but just to be sure
+#}

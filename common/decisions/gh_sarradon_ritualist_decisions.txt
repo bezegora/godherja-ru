@@ -1,0 +1,30 @@
+﻿sophocos_quest_decision = {
+	picture = "gfx/interface/illustrations/decisions/decision_personal_religious.dds"
+	ai_check_interval = 60
+
+	desc = sophocos_quest_decision.desc
+	selection_tooltip = sophocos_quest_decision_tooltip
+
+	cooldown = {
+		years = 30
+	}
+
+	is_shown = {
+		is_landed = yes
+
+		faith = {
+			religion_tag = ritualist_religion
+		}
+	}
+
+	is_valid_showing_failures_only = {
+		is_available_adult = yes
+		is_at_war = no
+	}
+
+	effect = {
+		trigger_event = {
+			id = sophocos_quest.0001
+		}
+	}
+}

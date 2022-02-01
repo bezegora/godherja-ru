@@ -1,0 +1,12 @@
+﻿trigger_freebreak_succ_av = {
+	effect = {
+		scope:title_duelling.var:independence_faction_av = {
+			faction_start_war = {
+				title = scope:title_duelling
+			}
+		}
+		scope:title_duelling = {
+			remove_variable = independence_faction_av
+		}
+	}
+}

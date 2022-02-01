@@ -1,0 +1,745 @@
+﻿thebastro_1 = { ##tower warden
+	name = "Pantoleon"
+        dna = pantoleon
+	dynasty = dyn_aversaria_western_isle_7
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	trait = education_learning_4
+	trait = scholar
+	learning = 10
+	trait = zealous
+	trait = patient
+	trait = temperate
+	1192.6.18 = {
+		birth = yes
+                effect = {
+			add_character_flag = has_scripted_appearance
+		}
+	}
+}
+thebastro_2 = {
+	name = "Helgesippos"
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	dynasty = dyn_aversaria_western_isle_7
+	trait = education_learning_4
+	trait = scholar
+	trait = zealous
+	1145.4.30 = {
+		birth = yes
+	}
+	1200.3.1 = {
+	death = {
+		death_reason = death_frodbrokna
+		}
+	}
+}
+thebastro_3 = {
+	name = "Acrisius"
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	dynasty = dyn_aversaria_western_isle_7
+	trait = education_learning_4
+	trait = scholar
+	trait = zealous
+	1170.3.2 = {
+		birth = yes
+	}
+	1244.1.1 = {
+	death = {
+		death_reason = death_battle
+		}
+	}
+}
+
+teninth_1 = { ###archaeologists
+	name = "Kyros"
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	dynasty = dyn_aversaria_western_isle_1
+	father = teninth_2
+	mother = teninth_3
+	trait = education_learning_3
+	trait = scholar
+	1232.6.18 = {
+		birth = yes
+	}
+}
+
+teninth_2 = { ###archaeologists
+	name = "Timoxenos"
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	dynasty = dyn_aversaria_western_isle_1
+	1205.5.5 = {
+		birth = yes
+	}
+	1231.9.1 = {
+		add_spouse = teninth_3
+	}
+	1244.1.1 = {
+		death = {
+			death_reason = death_accident
+		}
+	}
+}
+teninth_3 = { ###archaeologists
+	name = "Nikaia"
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	female = yes
+	1206.5.13 = {
+		birth = yes
+	}
+		1250.1.1 = {
+		death = {
+			death_reason = death_natural_causes
+		}
+	}
+}
+teninth_4 = { ###archaeologists
+	name = "Nastes"
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	dynasty = dyn_aversaria_western_isle_1
+	father = teninth_2
+	mother = teninth_3
+	1235.2.18 = {
+		birth = yes
+	}
+}
+teninth_5 = { ###archaeologists
+	name = "Kleio"
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	female = yes
+	dynasty = dyn_aversaria_western_isle_1
+	father = teninth_2
+	mother = teninth_3
+	1237.8.1 = {
+		birth = yes
+	}
+}
+teninth_6 = { ###archaeologists
+	name = "Euphorion"
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	dynasty = dyn_aversaria_western_isle_1
+	1160.5.5 = {
+		birth = yes
+	}
+	1199.9.1 = {
+		add_spouse = teninth_7
+	}
+	1206.1.1 = {
+		death = {
+			death_reason = death_ill
+		}
+	}
+}
+teninth_7 = { ###archaeologists
+	name = "Andraemon"
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	1179.2.6 = {
+		birth = yes
+	}
+	1238.2.12 = {
+		death = {
+			death_reason = death_ill
+		}
+	}
+}
+
+lissox_1 = { ##cult dude named after a noble gas
+	name = "Zenon"
+        dna = zenon
+	father = lissox_4
+	dynasty = dyn_aversaria_western_isle_5
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	trait = education_intrigue_3
+	trait = deceitful
+	trait = ambitious
+	trait = vengeful
+	trait = schemer
+	intrigue = 10
+	trait = magic_good_3
+	trait = education_dead_magic_2
+	1212.6.18 = {
+		birth = yes
+	        effect = {
+			add_character_flag = has_scripted_appearance
+		}
+	}
+	1239.5.19 = {
+		add_spouse = lissox_1
+	}	
+}
+
+lissox_2 = { ##cult mom
+	name = "Aigidia"
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	female = yes
+	dynasty = dyn_aversaria_western_isle_5
+	trait = magic_good_1
+	trait = education_diplomacy_3
+	trait = deceitful
+	trait = gregarious
+	trait = ambitious
+	1215.6.18 = {
+		birth = yes
+                effect = {
+			add_character_flag = has_scripted_appearance
+		}
+	}
+	1248.4.4 = {
+		add_spouse = psissos_5
+	}
+}
+
+lissox_3 = { #creepy cult kid 
+	name = "Niphon"
+	mother = lissox_2
+	father = aversaria_western_isle_7
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	dynasty = dyn_aversaria_western_isle_5
+	trait = albino
+	trait = magic_good_3
+	1242.6.18 = {
+		birth = yes
+	}
+}
+lissox_4 = { 
+	name = "Deiphobus"
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	dynasty = dyn_aversaria_western_isle_5
+	1170.5.12 = {
+		birth = yes
+	}
+	1244.1.1 = {
+		death = {
+			death_reason = death_accident
+		}
+	}
+}
+lissox_5 = {
+	name = "Antonios"
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	1232.6.18 = {
+		birth = yes
+	}
+}
+lissox_6 = {
+	name = "Porphyrios"
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	1228.6.18 = {
+		birth = yes
+	}
+}
+psissos_1 = {
+	name = "Eusebios"
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	dynasty = dyn_aversaria_western_isle_3
+	father = psissos_2
+	mother = psissos_3
+	trait = lustful
+	trait = seducer
+	1196.6.18 = {
+		birth = yes
+	}
+	1250.1.1 = {
+		set_relation_lover = character:teninth_5
+	}
+}
+psissos_2 = { 
+	name = "Evenios"
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	dynasty = dyn_aversaria_western_isle_3
+	1165.6.18 = {
+		birth = yes
+	}
+	1194.9.1 = {
+		add_spouse = psissos_3
+	}
+	1240.1.1 = {
+		death = {
+			death_reason = death_fall
+		}
+	}
+}
+psissos_3 = { 
+	name = "Anticleia"
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	female = yes
+	1170.6.18 = {
+		birth = yes
+	}
+		1250.1.1 = {
+		death = {
+			death_reason = death_natural_causes
+		}
+	}
+}
+psissos_4 = {
+	name = "Polypemon"
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	dynasty = dyn_aversaria_western_isle_3
+	father = psissos_2
+	mother = psissos_3
+	1199.9.4 = {
+		birth = yes
+	}
+	1239.2.14 = {
+	death = {
+		death_reason = death_accident
+		}
+	}
+}
+psissos_5 = {
+	name = "Konon"
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	dynasty = dyn_aversaria_western_isle_3
+	father = psissos_2
+	mother = psissos_3
+	1201.9.4 = {
+		birth = yes
+	}
+}
+psissos_6 = {
+	name = "Artemidora"
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	female = yes
+	dynasty = dyn_aversaria_western_isle_3
+	father = psissos_2
+	mother = psissos_3
+	1220.1.4 = {
+		birth = yes
+	}
+}
+psissos_7 = {
+	name = "Aketa"
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	female = yes
+	dynasty = dyn_aversaria_western_isle_3
+	father = psissos_1
+	trait = bastard
+	1236.2.4 = {
+		birth = yes
+	}
+}
+psissos_8 = {
+	name = "Midas"
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	dynasty = dyn_aversaria_western_isle_3
+	father = psissos_1
+	trait = bastard
+	1240.2.2 = {
+		birth = yes
+	}
+}
+psissos_9 = {
+	name = "Cybele"
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	female = yes
+	dynasty = dyn_aversaria_western_isle_3
+	father = psissos_1
+	trait = bastard
+	1244.2.2 = {
+		birth = yes
+	}
+}
+psissos_10 = {
+	name = "Aristarchos"
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	dynasty = dyn_aversaria_western_isle_3
+	father = psissos_1
+	trait = bastard
+	1244.2.2 = {
+		birth = yes
+	}
+}
+psissos_11 = { 
+	name = "Deianeira"
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	dynasty = dyn_aversaria_western_isle_3
+	female = yes
+	1165.6.18 = {
+		birth = yes
+	}
+	1190.9.1 = {
+		add_spouse = lebelis_5
+	}
+	1230.1.1 = {
+		death = {
+			death_reason = death_old_age
+		}
+	}
+}
+
+naxembria_1 = {
+	name = "Evangelos"
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	dynasty = dyn_aversaria_western_isle_2
+	father = naxembria_2
+	mother = naxembria_3
+	1224.6.18 = {
+		birth = yes
+	}
+}
+naxembria_2 = { 
+	name = "Heliodorus"
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	dynasty = dyn_aversaria_western_isle_2
+	father = naxembria_6
+	mother = naxembria_5
+	1184.6.18 = {
+		birth = yes
+	}
+	1220.9.1 = {
+		add_spouse = naxembria_3
+	}
+	1244.1.1 = {
+		death = {
+			death_reason = death_murder
+		}
+	}
+}
+naxembria_3 = { 
+	name = "Deianeira"
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	female = yes
+	trait = lustful
+	trait = trusting
+	trait = fickle
+	intrigue = 0
+	trait = education_stewardship_1
+	1196.6.18 = {
+		birth = yes
+	}
+		1244.10.1 = {
+		add_spouse = psissos_1
+	}
+}
+naxembria_4 = {
+	name = "Evangelos"
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	dynasty = dyn_aversaria_western_isle_2
+	female = yes
+	father = naxembria_2
+	mother = naxembria_3
+	1221.6.18 = {
+		birth = yes
+	}
+	1245.9.18 = {
+		death = {
+			death_reason = death_accident
+		}
+	}
+}
+naxembria_5 = { 
+	name = "Raisa"
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	female = yes
+	1158.6.14 = {
+		birth = yes
+	}
+	1210.5.8 = {
+	death = {
+		death_reason = death_ill
+		}
+	}
+}
+naxembria_6 = { 
+	name = "Ennomus"
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	trait = magic_good_2
+	1159.6.18 = {
+		birth = yes
+	}
+	1181.10.1 = {
+		add_spouse = naxembria_5
+	}
+	1200.3.1 = {
+	death = {
+		death_reason = death_frodbrokna
+		}
+	}
+}
+
+lebelis_6 = { #declared empress-young
+	name = "Pelagia"
+	father = lebelis_1
+	dynasty = dyn_aversaria_western_isle_6
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	trait = ambitious
+	trait = magic_good_2
+	trait = education_diplomacy_4
+	trait = cynical
+	trait = stubborn
+	trait = intellect_good_2
+	female = yes
+	1235.6.18 = {
+		birth = yes
+	        effect = {
+			add_character_flag = has_scripted_appearance
+		}
+	}
+}
+
+lebelis_1 = { #empress father
+	name = "Damianos"
+        dna = damianos
+	father = lebelis_5
+	mother = psissos_11
+	dynasty = dyn_aversaria_western_isle_6
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	trait = magic_good_2
+	1192.6.18 = {
+		birth = yes
+	        effect = {
+			add_character_flag = has_scripted_appearance
+		}
+	}
+	1251.1.6 = {
+		death = {
+			death_reason = death_ill
+		}
+	}	
+}
+lebelis_2 = { #empress brother
+	name = "Niketas"
+	dynasty = dyn_aversaria_western_isle_6
+	father = lebelis_1
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	1237.6.18 = {
+		birth = yes
+	}
+	1254.1.1 = {
+		add_spouse = teninth_5
+	}
+}
+lebelis_3 = { #empress sister
+	name = "Apollonia"
+	dynasty = dyn_aversaria_western_isle_6
+	father = lebelis_1
+	female = yes
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	trait = magic_good_1
+	1242.6.18 = {
+		birth = yes
+	}
+}
+lebelis_5 = { #usurper
+	name = "Apollonis"
+	dynasty = dyn_aversaria_western_isle_6
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	trait = magic_good_1
+	trait = education_martial_3
+	trait = overseer
+	trait = sadistic
+	trait = arrogant
+	trait = ambitious
+	stewardship = 10
+	1160.3.28 = {
+		birth = yes
+	}
+	1199.1.1 = {
+	effect = {
+			imprison = {
+				target = character:sozenia_5
+				type = house_arrest
+			}
+		}
+	}
+	1216.1.1 = {
+	death = {
+		death_reason = death_battle
+		}
+	}
+}
+lebelis_7 = {
+	name = "Porphyrios"
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	1228.6.18 = {
+		birth = yes
+	}
+}
+lebelis_8 = {
+	name = "Kyros"
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	1226.6.18 = {
+		birth = yes
+	}
+}
+lebelis_9 = {
+	name = "Orestes"
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	1218.6.18 = {
+		birth = yes
+	}
+}
+lebelis_10 = {
+	name = "Orestes"
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	1166.1.18 = {
+		birth = yes
+	}
+	1228.1.1 = {
+		death = {
+			death_reason = death_natural_causes
+		}
+	}
+}
+sozenia_1 = {
+	name = "Meletios"
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	dynasty = dyn_aversaria_western_isle_4
+	father = sozenia_2
+	mother = sozenia_3
+	trait = education_martial_4
+	martial = 5
+	1229.6.18 = {
+		birth = yes
+	}
+	1242.1.1 = {
+		add_spouse = psissos_6
+	}
+}
+sozenia_2 = { 
+	name = "Pataicos"
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	dynasty = dyn_aversaria_western_isle_4
+	1202.6.18 = {
+		birth = yes
+	}
+	1228.9.1 = {
+		add_spouse = sozenia_3
+	}
+	1253.1.1 = {
+		death = {
+			death_reason = death_battle
+		}
+	}
+}
+sozenia_3 = { 
+	name = "Archesilaus"
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	female = yes
+	1203.6.18 = {
+		birth = yes
+	}
+		1250.1.1 = {
+		death = {
+			death_reason = death_natural_causes
+		}
+	}
+}
+sozenia_4 = { 
+	name = "Siromos"
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	dynasty = dyn_aversaria_western_isle_4
+	father = sozenia_2
+	mother = sozenia_3
+	1235.6.18 = {
+		birth = yes
+	}
+
+	1244.1.1 = {
+		death = {
+			death_reason = death_accident
+		}
+	}
+}
+sozenia_5 = { #imperial governor
+	name = "Epistrophos"
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	dynasty = dyn_aversaria_western_isle_4
+	trait = education_diplomacy_1
+	trait = dull
+	trait = arrogant
+	trait = content
+	1170.8.8 = {
+		birth = yes
+	}
+	1186.1.1 = {
+		effect = {
+			set_relation_rival = character:lebelis_5
+		}
+	}
+	1203.1.1 = {
+		death = {
+			death_reason = death_execution
+			killer = lebelis_5
+		}
+	}
+}
+sozenia_6 = {
+	name = "Kallixeina"
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	dynasty = dyn_aversaria_western_isle_4
+	female = yes
+	1245.5.18 = {
+		birth = yes
+	}
+}
+
+erythreline_1 = {
+	name = "Akakios"
+	father = erythreline_2
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	1231.6.18 = {
+		birth = yes
+	}
+}
+erythreline_2 = {
+	name = "Anchimolios"
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	1160.1.1 = {
+		birth = yes
+	}
+	1215.1.1 = {
+	death = {
+		death_reason = death_ill
+		}
+	}
+}

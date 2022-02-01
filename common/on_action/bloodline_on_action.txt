@@ -1,0 +1,42 @@
+﻿on_birth_bloodline = {
+    effect = {
+        if = {
+            limit = {
+                any_parent = {
+                    even_if_dead = yes
+                    has_trait_with_flag = bloodline
+                }
+            }
+            inherit_all_bloodlines = yes
+        }
+    }
+}
+
+bloodline_set_founders = {
+    effect = {
+        character:clanlands_sjalvolki_1 = { bloodline_set_founder = { TRAIT = cenware } } #Cenware
+        character:western_imperial_1 = { bloodline_set_founder = { TRAIT = aeschraes } } #Cenware
+        character:western_imperial_1059 = { bloodline_set_founder = { TRAIT = nikaryin } } #Cenware
+        character:western_imperial_1016 = { bloodline_set_founder = { TRAIT = phanagorax } } #Cenware
+        character:western_imperial_1063 = { bloodline_set_founder = { TRAIT = dhacixen } } #Cenware
+        character:western_imperial_1065 = { bloodline_set_founder = { TRAIT = aexionarax } } #Cenware
+        character:western_imperial_1068 = { bloodline_set_founder = { TRAIT = maklea } } #Cenware
+        character:western_imperial_1015 = { bloodline_set_founder = { TRAIT = nothyx } } #Cenware
+        character:western_imperial_1000 = { bloodline_set_founder = { TRAIT = axiaothea } } #Cenware
+        character:iyrossi_history_1 = { bloodline_set_founder = { TRAIT = pothacleas } } #Cenware
+        character:southern_imperial_15 = { bloodline_set_founder = { TRAIT = the_skull_taker } } #Cenware
+        character:marcher_10001 = { bloodline_set_founder = { TRAIT = gardfrei } } #Cenware
+        character:marcher_10105 = { bloodline_set_founder = { TRAIT = huegons } } #Cenware
+        character:marcher_20000 = { bloodline_set_founder = { TRAIT = the_good_king } } #Cenware
+        character:amsari_history_1 = { bloodline_set_founder = { TRAIT = the_prophet } } #Cenware
+        character:history_misc_kathanouxa = { bloodline_set_founder = { TRAIT = kathanouxa } } #Cenware
+        character:marcher_19999 = { bloodline_set_founder = { TRAIT = vercigex } } #Cenware
+    }
+}
+
+bloodline_add_member = {
+    effect = {
+        character:iyrossi_history_7 = { bloodline_add_member = { TRAIT = pothacleas CHECK = no } }
+        character:canian_1 = { bloodline_add_member = { TRAIT = the_prophet CHECK = no } }
+    }
+}

@@ -1,0 +1,56 @@
+﻿# Kingdom of the Clouds
+#by TBPineapple
+
+kingdom_of_the_clouds_decision = {
+	picture = "gfx/interface/illustrations/decisions/decision_destiny_goal.dds"
+	major = yes
+	ai_check_interval = 120
+	desc = kingdom_of_the_clouds_desc
+	
+	is_shown = {
+	has_culture_group = culture_group:gh_sarminian_group
+	
+	NOR = {
+	is_target_in_global_variable_list = {
+	name = unavailable_unique_decisions
+	target = flag:kingdom_of_the_clouds_decision
+	}
+	}
+	}
+	is_valid = {
+		has_culture_group = culture_group:gh_sarminian_group
+		completely_controls = title:d_puscava
+		completely_controls = title:d_podkoren
+		}
+	effect = {
+	capital_county = {
+	change_development_level = 15
+	set_county_culture = culture:sarminian
+	set_county_faith = faith:salacad
+	}
+	get_title = title:k_samazonas
+	hidden_effect = {
+	set_primary_title_to = title:k_samazonas
+	}
+	add_prestige = 750
+	give_nickname = nick_skycrowned
+	add_to_global_variable_list = {
+	name = unavailable_unique_decisions
+	target = flag:kingdom_of_the_clouds_decision
+	
+	}
+	trigger_event = {
+		id = sarminian_flavor.1000
+		days = 1
+	}
+}
+	
+	ai_potential = {
+		always = yes
+	}
+
+	ai_will_do = {
+		base = 100
+	}
+
+}

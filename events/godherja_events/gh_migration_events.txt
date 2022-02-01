@@ -1,0 +1,576 @@
+﻿namespace = migration_debug
+
+migration_debug.1 = {
+	type = character_event
+	theme = martial
+	title = migration_debug.1.t
+	desc = migration_debug.1.desc
+
+	option = {
+		name = migration_debug.1.a
+		migrate_from_lands = yes
+	}
+}
+
+# Give yourself all the land needed to redraw the west
+migration_debug.2 = {
+	hidden = yes
+
+	immediate = {
+		create_title_and_vassal_change = {
+			type = conquest
+			save_scope_as = change
+		}
+
+		every_county = {
+			limit = {
+				OR = {
+					kingdom = title:k_palitake
+					kingdom = title:k_zakros
+					kingdom = title:k_parcos
+					kingdom = title:k_pergicos
+					kingdom = title:k_assocaea
+					kingdom = title:k_argyra
+				}
+			}
+			
+			change_title_holder = {
+				holder = root
+				change = scope:change
+			}
+		}
+		resolve_title_and_vassal_change = scope:change
+	}
+}
+
+# Give yourself all the land needed to end the empire
+migration_debug.3 = {
+	hidden = yes
+
+	immediate = {
+		trigger_event = {
+			id = migration_debug.2
+		}
+
+		create_title_and_vassal_change = {
+			type = conquest
+			save_scope_as = change
+		}
+
+		every_county = {
+			limit = {
+				OR = {
+					kingdom = title:k_sanos
+					kingdom = title:k_kallios
+					kingdom = title:k_helenai
+					kingdom = title:k_arsidos
+					kingdom = title:k_artesmos
+					kingdom = title:k_kasmiene
+					kingdom = title:k_tanada
+					kingdom = title:k_cyrocaea
+					kingdom = title:k_hyrea
+					kingdom = title:k_kalliados
+					kingdom = title:k_bourillai
+				}
+			}
+			
+			change_title_holder = {
+				holder = root
+				change = scope:change
+			}
+		}
+		resolve_title_and_vassal_change = scope:change
+	}
+}
+
+# Give yourself all the land needed to end the empire
+migration_debug.4 = {
+	hidden = yes
+
+	immediate = {
+		create_title_and_vassal_change = {
+			type = conquest
+			save_scope_as = change
+		}
+
+		every_county = {
+			limit = {
+				OR = {
+					empire = title:e_etepezea
+					empire = title:e_malcois
+					empire = title:e_opakhasia
+					empire = title:e_aironoi
+					empire = title:e_megos_kalathipsomi
+					empire = title:e_mikros_kalathipsomi
+				}
+			}
+			
+			change_title_holder = {
+				holder = root
+				change = scope:change
+			}
+		}
+		resolve_title_and_vassal_change = scope:change
+	}
+}
+
+migration_debug.5 = {
+	hidden = yes
+
+	immediate = {
+		# trigger_event = {
+		# 	id = migration_debug.4
+		# }
+
+		create_title_and_vassal_change = {
+			type = conquest
+			save_scope_as = change
+		}
+
+		every_county = {
+			limit = {
+				NOT = {
+					holder.top_liege = root
+				}
+				OR = {
+					empire = title:e_etepezea
+					empire = title:e_malcois
+					empire = title:e_opakhasia
+					empire = title:e_aironoi
+					empire = title:e_megos_kalathipsomi
+					empire = title:e_mikros_kalathipsomi
+				}
+			}
+			
+			change_title_holder = {
+				holder = root
+				change = scope:change
+			}
+		}
+		resolve_title_and_vassal_change = scope:change
+	}
+}
+
+namespace = west_migration
+
+#decision maker for redraw the west
+west_migration.0001 = {
+	type = character_event
+	theme = martial
+	title = west_migration.0001.t
+	desc = west_migration.0001.desc
+
+	immediate = {
+		create_character = {
+			employer = root
+			gender_female_chance = 50
+			template_character = root
+			random_traits = yes
+			age = { 20 50 }
+
+			save_scope_as = generated_character
+		}
+
+		scope:generated_character = {
+			add_to_list = destroyer_vassals
+		}
+
+		title:k_kerkonia = { add_to_list = destroyer_kingdoms }
+		title:k_cycladecia = { add_to_list = destroyer_kingdoms }
+		title:k_sgrad = { add_to_list = destroyer_kingdoms }
+		title:k_sajrag = { add_to_list = destroyer_kingdoms }
+		title:k_plekig = { add_to_list = destroyer_kingdoms }
+		title:k_vraved = { add_to_list = destroyer_kingdoms }
+		title:k_sjas = { add_to_list = destroyer_kingdoms }
+
+		generate_title_list = {
+			INPUT_LIST = destroyer_kingdoms
+			OUTPUT_DUCHIES = destroyer_duchies
+			OUTPUT_COUNTIES = destroyer_counties
+		}
+	}
+
+	#migrating
+	option = {
+		name = west_migration.0001.a
+		
+		#migrate_from_lands_keep = yes
+
+		get_title = title:e_maskiv
+		get_title = title:e_keiskad
+		get_title = title:e_sjevregard
+
+		hidden_effect = {
+			get_title = title:c_syreidonia
+			set_realm_capital = title:c_syreidonia
+			title:c_syreidonia = { remove_from_list = destroyer_counties }
+
+			every_in_list = {
+				list = destroyer_kingdoms
+				remove_from_list = destroyer_kingdoms
+			}
+		}
+
+		# title:e_sjevregard = {
+		# 	migrate_to_title = yes
+		# }
+		
+		# title:e_maskiv = {
+		# 	migrate_to_title = yes
+		# }
+		
+		# title:e_keiskad = {
+		# 	migrate_to_title = yes
+		# }
+	}
+	#no migration, can only choose if player
+	option = {
+		trigger = { is_ai = no }
+		name = west_migration.0001.b
+	}
+	
+	after = {
+		hidden_effect = {
+			destroy_title = title:e_etepezea
+			destroy_title = title:e_megos_kalathipsomi
+			destroy_title = title:e_mikros_kalathipsomi
+
+			assign_titles_to_characters = {
+				CHARACTER_LIST = destroyer_vassals
+				KINGDOM_LIST = destroyer_kingdoms
+				DUCHY_LIST = destroyer_duchies
+				COUNTY_LIST = destroyer_counties
+			}
+
+			trigger_event = {
+				id = sjalvolki_decisions.2000
+			}
+		}
+	}
+}
+
+# Allows the player to reject a migration, in which case the title goes to the next person
+west_migration.0002 = {
+	type = character_event
+	theme = martial
+	title = west_migration.0002.t
+	desc = west_migration.0002.desc
+
+	#migrating
+	option = {
+		name = west_migration.0002.a
+
+		# random_county = {
+		# 	limit = {
+		# 		kingdom = title:k_dahagrad
+		# 		holder.top_liege = scope:destroyer
+		# 	}
+		# 	save_scope_as = new_capital
+		# }
+		# get_title = scope:new_capital
+		# set_realm_capital = scope:new_capital
+		
+		# migrate_from_lands = yes
+
+		# get_title = title:k_dahagrad
+
+		# title:k_dahagrad = {
+		# 	migrate_to_title = yes
+		# }
+		
+		# create_title_and_vassal_change = {
+		# 	type = conquest
+		# 	save_scope_as = change
+		# 	add_claim_on_loss = no
+		# }
+		# change_liege = {
+		# 	liege = scope:destroyer
+		# 	change = scope:change
+		# }
+		# resolve_title_and_vassal_change = scope:change
+
+		scope:title_to_pass = {
+			IF = {
+				limit = {
+					tier = tier_kingdom
+				}
+
+				random_county = {
+					limit = {
+						kingdom = prev
+						holder.top_liege = scope:destroyer
+					}
+
+					set_county_culture = scope:new_character.culture
+					set_county_faith = scope:new_character.faith
+
+					remove_from_list = county_list
+					save_scope_as = new_capital
+				}
+				
+				scope:new_character = {
+					get_title = scope:new_capital
+					set_realm_capital = scope:new_capital
+					add_character_flag = aversarian_migration
+					migrate_from_lands = yes
+				}
+
+				scope:new_capital.duchy = {
+					scope:new_character = { get_title = prev }
+					# change_title_holder = {
+					# 	holder = scope:new_character
+					# 	change = scope:change
+					# }
+					remove_from_list = duchy_list
+				}
+
+				scope:new_character = { get_title = prev }
+				# change_title_holder = {
+				# 	holder = scope:new_character
+				# 	change = scope:change
+				# }
+			}
+			ELSE_IF = {
+				limit = {
+					tier = tier_duchy
+				}
+
+				random_county = {
+					limit = {
+						duchy = prev
+						holder.top_liege = scope:destroyer
+					}
+	
+					set_county_culture = scope:new_character.culture
+					set_county_faith = scope:new_character.faith
+	
+					remove_from_list = county_list
+					save_scope_as = new_capital
+				}
+	
+				scope:new_character = {
+					get_title = scope:new_capital
+					set_realm_capital = scope:new_capital
+					add_character_flag = aversarian_migration
+					migrate_from_lands = yes
+				}
+	
+				scope:new_character = { get_title = prev }
+				# change_title_holder = {
+				# 	holder = scope:new_character
+				# 	change = scope:change
+				# }
+			}
+			ELSE_IF = {
+				limit = {
+					tier = tier_county
+				}
+
+				set_county_culture = scope:new_character.culture
+				set_county_faith = scope:new_character.faith
+	
+				scope:new_character = {
+					get_title = prev
+					set_realm_capital = prev
+					add_character_flag = aversarian_migration
+					migrate_from_lands = yes
+				}
+			}
+		}
+	}
+	#no migration, can only choose if player
+	option = {
+		trigger = { is_ai = no }
+		name = west_migration.0002.b
+	}
+}
+
+#decision maker for end the empire
+west_migration.0003 = {
+	type = character_event
+	theme = martial
+	title = west_migration.0003.t
+	desc = west_migration.0003.desc
+
+	immediate = {
+		create_character = {
+			employer = root
+			gender_female_chance = 50
+			template_character = root
+			random_traits = yes
+			age = { 20 50 }
+
+			save_scope_as = generated_character
+		}
+
+		scope:generated_character = {
+			add_to_list = destroyer_vassals
+		}
+
+		title:k_kollos = { add_to_list = destroyer_kingdoms }
+
+		generate_title_list = {
+			INPUT_LIST = destroyer_kingdoms
+			OUTPUT_DUCHIES = destroyer_duchies
+			OUTPUT_COUNTIES = destroyer_counties
+		}
+	}
+
+	option = {
+		trigger = { is_ai = no }
+		name = west_migration.0003.a
+	}
+
+	option = {
+		name = west_migration.0003.b
+
+		get_title = title:k_kollos
+		hidden_effect = {
+			every_in_list = {
+				list = destroyer_kingdoms
+				remove_from_list = destroyer_kingdoms
+			}
+		}
+	}
+	
+	after = {
+		hidden_effect = {
+			destroy_title = title:e_malcois
+			destroy_title = title:e_opakhasia
+			destroy_title = title:e_aironoi
+
+			assign_titles_to_characters = {
+				CHARACTER_LIST = destroyer_vassals
+				KINGDOM_LIST = destroyer_kingdoms
+				DUCHY_LIST = destroyer_duchies
+				COUNTY_LIST = destroyer_counties
+			}
+
+			trigger_event = {
+				id = sjalvolki_decisions.2001
+			}
+		}
+	}
+}
+
+west_migration.0004 = {
+	type = character_event
+	theme = martial
+	title = west_migration.0004.t
+	desc = west_migration.0004.desc
+
+	option = {
+		name = west_migration.0004.a
+
+		hidden_effect = {
+			create_title_and_vassal_change = {
+				type = independency
+				save_scope_as = change
+			}
+
+			every_vassal = {
+				limit = {
+					OR = {
+						primary_title.tier = tier_kingdom
+						NOR = {
+							primary_title.kingdom.holder = root
+							primary_title.empire.holder = root
+						}
+					}
+				}
+				becomes_independent = {
+					change = scope:change
+				}
+			}
+
+			resolve_title_and_vassal_change = scope:change
+		}
+	}
+
+	option = {
+		trigger = { is_ai = no }
+		name = west_migration.0004.b
+
+		hidden_effect = {
+			IF = {
+				limit = {
+					NOT = {
+						any_targeting_faction = {
+							faction_is_type = independence_faction
+						}
+					}
+				}
+				random_vassal = {
+					limit = {
+						primary_title.tier = tier_kingdom
+					}
+					create_faction = {
+						type = independence_faction
+						target = root
+					}
+				}
+			}
+				
+			random_targeting_faction = {
+				limit = {
+					faction_is_type = independence_faction
+				}
+				save_scope_as = faction
+			}
+
+			every_vassal = {
+				limit = {
+					primary_title.tier > tier_barony
+				}
+				IF = {
+					limit = {
+						culture = root.culture
+					}
+					debug_log_scopes = no
+					random_list = {
+						90 = {
+							join_faction_forced = {
+								faction = scope:faction
+								forced_by = root
+								years = 20
+							}
+						}
+						10 = {}
+					}
+				}
+				ELSE = {
+					random_list = {
+						98 = {
+							join_faction_forced = {
+								faction = scope:faction
+								forced_by = root
+								years = 20
+							}
+						}
+						2 = {}
+					}
+				}
+			}
+
+			scope:faction.faction_leader = {
+				trigger_event = faction_demand.0003
+			}
+		}
+	}
+
+	after = {
+		destroy_title = title:e_sjalvolki
+
+		# Remove cheat
+		hidden_effect = {
+			character:clanlands_sjalvolki_1 = {
+				IF = {
+					limit = {
+						has_character_modifier = cenware_cheat_modifier
+					}
+					remove_character_modifier = cenware_cheat_modifier
+				}
+			}
+		}
+	}
+}

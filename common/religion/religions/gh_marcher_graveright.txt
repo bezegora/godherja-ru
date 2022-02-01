@@ -1,0 +1,272 @@
+﻿graveright_religion= {
+	family = gh_marcher
+	
+	graphical_faith = "catholic_gfx"
+
+
+	doctrine_background_icon = core_tenet_banner_christian.dds
+	doctrine = standard_hostility_doctrine
+	#main group 
+	doctrine = doctrine_gender_equal
+	doctrine = doctrine_pluralism_righteous
+	doctrine = doctrine_theocracy_lay_clergy
+	doctrine = doctrine_no_head
+	
+	#Belief
+	doctrine = doctrine_sacred_scriptures
+	doctrine = doctrine_transtheistic
+	doctrine = doctrine_spiritual
+	doctrine = doctrine_cyclic
+	doctrine = doctrine_spirits
+	doctrine = doctrine_gurus
+	doctrine = doctrine_eschatology_none
+	doctrine = doctrine_paradise_and_underworld
+
+	#Practices
+	doctrine = doctrine_venerated_ancestors
+	doctrine = doctrine_recommended
+	doctrine = doctrine_no_restrictions
+	doctrine = doctrine_monk_not_clergy_enforced
+	doctrine = doctrine_atonement_none
+	doctrine = doctrine_almsgiving_none
+	
+	#marriage
+	doctrine = doctrine_monogamy
+	doctrine = doctrine_consanguinity_cousins
+	doctrine = doctrine_divorce_approval
+	doctrine = doctrine_bastardry_legitimization
+	doctrine = doctrine_sacred_marriage
+	doctrine = doctrine_no_concubinage
+
+	#crimes
+	doctrine = doctrine_homosexuality_shunned
+	doctrine = doctrine_adultery_men_shunned
+	doctrine = doctrine_adultery_women_shunned
+	doctrine = doctrine_kinslaying_extended_family_crime
+	doctrine = doctrine_deviancy_crime
+	doctrine = doctrine_magic_shunned
+	
+	#Clerical Functions
+	doctrine = doctrine_clerical_function_recruitment #replace with new called "teaching"
+	doctrine = doctrine_clerical_gender_either
+	doctrine = doctrine_clerical_marriage_allowed
+	doctrine = doctrine_clerical_succession_temporal_appointment
+
+	#Special Doctrine for Aversarian Syncretism
+	doctrine = special_doctrine_is_graveright_faith
+
+
+	traits = {
+		virtues = { just }
+		sins = { arbitrary }
+	}
+
+	reserved_male_names = {
+	}
+
+	custom_faith_icons = {
+		graveright_custom_black_icon graveright_custom_green_icon graveright_custom_orange_icon graveright_custom_pink_icon graveright_custom_purple_icon graveright_custom_red_icon graveright_custom_white_icon graveright_icon gravewatch_icon
+	}
+
+	holy_order_names = {
+		{  }
+	}
+
+	holy_order_maa = {  }
+
+	localization = {
+		#HighGod
+		HighGodName = graveright_religion_high_god_name
+		HighGodNamePossessive = graveright_religion_high_god_name_possessive
+		HighGodNameSheHe = CHARACTER_SHEHE_HE
+		HighGodHerselfHimself = CHARACTER_HIMSELF
+		HighGodHerHis = CHARACTER_HERHIS_HIS
+		HighGodNameAlternate = graveright_religion_high_god_name_alternate
+		HighGodNameAlternatePossessive = graveright_religion_high_god_name_alternate_possessive
+
+		#Creator
+		CreatorName = graveright_religion_creator_god_name
+		CreatorNamePossessive = graveright_religion_creator_god_name_possessive
+		CreatorSheHe = CHARACTER_SHEHE_HE
+		CreatorHerHis = CHARACTER_HERHIS_HIS
+		CreatorHerHim = CHARACTER_HERHIM_HIM
+
+		#HealthGod
+		HealthGodName = graveright_religion_health_god_name
+		HealthGodNamePossessive = graveright_religion_health_god_name_possessive
+		HealthGodSheHe = CHARACTER_SHEHE_HE
+		HealthGodHerHis = CHARACTER_HERHIS_HIS
+		HealthGodHerHim = CHARACTER_HERHIM_HIM
+		
+		#FertilityGod
+		FertilityGodName = graveright_religion_fertility_god_name
+		FertilityGodNamePossessive = graveright_religion_fertility_god_name_possessive
+		FertilityGodSheHe = CHARACTER_SHEHE_SHE
+		FertilityGodHerHis = CHARACTER_HERHIS_HER
+		FertilityGodHerHim = CHARACTER_HERHIM_HER
+
+		#WealthGod
+		WealthGodName = graveright_religion_wealth_god_name
+		WealthGodNamePossessive = graveright_religion_wealth_god_name_possessive
+		WealthGodSheHe = CHARACTER_SHEHE_HE
+		WealthGodHerHis = CHARACTER_HERHIS_HIS
+		WealthGodHerHim = CHARACTER_HERHIM_HIM
+
+		#HouseholdGod
+		HouseholdGodName = graveright_religion_household_god_name
+		HouseholdGodNamePossessive = graveright_religion_household_god_name_possessive
+		HouseholdGodSheHe = CHARACTER_SHEHE_HE
+		HouseholdGodHerHis = CHARACTER_HERHIS_HIS
+		HouseholdGodHerHim = CHARACTER_HERHIM_HIM
+
+		#FateGod
+		FateGodName = graveright_religion_fate_god_name
+		FateGodNamePossessive = graveright_religion_fate_god_name_possessive
+		FateGodSheHe = CHARACTER_SHEHE_SHE
+		FateGodHerHis = CHARACTER_HERHIS_HER
+		FateGodHerHim = CHARACTER_HERHIM_HER
+
+		#KnowledgeGod
+		KnowledgeGodName = graveright_religion_knowledge_god_name
+		KnowledgeGodNamePossessive = graveright_religion_knowledge_god_name_possessive
+		KnowledgeGodSheHe = CHARACTER_SHEHE_HE
+		KnowledgeGodHerHis = CHARACTER_HERHIS_HIS
+		KnowledgeGodHerHim = CHARACTER_HERHIM_HIM
+
+		#WarGod
+		WarGodName = graveright_religion_war_god_name
+		WarGodNamePossessive = graveright_religion_war_god_name_possessive
+		WarGodSheHe = CHARACTER_SHEHE_HE
+		WarGodHerHis = CHARACTER_HERHIS_HIS
+		WarGodHerHim = CHARACTER_HERHIM_HIM
+
+		#TricksterGod
+		TricksterGodName = graveright_religion_trickster_god_name
+		TricksterGodNamePossessive = graveright_religion_trickster_god_name_possessive
+		TricksterGodSheHe = CHARACTER_SHEHE_HE
+		TricksterGodHerHis = CHARACTER_HERHIS_HIS
+		TricksterGodHerHim = CHARACTER_HERHIM_HIM
+
+		#NightGod
+		NightGodName = graveright_religion_night_god_name
+		NightGodNamePossessive = graveright_religion_night_god_name_possessive
+		NightGodSheHe = CHARACTER_SHEHE_HE
+		NightGodHerHis = CHARACTER_HERHIS_HIS
+		NightGodHerHim = CHARACTER_HERHIM_HIM
+
+		#WaterGod
+		WaterGodName = graveright_religion_water_god_name
+		WaterGodNamePossessive = graveright_religion_water_god_name_possessive
+		WaterGodSheHe = CHARACTER_SHEHE_SHE
+		WaterGodHerHis = CHARACTER_HERHIS_HER
+		WaterGodHerHim = CHARACTER_HERHIM_HER
+
+
+
+		PantheonTerm = graveright_religion_high_god_name
+		PantheonTermHasHave = pantheon_term_has
+		GoodGodNames = {
+			graveright_religion_high_god_name
+			HighGodNameAlternate
+			graveright_religion_health_god_name
+			graveright_religion_creator_god_name
+			graveright_religion_fertility_god_name
+			graveright_religion_household_god_name
+			graveright_religion_knowledge_god_name
+			graveright_religion_war_god_name
+			graveright_religion_trickster_god_name
+		}
+		DevilName = graveright_religion_devil_name
+		DevilNamePossessive = graveright_religion_devil_name_possessive
+		DevilSheHe = CHARACTER_SHEHE_HE
+		DevilHerHis = CHARACTER_HERHIS_HIS
+		DevilHerselfHimself = CHARACTER_HIMSELF
+		EvilGodNames = {
+			graveright_religion_devil_name
+			graveright_religion_night_god_name
+			graveright_religion_fate_god_name
+		}
+		HouseOfWorship = graveright_religion_house_of_worship
+		HouseOfWorshipPlural = graveright_religion_house_of_worship_plural
+		ReligiousSymbol = graveright_religion_religious_symbol
+		ReligiousText = graveright_religion_religious_text
+		ReligiousHeadName = graveright_religion_religious_head_title
+		ReligiousHeadTitleName = graveright_religion_religious_head_title_name
+		DevoteeMale = graveright_religion_devotee
+		DevoteeMalePlural = graveright_religion_devotee_plural
+		DevoteeFemale = graveright_religion_devotee
+		DevoteeFemalePlural = graveright_religion_devotee_plural
+		DevoteeNeuter = graveright_religion_devotee
+		DevoteeNeuterPlural = graveright_religion_devotee_plural
+		PriestMale = graveright_religion_priest
+		PriestMalePlural = graveright_religion_priest_plural
+		PriestFemale = graveright_religion_priest
+		PriestFemalePlural = graveright_religion_priest_plural
+		PriestNeuter = graveright_religion_priest
+		PriestNeuterPlural = graveright_religion_priest_plural
+		AltPriestTermPlural = graveright_religion_priest_alternate_plural
+		BishopMale = graveright_religion_bishop
+		BishopMalePlural = graveright_religion_bishop_plural
+		BishopFemale = graveright_religion_bishop
+		BishopFemalePlural = graveright_religion_bishop_plural
+		BishopNeuter = graveright_religion_bishop
+		BishopNeuterPlural = graveright_religion_bishop_plural
+		DivineRealm = graveright_religion_positive_afterlife
+		PositiveAfterLife = graveright_religion_positive_afterlife
+		NegativeAfterLife = graveright_religion_negative_afterlife
+		DeathDeityName = graveright_religion_death_deity_name
+		DeathDeityNamePossessive = graveright_religion_death_deity_name_possessive
+		DeathDeitySheHe = CHARACTER_SHEHE_HE
+		DeathDeityHerHis = CHARACTER_HERHIS_HIS
+		WitchGodName = christianity_witchgodname_iblis
+		WitchGodHerHis = CHARACTER_HERHIS_HIS
+		WitchGodSheHe = CHARACTER_SHEHE_SHE
+		WitchGodHerHim = CHARACTER_HERHIM_HER
+		WitchGodMistressMaster = mistress
+		WitchGodMotherFather = mother
+
+
+		GHWName = ghw_great_holy_war
+		GHWNamePlural = ghw_great_holy_war
+	}
+
+
+	faiths = {
+		graveright = { #polish religion
+			color = { 0.2 0.1 0.1 }
+			icon = graveright_icon
+			religious_head = d_graveright_rel
+
+			holy_site = sacreinux
+			holy_site = tillyes
+			holy_site = prefallias
+
+			#Tenet:
+			doctrine = tenet_ritual_celebrations
+			doctrine = tenet_wayfathers 
+			doctrine = tenet_communal_identity
+
+		}
+		gravewatch = {#replacement forced on by the marchers
+			color = {0.1 0.1 0.1}
+			icon = gravewatch_icon
+			religious_head = d_gravewatch_rel
+			
+			#Tenet
+			doctrine = tenet_ritual_celebrations
+			doctrine = tenet_wayfathers 
+			doctrine = tenet_communal_identity
+
+			holy_site = sacreinux
+			holy_site = tillyes
+			holy_site = prefallias
+			
+			#Crimes
+			doctrine = doctrine_magic_crime
+			
+			#Main Group
+			doctrine = doctrine_pluralism_fundamentalist
+		}
+	}
+}
+		

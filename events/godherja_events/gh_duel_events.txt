@@ -1,0 +1,1786 @@
+﻿namespace = duel
+
+# 010: duel in battle?
+# 011 - 029: duel in battle
+
+# 001 - 009: challenged prep events
+# 030 - 049: responses to the above
+#
+# 050 - 079: challenger prep events
+# 080 - 099: responses to the above
+
+# 100 - 119: strat
+# 120+ : give results
+
+#scripted_effect duel_tell = {
+#	# REFSTRING is the event number + . + option letter. eg 051.a
+#
+#	send_interface_toast = {
+#		title = duel.$REFSTRING$.I.t
+#		desc = {
+#			desc = duel.$REFSTRING$.I.initial
+#
+#			first_valid = {
+#				triggered_desc = {
+#					trigger = { scope:testresult = 1 }
+#					desc = duel.$REFSTRING$.I.A
+#				}
+#				triggered_desc = {
+#					trigger = { scope:testresult = 2 }
+#					desc = duel.$REFSTRING$.I.B
+#				}
+#				desc = duel.$REFSTRING$.I.C # this will sometimes not be used
+#			}
+#		}
+#		left_icon = var:OTHER
+#	}
+#
+#	var:OTHER = {
+#		send_interface_toast = {
+#			title = duel.$REFSTRING$.O.t
+#			desc = {
+#				desc = duel.$REFSTRING$.O.initial
+#
+#				first_valid = {
+#					triggered_desc = {
+#						trigger = { scope:testresult = 1 }
+#						desc = duel.$REFSTRING$.O.A
+#					}
+#					triggered_desc = {
+#						trigger = { scope:testresult = 2 }
+#						desc = duel.$REFSTRING$.O.B
+#					}
+#					desc = duel.$REFSTRING$.O.C # this will sometimes not be used
+#				}
+#			}
+#			left_icon = var:OTHER
+#		}
+#	}
+#}
+#
+#
+#duel.001 = {
+#	type = character_event
+#	theme = rival_relation
+#	title = duel.001.t
+#	desc = duel.001.desc
+#	left_portrait = {
+#		character = var:OTHER
+#		animation = personality_greedy
+#	}
+#
+#	option = { # diplo
+#		name = duel.001.a
+#
+#		save_scope_value_as = {
+#			name = option
+#			value = 1
+#		}
+#
+#		duel = {
+#			skill = diplomacy
+#			target = var:OTHER
+#
+#			5 = {
+#				compare_modifier = { # nice
+#					value = scope:duel_value
+#				}
+#				
+#				custom_tooltip = duel.cancelled.test.tt
+#
+#				add_prestige_experience = medium_fame_value
+#
+#					save_scope_value_as = {
+#						name = testresult
+#						value = 1
+#					}
+#				
+#			}
+#
+#			25 = { # you do not persuade them
+#				compare_modifier = {
+#					value = scope:duel_value
+#					multiplier = -1
+#				}
+#
+#				custom_tooltip = duel.001.a.2.tt
+#
+#				add_opinion = { modifier = duel_refused_to_back_down target = var:OTHER }
+#				save_scope_value_as = {
+#					name = testresult
+#					value = 2
+#				}
+#			}
+#
+#
+#		}
+#
+#		stress_impact = {
+#			shy = medium_stress_gain
+#		}
+#
+#		ai_chance = {
+#			base = 100
+#			ai_value_modifier = {
+#				
+#			}
+#
+#			modifier = {
+#				add = -20
+#				has_trait = shy
+#			}
+#		}
+#
+#		duel_tell = {
+#			REFSTRING = 001.a
+#		}
+#	}
+#
+#	option = { # bribe
+#		name = duel.001.b
+#
+#		save_scope_value_as = {
+#			name = option
+#			value = 2
+#		}
+#
+#		stress_impact = {
+#			greedy = minor_stress_impact_gain
+#		}
+#
+#		trigger = {
+#			short_term_gold > var:win_cost
+#		}
+#
+#		show_as_unavailable = {
+#			short_term_gold < var:win_cost
+#		}
+#
+#		duel = {
+#			skill = stewardship
+#			target = var:OTHER
+#
+#			25 = {
+#				compare_modifier = { # it works
+#					value = scope:duel_value
+#					multiplier = 0.5
+#					min = -15
+#					max = 25
+#				}
+#
+#				custom_tooltip = duel.cancelled.tt
+#				custom_tooltip = duel.001.b.1.tt
+#
+#				pay_short_term_gold = {
+#					target = var:OTHER
+#					gold = scope:win_cost
+#				}
+#				save_scope_value_as = {
+#					name = testresult
+#					value = 1
+#				}
+#
+#			}
+#
+#			10 = {
+#				compare_modifier = { # he swindles you out of your money
+#					value = scope:duel_value
+#					multiplier = -1
+#					min = -10
+#				}
+#
+#				custom_tooltip = duel.001.b.2.tt
+#
+#				pay_short_term_gold = {
+#					target = var:OTHER
+#					gold = scope:win_cost
+#				}
+#				save_scope_value_as = { name = testresult value = 2 }
+#			}
+#
+#			65 = {
+#				compare_modifier = { # he honourably declines
+#					value = scope:duel_value
+#					multiplier = -0.1
+#					min = -25
+#					max = 15
+#				}
+#
+#				custom_tooltip = duel.001.b.3.tt # the duel will continue
+#
+#				add_prestige = minor_prestige_loss
+#				var:OTHER = {
+#					add_prestige = minor_prestige_gain
+#				}
+#
+#				save_scope_value_as = {
+#					name = testresult
+#					value = 3
+#				}
+#			}
+#		}
+#
+#		ai_chance = {
+#			base = 100
+#
+#
+#		}
+#
+#		duel_tell = {
+#			REFSTRING = 001.b
+#		}
+#	}
+#
+#	option = { # prestige
+#		name = duel.001.c
+#		add_prestige = miniscule_prestige_gain
+#
+#		save_scope_value_as = {
+#			name = testresult
+#			value = 0
+#		}
+#
+#		custom_tooltip = duel.001.c.tt
+#	}
+#
+#	immediate = {
+#		hidden_effect = {
+#			set_variable = { name = win_cost value = 100 }
+#		}
+#	}
+#
+#	after = {
+#		hidden_effect = {
+#			remove_variable = win_cost
+#
+#			if = {
+#				limit = { scope:testresult = 1 }
+#				var:OTHER = {
+#					duel_cleanup = yes
+#				}
+#				duel_cleanup = yes
+#			}
+#			else = {
+#				duel_round_one = yes
+#			}
+#
+#		}
+#	}
+#
+#}
+#
+#
+#duel.010 = {
+#	hidden = yes
+#	trigger = {
+#		root = {
+#			can_duel = yes
+#		}
+#	}
+#
+#	immediate = {
+#		scope:combat_side.enemy_side.side_commander = {
+#			save_scope_as = duelled
+#		}
+#
+#		set_variable = { name = OTHER value = scope:duelled }
+#		scope:duelled = {
+#			set_variable = { name = OTHER value = scope:duelled }
+#		}
+#
+#		if = {
+#			limit = {
+#				NOT = {
+#					OR = {
+#						has_character_flag = duel_battle
+#						scope:duelled = { 
+#							trigger_if = {
+#								limit = { exists = this }
+#								has_character_flag = duel_battle 
+#							}
+#							trigger_else = {
+#								always = no
+#							}
+#						}
+#					}
+#				}
+#			}
+#			random = { # chance the duel happens at all
+#				chance = duel_battle_chance
+#
+#				add_character_flag = { flag = duel_battle weeks = 5 }
+#				scope:duelled = { add_character_flag = { flag = duel_battle weeks = 6 }}
+#
+#				set_variable = { name = duel_choice value = 0 }
+#				random = {
+#					chance = duel_battle_notice_chance
+#					trigger_event = duel.011
+#				}
+#
+#				scope:duelled = {
+#					set_variable = { name = duel_choice value = 0 }
+#					random = {
+#						chance = duel_battle_notice_chance
+#						trigger_event = duel.011
+#					}
+#				}
+#
+#				trigger_event = {
+#					id = duel.015
+#					days = 20
+#				}
+#			}
+#		}
+#	}
+#}
+#
+#
+## a duel possibility randomly happens in battles. If it does, there is a chance for each that they spot the other. in the second round, there is a chance they spot each other again depending on
+#duel.011 = { # you see the enemy commander - do you try to duel him?
+#	type = character_event
+#	theme = battle
+#	title = duel.011.t
+#	desc = duel.011.desc
+#	left_portrait = {
+#		character = var:OTHER
+#		animation = war_attacker
+#	}
+#
+#	background = battlefield
+#
+#	option = { # hell yeah bro
+#		name = duel.011.a
+#
+#		stress_impact = {
+#			brave = medium_stress_impact_loss
+#			craven = major_stress_impact_gain
+#		}
+#
+#		ai_chance = {
+#			base = 100
+#
+#			ai_value_modifier = {
+#				ai_boldness = 1
+#			}
+#
+#			modifier = {
+#				add = -50
+#				has_trait = craven
+#			}
+#
+#			modifier = {
+#				add = 50
+#				has_trait = brave
+#			}
+#		}
+#
+#		custom_tooltip = duel.011.a.tt
+#
+#		change_variable = { name = duel_choice add = 1 }
+#
+#		ai_chance = {
+#			base = 0
+#
+#			modifier = {
+#				add = 50
+#				has_relation_rival = var:OTHER
+#			}
+#
+#			modifier = {
+#				add = 50
+#				has_relation_nemesis = var:OTHER
+#			}
+#		}
+#	}
+#
+#	option = { # if our paths cross, so be it
+#		name = duel.011.b
+#
+#		stress_impact = {
+#			calm = minor_stress_impact_loss
+#			fickle = minor_stress_impact_gain # pick something dammit
+#		}
+#
+#		ai_chance = {
+#			base = 180
+#
+#			ai_value_modifier = {
+#			}
+#
+#			modifier = {
+#				add = -20
+#				has_trait = fickle
+#			}
+#
+#			modifier = {
+#				add = 30
+#				has_trait = lazy
+#			}
+#		}
+#
+#		custom_description = {
+#			text = duel.011.b.tt
+#			change_variable = { name = duel_choice add = 2 }
+#		}
+#
+#		ai_chance = {
+#			base = 100
+#		}
+#	}
+#
+#	option = { # avoid him
+#		name = duel.011.c
+#
+#		stress_impact = {
+#			brave = major_stress_impact_gain
+#			craven = medium_stress_impact_loss
+#		}
+#
+#		ai_chance = {
+#			base = 20
+#
+#			ai_value_modifier = {
+#				ai_boldness = -0.5
+#			}
+#
+#			modifier = {
+#				add = 50
+#				has_trait = craven
+#			}
+#
+#			modifier = {
+#				add = -50
+#				has_trait = brave
+#			}
+#		}
+#
+#		custom_description = {
+#			text = duel.011.c.tt
+#
+#			change_variable = { name = duel_choice add = 3 }
+#		}
+#
+#		ai_chance = {
+#			base = 50
+#		}
+#	}
+#
+#	after = {
+#		hidden_effect = {
+#			# cannot combine these ifs or we may call an unset variable
+#			if = {
+#				limit = {
+#					var:OTHER = {
+#						has_variable = duel_choice
+#					}
+#				}
+#				if = {
+#					limit = { var:OTHER.var:duel_choice > 0 }
+#					trigger_event = duel.015
+#				}
+#			}
+#			else = {
+#				trigger_event = duel.015
+#			}
+#		}
+#	}
+#}
+#
+#duel.015 = {
+#	hidden = yes
+#
+#	immediate = {
+#		random = { # chance they actually meet and duel
+#			chance = get_duel_battle_final_meet_chance # uses duel_choice and var:OTHER
+#
+#			trigger_event = duel.101
+#			var:OTHER = {
+#				trigger_event = duel.101
+#			}
+#		}
+#	}
+#}
+#
+#
+#
+####
+#
+#scripted_effect duel_tell_go = {
+#	duel_tell = {
+#		REFSTRING = $REF$
+#	}
+#
+#	duel_round_two = yes
+#}
+#
+#
+#duel.050 = { # choose how to attack him
+#	type = character_event
+#	theme = rival_relation
+#	title = duel.050.t
+#	desc = duel.050.desc
+#	left_portrait = {
+#		character = var:OTHER
+#		animation = idle
+#	}
+#
+#	option = { # psyche him out
+#		name = duel.050.a
+#		custom_description = {
+#			text = duel.050.a.tt # feel free to comment out this line if the tooltip's not necessary
+#
+#			trigger_event = duel.051
+#		}
+#
+#		stress_impact = {
+#			deceitful = minor_stress_impact_loss
+#			honest = minor_stress_impact_gain
+#		}
+#
+#		ai_chance = {
+#			base = 100
+#
+#
+#		}
+#	}
+#
+#	option = { # weaken him physically
+#		name = duel.050.b
+#		custom_description = {
+#			text = duel.050.b.tt
+#
+#			trigger_event = duel.052
+#		}
+#
+#		ai_chance = {
+#			base = 100
+#		}
+#	}
+#
+#	option = { # I will not engage in such dishonorable conduct
+#		name = duel.050.c
+#		add_stress = major_stress_loss
+#
+#		stress_impact = {
+#			deceitful = medium_stress_impact_gain
+#			honest = minor_stress_impact_loss
+#		}
+#
+#		if = {
+#			limit = { local_var:menu_count = 0 }
+#			stress_impact = {
+#				lazy = minor_stress_impact_loss
+#			}
+#		}
+#
+#		ai_chance = {
+#			base = 50
+#
+#
+#		}
+#
+#		custom_description = {
+#			text = duel.starts.tt
+#
+#			duel_round_two = yes
+#		}
+#	}
+#
+#	immediate = {
+#		if = {
+#			limit = { NOT = { has_local_variable = menu_count }}
+#			set_local_variable = { name = menu_count value = 0 }
+#		}
+#		else = {
+#			change_local_variable = { name = menu_count add = 1 }
+#		}
+#	}
+#}
+#
+#duel.051 = { # psyche him out
+#	type = character_event
+#	theme = rival_relation
+#	title = duel.051.t
+#	desc = duel.051.desc
+#	left_portrait = {
+#		character = var:OTHER
+#		animation = dismissal
+#	}
+#
+#	option = { # fabricate a secrt about him, then expose him
+#		name = duel.051.a
+#
+#		duel = {
+#			skill = intrigue
+#			target = var:OTHER
+#
+#			10 = { # success
+#				compare_modifier = {
+#					value = scope:duel_value
+#					multiplier = 0.5
+#				}
+#
+#				custom_description = {
+#					text = duel.051.success.tt
+#
+#					var:OTHER = {
+#						add_character_flag = reputation_tarnished
+#					}
+#					save_scope_value_as = {
+#						name = testresult
+#						value = 1
+#					}
+#				}
+#			}
+#
+#			20 = { # failure
+#				compare_modifier = {
+#					value = scope:duel_value
+#					multiplier = -0.5
+#					#var:OTHER = { add = {
+#					#	value = diplomacy
+#					#	subtract = decent_skill_rating
+#					#	min = 0
+#					#}}
+#				}
+#
+#				custom_description = {
+#					text = duel.051.failure.tt
+#
+#					save_scope_value_as = {
+#						name = testresult
+#						value = 2
+#					}
+#				}
+#			}
+#		}
+#		
+#		duel_tell_go = {
+#			REF = 051.a
+#		}
+#
+#
+#
+#		ai_chance = {
+#			base = 100
+#
+#
+#		}
+#	}
+#
+#	option = { # claim god's will
+#		name = duel.051.b
+#
+#		duel = {
+#			skill = learning
+#			target = var:OTHER
+#
+#			10 = {
+#				compare_modifier = {
+#					value = scope:duel_value
+#					multiplier = 0.5
+#				}
+#
+#				custom_description = {
+#					text = duel.051.success.tt
+#
+#					var:OTHER = {
+#						add_character_flag = reputation_tarnished
+#					}
+#					save_scope_value_as = {
+#						name = testresult
+#						value = 1
+#					}
+#				}
+#			}
+#
+#			20 = {
+#				compare_modifier = {
+#					value = scope:duel_value
+#					multiplier = -0.5
+#				}
+#
+#				custom_description = {
+#					text = duel.051.failure.tt
+#
+#					save_scope_value_as = {
+#						name = testresult
+#						value = 2
+#					}
+#				}
+#			}
+#		}
+#		remove_local_variable = menu_count
+#
+#		duel_tell_go = {
+#			REF = 051.b
+#		}
+#
+#		ai_chance = {
+#			base = 100
+#
+#
+#		}
+#	}
+#
+#	option = { # pay for leaflets
+#		name = duel.051.c
+#
+#		trigger = {
+#			short_term_gold >= medium_gold_value
+#		}
+#
+#		show_as_unavailable = {
+#			short_term_gold < medium_gold_value
+#		}
+#
+#		duel = {
+#			skill = stewardship
+#			value = decent_skill_rating
+#			
+#			15 = { # success
+#				compare_modifier = {
+#					value = scope:duel_value
+#					multiplier = 0.5
+#				}
+#
+#				custom_description = {
+#					text = duel.051.success.tt
+#
+#					var:OTHER = {
+#						add_character_flag = reputation_tarnished
+#					}
+#					save_scope_value_as = {
+#						name = testresult
+#						value = 1
+#					}
+#				}
+#			}
+#
+#			30 = { # failure
+#				compare_modifier = {
+#					value = scope:duel_value
+#					multiplier = -0.5
+#				}
+#
+#				custom_description = {
+#					text = duel.051.failure.tt
+#
+#					save_scope_value_as = {
+#						name = testresult
+#						value = 2
+#					}
+#				}
+#			}
+#		}
+#
+#		remove_local_variable = menu_count
+#
+#		add_gold = medium_gold_loss
+#
+#		custom_description = {
+#			text = duel.051.c.tt
+#
+#			duel_tell_go = {
+#				REF = 051.c
+#			}
+#		}
+#
+#		ai_chance = {
+#			base = 100
+#		}
+#	}
+#
+#	option = { # back
+#		name = duel.051.d
+#
+#		trigger = { local_var:menu_count < 3 }
+#
+#		custom_description = {
+#			text = duel.back.tt
+#
+#			trigger_event = duel.050
+#		}
+#
+#		stress_impact = {
+#			stubborn = medium_stress_impact_gain
+#			fickle = medium_stress_impact_loss
+#		}
+#
+#		add_stress = medium_stress_impact_gain
+#
+#		ai_chance = {
+#			base = 10
+#
+#			modifier = {
+#				add = 10
+#				has_trait = fickle
+#			}
+#
+#			modifier = {
+#				add = -10
+#				has_trait = stubborn
+#			}
+#		}
+#	}
+#}
+#
+#
+#duel.052 = { # hurt him
+#	type = character_event
+#	theme = rival_relation
+#	title = duel.052.t
+#	desc = duel.052.desc
+#	left_portrait = {
+#		character = var:OTHER
+#		animation = dismissal
+#	}
+#
+#
+#	option = { # poison
+#		name = duel.052.a
+#
+#		# you invite him over for a drink, then slip something in his food
+#		# his ilness is plausibly deniable, that's why you can't kill someone this easily
+#		duel = {
+#			skill = intrigue
+#			target = var:OTHER
+#
+#			5 = { # success
+#				compare_modifier = {
+#					value = scope:duel_value
+#					multiplier = 0.5
+#				}
+#
+#				custom_description = {
+#					text = duel.052.success.tt
+#
+#					var:OTHER = {
+#						add_character_flag = hurt
+#					}
+#					save_scope_value_as = {
+#						name = testresult
+#						value = 1
+#					}
+#				}
+#			}
+#
+#			20 = { # failure
+#				compare_modifier = {
+#					value = scope:duel_value
+#					multiplier = -0.5
+#				}
+#				custom_description = {
+#					text = duel.052.failure.tt
+#
+#					save_scope_value_as = {
+#						name = testresult
+#						value = 2
+#					}
+#				}
+#			}
+#		}
+#		
+#		hidden_effect = {
+#			duel_tell_go = {
+#				REF = 052.a
+#			}
+#		}
+#
+#		ai_chance = {
+#			base = 100
+#
+#
+#		}
+#	}
+#
+#	option = { # have one of your soldiers in plainclothes rough him up
+#		name = duel.052.b
+#
+#		duel = {
+#			skill = martial
+#			value = medium_skill_rating
+#
+#			5 = {
+#				compare_modifier = {
+#					value = scope:duel_value
+#					multiplier = 0.5
+#				}
+#
+#				custom_description = {
+#					text = duel.052.success.tt
+#
+#					var:OTHER = {
+#						add_character_flag = hurt
+#					}
+#					save_scope_value_as = {
+#						name = testresult
+#						value = 1
+#					}
+#				}
+#			}
+#
+#			20 = {
+#				compare_modifier = {
+#					value = scope:duel_value
+#					multiplier = -0.5
+#				}
+#
+#				custom_description = {
+#					text = duel.052.failure.tt
+#
+#					save_scope_value_as = {
+#						name = testresult
+#						value = 2
+#					}
+#				}
+#			}
+#		}
+#		
+#		duel_tell_go = {
+#			REF = 052.b
+#		}
+#
+#		ai_chance = {
+#			base = 100
+#
+#
+#		}
+#	}
+#
+#	# NOTE: may change once we have success_chance up and running, as if he thinks he's likely to lose this may not work
+#	option = { # convince him you're no threat, then send him alcohol the night before
+#		name = duel.052.c
+#
+#		duel = {
+#			skill = diplomacy
+#			target = var:OTHER
+#
+#			5 = { # you convince him
+#				compare_modifier = {
+#					value = scope:duel_value
+#					multiplier = 0.5
+#					min = -5
+#					max = 15
+#				}
+#
+#				custom_description = {
+#					text = duel.052.success.tt
+#
+#					var:OTHER = {
+#						add_character_flag = hurt
+#					}
+#
+#					save_scope_value_as = {
+#						name = testresults
+#						value = 1
+#					}
+#				}
+#			}
+#
+#			15 = { # he's not convinced
+#				compare_modifier = {
+#					value = scope:duel_value
+#					multiplier = -0.5
+#					min = -15
+#					max = 5
+#				}
+#
+#				custom_description = {
+#					text = duel.052.failure.tt
+#					save_scope_value_as = {
+#						name = testresults
+#						value = 2
+#					}
+#				}
+#			}
+#		}
+#		
+#		duel_tell_go = {
+#			REF = 052.c
+#		}
+#
+#		ai_chance = {
+#			base = 100
+#		}
+#	}
+#
+#	#gh
+#	#option = { # curse them
+#	#	name = duel.052.c
+#	#
+#	#	trigger = {
+#	#		has_trait_rank = {
+#	#			trait = 
+#	#		}
+#	#	}
+#	#
+#	#	remove_local_variable = menu_count
+#	#}
+#	#/gh
+#
+#
+#	option = { # back
+#		name = duel.051.d
+#
+#		trigger = { local_var:menu_count < 3 }
+#
+#		custom_description = {
+#			text = duel.back.tt
+#
+#			trigger_event = duel.050
+#		}
+#
+#		stress_impact = {
+#			stubborn = medium_stress_impact_gain
+#			fickle = medium_stress_impact_loss
+#		}
+#
+#		add_stress = medium_stress_impact_gain
+#
+#		ai_chance = {
+#			base = 10
+#
+#
+#		}
+#	}
+#}
+#
+#
+#
+####
+#
+#duel.101 = { # what you gonna do
+#	type = character_event
+#	theme = battle
+#	title = duel.101.t
+#	desc = {
+#		first_valid = {
+#			triggered_desc = {
+#				trigger = {
+#					OR = { # this works when called by either
+#						has_character_flag = duel_from_battle
+#						var:OTHER = {
+#							has_character_flag = duel_from_battle
+#						}
+#					}
+#				}
+#				desc = duel.101.desc.battle
+#			}
+#			desc = duel.101.desc.planned
+#		}
+#	}
+#	left_portrait = {
+#		character = var:OTHER
+#		animation = anger
+#	}
+#
+#	option = { # attack!
+#		name = duel.101.a
+#		custom_tooltip = duel.101.a.tt
+#
+#		set_variable = { name = stratchoice value = 1 }
+#
+#		ai_chance = {
+#			base = 100
+#
+#
+#		}
+#	}
+#
+#	option = { # attack
+#		name = duel.101.b
+#		custom_description = {
+#			text = duel.101.b.tt
+#
+#			set_variable = { name = stratchoice value = 2 }
+#		}
+#
+#		ai_chance = {
+#			base = 100
+#
+#
+#		}
+#	}
+#
+#	option = { # widen your stance
+#		name = duel.101.c
+#		custom_description = {
+#			text = duel.101.c.tt
+#
+#			set_variable = { name = stratchoice value = 3 }
+#		}
+#
+#		ai_chance = {
+#			base = 100
+#
+#
+#		}
+#	}
+#
+#	after = {
+#		hidden_effect = {
+#			if = {
+#				limit = {
+#					var:OTHER = {
+#						has_variable = stratchoice
+#					}
+#				}
+#				duel = {
+#					skill = prowess
+#					target = var:OTHER
+#	
+#					5 = {
+#						if = {
+#							limit = {
+#								scope:duel_value < 0
+#							}
+#							trigger_event = duel.102
+#						}
+#						else = {
+#							var:OTHER = {
+#								trigger_event = duel.102
+#							}
+#						}
+#					}
+#					95 = {
+#						duel_results = yes
+#					}
+#				}
+#			}
+#		}
+#	}
+#}
+#
+#
+#
+#duel.102 = {
+#	type = character_event
+#	theme = battle
+#	title = duel.102.t
+#	desc = duel.102.desc
+#
+#	left_portrait = {
+#		character = var:OTHER
+#		animation = anger
+#	}
+#
+#	option = { #surrender
+#		name = duel.102.a
+#		trigger_event = duel.125
+#	}
+#
+#	option = { #keep on fighting
+#		name = duel.102.b
+#		hidden_effect = {
+#			random_list = {
+#				20 = { #success
+#					duel_results = yes
+#				}
+#				80 = { #failure
+#					add_character_flag = {
+#						flag = unequal_footing
+#						weeks = 6
+#					}
+#					duel_results = yes
+#				}
+#			}
+#		}
+#	}
+#
+#	option = { #try to throw "earth" into the enemie's eyes
+#		name = duel.102.c
+#		hidden_effect = {
+#			random_list = {
+#				20 = { #success
+#					duel_results = yes
+#				}
+#				80 = { #failure
+#					add_character_flag = {
+#						flag = unequal_footing
+#						weeks = 6
+#					}
+#					duel_results = yes
+#				}
+#			}
+#		}
+#	}
+#}
+#
+#
+#scripted_effect show_duel_results_tt_singular = {
+#	if = {
+#		limit = { var:howmuchwound > 0 }
+#		
+#		if = {
+#			limit = { var:howmuchwound = 1 }
+#			custom_tooltip = duel.results_tt.wound_light
+#		}
+#		else_if = {
+#			limit = { var:howmuchwound = 2 }
+#			custom_tooltip = duel.results_tt.wound_medium
+#		}
+#		else = {
+#			custom_tooltip = duel.results_tt.wound_heavy
+#		}
+#
+#		if = {
+#			limit = { has_character_flag = duel_maimed }
+#			custom_tooltip = duel.results_tt.maimed
+#		}
+#	}
+#}
+#
+#scripted_effect show_duel_results_tt = {
+#	show_duel_results_tt_singular = yes
+#
+#	var:OTHER = {
+#		show_duel_results_tt_singular = yes
+#	}
+#}
+#
+####
+## these can use howmuchwound[int] and maimed[bool] 
+## hurt[bool] and reputation_tarnished[bool] are still available too if you want them
+#
+#
+#duel.121 = { # victory - he fled
+#	type = character_event
+#	theme = default
+#	title = duel.121.t
+#	desc = duel.121.desc
+#	left_portrait = {
+#		character = var:OTHER
+#		animation = personality_coward
+#	}
+#
+#	option = { # acknowledge receipt
+#		name = duel.121.a
+#	}
+#
+#	immediate = {
+#		enact_duel_effects = yes
+#		show_as_tooltip = {
+#			var:OTHER = {
+#				enact_duel_effects = yes
+#			}
+#		}
+#
+#		add_opinion = {
+#			modifier = duel_fled
+#			target = var:OTHER
+#		}
+#	}
+#
+#	after = {
+#		hidden_effect = {
+#			duel_over_cleanup = yes
+#		}
+#	}
+#}
+#
+#duel.122 = { # victory - enemy imprisoned
+#	type = character_event
+#	theme = default
+#	title = duel.122.t
+#	desc = duel.122.desc
+#	left_portrait = {
+#		character = var:OTHER
+#		animation = worry
+#	}
+#
+#	option = { # yeah imprison him
+#		name = duel.122.a
+#
+#		imprison_character_effect_ignore_reason = {
+#			TARGET = var:OTHER
+#			IMPRISONER = this
+#		}
+#
+#		hidden_effect = {
+#			var:OTHER = {
+#				trigger_event = duel.127
+#			}
+#		}
+#
+#		ai_chance = {
+#			base = 180
+#
+#
+#		}
+#	}
+#
+#	option = { # nah he can go
+#		name = duel.122.b
+#
+#		reverse_add_opinion = {
+#			modifier = duel_went_free
+#			target = var:OTHER
+#		}
+#
+#		hidden_effect = {
+#			var:OTHER = {
+#				trigger_event = duel.129
+#			}
+#		}
+#
+#		ai_chance = {
+#			base = 20
+#		}
+#	}
+#
+#	immediate = {
+#		enact_duel_effects = yes
+#		show_as_tooltip = {
+#			var:OTHER = {
+#				enact_duel_effects = yes
+#			}
+#		}
+#	}
+#
+#	after = {
+#		hidden_effect = {
+#			duel_over_cleanup = yes
+#		}
+#	}
+#}
+#
+#duel.123 = { # victory - enemy killed
+#	type = character_event
+#	theme = default
+#	title = duel.123.t
+#	desc = duel.123.desc
+#	left_portrait = {
+#		character = var:OTHER
+#		animation = 
+#	}
+#
+#	option = { # acknowledge receipt
+#		name = duel.123.a
+#	}
+#
+#	immediate = {
+#		enact_duel_effects = yes
+#		show_as_tooltip = {
+#			var:OTHER = {
+#				death = {
+#					killer = root
+#					death_reason = death_duel
+#				}
+#			}
+#		}
+#	}
+#
+#	after = {
+#		hidden_effect = {
+#			duel_over_cleanup = yes
+#		}
+#	}
+#}
+#
+#duel.124 = { # victory - tried to run
+#	type = character_event
+#	theme = default
+#	title = duel.124.t
+#	desc = duel.124.desc
+#	left_portrait = {
+#		character = var:OTHER
+#		animation = beg
+#	}
+#
+#	option = { # imprison him
+#		name = duel.124.a
+#
+#		var:OTHER = {
+#			trigger_event = duel.127
+#		}
+#
+#		ai_chance = {
+#			base = 250
+#
+#
+#		}
+#	}
+#
+#	option = { # execute him!
+#		name = duel.124.b
+#
+#		var:OTHER = {
+#			trigger_event = duel.128
+#		}
+#
+#		stress_impact = {
+#			vengeful = medium_stress_impact_gain
+#		}
+#
+#		ai_chance = {
+#			base = 45
+#
+#
+#		}
+#	}
+#
+#	option = { # let him go free???
+#		name = duel.124.c
+#
+#		trigger = { NOT = { has_trait = vengeful }}
+#
+#		show_as_unavailable = { has_trait = vengeful }
+#
+#		var:OTHER = {
+#			trigger_event = duel.129
+#		}
+#
+#		ai_chance = {
+#			base = 5
+#
+#			ai_value_modifier = {
+#				ai_compassion = 0.25
+#				ai_vengefulness = -0.5
+#				ai_honor = -0.05
+#			}
+#
+#			modifier = {
+#				has_trait = forgiving
+#				add = 20
+#			}
+#
+#			modifier = {
+#				has_trait = vengeful
+#				add = -20
+#			}
+#
+#			modifier = {
+#				has_trait = wrathful
+#				add = -5
+#			}
+#		}
+#	}
+#
+#	immediate = {
+#		enact_duel_effects = yes
+#		show_as_tooltip = {
+#			var:OTHER = {
+#				enact_duel_effects = yes
+#			}
+#		}
+#	}
+#
+#	after = {
+#		hidden_effect = {
+#			duel_over_cleanup = yes
+#		}
+#	}
+#}
+#
+###
+#
+#duel.125 = { # defeat - try to flee?
+#	type = character_event
+#	theme = unfriendly
+#	title = duel.125.t
+#	desc = duel.125.desc
+#	left_portrait = {
+#		character = var:OTHER
+#		animation = war_over_win
+#	}
+#
+#	option = { # no
+#		name = duel.125.a
+#
+#		var:OTHER = {
+#			add_opinion = {
+#				modifier = duel_didnt_flee
+#				target = var:OTHER
+#			}
+#		}
+#
+#		var:OTHER = {
+#			trigger_event = duel.122
+#		}
+#
+#		ai_chance = {
+#			base = 75
+#
+#			ai_value_modifier = {
+#				ai_honor = 0.5
+#				ai_boldness = -0.25
+#			}
+#
+#			#modifier = {
+#			#	always = yes
+#			#	add = {
+#			#		value = #getopinionofother
+#			#		multiply = 0.5
+#			#	}
+#			#}
+#
+#			# these get doubled below
+#			modifier = {
+#				has_trait = craven
+#				add = 15
+#			}
+#
+#			modifier = {
+#				has_trait = brave
+#				add = -10
+#			}
+#
+#			modifier = {
+#				has_trait = trusting
+#				add = 10
+#			}
+#
+#			modifier = {
+#				has_trait = paranoid
+#				add = -5
+#			}
+#		}
+#	}
+#
+#	option = { # yes
+#		name = duel.125.b
+#
+#		random_list = {
+#
+#			1 = {
+#				modifier = {
+#					factor = flee_bonus
+#					always = yes
+#				}
+#
+#				trigger_event = duel.126
+#			}
+#
+#			5 = {
+#				modifier = {
+#					factor = flee_bonus_other
+#					always = yes
+#				}
+#
+#				var:OTHER = {
+#					trigger_event = duel.124
+#				}
+#			}
+#		}
+#
+#		ai_chance = {
+#			base = 125
+#
+#			ai_value_modifier = {
+#				ai_honor = -0.5
+#				ai_boldness = 0.25
+#			}
+#
+#			#modifier = {
+#			#	always = yes
+#			#	add = {
+#			#		value = #getopinionofother
+#			#		multiply = -0.5
+#			#	}
+#			#}
+#
+#			modifier = {
+#				has_trait = craven
+#				add = -15
+#			}
+#
+#			modifier = {
+#				has_trait = brave
+#				add = 10
+#			}
+#
+#			modifier = {
+#				has_trait = trusting
+#				add = -10
+#			}
+#
+#			modifier = {
+#				has_trait = paranoid
+#				add = 5
+#			}
+#		}
+#	}
+#
+#	immediate = {
+#		enact_duel_effects = yes
+#		show_as_tooltip = {
+#			var:OTHER = {
+#				enact_duel_effects = yes
+#			}
+#		}
+#		save_scope_value_as = {
+#			name = first_event_happened
+#			value = yes # the value is irrelevant
+#		}
+#	}
+#}
+#
+#duel.126 = { # defeat - fled
+#	type = character_event
+#	theme = unfriendly
+#	title = duel.126.t
+#	desc = duel.126.desc
+#	left_portrait = {
+#		character = var:OTHER
+#		animation = rage
+#	}
+#
+#	option = { # acknowledge receipt
+#		name = duel.126.a
+#	}
+#
+#	immediate = {
+#		hidden_effect = {
+#			var:OTHER = {
+#				trigger_event = duel.121
+#			}
+#		}
+#
+#		show_as_tooltip = {
+#			reverse_add_opinion = {
+#				modifier = duel_fled
+#				target = var:OTHER
+#			}
+#		}
+#	}
+#
+#	after = {
+#		hidden_effect = {
+#			duel_over_cleanup = yes
+#		}
+#	}
+#}
+#
+#duel.127 = { # defeat - imprisoned
+#	type = character_event
+#	theme = default
+#	title = duel.127.t
+#	desc = duel.127.desc
+#	left_portrait = {
+#		character = var:OTHER
+#		animation = war_over_win
+#	}
+#
+#	option = { # acknowledge receipt
+#		name = duel.127.a
+#	}
+#
+#	immediate = {
+#		if = {
+#			limit = {
+#				NOT = { exists = scope:first_event_happened }
+#			}
+#			enact_duel_effects = yes
+#			show_as_tooltip = {
+#				var:OTHER = {
+#					enact_duel_effects = yes
+#				}
+#			}
+#		}
+#	}
+#
+#	after = {
+#		hidden_effect = {
+#			duel_over_cleanup = yes
+#		}
+#	}
+#}
+#
+#duel.128 = { # defeat - killed
+#	type = character_event
+#	theme = death
+#	title = duel.128.t
+#	desc = duel.128.desc
+#	left_portrait = {
+#		character = var:OTHER
+#		animation = happiness
+#	}
+#
+#	option = { # acknowledge receipt
+#		name = duel.128.a
+#	}
+#
+#	immediate = {
+#		enact_duel_effects = yes
+#		show_as_tooltip = {
+#			var:OTHER = {
+#				enact_duel_effects = yes
+#			}
+#		}
+#	}
+#
+#	after = {
+#		death = {
+#			killer = var:OTHER
+#			death_reason = death_duel
+#		}
+#		hidden_effect = {
+#			var:OTHER = { # here and not in immediate so when you get the event they die
+#				trigger_event = duel.123
+#			}
+#			duel_over_cleanup = yes
+#		}
+#	}
+#}
+#
+#duel.129 = { # defeat - let free
+#	type = character_event
+#	theme = default
+#	title = duel.129.t
+#	desc = duel.129.desc
+#	left_portrait = {
+#		character = var:OTHER
+#		animation = personality_forgiving
+#	}
+#
+#	option = { # acknowledge receipt
+#		name = duel.129.a
+#	}
+#
+#	immediate = {
+#		show_duel_results_tt = yes
+#
+#		show_as_tooltip = {
+#			add_opinion = {
+#				modifier = duel_went_free
+#				target = var:OTHER
+#			}
+#		}
+#	}
+#
+#	after = {
+#		hidden_effect = {
+#			duel_over_cleanup = yes
+#		}
+#	}
+#}
+#
+#
+#duel.130 = { # you both die
+#	type = character_event
+#	theme = death
+#	title = duel.130.t
+#	desc = duel.130.desc
+#	left_portrait = var:OTHER
+#
+#	option = {
+#		name = duel.130.a
+#	}
+#
+#	after = {
+#		show_as_tooltip = {
+#			var:OTHER = {
+#				death = {
+#					killer = var:OTHER
+#					death_reason = death_duel
+#				}
+#			}
+#		}
+#		death = {
+#			killer = var:OTHER
+#			death_reason = death_duel
+#		}
+#		duel_cleanup = yes
+#	}
+#}

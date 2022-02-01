@@ -1,0 +1,75 @@
+magic_legacy_1 = { # Magic for the Pure
+	legacy = magic_legacy_track
+
+	cost = dynasty_legacy_tier_1_cost
+
+	effect = {
+		# Effect is applied in the magic_defines file
+		custom_description_no_bullet = {
+			text = magic_legacy_1_effect
+		}
+	}
+	
+	ai_chance = {
+		value = 11
+		if = {
+			limit = {
+				can_start_new_legacy_track_trigger = no
+			}
+			multiply = 0
+		}
+	}
+}
+
+magic_legacy_2 = { # Increased Power
+	legacy = magic_legacy_track
+
+	cost = dynasty_legacy_tier_2_cost
+	
+	effect = {
+		custom_description_no_bullet = {
+			text = magic_legacy_2_effect
+		}
+	}
+}
+
+magic_legacy_3 = { # Inherent Casters
+	legacy = magic_legacy_track
+
+	cost = dynasty_legacy_tier_3_cost
+
+	character_modifier = {
+		monthly_magic_lifestyle_living_xp_gain_mult = 0.1
+		monthly_magic_lifestyle_mixed_xp_gain_mult = 0.1
+		monthly_magic_lifestyle_dead_xp_gain_mult = 0.1
+	}
+}
+
+magic_legacy_4 = { # Architected Ancestry
+	legacy = magic_legacy_track
+
+	cost = dynasty_legacy_tier_4_cost
+
+	effect = {
+		custom_description_no_bullet = {
+			text = magic_legacy_4_effect
+		}
+	}
+}
+
+magic_legacy_5 = { # Breed out the Unpure
+	legacy = magic_legacy_track
+
+	cost = dynasty_legacy_tier_5_cost
+	
+	effect = {
+		# Effect is applied in the on action 'on_birth_child'
+		custom_description_no_bullet = {
+			text = magic_legacy_5_effect
+		}
+	}
+	
+	character_modifier = {
+		life_expectancy = 5
+	}
+}

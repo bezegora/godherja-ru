@@ -1,0 +1,173 @@
+﻿##################
+##DECISIONS LIST##
+# investigate_valerix_decision
+# free_the_slaves_decision
+# invade_fenvir_clanrech_decision
+##################
+
+##################
+# Investigate Valerix
+# by ThePinkPanzer
+investigate_valerix_decision = {
+	picture = "gfx/interface/illustrations/decisions/decision_misc.dds"
+	major = yes
+	ai_check_interval = 120
+	desc = investigate_valerix_decision_desc
+
+	is_shown = {
+		has_title = title:k_legio_lxi_anoterion
+		has_game_rule = story_content_enabled
+		NOT = {
+			is_target_in_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:investigate_valerix_decision
+			}
+			is_target_in_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:eastern_reforms_picked_side
+			}
+		}
+	}
+
+	is_valid = {
+		gold >= 200
+	}
+
+	cost = {
+		gold = {
+			value = 200
+		}
+	}
+	
+	effect = {
+
+		#Events
+		trigger_event = eastern_reforms.0001
+
+		#Can only be done once
+		add_to_global_variable_list = {
+			name = unavailable_unique_decisions
+			target = flag:investigate_valerix_decision
+		}
+	}
+	
+
+	ai_potential = {
+		always = yes
+	}
+
+	ai_will_do = {
+		base = 100
+	}
+}
+
+##################
+# Free the Slaves
+# by ThePinkPanzer
+free_the_slaves_decision = {
+	picture = "gfx/interface/illustrations/decisions/decision_recruitment.dds"
+	major = yes
+	ai_check_interval = 120
+	desc = free_the_slaves_decision_desc
+
+	is_shown = {
+		has_character_flag = the_governor_is_purged
+		has_game_rule = story_content_enabled
+		NOT = {
+			is_target_in_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:free_the_slaves_decision
+			}
+		}
+	}
+
+	is_valid = {
+		prestige >= 1000
+		has_title = title:k_legio_lxi_anoterion
+	}
+
+	effect = {
+		#Events
+		trigger_event = aironoi.0001
+
+		#Can only be done once
+		add_to_global_variable_list = {
+			name = unavailable_unique_decisions
+			target = flag:free_the_slaves_decision
+		}
+		aironoi_free_slaves_effect = yes
+		add_prestige = -500
+		spawn_army = {
+			name = freed_slaves
+			location = capital_province
+			inheritable = no
+			levies = 3000
+			men_at_arms = {
+				type = light_footmen
+				stacks = 3
+			}
+		}
+	}
+	
+
+	ai_potential = {
+		always = yes
+	}
+
+	ai_will_do = {
+		base = 100
+	}
+}
+
+##################
+# Invade Fenvir Clanrech
+# by ThePinkPanzer
+invade_fenvir_clanrech_decision = {
+	picture = "gfx/interface/illustrations/decisions/decision_destiny_goal.dds"
+	major = yes
+	ai_check_interval = 12
+	desc = invade_fenvir_clanrech_decision_desc
+
+	is_shown = {
+		has_game_rule = story_content_enabled
+		has_title = title:k_legio_lxi_anoterion
+		OR = {
+			has_character_flag = the_governor_is_purged
+			has_character_flag = sided_with_governor # This should technically be a post-war flag, but this works for now
+		}
+		NOT = {
+			is_target_in_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:eastern_reforms_invade_fenvir_clanrech
+			}
+		}
+	}
+
+	is_valid = {
+		is_at_war = no
+		prestige >= 1500
+	}
+
+	effect = {
+		show_as_tooltip = {
+			custom_tooltip = invade_fenvir_clanrech_decision_tt
+		}
+		add_prestige = -1000
+		if = {
+			limit = {
+				has_character_flag = sided_with_mongols
+			}
+			trigger_event = eastern_reforms.0007
+		}
+		else = {
+			limit = {
+				has_character_flag = sided_with_governor
+			}
+			trigger_event = eastern_reforms.0011
+		}
+		add_to_global_variable_list = {
+			name = unavailable_unique_decisions
+			target = flag:eastern_reforms_invade_fenvir_clanrech
+		}
+	}
+}

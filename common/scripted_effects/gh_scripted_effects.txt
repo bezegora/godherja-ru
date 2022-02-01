@@ -1,0 +1,1882 @@
+﻿everybody_loves_cenware = {
+    every_vassal_or_below = {
+		limit = {
+			has_faith = faith:sjalvolki
+		}
+
+		add_opinion = {
+			modifier = sjalvolki_core_vassal_opinion
+			target = prev
+		}
+	}
+	
+    every_vassal_or_below = {
+		limit = {
+			OR = {
+				has_faith = faith:apti
+				has_faith = faith:gethian
+				has_faith = faith:kakarataki
+				has_faith = faith:kardawai
+				has_faith = faith:partic
+				has_faith = faith:portenchant
+				has_faith = faith:praznarva # Check if this belongs here or above
+				has_faith = faith:salacad
+			}
+		}
+
+		add_opinion = {
+			modifier = sjalvolki_coalition_vassal_opinion
+			target = prev
+		}
+	}
+}
+
+# Pulls any independent character with a county in the target war title into the war.
+multi_realm_invasion_join_war = {
+	every_in_list = {
+		list = target_titles
+		save_scope_as = target_title
+		every_de_jure_county_holder = {
+			limit = {
+				NOT = {
+					OR = {
+						this.top_liege = scope:attacker
+						this.top_liege = scope:attacker.top_liege
+					}
+				}
+			}
+			top_liege = {
+				if = {
+					limit = { NOT = { is_defender_in_war = scope:war } }
+					scope:war = {
+						add_defender = prev
+					}
+				}
+				every_vassal_or_below = {
+					limit = {
+						AND = {
+							primary_title = {
+								tier >= tier_county
+							}
+							NOT = {
+								is_defender_in_war = scope:war
+							}
+						}
+					}
+					add_to_list = valid_vassals
+				}
+			}
+		}
+	}
+	every_in_list = {
+		list = valid_vassals
+		trigger_event = {
+			id = war_event.4000
+		}
+	}
+}
+
+#shifts a title in the sjalvolki migration, but will only do so if the area is not held by a player
+#after you grant the higher title to a character
+#landed title scope
+migrate_to_title = {
+	holder = {
+		save_scope_as = conqueror
+	}
+	create_title_and_vassal_change = {
+		type = conquest
+		save_scope_as = change
+		add_claim_on_loss = no
+	}
+	every_in_de_jure_hierarchy = {
+		limit = {
+			holder = {
+				is_ai = yes
+			}
+			holder.top_liege = scope:destroyer
+			tier >= tier_county
+		}
+		
+		IF = {
+			limit = {
+				tier = tier_county
+			}
+			set_county_culture = scope:conqueror.culture
+			set_county_faith = scope:conqueror.faith
+
+			# create_character = {
+			# 	location = scope:conqueror.capital_province
+			# 	gender_female_chance = 50
+			# 	template_character = scope:conqueror
+			# 	random_traits = yes
+			# 	age = { 20 50 }
+				
+			# 	save_scope_as = fill
+			# }
+			# change_title_holder = {
+			# 	holder = scope:fill
+			# 	change = scope:change
+			# }
+			# scope:fill = {
+			# 	change_liege = {
+			# 		liege = scope:conqueror
+			# 		change = scope:change
+			# 	}
+			# }
+		}
+	}
+	
+	# create_character = {
+	# 	location = root.capital_province
+	# 	gender_female_chance = 50
+	# 	template_character = root
+	# 	random_traits = yes
+	# 	age = { 20 50 }
+		
+	# 	save_scope_as = fill
+	# }
+	#giving away temporary capital_province
+	# scope:conqueror.capital_county = {
+	# 	change_title_holder = {
+	# 		holder = scope:fill
+	# 		change = scope:change
+	# 	}
+	# }
+	
+	resolve_title_and_vassal_change = scope:change
+}
+
+# Same as above, but gives out duchies instead of counties. Mostly for Cenware because he takes a ton of land
+migrate_to_title_duchy = {
+	holder = {
+		save_scope_as = conqueror
+	}
+	create_title_and_vassal_change = {
+		type = conquest
+		save_scope_as = change
+		add_claim_on_loss = no
+	}
+	every_in_de_jure_hierarchy = {
+		limit = {
+			holder = {
+				is_ai = yes
+			}
+			holder.top_liege = scope:conqueror
+			tier >= tier_county
+		}
+		
+		IF = {
+			limit = {
+				tier = tier_county
+			}
+			set_county_culture = scope:conqueror.culture
+			set_county_faith = scope:conqueror.faith
+		}
+		ELSE_IF = {
+			limit = {
+				tier = tier_duchy
+			}
+
+			create_character = {
+				location = scope:conqueror.capital_province
+				gender_female_chance = 50
+				template_character = scope:conqueror
+				random_traits = yes
+				age = { 20 50 }
+				
+				save_scope_as = fill
+			}
+
+			every_county = {
+				limit = {
+					duchy = prev
+				}
+				change_title_holder = {
+					holder = scope:fill
+					change = scope:change
+				}
+			}
+			change_title_holder = {
+				holder = scope:fill
+				change = scope:change
+			}
+			scope:fill = {
+				change_liege = {
+					liege = scope:conqueror
+					change = scope:change
+				}
+			}
+		}
+	}
+	
+	resolve_title_and_vassal_change = scope:change
+}
+
+#migrates away from previously held lands, except for one title
+#make sure that this is done before migrate_to_title is done
+#will give away all personally held counties, will grant independence to all vassals
+#everyone but the person who activated the decision should have this effect
+#character scope
+
+migrate_from_lands = {
+	capital_county = {
+		save_scope_as = temp_province
+		title_province = {
+			save_scope_as = temp_title_province
+		}
+	}
+
+	create_title_and_vassal_change = {
+		type = independency
+		save_scope_as = change
+		add_claim_on_loss = no
+	}
+	
+	liege = { save_scope_as = former_liege }
+	
+	# Make sure they're not still under their old duke/king after migrating
+	if = {
+		limit = { NOT = { liege = { any_held_title = { has_variable = protected_from_migration_destruction } } } }
+		change_liege = {
+			CHANGE = scope:change
+			LIEGE = top_liege
+		}
+		
+		every_vassal = {
+			limit = {
+				primary_title.tier >= tier_county
+			}
+			change_liege = {
+				CHANGE = scope:change
+				LIEGE = top_liege
+			}
+		}
+	}
+
+	every_held_title = {
+		limit = {
+			NOR = {
+				this = scope:temp_province
+				tier = tier_barony
+			}
+		}
+		IF = {
+			limit = {
+				NOT = {
+					this = scope:temp_province
+				}
+			}
+			
+			if = {
+				limit = {
+					has_variable = influx_culture
+					has_variable = influx_faith
+				}
+				var:influx_culture = { save_temporary_scope_as = influx_culture }
+				var:influx_faith = { save_temporary_scope_as = influx_faith }
+				set_variable = protected_from_automatic_culture_conversion
+				create_character = {
+					location = scope:temp_title_province
+					culture = scope:influx_culture
+					faith = scope:influx_faith
+					gender_female_chance = {
+						if = {
+							limit = { scope:influx_faith = { has_doctrine = doctrine_gender_male_dominated } }
+							add = 0
+						}
+						else_if = {
+							limit = { scope:influx_faith = { has_doctrine = doctrine_gender_female_dominated } }
+							add = 100
+						}
+						else = {
+							add = 50
+						}
+					}
+					template_character = root
+					random_traits = yes
+					age = { 20 50 }
+					
+					save_scope_as = fill
+				}
+				set_county_culture = scope:influx_culture
+				set_county_faith = scope:influx_faith
+			}
+			else_if = {
+				limit = { 
+					NOR = {
+						scope:temp_province.culture_group = culture_group:gh_imperial_group
+						scope:temp_province.religion = religion:aversarinas_aautokrata_religion
+					}
+				}
+				create_character = {
+					location = scope:temp_title_province
+					culture = scope:temp_province.culture
+					faith = scope:temp_province.faith
+					gender_female_chance = 50
+					template_character = root
+					random_traits = yes
+					gender_female_chance = {
+						if = {
+							limit = { scope:temp_province.faith = { has_doctrine = doctrine_gender_male_dominated } }
+							add = 0
+						}
+						else_if = {
+							limit = { scope:temp_province.faith = { has_doctrine = doctrine_gender_female_dominated } }
+							add = 100
+						}
+						else = {
+							add = 50
+						}
+					}
+					
+					save_scope_as = fill
+				}
+			}
+			else = {
+				create_character = {
+					location = scope:temp_title_province
+					culture = root.culture
+					faith = root.faith
+					gender_female_chance = {
+						if = {
+							limit = { root.faith = { has_doctrine = doctrine_gender_male_dominated } }
+							add = 0
+						}
+						else_if = {
+							limit = { root.faith = { has_doctrine = doctrine_gender_female_dominated } }
+							add = 100
+						}
+						else = {
+							add = 50
+						}
+					}
+					template_character = root
+					random_traits = yes
+					age = { 20 50 }
+					
+					save_scope_as = fill
+				}
+			}
+			scope:fill = { 
+				add_character_flag = holdover_in_old_lands 
+				add_character_flag = aversarian_migration
+			}
+			change_title_holder = {
+				holder = scope:fill
+				change = scope:change
+			}
+			scope:fill = {
+				change_liege = {
+					CHANGE = scope:change
+					LIEGE = scope:former_liege
+				}
+			}
+		}
+	}
+	resolve_title_and_vassal_change = scope:change
+}	
+#migrating from your current lands, but only if you keep your old vassals.
+migrate_from_lands_keep = {
+	capital_county = {
+		save_scope_as = temp_province
+	}
+
+	create_title_and_vassal_change = {
+		type = independency
+		save_scope_as = change
+		add_claim_on_loss = no
+	}
+	
+	every_held_title = {
+		limit = {
+			NOR = {
+				this = scope:temp_province
+				this = root.primary_title
+				tier = tier_barony
+			}
+		}
+		
+		create_character = {
+			location = root.top_liege.capital_province
+			gender_female_chance = 50
+			template_character = root
+			random_traits = yes
+			age = { 20 50 }
+			
+			save_scope_as = fill
+		}
+		
+		change_title_holder = {
+			holder = scope:fill
+			change = scope:change
+		}
+	}
+	#keeping temporary capital_province
+	scope:temp_province = {
+		change_title_holder = {
+			holder = root
+			change = scope:change
+		}
+	}
+	resolve_title_and_vassal_change = scope:change
+}
+
+generate_vassal_list = {
+	# Get a list of all vassals of a set culture
+	ordered_vassal_or_below = {
+		limit = {
+			culture = $CULTURE$
+			primary_title.tier >= tier_county
+			NOT = {
+				has_character_flag = aversarian_migration
+			}
+		}
+		order_by = primary_title.tier
+		max = 500 # Check if there is a way to add all of them without setting a max
+
+		add_to_list = $LIST$
+	}
+
+	# Get unlanded courtiers fitting the criteria
+
+	# If none were found, generate one
+	IF = {
+		limit = {
+			list_size = {
+				name = $LIST$
+				value = 0
+			}
+		}
+
+		create_character = {
+			employer = root
+			gender_female_chance = 50
+			template_character = root
+			culture = $CULTURE$
+			faith = $FAITH$
+			random_traits = yes
+			age = { 20 50 }
+
+			save_scope_as = generated_character
+		}
+
+		scope:generated_character = {
+			add_to_list = $LIST$
+		}
+	}
+}
+
+generate_title_list = {
+	every_in_list = {
+		list = $INPUT_LIST$
+
+		every_in_de_jure_hierarchy = {
+			IF = {
+				limit = {
+					tier = tier_duchy
+					any_de_jure_county_holder = {
+						top_liege = scope:destroyer
+					}
+					is_title_created = yes
+				}
+				#random_list = {
+				#	40 = {
+				#		add_to_list = $OUTPUT_DUCHIES$
+				#	}
+				#	60 = {}
+				#}
+				add_to_list = $OUTPUT_DUCHIES$
+			}
+			ELSE_IF = {
+				limit = {
+					tier = tier_county
+					holder.top_liege = scope:destroyer
+				}
+				add_to_list = $OUTPUT_COUNTIES$
+			}
+		}
+	}
+}
+
+assign_titles_to_characters = {
+	# Save a character to use as a template in case we need to generate new ones
+	ordered_in_list = {
+		list = $CHARACTER_LIST$
+
+		save_scope_as = model
+	}
+		
+	# create_title_and_vassal_change = {
+	# 	type = conquest
+	# 	save_scope_as = change
+	# 	add_claim_on_loss = no
+	# }
+
+	every_in_list = {
+		list = $KINGDOM_LIST$
+
+		# Select or create the person getting a new title
+		IF = {
+			limit = {
+				list_size = {
+					name = $CHARACTER_LIST$
+					value > 0
+				}
+			}
+
+			ordered_in_list = {
+				list = $CHARACTER_LIST$
+
+				save_scope_as = new_character
+				remove_from_list = $CHARACTER_LIST$
+			}
+		}
+		ELSE = {
+			create_character = {
+				employer = root
+				gender_female_chance = 50
+				template_character = scope:model
+				random_traits = yes
+				age = { 20 50 }
+				
+				save_scope_as = new_character
+			}
+		}
+
+		IF = {
+			limit = {
+				scope:new_character = {
+					is_ai = no
+				}
+			}
+			save_scope_as = title_to_pass
+
+			# $COUNTY_LIST$ = { save_scope_as = county_list }
+			# $DUCHY_LIST$ = { save_scope_as = duchy_list }
+
+			scope:new_character = {
+				trigger_event = {
+					id = sjalvolki_decisions.0002
+				}
+			}
+		}
+		ELSE = {
+			random_county = {
+				limit = {
+					kingdom = prev
+					holder.top_liege = scope:destroyer
+				}
+
+				set_county_culture = scope:new_character.culture
+				set_county_faith = scope:new_character.faith
+
+				remove_from_list = $COUNTY_LIST$
+				save_scope_as = new_capital
+			}
+			
+			scope:new_character = {
+				get_title = scope:new_capital
+				set_realm_capital = scope:new_capital
+				add_character_flag = aversarian_migration
+				migrate_from_lands = yes
+			}
+
+			scope:new_capital.duchy = {
+				scope:new_character = { get_title = prev }
+				# change_title_holder = {
+				# 	holder = scope:new_character
+				# 	change = scope:change
+				# }
+				remove_from_list = $DUCHY_LIST$
+			}
+
+			scope:new_character = { get_title = prev }
+			# change_title_holder = {
+			# 	holder = scope:new_character
+			# 	change = scope:change
+			# }
+		}
+	}
+
+	every_in_list = {
+		list = $DUCHY_LIST$
+
+		# Select or create the person getting a new title
+		IF = {
+			limit = {
+				list_size = {
+					name = $CHARACTER_LIST$
+					value > 0
+				}
+			}
+
+			ordered_in_list = {
+				list = $CHARACTER_LIST$
+
+				save_scope_as = new_character
+				remove_from_list = $CHARACTER_LIST$
+			}
+		}
+		ELSE = {
+			create_character = {
+				employer = root
+				gender_female_chance = 50
+				template_character = scope:model
+				random_traits = yes
+				age = { 20 50 }
+				
+				save_scope_as = new_character
+			}
+		}
+
+		IF = {
+			limit = {
+				scope:new_character = {
+					is_ai = no
+				}
+			}
+			save_scope_as = title_to_pass
+
+			# $COUNTY_LIST$ = { save_scope_as = county_list }
+
+			scope:new_character = {
+				trigger_event = {
+					id = sjalvolki_decisions.0002
+				}
+			}
+		}
+		ELSE = {
+			random_county = {
+				limit = {
+					duchy = prev
+					holder.top_liege = scope:destroyer
+				}
+
+				set_county_culture = scope:new_character.culture
+				set_county_faith = scope:new_character.faith
+
+				remove_from_list = $COUNTY_LIST$
+				save_scope_as = new_capital
+			}
+
+			scope:new_character = {
+				get_title = scope:new_capital
+				set_realm_capital = scope:new_capital
+				add_character_flag = aversarian_migration
+				migrate_from_lands = yes
+			}
+
+			scope:new_character = { get_title = prev }
+			# change_title_holder = {
+			# 	holder = scope:new_character
+			# 	change = scope:change
+			# }
+		}
+	}
+
+	every_in_list = {
+		list = $COUNTY_LIST$
+
+		# Select or create the person getting a new title
+		IF = {
+			limit = {
+				list_size = {
+					name = $CHARACTER_LIST$
+					value > 0
+				}
+			}
+
+			ordered_in_list = {
+				list = $CHARACTER_LIST$
+
+				save_scope_as = new_character
+				remove_from_list = $CHARACTER_LIST$
+			}
+		}
+		ELSE = {
+			create_character = {
+				employer = root
+				gender_female_chance = 50
+				template_character = scope:model
+				random_traits = yes
+				age = { 20 50 }
+				
+				save_scope_as = new_character
+			}
+		}
+
+		IF = {
+			limit = {
+				scope:new_character = {
+					is_ai = no
+				}
+			}
+			save_scope_as = title_to_pass
+
+			scope:new_character = {
+				trigger_event = {
+					id = sjalvolki_decisions.0002
+				}
+			}
+		}
+		ELSE = {
+			set_county_culture = scope:new_character.culture
+			set_county_faith = scope:new_character.faith
+
+			scope:new_character = {
+				get_title = prev
+				set_realm_capital = prev
+				add_character_flag = aversarian_migration
+				migrate_from_lands = yes
+			}
+		}
+	}
+
+	# resolve_title_and_vassal_change = scope:change
+}
+
+assign_titles_to_characters_new = {
+	# Save a character to use as a template in case we need to generate new ones
+	ordered_in_list = {
+		list = $CHARACTER_LIST$
+
+		save_scope_as = model
+	}
+		
+	# create_title_and_vassal_change = {
+	# 	type = conquest
+	# 	save_scope_as = change
+	# 	add_claim_on_loss = no
+	# }
+
+	every_in_list = {
+		list = $KINGDOM_LIST$
+
+		# Select or create the person getting a new title
+		IF = {
+			limit = {
+				list_size = {
+					name = $CHARACTER_LIST$
+					value > 0
+				}
+			}
+
+			ordered_in_list = {
+				list = $CHARACTER_LIST$
+				limit = {
+					OR = {
+						is_landed = no
+						primary_title.tier <= tier_kingdom
+					}
+				}
+
+				save_scope_as = new_character
+				remove_from_list = $CHARACTER_LIST$
+			}
+		}
+		ELSE = {
+			create_character = {
+				employer = root
+				gender_female_chance = 50
+				template_character = scope:model
+				random_traits = yes
+				age = { 20 50 }
+				
+				save_scope_as = new_character
+			}
+		}
+
+		IF = {
+			limit = {
+				scope:new_character = {
+					is_ai = no
+				}
+			}
+			save_scope_as = title_to_pass
+
+			# $COUNTY_LIST$ = { save_scope_as = county_list }
+			# $DUCHY_LIST$ = { save_scope_as = duchy_list }
+
+			scope:new_character = {
+				trigger_event = sjalvolki_decisions.0002
+			}
+		}
+		ELSE = {
+			random_county = {
+				limit = {
+					kingdom = prev
+					holder.top_liege = scope:destroyer
+				}
+
+				set_county_culture = scope:new_character.culture
+				set_county_faith = scope:new_character.faith
+
+				remove_from_list = $COUNTY_LIST$
+				save_scope_as = new_capital
+			}
+			
+			scope:new_character = {
+				get_title = scope:new_capital
+				set_realm_capital = scope:new_capital
+				add_character_flag = aversarian_migration
+				migrate_from_lands = yes
+			}
+
+			scope:new_capital.duchy = {
+				scope:new_character = { get_title = prev }
+				# change_title_holder = {
+				# 	holder = scope:new_character
+				# 	change = scope:change
+				# }
+				remove_from_list = $DUCHY_LIST$
+			}
+
+			scope:new_character = { get_title = prev }
+			# change_title_holder = {
+			# 	holder = scope:new_character
+			# 	change = scope:change
+			# }
+		}
+	}
+
+	every_in_list = {
+		list = $DUCHY_LIST$
+
+		# Select or create the person getting a new title
+		IF = {
+			limit = {
+				list_size = {
+					name = $CHARACTER_LIST$
+					value > 0
+				}
+			}
+
+			ordered_in_list = {
+				list = $CHARACTER_LIST$
+				limit = {
+					OR = {
+						is_landed = no
+						primary_title.tier <= tier_duchy
+					}
+				}
+
+				save_scope_as = new_character
+				remove_from_list = $CHARACTER_LIST$
+			}
+		}
+		ELSE = {
+			create_character = {
+				employer = root
+				gender_female_chance = 50
+				template_character = scope:model
+				random_traits = yes
+				age = { 20 50 }
+				
+				save_scope_as = new_character
+			}
+		}
+
+		IF = {
+			limit = {
+				scope:new_character = {
+					is_ai = no
+				}
+			}
+			save_scope_as = title_to_pass
+
+			# $COUNTY_LIST$ = { save_scope_as = county_list }
+
+			scope:new_character = {
+				trigger_event = {
+					id = sjalvolki_decisions.0002
+				}
+			}
+		}
+		ELSE = {
+			random_county = {
+				limit = {
+					duchy = prev
+					holder.top_liege = scope:destroyer
+				}
+
+				set_county_culture = scope:new_character.culture
+				set_county_faith = scope:new_character.faith
+
+				remove_from_list = $COUNTY_LIST$
+				save_scope_as = new_capital
+			}
+
+			scope:new_character = {
+				get_title = scope:new_capital
+				set_realm_capital = scope:new_capital
+				add_character_flag = aversarian_migration
+				migrate_from_lands = yes
+			}
+
+			scope:new_character = { get_title = prev }
+			# change_title_holder = {
+			# 	holder = scope:new_character
+			# 	change = scope:change
+			# }
+		}
+	}
+
+	every_in_list = {
+		list = $COUNTY_LIST$
+
+		# Select or create the person getting a new title
+		IF = {
+			limit = {
+				list_size = {
+					name = $CHARACTER_LIST$
+					value > 0
+				}
+			}
+
+			ordered_in_list = {
+				list = $CHARACTER_LIST$
+				limit = {
+					OR = {
+						is_landed = no
+						primary_title.tier <= tier_county
+					}
+				}
+
+				save_scope_as = new_character
+				remove_from_list = $CHARACTER_LIST$
+			}
+		}
+		ELSE = {
+			create_character = {
+				employer = root
+				gender_female_chance = 50
+				template_character = scope:model
+				random_traits = yes
+				age = { 20 50 }
+				
+				save_scope_as = new_character
+			}
+		}
+
+		IF = {
+			limit = {
+				scope:new_character = {
+					is_ai = no
+				}
+			}
+			save_scope_as = title_to_pass
+
+			scope:new_character = {
+				trigger_event = {
+					id = sjalvolki_decisions.0002
+				}
+			}
+		}
+		ELSE = {
+			set_county_culture = scope:new_character.culture
+			set_county_faith = scope:new_character.faith
+
+			scope:new_character = {
+				get_title = prev
+				set_realm_capital = prev
+				add_character_flag = aversarian_migration
+				migrate_from_lands = yes
+			}
+		}
+	}
+
+	# resolve_title_and_vassal_change = scope:change
+}
+
+change_de_jure_liege_conditional = {
+	if = {
+		limit = {
+			title:$TITLE$ = {
+				de_jure_liege = {
+					NOT = { this = title:$NOT_ALREADY_PART_OF$ }
+				}
+			}
+		}
+		title:$TITLE$ = { set_de_jure_liege_title = title:$NEW_DE_JURE_LIEGE$ }
+	}
+}
+
+rebuild_title_hierarchy = {
+	create_title_and_vassal_change = {
+		type = granted
+		save_scope_as = change
+		add_claim_on_loss = no
+	}
+	holder = { save_temporary_scope_as = rebuilding_title_holder }
+
+	every_in_de_jure_hierarchy = {
+		limit = {
+			is_title_created = yes
+			trigger_if = {
+				limit = { exists = holder }
+				holder = {
+					primary_title.tier >= tier_county
+					NOR = {
+						primary_title.tier >= scope:rebuilding_title_holder.primary_title.tier
+						liege = primary_title.de_jure_liege.holder
+						any_liege_or_above = {
+							protected_from_title_rebuilding = yes
+						}
+					}
+				}
+			}
+			trigger_else = {
+				always = no
+			}
+		}
+		holder = {
+			IF = {
+				limit = {
+					primary_title.tier = tier_county
+				}
+
+				IF = {
+					limit = {
+						exists = primary_title.duchy.holder
+					}
+					
+					# 95%, 4.8%, 0.2%
+					random_list = {
+						475 = {
+							change_liege = {
+								liege = primary_title.duchy.holder
+								change = scope:change
+							}
+						}
+						24 = {
+							change_liege = {
+								liege = primary_title.kingdom.holder
+								change = scope:change
+							}
+						}
+						#1 = {
+						#	change_liege = {
+						#		liege = scope:destroyer
+						#		change = scope:change
+						#	}
+						#}
+					}
+				}
+				ELSE = {
+					random_list = {
+						95 = {
+							change_liege = {
+								liege = primary_title.kingdom.holder
+								change = scope:change
+							}
+						}
+						#5 = {
+						#	change_liege = {
+						#		liege = scope:destroyer
+						#		change = scope:change
+						#	}
+						#}
+					}
+				}
+			}
+			ELSE_IF = {
+				limit = {
+					primary_title.tier = tier_duchy
+				}
+
+				random_list = {
+					90 = {
+						change_liege = {
+							liege = primary_title.kingdom.holder
+							change = scope:change
+						}
+					}
+					#10 = {
+					#	change_liege = {
+					#		liege = scope:destroyer
+					#		change = scope:change
+					#	}
+					#}
+				}
+			}
+			ELSE_IF = {
+				limit = {
+					primary_title.tier = tier_kingdom
+				}
+				change_liege = {
+					liege = scope:destroyer
+					change = scope:change
+				}
+			}
+		}
+	}
+
+	resolve_title_and_vassal_change = scope:change
+
+	# Old version, keep for reference
+	# every_ruler = {
+	# 	limit = {
+	# 		primary_title.tier >= tier_county
+	# 		has_character_flag = aversarian_migration
+	# 		NOT = {
+	# 			liege = primary_title.de_jure_liege
+	# 		}
+	# 	}
+	# 	IF = {
+	# 		limit = {
+	# 			primary_title.tier = tier_county
+	# 		}
+
+	# 		IF = {
+	# 			limit = {
+	# 				exists = primary_title.duchy.holder
+	# 			}
+				
+	#			# 95%, 4.8%, 0.2%
+	# 			# random_list = {
+	# 			# 	475 = {
+	# 					change_liege = {
+	# 						liege = primary_title.duchy.holder
+	# 						change = scope:change
+	# 					}
+	# 			# 	}
+	# 			# 	24 = {
+	# 			# 		change_liege = {
+	# 			# 			liege = primary_title.kingdom.holder
+	# 			# 			change = scope:change
+	# 			# 		}
+	# 			# 	}
+	# 			# 	1 = {
+	# 			# 		change_liege = {
+	# 			# 			liege = scope:destroyer
+	# 			# 			change = scope:change
+	# 			# 		}
+	# 			# 	}
+	# 			# }
+	# 		}
+	# 		ELSE = {
+	# 			# random_list = {
+	# 			# 	95 = {
+	# 					change_liege = {
+	# 						liege = primary_title.kingdom.holder
+	# 						change = scope:change
+	# 					}
+	# 			# 	}
+	# 			# 	5 = {
+	# 			# 		change_liege = {
+	# 			# 			liege = scope:destroyer
+	# 			# 			change = scope:change
+	# 			# 		}
+	# 			# 	}
+	# 			# }
+	# 		}
+	# 	}
+	# 	ELSE_IF = {
+	# 		limit = {
+	# 			primary_title.tier = tier_duchy
+	# 		}
+
+	# 		# random_list = {
+	# 		# 	90 = {
+	# 				change_liege = {
+	# 					liege = primary_title.kingdom.holder
+	# 					change = scope:change
+	# 				}
+	# 		# 	}
+	# 		# 	10 = {
+	# 		# 		change_liege = {
+	# 		# 			liege = scope:destroyer
+	# 		# 			change = scope:change
+	# 		# 		}
+	# 		# 	}
+	# 		# }
+	# 	}
+	# 	ELSE_IF = {
+	# 		limit = {
+	# 			primary_title.tier = tier_kingdom
+	# 		}
+	# 		change_liege = {
+	#			liege = scope:destroyer
+	#			change = scope:change
+	#		}
+	# 	}
+	# }
+}
+
+debug_check_migrators = {
+	debug_log = debug_check_migrators
+	every_ruler = {
+		limit = {
+			has_character_flag = aversarian_migration
+		}
+
+		debug_log_scopes = no
+	}
+}
+
+debug_set_magic_number = { # sets everyone's magic counter to NUM
+	every_living_character = {
+		limit = { has_variable = magic_counter }
+		set_variable = {
+			name = magic_counter
+			value = $NUM$
+		}
+	}
+}
+
+aironoi_free_slaves_effect = { # End slavery effects
+	# add_trait = reformer
+	add_character_modifier = freed_slaves
+	give_nickname = nick_the_uniter
+	custom_tooltip = aironoi_free_slaves_effect_tt
+}
+
+devastate_county = {
+	change_development_level = -100
+	add_county_modifier = extreme_devastation
+	every_county_province = {
+		limit = { 
+			has_holding_type = castle_holding
+		}
+		set_holding_type = empty_holding	# To destroy buildings
+		set_holding_type = castle_holding
+	}
+	every_county_province = {
+		limit = { 
+			has_holding_type = city_holding
+		}
+		set_holding_type = empty_holding	# To destroy buildings
+		set_holding_type = church_holding
+	}
+	every_county_province = {
+		limit = { 
+			has_holding_type = church_holding
+		}
+		set_holding_type = empty_holding	# To destroy buildings
+		set_holding_type = church_holding
+	}
+}
+
+clear_truces = {
+	every_truce_target = {
+		cancel_truce_both_ways = root
+	}
+}
+
+generate_web_of_intrigue = {
+	if = {
+		limit = { is_independent_ruler = no }
+		save_temporary_scope_as = web_builder
+		top_liege = {
+			while = {
+				count = 2
+				ordered_vassal = {
+					limit = { 
+						highest_held_title_tier >= tier_county
+						NOT = { scope:web_builder = { has_strong_usable_hook = prev } } 
+						NOT = { this = scope:web_builder }
+					}
+					order_by = highest_held_title_tier
+					save_temporary_scope_as = blackmailed_vassal
+					scope:web_builder = {
+						add_hook = {
+							target = scope:blackmailed_vassal
+							type = loyalty_hook
+						}
+					}
+				}
+			}
+			while = {
+				count = 3
+				ordered_vassal = {
+					limit = { 
+						highest_held_title_tier >= tier_county
+						NOT = { scope:web_builder = { has_strong_usable_hook = prev } } 
+						NOT = { this = scope:web_builder }
+					}
+					order_by = highest_held_title_tier
+					save_temporary_scope_as = blackmailed_vassal
+					scope:web_builder = {
+						add_hook = {
+							target = scope:blackmailed_vassal
+							type = loyalty_hook
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+copy_global_variable_into_local = {
+	if = {
+		limit = { exists = global_var:$GLOBAL_VAR$ }
+		set_variable = {
+			name = $GLOBAL_VAR$
+			value = global_var:$GLOBAL_VAR$
+		}
+	}
+}
+
+release_disconnected_counties = {
+	remove_character_flag = delayed_cleanse
+	
+	root.capital_province.county = {
+		every_connected_county = { # Start off by making a list of all disconnected Counties
+			invert = yes
+			max_naval_distance = 2000
+			add_to_list = disconnected_counties
+		}
+	}
+	
+	every_in_list = {
+		list = disconnected_counties
+		
+		limit = {
+			any_connected_county = {
+				NOT = { is_in_list = disconnected_counties }
+				max_naval_distance = 2000
+			}
+		}
+		add_to_list = cull_naval_connection_counties
+	}
+	
+	while = {
+		limit = {
+			any_in_list = {
+				list = cull_naval_connection_counties
+			}
+		}
+		random_in_list = {
+			list = cull_naval_connection_counties
+			
+			save_scope_as = cull_origin_county
+			
+			every_connected_county = {
+				remove_from_list = cull_naval_connection_counties
+				remove_from_list = disconnected_counties
+			}
+			remove_from_list = cull_naval_connection_counties
+			remove_from_list = disconnected_counties
+		}
+	}
+	
+	every_in_list = { # Release Kings first
+		list = disconnected_counties
+		
+		limit = {
+			holder.primary_title.tier = tier_kingdom
+			NOR = {
+				holder = root
+				holder = {
+					any_sub_realm_title = {
+						tier = tier_county
+						NOT = { is_in_list = disconnected_counties }
+					}
+				}
+			}
+		}
+		holder = {
+			create_title_and_vassal_change = {
+				type = independency
+				save_scope_as = change
+				add_claim_on_loss = yes
+			}
+			becomes_independent = {
+				change = scope:change
+			}
+			resolve_title_and_vassal_change = scope:change
+		}
+	}
+	
+	every_in_list = { # Release Dukes second
+		list = disconnected_counties
+		
+		limit = {
+			holder.primary_title.tier = tier_duchy
+			NOR = {
+				holder = root
+				holder = {
+					any_sub_realm_title = {
+						tier = tier_county
+						NOT = { is_in_list = disconnected_counties }
+					}
+				}
+			}
+		}
+		holder = {
+			create_title_and_vassal_change = {
+				type = independency
+				save_scope_as = change
+				add_claim_on_loss = yes
+			}
+			becomes_independent = {
+				change = scope:change
+			}
+			resolve_title_and_vassal_change = scope:change
+		}
+	}
+	
+	every_in_list = { # Release Counts last
+		list = disconnected_counties
+		
+		limit = {
+			holder.primary_title.tier = tier_county
+			NOR = {
+				holder = root
+				holder = {
+					any_sub_realm_title = {
+						tier = tier_county
+						NOT = { is_in_list = disconnected_counties }
+					}
+				}
+			}
+		}
+		holder = {
+			create_title_and_vassal_change = {
+				type = independency
+				save_scope_as = change
+				add_claim_on_loss = yes
+			}
+			becomes_independent = {
+				change = scope:change
+			}
+			resolve_title_and_vassal_change = scope:change
+		}
+	}
+	
+	every_in_list = { # Finally, release contiguous areas under someone from the pool
+		list = disconnected_counties
+		
+		limit = {
+			OR = {
+				holder.top_liege = root
+				holder = root
+			}
+		}
+		
+		save_scope_as = county_of_origin
+		
+		every_pool_character = {
+			province = scope:county_of_origin.title_province
+			limit = {
+				is_available_adult = yes
+			}
+			add_to_list = potential_holders
+		}
+		
+		every_pool_character = {
+			province = scope:county_of_origin.holder.capital_province
+			limit = {
+				is_available_adult = yes
+			}
+			add_to_list = potential_holders
+		}
+		
+		if = {
+			limit = {
+				NOT = {
+					any_in_list = {
+						list = potential_holders
+						is_available_adult = yes
+					}
+				}
+			}
+			create_character = {
+				location = scope:county_of_origin.title_province
+				culture = scope:county_of_origin.culture
+				faith = scope:county_of_origin.faith
+				gender_female_chance = 50
+				age = 32
+				save_scope_as = backup_character
+			}
+			scope:backup_character = {
+				add_to_list = potential_holders
+			}
+		}
+		
+		random_in_list = {
+			list = potential_holders
+			limit = {
+				is_available_adult = yes
+				has_claim_on = scope:county_of_origin
+				faith = {
+					has_dominant_ruling_gender = prev
+				}
+			}
+			alternative_limit = {
+				is_available_adult = yes
+				culture = scope:county_of_origin.culture
+				faith = scope:county_of_origin.faith
+				faith = {
+					has_dominant_ruling_gender = prev
+				}
+			}
+			alternative_limit = {
+				is_available_adult = yes
+				culture = scope:county_of_origin.culture
+				faith = {
+					has_dominant_ruling_gender = prev
+				}
+			}
+			alternative_limit = {
+				is_available_adult = yes
+				faith = scope:county_of_origin.faith
+				faith = {
+					has_dominant_ruling_gender = prev
+				}
+			}
+			alternative_limit = {
+				is_available_adult = yes
+				faith = {
+					has_dominant_ruling_gender = prev
+				}
+			}
+			alternative_limit = {
+				is_available_adult = yes
+				has_claim_on = scope:county_of_origin
+			}
+			alternative_limit = {
+				is_available_adult = yes
+				culture = scope:county_of_origin.culture
+				faith = scope:county_of_origin.faith
+			}
+			alternative_limit = {
+				is_available_adult = yes
+				culture = scope:county_of_origin.culture
+			}
+			alternative_limit = {
+				is_available_adult = yes
+				faith = scope:county_of_origin.faith
+			}
+			alternative_limit = {
+				is_available_adult = yes
+			}
+			
+			save_scope_as = new_county_holder
+			#get_title = scope:county_of_origin
+			
+			create_title_and_vassal_change = {
+				type = independency
+				save_scope_as = change
+				add_claim_on_loss = yes
+			}
+			every_in_list = {
+				list = disconnected_counties
+				limit = {
+					OR = {
+						holder.top_liege = root
+						holder = root
+					}
+					is_connected_to = {
+						target = scope:county_of_origin
+					}
+					NOT ={
+						is_connected_to = {
+							target = root.capital_province.county
+						}
+					}
+				}
+				change_title_holder = {
+					holder = scope:new_county_holder
+					change = scope:change
+				}
+				#scope:new_county_holder = { get_title = prev }
+			}
+			becomes_independent = {
+				change = scope:change
+			}
+			resolve_title_and_vassal_change = scope:change
+			if = { # Just in case they need to create a duchy
+				limit = {
+					gold < 500
+				}
+				add_gold = 500
+			}
+		}
+	}
+}
+
+initialize_influx_cultures_kalathipsomi = {	# Determines which culture gets what in Kalathipsomi after the Sjalvolki leave
+	title:e_mikros_kalathipsomi = {
+		every_in_de_jure_hierarchy = {
+			limit = { tier = tier_kingdom }
+			random_list = {
+				3 = {
+					every_in_de_jure_hierarchy = {
+						limit = { tier = tier_county }
+						set_variable = {
+							name = influx_culture
+							value = culture:kardwens
+						}
+						set_variable = {
+							name = influx_faith
+							value = faith:kardawai
+						}
+					}
+				}
+				3 = {
+					every_in_de_jure_hierarchy = {
+						limit = { tier = tier_county }
+						set_variable = {
+							name = influx_culture
+							value = culture:goans
+						}
+						set_variable = {
+							name = influx_faith
+							value = faith:gethian
+						}
+					}
+				}
+				3 = {
+					every_in_de_jure_hierarchy = {
+						limit = { tier = tier_county }
+						set_variable = {
+							name = influx_culture
+							value = culture:huegodocs
+						}
+						set_variable = {
+							name = influx_faith
+							value = faith:apti
+						}
+					}
+				}
+				3 = {
+					every_in_de_jure_hierarchy = {
+						limit = { tier = tier_county }
+						set_variable = {
+							name = influx_culture
+							value = culture:karzarads
+						}
+						set_variable = {
+							name = influx_faith
+							value = faith:kakarataki
+						}
+					}
+				}
+				3 = {
+					every_in_de_jure_hierarchy = {
+						limit = { tier = tier_county }
+						set_variable = {
+							name = influx_culture
+							value = culture:mondecny
+						}
+						set_variable = {
+							name = influx_faith
+							value = faith:portenchant
+						}
+					}
+				}
+				3 = {
+					every_in_de_jure_hierarchy = {
+						limit = { tier = tier_county }
+						set_variable = {
+							name = influx_culture
+							value = culture:sarminians
+						}
+						set_variable = {
+							name = influx_faith
+							value = faith:salacad
+						}
+					}
+				}
+				1 = {
+					every_in_de_jure_hierarchy = {
+						limit = { tier = tier_county }
+						set_variable = {
+							name = influx_culture
+							value = culture:auteonic
+						}
+						set_variable = {
+							name = influx_faith
+							value = faith:partic
+						}
+					}
+				}
+				1 = {
+					every_in_de_jure_hierarchy = {
+						limit = { tier = tier_county }
+						set_variable = {
+							name = influx_culture
+							value = culture:brigandines
+						}
+						set_variable = {
+							name = influx_faith
+							value = faith:partic
+						}
+					}
+				}
+			}
+		}
+	}
+	# Some regions always get settled by predetermined cultures, to make sure they have a place to live
+	title:k_volgardr = {
+		every_in_de_jure_hierarchy = {
+			limit = { tier = tier_county }
+			set_variable = {
+				name = influx_culture
+				value = culture:auteonic
+			}
+			set_variable = {
+				name = influx_faith
+				value = faith:partic
+			}
+		}
+	}
+	title:k_obkirchen = {
+		every_in_de_jure_hierarchy = {
+			limit = { tier = tier_county }
+			set_variable = {
+				name = influx_culture
+				value = culture:greulokin
+			}
+			set_variable = {
+				name = influx_faith
+				value = faith:sjalvolki
+			}
+		}
+	}
+	title:k_schouweiler = {
+		every_in_de_jure_hierarchy = {
+			limit = { tier = tier_county }
+			set_variable = {
+				name = influx_culture
+				value = culture:brigandines
+			}
+			set_variable = {
+				name = influx_faith
+				value = faith:partic
+			}
+		}
+	}
+	title:d_nadost = {
+		every_in_de_jure_hierarchy = {
+			limit = { tier = tier_county }
+			set_variable = {
+				name = influx_culture
+				value = culture:irmionoth
+			}
+			set_variable = {
+				name = influx_faith
+				value = faith:sjalvolki
+			}
+		}
+	}
+	title:d_hattmannsdorf = {
+		every_in_de_jure_hierarchy = {
+			limit = { tier = tier_county }
+			set_variable = {
+				name = influx_culture
+				value = culture:irmionoth
+			}
+			set_variable = {
+				name = influx_faith
+				value = faith:sjalvolki
+			}
+		}
+	}
+	title:d_tisvildeleje = {
+		every_in_de_jure_hierarchy = {
+			limit = { tier = tier_county }
+			set_variable = {
+				name = influx_culture
+				value = culture:irmionoth
+			}
+			set_variable = {
+				name = influx_faith
+				value = faith:sjalvolki
+			}
+		}
+	}
+	title:k_sulzegg = {
+		every_in_de_jure_hierarchy = {
+			limit = { tier = tier_county }
+			set_variable = {
+				name = influx_culture
+				value = culture:sarminians
+			}
+			set_variable = {
+				name = influx_faith
+				value = faith:salacad
+			}
+		}
+	}
+	title:k_okrouhlice = {
+		every_in_de_jure_hierarchy = {
+			limit = { tier = tier_county }
+			set_variable = {
+				name = influx_culture
+				value = culture:karzarads
+			}
+			set_variable = {
+				name = influx_faith
+				value = faith:kakarataki
+			}
+		}
+	}
+	title:k_gampern = {
+		every_in_de_jure_hierarchy = {
+			limit = { tier = tier_county }
+			set_variable = {
+				name = influx_culture
+				value = culture:huegodocs
+			}
+			set_variable = {
+				name = influx_faith
+				value = faith:apti
+			}
+		}
+	}
+	title:k_svyatich = {
+		every_in_de_jure_hierarchy = {
+			limit = { tier = tier_county }
+			set_variable = {
+				name = influx_culture
+				value = culture:kardwens
+			}
+			set_variable = {
+				name = influx_faith
+				value = faith:kardawai
+			}
+		}
+	}
+	title:k_sanos = {
+		every_in_de_jure_hierarchy = {
+			limit = { tier = tier_county }
+			set_variable = {
+				name = influx_culture
+				value = culture:mondecny
+			}
+			set_variable = {
+				name = influx_faith
+				value = faith:portenchant
+			}
+		}
+	}
+	title:k_kallios = {
+		every_in_de_jure_hierarchy = {
+			limit = { tier = tier_county }
+			set_variable = {
+				name = influx_culture
+				value = culture:mondecny
+			}
+			set_variable = {
+				name = influx_faith
+				value = faith:portenchant
+			}
+		}
+	}
+	title:k_helenai = {
+		every_in_de_jure_hierarchy = {
+			limit = { tier = tier_county }
+			set_variable = {
+				name = influx_culture
+				value = culture:goans
+			}
+			set_variable = {
+				name = influx_faith
+				value = faith:gethian
+			}
+		}
+	}
+}

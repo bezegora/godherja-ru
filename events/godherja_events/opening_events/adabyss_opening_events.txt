@@ -1,0 +1,48 @@
+﻿namespace = adabyss_opening
+
+adabyss_opening.1 = { #Opener for adabyss dude/ gives troops and claims
+	title = adabyss_opening.1.t
+	desc = adabyss_opening.1.desc
+	theme = battle
+	left_portrait = { 
+		character = root
+		animation = marshal
+	}
+
+	trigger = {
+		has_title = title:e_adabyss
+	}
+	immediate = {
+		add_prestige = major_prestige_value
+		add_piety = major_piety_value
+		spawn_adabyss_starting_troops_effect = yes	
+		start_wars_for_damota_effect = yes		
+	}
+	option = {
+		name = adabyss_opening.1.a
+	}
+}
+
+adabyss_opening.2 = { #buff for ai
+	type = character_event
+	hidden = yes
+
+	trigger = {
+		has_title = title:e_adabyss
+	}
+	immediate = {
+		spawn_adabyss_starting_troops_effect = yes	
+		start_wars_for_damota_effect = yes
+	}
+	option = {
+		name = adabyss_opening.1.a
+	}
+}
+
+adabyss_opening.9001 = {
+	hidden = yes
+	
+	immediate = {
+		adabyss_ai_effect = yes
+	}
+}

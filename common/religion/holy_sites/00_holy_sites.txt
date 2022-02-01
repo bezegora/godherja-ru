@@ -1,0 +1,1797 @@
+﻿#############
+# Aversarian #
+#############
+
+# Aagiokratian
+
+oraispol = {
+	county = c_halium
+	barony = b_phasio
+	
+	character_modifier = {
+		monthly_piety_gain_mult = 0.2
+	}
+	flag = jerusalem_conversion_bonus # +20% County Conversion
+}
+
+vounill = {
+	county = c_rhamnythrae
+	barony = b_kosebes
+	
+	character_modifier = {
+		name = holy_site_rome_effect_name
+		development_growth_factor = 0.1
+		stewardship = 1
+	}
+}
+
+mayikprolollan = {
+	county = c_atce
+	
+	character_modifier = {
+		name = holy_site_cologne_effect_name
+		cultural_head_fascination_mult = 0.05
+		monthly_county_control_change_factor = 0.05
+	}
+}
+
+drakavil = {
+	county = c_sedlovice
+	barony = b_solidos
+	
+	character_modifier = {
+		name = holy_site_santiago_effect_name
+		supply_duration = 0.2
+		holy_order_hire_cost_mult = -0.1
+	}
+}
+
+thebastro = {
+	county = c_thebastro
+	
+	character_modifier = {
+		name = holy_site_kent_effect_name
+		religious_vassal_opinion = 5
+		sway_scheme_power_mult = 0.1
+	}
+}
+
+kasmeze = {
+	county = c_kasmeze
+
+	character_modifier = {
+		name = holy_site_segrada_familia_effect_name
+		monthly_piety_gain_mult = 0.1
+	}
+}
+
+asiupoli = {
+	county = c_mallilene
+
+	character_modifier = {
+		name = holy_site_rome_effect_name
+		monthly_piety_gain_mult = 0.1
+	}
+}
+
+chorosina = {
+	county = c_lofotis
+
+	character_modifier = {
+		name = holy_site_rome_effect_name
+		monthly_piety_gain_mult = 0.1
+	}
+}
+
+
+# Sjalvoki
+
+dyffrinloyw = { #where cenware migrated in from
+	county = c_dyffrinloyw
+	barony = b_porthy
+	
+	character_modifier = {
+		men_at_arms_maintenance = -0.2
+	}
+	flag = jerusalem_conversion_bonus # +20% County Conversion
+}
+
+stymphanais = { #elysian pass
+	county = c_stymphanais
+	barony = b_psychrembria
+	
+	character_modifier = {
+		name = holy_site_rome_effect_name
+		martial_per_prestige_level = 2
+	}
+}
+
+oraispol_sjalvolki = {
+	county = c_halium
+	barony = b_phasio
+	
+	character_modifier = {
+		monthly_piety_gain_mult = 0.2
+	}
+	flag = jerusalem_conversion_bonus # +20% County Conversion
+}
+
+haimingerberg = {
+	county = c_engelsdorf
+	barony = b_kaitz
+	
+	character_modifier = {
+		name = holy_site_santiago_effect_name
+		levy_reinforcement_rate = 0.2
+	}
+}
+
+velostadd = { #velostadd
+	county = c_krtely
+	barony = b_hirschberg
+	
+	character_modifier = {
+		name = holy_site_rome_effect_name
+		monthly_piety_gain_mult = 0.1
+	}
+}
+
+# Lifepath
+
+peti_gisredde = { #where cenware migrated in from
+	county = c_peti_gisredde
+	barony = b_vallguedoc
+	
+	character_modifier = {
+		monthly_piety = 1
+	}
+	flag = jerusalem_conversion_bonus # +20% County Conversion
+}
+
+the_crucible = {
+	county = c_rozalie
+	barony = b_calscue
+	
+	character_modifier = {
+		name = holy_site_rome_effect_name
+		prowess = 5
+		martial = 1
+	}
+}
+
+arubosc = { #grand cathedral
+	county = c_arubosc
+	barony = b_raocourt
+	
+	character_modifier = {
+		name = holy_site_santiago_effect_name
+		martial_per_piety_level = 1
+	}
+}
+
+geedern = { #archlich wlanislic slayed here at the end of the Thousand Days, after nearly all of the rest of the marches fell
+	county = c_geedern
+	barony = b_scaoport
+	
+	character_modifier = {
+		name = holy_site_santiago_effect_name
+		monthly_martial_lifestyle_xp_gain_mult = 0.1
+	}
+}
+
+# Sophocoist
+
+al_hailab = { #sophocos
+	county = c_al_hailab
+	barony = b_pawthar
+	
+	character_modifier = {
+		monthly_piety_gain_mult = 0.2
+	}
+	flag = jerusalem_conversion_bonus # +20% County Conversion
+}
+
+shaas_mukhtan = { #wardenites almost defeated here
+	county = c_shaas_mukhtan
+	barony = b_venaas_al_fetri
+	
+	character_modifier = {
+		name = holy_site_rome_effect_name
+		development_growth_factor = 0.1
+		martial = 1
+	}
+}
+
+# Wardenites
+
+pelinekin = { #originpoint
+	county = c_pelinekin
+	
+	character_modifier = {
+		monthly_piety_gain_mult = 0.2
+	}
+	flag = jerusalem_conversion_bonus # +20% County Conversion
+}
+
+el_qulatha = { #religious capital
+	county = c_el_qulatha
+	barony = b_en_nusriqarrah
+	
+	character_modifier = {
+		name = holy_site_rome_effect_name
+		piety_level_impact_mult = 0.2
+		monthly_piety_gain_mult = 0.2
+	}
+}
+
+zabiwkhah = { #first major victory against ritualists
+	county = c_zabiwkhah
+	barony = b_al_darbaniyah
+	
+	character_modifier = {
+		name = holy_site_rome_effect_name
+		development_growth_factor = 0.1
+		martial = 1
+	}
+}
+
+sulamaniyah = { #holy mountain monastery
+	county = c_sulamaniyah
+	barony = b_lagawah
+	
+	character_modifier = {
+		name = holy_site_santiago_effect_name
+		supply_duration = 0.2
+		holy_order_hire_cost_mult = -0.1
+	}
+}
+
+# Adabyss
+
+dimnablah = { #starting point
+	county = c_oanfo
+	barony = b_goggetti
+	
+	character_modifier = {
+		monthly_piety_gain_mult = 0.2
+	}
+	flag = jerusalem_conversion_bonus # +20% County Conversion
+}
+
+the_isle_tower = { #the eye
+	county = c_the_eye
+	barony = b_the_eye
+	
+	character_modifier = {
+		name = holy_site_rome_effect_name
+		development_growth_factor = 0.1
+		martial = 1
+	}
+}
+
+kabekaman = { #der vindeon
+	county = c_kabekaman
+	barony = b_apedemak
+	
+	character_modifier = {
+		name = holy_site_rome_effect_name
+		dread_baseline_add = 10
+		intrigue_scheme_power = 10
+	}
+}
+
+ambracia = { #eastern tower
+	county = c_ambracia
+	barony = b_amnisos
+
+	character_modifier = {
+		name = holy_site_segrada_familia_effect_name
+		monthly_piety_gain_per_dread_add = 0.01
+	}
+}
+
+conersc = { #swamp tower
+	county = c_hierdein
+	barony = b_godrenscifei
+
+	character_modifier = {
+		name = holy_site_segrada_familia_effect_name
+		monthly_piety_gain_mult = 0.01
+	}
+}
+
+#amsari
+tchouran = { #holy capital
+	county = c_tchouran
+
+	character_modifier = {
+		name = holy_site_segrada_familia_effect_name
+		monthly_piety_gain_mult = 0.2
+	}
+}
+
+jowband = { #birthplace of the prophet
+	county = c_jowband
+
+	character_modifier = {
+		name = holy_site_rome_effect_name
+		learning_per_piety_level = 2
+	}
+}
+
+kanitarn = { #wehydka'ha, battle of the broken chain
+	county = c_kani_tarn
+
+	character_modifier = {
+		name = holy_site_kent_effect_name
+		religious_vassal_opinion = 5
+		sway_scheme_power_mult = 0.1
+	}
+}
+
+jomnei = { #where the prophet got their first vision
+	county = c_jomnei
+
+	character_modifier = {
+		name = holy_site_cologne_effect_name
+		cultural_head_fascination_mult = 0.05
+		monthly_county_control_change_factor = 0.05
+	}
+}
+
+#anaanides
+zarrij = {
+	county = c_zarrij
+
+	character_modifier = {
+		name = holy_site_segrada_familia_effect_name
+		monthly_piety_gain_mult = 0.2
+	}
+}
+
+makmodhani = {
+	county = c_makmodhani
+
+	character_modifier = {
+		name = holy_site_rome_effect_name
+		development_growth_factor = 0.1
+		martial = 1
+	}
+}
+
+dawgri = { 
+	county = c_dawgri
+
+	character_modifier = {
+		name = holy_site_kent_effect_name
+		religious_vassal_opinion = 5
+		sway_scheme_power_mult = 0.1
+	}
+}
+
+fakkugat = {
+	county = c_fakkugat
+
+	character_modifier = {
+		name = holy_site_cologne_effect_name
+		general_opinion = 10
+	}
+}
+
+#hulawites
+
+meiranzegloufeh = { #great library
+	county = c_meir_anzegloufeh
+
+	character_modifier = {
+		name = holy_site_cologne_effect_name
+		cultural_head_fascination_mult = 0.05
+		monthly_county_control_change_factor = 0.05
+	}
+}
+
+mesbadh = { #ancient temple
+	county = c_mesbadh
+
+	character_modifier = {
+		name = holy_site_cologne_effect_name
+		piety_level_impact_mult = 0.5
+	}
+}
+
+ghirrehalwajaf = { #university
+	county = c_ghirreh_al_wajaf
+
+	character_modifier = {
+		name = holy_site_cologne_effect_name
+		learning = 3
+	}
+}
+
+herichan = { #birthplace of great philosopher
+	county = c_herichan
+
+	character_modifier = {
+		name = holy_site_cologne_effect_name
+		learning_per_piety_level = 1
+		learning_per_prestige_level = 1
+		
+	}
+}
+
+#hubarists
+
+chahbania = {
+	county = c_chahbania
+
+	character_modifier = {
+		name = holy_site_cologne_effect_name
+		cultural_head_fascination_mult = 0.05
+		monthly_county_control_change_factor = 0.05
+	}
+}
+
+jasimeh = {
+	county = c_jasimeh
+
+	character_modifier = {
+		name = holy_site_cologne_effect_name
+		cultural_head_fascination_mult = 0.1
+		
+	}
+}
+
+midaq = { 
+	county = c_midaq
+
+	character_modifier = {
+		name = holy_site_cologne_effect_name
+		monthly_learning_lifestyle_xp_gain_mult = 0.1
+	}
+}
+
+taougane = {
+	county = c_taougane
+
+	character_modifier = {
+		name = holy_site_cologne_effect_name
+		general_opinion = 10
+	}
+}
+
+#manats
+
+faidiyah = {
+	county = c_faidiyah
+
+	character_modifier = {
+		name = holy_site_segrada_familia_effect_name
+		monthly_piety_gain_mult = 0.1
+	}
+}
+
+igadde = {
+	county = c_igdadde
+
+	character_modifier = {
+		name = holy_site_rome_effect_name
+		vassal_opinion = 5
+	}
+}
+
+shibidah = {
+	county = c_shibidah
+
+	character_modifier = {
+		name = holy_site_kent_effect_name
+		development_growth_factor = 0.1
+	}
+}
+
+tallqush = {
+	county = c_tallqush
+
+	character_modifier = {
+		name = holy_site_cologne_effect_name
+		cultural_head_fascination_mult = 0.05
+		monthly_county_control_change_factor = 0.05
+	}
+}
+
+#khmeti
+
+esmwy = {
+	county = c_esmwy
+	barony = b_ahtepsrdjadys
+
+	character_modifier = {
+		name = holy_site_cologne_effect_name
+	    desert_advantage = 5
+	}
+}
+
+emtwys = {
+	county = c_emtwys
+
+	character_modifier = {
+		name = holy_site_kent_effect_name
+		dread_baseline_add = 10
+	}
+}
+
+ashsimmur = {
+	county = c_ashshimmur
+
+	character_modifier = {
+		name = holy_site_kent_effect_name
+	    enemy_terrain_advantage = -0.5
+	}
+}
+
+haremakhet = {
+	county = c_haremakhet
+
+	character_modifier = {
+		name = holy_site_segrada_familia_effect_name
+		monthly_piety_gain_mult = 0.1
+	}
+}
+
+pardula = {
+	county = c_pardula
+
+	character_modifier = {
+		name = holy_site_segrada_familia_effect_name
+		learning = 2
+	}
+}
+
+tarkunj = {
+	county = c_tarkunj
+
+	character_modifier = {
+		name = holy_site_rome_effect_name
+		development_growth_factor = 0.1
+		martial = 1
+	}
+}
+
+tabarrayala = {
+	county = c_tabarrayala
+
+	character_modifier = {
+		name = holy_site_rome_effect_name
+	    diplomacy_per_piety_level = 2
+	}
+}
+
+#mogowai
+
+gomolej = {
+	county = c_gomolej
+
+	character_modifier = {
+		name = holy_site_segrada_familia_effect_name
+	    piety_level_impact_mult = 0.5
+	}
+}
+
+mezbir = {
+	county = c_mezbir
+
+	character_modifier = {
+		name = holy_site_rome_effect_name
+		tribal_government_levy_contribution_mult = 0.2
+	}
+}
+
+gonan = {
+	county = c_gonan
+
+	character_modifier = {
+		name = holy_site_rome_effect_name
+		levy_reinforcement_rate = 0.2
+	}
+}
+
+#quzawaw
+
+fendikyah = {
+	county = c_fendkiyah
+
+	character_modifier = {
+		name = holy_site_segrada_familia_effect_name
+		monthly_piety_gain_mult = 0.1
+	}
+}
+
+ifralimane = {
+	county = c_ifralimane
+
+	character_modifier = {
+		name = holy_site_rome_effect_name
+		martial = 2
+	}
+}
+
+gharstir = {
+	county = c_gharstir
+
+	character_modifier = {
+		name = holy_site_rome_effect_name
+		development_growth_factor = 0.1
+		martial = 1
+	}
+}
+
+saidal = {
+	county = c_saidal
+
+	character_modifier = {
+		name = holy_site_rome_effect_name
+		development_growth_factor = 0.2
+	}
+}
+
+#sheharddi
+
+dattad = {
+	county = c_dattad
+
+	character_modifier = {
+		name = holy_site_segrada_familia_effect_name
+		monthly_piety_gain_mult = 0.1
+	}
+}
+
+sheybeh = {
+	county = c_sheybeh
+
+	character_modifier = {
+		name = holy_site_rome_effect_name
+		development_growth_factor = 0.2
+	}
+}
+
+haizah = {
+	county = c_haizah
+
+	character_modifier = {
+		name = holy_site_rome_effect_name
+		development_growth_factor = 0.1
+		stewardship = 1
+	}
+}
+
+asadsar = {
+	county = c_asadsar
+
+	character_modifier = {
+		name = holy_site_rome_effect_name
+	    monthly_piety_gain_mult = 0.1
+	}
+}
+
+abdili = {
+	county = c_abdili
+
+	character_modifier = {
+		name = holy_site_rome_effect_name
+		development_growth_factor = 0.1
+		martial = 1
+	}
+}
+
+#yuaguag
+
+akbourabad = {
+	county = c_akbourabad
+
+	character_modifier = {
+		name = holy_site_rome_effect_name
+		piety_level_impact_mult = 0.5
+	}
+}
+
+tenbeg = {
+	county = c_tenbeg
+
+	character_modifier = {
+		name = holy_site_rome_effect_name
+		development_growth_factor = 0.1
+		martial = 1
+	}
+}
+
+ahmadayah = {
+	county = c_ahmadayah
+
+	character_modifier = {
+		name = holy_site_rome_effect_name
+		diplomacy_per_piety_level = 1
+	}
+}
+
+taknis = {
+	county = c_taknis
+
+	character_modifier = {
+		name = holy_site_rome_effect_name
+		spouse_opinion = 10
+	}
+}
+
+#agionism
+
+sheitalun = {
+	county = c_sheitalun
+
+	character_modifier = {
+		name = holy_site_rome_effect_name
+		opinion_of_liege = 10
+	}
+}
+
+khokah = {
+	county = c_khokah
+
+	character_modifier = {
+		name = holy_site_rome_effect_name
+		martial_per_piety_level = 2
+	}
+}
+
+baloyeh = {
+	county = c_baloyeh
+
+	character_modifier = {
+		name = holy_site_rome_effect_name
+	    piety_level_impact_mult = 0.75
+	}
+}
+
+ferihan = {
+	county = c_ferihan
+
+	character_modifier = {
+		name = holy_site_rome_effect_name
+		development_growth_factor = 0.1
+		martial = 1
+	}
+}
+
+rhamnamnus = {
+	county = c_rhamnamnus
+
+	character_modifier = {
+		name = holy_site_rome_effect_name
+		prowess_per_piety_level = 5
+	}
+}
+
+zarrishtar = {
+	county = c_zarrishtar
+
+	character_modifier = {
+		name = holy_site_rome_effect_name
+	    martial_per_prestige_level = 1
+	}
+}
+
+ithi = {
+	county = c_ithi
+
+	character_modifier = {
+		name = holy_site_rome_effect_name
+	    holy_order_hire_cost_mult = -0.2
+	}
+}
+
+semaion = {
+	county = c_semaion
+
+	character_modifier = {
+		name = holy_site_rome_effect_name
+		development_growth_factor = 0.2
+	}
+}
+
+rizonnos = {
+	county = c_rizonnos
+
+	character_modifier = {
+		name = holy_site_rome_effect_name
+		development_growth_factor = 0.1
+		martial = 1
+	}
+}
+
+mallilene = {
+	county = c_mallilene
+
+	character_modifier = {
+		name = holy_site_rome_effect_name
+		monthly_piety_from_buildings_mult = 0.2
+	}
+}
+
+hern = {
+	county = c_hern
+
+	character_modifier = {
+		name = holy_site_rome_effect_name
+        hostile_county_attrition = -10
+	}
+}
+
+knossos = {
+	county = c_kameirebes
+
+	character_modifier = {
+		name = holy_site_rome_effect_name
+	    supply_capacity_mult = 0.1
+	}
+}
+
+#graveright
+
+sacreinux = {
+	county = c_sacreinux
+
+	character_modifier = {
+		name = holy_site_rome_effect_name
+		 dread_baseline_add = 10
+	}
+}
+
+tillyes = {
+	county = c_tillyes
+
+	character_modifier = {
+		name = holy_site_rome_effect_name
+		monthly_piety_gain_per_dread_add = 0.01
+	}
+}
+
+prefallias = {
+	county = c_prefallias
+
+	character_modifier = {
+		name = holy_site_rome_effect_name
+		martial_per_piety_level = 2
+	}
+}
+
+#portenchant
+
+emos = {
+	county = c_emos
+
+	character_modifier = {
+		name = holy_site_rome_effect_name
+		development_growth_factor = 0.2
+	}
+}
+
+lychoth = {
+	county = c_lychoth
+
+	character_modifier = {
+		name = holy_site_rome_effect_name
+		development_growth_factor = 0.1
+		stress_gain_mult = -0.1
+	}
+}
+
+leios = {
+	county = c_leios
+
+	character_modifier = {
+		name = holy_site_rome_effect_name
+		development_growth_factor = 0.1
+		stewardship = 1
+	}
+}
+
+#ancient
+
+emponnos = {
+	county = c_emponnos
+
+	character_modifier = {
+		name = holy_site_rome_effect_name
+		martial = 2
+	}
+}
+
+nynthus = {
+	county = c_nynthus
+
+	character_modifier = {
+		name = holy_site_rome_effect_name
+		martial_per_prestige_level = 1
+	}
+}
+
+balahatyn = {
+	county = c_balahatyn
+
+	character_modifier = {
+		name = holy_site_rome_effect_name
+		development_growth_factor = 0.1
+		martial = 1
+	}
+}
+
+zaex = {
+	county = c_zaex
+
+	character_modifier = {
+		name = holy_site_rome_effect_name
+		enemy_terrain_advantage = -5
+	}
+}
+
+mallilene = {
+	county = c_mallilene
+
+	character_modifier = {
+		name = holy_site_rome_effect_name
+		vassal_levy_contribution_mult = 0.1
+	}
+}
+
+ahtatinen = {
+	county = c_ahtatinen
+
+	character_modifier = {
+		name = holy_site_rome_effect_name
+		monthly_piety = 0.5
+	}
+}
+
+otodauti = {
+	county = c_otodauti
+
+	character_modifier = {
+		name = holy_site_rome_effect_name
+		diplomacy_scheme_power = 10
+	}
+}
+
+altenklitsche = {
+	county = c_altenklitsche
+
+	character_modifier = {
+		name = holy_site_rome_effect_name
+		learning = 1
+	}
+}
+	
+asklanos = {
+	county = c_sicerma
+
+	character_modifier = {
+		name = holy_site_rome_effect_name
+		martial = 1
+	}
+}
+
+#apti
+
+looh = {
+	county = c_looh
+
+	character_modifier = {
+		name = holy_site_rome_effect_name
+		diplomacy = 2
+	}
+}
+
+hora = {
+	county = c_hora
+
+	character_modifier = {
+		name = holy_site_rome_effect_name
+		martial = 2
+	}
+}
+
+kyje = {
+	county = c_kyje
+
+	character_modifier = {
+		name = holy_site_rome_effect_name
+        stewardship = 2
+	}
+}
+
+roodt = {
+	county = c_roodt
+
+	character_modifier = {
+		name = holy_site_rome_effect_name
+        learning = 2
+	}
+}
+
+#oltenic
+
+sexi = {
+	county = c_sexi
+
+	character_modifier = {
+		name = holy_site_rome_effect_name
+        martial_per_piety_level = 2
+	}
+}
+
+olbos = {
+	county = c_olbos
+
+	character_modifier = {
+		name = holy_site_rome_effect_name
+		light_cavalry_damage_add = 5
+		heavy_cavalry_damage_add = 5
+	}
+}
+
+selous = {
+	county = c_selous
+
+	character_modifier = {
+		name = holy_site_rome_effect_name
+	    light_cavalry_toughness_add = 5
+		heavy_cavalry_toughness_add = 5
+	}
+}
+
+kosios = {
+	county = c_kosios
+
+	character_modifier = {
+		name = holy_site_rome_effect_name
+		light_cavalry_max_size_mult = 0.2
+		heavy_cavalry_max_size_mult = 0.2
+	}
+}
+
+tulsos = {
+	county = c_tulsos
+
+	character_modifier = {
+		name = holy_site_rome_effect_name
+		light_cavalry_pursuit_add = 5
+		heavy_cavalry_pursuit_add = 5
+	}
+}
+
+#gallicader
+
+andalau = {
+	county = c_andalau
+
+	character_modifier = {
+		name = holy_site_rome_effect_name
+	    diplomacy_per_prestige_level = 2
+	}
+}
+
+guizforte = {
+	county = c_guizforte
+
+	character_modifier = {
+		name = holy_site_rome_effect_name
+        clergy_opinion = 10
+	}
+}
+
+pekwarde = {
+	county = c_pekwarde
+
+	character_modifier = {
+		name = holy_site_rome_effect_name
+		development_growth_factor = 0.1
+		martial = 1
+	}
+}
+
+utepode = {
+	county = c_utepode
+
+	character_modifier = {
+		name = holy_site_rome_effect_name
+        development_growth_factor = 0.2
+	}
+}
+
+connac = {
+	county = c_connac
+
+	character_modifier = {
+		name = holy_site_rome_effect_name
+		retreat_losses = -0.1
+	}
+}
+
+#fogeater
+
+gwynavon_uchav = {
+	county = c_gwynavon_uchav
+
+	character_modifier = {
+		name = holy_site_rome_effect_name
+		prowess_per_piety_level = 5
+	}
+}
+
+rhedola = {
+	county = c_rhedola
+
+	character_modifier = {
+		name = holy_site_rome_effect_name
+		levy_size = 0.2
+	}
+}
+
+#gethian
+
+lekos = {
+	county = c_lekos
+
+	character_modifier = {
+		name = holy_site_rome_effect_name
+		learning_per_piety_level = 2
+	}
+}
+
+#gestanwoder
+
+conersc = {
+	county = c_hierdein
+
+	character_modifier = {
+		name = holy_site_rome_effect_name
+		dread_baseline_add = 20
+	}
+}
+
+toweux = {
+	county = c_horavue
+
+	character_modifier = {
+		name = holy_site_rome_effect_name
+		intrigue_per_piety_level = 2
+	}
+}
+
+hoide = {
+	county = c_fiende
+
+	character_modifier = {
+		name = holy_site_rome_effect_name
+		wetlands_advantage = 10
+		marcher_wetlands_advantage = 10
+		wetlands_max_combat_roll = 5
+		marcher_wetlands_max_combat_roll = 5
+	}  
+}
+
+derentiede = {
+	county = c_derentiede
+
+	character_modifier = {
+		name = holy_site_rome_effect_name
+		supply_duration = 0.2 
+	}
+}
+
+#kakarataki
+
+jagdhase = {
+	county = c_jagdhase
+
+	character_modifier = {
+		name = holy_site_rome_effect_name
+		development_growth_factor = 0.1
+		martial = 1
+	}
+}
+
+radvanice = {
+	county = c_radvanice
+
+	character_modifier = {
+		name = holy_site_rome_effect_name
+		development_growth_factor = 0.2
+	}
+}
+
+danaia = {
+	county = c_danaia
+
+	character_modifier = {
+		name = holy_site_rome_effect_name
+		stewardship = 2
+	}
+}
+
+#kardawai
+
+chomutowitz = {
+	county = c_chomutowitz
+
+	character_modifier = {
+		name = holy_site_rome_effect_name
+		development_growth_factor = 0.1
+		martial = 1
+	}
+}
+
+ignaz = {
+	county = c_ignaz
+
+	character_modifier = {
+		name = holy_site_rome_effect_name
+    monthly_stewardship_lifestyle_xp_gain_mult = 0.1
+	}
+}
+
+kbelany = {
+	county = c_kbelany
+
+	character_modifier = {
+		name = holy_site_rome_effect_name
+        monthly_piety = 0.5
+	}
+}
+
+zdiarna = {
+	county = c_zdiarna
+
+	character_modifier = {
+		name = holy_site_rome_effect_name
+        forest_advantage = 5
+	}
+}
+
+bartum = {
+	county = c_bartum
+
+	character_modifier = {
+		name = holy_site_rome_effect_name
+		development_growth_factor = 0.1
+		martial = 1
+	}
+}
+
+#partic - random because partic are weird
+
+inbe = {
+	county = c_inbe
+
+	character_modifier = {
+		name = holy_site_rome_effect_name
+		tribal_government_vassal_opinion = 10
+	}
+}
+
+coria = {
+	county = c_coria
+
+	character_modifier = {
+		name = holy_site_rome_effect_name
+        levy_size = 0.1
+	}
+}
+
+yarincourt = {
+	county = c_yarincourt
+
+	character_modifier = {
+		name = holy_site_rome_effect_name
+         piety_level_impact_mult = 1.5
+	}
+}
+
+cyranos = {
+	county = c_cyranos
+
+	character_modifier = {
+		name = holy_site_rome_effect_name
+	    prowess_per_piety_level = 5
+	}
+}
+
+bayisova = {
+	county = c_bayisova
+
+	character_modifier = {
+		name = holy_site_rome_effect_name
+		development_growth_factor = 0.2
+	}
+}
+
+kirvin = {
+	county = c_kirvin
+
+	character_modifier = {
+		name = holy_site_rome_effect_name
+         religious_vassal_opinion = 10
+	}
+}
+
+#salacad
+
+hatzenreuth = {
+	county = c_hatzenreuth
+
+	character_modifier = {
+		name = holy_site_rome_effect_name
+		development_growth_factor = 0.1
+		martial = 1
+	}
+}
+
+kurscheid = {
+	county = c_kurscheid
+
+	character_modifier = {
+		name = holy_site_rome_effect_name
+		martial = 2
+	}
+}
+
+deutschbundesort = {
+	county = c_klotzow
+
+	character_modifier = {
+		name = holy_site_rome_effect_name
+		tribal_government_vassal_opinion = 10
+	}
+}
+
+tarheis = {
+	county = c_tarheis
+
+	character_modifier = {
+		name = holy_site_rome_effect_name
+        monthly_martial_lifestyle_xp_gain_mult = 0.1
+	}
+}
+
+#samojitian
+
+charea = {
+	county = c_charea
+
+	character_modifier = {
+		name = holy_site_rome_effect_name
+	    monthly_martial_lifestyle_xp_gain_mult = 0.1
+	}
+}
+
+emthemae = {
+	county = c_emthemae
+
+	character_modifier = {
+		name = holy_site_rome_effect_name
+	    martial_per_prestige_level = 2
+	}
+}
+
+progora = {
+	county = c_progora
+
+	character_modifier = {
+		name = holy_site_rome_effect_name
+		prowess_per_piety_level = 5
+	}
+}
+
+statfjord = {
+	county = c_statfjord
+
+	character_modifier = {
+		name = holy_site_rome_effect_name
+		martial = 2
+	}
+}
+
+#Illyrossi
+myrespiae = {
+	county = c_myrespiae
+
+	character_modifier = {
+		name = holy_site_rome_effect_name
+		vassal_opinion = 5
+	}
+}
+
+cures = {
+	county = c_cures
+
+	character_modifier = {
+		name = holy_site_rome_effect_name
+		martial_per_stress_level = 3
+	}
+}
+
+iopus = {
+	county = c_iopus
+
+	character_modifier = {
+		name = holy_site_rome_effect_name
+	    monthly_piety = 0.5
+	}
+}
+
+seuthona = {
+	county = c_seuthona
+
+	character_modifier = {
+		name = holy_site_rome_effect_name
+		development_growth_factor = 0.1
+		martial = 1
+	}
+}
+
+#Iyrossi reformed
+
+latarnacia = {
+	county = c_latarnacia
+
+	character_modifier = {
+		name = holy_site_rome_effect_name
+		same_culture_opinion = 10
+	}
+}
+
+arkos = {
+	county = c_arkos
+
+	character_modifier = {
+		name = holy_site_rome_effect_name
+	    same_faith_opinion = 10
+	}
+}
+
+#Stavronic
+peti_gisredde = {
+	county = c_peti_gisredde
+
+	character_modifier = {
+		name = holy_site_rome_effect_name
+        dread_baseline_add = 10
+	}
+}
+
+rozalie = {
+	county = c_rozalie
+
+	character_modifier = {
+		name = holy_site_rome_effect_name
+		development_growth_factor = 0.1
+		martial = 2
+	}
+}
+
+davoi = {
+	county = c_davoi
+
+	character_modifier = {
+		name = holy_site_rome_effect_name
+		martial_per_piety_level = 1
+		
+	}
+}
+
+laviec = {
+	county = c_laviec
+
+	character_modifier = {
+		name = holy_site_rome_effect_name
+		development_growth_factor = 0.1
+		stewardship = 2
+	}
+}
+
+#Tegonian
+vaselea = {
+	county = c_vaselea
+
+	character_modifier = {
+		name = holy_site_rome_effect_name
+		knight_effectiveness_mult = 0.60
+		monthly_prestige_gain_per_knight_add = 0.1
+	}
+}
+
+zacoe = {
+	county = c_zacoe
+
+	character_modifier = {
+		name = holy_site_rome_effect_name
+		vassal_opinion = 10
+	}
+}
+
+hellapeze= {
+	county = c_hellapeze
+
+	character_modifier = {
+		name = holy_site_rome_effect_name
+		diplomacy_per_piety_level = 1
+		
+	}
+}
+
+mesiri = {
+	county = c_gortippi
+
+	character_modifier = {
+		name = holy_site_rome_effect_name
+		learning = 2
+	}
+}
+#Sheticad
+wahlhousen = {
+	county = c_wahlhousen
+
+	character_modifier = {
+		name = holy_site_rome_effect_name
+		men_at_arms_maintenance = -0.2
+	}
+}
+
+unglinghausen = {
+	county = c_worhabschen
+
+	character_modifier = {
+		name = holy_site_rome_effect_name
+		monthly_piety = 2
+	}
+}
+
+kanice = {
+	county = c_kanice
+
+	character_modifier = {
+		name = holy_site_rome_effect_name
+		learning_per_piety_level = 2
+
+		
+	}
+}
+
+lobeditz = {
+	county = c_lobeditz
+
+	character_modifier = {
+		name = holy_site_rome_effect_name
+		martial_per_piety_level = 1
+		monthly_piety = 1.5
+	}
+}
+
+#Mountain-Sun Temple
+
+golgembria = {
+	county = c_golgembria
+
+	character_modifier = {
+		name = holy_site_rome_effect_name
+		monthly_piety_gain_per_dread_add = 0.02
+		
+	}
+}
+
+Kameirigus = {
+	county = c_kameirigus
+
+	character_modifier = {
+		name = holy_site_rome_effect_name
+		monthly_piety = 2.5
+	}
+}
+
+#Ethylisiac
+
+gorlowa = {
+	county = c_gorlowa
+
+	character_modifier = {
+		name = holy_site_rome_effect_name
+		monthly_piety_from_buildings_mult = 1.5
+		
+	}
+}
+
+vihoj = {
+	county = c_vihoj
+
+	character_modifier = {
+		name = holy_site_rome_effect_name
+		heavy_infantry_damage_add = 5
+		heavy_infantry_toughness_add = 5
+		light_cavalry_damage_add = 5
+		light_cavalry_toughness_add = 5
+	}
+}
+
+wintgard= {
+	county = c_gorlowa
+
+	character_modifier = {
+		name = holy_site_rome_effect_name
+		heavy_cavalry_damage_add = 5
+		heavy_cavalry_toughness_add = 5
+		archers_damage_add = 5
+		archers_toughness_add = 5
+		
+	}
+}
+
+sorveue = {
+	county = c_sorveue
+
+	character_modifier = {
+		name = holy_site_rome_effect_name
+		monthly_martial_lifestyle_xp_gain_mult = 0.1
+
+	}
+}
+
+#Eos
+
+thuwacca = {
+	county = c_thuwacca
+
+	character_modifier = {
+		name = holy_site_rome_effect_name
+		prowess_per_stress_level = 5
+		
+	}
+}
+
+medihat= {
+	county = c_medihat
+
+	character_modifier = {
+		name = holy_site_rome_effect_name
+		learning_per_stress_level = 2
+	}
+}
+
+ridaqbanah= {
+	county = c_ridaqbanah
+
+	character_modifier = {
+		name = holy_site_rome_effect_name
+		martial_per_stress_level = 2
+		
+		
+	}
+}
+
+#asred
+
+al_wadilah = {
+	county = c_al_wadilah
+
+	character_modifier = {
+		name = holy_site_rome_effect_name
+		enemy_terrain_advantage = -5
+		
+	}
+}
+
+hooreef= {
+	county = c_hooreef
+
+	character_modifier = {
+		name = holy_site_rome_effect_name
+		desert_advantage = 5
+		desert_mountains_advantage = 5
+		
+	}
+}
+
+sakamim = {
+	county = c_sakamim
+
+	character_modifier = {
+		name = holy_site_rome_effect_name
+		desert_min_combat_roll = 4
+		
+		
+	}
+}
+
+khoraneh = {
+	county = c_khoraneh
+
+	character_modifier = {
+		name = holy_site_rome_effect_name
+		desert_max_combat_roll = 6
+		
+		
+	}
+}
+
+
+
+#thryrionist
+
+drakavil = {
+	county = c_panticapaeum
+
+	character_modifier = {
+		name = holy_site_rome_effect_name
+		religious_vassal_opinion = 5
+		monthly_piety = 1
+
+		
+	}
+}
+
+megapeze = {
+	county = c_megapeze
+
+	character_modifier = {
+		name = holy_site_rome_effect_name
+		mercenary_hire_cost_add = -0.1
+	}
+}
+
+#Orphecian
+
+rhemae= {
+	county = c_rhemae
+
+	character_modifier = {
+		name = holy_site_rome_effect_name
+		dread_gain_mult = 0.2
+		
+	}
+}
+
+pythria = {
+	county = c_pythria
+
+	character_modifier = {
+		name = holy_site_rome_effect_name
+		dread_baseline_add = 10
+	}
+}
+
+arsendos = {
+	county = c_arsendos
+
+	character_modifier = {
+		name = holy_site_rome_effect_name
+		martial_per_prestige_level = 2
+		
+		
+	}
+}
+
+orios = {
+	county = c_orios
+
+	character_modifier = {
+		name = holy_site_rome_effect_name
+		controlled_province_advantage = 4
+		
+		
+	}
+}
+
+dethiclos = {
+	county = c_dethiclos
+
+	character_modifier = {
+		name = holy_site_rome_effect_name
+		intrigue_per_prestige_level = 2
+	}
+}

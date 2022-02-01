@@ -1,0 +1,135 @@
+﻿marcher_plains = {
+	color = hsv { 0.1 0.5 0.8 }
+	
+	province_modifier = {
+		supply_limit_mult = 0
+	}
+	
+	audio_parameter = 1.0
+}
+
+marcher_farmlands = {
+	color = hsv { 0 1 1 }
+	
+	province_modifier = {
+		supply_limit_mult = 0.5
+		development_growth_factor = 0.2
+	}
+	
+	audio_parameter = 1.0
+}
+
+marcher_hills = {
+	color = hsv { 29 0.867 0.353 }
+	
+	province_modifier = {
+		supply_limit_mult = -0.1
+		development_growth_factor = -0.1
+	}
+	
+	defender_combat_effects = {
+		name = combat_hills
+		image = combat_hills
+		advantage = 5
+	}
+	
+	movement_speed = 0.8
+	combat_width = 0.8
+	
+	audio_parameter = 1.0
+}
+
+marcher_mountains = {
+	color = hsv { 0 0 0.392 }
+	
+	province_modifier = {
+		supply_limit_mult = -0.5
+		development_growth_factor = -0.25
+	}
+	
+	defender_combat_effects = {
+		name = combat_mountain
+		image = combat_mountain
+		advantage = 12
+	}
+	
+	movement_speed = 0.5
+	combat_width = 0.5
+	
+	audio_parameter = 6.0
+}
+
+marcher_forest = {
+	color = hsv { 0.3 0.75 0.7 } #50 255 25
+	
+	province_modifier = {
+		supply_limit_mult = -0.1
+	}
+	
+	defender_combat_effects = {
+		name = combat_forest
+		image = defender_forest
+		advantage = 3
+	}
+	
+	movement_speed = 0.8
+	combat_width = 0.9
+
+	audio_parameter = 4.0
+}
+
+marcher_wetlands = {
+	color = hsv { 0.5 0.5 0.6 } #75 200 200
+	
+	province_modifier = {
+		supply_limit_mult = -0.25
+		development_growth_factor = -0.25
+	}
+	
+	attacker_modifier = {
+		hard_casualty_modifier = 0.2
+		retreat_losses = 0.25
+	}
+	
+	defender_modifier = {
+		hard_casualty_modifier = 0.2
+		retreat_losses = 0.25
+	}
+	
+	defender_combat_effects = {
+		name = combat_wetlands
+		image = defender_wetlands
+		advantage = 5
+	}
+	
+	movement_speed = 0.7
+	combat_width = 0.6
+	
+	audio_parameter = 3.0
+}
+
+marcher_floodplains = {
+	color = hsv { 0.7 0.8 0.6 } #200 50 100
+	
+	province_modifier = {
+		supply_limit_mult = 0.35
+		development_growth_factor = 0.2
+	}
+	
+	combat_width = 0.75
+	
+	audio_parameter = 2.0
+}
+
+deadland = {
+	color = rgb { 50 50 50 }
+	
+	province_modifier = {
+		supply_limit_mult = -0.8
+		development_growth_factor = -0.8
+	}
+	
+	movement_speed = 0.25
+	
+	audio_parameter = 1.0
+}

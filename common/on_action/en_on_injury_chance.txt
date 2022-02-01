@@ -1,0 +1,216 @@
+﻿on_injury_nickname = 
+{
+	trigger = { prestige_level >= 2 }
+	first_valid_on_action = 
+	{
+		on_scarred_nickname
+		on_disfigured_nickname 
+		on_maimed_nickname
+		on_weak_nickname
+	}
+}
+
+on_scarred_nickname = 
+{
+	trigger = { has_trait >= scarred }
+	random_on_action = 
+	{
+		30 = 0		
+		10 = on_three_fingers
+		10 = on_two_fingers
+		10 = on_the_scarred
+		10 = on_the_bloodied
+		10 = on_the_marked
+		10 = on_the_stiched
+		10 = on_the_fingerless
+		10 = on_the_marred
+		10 = on_the_carved
+	}
+}
+
+on_disfigured_nickname = 
+{
+	trigger = { has_trait >= disfigured }
+	random_on_action = 
+	{
+		30 = 0		
+		10 = on_the_metal_mask
+		10 = on_the_masked_one
+		10 = on_the_abominable
+		10 = on_the_half_person
+		10 = on_the_undead
+		10 = on_the_monster
+	}
+}
+
+on_maimed_nickname = 
+{
+	trigger = { has_trait >= maimed }
+	random_on_action = 
+	{
+		30 = 0		
+		10 = on_the_armless
+		10 = on_one_arm
+		10 = on_the_broken
+		10 = on_the_mauled
+		10 = on_the_injured
+	}
+}
+
+on_weak_nickname = 
+{
+	trigger = { has_trait >= weak }
+	random_on_action = 
+	{
+		30 = 0		
+		10 = on_the_weak
+		10 = on_the_fragile
+		10 = on_the_puny
+		10 = on_the_delicate
+		10 = on_the_decrepit
+	}
+}
+
+on_three_fingers = 
+{
+	effect = { give_nickname = nick_three_fingers }
+}
+
+on_two_fingers = 
+{
+	effect = { give_nickname = nick_two_fingers }
+}
+
+on_the_scarred = 
+{
+	effect = { give_nickname = nick_the_scarred }
+}
+
+on_the_bloodied = 
+{
+	effect = { give_nickname = nick_the_bloodied }
+}
+
+on_the_marked = 
+{
+	effect = { give_nickname = nick_the_marked }
+}
+
+on_the_stiched = 
+{
+	effect = { give_nickname = nick_the_stiched }
+}
+
+on_the_fingerless = 
+{
+	effect = { give_nickname = nick_fingerless }
+}
+
+on_the_marred = 
+{
+	effect = { give_nickname = nick_marred }
+}
+
+on_the_carved = 
+{
+	effect = { give_nickname = nick_the_carved }
+}
+
+
+on_the_metal_mask = 
+{
+	effect = { give_nickname = nick_the_metal_mask }
+}
+
+on_the_masked_one =
+{
+	effect = { give_nickname = nick_the_masked_one }
+}
+
+on_the_abominable =
+{
+	effect = { give_nickname = nick_the_abominable }
+}
+
+on_the_half_person =
+{	
+	first_valid_on_action = 
+	{
+		on_half_man
+		on_half_woman
+	}
+}
+
+on_half_man = 
+{
+	trigger = { is_male = yes}
+	effect = { give_nickname = nick_the_half_man }
+}	
+
+on_half_woman = 
+{
+	trigger = { is_male = no}
+	effect = { give_nickname = nick_the_half_woman }
+}	
+
+on_the_undead =
+{
+	effect = { give_nickname = nick_the_undead }
+}
+
+on_the_monster =
+{
+	effect = { give_nickname = nick_the_monster }
+}
+
+
+on_the_armless =
+{
+	effect = { give_nickname = nick_the_armless }
+}
+
+on_one_arm =
+{
+	effect = { give_nickname = nick_one_arm }
+}
+
+on_the_broken =
+{
+	effect = { give_nickname = nick_the_broken }
+}
+
+on_the_mauled=
+{
+	effect = { give_nickname = nick_the_mauled }
+}
+
+on_the_injured =
+{
+	effect = { give_nickname = nick_the_injured }
+}
+
+on_the_weak =
+{
+	effect = { give_nickname = nick_the_weak }
+}
+
+on_the_fragile=
+{
+	effect = { give_nickname = nick_the_fragile }
+}
+
+on_the_puny
+{
+	effect = { give_nickname = nick_the_puny }
+}	
+
+on_the_delicate
+{
+	effect = { give_nickname = nick_the_delicate }
+}	
+
+on_the_decrepit
+{
+	effect = { give_nickname = nick_the_decrepit }
+}	
+

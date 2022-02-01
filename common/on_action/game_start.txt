@@ -1,0 +1,369 @@
+﻿on_opening_events = {
+    effect = {
+        every_player = { #Opening Events
+			if { #give megistos third person
+				limit = {
+					has_title = title:k_kasmiene
+				}
+				add_character_flag = { flag = megistos_flag years = 1000 }
+			}
+			if {
+				limit = {
+					has_game_rule = opening_events_enabled
+				}
+				trigger_event = {
+					id = opening_event.1 #Black Sun
+				}
+			}
+			if {
+				limit = {
+					has_game_rule = opening_events_enabled
+				}
+				trigger_event = {
+					id = opening_event.2 #Dexios
+				}
+			}
+			if {
+				limit = {
+					has_game_rule = opening_events_enabled
+				}
+				trigger_event = {
+					id = opening_event.3 #Aironoi Generic
+				}
+			}
+			if {
+				limit = {
+					has_game_rule = opening_events_enabled
+				}
+				trigger_event = {
+					id = opening_event.4 #Hecuba
+				}
+			}
+			if {
+				limit = {
+					has_game_rule = opening_events_enabled
+				}
+				trigger_event = {
+					id = opening_event.6 #Gorassos
+				}
+			}
+			if {
+				limit = {
+					has_game_rule = opening_events_enabled
+				}
+				trigger_event = {
+					id = opening_event.7 #Magistos
+				}
+			}
+			if {
+				limit = {
+					has_game_rule = opening_events_enabled
+				}
+				trigger_event = {
+					id = opening_event.8 #Adriane
+				}
+			}
+			if {
+				limit = {
+					has_game_rule = opening_events_enabled
+				}
+				trigger_event = {
+					id = opening_event.9 #Heraklios
+				}
+			}
+			if {
+				limit = {
+					has_game_rule = opening_events_enabled
+				}
+				trigger_event = {
+					id = opening_event.10 #Mamur
+				}
+			}
+			if {
+				limit = {
+					has_game_rule = opening_events_enabled
+				}
+				trigger_event = {
+					id = opening_event.11 #Adalgar
+				}
+			}
+			if {
+				limit = {
+					has_game_rule = opening_events_enabled
+				}
+				trigger_event = {
+					id = opening_event.12 #Epghar-Argeadh
+				}
+			}
+			if {
+				limit = {
+					has_game_rule = opening_events_enabled
+				}
+				trigger_event = {
+					id = opening_event.13 #Mathilde
+				}
+			}
+			if {
+				limit = {
+					has_game_rule = opening_events_enabled
+				}
+				trigger_event = {
+					id = opening_event.14 #Rene
+				}
+			}
+			if {
+				limit = {
+					has_game_rule = opening_events_enabled
+				}
+				trigger_event = {
+					id = opening_event.15 #Cliement
+				}
+			}
+			if {
+				limit = {
+					has_game_rule = opening_events_enabled
+				}
+				trigger_event = {
+					id = opening_event.16 #Ansfrei
+				}
+			}
+			if {
+				limit = {
+					has_game_rule = opening_events_enabled
+				}
+				trigger_event = {
+					id = opening_event.17 #Benouet
+				}
+			}
+			if {
+				limit = {
+					has_game_rule = opening_events_enabled
+				}
+				trigger_event = {
+					id = opening_event.18 #Cois
+				}
+			}
+			if {
+				limit = {
+					has_game_rule = opening_events_enabled
+				}
+				trigger_event = {
+					id = opening_event.19 #Fenrus
+				}
+			}
+			if {
+				limit = {
+					has_game_rule = opening_events_enabled
+				}
+				trigger_event = {
+					id = opening_event.20 #Kekropi
+				}
+			}
+			if {
+				limit = {
+					has_game_rule = opening_events_enabled
+				}
+				trigger_event = {
+					id = opening_event.21 #Melane
+				}
+			}
+			if {
+				limit = {
+					has_game_rule = opening_events_enabled
+				}
+				trigger_event = {
+					id = opening_event.22 #Ulfirx
+				}
+			}
+			if {
+				limit = {
+					has_game_rule = opening_events_enabled
+				}
+				trigger_event = {
+					id = opening_event.23 #Harthah
+				}
+			}
+			if {
+				limit = {
+					has_game_rule = opening_events_enabled
+				}
+				trigger_event = {
+					id = opening_event.24 #Hammart
+				}
+			}
+			if {
+				limit = {
+					has_game_rule = opening_events_enabled
+				}
+				trigger_event = {
+					id = opening_event.25 #Pejman
+				}
+			}
+			if {
+				limit = {
+					has_game_rule = opening_events_enabled
+				}
+				trigger_event = {
+					id = opening_event.26 #Msamaki
+				}
+			}
+			if {
+				limit = {
+					has_game_rule = opening_events_enabled
+				}
+				trigger_event = {
+					id = opening_event.27 #Ogiers
+				}
+			}
+			if {
+				limit = {
+					has_game_rule = opening_events_enabled
+				}
+				trigger_event = {
+					id = opening_event.28 #Aeschraes
+				}
+			}
+			if {
+				limit = {
+					has_game_rule = opening_events_enabled
+				}
+				trigger_event = {
+					id = opening_event.29 #Cenware
+				}
+			}
+			if {
+				limit = {
+					has_game_rule = opening_events_enabled
+				}
+				trigger_event = {
+					id = opening_event.30 #Sigrun
+				}
+			}
+			if {
+				limit = {
+					has_game_rule = opening_events_enabled
+				}
+				trigger_event = {
+					id = opening_event.31 #Dragos
+				}
+			}
+			if {
+				limit = {
+					has_game_rule = opening_events_enabled
+				}
+				trigger_event = {
+					id = opening_event.32 #Isa
+				}
+			}
+			if {
+				limit = {
+					has_game_rule = opening_events_enabled
+				}
+				trigger_event = {
+					id = opening_event.33 #Sirras
+				}
+			}
+			if {
+				limit = {
+					has_game_rule = opening_events_enabled
+				}
+				trigger_event = {
+					id = opening_event.34 #Iordanes
+				}
+			}
+	
+			if = {
+				limit = {
+					has_game_rule = default_adabyss_invasion
+				}
+				title:e_adabyss.holder = {
+					trigger_event = {
+						id = adabyss_opening.1
+					}
+				}
+			}
+			# title:k_varrdevet.holder = {
+			# 	trigger_event = {
+			# 		id = marcher_war.0001
+			# 	}
+			# }
+			
+			# title:k_de_porte_de_bastione.holder = {
+			# 	trigger_event = {
+			# 		id = marcher_war.0002
+			# 	}
+			# }
+			
+			# title:k_marroux.holder = {
+			# 	trigger_event = {
+			# 		id = marcher_war.0003
+			# 	}
+			# }		
+			generate_magi_list = yes
+			initialize_metropoli_effect = yes
+		}
+	}
+}
+
+# Like on_game_start, except it is called once the host (or player, in single player) exits the lobby. Good for anything where you need to know who the players are, or what the game rules are
+on_game_start_after_lobby = {
+	effect = {
+		### GAME RULE: VIEW ON SAME-SEX RELATIONS
+		if = {
+			limit = { has_game_rule = accepted_same_sex_relations }
+			game_rule_accepted_same_sex_relations_effect = yes
+		}
+
+		### GAME RULE: RANDOM RULER PLACEMENT
+		#if = {
+		#	limit = { NOT = { has_game_rule = random_ruler_placement_off } }
+		#	game_rule_random_ruler_placement_effect = yes
+		#}
+
+		### GAME RULE: RANDOMIZE FAITH
+		#if = {
+		#	limit = { has_game_rule = randomized_faiths_on }
+		#	game_rule_randomize_faith_effect = yes
+		#}
+
+		### GAME RULE: FAITH ACCEPTANCE
+		if = {
+			limit = { has_game_rule = full_faith_acceptance }
+			game_rule_faith_acceptance_effect = yes
+		}
+
+		### GAME RULE: GENDER EQUALITY ###
+		if = {
+			limit = { has_game_rule = full_gender_equality }
+			game_rule_full_gender_equality_effect = yes
+		}
+		else_if = {
+			limit = { has_game_rule = inversed_gender_equality }
+			game_rule_inversed_gender_equality_effect = yes #todo fix
+		}
+
+		### GAME RULE: SEXUALITY DISTRIBUTION ###
+		if = {
+			limit = { NOT = { has_game_rule = sexuality_distribution_default } }
+			game_rule_sexuality_distribution_effect = yes
+		}
+
+		### ACHIEVEMENT: FROM RAGS TO RICHES
+		every_player = {
+			limit = { highest_held_title_tier = tier_county }
+			add_achievement_global_variable = {
+				VARIABLE = achievement_rags_to_riches_valid
+				VALUE = yes
+			}
+		}
+	}
+
+	events = {
+		game_rule.1000	#Autopopulate families.
+		fogeater_invasion.9000 #Decide when invasion happens
+	}
+	
+	on_actions = {
+		on_opening_events
+	}
+}

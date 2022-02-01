@@ -1,0 +1,348 @@
+﻿has_education_magic_trigger = {
+	OR = {
+		has_trait = education_living_magic_1
+		has_trait = education_living_magic_2
+		has_trait = education_living_magic_3
+		has_trait = education_living_magic_4
+		has_trait = education_dead_magic_1
+		has_trait = education_dead_magic_2
+		has_trait = education_dead_magic_3
+		has_trait = education_dead_magic_4
+		has_trait = education_mixed_magic_1
+		has_trait = education_mixed_magic_2
+		has_trait = education_mixed_magic_3
+		has_trait = education_mixed_magic_4
+	}
+}
+has_education_living_magic_trigger = {
+	OR = {
+		has_trait = education_living_magic_1
+		has_trait = education_living_magic_2
+		has_trait = education_living_magic_3
+		has_trait = education_living_magic_4
+	}
+}
+has_education_dead_magic_trigger = {
+	OR = {
+		has_trait = education_dead_magic_1
+		has_trait = education_dead_magic_2
+		has_trait = education_dead_magic_3
+		has_trait = education_dead_magic_4
+	}
+}
+has_education_mixed_magic_trigger = {
+	OR = {
+		has_trait = education_mixed_magic_1
+		has_trait = education_mixed_magic_2
+		has_trait = education_mixed_magic_3
+		has_trait = education_mixed_magic_4
+	}
+}
+
+has_magic_education_rank_trigger = {
+	save_temporary_scope_value_as = {
+		name = operator
+		value = flag:$OPERATOR$
+	}
+	OR = {
+		AND = {
+			scope:operator = flag:equals
+			OR = {
+				has_trait_rank = {
+					trait = education_living_magic
+					rank = $RANK$
+				}
+				has_trait_rank = {
+					trait = education_dead_magic
+					rank = $RANK$
+				}
+				has_trait_rank = {
+					trait = education_mixed_magic
+					rank = $RANK$
+				}
+			}
+		}
+		AND = {
+			scope:operator = flag:greater
+			OR = {
+				has_trait_rank = {
+					trait = education_living_magic
+					rank > $RANK$
+				}
+				has_trait_rank = {
+					trait = education_dead_magic
+					rank > $RANK$
+				}
+				has_trait_rank = {
+					trait = education_mixed_magic
+					rank > $RANK$
+				}
+			}
+		}
+		AND = {
+			scope:operator = flag:less
+			OR = {
+				has_trait_rank = {
+					trait = education_living_magic
+					rank < $RANK$
+				}
+				has_trait_rank = {
+					trait = education_dead_magic
+					rank < $RANK$
+				}
+				has_trait_rank = {
+					trait = education_mixed_magic
+					rank < $RANK$
+				}
+			}
+		}
+	}
+}
+
+# Placeholder to kill errors
+can_be_hashishiyah = {
+	is_adult = yes
+	NOR = { # Can not be Temperate or already have a Substance Abuse trait.
+		has_trait = drunkard
+		has_trait = hashishiyah
+		has_trait = temperate
+	}
+
+	OR = {
+		# Muslims always have access to Hashish...
+		faith = {
+			religion_tag = adabyssian_religion
+		}
+		# Otherwise you must not be located in Europe (where Hashish was relatively unknown until modern times.)
+		AND = {
+			OR = {
+				AND = {
+					exists = capital_province
+					capital_province = {
+						save_temporary_scope_as = my_home_province
+					}
+				}
+				AND = {
+					exists = liege
+					exists = liege.capital_province
+					liege = {
+						capital_province = {
+							save_temporary_scope_as = my_home_province
+						}
+					}
+				}
+			}
+			scope:my_home_province = {
+				NOT = {
+					geographical_region = world_ga_marcher_kingdoms
+					geographical_region = world_ga_clanlands
+					geographical_region = world_ga_mountainheights
+				}
+			}
+		}
+	}
+}
+is_living_magi = {
+	is_target_in_global_variable_list = {
+		name = blood_magi_list
+		target = this
+	}
+}
+is_dead_magi = {
+	is_target_in_global_variable_list = {
+		name = moon_magi_list
+		target = this
+	}
+}
+is_mixed_magi = {
+	is_target_in_global_variable_list = {
+		name = mixed_magi_list
+		target = this
+	}
+}
+is_any_magi = {
+	OR = {
+		is_target_in_global_variable_list = {
+			name = blood_magi_list
+			target = this
+		}
+		is_target_in_global_variable_list = {
+			name = moon_magi_list
+			target = this
+		}
+		is_target_in_global_variable_list = {
+			name = mixed_magi_list
+			target = this
+		}
+	}
+}
+
+
+can_be_magic_tutor_of = {
+	is_courtier_of = $EMPLOYER$
+	is_adult = yes
+	basic_is_available_ai = yes
+	NOT = { has_trait = incapable }
+}
+
+reg_mage = { # checks type
+	# stands for registered mage (registered by the game)
+	is_target_in_global_variable_list = {
+		name = $TYPE$_magi_list
+		target = root
+	}
+}
+
+reg_mageR = { # checks type adn is ruler
+	reg_mage = {
+		TYPE = $TYPE$
+	}
+
+	is_landed = yes
+}
+
+reg_mageC = { # checks the given cost
+	var:magic_counter >= $COST$
+}
+
+reg_mageF = { # checks cost and not has flag
+	reg_mageC = {
+		COUNT = $COUNT$
+	}
+
+	NOT = {
+		has_character_flag = $FLAG$
+	}
+}
+
+## Dueling: All must be called in character scope
+
+can_still_duel = {
+	exists = this
+	#is_alive = yes
+	duel_cultural_requirements_dynamic = {CULTURE = $CULTURE$}
+}
+
+can_duel = { # must call on both participants
+	is_adult = yes
+	#can_still_duel = {CULTURE = myculture}
+	#duel_cultural_requirements_£CULTURE$ = yes
+
+	## PROVISIONAL
+	this.faith = {
+		has_dominant_ruling_gender = root
+	}
+	
+	#is_ruler = yes
+	## /PROVISIONAL
+}
+
+reunite_the_empire_complete_control_trigger = { # this only works because the behaviour of these triggers [AND, OR] is defined when called, by the block surrounding them
+
+	trigger_if = {
+		limit = { title:e_etepezea = { any_in_de_jure_hierarchy = { tier = tier_county } } } #Has de jure land
+		completely_controls = title:e_etepezea
+	}
+	trigger_if = {
+		limit = { title:e_malcois = { any_in_de_jure_hierarchy = { tier = tier_county } } } #Has de jure land
+		completely_controls = title:e_malcois
+	}
+	trigger_if = {
+		limit = { title:e_aironoi = { any_in_de_jure_hierarchy = { tier = tier_county } } } #Has de jure land
+		completely_controls = title:e_aironoi
+	}
+	trigger_if = {
+		limit = { title:e_opakhasia = { any_in_de_jure_hierarchy = { tier = tier_county } } } #Has de jure land
+		completely_controls = title:e_opakhasia
+	}
+}
+
+has_ruins_trigger = {
+	OR = {
+		has_building = palace_ruins_01
+		has_building = house_ruins_01
+		has_building = fountain_ruins_01
+		has_building = garden_ruins_01
+		has_building = plaza_ruins_01
+		has_building = crater_ruins_01
+		has_building = waterway_ruins_01
+		has_building = nexus_ruins_01
+		has_building = monument_ruins_01
+
+	}
+}
+is_any_metropolis_district = {
+    OR = {
+        has_holding_type = military_district_holding
+        has_holding_type = palatial_district_holding
+        has_holding_type = maritime_district_holding
+        has_holding_type = temple_district_holding
+        has_holding_type = trade_district_holding
+		has_holding_type = urban_district_holding
+		has_holding_type = workshop_district_holding
+    }
+}
+has_aelvalr_shard = {
+	OR = {
+		title_province = {
+			OR = {
+				has_building = special_aervalr_shard_01
+				has_building = special_aervalr_shard_02
+				has_building = special_aervalr_shard_03
+				has_building = special_aervalr_shard_04
+			}
+		}
+		has_county_modifier = aervalr_debris_field
+	}
+}
+discount_embark_from_this_province = {
+	always = no # change when buildings exist that decrease embark cost
+	# remember to check if they're enabled
+	# if you want them to only be used by friendlies check that too, although that might be hard
+}
+is_traditionally_part_of_kingdom = {
+	trigger_if = {
+		limit = { has_variable = traditional_de_jure_kingdom }
+		var:traditional_de_jure_kingdom = title:$KINGDOM_NAME$
+	}
+	trigger_else = {
+		always = no
+	}
+}
+is_not_in_traditional_kingdom = {
+	trigger_if = {
+		limit = { has_variable = traditional_de_jure_kingdom }
+		var:traditional_de_jure_kingdom = title:$KINGDOM_NAME$
+		NOT = { kingdom = var:traditional_de_jure_kingdom }
+	}
+	trigger_else = {
+		always = no
+	}
+}
+protected_from_title_rebuilding = {
+	OR = {	# Add stuff here in the future, that's why it's an OR
+		has_variable = sjalvolki_vanguard	# Sjalvolki vanguard rulers shouldn't have their vassals stolen from them
+	}
+}
+chevalie_will_shatter = {
+	AND = {
+		has_title = title:e_chevalie
+		OR = {
+			NOR = {
+				primary_heir = { is_child_of = prev }
+				primary_heir = { is_grandchild_of = prev }
+				primary_heir = { is_great_grandchild_of = prev }
+			}
+			NOT = {
+				primary_heir = {
+					character_merit_value >= 30
+				}
+			}
+			NOT = {
+				primary_heir = {
+					character_merit_value >= merit_threshold_value
+				}
+			}
+		}
+	}
+}

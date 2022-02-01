@@ -1,0 +1,4309 @@
+﻿##################
+##DECISIONS LIST##
+# migrate_to_kingdom_berlisk
+# migrate_to_kingdom_sjaklaki
+# migrate_to_kingdom_casked
+# migrate_to_kingdom_sjas
+# migrate_to_kingdom_plekig
+# migrate_to_kingdom_vraved
+# migrate_to_kingdom_sgrad
+# migrate_to_kingdom_cycladecia
+# migrate_to_kingdom_kerkonia
+# migrate_to_kingdom_sajrag
+# migrate_to_kingdom_dahagrad
+# migrate_to_kingdom_dgask
+# migrate_to_kingdom_krakaw
+# migrate_to_kingdom_kollos
+# migrate_to_kingdom_gevek
+# migrate_to_kingdom_bakav
+# migrate_to_kingdom_sabalv
+# migrate_to_kingdom_slavka
+# migrate_to_kingdom_sladia
+# migrate_to_kingdom_provdanov
+# migrate_to_kingdom_siktak
+# migrate_to_kingdom_cevrek
+# migrate_to_kingdom_spedk
+# migrate_to_kingdom_poaclav
+# migrate_to_kingdom_cershuv
+# migrate_to_kingdom_vytva
+# migrate_to_kingdom_karvice
+# migrate_to_kingdom_tolmat
+# migrate_to_kingdom_glicin
+# migrate_to_kingdom_kochod
+# migrate_to_kingdom_parclav
+# migrate_to_kingdom_krary
+# migrate_to_kingdom_lubry
+# migrate_to_kingdom_horav
+# migrate_to_kingdom_alman
+# migrate_to_kingdom_deskivi
+# migrate_to_kingdom_descki
+# migrate_to_kingdom_kradaov
+# migrate_to_kingdom_djav
+# migrate_to_kingdom_pdvi
+# migrate_to_kingdom_hvak
+# migrate_to_kingdom_kradal
+# migrate_to_kingdom_sakc
+# migrate_to_kingdom_helski
+# migrate_to_kingdom_bledl
+# migrate_to_kingdom_dlak
+# migrate_to_kingdom_vlisck
+# migrate_to_kingdom_glicvice
+# migrate_to_kingdom_slavkinzi
+# migrate_to_kingdom_cravgrad
+# migrate_to_kingdom_crelkvania
+##################
+
+##################
+# Migrate to Berlisk
+# by hagamablabla
+migrate_to_kingdom_berlisk = {
+	picture = "gfx/interface/illustrations/decisions/decision_destiny_goal.dds"
+	major = yes
+	desc = migrate_to_kingdom_desc
+    confirm_text = migrate_to_kingdom_confirm
+
+	ai_check_interval = 1
+
+	is_shown = {
+		primary_title = title:e_sjalvolki
+		has_culture_group = culture_group:gh_sjalvolki_group
+		is_landed = yes
+		has_game_rule = story_content_enabled
+		is_target_in_global_variable_list = {
+			name = unavailable_unique_decisions
+			target = flag:sjaklaki_migration
+		}
+		NOT = {
+			is_target_in_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:berlisk_migration
+			}
+		}
+	}
+
+	is_valid = {
+		completely_controls = title:d_hyblossos
+		completely_controls = title:d_myonassus
+		completely_controls = title:d_gorteutherna
+		completely_controls = title:d_helleia
+		completely_controls = title:d_platamum
+		completely_controls = title:d_thermyra
+		completely_controls = title:d_eleutidrus
+		completely_controls = title:d_pylynthus
+		completely_controls = title:d_naxithos
+	}
+
+	effect = {
+		trigger_event = sjalvolki_decisions.3000
+		add_to_global_variable_list = {
+			name = unavailable_unique_decisions
+			target = flag:berlisk_migration
+		}
+	}
+	
+	ai_potential = {
+		always = yes
+	}
+
+	ai_will_do = {
+		base = 60
+	}
+}
+
+##################
+# Migrate to Sjaklaki
+# by ThePinkPanzer
+migrate_to_kingdom_sjaklaki = {
+	picture = "gfx/interface/illustrations/decisions/decision_destiny_goal.dds"
+	major = yes
+	desc = migrate_to_kingdom_desc
+    confirm_text = migrate_to_kingdom_confirm
+
+	ai_check_interval = 1
+
+	is_shown = {
+		primary_title = title:e_sjalvolki
+		has_culture_group = culture_group:gh_sjalvolki_group
+		is_landed = yes
+		has_game_rule = story_content_enabled
+		NOT = {
+			is_target_in_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:sjaklaki_migration
+			}
+		}
+	}
+
+	is_valid = {
+		completely_controls = title:d_trapona
+		completely_controls = title:d_dymydna
+		completely_controls = title:d_oenares
+		completely_controls = title:d_cumystus
+		completely_controls = title:d_pandia
+		completely_controls = title:d_trastro
+		completely_controls = title:d_pisenae
+		completely_controls = title:d_uggleberg
+	}
+
+	effect = {
+		trigger_event = sjalvolki_decisions.3001
+		add_to_global_variable_list = {
+			name = unavailable_unique_decisions
+			target = flag:sjaklaki_migration
+		}
+	}
+	
+	ai_potential = {
+		always = yes
+	}
+
+	ai_will_do = {
+		base = 60
+	}
+}
+
+##################
+# Migrate to Casked
+# by ThePinkPanzer
+migrate_to_kingdom_casked = {
+	picture = "gfx/interface/illustrations/decisions/decision_destiny_goal.dds"
+	major = yes
+	desc = migrate_to_kingdom_desc
+    confirm_text = migrate_to_kingdom_confirm
+
+	ai_check_interval = 1
+
+	is_shown = {
+		primary_title = title:e_sjalvolki
+		has_culture_group = culture_group:gh_sjalvolki_group
+		is_landed = yes
+		has_game_rule = story_content_enabled
+		is_target_in_global_variable_list = {
+			name = unavailable_unique_decisions
+			target = flag:sjas_migration
+		}
+		NOT = {
+			is_target_in_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:casked_migration
+			}
+		}
+	}
+
+	is_valid = {
+		completely_controls = title:d_mytanes
+		completely_controls = title:d_kydone
+		completely_controls = title:d_vasyma
+		completely_controls = title:d_kameirerna
+		completely_controls = title:d_theodonion
+		completely_controls = title:d_edapeze
+	}
+
+	effect = {
+		trigger_event = sjalvolki_decisions.3002
+		add_to_global_variable_list = {
+			name = unavailable_unique_decisions
+			target = flag:casked_migration
+		}
+	}
+	
+	ai_potential = {
+		always = yes
+	}
+
+	ai_will_do = {
+		base = 60
+	}
+}
+
+##################
+# Migrate to Sjas
+# by ThePinkPanzer
+migrate_to_kingdom_sjas = {
+	picture = "gfx/interface/illustrations/decisions/decision_destiny_goal.dds"
+	major = yes
+	desc = migrate_to_kingdom_desc
+    confirm_text = migrate_to_kingdom_confirm
+
+	ai_check_interval = 1
+
+	is_shown = {
+		primary_title = title:e_sjalvolki
+		has_culture_group = culture_group:gh_sjalvolki_group
+		is_landed = yes
+		has_game_rule = story_content_enabled
+		is_target_in_global_variable_list = {
+			name = unavailable_unique_decisions
+			target = flag:sjaklaki_migration
+		}
+		NOT = {
+			is_target_in_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:sjas_migration
+			}
+		}
+	}
+
+	is_valid = {
+		completely_controls = title:d_nysakros
+		completely_controls = title:d_toskopeion
+		completely_controls = title:d_knidomenus
+		completely_controls = title:d_seutheia
+		completely_controls = title:d_hemerollonia
+		completely_controls = title:d_tomantina
+		completely_controls = title:d_tarontos
+	}
+
+	effect = {
+		trigger_event = sjalvolki_decisions.3003
+		add_to_global_variable_list = {
+			name = unavailable_unique_decisions
+			target = flag:sjas_migration
+		}
+	}
+	
+	ai_potential = {
+		always = yes
+	}
+
+	ai_will_do = {
+		base = 60
+	}
+}
+
+##################
+# Migrate to Plekig
+# by ThePinkPanzer
+migrate_to_kingdom_plekig = {
+	picture = "gfx/interface/illustrations/decisions/decision_destiny_goal.dds"
+	major = yes
+	desc = migrate_to_kingdom_desc
+    confirm_text = migrate_to_kingdom_confirm
+
+	ai_check_interval = 1
+
+	is_shown = {
+		primary_title = title:e_sjalvolki
+		has_culture_group = culture_group:gh_sjalvolki_group
+		is_landed = yes
+		has_game_rule = story_content_enabled
+		is_target_in_global_variable_list = {
+			name = unavailable_unique_decisions
+			target = flag:berlisk_migration
+		}
+		NOT = {
+			is_target_in_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:plekig_migration
+			}
+		}
+	}
+
+	is_valid = {
+		completely_controls = title:d_abdeze
+		completely_controls = title:d_theodesmos
+		completely_controls = title:d_metedon
+		completely_controls = title:d_artyros
+		completely_controls = title:d_tragiae
+	}
+
+	effect = {
+		trigger_event = sjalvolki_decisions.3004
+		add_to_global_variable_list = {
+			name = unavailable_unique_decisions
+			target = flag:plekig_migration
+		}
+	}
+	
+	ai_potential = {
+		always = yes
+	}
+
+	ai_will_do = {
+		base = 60
+	}
+}
+
+##################
+# Migrate to Vraved
+# by ThePinkPanzer
+migrate_to_kingdom_vraved = {
+	picture = "gfx/interface/illustrations/decisions/decision_destiny_goal.dds"
+	major = yes
+	desc = migrate_to_kingdom_desc
+    confirm_text = migrate_to_kingdom_confirm
+
+	ai_check_interval = 1
+
+	is_shown = {
+		primary_title = title:e_sjalvolki
+		has_culture_group = culture_group:gh_sjalvolki_group
+		is_landed = yes
+		has_game_rule = story_content_enabled
+		OR = {
+			is_target_in_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:sajrag_migration
+			}
+			is_target_in_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:sgrad_migration
+			}
+		}
+		NOT = {
+			is_target_in_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:vraved_migration
+			}
+		}
+	}
+
+	is_valid = {
+		completely_controls = title:d_hieridos
+		completely_controls = title:d_erethosia
+		completely_controls = title:d_eultine
+		completely_controls = title:d_aegela
+		completely_controls = title:d_idendos
+		completely_controls = title:d_orous
+	}
+
+	effect = {
+		trigger_event = sjalvolki_decisions.3005
+		add_to_global_variable_list = {
+			name = unavailable_unique_decisions
+			target = flag:vraved_migration
+		}
+	}
+	
+	ai_potential = {
+		always = yes
+	}
+
+	ai_will_do = {
+		base = 60
+	}
+}
+
+##################
+# Migrate to Sgrad
+# by ThePinkPanzer
+migrate_to_kingdom_sgrad = {
+	picture = "gfx/interface/illustrations/decisions/decision_destiny_goal.dds"
+	major = yes
+	desc = migrate_to_kingdom_desc
+    confirm_text = migrate_to_kingdom_confirm
+
+	ai_check_interval = 1
+
+	is_shown = {
+		primary_title = title:e_sjalvolki
+		has_culture_group = culture_group:gh_sjalvolki_group
+		is_landed = yes
+		has_game_rule = story_content_enabled
+		is_target_in_global_variable_list = {
+			name = unavailable_unique_decisions
+			target = flag:plekig_migration
+		}
+		NOT = {
+			is_target_in_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:sgrad_migration
+			}
+		}
+	}
+
+	is_valid = {
+		completely_controls = title:d_myrapolis
+		# completely_controls = title:d_ranthus
+		completely_controls = title:d_aytissos
+		completely_controls = title:d_acaphos
+		completely_controls = title:d_zakria
+		completely_controls = title:d_himonia
+		completely_controls = title:d_smyrnurii
+	}
+
+	effect = {
+		trigger_event = sjalvolki_decisions.3006
+		add_to_global_variable_list = {
+			name = unavailable_unique_decisions
+			target = flag:sgrad_migration
+		}
+	}
+	
+	ai_potential = {
+		always = yes
+	}
+
+	ai_will_do = {
+		base = 60
+	}
+}
+
+##################
+# Migrate to Cycladecia
+# by ThePinkPanzer
+migrate_to_kingdom_cycladecia = {
+	picture = "gfx/interface/illustrations/decisions/decision_destiny_goal.dds"
+	major = yes
+	desc = migrate_to_kingdom_desc
+    confirm_text = migrate_to_kingdom_confirm
+
+	ai_check_interval = 1
+
+	is_shown = {
+		primary_title = title:e_sjalvolki
+		has_culture_group = culture_group:gh_sjalvolki_group
+		is_landed = yes
+		has_game_rule = story_content_enabled
+		is_target_in_global_variable_list = {
+			name = unavailable_unique_decisions
+			target = flag:sgrad_migration
+		}
+		NOT = {
+			is_target_in_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:cycladecia_migration
+			}
+		}
+	}
+
+	is_valid = {
+		completely_controls = title:k_cycladecia
+	}
+
+	effect = {
+		trigger_event = sjalvolki_decisions.3007
+		add_to_global_variable_list = {
+			name = unavailable_unique_decisions
+			target = flag:cycladecia_migration
+		}
+	}
+	
+	ai_potential = {
+		always = yes
+	}
+
+	ai_will_do = {
+		base = 60
+	}
+}
+
+##################
+# Migrate to Kerkonia
+# by ThePinkPanzer
+migrate_to_kingdom_kerkonia = {
+	picture = "gfx/interface/illustrations/decisions/decision_destiny_goal.dds"
+	major = yes
+	desc = migrate_to_kingdom_desc
+    confirm_text = migrate_to_kingdom_confirm
+
+	ai_check_interval = 1
+
+	is_shown = {
+		primary_title = title:e_sjalvolki
+		has_culture_group = culture_group:gh_sjalvolki_group
+		is_landed = yes
+		has_game_rule = story_content_enabled
+		is_target_in_global_variable_list = {
+			name = unavailable_unique_decisions
+			target = flag:cycladecia_migration
+		}
+		NOT = {
+			is_target_in_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:kerkonia_migration
+			}
+		}
+	}
+
+	is_valid = {
+		completely_controls = title:k_kerkonia
+	}
+
+	effect = {
+		trigger_event = sjalvolki_decisions.3008
+		add_to_global_variable_list = {
+			name = unavailable_unique_decisions
+			target = flag:kerkonia_migration
+		}
+	}
+	
+	ai_potential = {
+		always = yes
+	}
+
+	ai_will_do = {
+		base = 60
+	}
+}
+
+##################
+# Migrate to Sajrag
+# by ThePinkPanzer
+migrate_to_kingdom_sajrag = {
+	picture = "gfx/interface/illustrations/decisions/decision_destiny_goal.dds"
+	major = yes
+	desc = migrate_to_kingdom_desc
+    confirm_text = migrate_to_kingdom_confirm
+
+	ai_check_interval = 1
+
+	is_shown = {
+		primary_title = title:e_sjalvolki
+		has_culture_group = culture_group:gh_sjalvolki_group
+		is_landed = yes
+		has_game_rule = story_content_enabled
+		is_target_in_global_variable_list = {
+			name = unavailable_unique_decisions
+			target = flag:casked_migration
+		}
+		NOT = {
+			is_target_in_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:sajrag_migration
+			}
+		}
+	}
+
+	is_valid = {
+		completely_controls = title:d_kourorion
+		completely_controls = title:d_itos
+		completely_controls = title:d_gangrynthos
+		completely_controls = title:d_thassacuse
+		completely_controls = title:d_epigus
+		completely_controls = title:d_semympia
+		completely_controls = title:d_prienyn
+		completely_controls = title:d_andrurii
+		completely_controls = title:d_gythinus
+	}
+
+	effect = {
+		trigger_event = sjalvolki_decisions.3009
+		add_to_global_variable_list = {
+			name = unavailable_unique_decisions
+			target = flag:sajrag_migration
+		}
+	}
+	
+	ai_potential = {
+		always = yes
+	}
+
+	ai_will_do = {
+		base = 60
+	}
+}
+
+##################
+# Migrate to Dahagrad
+# by ThePinkPanzer
+migrate_to_kingdom_dahagrad = {
+	picture = "gfx/interface/illustrations/decisions/decision_destiny_goal.dds"
+	major = yes
+	desc = migrate_to_kingdom_desc
+    confirm_text = migrate_to_kingdom_confirm
+
+	ai_check_interval = 1
+
+	is_shown = {
+		primary_title = title:e_sjalvolki
+		has_culture_group = culture_group:gh_sjalvolki_group
+		is_landed = yes
+		has_game_rule = story_content_enabled
+		AND = {
+			is_target_in_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:sgrad_migration
+			}
+			is_target_in_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:sajrag_migration
+			}
+		}
+		NOT = {
+			is_target_in_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:dahagrad_migration
+			}
+		}
+	}
+
+	is_valid = {
+		completely_controls = title:d_zakrerna
+		completely_controls = title:d_dodaphos
+		completely_controls = title:d_cnidystus
+		completely_controls = title:d_astyn
+		completely_controls = title:d_paphenion
+	}
+
+	effect = {
+		trigger_event = sjalvolki_decisions.3010
+		add_to_global_variable_list = {
+			name = unavailable_unique_decisions
+			target = flag:dahagrad_migration
+		}
+	}
+	
+	ai_potential = {
+		always = yes
+	}
+
+	ai_will_do = {
+		base = 60
+	}
+}
+
+##################
+# Migrate to Dgask
+# by ThePinkPanzer
+migrate_to_kingdom_dgask = {
+	picture = "gfx/interface/illustrations/decisions/decision_destiny_goal.dds"
+	major = yes
+	desc = migrate_to_kingdom_desc
+    confirm_text = migrate_to_kingdom_confirm
+
+	ai_check_interval = 1
+
+	is_shown = {
+		primary_title = title:e_sjalvolki
+		has_culture_group = culture_group:gh_sjalvolki_group
+		is_landed = yes
+		has_game_rule = story_content_enabled
+		is_target_in_global_variable_list = {
+			name = unavailable_unique_decisions
+			target = flag:dahagrad_migration
+		}
+		NOT = {
+			is_target_in_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:dgask_migration
+			}
+		}
+	}
+
+	is_valid = {
+		completely_controls = title:d_eleutembria
+		completely_controls = title:d_zacope
+		completely_controls = title:d_doranais
+		completely_controls = title:d_hyblagoria
+	}
+
+	effect = {
+		trigger_event = sjalvolki_decisions.3011
+		add_to_global_variable_list = {
+			name = unavailable_unique_decisions
+			target = flag:dgask_migration
+		}
+	}
+	
+	ai_potential = {
+		always = yes
+	}
+
+	ai_will_do = {
+		base = 60
+	}
+}
+
+##################
+# Migrate to Krakaw
+# by ThePinkPanzer
+migrate_to_kingdom_krakaw = {
+	picture = "gfx/interface/illustrations/decisions/decision_destiny_goal.dds"
+	major = yes
+	desc = migrate_to_kingdom_desc
+    confirm_text = migrate_to_kingdom_confirm
+
+	ai_check_interval = 1
+
+	is_shown = {
+		primary_title = title:e_sjalvolki
+		has_culture_group = culture_group:gh_sjalvolki_group
+		is_landed = yes
+		has_game_rule = story_content_enabled
+		is_target_in_global_variable_list = {
+			name = unavailable_unique_decisions
+			target = flag:dgask_migration
+		}
+		NOT = {
+			is_target_in_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:krakaw_migration
+			}
+		}
+	}
+
+	is_valid = {
+		completely_controls = title:d_epidila
+		completely_controls = title:d_alidnae
+		completely_controls = title:d_hyelocaea
+		completely_controls = title:d_spartena
+		completely_controls = title:d_hemerane
+	}
+
+	effect = {
+		trigger_event = sjalvolki_decisions.3012
+		add_to_global_variable_list = {
+			name = unavailable_unique_decisions
+			target = flag:krakaw_migration
+		}
+	}
+	
+	ai_potential = {
+		always = yes
+	}
+
+	ai_will_do = {
+		base = 60
+	}
+}
+
+##################
+# Migrate to Snalav
+# by Hagamablabla
+
+migrate_to_kingdom_snalav = {
+	picture = "gfx/interface/illustrations/decisions/decision_destiny_goal.dds"
+	major = yes
+	desc = migrate_to_kingdom_desc
+    confirm_text = migrate_to_kingdom_confirm
+
+	ai_check_interval = 1
+
+	is_shown = {
+		primary_title = title:e_sjalvolki
+		has_culture_group = culture_group:gh_sjalvolki_group
+		is_landed = yes
+		has_game_rule = story_content_enabled
+		is_target_in_global_variable_list = {
+			name = unavailable_unique_decisions
+			target = flag:krakaw_migration
+		}
+		NOT = {
+			is_target_in_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:snalav_migration
+			}
+		}
+	}
+
+	is_valid = {
+		completely_controls = title:d_zehendhof
+		completely_controls = title:d_oberpaindorf
+		completely_controls = title:d_lelov
+		completely_controls = title:d_haimburg
+		completely_controls = title:d_kremkau
+		completely_controls = title:d_dresbruch
+	}
+
+	effect = {
+		trigger_event = sjalvolki_decisions.3051
+		add_to_global_variable_list = {
+			name = unavailable_unique_decisions
+			target = flag:snalav_migration
+		}
+	}
+	
+	ai_potential = {
+		always = yes
+	}
+
+	ai_will_do = {
+		base = 60
+	}
+}
+
+##################
+# Migrate to Krava
+# by Hagamablabla
+
+migrate_to_kingdom_krava = {
+	picture = "gfx/interface/illustrations/decisions/decision_destiny_goal.dds"
+	major = yes
+	desc = migrate_to_kingdom_desc
+    confirm_text = migrate_to_kingdom_confirm
+
+	ai_check_interval = 1
+
+	is_shown = {
+		primary_title = title:e_sjalvolki
+		has_culture_group = culture_group:gh_sjalvolki_group
+		is_landed = yes
+		has_game_rule = story_content_enabled
+		is_target_in_global_variable_list = {
+			name = unavailable_unique_decisions
+			target = flag:snalav_migration
+		}
+		NOT = {
+			is_target_in_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:krava_migration
+			}
+		}
+	}
+
+	is_valid = {
+		completely_controls = title:d_nadost
+		completely_controls = title:d_hattmannsdorf
+		completely_controls = title:d_tisvildeleje
+		completely_controls = title:d_paroz
+		completely_controls = title:d_sjalwagram
+		completely_controls = title:d_reepsholt
+	}
+
+	effect = {
+		trigger_event = sjalvolki_decisions.3054
+		add_to_global_variable_list = {
+			name = unavailable_unique_decisions
+			target = flag:krava_migration
+		}
+	}
+	
+	ai_potential = {
+		always = yes
+	}
+
+	ai_will_do = {
+		base = 60
+	}
+}
+
+##################
+# Migrate to Akiev
+# by Hagamablabla
+
+migrate_to_kingdom_akiev = {
+	picture = "gfx/interface/illustrations/decisions/decision_destiny_goal.dds"
+	major = yes
+	desc = migrate_to_kingdom_desc
+    confirm_text = migrate_to_kingdom_confirm
+
+	ai_check_interval = 1
+
+	is_shown = {
+		primary_title = title:e_sjalvolki
+		has_culture_group = culture_group:gh_sjalvolki_group
+		is_landed = yes
+		has_game_rule = story_content_enabled
+		is_target_in_global_variable_list = {
+			name = unavailable_unique_decisions
+			target = flag:snalav_migration
+		}
+		NOT = {
+			is_target_in_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:akiev_migration
+			}
+		}
+	}
+
+	is_valid = {
+		completely_controls = title:d_gornji_crnci
+		completely_controls = title:d_birnbaum
+		completely_controls = title:d_wakelterhof
+		completely_controls = title:d_kadan
+		completely_controls = title:d_geislersfeld
+	}
+
+	effect = {
+		trigger_event = sjalvolki_decisions.3053
+		add_to_global_variable_list = {
+			name = unavailable_unique_decisions
+			target = flag:akiev_migration
+		}
+	}
+	
+	ai_potential = {
+		always = yes
+	}
+
+	ai_will_do = {
+		base = 60
+	}
+}
+
+##################
+# Migrate to Devk
+# by Hagamablabla
+
+migrate_to_kingdom_devk = {
+	picture = "gfx/interface/illustrations/decisions/decision_destiny_goal.dds"
+	major = yes
+	desc = migrate_to_kingdom_desc
+    confirm_text = migrate_to_kingdom_confirm
+
+	ai_check_interval = 1
+
+	is_shown = {
+		primary_title = title:e_sjalvolki
+		has_culture_group = culture_group:gh_sjalvolki_group
+		is_landed = yes
+		has_game_rule = story_content_enabled
+		is_target_in_global_variable_list = {
+			name = unavailable_unique_decisions
+			target = flag:akiev_migration
+		}
+		NOT = {
+			is_target_in_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:devk_migration
+			}
+		}
+	}
+
+	is_valid = {
+		completely_controls = title:d_jaszfalu
+		completely_controls = title:d_strazgonjci
+		completely_controls = title:d_gajer
+		completely_controls = title:d_zbynice
+		completely_controls = title:d_feldingbjerg
+		completely_controls = title:d_dalmsdorf
+		completely_controls = title:d_rupensdorf
+		completely_controls = title:d_limpertsberg
+		completely_controls = title:d_attenhofen
+		completely_controls = title:d_tingstaede
+	}
+
+	effect = {
+		trigger_event = sjalvolki_decisions.3055
+		add_to_global_variable_list = {
+			name = unavailable_unique_decisions
+			target = flag:devk_migration
+		}
+	}
+	
+	ai_potential = {
+		always = yes
+	}
+
+	ai_will_do = {
+		base = 60
+	}
+}
+
+##################
+# Migrate to Bledlik
+# by Hagamablabla
+
+migrate_to_kingdom_bledlik = {
+	picture = "gfx/interface/illustrations/decisions/decision_destiny_goal.dds"
+	major = yes
+	desc = migrate_to_kingdom_desc
+    confirm_text = migrate_to_kingdom_confirm
+
+	ai_check_interval = 1
+
+	is_shown = {
+		primary_title = title:e_sjalvolki
+		has_culture_group = culture_group:gh_sjalvolki_group
+		is_landed = yes
+		has_game_rule = story_content_enabled
+		is_target_in_global_variable_list = {
+			name = unavailable_unique_decisions
+			target = flag:devk_migration
+		}
+		NOT = {
+			is_target_in_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:bledlik_migration
+			}
+		}
+	}
+
+	is_valid = {
+		completely_controls = title:d_weidingen
+		completely_controls = title:d_eutingen
+		completely_controls = title:d_landet
+		completely_controls = title:d_jokk
+		completely_controls = title:d_aspelt
+		completely_controls = title:d_elsane
+		completely_controls = title:d_sestajovice
+	}
+
+	effect = {
+		trigger_event = sjalvolki_decisions.3052
+		add_to_global_variable_list = {
+			name = unavailable_unique_decisions
+			target = flag:bledlik_migration
+		}
+	}
+	
+	ai_potential = {
+		always = yes
+	}
+
+	ai_will_do = {
+		base = 60
+	}
+}
+
+##################
+# Migrate to Cvradk
+# by Hagamablabla
+
+migrate_to_kingdom_cvradk = {
+	picture = "gfx/interface/illustrations/decisions/decision_destiny_goal.dds"
+	major = yes
+	desc = migrate_to_kingdom_desc
+    confirm_text = migrate_to_kingdom_confirm
+
+	ai_check_interval = 1
+
+	is_shown = {
+		primary_title = title:e_sjalvolki
+		has_culture_group = culture_group:gh_sjalvolki_group
+		is_landed = yes
+		has_game_rule = story_content_enabled
+		is_target_in_global_variable_list = {
+			name = unavailable_unique_decisions
+			target = flag:snalav_migration
+		}
+		NOT = {
+			is_target_in_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:cvradk_migration
+			}
+		}
+	}
+
+	is_valid = {
+		completely_controls = title:d_laubend
+		completely_controls = title:d_steinenkirch
+		completely_controls = title:d_mirsdorf
+		completely_controls = title:d_baromut
+		completely_controls = title:d_perne
+	}
+
+	effect = {
+		trigger_event = sjalvolki_decisions.3056
+		add_to_global_variable_list = {
+			name = unavailable_unique_decisions
+			target = flag:cvradk_migration
+		}
+	}
+	
+	ai_potential = {
+		always = yes
+	}
+
+	ai_will_do = {
+		base = 60
+	}
+}
+
+##################
+# Migrate to Uvusk
+# by Hagamablabla
+
+migrate_to_kingdom_uvusk = {
+	picture = "gfx/interface/illustrations/decisions/decision_destiny_goal.dds"
+	major = yes
+	desc = migrate_to_kingdom_desc
+    confirm_text = migrate_to_kingdom_confirm
+
+	ai_check_interval = 1
+
+	is_shown = {
+		primary_title = title:e_sjalvolki
+		has_culture_group = culture_group:gh_sjalvolki_group
+		is_landed = yes
+		has_game_rule = story_content_enabled
+		is_target_in_global_variable_list = {
+			name = unavailable_unique_decisions
+			target = flag:cvradk_migration
+		}
+		NOT = {
+			is_target_in_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:uvusk_migration
+			}
+		}
+	}
+
+	is_valid = {
+		completely_controls = title:d_prihova
+		completely_controls = title:d_dvorek
+		completely_controls = title:d_radous
+		completely_controls = title:d_klemensdorf
+		completely_controls = title:d_perbetsky_dvor
+	}
+
+	effect = {
+		trigger_event = sjalvolki_decisions.3057
+		add_to_global_variable_list = {
+			name = unavailable_unique_decisions
+			target = flag:uvusk_migration
+		}
+	}
+	
+	ai_potential = {
+		always = yes
+	}
+
+	ai_will_do = {
+		base = 60
+	}
+}
+
+##################
+# Migrate to Kevek
+# by Hagamablabla
+
+migrate_to_kingdom_kevek = {
+	picture = "gfx/interface/illustrations/decisions/decision_destiny_goal.dds"
+	major = yes
+	desc = migrate_to_kingdom_desc
+    confirm_text = migrate_to_kingdom_confirm
+
+	ai_check_interval = 1
+
+	is_shown = {
+		primary_title = title:e_sjalvolki
+		has_culture_group = culture_group:gh_sjalvolki_group
+		is_landed = yes
+		has_game_rule = story_content_enabled
+		is_target_in_global_variable_list = {
+			name = unavailable_unique_decisions
+			target = flag:uvusk_migration
+		}
+		NOT = {
+			is_target_in_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:kevek_migration
+			}
+		}
+	}
+
+	is_valid = {
+		completely_controls = title:d_bambousek
+		completely_controls = title:d_blaschdorf
+		completely_controls = title:d_sieding
+	}
+
+	effect = {
+		trigger_event = sjalvolki_decisions.3071
+		add_to_global_variable_list = {
+			name = unavailable_unique_decisions
+			target = flag:kevek_migration
+		}
+	}
+	
+	ai_potential = {
+		always = yes
+	}
+
+	ai_will_do = {
+		base = 60
+	}
+}
+
+##################
+# Migrate to Bladka
+# by Hagamablabla
+
+migrate_to_kingdom_bladka = {
+	picture = "gfx/interface/illustrations/decisions/decision_destiny_goal.dds"
+	major = yes
+	desc = migrate_to_kingdom_desc
+    confirm_text = migrate_to_kingdom_confirm
+
+	ai_check_interval = 1
+
+	is_shown = {
+		primary_title = title:e_sjalvolki
+		has_culture_group = culture_group:gh_sjalvolki_group
+		is_landed = yes
+		has_game_rule = story_content_enabled
+		is_target_in_global_variable_list = {
+			name = unavailable_unique_decisions
+			target = flag:uvusk_migration
+		}
+		NOT = {
+			is_target_in_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:bladka_migration
+			}
+		}
+	}
+
+	is_valid = {
+		completely_controls = title:d_plossen
+		completely_controls = title:d_kisujfalu
+		completely_controls = title:d_bylany
+		completely_controls = title:d_pyhrn
+		completely_controls = title:d_senseln
+	}
+
+	effect = {
+		trigger_event = sjalvolki_decisions.3072
+		add_to_global_variable_list = {
+			name = unavailable_unique_decisions
+			target = flag:bladka_migration
+		}
+	}
+	
+	ai_potential = {
+		always = yes
+	}
+
+	ai_will_do = {
+		base = 60
+	}
+}
+
+##################
+# Migrate to Vakarn
+# by Hagamablabla
+
+migrate_to_kingdom_vka = {
+	picture = "gfx/interface/illustrations/decisions/decision_destiny_goal.dds"
+	major = yes
+	desc = migrate_to_kingdom_desc
+    confirm_text = migrate_to_kingdom_confirm
+
+	ai_check_interval = 1
+
+	is_shown = {
+		primary_title = title:e_sjalvolki
+		has_culture_group = culture_group:gh_sjalvolki_group
+		is_landed = yes
+		has_game_rule = story_content_enabled
+		is_target_in_global_variable_list = {
+			name = unavailable_unique_decisions
+			target = flag:bladka_migration
+		}
+		NOT = {
+			is_target_in_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:vka_migration
+			}
+		}
+	}
+
+	is_valid = {
+		completely_controls = title:d_gelovizza
+		completely_controls = title:d_kulm
+		completely_controls = title:d_bogdanic
+		completely_controls = title:d_podkoren
+		completely_controls = title:d_grosbous
+		completely_controls = title:d_heinrichsheim
+	}
+
+	effect = {
+		trigger_event = sjalvolki_decisions.3058
+		add_to_global_variable_list = {
+			name = unavailable_unique_decisions
+			target = flag:vka_migration
+		}
+	}
+	
+	ai_potential = {
+		always = yes
+	}
+
+	ai_will_do = {
+		base = 60
+	}
+}
+
+##################
+# Migrate to Crecew
+# by Hagamablabla
+
+#migrate_to_kingdom_crecew = {
+#	picture = "gfx/interface/illustrations/decisions/decision_destiny_goal.dds"
+#	major = yes
+#	desc = migrate_to_kingdom_desc
+#    confirm_text = migrate_to_kingdom_confirm
+#
+#	ai_check_interval = 1
+#
+#	is_shown = {
+#		primary_title = title:e_sjalvolki
+#		has_culture_group = culture_group:gh_sjalvolki_group
+#		is_landed = yes
+#		has_game_rule = story_content_enabled
+#		is_target_in_global_variable_list = {
+#			name = unavailable_unique_decisions
+#			target = flag:vka_migration
+#		}
+#		NOT = {
+#			is_target_in_global_variable_list = {
+#				name = unavailable_unique_decisions
+#				target = flag:crecew_migration
+#			}
+#		}
+#	}
+#
+#	is_valid = {
+#		completely_controls = title:d_autschowa
+#		completely_controls = title:d_puscava
+#		completely_controls = title:d_salvenberg
+#	}
+#
+#	effect = {
+#		trigger_event = sjalvolki_decisions.3075
+#		add_to_global_variable_list = {
+#			name = unavailable_unique_decisions
+#			target = flag:crecew_migration
+#		}
+#	}
+#	
+#	ai_potential = {
+#		always = yes
+#	}
+#
+#	ai_will_do = {
+#		base = 60
+#	}
+#}
+
+##################
+# Migrate to Dievs
+# by Hagamablabla
+
+migrate_to_kingdom_dievs = {
+	picture = "gfx/interface/illustrations/decisions/decision_destiny_goal.dds"
+	major = yes
+	desc = migrate_to_kingdom_desc
+    confirm_text = migrate_to_kingdom_confirm
+
+	ai_check_interval = 1
+
+	is_shown = {
+		primary_title = title:e_sjalvolki
+		has_culture_group = culture_group:gh_sjalvolki_group
+		is_landed = yes
+		has_game_rule = story_content_enabled
+		is_target_in_global_variable_list = {
+			name = unavailable_unique_decisions
+			target = flag:kevek_migration
+		}
+		NOT = {
+			is_target_in_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:dievs_migration
+			}
+		}
+	}
+
+	is_valid = {
+		# completely_controls = title:d_srbetsch
+		completely_controls = title:d_popelna
+		completely_controls = title:d_cisotin
+		completely_controls = title:d_uhrov
+		completely_controls = title:d_krakovany
+		completely_controls = title:d_karwina
+		completely_controls = title:d_litrbachy
+	}
+
+	effect = {
+		trigger_event = sjalvolki_decisions.3070
+		add_to_global_variable_list = {
+			name = unavailable_unique_decisions
+			target = flag:dievs_migration
+		}
+	}
+	
+	ai_potential = {
+		always = yes
+	}
+
+	ai_will_do = {
+		base = 60
+	}
+}
+
+##################
+# Migrate to Cesk
+# by Hagamablabla
+
+migrate_to_kingdom_cesk = {
+	picture = "gfx/interface/illustrations/decisions/decision_destiny_goal.dds"
+	major = yes
+	desc = migrate_to_kingdom_desc
+    confirm_text = migrate_to_kingdom_confirm
+
+	ai_check_interval = 1
+
+	is_shown = {
+		primary_title = title:e_sjalvolki
+		has_culture_group = culture_group:gh_sjalvolki_group
+		is_landed = yes
+		has_game_rule = story_content_enabled
+		is_target_in_global_variable_list = {
+			name = unavailable_unique_decisions
+			target = flag:bladka_migration
+		}
+		NOT = {
+			is_target_in_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:cesk_migration
+			}
+		}
+	}
+
+	is_valid = {
+		completely_controls = title:d_oberneufahrn
+		completely_controls = title:d_engelswald
+	}
+
+	effect = {
+		trigger_event = sjalvolki_decisions.3074
+		add_to_global_variable_list = {
+			name = unavailable_unique_decisions
+			target = flag:cesk_migration
+		}
+	}
+	
+	ai_potential = {
+		always = yes
+	}
+
+	ai_will_do = {
+		base = 60
+	}
+}
+
+##################
+# Migrate to Nrakeved
+# by Hagamablabla
+
+migrate_to_kingdom_nrakeved = {
+	picture = "gfx/interface/illustrations/decisions/decision_destiny_goal.dds"
+	major = yes
+	desc = migrate_to_kingdom_desc
+    confirm_text = migrate_to_kingdom_confirm
+
+	ai_check_interval = 1
+
+	is_shown = {
+		primary_title = title:e_sjalvolki
+		has_culture_group = culture_group:gh_sjalvolki_group
+		is_landed = yes
+		has_game_rule = story_content_enabled
+		is_target_in_global_variable_list = {
+			name = unavailable_unique_decisions
+			target = flag:dievs_migration
+		}
+		NOT = {
+			is_target_in_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:nrakeved_migration
+			}
+		}
+	}
+
+	is_valid = {
+		completely_controls = title:d_otvovice
+		completely_controls = title:d_wanzer
+		completely_controls = title:d_blatta
+		completely_controls = title:d_westerhusen
+		completely_controls = title:d_visazys
+	}
+
+	effect = {
+		trigger_event = sjalvolki_decisions.3059
+		add_to_global_variable_list = {
+			name = unavailable_unique_decisions
+			target = flag:nrakeved_migration
+		}
+	}
+	
+	ai_potential = {
+		always = yes
+	}
+
+	ai_will_do = {
+		base = 60
+	}
+}
+
+##################
+# Migrate to Mowask
+# by Hagamablabla
+
+migrate_to_kingdom_mowask = {
+	picture = "gfx/interface/illustrations/decisions/decision_destiny_goal.dds"
+	major = yes
+	desc = migrate_to_kingdom_desc
+    confirm_text = migrate_to_kingdom_confirm
+
+	ai_check_interval = 1
+
+	is_shown = {
+		primary_title = title:e_sjalvolki
+		has_culture_group = culture_group:gh_sjalvolki_group
+		is_landed = yes
+		has_game_rule = story_content_enabled
+		OR = {
+			is_target_in_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:nrakeved_migration
+			}
+			is_target_in_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:cesk_migration
+			}
+		}
+		NOT = {
+			is_target_in_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:mowask_migration
+			}
+		}
+	}
+
+	is_valid = {
+		completely_controls = title:d_pirnitz
+		completely_controls = title:d_bircna_vas
+		completely_controls = title:d_radvanovice
+		completely_controls = title:d_ordos
+	}
+
+	effect = {
+		trigger_event = sjalvolki_decisions.3073
+		add_to_global_variable_list = {
+			name = unavailable_unique_decisions
+			target = flag:mowask_migration
+		}
+	}
+	
+	ai_potential = {
+		always = yes
+	}
+
+	ai_will_do = {
+		base = 60
+	}
+}
+
+##################
+# Migrate to Scadav
+# by Hagamablabla
+
+migrate_to_kingdom_scadav = {
+	picture = "gfx/interface/illustrations/decisions/decision_destiny_goal.dds"
+	major = yes
+	desc = migrate_to_kingdom_desc
+    confirm_text = migrate_to_kingdom_confirm
+
+	ai_check_interval = 1
+
+	is_shown = {
+		primary_title = title:e_sjalvolki
+		has_culture_group = culture_group:gh_sjalvolki_group
+		is_landed = yes
+		has_game_rule = story_content_enabled
+		is_target_in_global_variable_list = {
+			name = unavailable_unique_decisions
+			target = flag:cesk_migration
+		}
+		NOT = {
+			is_target_in_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:scadav_migration
+			}
+		}
+	}
+
+	is_valid = {
+		completely_controls = title:d_dobritsch
+		completely_controls = title:d_padochov
+		completely_controls = title:d_kleinsee
+		completely_controls = title:d_moosleiten
+	}
+
+	effect = {
+		trigger_event = sjalvolki_decisions.3069
+		add_to_global_variable_list = {
+			name = unavailable_unique_decisions
+			target = flag:scadav_migration
+		}
+	}
+	
+	ai_potential = {
+		always = yes
+	}
+
+	ai_will_do = {
+		base = 60
+	}
+}
+
+##################
+# Migrate to Blecked
+# by Hagamablabla
+
+migrate_to_kingdom_blecked = {
+	picture = "gfx/interface/illustrations/decisions/decision_destiny_goal.dds"
+	major = yes
+	desc = migrate_to_kingdom_desc
+    confirm_text = migrate_to_kingdom_confirm
+
+	ai_check_interval = 1
+
+	is_shown = {
+		primary_title = title:e_sjalvolki
+		has_culture_group = culture_group:gh_sjalvolki_group
+		is_landed = yes
+		has_game_rule = story_content_enabled
+		OR = {
+			is_target_in_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:mowask_migration
+			}
+			is_target_in_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:scadav_migration
+			}
+		}
+		NOT = {
+			is_target_in_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:blecked_migration
+			}
+		}
+	}
+
+	is_valid = {
+		completely_controls = title:d_oprostovice
+		completely_controls = title:d_walthersdorf
+		completely_controls = title:d_muehldorf
+	}
+
+	effect = {
+		trigger_event = sjalvolki_decisions.3068
+		add_to_global_variable_list = {
+			name = unavailable_unique_decisions
+			target = flag:blecked_migration
+		}
+	}
+	
+	ai_potential = {
+		always = yes
+	}
+
+	ai_will_do = {
+		base = 60
+	}
+}
+
+##################
+# Migrate to Sadak
+# by Hagamablabla
+
+migrate_to_kingdom_sadak = {
+	picture = "gfx/interface/illustrations/decisions/decision_destiny_goal.dds"
+	major = yes
+	desc = migrate_to_kingdom_desc
+    confirm_text = migrate_to_kingdom_confirm
+
+	ai_check_interval = 1
+
+	is_shown = {
+		primary_title = title:e_sjalvolki
+		has_culture_group = culture_group:gh_sjalvolki_group
+		is_landed = yes
+		has_game_rule = story_content_enabled
+		is_target_in_global_variable_list = {
+			name = unavailable_unique_decisions
+			target = flag:blecked_migration
+		}
+		NOT = {
+			is_target_in_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:sadak_migration
+			}
+		}
+	}
+
+	is_valid = {
+		completely_controls = title:d_reddereitz
+		completely_controls = title:d_zgornje_vrtice
+		completely_controls = title:d_kautenbach
+		completely_controls = title:d_mihla
+	}
+
+	effect = {
+		trigger_event = sjalvolki_decisions.3067
+		add_to_global_variable_list = {
+			name = unavailable_unique_decisions
+			target = flag:sadak_migration
+		}
+	}
+	
+	ai_potential = {
+		always = yes
+	}
+
+	ai_will_do = {
+		base = 60
+	}
+}
+
+##################
+# Migrate to Dlef
+# by Hagamablabla
+
+migrate_to_kingdom_dlef = {
+	picture = "gfx/interface/illustrations/decisions/decision_destiny_goal.dds"
+	major = yes
+	desc = migrate_to_kingdom_desc
+    confirm_text = migrate_to_kingdom_confirm
+
+	ai_check_interval = 1
+
+	is_shown = {
+		primary_title = title:e_sjalvolki
+		has_culture_group = culture_group:gh_sjalvolki_group
+		is_landed = yes
+		has_game_rule = story_content_enabled
+		is_target_in_global_variable_list = {
+			name = unavailable_unique_decisions
+			target = flag:sadak_migration
+		}
+		NOT = {
+			is_target_in_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:dlef_migration
+			}
+		}
+	}
+
+	is_valid = {
+		completely_controls = title:d_otterzhofen
+		completely_controls = title:d_imsovci
+		completely_controls = title:d_wischezahn
+	}
+
+	effect = {
+		trigger_event = sjalvolki_decisions.3066
+		add_to_global_variable_list = {
+			name = unavailable_unique_decisions
+			target = flag:dlef_migration
+		}
+	}
+	
+	ai_potential = {
+		always = yes
+	}
+
+	ai_will_do = {
+		base = 60
+	}
+}
+
+##################
+# Migrate to Dievd
+# by Hagamablabla
+
+migrate_to_kingdom_dievd = {
+	picture = "gfx/interface/illustrations/decisions/decision_destiny_goal.dds"
+	major = yes
+	desc = migrate_to_kingdom_desc
+    confirm_text = migrate_to_kingdom_confirm
+
+	ai_check_interval = 1
+
+	is_shown = {
+		primary_title = title:e_sjalvolki
+		has_culture_group = culture_group:gh_sjalvolki_group
+		is_landed = yes
+		has_game_rule = story_content_enabled
+		is_target_in_global_variable_list = {
+			name = unavailable_unique_decisions
+			target = flag:nrakeved_migration
+		}
+		NOT = {
+			is_target_in_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:dievd_migration
+			}
+		}
+	}
+
+	is_valid = {
+		completely_controls = title:d_mosebeck
+		completely_controls = title:d_baustene
+		completely_controls = title:d_halmbro
+		completely_controls = title:d_kurisinki
+		completely_controls = title:d_gumpolding
+	}
+
+	effect = {
+		trigger_event = sjalvolki_decisions.3060
+		add_to_global_variable_list = {
+			name = unavailable_unique_decisions
+			target = flag:dievd_migration
+		}
+	}
+	
+	ai_potential = {
+		always = yes
+	}
+
+	ai_will_do = {
+		base = 60
+	}
+}
+
+##################
+# Migrate to Buzi
+# by Hagamablabla
+
+migrate_to_kingdom_buzi = {
+	picture = "gfx/interface/illustrations/decisions/decision_destiny_goal.dds"
+	major = yes
+	desc = migrate_to_kingdom_desc
+    confirm_text = migrate_to_kingdom_confirm
+
+	ai_check_interval = 1
+
+	is_shown = {
+		primary_title = title:e_sjalvolki
+		has_culture_group = culture_group:gh_sjalvolki_group
+		is_landed = yes
+		has_game_rule = story_content_enabled
+		is_target_in_global_variable_list = {
+			name = unavailable_unique_decisions
+			target = flag:dievd_migration
+		}
+		NOT = {
+			is_target_in_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:buzi_migration
+			}
+		}
+	}
+
+	is_valid = {
+		completely_controls = title:d_wolfsfeld
+		completely_controls = title:d_kehla
+		completely_controls = title:d_lankum
+		completely_controls = title:d_alsbruck
+	}
+
+	effect = {
+		trigger_event = sjalvolki_decisions.3061
+		add_to_global_variable_list = {
+			name = unavailable_unique_decisions
+			target = flag:buzi_migration
+		}
+	}
+	
+	ai_potential = {
+		always = yes
+	}
+
+	ai_will_do = {
+		base = 60
+	}
+}
+
+##################
+# Migrate to Wakrav
+# by Hagamablabla
+
+migrate_to_kingdom_wakrav = {
+	picture = "gfx/interface/illustrations/decisions/decision_destiny_goal.dds"
+	major = yes
+	desc = migrate_to_kingdom_desc
+    confirm_text = migrate_to_kingdom_confirm
+
+	ai_check_interval = 1
+
+	is_shown = {
+		primary_title = title:e_sjalvolki
+		has_culture_group = culture_group:gh_sjalvolki_group
+		is_landed = yes
+		has_game_rule = story_content_enabled
+		is_target_in_global_variable_list = {
+			name = unavailable_unique_decisions
+			target = flag:dlef_migration
+		}
+		NOT = {
+			is_target_in_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:wakrav_migration
+			}
+		}
+	}
+
+	is_valid = {
+		completely_controls = title:d_talde
+		completely_controls = title:d_mistel
+		completely_controls = title:d_hestfjoror
+		completely_controls = title:d_mladovice
+		completely_controls = title:d_cisichie
+	}
+
+	effect = {
+		trigger_event = sjalvolki_decisions.3063
+		add_to_global_variable_list = {
+			name = unavailable_unique_decisions
+			target = flag:wakrav_migration
+		}
+	}
+	
+	ai_potential = {
+		always = yes
+	}
+
+	ai_will_do = {
+		base = 60
+	}
+}
+
+##################
+# Migrate to Kakra
+# by Hagamablabla
+
+migrate_to_kingdom_kakra = {
+	picture = "gfx/interface/illustrations/decisions/decision_destiny_goal.dds"
+	major = yes
+	desc = migrate_to_kingdom_desc
+    confirm_text = migrate_to_kingdom_confirm
+
+	ai_check_interval = 1
+
+	is_shown = {
+		primary_title = title:e_sjalvolki
+		has_culture_group = culture_group:gh_sjalvolki_group
+		is_landed = yes
+		has_game_rule = story_content_enabled
+		is_target_in_global_variable_list = {
+			name = unavailable_unique_decisions
+			target = flag:dlef_migration
+		}
+		NOT = {
+			is_target_in_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:kakra_migration
+			}
+		}
+	}
+
+	is_valid = {
+		completely_controls = title:d_skrbovice
+		completely_controls = title:d_schalkshofen
+		completely_controls = title:d_nepasice
+	}
+
+	effect = {
+		trigger_event = sjalvolki_decisions.3065
+		add_to_global_variable_list = {
+			name = unavailable_unique_decisions
+			target = flag:kakra_migration
+		}
+	}
+	
+	ai_potential = {
+		always = yes
+	}
+
+	ai_will_do = {
+		base = 60
+	}
+}
+
+##################
+# Migrate to Veik
+# by Hagamablabla
+
+migrate_to_kingdom_veik = {
+	picture = "gfx/interface/illustrations/decisions/decision_destiny_goal.dds"
+	major = yes
+	desc = migrate_to_kingdom_desc
+    confirm_text = migrate_to_kingdom_confirm
+
+	ai_check_interval = 1
+
+	is_shown = {
+		primary_title = title:e_sjalvolki
+		has_culture_group = culture_group:gh_sjalvolki_group
+		is_landed = yes
+		has_game_rule = story_content_enabled
+		is_target_in_global_variable_list = {
+			name = unavailable_unique_decisions
+			target = flag:wakrav_migration
+		}
+		NOT = {
+			is_target_in_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:veik_migration
+			}
+		}
+	}
+
+	is_valid = {
+		completely_controls = title:d_ludwigsthal
+		completely_controls = title:d_freusburg
+		completely_controls = title:d_ahle
+		completely_controls = title:d_ujezd
+	}
+
+	effect = {
+		trigger_event = sjalvolki_decisions.3064
+		add_to_global_variable_list = {
+			name = unavailable_unique_decisions
+			target = flag:veik_migration
+		}
+	}
+	
+	ai_potential = {
+		always = yes
+	}
+
+	ai_will_do = {
+		base = 60
+	}
+}
+
+##################
+# Migrate to Krassovce
+# by Hagamablabla
+
+migrate_to_kingdom_krassovce = {
+	picture = "gfx/interface/illustrations/decisions/decision_destiny_goal.dds"
+	major = yes
+	desc = migrate_to_kingdom_desc
+    confirm_text = migrate_to_kingdom_confirm
+
+	ai_check_interval = 1
+
+	is_shown = {
+		primary_title = title:e_sjalvolki
+		has_culture_group = culture_group:gh_sjalvolki_group
+		is_landed = yes
+		has_game_rule = story_content_enabled
+		is_target_in_global_variable_list = {
+			name = unavailable_unique_decisions
+			target = flag:nrakeved_migration
+		}
+		NOT = {
+			is_target_in_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:krassovce_migration
+			}
+		}
+	}
+
+	is_valid = {
+		completely_controls = title:k_krassovce
+		#completely_controls = title:d_srbetsch
+	}
+
+	effect = {
+		trigger_event = sjalvolki_decisions.3076
+		add_to_global_variable_list = {
+			name = unavailable_unique_decisions
+			target = flag:krassovce_migration
+		}
+	}
+	
+	ai_potential = {
+		always = yes
+	}
+
+	ai_will_do = {
+		base = 60
+	}
+}
+
+##################
+# Migrate to Maskav
+# by Hagamablabla
+
+migrate_to_kingdom_maskav = {
+	picture = "gfx/interface/illustrations/decisions/decision_destiny_goal.dds"
+	major = yes
+	desc = migrate_to_kingdom_desc
+    confirm_text = migrate_to_kingdom_confirm
+
+	ai_check_interval = 1
+
+	is_shown = {
+		primary_title = title:e_sjalvolki
+		has_culture_group = culture_group:gh_sjalvolki_group
+		is_landed = yes
+		has_game_rule = story_content_enabled
+		is_target_in_global_variable_list = {
+			name = unavailable_unique_decisions
+			target = flag:nrakeved_migration
+		}
+		NOT = {
+			is_target_in_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:maskav_migration
+			}
+		}
+	}
+
+	is_valid = {
+		completely_controls = title:d_vabalgala
+		completely_controls = title:d_kunra
+		completely_controls = title:d_jekabnde
+		completely_controls = title:d_keurava
+		completely_controls = title:d_vadhammar
+	}
+
+	effect = {
+		trigger_event = sjalvolki_decisions.3062
+		add_to_global_variable_list = {
+			name = unavailable_unique_decisions
+			target = flag:maskav_migration
+		}
+	}
+	
+	ai_potential = {
+		always = yes
+	}
+
+	ai_will_do = {
+		base = 60
+	}
+}
+
+##################
+# Migrate to Kollos
+# by ThePinkPanzer
+
+migrate_to_kingdom_kollos = {
+	picture = "gfx/interface/illustrations/decisions/decision_destiny_goal.dds"
+	major = yes
+	desc = migrate_to_kingdom_desc
+    confirm_text = migrate_to_kingdom_confirm
+
+	ai_check_interval = 1
+
+	is_shown = {
+		primary_title = title:e_sjalvolki
+		has_culture_group = culture_group:gh_sjalvolki_group
+		is_landed = yes
+		has_game_rule = story_content_enabled
+		is_target_in_global_variable_list = {
+			name = unavailable_unique_decisions
+			target = flag:krakaw_migration
+		}
+		NOT = {
+			is_target_in_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:kollos_migration
+			}
+		}
+	}
+
+	is_valid = {
+		completely_controls = title:k_kollos
+	}
+
+	effect = {
+		trigger_event = sjalvolki_decisions.3013
+		add_to_global_variable_list = {
+			name = unavailable_unique_decisions
+			target = flag:kollos_migration
+		}
+	}
+	
+	ai_potential = {
+		always = yes
+	}
+
+	ai_will_do = {
+		base = 60
+	}
+}
+
+##################
+# Migrate to Gevek
+# by ThePinkPanzer
+migrate_to_kingdom_gevek = {
+	picture = "gfx/interface/illustrations/decisions/decision_destiny_goal.dds"
+	major = yes
+	desc = migrate_to_kingdom_desc
+    confirm_text = migrate_to_kingdom_confirm
+
+	ai_check_interval = 1
+
+	is_shown = {
+		primary_title = title:e_sjalvolki
+		has_culture_group = culture_group:gh_sjalvolki_group
+		is_landed = yes
+		has_game_rule = story_content_enabled
+		is_target_in_global_variable_list = {
+			name = unavailable_unique_decisions
+			target = flag:krakaw_migration
+		}
+		NOT = {
+			is_target_in_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:gevek_migration
+			}
+		}
+	}
+
+	is_valid = {
+		completely_controls = title:d_larespontos
+		completely_controls = title:d_epidyros
+		completely_controls = title:d_aigemita
+		completely_controls = title:d_petra
+		completely_controls = title:d_lapitholi
+		completely_controls = title:d_pelelis
+		completely_controls = title:d_pavlasae
+		completely_controls = title:d_heraclon
+		completely_controls = title:d_tegina
+	}
+
+	effect = {
+		trigger_event = sjalvolki_decisions.3014
+		add_to_global_variable_list = {
+			name = unavailable_unique_decisions
+			target = flag:gevek_migration
+		}
+	}
+	
+	ai_potential = {
+		always = yes
+	}
+
+	ai_will_do = {
+		base = 60
+	}
+}
+
+##################
+# Migrate to Bakav
+# by ThePinkPanzer
+migrate_to_kingdom_bakav = {
+	picture = "gfx/interface/illustrations/decisions/decision_destiny_goal.dds"
+	major = yes
+	desc = migrate_to_kingdom_desc
+    confirm_text = migrate_to_kingdom_confirm
+
+	ai_check_interval = 1
+
+	is_shown = {
+		primary_title = title:e_sjalvolki
+		has_culture_group = culture_group:gh_sjalvolki_group
+		is_landed = yes
+		has_game_rule = story_content_enabled
+		is_target_in_global_variable_list = {
+			name = unavailable_unique_decisions
+			target = flag:krakaw_migration
+		}
+		NOT = {
+			is_target_in_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:bakav_migration
+			}
+		}
+	}
+
+	is_valid = {
+		completely_controls = title:d_throneos
+		completely_controls = title:d_boramea
+		completely_controls = title:d_petsitake
+		completely_controls = title:d_pelossos
+	}
+
+	effect = {
+		trigger_event = sjalvolki_decisions.3015
+		add_to_global_variable_list = {
+			name = unavailable_unique_decisions
+			target = flag:bakav_migration
+		}
+	}
+	
+	ai_potential = {
+		always = yes
+	}
+
+	ai_will_do = {
+		base = 60
+	}
+}
+
+##################
+# Migrate to Sabalv
+# by ThePinkPanzer
+migrate_to_kingdom_sabalv = {
+	picture = "gfx/interface/illustrations/decisions/decision_destiny_goal.dds"
+	major = yes
+	desc = migrate_to_kingdom_desc
+    confirm_text = migrate_to_kingdom_confirm
+
+	ai_check_interval = 1
+
+	is_shown = {
+		primary_title = title:e_sjalvolki
+		has_culture_group = culture_group:gh_sjalvolki_group
+		is_landed = yes
+		has_game_rule = story_content_enabled
+		is_target_in_global_variable_list = {
+			name = unavailable_unique_decisions
+			target = flag:gevek_migration
+		}
+		NOT = {
+			is_target_in_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:sabalv_migration
+			}
+		}
+	}
+
+	is_valid = {
+		completely_controls = title:d_erythralamis
+		completely_controls = title:d_elatepios
+		completely_controls = title:d_myligeneia
+		completely_controls = title:d_rizesos
+		completely_controls = title:d_megalarina
+		completely_controls = title:d_argatis
+		completely_controls = title:d_phanaca
+	}
+
+	effect = {
+		trigger_event = sjalvolki_decisions.3016
+		add_to_global_variable_list = {
+			name = unavailable_unique_decisions
+			target = flag:sabalv_migration
+		}
+	}
+	
+	ai_potential = {
+		always = yes
+	}
+
+	ai_will_do = {
+		base = 60
+	}
+}
+
+##################
+# Migrate to Slavka
+# by ThePinkPanzer
+migrate_to_kingdom_slavka = {
+	picture = "gfx/interface/illustrations/decisions/decision_destiny_goal.dds"
+	major = yes
+	desc = migrate_to_kingdom_desc
+    confirm_text = migrate_to_kingdom_confirm
+
+	ai_check_interval = 1
+
+	is_shown = {
+		primary_title = title:e_sjalvolki
+		has_culture_group = culture_group:gh_sjalvolki_group
+		is_landed = yes
+		has_game_rule = story_content_enabled
+		is_target_in_global_variable_list = {
+			name = unavailable_unique_decisions
+			target = flag:sabalv_migration
+		}
+		NOT = {
+			is_target_in_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:slavka_migration
+			}
+		}
+	}
+
+	is_valid = {
+		completely_controls = title:d_phalalia
+		completely_controls = title:d_aphini
+		completely_controls = title:d_agrinyreum
+		completely_controls = title:d_taureum
+	}
+
+	effect = {
+		trigger_event = sjalvolki_decisions.3017
+		add_to_global_variable_list = {
+			name = unavailable_unique_decisions
+			target = flag:slavka_migration
+		}
+	}
+	
+	ai_potential = {
+		always = yes
+	}
+
+	ai_will_do = {
+		base = 60
+	}
+}
+
+##################
+# Migrate to Sladia
+# by ThePinkPanzer
+migrate_to_kingdom_sladia = {
+	picture = "gfx/interface/illustrations/decisions/decision_destiny_goal.dds"
+	major = yes
+	desc = migrate_to_kingdom_desc
+    confirm_text = migrate_to_kingdom_confirm
+
+	ai_check_interval = 1
+
+	is_shown = {
+		primary_title = title:e_sjalvolki
+		has_culture_group = culture_group:gh_sjalvolki_group
+		is_landed = yes
+		has_game_rule = story_content_enabled
+		is_target_in_global_variable_list = {
+			name = unavailable_unique_decisions
+			target = flag:slavka_migration
+		}
+		NOT = {
+			is_target_in_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:sladia_migration
+			}
+		}
+	}
+
+	is_valid = {
+		completely_controls = title:d_pandena
+		completely_controls = title:d_trapopolis
+		completely_controls = title:d_kamymna
+		completely_controls = title:d_thuramos
+		completely_controls = title:d_psacus
+		completely_controls = title:d_ayteos
+	}
+
+	effect = {
+		trigger_event = sjalvolki_decisions.3018
+		add_to_global_variable_list = {
+			name = unavailable_unique_decisions
+			target = flag:sladia_migration
+		}
+	}
+	
+	ai_potential = {
+		always = yes
+	}
+
+	ai_will_do = {
+		base = 60
+	}
+}
+
+##################
+# Migrate to Provdanov
+# by ThePinkPanzer
+migrate_to_kingdom_provdanov = {
+	picture = "gfx/interface/illustrations/decisions/decision_destiny_goal.dds"
+	major = yes
+	desc = migrate_to_kingdom_desc
+    confirm_text = migrate_to_kingdom_confirm
+
+	ai_check_interval = 1
+
+	is_shown = {
+		primary_title = title:e_sjalvolki
+		has_culture_group = culture_group:gh_sjalvolki_group
+		is_landed = yes
+		has_game_rule = story_content_enabled
+		is_target_in_global_variable_list = {
+			name = unavailable_unique_decisions
+			target = flag:slavka_migration
+		}
+		NOT = {
+			is_target_in_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:provdanov_migration
+			}
+		}
+	}
+
+	is_valid = {
+		completely_controls = title:d_pellactus
+		completely_controls = title:d_demymna
+		completely_controls = title:d_kameireia
+		completely_controls = title:d_elatollo
+	}
+
+	effect = {
+		trigger_event = sjalvolki_decisions.3019
+		add_to_global_variable_list = {
+			name = unavailable_unique_decisions
+			target = flag:provdanov_migration
+		}
+	}
+	
+	ai_potential = {
+		always = yes
+	}
+
+	ai_will_do = {
+		base = 60
+	}
+}
+
+##################
+# Migrate to Siktak
+# by ThePinkPanzer
+migrate_to_kingdom_siktak = {
+	picture = "gfx/interface/illustrations/decisions/decision_destiny_goal.dds"
+	major = yes
+	desc = migrate_to_kingdom_desc
+    confirm_text = migrate_to_kingdom_confirm
+
+	ai_check_interval = 1
+
+	is_shown = {
+		primary_title = title:e_sjalvolki
+		has_culture_group = culture_group:gh_sjalvolki_group
+		is_landed = yes
+		has_game_rule = story_content_enabled
+		is_target_in_global_variable_list = {
+			name = unavailable_unique_decisions
+			target = flag:provdanov_migration
+		}
+		NOT = {
+			is_target_in_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:siktak_migration
+			}
+		}
+	}
+
+	is_valid = {
+		completely_controls = title:d_astaseia
+		completely_controls = title:d_eresarnassus
+		completely_controls = title:d_kamaramum
+		completely_controls = title:d_rhypontum
+		completely_controls = title:d_pylypes
+	}
+
+	effect = {
+		trigger_event = sjalvolki_decisions.3020
+		add_to_global_variable_list = {
+			name = unavailable_unique_decisions
+			target = flag:siktak_migration
+		}
+	}
+	
+	ai_potential = {
+		always = yes
+	}
+
+	ai_will_do = {
+		base = 60
+	}
+}
+
+##################
+# Migrate to Cevrek
+# by ThePinkPanzer
+migrate_to_kingdom_cevrek = {
+	picture = "gfx/interface/illustrations/decisions/decision_destiny_goal.dds"
+	major = yes
+	desc = migrate_to_kingdom_desc
+    confirm_text = migrate_to_kingdom_confirm
+
+	ai_check_interval = 1
+
+	is_shown = {
+		primary_title = title:e_sjalvolki
+		has_culture_group = culture_group:gh_sjalvolki_group
+		is_landed = yes
+		has_game_rule = story_content_enabled
+		is_target_in_global_variable_list = {
+			name = unavailable_unique_decisions
+			target = flag:bakav_migration
+		}
+		NOT = {
+			is_target_in_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:cevrek_migration
+			}
+		}
+	}
+
+	is_valid = {
+		completely_controls = title:d_paphepios
+		completely_controls = title:d_crotapezus
+		completely_controls = title:d_kamarosse
+		completely_controls = title:d_arysarnaria
+		completely_controls = title:d_ephgive
+	}
+
+	effect = {
+		trigger_event = sjalvolki_decisions.3021
+		add_to_global_variable_list = {
+			name = unavailable_unique_decisions
+			target = flag:cevrek_migration
+		}
+	}
+	
+	ai_potential = {
+		always = yes
+	}
+
+	ai_will_do = {
+		base = 60
+	}
+}
+
+##################
+# Migrate to Spedk
+# by ThePinkPanzer
+migrate_to_kingdom_spedk = {
+	picture = "gfx/interface/illustrations/decisions/decision_destiny_goal.dds"
+	major = yes
+	desc = migrate_to_kingdom_desc
+    confirm_text = migrate_to_kingdom_confirm
+
+	ai_check_interval = 1
+
+	is_shown = {
+		primary_title = title:e_sjalvolki
+		has_culture_group = culture_group:gh_sjalvolki_group
+		is_landed = yes
+		has_game_rule = story_content_enabled
+		is_target_in_global_variable_list = {
+			name = unavailable_unique_decisions
+			target = flag:bakav_migration
+		}
+		NOT = {
+			is_target_in_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:spedk_migration
+			}
+		}
+	}
+
+	is_valid = {
+		completely_controls = title:d_platiae
+		completely_controls = title:d_philoli
+		completely_controls = title:d_spartenion
+		completely_controls = title:d_sedypethedia
+		completely_controls = title:d_olylama
+	}
+
+	effect = {
+		trigger_event = sjalvolki_decisions.3022
+		add_to_global_variable_list = {
+			name = unavailable_unique_decisions
+			target = flag:spedk_migration
+		}
+	}
+	
+	ai_potential = {
+		always = yes
+	}
+
+	ai_will_do = {
+		base = 60
+	}
+}
+
+##################
+# Migrate to Poaclav
+# by ThePinkPanzer
+migrate_to_kingdom_poaclav = {
+	picture = "gfx/interface/illustrations/decisions/decision_destiny_goal.dds"
+	major = yes
+	desc = migrate_to_kingdom_desc
+    confirm_text = migrate_to_kingdom_confirm
+
+	ai_check_interval = 1
+
+	is_shown = {
+		primary_title = title:e_sjalvolki
+		has_culture_group = culture_group:gh_sjalvolki_group
+		is_landed = yes
+		has_game_rule = story_content_enabled
+		OR = {
+			is_target_in_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:spedk_migration
+			}
+			is_target_in_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:sabalv_migration
+			}
+		}
+		NOT = {
+			is_target_in_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:poaclav_migration
+			}
+		}
+	}
+
+	is_valid = {
+		completely_controls = title:d_dymetra
+		completely_controls = title:d_ithina
+		completely_controls = title:d_epenae
+		completely_controls = title:d_mochlocaea
+		completely_controls = title:d_binth
+		completely_controls = title:d_eryras
+		completely_controls = title:d_itilene
+	}
+
+	effect = {
+		trigger_event = sjalvolki_decisions.3023
+		add_to_global_variable_list = {
+			name = unavailable_unique_decisions
+			target = flag:poaclav_migration
+		}
+	}
+	
+	ai_potential = {
+		always = yes
+	}
+
+	ai_will_do = {
+		base = 60
+	}
+}
+
+##################
+# Migrate to Cershuv
+# by ThePinkPanzer
+migrate_to_kingdom_cershuv = {
+	picture = "gfx/interface/illustrations/decisions/decision_destiny_goal.dds"
+	major = yes
+	desc = migrate_to_kingdom_desc
+    confirm_text = migrate_to_kingdom_confirm
+
+	ai_check_interval = 1
+
+	is_shown = {
+		primary_title = title:e_sjalvolki
+		has_culture_group = culture_group:gh_sjalvolki_group
+		is_landed = yes
+		has_game_rule = story_content_enabled
+		is_target_in_global_variable_list = {
+			name = unavailable_unique_decisions
+			target = flag:poaclav_migration
+		}
+		NOT = {
+			is_target_in_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:cershuv_migration
+			}
+		}
+	}
+
+	is_valid = {
+		completely_controls = title:d_thurios
+		completely_controls = title:d_hellane
+		completely_controls = title:d_byllyrian
+		completely_controls = title:d_epacuse
+		completely_controls = title:d_halaca
+		completely_controls = title:d_chalcela
+	}
+
+	effect = {
+		trigger_event = sjalvolki_decisions.3024
+		add_to_global_variable_list = {
+			name = unavailable_unique_decisions
+			target = flag:cershuv_migration
+		}
+	}
+	
+	ai_potential = {
+		always = yes
+	}
+
+	ai_will_do = {
+		base = 60
+	}
+}
+
+##################
+# Migrate to Vytva
+# by ThePinkPanzer
+migrate_to_kingdom_vytva = {
+	picture = "gfx/interface/illustrations/decisions/decision_destiny_goal.dds"
+	major = yes
+	desc = migrate_to_kingdom_desc
+    confirm_text = migrate_to_kingdom_confirm
+
+	ai_check_interval = 1
+
+	is_shown = {
+		primary_title = title:e_sjalvolki
+		has_culture_group = culture_group:gh_sjalvolki_group
+		is_landed = yes
+		has_game_rule = story_content_enabled
+		is_target_in_global_variable_list = {
+			name = unavailable_unique_decisions
+			target = flag:cershuv_migration
+		}
+		NOT = {
+			is_target_in_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:vytva_migration
+			}
+		}
+	}
+
+	is_valid = {
+		completely_controls = title:d_tomeira
+		completely_controls = title:d_cyrydon
+		completely_controls = title:d_rhegyra
+		completely_controls = title:d_olendos
+		completely_controls = title:d_thyrodosia
+	}
+
+	effect = {
+		trigger_event = sjalvolki_decisions.3025
+		add_to_global_variable_list = {
+			name = unavailable_unique_decisions
+			target = flag:vytva_migration
+		}
+	}
+	
+	ai_potential = {
+		always = yes
+	}
+
+	ai_will_do = {
+		base = 60
+	}
+}
+
+##################
+# Migrate to Karvice
+# by ThePinkPanzer
+migrate_to_kingdom_karvice = {
+	picture = "gfx/interface/illustrations/decisions/decision_destiny_goal.dds"
+	major = yes
+	desc = migrate_to_kingdom_desc
+    confirm_text = migrate_to_kingdom_confirm
+
+	ai_check_interval = 1
+
+	is_shown = {
+		primary_title = title:e_sjalvolki
+		has_culture_group = culture_group:gh_sjalvolki_group
+		is_landed = yes
+		has_game_rule = story_content_enabled
+		OR = {
+			is_target_in_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:vytva_migration
+			}
+			is_target_in_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:krary_migration
+			}
+		}
+		NOT = {
+			is_target_in_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:karvice_migration
+			}
+		}
+	}
+
+	is_valid = {
+		completely_controls = title:d_demylos
+		completely_controls = title:d_kepapetra
+		completely_controls = title:d_massatrea
+		completely_controls = title:d_stenitida
+		completely_controls = title:d_phaistetus
+		completely_controls = title:d_apenae
+	}
+
+	effect = {
+		trigger_event = sjalvolki_decisions.3026
+		add_to_global_variable_list = {
+			name = unavailable_unique_decisions
+			target = flag:karvice_migration
+		}
+	}
+	
+	ai_potential = {
+		always = yes
+	}
+
+	ai_will_do = {
+		base = 60
+	}
+}
+
+##################
+# Migrate to Tolmat
+# by ThePinkPanzer
+migrate_to_kingdom_tolmat = {
+	picture = "gfx/interface/illustrations/decisions/decision_destiny_goal.dds"
+	major = yes
+	desc = migrate_to_kingdom_desc
+    confirm_text = migrate_to_kingdom_confirm
+
+	ai_check_interval = 1
+
+	is_shown = {
+		primary_title = title:e_sjalvolki
+		has_culture_group = culture_group:gh_sjalvolki_group
+		is_landed = yes
+		has_game_rule = story_content_enabled
+		is_target_in_global_variable_list = {
+			name = unavailable_unique_decisions
+			target = flag:karvice_migration
+		}
+		NOT = {
+			is_target_in_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:tolmat_migration
+			}
+		}
+	}
+
+	is_valid = {
+		completely_controls = title:d_cythioch
+		completely_controls = title:d_lampsantina
+		completely_controls = title:d_sozydos
+		completely_controls = title:d_sozegion
+	}
+
+	effect = {
+		trigger_event = sjalvolki_decisions.3027
+		add_to_global_variable_list = {
+			name = unavailable_unique_decisions
+			target = flag:tolmat_migration
+		}
+	}
+	
+	ai_potential = {
+		always = yes
+	}
+
+	ai_will_do = {
+		base = 60
+	}
+}
+
+##################
+# Migrate to Glicin
+# by ThePinkPanzer
+migrate_to_kingdom_glicin = {
+	picture = "gfx/interface/illustrations/decisions/decision_destiny_goal.dds"
+	major = yes
+	desc = migrate_to_kingdom_desc
+    confirm_text = migrate_to_kingdom_confirm
+
+	ai_check_interval = 1
+
+	is_shown = {
+		primary_title = title:e_sjalvolki
+		has_culture_group = culture_group:gh_sjalvolki_group
+		is_landed = yes
+		has_game_rule = story_content_enabled
+		OR = {
+			is_target_in_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:spedk_migration
+			}
+			is_target_in_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:kochod_migration
+			}
+		}
+		NOT = {
+			is_target_in_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:glicin_migration
+			}
+		}
+	}
+
+	is_valid = {
+		completely_controls = title:d_hieraros
+		completely_controls = title:d_apa
+		completely_controls = title:d_diysthon
+		completely_controls = title:d_aarpazdea
+		completely_controls = title:d_pesandros
+		completely_controls = title:d_asglekeia
+		completely_controls = title:d_skukoi
+	}
+
+	effect = {
+		trigger_event = sjalvolki_decisions.3028
+		add_to_global_variable_list = {
+			name = unavailable_unique_decisions
+			target = flag:glicin_migration
+		}
+	}
+	
+	ai_potential = {
+		always = yes
+	}
+
+	ai_will_do = {
+		base = 60
+	}
+}
+
+##################
+# Migrate to Kochod
+# by ThePinkPanzer
+migrate_to_kingdom_kochod = {
+	picture = "gfx/interface/illustrations/decisions/decision_destiny_goal.dds"
+	major = yes
+	desc = migrate_to_kingdom_desc
+    confirm_text = migrate_to_kingdom_confirm
+
+	ai_check_interval = 1
+
+	is_shown = {
+		primary_title = title:e_sjalvolki
+		has_culture_group = culture_group:gh_sjalvolki_group
+		is_landed = yes
+		has_game_rule = story_content_enabled
+		OR = {
+			is_target_in_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:glicin_migration
+			}
+			is_target_in_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:krary_migration
+			}
+		}
+		NOT = {
+			is_target_in_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:kochod_migration
+			}
+		}
+	}
+
+	is_valid = {
+		completely_controls = title:d_stratopedon
+		completely_controls = title:d_he_vrerai
+		completely_controls = title:d_helesthemna
+		completely_controls = title:d_gvasiklea
+		completely_controls = title:d_proletheros
+	}
+
+	effect = {
+		trigger_event = sjalvolki_decisions.3029
+		add_to_global_variable_list = {
+			name = unavailable_unique_decisions
+			target = flag:kochod_migration
+		}
+	}
+	
+	ai_potential = {
+		always = yes
+	}
+
+	ai_will_do = {
+		base = 60
+	}
+}
+
+##################
+# Migrate to Parclav
+# by ThePinkPanzer
+migrate_to_kingdom_parclav = {
+	picture = "gfx/interface/illustrations/decisions/decision_destiny_goal.dds"
+	major = yes
+	desc = migrate_to_kingdom_desc
+    confirm_text = migrate_to_kingdom_confirm
+
+	ai_check_interval = 1
+
+	is_shown = {
+		primary_title = title:e_sjalvolki
+		has_culture_group = culture_group:gh_sjalvolki_group
+		is_landed = yes
+		has_game_rule = story_content_enabled
+		OR = {
+			is_target_in_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:kochod_migration
+			}
+			is_target_in_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:krary_migration
+			}
+			is_target_in_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:lubry_migration
+			}
+		}
+		NOT = {
+			is_target_in_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:parclav_migration
+			}
+		}
+	}
+
+	is_valid = {
+		completely_controls = title:d_myrmomenus
+		completely_controls = title:d_smyrnonnos
+		completely_controls = title:d_stenyrian
+		completely_controls = title:d_assila
+		completely_controls = title:d_messopus
+	}
+
+	effect = {
+		trigger_event = sjalvolki_decisions.3030
+		add_to_global_variable_list = {
+			name = unavailable_unique_decisions
+			target = flag:parclav_migration
+		}
+	}
+	
+	ai_potential = {
+		always = yes
+	}
+
+	ai_will_do = {
+		base = 60
+	}
+}
+
+##################
+# Migrate to Krary
+# by ThePinkPanzer
+migrate_to_kingdom_krary = {
+	picture = "gfx/interface/illustrations/decisions/decision_destiny_goal.dds"
+	major = yes
+	desc = migrate_to_kingdom_desc
+    confirm_text = migrate_to_kingdom_confirm
+
+	ai_check_interval = 1
+
+	is_shown = {
+		primary_title = title:e_sjalvolki
+		has_culture_group = culture_group:gh_sjalvolki_group
+		is_landed = yes
+		has_game_rule = story_content_enabled
+		OR = {
+			is_target_in_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:kochod_migration
+			}
+			is_target_in_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:karvice_migration
+			}
+		}
+		NOT = {
+			is_target_in_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:krary_migration
+			}
+		}
+	}
+
+	is_valid = {
+		completely_controls = title:d_phanokampos
+		completely_controls = title:d_eleutoezen
+		completely_controls = title:d_cyralos
+		completely_controls = title:d_paeschaes
+		completely_controls = title:d_idon
+	}
+
+	effect = {
+		trigger_event = sjalvolki_decisions.3031
+		add_to_global_variable_list = {
+			name = unavailable_unique_decisions
+			target = flag:krary_migration
+		}
+	}
+	
+	ai_potential = {
+		always = yes
+	}
+
+	ai_will_do = {
+		base = 60
+	}
+}
+
+##################
+# Migrate to Lubry
+# by ThePinkPanzer
+migrate_to_kingdom_lubry = {
+	picture = "gfx/interface/illustrations/decisions/decision_destiny_goal.dds"
+	major = yes
+	desc = migrate_to_kingdom_desc
+    confirm_text = migrate_to_kingdom_confirm
+
+	ai_check_interval = 1
+
+	is_shown = {
+		primary_title = title:e_sjalvolki
+		has_culture_group = culture_group:gh_sjalvolki_group
+		is_landed = yes
+		has_game_rule = story_content_enabled
+		OR = {
+			is_target_in_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:karvice_migration
+			}
+			is_target_in_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:horav_migration
+			}
+		}
+		NOT = {
+			is_target_in_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:lubry_migration
+			}
+		}
+	}
+
+	is_valid = {
+		completely_controls = title:d_mochlurion
+		completely_controls = title:d_gangredon
+		completely_controls = title:d_tukhei
+		completely_controls = title:d_actox
+		completely_controls = title:d_akragas
+	}
+
+	effect = {
+		trigger_event = sjalvolki_decisions.3032
+		add_to_global_variable_list = {
+			name = unavailable_unique_decisions
+			target = flag:lubry_migration
+		}
+	}
+	
+	ai_potential = {
+		always = yes
+	}
+
+	ai_will_do = {
+		base = 60
+	}
+}
+
+##################
+# Migrate to Horav
+# by ThePinkPanzer
+migrate_to_kingdom_horav = {
+	picture = "gfx/interface/illustrations/decisions/decision_destiny_goal.dds"
+	major = yes
+	desc = migrate_to_kingdom_desc
+    confirm_text = migrate_to_kingdom_confirm
+
+	ai_check_interval = 1
+
+	is_shown = {
+		primary_title = title:e_sjalvolki
+		has_culture_group = culture_group:gh_sjalvolki_group
+		is_landed = yes
+		has_game_rule = story_content_enabled
+		OR = {
+			is_target_in_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:karvice_migration
+			}
+			is_target_in_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:krary_migration
+			}
+			is_target_in_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:lubry_migration
+			}
+		}
+		NOT = {
+			is_target_in_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:horav_migration
+			}
+		}
+	}
+
+	is_valid = {
+		completely_controls = title:d_epidamnus
+		completely_controls = title:d_lampsacus
+		completely_controls = title:d_aakthmai
+		completely_controls = title:d_coucounaries
+		completely_controls = title:d_menelaion
+		completely_controls = title:d_nisara
+	}
+
+	effect = {
+		trigger_event = sjalvolki_decisions.3033
+		add_to_global_variable_list = {
+			name = unavailable_unique_decisions
+			target = flag:horav_migration
+		}
+	}
+	
+	ai_potential = {
+		always = yes
+	}
+
+	ai_will_do = {
+		base = 60
+	}
+}
+
+##################
+# Migrate to Alman
+# by ThePinkPanzer
+migrate_to_kingdom_alman = {
+	picture = "gfx/interface/illustrations/decisions/decision_destiny_goal.dds"
+	major = yes
+	desc = migrate_to_kingdom_desc
+    confirm_text = migrate_to_kingdom_confirm
+
+	ai_check_interval = 1
+
+	is_shown = {
+		primary_title = title:e_sjalvolki
+		has_culture_group = culture_group:gh_sjalvolki_group
+		is_landed = yes
+		has_game_rule = story_content_enabled
+		is_target_in_global_variable_list = {
+			name = unavailable_unique_decisions
+			target = flag:horav_migration
+		}
+		NOT = {
+			is_target_in_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:alman_migration
+			}
+		}
+	}
+
+	is_valid = {
+		completely_controls = title:d_tomi
+		completely_controls = title:d_posidonia
+		completely_controls = title:d_jaraea
+		completely_controls = title:d_nisoni
+		completely_controls = title:d_busaraphae
+		completely_controls = title:d_kalkathoi
+	}
+
+	effect = {
+		trigger_event = sjalvolki_decisions.3034
+		add_to_global_variable_list = {
+			name = unavailable_unique_decisions
+			target = flag:alman_migration
+		}
+	}
+	
+	ai_potential = {
+		always = yes
+	}
+
+	ai_will_do = {
+		base = 60
+	}
+}
+
+##################
+# Migrate to Deskivi
+# by ThePinkPanzer
+migrate_to_kingdom_deskivi = {
+	picture = "gfx/interface/illustrations/decisions/decision_destiny_goal.dds"
+	major = yes
+	desc = migrate_to_kingdom_desc
+    confirm_text = migrate_to_kingdom_confirm
+
+	ai_check_interval = 1
+
+	is_shown = {
+		primary_title = title:e_sjalvolki
+		has_culture_group = culture_group:gh_sjalvolki_group
+		is_landed = yes
+		has_game_rule = story_content_enabled
+		is_target_in_global_variable_list = {
+			name = unavailable_unique_decisions
+			target = flag:vka_migration
+		}
+		is_target_in_global_variable_list = {
+			name = unavailable_unique_decisions
+			target = flag:bledlik_migration
+		}
+		NOT = {
+			is_target_in_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:deskivi_migration
+			}
+		}
+	}
+
+	is_valid = {
+		completely_controls = title:d_addia
+		#completely_controls = title:d_seopuse
+		#completely_controls = title:d_thururii
+		completely_controls = title:d_gelale
+		completely_controls = title:d_moorende
+		completely_controls = title:d_rumanja_vas
+	}
+
+	effect = {
+		trigger_event = sjalvolki_decisions.3035
+		add_to_global_variable_list = {
+			name = unavailable_unique_decisions
+			target = flag:deskivi_migration
+		}
+	}
+	
+	ai_potential = {
+		always = yes
+	}
+
+	ai_will_do = {
+		base = 60
+	}
+}
+
+##################
+# Migrate to Descki
+# by ThePinkPanzer
+migrate_to_kingdom_descki = {
+	picture = "gfx/interface/illustrations/decisions/decision_destiny_goal.dds"
+	major = yes
+	desc = migrate_to_kingdom_desc
+    confirm_text = migrate_to_kingdom_confirm
+
+	ai_check_interval = 1
+
+	is_shown = {
+		primary_title = title:e_sjalvolki
+		has_culture_group = culture_group:gh_sjalvolki_group
+		is_landed = yes
+		has_game_rule = story_content_enabled
+		OR = {
+			is_target_in_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:deskivi_migration
+			}
+			is_target_in_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:djav_migration
+			}
+		}
+		NOT = {
+			is_target_in_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:descki_migration
+			}
+		}
+	}
+
+	is_valid = {
+		completely_controls = title:d_ithna
+		completely_controls = title:d_knokidbes
+		completely_controls = title:d_maadoran
+		completely_controls = title:d_oekevrokanne
+	}
+
+	effect = {
+		trigger_event = sjalvolki_decisions.3036
+		add_to_global_variable_list = {
+			name = unavailable_unique_decisions
+			target = flag:descki_migration
+		}
+	}
+	
+	ai_potential = {
+		always = yes
+	}
+
+	ai_will_do = {
+		base = 60
+	}
+}
+
+##################
+# Migrate to Kradaov
+# by ThePinkPanzer
+migrate_to_kingdom_kradaov = {
+	picture = "gfx/interface/illustrations/decisions/decision_destiny_goal.dds"
+	major = yes
+	desc = migrate_to_kingdom_desc
+    confirm_text = migrate_to_kingdom_confirm
+
+	ai_check_interval = 1
+
+	is_shown = {
+		primary_title = title:e_sjalvolki
+		has_culture_group = culture_group:gh_sjalvolki_group
+		is_landed = yes
+		has_game_rule = story_content_enabled
+		OR = {
+			is_target_in_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:descki_migration
+			}
+			is_target_in_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:djav_migration
+			}
+		}
+		NOT = {
+			is_target_in_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:kradaov_migration
+			}
+		}
+	}
+
+	is_valid = {
+		completely_controls = title:d_prirkos
+		completely_controls = title:d_saris
+		completely_controls = title:d_olythssoessa
+		completely_controls = title:d_elrhyos
+		completely_controls = title:d_dryn
+	}
+
+	effect = {
+		trigger_event = sjalvolki_decisions.3037
+		add_to_global_variable_list = {
+			name = unavailable_unique_decisions
+			target = flag:kradaov_migration
+		}
+	}
+	
+	ai_potential = {
+		always = yes
+	}
+
+	ai_will_do = {
+		base = 60
+	}
+}
+
+##################
+# Migrate to Djav
+# by ThePinkPanzer
+migrate_to_kingdom_djav = {
+	picture = "gfx/interface/illustrations/decisions/decision_destiny_goal.dds"
+	major = yes
+	desc = migrate_to_kingdom_desc
+    confirm_text = migrate_to_kingdom_confirm
+
+	ai_check_interval = 1
+
+	is_shown = {
+		primary_title = title:e_sjalvolki
+		has_culture_group = culture_group:gh_sjalvolki_group
+		is_landed = yes
+		has_game_rule = story_content_enabled
+		OR = {
+			is_target_in_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:descki_migration
+			}
+			is_target_in_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:pdvi_migration
+			}
+		}
+		NOT = {
+			is_target_in_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:djav_migration
+			}
+		}
+	}
+
+	is_valid = {
+		completely_controls = title:d_vrekennus
+		completely_controls = title:d_oradoth
+		completely_controls = title:d_oedi
+		completely_controls = title:d_iopolos
+	}
+
+	effect = {
+		trigger_event = sjalvolki_decisions.3038
+		add_to_global_variable_list = {
+			name = unavailable_unique_decisions
+			target = flag:djav_migration
+		}
+	}
+	
+	ai_potential = {
+		always = yes
+	}
+
+	ai_will_do = {
+		base = 60
+	}
+}
+
+##################
+# Migrate to Pdvi
+# by ThePinkPanzer
+migrate_to_kingdom_pdvi = {
+	picture = "gfx/interface/illustrations/decisions/decision_destiny_goal.dds"
+	major = yes
+	desc = migrate_to_kingdom_desc
+    confirm_text = migrate_to_kingdom_confirm
+
+	ai_check_interval = 1
+
+	is_shown = {
+		primary_title = title:e_sjalvolki
+		has_culture_group = culture_group:gh_sjalvolki_group
+		is_landed = yes
+		has_game_rule = story_content_enabled
+		OR = {
+			is_target_in_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:djav_migration
+			}
+			is_target_in_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:hvak_migration
+			}
+		}
+		NOT = {
+			is_target_in_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:pdvi_migration
+			}
+		}
+	}
+
+	is_valid = {
+		completely_controls = title:d_askigos
+		completely_controls = title:d_abene
+		completely_controls = title:d_kethetis
+		completely_controls = title:d_grylothephon
+		completely_controls = title:d_adne
+	}
+
+	effect = {
+		trigger_event = sjalvolki_decisions.3039
+		add_to_global_variable_list = {
+			name = unavailable_unique_decisions
+			target = flag:pdvi_migration
+		}
+	}
+	
+	ai_potential = {
+		always = yes
+	}
+
+	ai_will_do = {
+		base = 60
+	}
+}
+
+##################
+# Migrate to Hvak
+# by ThePinkPanzer
+migrate_to_kingdom_hvak = {
+	picture = "gfx/interface/illustrations/decisions/decision_destiny_goal.dds"
+	major = yes
+	desc = migrate_to_kingdom_desc
+    confirm_text = migrate_to_kingdom_confirm
+
+	ai_check_interval = 1
+
+	is_shown = {
+		primary_title = title:e_sjalvolki
+		has_culture_group = culture_group:gh_sjalvolki_group
+		is_landed = yes
+		has_game_rule = story_content_enabled
+		OR = {
+			is_target_in_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:pdvi_migration
+			}
+			is_target_in_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:kradal_migrartion
+			}
+		}
+		NOT = {
+			is_target_in_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:hvak_migration
+			}
+		}
+	}
+
+	is_valid = {
+		completely_controls = title:d_anadres
+		completely_controls = title:d_dephoephladus
+		completely_controls = title:d_cose
+		completely_controls = title:d_oios
+		completely_controls = title:d_olafos
+	}
+
+	effect = {
+		trigger_event = sjalvolki_decisions.3040
+		add_to_global_variable_list = {
+			name = unavailable_unique_decisions
+			target = flag:hvak_migration
+		}
+	}
+	
+	ai_potential = {
+		always = yes
+	}
+
+	ai_will_do = {
+		base = 60
+	}
+}
+
+##################
+# Migrate to Kradal
+# by ThePinkPanzer
+migrate_to_kingdom_kradal = {
+	picture = "gfx/interface/illustrations/decisions/decision_destiny_goal.dds"
+	major = yes
+	desc = migrate_to_kingdom_desc
+    confirm_text = migrate_to_kingdom_confirm
+
+	ai_check_interval = 1
+
+	is_shown = {
+		primary_title = title:e_sjalvolki
+		has_culture_group = culture_group:gh_sjalvolki_group
+		is_landed = yes
+		has_game_rule = story_content_enabled
+		OR = {
+			is_target_in_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:hvak_migration
+			}
+			is_target_in_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:sakc_migration
+			}
+		}
+		NOT = {
+			is_target_in_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:kradal_migrartion
+			}
+		}
+	}
+
+	is_valid = {
+		completely_controls = title:d_vroradi
+		completely_controls = title:d_anphon
+		completely_controls = title:d_grydi
+		completely_controls = title:d_diath
+		completely_controls = title:d_skyympene
+		completely_controls = title:d_myris
+		completely_controls = title:d_dine
+	}
+
+	effect = {
+		trigger_event = sjalvolki_decisions.3041
+		add_to_global_variable_list = {
+			name = unavailable_unique_decisions
+			target = flag:kradal_migrartion
+		}
+	}
+	
+	ai_potential = {
+		always = yes
+	}
+
+	ai_will_do = {
+		base = 60
+	}
+}
+
+##################
+# Migrate to Sakc
+# by ThePinkPanzer
+migrate_to_kingdom_sakc = {
+	picture = "gfx/interface/illustrations/decisions/decision_destiny_goal.dds"
+	major = yes
+	desc = migrate_to_kingdom_desc
+    confirm_text = migrate_to_kingdom_confirm
+
+	ai_check_interval = 1
+
+	is_shown = {
+		primary_title = title:e_sjalvolki
+		has_culture_group = culture_group:gh_sjalvolki_group
+		is_landed = yes
+		has_game_rule = story_content_enabled
+		OR = {
+			is_target_in_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:kradal_migrartion
+			}
+			is_target_in_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:helski_migration
+			}
+		}
+		NOT = {
+			is_target_in_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:sakc_migration
+			}
+		}
+	}
+
+	is_valid = {
+		completely_controls = title:d_herainai
+		completely_controls = title:d_skylos
+		completely_controls = title:d_migoelni
+		completely_controls = title:d_paos
+		completely_controls = title:d_heriris
+	}
+
+	effect = {
+		trigger_event = sjalvolki_decisions.3042
+		add_to_global_variable_list = {
+			name = unavailable_unique_decisions
+			target = flag:sakc_migration
+		}
+	}
+	
+	ai_potential = {
+		always = yes
+	}
+
+	ai_will_do = {
+		base = 60
+	}
+}
+
+##################
+# Migrate to Helski
+# by ThePinkPanzer
+migrate_to_kingdom_helski = {
+	picture = "gfx/interface/illustrations/decisions/decision_destiny_goal.dds"
+	major = yes
+	desc = migrate_to_kingdom_desc
+    confirm_text = migrate_to_kingdom_confirm
+
+	ai_check_interval = 1
+
+	is_shown = {
+		primary_title = title:e_sjalvolki
+		has_culture_group = culture_group:gh_sjalvolki_group
+		is_landed = yes
+		has_game_rule = story_content_enabled
+		OR = {
+			is_target_in_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:sakc_migration
+			}
+			is_target_in_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:cevrek_migration
+			}
+		}
+		NOT = {
+			is_target_in_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:helski_migration
+			}
+		}
+	}
+
+	is_valid = {
+		completely_controls = title:d_elrio
+		completely_controls = title:d_gryike
+		completely_controls = title:d_chsolythth
+		completely_controls = title:d_keblaia
+		completely_controls = title:d_akthon
+	}
+
+	effect = {
+		trigger_event = sjalvolki_decisions.3043
+		add_to_global_variable_list = {
+			name = unavailable_unique_decisions
+			target = flag:helski_migration
+		}
+	}
+	
+	ai_potential = {
+		always = yes
+	}
+
+	ai_will_do = {
+		base = 60
+	}
+}
+
+##################
+# Migrate to Bledl
+# by ThePinkPanzer
+migrate_to_kingdom_bledl = {
+	picture = "gfx/interface/illustrations/decisions/decision_destiny_goal.dds"
+	major = yes
+	desc = migrate_to_kingdom_desc
+    confirm_text = migrate_to_kingdom_confirm
+
+	ai_check_interval = 1
+
+	is_shown = {
+		primary_title = title:e_sjalvolki
+		has_culture_group = culture_group:gh_sjalvolki_group
+		is_landed = yes
+		has_game_rule = story_content_enabled
+		is_target_in_global_variable_list = {
+			name = unavailable_unique_decisions
+			target = flag:sakc_migration
+		}
+		NOT = {
+			is_target_in_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:bledl_migration
+			}
+		}
+	}
+
+	is_valid = {
+		completely_controls = title:d_mekipia
+		completely_controls = title:d_akkos
+		completely_controls = title:d_armos
+		completely_controls = title:d_eene
+		completely_controls = title:d_cregoeis
+	}
+
+	effect = {
+		trigger_event = sjalvolki_decisions.3044
+		add_to_global_variable_list = {
+			name = unavailable_unique_decisions
+			target = flag:bledl_migration
+		}
+	}
+	
+	ai_potential = {
+		always = yes
+	}
+
+	ai_will_do = {
+		base = 60
+	}
+}
+
+##################
+# Migrate to Dlak
+# by ThePinkPanzer
+migrate_to_kingdom_dlak = {
+	picture = "gfx/interface/illustrations/decisions/decision_destiny_goal.dds"
+	major = yes
+	desc = migrate_to_kingdom_desc
+    confirm_text = migrate_to_kingdom_confirm
+
+	ai_check_interval = 1
+
+	is_shown = {
+		primary_title = title:e_sjalvolki
+		has_culture_group = culture_group:gh_sjalvolki_group
+		is_landed = yes
+		has_game_rule = story_content_enabled
+		is_target_in_global_variable_list = {
+			name = unavailable_unique_decisions
+			target = flag:sakc_migration
+		}
+		NOT = {
+			is_target_in_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:dlak_migration
+			}
+		}
+	}
+
+	is_valid = {
+		completely_controls = title:d_rhophones
+		completely_controls = title:d_antaphos
+		completely_controls = title:d_dulia
+		completely_controls = title:d_hacelia
+		completely_controls = title:d_midia
+		completely_controls = title:d_pedi
+	}
+
+	effect = {
+		trigger_event = sjalvolki_decisions.3045
+		add_to_global_variable_list = {
+			name = unavailable_unique_decisions
+			target = flag:dlak_migration
+		}
+	}
+	
+	ai_potential = {
+		always = yes
+	}
+
+	ai_will_do = {
+		base = 60
+	}
+}
+
+##################
+# Migrate to Vlisck
+# by ThePinkPanzer
+migrate_to_kingdom_vlisck = {
+	picture = "gfx/interface/illustrations/decisions/decision_destiny_goal.dds"
+	major = yes
+	desc = migrate_to_kingdom_desc
+    confirm_text = migrate_to_kingdom_confirm
+
+	ai_check_interval = 1
+
+	is_shown = {
+		primary_title = title:e_sjalvolki
+		has_culture_group = culture_group:gh_sjalvolki_group
+		is_landed = yes
+		has_game_rule = story_content_enabled
+		OR = {
+			is_target_in_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:bledl_migration
+			}
+			is_target_in_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:dlak_migration
+			}
+		}
+		NOT = {
+			is_target_in_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:vlisck_migration
+			}
+		}
+	}
+
+	is_valid = {
+		completely_controls = title:d_eretrona
+		completely_controls = title:d_monaros
+		completely_controls = title:d_teron
+		completely_controls = title:d_olynthagoria
+		completely_controls = title:d_myonea
+	}
+
+	effect = {
+		trigger_event = sjalvolki_decisions.3046
+		add_to_global_variable_list = {
+			name = unavailable_unique_decisions
+			target = flag:vlisck_migration
+		}
+	}
+	
+	ai_potential = {
+		always = yes
+	}
+
+	ai_will_do = {
+		base = 60
+	}
+}
+
+##################
+# Migrate to Glicvice
+# by ThePinkPanzer
+migrate_to_kingdom_glicvice = {
+	picture = "gfx/interface/illustrations/decisions/decision_destiny_goal.dds"
+	major = yes
+	desc = migrate_to_kingdom_desc
+    confirm_text = migrate_to_kingdom_confirm
+
+	ai_check_interval = 1
+
+	is_shown = {
+		primary_title = title:e_sjalvolki
+		has_culture_group = culture_group:gh_sjalvolki_group
+		is_landed = yes
+		has_game_rule = story_content_enabled
+		is_target_in_global_variable_list = {
+			name = unavailable_unique_decisions
+			target = flag:lubry_migration
+		}
+		NOT = {
+			is_target_in_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:glicvice_migration
+			}
+		}
+	}
+
+	is_valid = {
+		completely_controls = title:d_kordabad
+		completely_controls = title:d_ezia
+		completely_controls = title:d_povia
+	}
+
+	effect = {
+		trigger_event = sjalvolki_decisions.3047
+		add_to_global_variable_list = {
+			name = unavailable_unique_decisions
+			target = flag:glicvice_migration
+		}
+	}
+	
+	ai_potential = {
+		always = yes
+	}
+
+	ai_will_do = {
+		base = 60
+	}
+}
+
+##################
+# Migrate to Slavkinzi
+# by ThePinkPanzer
+migrate_to_kingdom_slavkinzi = {
+	picture = "gfx/interface/illustrations/decisions/decision_destiny_goal.dds"
+	major = yes
+	desc = migrate_to_kingdom_desc
+    confirm_text = migrate_to_kingdom_confirm
+
+	ai_check_interval = 1
+
+	is_shown = {
+		primary_title = title:e_sjalvolki
+		has_culture_group = culture_group:gh_sjalvolki_group
+		is_landed = yes
+		has_game_rule = story_content_enabled
+		is_target_in_global_variable_list = {
+			name = unavailable_unique_decisions
+			target = flag:glicvice_migration
+		}
+		NOT = {
+			is_target_in_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:slavkinzi_migration
+			}
+		}
+	}
+
+	is_valid = {
+		completely_controls = title:d_sthenoumnos
+		completely_controls = title:d_antiphoron
+		completely_controls = title:d_hemaiod
+		completely_controls = title:d_ketnax
+	}
+
+	effect = {
+		trigger_event = sjalvolki_decisions.3048
+		add_to_global_variable_list = {
+			name = unavailable_unique_decisions
+			target = flag:slavkinzi_migration
+		}
+	}
+	
+	ai_potential = {
+		always = yes
+	}
+
+	ai_will_do = {
+		base = 60
+	}
+}
+
+##################
+# Migrate to Cravgrad
+# by ThePinkPanzer
+migrate_to_kingdom_cravgrad = {
+	picture = "gfx/interface/illustrations/decisions/decision_destiny_goal.dds"
+	major = yes
+	desc = migrate_to_kingdom_desc
+    confirm_text = migrate_to_kingdom_confirm
+
+	ai_check_interval = 1
+
+	is_shown = {
+		primary_title = title:e_sjalvolki
+		has_culture_group = culture_group:gh_sjalvolki_group
+		is_landed = yes
+		has_game_rule = story_content_enabled
+		OR = {
+			is_target_in_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:slavkinzi_migration
+			}
+			is_target_in_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:alman_migration
+			}
+		}
+		NOT = {
+			is_target_in_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:cravgrad_migration
+			}
+		}
+	}
+
+	is_valid = {
+		completely_controls = title:d_kunnae
+		completely_controls = title:d_syracus
+		completely_controls = title:d_aregodau
+		completely_controls = title:d_kathardd
+		completely_controls = title:d_mulgarrartar
+		completely_controls = title:d_oltedic
+	}
+
+	effect = {
+		trigger_event = sjalvolki_decisions.3049
+		add_to_global_variable_list = {
+			name = unavailable_unique_decisions
+			target = flag:cravgrad_migration
+		}
+	}
+	
+	ai_potential = {
+		always = yes
+	}
+
+	ai_will_do = {
+		base = 60
+	}
+}
+
+##################
+# Migrate to Crelkvania
+# by ThePinkPanzer
+migrate_to_kingdom_crelkvania = {
+	picture = "gfx/interface/illustrations/decisions/decision_destiny_goal.dds"
+	major = yes
+	desc = migrate_to_kingdom_desc
+    confirm_text = migrate_to_kingdom_confirm
+
+	ai_check_interval = 1
+
+	is_shown = {
+		primary_title = title:e_sjalvolki
+		has_culture_group = culture_group:gh_sjalvolki_group
+		is_landed = yes
+		has_game_rule = story_content_enabled
+		is_target_in_global_variable_list = {
+			name = unavailable_unique_decisions
+			target = flag:cravgrad_migration
+		}
+		NOT = {
+			is_target_in_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:crelkvania_migration
+			}
+		}
+	}
+
+	is_valid = {
+		completely_controls = title:d_naekytikid
+		completely_controls = title:d_bruttac
+		completely_controls = title:d_peletakki
+		completely_controls = title:d_karth
+		completely_controls = title:d_kallin
+	}
+
+	effect = {
+		trigger_event = sjalvolki_decisions.3050
+		add_to_global_variable_list = {
+			name = unavailable_unique_decisions
+			target = flag:crelkvania_migration
+		}
+	}
+	
+	ai_potential = {
+		always = yes
+	}
+
+	ai_will_do = {
+		base = 60
+	}
+}
+

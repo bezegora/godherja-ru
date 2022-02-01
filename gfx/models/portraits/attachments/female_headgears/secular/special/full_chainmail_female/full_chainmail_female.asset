@@ -1,0 +1,19 @@
+pdxmesh = {
+	name = "full_chainmail_female_mesh"
+	file = "full_chainmail_female.mesh"
+
+	meshsettings = {
+		name = "fc_female_Shape"
+		index = 0
+		texture_diffuse = "fc_color.dds"
+		texture_normal = "fc_normal.dds"
+		texture_specular = "fc_properties.dds"
+		shader = "portrait_attachment"
+		shader_file = "gfx/FX/jomini/portrait.shader"
+	}
+}
+
+entity = {
+	name = "full_chainmail_female_entity"
+	pdxmesh = "full_chainmail_female_mesh"
+}

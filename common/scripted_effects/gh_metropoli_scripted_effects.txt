@@ -1,0 +1,75 @@
+﻿initialize_metropoli_effect = {	# Run on game start to add building slots to metropoli and add in buildings that would otherwise refuse to load due to previous build cap
+	every_province = {
+		limit = {
+			OR = {
+				has_holding_type = palatial_district_holding
+				has_holding_type = military_district_holding
+				has_holding_type = maritime_district_holding
+				has_holding_type = trade_district_holding
+				has_holding_type = temple_district_holding
+				has_holding_type = urban_district_holding
+				has_holding_type = ruined_district_holding
+				has_holding_type = workshop_district_holding
+				has_holding_type = ruined_military_district_holding
+				has_holding_type = ruined_palatial_district_holding
+				has_holding_type = ruined_maritime_district_holding
+				has_holding_type = ruined_temple_district_holding
+				has_holding_type = ruined_trade_district_holding
+				has_holding_type = ruined_urban_district_holding
+				has_holding_type = ruined_workshop_district_holding
+			}
+		}
+		if = {
+			limit = {	# County capitals get two additional building slots
+				is_county_capital = yes
+			}
+			add_building_slot = 1
+		}
+		add_building_slot = 1
+	}
+	title:c_halium = {
+		title_province = {
+			add_building = walls_03
+			add_building = administration_03
+		}
+	}
+	title:c_kyzous = {
+		title_province = {
+			add_building = walls_01
+		}
+	}
+	title:c_tchouran = {
+		title_province = {
+			add_building = walls_03
+			add_building = administration_02
+		}
+	}
+	title:c_sereksi = {
+		title_province = {
+			add_building = walls_02
+		}
+	}
+}
+
+clear_ruin_effect = {
+	if = {
+		limit = { 
+			NOR = {  
+				has_building = palace_ruins_01
+				has_building = house_ruins_01
+				has_building = garden_ruins_01
+				has_building = fountain_ruins_01
+				has_building = crater_ruins_01
+				has_building = maritime_ruins_01
+				has_building = waterway_ruins_01
+				has_building = citadel_ruins_01
+				has_building = nexus_ruins_01
+			} 
+		}
+		save_scope_as = cleared_ruins_province
+		county_controller = {
+			trigger_event = metropolis.0001
+		}
+		#set_holding_type = urban_district_holding
+	}
+}

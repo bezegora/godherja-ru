@@ -1,0 +1,464 @@
+﻿namespace = gh_fog_spread_events
+
+gh_fog_spread_events.1 = {	# Fog spread tick
+	type = empty
+    hidden = yes
+	
+	immediate = {
+		title:c_halium = { 
+			change_variable = {
+				name = fog_clock
+				add = 1
+			}
+		}
+		if = {
+			limit = { 
+				OR = {
+					AND = {
+						title:c_halium = {
+							var:fog_clock >= 1
+						}
+						has_game_rule = fog_speed_apocalypse
+					}
+					AND = {
+						title:c_halium = {
+							var:fog_clock >= 5
+						}
+						has_game_rule = fog_speed_fast
+					}
+					AND = {
+						title:c_halium = {
+							var:fog_clock >= 10
+						}
+						has_game_rule = fog_speed_default
+					}
+					AND = {
+						title:c_halium = {
+							var:fog_clock >= 20
+						}
+						has_game_rule = fog_speed_slow
+					}
+					AND = {
+						title:c_halium = {
+							var:fog_clock >= 60
+						}
+						has_game_rule = fog_speed_glacial
+					}
+				}
+			}
+			title:c_halium = {
+				set_variable = {
+					name = fog_clock
+					value = 0
+				}
+				trigger_event = {
+					id = gh_fog_spread_events.2
+				}
+				trigger_event = {
+					id = gh_fog_spread_events.3
+				}
+			}
+			every_county = {
+				limit = {
+					#has_county_modifier = fogswept_modifier	# Inefficient as hell
+					#NOT = { has_variable = recently_fogswept }
+					has_county_modifier = bordering_fog_modifier
+				}
+				spread_fog_effect = yes
+			}
+			
+			spread_fog_effect_offmap = { PROVINCE = title:c_borgsas }				# Mistel Pass
+			spread_fog_effect_offmap = { PROVINCE = title:c_diessenrefin }			# Mistel Pass
+			if = {
+				limit = { title:c_jamolitz = { has_county_modifier = fogswept_modifier } }
+				title:c_knoike = { remove_variable = fog_blocked }
+				spread_fog_effect_offmap = { PROVINCE = title:c_knoike }				# Thanatosia Valley
+			}
+			if = {
+				limit = { title:c_going = { has_county_modifier = fogswept_modifier } }
+				spread_fog_effect_offmap = { PROVINCE = title:c_tylissane }		# Aironoi Steppe
+				spread_fog_effect_offmap = { PROVINCE = title:c_thespeia }		# Aironoi Steppe
+				spread_fog_effect_offmap = { PROVINCE = title:c_tylissithos }		# Aironoi Steppe
+				spread_fog_effect_offmap = { PROVINCE = title:c_byllens }			# Aironoi Steppe
+				spread_fog_effect_offmap = { PROVINCE = title:c_patrium }			# Aironoi Steppe
+				spread_fog_effect_offmap = { PROVINCE = title:c_calion }			# Aironoi Steppe
+				spread_fog_effect_offmap = { PROVINCE = title:c_valion }			# Aironoi Steppe
+				spread_fog_effect_offmap = { PROVINCE = title:c_mesiteia }		# Aironoi Steppe
+				spread_fog_effect_offmap = { PROVINCE = title:c_thurope }			# Aironoi Steppe
+				spread_fog_effect_offmap = { PROVINCE = title:c_elephos }			# Aironoi Steppe
+			}
+		}
+	}
+}
+
+gh_fog_spread_events.2 = { #Spreading over sea tiles
+	type = empty
+	hidden = yes
+	
+	immediate = {
+	
+		spread_fog_sea_short_connection_effect = { FIRST_PROVINCE = title:c_posike SECOND_PROVINCE = title:c_kasmenebes } 	# Helenai Bay
+		spread_fog_sea_short_connection_effect = { FIRST_PROVINCE = title:c_posike SECOND_PROVINCE = title:c_ampholgi } 	# Helenai Bay
+		spread_fog_sea_short_connection_effect = { FIRST_PROVINCE = title:c_posike SECOND_PROVINCE = title:c_pteloli }	 	# Helenai Bay
+		
+		spread_fog_sea_short_connection_effect = { FIRST_PROVINCE = title:c_uiliton SECOND_PROVINCE = title:c_lekerio }	 	# Hyrea-Agadendon River Crossing
+		
+		spread_fog_sea_mid_connection_effect   = { FIRST_PROVINCE = title:c_stenestias SECOND_PROVINCE = title:c_suen }     # Pergicos East Coast
+		spread_fog_sea_mid_connection_effect   = { FIRST_PROVINCE = title:c_lekos SECOND_PROVINCE = title:c_myonippi }      # Pergicos East Coast
+		spread_fog_sea_mid_connection_effect   = { FIRST_PROVINCE = title:c_cordes SECOND_PROVINCE = title:c_latephyrian }  # Pergicos East Coast
+		spread_fog_sea_mid_connection_effect   = { FIRST_PROVINCE = title:c_enaporio SECOND_PROVINCE = title:c_pyrgos }    # Pergicos East Coast
+		spread_fog_sea_mid_connection_effect   = { FIRST_PROVINCE = title:c_himagra SECOND_PROVINCE = title:c_phocathon }   # Pergicos East Coast
+		
+		spread_fog_sea_mid_connection_effect   = { FIRST_PROVINCE = title:c_packarnae SECOND_PROVINCE = title:c_diosippi }  # Partharian Sea East
+		spread_fog_sea_mid_connection_effect   = { FIRST_PROVINCE = title:c_magipolopoin SECOND_PROVINCE = title:c_salikon }# Partharian Sea East
+		spread_fog_sea_mid_connection_effect   = { FIRST_PROVINCE = title:c_ithi SECOND_PROVINCE = title:c_amphamis }		# Partharian Sea East
+		spread_fog_sea_short_connection_effect = { FIRST_PROVINCE = title:c_amphamis SECOND_PROVINCE = title:c_tylissonia }	# Partharian Sea East
+		spread_fog_sea_mid_connection_effect = { FIRST_PROVINCE = title:c_tylissonia SECOND_PROVINCE = title:c_vasoskopeion}# Partharian Sea East
+		spread_fog_sea_short_connection_effect = { FIRST_PROVINCE = title:c_zacoe SECOND_PROVINCE = title:c_sklavidrus }	# Partharian Sea East
+		spread_fog_sea_short_connection_effect = { FIRST_PROVINCE = title:c_sklavidrus SECOND_PROVINCE = title:c_ponesos }	# Partharian Sea East
+		spread_fog_sea_short_connection_effect = { FIRST_PROVINCE = title:c_ponesos SECOND_PROVINCE = title:c_sitissos }	# Partharian Sea East
+		spread_fog_sea_short_connection_effect = { FIRST_PROVINCE = title:c_amphamis SECOND_PROVINCE = title:c_sitissos }	# Partharian Sea East
+		
+		spread_fog_sea_short_connection_effect = { FIRST_PROVINCE = title:c_byzantium SECOND_PROVINCE = title:c_ambracia }	# Ambracia
+		spread_fog_sea_mid_connection_effect   = { FIRST_PROVINCE = title:c_pavlythrae SECOND_PROVINCE = title:c_ambracia } # Ambracia
+		
+		spread_fog_sea_short_connection_effect = { FIRST_PROVINCE = title:c_oenalos SECOND_PROVINCE = title:c_olynthicus }	# Eryras Archipelago
+		spread_fog_sea_short_connection_effect = { FIRST_PROVINCE = title:c_kamenae SECOND_PROVINCE = title:c_olynthicus }	# Eryras Archipelago
+		spread_fog_sea_short_connection_effect = { FIRST_PROVINCE = title:c_cnidares SECOND_PROVINCE = title:c_olynthicus }	# Eryras Archipelago
+		spread_fog_sea_short_connection_effect = { FIRST_PROVINCE = title:c_olynthicus SECOND_PROVINCE = title:c_braurens }	# Eryras Archipelago
+		spread_fog_sea_short_connection_effect = { FIRST_PROVINCE = title:c_laodasa SECOND_PROVINCE = title:c_braurens }	# Eryras Archipelago
+		spread_fog_sea_short_connection_effect = { FIRST_PROVINCE = title:c_amaroe SECOND_PROVINCE = title:c_braurens }		# Eryras Archipelago
+		spread_fog_sea_short_connection_effect = { FIRST_PROVINCE = title:c_posinda SECOND_PROVINCE = title:c_amaroe }		# Eryras Archipelago
+		spread_fog_sea_short_connection_effect = { FIRST_PROVINCE = title:c_tylai SECOND_PROVINCE = title:c_amaroe }		# Eryras Archipelago
+		spread_fog_sea_short_connection_effect = { FIRST_PROVINCE = title:c_gortio SECOND_PROVINCE = title:c_mochlinitida }	# Eryras Archipelago
+		spread_fog_sea_short_connection_effect = { FIRST_PROVINCE = title:c_bourale SECOND_PROVINCE = title:c_mochlinitida }# Eryras Archipelago
+		
+		spread_fog_sea_short_connection_effect = { FIRST_PROVINCE = title:c_morgoton SECOND_PROVINCE = title:c_ialissos   }	# Kamaramum Archipelago
+		spread_fog_sea_short_connection_effect = { FIRST_PROVINCE = title:c_eresakros SECOND_PROVINCE = title:c_ialissos  }	# Kamaramum Archipelago
+		spread_fog_sea_mid_connection_effect   = { FIRST_PROVINCE = title:c_gazonion SECOND_PROVINCE = title:c_ialissos   } # Kamaramum Archipelago
+		spread_fog_sea_very_long_connection_effect = {FIRST_PROVINCE = title:c_pandenimahos SECOND_PROVINCE = title:c_thassomenion } # Kamaramum Archipelago, coming from the magical wasteland in the north
+		
+		spread_fog_sea_short_connection_effect = { FIRST_PROVINCE = title:c_salagoria SECOND_PROVINCE = title:c_naucrissa  }	# Ithiteia
+		spread_fog_sea_short_connection_effect = { FIRST_PROVINCE = title:c_salagoria SECOND_PROVINCE = title:c_thurateia }		# Ithiteia
+		spread_fog_sea_short_connection_effect = { FIRST_PROVINCE = title:c_histraza SECOND_PROVINCE = title:c_askorus }		# Ithiteia
+		spread_fog_sea_short_connection_effect = { FIRST_PROVINCE = title:c_kerkaclea SECOND_PROVINCE = title:c_kameirigus }	# Ithiteia
+		spread_fog_sea_short_connection_effect = { FIRST_PROVINCE = title:c_byzenes SECOND_PROVINCE = title:c_gortelea }		# Ithiteia
+		spread_fog_sea_short_connection_effect = { FIRST_PROVINCE = title:c_byzenes SECOND_PROVINCE = title:c_kourarnae }		# Ithiteia
+		spread_fog_sea_short_connection_effect = { FIRST_PROVINCE = title:c_dioscada SECOND_PROVINCE = title:c_amareum }		# Ithiteia
+		spread_fog_sea_short_connection_effect = { FIRST_PROVINCE = title:c_peiramos SECOND_PROVINCE = title:c_abdenes }		# Ithiteia
+		spread_fog_sea_short_connection_effect = { FIRST_PROVINCE = title:c_demebes SECOND_PROVINCE = title:c_megaleion }		# Ithiteia
+		spread_fog_sea_short_connection_effect = { FIRST_PROVINCE = title:c_tarigeneia SECOND_PROVINCE = title:c_athidaea }		# Ithiteia
+		spread_fog_sea_short_connection_effect = { FIRST_PROVINCE = title:c_megaleion SECOND_PROVINCE = title:c_geliene }		# Ithiteia
+		spread_fog_sea_short_connection_effect = { FIRST_PROVINCE = title:c_abdenes SECOND_PROVINCE = title:c_geliene }			# Ithiteia
+		spread_fog_sea_short_connection_effect = { FIRST_PROVINCE = title:c_milotiri SECOND_PROVINCE = title:c_iolcicus }		# Ithiteia, small bay
+		spread_fog_sea_short_connection_effect = { FIRST_PROVINCE = title:c_milotiri SECOND_PROVINCE = title:c_achena }	    	# Ithiteia, small bay
+		spread_fog_sea_short_connection_effect = { FIRST_PROVINCE = title:c_iolcicus SECOND_PROVINCE = title:c_achena }	    	# Ithiteia, small bay
+		spread_fog_sea_short_connection_effect = { FIRST_PROVINCE = title:c_laminth SECOND_PROVINCE = title:c_achena }	    	# Ithiteia
+		spread_fog_sea_short_connection_effect = { FIRST_PROVINCE = title:c_laminth SECOND_PROVINCE = title:c_dymysthenes }		# Ithiteia
+		spread_fog_sea_short_connection_effect = { FIRST_PROVINCE = title:c_laporion SECOND_PROVINCE = title:c_doracuse }		# Ithiteia
+		spread_fog_sea_short_connection_effect = { FIRST_PROVINCE = title:c_rhegeidonia SECOND_PROVINCE = title:c_phocorus }	# Ithiteia
+		spread_fog_sea_short_connection_effect = { FIRST_PROVINCE = title:c_rhegeidonia SECOND_PROVINCE = title:c_rizicus }		# Ithiteia
+		spread_fog_sea_short_connection_effect = { FIRST_PROVINCE = title:c_doracuse SECOND_PROVINCE = title:c_phocorus }		# Ithiteia
+		spread_fog_sea_short_connection_effect = { FIRST_PROVINCE = title:c_doracuse SECOND_PROVINCE = title:c_antarta }		# Ithiteia
+		spread_fog_sea_short_connection_effect = { FIRST_PROVINCE = title:c_phocorus SECOND_PROVINCE = title:c_antarta }		# Ithiteia
+		spread_fog_sea_short_connection_effect = { FIRST_PROVINCE = title:c_tyrinion SECOND_PROVINCE = title:c_palidaea }		# Ithiteia
+		spread_fog_sea_short_connection_effect = { FIRST_PROVINCE = title:c_palidaea SECOND_PROVINCE = title:c_metagra }		# Ithiteia
+		
+		spread_fog_sea_short_connection_effect = { FIRST_PROVINCE = title:c_histrokampos SECOND_PROVINCE = title:c_mylida }		# Heraclon Bay
+		spread_fog_sea_short_connection_effect = { FIRST_PROVINCE = title:c_purias SECOND_PROVINCE = title:c_semaion }			# Heraclon Bay
+		spread_fog_sea_short_connection_effect = { FIRST_PROVINCE = title:c_histrokampos SECOND_PROVINCE = title:c_tritida }	# Heraclon Bay
+		spread_fog_sea_short_connection_effect = { FIRST_PROVINCE = title:c_semaion SECOND_PROVINCE = title:c_tritida }			# Heraclon Bay
+		spread_fog_sea_short_connection_effect = { FIRST_PROVINCE = title:c_tritida SECOND_PROVINCE = title:c_mylida }			# Heraclon Bay
+		spread_fog_sea_short_connection_effect = { FIRST_PROVINCE = title:c_tritida SECOND_PROVINCE = title:c_astissos }		# Heraclon Bay
+		spread_fog_sea_short_connection_effect = { FIRST_PROVINCE = title:c_erethisos SECOND_PROVINCE = title:c_kepene }		# Heraclon Bay
+		
+		spread_fog_sea_short_connection_effect = { FIRST_PROVINCE = title:c_erethisos SECOND_PROVINCE = title:c_naxares }		# Kollos
+		spread_fog_sea_short_connection_effect = { FIRST_PROVINCE = title:c_naxares SECOND_PROVINCE = title:c_abacia }			# Kollos
+		spread_fog_sea_short_connection_effect = { FIRST_PROVINCE = title:c_arsendos SECOND_PROVINCE = title:c_sklavoricus }	# Kollos
+		spread_fog_sea_short_connection_effect = { FIRST_PROVINCE = title:c_vasoskopeion SECOND_PROVINCE = title:c_nirerikon }	# Kollos
+		spread_fog_sea_short_connection_effect = { FIRST_PROVINCE = title:c_syronion SECOND_PROVINCE = title:c_vuonae }			# Kollos
+		spread_fog_sea_short_connection_effect = { FIRST_PROVINCE = title:c_vuonae SECOND_PROVINCE = title:c_esochinon }		# Kollos
+		spread_fog_sea_short_connection_effect = { FIRST_PROVINCE = title:c_vuonae SECOND_PROVINCE = title:c_agronomika }		# Kollos
+		spread_fog_sea_short_connection_effect = { FIRST_PROVINCE = title:c_oliontos SECOND_PROVINCE = title:c_lofotis }		# Kollos
+		spread_fog_sea_short_connection_effect = { FIRST_PROVINCE = title:c_agronomika SECOND_PROVINCE = title:c_lofotis }		# Kollos
+		spread_fog_sea_short_connection_effect = { FIRST_PROVINCE = title:c_lofotis SECOND_PROVINCE = title:c_omichiron }		# Kollos
+		spread_fog_sea_short_connection_effect = { FIRST_PROVINCE = title:c_omichiron SECOND_PROVINCE = title:c_hippio }		# Kollos
+		spread_fog_sea_short_connection_effect = { FIRST_PROVINCE = title:c_hippio SECOND_PROVINCE = title:c_kathaeras }		# Kollos
+		spread_fog_sea_short_connection_effect = { FIRST_PROVINCE = title:c_hippio SECOND_PROVINCE = title:c_hemikon }			# Kollos
+		spread_fog_sea_mid_connection_effect = { FIRST_PROVINCE = title:c_lissus SECOND_PROVINCE = title:c_sona }				# Kollos
+		spread_fog_sea_short_connection_effect = { FIRST_PROVINCE = title:c_raki SECOND_PROVINCE = title:c_konomigion }			# Kollos
+		spread_fog_sea_short_connection_effect = { FIRST_PROVINCE = title:c_konomigion SECOND_PROVINCE = title:c_gangraion }	# Kollos
+		
+		spread_fog_sea_short_connection_effect = { FIRST_PROVINCE = title:c_lampsodes SECOND_PROVINCE = title:c_didorus }		# Ranthus Archipelago
+		spread_fog_sea_short_connection_effect = { FIRST_PROVINCE = title:c_lampsodes SECOND_PROVINCE = title:c_messesos }		# Ranthus Archipelago
+		spread_fog_sea_short_connection_effect = { FIRST_PROVINCE = title:c_edomnos SECOND_PROVINCE = title:c_salolis	 }		# Ranthus Archipelago
+		
+		spread_fog_sea_mid_connection_effect = { FIRST_PROVINCE = title:c_nynthus SECOND_PROVINCE = title:c_methoe }			# Western Isle
+		spread_fog_sea_short_connection_effect = { FIRST_PROVINCE = title:c_syreidonia SECOND_PROVINCE = title:c_geletus	 }	# Western Isle
+		spread_fog_sea_short_connection_effect = { FIRST_PROVINCE = title:c_olbae SECOND_PROVINCE = title:c_didippia	 }		# Western Isle
+		
+		spread_fog_sea_short_connection_effect = { FIRST_PROVINCE = title:c_ledina SECOND_PROVINCE = title:c_itel_faien	 }		# Dielec
+		
+		spread_fog_sea_short_connection_effect = { FIRST_PROVINCE = title:c_hadaril SECOND_PROVINCE = title:c_ada	 }			# Mukhtab
+		spread_fog_sea_short_connection_effect = { FIRST_PROVINCE = title:c_ada SECOND_PROVINCE = title:c_ferihan	 }			# Mukhtab
+		
+		spread_fog_sea_short_connection_effect = { FIRST_PROVINCE = title:c_buqama SECOND_PROVINCE = title:c_hayubal	}		# Ul Gazho
+		
+		spread_fog_sea_short_connection_effect = { FIRST_PROVINCE = title:c_naqanzala SECOND_PROVINCE = title:c_saasazeh }		# Dhami
+		spread_fog_sea_short_connection_effect = { FIRST_PROVINCE = title:c_naqanzala SECOND_PROVINCE = title:c_nasitba }		# Dhami
+		spread_fog_sea_short_connection_effect = { FIRST_PROVINCE = title:c_saasazeh SECOND_PROVINCE = title:c_doganbey }		# Dhami
+	}
+}
+
+gh_fog_spread_events.3 = { # Spreading to Sarradon
+	type = empty
+	hidden = yes
+	
+	immediate = {
+		if = {
+			limit = { has_game_rule = fog_spread_sarradon_enabled }
+			
+			spread_fog_sea_long_connection_effect = { FIRST_PROVINCE = title:c_agrineneia SECOND_PROVINCE = title:c_zarrishtar }		# Western Isle - Mukhtab
+			spread_fog_sea_long_connection_effect = { FIRST_PROVINCE = title:c_thebastro SECOND_PROVINCE = title:c_fakkugat }			# Western Isle - Mukhtab
+			spread_fog_sea_very_long_connection_effect = { FIRST_PROVINCE = title:c_syreidonia SECOND_PROVINCE = title:c_sanala }		# Palitake - Behbarvan
+			spread_fog_sea_very_long_connection_effect = { FIRST_PROVINCE = title:c_pellicus SECOND_PROVINCE = title:c_hooreef }		# Palitake - Behbarvan
+			spread_fog_sea_very_long_connection_effect = { FIRST_PROVINCE = title:c_kathaeras SECOND_PROVINCE = title:c_zakhodiyah }	# Kollos - Khenemnet
+			spread_fog_sea_very_long_connection_effect = { FIRST_PROVINCE = title:c_nysyrgos SECOND_PROVINCE = title:c_medihat }		# Kollos - Khenemnet
+			spread_fog_sea_very_long_connection_effect = { FIRST_PROVINCE = title:c_kerkaclea SECOND_PROVINCE = title:c_hudabam }		# Ithiteia - Khenemnet
+		}
+	}
+}
+
+gh_fog_spread_events.5 = {	 # Fogeater maintenance 
+	type = character_event
+	hidden = yes # Until I can figure out how to not have it spam you 10 times with the event
+	
+	immediate = {
+		if = {
+			limit = {
+				exists = liege
+			}
+			if = {
+				limit = {
+					liege = { NOT = {faith = faith:fogeater}}
+				}
+				create_title_and_vassal_change = {
+					type = independency
+					save_scope_as = indep
+					add_claim_on_loss = no
+				}
+				becomes_independent = { change = scope:indep }
+				resolve_title_and_vassal_change = scope:indep
+			}
+		}
+		every_vassal = {
+			limit = {
+				highest_held_title_tier >= 2
+				NOT = { faith = faith:fogeater }
+			}
+			create_title_and_vassal_change = {
+				type = independency
+				save_scope_as = indep
+				add_claim_on_loss = no
+			}
+			becomes_independent = { change = scope:indep }
+			resolve_title_and_vassal_change = scope:indep
+		}
+		every_vassal = {
+			limit = {
+				highest_held_title_tier < 2
+				NOT = { faith = faith:fogeater }
+			}
+			set_character_faith = faith:fogeater
+		}
+		every_councillor = {
+			limit = { NOT = { faith = faith:fogeater } }
+			set_character_faith = faith:fogeater
+		}
+		every_courtier_or_guest = {
+			limit = { NOT = { faith = faith:fogeater } }
+			set_character_faith = faith:fogeater
+		}
+	}
+}
+
+gh_fog_spread_events.11 = {	# Province flips to a fogeater (fate of the owner if it is their final county)
+	type = character_event
+	title = gh_fog_spread_events.11.t
+	desc = gh_fog_spread_events.11.desc
+	theme = learning_theology_focus
+	override_background = { event_background = corridor_night }
+	
+	right_portrait = { 
+		character = root
+		animation = shock
+	}
+	
+	option = { # Try to flee the province
+		name = gh_fog_spread_events.11.a
+		ai_chance = {
+			base = 100
+		}
+		random_list = {
+			80 = {
+				custom_tooltip = gh_fog_spread_events.11.a.escape.tt
+				# Successfully escaped
+				hidden_effect = {
+					every_held_title = {
+						limit = { tier >= 2 }
+						create_character = {
+							location = root.location
+							culture = culture:fog_eaters
+							faith = faith:fogeater
+							gender_female_chance = {
+								value = 50
+							}
+							save_scope_as = new_fogeater
+						}
+						create_title_and_vassal_change = {
+							type = conquest_claim
+							save_scope_as = change
+							add_claim_on_loss = yes
+						}
+						change_title_holder_include_vassals = {
+							holder = scope:new_fogeater
+							change = scope:change
+						}
+						resolve_title_and_vassal_change = scope:change
+						create_title_and_vassal_change = {
+							type = independency
+							save_scope_as = indep
+							add_claim_on_loss = no
+						}
+						scope:new_fogeater = {
+							becomes_independent = { change = scope:indep }
+						}
+						resolve_title_and_vassal_change = scope:indep
+						scope:new_fogeater = {
+							if = {
+								limit = { NOT = { has_government = tribal_government } }
+								change_government = tribal_government
+							}
+						}
+					}
+				}
+			}
+			10 = {
+				custom_tooltip = gh_fog_spread_events.11.a.die.tt
+				hidden_effect = {
+					every_held_title = {
+						limit = { tier >= 2 }
+						create_character = {
+							location = root.location
+							culture = culture:fog_eaters
+							faith = faith:fogeater
+							gender_female_chance = {
+								value = 50
+							}
+							save_scope_as = new_fogeater
+						}
+						create_title_and_vassal_change = {
+							type = conquest_claim
+							save_scope_as = change
+							add_claim_on_loss = yes
+						}
+						change_title_holder_include_vassals = {
+							holder = scope:new_fogeater
+							change = scope:change
+						}
+						resolve_title_and_vassal_change = scope:change
+						create_title_and_vassal_change = {
+							type = independency
+							save_scope_as = indep
+							add_claim_on_loss = no
+						}
+						scope:new_fogeater = {
+							becomes_independent = { change = scope:indep }
+						}
+						resolve_title_and_vassal_change = scope:indep
+						scope:new_fogeater = {
+							if = {
+								limit = { NOT = { has_government = tribal_government } }
+								change_government = tribal_government
+							}
+						}
+					}
+					death = {
+						death_reason = death_vanished
+					}
+				}
+			}
+			10 = {
+				custom_tooltip = gh_fog_spread_events.11.a.listen.tt
+				hidden_effect = {
+					set_character_faith_with_conversion = faith:fogeater
+					set_culture = culture:fog_eaters
+					if = {
+						limit = { NOT = { has_government = tribal_government } }
+						change_government = tribal_government
+					}
+				}
+			}
+		}
+	}
+	option = { # Embrace the Fog
+		name = gh_fog_spread_events.11.b
+		ai_chance = {
+			base = 0
+		}
+		set_character_faith_with_conversion = faith:fogeater
+		set_culture = culture:fog_eaters
+		if = {
+			limit = { NOT = { has_government = tribal_government } }
+			change_government = tribal_government
+		}
+	}
+}
+
+gh_fog_spread_events.12 = {	 # Province flips to a fogeater
+	type = character_event
+	hidden = yes # Until I can figure out how to not have it spam you 10 times with the event
+	
+	immediate = {
+		every_held_title = {
+			limit = {
+				tier = 2
+				has_county_modifier = fogswept_modifier
+			}
+			create_character = {
+				location = root.location
+				culture = culture:fog_eaters
+				faith = faith:fogeater
+				gender_female_chance = {
+					value = 50
+				}
+				save_scope_as = new_fogeater
+			}
+			create_title_and_vassal_change = {
+				type = conquest_claim
+				save_scope_as = change
+				add_claim_on_loss = yes
+			}
+			change_title_holder_include_vassals = {
+				holder = scope:new_fogeater
+				change = scope:change
+			}
+			resolve_title_and_vassal_change = scope:change
+			create_title_and_vassal_change = {
+				type = independency
+				save_scope_as = indep
+				add_claim_on_loss = no
+			}
+			scope:new_fogeater = {
+				becomes_independent = { change = scope:indep }
+			}
+			resolve_title_and_vassal_change = scope:indep
+			scope:new_fogeater = {
+				if = {
+					limit = { NOT = { has_government = tribal_government } }
+					change_government = tribal_government
+				}
+			}
+		}
+	}
+}

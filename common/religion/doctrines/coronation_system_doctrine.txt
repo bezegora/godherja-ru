@@ -1,0 +1,50 @@
+﻿doctrine_coronations = {
+	group = "clergy"
+	doctrine_religious_coronation = {
+		parameters = {
+			can_perform_coronations = yes
+			can_perform_coronations_3_stage = yes
+		}
+		piety_cost = {
+			value = faith_doctrine_cost_high
+			if = {
+				limit = { has_doctrine = doctrine_religious_coronation }
+				multiply = faith_unchanged_doctrine_cost_mult
+			}
+		}
+	}
+	doctrine_formal_coronation = {
+		parameters = {
+			can_perform_coronations = yes
+			can_perform_coronations_2_stage = yes
+		}
+		piety_cost = {
+			value = faith_doctrine_cost_mid
+			if = {
+				limit = { has_doctrine = doctrine_formal_coronation }
+				multiply = faith_unchanged_doctrine_cost_mult
+			}
+		}
+	}
+	doctrine_celebration_coronation = {
+		parameters = {
+			can_perform_coronations = yes
+			can_perform_coronations_1_stage = yes
+		}
+		piety_cost = {
+			value = faith_doctrine_cost_low
+			if = {
+				limit = { has_doctrine = doctrine_celebration_coronation }
+				multiply = faith_unchanged_doctrine_cost_mult
+			}
+		}
+	}
+	doctrine_no_coronation = {
+		parameters = {
+			can_perform_coronations = no
+		}
+		piety_cost = {
+			value = 0
+		}
+	}
+}

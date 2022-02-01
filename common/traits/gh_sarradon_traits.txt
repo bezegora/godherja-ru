@@ -1,0 +1,35 @@
+tahariat_evader = {
+	index = 600
+	minimum_age = 16
+
+	same_opinion = 10
+	same_faith_opinion = 15
+	fame = yes
+
+	ruler_designer_cost = -5
+
+	ai_greed = 50
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_tahariat_evader_desc
+			}
+			desc = trait_tahariat_evader_character_desc
+		}
+	}
+
+	triggered_opinion = {
+		parameter = tax_evasion_illegal
+		opinion_modifier = tahariat_evader
+	}
+	compatibility = {
+		tahariat_evader = @pos_compat_high
+		greedy = @pos_compat_medium
+		generous = @neg_compat_medium
+		content = @neg_compat_medium
+	}
+}

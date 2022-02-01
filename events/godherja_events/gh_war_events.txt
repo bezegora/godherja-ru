@@ -1,0 +1,80 @@
+﻿namespace = war_event
+
+
+#Event if black sun takes any kingdoms outside of his orginal location
+war_event.3103 = {
+
+	title = war_event.3103.t
+	desc = war_event.3103.desc
+
+	theme = realm
+	left_portrait = root
+
+	
+
+		trigger = {
+			is_ai = no
+			OR = {
+				has_title = title:k_calagonii
+				has_title = title:k_marroux
+				has_title = title:k_yperosama
+				has_title = title:k_timeveila
+			}	
+	
+		}
+
+		option = {
+			name = war_event.3103.a
+		}
+	}
+
+
+#Event for the execution of Aeschreas if he loses a war
+war_event.3104 = {
+	
+	title = war_event.3104.t
+	desc = war_event.3104.desc
+
+	theme = prison
+	left_portrait = {
+		character = root
+		animation = war_over_win
+	}
+	right_portrait = {
+		character = character:western_imperial_1
+		animation = rage
+	}
+
+	immediate = { 
+		character:western_imperial_1 = {
+			save_scope_as = prisoner_a
+		}
+	}
+
+	 option = {
+		name = war_event.3104.a    #Execute Aeschreas
+
+		scope:prisoner_a = {
+			death = {
+				death_reason = death_execution
+				killer = root
+			}
+		}
+		add_trait = gh_aeschreas_killer
+		add_piety = monumental_piety_gain
+		add_prestige = monumental_prestige_gain
+		if = {
+			limit = { has_nickname = no }
+			give_nickname = nick_archon_killer
+		}
+		ai_chance = {
+			base = 100
+		}
+	}
+	option = {
+		name = war_event.3104.b
+		ai_chance = {
+			base = 0
+		}
+	}
+}

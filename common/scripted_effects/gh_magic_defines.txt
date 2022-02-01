@@ -1,0 +1,407 @@
+﻿#########################
+# MAGIC ECONOMY DEFINES #
+#########################
+
+# TRAITS
+
+trait_magic_table_add = {
+	start_magical_defines_table = { TABLE_NAME = trait_magic MODE = add }
+	
+		check_trait_magic = { TRAIT_NAME = magic_good_1  VALUE = 0.5  TABLE_NAME = trait_magic MODE = add }
+		check_trait_magic = { TRAIT_NAME = magic_good_2  VALUE = 1    TABLE_NAME = trait_magic MODE = add }
+		check_trait_magic = { TRAIT_NAME = magic_good_3  VALUE = 1.5  TABLE_NAME = trait_magic MODE = add }
+		check_trait_magic = { TRAIT_NAME = magic_good_4  VALUE = 2    TABLE_NAME = trait_magic MODE = add }
+		check_trait_magic = { TRAIT_NAME = magic_good_5  VALUE = 2.5  TABLE_NAME = trait_magic MODE = add }
+		check_trait_magic = { TRAIT_NAME = magic_good_6  VALUE = 3    TABLE_NAME = trait_magic MODE = add }
+		check_trait_magic = { TRAIT_NAME = magic_good_7  VALUE = 3.5  TABLE_NAME = trait_magic MODE = add }
+		check_trait_magic = { TRAIT_NAME = magic_good_8  VALUE = 4    TABLE_NAME = trait_magic MODE = add }
+		check_trait_magic = { TRAIT_NAME = magic_good_9  VALUE = 4.5  TABLE_NAME = trait_magic MODE = add }
+		check_trait_magic = { TRAIT_NAME = magic_good_10 VALUE = 5    TABLE_NAME = trait_magic MODE = add }
+		check_trait_magic = { TRAIT_NAME = magic_good_11 VALUE = 5.5  TABLE_NAME = trait_magic MODE = add }
+		check_trait_magic = { TRAIT_NAME = magic_good_12 VALUE = 6    TABLE_NAME = trait_magic MODE = add }
+		check_trait_magic = { TRAIT_NAME = magic_good_13 VALUE = 6.5  TABLE_NAME = trait_magic MODE = add }
+		check_trait_magic = { TRAIT_NAME = magic_good_14 VALUE = 7    TABLE_NAME = trait_magic MODE = add }
+		check_trait_magic = { TRAIT_NAME = magic_good_15 VALUE = 7.5  TABLE_NAME = trait_magic MODE = add }
+		check_trait_magic = { TRAIT_NAME = magic_good_16 VALUE = 8    TABLE_NAME = trait_magic MODE = add }
+		check_trait_magic = { TRAIT_NAME = magic_good_17 VALUE = 8.5  TABLE_NAME = trait_magic MODE = add }
+		check_trait_magic = { TRAIT_NAME = magic_good_18 VALUE = 9    TABLE_NAME = trait_magic MODE = add }
+		check_trait_magic = { TRAIT_NAME = magic_good_19 VALUE = 9.5  TABLE_NAME = trait_magic MODE = add }
+		check_trait_magic = { TRAIT_NAME = magic_good_20 VALUE = 10   TABLE_NAME = trait_magic MODE = add }
+		
+	end_magical_defines_table = { TABLE_NAME = trait_magic MODE = add }
+}
+
+trait_magic_table_multiply = {
+	start_magical_defines_table = { TABLE_NAME = trait_magic MODE = multiply }
+	
+		# Empty for now
+		
+	end_magical_defines_table = { TABLE_NAME = trait_magic MODE = multiply }
+}
+
+# FAITH (DOCTRINE PARAMETER)
+
+faith_magic_table_add = {
+	start_magical_defines_table = { TABLE_NAME = faith_magic MODE = add }
+	
+		# Empty for now
+		
+	end_magical_defines_table = { TABLE_NAME = faith_magic MODE = add }
+}
+
+faith_magic_table_multiply = {
+	start_magical_defines_table = { TABLE_NAME = faith_magic MODE = multiply }
+
+	 	check_faith_magic = { DOCTRINE_PARAMETER = faith_monthly_magic_mult_10 VALUE = 0.1 TABLE_NAME = faith_magic MODE = multiply }
+		check_faith_magic = { DOCTRINE_PARAMETER = faith_monthly_magic_mult_20 VALUE = 0.2 TABLE_NAME = faith_magic MODE = multiply }
+		
+	end_magical_defines_table = { TABLE_NAME = faith_magic MODE = multiply }
+}
+
+# PROVINCIAL MODIFIERS
+
+county_modifier_magic_table_add = {
+	start_magical_defines_table = { TABLE_NAME = county_modifier_magic MODE = add }
+	
+		check_county_modifier_magic = { MODIFIER_NAME = wayline_modifier VALUE = 0.5 TABLE_NAME = county_modifier_magic MODE = add}
+		check_county_modifier_magic = { MODIFIER_NAME = wayline_intersection_modifier VALUE = 3 TABLE_NAME = county_modifier_magic MODE = add}
+		check_county_modifier_magic = { MODIFIER_NAME = arcane_fallout VALUE = 1 TABLE_NAME = county_modifier_magic MODE = add}
+		
+		#check_county_modifier_magic = { MODIFIER_NAME = aervalr_debris_field VALUE = 0.2 TABLE_NAME = county_modifier_magic MODE = add}
+		
+	end_magical_defines_table = { TABLE_NAME = county_modifier_magic MODE = add }
+}
+
+county_modifier_magic_table_multiply = {
+	start_magical_defines_table = { TABLE_NAME = county_modifier_magic MODE = multiply }
+		
+		check_county_modifier_magic = { MODIFIER_NAME = antimagic_field VALUE = -2 TABLE_NAME = county_modifier_magic MODE = multiply }
+		check_county_modifier_magic = { MODIFIER_NAME = arcane_fallout VALUE = 0.1 TABLE_NAME = county_modifier_magic MODE = multiply }
+		
+	end_magical_defines_table = { TABLE_NAME = county_modifier_magic MODE = multiply }	
+}
+
+# CHARACTER MODIFIERS
+
+character_modifier_magic_table_add = {
+	start_magical_defines_table = { TABLE_NAME = character_modifier_magic MODE = add }
+	
+		check_character_modifier_magic = { MODIFIER_NAME = artifact_blacksunmask_modifier VALUE = 1  TABLE_NAME = character_modifier_magic MODE = add }
+		check_character_modifier_magic = { MODIFIER_NAME = artifact_bookburntgrimoire_modifier VALUE = 1  TABLE_NAME = character_modifier_magic MODE = add }
+		check_character_modifier_magic = { MODIFIER_NAME = artifact_bookgrimoireofmethinoire_modifier VALUE = 3  TABLE_NAME = character_modifier_magic MODE = add }
+		check_character_modifier_magic = { MODIFIER_NAME = artifact_ringofthelich_modifier VALUE = 4  TABLE_NAME = character_modifier_magic MODE = add }
+		check_character_modifier_magic = { MODIFIER_NAME = artifact_aversariacrown_modifier VALUE = 1  TABLE_NAME = character_modifier_magic MODE = add }
+		check_character_modifier_magic = { MODIFIER_NAME = artifact_aersanonstaff2_modifier VALUE = 2 TABLE_NAME = character_modifier_magic MODE = add }
+		check_character_modifier_magic = { MODIFIER_NAME = artifact_aersanonstaff1_modifier VALUE = -1 TABLE_NAME = character_modifier_magic MODE = add }
+
+	end_magical_defines_table = { TABLE_NAME = character_modifier_magic MODE = add }
+}
+
+character_modifier_magic_table_multiply = {
+	start_magical_defines_table = { TABLE_NAME = character_modifier_magic MODE = multiply }
+	
+		check_character_modifier_magic = { MODIFIER_NAME = artifact_ringofthelich_modifier VALUE = 1  TABLE_NAME = character_modifier_magic MODE = multiply }
+		check_character_modifier_magic = { MODIFIER_NAME = artifact_bloodofthearchmagi_modifier VALUE = 0.25  TABLE_NAME = character_modifier_magic MODE = multiply }
+		check_character_modifier_magic = { MODIFIER_NAME = artifact_aersanonstaff1_modifier VALUE = 0.5  TABLE_NAME = character_modifier_magic MODE = multiply }
+		check_character_modifier_magic = { MODIFIER_NAME = artifact_aersanonstaff2_modifier VALUE = 0.25  TABLE_NAME = character_modifier_magic MODE = multiply }
+
+	end_magical_defines_table = { TABLE_NAME = character_modifier_magic MODE = multiply }
+}
+
+# BUILDINGS
+
+building_magic_table_add = {
+	start_magical_defines_table = { TABLE_NAME = building_magic MODE = add }
+	
+		check_building_magic = { BUILDING_NAME = thesorrowfield VALUE = 0.5 TABLE_NAME = building_magic MODE = add }
+		check_building_magic = { BUILDING_NAME = sunkentower VALUE = 1.5 TABLE_NAME = building_magic MODE = add }
+		check_building_magic = { BUILDING_NAME = easterntower VALUE = 1.5 TABLE_NAME = building_magic MODE = add }
+		check_building_magic = { BUILDING_NAME = westtower VALUE = 1.5 TABLE_NAME = building_magic MODE = add }
+		check_building_magic = { BUILDING_NAME = westerncabal VALUE = 1 TABLE_NAME = building_magic MODE = add }
+		check_building_magic = { BUILDING_NAME = easterncabal VALUE = 1 TABLE_NAME = building_magic MODE = add }
+		check_building_magic = { BUILDING_NAME = wehydkaha VALUE = 1 TABLE_NAME = building_magic MODE = add }
+		check_building_magic = { BUILDING_NAME = palaceofthewizardking_01 VALUE = 0.5 TABLE_NAME = building_magic MODE = add }
+		check_building_magic = { BUILDING_NAME = palaceofthewizardking_02 VALUE = 0.5 TABLE_NAME = building_magic MODE = add }
+		
+		check_building_magic = { BUILDING_NAME = special_aervalr_shard_01 VALUE = 0.1 TABLE_NAME = building_magic MODE = add }
+		check_building_magic = { BUILDING_NAME = special_aervalr_shard_02 VALUE = 0.2 TABLE_NAME = building_magic MODE = add }
+		check_building_magic = { BUILDING_NAME = special_aervalr_shard_03 VALUE = 0.3 TABLE_NAME = building_magic MODE = add }
+		check_building_magic = { BUILDING_NAME = special_aervalr_shard_04 VALUE = 0.4 TABLE_NAME = building_magic MODE = add }
+		
+		check_building_magic_magic_type_ranked = { BUILDING_NAME = special_aervalr_shard_01 VALUE = 0.1 TABLE_NAME = building_magic MODE = add MAGIC_TYPE = dead_magic }
+		check_building_magic_magic_type_ranked = { BUILDING_NAME = special_aervalr_shard_02 VALUE = 0.2 TABLE_NAME = building_magic MODE = add MAGIC_TYPE = dead_magic }
+		check_building_magic_magic_type_ranked = { BUILDING_NAME = special_aervalr_shard_03 VALUE = 0.3 TABLE_NAME = building_magic MODE = add MAGIC_TYPE = dead_magic }
+		check_building_magic_magic_type_ranked = { BUILDING_NAME = special_aervalr_shard_04 VALUE = 0.4 TABLE_NAME = building_magic MODE = add MAGIC_TYPE = dead_magic }
+		
+		check_building_magic = { BUILDING_NAME = special_bloodcrystal_01 VALUE = 0.1 TABLE_NAME = building_magic MODE = add }
+		check_building_magic = { BUILDING_NAME = special_bloodcrystal_02 VALUE = 0.2 TABLE_NAME = building_magic MODE = add }
+		check_building_magic = { BUILDING_NAME = special_bloodcrystal_03 VALUE = 0.3 TABLE_NAME = building_magic MODE = add }
+		check_building_magic = { BUILDING_NAME = special_bloodcrystal_04 VALUE = 0.4 TABLE_NAME = building_magic MODE = add }
+		
+		check_building_magic_magic_type_ranked = { BUILDING_NAME = special_bloodcrystal_01 VALUE = 0.1 TABLE_NAME = building_magic MODE = add MAGIC_TYPE = living_magic }
+		check_building_magic_magic_type_ranked = { BUILDING_NAME = special_bloodcrystal_02 VALUE = 0.2 TABLE_NAME = building_magic MODE = add MAGIC_TYPE = living_magic }
+		check_building_magic_magic_type_ranked = { BUILDING_NAME = special_bloodcrystal_03 VALUE = 0.3 TABLE_NAME = building_magic MODE = add MAGIC_TYPE = living_magic }
+		check_building_magic_magic_type_ranked = { BUILDING_NAME = special_bloodcrystal_04 VALUE = 0.4 TABLE_NAME = building_magic MODE = add MAGIC_TYPE = living_magic }
+		
+		check_building_magic = { BUILDING_NAME = thebloodyard VALUE = 0.2 TABLE_NAME = building_magic MODE = add }
+		check_building_magic_magic_type_ranked = { BUILDING_NAME = thebloodyard VALUE = 0.2 TABLE_NAME = building_magic MODE = add MAGIC_TYPE = living_magic }
+
+	end_magical_defines_table = { TABLE_NAME = building_magic MODE = add }
+}
+
+building_magic_table_multiply = {
+	start_magical_defines_table = { TABLE_NAME = building_magic MODE = multiply }
+	
+		check_building_magic = { BUILDING_NAME = mayikprolollan_01 VALUE = 0.5  TABLE_NAME = building_magic MODE = multiply }
+		
+	end_magical_defines_table = { TABLE_NAME = building_magic MODE = multiply }
+}
+
+# LIFESTYLES
+
+lifestyle_magic_table_add = {
+	start_magical_defines_table = { TABLE_NAME = lifestyle_magic MODE = add }
+	
+		# Empty for now
+		
+	end_magical_defines_table = { TABLE_NAME = lifestyle_magic MODE = add }
+}
+
+lifestyle_magic_table_multiply = {
+	start_magical_defines_table = { TABLE_NAME = lifestyle_magic MODE = multiply }
+	
+		# Empty for now
+		
+	end_magical_defines_table = { TABLE_NAME = lifestyle_magic MODE = multiply }
+}
+
+# LIFESTYLE FOCUSES
+
+lifestyle_focus_magic_table_add = {
+	start_magical_defines_table = { TABLE_NAME = lifestyle_focus_magic MODE = add }
+	
+		# Empty for now
+		
+	end_magical_defines_table = { TABLE_NAME = lifestyle_focus_magic MODE = add }
+}
+
+lifestyle_focus_magic_table_multiply = {
+	start_magical_defines_table = { TABLE_NAME = lifestyle_focus_magic MODE = multiply }
+	
+		check_lifestyle_focus_magic = { FOCUS_NAME = magic_power_focus_dead VALUE = 0.2  TABLE_NAME = lifestyle_focus_magic MODE = multiply }
+		check_lifestyle_focus_magic = { FOCUS_NAME = magic_power_focus_living VALUE = 0.2  TABLE_NAME = lifestyle_focus_magic MODE = multiply }
+		
+	end_magical_defines_table = { TABLE_NAME = lifestyle_focus_magic MODE = multiply }
+}
+
+# LIFESTYLE PERKS
+
+lifestyle_perk_magic_table_add = {
+	start_magical_defines_table = { TABLE_NAME = lifestyle_perk_magic MODE = add }
+	
+		check_lifestyle_perk_magic = { PERK_NAME = deadmagic_perk1_tree1 VALUE = 1 TABLE_NAME = lifestyle_perk_magic MODE = add }
+		
+	end_magical_defines_table = { TABLE_NAME = lifestyle_perk_magic MODE = add }
+}
+
+lifestyle_perk_magic_table_multiply = {
+	start_magical_defines_table = { TABLE_NAME = lifestyle_perk_magic MODE = multiply }
+	
+		# Empty for now
+		
+	end_magical_defines_table = { TABLE_NAME = lifestyle_perk_magic MODE = multiply }
+}
+
+# DYNASTY LEGACIES
+
+dynasty_legacy_magic_table_add = {
+	start_magical_defines_table = { TABLE_NAME = dynasty_legacy_magic MODE = add }
+	
+		check_dynasty_legacy_magic = { LEGACY_NAME = magic_legacy_1 VALUE = 1 TABLE_NAME = dynasty_legacy_magic MODE = add }
+		
+	end_magical_defines_table = { TABLE_NAME = dynasty_legacy_magic MODE = add }
+}
+
+dynasty_legacy_magic_table_multiply = {
+	start_magical_defines_table = { TABLE_NAME = dynasty_legacy_magic MODE = multiply }
+	
+		# Empty for now
+		
+	end_magical_defines_table = { TABLE_NAME = dynasty_legacy_magic MODE = multiply }
+}
+
+# WAYLINES
+
+set_all_waylines = {
+	set_wayline = { PROVINCE = title:c_de_rheu }
+	set_wayline = { PROVINCE = title:c_arlanex }
+	set_wayline = { PROVINCE = title:c_andalau }
+	set_wayline = { PROVINCE = title:c_vizellia }
+	set_wayline = { PROVINCE = title:c_de_bassneux }
+
+	set_wayline = { PROVINCE = title:c_unterklausen }
+	set_wayline = { PROVINCE = title:c_ottetstift }
+	set_wayline = { PROVINCE = title:c_zesta }
+	set_wayline = { PROVINCE = title:c_fill_8811 }
+	set_wayline = { PROVINCE = title:c_klinkby }
+	set_wayline = { PROVINCE = title:c_ellends }
+	set_wayline = { PROVINCE = title:c_varnhalt }
+	set_wayline = { PROVINCE = title:c_halberbracht }
+	set_wayline = { PROVINCE = title:c_millestau }
+	set_wayline = { PROVINCE = title:c_yaffenguiem }
+	set_wayline = { PROVINCE = title:c_feigne }
+	set_wayline = { PROVINCE = title:c_fiende }
+	set_wayline = { PROVINCE = title:c_bereque }
+	set_wayline = { PROVINCE = title:c_veressirlaluc }
+	set_wayline = { PROVINCE = title:c_haravasiet }
+	set_wayline = { PROVINCE = title:c_provensier }
+	set_wayline = { PROVINCE = title:c_noscruex }
+	set_wayline = { PROVINCE = title:c_dorduein }
+	set_wayline = { PROVINCE = title:c_sarvede }
+	set_wayline = { PROVINCE = title:c_yiuve }
+	set_wayline = { PROVINCE = title:c_laviec }
+	
+	set_wayline = { PROVINCE = title:c_kyma }
+	set_wayline = { PROVINCE = title:c_kordowitz }
+	set_wayline = { PROVINCE = title:c_niederheischbach }
+	set_wayline = { PROVINCE = title:c_morgope }
+	set_wayline = { PROVINCE = title:c_hegningen }
+	set_wayline = { PROVINCE = title:c_motiri }
+	set_wayline = { PROVINCE = title:c_akum }
+	set_wayline = { PROVINCE = title:c_hyea }
+	set_wayline = { PROVINCE = title:c_poios }
+	set_wayline = { PROVINCE = title:c_thraadmis }
+	set_wayline = { PROVINCE = title:c_sadoum }
+	set_wayline = { PROVINCE = title:c_pyeis }
+	set_wayline = { PROVINCE = title:c_ticycortatis }
+	set_wayline = { PROVINCE = title:c_leios }
+	set_wayline = { PROVINCE = title:c_ithphaon }
+	set_wayline = { PROVINCE = title:c_hyponnus }
+	title:c_rhedola = { add_county_modifier = wayline_intersection_modifier }
+	set_wayline = { PROVINCE = title:c_orcelephnae }
+	set_wayline = { PROVINCE = title:c_leyddike }
+	set_wayline = { PROVINCE = title:c_olymis }
+	set_wayline = { PROVINCE = title:c_mezous }
+	set_wayline = { PROVINCE = title:c_olyraapne }
+	set_wayline = { PROVINCE = title:c_tidus }
+	set_wayline = { PROVINCE = title:c_oillinigarfn }
+	set_wayline = { PROVINCE = title:c_treghudiu }
+	set_wayline = { PROVINCE = title:c_llawyisgny }
+	
+	set_wayline = { PROVINCE = title:c_iasontum }
+	set_wayline = { PROVINCE = title:c_kosalos }
+	set_wayline = { PROVINCE = title:c_olbae }
+	set_wayline = { PROVINCE = title:c_crotyn }
+	set_wayline = { PROVINCE = title:c_myrauros }
+	set_wayline = { PROVINCE = title:c_geliene }
+	set_wayline = { PROVINCE = title:c_abdenes }
+	set_wayline = { PROVINCE = title:c_peiramos }
+	set_wayline = { PROVINCE = title:c_amareum }
+	set_wayline = { PROVINCE = title:c_thorynthos }
+	set_wayline = { PROVINCE = title:c_kourarnae }
+	set_wayline = { PROVINCE = title:c_byzenes }
+	set_wayline = { PROVINCE = title:c_rizydna }
+	set_wayline = { PROVINCE = title:c_delphoskopeion }
+	set_wayline = { PROVINCE = title:c_aytine }
+	set_wayline = { PROVINCE = title:c_alalia }
+	set_wayline = { PROVINCE = title:c_histraza }
+	set_wayline = { PROVINCE = title:c_askorus }
+	
+	set_wayline = { PROVINCE = title:c_mehmeslu }
+	set_wayline = { PROVINCE = title:c_ramaditha }
+	set_wayline = { PROVINCE = title:c_nawadad }
+	
+	set_wayline = { PROVINCE = title:c_zarrishtar }
+	set_wayline = { PROVINCE = title:c_zunat }
+	set_wayline = { PROVINCE = title:c_anrifal }
+	set_wayline = { PROVINCE = title:c_siligat }
+	set_wayline = { PROVINCE = title:c_ilinkum }
+	set_wayline = { PROVINCE = title:c_kiqubah }
+	set_wayline = { PROVINCE = title:c_unair }
+	set_wayline = { PROVINCE = title:c_wadi_sayh }
+	set_wayline = { PROVINCE = title:c_branahbad }
+	set_wayline = { PROVINCE = title:c_djiblish }
+	set_wayline = { PROVINCE = title:c_mellakesh }
+	set_wayline = { PROVINCE = title:c_sidi_nerbehl }
+	set_wayline = { PROVINCE = title:c_al_misheh }
+	set_wayline = { PROVINCE = title:c_al_mushyef }
+	set_wayline = { PROVINCE = title:c_ular_shala }
+	set_wayline = { PROVINCE = title:c_chahbania }
+	set_wayline = { PROVINCE = title:c_al_ahmane }
+	set_wayline = { PROVINCE = title:c_sitrabis }
+	
+	set_wayline = { PROVINCE = title:c_rana }
+	set_wayline = { PROVINCE = title:c_falagat }
+	set_wayline = { PROVINCE = title:c_ghaslan }
+	set_wayline = { PROVINCE = title:c_sashtun }
+	set_wayline = { PROVINCE = title:c_yasoundaj }
+	set_wayline = { PROVINCE = title:c_al_lifudhah }
+	set_wayline = { PROVINCE = title:c_tel_kebayr }
+	set_wayline = { PROVINCE = title:c_alqullah }
+	set_wayline = { PROVINCE = title:c_cakimit }
+	set_wayline = { PROVINCE = title:c_vardavard }
+	set_wayline = { PROVINCE = title:c_ahmadabad }
+	set_wayline = { PROVINCE = title:c_garm_ab }
+	set_wayline = { PROVINCE = title:c_chahe_ali }
+	set_wayline = { PROVINCE = title:c_pirakuh }
+	
+	# BLUE WAYLINE #
+	
+	set_wayline = { PROVINCE = title:c_danaia }
+	set_wayline = { PROVINCE = title:c_paestos }
+	set_wayline = { PROVINCE = title:c_amdia }
+	set_wayline = { PROVINCE = title:c_thephathus }
+	set_wayline = { PROVINCE = title:c_annpia }
+	set_wayline = { PROVINCE = title:c_pedoryns }
+	set_wayline = { PROVINCE = title:c_statfjord }
+	set_wayline = { PROVINCE = title:c_iisalsamaki }
+	set_wayline = { PROVINCE = title:c_alukdus }
+	set_wayline = { PROVINCE = title:c_tidahammar }
+	set_wayline = { PROVINCE = title:c_porsjoen }
+	set_wayline = { PROVINCE = title:c_priena }
+	set_wayline = { PROVINCE = title:c_rossmeisl }
+	set_wayline = { PROVINCE = title:c_jinonice }
+	set_wayline = { PROVINCE = title:c_kojetice }
+	set_wayline = { PROVINCE = title:c_mosenhof }
+	set_wayline = { PROVINCE = title:c_birkenberg }
+	set_wayline = { PROVINCE = title:c_zinkovy }
+	set_wayline = { PROVINCE = title:c_gesthuysen }
+	set_wayline = { PROVINCE = title:c_hachenberg }
+	set_wayline = { PROVINCE = title:c_wichum }
+	set_wayline = { PROVINCE = title:c_rathschlag }
+	set_wayline = { PROVINCE = title:c_vorhalle }
+	set_wayline = { PROVINCE = title:c_hochenegg }
+	set_wayline = { PROVINCE = title:c_ribnian }
+	set_wayline = { PROVINCE = title:c_oedes }
+	set_wayline = { PROVINCE = title:c_chila }
+	# INTERSECTION
+	set_wayline = { PROVINCE = title:c_sys }
+	set_wayline = { PROVINCE = title:c_makos }
+	set_wayline = { PROVINCE = title:c_syrythna }
+	set_wayline = { PROVINCE = title:c_pythria }
+	set_wayline = { PROVINCE = title:c_aspymna }
+	set_wayline = { PROVINCE = title:c_seuthatis }
+	set_wayline = { PROVINCE = title:c_himarina }
+	set_wayline = { PROVINCE = title:c_milymna }
+	set_wayline = { PROVINCE = title:c_erethasae }
+	set_wayline = { PROVINCE = title:c_stagina }
+	set_wayline = { PROVINCE = title:c_poseos }
+	set_wayline = { PROVINCE = title:c_nymphactus }
+	set_wayline = { PROVINCE = title:c_heraclosia }
+	set_wayline = { PROVINCE = title:c_lampsaclea }
+	set_wayline = { PROVINCE = title:c_sinera }
+	set_wayline = { PROVINCE = title:c_delphike }
+	set_wayline = { PROVINCE = title:c_petsiraki }
+	set_wayline = { PROVINCE = title:c_odethra }
+	set_wayline = { PROVINCE = title:c_alaris }
+	set_wayline = { PROVINCE = title:c_amberae }
+	set_wayline = { PROVINCE = title:c_etafag }
+	set_wayline = { PROVINCE = title:c_abu_kafta }
+	set_wayline = { PROVINCE = title:c_jabada }
+	set_wayline = { PROVINCE = title:c_shirasht }
+	set_wayline = { PROVINCE = title:c_salatalan }
+	set_wayline = { PROVINCE = title:c_pelinekin }
+	set_wayline = { PROVINCE = title:c_nabammam }
+	set_wayline = { PROVINCE = title:c_adem }
+	set_wayline = { PROVINCE = title:c_gimma }
+}

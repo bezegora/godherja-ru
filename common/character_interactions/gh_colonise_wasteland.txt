@@ -1,0 +1,96 @@
+﻿gh_colonise_wasteland = {
+	category = interaction_category_uncategorized
+	hidden = yes
+
+	desc = gh_colonise_wasteland_desc
+
+	target_type = title
+	target_filter = recipient_domain_titles
+	
+	auto_accept = yes
+
+	has_valid_target_showing_failures_only = {
+		scope:target = {
+			trigger_if = {
+				title_province = {
+					is_county_capital = yes
+					has_holding_type = wasteland_empty_holding
+					barony_controller = { has_trait = gh_wasteland }
+				}
+			}
+		}
+	}
+
+	on_accept = {
+
+		scope:target = {
+			save_scope_as = toColoniseTitle
+		}		
+		scope:actor = {
+			send_interface_toast = {
+				title = gh_colonize_wasteland_title
+
+				right_icon = scope:actor					
+
+				get_title = scope:target
+
+			}
+
+			trigger_event = colonisation.0001
+		}
+
+		
+	}
+
+	ai_will_do = {
+		base = 0
+	}
+}
+
+
+
+gh_abandon_colony = {
+	category = interaction_category_uncategorized
+	hidden = yes
+
+	desc = gh_abandon_colony_desc
+
+	target_type = title
+	target_filter = recipient_domain_titles
+	
+	auto_accept = yes
+
+	has_valid_target_showing_failures_only = {
+		scope:target = {
+			trigger_if = {
+				title_province = {
+					is_county_capital = yes
+					has_holding_type = wasteland_empty_holding
+					NOT = { barony_controller = { has_trait = gh_wasteland }}
+				}
+			}
+		}
+	}
+
+	on_accept = {
+		title:k_red_waste = {
+			if = {
+				limit = { exists = holder}
+				holder = { save_scope_as = red_waste_holder }
+				scope:red_waste_holder = { get_title = scope:target }
+			}
+			else = {
+				spawn_ruin = { COUNTY = scope:target }
+				scope:target = { holder = { save_scope_as = red_waste_holder } }
+				scope:red_waste_holder = { get_title = title:k_red_waste }
+				scope:red_waste_holder = { change_government = wasteland_government  }
+			}
+	
+		}
+
+	}
+
+	ai_will_do = {
+		base = 0
+	}
+}

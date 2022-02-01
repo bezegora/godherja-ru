@@ -1,0 +1,113 @@
+visual_traits_glowing_eyes_red = {
+	usage = game
+	glowing_eyes_red = {
+		dna_modifiers = {			
+		
+			accessory = {
+			    mode = modify
+			    gene = eye_accessory
+				template = glowing_eyes_red
+				value = 1.0
+			}	
+			morph = {
+				mode = add
+				gene = gene_gh_glowing_eyes_red
+				value = 1.0 
+				template = glowing_eyes_red_skin
+			}		
+		}
+		
+		weight = {
+			base = 0
+			modifier = {
+				add = 150
+				has_trait = gh_glowingeyes_red
+			}
+		}
+	}
+}
+
+visual_traits_glowing_veins = {
+	usage = game
+	glowing_veins_red = {
+		dna_modifiers = {			
+		
+			morph = {
+				mode = add
+				gene = gene_gh_glowing_veins
+				value = 1.0 
+				template = glowing_veins_red
+			}		
+		}
+		
+		weight = {
+			base = 0
+			modifier = {
+				add = 150
+				AND = {
+					has_trait = gh_glowing_veins
+					OR = {
+						has_trait = education_living_magic_1
+						has_trait = education_living_magic_2
+						has_trait = education_living_magic_3
+						has_trait = education_living_magic_4
+					}
+				}
+			}
+		}
+	}
+	glowing_veins_green = {
+		dna_modifiers = {			
+		
+			morph = {
+				mode = add
+				gene = gene_gh_glowing_veins
+				value = 1.0 
+				template = glowing_veins_green
+			}		
+		}
+		
+		weight = {
+			base = 0
+			modifier = {
+				add = 150
+				AND = {
+					has_trait = gh_glowing_veins
+					OR = {
+						has_trait = education_dead_magic_1
+						has_trait = education_dead_magic_2
+						has_trait = education_dead_magic_3
+						has_trait = education_dead_magic_4
+					}
+				}
+			}
+		}
+	}
+	glowing_veins_white = {
+		dna_modifiers = {			
+		
+			morph = {
+				mode = add
+				gene = gene_gh_glowing_veins
+				value = 1.0 
+				template = glowing_veins_white
+			}		
+		}
+		
+		weight = {
+			base = 0
+			modifier = {
+				add = 150
+				AND = {
+					has_trait = gh_glowing_veins
+					OR = {
+						has_trait = education_mixed_magic_1
+						has_trait = education_mixed_magic_2
+						has_trait = education_mixed_magic_3
+						has_trait = education_mixed_magic_4
+					}
+				}
+			}
+		}
+	}
+}

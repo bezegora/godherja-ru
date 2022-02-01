@@ -1,0 +1,59 @@
+﻿
+###################
+# MAGICAL PROWESS #
+###################
+
+magical_prowess_value = {
+	value = 0
+	
+	# Faith and province level magic sources do not factor into magical prowess calculations. Inherent personal traits do, as do character modifiers (and therefore artifacts as well)
+	
+	if = {
+		limit = { can_access_magic = yes }
+		add = magical_prowess_value_add
+		multiply = magical_prowess_value_multiply
+	}
+	
+	floor = yes
+}
+
+magical_prowess_value_add = {
+	value = 0
+	if = {
+		limit = { has_variable = trait_magic_add }
+		add = var:trait_magic_add
+	}
+	if = {
+		limit = { has_variable = character_modifier_magic_add }
+		add = var:character_modifier_magic_add
+	}
+	
+	add = magical_prowess_add_general
+	add = magical_prowess_add_skills
+	add = magical_prowess_add_traits
+}
+
+magical_prowess_value_multiply = {
+	value = 1
+
+	if = {
+		limit = { has_variable = trait_magic_multiply }
+		add = var:trait_magic_multiply
+	}
+
+	if = {
+		limit = { has_variable = character_modifier_magic_multiply }
+		add = var:character_modifier_magic_multiply
+	}
+
+
+	add = magical_prowess_education_bonus
+	add = magical_prowess_multiply_general
+}
+
+pure_prowess_value = {
+	value = prowess
+	
+	subtract = magical_prowess_value
+	min = 0
+}

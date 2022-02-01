@@ -1,0 +1,204 @@
+﻿on_giant_nickname = 
+{
+	trigger = { 
+		    has_trait = giant 
+		    prestige_level >= 2
+		  }
+	first_valid_on_action = 
+	{
+		on_learning_giant
+		on_stewardship_giant
+		on_martial_giant
+		on_prowess_giant
+		on_diplomacy_giant
+		on_intrigue_giant
+	}
+
+	fallback = on_albino_nickname
+}
+
+##################################################################
+
+on_learning_giant = 
+{
+	trigger = { learning >= 35 }
+	random_on_action = 
+	{
+		10 = on_gentle_giant
+		10 = on_holy_giant
+		10 = on_sacred_mountain
+	}
+
+}
+
+on_gentle_giant = 
+{
+	effect = { give_nickname = nick_the_gentle_giant }
+}
+on_holy_giant = 
+{
+	effect = { give_nickname = nick_the_holy_giant }
+}
+on_sacred_mountain= 
+{
+	effect = { give_nickname = nick_the_sacred_mountain }
+}
+
+##################################################################
+
+on_stewardship_giant = 
+{
+	trigger = { stewardship >= 25 }
+	random_on_action = 
+	{
+		10 = on_golden_giant
+		10 = on_silver_giant
+		10 = on_affluent_mountain
+	}
+	
+}
+
+on_golden_giant= 
+{
+	effect = { give_nickname = nick_the_golden_giant }
+}
+on_silver_giant= 
+{
+	effect = { give_nickname = nick_the_silver_giant }
+}
+on_affluent_mountain=
+{
+	effect = { give_nickname = nick_the_affluent_mountain }
+}
+
+##################################################################
+
+on_martial_giant =
+{
+	trigger = { martial >= 25 }
+	random_on_action = 
+	{
+		10 = on_warmongering_giant
+		10 = on_war_giant
+		10 = on_mountain_that_strikes
+	}
+}
+
+on_warmongering_giant=
+{
+	effect = { give_nickname = nick_the_warmongering_giant }
+}
+on_war_giant=
+{
+	effect = { give_nickname = nick_the_war_giant }
+}
+on_mountain_that_strikes=
+{
+	effect = { give_nickname = nick_the_mountain_that_strikes }
+}
+
+##################################################################
+
+on_prowess_giant =
+{
+	trigger = { prowess >= 30 }
+	first_valid_on_action = 
+	{
+		on_cyclops
+		on_random_prowess_giant		
+	}
+}
+
+on_cyclops =
+{
+	trigger = { has_trait >= one_eyed }
+	effect = { give_nickname = nick_the_cyclops }
+}
+
+on_random_prowess_giant	=
+{
+	random_on_action = 
+	{
+		10 = on_warrior_giant 
+		10 = on_giant_soldier
+		10 = on_mountain_that_rides
+	}
+}
+
+on_warrior_giant =
+{
+	effect = { give_nickname = nick_the_warrior_giant }
+}
+
+on_giant_soldier =
+{
+	effect = { give_nickname = nick_the_giant_soldier }
+}
+
+on_mountain_that_rides=
+{
+	effect = { give_nickname = nick_the_mountain_that_rides }
+}
+
+##################################################################
+
+on_diplomacy_giant =
+{
+	trigger = { diplomacy >= 25 }
+	random_on_action = 
+	{
+		10 = on_cordial_giant
+		10 = on_pleasant_giant
+		10 = on_warm_mountain
+	}
+}
+
+on_cordial_giant =
+{
+	effect = { give_nickname = nick_the_cordial_giant }
+}
+
+on_pleasant_giant =
+{
+	effect = { give_nickname = nick_the_pleasant_giant }
+}
+
+on_warm_mountain =
+{
+	effect = { give_nickname = nick_the_warm_mountain }
+}
+
+##################################################################
+
+on_intrigue_giant =
+{
+	trigger = { intrigue >= 25 }
+	random_on_action = 
+	{
+		10 = on_shadow_giant
+		10 = on_giant_spider
+		10 = on_hidden_mountain
+	}
+
+}
+
+on_shadow_giant =
+{
+	effect = { give_nickname = nick_the_shadow_giant }
+}
+
+on_giant_spider =
+{
+	effect = { give_nickname = nick_the_giant_spider }
+}
+
+on_hidden_mountain =
+{
+	effect = { give_nickname = nick_the_hidden_mountain }
+}
+
+
+
+
+
+

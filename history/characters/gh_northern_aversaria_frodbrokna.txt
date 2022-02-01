@@ -1,0 +1,327 @@
+﻿northern_aversaria_frodbrokna_1 = {
+	# Governor of Kyvernis ti Kalathipsomi in 1200.3.1. Predecessor was sent north from Oraispol in 1197 to eliminate the previous turncoat governor and restore order to the province.
+	# Managed to take Pathosopol, but quickly stalled when faced against the warlord of Bastonport. Continued this stalemate until 1200, when she got killed in Frodbrokna as collateral
+	# Tried restoring some semblance of order to Megos Kalathipsomi to mixed success for the next 9 years, killed in battle in 1209
+	name = "Konstas"
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"	# Not actually from Kalathipsomi itself, family is Etepezean
+	1181.4.5 = {
+		birth = yes
+		trait = magic_good_1
+	}
+	1193.1.1 = {
+		trait = ambitious
+		trait = calm
+		trait = deceitful
+	}
+	1197.4.5 = {
+		trait = education_martial_2
+	}
+	1209.10.2 = {
+		death = {
+			death_reason = death_battle
+		}
+	}
+}
+
+northern_aversaria_frodbrokna_2 = {
+	# Governor of Kyvernis ti Kalathipsomi starting from 1209
+	# Family were major landholders in the Phocomenion Prefecture, elevated from Oraispol to the position by recommendation
+	# Managed to successfully bring large swathes of Megos Kalathipsomi back under imperial control, but would be executed in 1221 as a result of scheming from his rival and successor
+	name = "Philippos"
+	religion = "aversarinas_aautokrata"
+	culture = "northernimperial"
+	1178.8.26 = {
+		birth = yes
+		trait = intellect_good_1
+	}
+	1190.1.1 = {
+		trait = diligent
+		trait = honest
+		trait = brave
+	}
+	1194.8.26 = {
+		trait = education_martial_4
+	}
+	1221.1.17 = {
+		death = {
+			death_reason = death_execution
+			killer = western_imperial_1
+		}
+	}
+}
+
+northern_aversaria_frodbrokna_3 = {
+	# Governor of Kyvernis ti Kalathipsomi, starting from 1221
+	# Got position via backstabbing predecessor and getting appointed as Governor in his stead
+	# Used position to brutalize the local populace and fleece everyone out of their money, very rapidly caused a collapse of authority outside Pathosopol, basically undid all of predecessor's gains
+	# Killed in an uprising in the city that caused the finally collapse of any Oraispol Aautokratian control in Kalathipsomi, and the effective end of the Kyvernis ti Kalathipsomi
+	name = "Eustathia"
+	religion = "aversarinas_aautokrata"
+	culture = "northernimperial"
+	female = yes
+	1188.12.4 = {
+		birth = yes
+	}
+	1200.1.1 = {
+		trait = callous
+		trait = greedy
+		trait = deceitful
+	}
+	1204.12.4 = {
+		trait = education_intrigue_1
+	}
+	1226.5.15 = {
+		death = {
+			death_reason = death_murder
+		}
+	}
+}
+
+northern_aversaria_frodbrokna_4 = {
+	# Minor landholder, previously Kothexir of Maresego. Swept into Pathosopol in 1226 to put down the uprising in the city
+	# Was angling for a promotion to the governorate, but was rebuffed due to various political reasons. Refused to stand down, and instead broke with Oraispol permanently
+	# Driven out of Pathosopol by loyalist forces in 1228, but retook it in 1231 with the help of a bandit warlord of the area
+	# Gradually fell out with his ally until he was finally betrayed and killed by him in 1234
+	name = "Theophanes"
+	religion = "aversarinas_aautokrata"
+	culture = "northernimperial"
+	1185.6.13 = {
+		birth = yes
+	}
+	1197.1.1 = {
+		trait = ambitious
+		trait = greedy
+		trait = vengeful
+	}
+	1201.6.13 = {
+		trait = education_diplomacy_2
+	}
+	1234.10.14 = {
+		death = {
+			death_reason = death_torture
+			killer = northern_aversaria_frodbrokna_6
+		}
+	}
+}
+
+northern_aversaria_frodbrokna_5 = {
+	# Aeschraeist loyalist and stooge. Sent to be a pliable governor of Kalathipsomi (or whatever remained of it) in 1228
+	# Lost the city in 1231 to the person he drove out and a bandit warlord
+	name = "Isidoros"
+	religion = "aversarian_aeschraes"
+	culture = "westernimperial"
+	1161.8.19 = {
+		birth = yes
+	}
+	1173.1.1 = {
+		trait = content
+		trait = fickle
+		trait = craven
+	}
+	1177.8.19 = {
+		trait = education_stewardship_2
+	}
+	1231.9.20 = {
+		death = {
+			death_reason = death_torture
+			killer = northern_aversaria_frodbrokna_6
+		}
+	}
+}
+
+northern_aversaria_frodbrokna_6 = {
+	# Bandit warlord, took Pathosopol in 1234 after backstabbing ally
+	name = "Melissa"
+	religion = "aversarinas_aautokrata"
+	culture = "northernimperial"
+	female = yes
+	1202.4.2 = {
+		birth = yes
+		trait = physique_good_1
+	}
+	1214.1.1 = {
+		trait = greedy
+		trait = brave
+		trait = sadistic
+		trait = shrewd
+	}
+	1218.4.2 = {
+		trait = education_martial_3
+	}
+	1220.1.1 = {
+		trait = peasant_leader
+	}
+	1243.8.23 = {
+		death = {
+			death_reason = death_murder_unknown
+		}
+	}
+}
+
+northern_aversaria_frodbrokna_7 = {
+	# Daughter of previous, ruled Pathosopol for a short time before getting stabbed in the back by an underling
+	name = "Eudokia"
+	religion = "aversarinas_aautokrata"
+	culture = "northernimperial"
+	female = yes
+	mother = northern_aversaria_frodbrokna_6
+	1221.11.13 = {
+		birth = yes
+		trait = intellect_bad_2
+	}
+	1233.1.1 = {
+		trait = wrathful
+		trait = sadistic
+		trait = honest
+	}
+	1237.11.13 = {
+		trait = education_martial_1
+	}
+	1245.3.6 = {
+		death = {
+			death_reason = death_murder_known
+			killer = northern_aversaria_frodbrokna_8
+		}
+	}
+}
+
+northern_aversaria_frodbrokna_8 = {
+	# Final Aversarian ruler of Pathosopol. Got a Klingon promotion by murdering predecessor. Killed in battle by Sjalvolki successor
+	name = "Kosmas"
+	religion = "aversarinas_aautokrata"
+	culture = "northernimperial"
+	1213.6.20 = {
+		birth = yes
+	}
+	1225.1.1 = {
+		trait = deceitful
+		trait = vengeful
+		trait = paranoid
+	}
+	1229.6.20 = {
+		trait = education_intrigue_2
+	}
+	1251.7.8 = {
+		death = {
+			death_reason = death_battle
+			killer = clanlands_megos_128
+		}
+	}
+}
+
+northern_aversaria_frodbrokna_9 = {
+	# Ruler of Bastonport in 1200.3.1. Was a major supporter of the warlord of Leskovec during the later half of the civil war. When said warlord bit the bullet during Frodbrokna,
+	# quickly swept into Bastonport, massacred anyone left of his previous overlord's family and supporters, and took the city for himself. Only managed to take over half of Leskovec
+	# however, as in the west his civil war-era rival managed to gain control. The two would spend the next 20 odd years fighting, neither being able to secure an advantage
+	name = "Polykarpos"
+	religion = "aversarinas_aautokrata"
+	culture = "northernimperial"
+	1163.10.11 = {
+		birth = yes
+	}
+	1175.1.1 = {
+		trait = ambitious
+		trait = sadistic
+		trait = impatient
+	}
+	1179.10.11 = {
+		trait = education_intrigue_4
+	}
+	1228.3.14 = {
+		death = {
+			death_reason = death_natural_causes
+		}
+	}
+}
+
+northern_aversaria_frodbrokna_10 = {
+	# Demetros 'Iron-Spike' Detheniax
+	name = "Demetros"
+	dynasty = dyn_aversarian_11
+	religion = "aversarinas_aautokrata"
+	culture = "northernimperial"
+	1202.6.13 = {
+		birth = yes
+		trait = intellect_good_2
+	}
+	1214.1.1 = {
+		trait = ambitious
+		trait = callous
+		trait = greedy
+		trait = shrewd
+		trait = blademaster_3
+	}
+	1218.6.13 = {
+		trait = education_intrigue_4
+	}
+	1219.1.1 = {
+		give_nickname = nick_iron_spike
+	}
+	1229.3.23 = {
+		death = {
+			death_reason = death_duel
+			killer = western_imperial_15009
+		}
+	}
+}
+
+northern_aversaria_frodbrokna_11 = {
+	# Oulnir Gordabrok
+	name = "Oulnir"
+	dynasty = dyn_aversarian_13
+	religion = "aversarinas_aautokrata"
+	culture = "sarridians"
+	1213.1.13 = {
+		birth = yes
+		trait = physique_good_2
+		trait = intellect_good_1
+		trait = giant
+	}
+	1225.1.1 = {
+		trait = ambitious
+		trait = callous
+		trait = calm
+		trait = scholar
+		trait = blademaster_2
+	}
+	1229.1.13 = {
+		trait = education_learning_4
+		trait = scarred
+	}
+	1247.10.17 = {
+		death = {
+			death_reason = death_battle
+			killer = clanlands_imperial_1	# Ganked by Black Sun
+		}
+	}
+}
+
+northern_aversaria_frodbrokna_12 = {
+	# Methiad
+	name = "Methiad"
+	dynasty = dyn_aversarian_14
+	religion = "aversarian_axiaotheaism"
+	culture = "northernimperial"
+	female = yes
+	1211.6.2 = {
+		birth = yes
+		trait = magic_good_4
+		trait = intellect_good_1
+	}
+	1223.1.1 = {
+		trait = ambitious
+		trait = arrogant
+		trait = zealous
+	}
+	1227.6.2 = {
+		trait = education_intrigue_3
+		trait = education_living_magic_4
+	}
+	1247.11.10 = {
+		death = {
+			death_reason = death_execution
+			killer = clanlands_imperial_1	# Executed by Black Sun
+		}
+	}
+}

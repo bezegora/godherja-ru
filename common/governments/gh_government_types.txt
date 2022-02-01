@@ -1,0 +1,129 @@
+﻿magocratic_government = {
+	dynasty_named_realms = yes
+
+	primary_holding = castle_holding
+	valid_holdings = { castle_holding military_district_holding palatial_district_holding maritime_district_holding temple_district_holding trade_district_holding urban_district_holding workshop_district_holding ruined_district_holding ruined_military_district_holding ruined_palatial_district_holding ruined_maritime_district_holding ruined_temple_district_holding ruined_trade_district_holding ruined_urban_district_holding ruined_workshop_district_holding  }
+	required_county_holdings = { castle_holding city_holding church_holding }
+
+	vassal_contract = {
+		feudal_government_taxes
+		feudal_government_levies
+		special_contract
+		religious_rights
+		fortification_rights
+		coinage_rights
+		succession_rights
+		war_declaration_rights
+		council_rights
+		title_revocation_rights
+	}
+
+	fallback = 5
+
+	flag = can_not_be_vassal_or_liege
+
+	can_get_government = {
+		OR = {
+			has_trait = magic_good_1
+			has_trait = magic_good_2
+			has_trait = magic_good_3
+			has_trait = magic_good_4
+		}
+	}
+	
+	color = hsv{ 0.0 0.00 0.50 }
+}
+
+magocratic_republic = {
+	primary_holding = city_holding
+	valid_holdings = { castle_holding military_district_holding palatial_district_holding maritime_district_holding temple_district_holding trade_district_holding urban_district_holding workshop_district_holding ruined_district_holding ruined_military_district_holding ruined_palatial_district_holding ruined_maritime_district_holding ruined_temple_district_holding ruined_trade_district_holding ruined_urban_district_holding ruined_workshop_district_holding }
+	required_county_holdings = { city_holding castle_holding church_holding }
+
+	ai = {
+		arrange_marriage = no
+		use_goals = no
+		perform_religious_reformation = no
+	}
+
+	can_get_government = {
+		OR = {
+			has_trait = magic_good_1
+			has_trait = magic_good_2
+			has_trait = magic_good_3
+			has_trait = magic_good_4
+		}
+	}
+
+	fallback = 4
+
+	flag = can_not_be_vassal_or_liege
+
+	vassal_contract = { republic_government_obligations }
+	color = hsv{ 0.00 0.00 0.60 }
+}
+
+peasant_republic = {
+	primary_holding = city_holding
+	valid_holdings = { castle_holding military_district_holding palatial_district_holding maritime_district_holding temple_district_holding trade_district_holding urban_district_holding workshop_district_holding ruined_district_holding ruined_military_district_holding ruined_palatial_district_holding ruined_maritime_district_holding ruined_temple_district_holding ruined_trade_district_holding ruined_urban_district_holding ruined_workshop_district_holding }
+	required_county_holdings = { city_holding castle_holding church_holding }
+
+	vassal_contract = {
+		republic_government_obligations
+	}
+	
+	fallback = 3
+
+	supply_limit_mult_for_others = -0.5
+
+	flag = can_not_be_vassal_or_liege
+
+	ai = {
+		arrange_marriage = no
+		use_goals = no
+		perform_religious_reformation = no
+	}
+
+	color = hsv{ 0.4 0.5 0.4 } #placeholder color
+}
+
+landed_order_government = {
+	create_cadet_branches = no
+	rulers_should_have_dynasty = no
+	dynasty_named_realms = no
+
+	primary_holding = castle_holding
+	valid_holdings = { castle_holding military_district_holding palatial_district_holding maritime_district_holding temple_district_holding trade_district_holding urban_district_holding workshop_district_holding ruined_district_holding ruined_military_district_holding ruined_palatial_district_holding ruined_maritime_district_holding ruined_temple_district_holding ruined_trade_district_holding ruined_urban_district_holding ruined_workshop_district_holding }
+	required_county_holdings = { castle_holding city_holding church_holding }
+
+	vassal_contract = {
+		feudal_government_taxes
+		feudal_government_levies
+		special_contract
+		religious_rights
+		fortification_rights
+		coinage_rights
+		succession_rights
+		war_declaration_rights
+		council_rights
+		title_revocation_rights
+	}
+	
+	color = hsv{ 0.2 0.2 0.2 }
+}
+
+military_unit_government = {
+	valid_holdings = { castle_holding military_district_holding palatial_district_holding maritime_district_holding temple_district_holding trade_district_holding urban_district_holding workshop_district_holding ruined_district_holding ruined_military_district_holding ruined_palatial_district_holding ruined_maritime_district_holding ruined_temple_district_holding ruined_trade_district_holding ruined_urban_district_holding ruined_workshop_district_holding }
+	required_county_holdings = { castle_holding city_holding church_holding }
+	court_generate_spouses = no
+	court_generate_commanders = 5
+	council = no
+
+	ai = {
+		arrange_marriage = no
+		use_goals = no
+		perform_religious_reformation = no
+	}
+
+	flag = can_not_be_vassal_or_liege
+	color = hsv{ 0.66 0.11 0.11 }
+}

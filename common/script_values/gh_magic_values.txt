@@ -1,0 +1,976 @@
+﻿living_magi_trait_progress_threshold_base = 5
+dead_magi_trait_progress_threshold_base = 5
+magic_defense_from_magic_criminal = 25
+magic_defense_from_magic_shunned = 25
+magic_defense_from_antimagic_field = 100
+
+##############
+# COURT MAGE #
+##############
+
+court_mage_transfer_value = {
+	value = 0
+	if = {
+		limit = {
+			exists = var:monthly_magic_no_transfer
+		}
+		add = var:monthly_magic_no_transfer
+	}
+	if = {
+		limit = {
+			exists = var:monthly_magic_no_transfer
+		}
+		divide = 2
+	}
+}
+
+###################
+# MAGICAL PROWESS #
+###################
+magical_prowess_add_general = {
+	value = 0
+
+
+}
+
+magical_prowess_multiply_general = {
+	value = 0
+
+	
+}
+
+
+magical_prowess_education_bonus = {
+	value = 0
+	if = {
+		limit = {
+			has_magic_education_trait_rank = {
+				RANK = 4
+			}
+		}
+		add = 4
+	}
+	else_if = {
+		limit = {
+			has_magic_education_trait_rank = {
+				RANK = 3
+			}
+		}
+		add = 2
+	}
+	else_if = {
+		limit = {
+			has_magic_education_trait_rank = {
+				RANK = 2
+			}
+		}
+		add = 1
+	}
+	else_if = {
+		limit = {
+			has_magic_education_trait_rank = {
+				RANK = 1
+			}
+		}
+		add = 0.5
+	}
+}
+
+magical_prowess_add_skills = {
+	value = 0
+
+	add = {
+		value = martial
+		multiply = 0.1
+	}
+
+	add = {
+		value = learning
+		multiply = 0.1
+	}
+}
+
+magical_prowess_add_traits = {
+	value = 0
+	if = {
+		limit = { has_trait = ambitious }
+		add = 1
+	}
+	if = {
+		limit = { has_trait = sadistic }
+		add = 1
+	}
+	if = {
+		limit = { has_trait = brave }
+		add = 1
+	}
+
+	if = {
+		limit = { has_trait = intellect_good_1 }
+		add = 1
+	}
+	else_if = {
+		limit = { has_trait = intellect_good_2 }
+		add = 2
+	}
+	else_if = {
+		limit = { has_trait = intellect_good_3 }
+		add = 3
+	}
+}
+
+level_spell_multiplier = {
+	value = 1
+		if = {
+		limit = {
+			trigger_if = {
+				limit = { has_variable = magic_lvl }
+				var:magic_lvl >= 1
+			}
+			trigger_else = { always = no }
+		}
+		multiply = 2
+	}
+	if = {
+		limit = { 
+			trigger_if = {
+				limit = { has_variable = magic_lvl }
+				var:magic_lvl >= 2
+			}
+			trigger_else = { always = no }
+		}
+		multiply = 2
+	}
+	if = {
+		limit = { 
+			trigger_if = {
+				limit = { has_variable = magic_lvl }
+				var:magic_lvl >= 3
+			}
+			trigger_else = { always = no }
+		}
+		multiply = 2
+	}
+	if = {
+		limit = { 
+			trigger_if = {
+				limit = { has_variable_list = spell_targets }
+				variable_list_size = {
+					name = spell_targets
+					value > 1
+				}
+			}
+			trigger_else = { always = no }
+		}
+		every_in_list = {
+			variable = spell_targets
+			multiply = 1.5
+		}
+	}
+	if = {
+		limit = { 
+			root = {
+				exists = cp:councillor_court_mage
+				cp:councillor_court_mage = {
+					is_performing_council_task = task_court_mage_cast_spells
+				}
+			}
+		}
+		multiply = 3
+	}
+}
+
+tier_1_spell = {
+	value = 25
+	multiply = level_spell_multiplier
+}
+
+tier_2_spell = {
+	value = 50
+	multiply = level_spell_multiplier
+}
+
+tier_3_spell = {
+	value = 100
+	multiply = level_spell_multiplier
+}
+
+tier_4_spell = {
+	value = 150
+	multiply = level_spell_multiplier
+}
+
+tier_5_spell = {
+	value = 200
+	multiply = level_spell_multiplier
+}
+
+dead_magic_moon_pull_multiplier = {
+	value = 1
+	if = {
+		limit = {
+		has_character_modifier = pulling_moon_mod
+		is_any_good_moon_trigger = yes
+		}
+	subtract = 0.15
+	}
+	if = {
+		limit = {
+		has_character_modifier = pulling_moon_mod
+		is_full_moon_trigger = yes
+		}
+	subtract = 0.15
+	}
+}
+
+# affects the amount given by dead magic education traits
+dead_magic_monthly_magic_multiplier = {
+	value = 1
+	if = {
+		limit = {
+			is_new_moon_trigger = yes
+		}
+		multiply = 0
+	}
+	else_if = {
+		limit = {
+			is_crescent_moon_trigger = yes
+		}
+		multiply = 0.25
+	}
+	else_if = {
+		limit = {
+			is_quarter_moon_trigger = yes
+		}
+		multiply = 0.5
+	}
+	else_if = {
+		limit = {
+			is_gibbous_moon_trigger = yes
+		}
+		multiply = 0.75
+	}
+	else_if = {
+		limit = {
+			is_full_moon_trigger = yes
+		}
+		multiply = 1
+	}
+}
+
+dead_magic_monthly_magic_0_dot_5 = {
+	value = 0.5
+	multiply = dead_magic_monthly_magic_multiplier
+}
+
+dead_magic_monthly_magic_1 = {
+	value = 1
+	multiply = dead_magic_monthly_magic_multiplier
+}
+
+dead_magic_monthly_magic_1_dot_5 = {
+	value = 1.5
+	multiply = dead_magic_monthly_magic_multiplier
+}
+
+dead_magic_monthly_magic_2 = {
+	value = 2
+	multiply = dead_magic_monthly_magic_multiplier
+}
+
+dead_magic_monthly_magic_2_dot_5 = {
+	value = 2.5
+	multiply = dead_magic_monthly_magic_multiplier
+}
+
+dead_magic_monthly_magic_3 = {
+	value = 3
+	multiply = dead_magic_monthly_magic_multiplier
+}
+
+dead_magic_monthly_magic_3_dot_5 = {
+	value = 3.5
+	multiply = dead_magic_monthly_magic_multiplier
+}
+
+dead_magic_monthly_magic_4 = {
+	value = 4
+	multiply = dead_magic_monthly_magic_multiplier
+}
+
+tier_1dead_spell = {
+	value = 25
+	multiply = level_spell_multiplier
+	multiply = dead_magic_moon_pull_multiplier
+}
+
+tier_2dead_spell = {
+	value = 50
+	multiply = level_spell_multiplier
+	multiply = dead_magic_moon_pull_multiplier
+}
+
+tier_3dead_spell = {
+	value = 100
+	multiply = level_spell_multiplier
+	multiply = dead_magic_moon_pull_multiplier
+}
+
+tier_4dead_spell = {
+	value = 150
+	multiply = level_spell_multiplier
+	multiply = dead_magic_moon_pull_multiplier
+}
+
+tier_5dead_spell = {
+	value = 200
+	multiply = level_spell_multiplier
+	multiply = dead_magic_moon_pull_multiplier
+}
+
+tier_1_gen = {
+	value = 10
+}
+
+tier_2_gen = {
+	value = 25
+}
+
+tier_3_gen = {
+	value = 50
+}
+
+tier_4_gen = {
+	value = 100
+}
+
+tier_5_gen = {
+	value = 150
+}
+
+bone_gen_multiplier = {
+	value = 1
+	if = {
+		limit = {
+		has_perk = deadmagic_perk9_tree1
+		}
+	}
+	add = 0.25
+}
+
+tier_0_bone_gen = {
+	value = 50
+	multiply = bone_gen_multiplier
+}
+
+tier_1_bone_gen = {
+	value = 100
+	multiply = bone_gen_multiplier
+}
+
+tier_2_bone_gen = {
+	value = 200
+	multiply = bone_gen_multiplier
+}
+
+tier_3_bone_gen = {
+	value = 400
+	multiply = bone_gen_multiplier
+}
+
+tier_4_bone_gen = {
+	value = 800
+	multiply = bone_gen_multiplier
+}
+
+tier_3x_bone_gen = {
+	value = 400
+	multiply = bone_gen_multiplier
+}
+
+GetMagicAdditionTT = {
+	value = scope:adding
+}
+
+gedeora_min_distance_value = {
+	value = 1
+	if = {
+		limit = { scope:gedeora_epicenter = { has_variable = medium_gedeora } }
+		add = 4
+	}
+	else_if = {
+		limit = { scope:gedeora_epicenter = { has_variable = big_gedeora } }
+		add = 10
+	}
+	if = {
+		limit = { scope:gedeora_epicenter = { has_variable = huge_gedeora } }
+		add = 20
+	}
+}
+
+gedeora_max_distance_value = {
+	value = 2
+	if = {
+		limit = { scope:gedeora_epicenter = { has_variable = medium_gedeora } }
+		add = 8
+	}
+	else_if = {
+		limit = { scope:gedeora_epicenter = { has_variable = big_gedeora } }
+		add = 20
+	}
+	if = {
+		limit = { scope:gedeora_epicenter = { has_variable = huge_gedeora } }
+		add = 40
+	}
+}
+
+gedeora_sadist_resist_cost = {
+	value = 100
+	
+	subtract = { 
+		value = ai_compassion
+		multiply = 3
+	}
+	add = {
+		value = ai_vengefulness
+		multiply = 2
+	}
+	subtract = { 
+		value = ai_honor
+		divide = 2
+	}
+	max = 250
+	min = 0
+}
+
+# min(magi_potency, 1)*0.2
+monthly_overwhelmation_loss = {
+	value = magi_potency
+	min = 1
+	multiply = 0.2
+	max = var:overwhelmation
+}
+
+# min(magi_potency, 1)*0.5 + 0.5
+overwhelmation_limit_first = {
+	value = magi_potency
+	min = 1
+	multiply = 0.5
+	add = 0.5
+	if = {
+		limit = {
+			trigger_if = {
+				limit = { is_lowborn = no }
+				dynasty = { has_dynasty_perk = magic_legacy_2 }
+			}
+			trigger_else = { always = no }
+		}
+		multiply = 1.5
+	}
+}
+
+overwhelmation_limit_second = {
+	value = overwhelmation_limit_first
+	multiply = 2
+}
+
+overwhelmation_limit_third = {
+	value = overwhelmation_limit_first
+	multiply = 3
+}
+
+overwhelmation_after_spell = {
+	value = 0
+	if = {
+		limit = { has_variable = overwhelmation }
+		add = var:overwhelmation
+	}
+	if = {
+		limit = { root = { has_variable = magic_lvl } }
+		if = {
+			limit = { root.var:magic_lvl = 0 }
+			add = 0.5
+		}
+		else_if = {
+			limit = { root.var:magic_lvl = 1 }
+			add = 1
+		}
+		else_if = {
+			limit = { root.var:magic_lvl = 2 }
+			add = 2
+		}
+		else_if = {
+			limit = { root.var:magic_lvl = 3 }
+			add = 4
+		}
+	}
+}
+
+ritual_scars_progress_threshold_first = 3
+ritual_scars_progress_threshold_second = 10
+ritual_scars_progress_threshold_third = 20
+
+sacrifice_value_multiplier = {
+	value = 1
+	if = {
+		limit = { has_trait = education_living_magic_2 }
+		add = 0.1
+	}
+	else_if = {
+		limit = { has_trait = education_living_magic_3 }
+		add = 0.2
+	}
+	else_if = {
+		limit = { has_trait = education_living_magic_4 }
+		add = 0.3
+	}
+}
+
+sacrifice_value = {
+	value = 0
+	if = {
+		limit = { has_trait = magic_good_1 }	# Magi always give at least some mana
+		add = 15
+	}
+	else_if = {
+		limit = { has_trait = magic_good_2 }
+		add = 30
+	}
+	else_if = {
+		limit = { has_trait = magic_good_3 }
+		add = 50
+	}
+	else_if = {
+		limit = { has_trait = magic_good_4 }
+		add = 100
+	}
+	else_if = {
+		limit = { has_trait = magic_good_5 }
+		add = 150
+	}
+	else_if = {	# After this, magic gain starts exponentially increasing...
+		limit = { has_trait = magic_good_6 }
+		add = 200
+	}
+	else_if = {
+		limit = { has_trait = magic_good_7 }
+		add = 300
+	}
+	else_if = {
+		limit = { has_trait = magic_good_8 }
+		add = 400
+	}
+	else_if = {
+		limit = { has_trait = magic_good_9 }
+		add = 500
+	}
+	else_if = {
+		limit = { has_trait = magic_good_10 }
+		add = 600
+	}
+	else_if = {
+		limit = { has_trait = magic_good_11 }
+		add = 800
+	}
+	else_if = {
+		limit = { has_trait = magic_good_12 }
+		add = 1000
+	}
+	else_if = {
+		limit = { has_trait = magic_good_13 }
+		add = 1500
+	}
+	else_if = {
+		limit = { has_trait = magic_good_14 }
+		add = 2000
+	}
+	else_if = {
+		limit = { has_trait = magic_good_15 }
+		add = 2500
+	}
+	else_if = {
+		limit = { has_trait = magic_good_16 }
+		add = 3000
+	}
+	else_if = {
+		limit = { has_trait = magic_good_17 }
+		add = 3500
+	}
+	else_if = {
+		limit = { has_trait = magic_good_18 }
+		add = 4000
+	}
+	else_if = {
+		limit = { has_trait = magic_good_19 }
+		add = 4500
+	}
+	else_if = {
+		limit = { has_trait = magic_good_20 }
+		add = 5000
+	}
+}
+
+sacrifice_value_adjusted = {
+	value = 1
+	if = {
+		limit = { highest_held_title_tier = tier_county }
+		multiply = 3
+	}
+	else_if = {
+		limit = { highest_held_title_tier = tier_duchy }
+		multiply = 10
+	}
+	else_if = {
+		limit = { highest_held_title_tier = tier_kingdom }
+		multiply = 30
+	}
+	else_if = {
+		limit = { highest_held_title_tier = tier_empire }
+		multiply = 100
+	}
+	add = sacrifice_value
+	multiply = root.sacrifice_value_multiplier
+	if = {
+		limit = {
+			root.faith = {
+				has_doctrine = tenet_aeschres_legacy
+			}
+		}
+		multiply = 1.2
+	}
+	if = {
+		limit = {
+			root = {
+				any_held_title = {
+					trigger_if = {
+						limit = { tier = tier_county }
+						any_county_province = {
+							OR = {
+								has_building = thebloodyard	
+								has_building = thebloodyard_02
+							}
+						}
+					}
+					trigger_else = { always = no }
+				}
+			}
+		}
+		multiply = 2
+	}
+	if = {
+		limit = {
+			is_primary_heir_of = root
+		}
+		multiply = 1.5
+	}
+	if = {
+		limit = {
+			is_child_of = root
+		}
+		multiply = 1.5
+	}
+	if = {
+		limit = {
+			is_spouse_of = root
+		}
+		multiply = 1.5
+	}
+	if = {
+		limit = {
+			is_close_family_of = root
+		}
+		multiply = 1.5
+	}
+}
+
+dread_from_sacrifice = {
+	value = 0
+	
+	if = {
+		limit = { highest_held_title_tier = tier_barony }
+		add = 5
+	}
+	else_if = {
+		limit = { highest_held_title_tier = tier_county }
+		add = 10
+	}
+	else_if = {
+		limit = { highest_held_title_tier = tier_duchy }
+		add = 20
+	}
+	else_if = {
+		limit = { highest_held_title_tier = tier_kingdom }
+		add = 30
+	}
+	else_if = {
+		limit = { highest_held_title_tier = tier_empire }
+		add = 50
+	}
+}
+
+living_magi_trait_progress_threshold = {
+	value = living_magi_trait_progress_threshold_base
+	if = {
+		limit = { has_variable = already_received_living_magic_trait }
+		add = var:already_received_living_magic_trait
+	}
+}
+
+dead_magi_trait_progress_threshold = {
+	value = dead_magi_trait_progress_threshold_base
+	if = {
+		limit = { has_variable = already_received_dead_magic_trait }
+		add = var:already_received_dead_magic_trait
+	}
+}
+
+# I know that the formatting is not orthodox. It is formatted for easy readability and to conserve space. - Oddness
+
+# Returns a number which is equivalent to the magi's magic_good_x trait.
+magi_potency = {
+	value = 0
+	if = { limit = { has_trait = magic_good_1  } add = 1  } 
+	if = { limit = { has_trait = magic_good_2  } add = 2  } 
+	if = { limit = { has_trait = magic_good_3  }  add = 3  }
+	if = { limit = { has_trait = magic_good_4  } add = 4  } 
+	if = { limit = { has_trait = magic_good_5  } add = 5  } 
+	if = { limit = { has_trait = magic_good_6  }  add = 6  }
+	if = { limit = { has_trait = magic_good_7  } add = 7  } 
+	if = { limit = { has_trait = magic_good_8  } add = 8  } 
+	if = { limit = { has_trait = magic_good_9  }  add = 9  }
+	if = { limit = { has_trait = magic_good_10 } add = 10 } 
+	if = { limit = { has_trait = magic_good_11 } add = 11 } 
+	if = { limit = { has_trait = magic_good_12 } add = 12 }
+	if = { limit = { has_trait = magic_good_13 } add = 13 } 
+	if = { limit = { has_trait = magic_good_14 } add = 14 } 
+	if = { limit = { has_trait = magic_good_15 } add = 15 }
+	if = { limit = { has_trait = magic_good_16 } add = 16 } 
+	if = { limit = { has_trait = magic_good_17 } add = 17 } 
+	if = { limit = { has_trait = magic_good_18 } add = 18 }
+	if = { limit = { has_trait = magic_good_19 } add = 19 } 
+	if = { limit = { has_trait = magic_good_20 } add = 20 }
+}
+
+# Returns a number which is equivalent to the number of times vampiric drain was cast.
+# I legit have bugger all idea as to what the point of a script value for this is, but won't remove it as it would probably break something - Hap
+num_vampiric_drain_casted = {
+	value = 0
+	if = {
+		limit = {
+			var:vampiric_drain_casted_raw > 0
+		}
+		if      = { limit = { var:vampiric_drain_casted_raw = 1 	}  add = 1  	}
+		else_if = { limit = { var:vampiric_drain_casted_raw = 2 	} 	add = 2  }
+		else_if = { limit = { var:vampiric_drain_casted_raw = 3 	}  add = 3  	}
+		else_if = { limit = { var:vampiric_drain_casted_raw = 4 	} 	add = 4  }
+		else_if = { limit = { var:vampiric_drain_casted_raw = 5 	}  add = 5   }
+		else_if = { limit = { var:vampiric_drain_casted_raw = 6 	} add = 6  	}
+		else_if = { limit = { var:vampiric_drain_casted_raw = 7 	}  add = 7   }
+		else_if = { limit = { var:vampiric_drain_casted_raw = 8 	} add = 8  	}
+		else_if = { limit = { var:vampiric_drain_casted_raw = 9 	}  add = 9   }
+		else_if = { limit = { var:vampiric_drain_casted_raw = 10	} add = 10 	}
+		else_if = { limit = { var:vampiric_drain_casted_raw = 11 	}  add = 11  }
+		else_if = { limit = { var:vampiric_drain_casted_raw = 12  	} add = 12 	}
+		else_if = { limit = { var:vampiric_drain_casted_raw = 13 	}  add = 13  }
+		else_if = { limit = { var:vampiric_drain_casted_raw = 14  	} add = 14 	}
+		else_if = { limit = { var:vampiric_drain_casted_raw = 15 	}  add = 15  }
+		else_if = { limit = { var:vampiric_drain_casted_raw = 16 	} add = 16 	}
+		else_if = { limit = { var:vampiric_drain_casted_raw = 17 	}  add = 17  }
+		else_if = { limit = { var:vampiric_drain_casted_raw = 18 	} add = 18 	}
+		else_if = { limit = { var:vampiric_drain_casted_raw = 19 	}  add = 19  }
+		else_if = { limit = { var:vampiric_drain_casted_raw = 20 	} add = 20 	}
+		else_if = { limit = { var:vampiric_drain_casted_raw = 21 	}  add = 21  }
+		else_if = { limit = { var:vampiric_drain_casted_raw = 22 	} add = 22 	}
+		else_if = { limit = { var:vampiric_drain_casted_raw = 23 	}  add = 23  }
+		else_if = { limit = { var:vampiric_drain_casted_raw = 24 	} add = 24 	}
+		else_if = { limit = { var:vampiric_drain_casted_raw = 25 	}  add = 25  }
+		else_if = { limit = { var:vampiric_drain_casted_raw = 26 	} add = 26 	}
+		else_if = { limit = { var:vampiric_drain_casted_raw = 27 	}  add = 27  }
+		else_if = { limit = { var:vampiric_drain_casted_raw = 28 	} add = 28 	}
+		else_if = { limit = { var:vampiric_drain_casted_raw = 29 	}  add = 29  }
+		else_if = { limit = { var:vampiric_drain_casted_raw = 30 	} add = 30 	}
+		else_if = { limit = { var:vampiric_drain_casted_raw = 31 	}  add = 31  }
+		else_if = { limit = { var:vampiric_drain_casted_raw = 32 	} add = 32 	}
+		else_if = { limit = { var:vampiric_drain_casted_raw = 33 	}  add = 33  }
+		else_if = { limit = { var:vampiric_drain_casted_raw = 34 	} add = 34 	}
+		else_if = { limit = { var:vampiric_drain_casted_raw = 35 	}  add = 35  }
+		else_if = { limit = { var:vampiric_drain_casted_raw = 36 	} add = 36 	}
+		else_if = { limit = { var:vampiric_drain_casted_raw = 37 	}  add = 37  }
+		else_if = { limit = { var:vampiric_drain_casted_raw = 38 	} add = 38 	}
+		else_if = { limit = { var:vampiric_drain_casted_raw = 39 	}  add = 39  }
+		else_if = { limit = { var:vampiric_drain_casted_raw = 40 	} add = 40 	}
+		else_if = { limit = { var:vampiric_drain_casted_raw = 41 	}  add = 41  }
+		else_if = { limit = { var:vampiric_drain_casted_raw = 42 	} add = 42 	}
+		else_if = { limit = { var:vampiric_drain_casted_raw = 43 	}  add = 43  }
+		else_if = { limit = { var:vampiric_drain_casted_raw = 44 	} add = 44 	}
+		else_if = { limit = { var:vampiric_drain_casted_raw = 45 	}  add = 45  }
+		else_if = { limit = { var:vampiric_drain_casted_raw = 46 	} add = 46 	}
+		else_if = { limit = { var:vampiric_drain_casted_raw = 47 	}  add = 47 }
+		else_if = { limit = { var:vampiric_drain_casted_raw = 48 	}  add = 48 }
+		else_if = { limit = { var:vampiric_drain_casted_raw = 49 	}  add = 49 }
+		else_if = { limit = { var:vampiric_drain_casted_raw >= 50	}  add = 50	}
+	}
+}
+
+# Returns a number equivalent to the number of spell targets in spell_targets list. (Created to work out a headache, but left for possible utility) Use at own risk!
+num_spell_targets = {
+	value = 0
+	if = { limit = { variable_list_size = { name = spell_targets value = 1  } } add = 1  }
+	if = { limit = { variable_list_size = { name = spell_targets value = 2  } } add = 2  }
+	if = { limit = { variable_list_size = { name = spell_targets value = 3  } } add = 3  }
+	if = { limit = { variable_list_size = { name = spell_targets value = 4  } } add = 4  }	
+	if = { limit = { variable_list_size = { name = spell_targets value = 5  } } add = 5  }
+	if = { limit = { variable_list_size = { name = spell_targets value = 6  } } add = 6  }
+	if = { limit = { variable_list_size = { name = spell_targets value = 7  } } add = 7  }
+	if = { limit = { variable_list_size = { name = spell_targets value = 8  } } add = 8  }	
+	if = { limit = { variable_list_size = { name = spell_targets value = 9 	} } add = 9  }
+	if = { limit = { variable_list_size = { name = spell_targets value = 10 } } add = 10 }
+	if = { limit = { variable_list_size = { name = spell_targets value = 11 } } add = 11 }
+	if = { limit = { variable_list_size = { name = spell_targets value = 12 } } add = 12 }
+	if = { limit = { variable_list_size = { name = spell_targets value = 13 } } add = 13 }
+	if = { limit = { variable_list_size = { name = spell_targets value = 14 } } add = 14 }
+	if = { limit = { variable_list_size = { name = spell_targets value = 15 } } add = 15 }
+	if = { limit = { variable_list_size = { name = spell_targets value = 16 } } add = 16 }
+	if = { limit = { variable_list_size = { name = spell_targets value = 17 } } add = 17 }
+	if = { limit = { variable_list_size = { name = spell_targets value = 18 } } add = 18 }
+	if = { limit = { variable_list_size = { name = spell_targets value = 19 } } add = 19 }
+	if = { limit = { variable_list_size = { name = spell_targets value = 20 } } add = 20 }
+	if = { limit = { variable_list_size = { name = spell_targets value = 21 } } add = 21 }
+	if = { limit = { variable_list_size = { name = spell_targets value = 22 } } add = 22 }
+	if = { limit = { variable_list_size = { name = spell_targets value = 23 } } add = 23 }
+	if = { limit = { variable_list_size = { name = spell_targets value = 24 } } add = 24 }
+	if = { limit = { variable_list_size = { name = spell_targets value = 25 } } add = 25 }
+	if = { limit = { variable_list_size = { name = spell_targets value = 26 } } add = 26 }
+	if = { limit = { variable_list_size = { name = spell_targets value = 27 } } add = 27 }
+	if = { limit = { variable_list_size = { name = spell_targets value = 28 } } add = 28 }
+	if = { limit = { variable_list_size = { name = spell_targets value = 29 } } add = 29 }
+	if = { limit = { variable_list_size = { name = spell_targets value = 30 } } add = 30 }
+	if = { limit = { variable_list_size = { name = spell_targets value = 31 } } add = 31 }
+	if = { limit = { variable_list_size = { name = spell_targets value = 32 } } add = 32 }
+	if = { limit = { variable_list_size = { name = spell_targets value = 33 } } add = 33 }
+	if = { limit = { variable_list_size = { name = spell_targets value = 34 } } add = 34 }
+	if = { limit = { variable_list_size = { name = spell_targets value = 35 } } add = 35 }
+	if = { limit = { variable_list_size = { name = spell_targets value = 36 } } add = 36 }
+	if = { limit = { variable_list_size = { name = spell_targets value = 37 } } add = 37 }
+	if = { limit = { variable_list_size = { name = spell_targets value = 38 } } add = 38 }
+	if = { limit = { variable_list_size = { name = spell_targets value = 39 } } add = 39 }
+	if = { limit = { variable_list_size = { name = spell_targets value = 40 } } add = 40 }
+	if = { limit = { variable_list_size = { name = spell_targets value = 41 } } add = 41 }
+	if = { limit = { variable_list_size = { name = spell_targets value = 42 } } add = 42 }
+	if = { limit = { variable_list_size = { name = spell_targets value = 43 } } add = 43 }
+	if = { limit = { variable_list_size = { name = spell_targets value = 44 } } add = 44 }
+}
+
+# How many years parasatized?
+vampiric_drain_years = {
+	value = num_vampiric_drain_casted
+	multiply = 5
+}
+
+# How many years will they live?
+vampiric_drain_life_expectancy = {
+	value = vampiric_drain_years
+	add = 100
+}
+
+# How many years are left?
+vampiric_drain_years_left = {
+	value = vampiric_drain_life_expectancy
+	subtract = age
+}
+
+# Is this magi talented with living magic? How talented with living magic is this magi on a scale from 0-4?
+living_magic_education = {
+	value = 0
+	if = { limit = { has_trait = education_living_magic_1 } add = 1 }
+	if = { limit = { has_trait = education_living_magic_2 } add = 2 }
+	if = { limit = { has_trait = education_living_magic_3 } add = 3 }
+	if = { limit = { has_trait = education_living_magic_4 } add = 4 }
+}
+
+# Is this magi talented with dead magic? How talented with dead magic is this magi on a scale from 0-4?
+dead_magic_education = {
+	value = 0
+	if = { limit = { has_trait = education_dead_magic_1 } add = 1 }
+	if = { limit = { has_trait = education_dead_magic_2 } add = 2 }
+	if = { limit = { has_trait = education_dead_magic_3 } add = 3 }
+	if = { limit = { has_trait = education_dead_magic_4 } add = 4 }
+}
+
+# Is this magi talented with mixed magic? How talented with mixed magic is this magi on a scale from 0-4?
+mixed_magic_education = {
+	value = 0
+	if = { limit = { has_trait = education_mixed_magic_1 } add = 1 }  
+	if = { limit = { has_trait = education_mixed_magic_2 } add = 2 }
+	if = { limit = { has_trait = education_mixed_magic_3 } add = 3 }
+	if = { limit = { has_trait = education_mixed_magic_4 } add = 4 }
+}
+
+# How talented with any magic is this magi on a scale from 0-4? (Value is equal to the highest of all disciplines)
+any_magic_education = {
+	value = 0
+	if = { limit = { OR = { living_magic_education = 1 dead_magic_education = 1 mixed_magic_education = 1 }} value = 1 }
+	if = { limit = { OR = { living_magic_education = 2 dead_magic_education = 2 mixed_magic_education = 2 }} value = 2 }
+	if = { limit = { OR = { living_magic_education = 3 dead_magic_education = 3 mixed_magic_education = 3 }} value = 3 }
+	if = { limit = { OR = { living_magic_education = 4 dead_magic_education = 4 mixed_magic_education = 4 }} value = 4 }
+}
+
+# How talented with all magical disciplines is this magi on a scale from 0-4? (Value is equal to the lowest of all disciplines)
+every_magic_education = {
+	value = 0
+	if = { limit = { living_magic_education >= 4 dead_magic_education >= 4 mixed_magic_education >= 4 } add = 4 }
+	if = { limit = { living_magic_education >= 3 dead_magic_education >= 3 mixed_magic_education >= 3 } add = 3 }
+	if = { limit = { living_magic_education >= 2 dead_magic_education >= 2 mixed_magic_education >= 2 } add = 2 }
+	if = { limit = { living_magic_education >= 1 dead_magic_education >= 1 mixed_magic_education >= 1 } add = 1 }
+}
+
+# How talented is this magi on a scale from 0-12?
+total_magic_education = {
+	value = 0
+	add = living_magic_education
+	add = dead_magic_education
+	add = mixed_magic_education
+}
+
+# What percentage of this magi's ability is in living magic?
+living_magic_education_percentage = {
+	value = living_magic_education
+	if = {
+		limit = {
+			total_magic_education > 0 # Don't divide by 0
+		}
+		divide = total_magic_education
+	}
+}
+
+# What percentage of this magi's ability is in dead magic?
+dead_magic_education_percentage = {
+	value = dead_magic_education
+	if = {
+		limit = {
+			total_magic_education > 0 # Don't divide by 0
+		}
+		divide = total_magic_education
+	}
+}
+
+# What percentage of this magi's ability is in mixed magic?
+mixed_magic_education_percentage = {
+	value = mixed_magic_education
+	if = {
+		limit = {
+			total_magic_education > 0 # Don't divide by 0
+		}
+		divide = total_magic_education
+	}
+}
+
+# How many disciplines is this magi skilled in?
+num_magic_education_traits = {
+	value = 0
+	if = { limit = { living_magic_education > 0 } add = 1 }
+	if = { limit = { dead_magic_education   > 0 } add = 1 }
+	if = { limit = { mixed_magic_education  > 0 } add = 1 }
+}
+
+# End unorthodoxy - Oddness

@@ -1,0 +1,56 @@
+﻿on_brave_nickname = 
+{
+	trigger = { has_trait = brave 
+		    prestige_level >= 3
+		  }
+	first_valid_on_action = 
+	{
+		on_diplomacy_brave
+		on_stewardship_brave
+		on_martial_brave
+		on_prowess_brave
+		on_intrigue_brave
+		on_learning_brave
+	}
+	fallback = on_deceitful_nickname 
+}
+
+on_diplomacy_brave = 
+{
+	trigger = { diplomacy >= 27 }
+	effect = { give_nickname = nick_the_noble_lion}
+}
+
+on_stewardship_brave = 
+{
+	trigger = { stewardship >= 25 }
+	effect = { give_nickname = nick_the_gilded_lion}
+}
+
+on_martial_brave =
+{
+	trigger = { martial >= 25 }
+	effect = { give_nickname = nick_the_lion_heart }
+}
+
+on_prowess_brave =
+{
+	trigger = { prowess >= 30 }
+	effect = { give_nickname = nick_the_mauler_lion }
+}
+
+on_intrigue_brave =
+{
+	trigger = { intrigue >= 25 }
+	effect = { give_nickname = nick_the_lion_the_shadows }
+}
+
+on_learning_brave = {
+	trigger = { learning >= 30 }
+	effect = { give_nickname = nick_the_gentle_lion }
+}
+
+
+
+
+

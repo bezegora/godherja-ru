@@ -1,0 +1,103 @@
+﻿namespace = adabyss_event
+
+
+################
+#
+
+
+adabyss_event.0001 = {
+	type = character_event
+	title = adabyss_event.0001.t
+	desc = adabyss_event.0001.desc
+	theme = war
+	left_portrait = {
+		character = root
+		animation = personality_vengeful
+	}
+	override_background = { event_background = wilderness_desert }
+	
+	immediate = {
+		play_music_cue = "mx_cue_crusade_starts"	
+		add_trait = adabyss_invasion_leader
+		add_character_modifier = { modifier = adabyss_invasion_leader_modifier }
+	}
+
+	option = {
+		name = adabyss_event.0001.a
+		if = {
+			limit = {
+				prestige_level < 5
+			}
+			add_prestige_level = 1
+		}
+	}
+}
+
+
+adabyss_event.0002 = {
+	type = character_event
+	title = adabyss_event.0002.t
+	desc = adabyss_event.0002.desc
+	theme = war
+	left_portrait = {
+		character = scope:adabyss_leader
+		animation = personality_vengeful
+	}
+	override_background = { event_background = wilderness_desert }
+	
+	immediate = {
+		play_music_cue = "mx_cue_crusade_starts"
+		show_as_tooltip = {
+			scope:adabyss_leader = {
+				add_trait_force_tooltip = adabyss_invasion_leader
+			}
+		}
+	}
+
+	option = {
+		name = adabyss_event.0002.a
+	}
+}
+
+
+adabyss_event.0003 = {
+	type = character_event
+	title = adabyss_event.0003.t
+	desc = adabyss_event.0003.desc
+	theme = war
+	left_portrait = {
+		character = scope:adabyss_leader
+		animation = personality_vengeful
+	}
+	override_background = { event_background = wilderness_desert }
+
+	immediate = {
+		play_music_cue = "mx_cue_combat_2"
+		show_as_tooltip = {
+			scope:adabyss_leader = {
+				add_trait_force_tooltip = adabyss_invasion_leader
+			}
+		}
+	}
+
+	option = {
+		name = {
+			text = adabyss_event.0003.a.neighbor
+			trigger = {
+				any_neighboring_top_liege_realm_owner = {
+					this = scope:adabyss_leader
+				}
+			}
+		}
+		name = {
+			text = adabyss_event.0003.a.distant
+		}
+	}
+}
+
+
+
+
+
+
+

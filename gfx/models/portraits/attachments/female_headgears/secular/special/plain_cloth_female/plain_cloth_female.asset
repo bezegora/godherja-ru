@@ -1,0 +1,18 @@
+pdxmesh = {
+	name = "plain_cloth_female_mesh"
+	file = "plain_cloth_female.mesh"
+
+	meshsettings = {
+		name = "plc_femShape"
+		index = 0
+		texture_diffuse = "plc_color.dds"
+		texture_normal = "plc_normal.dds"
+		texture_specular = "plc_properties.dds"
+		shader = "portrait_attachment"
+		shader_file = "gfx/FX/jomini/portrait.shader"
+	}
+}
+entity = {
+	name = "plain_cloth_female_entity"
+	pdxmesh = "plain_cloth_female_mesh"
+}

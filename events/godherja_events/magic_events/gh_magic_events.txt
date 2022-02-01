@@ -1,0 +1,1206 @@
+﻿namespace = magic
+
+##################################################
+
+### General Magic Events
+
+# 0001 - Ritual Sacrifice
+# 0031 - Magi Recruitment
+# 0300 - Domination and Charm Utility Events
+# 0350 - Bloodthrall Events
+# 1001 - Poison Spell
+# 1011 - Fire Magick Spell
+# 1101 - Magical Trait Events
+# 1201 - Potent Magi Events
+
+##################################################
+
+##################################################
+# You Organize a Ritual Sacrifice
+# by Hapchazzard
+# 0001 - 0010
+##################################################
+
+magic.0001 = {
+	type = character
+	title = magic.0001.t
+	desc = {
+		desc = magic.0001.desc
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					scope:main_sacrifice_victim = {
+						ai_boldness >= 100
+					}
+				}
+				desc = magic.0001.desc.brave_victim
+			}
+			triggered_desc = {
+				trigger = {
+					scope:main_sacrifice_victim = {
+						ai_boldness < 100
+						ai_boldness > -50
+					}
+				}
+				desc = magic.0001.desc.neutral_victim
+			}
+			triggered_desc = {
+				trigger = {
+					scope:main_sacrifice_victim = {
+						ai_boldness <= -50
+					}
+				}
+				desc = magic.0001.desc.craven_victim
+			}
+		}
+	}
+	theme = intrigue_intimidation_focus
+	left_portrait = {
+		character = root
+		triggered_animation = {
+			trigger = {
+				OR = {
+					has_trait = sadistic
+					has_trait = callous
+					ai_compassion <= -100
+				}
+			}
+			animation = personality_callous
+		}
+		triggered_animation = {
+			trigger = {
+				NOR = {
+					has_trait = sadistic
+					has_trait = callous
+					ai_compassion <= -100
+				}
+			}
+			animation = personality_cynical
+		}
+	}
+	right_portrait = {
+		character = scope:main_sacrifice_victim
+		triggered_animation = {
+			trigger = {
+				scope:main_sacrifice_victim = {
+					ai_boldness >= 100
+				}
+			}
+			animation = personality_bold
+		}
+		triggered_animation = {
+			trigger = {
+				scope:main_sacrifice_victim = {
+					ai_boldness < 100
+					ai_boldness > -50
+				}
+			}
+			animation = worry
+		}
+		triggered_animation = {
+			trigger = {
+				scope:main_sacrifice_victim = {
+					ai_boldness <= -50
+				}
+			}
+			animation = beg
+		}
+	}
+	override_background = { event_background = magic_ritual }
+	
+	immediate = {
+		# Precalculating sacrifice gain
+		set_variable = {
+			name = total_sacrifice_value
+			value = 0
+			days = 1
+		}
+		every_in_list = {
+			variable = spell_targets
+			save_scope_as = sacrifice_victim
+			root = {
+				change_variable = {
+					name = total_sacrifice_value
+					add = scope:sacrifice_victim.sacrifice_value_adjusted
+				}
+			}
+		}
+		# Pick the person with the highest sacrifice value as the 'main' target for loc and flavor purposes
+		ordered_in_list = {
+			variable = spell_targets
+			order_by = sacrifice_value
+			save_scope_as = main_sacrifice_victim
+		}
+		if = {
+			limit = { 
+				OR = {
+					has_trait = sadistic
+					has_trait = callous
+				}
+			}
+			# Sadistic and callous characters have a variant of the event where they are especially thorough and get 20% more magic
+			change_variable = {
+				name = total_sacrifice_value
+				multiply = 1.2
+			}
+		}
+		if = {
+			limit = { 
+				has_trait = torturer
+			}
+			# Torturers get an additional 20% bonus
+			change_variable = {
+				name = total_sacrifice_value
+				multiply = 1.2
+			}
+		}
+		if = {
+			limit = { 
+				has_trait = diligent
+			}
+			# Diligent characters always get a 10% bonus
+			change_variable = {
+				name = total_sacrifice_value
+				multiply = 1.1
+			}
+		}
+	}
+	
+	option = {
+		name = magic.0001.a
+		trigger = {
+			NOR = {
+				has_trait = sadistic
+				has_trait = callous
+				has_trait = torturer
+			}
+		}
+		custom_tooltip = sacrifice_value_tt
+		change_variable = {
+			name = magic_counter
+			add = var:total_sacrifice_value
+		}
+		every_in_list = {
+			variable = spell_targets
+			limit = {
+				is_imprisoned_by = root
+			}
+			sacrifice_prisoner_ritual_effect = {
+				VICTIM = this
+				EXECUTIONER = root
+				SACRIFICE_METHOD = death_ritual
+			}
+			root = {
+				remove_list_variable = {
+					name = spell_targets
+					target = prev
+				}
+			}
+		}
+	}
+	
+	option = {
+		name = magic.0001.a.sadistic
+		trait = sadistic
+		trait = callous
+		trait = torturer
+		trigger = {
+			OR = {
+				has_trait = sadistic
+				has_trait = callous
+				has_trait = torturer
+			}
+		}
+		custom_tooltip = sacrifice_value_tt
+		change_variable = {
+			name = magic_counter
+			add = var:total_sacrifice_value
+		}
+		every_in_list = {
+			variable = spell_targets
+			limit = {
+				is_imprisoned_by = root
+			}
+			sacrifice_prisoner_ritual_effect = {
+				VICTIM = this
+				EXECUTIONER = root
+				SACRIFICE_METHOD = death_ritual_torture
+			}
+			root = {
+				remove_list_variable = {
+					name = spell_targets
+					target = prev
+				}
+			}
+		}
+	}
+	
+	option = {
+		name = magic.0001.b
+	}
+}
+
+##################################################
+# Recruiting a Magi
+# by Hapchazzard
+# 0031 - 0037
+##################################################
+
+magic.0031 = {	# Search for a mage decision event
+	type = character_event
+	theme = learning
+	title = magic.0031.t
+	desc = magic.0031.desc
+	left_portrait = {
+		character = root
+	}
+	
+	option = {
+		name = magic.0031.a
+		
+		remove_short_term_gold = 50
+		hidden_effect = {
+			trigger_event = {
+				id = magic.0032
+				days = 5
+			}
+		}
+		
+		trigger = { gold >= 50 }
+	}
+	
+	option = {
+		name = magic.0031.b
+		
+		remove_short_term_gold = 300
+		hidden_effect = {
+			trigger_event = {
+				id = magic.0033
+				days = 5
+			}
+		}
+		
+		trigger = { gold >= 300 }
+	}
+	
+	option = {
+		name = magic.0031.c
+		
+		remove_short_term_gold = 1000
+		hidden_effect = {
+			trigger_event = {
+				id = magic.0035
+				days = 1
+			}
+		}
+		
+		trigger = { gold >= 1000 }
+	}
+	
+	option = {
+		name = magic.0031.d
+		
+		remove_decision_cooldown = search_for_mage_decision
+		
+		trigger = { gold >= 50 }
+	}
+	
+	option = {
+		name = magic.0031.e
+		
+		remove_decision_cooldown = search_for_mage_decision
+		
+		trigger = { gold < 50 }
+	}
+}
+
+magic.0032 = {
+	type = character_event
+	theme = learning
+	title = magic.0032.t
+	desc = magic.0032.desc
+	left_portrait = {
+		character = root
+	}
+	right_portrait = {
+		character = scope:generated_mage
+	}
+	
+	immediate = {
+		generate_mage = yes
+	}
+	
+	option = { name = magic.0032.a }
+}
+
+magic.0033 = {
+	type = character_event
+	theme = learning
+	title = magic.0033.t
+	desc = magic.0033.desc
+	left_portrait = {
+		character = root
+	}
+	
+	option = {
+		name = magic.0033.a
+	}
+	
+	option = {
+		name = magic.0033.b
+		
+		remove_short_term_gold = 30
+		hidden_effect = {
+			add_character_flag = {
+				flag = searching_for_living_magic_mage
+				days = 100
+			}
+		}
+	}
+	
+	option = {
+		name = magic.0033.c
+		
+		remove_short_term_gold = 60
+		hidden_effect = {
+			add_character_flag = {
+				flag = searching_for_dead_magic_mage
+				days = 100
+			}
+		}
+	}
+	
+	option = {
+		name = magic.0033.d
+		
+		trigger = {
+			OR = {
+				has_religion = religion:partic
+				faith = {
+					has_doctrine = tenet_the_sjalvoki_bloodright
+				}
+			}
+		}
+		
+		remove_short_term_gold = 150
+		hidden_effect = {
+			add_character_flag = {
+				flag = searching_for_mixed_magic_mage
+				days = 100
+			}
+		}
+	}
+	
+	after = {
+		hidden_effect = {
+			trigger_event = magic.0034
+		}
+	}
+}
+
+magic.0034 = {
+	type = character_event
+	theme = learning
+	title = magic.0034.t
+	desc = magic.0034.desc
+	left_portrait = {
+		character = root
+	}
+	right_portrait = {
+		character = scope:generated_mage
+	}
+	
+	immediate = {
+		if = {
+			limit = { has_character_flag = searching_for_living_magic_mage }
+			generate_proficient_living_magic_mage = yes
+		}
+		else_if = {
+			limit = { has_character_flag = searching_for_dead_magic_mage }
+			generate_proficient_dead_magic_mage = yes
+		}
+		else_if = {
+			limit = { has_character_flag = searching_for_mixed_magic_mage }
+			generate_proficient_mixed_magic_mage = yes
+		}
+		else = {
+			generate_proficient_mage = yes
+		}
+	}
+	
+	option = { name = magic.0034.a }
+}
+
+magic.0035 = {
+	type = character_event
+	theme = learning
+	title = magic.0035.t
+	desc = magic.0035.desc
+	left_portrait = {
+		character = root
+	}
+	
+	option = {
+		name = magic.0035.a
+	}
+	
+	option = {
+		name = magic.0035.b
+		
+		remove_short_term_gold = 100
+		hidden_effect = {
+			add_character_flag = {
+				flag = searching_for_living_magic_mage
+				days = 100
+			}
+		}
+	}
+	
+	option = {
+		name = magic.0035.c
+		
+		remove_short_term_gold = 200
+		hidden_effect = {
+			add_character_flag = {
+				flag = searching_for_dead_magic_mage
+				days = 100
+			}
+		}
+	}
+	
+	option = {
+		name = magic.0035.d
+		
+		remove_short_term_gold = 500
+		hidden_effect = {
+			add_character_flag = {
+				flag = searching_for_mixed_magic_mage
+				days = 100
+			}
+		}
+	}
+	
+	after = {
+		hidden_effect = {
+			trigger_event = magic.0036
+		}
+	}
+}
+
+magic.0036 = {
+	type = character_event
+	theme = learning
+	title = magic.0036.t
+	desc = magic.0036.desc
+	left_portrait = {
+		character = root
+	}
+	right_portrait = {
+		character = scope:generated_mage
+	}
+	
+	immediate = {
+		if = {
+			limit = { has_character_flag = searching_for_living_magic_mage }
+			generate_legendary_living_magic_mage = yes
+		}
+		else_if = {
+			limit = { has_character_flag = searching_for_dead_magic_mage }
+			generate_legendary_dead_magic_mage = yes
+		}
+		else_if = {
+			limit = { has_character_flag = searching_for_mixed_magic_mage }
+			generate_legendary_mixed_magic_mage = yes
+		}
+		else = {
+			generate_legendary_mage = yes
+		}
+	}
+	
+	option = { name = magic.0036.a }
+}
+
+# Utility event: gives landed rulers with no court magi one
+magic.0037 = {
+	hidden = yes
+	
+	trigger = { 
+		is_landed = yes
+		highest_held_title_tier >= tier_county
+		NOT = { has_variable = generated_magi_cooldown }
+	}
+	
+	immediate = {
+		generate_mage = yes
+		set_variable = {
+			name = generated_magi_cooldown
+			years = 2
+		}
+	}
+}
+
+##################################################
+# Domination and Charm Utility Events
+# by Hapchazzard
+# 0300 - 0301
+##################################################
+
+magic.0300 = {
+	hidden = yes
+
+	trigger = {
+		trigger_if = {
+			limit = { has_variable = dominated_by }
+			var:dominated_by = {
+				is_alive = yes
+				is_ai = yes
+			}
+		}
+		trigger_else = { always = no }
+	}
+	
+	immediate = {
+		set_player_character = var:dominated_by
+		if = {
+			limit = { has_variable = needs_to_be_reimprisoned }
+			remove_variable = needs_to_be_reimprisoned
+			var:dominated_by = {
+				imprison = {
+					target = root
+					type = dungeon
+				}
+			}
+		}
+	}
+}
+
+# Resets relations after charm expires
+magic.0301 = {
+	hidden = yes
+	
+	immediate = {
+		if = {
+			limit = {
+				trigger_if = {
+					limit = { has_variable = former_nemesis }
+					var:former_nemesis = { is_alive = yes }
+				}
+				trigger_else = { always = no }
+			}
+			var:former_nemesis = {
+				if = {
+					limit = { has_relation_friend = root }
+					remove_relation_friend = root
+				}
+				set_relation_nemesis = root
+			}
+		}
+		else_if = {
+			limit = { 
+				trigger_if = {
+					limit = { has_variable = former_rival }
+					var:former_rival = { is_alive = yes }
+				}
+				trigger_else = { always = no }
+			}
+			var:former_rival = {
+				if = {
+					limit = { has_relation_friend = root }
+					remove_relation_friend = root
+				}
+				set_relation_rival = root
+			}
+		}
+		else_if = {
+			limit = { 
+				trigger_if = {
+					limit = { has_variable = temporary_friend }
+					var:temporary_friend = { is_alive = yes }
+				}
+				trigger_else = { always = no }
+			}
+			var:temporary_friend = {
+				if = {
+					limit = { has_relation_friend = root }
+					remove_relation_friend = root
+				}
+			}
+		}
+	}
+}
+
+##################################################
+# Bloodthrall Events
+# by Hapchazzard
+# 0350 - 0360
+##################################################
+magic.0350 = {
+	hidden = yes
+	
+	immediate = {
+		if = {
+			limit = { exists = capital_province }
+			capital_province = { save_temporary_scope_as = location }
+			if = {
+				limit ={
+					root.var:magic_lvl = { compare_value = 0 }
+				}
+				spawn_army = {
+					name = "ZOMBIE_HOST"
+					location = scope:location
+					men_at_arms = {
+						type = zombies
+						stacks = 1
+					}
+					inheritable = no
+					uses_supply = yes	# Intentional. Zombies are more complex than the simple skeletal undead of Dead Magic, and somewhat inferior.
+				}
+			}
+			else_if = {
+				limit ={
+					root.var:magic_lvl = { compare_value = 1 }
+				}
+				spawn_army = {
+					name = "ZOMBIE_HOST"
+					location = scope:location
+					men_at_arms = {
+						type = zombies
+						stacks = 5
+					}
+					inheritable = no
+					uses_supply = yes
+				}
+			}
+			else_if = {
+				limit ={
+					root.var:magic_lvl = { compare_value = 2 }
+				}
+				spawn_army = {
+					name = "ZOMBIE_HOST"
+					location = scope:location
+					men_at_arms = {
+						type = zombies
+						stacks = 10
+					}
+					inheritable = no
+					uses_supply = yes
+				}
+			}
+			else_if = {
+				limit ={
+					root.var:magic_lvl = { compare_value = 3 }
+				}
+				spawn_army = {
+					name = "ZOMBIE_HOST"
+					location = scope:location
+					men_at_arms = {
+						type = zombies
+						stacks = 25
+					}
+					inheritable = no
+					uses_supply = yes
+				}
+			}
+		}
+	}
+}
+
+##################################################
+# Poison Spell
+# by Hapchazzard
+# 1001 - 1010
+##################################################
+
+# Hit by a poison spell
+magic.1001 = {
+	title = magic.1001.t
+	desc = magic.1001.desc
+	theme = murder_scheme
+	override_background = {
+		event_background = magic_ritual
+	}
+	left_portrait = {
+		character = root
+		animation = worry
+	}
+	right_portrait = {
+		character = scope:caster
+		animation = personality_dishonorable
+	}
+	
+	option = {
+		name = magic.1001.a
+	}
+}
+
+# Hit by a poison spell (backfire)
+magic.1002 = {
+	title = magic.1002.t
+	desc = magic.1002.desc
+	theme = murder_scheme
+	override_background = {
+		event_background = magic_ritual
+	}
+	left_portrait = {
+		character = root
+		animation = fear
+	}
+	
+	option = {
+		name = magic.1002.a
+	}
+}
+
+##################################################
+# Fire Magick
+# by Hapchazzard
+# 1011 - 1020
+##################################################
+magic.1012 = {
+	title = magic.1012.t
+	desc = magic.1012.desc
+	theme = murder_scheme
+	override_background = {
+		event_background = magic_ritual
+	}
+	left_portrait = {
+		character = root
+		animation = fear
+	}
+	
+	option = {
+		name = magic.1012.a
+	}
+}
+
+##################################################
+# Magical Trait Events
+# by Hapchazzard
+# 1101 - 1110
+##################################################
+magic.1101 = {
+	title = magic.1101.t
+	desc = magic.1101.desc
+	theme = physical_health
+	override_background = {
+		event_background = magic_ritual
+	}
+	left_portrait = {
+		character = root
+		animation = boredom
+	}
+	
+	option = {
+		name = magic.1101.a
+		trigger = {
+			NOR = {
+				has_trait = lazy
+				has_trait = diligent
+			}
+		}
+		add_trait = gh_exhausted
+	}
+	
+	option = {
+		name = magic.1101.a.diligent
+		trait = diligent
+		trigger = {
+			has_trait = diligent
+		}
+		stress_impact = {
+			diligent = medium_stress_gain
+		}
+		add_trait = gh_exhausted
+	}
+	
+	option = {
+		name = magic.1101.a.lazy
+		trait = lazy
+		trigger = {
+			has_trait = lazy
+		}
+		stress_impact = {
+			lazy = medium_stress_loss
+		}
+		add_trait = gh_exhausted
+	}
+}
+
+# Gain Stimulated
+magic.1102 = {
+	title = magic.1102.t
+	desc = magic.1102.desc
+	theme = physical_health
+	override_background = {
+		event_background = magic_ritual
+	}
+	left_portrait = {
+		character = root
+		animation = paranoia
+	}
+	
+	option = {
+		name = magic.1102.a
+		trigger = {
+			NOR = {
+				has_trait = lazy
+				has_trait = diligent
+			}
+		}
+		add_trait = gh_stimulated
+	}
+	
+	option = {
+		name = magic.1102.a.diligent
+		trait = diligent
+		trigger = {
+			has_trait = diligent
+		}
+		stress_impact = {
+			diligent = medium_stress_loss
+		}
+		add_stewardship_skill = 1
+		add_trait = gh_stimulated
+	}
+	
+	option = {
+		name = magic.1102.a.lazy
+		trait = lazy
+		trigger = {
+			has_trait = lazy
+		}
+		stress_impact = {
+			lazy = medium_stress_gain
+		}
+		add_trait = gh_stimulated
+	}
+}
+
+# Gain Racked by Voices
+magic.1103 = {
+	title = magic.1103.t
+	desc = magic.1103.desc
+	theme = physical_health
+	override_background = {
+		event_background = magic_ritual
+	}
+	left_portrait = {
+		character = root
+		animation = paranoia
+	}
+	
+	option = {
+		name = magic.1103.a
+		trigger = {
+			NOR = {
+				has_trait = lunatic_1
+				has_trait = brave
+				has_trait = craven
+				has_trait = paranoid
+			}
+		}
+		add_trait = gh_racked_by_voices
+		add_stress = medium_stress_gain
+	}
+	
+	option = {
+		name = magic.1103.a.lunatic
+		trait = lunatic_1
+		trigger = {
+			has_trait = lunatic_1
+		}
+		stress_impact = {
+			lunatic_1 = medium_stress_loss
+		}
+		add_trait = gh_racked_by_voices
+	}
+	
+	option = {
+		name = magic.1103.a.craven
+		trait = craven
+		trait = paranoid
+		trigger = {
+			OR = {
+				has_trait = craven
+				has_trait = paranoid
+			}
+			NOR = { 
+				has_trait = brave
+				has_trait = lunatic_1
+			}
+		}
+		stress_impact = {
+			craven = major_stress_gain
+			paranoid = major_stress_gain
+		}
+		add_trait = gh_racked_by_voices
+	}
+	
+	option = {
+		name = magic.1103.a.brave
+		trait = brave
+		trigger = {
+			has_trait = brave
+			NOT = { has_trait = lunatic_1 }
+		}
+		add_trait = gh_racked_by_voices
+	}
+}
+
+# Gain Ritual Tattoos
+magic.1104 = {
+	title = magic.1104.t
+	desc = magic.1104.desc
+	theme = physical_health
+	override_background = {
+		event_background = magic_ritual
+	}
+	left_portrait = {
+		character = root
+		animation = personality_bold
+	}
+	
+	option = {
+		name = magic.1104.a
+		add_trait = gh_ritual_tattoos
+	}
+}
+
+# Gain Beset by Visions
+magic.1105 = {
+	title = magic.1105.t
+	desc = magic.1105.desc
+	theme = physical_health
+	override_background = {
+		event_background = magic_ritual
+	}
+	left_portrait = {
+		character = root
+		animation = paranoia
+	}
+	
+	option = {
+		name = magic.1105.a
+		trigger = {
+			NOR = {
+				has_trait = lunatic_1
+				has_trait = brave
+				has_trait = craven
+				has_trait = paranoid
+			}
+		}
+		add_trait = gh_beset_by_visions
+		add_stress = medium_stress_gain
+	}
+	
+	option = {
+		name = magic.1105.a.lunatic
+		trait = lunatic_1
+		trigger = {
+			has_trait = lunatic_1
+		}
+		stress_impact = {
+			lunatic_1 = medium_stress_loss
+		}
+		add_trait = gh_beset_by_visions
+	}
+	
+	option = {
+		name = magic.1105.a.craven
+		trait = craven
+		trait = paranoid
+		trigger = {
+			OR = {
+				has_trait = craven
+				has_trait = paranoid
+			}
+			NOR = { 
+				has_trait = brave
+				has_trait = lunatic_1
+			}
+		}
+		stress_impact = {
+			craven = major_stress_gain
+			paranoid = major_stress_gain
+		}
+		add_trait = gh_beset_by_visions
+	}
+	
+	option = {
+		name = magic.1105.a.brave
+		trait = brave
+		trigger = {
+			has_trait = brave
+			NOT = { has_trait = lunatic_1 }
+		}
+		add_trait = gh_beset_by_visions
+	}
+}
+
+# Gain Glowing Red Eyes
+magic.1106 = {
+	title = magic.1106.t
+	desc = magic.1106.desc
+	theme = physical_health
+	override_background = {
+		event_background = magic_ritual
+	}
+	left_portrait = {
+		character = root
+		animation = personality_bold
+	}
+	
+	option = {
+		name = magic.1106.a
+		add_trait = gh_glowingeyes_red
+	}
+}
+
+# Gain Excessively Pale
+magic.1107 = {
+	title = magic.1107.t
+	desc = magic.1107.desc
+	theme = physical_health
+	override_background = {
+		event_background = magic_ritual
+	}
+	left_portrait = {
+		character = root
+		animation = personality_bold
+	}
+	
+	option = {
+		name = magic.1107.a
+		add_trait = gh_excessively_pale
+	}
+}
+
+# Gain Glowing Veins
+magic.1108 = {
+	title = magic.1108.t
+	desc = magic.1108.desc
+	theme = physical_health
+	override_background = {
+		event_background = magic_ritual
+	}
+	left_portrait = {
+		character = root
+		animation = personality_bold
+	}
+	
+	option = {
+		name = magic.1108.a
+		add_trait = gh_glowing_veins
+	}
+}
+
+##################################################
+# Potent Magi Events
+# by Hapchazzard
+# 1201 - 1210
+##################################################
+magic.1201 = {
+	type = empty
+	hidden = yes
+	immediate = {
+		random_list = {
+			90 = {}	# Should only happen once every 10 years
+			10 = {
+				random_living_character = {
+					limit = {
+						is_pregnant = yes
+						OR = {
+							highest_held_title_tier >= tier_county
+							trigger_if = {
+								limit = { exists = primary_spouse }
+								primary_spouse = {
+									highest_held_title_tier >= tier_county
+								}
+							}
+							any_close_family_member = {
+								highest_held_title_tier >= tier_county
+							}
+						}
+					}
+					set_variable = {
+						name = carrying_powerful_magi_child
+						months = 10
+					}
+					debug_log = "A POWERFUL MAGI WILL BE BORN TO:"
+					debug_log_scopes = yes
+				}
+			}
+		}
+	}
+}
+
+magic.1202 = {
+	type = character
+	hidden = yes
+	
+	trigger = {
+		has_character_flag = potent_magi
+	}
+	
+	immediate = {
+		if = {
+			limit = {
+				NOR = {
+					has_trait = education_living_magic
+					has_trait = education_dead_magic
+					has_trait = education_mixed_magic
+					faith = {
+						has_doctrine = doctrine_magic_crime
+					}
+				}
+			}
+			random_list = {
+				70 = {
+					add_trait = education_living_magic_4
+				}
+				28 = {
+					add_trait = education_dead_magic_4
+				}
+				2 = {
+					add_trait = education_mixed_magic_4
+				}
+			}
+		}
+		else_if = {
+			NOT = {
+				faith = {
+					has_doctrine = doctrine_magic_crime
+				}
+			}
+			if = {
+				limit = { has_trait = education_living_magic }
+				change_trait_rank = {
+					trait = education_living_magic
+					rank = 4
+					max = 5
+				}
+			}
+			else_if = {
+				limit = { has_trait = education_dead_magic }
+				change_trait_rank = {
+					trait = education_dead_magic
+					rank = 4
+					max = 5
+				}
+			}
+			else_if = {
+				limit = { has_trait = education_mixed_magic }
+				change_trait_rank = {
+					trait = education_mixed_magic
+					rank = 4
+					max = 5
+				}
+			}
+		}
+		set_global_variable = {
+			name = recent_potent_magi
+			value = this
+			months = 3
+		}
+	}
+}

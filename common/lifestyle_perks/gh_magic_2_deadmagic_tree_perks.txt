@@ -1,0 +1,601 @@
+﻿deadmagic_perk1_tree1 = {
+	lifestyle = magic_lifestyle_dead
+	tree = deadmagic_tree1
+	position = { 1 0 }
+	icon = node_intrigue
+	
+	auto_selection_weight = {
+		value = 11
+		if = {
+			limit = {
+				has_education_magic_trigger = yes
+			}
+			add = 1989
+		}
+		if = {
+			limit = {
+				has_focus = magic_power_focus_dead
+			}
+			multiply = 5
+		}
+		if = {
+			limit = {
+				has_education_dead_magic_trigger = yes
+			}
+			multiply = 5
+		}
+		if = {
+			limit = {
+				can_start_new_lifestyle_tree_trigger = no
+			}
+			multiply = 0
+		}
+	}
+	
+	can_be_picked = {
+		has_education_dead_magic_trigger = yes
+	}
+	
+	effect = {
+		custom_description_no_bullet = {
+			text = deadmagic_perk1_effect
+		}
+	}
+	
+	character_modifier = {
+		dread_baseline_add = 5
+	}
+}
+
+deadmagic_perk2_tree1 = {
+	lifestyle = magic_lifestyle_dead
+	tree = deadmagic_tree1
+	position = { 0 1 }
+	icon = node_intrigue
+	
+	parent = deadmagic_perk1_tree1
+	
+	can_be_picked = {
+		always = yes
+	}
+	
+	effect = {
+		custom_tooltip = dm_perk2.tt
+	}
+}
+
+deadmagic_perk3_tree1 = {
+	lifestyle = magic_lifestyle_dead
+	tree = deadmagic_tree1
+	position = { 2 1 }
+	icon = node_intrigue
+	
+	parent = deadmagic_perk1_tree1
+	
+	can_be_picked = {
+		always = yes
+	}
+	
+	effect = {
+		custom_tooltip = dm_perk3.tt
+	}
+}
+
+deadmagic_perk4_tree1 = {
+	lifestyle = magic_lifestyle_dead
+	tree = deadmagic_tree1
+	position = { 1 2 }
+	icon = node_intrigue
+	
+	parent = deadmagic_perk2_tree1
+	parent = deadmagic_perk3_tree1
+	
+	can_be_picked = {
+		always = yes
+	}
+	
+	effect = {
+		custom_tooltip = dm_perk4.tt
+	}
+}
+
+deadmagic_perk5_tree1 = {
+	lifestyle = magic_lifestyle_dead
+	tree = deadmagic_tree1
+	position = { 0 3 }
+	icon = node_intrigue
+	
+	parent = deadmagic_perk4_tree1
+	
+	can_be_picked = {
+		always = yes
+	}
+	
+	effect = {
+		custom_tooltip = dm_perk5.tt
+	}
+}
+
+deadmagic_perk6_tree1 = {
+	lifestyle = magic_lifestyle_dead
+	tree = deadmagic_tree1
+	position = { 2 3 }
+	icon = node_intrigue
+	
+	parent = deadmagic_perk4_tree1
+	
+	can_be_picked = {
+		always = yes
+	}
+	
+	effect = {
+		custom_tooltip = dm_perk6.tt
+	}
+
+	character_modifier = {
+		dread_baseline_add = 15
+		men_at_arms_maintenance_per_dread_mult = -0.005
+	}
+}
+
+deadmagic_perk7_tree1 = {
+	lifestyle = magic_lifestyle_dead
+	tree = deadmagic_tree1
+	position = { 0 4 }
+	icon = node_intrigue
+	
+	parent = deadmagic_perk5_tree1
+	
+	can_be_picked = {
+		always = yes
+	}
+	effect = {
+		custom_tooltip = dm_perk7.tt
+	}	
+	character_modifier = {
+		life_expectancy = 10
+		health = 0.5
+	}
+}
+
+deadmagic_perk8_tree1 = {
+	lifestyle = magic_lifestyle_dead
+	tree = deadmagic_tree1
+	position = { 2 4 }
+	icon = node_intrigue
+	
+	parent = deadmagic_perk6_tree1
+	
+	can_be_picked = {
+		always = yes
+	}
+	
+	effect = {
+		custom_tooltip = dm_perk8.tt
+	}
+}
+
+deadmagic_perk9_tree1 = {
+	lifestyle = magic_lifestyle_dead
+	tree = deadmagic_tree1
+	position = { 1 5 }
+	icon = trait_theologian
+	
+	parent = deadmagic_perk7_tree1
+	parent = deadmagic_perk8_tree1
+	
+	can_be_picked = {
+		always = yes
+	}
+	
+	effect = {
+		custom_tooltip = not_yet_implemented.tt
+	}
+}
+
+deadmagic_perk1_tree2 = {
+	lifestyle = magic_lifestyle_dead
+	tree = deadmagic_tree2
+	position = { 0 0 }
+	icon = node_intrigue
+	
+	auto_selection_weight = {
+		value = 11
+		if = {
+			limit = {
+				has_education_magic_trigger = yes
+			}
+			add = 1989
+		}
+		if = {
+			limit = {
+				has_focus = magic_power_focus_dead
+			}
+			multiply = 5
+		}
+		if = {
+			limit = {
+				has_education_dead_magic_trigger = yes
+			}
+			multiply = 5
+		}
+		if = {
+			limit = {
+				can_start_new_lifestyle_tree_trigger = no
+			}
+			multiply = 0
+		}
+	}
+	
+	can_be_picked = {
+		has_education_dead_magic_trigger = yes
+	}
+	
+	effect = {
+		custom_description_no_bullet = {
+			text = deadmagic_perk1_effect
+		}
+		custom_tooltip = dm2_perk1.tt
+	}
+}
+
+deadmagic_perk2_tree2 = {
+	lifestyle = magic_lifestyle_dead
+	tree = deadmagic_tree2
+	position = { 2 0 }
+	icon = node_intrigue
+	
+	auto_selection_weight = {
+		value = 11
+		if = {
+			limit = {
+				has_education_magic_trigger = yes
+			}
+			add = 1989
+		}
+		if = {
+			limit = {
+				has_focus = magic_power_focus_dead
+			}
+			multiply = 5
+		}
+		if = {
+			limit = {
+				has_education_dead_magic_trigger = yes
+			}
+			multiply = 5
+		}
+		if = {
+			limit = {
+				can_start_new_lifestyle_tree_trigger = no
+			}
+			multiply = 0
+		}
+	}
+	
+	can_be_picked = {
+		has_education_dead_magic_trigger = yes
+	}
+	
+	effect = {
+		custom_description_no_bullet = {
+			text = deadmagic_perk1_effect
+		}
+		custom_tooltip = dm2_perk2.tt
+	}
+}
+
+deadmagic_perk3_tree2 = {
+	lifestyle = magic_lifestyle_dead
+	tree = deadmagic_tree2
+	position = { 0 1 }
+	icon = node_intrigue
+	
+	parent = deadmagic_perk1_tree2
+	
+	can_be_picked = {
+		always = yes
+	}
+	
+	character_modifier = {
+		monsters_toughness_add = 15
+		monsters_damage_add = 15
+	}
+}
+
+deadmagic_perk4_tree2 = {
+	lifestyle = magic_lifestyle_dead
+	tree = deadmagic_tree2
+	position = { 2 1 }
+	icon = node_intrigue
+	
+	parent = deadmagic_perk2_tree2
+	
+	can_be_picked = {
+		always = yes
+	}
+	
+	character_modifier = {
+		knight_effectiveness_mult = 0.75
+	}
+	
+	effect = {
+		custom_tooltip = dm2_perk4.tt
+	}	
+}
+
+deadmagic_perk5_tree2 = {
+	lifestyle = magic_lifestyle_dead
+	tree = deadmagic_tree2
+	position = { 0 2 }
+	icon = node_intrigue
+	
+	parent = deadmagic_perk3_tree2
+	
+	can_be_picked = {
+		always = yes
+	}
+	
+	character_modifier = {
+		magi_toughness_add = 15
+		magi_damage_add = 15
+	}
+}
+
+deadmagic_perk6_tree2 = {
+	lifestyle = magic_lifestyle_dead
+	tree = deadmagic_tree2
+	position = { 2 2 }
+	icon = node_intrigue
+	
+	parent = deadmagic_perk4_tree2
+	
+	can_be_picked = {
+		always = yes
+	}
+	
+	character_modifier = {
+		knight_limit = 3
+		direct_vassal_opinion = 10
+	}
+}
+
+deadmagic_perk7_tree2 = {
+	lifestyle = magic_lifestyle_dead
+	tree = deadmagic_tree2
+	position = { 1 3 }
+	icon = node_intrigue
+	
+	parent = deadmagic_perk5_tree2
+	parent = deadmagic_perk6_tree2
+	
+	can_be_picked = {
+		always = yes
+	}
+	
+	effect = {
+		custom_tooltip = dm2_perk7.tt
+	}
+}
+
+deadmagic_perk8_tree2 = {
+	lifestyle = magic_lifestyle_dead
+	tree = deadmagic_tree2
+	position = { 1 4 }
+	icon = node_intrigue
+	
+	parent = deadmagic_perk7_tree2
+	
+	can_be_picked = {
+		always = yes
+	}
+	
+	character_modifier = {
+		monthly_prestige_gain_per_knight_mult = 0.05
+		monthly_piety_gain_per_knight_mult = 0.05
+	}
+}
+
+deadmagic_perk9_tree2 = {
+	lifestyle = magic_lifestyle_dead
+	tree = deadmagic_tree2
+	position = { 1 5 }
+	icon = trait_theologian
+	
+	parent = deadmagic_perk8_tree2
+	
+	can_be_picked = {
+		always = yes
+	}
+	
+	effect = {
+		custom_tooltip = dm2_perk9.tt
+		custom_tooltip = not_yet_implemented.tt
+	}
+}
+
+deadmagic_perk1_tree3 = {
+	lifestyle = magic_lifestyle_dead
+	tree = deadmagic_tree3
+	position = { 2 0 }
+	icon = node_intrigue
+	
+	auto_selection_weight = {
+		value = 11
+		if = {
+			limit = {
+				has_education_magic_trigger = yes
+			}
+			add = 1989
+		}
+		if = {
+			limit = {
+				has_focus = magic_power_focus_dead
+			}
+			multiply = 5
+		}
+		if = {
+			limit = {
+				has_education_dead_magic_trigger = yes
+			}
+			multiply = 5
+		}
+		if = {
+			limit = {
+				can_start_new_lifestyle_tree_trigger = no
+			}
+			multiply = 0
+		}
+	}
+	
+	can_be_picked = {
+		has_education_dead_magic_trigger = yes
+	}
+	
+	effect = {
+		custom_description_no_bullet = {
+			text = deadmagic_perk1_effect
+		}
+		custom_tooltip = dm3_perk1.tt
+	}
+}
+
+deadmagic_perk2_tree3 = {
+	lifestyle = magic_lifestyle_dead
+	tree = deadmagic_tree3
+	position = { 2 1 }
+	icon = node_intrigue
+	
+	parent = deadmagic_perk1_tree3
+	
+	can_be_picked = {
+		always = yes
+	}
+	
+	effect = {
+		custom_tooltip = dm3_perk2.tt
+		custom_tooltip = not_yet_implemented.tt
+	}
+}
+
+deadmagic_perk3_tree3 = {
+	lifestyle = magic_lifestyle_dead
+	tree = deadmagic_tree3
+	position = { 2 2 }
+	icon = node_intrigue
+	
+	parent = deadmagic_perk2_tree3
+	
+	can_be_picked = {
+		always = yes
+	}
+	
+	effect = {
+		custom_tooltip = not_yet_implemented.tt
+	}
+}
+
+deadmagic_perk4_tree3 = {
+	lifestyle = magic_lifestyle_dead
+	tree = deadmagic_tree3
+	position = { 0 3 }
+	icon = node_intrigue
+	
+	parent = deadmagic_perk3_tree3
+	
+	can_be_picked = {
+		always = yes
+	}
+	
+	effect = {
+		custom_tooltip = not_yet_implemented.tt
+	}
+}
+
+deadmagic_perk5_tree3 = {
+	lifestyle = magic_lifestyle_dead
+	tree = deadmagic_tree3
+	position = { 2 3 }
+	icon = node_intrigue
+	
+	parent = deadmagic_perk3_tree3
+	
+	can_be_picked = {
+		always = yes
+	}
+	
+	effect = {
+		custom_tooltip = not_yet_implemented.tt
+	}	
+}
+
+deadmagic_perk6_tree3 = {
+	lifestyle = magic_lifestyle_dead
+	tree = deadmagic_tree3
+	position = { 4 3 }
+	icon = node_intrigue
+	
+	parent = deadmagic_perk3_tree3
+	
+	can_be_picked = {
+		always = yes
+	}
+	
+	effect = {
+		custom_tooltip = not_yet_implemented.tt
+	}
+}
+
+deadmagic_perk7_tree3 = {
+	lifestyle = magic_lifestyle_dead
+	tree = deadmagic_tree3
+	position = { 1 4 }
+	icon = node_intrigue
+	
+	parent = deadmagic_perk4_tree3
+	parent = deadmagic_perk5_tree3
+	
+	can_be_picked = {
+		always = yes
+	}
+	
+	effect = {
+		custom_tooltip = not_yet_implemented.tt
+	}
+}
+
+deadmagic_perk8_tree3 = {
+	lifestyle = magic_lifestyle_dead
+	tree = deadmagic_tree3
+	position = { 3 4 }
+	icon = node_intrigue
+	
+	parent = deadmagic_perk5_tree3
+	parent = deadmagic_perk6_tree3
+	
+	can_be_picked = {
+		always = yes
+	}
+	
+	effect = {
+		custom_tooltip = not_yet_implemented.tt
+	}
+}
+
+deadmagic_perk9_tree3 = {
+	lifestyle = magic_lifestyle_dead
+	tree = deadmagic_tree3
+	position = { 2 5 }
+	icon = trait_theologian
+	
+	parent = deadmagic_perk7_tree3
+	parent = deadmagic_perk8_tree3
+	
+	can_be_picked = {
+		always = yes
+	}
+	
+	effect = {
+		custom_tooltip = not_yet_implemented.tt
+	}
+}

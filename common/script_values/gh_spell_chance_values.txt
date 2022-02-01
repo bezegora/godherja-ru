@@ -1,0 +1,183 @@
+﻿standard_spell_difficulty_success_chance = {
+	value = 0
+	add = base_standard_spell_difficulty_success_chance_value
+	add = caster_or_court_mage_value
+	add = legacy_spell_chance_value
+	subtract = magic_crime_defense_value
+	subtract = hostile_magic_defense_value
+	subtract = hostile_magic_defense_county_value
+		
+	min = 0
+}
+
+standard_spell_difficulty_success_chance_nonhostile = {
+	value = 0
+	add = base_standard_spell_difficulty_success_chance_value
+	add = caster_or_court_mage_value
+	add = legacy_spell_chance_value
+	min = 0
+}
+
+standard_spell_difficulty_failure_chance = {
+	value = 0
+	add = base_standard_spell_difficulty_failure_chance_value
+	add = magic_crime_defense_value
+	add = hostile_magic_defense_value
+	add = hostile_magic_defense_county_value
+	subtract = caster_or_court_mage_value
+	min = 5
+}
+
+standard_spell_difficulty_failure_chance_nonhostile = {
+	value = 0
+	add = base_standard_spell_difficulty_failure_chance_value
+	subtract = caster_or_court_mage_value
+	min = 5
+}
+
+standard_spell_difficulty_chance_ratio = {
+	value = standard_spell_difficulty_success_chance
+	divide = {
+		value = 1	# So we don't divide by zero
+		add = standard_spell_difficulty_success_chance
+		add = standard_spell_difficulty_failure_chance
+	}
+	multiply = 100
+	min = 0
+}
+
+difficult_spell_difficulty_success_chance = {
+	value = 0
+	add = base_difficult_spell_difficulty_success_chance_value
+	add = caster_or_court_mage_value
+	add = legacy_spell_chance_value
+	subtract = magic_crime_defense_value
+	subtract = hostile_magic_defense_value
+	subtract = hostile_magic_defense_county_value
+	min = 0
+}
+
+difficult_spell_difficulty_success_chance_nonhostile = {
+	value = 0
+	add = base_difficult_spell_difficulty_success_chance_value
+	add = caster_or_court_mage_value
+	add = legacy_spell_chance_value
+	min = 0
+}
+
+difficult_spell_difficulty_failure_chance = {
+	value = 0
+	add = base_difficult_spell_difficulty_failure_chance_value
+	add = magic_crime_defense_value
+	add = hostile_magic_defense_value
+	add = hostile_magic_defense_county_value
+	subtract = caster_or_court_mage_value
+	min = 5
+}
+
+difficult_spell_difficulty_failure_chance_nonhostile = {
+	value = 0
+	add = base_difficult_spell_difficulty_failure_chance_value
+	subtract = caster_or_court_mage_value
+	min = 5
+}
+
+difficult_spell_difficulty_chance_ratio = {
+	value = difficult_spell_difficulty_success_chance
+	divide = {
+		value = 1	# So we don't divide by zero
+		add = difficult_spell_difficulty_success_chance
+		add = difficult_spell_difficulty_failure_chance
+	}
+	multiply = 100
+	min = 0
+}
+
+moon_standard_spell_difficulty_success_chance = {
+	value = 0
+	add = base_standard_spell_difficulty_success_chance_value
+	add = caster_or_court_mage_value
+	add = legacy_spell_chance_value
+	subtract = magic_crime_defense_value
+	subtract = hostile_magic_defense_value
+	subtract = hostile_magic_defense_county_value
+	add = good_moon_spell_chance_value
+	subtract = bad_moon_spell_chance_value
+		
+	min = 0
+}
+
+moon_standard_spell_difficulty_success_chance_nonhostile = {
+	value = 0
+	add = base_standard_spell_difficulty_success_chance_value
+	add = caster_or_court_mage_value
+	add = legacy_spell_chance_value
+	add = good_moon_spell_chance_value
+	subtract = bad_moon_spell_chance_value
+	min = 0
+}
+
+moon_standard_spell_difficulty_failure_chance = {
+	value = 0
+	add = base_standard_spell_difficulty_failure_chance_value
+	add = magic_crime_defense_value
+	add = hostile_magic_defense_value
+	add = hostile_magic_defense_county_value
+	subtract = caster_or_court_mage_value
+	subtract = good_moon_spell_chance_value
+	add = bad_moon_spell_chance_value
+	min = 5
+}
+
+moon_standard_spell_difficulty_failure_chance_nonhostile = {
+	value = 0
+	add = base_standard_spell_difficulty_failure_chance_value
+	subtract = caster_or_court_mage_value
+	subtract = good_moon_spell_chance_value
+	add = bad_moon_spell_chance_value
+	min = 5
+}
+
+moon_difficult_spell_difficulty_success_chance = {
+	value = 0
+	add = base_difficult_spell_difficulty_success_chance_value
+	add = caster_or_court_mage_value
+	add = legacy_spell_chance_value
+	subtract = magic_crime_defense_value
+	subtract = hostile_magic_defense_value
+	subtract = hostile_magic_defense_county_value
+	add = good_moon_spell_chance_value
+	subtract = bad_moon_spell_chance_value
+	min = 0
+}
+
+moon_difficult_spell_difficulty_success_chance_nonhostile = {
+	value = 0
+	add = base_difficult_spell_difficulty_success_chance_value
+	add = caster_or_court_mage_value
+	add = legacy_spell_chance_value
+	add = good_moon_spell_chance_value
+	subtract = bad_moon_spell_chance_value
+	min = 0
+}
+
+moon_difficult_spell_difficulty_failure_chance = {
+	value = 0
+	add = base_difficult_spell_difficulty_failure_chance_value
+	add = magic_crime_defense_value
+	add = hostile_magic_defense_value
+	add = hostile_magic_defense_county_value
+	subtract = caster_or_court_mage_value
+	subtract = good_moon_spell_chance_value
+	add = bad_moon_spell_chance_value
+	min = 5
+}
+
+moon_difficult_spell_difficulty_failure_chance_nonhostile = {
+	value = 0
+	add = base_difficult_spell_difficulty_failure_chance_value
+	subtract = caster_or_court_mage_value
+	subtract = good_moon_spell_chance_value
+	add = bad_moon_spell_chance_value
+	min = 5
+}

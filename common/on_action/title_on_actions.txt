@@ -1,0 +1,274 @@
+﻿
+on_title_gain = {
+	effect = {
+		if = {
+			limit = {
+				scope:title = { is_holy_order = yes }
+				NOT = { has_trait = order_member }
+				has_government = holy_order_government
+			}
+			add_trait = order_member
+		}
+
+		#Did I receive a title from my sibling?
+		if = {
+			limit = {
+				exists = scope:previous_holder
+				scope:previous_holder = {
+					is_alive = yes
+					exists = var:sibling_waiting_for_land
+					any_sibling = {
+						this = root
+						this = scope:previous_holder.var:sibling_waiting_for_land
+					}
+				}
+			}
+			add_character_flag = {
+				flag = got_title_from_sibling
+				years = 4
+			}
+		}
+		
+		if = {
+			limit = {
+				NOT = {
+					religion = religion:agionism_religion
+				}
+				OR = {
+					scope:title = title:k_saint_sansias_rose
+					scope:title = title:k_forlorn_guardian
+					scope:title = title:k_golden_hand
+					scope:title = title:k_saint_calystos_key
+					scope:title = title:k_bleeding_martyr
+					scope:title = title:k_pure_heart
+					scope:title = title:k_blind_watcher
+					scope:title = title:k_forgotten_saint
+				}
+			}
+			destroy_title = scope:title
+		}
+	}
+}
+
+on_explicit_claim_gain = {
+	events = {
+		coa.1 # check if title Coat of Arms should change.
+	}
+}
+
+on_explicit_claim_lost = {
+	events = {
+		coa.1 # check if title Coat of Arms should change.
+	}
+}
+
+on_rank_up = { # Will not fire during history execution or for dying characters
+	events = {
+	}
+	effect = {
+		update_embassies_effect = yes
+		every_ally = {
+			update_embassies_effect = yes
+		}
+	}
+}
+
+on_rank_down = { # Will not fire during history execution or for dying characters
+	events = {
+	}
+	effect = {
+		add_character_flag = {
+			flag = make_suicide_available
+			years = 5
+		}
+		update_embassies_effect = yes
+		every_ally = {
+			update_embassies_effect = yes
+		}
+	}
+}
+
+on_vassal_gained = {
+	events = {
+		realm_maintenance.1000 # Notify vassals of new liege
+	}
+}
+
+on_title_gain = {
+	effect = {
+		if = {	# Griffon event for Chevalie
+			limit = { 
+				scope:title = title:e_chevalie
+			}
+			trigger_event = {
+				id = marcher.0110
+				days = 5
+			}
+		}
+	}
+}
+
+on_title_gain_inheritance = {
+	effect = {
+		if = {
+			limit = {
+				scope:previous_holder = character:western_imperial_1
+				NOT = {
+					scope:previous_holder = {
+						any_child = {
+							exists = this
+						}
+					}
+				}
+			}
+			destroy_title = title:e_oraispol_aautokratia
+		}
+		if = {
+			limit = {
+				any_held_title = {
+					has_variable_list = contesting_linked_titles
+				}
+			}
+			random_held_title = {
+				limit = { has_variable_list = contesting_linked_titles }
+				save_scope_as = main_contested_title
+				if = {
+					limit = { any_in_de_facto_hierarchy = { this = scope:title } }
+					add_to_variable_list = {
+						name = linked_titles
+						target = scope:title
+					}
+					#scope:previous_holder = {
+					#	every_held_title = {
+					#		scope:main_contested_title = {
+					#			add_to_variable_list = {
+					#				name = linked_titles
+					#				target = prev
+					#			}
+					#		}
+					#	}
+					#}
+				}
+			}
+			add_character_flag = temporary_holder
+		}
+		else_if = {
+			#if your title has the sjalvolki_succession_law, check if you are undergoing the event
+			limit = {
+				OR = {
+					scope:title = {
+						has_title_law = sjalvolki_succession_law
+					}
+					has_realm_law = sjalvolki_succession_law
+				}
+				is_independent_ruler = yes
+				scope:title = {
+					tier >= tier_kingdom
+				}
+			}
+			primary_title = {
+				set_variable = {
+					name = previous_holder
+					value = scope:previous_holder
+				}
+			}
+			#if you aren't going through the event chain, start the event chain
+			if = {
+				limit = {
+					NOT = {
+						has_character_flag = temporary_holder
+					}
+				}
+				add_character_flag = temporary_holder
+				trigger_event = {
+					id = sjalvolki_succession.0001
+					days = 1
+				}
+			}
+		}
+		else_if = { # Aversarian Succession
+			limit = {
+				OR = {
+					scope:title = {
+						has_title_law = aversarian_succession_law
+					}
+					has_realm_law = aversarian_succession_law
+				}
+				scope:title = {
+					tier >= 4	# Should only fire on kingdoms and empires
+				}
+			}
+			primary_title = {
+				set_variable = {
+					name = previous_holder
+					value = scope:previous_holder
+				}
+			}
+			#if any previous_holders titles are currently in contention, don't continue kek	
+			if = {
+				limit = {
+					any_held_title = {
+						has_variable_list = contesting_linked_titles
+					}
+				}
+				add_character_flag = temporary_holder
+			}
+			if = {
+				limit = {
+					NOT = {
+						has_character_flag = temporary_holder
+					}
+				}
+				add_character_flag = temporary_holder
+				trigger_event = {
+					id = aversarian_succession.0001
+					days = 1
+				}
+			}
+		}
+		else_if = { # Coronation System On Action Below
+			limit = {
+				AND = {
+					faith = {
+						has_doctrine_parameter = can_perform_coronations
+					}
+					NOT = { faith.religious_head = THIS }
+					NOT = { has_character_flag = temporary_holder }
+					is_adult = yes
+					highest_held_title_tier > 2 # Dukes and above
+					
+					NOT = {
+						has_trait = coronated_by_head_of_religion
+						has_trait = coronated_by_high_priest
+						has_trait = coronated_by_bishop
+						has_trait = coronated_formal_3
+						has_trait = coronated_formal_2
+						has_trait = coronated_formal_1
+						has_trait = coronated_celebration
+					}
+				}
+			}
+			trigger_event = {
+				id = coronation.0001
+				days = 3
+			}
+		}
+		else_if = {
+			limit = {
+				AND = {
+					faith = {
+						has_doctrine_parameter = can_perform_coronations
+					}
+					NOT = { faith.religious_head = THIS }
+					is_adult = no
+				}
+			}
+			#trigger_event = {
+			#	id = coronation.0001
+			#	days = 3
+			#}
+			# Wait for adulthood
+		}
+		# Coronation System On Action Above
+	}
+}

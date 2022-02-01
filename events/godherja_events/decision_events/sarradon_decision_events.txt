@@ -1,0 +1,40 @@
+﻿namespace = sarradon_decisions
+
+sarradon_decisions.0012 = {
+	type = character_event
+	hidden = yes
+	
+	trigger = {
+		OR = {
+			AND = {
+				exists = mother
+				mother = {
+					has_trait = gh_blood_of_prophet
+				}
+			}
+			AND = {
+				exists = father
+				father = {
+					has_trait = gh_blood_of_prophet
+				}
+			}
+			AND = {
+				exists = scope:hadasur_progenitor
+				OR = {
+					is_grandchild_of = scope:hadasur_progenitor 
+					is_great_grandchild_of = scope:hadasur_progenitor
+				}
+			}
+		}
+		NOT = {
+			has_trait = gh_blood_of_prophet
+		}
+	}
+	
+	immediate = {
+		add_trait = gh_blood_of_prophet
+		every_child = {
+			trigger_event = sarradon_decisions.0012
+		}
+	}
+}

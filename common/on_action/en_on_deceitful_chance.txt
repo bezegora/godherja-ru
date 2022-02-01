@@ -1,0 +1,52 @@
+﻿on_deceitful_nickname = 
+{
+	trigger = { has_trait = deceitful
+		    prestige_level >= 3
+		  }
+	first_valid_on_action = 
+	{
+		on_diplomacy_deceitful
+		on_stewardship_deceitful
+		on_martial_deceitful
+		on_prowess_deceitful
+		on_intrigue_deceitful
+		on_learning_deceitful
+	}
+	fallback = on_prowess_nickname
+}
+
+on_diplomacy_deceitful = 
+{
+	trigger = { diplomacy >= 27 }
+	effect = { give_nickname = nick_the_cordial_snake}
+}
+
+on_stewardship_deceitful = 
+{
+	trigger = { stewardship >= 25 }
+	effect = { give_nickname = nick_the_gilded_snake}
+}
+
+on_martial_deceitful =
+{
+	trigger = { martial >= 25 }
+	effect = { give_nickname = nick_the_venom_snake }
+}
+
+on_prowess_deceitful =
+{
+	trigger = { prowess >= 30 }
+	effect = { give_nickname = nick_the_deadly_snake }
+}
+
+on_intrigue_deceitful =
+{
+	trigger = { intrigue >= 25 }
+	effect = { give_nickname = nick_the_tricky_snake }
+}
+
+on_learning_deceitful = {
+	trigger = { learning >= 30 }
+	effect = { give_nickname = nick_the_calm_snake }
+}
+

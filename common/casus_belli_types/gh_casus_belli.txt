@@ -1,0 +1,4019 @@
+﻿sjalvolki_conquest_cb = {
+	group = invasion
+
+	combine_into_one = yes
+	should_show_war_goal_subview = yes
+	mutually_exclusive_titles = { always = yes }
+	white_peace_possible = no
+
+	allowed_for_character = {
+		has_title = title:e_sjalvolki
+		NOT = {
+			has_variable = cenware_invasion_cooldown
+		}
+	}
+
+	allowed_against_character = {
+		any_realm_county = {
+			OR = {
+				empire = title:e_etepezea
+				empire = title:e_malcois
+				empire = title:e_opakhasia
+				empire = title:e_aironoi
+			}
+		}
+		NOT = {
+			top_liege = scope:attacker
+		}
+	}
+
+	target_titles = all
+	target_title_tier = kingdom
+	target_de_jure_regions_above = yes
+	ignore_effect = change_title_holder
+
+	max_attacker_score_from_battles = 200
+	
+	on_invalidated_desc = msg_invasion_war_invalidated_message
+
+	cost = {
+		# Should be free, so that Cenware doesn't have to waste prestige and piety
+	}
+	
+	should_invalidate = {
+		scope:attacker = { NOT = { has_title = title:e_sjalvolki } }
+	}
+	
+	on_declaration = {
+		on_declared_war = yes
+		multi_realm_invasion_join_war_cenware = yes
+		war = {
+			save_scope_as = war
+		}
+		scope:attacker = {
+			every_vassal_or_below = {	# Call every vassal to contribute
+				limit = { 
+					highest_held_title_tier >= tier_county
+					NOR = { 
+						has_character_flag = aversarian_migration
+						has_religion = religion:aversarinas_aautokrata_religion
+					}
+				}
+				trigger_event = sjalvolki_conquest.0001
+			}
+			set_variable = {	# Needed for a very, very edge case that has the potential to seriously bug the system out
+				name = cenware_invasion_cooldown
+				days = 10
+			}
+			trigger_event = {	# Event for Cenware to actually get his troops
+				id = sjalvolki_conquest.0002
+				days = 1
+			}
+		}
+		if = {
+			limit = {
+				scope:war = {
+					any_war_defender = {
+						this = character:cois_1
+					}
+				}
+			}
+			character:cois_1 = {
+				trigger_event = {
+					id = cois.0001
+					days = 1
+				}
+			}
+		}
+		#if = {
+		#	limit = { 
+		#		any_in_list = {
+		#			list = target_titles
+		#			this = title:k_assocaea	# If anyone in the future wonders why - it's what happens after you see the AI manage to lose a war with a 10:1 advantage 5 times in a row
+		#		}
+		#	}
+		#	scope:attacker = {
+		#		trigger_event = {
+		#			id = sjalvolki_conquest.1002
+		#			months = 1
+		#		}
+		#	}
+		#}
+	}
+	
+	on_invalidated = {
+		hidden_effect = {
+			scope:attacker = {
+				trigger_event = {
+					id = sjalvolki_conquest.1001
+					days = 1
+				}
+			}
+		}
+	}
+
+	on_victory_desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { scope:attacker = { is_local_player = yes } }
+				desc = sjalvolki_invasion_war_victory_desc_attacker
+			}
+			desc = sjalvolki_invasion_war_victory_desc
+		}
+	}
+
+	on_victory = {
+		war = {
+			save_scope_as = war
+		}
+		hidden_effect = {
+			scope:attacker = {	# To counterract negative opinion from aggressive wars
+				every_vassal = {
+					limit = { culture_group = prev.culture_group }
+					add_opinion = {
+						modifier = sjalvolki_core_vassal_opinion
+						target = prev
+					}
+				}
+				every_vassal = {
+					limit = { NOT = { culture_group = prev.culture_group } }
+					add_opinion = {
+						modifier = sjalvolki_coalition_vassal_opinion
+						target = prev
+					}
+				}
+				fp1_remember_recent_conquest_victory_effect = yes
+				set_variable = {
+					name = recent_conquest_victory
+					value = scope:defender
+					years = 5
+				}
+			}
+		}
+		create_title_and_vassal_change = {
+			type = conquest
+			save_scope_as = change
+			add_claim_on_loss = yes
+		}
+		scope:war = {
+			random_in_list = {	# If someone invades Zakros, but doesn't actually wardec Cois himself, this makes sure that the entirety of Cois' kingdom gets consumed anyway
+				list = target_titles
+				limit = { tier = tier_kingdom }
+				if = {
+					limit = {
+						trigger_if = {
+							limit = { exists = holder }
+							NOT = { holder.top_liege = scope:attacker }
+						}
+						trigger_else = {
+							always = no
+						}
+					}
+					holder = { save_scope_as = actual_kingdom_holder }
+				}
+			}
+			if = {
+				limit = {
+					any_war_defender = {
+						this = character:cois_1
+						NOT = { character:cois_1 = { has_title = title:e_etepezea } }
+					}
+				}
+				character:cois_1 = {
+					get_title = title:c_alukdus
+					title:c_alukdus = {
+						set_variable = {
+							name = protected_from_conquest
+							days = 10
+						}
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					any_war_defender = {
+						this = character:cois_1
+						character:cois_1 = { has_title = title:e_etepezea } 
+					}
+				}
+				character:cois_1 = {
+					trigger_event = cois.0005
+					add_character_flag = cois_defeated
+				}
+			}
+			every_war_defender = {
+				every_held_title = {
+					limit = { tier = tier_empire }
+					scope:attacker = { destroy_title = prev }
+					holder = { add_character_flag = former_emperor }
+				}
+			}
+			every_war_defender = {
+				every_held_title = {
+					limit = {
+						tier < tier_kingdom
+						tier >= tier_county
+						OR = {
+							AND = {
+								holder.top_liege = scope:actual_kingdom_holder
+								holder.top_liege = { NOT = { has_character_flag = former_emperor } }
+							}
+							trigger_if = {
+								limit = {
+									exists = kingdom
+								}
+								kingdom = {
+									is_in_list = target_titles
+								}
+							}
+							trigger_else = { always = no }
+						}
+						NOR = { 
+							is_in_list = conquered_lands 
+							has_variable = protected_from_conquest
+						}
+					}
+					add_to_list = conquered_lands
+					if = {
+						limit = { is_sjalvolki_kingdom_capital = yes }
+						duchy = {	# So that even if a duchy title is not created, for future kingdom capitals it gets auto created on conquest
+							if = {
+								limit = { NOT = { is_in_list = conquered_lands } }
+							}
+							add_to_list = conquered_lands
+						}
+					}
+				}
+				every_vassal_or_below = {
+					every_held_title = {
+						limit = { 
+							tier < tier_kingdom
+							tier >= tier_county
+							OR = {
+								holder.top_liege = scope:actual_kingdom_holder
+								kingdom = {
+									is_in_list = target_titles
+								}
+							}
+							NOT = { is_in_list = conquered_lands }
+						}
+						add_to_list = conquered_lands
+						if = {
+							limit = { is_sjalvolki_kingdom_capital = yes }
+							duchy = {
+								if = {
+									limit = { NOT = { is_in_list = conquered_lands } }
+								}
+								add_to_list = conquered_lands
+							}
+						}
+					}
+				}
+			}
+		}
+		every_in_list = {
+			list = conquered_lands
+			change_title_holder = {
+				holder = scope:attacker
+				change = scope:change
+			}
+			hidden_effect = {
+				if = {
+					limit = { tier = tier_county }
+					add_county_modifier = {
+						modifier = conquered_by_the_sjalvolki # Gives increased opinion to prevent peasant rebellions
+						years = 20
+					}
+				}
+				if = {
+					limit = { 
+						OR = {
+							this = title:c_halium	# Always goes to Cenware
+							this = title:d_myrapolis
+						}
+					}
+					remove_from_list = conquered_lands
+				}
+			}
+		}
+		resolve_title_and_vassal_change = scope:change
+		
+		# Prestige Progress for the Attacker
+		every_in_list = {
+			list = target_titles
+			limit = { tier = tier_kingdom }
+			scope:attacker = {
+				add_prestige_experience = minor_prestige_value
+			}
+		}
+
+		# Prestige for the attacker's war allies
+		add_from_contribution_attackers = {
+			prestige = minor_prestige_value
+			opinion = {
+				modifier = contributed_in_war
+			}
+		}
+
+		# Prestige for the defender's war allies
+		add_from_contribution_defenders = {
+			prestige = minor_prestige_value
+			opinion = {
+				modifier = contributed_in_war
+			}
+		}
+
+		#add_truce_attacker_victory_effect = yes # No truce so Cenware can kick ass faster
+		
+		hidden_effect = {
+			scope:attacker = {
+				save_scope_as = destroyer
+				generate_vassal_list_by_contribution = {
+					CULTURE = culture:daukeni
+					FAITH = faith:sjalvolki
+					LIST = migration_vassals
+				}
+				every_in_list = {
+					list = conquered_lands
+					limit = { tier = tier_kingdom }
+					add_to_list = migration_kingdoms
+				}
+				every_in_list = {
+					list = conquered_lands
+					limit = { tier = tier_duchy }
+					add_to_list = migration_duchies
+				}
+				every_in_list = {
+					list = conquered_lands
+					limit = { tier = tier_county }
+					add_to_list = migration_counties
+				}
+				every_in_list = {
+					list = target_titles
+					limit = { tier = tier_kingdom }
+					remove_from_list = migration_kingdoms
+				}
+				assign_titles_to_characters_new_sjalvolki_conquest = {	
+					CHARACTER_LIST = migration_vassals
+					DUCHY_LIST = migration_duchies
+					COUNTY_LIST = migration_counties
+				}
+				trigger_event = {
+					id = sjalvolki_conquest.1000
+					days = 1
+				}
+			}
+		}
+		if = {
+			limit = {
+				scope:war = {
+					any_war_defender = {
+						this = character:cois_1
+						NOT = { character:cois_1 = { has_title = title:e_etepezea } }
+						NOT = { character:cois_1 = { has_character_flag = cois_defeated } }
+					}
+				}
+			}
+			character:cois_1 = {
+				trigger_event = cois.0004
+			}
+		}
+		hidden_effect = {
+			scope:attacker = {
+				trigger_event = {
+					id = sjalvolki_conquest.1001
+					days = 1
+				}
+			}
+		}
+	}
+
+	on_white_peace_desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { scope:defender = { is_local_player = yes } }
+				desc = invasion_war_white_peace_desc_defender
+			}
+			desc = invasion_war_white_peace_desc
+		}
+	}
+
+	on_white_peace = {
+		# Prestige loss for the attacker
+		scope:attacker = {
+			add_prestige = {
+				value = medium_prestige_value
+				multiply = -1.0
+			}
+		}
+
+		# Prestige for the attacker's war allies
+		add_from_contribution_attackers = {
+			prestige = miniscule_prestige_value
+			opinion = {
+				modifier = contributed_in_war
+			}
+		}
+
+		# Prestige for the defender's war allies
+		add_from_contribution_defenders = {
+			prestige = medium_prestige_value
+			opinion = {
+				modifier = contributed_in_war
+			}
+		}
+		add_truce_white_peace_effect = yes
+		
+		if = {
+			limit = { 
+				scope:war = {
+					any_war_defender = {
+						this = character:cois_1
+					}
+				}
+			}
+			character:cois_1 = {
+				trigger_event = cois.0010
+			}
+			scope:attacker = {
+				add_character_flag = cenware_lost_war_once
+			}
+		}
+		
+		hidden_effect = {
+			scope:attacker = {
+				trigger_event = {
+					id = sjalvolki_conquest.1001
+					days = 1
+				}
+			}
+		}
+	}
+
+	on_defeat_desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { scope:defender = { is_local_player = yes } }
+				desc = invasion_war_white_peace_desc_defender
+			}
+			desc = invasion_war_white_peace_desc
+		}
+	}
+
+	on_defeat = {
+		# Prestige loss for the attacker
+		scope:attacker = {
+			pay_short_term_gold = {
+				gold = 2
+				target = scope:defender
+				yearly_income = yes
+			}
+			add_prestige = {
+				value = massive_prestige_value
+				multiply = -1.0
+			}
+			set_variable = {
+				name = still_licking_wounds
+				years = 3
+			}
+		}
+
+		# Prestige for defenders
+		every_in_list = {
+			list = defenders
+			add_prestige = major_prestige_value
+		}
+
+		# Prestige for the attacker's war allies
+		add_from_contribution_attackers = {
+			prestige = miniscule_prestige_value
+			opinion = {
+				modifier = contributed_in_war
+			}
+		}
+
+		# Prestige for the defender's war allies
+		add_from_contribution_defenders = {
+			prestige = massive_prestige_value
+			opinion = {
+				modifier = contributed_in_war
+			}
+		}
+
+		add_truce_attacker_defeat_effect = yes
+
+		scope:attacker = {
+			save_temporary_scope_as = loser
+		}
+		on_lost_aggression_war_discontent_loss = yes
+		if = {
+			limit = { scope:attacker = { has_character_flag = cenware_lost_war_once } }
+			scope:attacker = {
+				debug_log = "ATTACKER:"
+				debug_log_scopes = yes
+			}
+			force_end_the_conquest = yes
+		}
+		else = {
+			scope:attacker = {
+				add_character_flag = cenware_lost_war_once
+			}
+		}
+		if = {
+			limit = {
+				scope:war = {
+					any_war_defender = {
+						this = character:cois_1
+					}
+					scope:attacker = { NOT = { has_character_flag = lost_to_cois_once } }
+				}
+			}
+			character:cois_1 = {
+				trigger_event = cois.0010
+				set_variable = cois_defeated_cenware
+			}
+			scope:attacker = {
+				add_character_flag = lost_to_cois_once
+				set_variable = {
+					name = lost_to_cois_cooldown
+					years = 3
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				scope:war = {
+					any_war_defender = {
+						this = character:cois_1
+					}
+					scope:attacker = { has_character_flag = lost_to_cois_once }
+				}
+			}
+			scope:attacker = {
+				add_character_flag = lost_to_cois_twice
+			}
+			character:cois_1 = {
+				trigger_event = cois.0020
+			}
+		}
+	}
+
+	on_primary_attacker_death = invalidate
+	on_primary_defender_death = inherit
+	transfer_behavior = transfer
+
+	war_name = "INVASION_WAR_NAME"
+	war_name_base = "INVASION_WAR_NAME_BASE"
+	cb_name = "SJALVOLKI_INVASION_CB_NAME"
+
+	interface_priority = 500
+	
+}
+
+
+mad_dad_cb = {
+	group = invasion
+
+	combine_into_one = yes
+	should_show_war_goal_subview = yes
+	mutually_exclusive_titles = { always = yes }
+
+	allowed_for_character = {
+		has_character_flag = mad_dog_died
+	}
+
+	allowed_against_character = {
+		AND = {
+			NOR = {
+				any_realm_county = {
+					OR = {
+						empire = title:e_etepezea
+						empire = title:e_malcois
+						kingdom = title:k_kasmiene
+						kingdom = title:k_arsidos
+						kingdom = title:k_ithiteia
+					}
+				}
+			}
+			OR = {
+				any_realm_county = {
+					OR = {
+						kingdom = title:k_kollos
+					}
+				}
+			}
+		}
+	}
+
+	target_titles = all
+	target_title_tier = kingdom
+	target_de_jure_regions_above = yes
+	ignore_effect = change_title_holder
+	
+	on_invalidated_desc = msg_mad_dad_invalidated_message
+
+	cost = {
+		prestige = {
+			value = 250
+		}
+		piety = {
+			value = 100
+		}
+	}
+
+	on_declaration = {
+		on_declared_war = yes
+		multi_realm_invasion_join_war = yes
+		scope:attacker = {
+			spawn_army = {
+				name = "SJALVOLKI_WARBAND"
+				levies = 1000
+				men_at_arms = {
+					type = armored_footmen
+					men = 250
+				}
+				location = 5317 # Hard coded for now, redo this later
+				war = scope:war
+			}
+			spawn_army = {
+				name = "SJALVOLKI_WARBAND"
+				levies = 1000
+				men_at_arms = {
+					type = armored_footmen
+					men = 250
+				}
+				location = 5317
+				war = scope:war
+			}
+			spawn_army = {
+				name = "SJALVOLKI_WARBAND"
+				levies = 1000
+				men_at_arms = {
+					type = armored_footmen
+					men = 250
+				}
+				location = 5317
+				war = scope:war
+			}
+			spawn_army = {
+				name = "SJALVOLKI_WARBAND"
+				levies = 1000
+				men_at_arms = {
+					type = armored_footmen
+					men = 250
+				}
+				location = 5317
+				war = scope:war
+			}
+			every_primary_war_enemy = {
+				trigger_event = mad_dog.2
+			}
+		}
+	}
+
+	on_victory_desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { scope:attacker = { is_local_player = yes } }
+				desc = mad_dad_victory_desc_attacker
+			}
+			desc = mad_dad_war_victory_desc
+		}
+	}
+
+	on_victory = {
+		create_title_and_vassal_change = {
+			type = conquest
+			save_scope_as = change
+			add_claim_on_loss = yes
+		}
+		scope:attacker = {
+			create_title_and_vassal_change = {
+				type = independency
+				save_scope_as = change
+			}
+			every_vassal = {
+				limit = {
+					NOT = {
+						primary_title = {
+							target_is_de_jure_liege_or_above = k_kollos
+						}
+					}	
+				}
+				change_liege_or_become_independent = {
+					CHANGE = scope:change
+					VASSAL = this
+				}
+			}
+			every_held_title = {
+				limit = {
+					NOT = {
+						kingdom = title:k_kollos
+					}
+				}
+				change_title_holder = {
+					holder = scope:attacker.top_liege
+					change = scope:change
+				}
+			}
+		}
+
+		every_in_list = {
+			list = target_titles
+			every_in_de_jure_hierarchy = {
+				limit = {
+					AND = {
+						tier <= tier_county
+						NOT = {
+							holder.top_liege = scope:attacker
+						}
+					}
+				}
+				change_title_holder = {
+					holder = scope:attacker
+					change = scope:change
+				}
+			}
+		}
+		title:k_kollos = {
+			change_title_holder = {
+				holder = scope:attacker
+				change = scope:change
+			}
+		}
+	
+			
+		#setup_invasion_cb = {
+		#	titles = target_titles
+		#	attacker = scope:attacker
+		#	defender = scope:defender
+		#	claimant = scope:claimant
+		#	change = scope:change
+		#}
+		resolve_title_and_vassal_change = scope:change
+
+		# Prestige Progress for the Attacker
+		every_in_list = {
+			list = target_titles
+			scope:attacker = {
+				add_prestige_experience = minor_prestige_value
+			}
+		}
+
+		# Prestige for the attacker's war allies
+		add_from_contribution_attackers = {
+			prestige = minor_prestige_value
+			opinion = {
+				modifier = contributed_in_war
+			}
+		}
+
+		# Prestige for the defender's war allies
+		add_from_contribution_defenders = {
+			prestige = minor_prestige_value
+			opinion = {
+				modifier = contributed_in_war
+			}
+		}
+
+		#add_truce_attacker_victory_effect = yes # No truce so Cenware can kick ass faster
+	}
+
+	on_white_peace_desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { scope:defender = { is_local_player = yes } }
+				desc = mad_dad_white_peace_desc_defender
+			}
+			desc = mad_dad_white_peace_desc
+		}
+	}
+
+	on_white_peace = {
+		# Prestige loss for the attacker
+		scope:attacker = {
+			add_prestige = {
+				value = medium_prestige_value
+				multiply = -1.0
+			}
+		}
+
+		# Prestige for the attacker's war allies
+		add_from_contribution_attackers = {
+			prestige = miniscule_prestige_value
+			opinion = {
+				modifier = contributed_in_war
+			}
+		}
+
+		# Prestige for the defender's war allies
+		add_from_contribution_defenders = {
+			prestige = medium_prestige_value
+			opinion = {
+				modifier = contributed_in_war
+			}
+		}
+		add_truce_white_peace_effect = yes
+	}
+
+	on_defeat_desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { scope:defender = { is_local_player = yes } }
+				desc = mad_dad_defeat_desc_defender
+			}
+			desc = mad_dad_defeat_desc
+		}
+	}
+
+	on_defeat = {
+		# Prestige loss for the attacker
+		scope:attacker = {
+			pay_short_term_gold = {
+				gold = 2
+				target = scope:defender
+				yearly_income = yes
+			}
+			add_prestige = {
+				value = massive_prestige_value
+				multiply = -1.0
+			}
+		}
+
+		# Prestige for defenders
+		every_in_list = {
+			list = defenders
+			add_prestige = major_prestige_value
+		}
+
+		# Prestige for the attacker's war allies
+		add_from_contribution_attackers = {
+			prestige = miniscule_prestige_value
+			opinion = {
+				modifier = contributed_in_war
+			}
+		}
+
+		# Prestige for the defender's war allies
+		add_from_contribution_defenders = {
+			prestige = massive_prestige_value
+			opinion = {
+				modifier = contributed_in_war
+			}
+		}
+
+		add_truce_attacker_defeat_effect = yes
+
+		scope:attacker = {
+			save_temporary_scope_as = loser
+		}
+		on_lost_aggression_war_discontent_loss = yes
+		#broken_witch_breaker = yes # Remove Cenware's opinion bonuses from his vassals
+	}
+
+	on_primary_attacker_death = invalidate
+	on_primary_defender_death = inherit
+	transfer_behavior = transfer
+
+	war_name = "INVASION_WAR_NAME"
+	war_name_base = "INVASION_WAR_NAME_BASE"
+	cb_name = "MAD_DAD_CB_NAME"
+
+	interface_priority = 500
+	
+}
+
+reclaim_the_east_cb = {
+	group = invasion
+
+	combine_into_one = yes
+	should_show_war_goal_subview = yes
+	mutually_exclusive_titles = { always = yes }
+
+	allowed_for_character = {
+		AND = {
+			has_culture_group = culture_group:gh_imperial_group
+			any_realm_county = {
+				county = title:c_mallilene
+			}
+			title:e_aironoi = {
+				is_title_created = no
+			}
+			OR = {
+				primary_title.tier = tier_kingdom
+				primary_title.tier = tier_empire
+			}
+		}
+	}
+
+	allowed_against_character = {
+		AND = {
+			OR = {
+				any_realm_county = {
+					OR = {
+						empire = title:e_aironoi
+					}
+				}
+			}
+		}
+	}
+	
+	valid_to_start = {
+		scope:target = title:e_aironoi
+	}
+
+	target_titles = all
+	target_title_tier = empire
+	target_de_jure_regions_above = yes
+	ignore_effect = change_title_holder
+	
+	on_invalidated_desc = msg_reclaim_the_east_invalidated_message
+
+	cost = {
+		prestige = {
+			value = 250
+		}
+	}
+
+	on_declaration = {
+		on_declared_war = yes
+	}
+
+	on_victory_desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { scope:attacker = { is_local_player = yes } }
+				desc = reclaim_the_east_victory_desc_attacker
+			}
+			desc = reclaim_the_east_war_victory_desc
+		}
+	}
+
+	on_victory = {
+		create_title_and_vassal_change = {
+			type = conquest
+			save_scope_as = change
+			add_claim_on_loss = yes
+		}
+
+		# Vassalize every defender under the title, if county is held personally by defender, seize it.
+		every_in_list = {
+			list = target_titles
+			every_dejure_vassal_title_holder = {
+				limit = {
+					AND = {
+						top_liege = scope:defender
+					}
+				}
+				change_liege = {
+					LIEGE = scope:attacker
+					CHANGE = scope:change
+				}
+			}
+			
+			every_in_de_jure_hierarchy = {
+				limit = {
+					tier = tier_county
+					holder = scope:defender
+				}
+				change_title_holder = {
+					holder = scope:attacker
+					change = scope:change
+				}
+			}
+		}
+
+		resolve_title_and_vassal_change = scope:change
+		
+		# Prestige Progress for the Attacker
+		every_in_list = {
+			list = target_titles
+			scope:attacker = {
+				add_prestige_experience = minor_prestige_value
+			}
+		}
+
+		# Prestige for the attacker's war allies
+		add_from_contribution_attackers = {
+			prestige = minor_prestige_value
+			opinion = {
+				modifier = contributed_in_war
+			}
+		}
+
+		# Prestige for the defender's war allies
+		add_from_contribution_defenders = {
+			prestige = minor_prestige_value
+			opinion = {
+				modifier = contributed_in_war
+			}
+		}
+
+		add_truce_attacker_victory_effect = yes
+	}
+
+	on_white_peace_desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { scope:defender = { is_local_player = yes } }
+				desc = reclaim_the_east_white_peace_desc_defender
+			}
+			desc = reclaim_the_east_white_peace_desc
+		}
+	}
+
+	on_white_peace = {
+		# Prestige loss for the attacker
+		scope:attacker = {
+			add_prestige = {
+				value = medium_prestige_value
+				multiply = -1.0
+			}
+		}
+
+		# Prestige for the attacker's war allies
+		add_from_contribution_attackers = {
+			prestige = miniscule_prestige_value
+			opinion = {
+				modifier = contributed_in_war
+			}
+		}
+
+		# Prestige for the defender's war allies
+		add_from_contribution_defenders = {
+			prestige = medium_prestige_value
+			opinion = {
+				modifier = contributed_in_war
+			}
+		}
+		add_truce_white_peace_effect = yes
+	}
+
+	on_defeat_desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { scope:defender = { is_local_player = yes } }
+				desc = reclaim_the_east_defeat_desc_defender
+			}
+			desc = reclaim_the_east_defeat_desc
+		}
+	}
+
+	on_defeat = {
+		# Prestige loss for the attacker
+		scope:attacker = {
+			pay_short_term_gold = {
+				gold = 2
+				target = scope:defender
+				yearly_income = yes
+			}
+			add_prestige = {
+				value = massive_prestige_value
+				multiply = -1.0
+			}
+		}
+
+		# Prestige for defenders
+		every_in_list = {
+			list = defenders
+			add_prestige = major_prestige_value
+		}
+
+		# Prestige for the attacker's war allies
+		add_from_contribution_attackers = {
+			prestige = miniscule_prestige_value
+			opinion = {
+				modifier = contributed_in_war
+			}
+		}
+
+		# Prestige for the defender's war allies
+		add_from_contribution_defenders = {
+			prestige = massive_prestige_value
+			opinion = {
+				modifier = contributed_in_war
+			}
+		}
+
+		add_truce_attacker_defeat_effect = yes
+
+		scope:attacker = {
+			save_temporary_scope_as = loser
+		}
+		on_lost_aggression_war_discontent_loss = yes
+	}
+
+	on_primary_attacker_death = invalidate
+	on_primary_defender_death = inherit
+	transfer_behavior = transfer
+
+	war_name = "INVASION_WAR_NAME"
+	war_name_base = "INVASION_WAR_NAME_BASE"
+	cb_name = "RECLAIM_THE_EAST_CB_NAME"
+
+	interface_priority = 500
+	
+}
+
+iyrossi_slave_cb = {
+	group = conquest
+
+	combine_into_one = yes
+	should_show_war_goal_subview = yes
+
+	allowed_for_character = {
+		has_culture_group = culture_group:gh_iyrossi_group
+		primary_title.empire = title:e_malcois
+	}
+
+	allowed_against_character = {
+		has_culture_group = culture_group:gh_imperial_group
+		primary_title.empire = title:e_malcois
+	}
+
+	target_titles = neighbor_land
+	target_title_tier = county
+	target_de_jure_regions_above = yes
+	ignore_effect = change_title_holder
+
+	on_invalidated_desc = msg_iyrossi_slave_cb_invalidated_message
+
+	cost = {
+		prestige = {
+			value = 100
+		}
+	}
+
+	on_declaration = {
+		on_declared_war = yes
+	}
+
+	on_victory_desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { scope:attacker = { is_local_player = yes } }
+				desc = county_conquest_cb_victory_desc_attacker
+			}
+			desc = county_conquest_cb_victory_desc
+		}
+	}
+
+	on_victory = {
+		create_title_and_vassal_change = {
+			type = conquest
+			save_scope_as = change
+			add_claim_on_loss = yes
+		}
+
+		# Take the title
+		every_in_list = {
+			list = target_titles
+
+			change_title_holder = {
+				holder = scope:attacker
+				change = scope:change
+			}
+		}
+
+		resolve_title_and_vassal_change = scope:change
+		
+		# Prestige Progress for the Attacker
+		every_in_list = {
+			list = target_titles
+			scope:attacker = {
+				add_prestige_experience = minor_prestige_value
+			}
+		}
+
+		# Prestige for the attacker's war allies
+		add_from_contribution_attackers = {
+			prestige = minor_prestige_value
+			opinion = {
+				modifier = contributed_in_war
+			}
+		}
+
+		# Prestige for the defender's war allies
+		add_from_contribution_defenders = {
+			prestige = minor_prestige_value
+			opinion = {
+				modifier = contributed_in_war
+			}
+		}
+
+		add_truce_attacker_victory_effect = yes
+	}
+	
+	on_white_peace_desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { scope:defender = { is_local_player = yes } }
+				desc = county_conquest_cb_white_peace_desc_defender
+			}
+			desc = county_conquest_cb_white_peace_desc
+		}
+	}
+
+	on_white_peace = {
+		# Prestige loss for the attacker
+		scope:attacker = {
+			add_prestige = {
+				value = medium_prestige_value
+				multiply = -1.0
+			}
+		}
+
+		# Prestige for the attacker's war allies
+		add_from_contribution_attackers = {
+			prestige = miniscule_prestige_value
+			opinion = {
+				modifier = contributed_in_war
+			}
+		}
+
+		# Prestige for the defender's war allies
+		add_from_contribution_defenders = {
+			prestige = medium_prestige_value
+			opinion = {
+				modifier = contributed_in_war
+			}
+		}
+		add_truce_white_peace_effect = yes
+	}
+
+	on_defeat_desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { scope:defender = { is_local_player = yes } }
+				desc = county_conquest_cb_defeat_desc_attacker
+			}
+			desc = county_conquest_cb_defeat_desc
+		}
+	}
+
+	on_defeat = {
+		# Prestige loss for the attacker
+		scope:attacker = {
+			pay_short_term_gold = {
+				gold = 2
+				target = scope:defender
+				yearly_income = yes
+			}
+			add_prestige = {
+				value = major_prestige_value
+				multiply = -1.0
+			}
+		}
+
+		# Prestige for defenders
+		every_in_list = {
+			list = defenders
+			add_prestige = major_prestige_value
+		}
+
+		# Prestige for the attacker's war allies
+		add_from_contribution_attackers = {
+			prestige = miniscule_prestige_value
+			opinion = {
+				modifier = contributed_in_war
+			}
+		}
+
+		# Prestige for the defender's war allies
+		add_from_contribution_defenders = {
+			prestige = massive_prestige_value
+			opinion = {
+				modifier = contributed_in_war
+			}
+		}
+
+		add_truce_attacker_defeat_effect = yes
+
+		scope:attacker = {
+			save_temporary_scope_as = loser
+		}
+		on_lost_aggression_war_discontent_loss = yes
+	}
+
+	on_primary_attacker_death = invalidate
+	on_primary_defender_death = inherit
+	transfer_behavior = transfer
+
+	war_name = "IYROSSI_SLAVE_WAR_NAME"
+	war_name_base = "IYROSSI_SLAVE_WAR_NAME_BASE"
+	cb_name = "IYROSSI_SLAVE_CB_NAME"
+
+	interface_priority = 500
+	
+}
+
+
+####copied mongol invasion cbs for fogeaters
+
+fogeater_invasion_war = { #mongol_invasion_war
+	group = invasion
+
+	combine_into_one = yes
+	should_show_war_goal_subview = yes
+	mutually_exclusive_titles = { always = yes }
+
+	allowed_for_character = {
+		has_title = title:e_foglands
+		has_government = tribal_government
+		prestige_level >= 1
+	}
+	
+	allowed_against_character = {
+		scope:attacker = {
+			ALL_FALSE = {
+				top_liege = scope:defender.top_liege
+				liege = scope:defender
+			}
+		}
+	}
+	target_titles = neighbor_land_or_water
+	target_title_tier = all
+	target_de_jure_regions_above = yes
+	ignore_effect = change_title_holder
+	
+	valid_to_start = {
+		scope:target = {
+			tier = tier_kingdom
+		}
+	}
+
+
+	on_invalidated_desc = msg_fogeater_invasion_war_invalidated_message
+	
+	on_invalidated = {
+	}
+
+	cost = {
+		piety = {
+			value = 0
+			if = { # Attacking your HoF is impious
+				limit = {
+					exists = scope:attacker.faith.religious_head
+					scope:attacker.faith.religious_head = scope:defender
+				}
+				if = {
+					limit = {
+						scope:attacker.faith = {
+							has_doctrine = doctrine_spiritual_head
+						}
+					}
+					add = {
+						value = massive_piety_value
+						desc = CB_ATTACKER_HOF
+					}
+				}
+				else = {
+					add = {
+						value = medium_piety_value
+						desc = CB_ATTACKER_HOF
+					}
+				}
+			}
+			if = {
+				limit = {
+					scope:attacker.faith = scope:defender.faith
+					scope:defender = {
+						has_government = theocracy_government
+					}
+				}
+				add = {
+					value = medium_piety_value
+					desc = CB_ATTACKER_THEOCRACY
+				}
+			}
+		}
+		prestige = {
+			add = {
+				value = 50
+				desc = CB_BASE_COST
+			}
+
+			# Bellum Justum Perk
+			if = {
+				limit = {
+					scope:attacker = {
+						has_perk = bellum_justum_perk
+					}
+				}
+				multiply = {
+					add = bellum_justum_discount_percentage
+					divide = 100
+					desc = CB_ATTACKER_BELLUM_JUSTUM
+				}
+			}
+
+			# Dynasty Warfare Perk
+			if = {
+				limit = {
+					scope:attacker = {
+						has_dynasty = yes
+						dynasty = {
+							has_dynasty_perk = warfare_legacy_2
+						}
+					}
+				}
+				multiply = {
+					value = warfare_legacy_2_discount
+					desc = CB_ATTACKER_DYNASTY_WARFARE
+				}
+			}
+
+			# Vassal contract in-realm cost reduction
+			if = {
+				limit = {
+					scope:attacker = {
+						is_independent_ruler = no
+						vassal_contract_has_flag = vassal_contract_war_override
+						liege = scope:defender.liege
+					}
+				}
+				multiply = {
+					value = war_declaration_rights_allowed_cost_reduction
+					desc = "CB_ATTACKER_VASSAL_CONTRACT"
+				}
+			}
+
+			
+			if = {
+				limit = {
+					has_game_rule = no_cost_casus_belli_costs
+				}
+				multiply = {
+					value = 0
+					desc = CB_GAME_RULE_NO_COST
+				}
+			}
+		}
+	}
+	
+	on_declaration = {
+		on_declared_war = yes
+	}	
+
+	on_victory_desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { scope:attacker = { is_local_player = yes } }
+				desc = fogeater_invasion_war_victory_desc_attacker
+			}
+			desc = fogeater_invasion_war_victory_desc
+		}
+	}
+	
+	on_victory = {
+		create_title_and_vassal_change = {
+			type = conquest
+			save_scope_as = change
+			add_claim_on_loss = yes
+		}
+		
+
+		# go through the dejure hierarchy under target titles, transfer titles with same or worse tolerance holders (their religion equaly or less tolerated than the defender's),
+		# take the holder as vassal otherwise and don't go deeper
+		every_in_list = {
+			list = target_titles
+			custom_tooltip = CONQUEST_CB_TITLE
+			every_in_de_jure_hierarchy = {
+				continue = {
+					OR = {
+						NOT = {
+							exists = holder
+						}
+						NOT = {
+							holder = {
+								target_is_liege_or_above = scope:defender
+							}
+						}
+						AND = {
+							scope:attacker.faith = {
+								faith_hostility_level_comparison = {
+									prev.holder.faith <= scope:defender.faith
+								}
+							}
+							holder = {
+								OR = {
+									this = scope:defender
+									target_is_liege_or_above = scope:defender
+								}
+							}
+						}
+					}
+					tier > tier_county
+				}
+				limit = {
+					#tier = tier_county
+					exists = holder
+					holder = {
+						OR = {
+							this = scope:defender
+							target_is_liege_or_above = scope:defender
+						}
+					}
+				}
+				
+				if = {
+					limit = {
+						OR = {
+							scope:attacker.faith = {
+								faith_hostility_level_comparison = {
+									prev.holder.faith >= scope:defender.faith
+								}
+							}
+							holder.primary_title.tier >= scope:attacker.primary_title.tier
+						}
+					}
+					add_to_temporary_list = titles_taken
+				}
+				else = {
+					holder = {
+						add_to_temporary_list = vassals_taken
+					}
+				}
+			}
+		}
+
+		every_in_list = {
+			list = titles_taken
+			change_title_holder = {
+				holder = scope:attacker
+				change = scope:change
+				take_baronies = yes
+			}
+		}
+
+		every_in_list = {
+			list = vassals_taken
+			change_liege = {
+				liege = scope:attacker
+				change = scope:change
+			}
+		}	
+		resolve_title_and_vassal_change = scope:change
+
+		# Prestige for the attacker's war allies
+		add_from_contribution_attackers = {
+			prestige = fogeater_invasion_cb_ally_prestige
+			opinion = {
+				modifier = contributed_in_war
+			}
+		}
+
+		# Prestige for the defender's war allies
+		add_from_contribution_defenders = {
+			prestige = fogeater_invasion_cb_ally_prestige
+			opinion = {
+				modifier = contributed_in_war
+			}
+		}
+		
+		# Prestige level progress for the attacker
+		scope:attacker = {
+			add_prestige_experience = {
+				value = fogeater_invasion_cb_prestige_experience_gain
+			}
+		}
+
+		# Truce
+		add_truce_attacker_victory_effect = yes
+				
+	}
+
+	on_white_peace_desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { scope:defender = { is_local_player = yes } }
+				desc = invasion_war_white_peace_desc_defender
+			}
+			desc = invasion_war_white_peace_desc
+		}
+	}
+	
+	on_white_peace = {
+
+		# Prestige for the attacker's war allies
+		add_from_contribution_attackers = {
+			prestige = fogeater_invasion_cb_ally_prestige
+			opinion = {
+				modifier = contributed_in_war
+			}
+		}
+
+		# Prestige for the defender's war allies
+		add_from_contribution_defenders = {
+			prestige = fogeater_invasion_cb_ally_prestige
+			opinion = {
+				modifier = contributed_in_war
+			}
+		}
+
+		add_truce_white_peace_effect = yes
+
+		scope:attacker = {
+			add_prestige = fogeater_invasion_cb_prestige_white_peace
+		}
+	}
+
+	on_defeat_desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { scope:defender = { is_local_player = yes } }
+				desc = invasion_war_white_peace_desc_defender
+			}
+			desc = invasion_war_white_peace_desc
+		}
+	}
+	
+	on_defeat = {
+
+		# Prestige for the attacker's war allies
+		add_from_contribution_attackers = {
+			prestige = fogeater_invasion_cb_ally_prestige
+			opinion = {
+				modifier = contributed_in_war
+			}
+		}
+
+		# Prestige for the defender's war allies
+		add_from_contribution_defenders = {
+			prestige = fogeater_invasion_cb_ally_prestige
+			opinion = {
+				modifier = contributed_in_war
+			}
+		}
+	
+		# Truce
+		add_truce_attacker_defeat_effect = yes
+			
+		# piety change
+		every_in_list = {
+			list = target_titles
+			
+			scope:defender = {
+				add_prestige = fogeater_invasion_cb_prestige_gain
+			}
+
+			scope:attacker = {
+				pay_short_term_income = {
+					years = 3
+					target = scope:defender
+				}
+			}
+		}
+		
+		#scope:attacker = {
+		#	every_vassal = {
+		#		add_opinion = {
+		#			modifier = liege_lost_fogeater_invasion_war
+		#			target = prev
+		#		}
+		#	}
+		#}
+		
+		scope:attacker = {
+			save_temporary_scope_as = loser
+		}
+		on_lost_aggression_war_discontent_loss = yes
+	}
+	
+	transfer_behavior = transfer
+	
+	on_primary_attacker_death = inherit
+	on_primary_defender_death = inherit
+	
+	attacker_allies_inherit = yes
+	defender_allies_inherit = yes
+	
+	war_name = "FOGEATER_INVASION_WAR_NAME"
+	cb_name = "FOGEATER_INVASION_KINGDOM_CB_NAME"
+	
+	interface_priority = 100
+	
+	use_de_jure_wargoal_only = yes
+	
+	attacker_wargoal_percentage = 0.8
+	
+	max_ai_diplo_distance_to_title = 500
+	
+}
+
+fogeater_realm_invasion_war = { ##mongol_realm_invasion_war
+	group = invasion
+
+	combine_into_one = yes
+	should_show_war_goal_subview = yes
+	mutually_exclusive_titles = { always = yes }
+
+	allowed_for_character = {
+		has_title = title:e_foglands
+		is_ai = yes # To keep it clean and simple for players
+		prestige_level >= 1
+	}
+	
+	allowed_against_character = {
+		NOT = { scope:defender.top_liege = scope:attacker }
+		scope:attacker = {
+			ALL_FALSE = {
+				top_liege = scope:defender.top_liege
+				liege = scope:defender
+			}
+		}
+	}
+	target_titles = neighbor_land_or_water
+	target_title_tier = all
+	target_de_jure_regions_above = yes
+	use_de_jure_wargoal_only = yes
+	ignore_effect = change_title_holder
+	
+	valid_to_start = {
+		scope:target = {
+			tier = tier_empire
+		}
+	}
+
+
+
+	on_invalidated_desc = msg_fogeater_invasion_war_invalidated_message
+	
+	on_invalidated = {
+	}
+
+	cost = {
+		piety = {
+			value = 0
+		}
+		prestige = {
+			add = {
+				value = 50
+				desc = CB_BASE_COST
+			}
+
+			# Bellum Justum Perk
+			if = {
+				limit = {
+					scope:attacker = {
+						has_perk = bellum_justum_perk
+					}
+				}
+				multiply = {
+					add = bellum_justum_discount_percentage
+					divide = 100
+					desc = CB_ATTACKER_BELLUM_JUSTUM
+				}
+			}
+
+			# Dynasty Warfare Perk
+			if = {
+				limit = {
+					scope:attacker = {
+						has_dynasty = yes
+						dynasty = {
+							has_dynasty_perk = warfare_legacy_2
+						}
+					}
+				}
+				multiply = {
+					value = warfare_legacy_2_discount
+					desc = CB_ATTACKER_DYNASTY_WARFARE
+				}
+			}
+
+			# Vassal contract in-realm cost reduction
+			if = {
+				limit = {
+					scope:attacker = {
+						is_independent_ruler = no
+						vassal_contract_has_flag = vassal_contract_war_override
+						liege = scope:defender.liege
+					}
+				}
+				multiply = {
+					value = war_declaration_rights_allowed_cost_reduction
+					desc = "CB_ATTACKER_VASSAL_CONTRACT"
+				}
+			}
+
+
+			# If fired by the Mongol Invasion story, don't charge a cost
+			if = {
+				limit = { scope:attacker = { has_character_flag = free_fogeater_cb } }
+				multiply = {
+					value = 0
+					desc = CB_FOGEATERS_INVASIONS_COST
+				}
+			}
+			
+			# Game rule
+			if = {
+				limit = {
+					has_game_rule = no_cost_casus_belli_costs
+				}
+				multiply = {
+					value = 0
+					desc = CB_GAME_RULE_NO_COST
+				}
+			}
+		}
+	}
+	
+	on_declaration = {
+		on_declared_war = yes
+	}	
+
+	on_victory_desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { scope:attacker = { is_local_player = yes } }
+				desc = invasion_war_victory_desc_attacker
+			}
+			desc = invasion_war_victory_desc
+		}
+	}
+	
+	on_victory = {
+		create_title_and_vassal_change = {
+			type = conquest
+			save_scope_as = change
+			add_claim_on_loss = yes
+		}
+
+		# Target titles + dominant empires only
+		scope:defender = {
+			# Check whether any additional empires should be considered target titles
+				# First check for the primary defender
+			every_realm_de_jure_empire = {
+				limit = {
+					any_in_de_jure_hierarchy = { # Then check how many de jure counties are in the Mongol Emperor's realm
+						count >= 8 # This number determines how many counties activates the threshold for taking these titles
+						continue = {
+							tier > tier_county
+						}
+						exists = this
+						tier = tier_county
+						exists = holder
+						holder.top_liege = scope:attacker
+					}
+				}
+				add_to_temporary_list = target_titles
+			}
+			# Mark any empire-level titles for destruction after transfer
+			every_realm_de_jure_empire = {
+				limit = {
+					holder = scope:defender
+					is_in_list = target_titles
+				}
+				add_to_list = titles_to_destroy
+			}
+		}
+		
+		# Most of the title transfers are handled here
+		setup_invasion_cb = {
+			titles = target_titles
+			attacker = scope:attacker
+			defender = scope:defender
+			change = scope:change
+			take_occupied = yes
+		}
+
+		resolve_title_and_vassal_change = scope:change
+		
+		# Destroy any titles that should be destroyed
+		every_in_list = {
+			list = titles_to_destroy
+			scope:attacker = {
+				destroy_title = prev
+			}
+		}
+		# If the defender was vassalised, take any Kingdom title they hold
+		scope:defender = {
+			if = {
+				limit = {
+					target_is_liege_or_above = scope:attacker
+					any_held_title = {
+						tier = tier_kingdom
+					}
+				}
+				create_title_and_vassal_change = {
+					type = conquest
+					save_scope_as = change_two
+					add_claim_on_loss = yes
+				}
+				every_held_title = {
+					limit = {
+						tier = tier_kingdom
+					}
+					change_title_holder = {
+						holder = scope:attacker
+						change = scope:change_two
+					}
+				}
+				resolve_title_and_vassal_change = scope:change_two
+			}
+		}
+
+		# Prestige for the attacker's war allies
+		add_from_contribution_attackers = {
+			prestige = fogeater_invasion_cb_ally_prestige
+			opinion = {
+				modifier = contributed_in_war
+			}
+		}
+
+		# Prestige for the defender's war allies
+		add_from_contribution_defenders = {
+			prestige = fogeater_invasion_cb_ally_prestige
+			opinion = {
+				modifier = contributed_in_war
+			}
+		}
+		
+		# Prestige level progress for the attacker
+		scope:attacker = {
+			add_prestige_experience = {
+				value = fogeater_invasion_cb_prestige_experience_gain
+			}
+		}
+
+		# Truce
+		#add_truce_attacker_victory_effect = yes
+		hidden_effect = {
+			scope:attacker = {
+				trigger_event = {
+					id = fogeater_invasion.9001
+					days = 1
+				}
+			}
+		}
+				
+	}
+
+	on_white_peace_desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { scope:defender = { is_local_player = yes } }
+				desc = invasion_war_white_peace_desc_defender
+			}
+			desc = invasion_war_white_peace_desc
+		}
+	}
+	
+	on_white_peace = {
+
+		# Prestige for the attacker's war allies
+		add_from_contribution_attackers = {
+			prestige = fogeater_invasion_cb_ally_prestige
+			opinion = {
+				modifier = contributed_in_war
+			}
+		}
+
+		# Prestige for the defender's war allies
+		add_from_contribution_defenders = {
+			prestige = fogeater_invasion_cb_ally_prestige
+			opinion = {
+				modifier = contributed_in_war
+			}
+		}
+
+		add_truce_white_peace_effect = yes
+
+		scope:attacker = {
+			add_prestige = fogeater_invasion_cb_prestige_white_peace
+		}
+	}
+	
+	on_defeat_desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { scope:defender = { is_local_player = yes } }
+				desc = invasion_war_white_peace_desc_defender
+			}
+			desc = invasion_war_white_peace_desc
+		}
+	}
+	
+	on_defeat = {
+
+		# Prestige for the attacker's war allies
+		add_from_contribution_attackers = {
+			prestige = fogeater_invasion_cb_ally_prestige
+			opinion = {
+				modifier = contributed_in_war
+			}
+		}
+
+		# Prestige for the defender's war allies
+		add_from_contribution_defenders = {
+			prestige = fogeater_invasion_cb_ally_prestige
+			opinion = {
+				modifier = contributed_in_war
+			}
+		}
+	
+		# Truce
+		add_truce_attacker_defeat_effect = yes
+			
+		# piety change
+		every_in_list = {
+			list = target_titles
+			
+			scope:defender = {
+				add_prestige = fogeater_invasion_cb_prestige_gain
+			}
+
+			scope:attacker = {
+				pay_short_term_income = {
+					years = 3
+					target = scope:defender
+				}
+			}
+		}
+		
+		#scope:attacker = {
+		#	every_vassal = {
+		#		add_opinion = {
+		#			modifier = liege_lost_fogeater_invasion_war
+		#			target = prev
+		#		}
+		#	}
+		#}
+		
+		scope:attacker = {
+			save_temporary_scope_as = loser
+		}
+		on_lost_aggression_war_discontent_loss = yes
+		
+		hidden_effect = {
+			scope:attacker = {
+				trigger_event = {
+					id = fogeater_invasion.9001
+					days = 1
+				}
+			}
+		}		
+	}
+	
+	transfer_behavior = transfer
+	
+	on_primary_attacker_death = inherit
+	on_primary_defender_death = inherit
+	
+	attacker_allies_inherit = yes
+	defender_allies_inherit = yes
+	
+	war_name = "FOGEATER_INVASION_WAR_NAME"
+	cb_name = "FOGEATER_INVASION_EMPIRE_CB_NAME"
+	
+	interface_priority = 100
+	
+	use_de_jure_wargoal_only = yes
+	
+	attacker_wargoal_percentage = 0.8
+	
+	max_ai_diplo_distance_to_title = 500
+	
+}
+
+#######fogeaters
+
+#######adabyss stuff, same as fogeaters
+
+adabyss_invasion_war = { #mongol_invasion_war
+	group = invasion
+
+	combine_into_one = yes
+	should_show_war_goal_subview = yes
+	mutually_exclusive_titles = { always = yes }
+
+	allowed_for_character = {
+		this = title:e_adabyss.holder
+		religion = religion:adabyssian_religion
+		prestige_level >= 1
+	}
+	
+	allowed_against_character = {
+		scope:attacker = {
+			ALL_FALSE = {
+				top_liege = scope:defender.top_liege
+				liege = scope:defender
+			}
+		}
+	}
+	target_titles = neighbor_land_or_water
+	target_title_tier = all
+	target_de_jure_regions_above = yes
+	ignore_effect = change_title_holder
+	
+	valid_to_start = {
+		scope:target = {
+			tier = tier_kingdom
+		}
+	}
+
+
+	on_invalidated_desc = msg_adabyss_invasion_war_invalidated_message
+	
+	on_invalidated = {
+	}
+
+	cost = {
+		piety = {
+			value = 0
+			if = { # Attacking your HoF is impious
+				limit = {
+					exists = scope:attacker.faith.religious_head
+					scope:attacker.faith.religious_head = scope:defender
+				}
+				if = {
+					limit = {
+						scope:attacker.faith = {
+							has_doctrine = doctrine_spiritual_head
+						}
+					}
+					add = {
+						value = massive_piety_value
+						desc = CB_ATTACKER_HOF
+					}
+				}
+				else = {
+					add = {
+						value = medium_piety_value
+						desc = CB_ATTACKER_HOF
+					}
+				}
+			}
+			if = {
+				limit = {
+					scope:attacker.faith = scope:defender.faith
+					scope:defender = {
+						has_government = theocracy_government
+					}
+				}
+				add = {
+					value = medium_piety_value
+					desc = CB_ATTACKER_THEOCRACY
+				}
+			}
+		}
+		prestige = {
+			add = {
+				value = 50
+				desc = CB_BASE_COST
+			}
+
+			# Bellum Justum Perk
+			if = {
+				limit = {
+					scope:attacker = {
+						has_perk = bellum_justum_perk
+					}
+				}
+				multiply = {
+					add = bellum_justum_discount_percentage
+					divide = 100
+					desc = CB_ATTACKER_BELLUM_JUSTUM
+				}
+			}
+
+			# Dynasty Warfare Perk
+			if = {
+				limit = {
+					scope:attacker = {
+						has_dynasty = yes
+						dynasty = {
+							has_dynasty_perk = warfare_legacy_2
+						}
+					}
+				}
+				multiply = {
+					value = warfare_legacy_2_discount
+					desc = CB_ATTACKER_DYNASTY_WARFARE
+				}
+			}
+
+			# Vassal contract in-realm cost reduction
+			if = {
+				limit = {
+					scope:attacker = {
+						is_independent_ruler = no
+						vassal_contract_has_flag = vassal_contract_war_override
+						liege = scope:defender.liege
+					}
+				}
+				multiply = {
+					value = war_declaration_rights_allowed_cost_reduction
+					desc = "CB_ATTACKER_VASSAL_CONTRACT"
+				}
+			}
+			
+			if = {
+				limit = {
+					has_game_rule = no_cost_casus_belli_costs
+				}
+				multiply = {
+					value = 0
+					desc = CB_GAME_RULE_NO_COST
+				}
+			}
+		}
+	}
+	
+	on_declaration = {
+		on_declared_war = yes
+	}	
+
+	on_victory_desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { scope:attacker = { is_local_player = yes } }
+				desc = adabyss_invasion_war_victory_desc_attacker
+			}
+			desc = adabyss_invasion_war_victory_desc
+		}
+	}
+	
+	on_victory = {
+		create_title_and_vassal_change = {
+			type = conquest
+			save_scope_as = change
+			add_claim_on_loss = yes
+		}
+		
+
+		# go through the dejure hierarchy under target titles, transfer titles with same or worse tolerance holders (their religion equaly or less tolerated than the defender's),
+		# take the holder as vassal otherwise and don't go deeper
+		every_in_list = {
+			list = target_titles
+			custom_tooltip = CONQUEST_CB_TITLE
+			every_in_de_jure_hierarchy = {
+				continue = {
+					OR = {
+						NOT = {
+							exists = holder
+						}
+						NOT = {
+							holder = {
+								target_is_liege_or_above = scope:defender
+							}
+						}
+						AND = {
+							scope:attacker.faith = {
+								faith_hostility_level_comparison = {
+									prev.holder.faith <= scope:defender.faith
+								}
+							}
+							holder = {
+								OR = {
+									this = scope:defender
+									target_is_liege_or_above = scope:defender
+								}
+							}
+						}
+					}
+					tier > tier_county
+				}
+				limit = {
+					#tier = tier_county
+					exists = holder
+					holder = {
+						OR = {
+							this = scope:defender
+							target_is_liege_or_above = scope:defender
+						}
+					}
+				}
+				
+				if = {
+					limit = {
+						OR = {
+							scope:attacker.faith = {
+								faith_hostility_level_comparison = {
+									prev.holder.faith >= scope:defender.faith
+								}
+							}
+							holder.primary_title.tier >= scope:attacker.primary_title.tier
+						}
+					}
+					add_to_temporary_list = titles_taken
+				}
+				else = {
+					holder = {
+						add_to_temporary_list = vassals_taken
+					}
+				}
+			}
+		}
+
+		every_in_list = {
+			list = titles_taken
+			change_title_holder = {
+				holder = scope:attacker
+				change = scope:change
+				take_baronies = yes
+			}
+		}
+
+		every_in_list = {
+			list = vassals_taken
+			change_liege = {
+				liege = scope:attacker
+				change = scope:change
+			}
+		}	
+		resolve_title_and_vassal_change = scope:change
+
+		# Prestige for the attacker's war allies
+		add_from_contribution_attackers = {
+			prestige = adabyss_invasion_cb_ally_prestige
+			opinion = {
+				modifier = contributed_in_war
+			}
+		}
+
+		# Prestige for the defender's war allies
+		add_from_contribution_defenders = {
+			prestige = adabyss_invasion_cb_ally_prestige
+			opinion = {
+				modifier = contributed_in_war
+			}
+		}
+		
+		# Prestige level progress for the attacker
+		scope:attacker = {
+			add_prestige_experience = {
+				value = adabyss_invasion_cb_prestige_experience_gain
+			}
+		}
+
+		# Truce
+		add_truce_attacker_victory_effect = yes
+				
+	}
+
+	on_white_peace_desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { scope:defender = { is_local_player = yes } }
+				desc = invasion_war_white_peace_desc_defender
+			}
+			desc = invasion_war_white_peace_desc
+		}
+	}
+	
+	on_white_peace = {
+
+		# Prestige for the attacker's war allies
+		add_from_contribution_attackers = {
+			prestige = adabyss_invasion_cb_ally_prestige
+			opinion = {
+				modifier = contributed_in_war
+			}
+		}
+
+		# Prestige for the defender's war allies
+		add_from_contribution_defenders = {
+			prestige = adabyss_invasion_cb_ally_prestige
+			opinion = {
+				modifier = contributed_in_war
+			}
+		}
+
+		add_truce_white_peace_effect = yes
+
+		scope:attacker = {
+			add_prestige = adabyss_invasion_cb_prestige_white_peace
+		}
+	}
+
+	on_defeat_desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { scope:defender = { is_local_player = yes } }
+				desc = invasion_war_white_peace_desc_defender
+			}
+			desc = invasion_war_white_peace_desc
+		}
+	}
+	
+	on_defeat = {
+
+		# Prestige for the attacker's war allies
+		add_from_contribution_attackers = {
+			prestige = adabyss_invasion_cb_ally_prestige
+			opinion = {
+				modifier = contributed_in_war
+			}
+		}
+
+		# Prestige for the defender's war allies
+		add_from_contribution_defenders = {
+			prestige = adabyss_invasion_cb_ally_prestige
+			opinion = {
+				modifier = contributed_in_war
+			}
+		}
+	
+		# Truce
+		add_truce_attacker_defeat_effect = yes
+			
+		# piety change
+		every_in_list = {
+			list = target_titles
+			
+			scope:defender = {
+				add_prestige = adabyss_invasion_cb_prestige_gain
+			}
+
+			scope:attacker = {
+				pay_short_term_income = {
+					years = 3
+					target = scope:defender
+				}
+			}
+		}
+		
+		#scope:attacker = {
+		#	every_vassal = {
+		#		add_opinion = {
+		#			modifier = liege_lost_adabyss_invasion_war
+		#			target = prev
+		#		}
+		#	}
+		#}
+		
+		scope:attacker = {
+			save_temporary_scope_as = loser
+		}
+		on_lost_aggression_war_discontent_loss = yes
+	}
+	
+	transfer_behavior = transfer
+	
+	on_primary_attacker_death = inherit
+	on_primary_defender_death = inherit
+	
+	attacker_allies_inherit = yes
+	defender_allies_inherit = yes
+	
+	war_name = "ADABYSS_INVASION_WAR_NAME"
+	cb_name = "ADABYSS_INVASION_KINGDOM_CB_NAME"
+	
+	interface_priority = 100
+	
+	use_de_jure_wargoal_only = yes
+	
+	attacker_wargoal_percentage = 0.8
+	
+	max_ai_diplo_distance_to_title = 500
+	
+}
+
+adabyss_realm_invasion_war = { ##mongol_realm_invasion_war
+	group = invasion
+
+	combine_into_one = yes
+	should_show_war_goal_subview = yes
+	mutually_exclusive_titles = { always = yes }
+
+	allowed_for_character = {
+		this = title:e_adabyss.holder
+		religion = religion:adabyssian_religion
+		is_ai = yes # To keep it clean and simple for players
+		prestige_level >= 1
+	}
+
+	allowed_against_character = {
+		NOT = { scope:defender.top_liege = scope:attacker }
+		scope:attacker = {
+			ALL_FALSE = {
+				top_liege = scope:defender.top_liege
+				liege = scope:defender
+			}
+		}
+	}
+	target_titles = neighbor_land_or_water
+	target_title_tier = all
+	target_de_jure_regions_above = yes
+	use_de_jure_wargoal_only = yes
+	ignore_effect = change_title_holder
+	
+	valid_to_start = {
+		scope:target = {
+			tier = tier_empire
+		}
+	}
+
+
+
+	on_invalidated_desc = msg_adabyss_invasion_war_invalidated_message
+	
+	on_invalidated = {
+	}
+
+	cost = {
+		piety = {
+			value = 0
+		}
+		prestige = {
+			add = {
+				value = 50
+				desc = CB_BASE_COST
+			}
+
+			# Bellum Justum Perk
+			if = {
+				limit = {
+					scope:attacker = {
+						has_perk = bellum_justum_perk
+					}
+				}
+				multiply = {
+					add = bellum_justum_discount_percentage
+					divide = 100
+					desc = CB_ATTACKER_BELLUM_JUSTUM
+				}
+			}
+
+			# Dynasty Warfare Perk
+			if = {
+				limit = {
+					scope:attacker = {
+						has_dynasty = yes
+						dynasty = {
+							has_dynasty_perk = warfare_legacy_2
+						}
+					}
+				}
+				multiply = {
+					value = warfare_legacy_2_discount
+					desc = CB_ATTACKER_DYNASTY_WARFARE
+				}
+			}
+
+			# Vassal contract in-realm cost reduction
+			if = {
+				limit = {
+					scope:attacker = {
+						is_independent_ruler = no
+						vassal_contract_has_flag = vassal_contract_war_override
+						liege = scope:defender.liege
+					}
+				}
+				multiply = {
+					value = war_declaration_rights_allowed_cost_reduction
+					desc = "CB_ATTACKER_VASSAL_CONTRACT"
+				}
+			}
+
+			# If fired by the Mongol Invasion story, don't charge a cost
+			if = {
+				limit = { scope:attacker = { has_character_flag = free_adabyss_cb } }
+				multiply = {
+					value = 0
+					desc = CB_ADABYSS_INVASIONS_COST
+				}
+			}
+			
+			# Game rule
+			if = {
+				limit = {
+					has_game_rule = no_cost_casus_belli_costs
+				}
+				multiply = {
+					value = 0
+					desc = CB_GAME_RULE_NO_COST
+				}
+			}
+		}
+	}
+	
+	on_declaration = {
+		on_declared_war = yes
+	}	
+
+	on_victory_desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { scope:attacker = { is_local_player = yes } }
+				desc = invasion_war_victory_desc_attacker
+			}
+			desc = invasion_war_victory_desc
+		}
+	}
+	
+	on_victory = {
+		create_title_and_vassal_change = {
+			type = conquest
+			save_scope_as = change
+			add_claim_on_loss = yes
+		}
+
+		# Target titles + dominant empires only
+		scope:defender = {
+			# Check whether any additional empires should be considered target titles
+				# First check for the primary defender
+			every_realm_de_jure_empire = {
+				limit = {
+					any_in_de_jure_hierarchy = { # Then check how many de jure counties are in the Mongol Emperor's realm
+						count >= 8 # This number determines how many counties activates the threshold for taking these titles
+						continue = {
+							tier > tier_county
+						}
+						exists = this
+						tier = tier_county
+						exists = holder
+						holder.top_liege = scope:attacker
+					}
+				}
+				add_to_temporary_list = target_titles
+			}
+			# Mark any empire-level titles for destruction after transfer
+			every_realm_de_jure_empire = {
+				limit = {
+					holder = scope:defender
+					is_in_list = target_titles
+				}
+				add_to_list = titles_to_destroy
+			}
+		}
+		
+		# Most of the title transfers are handled here
+		setup_invasion_cb = {
+			titles = target_titles
+			attacker = scope:attacker
+			defender = scope:defender
+			change = scope:change
+			take_occupied = yes
+		}
+
+		resolve_title_and_vassal_change = scope:change
+		
+		# Destroy any titles that should be destroyed
+		every_in_list = {
+			list = titles_to_destroy
+			scope:attacker = {
+				destroy_title = prev
+			}
+		}
+		# If the defender was vassalised, take any Kingdom title they hold
+		scope:defender = {
+			if = {
+				limit = {
+					target_is_liege_or_above = scope:attacker
+					any_held_title = {
+						tier = tier_kingdom
+					}
+				}
+				create_title_and_vassal_change = {
+					type = conquest
+					save_scope_as = change_two
+					add_claim_on_loss = yes
+				}
+				every_held_title = {
+					limit = {
+						tier = tier_kingdom
+					}
+					change_title_holder = {
+						holder = scope:attacker
+						change = scope:change_two
+					}
+				}
+				resolve_title_and_vassal_change = scope:change_two
+			}
+		}
+
+		# Prestige for the attacker's war allies
+		add_from_contribution_attackers = {
+			prestige = adabyss_invasion_cb_ally_prestige
+			opinion = {
+				modifier = contributed_in_war
+			}
+		}
+
+		# Prestige for the defender's war allies
+		add_from_contribution_defenders = {
+			prestige = adabyss_invasion_cb_ally_prestige
+			opinion = {
+				modifier = contributed_in_war
+			}
+		}
+		
+		# Prestige level progress for the attacker
+		scope:attacker = {
+			add_prestige_experience = {
+				value = adabyss_invasion_cb_prestige_experience_gain
+			}
+		}
+
+		# Truce
+		#add_truce_attacker_victory_effect = yes
+		if = {
+			limit = { has_game_rule = default_adabyss_invasion }
+			hidden_effect = {
+				scope:attacker = {
+					trigger_event = {
+						id = adabyss_opening.9001
+						days = 1
+					}
+				}
+			}
+		}
+				
+	}
+
+	on_white_peace_desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { scope:defender = { is_local_player = yes } }
+				desc = invasion_war_white_peace_desc_defender
+			}
+			desc = invasion_war_white_peace_desc
+		}
+	}
+	
+	on_white_peace = {
+
+		# Prestige for the attacker's war allies
+		add_from_contribution_attackers = {
+			prestige = adabyss_invasion_cb_ally_prestige
+			opinion = {
+				modifier = contributed_in_war
+			}
+		}
+
+		# Prestige for the defender's war allies
+		add_from_contribution_defenders = {
+			prestige = adabyss_invasion_cb_ally_prestige
+			opinion = {
+				modifier = contributed_in_war
+			}
+		}
+
+		add_truce_white_peace_effect = yes
+		if = {
+			limit = { has_game_rule = default_adabyss_invasion }
+			hidden_effect = {
+				scope:attacker = {
+					trigger_event = {
+						id = adabyss_opening.9001
+						days = 1
+					}
+				}
+			}
+		}		
+
+		scope:attacker = {
+			add_prestige = adabyss_invasion_cb_prestige_white_peace
+		}
+	}
+	
+	on_defeat_desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { scope:defender = { is_local_player = yes } }
+				desc = invasion_war_white_peace_desc_defender
+			}
+			desc = invasion_war_white_peace_desc
+		}
+	}
+	
+	on_defeat = {
+
+		# Prestige for the attacker's war allies
+		add_from_contribution_attackers = {
+			prestige = adabyss_invasion_cb_ally_prestige
+			opinion = {
+				modifier = contributed_in_war
+			}
+		}
+
+		# Prestige for the defender's war allies
+		add_from_contribution_defenders = {
+			prestige = adabyss_invasion_cb_ally_prestige
+			opinion = {
+				modifier = contributed_in_war
+			}
+		}
+	
+		# Truce
+		add_truce_attacker_defeat_effect = yes
+		if = {
+			limit = { has_game_rule = default_adabyss_invasion }
+			hidden_effect = {
+				scope:attacker = {
+					trigger_event = {
+						id = adabyss_opening.9001
+						days = 1
+					}
+				}
+			}
+		}
+			
+		# piety change
+		every_in_list = {
+			list = target_titles
+			
+			scope:defender = {
+				add_prestige = adabyss_invasion_cb_prestige_gain
+			}
+
+			scope:attacker = {
+				pay_short_term_income = {
+					years = 3
+					target = scope:defender
+				}
+			}
+		}
+		
+		#scope:attacker = {
+		#	every_vassal = {
+		#		add_opinion = {
+		#			modifier = liege_lost_adabyss_invasion_war
+		#			target = prev
+		#		}
+		#	}
+		#}
+		
+		scope:attacker = {
+			save_temporary_scope_as = loser
+		}
+		on_lost_aggression_war_discontent_loss = yes
+	}
+	
+	transfer_behavior = transfer
+	
+	on_primary_attacker_death = inherit
+	on_primary_defender_death = inherit
+	
+	attacker_allies_inherit = yes
+	defender_allies_inherit = yes
+	
+	war_name = "ADABYSS_INVASION_WAR_NAME"
+	cb_name = "ADABYSS_INVASION_EMPIRE_CB_NAME"
+	
+	interface_priority = 100
+	
+	use_de_jure_wargoal_only = yes
+	
+	attacker_wargoal_percentage = 0.8
+	
+	max_ai_diplo_distance_to_title = 500
+	
+}
+
+aversarian_reconquest_black_sun_cb = {
+	group = invasion
+
+	combine_into_one = yes
+	should_show_war_goal_subview = yes
+	mutually_exclusive_titles = { always = yes }
+
+	allowed_for_character = {
+		has_title = title:e_gurdurbok
+		is_target_in_global_variable_list = {
+			name = unavailable_unique_decisions
+			target = flag:announce_aversaria_voreias_decision
+		}
+	}
+
+	allowed_against_character = {
+		any_realm_province = {
+			OR = {
+				geographical_region = world_ga_clanlands
+				geographical_region = world_ga_aversarian_homelands
+			}
+		}
+	}
+
+	target_titles = neighbor_land
+	target_title_tier = kingdom
+	target_de_jure_regions_above = yes
+	ignore_effect = change_title_holder
+
+	on_invalidated_desc = msg_invasion_war_invalidated_message
+
+	cost = {
+		prestige = {
+			value = 250
+		}
+		piety = {
+			value = 100
+		}
+	}
+
+	on_declaration = {
+		on_declared_war = yes
+		multi_realm_invasion_join_war = yes
+		scope:attacker = {
+			# spawn_army = {
+			# 	name = "Sjalvolki Warband"
+			# 	levies = 2000
+			# 	men_at_arms = {
+			# 		type = armored_footmen
+			# 		men = 500
+			# 	}
+			# 	location = 3538 # Hard coded for now, redo this later
+			# 	war = scope:war
+			# }
+		}
+	}
+
+	on_victory_desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { scope:attacker = { is_local_player = yes } }
+				desc = aversarian_reconquest_war_victory_desc_attacker
+			}
+			desc = aversarian_reconquest_war_victory_desc
+		}
+	}
+
+	on_victory = {
+		create_title_and_vassal_change = {
+			type = conquest
+			save_scope_as = change
+			add_claim_on_loss = yes
+		}
+
+		# There should only be one, unless I misunderstood how this works
+		every_in_list = {
+			list = target_titles
+			save_scope_as = target_title
+		}
+
+		scope:war = {
+			every_war_defender = {
+				every_realm_county = {
+					limit = {
+						kingdom = scope:target_title
+					}
+					add_to_list = conquered_lands
+				}
+			}
+		}
+
+		every_in_list = {
+			list = conquered_lands
+			change_title_holder = {
+				holder = scope:attacker
+				change = scope:change
+			}
+		}
+		resolve_title_and_vassal_change = scope:change
+
+		# Prestige Progress for the Attacker
+		every_in_list = {
+			list = target_titles
+			scope:attacker = {
+				add_prestige_experience = medium_prestige_value
+			}
+		}
+
+		# Prestige for the attacker's war allies
+		add_from_contribution_attackers = {
+			prestige = minor_prestige_value
+			opinion = {
+				modifier = contributed_in_war
+			}
+		}
+
+		# Prestige for the defender's war allies
+		add_from_contribution_defenders = {
+			prestige = minor_prestige_value
+			opinion = {
+				modifier = contributed_in_war
+			}
+		}
+		if = {
+			limit = {
+				scope:attacker = { is_black_sun_trigger = yes }
+			}
+			hidden_effect = {
+				scope:attacker = {
+					add_truce_one_way = {
+						character = scope:defender
+						days = 180
+						war = root.war
+						result = victory
+					}
+				}
+			}
+		}
+		else = {
+			add_truce_attacker_victory_effect = yes
+		}
+	}
+
+	on_white_peace_desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { scope:defender = { is_local_player = yes } }
+				desc = invasion_war_white_peace_desc_defender
+			}
+			desc = invasion_war_white_peace_desc
+		}
+	}
+
+	on_white_peace = {
+		# Prestige loss for the attacker
+		scope:attacker = {
+			add_prestige = {
+				value = medium_prestige_value
+				multiply = -1.0
+			}
+		}
+
+		# Prestige for the attacker's war allies
+		add_from_contribution_attackers = {
+			prestige = miniscule_prestige_value
+			opinion = {
+				modifier = contributed_in_war
+			}
+		}
+
+		# Prestige for the defender's war allies
+		add_from_contribution_defenders = {
+			prestige = medium_prestige_value
+			opinion = {
+				modifier = contributed_in_war
+			}
+		}
+		add_truce_white_peace_effect = yes
+	}
+
+	on_defeat_desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { scope:defender = { is_local_player = yes } }
+				desc = invasion_war_white_peace_desc_defender
+			}
+			desc = invasion_war_white_peace_desc
+		}
+	}
+
+	on_defeat = {
+		# Prestige loss for the attacker
+		scope:attacker = {
+			pay_short_term_gold = {
+				gold = 2
+				target = scope:defender
+				yearly_income = yes
+			}
+			add_prestige = {
+				value = massive_prestige_value
+				multiply = -1.0
+			}
+		}
+
+		# Prestige for defenders
+		every_in_list = {
+			list = defenders
+			add_prestige = major_prestige_value
+		}
+
+		# Prestige for the attacker's war allies
+		add_from_contribution_attackers = {
+			prestige = miniscule_prestige_value
+			opinion = {
+				modifier = contributed_in_war
+			}
+		}
+
+		# Prestige for the defender's war allies
+		add_from_contribution_defenders = {
+			prestige = massive_prestige_value
+			opinion = {
+				modifier = contributed_in_war
+			}
+		}
+
+		add_truce_attacker_defeat_effect = yes
+
+		scope:attacker = {
+			save_temporary_scope_as = loser
+		}
+		on_lost_aggression_war_discontent_loss = yes
+	}
+
+	on_primary_attacker_death = invalidate
+	on_primary_defender_death = inherit
+	transfer_behavior = transfer
+
+	war_name = "INVASION_WAR_NAME"
+	war_name_base = "INVASION_WAR_NAME_BASE"
+	cb_name = "AVERSARIAN_RECONQUEST_CB_NAME"
+
+	interface_priority = 500
+	
+}
+
+aversarian_reconquest_generic_cb = {
+	group = invasion
+
+	combine_into_one = yes
+	should_show_war_goal_subview = yes
+	mutually_exclusive_titles = { always = yes }
+
+	allowed_for_character = {
+		highest_held_title_tier >= tier_kingdom
+		OR = {
+			has_trait = bloodline_cois_defeated
+			has_trait = bloodline_cois_victorious
+			has_title = title:e_aversaria
+		}
+	}
+
+	allowed_against_character = {
+		any_realm_province = {
+			OR = {
+				geographical_region = world_ga_clanlands
+				geographical_region = world_ga_aversarian_homelands
+			}
+		}
+		character_is_realm_neighbor = scope:attacker
+	}
+
+	target_titles = all
+	target_title_tier = kingdom
+	target_de_jure_regions_above = yes
+	ignore_effect = change_title_holder
+
+	on_invalidated_desc = msg_invasion_war_invalidated_message
+
+	cost = {
+		prestige = {
+			value = 250
+		}
+		piety = {
+			value = 100
+		}
+	}
+
+	on_declaration = {
+		on_declared_war = yes
+		multi_realm_invasion_join_war = yes
+	}
+
+	on_victory_desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { scope:attacker = { is_local_player = yes } }
+				desc = aversarian_reconquest_war_victory_desc_attacker
+			}
+			desc = aversarian_reconquest_war_victory_desc
+		}
+	}
+
+	on_victory = {
+		create_title_and_vassal_change = {
+			type = conquest
+			save_scope_as = change
+			add_claim_on_loss = yes
+		}
+
+		# There should only be one, unless I misunderstood how this works
+		every_in_list = {
+			list = target_titles
+			save_scope_as = target_title
+		}
+
+		scope:war = {
+			every_war_defender = {
+				every_realm_county = {
+					limit = {
+						kingdom = scope:target_title
+					}
+					add_to_list = conquered_lands
+				}
+			}
+		}
+
+		every_in_list = {
+			list = conquered_lands
+			change_title_holder = {
+				holder = scope:attacker
+				change = scope:change
+			}
+		}
+		resolve_title_and_vassal_change = scope:change
+
+		# Prestige Progress for the Attacker
+		every_in_list = {
+			list = target_titles
+			scope:attacker = {
+				add_prestige_experience = medium_prestige_value
+			}
+		}
+
+		# Prestige for the attacker's war allies
+		add_from_contribution_attackers = {
+			prestige = minor_prestige_value
+			opinion = {
+				modifier = contributed_in_war
+			}
+		}
+
+		# Prestige for the defender's war allies
+		add_from_contribution_defenders = {
+			prestige = minor_prestige_value
+			opinion = {
+				modifier = contributed_in_war
+			}
+		}
+		add_truce_attacker_victory_effect = yes
+	}
+
+	on_white_peace_desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { scope:defender = { is_local_player = yes } }
+				desc = invasion_war_white_peace_desc_defender
+			}
+			desc = invasion_war_white_peace_desc
+		}
+	}
+
+	on_white_peace = {
+		# Prestige loss for the attacker
+		scope:attacker = {
+			add_prestige = {
+				value = medium_prestige_value
+				multiply = -1.0
+			}
+		}
+
+		# Prestige for the attacker's war allies
+		add_from_contribution_attackers = {
+			prestige = miniscule_prestige_value
+			opinion = {
+				modifier = contributed_in_war
+			}
+		}
+
+		# Prestige for the defender's war allies
+		add_from_contribution_defenders = {
+			prestige = medium_prestige_value
+			opinion = {
+				modifier = contributed_in_war
+			}
+		}
+		add_truce_white_peace_effect = yes
+	}
+
+	on_defeat_desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { scope:defender = { is_local_player = yes } }
+				desc = invasion_war_white_peace_desc_defender
+			}
+			desc = invasion_war_white_peace_desc
+		}
+	}
+
+	on_defeat = {
+		# Prestige loss for the attacker
+		scope:attacker = {
+			pay_short_term_gold = {
+				gold = 2
+				target = scope:defender
+				yearly_income = yes
+			}
+			add_prestige = {
+				value = massive_prestige_value
+				multiply = -1.0
+			}
+		}
+
+		# Prestige for defenders
+		every_in_list = {
+			list = defenders
+			add_prestige = major_prestige_value
+		}
+
+		# Prestige for the attacker's war allies
+		add_from_contribution_attackers = {
+			prestige = miniscule_prestige_value
+			opinion = {
+				modifier = contributed_in_war
+			}
+		}
+
+		# Prestige for the defender's war allies
+		add_from_contribution_defenders = {
+			prestige = massive_prestige_value
+			opinion = {
+				modifier = contributed_in_war
+			}
+		}
+
+		add_truce_attacker_defeat_effect = yes
+
+		scope:attacker = {
+			save_temporary_scope_as = loser
+		}
+		on_lost_aggression_war_discontent_loss = yes
+	}
+
+	on_primary_attacker_death = invalidate
+	on_primary_defender_death = inherit
+	transfer_behavior = transfer
+
+	war_name = "INVASION_WAR_NAME"
+	war_name_base = "INVASION_WAR_NAME_BASE"
+	cb_name = "AVERSARIAN_RECONQUEST_CB_NAME"
+
+	interface_priority = 500
+	
+}
+
+sarradon_reconquest_war = {
+	group = religious
+
+	defender_faith_can_join = yes
+
+	combine_into_one = yes
+	should_show_war_goal_subview = yes
+	mutually_exclusive_titles = { always = yes }
+
+	allowed_for_character = {
+		has_character_modifier = father_of_sarradon
+	}
+
+	allowed_against_character = {
+		has_culture_group = culture_group:gh_imperial_group
+	}
+	target_titles = neighbor_land_or_water
+	target_title_tier = kingdom
+	target_de_jure_regions_above = yes
+	ignore_effect = change_title_holder
+
+	valid_to_start = {
+		scope:target = {
+			tier = tier_kingdom
+		}
+	}
+
+	should_invalidate = {
+		OR = {
+			NOT = {
+				any_in_list = {
+					list = target_titles
+					any_in_de_jure_hierarchy = {
+						tier = tier_county
+						holder = {
+							OR = {
+								this = scope:defender
+								target_is_liege_or_above = scope:defender
+							}
+						}
+					}
+				}
+			}
+			#Faith change does not immediately invalidate, it's run through event war_event.3100
+			scope:war = { exists = var:invalidate_defender_faith_change }
+			scope:war = { exists = var:invalidate_attacker_faith_change }
+		}
+	}
+
+	on_invalidated_desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = {
+						any_in_list = {
+							list = target_titles
+							any_in_de_jure_hierarchy = {
+								tier = tier_county
+								holder = {
+									OR = {
+										this = scope:defender
+										target_is_liege_or_above = scope:defender
+									}
+								}
+							}
+						}
+					}
+				}
+				desc = msg_religious_war_invalidation_region_message
+			}
+			triggered_desc = {
+				trigger = {
+					scope:war = {
+						OR = {
+							exists = var:invalidate_defender_faith_change
+							exists = var:invalidate_attacker_faith_change
+						}
+					}
+				}
+				desc = msg_religious_war_invalidated_hostility_level_message
+			}
+		}
+	}
+	
+	on_invalidated = {
+		
+	}
+
+	cost = {
+		piety = {
+			add = {
+				value = 375
+				desc = CB_BASE_COST
+			}
+			# Faith Doctrine Piety Discounts
+			if = {
+				limit = {
+					scope:attacker.faith = {
+						has_doctrine_parameter = divine_destiny_holy_war_cost_reduction
+					}
+				}
+				multiply = {
+					value = 0.5
+					desc = CB_DIVINE_DESTINY_COST
+				}
+			}
+
+			if = {
+				limit = {
+					scope:attacker.faith = {
+						has_doctrine_parameter = cheaper_holy_wars_active
+					}
+				}
+				multiply = {
+					value = 0.8
+					desc = CB_REDUCED_HOLY_WAR_COST
+				}
+			}
+
+			# Bellum Justum Perk
+			if = {
+				limit = {
+					scope:attacker = {
+						has_perk = bellum_justum_perk
+					}
+				}
+				multiply = {
+					add = bellum_justum_discount_percentage
+					divide = 100
+					desc = CB_ATTACKER_BELLUM_JUSTUM
+				}
+			}
+
+			# Dynasty Warfare Perk
+			if = {
+				limit = {
+					scope:attacker = {
+						has_dynasty = yes
+						dynasty = {
+							has_dynasty_perk = warfare_legacy_2
+						}
+					}
+				}
+				multiply = {
+					value = warfare_legacy_2_discount
+					desc = CB_ATTACKER_DYNASTY_WARFARE
+				}
+			}
+
+			# Vassal contract in-realm cost reduction
+			if = {
+				limit = {
+					scope:attacker = {
+						is_independent_ruler = no
+						vassal_contract_has_flag = vassal_contract_war_override
+						liege = scope:defender.liege
+					}
+				}
+				multiply = {
+					value = war_declaration_rights_allowed_cost_reduction
+					desc = "CB_ATTACKER_VASSAL_CONTRACT"
+				}
+			}
+
+			if = {
+				limit = {
+					has_game_rule = no_cost_casus_belli_costs
+				}
+				multiply = {
+					value = 0
+					desc = CB_GAME_RULE_NO_COST
+				}
+			}
+		}
+	}
+
+	on_declaration = {
+		on_declared_war = yes
+	
+	}
+
+	on_victory_desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					scope:attacker.faith = {
+						has_doctrine = doctrine_pluralism_pluralistic
+					}
+				}
+				desc = religious_war_victory_desc_doctrine_pluralism
+			}
+			desc = religious_war_victory_desc
+		}
+	}
+
+	on_victory = {
+		scope:attacker = { show_pow_release_message_effect = yes }
+		create_title_and_vassal_change = {
+			type = conquest_holy_war
+			save_scope_as = change
+			add_claim_on_loss = yes
+		}
+		# go through the dejure hierarchy under target titles, transfer titles with same or worse tolerance holders (their religion equaly or less tolerated than the defender's),
+		# take the holder as vassal otherwise and don't go deeper
+		every_in_list = {
+			list = target_titles
+			custom_tooltip = RELIGIOUS_CB_TITLE
+
+			conquest_cb_title_transfer = {
+				RELIGIOUS_WAR = yes
+			}
+		}
+
+		every_in_list = {
+			list = vassals_taken
+			change_liege = {
+				liege = scope:attacker
+				change = scope:change
+			}
+		}
+		
+		every_in_list = {
+			list = titles_taken
+			change_title_holder = {
+				holder = scope:attacker
+				change = scope:change
+				take_baronies = yes
+			}
+		}
+
+		resolve_title_and_vassal_change = scope:change
+
+		# Prestige for the attacker's war allies
+		add_from_contribution_attackers = {
+			prestige = religious_cb_ally_prestige_kingdom
+			opinion = {
+				modifier = contributed_in_war
+			}
+		}
+
+		# Prestige for the defender's war allies
+		add_from_contribution_defenders = {
+			prestige = religious_cb_ally_prestige_kingdom
+			opinion = {
+				modifier = contributed_in_war
+			}
+		}
+
+		# Piety Progress for the Attacker
+		every_in_list = {
+			list = target_titles
+				scope:attacker = {
+				add_piety_experience = {
+					add = religious_cb_piety_gain_kingdom
+					if = {
+						limit = {
+							scope:attacker.faith = {
+								has_doctrine_parameter = bonus_holy_war_piety_active
+							}
+						}
+						multiply = 1.5
+					}
+				}
+			}
+		}
+
+		scope:attacker.faith = {
+			change_fervor = -5
+		}
+		scope:defender.faith = {
+			change_fervor = 10
+		}
+
+		# Truce
+		add_truce_attacker_victory_effect = yes
+
+	}
+
+	on_white_peace_desc = {
+		desc = religious_war_white_peace_desc
+	}
+
+	on_white_peace = {
+		scope:attacker = { show_pow_release_message_effect = yes }
+
+		# Prestige for the attacker's war allies
+		add_from_contribution_attackers = {
+			prestige = religious_cb_ally_prestige_kingdom
+			opinion = {
+				modifier = contributed_in_war
+			}
+		}
+
+		# Prestige for the defender's war allies
+		add_from_contribution_defenders = {
+			prestige = religious_cb_ally_prestige_kingdom
+			opinion = {
+				modifier = contributed_in_war
+			}
+		}
+
+		scope:attacker = {
+			add_piety = religious_cb_piety_white_peace
+		}
+
+		# Truce
+		add_truce_white_peace_effect = yes
+	}
+
+	on_defeat_desc = {
+		desc = religious_war_defeat_desc
+	}
+
+	on_defeat = {
+		scope:attacker = { show_pow_release_message_effect = yes }
+
+		# Prestige for the attacker's war allies
+		add_from_contribution_attackers = {
+			prestige = religious_cb_ally_prestige_kingdom
+			opinion = {
+				modifier = contributed_in_war
+			}
+		}
+
+		# Prestige for the defender's war allies
+		add_from_contribution_defenders = {
+			prestige = religious_cb_ally_prestige_kingdom
+			opinion = {
+				modifier = contributed_in_war
+			}
+		}
+
+		# piety change
+		every_in_list = {
+			list = target_titles
+
+			scope:defender = {
+				add_piety = {
+					add = religious_cb_piety_gain_kingdom
+					if = {
+						limit = {
+							scope:defender.faith = {
+								has_doctrine_parameter = bonus_holy_war_piety_active
+							}
+						}
+						multiply = 1.5
+					}
+				}
+			}
+
+			scope:attacker = {
+				pay_short_term_income = {
+					years = 4
+					target = scope:defender
+				}
+			}
+		}
+
+		scope:attacker = {
+			every_vassal = {
+				limit = { faith = scope:attacker.faith }
+				custom = all_attackers_vassals_same_faith
+				add_opinion = {
+					modifier = liege_lost_declared_religious_war
+					target = scope:attacker
+				}
+			}
+		}
+
+		# Truce
+		add_truce_attacker_defeat_effect = yes
+
+		scope:attacker = {
+			save_temporary_scope_as = loser
+		}
+		on_lost_aggression_war_discontent_loss = yes
+	}
+
+	on_primary_attacker_death = inherit
+	on_primary_defender_death = inherit
+
+	transfer_behavior = transfer
+
+	attacker_allies_inherit = yes
+	defender_allies_inherit = yes
+
+	war_name = "SARRADONIAN_RECONQUEST_WAR_NAME"
+	cb_name = "The Reconquest of Sarradon"
+
+	is_holy_war = yes
+
+	interface_priority = 80
+
+	use_de_jure_wargoal_only = yes
+
+	attacker_wargoal_percentage = 0.8
+
+	max_ai_diplo_distance_to_title = 500
+	
+}
+asiupoli_invasion_war = {
+	group = invasion
+
+	combine_into_one = yes
+	should_show_war_goal_subview = yes
+	mutually_exclusive_titles = { always = yes }
+
+	allowed_for_character = {
+		OR = {
+			has_government = tribal_government
+			faith = {
+				has_doctrine_parameter = invasion_cb_enabled
+			}
+		}
+		NOT = {
+			has_character_flag = used_lifetime_invasion
+		}
+	}
+
+	allowed_for_character_display_regardless = {
+		this = character:aironoi_79
+	}
+	
+	allowed_against_character = {
+		scope:attacker = {
+			ALL_FALSE = {
+				top_liege = scope:defender.top_liege
+				liege = scope:defender
+			}
+		}
+	}
+	target_titles = all
+	target_title_tier = kingdom
+	target_de_jure_regions_above = yes
+	ignore_effect = change_title_holder
+
+	ai_can_target_all_titles = {
+		can_use_viking_invasion_cbs_trigger = yes
+	}
+	ai_score_mult = {
+		value = viking_conquest_ai_score_value
+	}
+
+	valid_to_start = {
+		trigger_if = {
+			limit = { exists = scope:target }
+			scope:target = {
+				any_in_de_jure_hierarchy = {
+					tier = tier_county
+					#neighboring_county_or_viking_conquest_trigger = { CHARACTER = root }
+				}
+			}
+		}
+		trigger_else = { always = no }
+	}
+
+	should_invalidate = {
+		NOT = {
+			any_in_list = {
+				list = target_titles
+				any_in_de_jure_hierarchy = {
+					tier = tier_county
+					holder = {
+						target_is_same_character_or_above = scope:defender
+					}
+				}
+			}
+		}
+	}
+
+	on_invalidated_desc = msg_invasion_war_invalidated_message
+	
+	on_invalidated = {
+		scope:attacker = {
+			remove_character_flag = used_lifetime_invasion # If the war is invalidated, you should be permitted to try again
+		}
+	}
+
+	cost = {
+		piety = {
+			value = 0
+			if = { # Attacking your HoF is impious
+				limit = {
+					exists = scope:attacker.faith.religious_head
+					scope:attacker.faith.religious_head = scope:defender
+				}
+				if = {
+					limit = {
+						scope:attacker.faith = {
+							has_doctrine = doctrine_spiritual_head
+						}
+					}
+					add = {
+						value = massive_piety_value
+						desc = CB_ATTACKER_HOF
+					}
+				}
+				else = {
+					add = {
+						value = medium_piety_value
+						desc = CB_ATTACKER_HOF
+					}
+				}
+			}
+			if = {
+				limit = {
+					scope:attacker.faith = scope:defender.faith
+					scope:defender = {
+						has_government = theocracy_government
+					}
+				}
+				add = {
+					value = medium_piety_value
+					desc = CB_ATTACKER_THEOCRACY
+				}
+			}
+		}
+	}
+	
+	on_declaration = {
+		on_declared_war = yes
+		scope:attacker = {
+			add_character_flag = used_lifetime_invasion
+		}
+	}	
+
+	on_victory_desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { scope:attacker = { is_local_player = yes } }
+				desc = invasion_war_victory_desc_attacker
+			}
+			desc = invasion_war_victory_desc
+		}
+		triggered_desc = {
+			trigger = { scope:attacker = { is_local_player = yes } }
+			desc = invasion_war_warning_desc
+		}
+	}
+	
+	on_victory = {
+		scope:attacker = { show_pow_release_message_effect = yes }
+		create_title_and_vassal_change = {
+			type = conquest
+			save_scope_as = change
+			add_claim_on_loss = yes
+		}
+		
+		setup_invasion_cb = {
+			titles = target_titles
+			attacker = scope:attacker
+			defender = scope:defender
+			change = scope:change
+			take_occupied = yes
+		}
+		resolve_title_and_vassal_change = scope:change
+
+		# Attacker gets Prestige Experience, Defender loses Prestige, all other participants gain Prestige based on their war contribution.
+		modify_all_participants_fame_values = {
+			WINNER = scope:attacker
+			LOSER = scope:defender
+			FAME_BASE = scope:cb_prestige_factor # Set by 'setup_invasion_cb'
+			IS_RELIGIOUS_WAR = no
+			WINNER_FAME_SCALE = 10
+			LOSER_FAME_SCALE = -10
+			WINNER_ALLY_FAME_SCALE = 10
+			LOSER_ALLY_FAME_SCALE = 10
+		}
+
+		# Truce
+		add_truce_attacker_victory_effect = yes
+
+		# FP1: note the victory for future memorialisation via stele (if applicable).
+		scope:attacker = { fp1_remember_recent_conquest_victory_effect = yes }
+	}
+
+	on_white_peace_desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { scope:defender = { is_local_player = yes } }
+				desc = invasion_war_white_peace_desc_defender
+			}
+			desc = invasion_war_white_peace_desc
+		}
+	}
+	
+	on_white_peace = {
+		scope:attacker = { show_pow_release_message_effect = yes }
+
+		# Prestige for the attacker's war allies
+		add_from_contribution_attackers = {
+			prestige = major_prestige_value
+			opinion = {
+				modifier = contributed_in_war
+			}
+		}
+
+		# Prestige for the defender's war allies
+		add_from_contribution_defenders = {
+			prestige = major_prestige_value
+			opinion = {
+				modifier = contributed_in_war
+			}
+		}
+
+		# Truce
+		add_truce_white_peace_effect = yes
+
+		scope:attacker = {
+			add_prestige = mongol_invasion_cb_prestige_white_peace
+		}
+	}
+
+	on_defeat_desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { scope:defender = { is_local_player = yes } }
+				desc = invasion_war_white_peace_desc_defender
+			}
+			desc = invasion_war_white_peace_desc
+		}
+	}
+	
+	on_defeat = {
+		scope:attacker = { show_pow_release_message_effect = yes }
+
+		# Prestige loss for the attacker
+		scope:attacker = {
+			pay_short_term_gold = {
+				gold = 5
+				target = scope:defender
+				yearly_income = yes
+			}
+			add_prestige = {
+				value = massive_prestige_value
+				multiply = -1.0
+			}
+		}
+		
+		setup_invasion_cb = {
+			titles = target_titles
+			attacker = scope:attacker
+			defender = scope:defender
+			claimant = scope:claimant
+			victory = no
+		}
+
+		# Attacker loses Prestige, all other war participants gain Prestige (Defender gains full prestige, all allies on both sides gain based on war contribution).
+		modify_all_participants_fame_values = {
+			WINNER = scope:defender
+			LOSER = scope:attacker
+			FAME_BASE = scope:cb_prestige_factor # Set by 'setup_claim_cb'
+			IS_RELIGIOUS_WAR = no
+			WINNER_FAME_SCALE = 10
+			LOSER_FAME_SCALE = -10
+			WINNER_ALLY_FAME_SCALE = 10
+			LOSER_ALLY_FAME_SCALE = 10
+		}
+	
+		add_truce_attacker_defeat_effect = yes
+		
+		scope:attacker = {
+			save_temporary_scope_as = loser
+		}
+		on_lost_aggression_war_discontent_loss = yes
+	}
+	
+	transfer_behavior = transfer
+	
+	on_primary_attacker_death = inherit
+	on_primary_defender_death = inherit
+	
+	attacker_allies_inherit = yes
+	defender_allies_inherit = yes
+	
+	war_name = "INVASION_WAR_NAME"
+	war_name_base = "INVASION_WAR_NAME_BASE"
+	cb_name = "INVASION_CB_NAME"
+	
+	interface_priority = 100
+	
+	use_de_jure_wargoal_only = yes
+	
+	attacker_wargoal_percentage = 0.8
+	
+	
+}

@@ -1,0 +1,128 @@
+﻿#################################
+# COMPLEX MAGIC ECONOMY DEFINES #
+#################################
+
+complex_magic_table_add = {
+	start_magical_defines_table = { TABLE_NAME = complex_magic MODE = add }
+	
+		check_bloodyard_modifier 								 = { TABLE_NAME = complex_magic MODE = add }
+		check_bonus_to_waylines_from_northernexpedition_modifier = { TABLE_NAME = complex_magic MODE = add }
+		check_bonus_to_waylines_from_lm3_perk8					 = { TABLE_NAME = complex_magic MODE = add }
+		check_bonus_from_lm3_perk7								 = { TABLE_NAME = complex_magic MODE = add }
+		
+	end_magical_defines_table = { TABLE_NAME = complex_magic MODE = add }
+}
+
+check_bloodyard_modifier = {
+	every_held_title = {
+		limit = { tier = tier_county }
+		if = {
+			limit = {
+				any_county_province = {
+					has_building = thebloodyard
+				}
+			}
+			holder = {
+				debug_log_scopes = yes
+				set_variable = {
+					name = tmp_bloodyard_variable
+					value = tyranny
+				}
+				change_variable = {
+					name = tmp_bloodyard_variable
+					multiply = 0.02
+				}
+				change_variable = {
+					name = $TABLE_NAME$_$MODE$
+					add = var:tmp_bloodyard_variable
+				}
+				remove_variable = tmp_bloodyard_variable
+			}
+		}
+	}
+}
+
+check_bonus_to_waylines_from_northernexpedition_modifier = {
+	if = {
+		limit = { has_character_modifier = artifact_bookexpeditiontothenorth_modifier }
+		every_held_title = {
+			limit = { tier = tier_county }
+			if = {
+				limit = {
+					has_county_modifier = wayline_modifier
+				}
+				holder = {
+					change_variable = {
+						name = $TABLE_NAME$_$MODE$
+						add = 0.1
+					}
+				}
+			}
+		}
+	}
+}
+
+check_bonus_to_waylines_from_lm3_perk8 = {
+	if = {
+		limit = { has_perk = livingmagic_perk8_tree3 }
+		every_held_title = {
+			limit = { tier = tier_county }
+			if = {
+				limit = {
+					has_county_modifier = wayline_modifier
+				}
+				holder = {
+					change_variable = {
+						name = $TABLE_NAME$_$MODE$
+						add = 0.1
+					}
+				}
+			}
+		}
+	}
+}
+
+check_bonus_from_lm3_perk7 = {
+	if = {
+		limit = { 
+			has_perk = livingmagic_perk7_tree3
+			highest_held_title_tier >= tier_county
+		}
+		if = {
+			limit = {
+				highest_held_title_tier >= tier_county
+			}
+			change_variable = {
+				name = $TABLE_NAME$_$MODE$
+				add = 0.25
+			}
+		}
+		if = {
+			limit = {
+				highest_held_title_tier >= tier_duchy
+			}
+			change_variable = {
+				name = $TABLE_NAME$_$MODE$
+				add = 0.25
+			}
+		}
+		if = {
+			limit = {
+				highest_held_title_tier >= tier_kingdom
+			}
+			change_variable = {
+				name = $TABLE_NAME$_$MODE$
+				add = 0.25
+			}
+		}
+		if = {
+			limit = {
+				highest_held_title_tier >= tier_empire
+			}
+			change_variable = {
+				name = $TABLE_NAME$_$MODE$
+				add = 0.25
+			}
+		}
+	}
+}

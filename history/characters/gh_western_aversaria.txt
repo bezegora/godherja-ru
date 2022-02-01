@@ -1,0 +1,1663 @@
+﻿western_aversaria_1 = {
+	name = "Erogios"
+	religion = "aversarian_pope"
+	culture = "westernimperial"
+	1222.6.18 = {
+		birth = yes
+	}
+}
+
+western_aversaria_2 = { #not-spartacus?
+	name = "Kallistos"
+        dna = kallistos 
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	trait = peasant_leader
+	trait = blademaster_3
+	trait = brave
+	trait = honest
+	trait = education_martial_4
+	trait = diligent
+        sexuality = heterosexual
+	martial = 10
+	diplomacy = 8
+	stewardship = 6
+	intrigue = 6
+	1222.6.18 = {
+		birth = yes
+	        effect = {
+			add_character_flag = has_scripted_appearance
+		}
+	}
+}
+
+western_aversaria_3 = {
+	name = "Kallistos"
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	1233.6.18 = {
+		birth = yes
+	}
+	1252.1.1 = {
+		trait = gh_veteran_of_elysia_aversarian
+	}
+	trait = education_living_magic_2
+	trait = magic_good_2
+}
+
+###k_parcos
+
+western_aversaria_7 = {
+	name = "Idaeus"
+	dynasty = dyn_western_aversarian_9
+	father = parcos_2
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	trait = arrogant
+	trait = brave
+	trait = strong
+	trait = gregarious
+	trait = magic_good_2
+	trait = education_living_magic_2
+	trait = education_diplomacy_3
+	1224.6.18 = {
+		birth = yes
+	}
+	1251.4.29 = {
+		add_spouse = western_aversaria_103
+	}
+	1252.1.1 = {
+		trait = gh_veteran_of_elysia_aversarian
+	}
+}
+parcos_1 = {
+	name = "Thalassa"
+	dynasty = dyn_western_aversarian_9
+	mother = western_aversaria_103
+	father = western_aversaria_7
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	female = yes
+	trait = magic_good_4
+	trait = intellect_good_3
+	trait = beauty_good_2
+	1253.6.18 = {
+		birth = yes
+	}
+}
+parcos_2 = { #parcos dad
+	name = "Alliatos"
+	dynasty = dyn_western_aversarian_9
+	mother = western_imperial_1053
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	1180.6.18 = {
+		birth = yes
+	}
+	1249.3.14 = {
+		death = {
+			death_reason = death_old_age
+		}
+	}	
+}
+
+####
+
+western_aversaria_12 = {
+	name = "Kyriakos"
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	1222.6.18 = {
+		birth = yes
+	}
+}
+
+western_aversaria_15 = {
+	name = "Zenon"
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	1215.6.18 = {
+		birth = yes
+	}
+}
+skallmold_1 = {
+	name = "Skogul"
+	dynasty = dyn_sjalvolki_4
+	mother = western_aversaria_18
+	trait = legitimized_bastard
+	religion = "sjalvolki"
+	culture = "caemansi"
+	1248.6.18 = {
+		birth = yes
+	}
+}
+skallmold_2 = {
+	name = "Rota"
+	dynasty = dyn_sjalvolki_4
+	mother = western_aversaria_18
+	trait = legitimized_bastard
+	religion = "sjalvolki"
+	culture = "caemansi"
+	female = yes
+	1250.6.18 = {
+		birth = yes
+	}
+}
+
+western_imperial_1 = { #THE MAN, THE MYTH, THE LEGEND
+	name = "Aeschraes"
+    dna = aeschraes_western_imperial_1
+	religion = "aversarian_aeschraes"
+	culture = "westernimperial"
+	martial = 14
+	diplomacy = 4
+	intrigue = 16
+	stewardship = 6
+	dynasty = dyn_aversarian_6
+	father = western_imperial_15001
+	mother = western_imperial_15002
+	trait = ambitious
+	trait = sadistic
+	trait = arbitrary
+	trait = torturer
+	trait = magic_good_14
+	trait = education_living_magic_4
+	trait = education_intrigue_4
+	trait = murderer
+	trait = kinslayer_2
+	trait = intellect_good_3
+    sexuality = heterosexual
+	1168.3.14 = {
+		birth = yes
+	        effect = {
+			add_character_flag = has_scripted_appearance
+		}
+	}
+	1181.5.11 = {
+		add_trait = kinslayer_2
+	}
+	1188.5.14 = {
+		add_spouse = western_imperial_15013
+	}
+	1245.5.6 = {
+		add_perk = livingmagic_perk1_tree1
+		add_perk = livingmagic_perk2_tree1
+		add_perk = livingmagic_perk3_tree1
+		add_perk = livingmagic_perk4_tree1
+		add_perk = livingmagic_perk5_tree1
+		add_perk = livingmagic_perk6_tree1
+		add_perk = livingmagic_perk7_tree1
+		add_perk = livingmagic_perk8_tree1
+		add_perk = livingmagic_perk9_tree1
+	}
+	1200.3.1 = {
+		add_character_modifier = aeschraes_pissed_on_my_wife
+		add_trait = murderer
+	}
+	1234.3.1 = {
+		give_nickname = nick_lord_of_the_ashes
+	}
+	1251.1.1 = {
+		add_trait = gh_extended_life
+		effect = {
+			add_character_modifier = vampiric_drain_mod
+			add_character_modifier = {
+				modifier = healing_water_mod_major
+				years = 5
+			}
+			add_character_flag = casted_vampiric_drain
+			
+		}
+	}
+}
+
+western_aversaria_29 = {
+	name = "Gennadios"
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	trait = peasant_leader
+	1211.6.18 = {
+		birth = yes
+	}
+}
+
+western_aversaria_30 = {
+	name = "Meletios"
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	trait = peasant_leader
+	1227.6.18 = {
+		birth = yes
+	}
+}
+
+western_aversaria_31 = {
+	name = "Briarius"
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	trait = peasant_leader
+	1232.6.18 = {
+		birth = yes
+	}
+}
+
+western_aversaria_32 = {
+	name = "Philippos"
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	1231.6.18 = {
+		birth = yes
+	}
+}
+
+western_aversaria_33 = {
+	name = "Ocealus"
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	1231.6.18 = {
+		birth = yes
+	}
+}
+
+western_aversaria_34 = {
+	name = "Laurentios"
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	1231.6.18 = {
+		birth = yes
+	}
+}
+
+western_aversaria_35 = {
+	name = "Konstas"
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	1230.6.18 = {
+		birth = yes
+	}
+}
+
+western_aversaria_36 = {
+	name = "Ioannes"
+	religion = "aversarian_pope"
+	culture = "westernimperial"
+	1222.6.18 = {
+		birth = yes
+	}
+}
+
+western_aversaria_37 = {
+	name = "Andron"
+	religion = "aversarian_pope"
+	culture = "westernimperial"
+	1215.6.18 = {
+		birth = yes
+	}
+}
+
+western_aversaria_38 = {
+	name = "Crathis"
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	1228.6.18 = {
+		birth = yes
+	}
+}
+
+western_aversaria_39 = {
+	name = "Brennus"
+	religion = "aversarian_pope"
+	culture = "westernimperial"
+	1228.6.18 = {
+		birth = yes
+	}
+}
+
+western_aversaria_40 = {
+	name = "Gennadios"
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	1232.6.18 = {
+		birth = yes
+	}
+}
+
+western_aversaria_41 = {
+	name = "Lazaros"
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	1221.6.18 = {
+		birth = yes
+	}
+}
+
+### duke of acaphos characters
+
+western_aversaria_42 = {
+	name = "Icarion"
+	religion = "aversarian_pope"
+	culture = "westernimperial"
+	father = acaphos_1
+	mother = acaphos_2
+	dynasty = dyn_western_aversarian_5
+	trait = arrogant
+	trait = gregarious
+	trait = reveler_2
+	trait = gluttonous
+	trait = education_stewardship_2
+	trait = magic_good_1
+	1210.6.18 = {
+		birth = yes
+	}
+	1232.6.12 = {
+		add_spouse = acaphos_3
+	}
+}
+acaphos_1 = { ##father
+	name = "Antidoros"
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	mother = western_imperial_1056
+	dynasty = dyn_western_aversarian_5
+	1180.6.18 = {
+		birth = yes
+	}
+	1206.6.12 = {
+		add_spouse = acaphos_2
+	}	
+	1242.3.14 = {
+		death = {
+			death_reason = death_old_age
+		}
+	}	
+}
+acaphos_2 = { ##mother
+	name = "Klymene"
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	female = yes
+	1184.6.18 = {
+		birth = yes
+	}
+}
+acaphos_3 = { ##wife
+	name = "Elaiodora"
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	female = yes
+	1212.6.18 = {
+		birth = yes
+	}
+}
+acaphos_4 = { ##child
+	name = "Leontia"
+	religion = "aversarian_pope"
+	culture = "westernimperial"
+	female = yes
+	father = western_aversaria_42
+	mother = acaphos_3	
+	dynasty = dyn_western_aversarian_5
+	trait = magic_good_2
+	trait = education_living_magic_2
+	trait = education_intrigue_3
+	trait = ambitious
+	trait = temperate
+	trait = vengeful
+	1234.6.18 = {
+		birth = yes
+	}
+}
+acaphos_5 = { ##child
+	name = "Faenus"
+	religion = "aversarian_pope"
+	culture = "westernimperial"
+	father = western_aversaria_42
+	mother = acaphos_3	
+	dynasty = dyn_western_aversarian_5
+	trait = stubborn
+	trait = lazy
+	trait = brave
+	trait = education_diplomacy_3
+	1236.7.18 = {
+		birth = yes
+	}
+}
+acaphos_6 = { ##brother
+	name = "Ocytos"
+	religion = "aversarian_pope"
+	culture = "westernimperial"
+	father = acaphos_1
+	mother = acaphos_2
+	dynasty = dyn_western_aversarian_5
+	trait = brave
+	trait = wrathful
+	trait = cynical
+	trait = education_martial_3
+	trait = blademaster_3
+	1216.6.18 = {
+		birth = yes
+	}
+}
+
+###
+
+western_aversaria_43 = {
+	name = "Stavros"
+	religion = "aversarian_pope"
+	culture = "westernimperial"
+	1227.6.18 = {
+		birth = yes
+	}
+}
+
+western_aversaria_44 = {
+	name = "Angelos"
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	1221.6.18 = {
+		birth = yes
+	}
+}
+
+western_aversaria_45 = {
+	name = "Valerios"
+	religion = "aversarian_pope"
+	culture = "westernimperial"
+	father = lampseidonia_5
+	1215.6.18 = {
+		birth = yes
+	}
+}
+
+western_aversaria_46 = {
+	name = "Georgios"
+	religion = "aversarian_pope"
+	culture = "westernimperial"
+	father = lampseidonia_5
+	1217.6.18 = {
+		birth = yes
+	}
+}
+
+western_aversaria_47 = {
+	name = "Laurentios"
+	religion = "aversarian_pope"
+	culture = "westernimperial"
+	1221.6.18 = {
+		birth = yes
+	}
+}
+
+western_aversaria_48 = {
+	name = "Isaakios"
+	religion = "aversarian_pope"
+	culture = "westernimperial"
+	1225.6.18 = {
+		birth = yes
+	}
+}
+
+western_aversaria_49 = {
+	name = "Nikodemos"	
+	religion = "aversarian_pope"
+	culture = "westernimperial"
+	1217.6.18 = {
+		birth = yes
+	}
+}
+
+western_aversaria_50 = {
+	name = "Niketas"
+	religion = "aversarian_pope"
+	culture = "westernimperial"
+	1232.6.18 = {
+		birth = yes
+	}
+}
+
+western_aversaria_51 = {
+	name = "Chalicos"
+	religion = "aversarian_pope"
+	culture = "westernimperial"
+	1211.6.18 = {
+		birth = yes
+	}
+}
+
+##3d_chalcioch family
+
+western_aversaria_52 = {
+	name = Neophytos
+	dynasty = dyn_western_aversarian_6
+	father = western_imperial_1057
+	religion = "aversarian_pope"
+	culture = "westernimperial"
+	trait = lazy
+	trait = arrogant
+	trait = callous
+	trait = education_diplomacy_3
+	trait = torturer
+	trait = magic_good_1
+	1197.6.18 = {
+		birth = yes
+	}
+	1229.8.11 = {
+		add_spouse = chalcioch_1
+	}	
+	
+}
+chalcioch_1 = { ###wife
+	name = Xene
+	religion = "aversarian_pope"
+	culture = "westernimperial"
+	female = yes
+	1204.6.18 = {
+		birth = yes
+	}
+}
+chalcioch_2 = { ##brother-pydnessos
+	name = Ocealus
+	dynasty = dyn_western_aversarian_6
+	father = western_imperial_1057
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	trait = arrogant
+	trait = cynical
+	trait = ambitious
+	trait = education_intrigue_4
+	trait = intellect_good_1
+	1198.6.18 = {
+		birth = yes
+	}
+	1232.8.11 = {
+		add_spouse = chalcioch_3
+	}	
+}
+chalcioch_3 = { ##brother wife
+	name = Athanasia
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	female = yes
+	1206.6.18 = {
+		birth = yes
+	}
+}
+chalcioch_4 = { #kid
+	name = Helene
+	dynasty = dyn_western_aversarian_6
+	mother = chalcioch_1
+	father = western_aversaria_52
+	religion = "aversarian_pope"
+	culture = "westernimperial"
+	female = yes
+	trait = beauty_good_3
+	trait = magic_good_3
+	trait = education_living_magic_3
+	trait = patient
+	trait = arrogant
+	trait = greedy
+	1231.6.18 = {
+		birth = yes
+	}
+}
+chalcioch_7 = { #kid
+	name = Dryas
+	dynasty = dyn_western_aversarian_6
+	mother = chalcioch_1
+	father = western_aversaria_52
+	religion = "aversarian_pope"
+	culture = "westernimperial"
+	1233.6.18 = {
+		birth = yes
+	}
+}
+chalcioch_8 = { #kid
+	name = Theano
+	dynasty = dyn_western_aversarian_6
+	mother = chalcioch_1
+	father = western_aversaria_52
+	religion = "aversarian_pope"
+	culture = "westernimperial"
+	female = yes
+	1234.6.18 = {
+		birth = yes
+	}
+}
+chalcioch_5 = { #brother kid
+	name = Kyros
+	dynasty = dyn_western_aversarian_6
+	mother = chalcioch_3 
+	father = chalcioch_2
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	trait = calm
+	trait = brave
+	trait = sadistic
+	trait = magic_good_3
+	trait = magic_good_2
+	trait = education_living_magic_2
+	1235.6.18 = {
+		birth = yes
+	}
+}
+chalcioch_6 = { #brother kid 2
+	name = Pyrros
+	dynasty = dyn_western_aversarian_6
+	mother = chalcioch_3
+	father = chalcioch_2
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	trait = wrathful
+	trait = lustful
+	trait = impatient
+	trait = education_martial_2
+	trait = magic_good_2
+	trait = education_living_magic_1
+	1236.6.18 = {
+		birth = yes
+	}
+}
+western_aversaria_57 = { ##brother 3-unlanded
+	name = Damianos
+	dynasty = dyn_western_aversarian_6
+	father = western_imperial_1057
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	trait = strong
+	trait = brave
+	trait = chaste
+	trait = just
+	trait = blademaster_2
+	trait = education_martial_4
+	trait = infertile
+	1199.6.18 = {
+		birth = yes
+	}
+}
+
+
+###
+
+western_aversaria_53 = {
+	name = "Lazaros"
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	1235.6.18 = {
+		birth = yes
+	}
+}
+
+western_aversaria_54 = {
+	name = "Hektorios"
+	religion = "aversarian_pope"
+	culture = "westernimperial"
+	1211.6.18 = {
+		birth = yes
+	}
+}
+
+western_aversaria_55 = {
+	name = "Anatolios"
+	religion = "aversarian_pope"
+	culture = "westernimperial"
+	1218.6.18 = {
+		birth = yes
+	}
+}
+
+western_aversaria_56 = {
+	name = "Leontios"
+	religion = "aversarian_pope"
+	culture = "westernimperial"
+	1222.6.18 = {
+		birth = yes
+	}
+}
+
+###pheraea family
+
+western_aversaria_58 = { 
+	name = "Crathis"
+	dynasty = dyn_western_aversarian_7
+	father = western_imperial_1054
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	trait = magic_good_2
+	trait = education_living_magic_2
+	1195.6.18 = {
+		birth = yes
+	}
+	1221.1.1 = {
+		add_spouse = pheraea_1
+	}	
+}
+pheraea_1 = { ##wife
+	name = "Aethre"
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	female = yes
+	1199.6.18 = {
+		birth = yes
+	}
+}
+pheraea_2 = { #kid
+	name = "Apostolos"
+	dynasty = dyn_western_aversarian_7
+	father = western_aversaria_58
+	mother = pheraea_1
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	1223.6.18 = {
+		birth = yes
+	}
+}
+pheraea_3 = { #kid
+	name = "Vissarion"
+	dynasty = dyn_western_aversarian_7
+	father = western_aversaria_58
+	mother = pheraea_1
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	trait = magic_good_1
+	trait = education_living_magic_2
+	1224.6.18 = {
+		birth = yes
+	}
+}
+pheraea_4 = { #kid
+	name = "Ianthe"
+	dynasty = dyn_western_aversarian_7
+	father = western_aversaria_58
+	mother = pheraea_1
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	female = yes
+	1228.6.18 = {
+		birth = yes
+	}
+}
+pheraea_5 = { #kid
+	name = "Cratais"
+	dynasty = dyn_western_aversarian_7
+	father = western_aversaria_58
+	mother = pheraea_1
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	trait = magic_good_3
+	trait = education_living_magic_3
+	female = yes
+	1231.6.18 = {
+		birth = yes
+	}
+}
+
+###
+
+western_aversaria_59 = {
+	name = "Anthimos"
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	1231.6.18 = {
+		birth = yes
+	}
+}
+
+western_aversaria_60 = {
+	name = "Theodoulos"
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	1235.6.18 = {
+		birth = yes
+	}
+}
+
+western_aversaria_61 = {
+	name = "Phokas"
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	1216.6.18 = {
+		birth = yes
+	}
+}
+
+western_aversaria_62 = {
+	name = "Theophanes"
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	1204.6.18 = {
+		birth = yes
+	}
+}
+
+western_aversaria_63 = {
+	name = "Ioannes"
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	1222.6.18 = {
+		birth = yes
+	}
+}
+
+western_aversaria_64 = {
+	name = "Damianos"
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	1227.6.18 = {
+		birth = yes
+	}
+}
+
+western_aversaria_65 = {
+	name = "Raphail"
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	1225.6.18 = {
+		birth = yes
+	}
+}
+
+western_aversaria_66 = {
+	name = "Damianos"
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	1230.6.18 = {
+		birth = yes
+	}
+}
+
+western_aversaria_67 = {
+	name = "Alliatos"
+	religion = "aversarian_pope"
+	culture = "westernimperial"
+	1220.6.18 = {
+		birth = yes
+	}
+}
+
+western_aversaria_68 = {
+	name = "Laurentios"
+	religion = "aversarian_pope"
+	culture = "westernimperial"
+	1213.6.18 = {
+		birth = yes
+	}
+}
+
+western_aversaria_69= {
+	name = "Konstas"
+	religion = "aversarian_pope"
+	culture = "westernimperial"
+	1226.6.18 = {
+		birth = yes
+	}
+}
+
+###d_iolcegea
+
+western_aversaria_70 = {
+	name = "Amyris"
+	dynasty = dyn_western_aversarian_8
+	father = lampseidonia_4
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	1212.6.18 = {
+		birth = yes
+	}
+	1235.1.1 = {
+		add_spouse = iolcegea_1
+	}	
+}
+
+iolcegea_1 = { #wife
+	name = "Agamede"
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	female = yes
+	trait = magic_good_3
+	trait = education_living_magic_2
+	1215.6.18 = {
+		birth = yes
+	}
+}
+
+iolcegea_2 = {
+	name = "Seraphon"
+	dynasty = dyn_western_aversarian_8
+	mother = iolcegea_1
+	father = western_aversaria_70
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	1237.6.18 = {
+		birth = yes
+	}
+}
+
+iolcegea_3 = {
+	name = "Prokopis"
+	dynasty = dyn_western_aversarian_8
+	mother = iolcegea_1
+	father = western_aversaria_70
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	trait = magic_good_3
+	1240.6.18 = {
+		birth = yes
+	}
+}
+
+iolcegea_4 = {
+	name = "Elissa"
+	dynasty = dyn_western_aversarian_8
+	mother = iolcegea_1
+	father = western_aversaria_70
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	female = yes
+	1242.6.18 = {
+		birth = yes
+	}
+}
+
+###
+
+western_aversaria_71 = {
+	name = "Anastasios"
+	religion = "aversarian_pope"
+	culture = "westernimperial"
+	1232.6.18 = {
+		birth = yes
+	}
+}
+
+western_aversaria_72 = {
+	name = "Ioustinianos"
+	religion = "aversarian_pope"
+	culture = "westernimperial"
+	1219.6.18 = {
+		birth = yes
+	}
+}
+
+western_aversaria_73 = {
+	name = "Phokas"
+	religion = "aversarian_pope"
+	culture = "westernimperial"
+	1212.6.18 = {
+		birth = yes
+	}
+}
+
+western_aversaria_74 = {
+	name = "Pyrros"
+	religion = "aversarian_pope"
+	culture = "westernimperial"
+	1228.6.18 = {
+		birth = yes
+	}
+}
+
+western_aversaria_75 = {
+	name = "Michael"
+	religion = "aversarian_pope"
+	culture = "westernimperial"
+	1228.6.18 = {
+		birth = yes
+	}
+}
+
+western_aversaria_76 = {
+	name = "Helias"
+	religion = "aversarian_pope"
+	culture = "westernimperial"
+	1225.6.18 = {
+		birth = yes
+	}
+}
+
+western_aversaria_77 = {
+	name = "Philotheos"
+	religion = "aversarian_pope"
+	culture = "westernimperial"
+	1211.6.18 = {
+		birth = yes
+	}
+}
+
+western_aversaria_78 = {
+	name = "Zenon"
+	religion = "aversarian_pope"
+	culture = "westernimperial"
+	1234.6.18 = {
+		birth = yes
+	}
+}
+
+###
+
+western_aversaria_79 = {
+	name = "Likourgos"
+	dynasty = dyn_western_aversarian_8
+	father = lampseidonia_3
+	religion = "aversarian_pope"
+	culture = "westernimperial"
+	1189.6.18 = {
+		birth = yes
+	}
+	1221.1.1 = {
+		add_spouse = lampseidonia_1
+	}	
+}
+lampseidonia_1 = {
+	name = "Stephania"
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	female = yes
+	1199.6.18 = {
+		birth = yes
+	}
+}
+lampseidonia_2 = {
+	name = "Adrianos"
+	dynasty = dyn_western_aversarian_8
+	father = western_aversaria_79
+	mother = lampseidonia_1
+	religion = "aversarian_pope"
+	culture = "westernimperial"
+	1224.6.18 = {
+		birth = yes
+	}
+}
+##
+lampseidonia_3 = { #granddad
+	name = "Symmachos"
+	dynasty = dyn_western_aversarian_8
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	1150.6.18 = {
+		birth = yes
+	}
+	1225.3.14 = {
+		death = {
+			death_reason = death_old_age
+		}
+	}	
+}
+lampseidonia_4 = { #dad of d_iolcegea
+	name = "Philippos"
+	father = lampseidonia_3
+	dynasty = dyn_western_aversarian_8
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	1176.6.18 = {
+		birth = yes
+	}
+	1239.3.14 = {
+		death = {
+			death_reason = death_old_age
+		}
+	}	
+}
+lampseidonia_5 = { #dad with two sons
+	name = "Meletios"
+	father = lampseidonia_3
+	dynasty = dyn_western_aversarian_8
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	1187.6.18 = {
+		birth = yes
+	}
+	1243.3.14 = {
+		death = {
+			death_reason = death_old_age
+		}
+	}	
+}
+
+
+####
+
+western_aversaria_80 = {
+	name = "Himerios"
+	religion = "aversarian_pope"
+	culture = "westernimperial"
+	1234.6.18 = {
+		birth = yes
+	}
+}
+
+western_aversaria_81 = {
+	name = "Hektorios"
+	religion = "aversarian_pope"
+	culture = "westernimperial"
+	1201.6.18 = {
+		birth = yes
+	}
+}
+
+western_aversaria_82 = {
+	name = "Kyros"
+	religion = "aversarian_pope"
+	culture = "westernimperial"
+	1214.6.18 = {
+		birth = yes
+	}
+}
+
+western_aversaria_83 = {
+	name = "Lazaros"
+	religion = "aversarian_pope"
+	culture = "westernimperial"
+	1218.6.18 = {
+		birth = yes
+	}
+}
+
+###parcos vassals
+
+western_aversaria_91 = {
+	name = "Gorsephon"
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	1202.6.18 = {
+		birth = yes
+	}
+}
+
+western_aversaria_92 = {
+	name = "Kallinikos"
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	1221.6.18 = {
+		birth = yes
+	}
+}
+
+western_aversaria_93 = {
+	name = "Parthena"
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	trait = cynical
+	trait = vengeful
+	trait = ambitious
+	trait = education_intrigue_4
+	female = yes
+	1231.6.18 = {
+		birth = yes
+	}
+	1253.4.29 = {
+		add_spouse = gorteutherna_1
+	}	
+}
+gorteutherna_1 = {
+	name = "Telema"
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	trait = cynical
+	trait = strong
+	trait = ambitious
+	trait = education_martial_3
+	1229.6.18 = {
+		birth = yes
+	}
+}
+western_aversaria_94 = {
+	name = "Tryphon"
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	1212.6.18 = {
+		birth = yes
+	}
+}
+
+western_aversaria_95 = {
+	name = "Porphyrios"
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	1215.6.18 = {
+		birth = yes
+	}
+}
+
+western_aversaria_96 = {
+	name = "Kyriakos"
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	1226.6.18 = {
+		birth = yes
+	}
+}
+
+western_aversaria_97 = {
+	name = "Theodoulos"
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	1197.6.18 = {
+		birth = yes
+	}
+}
+
+western_aversaria_98 = {
+	name = "Phokas"
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	1205.6.18 = {
+		birth = yes
+	}
+	1235.4.29 = {
+		add_spouse = platamum_1
+	}	
+}
+platamum_1 = {
+	name = "Eirene"
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	female = yes
+	1210.6.18 = {
+		birth = yes
+	}
+}
+platamum_2 = {
+	name = "Cydippe"
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	mother = platamum_1
+	father = western_aversaria_98
+	female = yes
+	trait = magic_good_3
+	trait = education_living_magic_3
+	1238.6.18 = {
+		birth = yes
+	}
+}
+platamum_3 = {
+	name = "Helene"
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	mother = platamum_1
+	father = western_aversaria_98	
+	female = yes
+	1240.6.18 = {
+		birth = yes
+	}
+}
+
+western_aversaria_99 = {
+	name = "Andreas"
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	trait = magic_good_2
+	trait = education_living_magic_3
+	1228.6.18 = {
+		birth = yes
+	}
+	1250.4.29 = {
+		add_spouse = western_aversaria_100
+	}	
+}
+
+western_aversaria_100 = {
+	name = "Thekla"
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	trait = magic_good_1
+	trait = education_living_magic_2
+	female = yes
+	1230.6.18 = {
+		birth = yes
+	}
+}
+
+western_aversaria_102 = {
+	name = "Aeschratios"
+	religion = "cumani"
+	culture = "kiykardid"
+	1221.6.18 = {
+		birth = yes
+	}
+}
+
+western_aversaria_103 = {
+	name = "Aikaterine"
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	female = yes
+	1229.6.18 = {
+		birth = yes
+	}
+}
+
+####
+
+western_aversaria_104 = {
+	name = "Sabas"
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	1232.6.18 = {
+		birth = yes
+	}
+}
+
+western_aversaria_105 = {
+	name = "Niphon"
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	1229.6.18 = {
+		birth = yes
+	}
+}
+
+western_aversaria_106 = {
+	name = "Kyriakos"
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	1228.6.18 = {
+		birth = yes
+	}
+}
+
+western_aversaria_107 = {
+	name = "Kyros"
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	1226.6.18 = {
+		birth = yes
+	}
+}
+
+western_aversaria_108 = {
+	name = "Laurentios"
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	1233.6.18 = {
+		birth = yes
+	}
+}
+
+western_aversaria_109 = {
+	name = "Ioulianos"
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	1224.6.18 = {
+		birth = yes
+	}
+}
+
+western_aversaria_110 = {
+	name = "Rumanos"
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	1225.6.18 = {
+		birth = yes
+	}
+}
+
+western_aversaria_111 = {
+	name = "Nikephoros"
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	1222.6.18 = {
+		birth = yes
+	}
+}
+
+western_aversaria_112 = {
+	name = "Neophytos"
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	1231.6.18 = {
+		birth = yes
+	}
+}
+
+western_aversaria_113 = {
+	name = "Polykarpos"
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	1220.6.18 = {
+		birth = yes
+	}
+}
+
+western_aversaria_114 = {
+	name = "Kyriakos"
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	1232.6.18 = {
+		birth = yes
+	}
+}
+
+western_aversaria_115 = {
+	name = "Ioseph"
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	1230.6.18 = {
+		birth = yes
+	}
+}
+
+western_aversaria_116 = {
+	name = "Gerasimos"
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	1228.6.18 = {
+		birth = yes
+	}
+}
+
+western_aversaria_117 = {
+	name = "Briarius"
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	1223.6.18 = {
+		birth = yes
+	}
+}
+
+western_aversaria_118 = {
+	name = "Pavlos"
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	1221.6.18 = {
+		birth = yes
+	}
+}
+
+western_aversaria_119 = {
+	name = "Bartholomaios"
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	1219.6.18 = {
+		birth = yes
+	}
+}
+
+western_aversaria_121 = {
+	name = "Basileios"
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	1222.6.18 = {
+		birth = yes
+	}
+}
+
+western_aversaria_125 = {
+	name = "Michael"
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	1228.6.18 = {
+		birth = yes
+	}
+}
+
+####
+
+western_aversaria_148 = {
+	name = "Hermon"
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	1231.6.18 = {
+		birth = yes
+	}
+}
+kamaronesos_1 = {
+	name = "Parthena"
+	female = yes
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	1220.6.18 = {
+		birth = yes
+	}
+}
+kamaronesos_2 = {
+	name = "Damianos"
+	father = western_aversaria_153
+	mother = kamaronesos_1
+	trait = magic_good_1
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	1242.6.18 = {
+		birth = yes
+	}
+}
+
+western_aversaria_159 = {
+	name = "Ariston"
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	1222.6.18 = {
+		birth = yes
+	}
+}
+
+###
+
+kameirerna_1 = { #ioulianos wife
+	name = "Cybele"
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	female = yes
+	trait = arrogant
+	trait = lazy
+	1180.6.18 = {
+		birth = yes
+	}
+}
+kameirerna_2 = { #wife
+	name = "Nikoletta"
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	female = yes
+	1210.6.18 = {
+		birth = yes
+	}
+}
+kameirerna_3 = { #wife
+	name = "Viviana"
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	female = yes
+	1212.6.18 = {
+		birth = yes
+	}
+}
+
+western_aversaria_163 = { #Ioulianos kid
+	name = "Hektorios"
+	dynasty = dyn_western_aversarian_10
+	mother = kameirerna_1
+	father = western_imperial_1041
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	1210.6.18 = {
+		birth = yes
+	}
+	1235.9.23 = {
+		add_spouse = kameirerna_3
+	}	
+}
+kameirerna_7 = { #kid
+	name = "Nikolaos"
+	dynasty = dyn_western_aversarian_10
+	mother = kameirerna_3
+	father = western_aversaria_163	
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	1236.6.18 = {
+		birth = yes
+	}
+}
+kameirerna_8 = { #kid
+	name = "Methodios"
+	dynasty = dyn_western_aversarian_10
+	mother = kameirerna_3
+	father = western_aversaria_163	
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	1240.6.18 = {
+		birth = yes
+	}
+}
+kameirerna_9 = { #kid
+	name = "Anastasia"
+	dynasty = dyn_western_aversarian_10
+	mother = kameirerna_3
+	father = western_aversaria_163
+	female = yes
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	1242.6.18 = {
+		birth = yes
+	}
+}
+
+###
+
+western_aversaria_180 = {
+	name = "Isidoros"
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	religion = "aversarian_island"
+	1202.6.18 = {
+		birth = yes
+	}
+}
+
+western_aversaria_194 = {
+	name = "Thalassa"
+	female = yes
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	1225.6.18 = {
+		birth = yes
+	}
+}
+
+western_aversaria_195 = {
+	name = "Theophanes"
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	1233.6.18 = {
+		birth = yes
+	}
+}
+
+western_aversaria_197 = {
+	name = "Jhen"
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	1231.6.18 = {
+		birth = yes
+	}
+}
+
+western_aversaria_199 = {
+	name = "Psapho"
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	sexuality = homosexual
+	female = yes
+	1233.1.11 = {
+		birth = yes
+	}
+}

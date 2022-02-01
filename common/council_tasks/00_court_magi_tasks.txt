@@ -1,0 +1,116 @@
+﻿task_court_mage_boost_magic_power = {
+	default_task = yes
+	position = councillor_court_mage
+	task_type = task_type_general
+	task_progress = task_progress_infinite
+	
+	effect_desc = {
+		desc = task_court_mage_boost_magic_power_effect_desc
+	}
+
+	is_valid_showing_failures_only = {
+		liege = {
+			can_access_magic = yes
+		}
+	}
+
+	council_owner_modifier = {
+	
+	}
+	
+	on_cancel_task = {
+	
+	}
+
+	on_start_task = {
+	
+	}
+	
+	on_monthly = {
+	
+	}
+	
+	ai_will_do = {
+		value = 0
+		if = { # Don't do this unless you can actually use magic
+			limit = {
+				scope:councillor_liege = {
+					can_access_magic = yes
+				}
+			}
+			add = 10
+		}
+	}
+}
+
+
+task_court_mage_cast_spells = {
+	position = councillor_court_mage
+	task_type = task_type_general
+	task_progress = task_progress_infinite
+	
+	effect_desc = task_court_mage_cast_spells_effect_desc
+
+	council_owner_modifier = {
+		# name = task_court_mage_cast_spells_modifier
+		# Fire a decision or event for spell here
+	}
+
+	on_cancel_task = {
+		
+	}
+	
+	on_start_task = {
+		
+	}
+
+	on_monthly = { 
+	}
+	
+	ai_will_do = {
+		value = 1
+	}  
+}
+
+
+task_court_mage_tutor_magic = {
+	position = councillor_court_mage
+	
+	task_type = task_type_general
+	task_progress = task_progress_infinite
+	
+	effect_desc = task_court_mage_tutor_magic_effect_desc
+
+	council_owner_modifier = {
+		# name = task_court_mage_cast_spells_modifier
+		# Fire a decision or event for spell here
+	}
+
+	on_cancel_task = {
+		
+	}
+	
+	on_start_task = {
+		
+	}
+
+	on_monthly = {
+		trigger_event = court_mage_task.0001
+	}
+	
+	ai_will_do = {	# If you have kids that have potential, do it. Check will be made more complex in the future
+		value = 0
+		if = {
+			limit = {
+				scope:councillor_liege = {
+					any_child = {
+						is_adult = no
+						has_magi_potency_trigger = yes
+						age >= 6	# Must be old enough to actually get educated
+					}
+				}
+			}
+			add = 1000
+		}
+	}  
+}

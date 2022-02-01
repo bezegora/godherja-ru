@@ -1,0 +1,100 @@
+﻿##################
+##DECISIONS LIST##
+# search_for_mage_decision
+# pryonism_decision
+##################
+
+##################
+# Search for Court Magi
+# by ThePinkPanzer
+search_for_mage_decision = {
+	ai_check_interval = 0
+	picture = "gfx/interface/illustrations/decisions/decision_recruitment.dds"
+	
+	desc = search_for_mage_decision_desc
+	selection_tooltip = search_for_mage_decision_desc_tooltip
+	
+	is_shown = {
+		OR = {
+			has_trait = cynical
+			faith = {
+				NOR = {
+					has_doctrine = doctrine_magic_crime
+					has_doctrine = doctrine_magic_shunned
+				}
+			}
+		}
+	}
+	
+	is_valid = {
+		NOT = {
+			has_character_flag = searched_for_court_mage
+		}
+	}
+	
+	effect = {
+		hidden_effect = {
+			add_character_flag = {
+				flag = searched_for_court_mage
+				years = 5
+			}
+		}
+		if = {
+			limit = {
+				faith = { has_doctrine = doctrine_magic_crime }
+			}
+			add_piety = massive_piety_loss
+		}
+		else_if = {
+			limit = {
+				faith = { has_doctrine = doctrine_magic_shunned }
+			}
+			add_piety = major_piety_loss
+		}
+		
+		trigger_event = magic.0031
+		custom_tooltip = search_for_mage_decision_tooltip
+
+	}
+	
+	ai_potential = {
+		always = no #AI will not look at this
+	}
+	
+	ai_will_do = {
+		base = 0 # For now, disabled for AI
+	}
+}
+
+##################
+# Pyronism (Discovering Plots)
+# by ThePinkPanzer
+pryonism_decision = {
+	picture = "gfx/interface/illustrations/decisions/decision_recruitment.dds" #this needs changed to something magical
+	desc = pryonism_decision_desc
+
+	ai_check_interval = 0
+
+	is_shown = {
+		is_landed = yes
+		is_imprisoned = no
+		has_trait = pryonism
+	}
+
+	is_valid = {
+		is_landed = yes
+		is_imprisoned = no
+		has_trait = pryonism
+
+	}
+
+	cooldown = { days = 365 }
+
+	effect = {
+		trigger_event = {
+			id = magic.0040
+			
+		}
+
+	}	
+}

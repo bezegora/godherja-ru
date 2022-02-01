@@ -1,0 +1,579 @@
+﻿reset_valid_lifepaths = {
+	set_valid_lifepath = { FAITH_PARAMETER = lifepath_choice LIFEPATH = way_of_swords }
+	set_valid_lifepath = { FAITH_PARAMETER = lifepath_choice LIFEPATH = way_of_family }
+	set_valid_lifepath = { FAITH_PARAMETER = lifepath_choice LIFEPATH = way_of_coins }
+	set_valid_lifepath = { FAITH_PARAMETER = lifepath_choice LIFEPATH = way_of_crowns }
+	set_valid_lifepath = { FAITH_PARAMETER = lifepath_choice LIFEPATH = way_of_harvests }
+	set_valid_lifepath = { FAITH_PARAMETER = lifepath_choice LIFEPATH = way_of_justice }
+	set_valid_lifepath = { FAITH_PARAMETER = lifepath_choice LIFEPATH = way_of_knowledge }
+	set_valid_lifepath = { FAITH_PARAMETER = lifepath_choice LIFEPATH = way_of_crows }
+	set_valid_lifepath = { FAITH_PARAMETER = lifepath_choice LIFEPATH = way_of_nullification }
+}
+
+set_valid_lifepath = {
+	if = {
+		limit = {
+			has_doctrine_parameter = $FAITH_PARAMETER$
+			NOT = { has_variable = lifepath_trait_available_$LIFEPATH$ }
+		}
+		if = {
+			limit = { NOT = { has_variable = number_of_lifepaths } }
+			set_variable = {
+				name = number_of_lifepaths
+				value = 1
+			}
+		}
+		else = {
+			change_variable = {
+				name = number_of_lifepaths
+				add = 1
+			}
+		}
+		set_variable = faith_has_lifepaths
+		set_variable = lifepath_trait_available_$LIFEPATH$
+	}
+}
+
+remove_lifepath = {
+	if = {
+		limit = { has_variable = lifepath_trait_available_$LIFEPATH$ }
+		remove_variable = lifepath_trait_available_$LIFEPATH$
+		change_variable = {
+			name = number_of_lifepaths
+			subtract = 1
+		}
+	}
+}
+
+set_valid_lifepaths_all_faiths = {
+	every_religion_global = {
+		every_faith = {
+			reset_valid_lifepaths = yes
+		}
+	}
+}
+
+# Lifepath Dedication
+
+set_lifepath_dedication = {
+	every_religion_global = {
+		every_faith = {
+			limit = {
+				has_doctrine_parameter = lifepath_choice
+			}
+			set_variable = {
+				name = lifepath_relevance_measure
+				value = 0.5
+			}
+		}
+	}
+}
+
+dedication_impact = {
+	if = {
+		faith = {
+			has_doctrine_parameter = lifepath_choice
+		}
+		faith = {
+			change_variable = {
+				name = lifepath_relevance_measure
+				add = $AMOUNT$_dedication_$NATURE$
+			}
+		}
+		custom_tooltip = dedication_$AMOUNT$_$NATURE$.tt
+	}
+}
+
+lifepath_impact = {
+	if = {
+		limit = {
+			has_trait = way_of_$WAY$_follower
+		}
+		custom_tooltip = lifepath_impact_$WAY$.tt
+		lifepath_constituent_$NATURE$ = {
+			AMOUNTX = $AMOUNT$
+		}
+		custom_tooltip = lifepath_impact_end.tt
+	}
+}
+
+lifepath_constituent_negative = {
+	add_piety = $AMOUNTX$_piety_loss_lifepath
+	stress_impact = {
+		zealous = $AMOUNTX$_stress_impact_gain
+	}
+}
+
+lifepath_constituent_positive = {
+	add_piety = $AMOUNTX$_piety_gain_lifepath
+	stress_impact = {
+		zealous = $AMOUNTX$_stress_impact_loss
+	}
+}
+
+
+#####################################
+#
+#    OUTDATED LIFEPATH EFFECTS.
+#	 Should be removed when new (above) are fully implemented.
+#####################################
+lifepath_adherence_impact_tooltip = { # Produces the right tooltip for whether or not the Marcher is zealous or not. For use in options with random outcomes.
+    if = {
+        limit = {
+            has_trait = way_of_$LP_NAME$_follower
+			NOT = {
+				has_trait = zealous
+			}
+        }
+        custom_tooltip = lifepath_adherence_notification.tt
+    }
+	else_if = {
+		limit = {
+			AND = {
+				has_trait = way_of_$LP_NAME$_follower
+				has_trait = zealous
+			}
+		}
+		custom_tooltip = lifepath_adherence_zealous.tt
+	}
+}
+
+lifepath_adherence_impact = { # Produces the right effect, for use in random outcomes.
+	if = {
+		limit = {
+			has_trait = way_of_$LP_NAME$_follower
+		}
+		add_piety = $PIETY_AMOUNT$
+		stress_impact = {
+			zealous = $STRESS_AMOUNT$
+		}
+	}
+}
+
+lifepath_option_adherence = { # Produces the right effects and tooltips, for use in event options without random outcomes.
+	if = {
+		limit = {
+			has_trait = way_of_$LP_NAME$_follower
+		}
+		if = {
+			limit = {
+				has_trait = zealous
+			}
+			custom_tooltip = lifepath_adherence_zealous.tt
+		}
+		else = {
+			custom_tooltip = lifepath_adherence_notification.tt
+		}
+		add_piety = $PIETY_AMOUNT$_piety_gain_lifepath
+		stress_impact = {
+			zealous = $STRESS_AMOUNT$_stress_impact_loss
+		}
+	}
+}
+
+lifepath_adherence_variant = { # For use in result events, localisation is more past-tense.
+	if = {
+		limit = {
+			has_trait = way_of_$LP_NAME$_follower
+		}
+		if = {
+			limit = {
+				has_trait = zealous
+			}
+			custom_tooltip = lifepath_adherence_variantzealous.tt
+		}
+		else = {
+			custom_tooltip = lifepath_adherence_variant.tt
+		}
+		add_piety = $PIETY_AMOUNT$_piety_gain_lifepath
+		stress_impact = {
+			zealous = $STRESS_AMOUNT$_stress_impact_loss
+		}
+	}
+}
+
+lifepath_option_disadherence = { # Produces the right effects and tooltips, for use in event options without random outcomes.
+	if = {
+		limit = {
+			has_trait = way_of_$LP_NAME$_follower
+		}
+		if = {
+			limit = {
+				has_trait = zealous
+			}
+			custom_tooltip = lifepath_adherence_zealousbad.tt
+		}
+		else = {
+			custom_tooltip = lifepath_adherence_bad.tt
+		}
+		add_piety = $PIETY_AMOUNT$_piety_loss_lifepath
+		stress_impact = {
+			zealous = $STRESS_AMOUNT$_stress_impact_gain
+		}
+	}
+}
+
+lifepath_disadherence_variant = { # Same as adherence_variant but for failing
+	if = {
+		limit = {
+			has_trait = way_of_$LP_NAME$_follower
+		}
+		if = {
+			limit = {
+				has_trait = zealous
+			}
+			custom_tooltip = lifepath_disadherence_variantzealous.tt
+		}
+		else = {
+			custom_tooltip = lifepath_disadherence_variant.tt
+		}
+		add_piety = $PIETY_AMOUNT$_piety_loss_lifepath
+		stress_impact = {
+			zealous = $STRESS_AMOUNT$_stress_impact_gain
+		}
+	}
+}
+
+##################
+#
+# Not satisfied with below clandestine effects for crows. They should have something else IMO, but this will be implemented for now.
+#
+##################
+
+crow_clandestine_impact = { # Produces effect for failed clandestine operations for followers of the Way of Crows. For use in negative randomized outcomes.
+	if = {
+		limit = {
+			has_trait = way_of_crows_follower
+		}
+		add_piety = $PIETY_AMOUNT$_piety_loss_lifepath
+		stress_impact = {
+			zealous = $STRESS_AMOUNT$_stress_impact_gain
+		}
+	}
+}
+
+crow_zealous_clandestine_impact = { # Produces stress loss for succesful clandestine operations for zealous followers of the Way of Crows. For use in positive randomized outcomes.
+	if = {
+		AND = {
+			has_trait = way_of_crows_follower
+			has_trait = zealous
+		}
+		stress_impact = {
+			zealous = $STRESS_AMOUNT$_stress_impact_loss
+		}
+	}
+}
+
+crow_zealous_withtooltip = { # For use in event options with no randomized outcomes. Produces tooltip and effects.
+	if = {
+		AND = {
+			has_trait = way_of_crows_follower
+			has_trait = zealous
+		}
+		custom_tooltip = lifepath_crow_adherence_zealous.tt
+		stress_impact = {
+			zealous = $STRESS_AMOUNT$_stress_impact_loss
+		}
+	}
+}
+
+crow_clandestine_impact_tooltip = { # Produces the correct tooltips for crows performing clandestine actions. For use in options.
+	if = {
+		limit = {
+			has_trait = way_of_crows_follower
+		}
+		custom_tooltip = lifepath_crow_adherence_staysneaky.tt
+	}
+	if = {
+		limit = {
+			AND = {
+				has_trait = way_of_crows_follower
+				has_trait = zealous
+			}
+		}
+		custom_tooltip = lifepath_crow_adherence_zealous.tt
+	}
+}
+
+lifepath_disadherence_impact = { # Produces the correct tooltips and effects for choosing non-lifepath adhering decisions. For use in options with random outcomes.
+	if = {
+		limit = {
+			has_trait = way_of_$LP_NAME$_follower
+		}
+		add_piety = $PIETY_AMOUNT$_piety_loss_lifepath
+		stress_impact = {
+			zealous = $STRESS_AMOUNT$_stress_impact_gain
+		}
+		if = {
+			has_trait = zealous
+			custom_tooltip = lifepath_adherence_zealousbad.tt
+		}
+		else = {
+			custom_tooltip = lifepath_adherence_bad.tt
+		}
+	}
+}
+
+upgrade_to_wayfather = {
+	if = {
+		limit = { has_trait = way_of_swords_follower }
+		change_trait_rank = {
+			trait = way_of_swords
+			rank = 1
+			max = 2
+		}
+	}
+	else_if = {
+		limit = { has_trait = way_of_family_follower }
+		change_trait_rank = {
+			trait = way_of_family
+			rank = 1
+			max = 2
+		}
+	}
+	if = {
+		limit = { has_trait = way_of_coins_follower }
+		change_trait_rank = {
+			trait = way_of_coins
+			rank = 1
+			max = 2
+		}
+	}
+	if = {
+		limit = { has_trait = way_of_crowns_follower }
+		change_trait_rank = {
+			trait = way_of_crowns
+			rank = 1
+			max = 2
+		}
+	}
+	if = {
+		limit = { has_trait = way_of_harvests_follower }
+		change_trait_rank = {
+			trait = way_of_harvests
+			rank = 1
+			max = 2
+		}
+	}
+	if = {
+		limit = { has_trait = way_of_justice_follower }
+		change_trait_rank = {
+			trait = way_of_justice
+			rank = 1
+			max = 2
+		}
+	}
+	if = {
+		limit = { has_trait = way_of_knowledge_follower }
+		change_trait_rank = {
+			trait = way_of_knowledge
+			rank = 1
+			max = 2
+		}
+	}
+	if = {
+		limit = { has_trait = way_of_crows_follower }
+		change_trait_rank = {
+			trait = way_of_crows
+			rank = 1
+			max = 2
+		}
+	}
+	if = {
+		limit = { has_trait = way_of_nullification_follower }
+		change_trait_rank = {
+			trait = way_of_nullification
+			rank = 1
+			max = 2
+		}
+	}
+}
+
+populate_with_wayfathers = {
+	every_ruler = {
+		limit = {
+			highest_held_title_tier >= tier_county
+			faith = { has_variable = faith_has_lifepaths }
+			NOR = {
+				any_courtier_or_guest = { is_wayfather_trigger = yes }
+				any_vassal = { is_wayfather_trigger = yes }
+			}
+		}
+		save_temporary_scope_as = court_owner
+		random_list = {
+			10 = {
+				create_character = {
+					template = way_of_swords_father_template
+					faith = court_owner.faith
+					culture = court_owner.culture
+					employer = court_owner
+					save_scope_as = generated_wayfather
+				}
+			}
+			10 = {
+				create_character = {
+					template = way_of_family_father_template
+					faith = court_owner.faith
+					culture = court_owner.culture
+					employer = court_owner
+					save_scope_as = generated_wayfather
+				}
+			}
+			10 = {
+				create_character = {
+					template = way_of_coins_father_template
+					faith = court_owner.faith
+					culture = court_owner.culture
+					employer = court_owner
+					save_scope_as = generated_wayfather
+				}
+			}
+			10 = {
+				create_character = {
+					template = way_of_crowns_father_template
+					faith = court_owner.faith
+					culture = court_owner.culture
+					employer = court_owner
+					save_scope_as = generated_wayfather
+				}
+			}
+			10 = {
+				create_character = {
+					template = way_of_harvests_father_template
+					faith = court_owner.faith
+					culture = court_owner.culture
+					employer = court_owner
+					save_scope_as = generated_wayfather
+				}
+			}
+			10 = {
+				create_character = {
+					template = way_of_justice_father_template
+					faith = court_owner.faith
+					culture = court_owner.culture
+					employer = court_owner
+					save_scope_as = generated_wayfather
+				}
+			}
+			10 = {
+				create_character = {
+					template = way_of_knowledge_father_template
+					faith = court_owner.faith
+					culture = court_owner.culture
+					employer = court_owner
+					save_scope_as = generated_wayfather
+				}
+			}
+			10 = {
+				create_character = {
+					template = way_of_crows_father_template
+					faith = court_owner.faith
+					culture = court_owner.culture
+					employer = court_owner
+					save_scope_as = generated_wayfather
+				}
+			}
+			10 = {
+				create_character = {
+					template = way_of_nullification_father_template
+					faith = court_owner.faith
+					culture = court_owner.culture
+					employer = court_owner
+					save_scope_as = generated_wayfather
+				}
+			}
+		}
+		scope:generated_wayfather = {
+			set_variable = wayfather
+		}
+	}
+}
+
+generate_wayfather_swords = {
+	create_character = {
+		template = way_of_swords_father_template
+		faith = root.faith
+		culture = root.culture
+		dynasty = none
+		employer = root
+	}
+}
+
+generate_wayfather_family = {
+	create_character = {
+		template = way_of_family_father_template
+		faith = root.faith
+		culture = root.culture
+		dynasty = none
+		employer = root
+	}
+}
+
+generate_wayfather_coins = {
+	create_character = {
+		template = way_of_coins_father_template
+		faith = root.faith
+		culture = root.culture
+		dynasty = none
+		employer = root
+	}
+}
+
+generate_wayfather_crowns = {
+	create_character = {
+		template = way_of_crowns_father_template
+		faith = root.faith
+		culture = root.culture
+		dynasty = none
+		employer = root
+	}
+}
+
+generate_wayfather_harvests = {
+	create_character = {
+		template = way_of_harvests_father_template
+		faith = root.faith
+		culture = root.culture
+		dynasty = none
+		employer = root
+	}
+}
+
+generate_wayfather_justice = {
+	create_character = {
+		template = way_of_justice_father_template
+		faith = root.faith
+		culture = root.culture
+		dynasty = none
+		employer = root
+	}
+}
+
+generate_wayfather_knowledge = {
+	create_character = {
+		template = way_of_knowledge_father_template
+		faith = root.faith
+		culture = root.culture
+		dynasty = none
+		employer = root
+	}
+}
+
+generate_wayfather_crows = {
+	create_character = {
+		template = way_of_crows_father_template
+		faith = root.faith
+		culture = root.culture
+		employer = root
+	}
+}
+
+generate_wayfather_nullification = {
+	create_character = {
+		template = way_of_nullification_father_template
+		faith = root.faith
+		culture = root.culture
+		dynasty = none
+		employer = root
+	}
+}

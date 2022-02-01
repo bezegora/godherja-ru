@@ -1,0 +1,159 @@
+﻿aversaria_isles_1 = {
+	#Got his nickname drinking on a night out with the boys and then decided with his local frat that dealing with the latest sexual harassment case from their last rager was totally lame so they decided to invade the Isles on a bunch of stolen boats before old man Principal Cenware could steal all the babes. Managed to accidentally land his force in the middle of the High Kings entire mercenary army since he's incompetent but then whipped the fuck out of them since he's still more competent than anyone in the Empire. Now chugging brewskies with the boys and getting ready to shove his dick so hard up the Empire's backside. He's also a trustfund baby with a hella connected daddy in the Sjalvolki who will blood eagle the fuck out of the High King and every other Aversarian who can see a coastline if anything happens to his boy.
+	name = "Ulfirx" #Ulfirx 'Mad Dog'
+	religion = "sjalvolki"
+	culture = "daukeni"
+	dna = ulfirx_mad_dog
+	dynasty = dyn_sjalvolki_3
+	father = clanlands_megos_1
+	1231.6.18 = {
+	                      birth = yes
+	        effect = {
+			add_character_flag = has_scripted_appearance
+		}
+	}
+	1249.6.18 = {
+		give_nickname = nick_mad_dog
+		effect = {
+			set_relation_rival = character:aversaria_isles_4
+		}
+	}
+	1249.7.18 = {
+		effect = {
+			# Troops that goes away
+			spawn_army = {
+				name = ulfrix_host
+				levies = 500
+				men_at_arms = {
+					type = sjalvoki_berserkers
+					stacks = 2
+				}
+				location = 6108
+				origin = 6108
+				inheritable = no
+			}
+		}	
+	}	
+	martial = 9
+	diplomacy = 5
+	stewardship = 4
+	intrigue = 4
+	learning = 5
+	trait = ambitious
+	trait = impatient
+	trait = brave
+	trait = education_martial_2
+	trait = reveler_1
+	trait = physique_good_1
+	trait = reckless
+}
+
+aversaria_isles_2 = {
+	#Merc who thought Ulfirx was an entire Sjalvolki fleet and then got his entire force of 1000+ absolutely scrapped in the following slap fight by Ulfirx's 100 men in a mass panic. Proceeded to tell the High King to suck his dick and took a bunch of his islands as payment. Screwed.
+	name = "Kekropi" #Kekropi Aeovios
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	dna = kekropi_aversaria_isles_2
+	dynasty = dyn_aversarian_3
+	1222.4.11 = {
+	                      birth = yes
+	        effect = {
+			add_character_flag = has_scripted_appearance
+		}
+	}
+	martial = 8
+	diplomacy = 6
+	stewardship = 3
+	intrigue = 6
+	learning = 5
+	trait = deceitful
+	trait = cynical
+	trait = craven
+	trait = scarred
+	trait = education_intrigue_1
+}
+
+aversaria_isles_3 = {
+	#Local cult leader going big time, likes abducting people and sacrificing them to shadow gods, High King letting him run some islands for a while might have been a bad idea now that he wants to sacrifice the high king (and ulfirx (and everyone else (hes a crazy person)))
+	name = "Telemachion" #Telemachion
+        dna = telemachion
+	religion = "aversarian_island"
+	culture = "islander"
+	1198.5.27 = {
+		birth = yes
+	        effect = {
+			add_character_flag = has_scripted_appearance
+		}
+	}                       
+	martial = 5
+	diplomacy = 4
+	stewardship = 6
+	intrigue = 7
+	learning = 9
+	trait = zealous
+	trait = paranoid
+	trait = sadistic
+	trait = lunatic_1
+	trait = education_learning_2
+}
+
+aversaria_isles_4 = {
+	#ILLUSTRIOUS HIGH KING OF THE ISLES AND ALL OF THE SEAS OF THE RIGHTFUL AAUTOKRATA DEXIOS THE GLORIOUS FUCK YOU MERCENARY SCUM BAG TRAITOR FUCKS FUCK YOU ULFIRX YOU LITTLE CRAFTY SHIT PLOTTING MY DEMISE FROM THE START FUCK YOU CHILDREN PLOTTING AGAINST ME ILL FUCKING SHOW ALL OF YOU FUCK SHIT GOD DAMN IT FUCK LISTEN TO ME I WILL KILL ALL OF YOU WHAT THE FUCK DID YOU JUST SAY TO ME YOU LITTLE BITCH ILL FUCXGNSO IGNSOINGH ASJONFHASD;JHN ;ASDKJBFH ND;ASJONF HFUCK YOU FUCK GHFUFC KFUCK FUCK FOY YOU FUCK YOU AAAAAAAAAAAAAAAA I DONT HAVE A NAPOLEON COMPLEX YOU DO
+	#not an amazing dude
+	name = "Dexios" #Dexios
+	religion = "aversarinas_aautokrata"
+	culture = "islander"
+	dna = dexios_aversaria_isles_4
+	dynasty = dyn_aversarian_4
+	1205.10.10 = {
+	                      birth = yes
+	        effect = {
+			add_character_flag = has_scripted_appearance
+		}
+	}
+	1234.4.14 = {
+		give_nickname = nick_the_glorious
+		add_pressed_claim = k_nisinos
+	}
+	martial = 2
+	diplomacy = 3
+	stewardship = 2
+	intrigue = 7
+	learning = 4
+	trait = vengeful
+	trait = paranoid
+	trait = arrogant
+	trait = education_stewardship_3
+	trait = magic_good_2
+	trait = education_living_magic_1
+}
+
+aversaria_isles_5 = {
+	#High Kings daughter who he once doted on completely as his perfect child. Badass general girl and probably the only competent person in the High Kingdom. Was planning on a coup with the mercenaries and was literally in the first stage of launching it when Ulfirx dropped on top of the mercs and set the whole region on fire. After the coup failed we retreated with what few men weren't mercenaries or idiots and is now trying to depose her father for the betterment of everyone caught in the middle of the nonsense.
+	name = "Melane" #Melane
+	religion = "aversarinas_aautokrata"
+	culture = "islander"
+	dna = melane_aversaria_isles_5
+	dynasty = dyn_aversarian_4
+	father = aversaria_isles_4
+	female = yes
+	1223.11.24 = {
+		birth = yes
+	        effect = {
+			add_character_flag = has_scripted_appearance
+		}
+	}
+	1234.4.14 = {
+		add_pressed_claim = k_nisinos
+	}
+	martial = 9
+	diplomacy = 7
+	stewardship = 7
+	intrigue = 5
+	learning = 5
+	trait = just
+	trait = diligent
+	trait = arrogant
+	trait = education_martial_3
+	trait = magic_good_2
+}

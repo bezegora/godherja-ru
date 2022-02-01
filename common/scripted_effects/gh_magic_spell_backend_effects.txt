@@ -1,0 +1,259 @@
+﻿apply_spell_effect_with_backfire_chance_list = {
+	deduct_spell_cost_by_tier = { TIER = $TIER$ }
+	increase_overwhelmation_from_spell = yes
+	will_increase_overwhelmation = yes
+	random_list = {
+		0 = {
+			modifier = {
+				add = $SUCCESS_CHANCE$
+			}
+			every_in_list = {
+				variable = spell_targets
+				$SPELL_EFFECT$ = yes
+			}
+		}
+		0 = {
+			modifier = {
+				add = $FAILURE_CHANCE$
+			}
+			custom_tooltip = spell_backfires_tt
+			hidden_effect = {
+				$SPELL_EFFECT$ = yes
+			}
+		}
+	}
+}
+
+apply_spell_effect_with_custom_backfire_chance_list = {
+	deduct_spell_cost_by_tier = { TIER = $TIER$ }
+	increase_overwhelmation_from_spell = yes
+	will_increase_overwhelmation = yes
+	random_list = {
+		0 = {
+			modifier = {
+				add = $SUCCESS_CHANCE$
+			}
+			if = {
+				limit = { has_variable_list = spell_targets }
+				every_in_list = {
+					variable = spell_targets
+					$SPELL_EFFECT$ = yes
+				}
+			}
+			else = {
+				$SPELL_EFFECT$ = yes
+			}
+		}
+		0 = {
+			modifier = {
+				add = $FAILURE_CHANCE$
+			}
+			custom_tooltip = spell_backfires_tt
+			hidden_effect = {
+				$BACKFIRE_EFFECT$ = yes
+			}
+		}
+	}
+}
+
+increase_overwhelmation_from_spell = {
+	if = {
+		limit ={
+			root.var:magic_lvl = { compare_value = 0 }
+		}
+		increase_overwhelmation = { VALUE = 0.5 }
+	}
+	else_if = {
+		limit ={
+			root.var:magic_lvl = { compare_value = 1 }
+		}
+		increase_overwhelmation = { VALUE = 1 }
+	}
+	else_if = {
+		limit ={
+			root.var:magic_lvl = { compare_value = 2 }
+		}
+		increase_overwhelmation = { VALUE = 2 }
+	}
+	else_if = {
+		limit ={
+			root.var:magic_lvl = { compare_value = 3 }
+		}
+		increase_overwhelmation = { VALUE = 4 }
+	}
+}
+
+will_increase_overwhelmation = {
+	if = {
+		limit = {
+			NOT = {
+				has_trait_rank = {
+					trait = magicsickness
+					rank >= 3
+				}
+			}
+			overwhelmation_after_spell > overwhelmation_limit_third
+		}
+		custom_tooltip = will_increase_overwhelmation_extreme_tt
+	}
+	else_if = {
+		limit = {
+			NOT = {
+				has_trait_rank = {
+					trait = magicsickness
+					rank >= 2
+				}
+			}
+			overwhelmation_after_spell > overwhelmation_limit_second
+		}
+		custom_tooltip = will_increase_overwhelmation_advanced_tt
+	}
+	else_if = {
+		limit = {
+			NOT = {
+				has_trait_rank = {
+					trait = magicsickness
+					rank >= 1
+				}
+			}
+			overwhelmation_after_spell > overwhelmation_limit_first
+		}
+		custom_tooltip = will_increase_overwhelmation_standard_tt
+	}
+}
+
+set_or_upgrade_magic_modifier = {
+	if = {
+		limit = { $CASTER$ = { has_variable = magic_lvl } }
+		if = {
+			limit = { 
+				$CASTER$.var:magic_lvl = 0
+				NOR = {
+					has_character_modifier = $MODIFIER_NAME$_minor
+					has_character_modifier = $MODIFIER_NAME$_mid
+					has_character_modifier = $MODIFIER_NAME$_major
+					has_character_modifier = $MODIFIER_NAME$_huge
+				}
+			}
+			add_character_modifier = {
+				modifier = $MODIFIER_NAME$_minor
+				$TIME_UNIT$ = $DURATION$
+			}
+		}
+		else_if = {
+			limit = { 
+				$CASTER$.var:magic_lvl = 1
+				NOR = {
+					has_character_modifier = $MODIFIER_NAME$_mid
+					has_character_modifier = $MODIFIER_NAME$_major
+					has_character_modifier = $MODIFIER_NAME$_huge
+				}
+			}
+			if = {
+				limit = { has_character_modifier = $MODIFIER_NAME$_minor }
+				remove_character_modifier = $MODIFIER_NAME$_minor
+			}
+			add_character_modifier = {
+				modifier = $MODIFIER_NAME$_mid
+				$TIME_UNIT$ = $DURATION$
+			}
+		}
+		else_if = {
+			limit = { 
+				$CASTER$.var:magic_lvl = 2
+				NOR = {
+					has_character_modifier = $MODIFIER_NAME$_major
+					has_character_modifier = $MODIFIER_NAME$_huge
+				}
+			}
+			if = {
+				limit = { has_character_modifier = $MODIFIER_NAME$_minor }
+				remove_character_modifier = $MODIFIER_NAME$_minor
+			}
+			if = {
+				limit = { has_character_modifier = $MODIFIER_NAME$_mid }
+				remove_character_modifier = $MODIFIER_NAME$_mid
+			}
+			add_character_modifier = {
+				modifier = $MODIFIER_NAME$_major
+				$TIME_UNIT$ = $DURATION$
+			}
+		}
+		else_if = {
+			limit = { 
+				$CASTER$.var:magic_lvl = 3
+				NOT = {
+					has_character_modifier = $MODIFIER_NAME$_huge
+				}
+			}
+			if = {
+				limit = { has_character_modifier = $MODIFIER_NAME$_minor }
+				remove_character_modifier = $MODIFIER_NAME$_minor
+			}
+			if = {
+				limit = { has_character_modifier = $MODIFIER_NAME$_mid }
+				remove_character_modifier = $MODIFIER_NAME$_mid
+			}
+			if = {
+				limit = { has_character_modifier = $MODIFIER_NAME$_major }
+				remove_character_modifier = $MODIFIER_NAME$_major
+			}
+			add_character_modifier = {
+				modifier = $MODIFIER_NAME$_huge
+				$TIME_UNIT$ = $DURATION$
+			}
+		}
+	}
+}
+
+increase_ai_spell_tier_to_ideal_level = {
+	set_variable = {
+		name = temporary_success_chance_ratio_var
+		value = $SPELL_DIFFICULTY$_difficulty_chance_ratio
+	}
+	while = {
+		limit = {
+			var:magic_lvl < 4
+			spell_magic_cost_by_tier = { TIER = $TIER$ }
+			OR = {
+				NOT = { overwhelmation_after_spell >= overwhelmation_limit_second }
+				AND = {
+					NOT = { overwhelmation_after_spell >= overwhelmation_limit_third }
+					OR = {	# The very brave or very foolish will exert themselves to their max
+						ai_boldness >= 100
+						ai_rationality <= -50
+					}
+				}
+				AND = {	# The very brave AND very foolish will have no qualms about melting themselves into a puddle
+					ai_boldness >= 100
+					ai_rationality <= -50
+				}
+			}
+			OR = {
+				var:temporary_success_chance_ratio_var >= 75
+				AND = {
+					var:temporary_success_chance_ratio_var >= 50
+					OR = {
+						ai_boldness >= 100
+						ai_rationality <= -50
+					}
+				}
+			}
+		}
+		change_variable = {
+			name = magic_lvl
+			add = 1
+		}
+	}
+	set_variable = {
+		name = temporary_success_chance_ratio_var
+		value = $SPELL_DIFFICULTY$_difficulty_chance_ratio
+	}
+	if = {
+		limit = { var:magic_lvl > 0 }
+		change_variable = {
+			name = magic_lvl
+			subtract = 1
+		}
+	}
+}

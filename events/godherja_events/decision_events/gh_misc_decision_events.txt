@@ -1,0 +1,640 @@
+﻿###########################
+## EVENT LIST ##
+# gh_misc_decision_events
+# redistricting metro decision events
+# founding metro in kingdom capital events
+###########################
+
+###########################
+# Found metro in capital
+# by Syzygy 
+
+#REDISTRICTING EVENT
+namespace = gh_misc_decision_events
+
+
+gh_misc_decision_events.001 = {
+	type = character_event
+	title = gh_misc_decision_events.001.t
+	desc = gh_misc_decision_events.001.desc
+	theme = learning
+	left_portrait = {
+		character = ROOT
+		animation = personality_rational
+	}
+	#option = { #citadel_holding
+	#	name = holding_decisions_events.001.a
+	#	root.capital_province = {
+	#		set_holding_type = citadel_holding
+	#	}
+	#}
+	option = { #palatial_district_holding
+		name = gh_misc_decision_events.001.b
+		root.capital_province = {
+			set_holding_type = palatial_district_holding
+		}
+	}
+	option = { #temple_district_holding
+		name = gh_misc_decision_events.001.c
+		capital_province = {
+			set_holding_type = temple_district_holding
+		}
+	}
+	option = { #trade_district_holding
+		name = gh_misc_decision_events.001.d
+		capital_province = {
+			set_holding_type = trade_district_holding
+		}
+	}
+	option = { #urban_district_holding
+		name = gh_misc_decision_events.001.e
+		capital_province = {
+			set_holding_type = urban_district_holding
+		}
+	}
+	option = { #maritime_district_holding
+		name = gh_misc_decision_events.001.f
+		trigger = {
+			capital_province = {
+				is_coastal = yes 
+			}
+		}
+		capital_province = {
+			set_holding_type = maritime_district_holding
+		}
+	}
+	option = { #military_district_holding
+		name = gh_misc_decision_events.001.g 
+		capital_province = {
+			set_holding_type = military_district_holding
+		}
+	}
+	option = { #workshop_district_holding
+		name = gh_misc_decision_events.001.h 
+		capital_province = {
+			set_holding_type = workshop_district_holding
+		}
+	}		
+}
+#FOUDNING METRO EVENT - priming
+gh_misc_decision_events.002 = {
+	type = character_event
+	title = gh_misc_decision_events.002.t
+	desc = gh_misc_decision_events.002.desc
+	theme = learning
+	left_portrait = {
+		character = ROOT 
+		animation = personality_rational
+	}
+    
+    immediate = { #saving scope for localization
+        capital_province = {
+            save_scope_as = capital
+        }
+    }
+
+	#high martial options
+	option = {
+		name = gh_misc_decision_events.002.a
+		trigger = {
+			ROOT = {
+				martial >= 20
+			}
+		}
+		trigger_event = gh_misc_decision_events.003
+        
+        ai_chance = {
+            base = 100
+            ai_value_modifier = {
+                ai_boldness = 1
+                ai_greed = -0.2
+            }
+        }
+	}
+	#high steward options
+	option = {
+		name = gh_misc_decision_events.002.b
+		trigger = {
+			stewardship >= 20 
+		}
+		trigger_event = gh_misc_decision_events.004
+        
+        ai_chance = {
+            base = 100
+            ai_value_modifier = {
+                ai_rationality = 1
+            }
+        }
+	}
+	#high diplomacy options
+	option = {
+		name = gh_misc_decision_events.002.c
+		trigger = {
+			diplomacy >= 20
+		}
+		trigger_event = gh_misc_decision_events.005
+        
+        ai_chance = {
+            base = 100
+            ai_value_modifier = {
+                ai_honor = 1
+                ai_greed = -0.2
+            }
+        }
+	}
+	#high intrigue options
+	option = {
+		name = gh_misc_decision_events.002.d
+		trigger = {
+			intrigue >= 20
+		}
+		trigger_event = gh_misc_decision_events.006
+        
+        ai_chance = {
+            base = 100
+            ai_value_modifier = {
+                ai_honor = -1
+            }
+        }
+	}
+	#high learning options
+	option = {
+		name = gh_misc_decision_events.002.e
+		trigger = {
+			learning >= 20
+		}
+		trigger_event = gh_misc_decision_events.007
+	}
+    
+    ai_chance = {
+        base = 100
+        ai_value_modifier = {
+         	ai_zeal = 1
+		 	ai_greed = -0.2
+        }
+    }
+}
+#martial
+gh_misc_decision_events.003 = {
+	type = character_event
+	title = gh_misc_decision_events.003.t
+	desc = gh_misc_decision_events.003.desc
+	theme = learning
+	left_portrait = {
+		character = ROOT 
+		animation = personality_rational
+	}
+	#default -mil_dis
+	option = {
+		name = gh_misc_decision_events.003.a
+		capital_province = {
+			set_holding_type = military_district_holding
+		}
+	}
+	#lifestyle 1 
+	option = { #strategist -mil
+		name = gh_misc_decision_events.003.b
+		trigger = {
+			root = {
+				has_trait = strategist
+			}
+		}
+		capital_province = {
+			set_holding_type = military_district_holding
+		}
+	}
+	#lifestyle 2
+	#option = { #overseer - cit
+	#	name = gh_misc_decision_events.003.c
+	#	trigger = {
+	#		has_trait = overseer
+	#	}
+	#	root.capital_province = {
+	#		set_holding_type = citadel_holding
+	#	}
+	#}
+	#lifestyle 3
+	option = { #gallant - temple
+		name = gh_misc_decision_events.003.d
+		trigger = {
+			root = {
+				has_trait = gallant
+			}
+		}
+		capital_province = {
+			set_holding_type = temple_district_holding
+		}
+	}
+	#go back
+	option = { #back to priming
+		name = gh_misc_decision_events.003.e
+		trigger_event = gh_misc_decision_events.002
+	}
+
+}
+#steward
+gh_misc_decision_events.004 = {
+	type = character_event
+	title = gh_misc_decision_events.004.t
+	desc = gh_misc_decision_events.004.desc
+	theme = learning
+	left_portrait = {
+		character = ROOT 
+		animation = personality_rational
+	}
+	#default 
+	option = { # -trade
+		name = gh_misc_decision_events.004.a
+		capital_province = {
+			set_holding_type = trade_district_holding
+		}
+	}
+	#lifestyle 1
+	#option = { # architect - cit
+	#	name = gh_misc_decision_events.004.b
+	#	trigger = {
+	#		has_trait = architect
+	#	}
+	#}
+	#lifestyle 2
+	option = { #administrator - urban
+		name = gh_misc_decision_events.004.c
+		trigger = {
+			has_trait = administrator
+		}
+		capital_province = {
+			set_holding_type = urban_district_holding
+		}
+	}
+	#lifestyle 3
+	option = { #avaricious -trade/maratime
+		name = gh_misc_decision_events.004.d
+		trigger = {
+			has_trait = avaricious
+		}
+		if = {
+			limit = {
+				capital_province = {
+					is_coastal = yes 
+				}
+			}
+			capital_province = {
+				set_holding_type = maritime_district_holding
+			}
+		}
+		else_if = {
+			capital_province = {
+				set_holding_type = trade_district_holding
+			}
+		}
+	}
+	#go back
+	option = {
+		name = gh_misc_decision_events.004.e
+		trigger_event = gh_misc_decision_events.002	
+	}	
+}
+#diplo
+gh_misc_decision_events.005 = {
+	type = character_event
+	title = gh_misc_decision_events.005.t
+	desc = gh_misc_decision_events.005.desc
+	theme = learning
+	left_portrait = {
+		character = ROOT 
+		animation = personality_rational
+	}
+	#default 
+	option = { # palace
+		name = gh_misc_decision_events.005.a
+	}
+	#lifestyle 1
+	option = { #diplomat - palace
+		name = gh_misc_decision_events.005.b
+		trigger = {
+			has_trait = diplomat
+		}
+	}
+	#lifestyle 2
+	option = { #family_first - urban
+		name = gh_misc_decision_events.005.c
+		trigger = {
+			has_trait = family_first
+		}
+	}
+	#lifestyle 3
+	#option = { #august - cit
+	#	name = gh_misc_decision_events.005.d
+	#	trigger = {
+	#		has_trait = august
+	#	}
+	#}
+	#go back
+	option = {
+		name = gh_misc_decision_events.005.e	
+		trigger_event = gh_misc_decision_events.002
+	}	
+}
+#intrigue
+gh_misc_decision_events.006 = {
+	type = character_event
+	title = gh_misc_decision_events.006.t
+	desc = gh_misc_decision_events.006.desc
+	theme = learning
+	left_portrait = {
+		character = ROOT 
+		animation = personality_rational
+	}
+	#default 
+	option = { # urb
+		name = gh_misc_decision_events.006.a
+		capital_province = {
+			set_holding_type = urban_district_holding
+		}
+	}
+	#lifestyle 1
+	option = { #schemer - trade
+		name = gh_misc_decision_events.006.b
+		trigger = {
+			has_trait = schemer
+		}
+		capital_province = {
+			set_holding_type = trade_district_holding
+		}
+	}
+	#lifestyle 2
+	option = { #seducer - palace
+		name = gh_misc_decision_events.006.c
+		trigger = {
+			has_trait = seducer
+		}
+		capital_province = {
+			set_holding_type = palatial_district_holding
+		}
+	}
+	#lifestyle 3
+	option = { #torturer - urb
+		name = gh_misc_decision_events.006.d
+		trigger = {
+			has_trait = torturer 
+		}
+		capital_province = {
+			set_holding_type = urban_district_holding
+		}
+	}
+	#go back
+	option = {
+		name = gh_misc_decision_events.006.e
+		trigger_event = gh_misc_decision_events.002
+	}	
+}
+#learning
+gh_misc_decision_events.007 = {
+	type = character_event
+	title = gh_misc_decision_events.007.t
+	desc = gh_misc_decision_events.007.desc
+	theme = learning
+	left_portrait = {
+		character = ROOT 
+		animation = personality_rational
+	}
+	#default 
+	option = { # temple
+		name = gh_misc_decision_events.007.a
+		capital_province = {
+			set_holding_type = temple_district_holding
+		}
+	}
+	#lifestyle 1
+	option = { # whole_of_body - urb
+		name = gh_misc_decision_events.007.b
+		trigger = {
+			has_trait = whole_of_body
+		}
+		capital_province = {
+			set_holding_type = urban_district_holding
+		}
+	}
+	#lifestyle 2
+	option = { # scholar - trade
+		name = gh_misc_decision_events.007.c
+		trigger = {
+			has_trait = scholar
+		}
+		capital_province = {
+			set_holding_type = trade_district_holding
+		}
+	}
+	#lifestyle 3
+	option = { # theologian = temple
+		name = gh_misc_decision_events.007.d
+		trigger = {
+			has_trait = theologian
+		}
+		capital_province = {
+			set_holding_type = temple_district_holding
+		}
+	}
+	#go back
+	option = {
+		name = gh_misc_decision_events.007.e
+		trigger_event = gh_misc_decision_events.002
+	}	
+}
+
+######## Sacking events 100-200
+### respone events are just loc event
+gh_misc_decision_events.101 = { #sacking event inital
+	type = character_event
+	title = gh_misc_decision_events.101.t
+	desc = gh_misc_decision_events.101.desc
+	theme = skull
+	left_portrait = {
+		character = ROOT 
+		animation = personality_rational
+	}	
+	option = {
+		name = gh_misc_decision_events.101.a
+		trigger_event = {
+			id = gh_misc_decision_events.106
+			days = 7
+		}
+	}
+
+}
+gh_misc_decision_events.102 = { #generic not culture player response event
+	type = character_event
+	title = gh_misc_decision_events.102.t
+	desc = gh_misc_decision_events.102.desc
+	theme = skull
+	left_portrait = {
+		character = ROOT 
+		animation = personality_rational
+	}	
+	option = {
+		name = gh_misc_decision_events.102.a
+	}
+	
+}
+gh_misc_decision_events.103 = { #generic culture response event
+	type = character_event
+	title = gh_misc_decision_events.103.t
+	desc = gh_misc_decision_events.103.desc
+	theme = skull
+	left_portrait = {
+		character = ROOT 
+		animation = personality_rational
+	}	
+	option = {
+		name = gh_misc_decision_events.103.a
+	}
+	
+}
+gh_misc_decision_events.104 = { #abhorant culture response event
+	type = character_event
+	title = gh_misc_decision_events.104.t
+	desc = gh_misc_decision_events.104.desc
+	theme = skull
+	left_portrait = {
+		character = ROOT 
+		animation = personality_rational
+	}	
+	option = {
+		name = gh_misc_decision_events.104.a
+	}
+	
+}
+gh_misc_decision_events.105 = { #indifferent culture response event
+	type = character_event
+	title = gh_misc_decision_events.105.t
+	desc = gh_misc_decision_events.105.desc
+	theme = skull
+	left_portrait = {
+		character = ROOT 
+		animation = personality_rational
+	}	
+	option = {
+		name = gh_misc_decision_events.105.a
+	}
+	
+}
+gh_misc_decision_events.106 = { #sacking event 1
+	type = character_event
+	title = gh_misc_decision_events.106.t
+	desc = gh_misc_decision_events.106.desc
+	theme = skull
+	left_portrait = {
+		character = ROOT 
+		animation = personality_rational
+	}
+	immediate = {
+		trigger_event = {
+			id = gh_misc_decision_events.107
+			days = 14
+		}
+	}	
+	option = {
+		name = gh_misc_decision_events.106.a
+		title:b_phasio = {
+			title_province = {
+				set_holding_type = ruined_district_holding
+				add_building = palace_ruins_01
+				add_building = garden_ruins_01
+			}
+		}
+	}
+}
+gh_misc_decision_events.107 = { #sacking event 2
+	type = character_event
+	title = gh_misc_decision_events.107.t
+	desc = gh_misc_decision_events.107.desc
+	theme = skull
+	left_portrait = {
+		character = ROOT 
+		animation = personality_rational
+	}	
+	immediate = {
+		trigger_event = {
+			id = gh_misc_decision_events.108
+			days = 14
+		}
+	}
+	option = {
+		name = gh_misc_decision_events.107.a
+		title:b_cythenion = {
+			title_province = {
+				set_holding_type = ruined_district_holding
+				add_building = plaza_ruins_01
+				add_building = crater_ruins_01
+			}
+		}
+	}
+	
+}
+gh_misc_decision_events.108 = { #sacking event 3
+	type = character_event
+	title = gh_misc_decision_events.108.t
+	desc = gh_misc_decision_events.108.desc
+	theme = skull
+	left_portrait = {
+		character = ROOT 
+		animation = personality_rational
+	}	
+	immediate = {
+		trigger_event = {
+			id = gh_misc_decision_events.109
+			days = 14
+		}
+	}
+	option = {
+		name = gh_misc_decision_events.108.a
+		title:b_amaria = {
+			title_province = {
+				set_holding_type = ruined_district_holding
+				add_building = maritime_ruins_01
+				add_building = monument_ruins_01
+			}
+		}
+	}
+	
+}
+gh_misc_decision_events.109 = { #sacking event 4
+	type = character_event
+	title = gh_misc_decision_events.109.t
+	desc = gh_misc_decision_events.109.desc
+	theme = skull
+	left_portrait = {
+		character = ROOT 
+		animation = personality_rational
+	}	
+	option = {
+		name = gh_misc_decision_events.109.a
+		title:b_calinus = {
+			title_province = {
+				set_holding_type = ruined_district_holding
+				add_building = fountain_ruins_01
+				add_building = house_ruins_01
+			}
+		}
+		#trigger_event = gh_misc_decision_events.110
+	}
+	
+}
+#gh_misc_decision_events.110 = { #sacking event final - replace title:b_phasio with tribal holding
+#	type = character_event
+#	title = gh_misc_decision_events.110.t
+#	desc = gh_misc_decision_events.110.desc
+#	theme = skull
+#	left_portrait = {
+#		character = ROOT 
+#		animation = personality_rational
+#	}	
+#	option = {
+#		name = gh_misc_decision_events.110.a
+#		title:b_phasio = {
+#			title_province = {
+#				set_holding_type = tribal_holding
+#			}
+#		}
+#	}	
+#}

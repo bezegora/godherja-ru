@@ -1,0 +1,123 @@
+﻿namespace = world_story
+
+world_story.0001 = { #The Fall of Oraispol
+	title = world_story.0001.t
+	theme = battle
+	
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					culture_group = culture_group:gh_imperial_group
+				}
+				desc = world_story.0001.desc # Aversarian
+			}
+			triggered_desc = {
+				trigger = {
+					culture_group = culture_group:gh_sjalvoki_group
+				}
+				desc = world_story.0001.desc.sjalvoki # Sjavolki
+			}
+			triggered_desc = {
+				trigger = {
+					culture_group = culture_group:gh_iyrossi_group
+				}
+				desc = world_story.0001.desc.iyrossi # Iyrossi
+			}
+			triggered_desc = {
+				trigger = {
+					NOT = {
+						OR = {
+							culture_group = culture_group:gh_imperial_group
+							culture_group = culture_group:gh_iyrossi_group
+							culture_group = culture_group:gh_sjalvoki_group
+						}
+					}
+				}
+				desc = world_story.0001.desc.generic # Generic
+			}
+		}
+	}
+	
+	right_portrait = { 
+		character = scope:oraispol_conqueror
+		animation = marshal
+	}
+
+	option = {
+		trigger = {
+			culture_group = culture_group:gh_imperial_group
+		}
+		name = world_story.0001.a
+	}
+	option = {
+		trigger = {
+			OR = {
+				culture_group = culture_group:gh_iyrossi_group
+				culture_group = culture_group:gh_sjalvoki_group
+			}
+		}
+		name = world_story.0001.b
+	}
+	option = {
+		trigger = {
+			NOT = {
+				OR = {
+					culture_group = culture_group:gh_imperial_group
+					culture_group = culture_group:gh_iyrossi_group
+					culture_group = culture_group:gh_sjalvoki_group
+				}
+			}
+		}
+		name = world_story.0001.c
+	}
+}
+
+world_story.0100 = { # Niconaneus takes Oraispol
+	title = world_story.0100.t
+	#desc = world_story.0100.desc
+	theme = battle
+	
+	desc = world_story.0100.desc
+	
+	right_portrait = { 
+		character = root
+		animation = marshal
+	}
+
+	option = {
+		name = world_story.0100.a
+		add_prestige = 1500
+		add_prestige_level = 1
+		set_capital_county = title:c_halium
+	}
+}
+
+world_story.0101 = { # Niconaneus takes Bastonport
+	title = world_story.0101.t
+	#desc = world_story.0101.desc
+	theme = battle
+	
+	desc = world_story.0101.desc
+	
+	right_portrait = { 
+		character = root
+		animation = marshal
+	}
+
+	option = {
+		name = world_story.0101.a
+		add_prestige = massive_prestige_gain
+		custom_tooltip = world_story.0101.a.tt
+		title:c_kankaanviisa = {
+			set_title_name = NICONEAPOL_NAME
+		}
+		title:b_hinterreckenberg = {
+			set_title_name = NICONEAPOL_NAME
+		}
+	}
+	option = {
+		name = world_story.0101.b
+		add_piety = massive_piety_gain
+	}
+}

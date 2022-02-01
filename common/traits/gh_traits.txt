@@ -1,0 +1,3765 @@
+﻿############################
+#### GH  MAGICAL TRAITS ####
+### BY  JAKOB ZABOROWSKI ###
+####  (THEPINKPANZER)   ####
+############################
+
+###########################
+# CONGENITAL MAGIC TRAITS - ( 328 - 331 )
+# MAGIC EDUCATION TRAITS - ( 332 - 343 )
+# KONIJKMENER TRAITS - ( 344 - 345 )
+# LIFEPATH TRAITS - ( 346 - 363 )
+# DECISION/EVENT TRAITS - ( 364 - 366 )
+# RELIGION TRAITS - ( 367 - 368 )
+# INVASION TRAITS - ( 369 - 370 )
+# MISC BACKGROUND TRAITS - ( 371 - 372 )
+# MISC MAGIC TRAITS - ( 373 - 377 )
+# HISTORICAL TRAITS - ( 378 - 379 )
+# MAGIC EFFECT TRAITS ( 380 - 402 )
+
+############################
+#####  MAGIC   TRAITS  #####
+############################
+
+# When adding new magic traits, include the flag so that the magic effect shows up in the localization
+
+# Magic (+1) - Latent Magical Ability
+magic_good_1 = {
+	index = 328
+
+	#opposites = {
+	#	education_anti_magic
+	#}
+	#opposite_opinion = -20
+	
+	flag = character_monthly_magic_0_dot_5
+	
+	birth = 10
+	random_creation = 10
+
+	group = magic_good
+	level = 1
+	
+	ruler_designer_cost = 10
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_magic_good_1_desc
+			}
+			desc = trait_magic_good_1_character_desc
+		}
+	}
+	triggered_opinion = {
+		parameter = magic_illegal
+		opinion_modifier = magic_crime
+		ignore_opinion_value_if_same_trait = yes
+	}
+	triggered_opinion = {
+		parameter = magic_shunned
+		opinion_modifier = magic_intolerant
+		ignore_opinion_value_if_same_trait = yes
+	}
+	triggered_opinion = {
+		parameter = magic_supreme
+		opinion_modifier = magic_supreme
+		ignore_opinion_value_if_same_trait = yes
+	}
+	
+	genetic = yes
+	physical = yes
+	good = yes
+}
+# Magic (+2) - Basic Magical Ability
+magic_good_2 = {
+	index = 329
+
+	#opposites = {
+	#	education_anti_magic
+	#}
+	#opposite_opinion = -20
+	
+	flag = character_monthly_magic_1
+	
+	birth = 7
+	random_creation = 7
+
+	group = magic_good
+	level = 2
+	
+	ruler_designer_cost = 20
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { NOT = { exists = this } }
+				desc = trait_magic_good_2_desc
+			}
+			desc = trait_magic_good_2_character_desc
+		}
+	}
+	triggered_opinion = {
+		parameter = magic_illegal
+		opinion_modifier = magic_crime
+		ignore_opinion_value_if_same_trait = yes
+	}
+	triggered_opinion = {
+		parameter = magic_shunned
+		opinion_modifier = magic_intolerant
+		ignore_opinion_value_if_same_trait = yes
+	}
+	triggered_opinion = {
+		parameter = magic_supreme
+		opinion_modifier = magic_supreme
+		ignore_opinion_value_if_same_trait = yes
+	}
+	
+	genetic = yes
+	physical = yes
+	good = yes
+}
+# Magic (+3) - Gifted
+magic_good_3 = {
+	index = 330
+	
+	flag = character_monthly_magic_1_dot_5
+	
+	birth = 5
+	random_creation = 5
+
+	#opposites = {
+	#	education_anti_magic
+	#}
+	#opposite_opinion = -20
+
+	group = magic_good
+	level = 3
+	
+	ruler_designer_cost = 30
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { NOT = { exists = this } }
+				desc = trait_magic_good_3_desc
+			}
+			desc = trait_magic_good_3_character_desc
+		}
+	}
+	triggered_opinion = {
+		parameter = magic_illegal
+		opinion_modifier = magic_crime
+		ignore_opinion_value_if_same_trait = yes
+	}
+	triggered_opinion = {
+		parameter = magic_shunned
+		opinion_modifier = magic_intolerant
+		ignore_opinion_value_if_same_trait = yes
+	}
+	triggered_opinion = {
+		parameter = magic_supreme
+		opinion_modifier = magic_supreme
+		ignore_opinion_value_if_same_trait = yes
+	}
+	
+	genetic = yes
+	physical = yes
+	good = yes
+}
+# Magic (+4) - Advanced Magical Ability
+magic_good_4 = {
+	index = 331
+	
+	flag = character_monthly_magic_2
+
+	#opposites = {
+	#	education_anti_magic
+	#}
+	#opposite_opinion = -20
+	
+	birth = 2
+	random_creation = 2
+
+	group = magic_good
+	level = 4
+	
+	ruler_designer_cost = 40
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { NOT = { exists = this } }
+				desc = trait_magic_good_4_desc
+			}
+			desc = trait_magic_good_4_character_desc
+		}
+	}
+	triggered_opinion = {
+		parameter = magic_illegal
+		opinion_modifier = magic_crime
+		ignore_opinion_value_if_same_trait = yes
+	}
+	triggered_opinion = {
+		parameter = magic_shunned
+		opinion_modifier = magic_intolerant
+		ignore_opinion_value_if_same_trait = yes
+	}
+	triggered_opinion = {
+		parameter = magic_supreme
+		opinion_modifier = magic_supreme
+		ignore_opinion_value_if_same_trait = yes
+	}
+	
+	genetic = yes
+	physical = yes
+	good = yes
+}
+# Magic (+5) - Exceptional Magic Ability (I)
+magic_good_5 = {
+	index = 403
+	
+	flag = character_monthly_magic_2_dot_5
+
+	#opposites = {
+	#	education_anti_magic
+	#}
+	opposite_opinion = -20
+	
+	birth = 1
+	random_creation = 1
+	
+	group = magic_good
+	level = 5
+	
+	ruler_designer_cost = 50
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { NOT = { exists = this } }
+				desc = trait_magic_good_5_desc
+			}
+			desc = trait_magic_good_5_character_desc
+		}
+	}
+	triggered_opinion = {
+		parameter = magic_illegal
+		opinion_modifier = magic_crime
+		ignore_opinion_value_if_same_trait = yes
+	}
+	triggered_opinion = {
+		parameter = magic_shunned
+		opinion_modifier = magic_intolerant
+		ignore_opinion_value_if_same_trait = yes
+	}
+	triggered_opinion = {
+		parameter = magic_supreme
+		opinion_modifier = magic_supreme
+		ignore_opinion_value_if_same_trait = yes
+	}
+	
+	genetic = yes
+	physical = yes
+	good = yes
+}
+# Magic (+6) - Exceptional Magic Ability (II)
+magic_good_6 = {
+	index = 404
+	
+	flag = character_monthly_magic_3
+
+
+	opposite_opinion = -20
+	
+	birth = 0
+	random_creation = 0
+	
+	group = magic_good
+	level = 6
+	
+	ruler_designer_cost = 60
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { NOT = { exists = this } }
+				desc = trait_magic_good_6_desc
+			}
+			desc = trait_magic_good_6_character_desc
+		}
+	}
+	triggered_opinion = {
+		parameter = magic_illegal
+		opinion_modifier = magic_crime
+		ignore_opinion_value_if_same_trait = yes
+	}
+	triggered_opinion = {
+		parameter = magic_shunned
+		opinion_modifier = magic_intolerant
+		ignore_opinion_value_if_same_trait = yes
+	}
+	triggered_opinion = {
+		parameter = magic_supreme
+		opinion_modifier = magic_supreme
+		ignore_opinion_value_if_same_trait = yes
+	}
+	
+	genetic = yes
+	physical = yes
+	good = yes
+}
+# Magic (+7) - Exceptional Magic Ability (III)
+magic_good_7 = {
+	index = 405
+	
+	flag = character_monthly_magic_3_dot_5
+
+
+	opposite_opinion = -20
+	
+	birth = 0
+	random_creation = 0
+	
+	group = magic_good
+	level = 7
+	
+	ruler_designer_cost = 70
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { NOT = { exists = this } }
+				desc = trait_magic_good_7_desc
+			}
+			desc = trait_magic_good_7_character_desc
+		}
+	}
+	triggered_opinion = {
+		parameter = magic_illegal
+		opinion_modifier = magic_crime
+		ignore_opinion_value_if_same_trait = yes
+	}
+	triggered_opinion = {
+		parameter = magic_shunned
+		opinion_modifier = magic_intolerant
+		ignore_opinion_value_if_same_trait = yes
+	}
+	triggered_opinion = {
+		parameter = magic_supreme
+		opinion_modifier = magic_supreme
+		ignore_opinion_value_if_same_trait = yes
+	}
+	
+	genetic = yes
+	physical = yes
+	good = yes
+}
+# Magic (+8) - Pureblooded (I)
+magic_good_8 = {
+	index = 406
+	
+	flag = character_monthly_magic_4
+
+
+	opposite_opinion = -20
+	
+	birth = 0
+	random_creation = 0
+	
+	group = magic_good
+	level = 8
+	
+	ruler_designer_cost = 80
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { NOT = { exists = this } }
+				desc = trait_magic_good_8_desc
+			}
+			desc = trait_magic_good_8_character_desc
+		}
+	}
+	triggered_opinion = {
+		parameter = magic_illegal
+		opinion_modifier = magic_crime
+		ignore_opinion_value_if_same_trait = yes
+	}
+	triggered_opinion = {
+		parameter = magic_shunned
+		opinion_modifier = magic_intolerant
+		ignore_opinion_value_if_same_trait = yes
+	}
+	triggered_opinion = {
+		parameter = magic_supreme
+		opinion_modifier = magic_supreme
+		ignore_opinion_value_if_same_trait = yes
+	}
+	
+	genetic = yes
+	physical = yes
+	good = yes
+}
+# Magic (+9) - Pureblooded (II)
+magic_good_9 = {
+	index = 407
+	
+	flag = character_monthly_magic_4_dot_5
+
+
+	opposite_opinion = -20
+	
+	birth = 0
+	random_creation = 0
+	
+	group = magic_good
+	level = 9
+	
+	ruler_designer_cost = 90
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { NOT = { exists = this } }
+				desc = trait_magic_good_9_desc
+			}
+			desc = trait_magic_good_9_character_desc
+		}
+	}
+	triggered_opinion = {
+		parameter = magic_illegal
+		opinion_modifier = magic_crime
+		ignore_opinion_value_if_same_trait = yes
+	}
+	triggered_opinion = {
+		parameter = magic_shunned
+		opinion_modifier = magic_intolerant
+		ignore_opinion_value_if_same_trait = yes
+	}
+	triggered_opinion = {
+		parameter = magic_supreme
+		opinion_modifier = magic_supreme
+		ignore_opinion_value_if_same_trait = yes
+	}
+	
+	genetic = yes
+	physical = yes
+	good = yes
+}
+# Magic (+10) - Pureblooded (III)
+magic_good_10 = {
+	index = 408
+	
+	flag = character_monthly_magic_5
+
+
+	opposite_opinion = -20
+	
+	birth = 0
+	random_creation = 0
+	
+	group = magic_good
+	level = 10
+	
+	ruler_designer_cost = 100
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { NOT = { exists = this } }
+				desc = trait_magic_good_10_desc
+			}
+			desc = trait_magic_good_10_character_desc
+		}
+	}
+	triggered_opinion = {
+		parameter = magic_illegal
+		opinion_modifier = magic_crime
+		ignore_opinion_value_if_same_trait = yes
+	}
+	triggered_opinion = {
+		parameter = magic_shunned
+		opinion_modifier = magic_intolerant
+		ignore_opinion_value_if_same_trait = yes
+	}
+	triggered_opinion = {
+		parameter = magic_supreme
+		opinion_modifier = magic_supreme
+		ignore_opinion_value_if_same_trait = yes
+	}
+	
+	genetic = yes
+	physical = yes
+	good = yes
+}
+# Magic (+11) - Masterful (I)
+magic_good_11 = {
+	index = 409
+	
+	flag = character_monthly_magic_5_dot_5
+
+
+	opposite_opinion = -20
+	
+	birth = 0
+	random_creation = 0
+	
+	group = magic_good
+	level = 11
+	
+	ruler_designer_cost = 110
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { NOT = { exists = this } }
+				desc = trait_magic_good_11_desc
+			}
+			desc = trait_magic_good_11_character_desc
+		}
+	}
+	triggered_opinion = {
+		parameter = magic_illegal
+		opinion_modifier = magic_crime
+		ignore_opinion_value_if_same_trait = yes
+	}
+	triggered_opinion = {
+		parameter = magic_shunned
+		opinion_modifier = magic_intolerant
+		ignore_opinion_value_if_same_trait = yes
+	}
+	triggered_opinion = {
+		parameter = magic_supreme
+		opinion_modifier = magic_supreme
+		ignore_opinion_value_if_same_trait = yes
+	}
+	
+	genetic = yes
+	physical = yes
+	good = yes
+}
+# Magic (+12) - Masterful (II)
+magic_good_12 = {
+	index = 410
+	
+	flag = character_monthly_magic_6
+
+
+	opposite_opinion = -20
+	
+	birth = 0
+	random_creation = 0
+	
+	group = magic_good
+	level = 12
+	
+	ruler_designer_cost = 120
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { NOT = { exists = this } }
+				desc = trait_magic_good_12_desc
+			}
+			desc = trait_magic_good_12_character_desc
+		}
+	}
+	triggered_opinion = {
+		parameter = magic_illegal
+		opinion_modifier = magic_crime
+		ignore_opinion_value_if_same_trait = yes
+	}
+	triggered_opinion = {
+		parameter = magic_shunned
+		opinion_modifier = magic_intolerant
+		ignore_opinion_value_if_same_trait = yes
+	}
+	triggered_opinion = {
+		parameter = magic_supreme
+		opinion_modifier = magic_supreme
+		ignore_opinion_value_if_same_trait = yes
+	}
+	
+	genetic = yes
+	physical = yes
+	good = yes
+}
+# Magic (+13) - Masterful (III)
+magic_good_13 = {
+	index = 411
+	
+	flag = character_monthly_magic_6_dot_5
+
+
+	opposite_opinion = -20
+	
+	birth = 0
+	random_creation = 0
+	
+	group = magic_good
+	level = 13
+	
+	ruler_designer_cost = 130
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { NOT = { exists = this } }
+				desc = trait_magic_good_13_desc
+			}
+			desc = trait_magic_good_13_character_desc
+		}
+	}
+	triggered_opinion = {
+		parameter = magic_illegal
+		opinion_modifier = magic_crime
+		ignore_opinion_value_if_same_trait = yes
+	}
+	triggered_opinion = {
+		parameter = magic_shunned
+		opinion_modifier = magic_intolerant
+		ignore_opinion_value_if_same_trait = yes
+	}
+	triggered_opinion = {
+		parameter = magic_supreme
+		opinion_modifier = magic_supreme
+		ignore_opinion_value_if_same_trait = yes
+	}
+	
+	genetic = yes
+	physical = yes
+	good = yes
+}
+# Magic (+14) - Extreme (I)
+magic_good_14 = {
+	index = 412
+	
+	flag = character_monthly_magic_7
+
+
+	opposite_opinion = -20
+	
+	birth = 0
+	random_creation = 0
+	
+	group = magic_good
+	level = 14
+	
+	ruler_designer_cost = 140
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { NOT = { exists = this } }
+				desc = trait_magic_good_14_desc
+			}
+			desc = trait_magic_good_14_character_desc
+		}
+	}
+	triggered_opinion = {
+		parameter = magic_illegal
+		opinion_modifier = magic_crime
+		ignore_opinion_value_if_same_trait = yes
+	}
+	triggered_opinion = {
+		parameter = magic_shunned
+		opinion_modifier = magic_intolerant
+		ignore_opinion_value_if_same_trait = yes
+	}
+	triggered_opinion = {
+		parameter = magic_supreme
+		opinion_modifier = magic_supreme
+		ignore_opinion_value_if_same_trait = yes
+	}
+	
+	genetic = yes
+	physical = yes
+	good = yes
+}
+# Magic (+15) - Extreme (II)
+magic_good_15 = {
+	index = 413
+	
+	flag = character_monthly_magic_7_dot_5
+
+
+	opposite_opinion = -20
+	
+	birth = 0
+	random_creation = 0
+	
+	group = magic_good
+	level = 15
+	
+	ruler_designer_cost = 150
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { NOT = { exists = this } }
+				desc = trait_magic_good_15_desc
+			}
+			desc = trait_magic_good_15_character_desc
+		}
+	}
+	triggered_opinion = {
+		parameter = magic_illegal
+		opinion_modifier = magic_crime
+		ignore_opinion_value_if_same_trait = yes
+	}
+	triggered_opinion = {
+		parameter = magic_shunned
+		opinion_modifier = magic_intolerant
+		ignore_opinion_value_if_same_trait = yes
+	}
+	triggered_opinion = {
+		parameter = magic_supreme
+		opinion_modifier = magic_supreme
+		ignore_opinion_value_if_same_trait = yes
+	}
+	
+	genetic = yes
+	physical = yes
+	good = yes
+}
+# Magic (+16) - Extreme (III)
+magic_good_16 = {
+	index = 414
+	
+	flag = character_monthly_magic_8
+
+
+	opposite_opinion = -20
+	
+	birth = 0
+	random_creation = 0
+	
+	group = magic_good
+	level = 16
+	
+	ruler_designer_cost = 160
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { NOT = { exists = this } }
+				desc = trait_magic_good_16_desc
+			}
+			desc = trait_magic_good_16_character_desc
+		}
+	}
+	triggered_opinion = {
+		parameter = magic_illegal
+		opinion_modifier = magic_crime
+		ignore_opinion_value_if_same_trait = yes
+	}
+	triggered_opinion = {
+		parameter = magic_shunned
+		opinion_modifier = magic_intolerant
+		ignore_opinion_value_if_same_trait = yes
+	}
+	triggered_opinion = {
+		parameter = magic_supreme
+		opinion_modifier = magic_supreme
+		ignore_opinion_value_if_same_trait = yes
+	}
+	
+	genetic = yes
+	physical = yes
+	good = yes
+}
+# Magic (+17) - Godtouched (I)
+magic_good_17 = {
+	index = 415
+	
+	flag = character_monthly_magic_8_dot_5
+
+
+	opposite_opinion = -20
+	
+	birth = 0
+	random_creation = 0
+	
+	group = magic_good
+	level = 17
+	
+	ruler_designer_cost = 170
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { NOT = { exists = this } }
+				desc = trait_magic_good_17_desc
+			}
+			desc = trait_magic_good_17_character_desc
+		}
+	}
+	triggered_opinion = {
+		parameter = magic_illegal
+		opinion_modifier = magic_crime
+		ignore_opinion_value_if_same_trait = yes
+	}
+	triggered_opinion = {
+		parameter = magic_shunned
+		opinion_modifier = magic_intolerant
+		ignore_opinion_value_if_same_trait = yes
+	}
+	triggered_opinion = {
+		parameter = magic_supreme
+		opinion_modifier = magic_supreme
+		ignore_opinion_value_if_same_trait = yes
+	}
+	
+	genetic = yes
+	physical = yes
+	good = yes
+}
+# Magic (+18) - Godtouched (II)
+magic_good_18 = {
+	index = 416
+	
+	flag = character_monthly_magic_9
+
+
+	opposite_opinion = -20
+	
+	birth = 0
+	random_creation = 0
+	
+	group = magic_good
+	level = 18
+	
+	ruler_designer_cost = 180
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { NOT = { exists = this } }
+				desc = trait_magic_good_18_desc
+			}
+			desc = trait_magic_good_18_character_desc
+		}
+	}
+	triggered_opinion = {
+		parameter = magic_illegal
+		opinion_modifier = magic_crime
+		ignore_opinion_value_if_same_trait = yes
+	}
+	triggered_opinion = {
+		parameter = magic_shunned
+		opinion_modifier = magic_intolerant
+		ignore_opinion_value_if_same_trait = yes
+	}
+	triggered_opinion = {
+		parameter = magic_supreme
+		opinion_modifier = magic_supreme
+		ignore_opinion_value_if_same_trait = yes
+	}
+	
+	genetic = yes
+	physical = yes
+	good = yes
+}
+# Magic (+19) - Godtouched (III)
+magic_good_19 = {
+	index = 417
+	
+	flag = character_monthly_magic_9_dot_5
+
+
+	opposite_opinion = -20
+	
+	birth = 0
+	random_creation = 0
+	
+	group = magic_good
+	level = 19
+	
+	ruler_designer_cost = 190
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { NOT = { exists = this } }
+				desc = trait_magic_good_19_desc
+			}
+			desc = trait_magic_good_19_character_desc
+		}
+	}
+	triggered_opinion = {
+		parameter = magic_illegal
+		opinion_modifier = magic_crime
+		ignore_opinion_value_if_same_trait = yes
+	}
+	triggered_opinion = {
+		parameter = magic_shunned
+		opinion_modifier = magic_intolerant
+		ignore_opinion_value_if_same_trait = yes
+	}
+	triggered_opinion = {
+		parameter = magic_supreme
+		opinion_modifier = magic_supreme
+		ignore_opinion_value_if_same_trait = yes
+	}
+	
+	genetic = yes
+	physical = yes
+	good = yes
+}
+# Magic (+20) - Unimaginable
+magic_good_20 = {
+	index = 418
+	
+	flag = character_monthly_magic_10
+
+
+	opposite_opinion = -20
+	
+	birth = 0
+	random_creation = 0
+	
+	group = magic_good
+	level = 20
+	
+	ruler_designer_cost = 200
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { NOT = { exists = this } }
+				desc = trait_magic_good_20_desc
+			}
+			desc = trait_magic_good_20_character_desc
+		}
+	}
+	triggered_opinion = {
+		parameter = magic_illegal
+		opinion_modifier = magic_crime
+		ignore_opinion_value_if_same_trait = yes
+	}
+	triggered_opinion = {
+		parameter = magic_shunned
+		opinion_modifier = magic_intolerant
+		ignore_opinion_value_if_same_trait = yes
+	}
+	triggered_opinion = {
+		parameter = magic_supreme
+		opinion_modifier = magic_supreme
+		ignore_opinion_value_if_same_trait = yes
+	}
+	
+	genetic = yes
+	physical = yes
+	good = yes
+}
+
+############################
+##### MAGIC  EDUCATION #####
+############################
+
+# LIVING MAGIC OUTCOMES
+education_living_magic_1 = {
+	index = 332
+	minimum_age = 6
+
+
+	opposite_opinion = -20
+	
+	monthly_magic_lifestyle_living_xp_gain_mult = 0.1
+	flag = character_monthly_magic_0_dot_2
+	flag = enables_magic
+
+	random_creation = 0
+	
+	ruler_designer_cost = 10
+	
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_education_living_magic_1_desc
+			}
+			desc = trait_education_living_magic_1_character_desc
+		}
+	}
+
+	group = education_living_magic
+	level = 1
+}
+education_living_magic_2 = {
+	index = 333
+	minimum_age = 10
+
+
+	opposite_opinion = -20
+	
+	monthly_magic_lifestyle_living_xp_gain_mult = 0.2
+	flag = character_monthly_magic_0_dot_3
+	flag = character_sacrifice_magic_bonus_10
+	flag = enables_magic
+
+	random_creation = 0
+	
+	ruler_designer_cost = 10
+	
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_education_living_magic_2_desc
+			}
+			desc = trait_education_living_magic_2_character_desc
+		}
+	}
+
+	group = education_living_magic
+	level = 2
+}
+education_living_magic_3 = {
+	index = 334
+	minimum_age = 12
+
+
+	opposite_opinion = -20
+	
+	monthly_magic_lifestyle_living_xp_gain_mult = 0.3
+	flag = character_monthly_magic_0_dot_4
+	flag = character_sacrifice_magic_bonus_20
+	flag = enables_magic
+
+	random_creation = 0
+	
+	ruler_designer_cost = 10
+	
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_education_living_magic_3_desc
+			}
+			desc = trait_education_living_magic_3_character_desc
+		}
+	}
+
+	group = education_living_magic
+	level = 3
+}
+education_living_magic_4 = {
+	index = 335
+	minimum_age = 14
+
+
+	opposite_opinion = -20
+	
+	monthly_magic_lifestyle_living_xp_gain_mult = 0.4
+	flag = character_monthly_magic_0_dot_5
+	flag = character_sacrifice_magic_bonus_30
+	flag = enables_magic
+
+	random_creation = 0
+	
+	ruler_designer_cost = 10
+	
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_education_living_magic_4_desc
+			}
+			desc = trait_education_living_magic_4_character_desc
+		}
+	}
+
+	group = education_living_magic
+	level = 4
+}
+
+# DEAD MAGIC OUTCOMES
+education_dead_magic_1 = {
+	index = 336
+	minimum_age = 6
+
+	opposite_opinion = -20
+
+	monthly_magic_lifestyle_dead_xp_gain_mult = 0.1
+	flag = character_monthly_magic_moon_0_dot_5
+	flag = enables_magic
+
+	random_creation = 0
+	
+	ruler_designer_cost = 10
+	
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_education_dead_magic_1_desc
+			}
+			desc = trait_education_dead_magic_1_character_desc
+		}
+	}
+
+	group = education_dead_magic
+	level = 1
+}
+education_dead_magic_2 = {
+	index = 337
+	minimum_age = 10
+	
+	
+	opposite_opinion = -20
+	
+	monthly_magic_lifestyle_dead_xp_gain_mult = 0.2
+	flag = character_monthly_magic_moon_1
+	flag = enables_magic
+
+	random_creation = 0
+	
+	ruler_designer_cost = 10
+	
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_education_dead_magic_2_desc
+			}
+			desc = trait_education_dead_magic_2_character_desc
+		}
+	}
+
+	group = education_dead_magic
+	level = 2
+}
+education_dead_magic_3 = {
+	index = 338
+	minimum_age = 12
+
+
+	opposite_opinion = -20
+	
+	monthly_magic_lifestyle_dead_xp_gain_mult = 0.3
+	flag = character_monthly_magic_moon_1_dot_5
+	flag = enables_magic
+
+	random_creation = 0
+	
+	ruler_designer_cost = 10
+	
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_education_dead_magic_3_desc
+			}
+			desc = trait_education_dead_magic_3_character_desc
+		}
+	}
+
+	group = education_dead_magic
+	level = 3
+}
+education_dead_magic_4 = {
+	index = 339
+	minimum_age = 14
+
+
+	opposite_opinion = -20
+	
+	monthly_magic_lifestyle_dead_xp_gain_mult = 0.4
+	flag = character_monthly_magic_moon_2
+	flag = enables_magic
+
+	random_creation = 0
+	
+	ruler_designer_cost = 10
+	
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_education_dead_magic_4_desc
+			}
+			desc = trait_education_dead_magic_4_character_desc
+		}
+	}
+
+	group = education_dead_magic
+	level = 4
+}
+
+#MIXED MAGIC OUTCOMES
+education_mixed_magic_1 = {
+	index = 340
+	minimum_age = 6
+
+
+	opposite_opinion = -20
+	
+	monthly_magic_lifestyle_mixed_xp_gain_mult = 0.1
+	flag = enables_magic
+
+	random_creation = 0
+	
+	ruler_designer_cost = 10
+	
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_education_mixed_magic_1_desc
+			}
+			desc = trait_education_mixed_magic_1_character_desc
+		}
+	}
+
+	group = education_mixed_magic
+	level = 1
+}
+education_mixed_magic_2 = {
+	index = 341
+	minimum_age = 10
+
+
+	opposite_opinion = -20
+	
+	monthly_magic_lifestyle_mixed_xp_gain_mult = 0.2
+	flag = enables_magic
+
+	random_creation = 0
+	
+	ruler_designer_cost = 10
+	
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_education_mixed_magic_2_desc
+			}
+			desc = trait_education_mixed_magic_2_character_desc
+		}
+	}
+
+	group = education_mixed_magic
+	level = 2
+}
+education_mixed_magic_3 = {
+	index = 342
+	minimum_age = 12
+
+
+	opposite_opinion = -20
+	
+	monthly_magic_lifestyle_mixed_xp_gain_mult = 0.3
+	flag = enables_magic
+
+	random_creation = 0
+	
+	ruler_designer_cost = 10
+	
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_education_mixed_magic_3_desc
+			}
+			desc = trait_education_mixed_magic_3_character_desc
+		}
+	}
+
+	group = education_mixed_magic
+	level = 3
+}
+education_mixed_magic_4 = {
+	index = 343
+	minimum_age = 14
+
+
+	opposite_opinion = -20
+	
+	monthly_magic_lifestyle_mixed_xp_gain_mult = 0.4
+	flag = enables_magic
+
+	random_creation = 0
+	
+	ruler_designer_cost = 10
+	
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_education_mixed_magic_4_desc
+			}
+			desc = trait_education_mixed_magic_4_character_desc
+		}
+	}
+
+	group = education_mixed_magic
+	level = 4
+}
+
+############################
+### KONIJKMENER FACTIONS ###
+############################
+
+konijkmener_councilists = {
+	index = 344
+	martial = 1
+	general_opinion = -10
+	monthly_prestige = 1
+
+	opposite_opinion = -10
+	same_opinion = 15
+
+	shown_in_ruler_designer = no
+	
+	ruler_designer_cost = 10
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_konijkmener_councilists_1_desc
+			}
+			desc = trait_konijkmener_councilists_1_character_desc
+		}
+	}
+
+	compatibility = {
+		konijkmener_peopleofunity = @neg_compat_high
+		#konijkmener_neutral = @neg_compat_high
+	}
+}
+konijkmener_peopleofunity = {
+	index = 345
+	stewardship = 1
+	general_opinion = 10
+	county_opinion_add = 10
+
+	opposite_opinion = -10
+	same_opinion = 15
+
+	shown_in_ruler_designer = no
+	
+	ruler_designer_cost = 10
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_konijkmener_peopleofunity_1_desc
+			}
+			desc = trait_konijkmener_peopleofunity_1_character_desc
+		}
+	}
+
+	compatibility = {
+		konijkmener_councilists = @neg_compat_high
+		#konijkmener_neutral = @neg_compat_high
+	}
+}
+
+############################
+##### LIFEPATH  TRAITS #####
+############################
+
+# SECULAR TRAITS
+way_of_swords_follower = {
+	index = 346
+	opposites = {
+		way_of_coins
+		way_of_family
+		way_of_crowns
+		way_of_harvests
+		way_of_justice
+		way_of_knowledge
+		way_of_crows
+		way_of_nullification
+	}
+	
+	shown_in_ruler_designer = yes
+
+	martial = 2
+	prowess = 5
+	monthly_martial_lifestyle_xp_gain_mult = 0.1
+	
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_way_of_swords_follower_desc
+			}
+			desc = trait_way_of_swords_follower_character_desc
+		}
+	}
+	ai_boldness = 50
+	
+	group = way_of_swords
+	level = 1
+}
+way_of_family_follower = {
+	index = 347
+	opposites = {
+		way_of_coins
+		way_of_swords
+		way_of_crowns
+		way_of_harvests
+		way_of_justice
+		way_of_knowledge
+		way_of_crows
+		way_of_nullification
+		way_of_swords
+	}
+	
+	shown_in_ruler_designer = yes
+
+	diplomacy = 1
+	fertility = 0.2
+	monthly_dynasty_prestige_mult = 0.2
+	dynasty_opinion = 10
+	
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_way_of_family_follower_desc
+			}
+			desc = trait_way_of_family_follower_character_desc
+		}
+	}
+	ai_boldness = 50
+	
+	group = way_of_family
+	level = 1
+}
+way_of_coins_follower = {
+	index = 348
+	opposites = {
+		way_of_swords
+		way_of_family
+		way_of_crowns
+		way_of_harvests
+		way_of_justice
+		way_of_knowledge
+		way_of_crows
+		way_of_nullification
+	}
+	
+	shown_in_ruler_designer = yes
+
+	stewardship = 2
+	monthly_stewardship_lifestyle_xp_gain_mult = 0.1
+	domain_tax_mult = 0.2
+	vassal_tax_mult = 0.2
+	
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_way_of_coins_follower_desc
+			}
+			desc = trait_way_of_coins_follower_character_desc
+		}
+	}
+	ai_greed = 50
+	
+	group = way_of_coins
+	level = 1
+}
+way_of_crowns_follower = {
+	index = 349
+	opposites = {
+		way_of_swords
+		way_of_family
+		way_of_coins
+		way_of_harvests
+		way_of_justice
+		way_of_knowledge
+		way_of_crows
+		way_of_nullification
+	}
+
+	stewardship = 1
+	vassal_opinion = 10
+	general_opinion = 10
+	county_opinion_add = 5
+	
+	shown_in_ruler_designer = yes
+
+	
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_way_of_crowns_follower_desc
+			}
+			desc = trait_way_of_crowns_follower_character_desc
+		}
+	}
+	ai_sociability = 25
+	
+	group = way_of_crowns
+	level = 1
+}
+way_of_harvests_follower = {
+	index = 350
+	opposites = {
+		way_of_swords
+		way_of_family
+		way_of_crowns
+		way_of_coins
+		way_of_justice
+		way_of_knowledge
+		way_of_crows
+		way_of_nullification
+	}
+	
+	shown_in_ruler_designer = yes
+
+	stewardship = 1
+	vassal_opinion = -5
+	powerful_vassal_opinion = -10
+	county_opinion_add = 15
+	domain_tax_mult = 0.2
+	character_capital_county_monthly_development_growth_add = 0.2
+	
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_way_of_harvests_follower_desc
+			}
+			desc = trait_way_of_harvests_follower_character_desc
+		}
+	}
+	ai_rationality = 25
+	
+	group = way_of_harvests
+	level = 1
+}
+way_of_justice_follower = {
+	index = 351
+	opposites = {
+		way_of_swords
+		way_of_family
+		way_of_crowns
+		way_of_coins
+		way_of_harvests
+		way_of_knowledge
+		way_of_crows
+		way_of_nullification
+	}
+	
+	shown_in_ruler_designer = yes
+
+	martial = 1
+	general_opinion = 5
+	monthly_piety_gain_mult = 0.2
+	dread_decay_mult = 0.1
+	knight_limit = 2
+	
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_way_of_justice_follower_desc
+			}
+			desc = trait_way_of_justice_follower_character_desc
+		}
+	}
+	ai_compassion = 50
+	
+	group = way_of_justice
+	level = 1
+}
+way_of_knowledge_follower = {
+	index = 352
+	opposites = {
+		way_of_swords
+		way_of_family
+		way_of_crowns
+		way_of_coins
+		way_of_harvests
+		way_of_justice
+		way_of_crows
+		way_of_nullification
+	}
+	
+	shown_in_ruler_designer = yes
+
+	learning = 2
+	long_reign_bonus_mult = 0.2
+	monthly_learning_lifestyle_xp_gain_mult = 0.2
+	cultural_head_fascination_mult = 0.2
+	
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_way_of_knowledge_follower_desc
+			}
+			desc = trait_way_of_knowledge_follower_character_desc
+		}
+	}
+	ai_rationality = 100
+	
+	group = way_of_knowledge
+	level = 1
+}
+way_of_crows_follower = {
+	index = 353
+	opposites = {
+		way_of_swords
+		way_of_family
+		way_of_crowns
+		way_of_coins
+		way_of_harvests
+		way_of_justice
+		way_of_knowledge
+		way_of_nullification
+	}
+	
+	shown_in_ruler_designer = yes
+
+	intrigue = 2
+	scheme_success_chance = 5
+	monthly_intrigue_lifestyle_xp_gain_mult = 0.2
+	scheme_secrecy = 5
+	
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_way_of_crows_follower_desc
+			}
+			desc = trait_way_of_crows_follower_character_desc
+		}
+	}
+	ai_compassion = -20
+	
+	group = way_of_crows
+	level = 1
+}
+way_of_nullification_follower = {
+	index = 354
+	opposites = {
+		way_of_swords
+		way_of_family
+		way_of_crowns
+		way_of_coins
+		way_of_harvests
+		way_of_justice
+		way_of_knowledge
+		way_of_crows
+	}
+	
+	shown_in_ruler_designer = yes
+
+	martial = 1
+	prowess = 10
+	holy_order_hire_cost_mult = -0.2
+	
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_way_of_nullification_follower_desc
+			}
+			desc = trait_way_of_nullification_follower_character_desc
+		}
+	}
+	ai_zeal = 50
+	
+	group = way_of_nullification
+	level = 1
+}
+
+# PRIEST TRAITS
+way_of_swords_father = {
+	index = 355
+	opposites = {
+		way_of_coins
+		way_of_family
+		way_of_crowns
+		way_of_harvests
+		way_of_justice
+		way_of_knowledge
+		way_of_crows
+		way_of_nullification
+	}
+	
+	shown_in_ruler_designer = no
+
+	martial = 4
+	prowess = 10
+	monthly_martial_lifestyle_xp_gain_mult = 0.2
+	
+	
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_way_of_swords_father_desc
+			}
+			desc = trait_way_of_swords_father_character_desc
+		}
+	}
+	ai_boldness = 100
+	
+	group = way_of_swords
+	level = 2
+}
+
+way_of_family_father = {
+	index = 356
+	opposites = {
+		way_of_coins
+		way_of_swords
+		way_of_crowns
+		way_of_harvests
+		way_of_justice
+		way_of_knowledge
+		way_of_crows
+		way_of_nullification
+		way_of_swords
+	}
+	
+	shown_in_ruler_designer = no
+
+	diplomacy = 2
+	fertility = 0.4
+	monthly_dynasty_prestige_mult = 0.3
+	dynasty_opinion = 20
+	
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_way_of_family_father_desc
+			}
+			desc = trait_way_of_family_father_character_desc
+		}
+	}
+	ai_boldness = 50
+	
+	group = way_of_family
+	level = 2
+}
+
+way_of_coins_father = {
+	index = 357
+	opposites = {
+		way_of_swords
+		way_of_family
+		way_of_crowns
+		way_of_harvests
+		way_of_justice
+		way_of_knowledge
+		way_of_crows
+		way_of_nullification
+	}
+	
+	shown_in_ruler_designer = no
+
+	stewardship = 4
+	monthly_stewardship_lifestyle_xp_gain_mult = 0.2
+	domain_tax_mult = 0.4
+	vassal_tax_mult = 0.4
+	
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_way_of_coins_father_desc
+			}
+			desc = trait_way_of_coins_father_character_desc
+		}
+	}
+	ai_greed = 100
+	
+	group = way_of_coins
+	level = 2
+}
+
+way_of_crowns_father = {
+	index = 358
+	opposites = {
+		way_of_swords
+		way_of_family
+		way_of_coins
+		way_of_harvests
+		way_of_justice
+		way_of_knowledge
+		way_of_crows
+		way_of_nullification
+	}
+
+	stewardship = 2
+	vassal_opinion = 20
+	general_opinion = 20
+	county_opinion_add = 10
+	
+	shown_in_ruler_designer = no
+
+	
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_way_of_crowns_father_desc
+			}
+			desc = trait_way_of_crowns_father_character_desc
+		}
+	}
+	ai_sociability = 50
+	
+	group = way_of_crowns
+	level = 2
+}
+
+way_of_harvests_father = {
+	index = 359
+	opposites = {
+		way_of_swords
+		way_of_family
+		way_of_crowns
+		way_of_coins
+		way_of_justice
+		way_of_knowledge
+		way_of_crows
+		way_of_nullification
+	}
+	
+	shown_in_ruler_designer = no
+
+	stewardship = 2
+	vassal_opinion = -10
+	powerful_vassal_opinion = -20
+	county_opinion_add = 30
+	domain_tax_mult = 0.4
+	character_capital_county_monthly_development_growth_add = 0.4
+	
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_way_of_harvests_father_desc
+			}
+			desc = trait_way_of_harvests_father_character_desc
+		}
+	}
+	ai_rationality = 50
+	
+	group = way_of_harvests
+	level = 2
+}
+
+way_of_justice_father = {
+	index = 360
+	opposites = {
+		way_of_swords
+		way_of_family
+		way_of_crowns
+		way_of_coins
+		way_of_harvests
+		way_of_knowledge
+		way_of_crows
+		way_of_nullification
+	}
+	
+	shown_in_ruler_designer = no
+
+	martial = 2
+	general_opinion = 10
+	monthly_piety_gain_mult = 0.4
+	dread_decay_mult = 0.2
+	knight_limit = 4
+	
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_way_of_justice_father_desc
+			}
+			desc = trait_way_of_justice_father_character_desc
+		}
+	}
+	ai_compassion = 100
+	
+	group = way_of_justice
+	level = 2
+}
+
+way_of_knowledge_father = {
+	index = 361
+	opposites = {
+		way_of_swords
+		way_of_family
+		way_of_crowns
+		way_of_coins
+		way_of_harvests
+		way_of_justice
+		way_of_crows
+		way_of_nullification
+	}
+	
+	shown_in_ruler_designer = no
+
+	learning = 4
+	long_reign_bonus_mult = 0.4
+	monthly_learning_lifestyle_xp_gain_mult = 0.2
+	cultural_head_fascination_mult = 0.4
+	
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_way_of_knowledge_father_desc
+			}
+			desc = trait_way_of_knowledge_father_character_desc
+		}
+	}
+	ai_rationality = 100
+	
+	group = way_of_knowledge
+	level = 2
+}
+
+way_of_crows_father = {
+	index = 362
+	opposites = {
+		way_of_swords
+		way_of_family
+		way_of_crowns
+		way_of_coins
+		way_of_harvests
+		way_of_justice
+		way_of_knowledge
+		way_of_nullification
+	}
+	
+	shown_in_ruler_designer = no
+
+	intrigue = 4
+	scheme_success_chance = 0.4
+	monthly_intrigue_lifestyle_xp_gain_mult = 0.2
+	scheme_secrecy = 0.2
+	
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_way_of_crows_father_desc
+			}
+			desc = trait_way_of_crows_father_character_desc
+		}
+	}
+	ai_compassion = -40
+	
+	group = way_of_crows
+	level = 2
+}
+
+way_of_nullification_father = {
+	index = 363
+	opposites = {
+		way_of_swords
+		way_of_family
+		way_of_crowns
+		way_of_coins
+		way_of_harvests
+		way_of_justice
+		way_of_knowledge
+		way_of_crows
+	}
+	
+	shown_in_ruler_designer = no
+
+	martial = 2
+	prowess = 20
+	holy_order_hire_cost_mult = 0.2
+	
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_way_of_nullification_father_desc
+			}
+			desc = trait_way_of_nullification_father_character_desc
+		}
+	}
+	ai_zeal = 100
+	
+	group = way_of_nullification
+	level = 2
+}
+
+############################
+## DECISION/EVENT  TRAITS ##
+############################
+
+gh_chevalie_uniter = {
+	index = 364
+	
+	vassal_opinion = 10
+	fame = yes
+	monthly_prestige = 0.5
+	
+	shown_in_ruler_designer = no
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_gh_chevalie_uniter_desc
+			}
+			desc = trait_gh_chevalie_uniter_character_desc
+		}
+	}
+}
+gh_aeschreas_killer = {
+	index = 365
+
+	fame = yes
+	monthly_prestige = 1.5
+	vassal_opinion = 20
+	dread_gain_mult = 0.3
+	general_opinion = 20
+
+	shown_in_ruler_designer = no
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_gh_aeschreas_killer_desc
+			}
+			desc = trait_gh_aeschreas_killer_character_desc
+		}
+	}
+}
+gh_iyrossi_uniter = {
+	index = 366
+	
+	vassal_opinion = 10
+	fame = yes
+	monthly_prestige = 0.5
+	same_faith_opinion = 20
+	different_faith_opinion = -20
+	
+	
+	shown_in_ruler_designer = no
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_gh_iyrossi_uniter_desc
+			}
+			desc = trait_gh_iyrossi_uniter_character_desc
+		}
+	}
+}
+
+############################
+####  RELIGION  TRAITS  ####
+############################
+
+gh_blood_of_prophet = {
+	index = 367
+	education = no
+	fame = yes
+
+	same_faith_opinion = 10
+
+	shown_in_ruler_designer = no
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_gh_blood_of_prophet_desc
+			}
+			desc = trait_gh_blood_of_prophet_character_desc
+		}
+	}
+}
+gh_axiaothea_reborn = {
+	index = 368
+	
+	same_faith_opinion = 20
+	fame = yes
+	monthly_prestige = 1.0
+	monthly_piety = 2.0
+	martial = 3
+	
+	shown_in_ruler_designer = no
+	
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_gh_axiaothea_reborn_desc
+			}
+			desc = trait_gh_axiaothea_reborn_desc
+		}
+	}
+}
+
+############################
+####  INVASION  TRAITS  ####
+############################
+
+fogeater_invasion_leader = {
+	index = 369
+	diplomacy = 2
+	martial = 2
+	stewardship = 1
+	prowess = 2
+
+	shown_in_ruler_designer = no
+	
+	ruler_designer_cost = 10
+
+	same_culture_opinion = 75
+	vassal_limit = 20
+	dread_baseline_add = 50
+	dread_decay_mult = -0.25
+	hostile_scheme_resistance_mult = 0.25
+	enemy_hostile_scheme_success_chance_add = -20
+	
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_fogeater_invasion_leader_desc
+			}
+			desc = trait_fogeater_invasion_leader_character_desc
+		}
+	}
+
+	ai_honor = 20
+	ai_energy = 40
+	ai_boldness = 20
+}
+adabyss_invasion_leader = {
+	index = 370
+	diplomacy = 4
+	martial = 2
+	stewardship = 4
+	prowess = 3
+
+	shown_in_ruler_designer = no
+	
+	ruler_designer_cost = 15
+
+	same_culture_opinion = 20
+	vassal_limit = 20
+	dread_baseline_add = 50
+	dread_decay_mult = -0.25
+	hostile_scheme_resistance_mult = 0.25
+	enemy_hostile_scheme_success_chance_add = -20
+	
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_adabyss_invasion_leader_desc
+			}
+			desc = trait_adabyss_invasion_leader_character_desc
+		}
+	}
+
+	ai_honor = 20
+	ai_energy = 40
+	ai_boldness = 20
+}
+
+############################
+## MISC BACKGROUND TRAITS ##
+############################
+
+gh_peasant_birth = {
+	index = 371
+	#diplomacy = -5
+	same_opinion = 25
+	general_opinion = -10
+	county_opinion_add = 10
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_gh_peasant_birth_desc
+			}
+			desc = trait_gh_peasant_birth_character_desc
+		}
+	}
+	
+	ruler_designer_cost = 10
+}
+gh_puppet = {
+	index = 372
+	diplomacy = -1
+	intrigue = -1
+	martial = -1
+	learning = -1
+	stewardship = -1
+	general_opinion = -10
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_gh_puppet_desc
+			}
+			desc = trait_gh_puppet_character_desc
+		}
+	}
+	
+	ruler_designer_cost = 10
+}
+
+############################
+#### MISC  MAGIC TRAITS ####
+############################
+
+necromancy_undead_thrall = {
+	index = 373
+	minimum_age = 16
+
+
+	opposite_opinion = -20
+	
+	ruler_designer_cost = 10
+
+	shown_in_ruler_designer = no
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_necromancy_undead_thrall_desc
+			}
+			desc = trait_necromancy_undead_thrall_character_desc
+		}
+	}
+
+	group = undead
+	level = 1
+}
+necromancy_undead_awakened = {
+	index = 374
+	minimum_age = 16
+	
+
+	opposite_opinion = -20
+
+	shown_in_ruler_designer = no
+	
+	ruler_designer_cost = 10
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_necromancy_undead_awakened_desc
+			}
+			desc = trait_necromancy_undead_awakened_character_desc
+		}
+	}
+
+	group = undead
+	level = 2
+}
+necromancy_undead_lich = {
+	index = 375
+	minimum_age = 16
+
+
+
+	shown_in_ruler_designer = no
+
+	opposite_opinion = -50
+	
+	ruler_designer_cost = 10
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_necromancy_undead_lich_desc
+			}
+			desc = trait_necromancy_undead_lich_character_desc
+		}
+	}
+
+	group = undead
+	level = 3
+}
+gh_extended_life = {
+	index = 376
+
+	immortal = yes
+	shown_in_ruler_designer = no
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_gh_extended_life
+			}
+			desc = trait_gh_extended_life_character_desc
+		}
+	}
+}
+
+gh_gedeora_child = {
+	index = 377
+	
+	shown_in_ruler_designer = yes
+	
+	diplomacy = -1
+	general_opinion = -5
+	
+	fame = yes
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_gh_gedeora_child
+			}
+			desc = trait_gh_gedeora_child_desc
+		}
+	}
+	
+	ai_honor = -25
+	ai_compassion = -25
+	ai_vengefulness = 25
+}
+
+############################
+###  HISTORICAL  TRAITS  ###
+############################
+
+gh_chevalie_uniter_og = {
+	index = 378
+	
+	vassal_opinion = 30
+	fame = yes
+	monthly_prestige = 2.0
+	monthly_piety = 1.0
+	
+	shown_in_ruler_designer = no
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_gh_chevalie_uniter_og_desc
+			}
+			desc = trait_gh_chevalie_uniter_og_character_desc
+		}
+	}
+}
+gh_the_last_nikaryin = {
+	index = 379
+	
+	vassal_opinion = 10
+	fame = yes
+	monthly_prestige = 0.5
+	monthly_piety = 0.5
+	monthly_war_income_mult = 0.2
+	dread_gain_mult = 0.2
+	
+	shown_in_ruler_designer = no
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_gh_the_last_nikaryin_desc
+			}
+			desc = trait_gh_the_last_nikaryin_char_desc
+		}
+	}
+}
+
+############################
+###  MAGIC EFFECT TRAITS ###
+############################
+
+gh_boneshaped_strong = {
+	index = 380
+	
+	prowess = 4
+	health = -0.25
+	
+	attraction_opinion = 15
+	
+	shown_in_ruler_designer = no
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_gh_boneshaped_strong_desc
+			}
+			desc = trait_gh_boneshaped_strong_character_desc
+		}
+	}
+}
+
+gh_boneshaped_beauty = {
+	index = 381
+	
+	diplomacy = 2
+	fertility = 0.2
+	health = -0.25
+	
+	attraction_opinion = 20
+	
+	shown_in_ruler_designer = no
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_gh_boneshaped_beauty_desc
+			}
+			desc = trait_gh_boneshaped_beauty_character_desc
+		}
+	}
+}
+
+gh_boneshaped_giant = {
+	index = 382
+	
+	prowess = 8
+	health = -0.5
+
+	physical = yes
+	
+	attraction_opinion = -5
+	tribal_government_opinion = 10
+	vassal_opinion = 5
+	same_opinion = 20
+	
+	shown_in_ruler_designer = no
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_gh_boneshaped_giant_desc
+			}
+			desc = trait_gh_boneshaped_giant_character_desc
+		}
+	}
+}
+
+gh_magicsickness_1 = {
+	index = 383
+	
+	health_trait = yes
+
+	diplomacy = -1
+	stewardship = -1
+	intrigue = -1
+	learning = -1
+	prowess = -3
+	health = -1
+	fertility = -0.1
+	dread_baseline_add = -5
+	dread_loss_mult = 0.25
+	attraction_opinion = -5
+	
+	shown_in_ruler_designer = no
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_gh_magicsickness_1_desc
+			}
+			desc = trait_gh_magicsickness_1_character_desc
+		}
+	}
+	
+	group = magicsickness
+	level = 1
+}
+
+gh_magicsickness_2 = {
+	index = 384
+
+	health_trait = yes
+	
+	diplomacy = -2
+	stewardship = -2
+	intrigue = -2
+	learning = -2
+	prowess = -5
+	health = -2
+	fertility = -0.25
+	dread_baseline_add = -10
+	dread_loss_mult = 0.5
+	attraction_opinion = -10
+	
+	shown_in_ruler_designer = no
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_gh_magicsickness_2_desc
+			}
+			desc = trait_gh_magicsickness_2_character_desc
+		}
+	}
+	
+	group = magicsickness
+	level = 2
+}
+
+gh_magicsickness_3 = {
+	index = 385
+
+	health_trait = yes
+	
+	diplomacy = -3
+	stewardship = -3
+	intrigue = -3
+	learning = -3
+	prowess = -10
+	health = -4
+	fertility = -0.5
+	dread_baseline_add = -20
+	dread_loss_mult = 1
+	attraction_opinion = -15
+	
+	shown_in_ruler_designer = no
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_gh_magicsickness_3_desc
+			}
+			desc = trait_gh_magicsickness_3_character_desc
+		}
+	}
+	
+	group = magicsickness
+	level = 3
+}
+
+gh_glowingeyes_red = {
+	index = 386
+
+	health_trait = yes
+	
+	attraction_opinion = -5
+	monthly_prestige = 1
+	
+	shown_in_ruler_designer = no
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_gh_glowingeyes_red_desc
+			}
+			desc = trait_gh_glowingeyes_red_character_desc
+		}
+	}
+}
+
+gh_glowingeyes_green = {
+	index = 387
+
+	health_trait = yes
+	
+	attraction_opinion = -5
+	monthly_prestige = 1
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_gh_glowingeyes_green_desc
+			}
+			desc = trait_gh_glowingeyes_green_character_desc
+		}
+	}
+}
+
+gh_excessively_pale = {
+	index = 388
+
+	health_trait = yes
+	
+	attraction_opinion = -10
+	monthly_prestige = 1
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_gh_excessively_pale_desc
+			}
+			desc = trait_gh_excessively_pale_character_desc
+		}
+	}
+}
+
+gh_glowing_veins = {
+	index = 389
+
+	health_trait = yes
+	
+	attraction_opinion = -10
+	monthly_prestige = 1
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_gh_glowing_veins_desc
+			}
+			desc = trait_gh_glowing_veins_character_desc
+		}
+	}
+}
+
+gh_power_bleeder = {
+	index = 390
+
+	health_trait = yes
+	
+	health = -2
+	prowess = -5
+	attraction_opinion = -5
+	monthly_prestige = 1
+	monthly_piety = 1
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_gh_power_bleeder_desc
+			}
+			desc = trait_gh_power_bleeder_character_desc
+		}
+	}
+}
+
+gh_necronic_skin = {
+	index = 391
+
+	health_trait = yes
+	
+	health = -1
+	attraction_opinion = -10
+	fertility = -0.2
+	prowess = -10
+	dread_gain_mult = 0.25
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_gh_necronic_skin_desc
+			}
+			desc = trait_gh_necronic_skin_character_desc
+		}
+	}
+}
+
+gh_beset_by_visions = {
+	index = 392
+
+	health_trait = yes
+	
+	stress_gain_mult = 0.15
+	scheme_discovery_chance_mult = 0.15
+	dread_gain_mult = 0.1
+	fertility = -0.2
+	health = -1
+	learning = 2
+	intrigue = 1
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_gh_beset_by_visions_desc
+			}
+			desc = trait_gh_beset_by_visions_character_desc
+		}
+	}
+}
+
+gh_aervalrian_curse = {
+	index = 393
+
+	health_trait = yes
+	
+	vassal_opinion = -10
+	scheme_resistance = -0.1
+	intrigue = -1
+	stewardship = -1
+	martial = -1
+	learning = -1
+	diplomacy = -1
+	
+	shown_in_ruler_designer = no
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_gh_aervalrian_curse_desc
+			}
+			desc = trait_gh_aervalrian_curse_character_desc
+		}
+	}
+}
+
+gh_ritual_tattoos = {
+	index = 394
+
+	health_trait = yes
+	
+	monthly_prestige = 1.0
+	attraction_opinion = -10
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_gh_ritual_tattoos_desc
+			}
+			desc = trait_gh_ritual_tattoos_character_desc
+		}
+	}
+}
+
+gh_ritual_scars_1 = {
+	index = 395
+
+	health_trait = yes
+	
+	attraction_opinion = 5
+	monthly_prestige = 0.5
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_gh_ritual_scars_1_desc
+			}
+			desc = trait_gh_ritual_scars_1_character_desc
+		}
+	}
+	
+	group = ritual_scars
+	level = 1
+}
+
+gh_ritual_scars_2 = {
+	index = 396
+
+	health_trait = yes
+	
+	monthly_prestige = 1
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_gh_ritual_scars_2_desc
+			}
+			desc = trait_gh_ritual_scars_2_character_desc
+		}
+	}
+	
+	group = ritual_scars
+	level = 2
+}
+
+gh_ritual_scars_3 = {
+	index = 397
+
+	health_trait = yes
+	
+	health = -0.5
+	attraction_opinion = -5
+	monthly_prestige = 1.5
+	
+	shown_in_ruler_designer = no
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_gh_ritual_scars_3_desc
+			}
+			desc = trait_gh_ritual_scars_3_character_desc
+		}
+	}
+	
+	group = ritual_scars
+	level = 3
+}
+
+gh_racked_by_voices = {
+	index = 398
+
+	health_trait = yes
+	
+	stress_gain_mult = 0.15
+	scheme_discovery_chance_mult = 0.15
+	dread_gain_mult = 0.1
+	fertility = -0.2
+	health = -1
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_gh_racked_by_voices_desc
+			}
+			desc = trait_gh_racked_by_voices_character_desc
+		}
+	}
+}
+
+gh_exhausted = {
+	index = 399
+	
+	opposites = {
+		gh_stimulated
+	}
+	
+	health_trait = yes
+	
+	stress_loss_mult = 0.15
+	health = -0.5
+	diplomacy = -1
+	intrigue = -1
+	martial = -1
+	stewardship = -1
+	learning = -1
+	life_expectancy = -5
+	fertility = -0.1
+
+	physical = yes
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_gh_exhausted_desc
+			}
+			desc = trait_gh_exhausted_character_desc
+		}
+	}
+}
+
+gh_stimulated = {
+	index = 400
+	
+	opposites = {
+		gh_exhausted
+	}
+	
+	health_trait = yes
+	
+	stress_gain_mult = 0.15
+	health = -0.5
+	diplomacy = -1
+	intrigue = -1
+	martial_per_stress_level = 1
+	stewardship_per_stress_level = 1
+	learning_per_stress_level = 1
+	life_expectancy = -5
+
+	physical = yes
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_gh_stimulated_desc
+			}
+			desc = trait_gh_stimulated_character_desc
+		}
+	}
+}
+
+gh_deep_mutation = {
+	index = 401
+
+	health_trait = yes
+	
+	positive_random_genetic_chance = 0.75
+	negative_inactive_inheritance_chance = 0.75
+	positive_random_genetic_chance = 0.75
+	negative_random_genetic_chance = 0.75
+	genetic_trait_strengthen_chance = 0.75
+	life_expectancy = -10
+	fertility = -0.5
+	health = -2
+
+	physical = yes
+	genetic = yes
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_gh_deep_mutation_desc
+			}
+			desc = trait_gh_deep_mutation_character_desc
+		}
+	}
+}
+
+gh_vampiric = {
+	index = 402
+
+	health_trait = yes
+	
+	prowess = -5
+	fertility = -2
+	health = -0.5
+	dread_baseline_add = 5
+	attraction_opinion = -10
+	general_opinion = -5
+
+	physical = yes
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_gh_vampiric_desc
+			}
+			desc = trait_gh_vampiric_character_desc
+		}
+	}
+}
+
+gh_dehanded = {
+	index = 419
+	health_trait = yes
+	attraction_opinion = -10
+	prowess = -100
+	martial = -4
+	
+	flag = can_not_access_magic
+	
+	shown_in_ruler_designer = no
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_gh_dehanded_desc
+			}
+			desc = trait_gh_dehanded_character_desc
+		}
+	}
+}
+
+gh_shortsighted = {
+	index = 420
+	
+	opposites = {
+		gh_nearly_blind
+		blind
+	}
+	
+	health_trait = yes
+	martial = -2
+	stewardship = -1
+	intrigue = -1
+	prowess = -4
+	
+	ruler_designer_cost = -4
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_shortsighted_desc
+			}
+			desc = trait_shortsighted_desc
+		}
+	}
+	
+	group = gh_sight_bad
+	level = 1
+}
+
+gh_nearly_blind = {
+	index = 421
+	
+	opposites = {
+		gh_shortsighted
+		blind
+	}
+	
+	health_trait = yes
+	martial = -4
+	stewardship = -2
+	intrigue = -2
+	prowess = -8
+	health = -0.1
+	
+	dread_baseline_add = -5
+	attraction_opinion = -5
+	
+	ruler_designer_cost = -8
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_gh_nearly_blind_desc
+			}
+			desc = trait_gh_nearly_blind_desc
+		}
+	}
+	
+	group = gh_sight_bad
+	level = 2
+}
+
+gh_riftsight_1 = {
+	index = 422
+	
+	health_trait = yes
+	intrigue = 2
+	hostile_scheme_power_mult = 0.1
+	hostile_scheme_resistance_mult = 0.1
+	dread_baseline_add = 5
+	stress_gain_mult = 0.25
+	general_opinion = -5
+	
+	ruler_designer_cost = 5
+	
+	opposites = {
+		gh_riftsight_2
+		gh_riftsight_3
+		gh_riftsight_4
+	}
+	
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_gh_riftsight_1_desc
+			}
+			desc = trait_gh_riftsight_1_desc
+		}
+	}
+	
+	group = gh_riftsight
+	level = 1
+}
+
+gh_riftsight_2 = {
+	index = 423
+	
+	health_trait = yes
+	intrigue = 4
+	hostile_scheme_power_mult = 0.2
+	hostile_scheme_resistance_mult = 0.2
+	dread_baseline_add = 10
+	stress_gain_mult = 0.5
+	general_opinion = -10
+	
+	ruler_designer_cost = 10
+	
+	opposites = {
+		gh_riftsight_1
+		gh_riftsight_3
+		gh_riftsight_4
+	}
+	
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_gh_riftsight_2_desc
+			}
+			desc = trait_gh_riftsight_2_desc
+		}
+	}
+	
+	group = gh_riftsight
+	level = 2
+}
+
+gh_riftsight_3 = {
+	index = 424
+	
+	health_trait = yes
+	intrigue = 6
+	hostile_scheme_power_mult = 0.3
+	hostile_scheme_resistance_mult = 0.3
+	dread_baseline_add = 15
+	stress_gain_mult = 0.75
+	general_opinion = -15
+	
+	flag = informs_of_impending_death
+	
+	ruler_designer_cost = 15
+	
+	opposites = {
+		gh_riftsight_1
+		gh_riftsight_2
+		gh_riftsight_4
+	}
+	
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_gh_riftsight_3_desc
+			}
+			desc = trait_gh_riftsight_3_desc
+		}
+	}
+	
+	group = gh_riftsight
+	level = 3
+}
+
+gh_riftsight_4 = {
+	index = 425
+	
+	health_trait = yes
+	intrigue = 8
+	hostile_scheme_power_mult = 0.4
+	hostile_scheme_resistance_mult = 0.4
+	dread_baseline_add = 20
+	stress_gain_mult = 1.0
+	general_opinion = -20
+	
+	flag = informs_of_impending_death
+	
+	ruler_designer_cost = 15
+	
+	opposites = {
+		gh_riftsight_1
+		gh_riftsight_2
+		gh_riftsight_4
+	}
+	
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_gh_riftsight_4_desc
+			}
+			desc = trait_gh_riftsight_4_desc
+		}
+	}
+	
+	group = gh_riftsight
+	level = 4
+}
+
+gh_chosen_man = {
+	index = 426
+
+	fame = yes
+	monthly_piety = 0.5
+	same_faith_opinion = 10
+	different_faith_opinion = -20
+	
+	
+	shown_in_ruler_designer = no
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_gh_chosen_man_desc
+			}
+			desc = trait_gh_chosen_man_character_desc
+		}
+	}
+}
+gh_veteran_of_elysia_sjalvolki = {
+	index = 427
+	
+	same_faith_opinion = 10
+	monthly_prestige = 1.5
+	monthly_piety = 1
+	martial = 1
+	hills_advantage = 4
+	tolerance_advantage_mod = 5
+	
+	fame = yes
+	shown_in_ruler_designer = no
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_gh_veteran_of_elysia_sjalvolki_desc
+			}
+			desc = trait_gh_veteran_of_elysia_sjalvolki_char_desc
+		}
+	}
+}
+gh_veteran_of_elysia_aversarian = {
+	index = 428
+	
+	same_faith_opinion = 5
+	stress_gain_mult = 0.1
+	martial = 1
+	hills_advantage = 4
+	tolerance_advantage_mod = 5
+	
+	fame = yes
+	shown_in_ruler_designer = no
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_gh_veteran_of_elysia_aversarian_desc
+			}
+			desc = trait_gh_veteran_of_elysia_aversarian_char_desc
+		}
+	}
+}
+gh_veteran_of_elysia_marcher = {
+	index = 429
+	
+	stress_gain_mult = 0.05
+	monthly_prestige = 1.0
+	martial = 1
+	hills_advantage = 4
+	tolerance_advantage_mod = 5
+	
+	fame = yes
+	shown_in_ruler_designer = no
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_gh_veteran_of_elysia_marcher_desc
+			}
+			desc = trait_gh_veteran_of_elysia_marcher_char_desc
+		}
+	}
+}
+gh_wasteland = {
+	index = 433
+	
+	immortal = yes
+	blocks_from_claim_inheritance = yes
+	incapacitating = yes
+	birth = 0
+	random_creation = 0
+	fertility = -1000
+	health = 15
+	county_opinion_add = 200
+	
+	shown_in_ruler_designer = no
+
+	desc = trait_gh_wasteland_desc
+}
+hunter_4 = {
+	index = 434
+	lifestyle = yes
+	prowess = 7
+	
+	stress_loss_mult = 0.2
+	
+	group = lifestyle_hunter
+	level = 4
+	
+	ruler_designer_cost = 70
+	
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_hunter_3_desc
+			}
+			desc = trait_hunter_3_character_desc
+		}
+	}
+
+	compatibility = {
+		hunter_1 = @pos_compat_medium
+		hunter_2 = @pos_compat_medium
+		hunter_3 = @pos_compat_medium
+		hunter_4 = @pos_compat_medium
+		hunter_5 = @pos_compat_medium
+		brave = @pos_compat_low
+		craven = @neg_compat_low
+		lazy = @neg_compat_low
+	}
+}
+hunter_5 = {
+	index = 435
+	lifestyle = yes
+	prowess = 7
+	
+	stress_loss_mult = 0.2
+	
+	group = lifestyle_hunter
+	level = 5
+	
+	ruler_designer_cost = 100
+	
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_hunter_3_desc
+			}
+			desc = trait_hunter_3_character_desc
+		}
+	}
+
+	compatibility = {
+		hunter_1 = @pos_compat_medium
+		hunter_2 = @pos_compat_medium
+		hunter_3 = @pos_compat_medium
+		hunter_4 = @pos_compat_medium
+		hunter_5 = @pos_compat_medium
+		brave = @pos_compat_low
+		craven = @neg_compat_low
+		lazy = @neg_compat_low
+	}
+}
+beasthunter_1 = {
+	index = 436
+	
+	group = lifestyle_beasthunter
+	level = 1
+	
+	flag = can_hunt_low_level_monsters
+	prowess = 2
+	martial = 1
+
+	ruler_designer_cost = 50
+	
+	name = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { has_variable = expert_proficiency_game }
+				}
+				desc = trait_beasthunter_1
+			}
+			triggered_desc = {
+				trigger = {
+					has_variable = expert_proficiency_game
+				}
+				desc = trait_specialized_beasthunter
+			}
+		}
+	}
+	
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_beasthunter_1_desc
+			}
+			triggered_desc = {
+				trigger = {
+					has_variable = expert_proficiency_game
+				}
+				desc = trait_beasthunter_1_specialized_desc
+			}
+			desc = trait_beasthunter_1_character_desc
+		}
+	}
+	
+	compatibility = {
+		hunter_1 = @pos_compat_medium
+		hunter_2 = @pos_compat_medium
+		hunter_3 = @pos_compat_medium
+		hunter_4 = @pos_compat_medium
+		hunter_5 = @pos_compat_medium
+		gh_lifestyle_beasthunter_1 = @pos_compat_medium
+		gh_lifestyle_beasthunter_2 = @pos_compat_medium
+		gh_lifestyle_beasthunter_3 = @pos_compat_medium
+		brave = @pos_compat_low
+		craven = @neg_compat_low
+		lazy = @neg_compat_low
+	}
+}
+beasthunter_2 = {
+	index = 437
+	
+	group = lifestyle_beasthunter
+	level = 2
+	
+	flag = can_hunt_medium_level_monsters
+	prowess = 4
+	martial = 2
+	learning = 1
+
+	ruler_designer_cost = 100
+	
+	name = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { has_variable = expert_proficiency_game }
+				}
+				desc = trait_beasthunter_2
+			}
+			triggered_desc = {
+				trigger = {
+					has_variable = expert_proficiency_game
+				}
+				desc = trait_specialized_beasthunter
+			}
+		}
+	}
+	
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_beasthunter_2_desc
+			}
+			triggered_desc = {
+				trigger = {
+					has_variable = expert_proficiency_game
+				}
+				desc = trait_beasthunter_2_specialized_desc
+			}
+			desc = trait_beasthunter_2_character_desc
+		}
+	}
+	
+	compatibility = {
+		hunter_1 = @pos_compat_medium
+		hunter_2 = @pos_compat_medium
+		hunter_3 = @pos_compat_medium
+		hunter_4 = @pos_compat_medium
+		hunter_5 = @pos_compat_medium
+		gh_lifestyle_beasthunter_1 = @pos_compat_medium
+		gh_lifestyle_beasthunter_2 = @pos_compat_medium
+		gh_lifestyle_beasthunter_3 = @pos_compat_medium
+		brave = @pos_compat_low
+		craven = @neg_compat_low
+		lazy = @neg_compat_low
+	}
+}
+
+beasthunter_3 = {
+	index = 438
+	
+	group = lifestyle_beasthunter
+	level = 3
+	
+	flag = can_hunt_high_level_monsters
+	prowess = 8
+	martial = 4
+	learning = 2
+
+	ruler_designer_cost = 200
+	
+	name = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { has_variable = expert_proficiency_game }
+				}
+				desc = trait_beasthunter_3
+			}
+			triggered_desc = {
+				trigger = {
+					has_variable = expert_proficiency_game
+				}
+				desc = trait_beasthunter_3_specialized_desc
+			}
+			triggered_desc = {
+				trigger = {
+					has_variable = expert_proficiency_game
+				}
+				desc = trait_specialized_beasthunter
+			}
+		}
+	}
+	
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_beasthunter_3_desc
+			}
+			desc = trait_beasthunter_3_character_desc
+		}
+	}
+	
+	compatibility = {
+		hunter_1 = @pos_compat_medium
+		hunter_2 = @pos_compat_medium
+		hunter_3 = @pos_compat_medium
+		hunter_4 = @pos_compat_medium
+		hunter_5 = @pos_compat_medium
+		gh_lifestyle_beasthunter_1 = @pos_compat_medium
+		gh_lifestyle_beasthunter_2 = @pos_compat_medium
+		gh_lifestyle_beasthunter_3 = @pos_compat_medium
+		brave = @pos_compat_low
+		craven = @neg_compat_low
+		lazy = @neg_compat_low
+	}
+}
+
+beasthunter_4 = {
+	index = 439
+	
+	group = lifestyle_beasthunter
+	level = 4
+	
+	flag = can_hunt_high_level_monsters
+	prowess = 10
+	martial = 4
+	learning = 2
+
+	ruler_designer_cost = 400
+	
+	name = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { has_variable = expert_proficiency_game }
+				}
+				desc = trait_beasthunter_4
+			}
+			triggered_desc = {
+				trigger = {
+					has_variable = expert_proficiency_game
+				}
+				desc = trait_beasthunter_4_specialized_desc
+			}
+			triggered_desc = {
+				trigger = {
+					has_variable = expert_proficiency_game
+				}
+				desc = trait_specialized_beasthunter
+			}
+		}
+	}
+	
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_beasthunter_4_desc
+			}
+			desc = trait_beasthunter_4_character_desc
+		}
+	}
+	
+	compatibility = {
+		hunter_1 = @pos_compat_medium
+		hunter_2 = @pos_compat_medium
+		hunter_3 = @pos_compat_medium
+		hunter_4 = @pos_compat_medium
+		hunter_5 = @pos_compat_medium
+		gh_lifestyle_beasthunter_1 = @pos_compat_medium
+		gh_lifestyle_beasthunter_2 = @pos_compat_medium
+		gh_lifestyle_beasthunter_3 = @pos_compat_medium
+		brave = @pos_compat_low
+		craven = @neg_compat_low
+		lazy = @neg_compat_low
+	}
+}

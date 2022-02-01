@@ -1,0 +1,56 @@
+amsari_child_kill = {
+	category = interaction_category_hostile
+
+	greeting = positive
+
+	auto_accept = yes
+
+	is_shown = {
+		has_culture_group = culture_group:gh_zarasadari_group
+		has_succession_law = amsari_succession_law
+	}
+
+	on_accept = {
+		scope:recipient = {
+			death = {
+				death_reason = death_strangulation
+				killer = scope:actor
+			}
+		}
+		scope:actor.primary_heir = {
+			add_opinion = {
+				target = scope:actor
+				add = 10
+			}
+			desc = happy_heir
+		}
+		scope:actor = {
+			every_child = {
+				limit = {
+					NOT = {
+						this = scope:actor.primary_heir
+					}
+				}
+				add_opinion = { 
+					target = scope:actor
+					add = 5
+				}
+			}
+			desc = happy_heir
+		}
+	}
+
+	ai_targets = {
+		ai_recipients = children
+	}
+	ai_target_quick_trigger = {
+		adult = yes
+	}
+	ai_frequency = 72
+	
+	ai_potential = {
+		any_child = {
+			count >= 6
+		}
+	}
+}

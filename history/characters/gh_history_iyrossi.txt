@@ -1,0 +1,207 @@
+﻿iyrossi_history_1 = { #Pothacleas, the Last Iyrossi
+	name = "Pothacleas"
+        dna = photacleas
+	religion = "iyrossi"
+	culture = "scusstari"
+	martial = 12
+	diplomacy = 4
+	intrigue = 3
+	stewardship = 5
+	dynasty = dyn_iyrossi_8
+	trait = stubborn
+	trait = vengeful
+	trait = patient
+	trait = education_martial_prowess_4
+	trait = education_martial_4
+	64.2.11 = {
+		birth = yes
+	        effect = {
+			add_character_flag = has_scripted_appearance
+		}
+	}
+	119.6.17 = {
+		give_nickname = nick_the_last_iyrossi
+		death = {
+			death_reason = death_fed_to_dragon
+			killer = western_imperial_1016
+		}
+	}
+}
+
+iyrossi_history_2 = { #Mother of Sirras, murdered by Gorassos, descendent of Pothacleas
+	name = "Iria"
+	religion = "aversarian_iyrossi"
+	culture = "scusstari"
+	dynasty = dyn_iyrossi_8
+	mother = iyrossi_history_4
+	father = iyrossi_history_5
+	female = yes
+	1204.4.14 = {
+		birth = yes
+	}
+	1221.5.11 = {
+		add_spouse = iyrossi_history_3
+	}
+	1236.1.16 = {
+		death = {
+			death_reason = death_head_ripped_off
+			killer = southern_imperial_15
+		}
+	}
+}
+
+iyrossi_history_6 = { #Uncle of Sirras, murdered by Gorassos
+	name = "Jorgron"
+	religion = "aversarian_iyrossi"
+	culture = "scusstari"
+	dynasty = dyn_iyrossi_8
+	mother = iyrossi_history_4
+	father = iyrossi_history_5
+	1199.5.11 = {
+		birth = yes
+	}
+	1236.1.16 = {
+		death = {
+			death_reason = death_battle
+			killer = southern_imperial_15
+		}
+	}
+}
+
+iyrossi_history_8 = { #Sister of Sirras, murdered by Gorassos
+	name = "Riza"
+	religion = "aversarian_iyrossi"
+	culture = "scusstari"
+	dynasty = dyn_iyrossi_8
+	mother = iyrossi_history_2
+	father = iyrossi_history_3
+	female = yes
+	1232.3.5 = {
+		birth = yes
+	}
+	1236.1.16 = {
+		death = {
+			death_reason = death_whipping
+			killer = southern_imperial_15
+		}
+	}
+}
+
+iyrossi_history_9 = { #Brother of Sirras, murdered by Gorassos
+	name = "Tudarn"
+	religion = "aversarian_iyrossi"
+	culture = "scusstari"
+	dynasty = dyn_iyrossi_8
+	mother = iyrossi_history_2
+	father = iyrossi_history_3
+	1233.7.21 = {
+		birth = yes
+	}
+	1236.1.16 = {
+		death = {
+			death_reason = death_whipping
+			killer = southern_imperial_15
+		}
+	}
+}
+
+iyrossi_history_10 = { #Aunt of Sirras, died in childbirth
+	name = "Vadisina"
+	religion = "aversarian_iyrossi"
+	culture = "scusstari"
+	dynasty = dyn_iyrossi_8
+	mother = iyrossi_history_4
+	father = iyrossi_history_5
+	female = yes
+	1200.10.11 = {
+		birth = yes
+	}
+	1229.4.21 = {
+		death = {
+			death_reason = death_delivery
+		}
+	}
+}
+
+iyrossi_history_11 = { #Cousin of Sirras, died in childbirth
+	name = "Doran"
+	religion = "aversarian_iyrossi"
+	culture = "scusstari"
+	dynasty = dyn_iyrossi_8
+	mother = iyrossi_history_10
+	1229.4.21 = {
+		birth = yes
+	}
+	1229.4.21 = {
+		death = {
+			death_reason = death_childbirth
+		}
+	}
+}
+
+iyrossi_history_3 = { #Father of Sirras, murdered by Gorassos
+	name = "Dazidan"
+	religion = "aversarian_iyrossi"
+	culture = "scusstari"
+	1198.11.12 = {
+		birth = yes
+	}
+	1236.1.16 = {
+		death = {
+			death_reason = death_execution_blood_eagle
+			killer = southern_imperial_15
+		}
+	}
+}
+
+iyrossi_history_4 = { #Grandmother of Sirras (mothers side), murdered by Gorassos
+	name = "Sida"
+	religion = "aversarian_iyrossi"
+	culture = "scusstari"
+	dynasty = dyn_iyrossi_8
+	father = iyrossi_history_7
+	female = yes
+	1179.4.4 = {
+		birth = yes
+	}
+	1195.4.5 = {
+		add_spouse = iyrossi_history_5
+	}
+	1236.1.16 = {
+		death = {
+			death_reason = death_beaten
+			killer = southern_imperial_15
+		}
+	}
+}
+
+iyrossi_history_5 = { #Grandfather of Sirras (mothers side)
+	name = "Agron"
+	religion = "aversarian_iyrossi"
+	culture = "scusstari"
+	dynasty = dyn_iyrossi_8
+	1170.1.2 = {
+		birth = yes
+	}
+	1211.1.2 = {
+		death = {
+			death_reason = death_old_age
+		}
+	}
+}
+
+iyrossi_history_7 = { #Great grandfather of Sirras (mothers side)
+	name = "Badar"
+	religion = "aversarian_iyrossi"
+	culture = "scusstari"
+	dynasty = dyn_iyrossi_8
+	1148.3.4 = {
+		birth = yes
+	}
+	1200.3.1 = {
+		death = {
+			death_reason = death_frodbrokna
+			killer = western_imperial_1
+		}
+	}
+}

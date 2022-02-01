@@ -1,0 +1,49 @@
+﻿on_birthday = {
+	on_actions = {
+		first_cast_extension
+		second_cast_extension
+		third_cast_extension
+	}
+}
+
+first_cast_extension = {
+	trigger = {
+		AND = {
+			age = 100
+			has_trait = gh_extended_life
+			has_character_flag = casted_vampiric_drain
+		}
+	}
+
+	events = {
+		magic_decisions.1002
+	}
+}
+
+second_cast_extension = {
+	trigger = {
+		AND = {
+			age = 125
+			has_trait = gh_extended_life
+			has_character_flag = casted_vampiric_drain
+		}
+	}
+
+	events = {
+		magic_decisions.1003
+	}
+}
+
+third_cast_extension = {
+	trigger = {
+		AND = {
+			age = 150
+			has_trait = gh_extended_life
+			has_character_flag = casted_vampiric_drain
+		}
+	}
+
+	events = {
+		magic_decisions.1004
+	}
+}

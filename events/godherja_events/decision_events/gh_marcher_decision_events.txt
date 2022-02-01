@@ -1,0 +1,1117 @@
+﻿namespace = marcher_decision
+
+##################################################
+
+### Marcher Major Decision Events
+
+# 0001 - Reunite Chevalie
+# 0100 - Reintegrate Ziemojycz
+# 0500 - Demand that Independent Lords Swear Fealty
+
+##################################################
+
+##################################################
+# Reunite Chevalie
+# by ThePinkPanzer
+##################################################
+
+marcher_decision.0001 = {
+	title = marcher_decision.0001.t
+	type = character_event
+	desc = {
+		first_valid = {
+			# Benouet.
+			triggered_desc = {
+				trigger = {
+					ROOT = character:marcher_3
+				}
+				desc = marcher_decision.0001.desc.benouet
+			}
+			#Rene
+			triggered_desc = {
+				trigger = {
+					ROOT = character:marcher_4
+				}
+				desc = marcher_decision.0001.desc.rene
+			}
+			#Cliement
+			triggered_desc = {
+				trigger = {
+					ROOT = character:marcher_5
+					is_adult = yes
+				}
+				desc = marcher_decision.0001.desc.cliement.adult
+			}
+			#Cliement Adult
+			triggered_desc = {
+				trigger = {
+					ROOT = character:marcher_5
+					is_adult = no
+				}
+				desc = marcher_decision.0001.desc.cliement.boy
+			}
+			#Ansfrei no heir
+			triggered_desc = {
+				trigger = {
+					ROOT = character:marcher_7
+					any_heir = {
+						NOT = {
+							exists = this 
+						}
+					}
+				}
+				desc = marcher_decision.0001.desc.ansfrei.noheir
+			}
+			#Ansfrei heir
+			triggered_desc = {
+				trigger = {
+					ROOT = character:marcher_7
+					any_heir = {
+						exists =  this 
+					}
+				}
+				desc = marcher_decision.0001.desc.ansfrei.heir
+			}
+			#Mathilde
+			triggered_desc = {
+				trigger = {
+					ROOT = character:marcher_11
+				}
+				desc = marcher_decision.0001.desc.mathilde
+			}
+			# Other.
+			desc = marcher_decision.0001.desc.regular
+		}
+	}
+	theme = realm
+	left_portrait = {
+		character = scope:chevalie_uniter
+		animation = personality_bold
+	}
+	right_portrait = {
+		character = character:marcher_1000
+		animation = war_over_win
+	}
+
+	immediate = {
+		play_music_cue = "mx_cue_epic_sacral_moment"
+		form_chevalie_scripted_effect = yes
+	}
+	option = {
+		name = marcher_decision.0001.a
+		trigger = { #benouet
+			ROOT = character:marcher_3
+		}
+	}
+	option = {
+		name = marcher_decision.0001.b
+		trigger = { #rene
+			ROOT = character:marcher_4
+		}
+		destroy_title = title:d_the_band_of_bastards
+	}
+	option = {
+		name = marcher_decision.0001.c
+		trigger = { #cliement adult
+			ROOT = character:marcher_5
+			is_adult = yes
+		}
+	}
+	option = {
+		name = marcher_decision.0001.d
+		trigger = { #cliement boy
+			ROOT = character:marcher_5
+			is_adult = no
+		}
+	}
+	option = {
+		name = marcher_decision.0001.e
+		trigger = { #ansfrei no heir
+			ROOT = character:marcher_7
+			any_heir = {
+				NOT = {
+					exists =  this 
+				}
+			}
+		}
+	}
+	option = {
+		name = marcher_decision.0001.f
+		trigger = { #ansfrei heir
+			ROOT = character:marcher_7
+			any_heir = {
+				exists =  this 
+			}
+		}
+	}
+	option = {
+		name = marcher_decision.0001.g
+		trigger = { #matilde
+			ROOT = character:marcher_11
+		}
+	}
+}
+
+# Players informed
+marcher_decision.0002 = {
+	title = marcher_decision.0002.t
+	desc = marcher_decision.0002.desc
+	first_valid = {  # Marchers.
+		triggered_desc = {
+			trigger = {
+				has_culture_group = culture_group:gh_marcher_group
+			}
+			desc = marcher_decision.0002.desc.marchers
+		}
+		# Regular.
+		desc = marcher_decision.0002.desc.regular
+	}
+	type = character_event
+	theme = realm
+	left_portrait = {
+		character = scope:chevalie_uniter
+		animation = personality_bold
+	}
+	right_portrait = {
+		character = character:marcher_1000
+		animation = happiness
+	}
+
+	immediate = {
+		play_music_cue = "mx_cue_epic_sacral_moment"
+	}
+	option = {
+		name = { # Regular
+			trigger = {
+				NOT = {
+					has_culture_group = culture_group:gh_marcher_group
+				}
+			}
+			text = marcher_decision.0002.a
+		}
+		name = { # Marchers
+			trigger = {
+				has_culture_group = culture_group:gh_marcher_group
+			}
+			text = marcher_decision.0002.b
+		}
+	}
+}
+
+##################################################
+# Reintegrate Ziemojycz
+# by Hapchazzard
+##################################################
+
+marcher_decision.0100 = {
+	title = marcher_decision.0100.t
+	desc = marcher_decision.0100.desc
+	type = character_event
+	theme = realm
+	
+	left_portrait = {
+		character = root
+		animation = personality_bold
+	}
+	
+	immediate = {
+		save_scope_as = chevalie_ruler
+		title:k_ziemojycz = {
+			holder = {
+				save_scope_as = ziemojycz_holder
+			}
+		}
+	}
+	
+	option = {	# Option if the kingdom of Ziemojycz already exists
+		trigger = {
+			exists = scope:ziemojycz_holder
+		}
+		name = marcher_decision.0100.a
+		
+		hidden_effect = {
+			scope:ziemojycz_holder = { 
+				trigger_event = {
+					id = marcher_decision.0101
+					days = 3
+				}
+			}
+		}
+	}
+	
+	option = {	# Option if the kingdom of Ziemojycz does not exist
+		trigger = {
+			NOT = { exists = scope:ziemojycz_holder }
+		}
+		name = marcher_decision.0100.b
+	}
+}
+
+# Event for the lord-to-be of Ziemojycz
+marcher_decision.0101 = {
+	title = marcher_decision.0101.t
+	desc = marcher_decision.0101.desc
+	type = character_event
+	theme = realm
+	
+	left_portrait = {
+		character = root
+		animation = personality_rational
+	}
+	
+	right_portrait = {
+		character = scope:chevalie_ruler
+		animation = personality_bold
+	}
+	
+	option = {	# Accept
+		trigger = {
+			exists = scope:ziemojycz_holder
+		}
+		name = marcher_decision.0101.a
+		
+		hidden_effect = {
+			create_title_and_vassal_change = {
+				type = created
+				save_scope_as = change
+				add_claim_on_loss = no
+			}
+			change_liege = {
+				liege = scope:chevalie_ruler
+				change = scope:change
+			}
+			resolve_title_and_vassal_change = scope:change
+			scope:chevalie_ruler = {
+				trigger_event = marcher_decision.0110
+			}
+		}
+	}
+	
+	option = {	# Refuse
+		name = marcher_decision.0101.b
+		hidden_effect = {
+			scope:chevalie_ruler = {
+				trigger_event = marcher_decision.0111
+			}
+		}
+	}
+}
+
+# Inform the High King that Ziemojycz accepted
+marcher_decision.0110 = {
+	title = marcher_decision.0110.t
+	desc = marcher_decision.0110.desc
+	type = character_event
+	theme = realm
+	
+	left_portrait = {
+		character = root
+		animation = personality_bold
+	}
+	
+	right_portrait = {
+		character = scope:ziemojycz_holder
+		animation = personality_rational
+	}
+	
+	option = {	
+		name = marcher_decision.0110.a
+	}
+}
+
+# Inform the High King that Ziemojycz refused
+marcher_decision.0111 = {
+	title = marcher_decision.0111.t
+	desc = marcher_decision.0111.desc
+	type = character_event
+	theme = realm
+	
+	left_portrait = {
+		character = root
+		animation = anger
+	}
+	
+	right_portrait = {
+		character = scope:ziemojycz_holder
+		animation = personality_bold
+	}
+	
+	option = {	
+		name = marcher_decision.0111.a
+		add_pressed_claim = title:k_ziemojycz
+	}
+}
+
+##################################################
+# Demand that Independent Lords Swear Fealty
+# by Hapchazzard
+##################################################
+
+marcher_decision.0500 = {
+	title = marcher_decision.0500.t
+	desc = marcher_decision.0500.desc
+	type = character_event
+	theme = realm
+	
+	left_portrait = {
+		character = root
+		animation = personality_rational
+	}
+	
+	immediate = {
+		add_character_flag = {
+			flag = already_demanded_independent_lords_swear_fealty
+			months = 60
+		}
+		title:e_chevalie = {
+			every_in_de_jure_hierarchy = {
+				limit = {
+					tier = tier_county
+					holder = { is_independent_ruler = yes }
+					OR = {
+						holder.culture_group = culture_group:gh_marcher_group
+						holder.religion = religion:marcher_religion
+					}
+					NOR = {
+						holder.highest_held_title_tier = tier_empire
+						holder.primary_title = title:k_ziemojycz	# Dealt with via a separate decision 
+						holder = { is_in_list = lords_to_receive_summons }
+					}
+				}
+				holder = { add_to_list = lords_to_receive_summons }
+			}
+		}
+		
+		save_scope_as = chevalie_ruler
+		capital_county = { save_scope_as = capital }	# For loc
+	}
+	
+	option = {
+		name = marcher_decision.0500.a
+		every_in_list = {
+			list = lords_to_receive_summons
+			custom_tooltip = will_receive_summons_tt
+			trigger_event = marcher_decision.0501
+		}
+	}
+	
+	after = {
+		trigger_event = {
+			id = marcher_decision.0510
+			days = 1
+		}
+		trigger_event = {
+			id = marcher_decision.0511
+			days = 2
+		}
+		trigger_event = {
+			id = marcher_decision.0513
+			days = 3
+		}
+	}
+}
+
+# Event for the lords themselves
+marcher_decision.0501 = {
+	title = marcher_decision.0501.t
+	desc = marcher_decision.0501.desc
+	type = character_event
+	theme = realm
+	
+	left_portrait = {
+		character = root
+		animation = personality_rational
+	}
+	
+	option = {	# Accept
+		name = marcher_decision.0501.a
+		scope:chevalie_ruler = {
+			add_to_variable_list = {
+				name = lords_that_accepted_without_stipulations
+				target = prev
+			}
+		}
+		ai_chance = {
+			base = 100
+			ai_value_modifier = {
+				ai_boldness = -0.5
+				ai_honor = 0.5
+				ai_greed = -0.5
+				ai_rationality = -0.1
+			}
+			modifier = {
+				add = -50
+				has_claim_on = title:e_chevalie
+			}
+			modifier = {
+				add = -50
+				has_claim_on = title:e_chevalie
+				has_trait = ambitious
+			}
+			modifier = {
+				add = -50
+				has_relation_rival = scope:chevalie_ruler
+			}
+			modifier = {
+				add = 100
+				has_relation_friend = scope:chevalie_ruler
+			}
+			modifier = {
+				add = 100
+				has_relation_lover = scope:chevalie_ruler
+			}
+			modifier = {
+				add = 1000
+				has_relation_soulmate = scope:chevalie_ruler
+			}
+			modifier = {
+				add = -1000
+				has_relation_nemesis = scope:chevalie_ruler
+			}
+		}
+	}
+	
+	option = {	# In exchange for a hook
+		name = marcher_decision.0501.b
+		scope:chevalie_ruler = {
+			add_to_variable_list = {
+				name = lords_that_are_asking_for_a_concession
+				target = prev
+			}
+		}
+		add_character_flag = {
+			flag = hook_concession
+			days = 360
+		}
+		ai_chance = {
+			base = 20
+			ai_value_modifier = {
+				ai_boldness = 0.25
+				ai_honor = -0.5
+				ai_greed = 0.75
+			}
+			modifier = {
+				factor = 2
+				has_trait = ambitious
+			}
+		}
+	}
+	
+	option = {	# In exchange for money
+		name = marcher_decision.0501.c
+		scope:chevalie_ruler = {
+			add_to_variable_list = {
+				name = lords_that_are_asking_for_a_concession
+				target = prev
+			}
+		}
+		add_character_flag = {
+			flag = gold_concession
+			days = 360
+		}
+		ai_chance = {
+			base = 20
+			ai_value_modifier = {
+				ai_boldness = 0.25
+				ai_honor = -0.5
+				ai_greed = 0.75
+				ai_rationality = -0.5	# Rational characters are more likely to ask for more long-term benefits
+			}
+			modifier = {	# Greedy characters really, REALLY love money and will demand an even bigger sum than normal
+				factor = 4
+				has_trait = greedy
+			}
+		}
+	}
+	
+	option = {	# In exchange for a total tax exemption
+		name = marcher_decision.0501.d
+		scope:chevalie_ruler = {
+			add_to_variable_list = {
+				name = lords_that_are_asking_for_a_concession
+				target = prev
+			}
+		}
+		add_character_flag = {
+			flag = total_tax_concession
+			days = 360
+		}
+		ai_chance = {
+			base = 20
+			ai_value_modifier = {
+				ai_boldness = 0.25
+				ai_honor = -0.5
+				ai_greed = 0.75
+				ai_rationality = 0.5
+			}
+			modifier = {
+				factor = 4
+				has_trait = greedy
+			}
+		}
+	}
+	
+	option = {	# In exchange for a total levy exemption
+		name = marcher_decision.0501.e
+		scope:chevalie_ruler = {
+			add_to_variable_list = {
+				name = lords_that_are_asking_for_a_concession
+				target = prev
+			}
+		}
+		add_character_flag = {
+			flag = total_levy_concession
+			days = 360
+		}
+		ai_chance = {
+			base = 20
+			ai_value_modifier = {
+				ai_boldness = 0.25
+				ai_honor = -0.5
+				ai_greed = 0.75
+				ai_rationality = 0.5
+			}
+		}
+	}
+	
+	option = {	# In exchange for a promotion
+		name = marcher_decision.0501.f
+		trigger = {
+			highest_held_title_tier = tier_county
+		}
+		scope:chevalie_ruler = {
+			add_to_variable_list = {
+				name = lords_that_are_asking_for_a_concession
+				target = prev
+			}
+		}
+		add_character_flag = {
+			flag = promotion_concession
+			days = 360
+		}
+		if = {
+			limit = {
+				capital_county = {
+					duchy = {
+						NOT = { has_variable = new_title_owner }
+						OR = {
+							is_title_created = no
+							holder = scope:chevalie_ruler
+						}
+					}
+				}
+			}
+			capital_county = {
+				duchy = {
+					set_variable = {
+						name = new_title_owner
+						value = root
+						days = 360
+					}
+					root = {
+						set_variable = {
+							name = duchy_to_be_received
+							value = prev
+							days = 360
+						}
+					}
+					add_to_list = duchies_to_be_granted
+				}
+			}
+		}
+		else = {
+			set_variable = will_have_dynamic_duchy_created
+		}
+		ai_chance = {
+			base = 30
+			modifier = {
+				factor = 4
+				has_trait = ambitious
+			}
+			modifier = {
+				factor = 2
+				has_trait = arrogant
+			}
+		}
+	}
+	
+	option = {	# Decline
+		name = marcher_decision.0501.j
+		add_character_flag = { 
+			flag = refused_to_voluntarily_submit
+			years = 5
+		}
+		scope:chevalie_ruler = {
+			add_to_variable_list = {
+				name = lords_that_refused
+				target = prev
+			}
+		}
+		ai_chance = {
+			base = 0
+			modifier = {
+				add = 100
+				highest_held_title_tier >= tier_kingdom
+			}
+			modifier = {
+				add = 100
+				has_claim_on = title:e_chevalie
+			}
+			modifier = {
+				add = 100
+				has_claim_on = title:e_chevalie
+				has_trait = ambitious
+			}
+			modifier = {
+				add = 100
+				has_relation_rival = scope:chevalie_ruler
+			}
+			ai_value_modifier = {
+				ai_boldness = 0.5
+			}
+		}
+	}
+}
+
+# Informs you of the people that accepted without stipulations
+marcher_decision.0510 = {
+	title = marcher_decision.0510.t
+	desc = marcher_decision.0510.desc
+	type = character_event
+	theme = realm
+	
+	left_portrait = {
+		character = root
+		animation = happiness
+	}
+	
+	trigger = {
+		variable_list_size = {
+			name = lords_that_accepted_without_stipulations
+			value > 0
+		}
+	}
+	
+	option = {	# Accept
+		name = marcher_decision.0510.a
+		every_in_list = {
+			variable = lords_that_accepted_without_stipulations
+			create_title_and_vassal_change = {
+				type = swear_fealty
+				save_scope_as = title_change
+				add_claim_on_loss = no
+			}
+			change_liege = {
+				liege = root
+				change = scope:title_change
+			}
+			resolve_title_and_vassal_change = scope:title_change
+		}
+	}
+	
+	after = {
+		clear_variable_list = lords_that_accepted_without_stipulations
+	}
+}
+
+# Informs you of the people that accepted in exchange for a concession
+marcher_decision.0511 = {
+	title = marcher_decision.0511.t
+	desc = marcher_decision.0511.desc
+	type = character_event
+	theme = realm
+	
+	left_portrait = {
+		character = root
+		animation = personality_rational
+	}
+	
+	trigger = {
+		variable_list_size = {
+			name = lords_that_are_asking_for_a_concession
+			value > 0
+		}
+	}
+	
+	option = {	# Accept for all
+		name = marcher_decision.0511.a
+		every_in_list = {
+			variable = lords_that_are_asking_for_a_concession
+			limit = { has_character_flag = hook_concession }
+			add_hook = {
+				target = root
+				type = favor_hook
+			}
+		}
+		every_in_list = {
+			variable = lords_that_are_asking_for_a_concession
+			limit = { has_character_flag = gold_concession }
+			if = {
+				limit = { has_trait = greedy }
+				root = {
+					pay_short_term_gold = {
+						target = prev
+						gold = major_gold_value
+					}
+				}
+			}
+			else = {
+				root = {
+					pay_short_term_gold = {
+						target = prev
+						gold = medium_gold_value
+					}
+				}
+			}
+		}
+		every_in_list = {
+			variable = lords_that_are_asking_for_a_concession
+			limit = { has_character_flag = total_tax_concession }
+			vassal_contract_set_obligation_level = {
+				type = feudal_government_taxes
+				level = feudal_tax_exempt
+			}
+			custom_tooltip = total_tax_exemption_tt
+		}
+		every_in_list = {
+			variable = lords_that_are_asking_for_a_concession
+			limit = { has_character_flag = total_levy_concession }
+			vassal_contract_set_obligation_level = {
+				type = feudal_government_levies
+				level = feudal_levies_exempt
+			}
+			custom_tooltip = total_levy_exemption_tt
+		}
+		every_in_list = {
+			variable = lords_that_are_asking_for_a_concession
+			limit = { has_character_flag = promotion_concession }
+			if = {
+				limit = { has_variable = duchy_to_be_received }
+				get_title = var:duchy_to_be_received
+			}
+			else = {
+				custom_tooltip = will_have_dynamic_duchy_created_tt
+				capital_county = { save_scope_as = capital }
+				hidden_effect = {
+					create_dynamic_title = {
+						tier = duchy
+						name = GENERATED_DUCHY_NAME
+					}
+					create_title_and_vassal_change = {
+						type = created
+						save_scope_as = change
+						add_claim_on_loss = no
+					}
+					scope:new_title = {
+						set_destroy_if_invalid_heir = yes
+						set_no_automatic_claims = yes
+						set_definitive_form = yes
+						set_always_follows_primary_heir = yes
+						change_title_holder = {
+							holder = prev
+							change = scope:change
+						}
+					}
+					resolve_title_and_vassal_change = scope:change
+					scope:new_title = {
+						generate_coa = yes
+					}
+				}
+			}
+		}
+		
+		hidden_effect = {
+			every_in_list = {
+				variable = lords_that_are_asking_for_a_concession
+				create_title_and_vassal_change = {
+					type = swear_fealty
+					save_scope_as = title_change
+					add_claim_on_loss = no
+				}
+				change_liege = {
+					liege = root
+					change = scope:title_change
+				}
+				resolve_title_and_vassal_change = scope:title_change
+			}
+		}
+		clear_variable_list = lords_that_are_asking_for_a_concession
+	}
+	
+	option = {	# Accept for all
+		name = marcher_decision.0511.b
+		custom_tooltip = will_decide_weak_hook_on_case_by_case_basis_tt
+		trigger_event = marcher_decision.0512
+	}
+	
+	option = {	# Reject for all
+		name = marcher_decision.0511.c
+		custom_tooltip = will_refuse_all_weak_hook_compromises_tt
+		every_in_list = {
+			variable = lords_that_are_asking_for_a_concession
+			add_character_flag = { 
+				flag = refused_to_voluntarily_submit
+				years = 5
+			}
+		}
+		clear_variable_list = lords_that_are_asking_for_a_concession
+	}
+}
+
+# Lets you decide whether to accept vassalage in exchange for a compromise
+marcher_decision.0512 = {
+	title = marcher_decision.0512.t
+	type = character_event
+	theme = realm
+	
+	left_portrait = {
+		character = root
+		animation = personality_rational
+	}
+	
+	right_portrait = {
+		character = scope:lord_asking_for_a_concession
+		animation = personality_greedy
+	}
+	
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					scope:lord_asking_for_a_concession = {
+						always = yes 	# Temporary
+					}
+				}
+				desc = marcher_decision.0512.desc.taxes
+			}
+		}
+	}
+	
+	immediate = {
+		random_in_list = {
+			variable = lords_that_are_asking_for_a_concession
+			save_scope_as = lord_asking_for_a_concession
+		}
+	}
+	
+	option = {	# Accept
+		name = marcher_decision.0512.a
+		scope:lord_asking_for_a_concession = {
+			create_title_and_vassal_change = {
+				type = swear_fealty
+				save_scope_as = title_change
+				add_claim_on_loss = no
+			}
+			change_liege = {
+				liege = root
+				change = scope:title_change
+			}
+			resolve_title_and_vassal_change = scope:title_change
+			if = {
+				limit = { has_character_flag = hook_concession }
+				add_hook = {
+					target = root
+					type = favor_hook
+				}
+			}
+			else_if = {
+				limit = { has_character_flag = gold_concession }
+				if = {
+					limit = { has_trait = greedy }
+					root = {
+						pay_short_term_gold = {
+							target = prev
+							gold = major_gold_value
+						}
+					}
+				}
+				else = {
+					root = {
+						pay_short_term_gold = {
+							target = prev
+							gold = medium_gold_value
+						}
+					}
+				}
+			}
+			else_if = {
+				limit = { has_character_flag = total_tax_concession }
+				vassal_contract_set_obligation_level = {
+					type = feudal_government_taxes
+					level = feudal_tax_exempt
+				}
+				custom_tooltip = total_tax_exemption_tt
+			}
+			else_if = {
+				limit = { has_character_flag = total_levy_concession }
+				vassal_contract_set_obligation_level = {
+					type = feudal_government_levies
+					level = feudal_levies_exempt
+				}
+				custom_tooltip = total_levy_exemption_tt
+			}
+			else_if = {
+				limit = { has_character_flag = promotion_concession }
+				if = {
+					limit = { has_variable = duchy_to_be_received }
+					get_title = var:duchy_to_be_received
+				}
+				else = {
+					custom_tooltip = will_have_dynamic_duchy_created_tt
+					capital_county = { save_scope_as = capital }
+					hidden_effect = {
+						create_dynamic_title = {
+							tier = duchy
+							name = GENERATED_DUCHY_NAME
+						}
+						create_title_and_vassal_change = {
+							type = created
+							save_scope_as = change
+							add_claim_on_loss = no
+						}
+						scope:new_title = {
+							set_destroy_if_invalid_heir = yes
+							set_no_automatic_claims = yes
+							set_definitive_form = yes
+							set_always_follows_primary_heir = yes
+							change_title_holder = {
+								holder = prev
+								change = scope:change
+							}
+						}
+						resolve_title_and_vassal_change = scope:change
+						scope:new_title = {
+							generate_coa = yes
+						}
+					}
+				}
+			}
+		}
+	}
+	
+	option = {	# Decline
+		name = marcher_decision.0512.b
+		scope:lord_asking_for_a_concession = {
+			add_character_flag = { 
+				flag = refused_to_voluntarily_submit
+				years = 5
+			}
+		}
+	}
+	
+	after = {
+		remove_list_variable = {
+			name = lords_that_are_asking_for_a_concession
+			target = scope:lord_asking_for_a_concession
+		}
+		if = {
+			limit = {
+				variable_list_size = {
+					name = lords_that_are_asking_for_a_concession
+					value > 0
+				}
+			}
+			trigger_event = marcher_decision.0512
+		}
+		if = {
+			limit = {
+				NOT = {
+					variable_list_size = {
+						name = lords_that_are_asking_for_a_concession
+						value > 0
+					}
+				}
+			}
+			trigger_event = {
+				id = marcher_decision.0513
+				days = 1
+			}
+		}
+	}
+}
+
+# Informs you of the people that refused
+marcher_decision.0513 = {
+	title = marcher_decision.0513.t
+	desc = marcher_decision.0513.desc
+	type = character_event
+	theme = realm
+	
+	left_portrait = {
+		character = root
+		animation = anger
+	}
+	
+	trigger = {
+		NOT = {
+			variable_list_size = {
+				name = lords_that_are_asking_for_a_concession
+				value > 0
+			}
+		}
+		variable_list_size = {
+			name = lords_that_refused
+			value > 0
+		}
+	}
+	
+	option = {	# Accept
+		name = marcher_decision.0513.a
+		every_in_list = {
+			variable = lords_that_refused
+			custom_tooltip = refused_submission_tt
+		}
+	}
+	
+	after = {
+		clear_variable_list = lords_that_refused
+	}
+}
+
+# Lets you determine the fate of a rebellious lord you defeated
+marcher_decision.0550 = {
+	title = marcher_decision.0550.t
+	desc = marcher_decision.0550.desc
+	type = character_event
+	theme = realm
+	
+	left_portrait = {
+		character = root
+		animation = war_over_win
+	}
+	
+	right_portrait = {
+		character = scope:defender
+		animation = beg
+	}
+	
+	immediate = {	# More efficient to be done in immediate than in option, as it means it will only be calculated once
+		scope:defender = {
+			prepare_demesne_for_partition_effect = { TARGET = scope:defender }
+		}
+	}
+	
+	option = {	# Don't punish them at all
+		name = marcher_decision.0550.a
+		add_dread = minor_dread_loss
+		add_hook = {
+			target = scope:defender
+			type = favor_hook
+		}
+	}
+	
+	option = {	# Demote them by a rank
+		name = marcher_decision.0550.b
+		trigger = {
+			scope:defender = { highest_held_title_tier > tier_county }
+		}
+		demote_in_rank_effect = { TARGET = scope:defender }
+	}
+	
+	option = {	# Completely attaint them and partition all their lands
+		name = marcher_decision.0550.c
+		add_tyranny = tyranny_from_confiscations_value
+		add_dread = dread_from_confiscations_value
+		partition_demesne_among_other_vassals_effect = { TARGET = scope:defender }
+	}
+}

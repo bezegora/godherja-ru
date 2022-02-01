@@ -1,0 +1,27 @@
+﻿hubarite_codex_decision = {
+	picture = "gfx/interface/illustrations/decisions/decision_magi.dds"
+	ai_check_interval = 120
+	desc = hubarite_codex_decision_desc
+	
+	is_shown = {
+		faith = faith:hubarism
+		NOT = {
+			has_character_flag = wrote_hubarite_codex
+		}
+	}
+	
+	is_valid = {
+		piety_level >= 4
+		prestige_level >= 4
+		has_education_living_magic_trigger = yes
+		has_at_least_magi_potency_rank_trigger = { RANK = 4 }
+	}
+	
+	effect = {
+		trigger_event = hubarite.0001
+	}
+	
+	ai_will_do = {
+		base = 50
+	}
+}

@@ -1,0 +1,76 @@
+﻿#Created by Lumi Schildkraut (KatiyaAdmiral8)
+
+#####################
+# Study Arcana
+#####################
+#get leads on artifacts, boosts
+
+#set base value
+
+#Add bonus calculations to modify base value (i.e. from perks, other modifiers)
+
+court_mage_boost_magic_power_scale = {
+	add = learning
+	if = {
+		limit = {
+			scope:councillor_liege = { has_perk = loyalty_and_respect_perk }
+		}
+		multiply = 1.25
+	}
+	divide = 10
+	if = {
+		limit = {
+			scope:councillor_liege = { has_perk = loyalty_and_respect_perk }
+		}
+		ceiling = yes
+	}
+	else = {
+		floor = yes
+	}
+	min = 1
+}
+
+#####################
+# Train Battle Magi
+#####################
+#improve magic armies
+
+#set base value
+
+#Add bonus calculations to modify base value (i.e. from perks, other modifiers)
+
+
+#####################
+# Task 3 (TBD, perhaps magic type specific?)
+#####################
+#TBD, but this may be specific to magic type of the Court Mage. (i.e. "Divinate Secrets" for Mixed Magi
+
+#set base value
+
+#Add bonus calculations to modify base value (i.e. from perks, other modifiers)
+
+
+### Learn on the Job modifier
+court_mage_learn_on_the_job_scale = {
+	value = 0
+	if = {
+		limit = {
+			liege = { has_perk = learn_on_the_job_perk } # checks to see if the liege has Learn on the Job (Scholarship tree)
+		}
+		add = learning # which skill factors into Learn on the Job for this councillor
+		
+		#calculate 20% of total skill value (floored), this is added to the liege's skill
+		multiply = {
+			add = learn_on_the_job_percentage # in 00_lifestyle_values (common/scriptvalues)
+			divide = 100 
+		}
+		floor = yes
+		min = 1 # liege guaranteed to get at least 1 skill point from Learn on the Job Perk
+	}
+}
+num_living_magic_lifestyle_perks = {
+	value = age
+	divide = 3
+	subtract = magic_lifestyle_living_perks
+	max = 27
+}

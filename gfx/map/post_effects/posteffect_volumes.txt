@@ -1,0 +1,364 @@
+##reload posteffectvolumes
+#PostEffectVolumes.Enabled
+#PostEffectVolumes.ForceUpdate
+#Draw.DebugPostEffectVolumes
+
+posteffect_values = {
+	name = standard
+	lut = "gfx/map/post_effects/colorcorrection_neutral.tga"
+}
+
+posteffect_values = {
+	name = cold
+	inherit = standard
+	saturation_scale = 0.8
+	colorbalance = { 0.9 0.95 1.15 }
+	fog_begin = 100
+	fog_end = 375
+}
+
+posteffect_values = {
+	name = hot
+	inherit = standard
+	value_scale = 1.15
+	colorbalance = { 1.1 1 0.9 }
+}
+
+posteffect_values = {
+	name = default
+	inherit = standard
+}
+
+posteffect_values = {
+	name = zoom_step_00
+	inherit = standard
+	fog_max = 1
+}
+posteffect_values = {
+	name = zoom_step_01
+	inherit = zoom_step_00
+	fog_begin = 2000
+	fog_end = 5000
+}
+posteffect_values = {
+	name = flatmap
+	inherit = zoom_step_01
+#	exposure = 1.0
+}
+
+#LotR: Post effects. Desert and Boreal are from Imperator: Rome.
+posteffect_values = {
+	name = desert	
+	lut = "gfx/map/post_effects/colorcorrection_desert.tga"
+	fog_color = { 0.55 0.50 0.375 }
+	fog_begin = 10
+	fog_end = 1200.0
+	fog_max = 10
+	bloom_width = 2.5
+	bloom_scale = 0.3
+	bright_threshold = 1
+	tonemap_middlegrey = 0.8
+	hue_offset = 0
+	saturation_scale = 1
+	value_scale = 1.05
+	colorbalance = { 1.05 1 0.95 }
+	levels_min = hsv{ 0 0 0 }
+	levels_max = hsv{ 0 0 1 }
+}
+posteffect_values = {
+	name = boreal	
+	lut = "gfx/map/post_effects/colorcorrection_neutral.tga"
+	fog_color = { 0.55 0.50 0.375 }
+	fog_begin = 10
+	fog_end = 1200.0
+	fog_max = 10
+	bloom_width = 2.5
+	bloom_scale = 0.25
+	bright_threshold = 1
+	tonemap_middlegrey = 0.35
+	hue_offset = 0
+	saturation_scale = 0.75
+	value_scale = 1.3
+	colorbalance = { 0.85 0.9 1 }
+	levels_min = hsv{ 0 0 0 }
+	levels_max = hsv{ 0 0 1 }
+}
+posteffect_values = {
+	name = arid
+	lut = "gfx/map/post_effects/colorcorrection_arid.dds"
+}
+posteffect_values = {
+	name = artic
+	lut = "gfx/map/post_effects/colorcorrection_arctic.tga"
+	fog_color = { 0.55 0.50 0.375 }
+	fog_begin = 10
+	fog_end = 1200.0
+	fog_max = 10
+	bloom_width = 2.5
+	bloom_scale = 0.25
+	bright_threshold = 1
+	tonemap_middlegrey = 0.35
+	hue_offset = 0
+	saturation_scale = 0.75
+	value_scale = 1.3
+	colorbalance = { 0.85 0.9 1 }
+	levels_min = hsv{ 0 0 0 }
+	levels_max = hsv{ 0 0 1 }
+}
+posteffect_values = {
+	name = ocean
+	lut = "gfx/map/post_effects/colorcorrection_ocean.dds"
+}
+posteffect_values = {
+	name = savannah
+	lut = "gfx/map/post_effects/colorcorrection_savannah.dds"
+}
+posteffect_values = {
+	name = tropical
+	lut = "gfx/map/post_effects/colorcorrection_tropical.dds"
+		colorbalance = { 0.95 1.0 0.95 }
+}
+posteffect_values = {
+	name = tundra
+	lut = "gfx/map/post_effects/colorcorrection_tundra.dds"
+}
+posteffect_values = {
+	name = undead
+	lut = "gfx/map/post_effects/colorcorrection_volcanic.tga"
+	tonemap_middlegrey = 0.4
+	colorbalance = { 0.85 0.90 1.30 }
+	saturation_scale = 0.75
+	exposure = 0.75
+	bloom_width = 2.5
+	bloom_scale = 0.3
+	bright_threshold = 1
+	fog_color = rgb { 120 100 150 }
+	fog_begin = 0
+	fog_end = 180
+	fog_max = 1.5
+}
+posteffect_values = {
+	name = fogland
+	lut = "gfx/map/post_effects/colorcorrection_tundra.dds"
+	tonemap_middlegrey = 0.4
+	colorbalance = { 0.85 0.85 0.95 }
+	saturation_scale = 0.5
+	exposure = 0.8
+	bloom_width = 1
+	bloom_scale = 0.2
+	bright_threshold = 1
+	fog_color = rgb { 180 180 220 }
+	fog_begin = 0
+	fog_end = 220
+	fog_max = 2
+}
+posteffect_values = {
+	name = fogland_high
+	lut = "gfx/map/post_effects/colorcorrection_tundra.dds"
+	tonemap_middlegrey = 0.4
+	colorbalance = { 0.9 0.9 1.0 }
+	saturation_scale = 0.35
+	exposure = 0.7
+	bloom_width = 2
+	bloom_scale = 0.4
+	bright_threshold = 1
+	fog_color = rgb { 180 180 220 }
+	fog_begin = 50
+	fog_end = 3000
+	fog_max = 1.5
+}
+posteffect_values = {
+	name = mageblight
+	lut = "gfx/map/post_effects/colorcorrection_volcanic.tga"
+	tonemap_middlegrey = 0.4
+	colorbalance = { 1.20 0.75 0.75 }
+	saturation_scale = 0.9
+	exposure = 0.8
+	bloom_width = 2.5
+	bloom_scale = 0.3
+	bright_threshold = 1
+	fog_color = hsv { 0.07 0.4 0.4 }
+	fog_begin = 0
+	fog_end = 150
+	fog_max = 1.7
+}
+
+#################################
+
+############ VOLUMES ############
+############ HEIGHTS ############
+
+#################################
+
+posteffect_volumes = {
+
+	posteffect_height_volume = {
+		name = "zoom_step_00"
+
+		posteffect_values_day = zoom_step_00
+		posteffect_values_night = zoom_step_00
+
+		height = 50
+		fade_distance = 0
+	}
+
+	posteffect_height_volume = {
+		name = "zoom_step_01"
+	
+		posteffect_values_day = zoom_step_01
+		posteffect_values_night = zoom_step_01
+	
+		height = 100
+		fade_distance = 800
+	}
+
+	posteffect_height_volume = {
+		name = "flatmap"
+	
+		posteffect_values_day = flatmap
+		posteffect_values_night = flatmap
+	
+		height = 1218
+		fade_distance = 142
+	}
+}
+
+################################# 
+
+############ VOLUMES ############ 
+############ BOXES	 ############ 
+
+#################################
+
+	
+#posteffect_volume = {
+#	name = "north"
+	
+#	posteffect_values_day = cold
+#	posteffect_values_night = cold
+	
+#	position = { 4000 0 4000 }
+#	size = { 20000 2000 3000 }
+#	fade_distance = 1000
+#}
+
+#posteffect_volume = {
+#	name = "south"
+	
+#	posteffect_values_day = hot
+#	posteffect_values_night = hot
+	
+#	position = { 4000 0 500 }
+#	size = { 20000 2000 3000 }
+#	fade_distance =  1000
+#}
+	
+	
+posteffect_volume = {
+	name = "Southern Lichdoms"
+	posteffect_values_day = undead
+	posteffect_values_night = undead
+	#position =	{ x-width		z			y-height }
+	position =	{ 2430.24		000.0		2128.9 }
+	size =		{ 1098.0			3172.0		488.0 }
+	fade_distance = 240.0
+}
+posteffect_volume = {
+	name = "Central Lichdoms"
+	posteffect_values_day = undead
+	posteffect_values_night = undead
+	#position =	{ x-width		z			y-height }
+	position =	{ 2186.24		000.0		2318.0 }
+	size =		{ 854.0			3172.0		854.0 }
+	fade_distance = 122.0
+}
+posteffect_volume = {
+	name = "Northern Lichdoms"
+	posteffect_values_day = undead
+	posteffect_values_night = undead
+	#position =	{ x-width		z			y-height }
+	position =	{ 2430.24		000.0		2616.9 }
+	size =		{ 1464.0			3172.0		488.0 }
+	fade_distance = 183.0
+}
+posteffect_volume = {
+	name = "Fogland Mayikprolollan"
+	posteffect_values_day = fogland
+	posteffect_values_night = fogland
+	#position =	{ x-width		z			y-height }
+	position =	{ 3660.0		000.0		2074.0 }
+	size =		{ 1464.0			1708.0		976.0 }
+	fade_distance = 244.0
+}
+posteffect_volume = {
+	name = "Fogland Mayikprolollan High"
+	posteffect_values_day = fogland_high
+	posteffect_values_night = fogland_high
+	#position =	{ x-width		z			y-height }
+	position =	{ 3660.0		1220.0		2074.0 }
+	size =		{ 1464.0			1708.0		976.0 }
+	fade_distance = 366.0
+}
+posteffect_volume = {
+	name = "Fogland East of Sjalvolki"
+	posteffect_values_day = fogland
+	posteffect_values_night = fogland
+	#position =	{ x-width		z			y-height }
+	position =	{ 3904.0		000.0		1568.92 }
+	size =		{ 1464.0			1708.0		1220.0 }
+	fade_distance = 244.0
+}
+posteffect_volume = {
+	name = "Fogland East of Sjalvolki High"
+	posteffect_values_day = fogland_high
+	posteffect_values_night = fogland_high
+	#position =	{ x-width		z			y-height }
+	position =	{ 3904.0		1220.0		1568.92 }
+	size =		{ 1464.0			1708.0		1220.0 }
+	fade_distance = 366.0
+}
+posteffect_volume = {
+	name = "Fogland Aversaria Pass"
+	posteffect_values_day = fogland
+	posteffect_values_night = fogland
+	#position =	{ x-width		z			y-height }
+	position =	{ 3294.0		0000.0		1453.02 }
+	size =		{ 793.0			1708.0		732.0 }
+	fade_distance = 244.0
+}
+posteffect_volume = {
+	name = "Fogland Aversaria Pass High"
+	posteffect_values_day = fogland_high
+	posteffect_values_night = fogland_high
+	#position =	{ x-width		z			y-height }
+	position =	{ 3294.0		1220.0		1453.02 }
+	size =		{ 793.0			1708.0		732.0 }
+	fade_distance = 366.0
+}
+posteffect_volume = {
+	name = "Aversarian Wasteland"
+	posteffect_values_day = mageblight
+	posteffect_values_night = mageblight
+	#position =	{ x-width		z			y-height }
+	position =	{ 3355.0		000.0		561.2 }
+	size =		{ 170.8			488.0		146.4 }
+	fade_distance = 12.2
+}
+posteffect_volume = {
+	name = "Sarradon"
+	posteffect_values_day = desert
+	posteffect_values_night = desert
+	#position =	{ x-width		z			y-height }
+	position =	{ 2440.0		000.0		158.6 }
+	size =		{ 610.0			732.0		488.0 }
+	fade_distance = 122.0
+}
+posteffect_volume = {
+	name = "Adabyss"
+	posteffect_values_day = tropical
+	posteffect_values_night = tropical
+	#position =	{ x-width		z			y-height }
+	position =	{ 1876.36		000.0		12.2 }
+	size =		{ 366.0			366.0		183.0 }
+	fade_distance = 30.5
+}

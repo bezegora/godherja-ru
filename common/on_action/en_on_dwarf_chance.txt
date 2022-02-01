@@ -1,0 +1,202 @@
+﻿on_dwarf_nickname = 
+{
+	trigger = { has_trait = dwarf
+		    prestige_level >= 2
+		  }
+	first_valid_on_action = 
+	{
+		on_diplomacy_dwarf 
+		on_stewardship_dwarf 
+		on_martial_dwarf 
+		on_prowess_dwarf 
+		on_learning_dwarf
+		on_intrigue_dwarf 
+		on_imp
+	}
+
+	fallback = on_albino_nickname
+}
+
+##################################################################
+
+on_diplomacy_dwarf =
+{
+	trigger = { diplomacy>= 25 }
+	random_on_action = 
+	{
+		10 = on_gracious_dwarf
+		10 = on_pleasant_dwarf
+		10 = on_short_friend
+	}
+}
+
+on_gracious_dwarf = 
+{
+	effect = { give_nickname = nick_the_gracious_dwarf }
+}
+
+on_pleasant_dwarf = 
+{
+	effect = { give_nickname = nick_the_pleasant_dwarf }
+}
+
+on_short_friend = 
+{
+	effect = { give_nickname = nick_the_short_friend }
+}
+
+##################################################################
+
+
+on_stewardship_dwarf =
+{
+	trigger = { stewardship >= 25 }
+	random_on_action = 
+	{
+		10 = on_opulent_dwarf 
+		10 = on_pleasant_dwarf
+		10 = on_goldtouched_dwarf
+	}
+}
+
+on_opulent_dwarf = 
+{
+	effect = { give_nickname = nick_the_opulent_dwarf }
+}
+
+on_affluent_dwarf = 
+{
+	effect = { give_nickname = nick_the_affluent_dwarf }
+}
+
+on_goldtouched_dwarf = 
+{
+	effect = { give_nickname = nick_the_gold_touched_dwarf }
+}
+
+##################################################################
+
+on_martial_dwarf =
+{
+	trigger = { martial >= 25 }
+	random_on_action = 
+	{
+		10 = on_vanquisher_dwarf 
+		10 = on_agressive_dwarf 
+		10 = on_the_little_conqueror 
+	}
+}
+
+on_vanquisher_dwarf = 
+{
+	effect = { give_nickname = nick_the_vanquisher_dwarf }
+}
+
+on_agressive_dwarf = 
+{
+	effect = { give_nickname = nick_the_agressive_dwarf }
+}
+
+on_the_little_conqueror = 
+{
+	effect = { give_nickname = nick_the_little_conqueror }
+}
+
+##################################################################
+
+on_prowess_dwarf =
+{
+	trigger = { prowess >= 25 }
+	random_on_action = 
+	{
+		10 = on_sturdy_dwarf 
+		10 = on_iron_dwarf 
+		10 = on_slayer_dwarf 
+	}
+}
+
+on_sturdy_dwarf = 
+{
+	effect = { give_nickname = nick_the_sturdy_dwarf }
+}
+
+on_iron_dwarf = 
+{
+	effect = { give_nickname = nick_the_iron_dwarf }
+}
+
+on_slayer_dwarf = 
+{
+	effect = { give_nickname = nick_the_slayer_dwarf }
+}
+
+##################################################################
+
+on_learning_dwarf =
+{
+	trigger = { learning >= 30 }
+	random_on_action = 
+	{
+		10 = on_sharp_dwarf 
+		10 = on_bright_dwarf 
+		10 = on_keen_dwarf 
+	}
+}
+
+on_sharp_dwarf = 
+{
+	effect = { give_nickname = nick_the_sharp_dwarf }
+}
+
+on_bright_dwarf = 
+{
+	effect = { give_nickname = nick_the_bright_dwarf }
+}
+
+on_keen_dwarf = 
+{
+	effect = { give_nickname = nick_the_keen_dwarf }
+}
+
+##################################################################
+
+on_intrigue_dwarf =
+{
+	trigger = { intrigue >= 25 }
+	random_on_action = 
+	{
+		10 = on_skulking_dwarf 
+		10 = on_spider_dwarf 
+		10 = on_cunning_dwarf 
+	}	
+}
+
+on_skulking_dwarf = 
+{
+	effect = { give_nickname = nick_the_skulking_dwarf }
+}
+
+on_spider_dwarf = 
+{
+	effect = { give_nickname = nick_the_spider_dwarf }
+}
+
+on_cunning_dwarf = 
+{
+	effect = { give_nickname = nick_the_cunning_dwarf }
+}
+
+##################################################################
+
+on_imp =
+{
+	trigger = { has_trait = possessed 
+        	    has_trait = lunatic
+		    has_trait = disfigured 
+	}
+	effect = { give_nickname = nick_the_imp }
+}
+
+
+
+

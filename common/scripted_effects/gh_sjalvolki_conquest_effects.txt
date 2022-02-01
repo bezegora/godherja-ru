@@ -1,0 +1,637 @@
+﻿assign_titles_to_characters_new_sjalvolki_conquest = {
+	# Save a character to use as a template in case we need to generate new ones
+	if = {
+		limit = { NOT = { exists = scope:model } }
+		ordered_in_list = {
+			list = $CHARACTER_LIST$
+			
+			order_by = sjalvolki_conquest_contribution_value
+			save_scope_as = model
+		}
+	}
+	if = {
+		limit = {
+			list_size = {
+				name = $DUCHY_LIST$
+				value > 0
+			}
+		}
+		ordered_in_list = {
+			list = $DUCHY_LIST$
+			order_by = sjalvolki_conquest_duchy_value
+			limit = { NOT = { has_variable = already_distributed } }
+			
+			set_variable = {
+				name = debug_duchy_value
+				value = sjalvolki_conquest_duchy_value
+			}
+			
+			save_scope_as = title_to_be_given
+			
+			if = {
+				limit = {
+					list_size = {
+						name = $CHARACTER_LIST$
+						value > 0
+					}
+					any_in_list = {
+						list = $CHARACTER_LIST$
+						NOT = {
+							trigger_if = {
+								limit = { has_variable =  refused_title }
+								var:refused_title = scope:title_to_be_given
+							}
+						}
+						sjalvolki_conquest_contribution_value > 0
+					}
+				}
+		
+				ordered_in_list = {
+					list = $CHARACTER_LIST$
+					limit = {
+						trigger_if = {
+							limit = { has_variable = refused_title }
+							NOT = { var:refused_title = scope:title_to_be_given }
+						}
+						sjalvolki_conquest_contribution_value > 0
+					}
+					save_scope_as = new_character
+				}
+			}
+			else = {
+				create_character = {
+					employer = root
+					gender_female_chance = 50
+					template_character = scope:model
+					random_traits = yes
+					age = { 20 50 }
+					
+					save_scope_as = new_character
+				}
+				scope:new_character = {
+					add_character_flag = created_for_migration
+				}
+			}
+			
+			if = {
+				limit = {
+					always = yes
+				}
+				scope:new_character = {
+					trigger_event = sjalvolki_conquest.0010
+				}
+			}
+		}
+	}
+	else = {
+		ordered_in_list = {
+			list = $COUNTY_LIST$
+			
+			limit = { NOT = { has_variable = already_distributed } }
+			#set_variable = {
+			#	name = already_distributed
+			#	days = 10
+			#}
+			
+			order_by = sjalvolki_conquest_county_value
+			save_scope_as = title_to_be_given
+			
+			if = {
+				limit = {
+					list_size = {
+						name = $CHARACTER_LIST$
+						value > 0
+					}
+					any_in_list = {
+						list = $CHARACTER_LIST$
+						NOT = {
+							trigger_if = {
+								limit = { has_variable =  refused_title }
+								var:refused_title = scope:title_to_be_given
+							}
+						}
+						sjalvolki_conquest_contribution_value > 0
+					}
+				}
+		
+				ordered_in_list = {
+					list = $CHARACTER_LIST$
+					limit = {
+						#OR = {
+						#	is_landed = no
+						#	primary_title.tier <= tier_duchy
+						#}
+						trigger_if = {
+							limit = { has_variable = refused_title }
+							NOT = { var:refused_title = scope:title_to_be_given }
+						}
+						sjalvolki_conquest_contribution_value > 0
+					}
+					save_scope_as = new_character
+				}
+			}
+			else = {
+				create_character = {
+					employer = root
+					gender_female_chance = 50
+					template_character = scope:model
+					random_traits = yes
+					age = { 20 50 }
+					
+					save_scope_as = new_character
+				}
+				scope:new_character = {
+					add_character_flag = created_for_migration
+				}
+			}
+			
+			IF = {
+				limit = {
+					always = yes
+				}
+				scope:new_character = {
+					trigger_event = sjalvolki_conquest.0010
+				}
+			}
+		}
+	}
+}
+
+generate_vassal_list_by_contribution = {
+	# Get a list of all vassals of a set culture
+	ordered_vassal_or_below = {
+		limit = {
+			primary_title.tier >= tier_county
+			#sjalvolki_conquest_contribution_value > 0
+			NOR = {
+				has_character_flag = aversarian_migration
+				has_culture_group = culture_group:gh_imperial_group
+			}
+		}
+		order_by = sjalvolki_conquest_contribution_value
+		max = 500 # Check if there is a way to add all of them without setting a max
+		check_range_bounds = no
+		add_to_list = $LIST$
+	}
+
+	# Get unlanded courtiers fitting the criteria
+
+	# If none were found, generate one
+	if = {
+		limit = {
+			list_size = {
+				name = $LIST$
+				value = 0
+			}
+		}
+
+		create_character = {
+			employer = root
+			gender_female_chance = 50
+			template_character = root
+			culture = $CULTURE$
+			faith = $FAITH$
+			random_traits = yes
+			age = { 20 50 }
+
+			save_scope_as = generated_character
+		}
+
+		scope:generated_character = {
+			add_to_list = $LIST$
+		}
+	}
+}
+
+rebuild_kingdom_around_capital_effect = {
+	set_capital_county = title:$NEW_CAPITAL$
+	title:$NEW_CAPITAL$ = {
+		holder = {
+			save_temporary_scope_as = prev_holder
+			if = {
+				limit = { 
+					any_liege_or_above = {
+						has_variable = sjalvolki_vanguard	# People in the vanguard have the privilege of keeping any kingdoms they conquered for themselves
+					}
+				}
+				random_liege_or_above = {
+					limit = {
+						has_variable = sjalvolki_vanguard
+					}
+					save_scope_as = new_kingdom_holder
+				}
+			}
+			else_if = {
+				limit = { 
+					trigger_if = {
+						limit = { title:$NEW_CAPITAL$ = { has_variable = influx_culture } }
+						title:$NEW_CAPITAL$ = { var:influx_culture = { save_temporary_scope_as = influx_culture_temp } }
+						AND = {
+							NOT = { culture = scope:influx_culture_temp }
+							is_ai = yes
+						}
+					}
+					trigger_else = { always = no }
+				}
+				title:$NEW_CAPITAL$ = {
+					var:influx_culture = { save_temporary_scope_as = influx_culture }
+					var:influx_faith = { save_temporary_scope_as = influx_faith }
+				}
+				create_character = {
+					location = scope:prev_holder.location
+					culture = scope:influx_culture
+					faith = scope:influx_faith
+					gender_female_chance = {
+						if = {
+							limit = { scope:influx_faith = { has_doctrine = doctrine_gender_male_dominated } }
+							add = 0
+						}
+						else_if = {
+							limit = { scope:influx_faith = { has_doctrine = doctrine_gender_female_dominated } }
+							add = 100
+						}
+						else = {
+							add = 50
+						}
+					}
+					template_character = root
+					random_traits = yes
+					age = { 20 50 }
+					
+					save_scope_as = new_kingdom_holder
+				}
+				scope:new_kingdom_holder = {
+					get_title = title:$NEW_CAPITAL$
+				}
+				if = {
+					limit = { title:$NEW_CAPITAL$ = { duchy = { is_title_created = yes } } }
+					title:$NEW_CAPITAL$ = { duchy = { scope:new_kingdom_holder = { get_title = prev } } }
+				}
+			}
+			else = {
+				save_scope_as = new_kingdom_holder
+			}
+		}
+	}
+	create_title_and_vassal_change = {
+		type = granted
+		save_scope_as = kingdom_change
+		add_claim_on_loss = no
+	}
+	change_title_holder = {
+		holder = scope:new_kingdom_holder
+		change = scope:kingdom_change
+	}
+	resolve_title_and_vassal_change = scope:kingdom_change
+	every_in_de_jure_hierarchy = {
+		generate_coa = yes
+	}
+	if = {
+		limit = { holder.dynasty = { NOT = { has_variable = already_assigned_coa_to_kingdom } } }
+		set_coa = holder.dynasty
+		holder.dynasty = { set_variable = already_assigned_coa_to_kingdom }
+	}
+	else = {
+		generate_coa = yes
+	}
+	rebuild_title_hierarchy = yes
+	every_in_de_jure_hierarchy = {
+		limit = {
+			tier = tier_county
+			NOT = { has_variable = protected_from_automatic_culture_conversion }
+		}
+		random_list = {
+			90 = { 
+				set_county_faith = scope:new_kingdom_holder.faith
+				set_county_culture = scope:new_kingdom_holder.culture
+			}
+			5 = {
+				set_county_faith = holder.faith
+				set_county_culture = holder.culture
+			}
+			5 = {  }	# County doesn't flip culture. Useful for leaving Aversarian enclaves here and there
+		}
+	}
+}
+
+# Modified version of the generic multi realm invasion which instead vassalizes Sjalvolki characters
+multi_realm_invasion_join_war_cenware = {
+	every_in_list = {
+		list = target_titles
+		save_scope_as = target_title
+		every_de_jure_top_liege = {
+			limit = {
+				NOR = {
+					this = scope:attacker
+					has_culture_group = culture_group:gh_sjalvoki_group
+				}
+			}
+			if = {
+				limit = {
+					NOT = { has_character_flag = already_offered_vassalage }
+				}
+				if = {
+					limit = { this = character:cois_1 }
+					trigger_event = {
+						id = cois.0001
+						days = 1
+					}
+				}
+				else = {
+					trigger_event = {
+						id = sjalvolki_conquest.0004
+						days = 1
+					}
+				}
+				add_character_flag = {
+					flag = already_offered_vassalage
+					days = 1
+				}
+				if = {
+					limit = {
+						NOT = {
+							is_defender_in_war = scope:war
+						}
+					}
+					scope:war = {
+						add_defender = prev
+					}
+				}
+				every_vassal_or_below = {
+					limit = {
+						AND = {
+							primary_title = {
+								tier >= tier_county
+							}
+							NOT = {
+								is_defender_in_war = scope:war
+							}
+						}
+					}
+					add_to_list = valid_vassals
+				}
+			}
+		}
+		every_de_jure_top_liege = {
+			limit = {
+				has_culture_group = culture_group:gh_sjalvoki_group
+				NOT = { this = scope:attacker }
+			}
+			if = {
+				limit = { 
+					#trigger_if = {
+					#	limit = { exists = scope:war }
+					#	NOT = { is_defender_in_war = scope:war }
+					#}
+					#trigger_else = { always = yes }
+					#this.highest_held_title_tier < scope:attacker.highest_held_title_tier
+					NOT = { has_character_flag = already_offered_vassalage }
+				}
+				trigger_event = {
+					id = sjalvolki_conquest.0003
+					days = 1
+				}
+				add_character_flag = already_offered_vassalage
+			}
+		}
+	}
+	every_in_list = {
+		list = valid_vassals
+		trigger_event = {
+			id = war_event.4000
+		}
+	}
+}
+
+cenware_conquer_kingdom_with_end_conquest_chance = {
+	if = {
+		limit = {
+			NOT = { has_character_flag = preparing_to_end_conquest }
+		}
+		cenware_conquer_kingdom = { KINGDOM_NAME = $KINGDOM_NAME$ }
+	}
+	else_if = {
+		limit = { NOT = { has_character_flag = preparing_to_end_conquest } }
+		random_list = {
+			100 = {
+				cenware_conquer_kingdom = { KINGDOM_NAME = $KINGDOM_NAME$ }
+			}
+			$END_CONQUEST_CHANCE$ = {
+				end_the_conquest_with_preparation = yes
+			}
+		}
+	}
+}
+
+cenware_conquer_kingdom = {
+	if = {
+		limit = { 
+			NOT = { has_variable = ai_cenware_recently_launched_invasion } 
+			NOT = { has_character_flag = preparing_to_end_conquest }
+		}
+		title:$KINGDOM_NAME$ = {
+			if = {
+				limit = {
+					any_in_de_jure_hierarchy = {
+						tier = tier_county 
+						NOR = { 
+							holder.top_liege = character:clanlands_sjalvolki_1
+							has_variable = lucky_aversarian_enclave
+						}
+					}
+				}
+				random_in_de_jure_hierarchy = {
+					limit = { 
+						tier = tier_county 
+						NOR = { 
+							holder.top_liege = character:clanlands_sjalvolki_1
+							has_variable = lucky_aversarian_enclave
+						}
+					}
+					kingdom = { save_scope_as = defender_title }
+					holder.top_liege = { save_scope_as = defender }
+					character:clanlands_sjalvolki_1 = {
+						if = {
+							limit = { has_character_flag = preparing_to_end_conquest }
+							remove_character_flag = preparing_to_end_conquest
+						}
+						set_variable = {
+							name = ai_cenware_recently_launched_invasion
+							days = 10
+						}
+						start_war = {
+							cb = sjalvolki_conquest_cb
+							target = scope:defender
+							target_title = scope:defender_title
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+end_the_conquest_with_preparation = {	# A version of ending the Conquest with a warm-up, so that AI Cenware has time to take all the kingdom division decisions
+	if = {
+		limit = { 
+			NOR = {
+				has_character_flag = preparing_to_end_conquest_timer
+				has_character_flag = preparing_to_end_conquest
+				is_at_war = yes
+			} 
+		}
+		add_character_flag = preparing_to_end_conquest
+		add_character_flag = {
+			flag = preparing_to_end_conquest_timer
+			days = 360
+		}
+	}
+	else_if = {
+		limit = { 
+			has_character_flag = preparing_to_end_conquest
+			NOT = { has_character_flag = preparing_to_end_conquest_timer }
+		}
+		end_the_conquest = yes
+	}
+}
+
+end_the_conquest = {
+	if = {
+		limit = { 
+			title:e_sjalvolki = {
+				is_title_created = yes
+			}
+			title:e_sjalvolki.holder = {
+				NOR = {
+					has_variable = still_licking_wounds
+					has_variable = ai_cenware_recently_launched_invasion
+				}
+			}
+		}
+		title:e_sjalvolki = {
+			holder = {
+				every_vassal = {
+					limit = { highest_held_title_tier >= tier_kingdom }
+					every_held_title = {
+						limit = { tier = tier_kingdom }
+						rebuild_title_hierarchy = yes
+					}
+				}
+				save_temporary_scope_as = imperrech_ruler
+			}
+		}
+		scope:imperrech_ruler = {
+			every_vassal = {
+				limit = {
+					save_temporary_scope_as = potential_vassal_to_be_released
+					NOT = {
+						scope:imperrech_ruler = {
+							any_held_title = {
+								is_de_jure_liege_or_above_target = scope:potential_vassal_to_be_released.primary_title
+							}
+						}
+					}
+				}
+				create_title_and_vassal_change = {
+					type = independency
+					save_scope_as = change
+					add_claim_on_loss = no
+				}
+				change_liege_or_become_independent = {
+					CHANGE = scope:change
+					VASSAL = this
+				}
+				resolve_title_and_vassal_change = scope:change
+				release_disconnected_counties = yes
+			}
+			destroy_title = title:e_sjalvolki
+			remove_character_modifier = gh_imperrech_debuff_modifier
+			release_disconnected_counties = yes
+		}
+	}
+}
+
+force_end_the_conquest = {	# For when the Conquest MUST end instantly regardless of anything else (e.g. Cenware gets beaten twice or dies)
+	if = {
+		limit = { 
+			title:e_sjalvolki = {
+				is_title_created = yes
+			}
+		}
+		title:e_sjalvolki = {
+			holder = {
+				every_vassal = {
+					limit = { highest_held_title_tier >= tier_kingdom }
+					every_held_title = {
+						limit = { tier = tier_kingdom }
+						rebuild_title_hierarchy = yes
+					}
+				}
+				save_temporary_scope_as = imperrech_ruler
+			}
+		}
+		scope:imperrech_ruler = {
+			every_vassal = {
+				limit = {
+					save_temporary_scope_as = potential_vassal_to_be_released
+					NOT = {
+						scope:imperrech_ruler = {
+							any_held_title = {
+								is_de_jure_liege_or_above_target = scope:potential_vassal_to_be_released.primary_title
+							}
+						}
+					}
+				}
+				create_title_and_vassal_change = {
+					type = independency
+					save_scope_as = change
+					add_claim_on_loss = no
+				}
+				change_liege_or_become_independent = {
+					CHANGE = scope:change
+					VASSAL = this
+				}
+				resolve_title_and_vassal_change = scope:change
+				release_disconnected_counties = yes
+			}
+			destroy_title = title:e_sjalvolki
+			remove_character_modifier = gh_imperrech_debuff_modifier
+			release_disconnected_counties = yes
+		}
+	}
+}
+
+change_pops_in_transit = {
+	culture:$CULTURE$ = {
+		if = {
+			limit = {
+				NOT = { has_variable = pops_in_transit }
+			}
+			set_variable = {
+				name = pops_in_transit
+				value = 0
+			}
+		}
+		change_variable = {
+			name = pops_in_transit
+			$OPERATION$ = 1
+		}
+		if = {
+			limit = { var:pops_in_transit = 0 }
+			remove_variable = pops_in_transit
+		}
+	}
+}
+
+###event troops for slave plantation event
+spawn_slave_troops_effect = {
+	spawn_army = {
+		uses_supply = no
+		inheritable = no
+		name = freed_slaves
+		levies = {
+			value = 500
+		}
+		location = capital_province
+	}
+}

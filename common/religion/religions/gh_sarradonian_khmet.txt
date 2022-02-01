@@ -1,0 +1,315 @@
+﻿khmet_religion= {
+	family = gh_sarradonian
+	
+	doctrine = standard_hostility_doctrine
+	
+	#Main Group
+	doctrine = doctrine_temporal_head
+	doctrine = doctrine_gender_equal
+	doctrine = doctrine_pluralism_righteous
+	doctrine = doctrine_theocracy_lay_clergy
+	
+	#Belief
+	doctrine = doctrine_sacred_scriptures
+	doctrine = doctrine_dihenotheistic
+	doctrine = doctrine_aeonic
+	doctrine = doctrine_cyclic
+	doctrine = doctrine_spirits
+	doctrine = doctrine_divine_guidance_none
+	doctrine = doctrine_apocalypse
+	doctrine = doctrine_underworld
+	
+	#Practices
+	doctrine = doctrine_holy_mortals_none
+	doctrine = doctrine_autonomous
+	doctrine = doctrine_no_restrictions
+	doctrine = doctrine_monk_not_clergy_enforced
+	doctrine = doctrine_atonement_none
+	doctrine = doctrine_encouraged_alms
+	
+	#Marriage
+	doctrine = doctrine_polygamy
+	doctrine = doctrine_divorce_allowed
+	doctrine = doctrine_bastardry_none
+	doctrine = doctrine_consanguinity_aunt_nephew_and_uncle_niece
+	doctrine = doctrine_worldly_marriage
+	doctrine = doctrine_paramourial
+
+	#Crimes
+	doctrine = doctrine_homosexuality_shunned
+	doctrine = doctrine_adultery_men_shunned
+	doctrine = doctrine_adultery_women_shunned
+	doctrine = doctrine_kinslaying_shunned
+	doctrine = doctrine_deviancy_crime
+	doctrine = doctrine_magic_accepted
+	doctrine = doctrine_slavery_encouraged
+	
+	#Clerical Functions
+	doctrine = doctrine_clerical_function_recruitment
+	doctrine = doctrine_clerical_gender_either
+	doctrine = doctrine_clerical_marriage_allowed
+	doctrine = doctrine_clerical_succession_temporal_fixed_appointment
+	doctrine = doctrine_formal_coronation
+
+	traits = {
+		virtues = { temperate just sadistic }
+		sins = { gluttonous arbitrary compassionate }
+	}
+
+	#Special Doctrine for Jewish Syncretism
+	doctrine = special_doctrine_is_khmet_faith
+
+	reserved_male_names = {
+		Ammeris Apries Abar Ashakhet Amethu Baqet Bakenran Beketaten Benerib Buneb Dedi Djedefhor Djet Harsiese Harkhuf Horbaef Inhote Inaros Intef Itet Kashta Kahyu Khnum Menhet Menwi Meru Nebet Neferet Nuya
+        Pensekhet Perneb Puimere Qareh Qakare Renseb Satien Senedj Sharek Tahip Tazka Zoser
+	}
+
+	custom_faith_icons = {
+		khmet_custom_pink_icon khmet_custom_blue_icon khmet_custom_green_icon khmet_custom_red_icon khmet_icon
+	}
+
+	holy_order_names = {
+		{ name = "holy_order_mekter_netaru" }
+	}
+
+	holy_order_maa = { }
+
+	localization = {
+		#HighGod
+		HighGodName = khmet_high_god_name
+		HighGodNamePossessive = khmet_high_god_name_possessive
+		HighGodNameSheHe = CHARACTER_SHEHE_HE
+		HighGodHerselfHimself = CHARACTER_HIMSELF
+		HighGodHerHis = CHARACTER_HERHIS_HIS
+		HighGodNameAlternate = khmet_high_god_name_alternate
+		HighGodNameAlternatePossessive = khmet_high_god_name_alternate_possessive
+
+		#Creator
+		CreatorName = khmet_creator_god_name
+		CreatorNamePossessive = khmet_creator_god_name_possessive
+		CreatorSheHe = CHARACTER_SHEHE_HE
+		CreatorHerHis = CHARACTER_HERHIS_HIS
+		CreatorHerHim = CHARACTER_HERHIM_HIM
+
+		#HealthGod
+		HealthGodName = khmet_health_god_name
+		HealthGodNamePossessive = khmet_health_god_name_possessive
+		HealthGodSheHe = CHARACTER_SHEHE_HE
+		HealthGodHerHis = CHARACTER_HERHIS_HIS
+		HealthGodHerHim = CHARACTER_HERHIM_HIM
+		
+		#FertilityGod
+		FertilityGodName = khmet_fertility_god_name
+		FertilityGodNamePossessive = khmet_fertility_god_name_possessive
+		FertilityGodSheHe = CHARACTER_SHEHE_HE
+		FertilityGodHerHis = CHARACTER_HERHIS_HIS
+		FertilityGodHerHim = CHARACTER_HERHIM_HIM
+
+		#WealthGod
+		WealthGodName = khmet_wealth_god_name
+		WealthGodNamePossessive = khmet_wealth_god_name_possessive
+		WealthGodSheHe = CHARACTER_SHEHE_HE
+		WealthGodHerHis = CHARACTER_HERHIS_HIS
+		WealthGodHerHim = CHARACTER_HERHIM_HIM
+
+		#HouseholdGod
+		HouseholdGodName = khmet_household_god_name
+		HouseholdGodNamePossessive = khmet_household_god_name_possessive
+		HouseholdGodSheHe = CHARACTER_SHEHE_HE
+		HouseholdGodHerHis = CHARACTER_HERHIS_HIS
+		HouseholdGodHerHim = CHARACTER_HERHIM_HIM
+
+		#FateGod
+		FateGodName = khmet_fate_god_name
+		FateGodNamePossessive = khmet_fate_god_name_possessive
+		FateGodSheHe = CHARACTER_SHEHE_HE
+		FateGodHerHis = CHARACTER_HERHIS_HIS
+		FateGodHerHim = CHARACTER_HERHIM_HIM
+
+		#KnowledgeGod
+		KnowledgeGodName = khmet_knowledge_god_name
+		KnowledgeGodNamePossessive = khmet_knowledge_god_name_possessive
+		KnowledgeGodSheHe = CHARACTER_SHEHE_HE
+		KnowledgeGodHerHis = CHARACTER_HERHIS_HIS
+		KnowledgeGodHerHim = CHARACTER_HERHIM_HIM
+
+		#WarGod
+		WarGodName = khmet_war_god_name
+		WarGodNamePossessive = khmet_war_god_name_possessive
+		WarGodSheHe = CHARACTER_SHEHE_HE
+		WarGodHerHis = CHARACTER_HERHIS_HIS
+		WarGodHerHim = CHARACTER_HERHIM_HIM
+
+		#TricksterGod
+		TricksterGodName = khmet_trickster_god_name
+		TricksterGodNamePossessive = khmet_trickster_god_name_possessive
+		TricksterGodSheHe = CHARACTER_SHEHE_HE
+		TricksterGodHerHis = CHARACTER_HERHIS_HIS
+		TricksterGodHerHim = CHARACTER_HERHIM_HIM
+
+		#NightGod
+		NightGodName = khmet_night_god_name
+		NightGodNamePossessive = khmet_night_god_name_possessive
+		NightGodSheHe = CHARACTER_SHEHE_HE
+		NightGodHerHis = CHARACTER_HERHIS_HIS
+		NightGodHerHim = CHARACTER_HERHIM_HIM
+
+		#WaterGod
+		WaterGodName = khmet_water_god_name
+		WaterGodNamePossessive = khmet_water_god_name_possessive
+		WaterGodSheHe = CHARACTER_SHEHE_HE
+		WaterGodHerHis = CHARACTER_HERHIS_HIS
+		WaterGodHerHim = CHARACTER_HERHIM_HIM
+
+		PantheonTerm = khmet_high_god_name
+		PantheonTermHasHave = pantheon_term_has
+		GoodGodNames = {
+			khmet_high_god_name
+			HighGodNameAlternate
+			khmet_health_god_name
+			khmet_fertility_god_name
+			khmet_household_god_name
+			khmet_knowledge_god_name
+			khmet_night_god_name
+		}
+		DevilName = khmet_devil_name
+		DevilNamePossessive = khmet_devil_name_possessive
+		DevilSheHe = CHARACTER_SHEHE_HE
+		DevilHerHis = CHARACTER_HERHIS_HIS
+		DevilHerselfHimself = CHARACTER_HIMSELF
+		EvilGodNames = {
+			khmet_devil_name
+			khmet_wealth_god_name
+			khmet_trickster_god_name
+			khmet_witchgodname
+		}
+		HouseOfWorship = khmet_house_of_worship
+		HouseOfWorshipPlural = khmet_house_of_worship_plural
+		ReligiousSymbol = khmet_religious_symbol
+		ReligiousText = khmet_religious_text
+		ReligiousHeadName = khmet_religious_head_title
+		ReligiousHeadTitleName = khmet_religious_head_title_name
+		DevoteeMale = khmet_devotee
+		DevoteeMalePlural = khmet_devotee_plural
+		DevoteeFemale = khmet_devotee
+		DevoteeFemalePlural = khmet_devotee_plural
+		DevoteeNeuter = khmet_devotee
+		DevoteeNeuterPlural = khmet_devotee_plural
+		PriestMale = khmet_priest
+		PriestMalePlural = khmet_priest_plural
+		PriestFemale = khmet_priest
+		PriestFemalePlural = khmet_priest_plural
+		PriestNeuter = khmet_priest
+		PriestNeuterPlural = khmet_priest_plural
+		AltPriestTermPlural = khmet_priest_alternate_plural
+		BishopMale = khmet_bishop
+		BishopMalePlural = khmet_bishop_plural
+		BishopFemale = khmet_bishop
+		BishopFemalePlural = khmet_bishop_plural
+		BishopNeuter = khmet_bishop
+		BishopNeuterPlural = khmet_bishop_plural
+		DivineRealm = khmet_positive_afterlife
+		PositiveAfterLife = khmet_positive_afterlife
+		NegativeAfterLife = khmet_negative_afterlife
+		DeathDeityName = khmet_death_deity_name
+		DeathDeityNamePossessive = khmet_death_deity_name_possessive
+		DeathDeitySheHe = CHARACTER_SHEHE_HE
+		DeathDeityHerHis = CHARACTER_HERHIS_HIS
+		WitchGodName = christianity_witchgodname_iblis
+		WitchGodHerHis = CHARACTER_HERHIS_HIS
+		WitchGodSheHe = CHARACTER_SHEHE_HE
+		WitchGodHerHim = CHARACTER_HERHIM_HIM
+		WitchGodMistressMaster = master
+		WitchGodMotherFather = father
+
+
+		GHWName = ghw_jihad
+		GHWNamePlural = ghw_jihads
+	}
+	
+	piety_icon_group = "islam"
+
+	faiths = {
+		khmet = { #Kemseri Religion
+			color = { 0.4 0.4 0 }
+			icon = khmet_icon
+			religious_head = d_khmet_rel
+
+			reformed_icon = khmet_icon
+			doctrine = unreformed_faith_doctrine
+
+			#Tenet:
+			doctrine = tenet_struggle_submission
+			doctrine = tenet_esotericism
+			doctrine = tenet_astrology
+
+			holy_site = kanitarn
+			holy_site = esmwy
+			holy_site = emtwys
+			holy_site = ashsimmur
+			holy_site = haremakhet
+			holy_site = pardula
+			holy_site = tarkunj
+			holy_site = tabarrayala
+
+			#DOCTRINES:
+
+			#Leadership
+			doctrine = doctrine_temporal_head
+		}
+		vinderon = { #Dark Tower 
+			color = { 0.3 0.3 0.3}
+			icon = khmet_vinderon_icon
+			religious_head = d_vinderon_rel
+
+			#Tenet:
+			doctrine = tenet_unrelenting_faith
+			doctrine = tenet_reincarnation
+			doctrine = tenet_astrology #replace with "Dark Arts" tenant regarding Aelfir Mutants & Archeology
+
+			#DOCTRINES:
+			doctrine = doctrine_consanguinity_aunt_nephew_and_uncle_niece
+
+			doctrine = doctrine_concubines
+			doctrine = doctrine_adultery_men_shunned
+			doctrine = doctrine_adultery_women_crime
+			doctrine = doctrine_homosexuality_accepted
+			doctrine = doctrine_deviancy_accepted
+			
+			doctrine = doctrine_gender_equal
+
+			doctrine = doctrine_pluralism_righteous
+			doctrine = doctrine_theocracy_lay_clergy
+			doctrine = doctrine_spiritual_head
+
+			holy_site = kabekaman
+			holy_site = conersc
+			holy_site = thebastro
+			holy_site = ambracia
+			holy_site = mayikprolollan
+
+			localization = {
+				HighGodName = vinderon_high_god_name
+				HighGodNamePossessive = vinderon_high_god_name_possessive
+				ReligiousText = vinderon_religious_text
+				GoodGodNames = {
+					vinderon_high_god_name
+					amsari_devil_name
+					amsari_trickster_god_name
+					amsari_witchgodname
+					amsari_night_god_name
+				}
+				EvilGodNames = {
+					amsari_high_god_name
+				}
+				PriestMale = vinderon_priest_male
+				PriestMalePlural = vinderon_priest_male_plural
+				PriestFemale = vinderon_priest_male
+				PriestFemalePlural = vinderon_priest_male_plural
+				PriestNeuter = vinderon_priest_male
+				PriestNeuterPlural = vinderon_priest_male_plural
+			}
+		}
+    }
+}
+		

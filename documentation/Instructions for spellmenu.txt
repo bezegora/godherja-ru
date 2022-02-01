@@ -1,0 +1,207 @@
+#################
+# Instructions for making spells
+# By CASTOX
+################
+
+#New spells
+
+#Go to common/scripted_guis/gm_sm_scripted_guis.txt
+
+#1 Inside Func get_spell_list
+#2 Find type of magic section for the spell
+
+#3 Input Code
+	add_to_variable_list = {
+		name = list_living_magic  #<------------ options: list_living_magic / list_dead_magic / list_mixed_magic  / list_other_magic
+		target = flag:massive_bomb #<----- use Flag:    then spell_name   | !Important - Do not localize this name we will do this later
+	}                         
+
+#4 create scripted_gui lower in that file under # Spells for CHECKS
+#name should look like massive_bomb_check | _check is used for the is_shown / is_valid but also to load the spell without executing it.
+
+#example below for creation: leave the effect empty or your spell will cast when selected from list.
+
+	creation_check = {
+		scope = character
+		is_shown = {
+			is_target_in_global_variable_list = {
+				name = blood_magi_list
+				target = root
+			}
+			has_trait_rank = {
+				trait = education_living_magic
+				rank >= 1
+			}
+		}
+
+		is_valid = {
+			this.var:magic_counter >= tier_1_spell
+			NOT = {
+				OR = {
+					has_character_flag = casted_creation
+					has_trait = incapable
+				}
+			}
+		}
+
+		effect = {
+		
+		}
+	}
+
+#5 create your effect for spell in common/scripted_guis/gh_spells use acutal name; final name would be: massive_bomb
+#item 6 ref spells on characters and lands and goes into more detail
+#example for creation;
+
+creation = {
+	scope = character
+	
+	# no need for is_shown or is_valid because we already did this in _check
+	#############################
+
+	effect = {
+		if = {   # this if statement is to check for any selected characters.
+			limit = {
+				root = {
+					has_variable_list = spell_targets
+				}
+			}
+			root = { # this root branch ensure that you get charged for casting the spell
+				add_character_flag = {
+					flag = casted_creation
+					years = 5
+				}
+				change_variable = {
+					name = magic_counter
+					subtract = tier_1_spell
+				}
+				send_interface_message = {  # a flavor message or whatever you want I just threw this in there.
+					type = designated_sacrifice_unsacrificed
+					title = "Spell Cast"
+					desc = "I've cast creation!"
+					right_icon = root
+				}
+			}
+			every_in_list = { #finally everyone, which should just be 1 person will get the effect of the magic spell.
+				variable = spell_targets
+				add_character_modifier = {
+					modifier = creation_mod
+					years = 10
+				}
+			}
+
+		}
+		else = {	# this else statement is for spells with nobody selected, so the spell will default to you.
+			change_variable = {
+				name = magic_counter
+				subtract = tier_1_spell
+			}
+			add_character_modifier = {
+				modifier = creation_mod
+				years = 10
+			}
+			add_character_flag = {
+				flag = casted_creation
+				years = 5
+			}
+			send_interface_message = { # note I put 2 different TOASTS in here instead of 1, the one above is incase you wanted to use the character that the spell got casted on
+				type = designated_sacrifice_unsacrificed
+				title = "Spell Cast"
+				desc = "I've cast creation!"
+				right_icon = root
+			}
+		}
+	}
+}
+
+#6 for spells on characters and titles enure to use an if statement!
+# 
+	if = {
+		limit = {
+			root = {
+				has_variable_list = spell_targets  #<--- spell_targets is for characters
+			}										#USE spell_l_targets for lands, that is a lower case L
+		}
+		root = {
+			#charge your magic cost here
+			#also add the casted modifer here to ensure the character is not being charged for your spell.
+		}
+		every_in_list = {
+			variable = spell_targets
+			#the effect you want here            
+		}
+	}
+	else = {
+			#the effect you want here <-- same effect as above only cast on yourself.
+	}
+  ##################################
+  #example for lands
+	if = {
+		limit = {
+			root = {
+				has_variable_list = spell_l_targets
+			}
+		}
+		every_in_list = {
+			variable = spell_l_targets
+			save_scope_as = location
+		}
+	}
+	else = {
+		if = {
+			limit = { exists = capital_province }
+			capital_province = { save_scope_as = location }
+		}
+	}
+#6a for spells using level indicator 1 / 2 / 3  use the root var   var:magic_lvl
+## NOTE for regular is 0 this is not needed.
+
+	if = {
+		limit ={
+			var:magic_lvl = { compare_value > 0 }
+		}
+		#do this normal
+	}
+	if = {
+		limit ={
+			var:magic_lvl = { compare_value > 1 }
+		}
+		#do this higher
+	}
+	if = {
+		limit ={
+			var:magic_lvl = { compare_value > 2 }
+		}
+		#do this the most
+	}
+
+#7 localize your spell in gh_magic_system_l_english,yml with massive_bomb_name  using the _name ext. final; massive_bomb_name
+#7a Localize your desc with massive_bomb_desc
+
+#8 adding icons
+# Add your icon in the the   ------> gui/spell_menu_icons.gui
+# follow example below, nothing else is needed.
+
+texticon = { 
+	icon = spell_icon_massive_bomb    #the prefix of your spell name will be spell_icon_
+	iconsize = {
+		texture = "gfx/interface/icons/spell_menu/massive_bomb.dds"  #<---- your location here, could be anywhere.
+		size = { 50 50 }
+		fontsize = 16
+	}
+}
+#9 Add your spell Cost in scripted values, even though the spells have tier costs and can be charged using that system you need a scripted value with the name using _cost
+# this to ensure it shows properly in the Spell Menu Gui
+# Example
+	massive_bomb_cost = {
+		#script or
+		value = 20
+	}
+
+
+#hardcoded icons 
+#change menu here gfx\interface\icons\spell_menu
+#
+#place spells here gfx\interface\icons\spell_menu\spells
+ #^ or where you pointed the image in the texticon section.
+

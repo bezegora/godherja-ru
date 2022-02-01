@@ -1,0 +1,394 @@
+﻿###Magic Point Generation###
+
+sacrifice_population = {
+	scope = character
+
+
+    effect = {
+		if = {
+			limit = {
+				root = {
+					has_variable_list = spell_l_targets
+				}
+			}
+			every_in_list = {
+				variable = spell_l_targets
+				save_scope_as = location
+			}
+		}
+		else = {
+			if = {
+				limit = { exists = capital_province }
+				capital_province = { save_scope_as = location }
+			}
+		}
+		if = {
+			limit = {
+				root.faith = {
+					has_doctrine = tenet_aeschres_legacy
+				}
+			}
+			add_piety = major_piety_value
+		}
+
+		scope:location = {
+			add_county_modifier = {
+				modifier = sacrificed_population_mod
+				years = 10
+			}
+			change_development_level = -2
+			
+		}
+		add_tyranny = 10
+    	change_variable = {
+    		name = magic_counter
+    		add = sacrifice_population_cost
+    	}
+
+    	add_character_flag = {
+    		flag = sacrificed_population
+    		years = 10
+    	}
+        if = {
+            limit = {
+                root = {
+                    has_perk = livingmagic_perk2_tree1
+                }
+            }
+            generate_prowess_or_intrigue = yes
+        }
+        if = {
+            limit = {
+                root = {
+                    has_perk = livingmagic_perk6_tree1
+                }
+            }
+            add_stress = medium_stress_loss
+        }
+    }
+}
+
+flagellate = {
+	scope = character
+
+	effect = {
+		flagellate_effect = yes
+	}
+}
+
+ritual_sacrifice = {
+	scope = character
+
+	effect = {
+		if = {
+			limit = {
+				root = {
+					has_variable_list = spell_targets
+					any_in_list = {
+						variable = spell_targets
+						is_imprisoned_by = root
+					}
+				}
+			}
+			custom_tooltip = will_mass_sacrifice_tt
+			root = { trigger_event = magic.0001 }
+		}
+    }
+}
+
+sacrifice_plants = {
+	scope = character
+
+
+    effect = {
+        change_variable = {
+    		name = magic_counter
+    		add = tier_1_gen
+    	}
+
+    	add_character_flag = {
+    		flag = killed_plants
+    		years = 5
+    	}
+    if = {
+        limit = {
+            root = {
+                has_perk = livingmagic_perk2_tree1
+            }
+        }
+        generate_prowess_or_intrigue = yes
+    }
+        if = {
+            limit = {
+                root = {
+                    has_perk = livingmagic_perk6_tree1
+                }
+            }
+            add_stress = medium_stress_loss
+        }
+    }
+}
+
+communed_with_the_way = {
+	scope = character
+
+    effect = {
+        change_variable = {
+    		name = magic_counter
+    		add = tier_2_gen
+    	}
+
+    	add_character_flag = {
+    		flag = communed_with_the_way
+    		years = 10
+    	}
+        if = {
+            limit = {
+                root = {
+                    has_perk = livingmagic_perk2_tree1
+                }
+            }
+            generate_prowess_or_intrigue = yes
+        }
+        if = {
+            limit = {
+                root = {
+                    has_perk = livingmagic_perk6_tree1
+                }
+            }
+            add_stress = medium_stress_loss
+        }
+    }
+}
+
+seeped_into_madness = {
+    scope = character
+
+    effect = {
+        change_variable = {
+            name = magic_counter
+            add = tier_1_gen
+        }
+
+        add_character_flag = {
+            flag = seeps_into_madness
+            years = 10
+        }
+
+        if = {
+            limit = {
+                root = {
+                    has_perk = mixedmagic_perk3_tree1
+                }
+            }
+            add_stress = minor_stress_gain
+        }
+        else = {
+            add_stress = medium_stress_gain
+        }
+    }
+}
+
+communed_with_eldritch = {
+    scope = character
+
+    effect = {
+        change_variable = {
+            name = magic_counter
+            add = tier_3_gen
+        }
+        add_character_flag = {
+            flag = communes_with_eldritch
+            years = 10
+        }
+        if = {
+            limit = {
+                root = {
+                    has_perk = mixedmagic_perk4_tree1
+                }
+            }
+            add_stress = medium_stress_gain
+        }
+        else = {
+            add_stress = major_stress_gain
+        }
+
+    }
+}
+
+dreamwalk = {
+    scope = character
+
+    effect = {
+        change_variable = {
+            name = magic_counter
+            add = tier_2_gen
+        }
+        add_character_flag = {
+            flag = dreamwalked
+            years = 5
+        }
+        if = {
+            limit = {
+                root = {
+                    has_perk = mixedmagic_perk3_tree1
+                }
+            }
+            add_stress = minor_stress_gain
+        }
+        else = {
+            add_stress = medium_stress_gain
+        }
+
+        if = {
+            limit = {
+                root = {
+                    has_perk = mixedmagic_perk3_tree3
+                }
+            }
+            hidden_effect = {
+                thought_theft_effect = yes
+            }
+        }
+    }
+}
+
+dream_invasion = {
+    scope = character
+
+    effect = {
+        if = {
+            limit = {
+                root = {
+                    has_variable_list = spell_targets
+                }
+            }
+            every_in_list = {
+                variable = spell_targets
+                custom_tooltip = dream_invasion.tt
+                add_character_modifier = {
+                    modifier = has_nightmares
+                    years = 5
+                }
+            }
+            root = {
+                add_character_flag = {
+                    flag = dream_invaded
+                    years = 10
+                }
+
+                change_variable = {
+                    name = magic_counter
+                    add = tier_2_gen
+                }
+            }
+        }
+        else = {
+
+        }
+    }
+}
+
+ethereal_ritual = {
+    scope = character
+
+    effect = {
+        change_variable = {
+            name = magic_counter
+            add = tier_2_gen
+        }
+        add_character_flag = {
+            flag = communes_with_ethereals
+            years = 5
+        }
+        if = {
+            limit = {
+                root = {
+                    has_perk = mixedmagic_perk4_tree1
+                }
+            }
+            add_stress = medium_stress_gain
+        }
+        else = {
+            add_stress = major_stress_gain
+        }
+
+    }
+}
+
+moon_read = {
+    scope = character
+
+    effect = {
+        change_variable = {
+            name = magic_counter
+            add = tier_1_gen
+        }
+        add_character_flag = {
+            flag = moon_read_already
+            months = 4
+        }
+    }
+}
+
+skeletal_craft = {
+    scope = character
+
+    effect = {
+        change_variable = {
+            name = magic_counter
+            add = tier_1_gen
+        }
+        add_character_flag = {
+            flag = casted_skeletal_craft
+            months = 4
+        }
+    }    
+}
+
+moon_pull = { 
+    scope = character
+
+    effect = {
+        change_variable = {
+            name = magic_counter
+            add = tier_2_gen
+        }
+        add_character_flag = {
+            flag = moon_pull_already
+            months = 8
+        }
+    }
+}
+
+study_arcane = {
+    scope = character
+
+    effect = {
+        change_variable = {
+            name = magic_counter
+            add = tier_1_gen
+        }
+
+        add_character_flag = {
+            flag = studied_arcane
+            years = 20
+        }
+    }
+}
+
+expedition = {
+    scope = character
+
+    effect = {
+        change_variable = {
+            name = magic_counter
+            add = tier_1_gen
+        }
+
+        add_character_flag = {
+            flag = went_on_expedition
+            years = 5
+        }		
+    }
+}

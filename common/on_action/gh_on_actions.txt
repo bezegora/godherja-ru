@@ -1,0 +1,897 @@
+﻿yearly_playable_pulse = {
+	events = {
+		adventure.1
+	}
+}
+
+on_game_start = { 
+	effect = {
+		initialize_historical_information = yes
+	
+		initialize_artifacts = yes
+		initialize_traditional_borders = yes
+		initialize_influx_cultures_kalathipsomi = yes
+		
+		#konijkmener traits
+		if = {
+			limit = { exists = title:k_de_kanzelerij.holder }
+			title:k_de_kanzelerij.holder = {
+				every_vassal = {
+					limit = {
+						NOT = {
+							OR = {
+								has_trait = konijkmener_peopleofunity
+								has_trait = konijkmener_councilists
+								#has_trait = konijkmnener_neutral
+							}
+						}
+					}
+					random_list = {
+						33 = {
+							add_trait = konijkmener_peopleofunity
+						}
+						33 = {
+							add_trait = konijkmener_councilists
+						}
+						34 = {
+							#add_trait = konijkmener_neutral
+						}						
+					}
+				}
+			}
+		}
+		character:clanlands_sjalvolki_1 = {
+			everybody_loves_cenware = yes
+			if = { 
+				limit = {
+					has_game_rule = imperrech_destroyed
+				}
+				destroy_title = title:e_sjalvolki
+			}
+			else = {
+				add_character_modifier = {
+					modifier = gh_imperrech_debuff_modifier
+				}
+			}
+		}
+		character:rhesus_1 = {	# Rhesus has such an iron-fisted control over the realm that this effect is intentionally called twice
+			generate_web_of_intrigue = yes
+			generate_web_of_intrigue = yes
+		}
+		
+		set_lifepath_dedication = yes
+		set_valid_lifepaths_all_faiths = yes
+		assign_lifepath_trait = yes
+		
+		# Initial Fog stuff
+		init_fog_locations = yes
+		init_fog_parameters = yes
+		
+		# Waylines
+		set_all_waylines = yes
+		
+		# Marcher Antimagic Field
+		set_antimagic_field = yes
+		
+		if = {
+			limit = {
+				has_game_rule = default_adabyss_invasion
+			}
+			title:e_adabyss.holder = {
+				trigger_event = {
+					id = adabyss_opening.2
+				}
+			}
+		}
+		
+		populate_with_wayfathers = yes
+		
+		#every_faith = {
+		#	#limit = { has_doctrine_parameter = lifepath_choice }
+		#	set_variable = {
+		#		name = lifepath_relevance_measure
+		#		value = lifepath_relevance_measure_start_value
+		#	}
+		#}
+		
+		#every_province = {
+		#	limit = { discount_embark_from_this_province = yes }
+		#	add_to_global_variable_list = {
+		#		name = cheapened_embark_provinces
+		#		target = this
+		#	}
+		#}
+		#
+		#every_army = {
+		#	save_scope_as = army
+		#	army_owner = {
+		#		trigger_event = {
+		#			on_action = on_army_enter_province
+		#		}
+		#	}
+		#}
+		
+		if = {
+			limit = { character:western_imperial_1 = { is_alive = yes } }
+			character:western_imperial_1 = {
+				set_variable = {
+					name = magic_counter
+					value = 300
+				}
+			}
+		}
+		
+		if = {
+			limit = { character:cois_1 = { is_alive = yes } }
+			character:cois_1 = {
+				set_variable = {
+					name = conclave_immunity_cooldown
+					days = 180
+				}
+			}
+		}
+	}
+
+	on_actions = {
+		on_monthly
+		on_daily
+		on_biannual_fog
+		on_yearly_marcher
+		on_yearly_legacy_of_elysia_check
+		on_yearly_ruined_by_ulfrix_check
+		bloodline_set_founders
+		bloodline_add_member
+		bloodline_inheritors
+		on_monthly_cenware_doomed_war_winner
+
+		# these two are from artifacts, as there can only be one on_game_start
+		on_artifact_initialization
+		on_monthly_artifacts
+		
+		delay = { days = 1 }
+		initialize_magi_on_action
+	}
+}
+
+#Runs code that needs to happen every month
+on_monthly = {
+	effect = {
+		#########
+		# MAGIC #
+		#########
+		global_magic_calculations = yes							# Initializes and/or updates all passive magic generation related variables for all magi
+		every_in_global_list = {
+			variable = non_magi_with_exposure
+			reduce_overwhelmation = yes
+		}
+		every_ruler = {
+			limit = { highest_held_title_tier >= tier_county }
+			trigger_event = magic.0037
+		}
+
+		# Assuming 10 valid rulers, there is a 70% chance of this war going off at least once a year
+		every_independent_ruler = {
+			limit = {
+				is_ai = yes
+				is_at_war = no
+				primary_title.empire = title:e_malcois
+				culture_group = culture_group:gh_iyrossi_group
+				any_character_to_title_neighboring_county = {
+					holder.top_liege.culture_group = culture_group:gh_imperial_group
+				}
+			}
+			random_list = {
+				99 = {}
+				1 = {
+					trigger_event = {
+						id = war_event.4004
+						days = { 3 18 }
+					}
+				}
+			}
+		}
+		
+		every_independent_ruler = {		
+			if = {
+				limit = { 
+					OR = {	
+					has_trait = coronated_by_head_of_religion	
+					has_trait = coronated_by_high_priest
+					has_trait = coronated_by_bishop
+					has_trait = coronated_formal_3
+					has_trait = coronated_formal_2
+					has_trait = coronated_formal_1
+					has_trait = coronated_celebration
+					}
+				}
+				clear_uncoronated_debuff = yes
+			}			
+		}
+
+		#every_living_character = {
+		#	limit = { can_access_magic = yes }
+		#	trigger_event = magic.9999 # spells for ai
+		#}
+
+		# Give the Agionist crusader kingdoms some help
+		every_independent_ruler = {
+			IF = {
+				limit = {
+					OR = {
+						primary_title = title:k_saint_sansias_rose
+						primary_title = title:k_forlorn_guardian
+						primary_title = title:k_golden_hand
+						primary_title = title:k_saint_calystos_key
+						primary_title = title:k_bleeding_martyr
+						primary_title = title:k_pure_heart
+						primary_title = title:k_blind_watcher
+						primary_title = title:k_forgotten_saint
+					}
+				}
+				add_character_modifier = agionist_stick_modifier
+				
+				every_realm_county = {
+					add_county_modifier = agionist_carrot_modifier
+				}
+			}
+			ELSE_IF = {
+				limit = {
+					has_character_modifier = agionist_stick_modifier
+				}
+				remove_character_modifier = agionist_stick_modifier
+
+				every_realm_county = {
+					limit = {
+						NOT = {
+							religion = religion:agionism_religion
+						}
+					}
+					add_county_modifier = agionist_carrot_modifier
+				}
+			}
+			ELSE_IF = {
+				limit = {
+					any_realm_county = {
+						has_county_modifier = agionist_carrot_modifier
+					}
+				}
+				every_realm_county = {
+					add_county_modifier = agionist_carrot_modifier
+				}
+			}
+		}
+		
+		# cheapened embark provinces
+		every_in_global_list = {
+			variable = cheapened_embark_provinces
+			limit = {
+				NOT = {
+					discount_embark_from_this_province = yes
+				}
+			}
+			remove_list_global_variable = {
+				name = cheapened_embark_provinces
+				target = this
+			}
+		}
+
+		every_in_global_list = {
+			variable = metropolis_counties
+			every_in_de_jure_hierarchy = {
+				continue = { tier > tier_province }
+				limit = {
+					tier = tier_province
+					is_coastal = yes
+					discount_embark_from_this_province = yes
+				}
+				add_to_global_variable_list = {
+					name = cheapened_embark_provinces
+					target = this
+				}
+			}
+		}
+	}
+	
+	on_actions = {
+		delay = {months = 1}
+		on_monthly
+	}
+}
+
+on_biannual_fog = {
+	effect = {
+		trigger_event = {
+			id = gh_fog_spread_events.1
+		}
+		every_ruler = {
+			limit = { 
+				faith = faith:fogeater 
+			}
+			trigger_event = gh_fog_spread_events.5
+		}
+	}
+	on_actions = {
+		delay = { months = { 6 9 } }
+		on_biannual_fog
+	}
+}
+
+yearly_gedeora_pulse = {
+	effect = {
+		random_list = {
+			80 = { }	# Has a 20% chance of striking each year
+			20 = {
+				trigger = { NOT = { has_game_rule = gedeora_disabled } }
+				modifier = {
+					factor = 0.25
+					any_parent = { has_game_rule = gedeora_rare }
+				}
+				trigger_event = {
+					id = gedeora.0001
+					days = { 1 360 }
+				}
+			}
+		}
+	}
+}
+
+on_yearly_marcher = {
+	effect = {
+		yearly_magic_calculations = yes	
+		every_ruler = {
+			limit = { has_culture_group = culture_group:gh_marcher_group }
+			random_list = {
+				98 = {  } # Nothing
+				1 = { trigger_event = { id = marcher.0101 days = { 1 350 } } } # Wounded Griffon
+				1 = { trigger_event = { id = marcher.0103 days = { 1 350 } } } # Griffon Trainer
+			}
+		}
+	}	
+	
+	on_actions = {
+		delay = {months = 12}
+		on_yearly_marcher
+	}
+}
+
+biannual_marcher_war_pulse = {
+	effect = {
+		if = {
+			limit = {
+				NOT = {
+					title:e_chevalie = {
+						is_title_created = yes
+					}
+				}
+				any_independent_ruler = {
+					has_character_modifier = piece_of_the_broken_crown_modifier
+					is_ai = yes
+				}
+			}
+
+			# Prep characters and variables
+			every_independent_ruler = {
+				limit = {
+					has_character_modifier = piece_of_the_broken_crown_modifier
+					is_ai = yes
+				}
+				add_to_global_variable_list = {
+					name = war_candidates
+					target = this
+				}
+			}
+
+			title:k_de_porte_de_bastione = {
+				if = {
+					limit = {
+						is_title_created = yes
+						holder = { is_ai = yes }
+					}
+					holder = {
+						add_to_global_variable_list = {
+							name = war_candidates
+							target = this
+						}
+					}
+				}
+			}
+			title:k_varrdevet = {
+				if = {
+					limit = {
+						is_title_created = yes
+						holder = { is_ai = yes }
+					}
+					holder = {
+						add_to_global_variable_list = {
+							name = war_candidates
+							target = this
+						}
+					}
+				}
+			}
+			title:k_rohr = {
+				if = {
+					limit = {
+						is_title_created = yes
+						holder = { is_ai = yes }
+					}
+					holder = {
+						add_to_global_variable_list = {
+							name = war_candidates
+							target = this
+						}
+					}
+				}
+			}
+			title:k_marroux = {
+				if = {
+					limit = {
+						is_title_created = yes
+						holder = { is_ai = yes }
+					}
+					holder = {
+						add_to_global_variable_list = {
+							name = war_candidates
+							target = this
+						}
+					}
+				}
+			}
+			title:k_perignan = {
+				if = {
+					limit = {
+						is_title_created = yes
+						holder = { is_ai = yes }
+					}
+					holder = {
+						add_to_global_variable_list = {
+							name = war_candidates
+							target = this
+						}
+					}
+				}
+			}
+
+			# set_variable = { name = marcher_wars_occuring value = 0 }
+			set_global_variable = {
+				name = marcher_wars_occuring
+				value = 0
+			}
+			every_in_global_list = {
+				variable = war_candidates
+			
+				# If anyone is already busy with a war, don't bother them with another one
+				# Also use this to figure out how many marcher wars are going on
+				every_character_war = {
+					if = {
+						limit = {
+							using_cb = marcher_crown_reclamation_cb
+						}
+						change_global_variable = {
+							name = marcher_wars_occuring
+							add = 1
+						}
+					}
+					prev = {
+						add_to_list = remove_from_war_candidates
+					}
+				}
+			}
+
+			every_in_list = {
+				list = remove_from_war_candidates
+
+				remove_list_global_variable = {
+					name = war_candidates
+					target = this
+				}
+			}
+
+			# Debug statement
+			every_in_global_list = {
+				variable = war_candidates
+				debug_log_scopes = no
+			}
+
+			# 80% chance of starting a war if there isn't a marcher war happening
+			# 40% chance of starting a second war if there's already a marcher war happening
+			# If there's 3 going on already, don't add any more
+			if = {
+				limit = {
+					global_variable_list_size = {
+						name = war_candidates
+						value > 1
+					}
+					global_var:marcher_wars_occuring <= 3
+				}
+			 	if = {
+					limit = {
+						global_var:marcher_wars_occuring = 0
+					}
+					random_list = {
+						80 = {
+							random_in_global_list = {
+								variable = war_candidates
+								limit = {
+									has_character_modifier = piece_of_the_broken_crown_modifier
+									is_ai = yes
+								}
+
+								save_scope_as = war_attacker
+							}
+
+							random_in_global_list = {
+								variable = war_candidates
+								limit = {
+									character_is_land_realm_neighbor = scope:war_attacker
+									NOT = {
+										this = scope:war_attacker
+									}
+								}
+
+								save_scope_as = war_defender
+							}
+
+							if = {
+								limit = {
+									NOT = {
+										exists = scope:war_defender
+									}
+								}
+								random_in_global_list = {
+									variable = war_candidates
+									limit = {
+										NOT = {
+											this = scope:war_attacker
+										}
+									}
+	
+									save_scope_as = war_defender
+								}
+							}
+
+							if = {
+								limit = {
+									exists = scope:war_attacker
+									exists = scope:war_defender 
+								}
+								scope:war_attacker = {
+									start_war = {
+										casus_belli = marcher_reunification_cb
+										target = scope:war_defender
+										target_title = scope:war_defender.primary_title
+									}
+								}
+							}
+						}
+						20 = {
+							
+						}
+					}
+				}
+				# 1-3 wars already, lower chance of starting one
+				else = {
+					random_list = {
+						40 = {
+							random_in_global_list = {
+								variable = war_candidates
+								limit = {
+									has_character_modifier = piece_of_the_broken_crown_modifier
+									is_ai = yes
+								}
+
+								save_scope_as = war_attacker
+							}
+							
+							debug_log = war_attacker
+							scope:war_attacker = {
+								debug_log_scopes = no
+							}
+
+							random_in_global_list = {
+								variable = war_candidates
+								limit = {
+									character_is_land_realm_neighbor = scope:war_attacker
+									NOT = {
+										this = scope:war_attacker
+									}
+								}
+
+								save_scope_as = war_defender
+							}
+
+							if = {
+								limit = {
+									NOT = {
+										exists = scope:war_defender
+									}
+								}
+								random_in_global_list = {
+									variable = war_candidates
+									limit = {
+										NOT = {
+											this = scope:war_attacker
+										}
+									}
+	
+									save_scope_as = war_defender
+								}
+							}
+							
+							if = {
+								limit = {
+									exists = scope:war_attacker
+									exists = scope:war_defender 
+								}
+								scope:war_attacker = {
+									start_war = {
+										casus_belli = marcher_reunification_cb
+										target = scope:war_defender
+										target_title = scope:war_defender.primary_title
+									}
+								}
+							}
+						}
+						60 = {
+						
+						}
+					}
+				}
+			}
+
+			clear_global_variable_list = war_candidates
+		}
+	}
+
+	# on_actions = {
+	# 	delay = { months = 6 }
+	# 	on_biannual_marcher_war
+	# }
+}
+
+on_yearly_legacy_of_elysia_check = {	# Yearly check to give Aversarian counties in Etepezea the Legacy of Elysia modifier. Should self-terminate after 1304 AD
+	effect = {
+		if = {	# If the date is post 1304, remove the modifier everywhere and self-terminate the on_action
+			limit = { current_date >= 1304.1.1 }
+			every_county_in_region = {
+				region = world_ga_western_aversaria
+				if = {
+					limit = { has_county_modifier = legacy_of_elyssia }
+					remove_county_modifier = legacy_of_elyssia
+				}
+			}
+		}
+		else = {
+			every_county_in_region = {
+				region = world_ga_western_aversaria
+				if = {
+					limit = {
+						has_county_modifier = legacy_of_elyssia
+						holder.top_liege.primary_title = title:e_sjalvolki
+					}
+					remove_county_modifier = legacy_of_elyssia
+				}
+				else_if = {
+					limit = {
+						holder.culture_group = culture_group:gh_imperial_group
+						NOR = {
+							has_county_modifier = legacy_of_elyssia
+							holder.top_liege.primary_title = title:e_sjalvolki
+						}
+					}
+					add_county_modifier = legacy_of_elyssia
+				}
+			}
+			trigger_event = {
+				on_action = on_yearly_legacy_of_elysia_check
+				days = 360
+			}
+		}
+	}
+}
+
+on_yearly_ruined_by_ulfrix_check = {	# Yearly check to give Aversarian island counties in Opakhasia the Raided by Ulfrix modifier. Should self-terminate after 1284 AD
+	effect = {
+		if = {	# If the date is post 1284, remove the modifier everywhere and self-terminate the on_action
+			limit = { current_date >= 1284.1.1 }
+			every_county_in_region = {
+				region = world_ga_aversarian_isles
+				if = {
+					limit = { has_county_modifier = ruined_by_ulfrix }
+					remove_county_modifier = ruined_by_ulfrix
+				}
+			}
+		}
+		else = {
+			every_county_in_region = {
+				region = world_ga_aversarian_isles
+				if = {
+					limit = {
+						has_county_modifier = ruined_by_ulfrix
+						holder.top_liege.primary_title = title:e_sjalvolki
+					}
+					remove_county_modifier = ruined_by_ulfrix
+				}
+				else_if = {
+					limit = {
+						holder.culture_group = culture_group:gh_imperial_group
+						NOR = {
+							has_county_modifier = ruined_by_ulfrix
+							holder.top_liege.primary_title = title:e_sjalvolki
+						}
+					}
+					add_county_modifier = ruined_by_ulfrix
+				}
+			}
+			trigger_event = {
+				on_action = on_yearly_ruined_by_ulfrix_check
+				days = 360
+			}
+		}
+	}
+}
+
+yearly_aervalr_shard_pulse = {
+	effect = {
+		random_list = {
+			60 = { } # Nothing, Aervalr shards should fall once every 3 years or so.
+			30 = { trigger_event = {
+					id = aervalr.0100
+					days = { 1 360 }
+				}
+			}
+		}
+	}
+}
+
+initialize_magi_on_action = {
+	effect = {
+		every_living_character = {
+			limit = { can_access_magic = yes }
+			give_mixed_magi_riftsight_effect = yes
+			add_to_magi_list = yes
+		}
+		global_magic_calculations = yes
+	}
+}
+
+on_daily = { # use with great caution!
+	effect = {
+		# check whether marked armies have embarked
+		every_in_global_list = {
+			variable = embark_armies_watched_daily
+
+			if = {
+				limit = {
+					always = "[THIS.Army.IsFleet]" # fight me pdx
+				}
+				army_owner = {
+					add_gold = {
+						value = "[PREV.Army.GetRaisingFleetCost]"
+						multiply = 0.5
+					}
+				}
+				remove_list_global_variable = {
+					name = embark_armies_watched_daily
+					target = this
+				}
+			}
+			else_if = {
+				limit = { # have they moved away, and no longer recieve the bonus?
+					NOT = {
+						is_target_in_global_variable_list = {
+							name = cheapened_embark_provinces
+							target = this.location
+						}
+					}
+				}
+				remove_list_global_variable = {
+					name = embark_armies_watched_daily
+					target = this
+				}
+			}
+		}
+	}
+
+	on_actions = {
+		delay = { days = 1 }
+		on_daily
+	}
+}
+
+sjalvolki_conquest_events = {
+	random_events = {
+		100 = 0
+		1 = sjalvolki_conquest.0100
+		3 = sjalvolki_conquest.0101 
+		2 = sjalvolki_conquest.0120
+		2 = sjalvolki_conquest.0122
+		2 = sjalvolki_conquest.0123
+		2 = sjalvolki_conquest.0124
+		2 = sjalvolki_conquest.0126
+		2 = sjalvolki_conquest.0127
+		2 = sjalvolki_conquest.0128
+		2 = sjalvolki_conquest.0129
+		2 = sjalvolki_conquest.0130
+		2 = sjalvolki_conquest.0131
+		2 = sjalvolki_conquest.0132
+		2 = sjalvolki_conquest.0136 #redo this one
+		2 = sjalvolki_conquest.0137 #redo this one
+		2 = sjalvolki_conquest.0138
+		2 = sjalvolki_conquest.0141
+		2 = sjalvolki_conquest.0144
+		2 = sjalvolki_conquest.0145
+		2 = sjalvolki_conquest.0146
+		2 = sjalvolki_conquest.0148
+	}
+}
+
+on_monthly_cenware_doomed_war_winner = {	# If AI Cenware is at war with other AI and he has over 75% warscore, auto win it instead of wasting his time
+	effect = {
+		if = {
+			limit = { 
+				character:clanlands_sjalvolki_1 = { 
+					is_alive = yes
+					has_title = title:e_sjalvolki
+				} 
+			}
+			character:clanlands_sjalvolki_1 = {
+				if = {
+					limit = { is_at_war = yes }
+					if = {
+						limit = {
+							OR = {
+								any_character_war = {
+									limit = {
+										any_war_attacker = { this = character:clanlands_sjalvolki_1 }
+										attacker_war_score >= 50
+										NOR = {
+											character:clanlands_sjalvolki_1 = { is_ai = no }
+											any_war_defender = { is_ai = no }
+										}
+									}
+								}
+								any_character_war = {
+									limit = {
+										any_war_defender = { this = character:clanlands_sjalvolki_1 }
+										defender_war_score >= 50
+										NOR = {
+											character:clanlands_sjalvolki_1 = { is_ai = no }
+											any_war_attacker = { is_ai = no }
+										}
+									}
+								}
+							}
+						}
+					}
+					every_character_war = {
+						limit = {
+							any_war_attacker = { this = character:clanlands_sjalvolki_1 }
+							attacker_war_score >= 50
+							NOR = {
+								character:clanlands_sjalvolki_1 = { is_ai = no }
+								any_war_defender = { is_ai = no }
+							}
+						}
+						end_war = attacker
+					}
+					every_character_war = {
+						limit = {
+							any_war_defender = { this = character:clanlands_sjalvolki_1 }
+							defender_war_score >= 50
+							NOR = {
+								character:clanlands_sjalvolki_1 = { is_ai = no }
+								any_war_attacker = { is_ai = no }
+							}
+						}
+						end_war = defender
+					}
+				}
+			}
+			trigger_event = {
+				on_action = on_monthly_cenware_doomed_war_winner
+				delay = { days = 30 }
+			}
+		}
+	}
+}

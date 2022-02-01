@@ -1,0 +1,60 @@
+pdxmesh = {
+	name = "unit_western_siege_04_bombard_mesh"
+	file = "unit_western_siege_04_bombard.mesh"
+
+	lod_percentages = {
+		lod = { index = 1 percent = 5.0 }
+	}
+	
+	scale = 0.004
+
+	cull_distance = 3000
+	# Base animations
+	animation = { id = "idle_animation" 			type = "unit_western_siege_04_bombard_idle.anim" }
+	animation = { id = "attack_animation" 			type = "unit_western_siege_04_bombard_attack.anim" }
+
+	meshsettings = {
+		name = "unit_western_siege_04_bombard_LOD_0Shape"
+		index = 0
+		texture_diffuse = "western_siege_04_bombard_diffuse.dds"
+		texture_normal = "western_siege_04_bombard_normal.dds"
+		texture_specular = "western_siege_04_bombard_properties.dds"
+		shader = "standard"
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "unit_western_siege_04_bombard_LOD_1Shape"
+		index = 0
+		texture_diffuse = "western_siege_04_bombard_diffuse.dds"
+		texture_normal = "western_siege_04_bombard_normal.dds"
+		texture_specular = "western_siege_04_bombard_properties.dds"
+		shader = "standard"
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+}
+
+entity = {
+	name = "unit_western_siege_04_bombard_entity"
+	pdxmesh = "unit_western_siege_04_bombard_mesh"
+	scale = 0.004
+
+	locator = { name = "impact_vfx" position = { 0 0 -9.7 } }
+
+	default_state = "besiege"
+	state = { 
+		name = "idle"
+		animation = "idle_animation"
+		event = { time = 0.0 sound = { soundeffect = "event:/SFX/Animations/Units/SiegeWeapons/Anim_Unit_Siegeweapons_Bombard"} }
+	}
+	state = { 
+		name = "besiege"
+		animation = "attack_animation"
+			
+		event = { time = 0 node = "root" particle = "units/cannon_muzzle" keep_particle = yes trigger_once = no }
+		event = { time = 2.1 node = "impact_vfx" particle = "siege_explosion_rubble" keep_particle = yes trigger_once = no }
+		event = { time = 0.0 sound = { soundeffect = "event:/SFX/Animations/Units/SiegeWeapons/Anim_Unit_Siegeweapons_Bombard"} }
+		event = { time = 2.1 sound = { soundeffect = "event:/SFX/VFX/Siege/vfx_siege_explosion_rubble"} }
+	}
+}
+

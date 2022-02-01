@@ -1,0 +1,970 @@
+﻿namespace = coronation
+namespace = coronation_chain
+
+coronation.0001 = { # Initial event, says “Hey your religion says that you need a coronation ceremony better get going on that, check the decision tab”
+	type = character_event
+	theme = faith
+	title = coronation.0001.t
+	desc = coronation.0001.desc
+	right_portrait = root
+	
+	trigger = {
+		NOT = { has_character_flag = stopping_firing_please }
+		NOT = { has_character_flag = temporary_holder }
+		faith = {
+			has_doctrine_parameter = can_perform_coronations
+		}
+		NOT = { faith.religious_head = THIS }
+		
+		highest_held_title_tier > 2 # Dukes and above
+		is_independent_ruler = yes
+		
+		NOT = {
+			has_trait = coronated_by_head_of_religion
+			has_trait = coronated_by_high_priest
+			has_trait = coronated_by_bishop
+			has_trait = coronated_formal_3
+			has_trait = coronated_formal_2
+			has_trait = coronated_formal_1
+			has_trait = coronated_celebration
+		}
+	}
+
+	immediate = {
+		add_character_flag = can_take_coronations_decision
+		if = {
+			limit = {
+				faith = {
+					has_doctrine_parameter = can_perform_coronations_3_stage
+				}
+			}
+			trigger_event = {
+				id = coronation.0002
+				days = 360
+			}
+		}
+		
+		add_character_flag = stopping_firing_please
+	}
+
+	option = { # Gotcha
+		name = coronation.0001.a
+		custom_tooltip = coronation.0001.a.tt
+		if = {
+			limit = {
+				faith = {
+					has_doctrine_parameter = can_perform_coronations_3_stage
+				}
+			}
+			increase_uncoronated_debuff = yes
+		}
+		hidden_effect = { remove_character_flag = stopping_firing_please }
+	}
+	
+	option = { # Let's do it now!
+		name = coronation.0001.b
+		custom_tooltip = coronation.0001.b.tt
+		
+		hidden_effect = {
+			remove_character_flag = can_take_coronations_decision
+			clear_uncoronated_debuff = yes
+			remove_character_flag = stopping_firing_please
+		}
+		
+		if = {
+			limit = {
+				faith = {
+					has_doctrine_parameter = can_perform_coronations_3_stage
+				}
+			}
+			trigger_event = {
+				id = coronation_chain.0001
+				days = 3
+			}
+		}
+		else_if = {
+			limit = {
+				faith = {
+					has_doctrine_parameter = can_perform_coronations_2_stage
+				}
+			}
+			trigger_event = {
+				id = coronation_chain.0002
+				days = 3
+			}
+		}
+		else_if = {
+			limit = {
+				faith = {
+					has_doctrine_parameter = can_perform_coronations_1_stage
+				}
+			}
+			trigger_event = {
+				id = coronation_chain.1000
+				days = 3
+			}
+		}
+	}
+}
+
+coronation.0002 = { # Event that tells you that your vassals dislike you more since you haven't been coronated (once, after a year), for religious coronations only
+	type = character_event
+	theme = faith
+	title = coronation.0002.t
+	desc = coronation.0002.desc
+	right_portrait = root
+	
+	trigger = {
+		NOT = {		
+			has_trait = coronated_by_head_of_religion	
+			has_trait = coronated_by_high_priest
+			has_trait = coronated_by_bishop
+			has_trait = coronated_formal_3
+			has_trait = coronated_formal_2
+			has_trait = coronated_formal_1
+			has_trait = coronated_celebration
+		}
+	}
+	
+	immediate = {
+		if = {
+			limit = {
+				faith = {
+					has_doctrine_parameter = can_perform_coronations_3_stage
+					}
+			}
+			trigger_event = {
+				id = coronation.0003
+				days = 360
+			}
+		}
+	}
+
+	option = { # Gotcha
+		name = coronation.0002.a
+		custom_tooltip = coronation.0002.a.tt
+		increase_uncoronated_debuff = yes
+	}
+	
+	option = { # Let's do it now!
+		name = coronation.0002.b
+		custom_tooltip = coronation.0002.b.tt
+		
+		hidden_effect = {
+			remove_character_flag = can_take_coronations_decision
+			clear_uncoronated_debuff = yes
+		}
+		
+		if = {
+			limit = {
+				faith = {
+					has_doctrine_parameter = can_perform_coronations_3_stage
+				}
+			}
+			trigger_event = {
+				id = coronation_chain.0001
+				days = 3
+			}
+		}
+		else_if = {
+			limit = {
+				faith = {
+					has_doctrine_parameter = can_perform_coronations_2_stage
+				}
+			}
+			trigger_event = {
+				id = coronation_chain.0002
+				days = 3
+			}
+		}
+		else_if = {
+			limit = {
+				faith = {
+					has_doctrine_parameter = can_perform_coronations_1_stage
+				}
+			}
+			trigger_event = {
+				id = coronation_chain.1000
+				days = 3
+			}
+		}
+	}
+}
+
+coronation.0003 = { # Hidden debuff increaser
+	type = character_event
+	theme = faith
+	title = coronation.0003.t
+	desc = coronation.0003.desc
+	hidden = yes
+
+	immediate = {
+		if = {
+			limit = {
+				faith = {
+					has_doctrine_parameter = can_perform_coronations_3_stage
+				}
+			}
+			trigger_event = {
+				id = coronation.0003
+				days = 360
+			}
+		}
+		increase_uncoronated_debuff = yes
+	}
+
+	option = { # Gotcha
+		name = coronation.0003.a
+	}
+}
+
+coronation_chain.0001 = { # Event for who is coronating you (the pope, a high priest, or just some bishop, each gives different modifiers)
+	type = character_event
+	theme = faith
+	title = coronation_chain.0001.t
+	desc = coronation_chain.0001.desc
+	right_portrait = root
+	
+	immediate = {
+		save_scope_as = person_being_coronated
+		
+		scope:person_being_coronated.faith.religious_head = {
+			save_scope_as = current_head_of_faith
+		}
+	}
+	
+	option = { # Pope/Head of Religion
+	
+		trigger = {
+			NOT = { has_character_flag = coronation_already_asked_head_of_religion }
+			scope:current_head_of_faith = {
+				is_alive = yes
+			}
+		}
+	
+		name = coronation_chain.0001.a
+		custom_tooltip = coronation_chain.0001.a.tt
+		
+		scope:current_head_of_faith = {
+			trigger_event = {
+				id = coronation_chain.0004
+				days = 3
+			}
+		}
+		
+		add_character_flag = getting_coronated_by_head_of_religion
+	}
+	
+	option = { # High Priest
+		name = coronation_chain.0001.b
+		custom_tooltip = coronation_chain.0001.b.tt
+		add_character_flag = getting_coronated_by_high_priest
+		
+		remove_short_term_gold = major_gold_value
+		
+		save_scope_as = ROOT
+
+		ai_chance = {
+			base = 100
+			ai_value_modifier = {
+				ai_greed = -0.5
+				ai_rationality = 0.5
+			}
+			# Reduced chance the less gold you have compared to the gold required
+			modifier = {
+				factor = {
+					value = short_term_gold
+					divide = major_gold_value
+				}
+				short_term_gold < major_gold_value
+			}
+			# Don't choose this if you're already in debt
+			modifier = {
+				factor = 0
+				gold < 0
+			}
+		}
+		
+		trigger_event = {
+			id = coronation_chain.0002
+			days = 3
+		}
+	}
+	
+	option = { # Bishop
+		name = coronation_chain.0001.c
+		custom_tooltip = coronation_chain.0001.c.tt
+		add_character_flag = getting_coronated_by_bishop
+		
+		remove_short_term_gold = tiny_gold_value
+		
+		save_scope_as = ROOT
+		
+		trigger_event = {
+			id = coronation_chain.0002
+			days = 3
+		}
+	}
+}
+
+coronation_chain.0002 = { # How much you're going to spend on the ceremony
+	type = character_event
+	theme = faith
+	title = coronation_chain.0002.t
+	desc = coronation_chain.0002.desc
+	right_portrait = root
+
+	option = { # Lot of money
+		name = coronation_chain.0002.a
+		custom_tooltip = coronation_chain.0002.a.tt
+		remove_short_term_gold = monumental_gold_value
+		add_character_flag = coronation_high_cost
+		trigger_event = {
+			id = coronation_chain.1000
+			days = 3
+		}
+
+		ai_chance = {
+			base = 100
+			ai_value_modifier = {
+				ai_greed = -0.5
+				ai_rationality = 0.5
+			}
+			# Reduced chance the less gold you have compared to the gold required
+			modifier = {
+				factor = {
+					value = short_term_gold
+					divide = monumental_gold_value
+				}
+				short_term_gold < monumental_gold_value
+			}
+			# Don't choose this if you're already in debt
+			modifier = {
+				factor = 0
+				gold < 0
+			}
+		}
+	}
+	
+	option = { # Good amount of money
+		name = coronation_chain.0002.b
+		custom_tooltip = coronation_chain.0002.b.tt
+		remove_short_term_gold = major_gold_value
+		add_character_flag = coronation_middle_cost
+		trigger_event = {
+			id = coronation_chain.1000
+			days = 3
+		}
+
+		ai_chance = {
+			base = 100
+			ai_value_modifier = {
+				ai_greed = -0.5
+				ai_rationality = 0.5
+			}
+			# Reduced chance the less gold you have compared to the gold required
+			modifier = {
+				factor = {
+					value = short_term_gold
+					divide = major_gold_value
+				}
+				short_term_gold < medium_gold_value
+			}
+			# Don't choose this if you're already in debt
+			modifier = {
+				factor = 0
+				gold < 0
+			}
+		}
+	}
+	
+	option = { # Little money
+		name = coronation_chain.0002.c
+		custom_tooltip = coronation_chain.0002.c.tt
+		remove_short_term_gold = tiny_gold_value
+		add_character_flag = coronation_low_cost
+		trigger_event = {
+			id = coronation_chain.1000
+			days = 3
+		}
+	}
+	
+	option = { # Reselect religion figure
+		name = coronation_chain.0002.d
+		custom_tooltip = coronation_chain.0002.d.tt
+		
+		trigger = {
+			faith = {
+				has_doctrine_parameter = can_perform_coronations_3_stage
+			}
+		}
+		
+		hidden_effect = {
+			remove_character_flag = getting_coronated_by_head_of_religion
+			remove_character_flag = getting_coronated_by_high_priest
+			remove_character_flag = getting_coronated_by_bishop
+		}
+		
+		trigger_event = {
+			id = coronation_chain.0001
+			days = 3
+		}
+	}
+}
+
+coronation_chain.0003 = { # Special pope/Head of religion event
+	type = character_event
+	theme = faith
+	title = coronation_chain.0003.t
+	right_portrait = root
+	
+	desc = {
+		desc = coronation_chain.0003.desc
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					has_character_flag = coronation_head_of_religion_wants_money
+				}
+				desc = coronation_chain.0003.desc.a
+			}
+			triggered_desc = {
+				trigger = {
+					has_character_flag = coronation_head_of_religion_prostrate_yourself
+				}
+				desc = coronation_chain.0003.desc.b
+			}
+			triggered_desc = {
+				trigger = {
+					has_character_flag = coronation_head_of_religion_disavow_sinful_family
+				}
+				desc = coronation_chain.0003.desc.c
+			}
+			triggered_desc = {
+				trigger = {
+					has_character_flag = coronation_head_of_religion_give_hostage
+				}
+				desc = coronation_chain.0003.desc.d
+			}
+			triggered_desc = {
+				trigger = {
+					has_character_flag = coronation_head_of_religion_return_lands
+				}
+				desc = coronation_chain.0003.desc.e
+			}
+			triggered_desc = {
+				trigger = {
+					has_character_flag = coronation_head_of_religion_free_service
+				}
+				desc = coronation_chain.0003.desc.f
+			}
+			triggered_desc = {
+				trigger = {
+					has_character_flag = coronation_head_of_religion_no_way
+				}
+				desc = coronation_chain.0003.desc.g
+			}
+		}
+	}
+
+	option = { # 
+		name = coronation_chain.0003.a
+		
+		trigger = {
+			NOT = { has_character_flag = coronation_head_of_religion_free_service }
+			NOT = { has_character_flag = coronation_head_of_religion_no_way }
+		}
+		
+		custom_tooltip = coronation_chain.0003.a.tt
+		
+		if = {
+			limit = {
+				has_character_flag = coronation_head_of_religion_wants_money
+			}
+			remove_short_term_gold = monumental_gold_value
+
+			ai_chance = {
+				base = 100
+				ai_value_modifier = {
+					ai_greed = -0.5
+					ai_rationality = 0.5
+				}
+				# Reduced chance the less gold you have compared to the gold required
+				modifier = {
+					factor = {
+						value = short_term_gold
+						divide = monumental_gold_value
+					}
+					short_term_gold < monumental_gold_value
+				}
+				# Don't choose this if you're already in debt
+				modifier = {
+					factor = 0
+					gold < 0
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				has_character_flag = coronation_head_of_religion_prostrate_yourself
+			}
+			add_prestige = {
+				value = medium_piety_gain
+				add = minor_piety_gain
+			}
+			add_piety = negligible_piety_gain
+		}
+		else_if = {
+			limit = {
+				has_character_flag = coronation_head_of_religion_disavow_sinful_family
+			}
+			
+			save_scope_as = ROOT
+			
+			every_close_or_extended_family_member = {
+				limit = {
+					num_sinful_traits > 3
+				}
+				save_scope_as = coronations_sinful_family_member
+				imprison_character_effect = {
+					TARGET = scope:coronations_sinful_family_member
+					IMPRISONER = scope:ROOT
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				has_character_flag = coronation_head_of_religion_give_hostage
+			}
+			random_close_family_member = {
+				limit = { always = yes }
+				save_scope_as = coronation_hostage
+			}
+			scope:current_head_of_faith = {
+				imprison = {
+					target = scope:coronation_hostage
+					type = dungeon
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				has_character_flag = coronation_head_of_religion_return_lands
+			}
+			#scope:current_head_of_faith = {
+			#	get_title = title:k_romagna
+			#}
+		}
+		
+		scope:person_being_coronated.faith.religious_head = {
+			save_scope_as = person_coronating_me
+		}
+		
+		trigger_event = {
+			id = coronation_chain.0002
+			days = 3
+		}
+	}
+	
+	option = { # 
+		name = coronation_chain.0003.b
+		
+		trigger = {
+			NOT = { has_character_flag = coronation_head_of_religion_free_service }
+			NOT = { has_character_flag = coronation_head_of_religion_no_way }
+		}
+		
+		custom_tooltip = coronation_chain.0003.b.tt
+		
+		add_character_flag = {
+			flag = coronation_already_asked_head_of_religion
+			days = 180
+		}
+		
+		add_piety = -50
+		scope:current_head_of_faith = {
+			add_opinion = {
+				modifier = impious_opinion
+				target = ROOT
+				opinion = 10
+			}
+		}
+		
+		remove_character_flag = getting_coronated_by_head_of_religion
+		add_character_flag = coronation_already_asked_head_of_religion
+		trigger_event = {
+			id = coronation_chain.0001
+			days = 3
+		}
+	}
+	
+	option = { # 
+		name = coronation_chain.0003.c
+		
+		trigger = {
+			has_character_flag = coronation_head_of_religion_free_service
+			NOT = { has_character_flag = coronation_head_of_religion_no_way }
+		}
+		
+		custom_tooltip = coronation_chain.0003.c.tt
+		
+		trigger_event = {
+			id = coronation_chain.0002
+			days = 3
+		}
+		
+		scope:person_being_coronated.faith.religious_head = {
+			save_scope_as = person_coronating_me
+		}
+	}
+	
+	option = { # 
+		name = coronation_chain.0003.d
+		
+		trigger = {
+			NOT = { has_character_flag = coronation_head_of_religion_free_service }
+			has_character_flag = coronation_head_of_religion_no_way
+		}
+		
+		custom_tooltip = coronation_chain.0003.d.tt
+		
+		add_character_flag = {
+			flag = coronation_already_asked_head_of_religion
+			days = 180
+		}
+		
+		add_piety = -20
+		
+		remove_character_flag = getting_coronated_by_head_of_religion
+		add_character_flag = coronation_already_asked_head_of_religion
+		trigger_event = {
+			id = coronation_chain.0001
+			days = 3
+		}
+	}
+}
+
+coronation_chain.0004 = { # Event for the head of religion
+	type = character_event
+	theme = faith
+	title = coronation_chain.0004.t
+	desc = coronation_chain.0004.desc
+	right_portrait = root
+	
+	hidden = yes
+
+	option = { # Money
+		name = coronation_chain.0004.a
+		
+		scope:person_being_coronated = { add_character_flag = coronation_head_of_religion_wants_money trigger_event = coronation_chain.0003 }
+		
+		ai_chance = {
+			base = 1
+			ai_value_modifier = {
+				ai_greed = 0.5
+			}
+		}
+	}
+	
+	option = { # Prostrate
+		name = coronation_chain.0004.a
+		
+		scope:person_being_coronated = { add_character_flag = coronation_head_of_religion_prostrate_yourself trigger_event = coronation_chain.0003 }
+		
+		ai_chance = {
+			base = 1
+			ai_value_modifier = {
+				ai_zeal = 0.5
+			}
+		}
+	}
+	
+	option = { # Sinful family
+		name = coronation_chain.0004.a
+		
+		scope:person_being_coronated = { add_character_flag = coronation_head_of_religion_disavow_sinful_family trigger_event = coronation_chain.0003 }
+		
+		ai_chance = {
+			base = 0
+			modifier = {
+				add = 1
+				scope:person_being_coronated = {
+					any_close_or_extended_family_member = {
+						num_sinful_traits > 3
+					}
+				}
+			}
+		}
+	}
+	
+	option = { # Hostage
+		name = coronation_chain.0004.a
+		
+		scope:person_being_coronated = { add_character_flag = coronation_head_of_religion_give_hostage trigger_event = coronation_chain.0003 }
+		
+		ai_chance = {
+			base = 0
+			modifier = {
+				add = 1
+				scope:person_being_coronated = {
+					any_close_family_member = {
+						OR = {
+							is_child_of = THIS
+							is_parent_of = THIS
+							is_sibling_of = THIS
+						}
+					}
+				}
+			}
+		}
+	}
+	
+	option = { # Lands
+		name = coronation_chain.0004.a
+		
+		scope:person_being_coronated = { add_character_flag = coronation_head_of_religion_return_lands trigger_event = coronation_chain.0003 }
+		
+		ai_chance = {
+			base = 0
+			#modifier = {
+			#	add = 20
+			#	scope:person_being_coronated = {
+			#		has_title = title:k_romagna
+			#		faith = faith:catholic
+			#	}
+			#}
+		}
+	}
+	
+	option = { # Free
+		name = coronation_chain.0004.a
+		
+		scope:person_being_coronated = { add_character_flag = coronation_head_of_religion_free_service trigger_event = coronation_chain.0003 }
+		
+		ai_chance = {
+			base = 0
+			modifier = {
+				add = 1000
+				scope:person_being_coronated = {
+					OR = {
+						piety > major_piety_value
+						opinion = {
+							target = faith.religious_head
+							value >= 50
+						}
+					}
+				}
+			}
+		}
+	}
+	
+	option = { # Nope
+		name = coronation_chain.0004.a
+		
+		scope:person_being_coronated = { add_character_flag = coronation_head_of_religion_no_way trigger_event = coronation_chain.0003 }
+		
+		ai_chance = {
+			base = 0
+			modifier = {
+				add = 1000
+				scope:person_being_coronated = {
+					AND = {
+						piety < miniscule_piety_value
+						opinion = {
+							target = faith.religious_head
+							value <= 0
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+coronation_chain.1000 = { # Time to start the event
+	type = character_event
+	theme = faith
+	title = coronation_chain.1000.t
+	desc = coronation_chain.1000.desc
+	right_portrait = root
+
+	option = { # Here we go
+		name = coronation_chain.1000.a
+		custom_tooltip = coronation_chain.1000.a.tt
+		
+		save_scope_as = root
+		
+		root.capital_province = {
+			spawn_activity = {
+				type = activity_coronation_feast
+				owner = root
+			}
+		}
+		
+		hidden_effect = { # Just in case
+			remove_character_flag = can_take_coronations_decision
+			clear_uncoronated_debuff = yes
+			
+			remove_character_flag = coronation_already_asked_head_of_religion
+			remove_character_flag = coronation_head_of_religion_wants_money
+			remove_character_flag = coronation_head_of_religion_return_lands
+			remove_character_flag = coronation_head_of_religion_disavow_sinful_family
+			remove_character_flag = coronation_head_of_religion_give_hostage
+			remove_character_flag = coronation_head_of_religion_prostrate_yourself
+			remove_character_flag = coronation_head_of_religion_free_service
+			remove_character_flag = coronation_head_of_religion_no_way
+		}
+	}
+}
+
+coronation_chain.2000 = { # Done!
+	type = character_event
+	theme = faith
+	title = coronation_chain.2000.t
+	desc = coronation_chain.2000.desc
+	right_portrait = scope:person_coronating_me
+	left_portrait = root
+	
+	immediate = {
+		save_scope_as = person_being_coronated
+	
+		if = {
+			limit = {
+				faith = {
+					has_doctrine_parameter = can_perform_coronations_3_stage
+				}
+				has_character_flag = getting_coronated_by_head_of_religion
+			}
+			scope:person_being_coronated.faith.religious_head = {
+				save_scope_as = person_coronating_me
+			}
+		}
+		else_if = {
+			limit = {
+				faith = {
+					has_doctrine_parameter = can_perform_coronations_3_stage
+				}
+				has_character_flag = getting_coronated_by_high_priest
+			}
+			cp:councillor_court_chaplain = {
+				save_scope_as = person_coronating_me
+			}
+		}
+		else_if = {
+			limit = {
+				faith = {
+					has_doctrine_parameter = can_perform_coronations_3_stage
+				}
+				has_character_flag = getting_coronated_by_bishop
+			}
+			cp:councillor_court_chaplain = {
+				save_scope_as = person_coronating_me
+			}
+		}
+	}
+
+	option = { # Woohoo
+		name = coronation_chain.2000.a
+		custom_tooltip = coronation_chain.2000.a.tt
+		
+		if = {
+			limit = {
+				faith = {
+					has_doctrine_parameter = can_perform_coronations_3_stage
+				}
+				has_character_flag = getting_coronated_by_head_of_religion
+			}
+			add_trait = coronated_by_head_of_religion
+		}
+		else_if = {
+			limit = {
+				faith = {
+					has_doctrine_parameter = can_perform_coronations_3_stage
+				}
+				has_character_flag = getting_coronated_by_high_priest
+			}
+			add_trait = coronated_by_high_priest
+		}
+		else_if = {
+			limit = {
+				faith = {
+					has_doctrine_parameter = can_perform_coronations_3_stage
+				}
+				has_character_flag = getting_coronated_by_bishop
+			}
+			add_trait = coronated_by_bishop
+		}
+		else_if = {
+			limit = {
+				faith = {
+					has_doctrine_parameter = can_perform_coronations_2_stage
+				}
+				has_character_flag = coronation_high_cost
+			}
+			add_trait = coronated_formal_3
+		}
+		else_if = {
+			limit = {
+				faith = {
+					has_doctrine_parameter = can_perform_coronations_2_stage
+				}
+				has_character_flag = coronation_middle_cost
+			}
+			add_trait = coronated_formal_2
+		}
+		else_if = {
+			limit = {
+				faith = {
+					has_doctrine_parameter = can_perform_coronations_2_stage
+				}
+				has_character_flag = coronation_low_cost
+			}
+			add_trait = coronated_formal_1
+		}
+		else_if = {
+			limit = {
+				faith = {
+					has_doctrine_parameter = can_perform_coronations_1_stage
+				}
+			}
+			add_trait = coronated_celebration
+		}
+		
+		# And the cost modifiers for religious coronations
+		if = {
+			limit = {
+				faith = {
+					has_doctrine_parameter = can_perform_coronations_3_stage
+				}
+				has_character_flag = coronation_high_cost
+			}
+			add_character_modifier = {
+				modifier = religious_coronation_high_cost
+				years = 10
+			}
+		}
+		else_if = {
+			limit = {
+				faith = {
+					has_doctrine_parameter = can_perform_coronations_3_stage
+				}
+				has_character_flag = coronation_middle_cost
+			}
+			add_character_modifier = {
+				modifier = religious_coronation_medium_cost
+				years = 10
+			}
+		}
+		else_if = {
+			limit = {
+				faith = {
+					has_doctrine_parameter = can_perform_coronations_3_stage
+				}
+				has_character_flag = coronation_low_cost
+			}
+			add_character_modifier = {
+				modifier = religious_coronation_low_cost
+				years = 10
+			}
+		}
+	}
+}

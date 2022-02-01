@@ -1,0 +1,59 @@
+﻿namespace = dream_theft
+
+dream_theft.1000 = {
+	type = character_event
+	theme = default
+	title = dream_theft.1000.t
+	desc = dream_theft.1000.d
+
+	left_portrait = {
+		character = root
+	}
+
+	option = {
+		name = dream_theft.1000.a
+		hidden_effect = {
+			random_list = {
+                50 = {
+                    add_artifact = {ARTIFACT = artifact_4}
+                }
+
+				50 = {
+					add_artifact = {ARTIFACT = artifact_5}
+				}
+
+				50 = {
+					add_artifact = {ARTIFACT = artifact_8}
+				}
+
+				50 = {
+					add_artifact = {ARTIFACT = artifact_9}
+				}
+
+				50 = {
+					add_artifact = {ARTIFACT = artifact_16}
+				}
+
+				50 = {
+					add_artifact = {ARTIFACT = artifact_17}
+				}
+
+				50 = {
+					add_artifact = {ARTIFACT = artifact_24}
+				}
+
+				50 = {
+					add_artifact = {ARTIFACT = artifact_25}
+				}
+
+				50 = {
+					add_artifact = {ARTIFACT = artifact_28}
+				}
+
+				50 = {
+					add_artifact = {ARTIFACT = artifact_29}
+				}
+			}
+		}
+	}
+}

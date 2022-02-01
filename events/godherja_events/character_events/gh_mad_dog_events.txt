@@ -1,0 +1,72 @@
+﻿namespace = mad_dog
+
+#lets someone do the mad dog cb
+mad_dog.1 = {
+	type = character_event
+	theme = martial
+	title = mad_dog.1.t
+	desc = mad_dog.1.desc
+	
+	left_portrait = {
+	character = aversaria_isles_1
+	animation = idle
+	}
+	
+	right_portrait = {
+	character = root
+	animation = grief
+	}
+
+	trigger = {
+		character:aversaria_isles_1 = {
+			OR = {
+				death_reason = death_mysterious
+				death_reason = death_murder
+				death_reason = death_duel
+				death_reason = death_punishment
+				death_reason = death_dungeon
+				death_reason = death_execution
+				death_reason = death_torture
+				death_reason = death_siege
+				death_reason = death_raid
+			}
+		}
+	}
+	
+	option = {
+		name = mad_dog.1.a
+		add_character_flag = mad_dog_died
+		if = {
+		limit = { is_ai = yes }
+		start_war = {
+			cb = mad_dad_cb
+			target = title:c_sitissos.holder
+			target_title = title:k_kollos
+		}
+		}
+	}
+}
+
+
+#angry mad dog letter
+mad_dog.2 = {
+	type = character_event
+	theme = martial
+	desc = mad_dog.2.desc
+	title = mad_dog.2.t
+	
+	
+	left_portrait = {
+	character = character:clanlands_megos_1
+	animation = rage
+	}
+	
+	right_portrait = {
+	character = root
+	animation = disgust
+	}
+	option = {
+		name = mad_dog.2.a
+		}
+	}
+

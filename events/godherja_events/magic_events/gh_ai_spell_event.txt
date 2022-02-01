@@ -1,0 +1,446 @@
+﻿namespace = magic_ai
+
+# on adding spells:
+# the trigger should check the cost, and all other requirements. A scripted trigger is best, so changing is easier
+# ai_value determines the likelihood the spell is cast.
+# using a scripted effect is also preferable
+
+magic_ai.0001 = {
+	hidden = yes
+	
+	trigger = {
+		can_access_magic = yes
+		is_ai = yes
+		OR = {
+			NOT = { has_trait = magicsickness }
+			has_trait = brave
+			has_trait = ambitious
+			has_trait = lunatic
+			has_trait = impatient
+		}
+	}
+	
+	immediate = {
+		every_in_list = {
+			variable = spell_targets
+			root = {
+				remove_list_variable = {
+					name = spell_targets
+					target = prev
+				}
+			}
+		}
+		if = {
+			limit = {
+				any_relation = { 
+					type = nemesis
+					exists = this 
+				}
+			}
+			random_relation = {
+				type = nemesis
+				save_scope_as = potential_enemy
+			}
+		}
+		else_if = {
+			limit = { is_at_war = yes }
+			random_war_enemy = {
+				save_scope_as = potential_enemy
+			}
+		}
+		else_if = {
+			limit = {
+				any_relation = { 
+					type = rival
+					exists = this 
+				}
+			}
+			random_relation = {
+				type = rival
+				save_scope_as = potential_enemy
+			}
+		}
+		set_variable = {
+			name = magic_lvl
+			value = 0
+		}
+		random_list = {	# Generation methods
+			80 = {}
+			20 = {
+				trigger = {
+					has_trait = education_living_magic
+					NOR = {
+						has_culture_group = culture_group:gh_partic_group
+						has_trait_rank = {
+							trait = wounded
+							rank = 3
+						}
+					}
+					OR = {
+						health >= 4
+						AND = {
+							has_trait = brave
+							health >= 2
+						}
+					}
+					is_commanding_army = no
+				}
+				modifier = {
+					add = ai_boldness
+				}
+				modifier = {
+					trigger = { health >= 5 }
+					add = 10
+				}
+				modifier = {
+					trigger = { health >= 6 }
+					add = 20
+				}
+				modifier = {
+					trigger = { health >= 7 }
+					add = 30
+				}
+				if = {
+					limit = { health >= 4 }
+					random_list = {
+						50 = { flagellate_effect = yes }
+						50 = {}
+					}
+				}
+				if = {
+					limit = { health >= 4 }
+					random_list = {
+						50 = { flagellate_effect = yes }
+						50 = {}
+					}
+				}
+			}
+		}
+		random_list = {
+			50 = {}
+			1 = {
+				trigger = {
+					has_trait = education_living_magic
+					NOT = { has_variable = ai_already_casted_healing_waters_cooldown }
+					spell_magic_cost_by_tier = { TIER = 1 }
+				}
+				modifier = {
+					factor = 5
+					health < 1
+				}
+				modifier = {
+					factor = 20
+					health < 3
+				}
+				modifier = {
+					factor = 0
+					health >= 4
+				}
+				increase_ai_spell_tier_to_ideal_level = { SPELL_DIFFICULTY = difficult_spell TIER = 1 }
+				set_variable = {
+					name = ai_already_casted_healing_waters_cooldown
+					years = 2
+				}
+				debug_log = "AN AI CHARACTER CASTED HEALING"
+				debug_log_scopes = yes
+				increase_progress_to_living_magi_trait = yes
+				apply_spell_effect_with_custom_backfire_chance_list = { TIER = 2 SUCCESS_CHANCE = difficult_spell_difficulty_success_chance SPELL_EFFECT = healing_water_effect FAILURE_CHANCE = difficult_spell_difficulty_failure_chance BACKFIRE_EFFECT = poison_effect }
+				trigger_event = {
+					id = magic_ai.0001
+					years = 5
+				}
+			}
+			1 = {
+				trigger = {
+					has_trait = education_living_magic
+					NOT = { has_variable = ai_already_casted_healing_waters_cooldown }
+					spell_magic_cost_by_tier = { TIER = 1 }
+					any_child = {
+						health < 3
+						NOR = {
+							has_relation_rival = root
+							has_relation_nemesis = root
+						}
+					}
+				}
+				modifier = {
+					factor = 5
+					any_child = {
+						health < 1
+						NOR = {
+							has_relation_rival = root
+							has_relation_nemesis = root
+						}
+					}
+				}
+				modifier = {
+					factor = 20
+					any_child = {
+						health < 3
+						NOR = {
+							has_relation_rival = root
+							has_relation_nemesis = root
+						}
+					}
+				}
+				modifier = {
+					factor = 0
+					NOT = {
+						any_child = {
+							health <= 4
+							NOR = {
+								has_relation_rival = root
+								has_relation_nemesis = root
+							}
+						}
+					}
+				}
+				random_child = {
+					limit = {
+						health < 3
+						NOR = {
+							has_relation_rival = root
+							has_relation_nemesis = root
+						}
+					}
+					root = {
+						add_to_variable_list = {
+							name = spell_targets
+							target = prev
+						}
+					}
+				}
+				increase_ai_spell_tier_to_ideal_level = { SPELL_DIFFICULTY = difficult_spell TIER = 1 }
+				set_variable = {
+					name = ai_already_casted_healing_waters_cooldown
+					years = 2
+				}
+				debug_log = "AN AI CHARACTER CASTED HEALING"
+				debug_log_scopes = yes
+				increase_progress_to_living_magi_trait = yes
+				apply_spell_effect_with_custom_backfire_chance_list = { TIER = 2 SUCCESS_CHANCE = difficult_spell_difficulty_success_chance SPELL_EFFECT = healing_water_effect FAILURE_CHANCE = difficult_spell_difficulty_failure_chance BACKFIRE_EFFECT = poison_effect }
+			}
+			10 = {
+				trigger = {
+					has_trait = education_living_magic
+					NOT = { has_variable = ai_already_casted_poison_cooldown }
+					exists = scope:potential_enemy
+					spell_magic_cost_by_tier = { TIER = 2 }
+				}
+				modifier = {
+					factor = 5
+					has_trait = vengeful
+				}
+				modifier = {
+					factor = 5
+					has_trait = sadistic
+				}
+				modifier = {
+					factor = 5
+					has_trait = callous
+				}
+				modifier = {
+					factor = 5
+					has_trait = deceitful
+				}
+				scope:potential_enemy = {
+					root = {
+						add_to_variable_list = {
+							name = spell_targets
+							target = prev
+						}
+					}
+				}
+				increase_ai_spell_tier_to_ideal_level = { SPELL_DIFFICULTY = difficult_spell TIER = 2 }
+				set_variable = {
+					name = ai_already_casted_poison_cooldown
+					years = 2
+				}
+				debug_log = "AN AI CHARACTER CASTED POISON"
+				debug_log_scopes = yes
+				increase_progress_to_living_magi_trait = yes
+				apply_spell_effect_with_backfire_chance_list = { TIER = 2 SUCCESS_CHANCE = standard_spell_difficulty_success_chance SPELL_EFFECT = poison_effect FAILURE_CHANCE = standard_spell_difficulty_failure_chance }
+			}
+			10 = {
+				trigger = {
+					has_trait = education_living_magic
+					NOT = { has_variable = ai_already_casted_thinning_cooldown }
+					exists = scope:potential_enemy
+					spell_magic_cost_by_tier = { TIER = 2 }
+				}
+				modifier = {
+					factor = 5
+					has_trait = vengeful
+				}
+				modifier = {
+					factor = 5
+					has_trait = sadistic
+				}
+				modifier = {
+					factor = 5
+					has_trait = callous
+				}
+				modifier = {
+					factor = 5
+					has_trait = deceitful
+				}
+				scope:potential_enemy = {
+					root = {
+						add_to_variable_list = {
+							name = spell_targets
+							target = prev
+						}
+					}
+				}
+				increase_ai_spell_tier_to_ideal_level = { SPELL_DIFFICULTY = difficult_spell TIER = 2 }
+				set_variable = {
+					name = ai_already_casted_thinning_cooldown
+					years = 2
+				}
+				debug_log = "AN AI CHARACTER CASTED THINNING"
+				debug_log_scopes = yes
+				increase_progress_to_living_magi_trait = yes
+				apply_spell_effect_with_backfire_chance_list = { TIER = 2 SUCCESS_CHANCE = standard_spell_difficulty_success_chance SPELL_EFFECT = thinning_effect FAILURE_CHANCE = standard_spell_difficulty_failure_chance }
+			}
+			10 = {
+				trigger = {
+					has_trait = education_living_magic
+					NOT = { has_variable = ai_already_casted_domination_cooldown }
+					exists = scope:potential_enemy
+					spell_magic_cost_by_tier = { TIER = 3 }
+				}
+				modifier = {
+					factor = 5
+					has_trait = vengeful
+				}
+				modifier = {
+					factor = 5
+					has_trait = sadistic
+				}
+				modifier = {
+					factor = 5
+					has_trait = callous
+				}
+				modifier = {
+					factor = 5
+					has_trait = deceitful
+				}
+				scope:potential_enemy = {
+					root = {
+						add_to_variable_list = {
+							name = spell_targets
+							target = prev
+						}
+					}
+				}
+				increase_ai_spell_tier_to_ideal_level = { SPELL_DIFFICULTY = difficult_spell TIER = 3 }
+				set_variable = {
+					name = ai_already_casted_domination_cooldown
+					years = 2
+				}
+				debug_log = "AN AI CHARACTER CASTED DOMINATION"
+				debug_log_scopes = yes
+				increase_progress_to_living_magi_trait = yes
+				apply_spell_effect_with_custom_backfire_chance_list = { TIER = 3 SUCCESS_CHANCE = standard_spell_difficulty_success_chance SPELL_EFFECT = domination_effect FAILURE_CHANCE = standard_spell_difficulty_failure_chance BACKFIRE_EFFECT = domination_backfire_effect }
+			}
+			10 = {
+				trigger = {
+					has_trait = education_living_magic
+					NOT = { has_variable = ai_already_casted_fire_magick_cooldown }
+					is_commanding_army = yes
+					spell_magic_cost_by_tier = { TIER = 1 }
+				}
+				modifier = {
+					factor = 5
+					has_trait = wrathful
+				}
+				modifier = {
+					factor = 5
+					has_trait = ambitious
+				}
+				increase_ai_spell_tier_to_ideal_level = { SPELL_DIFFICULTY = standard_spell TIER = 1 }
+				set_variable = {
+					name = ai_already_casted_fire_magick_cooldown
+					years = 2
+				}
+				debug_log = "AN AI CHARACTER CASTED FIRE MAGICK"
+				debug_log_scopes = yes
+				increase_progress_to_living_magi_trait = yes
+				apply_spell_effect_with_custom_backfire_chance_list = { TIER = 1 SUCCESS_CHANCE = standard_spell_difficulty_success_chance SPELL_EFFECT = fire_magick_effect FAILURE_CHANCE = standard_spell_difficulty_failure_chance BACKFIRE_EFFECT = fire_magick_backfire_effect }
+			}
+			10 = {
+				trigger = {
+					has_trait = education_living_magic
+					#NOT = { has_variable = ai_already_casted_raise_bloodthralls_cooldown }
+					is_at_war = yes
+					spell_magic_cost_by_tier = { TIER = 4 }
+				}
+				modifier = {
+					factor = 5
+					has_trait = callous
+				}
+				modifier = {
+					factor = 5
+					has_trait = sadistic
+				}
+				modifier = {
+					factor = 5
+					max_military_strength <= 500
+				}
+				modifier = {
+					factor = 2
+					max_military_strength <= 1000
+				}
+				modifier = {
+					factor = 2
+					max_military_strength <= 2000
+				}
+				increase_ai_spell_tier_to_ideal_level = { SPELL_DIFFICULTY = difficult_spell TIER = 4 }
+				#set_variable = {
+				#	name = ai_already_casted_raise_bloodthralls_cooldown
+				#	years = 2
+				#}
+				debug_log = "AN AI CHARACTER CASTED RAISE BLOODTHRALLS"
+				debug_log_scopes = yes
+				increase_progress_to_living_magi_trait = yes
+				apply_spell_effect_with_custom_backfire_chance_list = { TIER = 4 SUCCESS_CHANCE = difficult_spell_difficulty_success_chance SPELL_EFFECT = raise_undead_effect FAILURE_CHANCE = difficult_spell_difficulty_failure_chance BACKFIRE_EFFECT = fire_magick_backfire_effect }
+			}
+		}
+	}
+}
+
+#magic_ai.9999 = { # ai check spells
+#	hidden = yes
+#
+#	trigger = {
+#		has_variable = magic_counter
+#		is_ai = yes
+#	}
+#
+#	immediate = {
+#		save_scope_value_as = {
+#			name = more_spells
+#			value = yes
+#		}
+#	}
+#
+#	after = {
+#		if = {
+#			limit = { scope:more_spells = yes }
+#			trigger_event = magic.9999
+#		}
+#	}
+#
+#	option = { # none
+#		trigger = {}
+#
+#		save_scope_value_as = {
+#			name = more_spells
+#			value = no
+#		}
+#
+#		ai_value = {
+#			base = 100
+#		}
+#	}
+#}

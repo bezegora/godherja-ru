@@ -1,0 +1,186 @@
+﻿# Spell Menu Effects By CASTOX
+##############################
+	add_tier_magic = { 
+
+		if = {
+			limit = {
+			NOT = { has_variable = magic_lvl }
+			}
+			set_variable = {
+				name = magic_lvl
+				value = 1
+			}
+		}
+		change_variable = { name = magic_lvl add = 1 }
+
+
+			
+
+			if = {
+				limit = {
+					var:magic_lvl = { compare_value > 3 }
+				}
+				set_variable = { name = magic_lvl value = 3 }
+			}
+		
+		
+	}
+	addmymagic = {  #debugtool command to add magic power
+
+		if = {
+			limit = {
+			NOT = { has_variable = magic_counter }
+			}
+			set_variable = {
+				name = magic_counter
+				value = 0
+			}
+		}
+		change_variable = { name = magic_counter add = 10 }
+	}
+	sub_tier_magic = { 
+
+		if = {
+			limit = {
+			NOT = { has_variable = magic_lvl }
+			}
+			set_variable = {
+				name = magic_lvl
+				value = 1
+			}
+		}
+		change_variable = { name = magic_lvl subtract = 1 }
+
+
+			
+
+			if = {
+				limit = {
+					var:magic_lvl = { compare_value < 0 }
+				}
+				set_variable = { name = magic_lvl value = 0 }
+			}
+		
+	}
+
+	clear_selected_land = {
+		root = {
+			every_in_list = {
+				variable = lands_realm
+				remove_variable = is_selected
+			}
+			every_in_list = {
+				variable = enemy_lands
+				remove_variable = is_selected
+			}
+		}
+	}
+	clear_selected_char = {
+		root = {
+			every_in_list = {
+				variable = character_in_realm
+				remove_variable = is_selected
+			}
+			every_in_list = {
+				variable = prisoner_in_realm
+				remove_variable = is_selected
+			}
+			every_in_list = {
+				variable = enemy_in_realm
+				remove_variable = is_selected
+			}
+		}
+	}
+
+	clear_prev_menu = {
+		root = {
+			every_in_list = {
+				variable = character_in_realm
+				remove_variable = is_selected
+			}
+			every_in_list = {
+				variable = prisoner_in_realm
+				remove_variable = is_selected
+			}
+			every_in_list = {
+				variable = enemy_in_realm
+				remove_variable = is_selected
+			}
+			clear_variable_list = spell_targets
+			every_in_list = {
+				variable = lands_realm
+				remove_variable = is_selected
+			}
+			every_in_list = {
+				variable = enemy_lands
+				remove_variable = is_selected
+			}
+			clear_variable_list = spell_l_targets
+		}
+	}
+	reset_spells = {
+		root = {
+			set_magic_level = yes
+			#Clear Characters and Land selected
+			every_in_list = {
+				variable = lands_realm
+				remove_variable = is_selected
+			}
+			clear_variable_list = lands_realm
+
+			every_in_list = {
+				variable = prisoner_in_realm
+				remove_variable = is_selected
+			}
+			clear_variable_list = prisoner_in_realm
+
+			every_in_list = {
+				variable = enemy_in_realm
+				remove_variable = is_selected
+			}
+			clear_variable_list = enemy_in_realm
+
+			every_in_list = {
+				variable = character_in_realm
+				remove_variable = is_selected
+			}
+			clear_variable_list = character_in_realm
+
+			every_in_list = {
+				variable = enemy_lands
+				remove_variable = is_selected
+			}
+			clear_variable_list = enemy_lands
+
+			#Clear Spells
+			every_in_list = {
+				variable = list_living_magic
+				remove_variable = is_selected
+			}
+			clear_variable_list = list_living_magic
+
+			every_in_list = {
+				variable = list_dead_magic
+				remove_variable = is_selected
+			}
+			clear_variable_list = list_dead_magic
+
+			every_in_list = {
+				variable = list_mixed_magic
+				remove_variable = is_selected
+			}
+			clear_variable_list = list_mixed_magic
+			clear_variable_list = spell_l_targets
+			clear_variable_list = spell_targets
+			clear_variable_list = generate_magic
+		}
+	}
+	set_magic_level = {
+		root = {
+			set_variable = {
+				name = magic_lvl
+				value = 0
+			}
+		}
+	}
+################################END

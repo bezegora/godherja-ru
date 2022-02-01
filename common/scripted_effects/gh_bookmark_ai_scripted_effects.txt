@@ -1,0 +1,170 @@
+cenware_ai_effect = {	# A scripted effect to help AI Cenware do his conquest in a reasonably organic, non-cringeworthy way
+	character:clanlands_sjalvolki_1 = {
+		if = {
+			limit = { 
+				is_alive = yes
+				is_ai = yes
+				NOR = { 
+					is_at_war = yes 
+					has_variable = ai_cenware_recently_launched_invasion
+					has_variable = still_licking_wounds
+					has_variable = lost_war_cooldown
+					has_variable = lost_to_cois_cooldown
+				}
+				has_title = title:e_sjalvolki
+			}
+			
+			every_prisoner = {	# Cenware tends to pick up a million random prisoners along the way. Giving this for the AI so it doesn't end up with 200 people in its court
+				limit = { 
+					NOR = { 
+						root = { has_imprisonment_reason = prev }	# If he has a legit reason to have someone in jail, keep them there
+						is_landed = yes	# If a prisoner is landed, assume that they're at least valuable for a ransom or war score
+					}
+				}
+				release_from_prison = yes
+			}
+			
+			cenware_conquer_kingdom = { KINGDOM_NAME = k_parcos }		# Why is this done on a kingdom-by-kingdom basis? Granularity, mainly, and avoiding weirdness like him invading Kerkonia before Palitake
+			
+			cenware_conquer_kingdom = { KINGDOM_NAME = k_zakros }		# Should beeline towards Oraispol
+			cenware_conquer_kingdom = { KINGDOM_NAME = k_palitake }		# Should beeline towards Oraispol
+			
+			cenware_conquer_kingdom = { KINGDOM_NAME = k_assocaea }		# Finish up Assocaea
+			cenware_conquer_kingdom = { KINGDOM_NAME = k_pergicos }		# After that, mop up eastern Etepezea
+			cenware_conquer_kingdom = { KINGDOM_NAME = k_argyra }		# After that, mop up eastern Etepezea
+			
+			if = {
+				limit = { has_game_rule = cenware_conquest_mainland_etepezea }
+				end_the_conquest_with_preparation = yes
+			}
+			
+			cenware_conquer_kingdom = { KINGDOM_NAME = k_cycladecia }	# With mainland Etepezea finished for, take out Tower Isle
+			cenware_conquer_kingdom = { KINGDOM_NAME = k_kerkonia }		# With mainland Etepezea finished for, take out Tower Isle
+			
+			if = {
+				limit = { has_game_rule = cenware_conquest_greater_etepezea }
+				end_the_conquest_with_preparation = yes
+			}
+			
+			cenware_conquer_kingdom = { KINGDOM_NAME = k_kollos }		# The Kollos archipelago is the obvious next target
+			
+			cenware_conquer_kingdom = { KINGDOM_NAME = k_karthos }		# Make landfall at Karthos
+			cenware_conquer_kingdom = { KINGDOM_NAME = k_kasmiene }
+			cenware_conquer_kingdom = { KINGDOM_NAME = k_arsidos }
+			cenware_conquer_kingdom = { KINGDOM_NAME = k_arsidos }
+			cenware_conquer_kingdom = { KINGDOM_NAME = k_artesmos }
+			cenware_conquer_kingdom = { KINGDOM_NAME = k_ithiteia }
+			cenware_conquer_kingdom = { KINGDOM_NAME = k_tanada }
+			cenware_conquer_kingdom_with_end_conquest_chance = { KINGDOM_NAME = k_agadendon END_CONQUEST_CHANCE = 0 }
+			cenware_conquer_kingdom_with_end_conquest_chance = { KINGDOM_NAME = k_decateia 	END_CONQUEST_CHANCE = 0 }
+			
+			if = {
+				limit = { has_game_rule = cenware_conquest_opakhasia }
+				end_the_conquest_with_preparation = yes
+			}
+			
+			cenware_conquer_kingdom_with_end_conquest_chance = { KINGDOM_NAME = k_kalliados END_CONQUEST_CHANCE = 0 }
+			cenware_conquer_kingdom_with_end_conquest_chance = { KINGDOM_NAME = k_hyrea 	END_CONQUEST_CHANCE = 0 }
+			cenware_conquer_kingdom_with_end_conquest_chance = { KINGDOM_NAME = k_bourillai END_CONQUEST_CHANCE = 0 }
+			cenware_conquer_kingdom_with_end_conquest_chance = { KINGDOM_NAME = k_ephesos 	END_CONQUEST_CHANCE = 0 }
+			cenware_conquer_kingdom_with_end_conquest_chance = { KINGDOM_NAME = k_kteumaxia END_CONQUEST_CHANCE = 0 }
+			
+			end_the_conquest_with_preparation = yes
+		}
+	}
+}
+
+rhesus_ai_effect = { # A scripted effect that makes Rhesus an actually formidable foe
+	character:rhesus_1 = {
+		if = {
+			limit = { 
+				is_alive = yes
+				is_landed = yes
+			}
+			top_liege = {
+				random_targeting_faction = {
+					limit = { faction_is_type = omiltos_conclave_faction }
+					save_scope_as = conclave_faction
+				}
+			}
+			if = {
+				limit = {
+					scope:conclave_faction = { faction_power <= 300 }
+				}	# If the Conclave has over 300 power, Rhesus will chill. However, if not, start trying to recruit more people to it
+				random_list = {	# Plot in the shadows
+					50 = { }
+					50 = { # Successfully recruit someone
+						top_liege = {
+							random_vassal = {
+								limit = {
+									save_temporary_scope_as = vassal_to_be_recruited_trigger
+									NOR = {
+										scope:conclave_faction = {
+											any_faction_member = { this = scope:vassal_to_be_recruited_trigger }
+										}
+										has_variable = blocked_from_conclave
+									}
+									highest_held_title_tier >= tier_county
+									has_faith = faith:aversarian_pope
+								}
+								save_scope_as = vassal_to_be_recruited
+								character:cois_1 = {
+									trigger_event = cois.0200
+								}
+							}
+						}
+					}
+				}
+			}
+			if = {
+				limit = {
+					scope:conclave_faction = { faction_power <= 100 } 	# If below 100 power, enter desperation mode
+				}
+				if = {
+					limit = { character:cois_1 = { NOT = { has_character_flag = already_informed_about_rhesus_final_phase } } }
+					character:cois_1 = {
+						add_character_flag = already_informed_about_rhesus_final_phase
+						trigger_event = cois.0201
+					}
+				}
+				if = {
+					limit = {
+						NOT = {
+							any_scheme = {
+								scheme_target = character:cois_1
+							}
+						}
+					}
+					start_scheme = {
+						type = murder
+						target = character:cois_1
+					}
+					random_scheme = {
+						limit = { scheme_target = character:cois_1 }
+						debug_log_scopes = yes
+						save_scope_as = rhesus_scheme
+					}
+					character:cois_1 = {
+						every_vassal = {
+							limit = {
+								character:rhesus_1 = {
+									has_strong_usable_hook = prev
+								}
+							}
+							force_add_to_scheme = {
+								scheme = scope:rhesus_scheme
+								years = 5
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+rhesus_ai_debug = {
+	character:rhesus_1 = {
+		change_government = feudal_government
+	}
+}

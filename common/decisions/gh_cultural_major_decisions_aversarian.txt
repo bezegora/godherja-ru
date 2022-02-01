@@ -1,0 +1,1230 @@
+﻿##################
+##DECISIONS LIST##
+# reunite_the_empire_decision
+# reintegrate_core_aversarian_territory
+# announce_aversaria_voreias_decision
+# convert_to_suncult_decision
+# redraw_the_west_undo_decision
+# eastern_reforms_side_governor_decision
+# eastern_reforms_side_mongols_decision
+# reform_aversarian_religion
+# bloody_throne_decision
+# renounce_gorassos_decision
+# renounce_megistos_decision
+##################
+
+##################
+# Reunite the Empire
+# by ThePinkPanzer
+reunite_the_empire_decision = {
+	picture = "gfx/interface/illustrations/decisions/decision_aversaria.dds"
+	major = yes
+	ai_check_interval = 120
+	desc = reunite_the_empire_decision_desc
+
+	# the empires that become kingdoms are references in the following files:
+	# this one
+	# gh_scripted_triggers - reunite_the_empire_complete_control_trigger
+	# gh_decisions_effects
+
+	is_shown = {
+		has_culture_group = culture_group:gh_imperial_group
+		NOR = {
+			is_target_in_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:reunite_the_empire_decision
+			}
+		}
+		calc_true_if = { # do enough of the original empires remain to make this worthwhile?
+			amount >= 2
+			title:e_etepezea = { any_in_de_jure_hierarchy = { tier = tier_county } }
+			title:e_malcois = { any_in_de_jure_hierarchy = { tier = tier_county } }
+			title:e_aironoi = { any_in_de_jure_hierarchy = { tier = tier_county } }
+			title:e_opakhasia = { any_in_de_jure_hierarchy = { tier = tier_county } }
+			title:e_megos_kalathipsomi = { any_in_de_jure_hierarchy = { tier = tier_county } }
+			title:e_mikros_kalathipsomi = { any_in_de_jure_hierarchy = { tier = tier_county } }
+		}
+	}
+
+	is_valid = {
+		has_culture_group = culture_group:gh_imperial_group
+
+		custom_description = {
+			text = reunite_the_empire_valid_desc
+			calc_true_if = {
+				#amount >= reunite_the_empire_required_empire_count
+				amount >= 4
+				
+				has_title = title:e_etepezea
+				has_title = title:e_malcois
+				has_title = title:e_aironoi
+				has_title = title:e_opakhasia
+				has_title = title:e_megos_kalathipsomi
+				has_title = title:e_mikros_kalathipsomi
+				has_title = title:e_gurdurbok
+				
+				#reunite_the_empire_complete_control_trigger = yes
+			}
+		}
+
+		OR = {
+			has_primary_title = title:e_etepezea
+			has_primary_title = title:e_malcois
+			has_primary_title = title:e_aironoi
+			has_primary_title = title:e_opakhasia
+			has_primary_title = title:e_megos_kalathipsomi
+			has_primary_title = title:e_mikros_kalathipsomi
+			has_primary_title = title:e_gurdurbok
+		}
+	}
+
+	effect = {
+		save_scope_as = aversaria_uniter
+
+		show_as_tooltip = { reunite_the_empire_decision_effects = yes } #Actually applied in aversaria.0001 - prestige, laws, title, innovation effects
+
+		#Events
+		trigger_event = aversaria.0001
+		every_player = {
+			limit = {
+				NOT = { this = scope:aversaria_uniter }
+				is_within_diplo_range = { CHARACTER = scope:aversaria_uniter }
+			}
+			trigger_event = aversaria.0002
+		}		
+
+		#Can only be done once
+		add_to_global_variable_list = {
+			name = unavailable_unique_decisions
+			target = flag:reunite_the_empire_decision
+		}
+	}
+	
+
+	ai_potential = {
+		always = yes
+	}
+
+	ai_will_do = {
+		base = 100
+	}
+}
+
+##################
+# Reunite the North
+# by Hapchazzard
+reunite_the_north_decision = {
+	picture = "gfx/interface/illustrations/decisions/decision_aversaria.dds"
+	major = yes
+	ai_check_interval = 120
+	desc = reunite_the_north_decision_desc
+
+	is_shown = {
+		has_culture_group = culture_group:gh_imperial_group
+		NOR = { 
+			title:e_aversaria = { is_title_created = yes }
+			title:e_oraispol_aautokratia = { is_title_created = yes }
+			has_title = title:e_oraispol_aautokratia
+		}
+		has_title = title:e_etepezea
+	}
+
+	is_valid = {
+		custom_description = {
+			text = reunite_the_north_decision_oraispol_capital_tt
+			capital_county = title:c_halium
+		}
+		OR = {
+			has_title = title:e_megos_kalathipsomi
+			has_title = title:e_mikros_kalathipsomi
+			has_title = title:e_malcois
+			has_title = title:e_aironoi
+			has_title = title:e_opakhasia
+		}
+	}
+
+	effect = {
+		create_title_and_vassal_change = {
+			type = created
+			save_scope_as = change
+			add_claim_on_loss = no
+		}
+		title:e_oraispol_aautokratia = {
+			change_title_holder = {
+				holder = root
+				change = scope:change
+			}
+		}
+		resolve_title_and_vassal_change = scope:change
+		hidden_effect = {
+			set_primary_title_to = title:e_oraispol_aautokratia
+			reunite_the_empire_decision_effects_all_titles = { EMPIRENAME = oraispol_aautokratia }
+		}
+	}
+	
+
+	ai_potential = {
+		always = yes
+	}
+
+	ai_will_do = {
+		base = 100
+	}
+}
+
+##################
+# Reunite the South
+# by Hapchazzard
+reunite_the_south_decision = {
+	picture = "gfx/interface/illustrations/decisions/decision_aversaria.dds"
+	major = yes
+	ai_check_interval = 120
+	desc = reunite_the_north_decision_desc
+
+	is_shown = {
+		has_culture_group = culture_group:gh_imperial_group
+		NOR = { 
+			title:e_aversaria = { is_title_created = yes }
+			title:e_asiupoli_aautokratia = { is_title_created = yes } 
+			has_title = title:e_asiupoli_aautokratia
+		}
+		has_title = title:e_aironoi
+	}
+
+	is_valid = {
+		custom_description = {
+			text = reunite_the_south_decision_asiupoli_capital_tt
+			capital_county = title:c_mallilene
+		}
+		OR = {
+			has_title = title:e_megos_kalathipsomi
+			has_title = title:e_mikros_kalathipsomi
+			has_title = title:e_malcois
+			has_title = title:e_etepezea
+			has_title = title:e_opakhasia
+		}
+	}
+
+	effect = {
+		create_title_and_vassal_change = {
+			type = created
+			save_scope_as = change
+			add_claim_on_loss = no
+		}
+		title:e_asiupoli_aautokratia = {
+			change_title_holder = {
+				holder = root
+				change = scope:change
+			}
+		}
+		resolve_title_and_vassal_change = scope:change
+		hidden_effect = {
+			set_primary_title_to = title:e_asiupoli_aautokratia
+			reunite_the_empire_decision_effects_all_titles = { EMPIRENAME = asiupoli_aautokratia }
+		}
+	}
+	
+
+	ai_potential = {
+		always = yes
+	}
+
+	ai_will_do = {
+		base = 100
+	}
+}
+
+##################
+# Reintegrate Core Aversarian Territory
+# by ThePinkPanzer
+reintegrate_core_aversarian_territory = { # used for any you didn't get the first time around wiht the above decision
+	picture = "gfx/interface/illustrations/decisions/decision_aversaria.dds"
+	major = yes
+	ai_check_interval = 30
+	desc = reintegrate_core_aversarian_territory_desc
+
+	is_shown = {
+		has_culture_group = culture_group:gh_imperial_group
+
+		has_title = title:e_aversaria
+		is_target_in_global_variable_list = { # the above should not be true without this, but it's best to be cautious
+			name = unavailable_unique_decisions
+			target = flag:reunite_the_empire_decision
+		}
+		OR = { # did we miss any?
+			title:e_etepezea = { any_in_de_jure_hierarchy = { tier = tier_county } }
+			title:e_malcois = { any_in_de_jure_hierarchy = { tier = tier_county } }
+			title:e_aironoi = { any_in_de_jure_hierarchy = { tier = tier_county } }
+			title:e_opakhasia = { any_in_de_jure_hierarchy = { tier = tier_county } }
+		}
+	}
+
+	is_valid = {
+		calc_true_if = {
+			amount >= 1
+
+			reunite_the_empire_complete_control_trigger = yes
+		}
+	}
+
+	effect = {
+		# TODO: improve custom loc here
+
+		hidden_effect = {
+			reunite_the_empire_decision_effects_all_titles = { EMPIRENAME = aversaria }
+		}
+	}
+
+	ai_potential = {
+		always = yes
+	}
+
+	ai_will_do = {
+		base = 100
+	}
+}
+
+##################
+# BS - Announce Aversaria Voreias
+# by ThePinkPanzer
+announce_aversaria_voreias_decision = {
+	picture = "gfx/interface/illustrations/decisions/decision_aversaria.dds"
+	major = yes
+	ai_check_interval = 12
+	desc = announce_aversaria_voreias_decision_desc
+
+	is_shown = {
+		has_culture_group = culture_group:gh_imperial_group
+		has_game_rule = story_content_enabled
+		# character:clanlands_imperial_1 = {
+			has_title = title:k_epavarion
+		# }
+			
+		is_ai = no
+		NOT = {
+			is_target_in_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:announce_aversaria_voreias_decision
+			}
+		}
+	}
+
+	is_valid = {
+		has_culture_group = culture_group:gh_imperial_group
+		has_title = title:k_niidinia
+		OR = {
+			AND = {
+				has_title = title:k_vyshtanka
+				has_title = title:k_krassovce
+			}
+			AND = {
+				has_title = title:k_rohr
+				has_title = title:k_marroux
+			}
+		}
+	}
+
+	effect = {
+		save_scope_as = announce_aversaria_voreias
+		
+		custom_tooltip = announce_aversaria_voreias_decision_tt
+		hidden_effect = {
+			get_title = title:e_gurdurbok
+			title:e_gurdurbok = {
+				set_title_name = AVERSARIA_VOREIAS
+				set_color_from_title = title:e_aversaria_voreias
+				set_coa = title:e_aversaria_voreias
+			}
+			trigger_event = black_sun.0001
+		}
+	
+		if = {
+			limit = {
+				this = character:clanlands_imperial_1
+			}
+			bloodline_set_founder = { TRAIT = the_black_sun }
+		}
+
+		every_player = {
+			limit = {
+				NOT = { this = scope:announce_aversaria_voreias }
+				in_diplomatic_range = scope:announce_aversaria_voreias
+			}
+		}
+
+		add_to_global_variable_list = {
+			name = unavailable_unique_decisions
+			target = flag:announce_aversaria_voreias_decision
+		}
+	}
+
+	ai_potential = {
+		always = yes
+	}
+
+	ai_will_do = {
+		base = 100
+	}
+}
+
+##################
+# BS - Convert to Nicanoneus Aagiokratia
+# by Netgearghost
+convert_to_suncult_decision = {
+	major = yes
+	ai_check_interval = 12
+	picture = "gfx/interface/illustrations/decisions/decision_major_religion.dds"
+
+	is_shown = {
+		has_game_rule = story_content_enabled
+		NOT = {
+			has_global_variable = suncult_reformed
+		}
+		is_black_sun_trigger = yes
+		has_title = title:e_gurdurbok
+	}
+
+	is_valid = {
+		is_at_war = no
+		piety >= 1000
+		has_title = title:e_gurdurbok 
+	}
+
+	effect = {
+		add_piety = -1000
+		trigger_event = black_sun.0002
+		set_global_variable = {
+			name = suncult_reformed
+			value = yes
+		}
+		every_vassal_or_below = {
+			if = {
+				limit = {
+					has_religion = religion:aversarinas_aautokrata_religion
+				}
+				set_character_faith_with_conversion = faith:aversarinas_suncult
+			}
+		}
+		every_province = {
+			limit = {
+				faith = faith:aversarinas_aautokrata
+			}
+			scope:county = {
+				set_county_faith = faith:aversarinas_suncult
+			}
+		}
+	}
+
+	ai_potential = {
+		always = yes
+	}
+
+	ai_will_do = {
+		base = 100
+	}
+}
+
+##################
+# ER - Side with the Governor
+# by ThePinkPanzer
+eastern_reforms_side_governor_decision = {
+	major = yes
+	ai_check_interval = 2
+
+	is_shown = {
+		has_game_rule = story_content_enabled
+		has_character_flag = eastern_reforms_can_pick_side
+		NOT = {
+			is_target_in_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:eastern_reforms_picked_side
+			}
+		}
+	}
+
+	effect = {
+		trigger_event = eastern_reforms.0004
+		add_to_global_variable_list = {
+			name = unavailable_unique_decisions
+			target = flag:eastern_reforms_picked_side
+		}
+	}
+
+	ai_potential = {
+		always = yes
+	}
+
+	ai_will_do = {
+		base = 100
+	}
+}
+
+##################
+# ER - Side with the Oltenics
+# by ThePinkPanzer
+eastern_reforms_side_mongols_decision = {
+	major = yes
+	ai_check_interval = 2
+
+	is_shown = {
+		has_game_rule = story_content_enabled
+		has_character_flag = eastern_reforms_can_pick_side
+		NOT = {
+			is_target_in_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:eastern_reforms_picked_side
+			}
+		}
+	}
+
+	effect = {
+		trigger_event = eastern_reforms.0005
+		add_to_global_variable_list = {
+			name = unavailable_unique_decisions
+			target = flag:eastern_reforms_picked_side
+		}
+	}
+
+	ai_potential = {
+		always = yes
+	}
+
+	ai_will_do = {
+		base = 100
+	}
+}
+
+##################
+# ER - Reform Aversarian Religion
+# by ThePinkPanzer
+reform_aversarian_religion = {
+	picture = "gfx/interface/illustrations/decisions/decision_major_religion.dds"
+	ai_check_interval = 12
+	major = yes
+
+	is_shown = {
+		has_game_rule = story_content_enabled
+		is_target_in_global_variable_list = {
+			name = unavailable_unique_decisions
+			target = flag:eastern_reforms_picked_side
+		}
+		NOT = {
+			is_target_in_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:eastern_aversarian_reform
+			}
+		}
+		this = character:aironoi_79
+	}
+
+	is_valid = {
+		custom_description = {
+			text = reform_aversarian_religion_own_kasmeze
+			title:c_kasmeze = {
+				OR = {
+					holder = prev
+					holder.top_liege = prev
+				}
+			}
+		}
+		OR = {
+			custom_description = {
+				text = reform_aversarian_religion_gorassos_is_dead
+				character:southern_imperial_15 = {
+					is_alive = no
+				}
+			}
+			custom_description = {
+				text = reform_aversarian_religion_bloodied_throne_destroyed
+				title:k_the_bloodied_throne = {
+					is_title_created = no
+				}
+			}
+		}
+	}
+
+	effect = {
+		show_as_tooltip = {
+			custom_tooltip = reform_aversarian_religion_reform_effect
+		}
+		trigger_event = eastern_reforms.0013
+		add_to_global_variable_list = {
+			name = unavailable_unique_decisions
+			target = flag:eastern_aversarian_reform
+		}
+	}
+
+	ai_potential = {
+		always = yes
+	}
+
+	ai_will_do = {
+		base = 100
+	}
+}
+
+##################
+# BT - Reaffirm the Bloody Throne
+# by Wolverine422
+bloody_throne_decision = {
+	picture = "gfx/interface/illustrations/decisions/decision_aversaria.dds"
+	major = yes
+	ai_check_interval = 120	
+	desc = bloody_throne_decision_desc
+	
+	is_shown = {
+		has_title = title:k_the_bloodied_throne
+		NOT = {	has_character_modifier = butcher_of_aversaria_modifier }
+		NOT = {
+			is_target_in_global_variable_list = {
+			name = unavailable_unique_decisions
+			target = flag:bloody_throne_decision
+			}	
+		}	
+	}
+
+	is_valid = {
+		prestige_level >= 3
+		OR = {
+			has_trait = sadistic
+			has_trait = lunatic_1
+			has_trait = lunatic_genetic
+		}
+	}	
+
+	effect = {
+		show_as_tooltip = {
+			custom_tooltip = bloody_throne_decision_custom_tooltip
+		}
+		add_prestige = 1000
+		add_to_global_variable_list = {
+			name = unavailable_unique_decisions
+			target = flag:bloody_throne_decision
+		}	
+		add_character_flag = reaffirmed_bloody_throne
+	}
+	
+	ai_potential = {
+		always = yes
+	}
+
+	ai_will_do = {
+		base = 50
+	}	
+}	
+
+##################
+# BT - Renounce Gorassos Aagiokratia
+# by Wolverine422
+renounce_gorassos_decision = {
+	major = yes
+	picture = "gfx/interface/illustrations/decisions/decision_personal_religious.dds"
+	ai_check_interval = 120
+	desc = renounce_gorassos_decision_desc
+
+	is_shown = {
+		has_title = title:k_the_bloodied_throne
+		faith = faith:aversarian_gorassos
+		NOT = {	has_character_modifier = butcher_of_aversaria_modifier }
+		NOT = {
+			is_target_in_global_variable_list = {
+			name = unavailable_unique_decisions
+			target = flag:renounce_gorassos_decision
+			}	
+		}	
+	}
+	
+	is_valid = {
+		faith = faith:aversarian_gorassos
+		current_date <= 1310.1.1
+	}	
+
+	effect = {
+		add_piety = massive_piety_gain
+		add_to_global_variable_list = {
+			name = unavailable_unique_decisions
+			target = flag:renounce_gorassos_decision
+		}
+		set_character_faith = faith:aversarinas_aautokrata
+		trigger_event = aversaria.9005
+	}
+
+	ai_potential = {
+		always = yes
+	}
+
+	ai_will_do = {
+		base = 50
+	}
+}
+
+##################
+# MEG - Renounce Megistos Aagiokratia
+# by Wolverine422
+renounce_megistos_decision = {
+	major = yes
+	picture = "gfx/interface/illustrations/decisions/decision_personal_religious.dds"
+	ai_check_interval = 120
+	desc = renounce_megistos_decision_desc
+
+	is_shown = {
+		has_title = title:k_kasmiene
+		faith = faith:aversarian_megistos
+		NOT = {	has_character_modifier = prince_of_madness_modifier }
+		NOT = {
+			is_target_in_global_variable_list = {
+			name = unavailable_unique_decisions
+			target = flag:renounce_megistos_decision
+			}	
+		}	
+	}
+	
+	is_valid = {
+		faith = faith:aversarian_megistos
+		current_date <= 1310.1.1
+	}	
+
+	effect = {
+		add_piety = massive_piety_gain
+		add_to_global_variable_list = {
+			name = unavailable_unique_decisions
+			target = flag:renounce_megistos_decision
+		}
+		set_character_faith = faith:aversarinas_aautokrata
+		trigger_event = aversaria.9005
+	}
+
+	ai_potential = {
+		always = yes
+	}
+
+	ai_will_do = {
+		base = 50
+	}
+}
+
+##################
+# Restore the borders of Etepezea
+# by Hapchazzard
+restore_etepezea_decision = {
+	major = yes
+	picture = "gfx/interface/illustrations/decisions/decision_aversaria.dds"
+	ai_check_interval = 60
+	desc = restore_etepezea_decision_desc
+
+	is_shown = {
+		has_religion = religion:aversarinas_aautokrata_religion
+		is_independent_ruler = yes
+		any_realm_de_jure_duchy = {
+			OR = {
+				is_not_in_traditional_kingdom = { KINGDOM_NAME = k_parcos }
+				is_not_in_traditional_kingdom = { KINGDOM_NAME = k_assocaea }
+				is_not_in_traditional_kingdom = { KINGDOM_NAME = k_pergicos }
+				is_not_in_traditional_kingdom = { KINGDOM_NAME = k_argyra }
+				is_not_in_traditional_kingdom = { KINGDOM_NAME = k_zakros }
+				is_not_in_traditional_kingdom = { KINGDOM_NAME = k_palitake }
+				is_not_in_traditional_kingdom = { KINGDOM_NAME = k_cycladecia }
+				is_not_in_traditional_kingdom = { KINGDOM_NAME = k_kerkonia }
+			}
+		}
+	}
+	
+	is_valid = {
+		custom_description = {
+			text = restore_etepezea_requirement
+			NOT = {
+				any_duchy = {
+					OR = {
+						is_not_in_traditional_kingdom = { KINGDOM_NAME = k_parcos }
+						is_not_in_traditional_kingdom = { KINGDOM_NAME = k_assocaea }
+						is_not_in_traditional_kingdom = { KINGDOM_NAME = k_pergicos }
+						is_not_in_traditional_kingdom = { KINGDOM_NAME = k_argyra }
+						is_not_in_traditional_kingdom = { KINGDOM_NAME = k_zakros }
+						is_not_in_traditional_kingdom = { KINGDOM_NAME = k_palitake }
+						is_not_in_traditional_kingdom = { KINGDOM_NAME = k_cycladecia }
+						is_not_in_traditional_kingdom = { KINGDOM_NAME = k_kerkonia }
+					}
+					NOT = { 
+						any_in_de_jure_hierarchy = {
+							trigger_if = {
+								limit = { tier = tier_county }
+								has_county_modifier = fogswept_modifier # Fogswept counties are ignored, since they're presumed to be permanently lost
+							}
+							trigger_else = {
+								always = no
+							}
+						}
+					}
+					NOT = {
+						root = {
+							completely_controls = prev
+						}
+					}
+				}
+			}
+		}
+	}	
+
+	effect = {
+		custom_tooltip = restore_etepezea_decision_tooltip
+		hidden_effect = {
+			restore_traditional_aversarian_borders_etepezea = yes
+		}
+	}
+
+	ai_potential = {
+		always = yes
+	}
+
+	ai_will_do = {
+		base = 50
+	}
+}
+
+##################
+# Restore the borders of Megos Kalathipsomi
+# by Hapchazzard
+restore_megos_kalathipsomi_decision = {
+	major = yes
+	picture = "gfx/interface/illustrations/decisions/decision_aversaria.dds"
+	ai_check_interval = 60
+	desc = restore_megos_kalathipsomi_decision_desc
+
+	is_shown = {
+		has_religion = religion:aversarinas_aautokrata_religion
+		is_independent_ruler = yes
+		any_realm_de_jure_duchy = {
+			OR = {
+				is_not_in_traditional_kingdom = { KINGDOM_NAME = k_schouweiler }
+				is_not_in_traditional_kingdom = { KINGDOM_NAME = k_leskovec }
+				is_not_in_traditional_kingdom = { KINGDOM_NAME = k_volgardr }
+				is_not_in_traditional_kingdom = { KINGDOM_NAME = k_obkirchen }
+			}
+		}
+	}
+	
+	is_valid = {
+		custom_description = {
+			text = restore_megos_kalathipsomi_requirement
+			NOT = {
+				any_duchy = {
+					OR = {
+						is_not_in_traditional_kingdom = { KINGDOM_NAME = k_schouweiler }
+						is_not_in_traditional_kingdom = { KINGDOM_NAME = k_leskovec }
+						is_not_in_traditional_kingdom = { KINGDOM_NAME = k_volgardr }
+						is_not_in_traditional_kingdom = { KINGDOM_NAME = k_obkirchen }
+					}
+					NOT = { 
+						any_in_de_jure_hierarchy = {
+							trigger_if = {
+								limit = { tier = tier_county }
+								has_county_modifier = fogswept_modifier # Fogswept counties are ignored, since they're presumed to be permanently lost
+							}
+							trigger_else = {
+								always = no
+							}
+						}
+					}
+					NOT = {
+						root = {
+							completely_controls = prev
+						}
+					}
+				}
+			}
+		}
+	}	
+	
+	effect = {
+		custom_tooltip = restore_megos_kalathipsomi_decision_tooltip
+		hidden_effect = {
+			restore_traditional_aversarian_borders_megos_kalathipsomi = yes
+		}
+	}
+	
+	ai_potential = {
+		always = yes
+	}
+	
+	ai_will_do = {
+		base = 50
+	}
+}
+
+##################
+# Restore the borders of Mikros Kalathipsomi
+# by Hapchazzard
+restore_mikros_kalathipsomi_decision = {
+	major = yes
+	picture = "gfx/interface/illustrations/decisions/decision_aversaria.dds"
+	ai_check_interval = 60
+	desc = restore_mikros_kalathipsomi_decision_desc
+
+	is_shown = {
+		has_religion = religion:aversarinas_aautokrata_religion
+		is_independent_ruler = yes
+		any_realm_de_jure_duchy = {
+			OR = {
+				is_not_in_traditional_kingdom = { KINGDOM_NAME = k_sulzegg }
+				is_not_in_traditional_kingdom = { KINGDOM_NAME = k_okrouhlice }
+				is_not_in_traditional_kingdom = { KINGDOM_NAME = k_svyatich }
+				is_not_in_traditional_kingdom = { KINGDOM_NAME = k_gampern }
+				is_not_in_traditional_kingdom = { KINGDOM_NAME = k_nedweis }
+				is_not_in_traditional_kingdom = { KINGDOM_NAME = k_lieben }
+			}
+		}
+	}
+	
+	is_valid = {
+		custom_description = {
+			text = restore_mikros_kalathipsomi_requirement
+			NOT = {
+				any_duchy = {
+					OR = {
+						is_not_in_traditional_kingdom = { KINGDOM_NAME = k_sulzegg }
+						is_not_in_traditional_kingdom = { KINGDOM_NAME = k_okrouhlice }
+						is_not_in_traditional_kingdom = { KINGDOM_NAME = k_svyatich }
+						is_not_in_traditional_kingdom = { KINGDOM_NAME = k_gampern }
+						is_not_in_traditional_kingdom = { KINGDOM_NAME = k_nedweis }
+						is_not_in_traditional_kingdom = { KINGDOM_NAME = k_lieben }
+					}
+					NOT = { 
+						any_in_de_jure_hierarchy = {
+							trigger_if = {
+								limit = { tier = tier_county }
+								has_county_modifier = fogswept_modifier # Fogswept counties are ignored, since they're presumed to be permanently lost
+							}
+							trigger_else = {
+								always = no
+							}
+						}
+					}
+					NOT = {
+						root = {
+							completely_controls = prev
+						}
+					}
+				}
+			}
+		}
+	}	
+
+	effect = {
+		custom_tooltip = restore_mikros_kalathipsomi_decision_tooltip
+		hidden_effect = {
+			restore_traditional_aversarian_borders_mikros_kalathipsomi = yes
+		}
+	}
+
+	ai_potential = {
+		always = yes
+	}
+
+	ai_will_do = {
+		base = 50
+	}
+}
+
+##################
+# Restore the borders of Malcois
+# by Hapchazzard
+restore_malcois_decision = {
+	major = yes
+	picture = "gfx/interface/illustrations/decisions/decision_aversaria.dds"
+	ai_check_interval = 60
+	desc = restore_malcois_decision_desc
+
+	is_shown = {
+		has_religion = religion:aversarinas_aautokrata_religion
+		is_independent_ruler = yes
+		any_realm_de_jure_duchy = {
+			OR = {
+				is_not_in_traditional_kingdom = { KINGDOM_NAME = k_sanos }
+				is_not_in_traditional_kingdom = { KINGDOM_NAME = k_kallios }
+				is_not_in_traditional_kingdom = { KINGDOM_NAME = k_helenai }
+				is_not_in_traditional_kingdom = { KINGDOM_NAME = k_delphilikos }
+				is_not_in_traditional_kingdom = { KINGDOM_NAME = k_cyrocaea }
+				is_not_in_traditional_kingdom = { KINGDOM_NAME = k_mytidon }
+				is_not_in_traditional_kingdom = { KINGDOM_NAME = k_adgos }
+			}
+		}
+	}
+	
+	is_valid = {
+		custom_description = {
+			text = restore_malcois_requirement
+			NOT = {
+				any_duchy = {
+					OR = {
+						is_not_in_traditional_kingdom = { KINGDOM_NAME = k_sanos }
+						is_not_in_traditional_kingdom = { KINGDOM_NAME = k_kallios }
+						is_not_in_traditional_kingdom = { KINGDOM_NAME = k_helenai }
+						is_not_in_traditional_kingdom = { KINGDOM_NAME = k_delphilikos }
+						is_not_in_traditional_kingdom = { KINGDOM_NAME = k_cyrocaea }
+						is_not_in_traditional_kingdom = { KINGDOM_NAME = k_mytidon }
+						is_not_in_traditional_kingdom = { KINGDOM_NAME = k_adgos }
+					}
+					NOT = { 
+						any_in_de_jure_hierarchy = {
+							trigger_if = {
+								limit = { tier = tier_county }
+								has_county_modifier = fogswept_modifier # Fogswept counties are ignored, since they're presumed to be permanently lost
+							}
+							trigger_else = {
+								always = no
+							}
+						}
+					}
+					NOT = {
+						root = {
+							completely_controls = prev
+						}
+					}
+				}
+			}
+		}
+	}	
+
+	effect = {
+		custom_tooltip = restore_malcois_decision_tooltip
+		hidden_effect = {
+			restore_traditional_aversarian_borders_malcois = yes
+		}
+	}
+
+	ai_potential = {
+		always = yes
+	}
+
+	ai_will_do = {
+		base = 50
+	}
+}
+
+##################
+# Restore the borders of Opakhasia
+# by Hapchazzard
+restore_opakhasia_decision = {
+	major = yes
+	picture = "gfx/interface/illustrations/decisions/decision_aversaria.dds"
+	ai_check_interval = 60
+	desc = restore_opakhasia_decision_desc
+
+	is_shown = {
+		has_religion = religion:aversarinas_aautokrata_religion
+		is_independent_ruler = yes
+		any_realm_de_jure_duchy = {
+			OR = {
+				is_not_in_traditional_kingdom = { KINGDOM_NAME = k_kollos }
+				is_not_in_traditional_kingdom = { KINGDOM_NAME = k_arsidos }
+				is_not_in_traditional_kingdom = { KINGDOM_NAME = k_ithiteia }
+				is_not_in_traditional_kingdom = { KINGDOM_NAME = k_artesmos }
+				is_not_in_traditional_kingdom = { KINGDOM_NAME = k_karthos }
+				is_not_in_traditional_kingdom = { KINGDOM_NAME = k_tanada }
+				is_not_in_traditional_kingdom = { KINGDOM_NAME = k_kasmiene }
+				is_not_in_traditional_kingdom = { KINGDOM_NAME = k_agadendon }
+				is_not_in_traditional_kingdom = { KINGDOM_NAME = k_decateia }
+			}
+		}
+	}
+	
+	is_valid = {
+		custom_description = {
+			text = restore_opakhasia_requirement
+			NOT = {
+				any_duchy = {
+					OR = {
+						is_not_in_traditional_kingdom = { KINGDOM_NAME = k_kollos }
+						is_not_in_traditional_kingdom = { KINGDOM_NAME = k_arsidos }
+						is_not_in_traditional_kingdom = { KINGDOM_NAME = k_ithiteia }
+						is_not_in_traditional_kingdom = { KINGDOM_NAME = k_artesmos }
+						is_not_in_traditional_kingdom = { KINGDOM_NAME = k_karthos }
+						is_not_in_traditional_kingdom = { KINGDOM_NAME = k_tanada }
+						is_not_in_traditional_kingdom = { KINGDOM_NAME = k_kasmiene }
+						is_not_in_traditional_kingdom = { KINGDOM_NAME = k_agadendon }
+						is_not_in_traditional_kingdom = { KINGDOM_NAME = k_decateia }
+					}
+					NOT = { 
+						any_in_de_jure_hierarchy = {
+							trigger_if = {
+								limit = { tier = tier_county }
+								has_county_modifier = fogswept_modifier # Fogswept counties are ignored, since they're presumed to be permanently lost
+							}
+							trigger_else = {
+								always = no
+							}
+						}
+					}
+					NOT = {
+						root = {
+							completely_controls = prev
+						}
+					}
+				}
+			}
+		}
+	}	
+
+	effect = {
+		custom_tooltip = restore_opakhasia_decision_tooltip
+		hidden_effect = {
+			restore_traditional_aversarian_borders_opakhasia = yes
+		}
+	}
+
+	ai_potential = {
+		always = yes
+	}
+
+	ai_will_do = {
+		base = 50
+	}
+}
+
+##################
+# Restore the borders of Aironoi
+# by Hapchazzard
+restore_aironoi_decision = {
+	major = yes
+	picture = "gfx/interface/illustrations/decisions/decision_aversaria.dds"
+	ai_check_interval = 60
+	desc = restore_aironoi_decision_desc
+
+	is_shown = {
+		has_religion = religion:aversarinas_aautokrata_religion
+		is_independent_ruler = yes
+		any_realm_de_jure_duchy = {
+			OR = {
+				is_not_in_traditional_kingdom = { KINGDOM_NAME = k_hyrea }
+				is_not_in_traditional_kingdom = { KINGDOM_NAME = k_bourillai }
+				is_not_in_traditional_kingdom = { KINGDOM_NAME = k_kalliados }
+				is_not_in_traditional_kingdom = { KINGDOM_NAME = k_kteumaxia }
+				is_not_in_traditional_kingdom = { KINGDOM_NAME = k_ephesos }
+				is_not_in_traditional_kingdom = { KINGDOM_NAME = k_paradawn }
+				is_not_in_traditional_kingdom = { KINGDOM_NAME = k_arderwan }
+				is_not_in_traditional_kingdom = { KINGDOM_NAME = k_muthathk }
+			}
+		}
+	}
+	
+	is_valid = {
+		custom_description = {
+			text = restore_aironoi_requirement
+			NOT = {
+				any_duchy = {
+					OR = {
+						is_not_in_traditional_kingdom = { KINGDOM_NAME = k_hyrea }
+						is_not_in_traditional_kingdom = { KINGDOM_NAME = k_bourillai }
+						is_not_in_traditional_kingdom = { KINGDOM_NAME = k_kalliados }
+						is_not_in_traditional_kingdom = { KINGDOM_NAME = k_kteumaxia }
+						is_not_in_traditional_kingdom = { KINGDOM_NAME = k_ephesos }
+						is_not_in_traditional_kingdom = { KINGDOM_NAME = k_paradawn }
+						is_not_in_traditional_kingdom = { KINGDOM_NAME = k_arderwan }
+						is_not_in_traditional_kingdom = { KINGDOM_NAME = k_muthathk }
+					}
+					NOT = { 
+						any_in_de_jure_hierarchy = {
+							trigger_if = {
+								limit = { tier = tier_county }
+								has_county_modifier = fogswept_modifier # Fogswept counties are ignored, since they're presumed to be permanently lost
+							}
+							trigger_else = {
+								always = no
+							}
+						}
+					}
+					NOT = {
+						root = {
+							completely_controls = prev
+						}
+					}
+				}
+			}
+		}
+	}	
+
+	effect = {
+		custom_tooltip = restore_aironoi_decision_tooltip
+		hidden_effect = {
+			restore_traditional_aversarian_borders_aironoi = yes
+		}
+	}
+
+	ai_potential = {
+		always = yes
+	}
+
+	ai_will_do = {
+		base = 50
+	}
+}
+
+##################
+# Restore the borders of Gurdurbok
+# by Hapchazzard
+restore_gurdurbok_decision = {
+	major = yes
+	picture = "gfx/interface/illustrations/decisions/decision_aversaria.dds"
+	ai_check_interval = 60
+	desc = restore_gurdurbok_decision_desc
+
+	is_shown = {
+		has_religion = religion:aversarinas_aautokrata_religion
+		is_independent_ruler = yes
+		any_realm_de_jure_duchy = {
+			OR = {
+				is_not_in_traditional_kingdom = { KINGDOM_NAME = k_lyckholm }
+				is_not_in_traditional_kingdom = { KINGDOM_NAME = k_krassovce }
+				is_not_in_traditional_kingdom = { KINGDOM_NAME = k_vyshtanka }
+				is_not_in_traditional_kingdom = { KINGDOM_NAME = k_niidinia }
+			}
+		}
+	}
+	
+	is_valid = {
+		custom_description = {
+			text = restore_gurdurbok_requirement
+			NOT = {
+				any_duchy = {
+					OR = {
+						is_not_in_traditional_kingdom = { KINGDOM_NAME = k_lyckholm }
+						is_not_in_traditional_kingdom = { KINGDOM_NAME = k_krassovce }
+						is_not_in_traditional_kingdom = { KINGDOM_NAME = k_vyshtanka }
+						is_not_in_traditional_kingdom = { KINGDOM_NAME = k_niidinia }
+					}
+					NOT = { 
+						any_in_de_jure_hierarchy = {
+							trigger_if = {
+								limit = { tier = tier_county }
+								has_county_modifier = fogswept_modifier # Fogswept counties are ignored, since they're presumed to be permanently lost
+							}
+							trigger_else = {
+								always = no
+							}
+						}
+					}
+					NOT = {
+						root = {
+							completely_controls = prev
+						}
+					}
+				}
+			}
+		}
+	}	
+
+	effect = {
+		custom_tooltip = restore_gurdurbok_decision_tooltip
+		hidden_effect = {
+			restore_traditional_aversarian_borders_gurdurbok = yes
+		}
+	}
+
+	ai_potential = {
+		always = yes
+	}
+
+	ai_will_do = {
+		base = 50
+	}
+}

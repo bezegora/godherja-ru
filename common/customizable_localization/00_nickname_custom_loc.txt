@@ -1,0 +1,33 @@
+﻿RandomFirstNickname = {
+	type = character
+
+	text = {
+		trigger = {
+			var:first_random_nickname = flag:sacred
+		}
+		localization_key = custom_first_name_sacred
+	}
+	text = {
+		trigger = {
+			var:first_random_nickname = flag:big
+		}
+		localization_key = custom_first_name_big
+	}
+}
+
+RandomSecondNickname = {
+	type = character
+
+	text = {
+		trigger = {
+			var:second_random_nickname = flag:killer
+		}
+		localization_key = custom_second_name_killer
+	}
+	text = {
+		trigger = {
+			var:second_random_nickname = flag:sword
+		}
+		localization_key = custom_second_name_sword
+	}
+}

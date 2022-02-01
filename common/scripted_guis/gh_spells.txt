@@ -1,0 +1,1115 @@
+﻿
+####SPELL EFFECTS
+
+### LIVING MAGIC ###
+
+## ETERNAL LIFE, ENDLESS TORTURE ## thank you doodle
+vampiric_drain = {
+	scope = character
+
+	effect = {
+		add_character_flag = {
+			flag = casted_vampiric_drain
+		}
+		send_interface_toast = {
+			title = vampiric_toast
+		}
+		trigger_event = magic_decisions.1001
+		change_variable = {
+			name = magic_counter
+			subtract = tier_5_spell
+		}
+		increase_progress_to_living_magi_trait = yes
+	}
+}
+
+thinning = {
+	scope = character
+
+	effect = {
+		if = {
+			limit = {
+				root = {
+					has_variable_list = spell_targets
+				}
+			}
+			send_interface_toast = { title = thinning_toast }
+			increase_progress_to_living_magi_trait = yes
+			apply_spell_effect_with_backfire_chance_list = { TIER = 2 SUCCESS_CHANCE = standard_spell_difficulty_success_chance SPELL_EFFECT = thinning_effect FAILURE_CHANCE = standard_spell_difficulty_failure_chance }
+		}
+	}
+}
+
+poison = {
+	scope = character
+
+	effect = {
+		if = {
+			limit = {
+				root = {
+					has_variable_list = spell_targets
+				}
+			}
+			send_interface_toast = { title = poison_toast }
+			increase_progress_to_living_magi_trait = yes
+			apply_spell_effect_with_backfire_chance_list = { TIER = 2 SUCCESS_CHANCE = standard_spell_difficulty_success_chance SPELL_EFFECT = poison_effect FAILURE_CHANCE = standard_spell_difficulty_failure_chance }
+		}
+	}
+}
+
+domination = {
+	scope = character
+
+	effect = {
+		if = {
+			limit = {
+				root = {
+					has_variable_list = spell_targets
+				}
+			}
+			send_interface_toast = {
+				title = domination_toast
+			}
+			increase_progress_to_living_magi_trait = yes
+			apply_spell_effect_with_custom_backfire_chance_list = { TIER = 3 SUCCESS_CHANCE = standard_spell_difficulty_success_chance SPELL_EFFECT = domination_effect FAILURE_CHANCE = standard_spell_difficulty_failure_chance BACKFIRE_EFFECT = domination_backfire_effect }
+		}
+	}
+}
+
+healing_water = {
+	scope = character
+
+	effect = {
+		increase_progress_to_living_magi_trait = yes
+		apply_spell_effect_with_custom_backfire_chance_list = { TIER = 1 SUCCESS_CHANCE = difficult_spell_difficulty_success_chance SPELL_EFFECT = healing_water_effect FAILURE_CHANCE = difficult_spell_difficulty_failure_chance BACKFIRE_EFFECT = poison_effect }
+	}
+}
+
+thralldom = {
+	scope = character
+
+	effect = {
+		if = {
+			limit = {
+				root = {
+					has_variable_list = spell_targets
+				}
+			}
+			increase_progress_to_living_magi_trait = yes
+			apply_spell_effect_with_custom_backfire_chance_list = { TIER = 3 SUCCESS_CHANCE = difficult_spell_difficulty_success_chance SPELL_EFFECT = thralldom_effect FAILURE_CHANCE = difficult_spell_difficulty_failure_chance BACKFIRE_EFFECT = domination_backfire_effect }
+		}
+	}
+}
+
+strengthening = {
+	scope = character
+	effect = {
+		increase_progress_to_living_magi_trait = yes
+		apply_spell_effect_with_custom_backfire_chance_list = { TIER = 2 SUCCESS_CHANCE = standard_spell_difficulty_success_chance SPELL_EFFECT = strengthening_effect FAILURE_CHANCE = standard_spell_difficulty_failure_chance BACKFIRE_EFFECT = thinning_effect }
+	}
+}
+
+fire_magick = {
+	scope = character
+
+	effect = {
+		increase_progress_to_living_magi_trait = yes
+		apply_spell_effect_with_custom_backfire_chance_list = { TIER = 1 SUCCESS_CHANCE = standard_spell_difficulty_success_chance SPELL_EFFECT = fire_magick_effect FAILURE_CHANCE = standard_spell_difficulty_failure_chance BACKFIRE_EFFECT = fire_magick_backfire_effect }
+	}
+}
+
+mending = {	# OBSOLETE, MERGED WITH HEALING WATER
+    scope = character
+
+    effect = {
+		if = {
+			limit = {
+				root = {
+					has_variable_list = spell_targets
+				}
+			}
+			root = {
+				deduct_spell_cost_by_tier = { TIER = 2 }
+				add_character_flag = {
+					flag = casted_mending
+					years = 10
+				}
+				send_interface_toast = {
+					title = mending_toast
+				}
+			}
+			every_in_list = {
+				variable = spell_targets
+				mending_spell_effect = yes
+			}
+		}
+		else = {
+			deduct_spell_cost_by_tier = { TIER = 2 }
+			add_character_flag = {
+				flag = casted_mending
+				years = 10
+			}
+			mending_spell_effect = yes
+				send_interface_toast = {
+					title = mending_toast
+				}
+		}
+    }
+}
+
+purification = { # OBSOLETE, MERGED WITH HEALING WATER
+	scope = character
+
+	effect = {
+		if = {
+			limit = {
+				root = {
+					has_variable_list = spell_targets
+				}
+			}
+			root = {
+				# i put root to ensure it charges the caster
+				deduct_spell_cost_by_tier = { TIER = 1 }
+				add_character_flag = {
+					flag = casted_purification
+					years = 5
+				}
+				send_interface_toast = {
+					title = purification_toast
+				}
+			}
+			every_in_list = {
+				variable = spell_targets
+				add_character_modifier = {
+					modifier = purification_mod
+					years = 10
+				}
+				
+			}
+		}
+		else = {
+			deduct_spell_cost_by_tier = { TIER = 1 }
+			add_character_flag = {
+				flag = casted_purification
+				years = 5
+			}
+			add_character_modifier = {
+				modifier = purification_mod
+				years = 10
+			}
+			send_interface_toast = {
+				title = purification_toast
+			}
+		}
+
+	}
+}
+
+unveiling = {
+   scope = character
+
+    effect = {
+		increase_progress_to_living_magi_trait = yes
+		apply_spell_effect_with_custom_backfire_chance_list = { TIER = 2 SUCCESS_CHANCE = standard_spell_difficulty_success_chance SPELL_EFFECT = unveiling_effect FAILURE_CHANCE = standard_spell_difficulty_failure_chance BACKFIRE_EFFECT = unveiling_backfire_effect }
+	}
+}
+
+creation = {
+	scope = character
+
+	effect = {
+		increase_progress_to_living_magi_trait = yes
+		apply_spell_effect_with_custom_backfire_chance_list = { TIER = 1 SUCCESS_CHANCE = standard_spell_difficulty_success_chance SPELL_EFFECT = creation_effect FAILURE_CHANCE = standard_spell_difficulty_failure_chance BACKFIRE_EFFECT = creation_backfire_effect }
+	}
+}
+
+divination = {
+	scope = character
+
+	effect = {
+		increase_progress_to_living_magi_trait = yes
+		apply_spell_effect_with_custom_backfire_chance_list = { TIER = 3 SUCCESS_CHANCE = difficult_spell_difficulty_success_chance SPELL_EFFECT = divination_effect FAILURE_CHANCE = difficult_spell_difficulty_failure_chance BACKFIRE_EFFECT = unveiling_backfire_effect }
+	}
+}
+
+raise_undead = {
+	scope = character
+
+	effect = {
+		increase_progress_to_living_magi_trait = yes
+		apply_spell_effect_with_custom_backfire_chance_list = { TIER = 3 SUCCESS_CHANCE = difficult_spell_difficulty_success_chance SPELL_EFFECT = raise_undead_effect FAILURE_CHANCE = difficult_spell_difficulty_failure_chance BACKFIRE_EFFECT = fire_magick_backfire_effect }
+	}
+}
+
+genocide_region = {
+	scope = character
+
+	effect = {
+		if = {
+			limit = {
+				root = {
+					has_variable_list = spell_l_targets
+				}
+			}
+			every_in_list = {
+				variable = spell_l_targets
+				save_scope_as = location
+				scope:location = {
+					add_county_modifier = {
+						modifier = genocide_region_mod
+						years = 5
+					}
+				}
+				root = {
+					deduct_spell_cost_by_tier = { TIER = 5 }
+					add_character_flag = {
+						flag = casted_genocide_region
+						years = 10
+					}
+				}
+			}
+		}
+		else = {
+			if = {
+				limit = { exists = capital_province }
+				capital_province = { save_scope_as = location }
+			}
+		}
+
+			send_interface_toast = {
+				title = purge_region_toast
+			}
+		}
+}
+
+annihilation = {
+	scope = character
+
+	effect = {
+		if = {
+			limit = {
+				root = {
+					has_variable_list = spell_l_targets
+				}
+			}
+			every_in_list = {
+				variable = spell_l_targets
+				save_scope_as = location
+				scope:location = {
+					add_county_modifier = {
+						modifier = annihilation_mod
+						years = 5
+					}
+				}
+				root = {
+					deduct_spell_cost_by_tier = { TIER = 4 }
+					add_character_flag = {
+						flag = casted_annihilation
+						years = 10
+					}
+				}
+			}
+		}
+		else = {
+			if = {
+				limit = { exists = capital_province }
+				capital_province = { save_scope_as = location }
+			}
+		}
+
+			send_interface_toast = {
+				title = annihilation_toast
+			}
+		}
+}
+
+quicken = {
+	scope = character
+
+	effect = {
+		increase_progress_to_living_magi_trait = yes
+		apply_spell_effect_with_custom_backfire_chance_list = { TIER = 1 SUCCESS_CHANCE = standard_spell_difficulty_success_chance SPELL_EFFECT = quicken_effect FAILURE_CHANCE = standard_spell_difficulty_failure_chance BACKFIRE_EFFECT = poison_effect }
+	}
+}
+
+battle_rage = {
+	scope = character
+
+	effect = {
+		if = {
+			limit = {
+				root = {
+					has_variable_list = spell_targets
+				}
+			}
+			every_in_list = {
+				variable = spell_targets
+				add_character_modifier = {
+					modifier = battle_rage_mod
+					months = 5
+				}
+			}
+			root = {
+				deduct_spell_cost_by_tier = { TIER = 3 }
+				add_character_flag = {
+					flag = casted_battle_rage
+					years = 10
+				}
+				send_interface_toast = {
+					title = battle_rage_toast
+				}
+			}
+		}
+		else = {
+			deduct_spell_cost_by_tier = { TIER = 3 }
+			add_character_flag = {
+				flag = casted_battle_rage
+				years = 10
+			}
+			add_character_modifier = {
+				modifier = battle_rage_mod
+				years = 5
+			}
+				send_interface_toast = {
+					title = battle_rage_toast
+				}
+		}
+	}
+}
+
+### DEAD MAGIC ###
+
+raise_undead2 = {
+	scope = character
+
+	effect = {
+
+		if = {
+			limit = {
+				root = {
+					has_variable_list = spell_l_targets
+				}
+			}
+			every_in_list = {
+				variable = spell_l_targets
+				save_scope_as = location
+			}
+		}
+		else = {
+			if = {
+				limit = { exists = capital_province }
+				capital_province = { save_scope_as = location }
+			}
+				spawn_army = {
+					name = "Skeleton Army"
+					location = scope:location
+					levies = 0
+					men_at_arms = {
+						type = spirit_regular
+						stacks = 1
+					}
+				inheritable = no
+				uses_supply = no
+			}
+			deduct_spell_cost_by_tier = { TIER = 3 }
+
+			add_character_flag = {
+				flag = casted_raise_dead
+				years = 10
+				}
+		}
+
+				send_interface_toast = {
+					title = undead_dead_toast
+				}
+	}
+}
+
+lead_to_gold = {
+	scope = character
+	
+	effect = {
+		apply_spell_effect_with_custom_backfire_chance_list = { TIER = 2 SUCCESS_CHANCE = difficult_spell_difficulty_success_chance SPELL_EFFECT = lead_to_gold_effect FAILURE_CHANCE = difficult_spell_difficulty_failure_chance BACKFIRE_EFFECT = poison_effect }
+	}
+}
+
+create_golems = {
+	scope = character
+
+	effect = {
+		root = {
+			spawn_army = {
+				name = "Golem Army"
+				location = capital_province
+				levies = 1
+				men_at_arms = {
+					type = golems
+					stacks = 1
+				}
+				inheritable = no
+				uses_supply = no
+			}
+			deduct_spell_cost_by_tier = { TIER = 2 }
+
+			add_character_flag = {
+				flag = casted_created_golems
+				years = 10
+				}
+
+			send_interface_toast = {
+				title = craft_golems_toast
+			}
+		}
+	}
+}
+
+stone_serpent = {
+	scope = character
+
+	effect = {
+		if = {
+			limit = {
+				root = {
+					has_variable_list = spell_targets
+				}
+			}
+			every_in_list = {
+				variable = spell_targets
+			}
+			if = {
+				limit ={
+					var:magic_lvl = { compare_value = 1 }
+				}
+				every_in_list = {
+					variable = spell_targets
+					add_character_modifier = stone_serpent_1_mod
+				}
+			}
+			if = {
+				limit = {
+					var:magic_lvl = { compare_value = 2 }
+				}
+					every_in_list = {
+						variable = spell_targets
+						add_character_modifier = stone_serpent_2_mod
+					}
+				}
+			if = {
+				limit = {
+					var:magic_lvl = { compare_value = 3 }
+					}
+					every_in_list = {
+						variable = spell_targets
+						add_character_modifier = stone_serpent_3_mod
+					}
+				}
+			}
+		else = {
+			if = {
+				limit = {
+					var:magic_lvl = { compare_value = 0 }
+				}
+				custom_tooltip = level_0_warning.tt
+			}
+			if = {
+				limit = {
+					var:magic_lvl = { compare_value = 1 }
+				}
+				add_character_modifier = stone_serpent_1_mod
+				deduct_spell_cost_by_tier = { TIER = 1 }
+			}
+			if = {
+				limit = {
+						var:magic_lvl = { compare_value = 2 }
+					}
+					add_character_modifier = stone_serpent_2_mod
+					deduct_spell_cost_by_tier = { TIER = 1 }
+				}
+			if = {
+				limit = {
+					var:magic_lvl = { compare_value = 3 }
+				}
+				add_character_modifier = stone_serpent_3_mod
+				deduct_spell_cost_by_tier = { TIER = 1 }
+			}
+		}
+		root = {
+			add_character_flag = {
+				flag = casted_stone_serpent
+				years = 10
+			}
+
+			send_interface_toast = {
+				title = stone_serpent_toast
+			}
+		}
+	}
+}
+
+necrotic_boon = {
+	scope = character
+
+	effect = {
+		if = {
+			limit = {
+				has_variable_list = spell_targets
+			}
+			every_in_list = {
+				has_variable = spell_targets
+				random_list = {
+					50 = {
+						add_martial_skill = 1
+					}
+					50 = {
+						add_learning_skill = 1
+					}
+				}
+			}
+			root = {
+				add_dread = minor_dread_gain
+				deduct_spell_cost_by_tier = { TIER = 2 }
+				add_character_flag = {
+					flag = casted_necrotic_boon
+					years = 10
+				}
+			}
+		}
+		else = {
+			add_dread = minor_dread_gain
+			deduct_spell_cost_by_tier = { TIER = 2 }
+			add_character_flag = {
+				flag = casted_necrotic_boon
+				years = 10
+			}
+			random_list = {
+				50 = {
+					add_martial_skill = 1
+				}
+
+				50 = {
+					add_learning_skill = 1
+				}
+			}
+		}
+		send_interface_toast = {
+			title = necrotic_boon_toast
+		}
+	}
+}
+
+pull_meteor = {
+	scope = character
+	effect = {
+		if = {
+			limit = {
+				root = {
+					has_variable_list = spell_l_targets
+				}
+			}
+			every_in_list = {
+				variable = spell_l_targets
+				save_scope_as = location
+				scope:location = {
+					add_county_modifier = {
+						modifier = meteored
+						years = 10
+					}
+				}
+				root = {
+					deduct_spell_cost_by_tier = { TIER = 4 }
+					add_character_flag = {
+						flag = casted_pull_meteor
+						years = 10
+					}
+				}
+			}
+		}
+		else = {
+			if = {
+				limit = { exists = capital_province }
+				capital_province = { save_scope_as = location }
+			}
+		}
+
+		send_interface_toast = {
+			title = pull_meteor_toast
+		}
+	}
+}
+
+crush_armor = {
+	scope = character
+
+	effect = {
+		if = {
+			limit = {
+				root = {
+					has_variable_list = spell_targets
+				}
+			}
+			every_in_list = {
+				variable = spell_targets
+				add_character_modifier = {
+					modifier = crushed_armor_mod
+					months = 6
+				}
+				root = {
+					deduct_spell_cost_by_tier = { TIER = 1 }
+					add_character_flag = {
+						flag = casted_crush_armor
+						years = 2
+					}
+				}
+			}
+			send_interface_toast = {
+				title = crush_armor_toast
+			}
+		}
+		else = {
+			send_interface_toast = {
+				title = crush_armor_toast_rejection
+			}
+		}
+	}
+}
+
+craft_greater_golem = {
+	scope = character
+	effect = {
+		if = {
+			limit = {
+				root = {
+					has_variable_list = spell_targets
+				}
+			}
+			every_in_list = {
+				variable = spell_targets
+				root = {
+					deduct_spell_cost_by_tier = { TIER = 4 }
+					add_character_flag = {
+						flag = casted_craft_greater_golem
+						years = 20
+					}
+				}
+				custom_tooltip = craft_greater_golem2.tt
+				hidden_effect = {
+					add_artifact = {ARTIFACT = artifact_mountgreatergolem}
+				}
+			}
+			send_interface_toast = {
+				title = greater_fogbeast_toast
+			}
+		}
+		else = {
+			deduct_spell_cost_by_tier = { TIER = 4 }
+			custom_tooltip = craft_greater_golem.tt
+			add_character_flag = {
+				flag = casted_craft_greater_golem
+				years = 10
+			}
+			send_interface_toast = {
+				title = craft_greater_golem_toast
+			}
+			hidden_effect = {
+				add_artifact = {ARTIFACT = artifact_mountgreatergolem}
+			}
+		}
+	}
+}
+
+boneshaping = {
+	scope = character
+
+	effect = {
+		add_character_flag = {
+			flag = casted_boneshaping
+			years = 100
+		}
+		send_interface_toast = {
+			title = boneshaping_toast
+		}
+		trigger_event = magic_decisions.2000 ###tbd
+		change_variable = {
+			name = magic_counter
+			subtract = tier_5_spell
+		}
+	}
+}
+
+### MIXED MAGIC ###
+
+dementation = {
+	scope = character
+	effect = {
+
+		if = {
+			limit = {
+				root = {
+					has_variable_list = spell_targets
+				}
+			}
+			every_in_list = {
+				variable = spell_targets
+				root = {
+					deduct_spell_cost_by_tier = { TIER = 2 }
+					add_character_flag = {
+						flag = casted_dementation
+						years = 10
+					}
+				}
+				add_character_modifier = {
+					modifier = dementation_mod
+					years = 5
+				}
+			}
+			send_interface_toast = {
+				title = dementation_toast
+			}
+
+		}
+		else = {
+			deduct_spell_cost_by_tier = { TIER = 2 }
+			add_character_flag = {
+				flag = casted_dementation
+				years = 10
+			}
+			add_character_modifier = {
+				modifier = dementation_mod
+				years = 5
+			}
+			send_interface_toast = {
+				title = dementation_toast
+			}
+		}
+	}
+}
+
+summon_lesser = {
+	scope = character
+	effect = {
+		if = {
+			limit = {
+				root = {
+					has_variable_list = spell_targets
+				}
+			}
+			every_in_list = {
+				variable = spell_targets
+				root = {
+					deduct_spell_cost_by_tier = { TIER = 4 }
+					add_character_flag = {
+						flag = casted_summon_lesser
+						years = 10
+					}
+				}
+				custom_tooltip = summon_fogbeast2.tt
+				hidden_effect = {
+					add_artifact = {ARTIFACT = artifact_mountamiablefogbeast}
+				}
+			}
+			send_interface_toast = {
+				title = greater_fogbeast_toast
+			}
+		}
+		else = {
+			deduct_spell_cost_by_tier = { TIER = 4 }
+			custom_tooltip = summon_fogbeast.tt
+			add_character_flag = {
+				flag = casted_summon_lesser
+				years = 10
+			}
+			send_interface_toast = {
+				title = greater_fogbeast_toast
+			}
+			hidden_effect = {
+				add_artifact = {ARTIFACT = artifact_mountamiablefogbeast}
+			}
+		}
+	}
+}
+
+fog_cast = {
+	scope = character
+	effect = {
+		if = {
+			limit = {
+				root = {
+					has_variable_list = spell_l_targets
+				}
+			}
+			every_in_list = {
+				variable = spell_l_targets
+				root = {
+					deduct_spell_cost_by_tier = { TIER = 5 }
+					add_character_flag = {
+						flag = fog_casted
+						years = 10
+					}
+				}
+				add_county_modifier = {
+					modifier = fogswept_modifier
+					years = 5
+				}
+			}
+			send_interface_toast = {
+				title = summon_fog_toast
+			}
+		}
+		else = {
+			deduct_spell_cost_by_tier = { TIER = 5 }
+			add_character_flag = {
+				flag = fog_casted
+				years = 10
+			}
+			send_interface_toast = {
+				title = summon_fog_toast
+			}
+			capital_county = {
+				add_county_modifier = {
+					modifier = fogswept_modifier
+					years = 5
+				} 
+			}
+		}
+	}
+}
+
+raise_lesser_fogbeasts = {
+	scope = character
+
+	effect = {
+		if = {
+			limit = {
+				root = {
+					has_variable_list = spell_l_targets
+				}
+			}
+			every_in_list = {
+				variable = spell_l_targets
+				save_scope_as = location
+			}
+		}
+		else = {
+			if = {
+				limit = { exists = capital_province }
+				capital_province = { save_scope_as = location }
+			}
+			spawn_army = {
+				name = fogbeast_summoned_troops
+				location = scope:location
+				men_at_arms = {
+					type = fogbeasts
+					stacks = 10
+				}
+				inheritable = no
+				uses_supply = no
+			}
+				deduct_spell_cost_by_tier = { TIER = 4 }
+
+				add_character_flag = {
+					flag = casted_raise_lesser_fogbeasts
+					years = 10
+				}
+			send_interface_toast = {
+				title = summon_fogbeasts_toast
+			}
+		}
+	}
+}
+
+obliterate_memory = {
+	scope = character
+	effect = {
+		if = {
+			limit = {
+				root = {
+					has_variable_list = spell_targets
+				}
+			}
+			every_in_list = {
+				variable = spell_targets
+				root = {
+					deduct_spell_cost_by_tier = { TIER = 5 }
+					add_character_flag = {
+						flag = casted_obliterate_memory
+						years = 10
+					}
+				}
+			}
+			send_interface_toast = {
+				title = obliterate_memories_toast
+			}
+			if = {
+				limit ={
+					var:magic_lvl = { compare_value = 1 }
+				}
+				custom_tooltip = obliterate_tooltip1.tt
+				hidden_effect = {
+					every_in_list = {
+						variable = spell_targets
+						add_trait = depressed_1
+					}
+				}
+			}
+			if = {
+				limit ={
+					var:magic_lvl = { compare_value = 2 }
+				}
+					custom_tooltip = obliterate_tooltip2.tt
+					every_in_list = {
+						variable = spell_targets
+						random_list = {
+							50 = {
+								add_trait = lunatic_1
+							}
+							50 = {
+								add_trait = depressed_1
+							}
+						}
+					}
+				}
+			}
+			if = {
+				limit ={
+					var:magic_lvl = { compare_value = 3 }
+					}
+					custom_tooltip = obliterate_tooltip3.tt
+					hidden_effect = {
+						every_in_list = {
+							variable = spell_targets
+							random_list = {
+								50 = {
+									add_trait = incapable
+								}
+								50 = {
+									add_trait = lunatic_1
+								}
+							}
+						}
+					}
+				}
+		else = {
+			deduct_spell_cost_by_tier = { TIER = 5 }
+			if = {
+				limit = {
+					var:magic_lvl = { compare_value = 1 }
+				}
+				custom_tooltip = obliterate_tooltipW.tt
+					hidden_effect = {
+						add_trait = depressed_1
+					}
+				}
+			if = {
+				limit = {
+						var:magic_lvl = { compare_value = 2 }
+					}
+					custom_tooltip = obliterate_tooltipW2.tt
+					hidden_effect = {
+						add_trait = lunatic_1
+					}
+				}
+			if = {
+				limit = {
+						var:magic_lvl = { compare_value = 3 }
+						}
+						custom_tooltip = obliterate_tooltipW3.tt
+						hidden_effect = {
+							add_trait = incapable
+						}
+					}
+				}
+			}
+		}
+
+
+#needs work
+rift_walk = {
+	scope = character
+	effect = {
+
+		if = {
+			limit = {
+				root = {
+					has_variable_list = spell_targets
+				}
+			}
+			every_in_list = {
+				variable = spell_targets
+				root = {
+					deduct_spell_cost_by_tier = { TIER = 2 }
+					add_character_flag = {
+						flag = casted_rift_walk
+						years = 10
+					}
+				}
+				add_character_modifier = {
+					modifier = dementation_mod
+					years = 5
+				}
+			}
+			send_interface_toast = {
+				title = rift_walk_toast
+			}
+		}
+		else = {
+			deduct_spell_cost_by_tier = { TIER = 2 }
+			add_character_flag = {
+				flag = casted_rift_walk
+				years = 10
+			}
+			add_character_modifier = {
+				modifier = dementation_mod
+				years = 5
+			}
+			send_interface_toast = {
+				title = rift_walk_toast
+			}
+		}
+	}
+}
+
+#
+haunting_power = {
+	scope = character
+	effect = {
+
+		if = {
+			limit = {
+				root = {
+					has_variable_list = spell_targets
+				}
+			}
+			every_in_list = {
+				variable = spell_targets
+				root = {
+					deduct_spell_cost_by_tier = { TIER = 1 }
+					add_character_flag = {
+						flag = casted_haunting_power
+						years = 10
+					}
+				}
+				add_character_modifier = {
+					modifier = haunting_power_mod
+					years = 5
+				}
+			}
+			send_interface_toast = {
+				title = haunting_power_toast
+			}
+		}
+		else = {
+			deduct_spell_cost_by_tier = { TIER = 1 }
+			add_character_flag = {
+				flag = casted_haunting_power
+				years = 10
+			}
+			add_character_modifier = {
+				modifier = haunting_power_mod
+				years = 5
+			}
+			send_interface_toast = {
+				title = haunting_power_toast
+			}
+		}
+	}
+}

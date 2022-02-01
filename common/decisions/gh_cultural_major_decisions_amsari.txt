@@ -1,0 +1,100 @@
+﻿##################
+##DECISIONS LIST##
+# reform_the_shattered_empire
+# hire_marcher_mercenaries
+##################
+
+##################
+# Reform the shattered Empire
+# by Netgearghost
+reform_the_shattered_empire = {
+	picture = "gfx/interface/illustrations/decisions/decision_aversaria.dds"
+	major = yes
+	ai_check_interval = 12
+	desc = reform_the_shattered_empire
+
+	is_shown = {
+		has_culture_group = culture_group:gh_zarasadari_group
+		has_global_variable = amsari_civil_war
+	}
+
+	is_valid = {
+		has_culture_group = culture_group:gh_zarasadari_group
+		any_in_global_list = {
+			variable = amsari_war
+			count <= 1
+		}
+		is_available_at_peace_adult = yes
+	}
+
+	effect = {
+		custom_tooltip = reform_the_shattered_empire_tt	
+		
+		get_title = e_amsari
+		trigger_event = amsari.0008
+	}
+
+	ai_potential = {
+		always = yes
+	}
+
+	ai_will_do = {
+		base = 100
+	}
+}
+
+##################
+# Hire Marcher Mercenaries
+# by Netgearghost
+hire_marcher_mercenaries = {
+	picture = "gfx/interface/illustrations/decisions/decision_aversaria.dds"
+	major = yes
+	ai_check_interval = 24
+	desc = reform_the_shattered_empire
+
+	is_shown = {
+		has_culture_group = culture_group:gh_zarasadari_group
+		has_global_variable = amsari_civil_war
+		has_global_variable_list = amsari_war
+	}
+
+	is_valid = {
+		has_culture_group = culture_group:gh_zarasadari_group
+		has_global_variable_list = amsari_war
+	}
+
+	cost = {
+		gold = 100
+	}
+
+	cooldown = { days = 1460 }
+
+	effect = {
+		custom_tooltip = reform_the_shattered_empire_tt	
+		
+		spawn_army = {
+			uses_supply = no
+			inheritable = no
+			name = marcher_mercenaries
+			levies = {
+				value = 300
+			}
+			men_at_arms = {
+				type = marcher_anti_mage
+				stacks = 3
+			}
+			location = capital_province
+		}
+		title:d_marcher_amsari_republic = {
+			holder = { add_gold = 100 }
+		}
+	}
+
+	ai_potential = {
+		always = yes
+	}
+
+	ai_will_do = {
+		base = 100
+	}
+}

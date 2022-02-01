@@ -1,0 +1,2739 @@
+﻿rhesus_1 = { #Rhesus the Enlightened
+	name = "Rhesus"
+        dna = rhesus_1
+	religion = "aversarian_pope"
+	culture = "westernimperial"
+	martial = 6
+	diplomacy = 9
+	intrigue = 9
+	stewardship = 7
+	dna = rhesus_1
+	trait = education_intrigue_4
+	trait = intellect_good_2
+	trait = ambitious
+	trait = deceitful
+	trait = arbitrary
+	trait = schemer
+	trait = magic_good_2
+	1199.5.5 = {
+		birth = yes
+	        effect = {
+			add_character_flag = has_scripted_appearance
+		}
+		effect = {
+			add_character_modifier = gh_sound_of_body
+		}
+	}
+	1231.4.16 = {
+		give_nickname = nick_the_enlightened
+	}
+}
+
+cois_1 = { #Cois
+	name = "Cois"
+        dna = cois
+	religion = "aversarian_pope"
+	culture = "westernimperial"
+	martial = 6
+	diplomacy = 9
+	intrigue = 9
+	stewardship = 7
+	dynasty = dyn_aversarian_9
+    trait = beauty_good_1
+	trait = gh_peasant_birth
+	trait = gh_puppet
+	trait = cynical
+	trait = brave
+	trait = shy
+	trait = magic_good_1
+	trait = education_intrigue_3
+	1236.11.11 = {
+		birth = yes
+	        effect = {
+			add_character_flag = has_scripted_appearance
+		}
+	}
+	1243.3.15 = {
+		give_nickname = nick_chosen_of_the_purest
+	}
+}
+
+##### HISTORICAL #####
+
+western_imperial_994 = { #Axiaothea Grandpa
+	name = "Syennesis"
+                      dynasty = dyn_aversarian_10
+	religion = "aversarinas_aautokrata"
+	culture = "easternimperial"
+	trait = magic_good_6
+	trait = education_living_magic_3
+	trait = physique_bad_1 
+	1104.3.22 = {
+		birth = yes
+	}
+	1134.3.7 = {
+		add_spouse = western_imperial_995
+	}
+	1164.5.3 = {
+		death = {
+			death_reason = death_physique_bad_1
+		}
+	}
+}
+
+western_imperial_995 = { #Axiaothea Grandma
+	name = "Anastasia"
+                      female = yes
+	religion = "aversarian_axiaotheaism"
+	culture = "easternimperial"
+	1112.2.4 = {
+		birth = yes
+	}
+	1175.1.2 = {
+		death = {
+			death_reason = death_old_age
+		}
+	}
+}
+
+western_imperial_996 = { #Axiaothea Dad
+	name = "Cesaros"
+                      dynasty = dyn_aversarian_10
+                      dna = axiothea
+	religion = "aversarian_axiaotheaism"
+	culture = "easternimperial"
+	trait = paranoid
+	trait = callous
+	trait = diligent
+	trait = magic_good_5
+	trait = education_living_magic_2
+	trait = beauty_good_1
+                      father = western_imperial_994
+	mother = western_imperial_995
+	1138.5.12 = {
+		birth = yes
+	                      effect = {
+			add_character_flag = has_scripted_appearance
+		}
+	}
+	1158.3.7 = {
+		add_spouse = western_imperial_997
+	}
+	1194.1.2 = {
+		death = "1194.1.2"
+	}
+}
+
+western_imperial_997 = { #Axiaothea Mother
+	name = "Nicalathea"
+                      female = yes
+	religion = "aversarian_axiaotheaism"
+	culture = "easternimperial"
+	trait = gregarious
+	trait = ambitious
+	trait = arrogant
+	trait = magic_good_4
+	trait = education_living_magic_2
+	trait = beauty_good_3
+	1140.1.1 = {
+		birth = yes
+	}
+	1199.1.2 = {
+		death = "1199.1.2"
+                      }
+}
+
+western_imperial_998 = { #Axiaothea Uncle
+	name = "Mamercus"
+                      dynasty = dyn_aversarian_10
+	religion = "aversarian_axiaotheaism"
+	culture = "easternimperial"
+                      father = western_imperial_994
+	mother = western_imperial_995
+                      trait = magic_good_3
+	trait = education_living_magic_2
+	1142.1.3 = {
+		birth = yes
+	}
+	1162.8.8 = {
+		add_spouse = western_imperial_999 
+	}
+	1200.3.1 = {
+		death = {
+			death_reason = death_frodbrokna
+			killer = western_imperial_1
+		}
+	}
+}
+
+western_imperial_999 = { #Axiaothea Aunt
+	name = "Laberia"
+                      female = yes
+	religion = "aversarian_axiaotheaism"
+	culture = "easternimperial"
+	1143.1.1 = {
+		birth = yes
+	}
+	1210.2.1  = {
+		death = {
+			death_reason = death_old_age
+		}
+	}
+}	
+
+western_imperial_1000 = { #rip
+	name = "Axiaothea"
+                      dynasty = dyn_aversarian_10
+                      dna = axiothea
+	religion = "aversarian_axiaotheaism"
+	culture = "westernimperial"
+	female = yes
+	martial = 18
+	diplomacy = 8
+	intrigue = 12
+	stewardship = 8
+                      father = western_imperial_996
+	mother = western_imperial_997
+	trait = ambitious
+	trait = brave
+	trait = sadistic
+	trait = blademaster_1
+	trait = magic_good_14
+	trait = education_living_magic_4
+	trait = beauty_good_2
+	trait = intellect_good_3
+	1169.1.10 = {
+		birth = yes
+	        effect = {
+			add_character_flag = has_scripted_appearance
+		}
+	}
+	1180.6.12 = {
+		add_spouse = western_imperial_1001 #Anesimasios
+	}
+	1200.3.1 = {
+		death = {
+			death_reason = death_frodbrokna
+			killer = western_imperial_1
+		}
+	}
+}
+
+western_imperial_1001 = { #anesimasios. killed by axiaothea??
+	name = "Anesimasios"
+        dna = anesimasios 
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	trait = magic_good_2
+	trait = education_living_magic_2
+	1153.1.2 = {
+		birth = yes
+	        effect = {
+			add_character_flag = has_scripted_appearance
+		}
+	}
+	1180.6.12 = {
+		add_spouse = western_imperial_2 #Axiaothea
+	}
+	1186.2.14 = {
+		death = {
+			death_reason = death_mysterious
+		}
+	}
+}
+
+western_imperial_1002 = { #Crios
+	name = "Crios"
+        dna = crios 
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	trait = magic_good_3
+	trait = education_living_magic_3
+	dynasty = dyn_western_aversarian_10	
+	1142.4.21 = {
+		birth = yes
+	        effect = {
+			add_character_flag = has_scripted_appearance
+		}
+	}
+	1158.6.18 = {
+		add_spouse = western_imperial_1017
+	}
+	1179.9.23 = {
+		add_spouse = western_imperial_1018
+	}
+	1181.4.14 = {
+		death = {
+			death_reason = death_mysterious
+		}
+	}
+}
+
+western_imperial_1003 = { #Theodian
+	name = "Theodian"
+        dna = theodian
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	trait = magic_good_2
+	trait = education_living_magic_3
+	1142.4.21 = {
+		birth = yes
+	        effect = {
+			add_character_flag = has_scripted_appearance
+		}
+	}
+	1160.4.1 = {
+		add_spouse = western_imperial_1018
+	}
+	1179.1.12 = {
+		death = {
+			death_reason = death_murder_known
+			killer = western_imperial_1002
+		}
+	}
+}
+
+western_imperial_1004 = { #Aeolus
+	name = "Aeolus"
+        dna = aeolus
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	trait = magic_good_4
+	trait = education_living_magic_2
+	dynasty = dyn_western_aversarian_6
+	1133.3.15 = {
+		birth = yes
+	        effect = {
+			add_character_flag = has_scripted_appearance
+		}
+	}
+	1153.8.11 = {
+		add_spouse = western_imperial_1019
+	}
+	1177.7.17 = {
+		death = {
+			death_reason = death_mysterious
+		}
+	}
+}
+
+western_imperial_1005 = { #Thresatos
+	name = "Thresatos"
+        dna = thresatos 
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	trait = magic_good_2
+	trait = education_living_magic_3
+	1153.1.2 = {
+		birth = yes
+	        effect = {
+			add_character_flag = has_scripted_appearance
+		}
+	}
+	1169.1.2 = {
+		add_spouse = western_imperial_1020
+	}
+	1175.11.28 = {
+		death = {
+			death_reason = death_mysterious
+		}
+	}
+}
+
+western_imperial_1006 = { #Ischenios
+	name = "Ischenios"
+        dna = ischenios
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	trait = magic_good_1
+	trait = education_living_magic_1
+	dynasty = dyn_western_aversarian_7
+	1101.4.14 = {
+		birth = yes
+	        effect = {
+			add_character_flag = has_scripted_appearance
+		}
+	}
+	1120.1.1 = {
+		add_spouse = western_imperial_1021
+	}
+	1143.4.18 = {
+		add_spouse = western_imperial_1022
+	}
+	1172.3.14 = {
+		death = {
+			death_reason = death_duel
+			killer = western_imperial_1005
+		}
+	}
+}
+
+western_imperial_1007 = { #Maeonias
+	name = "Maeonias"
+        dna = maeonias 
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	female = yes
+	trait = magic_good_3
+	trait = education_living_magic_2
+	trait = drunkard
+	trait = blademaster_2
+	trait = chaste
+	trait = shy
+	trait = callous
+	1062.1.3 = {
+		birth = yes
+	        effect = {
+			add_character_flag = has_scripted_appearance
+		}
+	}
+	1120.3.14 = {
+		death = {
+			death_reason = death_drinking_passive
+		}
+	}
+}
+
+western_imperial_1008 = { #Biton
+	name = "Biton"
+        dna = biton 
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	trait = magic_good_4
+	trait = education_living_magic_4
+	trait = wrathful
+	trait = vengeful
+	trait = arrogant
+	1048.11.13 = {
+		birth = yes
+	        effect = {
+			add_character_flag = has_scripted_appearance
+		}
+	}
+	1066.10.14 = {
+		add_spouse = western_imperial_1023
+	}
+	1066.12.25 = {
+		add_spouse = western_imperial_1024
+	}
+	1117.2.12 = {
+		death = {
+			death_reason = death_duel
+			killer = western_imperial_1007
+		}
+	}
+}
+
+western_imperial_1009 = { #Phancis
+	name = "Phancis"
+        dna = phancis 
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	trait = magic_good_2
+	trait = education_living_magic_3
+	998.3.21 = {
+		birth = yes
+	        effect = {
+			add_character_flag = has_scripted_appearance
+		}
+	}
+	1015.1.12 = {
+		add_spouse = western_imperial_1025
+	}
+	1035.6.18 = {
+		add_spouse = western_imperial_1026
+	}
+	1061.4.29 = {
+		add_spouse = western_imperial_1027
+	}
+	1099.3.14 = {
+		death = {
+			death_reason = death_old_age
+		}
+	}
+}
+
+western_imperial_1010 = { #Exaduis
+	name = "Exaduis"
+        dna = exaduis 
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	trait = magic_good_2
+	trait = education_living_magic_2
+	987.7.7 = {
+		birth = yes
+	        effect = {
+			add_character_flag = has_scripted_appearance
+		}
+	}
+	1004.4.29 = {
+		add_spouse = western_imperial_1028
+	}
+	1024.12.14 = {
+		add_spouse = western_imperial_1029
+	}
+	1025.5.5 = {
+		death = {
+			death_reason = death_mysterious
+		}
+	}
+}
+
+western_imperial_1011 = { #Isocrates, last Emperor descended directly from Nothyx, shit starts to go downhill up here ^
+	name = "Isocrates"
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	father = western_imperial_1032
+	mother = western_imperial_1012
+	trait = magic_good_4
+	trait = education_living_magic_4
+	963.1.12 = {
+		birth = yes
+	}
+	987.6.14 = {
+		add_spouse = western_imperial_1030
+	}
+	994.5.10 = {
+		add_spouse = western_imperial_1031
+	}
+	1001.4.3 = {
+		death = {
+			death_reason = death_mysterious
+		}
+	}
+}
+
+western_imperial_1012 = { #Alcandrea
+	name = "Alcandrea"
+	religion = "aversarinas_aautokrata"
+	female = yes
+	culture = "westernimperial"
+	father = western_imperial_1014
+	mother = western_imperial_1034
+	trait = magic_good_4
+	trait = education_living_magic_3
+	921.6.15 = {
+		birth = yes
+	}
+	936.5.10 = {
+		add_spouse = western_imperial_1032
+	}
+	987.4.3 = {
+		death = {
+			death_reason = death_old_age
+		}
+	}
+}
+
+western_imperial_1013 = { #Clytomedes
+	name = "Clytomedes"
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	father = western_imperial_1015
+	mother = western_imperial_1035
+	trait = magic_good_4
+	trait = education_living_magic_4
+	909.2.13 = {
+		birth = yes
+	}
+	917.8.14 = {
+		add_spouse = western_imperial_1033
+	}
+	954.4.3 = {
+		death = {
+			death_reason = death_natural_causes
+		}
+	}
+}
+
+western_imperial_1014 = { #Oliatos
+	name = "Oliatos"
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	father = western_imperial_1015
+	mother = western_imperial_1035
+	trait = magic_good_3
+	trait = education_living_magic_4
+	903.4.14 = {
+		birth = yes
+	}
+	921.5.6 = {
+		add_spouse = western_imperial_1034
+	}
+	952.4.3 = {
+		death = {
+			death_reason = death_wounded_1
+		}
+	}
+}
+
+western_imperial_1015 = { #Nothyx
+	name = "Nothyx"
+        dna = nothyx
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	martial = 11
+	diplomacy = 12
+	trait = magic_good_1
+	trait = education_living_magic_2
+	trait = blademaster_3
+	trait = intellect_good_2
+	trait = brave
+	trait = ambitious
+	trait = gregarious
+	881.1.16 = {
+		birth = yes
+	        effect = {
+			add_character_flag = has_scripted_appearance
+		}
+	}
+	902.5.19 = {
+		add_spouse = western_imperial_1035
+	}
+	918.5.19 = {
+		add_spouse = western_imperial_1036
+	}
+	949.7.17 = {
+		death = {
+			death_reason = death_old_age
+		}
+	}
+}
+
+western_imperial_1016 = { #Ancient Imperial, founded Anthrokati Aftokratios
+	name = "Phanagorax"
+        dna = phanagorax
+	religion = "aversarinas_aautokrata"
+	culture = "aelarvisian"
+	trait = magic_good_4
+	trait = education_living_magic_4
+	trait = sadistic
+	trait = intellect_good_3
+	trait = cynical
+	trait = diligent
+	trait = scholar
+	67.12.11 = {
+		birth = yes
+	        effect = {
+			add_character_flag = has_scripted_appearance
+		}
+	}
+	132.7.11 = {
+		death = {
+			death_reason = death_mysterious
+		}
+	}
+}
+
+western_imperial_1017 = { # Crios' first wife
+	name = "Valeria"
+        dna = valeria 
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	female = yes
+	trait = magic_good_2
+	trait = education_living_magic_1
+	trait = beauty_bad_1
+	trait = greedy
+	trait = wrathful
+	trait = honest
+	1142.6.18 = {
+		birth = yes
+	        effect = {
+			add_character_flag = has_scripted_appearance
+		}
+	}
+	1158.6.18 = {
+		add_spouse = western_imperial_1002
+	}
+	1179.9.18 = {
+		death = {
+			death_reason = death_mysterious
+		}
+	}
+}
+
+western_imperial_1018 = { # Theodian's wife / Crios' second wife
+	name = "Eugenia"
+        dna = eugenia 
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	female = yes
+	trait = magic_good_2
+	trait = education_living_magic_3
+	trait = beauty_good_2
+	trait = lazy
+	trait = compassionate
+	trait = craven
+	1139.1.24 = {
+		birth = yes
+	        effect = {
+			add_character_flag = has_scripted_appearance
+		}
+	}
+	1160.4.1 = {
+		add_spouse = western_imperial_1003
+	}
+	1179.9.23 = {
+		add_spouse = western_imperial_1002
+	}
+	1200.3.1 = {
+		death = {
+			death_reason = death_frodbrokna
+			killer = western_imperial_1
+		}
+	}
+}
+
+western_imperial_1019 = { # Aeolus' wife
+	name = "Melissa"
+        dna = melissa 
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	female = yes
+	trait = magic_good_3
+	trait = education_living_magic_3
+	trait = depressed_1
+	trait = compassionate
+	trait = diligent
+	trait = paranoid
+	1117.9.4 = {
+		birth = yes
+	        effect = {
+			add_character_flag = has_scripted_appearance
+		}
+	}
+	1153.8.11 = {
+		add_spouse = western_imperial_1004
+	}
+	1177.7.20 = {
+		death = {
+			death_reason = death_depressed
+		}
+	}
+}
+
+western_imperial_1020 = { # Thresatos' wife
+	name = "Romylia"
+        dna = romylia 
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	female = yes
+	trait = magic_good_2
+	trait = education_living_magic_1
+	trait = intellect_bad_1
+	trait = forgiving
+	trait = honest
+	trait = humble
+	1151.2.21 = {
+		birth = yes
+	        effect = {
+			add_character_flag = has_scripted_appearance
+		}
+	}
+	1169.1.2 = {
+		add_spouse = western_imperial_1005
+	}
+	1200.3.1 = {
+		death = {
+			death_reason = death_frodbrokna
+			killer = western_imperial_1
+		}
+	}
+}
+
+western_imperial_1021 = { # Ischenios' first wife
+	name = "Basillike"
+        dna = basillike
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	female = yes
+	trait = magic_good_3
+	trait = education_living_magic_3
+	trait = physique_bad_1
+	trait = diligent
+	trait = content
+	trait = shy
+	1101.4.14 = {
+		birth = yes
+	        effect = {
+			add_character_flag = has_scripted_appearance
+		}
+	}
+	1120.1.1 = {
+		add_spouse = western_imperial_1006
+	}
+	1143.3.11 = {
+		death = {
+			death_reason = death_physique_bad_1
+		}
+	}
+}
+
+western_imperial_1022 = { # Ischenios' second wife
+	name = "Simonis"
+        dna = simonis
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	female = yes
+	trait = magic_good_3
+	trait = education_living_magic_1
+	trait = lazy
+	trait = content
+	trait = arbitrary
+	1125.11.20 = {
+		birth = yes
+	        effect = {
+			add_character_flag = has_scripted_appearance
+		}
+	}
+	1143.4.18 = {
+		add_spouse = western_imperial_1006
+	}
+	1189.4.1 = {
+		death = {
+			death_reason = death_old_age
+		}
+	}
+}
+
+western_imperial_1023 = { # Biton's first wife
+	name = "Eunike"
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	female = yes
+	trait = magic_good_3
+	trait = education_living_magic_3
+	trait = patient
+	trait = honest
+	trait = lustful
+	1050.10.14 = {
+		birth = yes
+	        effect = {
+			add_character_flag = has_scripted_appearance
+		}
+	}
+	1066.10.14 = {
+		add_spouse = western_imperial_1008
+	}
+	1066.10.15 = {
+		death = {
+			death_reason = death_accident
+		}
+	}
+}
+
+western_imperial_1024 = { # Biton's second wife
+	name = "Timandaria"
+        dna = timandaria 
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	female = yes
+	trait = magic_good_1
+	trait = education_living_magic_2
+	trait = lazy
+	trait = brave
+	trait = stubborn
+	1044.7.16 = {
+		birth = yes
+	        effect = {
+			add_character_flag = has_scripted_appearance
+		}
+	}
+	1066.12.25 = {
+		add_spouse = western_imperial_1008
+	}
+	1109.12.12 = {
+		death = {
+			death_reason = death_old_age
+		}
+	}
+}
+
+western_imperial_1025 = { # Phancis' first wife
+	name = "Pulcheria"
+        dna = pulcheria
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	female = yes
+	trait = magic_good_2
+	trait = education_living_magic_2
+	trait = greedy
+	trait = sadistic
+	trait = gluttonous
+	998.1.2 = {
+		birth = yes
+	        effect = {
+			add_character_flag = has_scripted_appearance
+		}
+	}
+	1015.1.12 = {
+		add_spouse = western_imperial_1009
+	}
+	1035.5.2 = {
+		death = {
+			death_reason = death_obesity
+		}
+	}
+}
+
+western_imperial_1026 = { # Phancis' second wife
+	name = "Antipatra"
+        dna = antipatra
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	female = yes
+	trait = magic_good_1
+	trait = education_living_magic_3
+	trait = trusting
+	trait = zealous
+	trait = shy
+	1014.5.9 = {
+		birth = yes
+	        effect = {
+			add_character_flag = has_scripted_appearance
+		}
+	}
+	1035.6.18 = {
+		add_spouse = western_imperial_1009
+	}
+	1061.2.20 = {
+		death = {
+			death_reason = death_natural_causes
+		}
+	}
+}
+
+western_imperial_1027 = { # Phancis' third wife
+	name = "Sibylla"
+        dna = sibylla
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	female = yes
+	trait = magic_good_3
+	trait = education_living_magic_2
+	trait = gregarious
+	trait = fickle
+	trait = ambitious
+	1039.4.6 = {
+		birth = yes
+	        effect = {
+			add_character_flag = has_scripted_appearance
+		}
+	}
+	1061.9.17 = {
+		add_spouse = western_imperial_1009
+	}
+	1128.7.7 = {
+		death = {
+			death_reason = death_murder_known
+			killer = western_imperial_1006
+		}
+	}
+}
+
+western_imperial_1028 = { # Exaduis' first wife
+	name = "Apollonia"
+        dna = apollonia 
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	female = yes
+	trait = magic_good_1
+	trait = education_living_magic_1
+	trait = chaste
+	trait = calm
+	trait = just
+	987.7.7 = {
+		birth = yes
+	        effect = {
+			add_character_flag = has_scripted_appearance
+		}
+	}
+	1004.4.29 = {
+		add_spouse = western_imperial_1028
+	}
+	1024.5.1 = {
+		death = {
+			death_reason = death_execution
+			killer = western_imperial_1010
+		}
+	}
+}
+
+western_imperial_1029 = { # Exaduis' second wife
+	name = "Alexeia"
+        dna = alexia 
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	female = yes
+	trait = magic_good_3
+	trait = education_living_magic_1
+	trait = content
+	trait = temperate
+	trait = callous
+	1001.11.1 = {
+		birth = yes
+	        effect = {
+			add_character_flag = has_scripted_appearance
+		}
+	}
+	1024.12.14 = {
+		add_spouse = western_imperial_1010
+	}
+	1100.2.14 = {
+		death = {
+			death_reason = death_old_age
+		}
+	}
+}
+
+western_imperial_1030 = { #Isocrates' first wife
+	name = "Iouliana"
+        dna = iouliana 
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	female = yes
+	trait = magic_good_2
+	trait = education_living_magic_3
+	trait = deceitful
+	trait = humble
+	trait = fickle
+	956.4.18 = {
+		birth = yes
+	        effect = {
+			add_character_flag = has_scripted_appearance
+		}
+	}
+	987.6.14 = {
+		add_spouse = western_imperial_1011
+	}
+	994.5.10 = {
+		death = {
+			death_reason = death_stress
+		}
+	}
+}
+
+western_imperial_1031 = { #Isocrates' second wife
+	name = "Auxesia"
+        dna = auxesia 
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	female = yes
+	trait = magic_good_3
+	trait = education_living_magic_2
+	trait = impatient
+	trait = stubborn
+	trait = craven
+	956.4.18 = {
+		birth = yes
+	        effect = {
+			add_character_flag = has_scripted_appearance
+		}
+	}
+	994.5.10 = {
+		add_spouse = western_imperial_1011
+	}
+	1023.5.10 = {
+		death = {
+			death_reason = death_old_age
+		}
+	}
+}
+
+western_imperial_1032 = { # Alcandrea's husband
+	name = "Tryphon"
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	father = western_imperial_1015
+	trait = magic_good_4
+	trait = education_living_magic_2
+	trait = bastard
+	trait = shy
+	trait = callous
+	trait = trusting
+	919.1.15 = {
+		birth = yes
+	}
+	936.5.10 = {
+		add_spouse = western_imperial_1012
+	}
+	987.9.19 = {
+		death = {
+			death_reason = death_old_age
+		}
+	}
+}
+
+western_imperial_1033 = { # Clytomedes' wife
+	name = "Sergia"
+        dna = sergia 
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	female = yes
+	trait = magic_good_3
+	trait = education_living_magic_2
+	trait = zealous
+	trait = trusting
+	trait = honest
+	901.2.13 = {
+		birth = yes
+	        effect = {
+			add_character_flag = has_scripted_appearance
+		}
+	}
+	917.8.14 = {
+		add_spouse = western_imperial_1013
+	}
+	954.4.3 = {
+		death = {
+			death_reason = death_mysterious
+		}
+	}
+}
+
+western_imperial_1034 = { # Oliatos' wife
+	name = "Oliatas"
+        dna = oliatas 
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	female = yes
+	trait = magic_good_3
+	trait = education_living_magic_2
+	trait = generous
+	trait = chaste
+	trait = forgiving
+	901.10.24 = {
+		birth = yes
+	        effect = {
+			add_character_flag = has_scripted_appearance
+		}
+	}
+	921.5.6 = {
+		add_spouse = western_imperial_1014
+	}
+	987.9.14 = {
+		death = {
+			death_reason = death_old_age
+		}
+	}
+}
+
+western_imperial_1035 = { # Nothyx's first wife
+	name = "Konstantia"
+        dna = konstantia
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	female = yes
+	trait = magic_good_4
+	trait = education_living_magic_4
+	trait = intellect_good_1
+	trait = generous
+	trait = calm
+	trait = humble
+	885.2.9 = {
+		birth = yes
+	        effect = {
+			add_character_flag = has_scripted_appearance
+		}
+	}
+	902.5.19 = {
+		add_spouse = western_imperial_1015
+	}
+	921.1.6 = {
+		death = {
+			death_reason = death_ill
+		}
+	}
+}
+
+western_imperial_1036 = { #Nothyx's second wife
+	name = "Gabrielia"
+        dna = gabrielia
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	female = yes
+	trait = magic_good_3
+	trait = education_living_magic_4
+	trait = physique_good_2
+	trait = honest
+	trait = gregarious
+	trait = fickle
+	902.2.20 = {
+		birth = yes
+	        effect = {
+			add_character_flag = has_scripted_appearance
+		}
+	}
+	918.5.19 = {
+		add_spouse = western_imperial_1015
+	}
+	1000.3.14 = {
+		death = {
+			death_reason = death_old_age
+		}
+	}
+}
+
+western_imperial_1037 = { # Axiothea Cousin
+	name = "Theophylaktos"
+                      dynasty = dyn_aversarian_10
+	religion = "aversarian_axiaotheaism"
+	culture = "easternimperial"
+	father = western_imperial_998
+	mother = western_imperial_999
+	trait = magic_good_3
+	trait = education_living_magic_2
+	trait = vengeful
+	trait = ambitious
+	trait = diligent
+	1172.10.8 = {
+		birth = yes
+	}
+                      1202.5.19 = {
+		add_spouse = western_imperial_1038
+	}
+	1239.3.1 = {
+		death = {
+			death_reason = death_old_age
+		}
+	}
+}
+
+western_imperial_1038 = { # Theo Wife
+	name = "Apollonia"
+	religion = "aversarian_axiaotheaism"
+	culture = "easternimperial"
+	female = yes
+	trait = magic_good_6
+	trait = education_living_magic_1
+	trait = cynical
+	trait = craven
+	trait = honest
+	1185.10.10 = {
+		birth = yes
+	}
+}
+
+## 1039-1058: marry these people as the rest of the world becomes more fleshed out. People who can be married are labeled with '# marriage candidate'
+# Also, add some grandkids once people start getting married. This is so there will be claimants with unpressed claims to the empire across the world.
+
+western_imperial_1039 = { # Crios' first son
+	name = "Pyrros"
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	father = western_imperial_1002
+	mother = western_imperial_1017
+	trait = magic_good_3
+	trait = education_living_magic_4
+	trait = impatient
+	trait = ambitious
+	trait = just
+	dynasty = dyn_western_aversarian_10
+	1159.10.21 = {
+		birth = yes
+	}
+	1180.12.29 = {
+		death = {
+			death_reason = death_dungeon_passive
+			#killer = western_imperial_1002
+		}
+	}
+}
+
+western_imperial_1040 = { # Crios' daughter
+	name = "Alexeia"
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	female = yes
+	father = western_imperial_1002
+	mother = western_imperial_1017
+	trait = magic_good_1
+	trait = education_living_magic_2
+	trait = forgiving
+	trait = compassionate
+	trait = ambitious
+	dynasty = dyn_western_aversarian_10	
+	1162.10.21 = {
+		birth = yes
+	}
+	1178.11.1 = {
+		add_spouse = western_imperial_1 # Change to an actual person later
+	}
+	1244.4.3 = {
+		death = {
+			death_reason = death_old_age
+		}
+	}
+}
+
+western_imperial_1041 = { # Crios' second son, fled to a foreign court when brother was imprisoned
+	name = "Ioulianos"
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	father = western_imperial_1002
+	mother = western_imperial_1017
+	trait = magic_good_1
+	trait = education_living_magic_1
+	trait = zealous
+	trait = stubborn
+	trait = lazy
+	dynasty = dyn_western_aversarian_10	
+	1169.10.21 = {
+		birth = yes
+	}
+	1204.9.23 = {
+		add_spouse = kameirerna_1
+	}	
+}
+
+western_imperial_1042 = { # Exadius' first daughter
+	name = "Georgia"
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	female = yes
+	father = western_imperial_1010
+	mother = western_imperial_1028
+	trait = magic_good_1
+	trait = education_living_magic_3
+	trait = patient
+	trait = callous
+	trait = brave
+	1012.6.23 = {
+		birth = yes
+	}
+	1029.9.15 = {
+		death = {
+			death_reason = death_mysterious
+		}
+	}
+}
+
+western_imperial_1043 = { # Exadius' second daughter
+	name = "Chrysogone"
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	female = yes
+	father = western_imperial_1010
+	mother = western_imperial_1028
+	trait = magic_good_1
+	trait = education_living_magic_2
+	trait = honest
+	trait = content
+	trait = arrogant
+	1018.9.14 = {
+		birth = yes
+	}
+	1045.2.19 = {
+		death = {
+			death_reason = death_dungeon_passive
+			#killer = western_imperial_1009
+		}
+	}
+}
+
+western_imperial_1044 = { # Phancis' first son
+	name = "Apollonios"
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	father = western_imperial_1009
+	mother = western_imperial_1025
+	trait = magic_good_2
+	trait = education_living_magic_1
+	trait = diligent
+	trait = fickle
+	trait = callous
+	1018.4.16 = {
+		birth = yes
+	}
+	1060.7.29 = {
+		death = {
+			death_reason = death_duel
+			killer = western_imperial_1046
+		}
+	}
+}
+
+western_imperial_1045 = { # Phancis' first daughter
+	name = "Antipatra"
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	female = yes
+	father = western_imperial_1009
+	mother = western_imperial_1026
+	trait = magic_good_2
+	trait = education_living_magic_1
+	trait = arrogant
+	trait = gregarious
+	trait = forgiving
+	1036.9.14 = {
+		birth = yes
+	}
+	1123.3.24 = {
+		death = {
+			death_reason = death_old_age
+		}
+	}
+}
+
+western_imperial_1046 = { # Phancis' second son
+	name = "Pankratios"
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	father = western_imperial_1009
+	mother = western_imperial_1026
+	trait = magic_good_2
+	trait = education_living_magic_1
+	trait = wrathful
+	trait = patient
+	trait = ambitious
+	1039.2.1 = {
+		birth = yes
+	}
+	1086.7.27 = {
+		death = {
+			death_reason = death_cancer
+		}
+	}
+}
+
+western_imperial_1047 = { # Phancis' third son
+	name = "Eustratios"
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	father = western_imperial_1009
+	mother = western_imperial_1027
+	trait = magic_good_3
+	trait = education_living_magic_1
+	trait = deceitful
+	trait = forgiving
+	trait = fickle
+	1066.8.19 = {
+		birth = yes
+	}
+	1129.1.29 = {
+		death = {
+			death_reason = death_old_age
+		}
+	}
+}
+
+western_imperial_1048 = { # Phancis' second daughter
+	name = "Agne"
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	female = yes
+	father = western_imperial_1009
+	mother = western_imperial_1027
+	trait = magic_good_2
+	trait = education_living_magic_1
+	trait = gregarious
+	trait = fickle
+	trait = humble
+	1069.1.29 = {
+		birth = yes
+	}
+	1154.4.27 = {
+		death = {
+			death_reason = death_murder_known
+			killer = western_imperial_1006
+		}
+	}
+}
+
+western_imperial_1049 = { # Biton's daughter
+	name = "Eupraxia"
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	female = yes
+	father = western_imperial_1008
+	mother = western_imperial_1024
+	trait = magic_good_2
+	trait = education_living_magic_3
+	trait = depressed_1
+	trait = chaste
+	trait = gluttonous
+	trait = greedy
+	1068.5.21 = {
+		birth = yes
+	}
+	1119.9.11 = {
+		death = {
+			death_reason = death_depressed
+		}
+	}
+}
+
+western_imperial_1050 = { # Biton's first son
+	name = "Paschalis"
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	father = western_imperial_1008
+	mother = western_imperial_1024
+	trait = magic_good_1
+	trait = education_living_magic_1
+	trait = forgiving
+	trait = shy
+	trait = impatient
+	trait = ill
+	1072.3.25 = {
+		birth = yes
+	}
+	1083.4.23 = {
+		death = {
+			death_reason = death_ill
+		}
+	}
+}
+
+western_imperial_1051 = { # Biton's second son
+	name = "Meletios"
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	father = western_imperial_1008
+	mother = western_imperial_1024
+	trait = magic_good_1
+	trait = education_living_magic_2
+	trait = arrogant
+	trait = sadistic
+	trait = craven
+	1074.11.4 = {
+		birth = yes
+	}
+	1156.4.7 = {
+		death = {
+			death_reason = death_old_age
+		}
+	}
+}
+
+western_imperial_1052 = { # Ischenios' first daughter
+	name = "Pavlina"
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	female = yes
+	father = western_imperial_1006
+	mother = western_imperial_1021
+	trait = magic_good_3
+	trait = education_living_magic_3
+	trait = arbitrary
+	trait = greedy
+	trait = fickle
+	dynasty = dyn_western_aversarian_7
+	1124.9.21 = {
+		birth = yes
+	}
+	1184.2.9 = {
+		death = {
+			death_reason = death_murder_known
+			killer = western_imperial_1022
+		}
+	}
+}
+
+western_imperial_1053 = { # Ischenios' second daughter
+	name = "Valeria"
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	female = yes
+	father = western_imperial_1006
+	mother = western_imperial_1022
+	trait = magic_good_3
+	trait = education_living_magic_4
+	trait = diligent
+	trait = honest
+	trait = arbitrary
+	dynasty = dyn_western_aversarian_7
+	1149.8.3 = {
+		birth = yes
+	}
+	1200.3.1 = {
+		death = {
+			death_reason = death_frodbrokna
+			killer = western_imperial_1
+		}
+	}
+}
+
+western_imperial_1054 = { # Ischenios' son
+	name = "Gabriel"
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	father = western_imperial_1006
+	mother = western_imperial_1022
+	trait = magic_good_1
+	trait = education_living_magic_2
+	trait = fickle
+	trait = lustful
+	trait = stubborn
+	dynasty = dyn_western_aversarian_7
+	1152.9.19 = {
+		birth = yes
+	}
+	1240.2.9 = {
+		death = {
+			death_reason = death_old_age
+		}
+	}
+}
+
+western_imperial_1055 = { # Thresatos' son
+	name = "Hektorios"
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	father = western_imperial_1005
+	mother = western_imperial_1020
+	trait = magic_good_2
+	trait = education_living_magic_2
+	trait = zealous
+	trait = craven
+	trait = generous
+	1171.9.17 = {
+		birth = yes
+	}
+	1249.1.29 = {
+		death = {
+			death_reason = death_old_age
+		}
+	}
+}
+
+western_imperial_1056 = { # Aeolus' daughter
+	name = "Eudoxia"
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	female = yes
+	father = western_imperial_1004
+	mother = western_imperial_1019
+	trait = magic_good_3
+	trait = education_living_magic_2
+	trait = sadistic
+	trait = shy
+	trait = lustful
+	dynasty = dyn_western_aversarian_6
+	1154.5.14 = {
+		birth = yes
+	}
+	1200.3.1 = {
+		death = {
+			death_reason = death_frodbrokna
+			killer = western_imperial_1
+		}
+	}
+}
+
+western_imperial_1057 = { # Aeolus' son
+	name = "Theophanes"
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	father = western_imperial_1004
+	mother = western_imperial_1019
+	trait = magic_good_2
+	trait = education_living_magic_4
+	trait = sadistic
+	trait = gregarious
+	trait = humble
+	dynasty = dyn_western_aversarian_6
+	1159.7.2 = {
+		birth = yes
+	}
+	1200.3.1 = {
+		death = {
+			death_reason = death_frodbrokna
+			killer = western_imperial_1
+		}
+	}
+}
+
+western_imperial_1058 = { # Theodian's daughter
+	name = "Basillike"
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	female = yes
+	father = western_imperial_1003
+	mother = western_imperial_1018
+	trait = magic_good_1
+	trait = education_living_magic_2
+	trait = gluttonous
+	trait = ambitious
+	trait = sadistic
+	1162.4.15 = {
+		birth = yes
+	}
+	1247.5.18 = {
+		death = {
+			death_reason = death_old_age
+		}
+	}
+}
+
+western_imperial_1059 = { #Ancient Imperial warlord-magi, formed the Aversarian Empire
+	name = "Dhacenox"
+        dna = dhacenox
+	religion = "aerasodiax"
+	culture = "aelarvisian"
+	trait = magic_good_4
+	trait = education_living_magic_4
+	trait = education_martial_4
+	trait = education_martial_prowess_4
+	trait = sadistic
+	trait = intellect_good_1
+	trait = physique_good_2
+	trait = zealous
+	trait = ambitious
+	trait = consecrated_blood
+	trait = gh_the_last_nikaryin
+	0.1.1 = {
+		birth = yes
+	        effect = {
+			add_character_flag = has_scripted_appearance
+		}
+	}
+	64.11.12 = {
+		death = {
+			death_reason = death_old_age
+		}
+	}
+}
+
+western_imperial_1060 = {
+	name = "Nokiesex"
+	religion = "aerasodiax"
+	culture = "aelarvisian"
+	trait = magic_good_3
+	trait = education_living_magic_3
+	trait = education_martial_2
+	father = western_imperial_1059
+	15.11.14 = {
+		birth = yes
+	}
+	86.3.1 = {
+		add_trait = incapable
+	}
+	103.12.15 = {
+		death = {
+			death_reason = death_incapable
+		}
+	}
+}
+
+western_imperial_1061 = {
+	name = "Thoenex"
+        dna = theonex
+	religion = "aerasodiax"
+	culture = "aelarvisian"
+	trait = magic_good_4
+	trait = education_living_magic_3
+	trait = education_stewardship_1
+	34.9.14 = {
+		birth = yes
+	        effect = {
+			add_character_flag = has_scripted_appearance
+		}
+	}
+	93.11.14 = {
+		death = {
+			death_reason = death_poison
+		}
+	}
+}
+
+western_imperial_1062 = {
+	name = "Memnubion"
+        dna = memnubion
+	religion = "aerasodiax"
+	culture = "aelarvisian"
+	trait = magic_good_2
+	trait = education_living_magic_1
+	trait = education_diplomacy_2
+	trait = patient
+	trait = zealous
+	98.2.2 = {
+		birth = yes
+	        effect = {
+			add_character_flag = has_scripted_appearance
+		}
+	}
+	151.2.1 = {
+		death = {
+			death_reason = death_ill
+		}
+	}
+}
+
+western_imperial_1063 = { #Dhaci'xen attempted to stop the spread of the Aagiokratia, seeing it as cruel and twisted in comparison to the 'old ways', in many ways being the last gasp of Aversarian culture not dominated by the Aelarvisians worst zealots. Sadly, his forces ended up fighting a civil war over the matter in the War of the Thousand Dragons, and while it stalemated, Dhaci'xen according to ancient legends, was so horrified at the bloodshed at the first great magical war and worried for his comrade Anatar'ianax, his dragon mount and Lord of Aversaria's dragons, that he ventured out to meet Phanago'rax of the rebel forces. In the trap, Dhaci'xen, his loyal guard, and Anatar'ianax were captured and killed through a dozen days of public torture in front of Oraispol. They only slit his throat once the gates were opened and the garrison surrendered. The city was shortly burned to the ground, and the Aagiokratia was triumphant.
+	name = "Dhacixen"
+	religion = "aerasodiax"
+	culture = "aeviaxian"
+	father = western_imperial_1062
+	trait = magic_good_3
+	trait = education_living_magic_3
+	trait = education_learning_3
+	trait = brave
+	trait = diligent
+	trait = compassionate
+	trait = gh_dragon_rider
+	98.2.2 = {
+		birth = yes
+	}
+	170.7.11 = {
+		death = {
+			death_reason = death_torture
+		}
+	}
+}
+
+western_imperial_1064 = { #son of Phanagorax who founded the Aagiokratia. Not super important, Phanagorax wasn't super popular and the Aagiokratia was largely founded to secure their own power instead of a religious reason, but it quickly caught on amongst magi and the populace and went out of control. Most important for giving birth to Aexionarax, who would end up leading the Imperial faction in the War of the Thousand Dragons that killed Aerasodiaxian belief for good. Tortured Dhacixen, his dragon, family and guard in front of Oraispol until they dropped the gates and then murdered all of them. Also proceeded to genocide the fuck out of the dragons, seeing their use as over and their resistance to the Aagiokratian belief as a threat, beginning the legend of Aversarians being dragon riders who put down their pets for trying to steal the gift of magic
+	name = "Lethigianex"
+	religion = "aversarinas_aautokrata"
+	culture = "aelarvisian"
+	father = western_imperial_1016
+	trait = magic_good_2
+	trait = education_living_magic_2
+	trait = education_diplomacy_2
+	trait = compassionate
+	trait = zealous
+	91.2.14 = {
+		birth = yes
+	}
+	141.2.11 = {
+		death = {
+			death_reason = death_old_age
+		}
+	}
+}
+
+western_imperial_1065 = { #Aexionarax, as above. Began the centralization and modernization of Aversarian culture, a project that was only finished by his successor
+	name = "Aexionarax"
+	religion = "aversarinas_aautokrata"
+	culture = "aelarvisian"
+	father = western_imperial_1064
+	trait = magic_good_3
+	trait = education_living_magic_4
+	trait = education_martial_4
+	trait = ambitious
+	trait = brave
+	trait = sadistic
+	112.7.19 = {
+		birth = yes
+	}
+	188.4.21 = {
+		death = {
+			death_reason = death_old_age
+		}
+	}
+}
+
+western_imperial_1066 = { #Aessocianix merged the various Aversarian cultures and formed a new one around the Aautokratia. Aversarian names started to shift away from Aelfir and towards more native incarnations inspired by Greek.
+	name = "Aessocianix"
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	father = western_imperial_1065
+	trait = magic_good_2
+	trait = education_living_magic_3
+	trait = education_martial_2
+	157.3.30 = {
+		birth = yes
+	}
+	210.3.14 = {
+		death = {
+			death_reason = death_old_age
+		}
+	}
+}
+
+western_imperial_1067 = { #Akalionixos started the practice of Blood Senates and magical duels to decide the Emperor, declaring whichever one of his sons could prove themselves the strongest magi could become Aautokratir on his death. He was then killed by his daughter Maklea in an impromptu duel while dealing with the Hagedean Rebellion.
+	name = "Akalionixos"
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	father = western_imperial_1066
+	trait = magic_good_3
+	trait = education_living_magic_3
+	trait = education_diplomacy_3
+	trait = trusting
+	189.2.2 = {
+		birth = yes
+	}
+	243.3.3 = {
+		death = {
+			death_reason = death_duel
+		}
+	}
+}
+
+western_imperial_1068 = { #Maklea genocided the entire Hagedean culture group for the Hagedean Rebellion, then had the Manathean dynasty wiped out for failing to contain it in the first place. Would spend much of her reign flipping between building up Oraispol which had been left somewhat to shit after it got burned down that time, building the Drakenval to store all the dragon corpses after one of her brothers tried raising one of them, and then fighting multiple wars against all of her brothers who constantly tried to take what they saw as their rightful throne. While she managed to kill all of them, she wasn't able to get her youngest brother Arthenanas who was spirited away as a toddler. This would cause no negative repercussions.
+	name = "Maklea"
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	father = western_imperial_1067
+	female = yes
+	trait = magic_good_4
+	trait = education_living_magic_4
+	trait = education_intrigue_4
+	trait = sadistic
+	trait = kinslayer_3
+	211.9.12 = {
+		birth = yes
+	}
+	265.5.15 = {
+		death = {
+			death_reason = death_mysterious
+		}
+	}
+}
+
+####################################
+####AESCHRAES FAMILY AND HISTORY####
+####################################
+#aeschraes' family is an old influential dynasty that can trace its roots back to ancient times. They were the traditional holders of Pergicos and often Argyra, and also had governership of Etepezea several times through their history. Aeschraes is the last of the line. The specific holdings most commonly in the family's control were Cnidystus, Ambaseia, Andrurii and Sempympia
+
+western_imperial_15000 = { #grandfather of Aeschraes, magi who extended his life but was deposed and exiled by Aeschraes after he took power in the west when tried to block him
+	name = "Iatrokles"
+        dna = iatrokles
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	dynasty = dyn_aversarian_6
+	trait = beauty_good_3
+        trait = magic_good_3
+	trait = education_living_magic_3
+	1114.3.11 = {
+		birth = yes
+	        effect = {
+			add_character_flag = has_scripted_appearance
+		}
+	}
+	1200.3.1 = {
+		death = {
+			death_reason = death_frodbrokna
+			killer = western_imperial_1
+		}
+	}
+}
+
+western_imperial_15001 = { #father of Aeschraes, extremely abusive, Aeschraes killed him at 13 after he murdered his sister in a drunken rage and then ran off to the Mayikprolollan
+	name = "Epistonicon"
+        dna = epistonicon
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	father = western_imperial_15000
+	dynasty = dyn_aversarian_6
+	trait = chaste
+	trait = sadistic
+	trait = content
+	trait = drunkard
+	trait = irritable
+	trait = magic_good_4
+	trait = education_living_magic_3
+	trait = education_stewardship_4
+	1134.2.2 = {
+		birth = yes
+	        effect = {
+			add_character_flag = has_scripted_appearance
+		}
+	}
+	1155.7.17 = {
+		add_spouse = western_imperial_15002
+	}
+	1181.5.11 = {
+		death = {
+			death_reason = death_duel
+			killer = western_imperial_1
+		}
+	}
+}
+
+western_imperial_15002 = { #mother of Aeschraes, loving but died of sickness when he was young.
+	name = "Erigana"
+        dna = erigana 
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	female = yes
+	trait = compassionate
+	trait = cynical
+	trait = temperate
+	trait = education_diplomacy_3
+	trait = magic_good_3
+	trait = education_living_magic_2
+	trait = beauty_good_1
+	1140.8.22 = {
+		birth = yes
+	        effect = {
+			add_character_flag = has_scripted_appearance
+		}
+	}
+	1178.3.1 = {
+		death = {
+			death_reason = death_delivery
+		}
+	}
+}
+
+western_imperial_15003 = { #brother of Aeschraes, the heir apparent and fathers favorite. Neutral with Aeschraes, but supported him in the civil war out of duty.
+	name = "Arios"
+        dna = arios
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	father = western_imperial_15001
+	mother = western_imperial_15002
+	dynasty = dyn_aversarian_6
+	trait = just
+	trait = gregarious
+	trait = brave
+	trait = education_martial_3
+	trait = magic_good_3
+	trait = education_living_magic_3
+	trait = beauty_good_1
+	trait = physique_good_1
+	1156.9.21 = {
+		birth = yes
+	        effect = {
+			add_character_flag = has_scripted_appearance
+		}
+	}
+	1198.6.11 = {
+		death = {
+			death_reason = death_duel
+		}
+	}
+}
+
+western_imperial_15004 = { #one of two middle brothers of Aeschraes and twin of Evenus.
+	name = "Praxion"
+        dna = praxion
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	father = western_imperial_15001
+	mother = western_imperial_15002
+	dynasty = dyn_aversarian_6
+	trait = arrogant
+	trait = gregarious
+	trait = impatient
+	trait = education_martial_4
+	trait = magic_good_2
+	trait = education_living_magic_2
+	trait = twin
+	1162.3.14 = {
+		birth = yes
+	        effect = {
+			add_character_flag = has_scripted_appearance
+		}
+	}
+	1200.3.1 = {
+		death = {
+			death_reason = death_frodbrokna
+			killer = western_imperial_1
+		}
+	}
+}
+
+western_imperial_15005 = { #Twin of Praxion and one of two middle brothers, bookish and studious and helped teach Aeschraes spells at a young age.
+	name = "Evenus"
+        dna = evenus 
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	father = western_imperial_15001
+	mother = western_imperial_15002
+	dynasty = dyn_aversarian_6
+	trait = humble
+	trait = patient
+	trait = shy
+	trait = education_learning_4
+	trait = magic_good_4
+	trait = education_living_magic_3
+	trait = scholar
+	trait = twin
+	trait = intellect_good_3
+	1162.3.14 = {
+		birth = yes
+	        effect = {
+			add_character_flag = has_scripted_appearance
+		}
+	}
+	1200.3.1 = {
+		death = {
+			death_reason = death_frodbrokna
+			killer = western_imperial_1
+		}
+	}
+}
+
+western_imperial_15006 = { #sister of Aeschraes, apple of his eye and his best friend. Murdered by her father in a drunken rage. Aeschraes would have trouble ever caring about anyone again
+	name = "Arias"
+        dna = arias
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	father = western_imperial_15001
+	mother = western_imperial_15002
+	female = yes
+	trait = physique_bad_1
+	trait = compassionate
+	trait = shy
+	trait = humble
+	dynasty = dyn_aversarian_6
+	1171.2.12 = {
+		birth = yes
+	        effect = {
+			add_character_flag = has_scripted_appearance
+		}
+	}
+	1181.5.6 = {
+		death = {
+			death_reason = death_murder_known
+			killer = western_imperial_15001
+		}
+	}
+}
+
+western_imperial_15007 = { #aeschraes younger sister who died while her mother had childbirth
+	name = "Callistamanas"
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	father = western_imperial_15001
+	mother = western_imperial_15002
+	female = yes
+	dynasty = dyn_aversarian_6
+	1178.3.1 = {
+		birth = yes
+	}
+	1178.3.1 = {
+		death = {
+			death_reason = death_childbirth
+		}
+	}
+}
+
+western_imperial_15010 = { #Aeschraes first daughter
+	name = "Arias"
+	religion = "aversarian_aeschraes"
+	culture = "westernimperial"
+	female = yes
+	dynasty = dyn_aversarian_6
+	father = western_imperial_1
+	mother = western_imperial_15013
+	trait = magic_good_4
+	trait = intellect_good_3
+	trait = beauty_good_2
+	1189.9.21 = {
+		birth = yes
+	}
+	1200.2.30 = {
+		death = {
+			death_reason = death_ritual
+			killer = western_imperial_1
+		}
+	}
+}
+
+western_imperial_15011 = { #Aeschraes second daughter
+	name = "Callistamanas"
+	religion = "aversarian_aeschraes"
+	culture = "westernimperial"
+	female = yes
+	dynasty = dyn_aversarian_6
+	father = western_imperial_1
+	mother = western_imperial_15013
+	trait = magic_good_3
+	trait = intellect_good_3
+	trait = physique_bad_1
+	1191.8.14 = {
+		birth = yes
+	}
+	1200.2.30 = {
+		death = {
+			death_reason = death_ritual
+			killer = western_imperial_1
+		}
+	}
+}
+
+western_imperial_15012 = { #Aeschraes first son
+	name = "Aercargiad"
+	religion = "aversarian_aeschraes"
+	culture = "westernimperial"
+	dynasty = dyn_aversarian_6
+	father = western_imperial_1
+	mother = western_imperial_15013
+	trait = magic_good_4
+	trait = intellect_good_2
+	1194.8.14 = {
+		birth = yes
+	}
+	1200.2.30 = {
+		death = {
+			death_reason = death_ritual
+			killer = western_imperial_1
+		}
+	}
+}
+
+western_imperial_15013 = { #Aeschraes's wife
+	name = "Helaeda"
+        dna = helaeda
+	female = yes
+	religion = "aversarian_aeschraes"
+	culture = "westernimperial"
+	trait = shrewd
+	trait = humble
+	trait = education_diplomacy_4
+	trait = patient
+	trait = shy
+	trait = magic_good_3
+	trait = intellect_good_2
+	trait = beauty_good_1
+	1171.11.21 = {
+		birth = yes
+	        effect = {
+			add_character_flag = has_scripted_appearance
+		}
+	}
+	1200.2.30 = {
+		death = {
+			death_reason = death_ritual
+			killer = western_imperial_1
+		}
+	}
+}
+
+################################
+####LEGIO XXI HISTORY RULERS####
+################################
+
+western_imperial_15008 = { #aeschraes best friend in the legion, grew apart as aeschraes grew more radical and eventually joined axiaothea. was rapidly becoming disillusioned with her as well when he was killed by frodbrokna.
+	name = "Siromon"
+        dna = siromon
+	religion = "aversarinas_aautokrata"
+	culture = "easternimperial"
+	1178.3.1 = {
+		birth = yes
+	        effect = {
+			add_character_flag = has_scripted_appearance
+		}
+	}
+	1200.3.1 = {
+		death = {
+			death_reason = death_frodbrokna
+			killer = western_imperial_1
+		}
+	}
+}
+
+western_imperial_15009 = { #began the axiaothea cult and decided that Aeschraes had to be put down. Did a do or die assault on Oraispol where Aeschraes was still based out of and him and his elites managed to get to the throne room before she was killed by Aeschraes. Managed to kill Demetros 'Iron-Spike' and Karthyn Delenel, Aeschraes's two most powerful supporters, in the attack. This effectively spelled the end of Aeschraes's empire.
+	name = "Isacea"
+        dna = isacea
+	religion = "aversarinas_aautokrata"
+	culture = "northernimperial"
+	female = yes
+	1174.6.5 = {
+		birth = yes
+	        effect = {
+			add_character_flag = has_scripted_appearance
+		}
+	}
+	1229.11.3 = {
+		death = {
+			death_reason = death_duel
+			killer = western_imperial_1
+		}
+	}
+}
+
+################################
+####    GORASSOS HISTORY    ####
+################################
+
+western_imperial_15014 = { #Gorassos brother
+	name = "Heklios"
+	religion = "aversarinas_aautokrata"
+	culture = "southernimperial"
+	mother = western_imperial_15016
+	father = western_imperial_15015
+	dynasty = dyn_aversarian_7
+	trait = magic_good_2
+	1223.7.14 = {
+		birth = yes
+	}
+	1231.5.19 = {
+		death = {
+			death_reason = death_murder
+			killer = southern_imperial_15
+		}
+	}
+}
+
+western_imperial_15015 = { #Gorassos father
+	name = "Mechidon"
+	religion = "aversarinas_aautokrata"
+	culture = "southernimperial"
+	father = western_imperial_15017
+	trait = physique_good_2
+	trait = magic_good_1
+	trait = education_living_magic_1
+	dynasty = dyn_aversarian_7
+	1217.5.11 = {
+		birth = yes
+	}
+	1237.1.12 = {
+		death = {
+			death_reason = death_bubonic_plague
+		}
+	}
+}
+
+western_imperial_15016 = { #Gorassos mother
+	name = "Haedia"
+	religion = "aversarinas_aautokrata"
+	culture = "southernimperial"
+	female = yes
+	trait = magic_good_3
+	trait = education_living_magic_3
+	dynasty = dyn_aversarian_7
+	1204.11.16 = {
+		birth = yes
+	}
+	1237.1.19 = {
+		death = {
+			death_reason = death_bubonic_plague
+		}
+	}
+}
+
+western_imperial_15017 = { #Gorassos grandfather
+	name = "Hexon"
+	religion = "aversarinas_aautokrata"
+	culture = "southernimperial"
+	father = western_imperial_15019
+	trait = magic_good_2
+	trait = education_living_magic_1
+	dynasty = dyn_aversarian_7
+	1161.3.14 = {
+		birth = yes
+	}
+	1231.4.15 = {
+		death = {
+			death_reason = death_old_age
+		}
+	}
+}
+
+western_imperial_15018 = { #Gorassos granduncle, died in Frodbrokna along with his family
+	name = "Method"
+	religion = "aversarinas_aautokrata"
+	culture = "southernimperial"
+	father = western_imperial_15019
+	trait = magic_good_3
+	trait = education_living_magic_3
+	dynasty = dyn_aversarian_7
+	1157.11.2 = {
+		birth = yes
+	}
+	1200.3.1 = {
+		death = {
+			death_reason = death_frodbrokna
+			killer = western_imperial_1
+		}
+	}
+}
+
+western_imperial_15019 = { #Gorassos great grandfather
+	name = "Heliod"
+	religion = "aversarinas_aautokrata"
+	culture = "southernimperial"
+	trait = magic_good_4
+	trait = education_living_magic_4
+	dynasty = dyn_aversarian_7
+	1094.4.14 = {
+		birth = yes
+	}
+	1188.2.14 = {
+		death = {
+			death_reason = death_murder
+			killer = western_imperial_1
+		}
+	}
+}
+
+#vassals murdered by Gorassos and squad when he made his realm
+
+western_imperial_15020 = { #Orarnacia and kyrosse
+	name = "Mendon"
+	religion = "aversarinas_aautokrata"
+	culture = "southernimperial"
+	trait = magic_good_3
+	trait = education_living_magic_3
+	1202.4.14 = {
+		birth = yes
+	}
+	1251.4.14 = {
+		death = {
+			death_reason = death_torture
+			killer = southern_imperial_15
+		}
+	}
+}
+
+western_imperial_15021 = { #Laodasa
+	name = "Hedon"
+	religion = "aversarinas_aautokrata"
+	culture = "southernimperial"
+	1216.2.11 = {
+		birth = yes
+	}
+	1251.4.14 = {
+		death = {
+			death_reason = death_beaten
+			killer = tanada_10
+		}
+	}
+}
+
+western_imperial_15022 = { #Laractus
+	name = "Laerion"
+	religion = "aversarinas_aautokrata"
+	culture = "southernimperial"
+	trait = magic_good_3
+	trait = education_living_magic_3
+	1177.4.14 = {
+		birth = yes
+	}
+	1251.4.14 = {
+		death = {
+			death_reason = death_beaten
+			killer = southern_imperial_15
+		}
+	}
+}
+
+western_imperial_15023 = { #Tos
+	name = "Ada"
+	religion = "aversarinas_aautokrata"
+	culture = "southernimperial"
+	female = yes
+	1246.11.11 = {
+		birth = yes
+	}
+	1251.4.14 = {
+		death = {
+			death_reason = death_sacrificed_to_gods
+			killer = tanada_15
+		}
+	}
+}
+
+western_imperial_15024 = { #Garriant and Histrynthos
+	name = "Hamaetios"
+	religion = "aversarinas_aautokrata"
+	culture = "southernimperial"
+	trait = compassionate
+	trait = zealous
+	trait = brave
+	1209.3.12 = {
+		birth = yes
+	}
+	1251.4.14 = {
+		death = {
+			death_reason = death_attacked
+			killer = southern_imperial_15
+		}
+	}
+}
+
+western_imperial_15025 = { #Lolcicus and Corogon & duchy of Erythralamis
+	name = "Dethamania"
+	female = yes
+	religion = "aversarinas_aautokrata"
+	culture = "southernimperial"
+	trait = generous
+	trait = magic_good_2
+	trait = education_living_magic_1
+	1211.2.2 = {
+		birth = yes
+	}
+	1251.4.14 = {
+		death = {
+			death_reason = death_eaten
+			killer = tanada_13
+		}
+	}
+}
+
+western_imperial_15026 = { #Father of the Wailers
+	name = "Kuthod"
+	religion = "aversarinas_aautokrata"
+	culture = "southernimperial"
+	trait = magic_good_3
+	1201.2.2 = {
+		birth = yes
+	}
+	1222.2.11 = {
+		death = {
+			death_reason = death_mysterious
+		}
+	}
+}
+
+western_imperial_15027 = { #Lefkofa, Acio and Stymphasae
+	name = "Mordiox"
+	religion = "aversarinas_aautokrata"
+	culture = "southernimperial"
+	1198.5.15 = {
+		birth = yes
+	}
+	1251.4.14 = {
+		death = {
+			death_reason = death_torture
+			killer = southern_imperial_15
+		}
+	}
+}
+
+###LEGIO ANOTERION###
+
+western_imperial_15028 = { #Valerix
+	name = "Valerix"
+	religion = "aversarinas_aautokrata"
+	culture = "easternimperial"
+	dynasty = dyn_aversarian_5 # Anoteris
+	trait = generous
+	trait = compassionate
+	trait = just
+	trait = magic_good_2
+	trait = education_living_magic_1
+	1182.2.12 = {
+		birth = yes
+	}
+	1253.11.12 = {
+		death = {
+			death_reason = death_murder
+		}
+	}
+}
+
+western_imperial_15029 = {
+	name = "Karthanad"
+	religion = "aversarinas_aautokrata"
+	culture = "easternimperial"
+	1145.1.14 = {
+		birth = yes
+	}
+	1200.3.1 = {
+		death = {
+			death_reason = death_frodbrokna
+			killer = western_imperial_1
+		}
+	}
+}
+
+western_imperial_15030 = {
+	name = "Pathocas"
+	religion = "aversarinas_aautokrata"
+	culture = "easternimperial"
+	1124.2.13 = {
+		birth = yes
+	}
+	1168.3.1 = {
+		death = {
+			death_reason = death_mysterious
+		}
+	}
+}
+
+western_imperial_15031 = {
+	name = "Karidan"
+	religion = "aversarinas_aautokrata"
+	culture = "easternimperial"
+	1090.4.14 = {
+		birth = yes
+	}
+	1153.1.11 = {
+		death = {
+			death_reason = death_hunting_accident
+		}
+	}
+}
+
+###########Theophylaktos kids###############################
+
+western_imperial_15032 = { # Theophylaktos kid 1
+	name = "Grigorios"
+                      dynasty = dyn_aversarian_10
+	religion = "aversarian_axiaotheaism"
+	culture = "easternimperial"
+	father = western_imperial_1037
+	mother = western_imperial_1038 
+	1205.4.1 = {
+		birth = yes
+	}
+                      1205.4.2 = {
+		death = {
+			death_reason = death_childbirth                   
+		}
+	}
+}
+
+western_imperial_15033 = { # Theophylaktos kid 2
+	name = "Stathis"
+                      dynasty = dyn_aversarian_10
+	religion = "aversarian_axiaotheaism"
+	culture = "easternimperial"
+	father = western_imperial_1037
+	mother = western_imperial_1038 
+	1210.2.1 = {
+		birth = yes
+	}
+                      1214.5.5 = {
+		trait = ill
+                      }
+                      1217.4.2 = {
+		death = {
+			death_reason = death_ill
+		}
+	}
+}
+
+western_imperial_15034 = { # Theophylaktos kid 3
+	name = "Christodoulos"
+                      dynasty = dyn_aversarian_10
+	religion = "aversarian_axiaotheaism"
+	culture = "easternimperial"
+	father = western_imperial_1037
+	mother = western_imperial_1038 
+                      trait = magic_good_7
+	trait = education_living_magic_3
+	trait = physique_bad_1 
+                      trait = intellect_good_2
+                      trait = ambitious
+	trait = vengeful
+	trait = patient
+	1216.2.1 = {
+		birth = yes
+	}
+                      1245.1.1 = {
+		add_spouse = western_imperial_15035
+	                      effect = {
+			set_relation_soulmate = character:western_imperial_15035
+		}
+	}
+                      1253.4.1 = {
+		death = {
+			death_reason = death_mysterious
+		}
+	}
+}
+
+western_imperial_15035 = { # Christodoulos wife
+	name = "Tasia"
+                      female = yes 
+	religion = "aversarian_axiaotheaism"
+	culture = "easternimperial"
+                      trait = magic_good_2
+	trait = education_living_magic_1
+	trait = beauty_good_1
+                      trait = depressed_1 
+	1225.4.2 = {
+		birth = yes
+	}
+}
+
+western_imperial_15036= { # Christodoulos son
+	name = "Axiotheos"
+                      dna = axiotheos
+                      dynasty = dyn_aversarian_10
+	religion = "aversarian_axiaotheaism"
+	culture = "easternimperial"
+	father = western_imperial_15034 
+	mother = western_imperial_15035 
+                      trait = magic_good_8
+	trait = beauty_good_1
+                      trait = intellect_good_1
+	1249.1.10 = {
+		birth = yes
+	}
+}
+
+#Malcois Guys who sided with Axiothea
+
+centralimperial_45 = {
+	name = "Valerios"
+	religion = "aversarinas_aautokrata"
+	culture = "centralimperial"
+	male = yes
+	mother = centralimperial_47
+	dynasty = dyn_central_empire_26
+	1200.2.30 = {
+		birth = yes
+		}
+	1240.8.13 = {
+		death = {
+			death_reason = death_attacked
+			killer = southern_imperial_15
+		}
+	}
+}
+
+centralimperial_46 = { #died in Frodbronka, grandfather of guy who got Gorrasos'd
+	name = "Narses"
+	religion = "aversarinas_aautokrata"
+	culture = "centralimperial"
+	male = yes
+	dynasty = dyn_central_empire_26
+	trait = craven
+	1149.4.20 = {
+		birth = yes
+		}
+		1200.3.1 = {
+			death = {
+				death_reason = death_frodbronka
+			}
+	}
+}
+
+centralimperial_47 = {
+	name = Georgia
+	religion = "aversarinas_aautokrata"
+	culture = "centralimperial"
+	female = yes
+	dynasty = dyn_central_empire_26
+	father = centralimperial_46
+	1173.12.20 = {
+		birth = yes
+	}
+	1238.4.15 = {
+		death = {
+			death_reason = death_duel
+			killer = southern_imperial_15
+		}
+	}
+}
+
+western_imperial_1069 = { # Aautokratir Pathos
+	name = "Pathos"
+	dna = pathos
+	religion = "aversarinas_aautokrata"
+	culture = "westernimperial"
+	323.12.5 = {
+		birth = yes
+		trait = physique_good_2
+		trait = intellect_good_2
+		trait = beauty_good_2
+		trait = magic_good_3
+		effect = {
+			add_character_flag = has_scripted_appearance
+		}
+	}
+	335.1.1 = {
+		trait = stubborn
+		trait = zealous
+		trait = ambitious
+	}
+	339.12.5 = {
+		trait = education_martial_4
+		trait = education_living_magic_3
+		trait = august
+		trait = strategist
+	}
+	405.2.17 = {
+		death = {
+			death_reason = death_natural_causes
+		}
+	}
+}

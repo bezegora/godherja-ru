@@ -1,0 +1,14 @@
+ADDING IN NEW OVERSEA CONNECTIONS
+=================================
+A very simple process. Go into events/godherja_events/gh_fog_spread_events and go to the immediate = {} clause of gh_fog_spread_events.2. New connections are defined via a scripted effect, as you can see from those already scripted in. Simply pick one of the scripted effects:
+
+spread_fog_sea_short_connection_effect
+spread_fog_sea_mid_connection_effect
+spread_fog_sea_long_connection_effect
+spread_fog_sea_very_long_connection_effect
+
+And add in the two provinces that you want to connect in the curly brackets. Don't forget to use the format title:c_county name - the effect will not work without the title:! The connection will be bidirectional, so you do not need to write the same effect twice, in reverse.
+
+If you appreciate efficiency, use as the FIRST_PROVINCE parameter whatever county you think is more likely to be the 'spreader' of the Fog.
+
+In regards to one province connecting to several - as much as I'd like it, avoid it. For short connections it should at least theoretically work fine, though Jomini throws a fit if you do. For mid and longer connections it outright won't work due to the algorithm itself having a counter, which would get overiterated.

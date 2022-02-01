@@ -1,0 +1,52 @@
+﻿##################
+##DECISIONS LIST##
+# contact_spirits
+##################
+
+##################
+# Contact Spirits
+# by ThePinkPanzer
+contact_spirits = {
+	ai_check_interval = 12
+	desc = contact_spirits_desc
+	is_shown = {
+		has_trait = ethereal_necromancy
+		is_landed = yes
+	}
+
+	# is_valid = {
+		
+	# 	var:living_magic_power > 0
+	# }
+
+	effect = {
+		change_variable = {
+			name = dead_magic_power
+			subtract = 1
+		}
+		hidden_effect = {
+			random_list = {
+				38 = {
+					trigger_event = {
+						id = magic.0100
+					}
+				}
+				37 = {
+					trigger_event = {
+						id = magic.0101
+					}
+				}
+				20 = {
+					trigger_event = {
+						id = magic.0102
+					}
+				}
+				5 = {
+					trigger_event = {
+						id = magic.0103
+					}
+				}
+			}
+		}
+	}
+}

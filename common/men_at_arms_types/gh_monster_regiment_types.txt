@@ -1,0 +1,99 @@
+﻿@cultural_maa_extra_ai_score = 25 # Equivalent to having 2.5 extra regiments beyond what the code scoring would indicate (see NEGATIVE_SCORE_PER_EXISTING_REGIMENT)
+
+###Fogeater
+fogbeasts = {
+	type = monsters
+	can_recruit = no
+	
+	
+	damage = 550
+	toughness = 290
+	pursuit = 200
+	screen = 0
+	siege_value = 0.2
+	siege_tier = 1
+	
+	terrain_bonus = {
+		hills = { damage = 50 toughness = 25 }
+		marcher_hills = { damage = -250 toughness = -90 }
+		marcher_farmlands = { damage = -250 toughness = -90 }
+		marcher_plains = { damage = -250 toughness = -90 }
+		marcher_mountains = { damage = -250 toughness = -90 }
+		marcher_forest = { damage = -250 toughness = -90 }
+		marcher_wetlands = { damage = -250 toughness = -90 }
+		marcher_floodplains = { damage = -250 toughness = -90 }
+	}
+
+	counters = {
+		archers = 1
+		monsters = 0.5
+	}
+
+	stack = 10
+	ai_quality = { value = @cultural_maa_extra_ai_score }
+	icon = fog_spirits
+}
+
+### Crafted Golem
+golems = {
+	type = monsters
+	can_recruit = no
+
+	damage = 100
+	toughness = 100
+	pursuit = 0
+	screen = 0
+	siege_value = 0.2
+	siege_tier = 1
+
+	terrain_bonus = {
+		desert = { damage = 50 toughness = 25 }
+		marcher_hills = { damage = -250 toughness = -90 }
+		marcher_farmlands = { damage = -250 toughness = -90 }
+		marcher_plains = { damage = -250 toughness = -90 }
+		marcher_mountains = { damage = -250 toughness = -90 }
+		marcher_forest = { damage = -250 toughness = -90 }
+		marcher_wetlands = { damage = -250 toughness = -90 }
+		marcher_floodplains = { damage = -250 toughness = -90 }
+	}
+
+	counters = {
+		heavy_infantry = 1
+		monsters = 0.5
+	}
+
+	stack = 10
+	ai_quality = { value = @cultural_maa_extra_ai_score }
+	icon = golems
+}
+
+zombies = {	# Living Magi Undead. 
+	type = skirmishers
+	can_recruit = no
+	
+	damage = 10	# Like light foot, but tougher and slower
+	toughness = 24
+	pursuit = 5
+	screen = 16
+	
+	terrain_bonus = {
+		forest = { damage = 4 toughness = 6 }
+		taiga = { damage = 4 toughness = 6 }
+		jungle = { damage = 4 toughness = 6 }
+		marcher_hills = { damage = -250 toughness = -90 }
+		marcher_farmlands = { damage = -250 toughness = -90 }
+		marcher_plains = { damage = -250 toughness = -90 }
+		marcher_mountains = { damage = -250 toughness = -90 }
+		marcher_forest = { damage = -250 toughness = -90 }
+		marcher_wetlands = { damage = -250 toughness = -90 }
+		marcher_floodplains = { damage = -250 toughness = -90 }
+	}
+
+	counters = {
+		heavy_infantry = 1
+	}
+	
+	stack = 100
+	ai_quality = { value = culture_ai_weight_skirmishers }
+	icon = raised_undead
+}

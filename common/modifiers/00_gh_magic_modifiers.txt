@@ -1,0 +1,489 @@
+﻿strengthening_mod_minor = {
+	icon = prowess_positive
+	prowess = 5
+}
+strengthening_mod_mid = {
+	icon = prowess_positive
+	prowess = 10
+}
+strengthening_mod_major = {
+	icon = prowess_positive
+	prowess = 20
+}
+strengthening_mod_huge = {
+	icon = prowess_positive
+	prowess = 40
+}
+fire_magick_mod = {
+	icon = prowess_positive
+	siege_phase_time = -0.25
+}
+fire_magick_mod_minor = {
+	icon = martial_positive
+	advantage = 5
+	enemy_hard_casualty_modifier = 0.25
+	hard_casualty_modifier = -0.2
+	retreat_losses = -0.2
+	siege_phase_time = -0.2
+}
+fire_magick_mod_mid = {
+	icon = martial_positive
+	advantage = 10
+	enemy_hard_casualty_modifier = 0.5
+	hard_casualty_modifier = -0.4
+	retreat_losses = -0.4
+	siege_phase_time = -0.4
+}
+fire_magick_mod_major = {
+	icon = martial_positive
+	advantage = 15
+	enemy_hard_casualty_modifier = 1.0
+	hard_casualty_modifier = -0.6
+	retreat_losses = -0.6
+	siege_phase_time = -0.6
+}
+fire_magick_mod_huge = {
+	icon = martial_positive
+	advantage = 30
+	enemy_hard_casualty_modifier = 3.0
+	hard_casualty_modifier = -0.8
+	retreat_losses = -0.8
+	siege_phase_time = -0.8
+}
+vampiric_drain_mod = {
+	icon = magic_positive
+	life_expectancy = 20
+}
+thinning_mod_minor = {
+	icon = magic_negative
+	prowess = -5
+	health = -0.25
+}
+thinning_mod_mid = {
+	icon = magic_negative
+	prowess = -10
+	health = -0.5
+	martial = -2
+}
+thinning_mod_major = {
+	icon = magic_negative
+	prowess = -15
+	health = -0.75
+	martial = -4
+	intrigue = -2
+	diplomacy = -2
+	stewardship = -2
+	learning = -2
+}
+thinning_mod_huge = {
+	icon = magic_negative
+	prowess = -20
+	health = -1
+	martial = -8
+	intrigue = -4
+	diplomacy = -4
+	stewardship = -4
+	learning = -4
+}
+purification_mod = {
+	icon = magic_positive
+	health = 0.25
+	negate_health_penalty_add = 0.5
+}
+creation_mod_minor = {
+	icon = fertility_positive
+	fertility = 0.1
+}
+creation_mod_mid = {
+	icon = fertility_positive
+	fertility = 0.25
+}
+creation_mod_major = {
+	icon = fertility_positive
+	fertility = 0.5
+	positive_inactive_inheritance_chance = 0.2
+	positive_random_genetic_chance = 2
+}
+creation_mod_huge = {
+	icon = fertility_positive
+	fertility = 1.0
+	positive_inactive_inheritance_chance = 0.4
+	positive_random_genetic_chance = 4
+}
+blight_mod_minor = {
+	icon = fertility_negative
+	fertility = -0.1
+}
+blight_mod_mid = {
+	icon = fertility_negative
+	fertility = -0.25
+}
+blight_mod_major = {
+	icon = fertility_negative
+	fertility = -0.5
+	negative_inactive_inheritance_chance = 0.2
+	negative_random_genetic_chance = 2
+}
+blight_mod_huge = {
+	icon = fertility_negative
+	fertility = -1.0
+	negative_inactive_inheritance_chance = 0.4
+	negative_random_genetic_chance = 4
+}
+boneshaping_mod = {
+	icon = magic_positive
+	health = 2
+}
+blood_poisoned_mod_minor = {
+	icon = magic_negative
+	health = -1
+	martial = -2
+	prowess = -2
+}
+blood_poisoned_mod_mid = {
+	icon = magic_negative
+	health = -2
+	martial = -5
+	prowess = -5
+	intrigue = -5
+	stewardship = -5
+	diplomacy = -5
+	learning = -5
+}
+blood_poisoned_mod_major = {
+	icon = magic_negative
+	health = -3
+	martial = -10
+	prowess = -10
+	intrigue = -10
+	stewardship = -10
+	diplomacy = -10
+	learning = -10
+}
+blood_poisoned_mod_huge = {
+	icon = magic_negative
+	health = -4
+	martial = -20
+	prowess = -20
+	intrigue = -20
+	stewardship = -20
+	diplomacy = -20
+	learning = -20
+}
+charmed_mod_malus_minor = {
+	icon = magic_negative
+	diplomacy = -4
+	martial = -4
+	intrigue = -4
+	stewardship = -4
+	learning = -4
+}
+charmed_mod_malus_mid = {
+	icon = magic_negative
+	diplomacy = -10
+	martial = -10
+	intrigue = -10
+	stewardship = -10
+	learning = -10
+}
+charmed_mod_malus_major = {
+	icon = magic_negative
+	diplomacy = -20
+	martial = -20
+	intrigue = -20
+	stewardship = -20
+	learning = -20
+}
+unveiling_mod_minor = {
+	icon = magic_positive
+	stress_gain_mult = -0.25
+	stress_loss_mult = 0.25
+}
+unveiling_mod_mid = {
+	icon = magic_positive
+	stress_gain_mult = -0.5
+	stress_loss_mult = 0.5
+}
+unveiling_mod_major = {
+	icon = magic_positive
+	stress_gain_mult = -0.75
+	stress_loss_mult = 0.75
+	diplomacy = 2
+}
+unveiling_mod_huge = {
+	icon = magic_positive
+	stress_gain_mult = -1.0
+	stress_loss_mult = 1.0
+	diplomacy = 4
+}
+unveiling_mod_backfire_minor = {
+	icon = magic_negative
+	stress_gain_mult = 0.25
+	stress_loss_mult = -0.25
+}
+unveiling_mod_backfire_mid = {
+	icon = magic_negative
+	stress_gain_mult = 0.5
+	stress_loss_mult = -0.5
+}
+unveiling_mod_backfire_major = {
+	icon = magic_negative
+	stress_gain_mult = 0.75
+	stress_loss_mult = -0.75
+}
+unveiling_mod_backfire_huge = {
+	icon = magic_negative
+	stress_gain_mult = 1.0
+	stress_loss_mult = -1.0
+}
+quicken_mod = {
+	icon = magic_positive
+	movement_speed = 0.25
+}
+quicken_mod_minor = {
+	icon = magic_positive
+	movement_speed = 0.25
+}
+quicken_mod_mid = {
+	icon = magic_positive
+	movement_speed = 0.5
+}
+quicken_mod_major = {
+	icon = magic_positive
+	movement_speed = 1.0
+}
+quicken_mod_huge = {
+	icon = magic_positive
+	movement_speed = 2.0
+}
+sacrificed_population_mod = {
+	icon = county_modifier_opinion_negative
+	county_opinion_add = -50
+	monthly_county_control_change_add = -0.5
+}
+natural_power_prowess_modifier = {
+	icon = magic_positive
+	prowess = 1
+}
+natural_power_intrigue_modifier = {
+	icon = magic_positive
+	intrigue = 1
+}
+annihilation_mod = {
+	icon = county_modifier_development_negative
+	development_growth = -0.35
+	garrison_size = -0.5
+}
+battle_rage_mod = {
+	icon = prowess_positive
+	prowess = 4
+	dread_gain_mult = 0.2
+}
+dementation_mod = {
+	icon = magic_positive
+	prowess_per_stress_level = 2
+	stress_gain_mult = 0.25
+}
+has_nightmares = {
+	icon = magic_negative
+	stress_gain_mult = 0.5
+}
+genocide_region_mod = {
+	icon = county_modifier_development_negative
+	development_growth = -0.5
+	garrison_size = -0.5
+	supply_limit = -3000
+	fort_level = -2
+}
+crushed_armor_mod = {
+	icon = prowess_negative
+	prowess = -5
+	advantage = -5
+	health = -0.5
+}
+stone_serpent_1_mod = {
+	icon = magic_positive
+	dread_baseline_add = 20
+}
+stone_serpent_2_mod = {
+	icon = magic_positive
+	dread_baseline_add = 20
+	prowess = 2
+}
+stone_serpent_3_mod = {
+	icon = magic_positive
+	dread_baseline_add = 20
+	prowess = 4
+}
+haunting_power_mod = {
+	icon = magic_positive
+	scheme_power = 5
+	scheme_success_chance = 5
+	scheme_resistance = 5
+}
+meteored = {
+	icon = magic_negative
+	development_growth = -0.25
+	supply_limit = -1500
+	fort_level = -1
+}
+healing_water_mod_minor = {
+	icon = magic_positive
+	health = 0.5
+}
+healing_water_mod_mid = {
+	icon = magic_positive
+	health = 1
+}
+healing_water_mod_major = {
+	icon = magic_positive
+	health = 1.5
+}
+healing_water_mod_huge = {
+	icon = magic_positive
+	health = 2
+}
+divination_diplomacy_mod_minor = {
+	icon = diplomacy_positive
+	diplomacy = 5
+	sway_scheme_power_mult = 0.25
+	befriend_scheme_power_mult = 0.25
+}
+divination_diplomacy_mod_mid = {
+	icon = diplomacy_positive
+	diplomacy = 10
+	sway_scheme_power_mult = 0.5
+	befriend_scheme_power_mult = 0.5
+}
+divination_diplomacy_mod_major = {
+	icon = diplomacy_positive
+	diplomacy = 15
+	sway_scheme_power_mult = 0.75
+	befriend_scheme_power_mult = 0.75
+}
+divination_diplomacy_mod_huge = {
+	icon = diplomacy_positive
+	diplomacy = 20
+	sway_scheme_power_mult = 1.0
+	befriend_scheme_power_mult = 1.0
+}
+divination_intrigue_mod_minor = {
+	icon = intrigue_positive
+	intrigue = 5
+	hostile_scheme_power_mult = 0.25
+	hostile_scheme_resistance_mult = 0.25
+}
+divination_intrigue_mod_mid = {
+	icon = intrigue_positive
+	intrigue = 10
+	hostile_scheme_power_mult = 0.5
+	hostile_scheme_resistance_mult = 0.5
+}
+divination_intrigue_mod_major = {
+	icon = intrigue_positive
+	intrigue = 15
+	hostile_scheme_power_mult = 0.75
+	hostile_scheme_resistance_mult = 0.75
+}
+divination_intrigue_mod_huge = {
+	icon = intrigue_positive
+	intrigue = 20
+	hostile_scheme_power_mult = 1.0
+	hostile_scheme_resistance_mult = 1.0
+}
+divination_martial_mod_minor = {
+	icon = martial_positive
+	martial = 5
+	advantage = 5
+}
+divination_martial_mod_mid = {
+	icon = martial_positive
+	martial = 10
+	advantage = 10
+}
+divination_martial_mod_major = {
+	icon = martial_positive
+	martial = 15
+	advantage = 15
+}
+divination_martial_mod_huge = {
+	icon = martial_positive
+	martial = 20
+	advantage = 20
+}
+divination_stewardship_mod_minor = {
+	icon = stewardship_positive
+	stewardship = 5
+	domain_tax_mult = 0.25
+}
+divination_stewardship_mod_mid = {
+	icon = stewardship_positive
+	stewardship = 10
+	domain_tax_mult = 0.5
+}
+divination_stewardship_mod_major = {
+	icon = stewardship_positive
+	stewardship = 15
+	domain_tax_mult = 0.75
+}
+divination_stewardship_mod_huge = {
+	icon = stewardship_positive
+	stewardship = 20
+	domain_tax_mult = 1.0
+}
+divination_learning_mod_minor = {
+	icon = learning_positive
+	learning = 5
+	monthly_lifestyle_xp_gain_mult = 0.25
+}
+divination_learning_mod_mid = {
+	icon = learning_positive
+	learning = 10
+	monthly_lifestyle_xp_gain_mult = 0.5
+}
+divination_learning_mod_major = {
+	icon = learning_positive
+	learning = 15
+	monthly_lifestyle_xp_gain_mult = 0.75
+}
+divination_learning_mod_huge = {
+	icon = learning_positive
+	learning = 20
+	monthly_lifestyle_xp_gain_mult = 1.0
+}
+temporary_magic_prowess_to_combined_cast_modifier = {
+	icon = magic_positive
+	prowess = 1
+	stacking = yes
+}
+temporary_combined_prowess_to_pure_magic_cast_modifier = {
+	icon = magic_negative
+	prowess = -1
+	stacking = yes
+}
+standard_potion_strength = {
+	icon = magic_positive
+	prowess = 4
+	health = 0.5
+}
+standard_potion_skill = {
+	icon = magic_positive
+	diplomacy = 2
+	martial = 2
+	intrigue = 2
+	stewardship = 2
+	learning = 2
+}
+standard_potion_fertility = {
+	icon = magic_positive
+	fertility = 0.25
+}
+standard_potion_experience = {
+	icon = magic_positive
+	monthly_lifestyle_xp_gain_mult = 0.1
+}
+standard_potion_life = {
+	icon = magic_positive
+	life_expectancy = 5
+	health = 1
+}

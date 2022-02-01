@@ -1,0 +1,30 @@
+﻿#Rayakuux:
+
+#rayakuux_influence_decision = {
+#	picture = "gfx/interface/illustrations/decisions/decision_realm.dds"
+#	major = no
+#	ai_check_interval = 120
+#	desc = rayakuux_influence_decision_desc
+	
+#	cooldown = { days = 3650 }
+	
+#	is_shown = {
+#		any_held_county = {
+#				culture = culture:kawoch
+#			}
+#		}
+	
+#	is_valid = {
+#		custom_description = {
+#			text = rayakuux_influence_decision_valid_desc
+#			}
+#		any_held_county = {
+#				culture = culture:kawoch
+#			}
+#		}
+		
+#	effect = {
+#		trigger_event = damota.0101
+#	}
+	
+#}

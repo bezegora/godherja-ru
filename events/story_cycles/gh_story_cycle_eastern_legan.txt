@@ -1,0 +1,430 @@
+﻿namespace = eastern_reforms
+
+# Begin investigation
+eastern_reforms.0001 = {
+	title = eastern_reforms.0001.title
+	desc = eastern_reforms.0001.desc
+	theme = intrigue
+
+	option = {
+		name = eastern_reforms.0001.a
+		trigger_event = {
+			id = eastern_reforms.0002
+			days = { 14 60 }
+		}
+	}
+}
+
+# Governor blames not!Mongols
+eastern_reforms.0002 = {
+	title = eastern_reforms.0002.title
+	desc = eastern_reforms.0002.desc
+	theme = corruption
+	left_portrait = root
+	right_portrait = title:d_kyvernis_ti_aironoi.holder
+
+	option = {
+		name = eastern_reforms.0002.a
+		trigger_event = {
+			id = eastern_reforms.0003
+			days = { 7 14 }
+		}
+	}
+}
+
+# not!Mongols blame governor
+eastern_reforms.0003 = {
+	title = eastern_reforms.0003.title
+	desc = eastern_reforms.0003.desc
+	theme = realm
+	left_portrait = root
+	right_portrait = title:k_kteumaxa.holder
+
+	option = {
+		name = eastern_reforms.0003.a
+		custom_tooltip = eastern_reforms.0003.a.tt
+		add_character_flag = eastern_reforms_can_pick_side
+	}
+}
+
+# Sided with governor, Mongols rebel
+eastern_reforms.0004 = {
+	title = eastern_reforms.0004.title
+	desc = eastern_reforms.0004.desc
+	theme = war
+
+	option = {
+		name = eastern_reforms.0004.a
+		add_character_flag = sided_with_governor
+
+		# Destroy independence faction to make the rest of the code work
+		hidden_effect = {
+			every_targeting_faction = {
+				limit = {
+					faction_is_type = independence_faction
+				}
+				destroy_faction = yes
+			}
+		}
+
+		random_vassal = {
+			limit = {
+				culture_group = culture_group:gh_vhanavids_group
+				primary_title.tier >= tier_county
+			}
+			save_scope_as = rebel
+			create_faction = {
+				type = independence_faction
+				target = liege
+			}
+			joined_faction = {
+				save_scope_as = rebel_faction
+			}
+		}
+		every_vassal = {
+			limit = {
+				culture_group = culture_group:gh_vhanavids_group
+				primary_title.tier >= tier_county
+			}
+			join_faction_skip_check = scope:rebel_faction
+		}
+		scope:rebel_faction = {
+			faction_start_war = {}
+		}
+
+		title:k_kteumaxa.holder = {
+			save_scope_as = mongol_attacker_1
+		}
+		title:d_assila.holder = {
+			save_scope_as = mongol_attacker_2
+		}
+		every_character_war = {
+			limit = {
+				is_civil_war = yes
+				any_war_attacker = {
+					this = scope:rebel
+				}
+			}
+			add_attacker = scope:mongol_attacker_1
+			add_attacker = scope:mongol_attacker_2
+		}
+	}
+}
+
+# Sided with Mongols, governor rebels
+eastern_reforms.0005 = {
+	title = eastern_reforms.0005.title
+	desc = eastern_reforms.0005.desc
+	theme = war
+
+	option = {
+		name = eastern_reforms.0005.a
+		save_scope_as = legan
+		add_character_flag = sided_with_mongols
+
+		# Destroy independence faction to make the rest of the code work
+		hidden_effect = {
+			every_targeting_faction = {
+				limit = {
+					faction_is_type = independence_faction
+				}
+				destroy_faction = yes
+			}
+		}
+
+		character:aironoi_57 = { # Governor
+			save_scope_as = rebel
+			create_faction = {
+				# type = claimant_faction
+				type = independence_faction
+				target = liege
+			}
+			joined_faction = {
+				# set_special_character = prev
+				# set_special_title = root.primary_title
+				save_scope_as = rebel_faction
+			}
+		}
+		scope:rebel_faction = {
+			faction_start_war = {}
+		}
+		# Temporary logic for making vassals rebel - replace with something more granular later
+		hidden_effect = {
+			every_vassal = {
+				limit = {
+					culture_group = culture_group:gh_imperial_group
+					primary_title.tier >= tier_county
+				}
+				random_list = {
+					70 = {}
+					30 = {
+						# join_faction_skip_check = scope:rebel_faction
+						add_to_list = governor_allies
+					}
+				}
+			}
+		}
+
+		# Northeastern Mongols vassalize
+		create_title_and_vassal_change = {
+			type = usurped
+			save_scope_as = change
+		}
+		title:d_assila.holder = {
+			change_liege = {
+				liege = scope:legan
+				change = scope:change
+			}
+		}
+		resolve_title_and_vassal_change = scope:change
+
+		# Southeastern Mongols join as allies
+		title:k_kteumaxa.holder = {
+			IF = {
+				limit = {
+					culture_group = culture_group:gh_vhanavids_group
+				}
+				save_scope_as = mongol_supporter
+			}
+		}
+		every_character_war = {
+			limit = {
+				is_civil_war = yes
+				any_war_attacker = {
+					this = scope:rebel
+				}
+			}
+			add_defender = scope:mongol_supporter
+			every_in_list = {
+				list = governor_allies
+				prev = {
+					add_attacker = prev
+				}
+			}
+		}
+	}
+}
+
+# Governor ded
+eastern_reforms.0006 = {
+	title = eastern_reforms.0006.title
+	desc = eastern_reforms.0006.desc
+	theme = war
+	override_background = {
+		event_background = throne_room
+	}
+	left_portrait = {
+		character = root
+		animation = personality_vengeful
+	}
+	right_portrait = {
+		character = character:aironoi_57
+		animation = fear
+	}
+
+	option = {
+		name = eastern_reforms.0006.a
+		character:aironoi_57 = {
+			set_character_flag = btfo_by_legan
+			death = {
+				killer = root
+				death_reason = death_murder
+			}
+		}
+		destroy_title = title:d_kyvernis_ti_aironoi
+		
+		custom_tooltip = eastern_reforms.0006.a.tt
+		add_character_flag = the_governor_is_purged
+	}
+}
+
+# Declaring war on Clanrech, invite Mongols
+eastern_reforms.0007 = {
+	title = eastern_reforms.0007.title
+	desc = eastern_reforms.0007.desc
+	theme = war
+
+	option = {
+		name = eastern_reforms.0007.a
+		add_character_flag = promised_to_share_land
+		title:k_kteumaxa.holder = {
+			trigger_event = {
+				id = eastern_reforms.0008
+				days = 3
+			}
+		}
+	}
+
+	option = {
+		name = eastern_reforms.0008.b
+		start_war = {
+			cb = asiupoli_invasion_war
+			target = title:k_fenvir.holder
+			target_title = title:e_aironoi
+		}
+	}
+}
+
+# Mongols were invited, see if they want to join
+eastern_reforms.0008 = {
+	title = eastern_reforms.0008.title
+	desc = eastern_reforms.0008.desc
+	theme = war
+
+	option = {
+		name = eastern_reforms.0008.a
+		title:k_legio_lxi_anoterion.holder = {
+			trigger_event = {
+				id = eastern_reforms.0009
+				days = 3
+			}
+		}
+	}
+
+	option = {
+		name = eastern_reforms.0008.b
+		trigger = {
+			is_ai = no
+		}
+		title:k_legio_lxi_anoterion.holder = {
+			trigger_event = {
+				id = eastern_reforms.0010
+				days = 3
+			}
+		}
+	}
+}
+
+# Mongols said yes
+eastern_reforms.0009 = {
+	title = eastern_reforms.0009.title
+	desc = eastern_reforms.0009.desc
+	theme = war
+
+	option = {
+		name = eastern_reforms.0009.a
+		start_war = {
+			cb = asiupoli_invasion_war
+			target = title:k_fenvir.holder
+			target_title = title:e_aironoi
+		}
+
+		title:k_kteumaxa.holder = {
+			save_scope_as = mongol_ally
+		}
+
+		title:k_fenvir.holder = {
+			break_alliance = scope:mongol_ally
+		}
+
+		title:k_legio_lxi_anoterion.holder = {
+			every_character_war = {
+				limit = {
+					primary_defender.primary_title = title:k_fenvir
+				}
+				add_attacker = scope:mongol_ally
+			}
+		}
+	}
+}
+
+# Mongols said no, oh well
+eastern_reforms.0010 = {
+	title = eastern_reforms.0010.title
+	desc = eastern_reforms.0010.desc
+	theme = war
+
+	option = {
+		name = eastern_reforms.0010.a
+		remove_character_flag = promised_to_share_land
+		start_war = {
+			cb = asiupoli_invasion_war
+			target = title:k_fenvir.holder
+			target_title = title:e_aironoi
+		}
+	}
+}
+
+# Governor-aligned war declaration, there's nobody to ask for help because you killed them already
+eastern_reforms.0011 = {
+	title = eastern_reforms.0011.title
+	desc = eastern_reforms.0011.desc
+	theme = war
+
+	option = {
+		name = eastern_reforms.0011.a
+		start_war = {
+			cb = invasion_war
+			target = title:k_fenvir.holder
+			target_title = title:e_aironoi
+		}
+	}
+}
+
+# Decision to let Hecaeda refuse to honor the deal - add this later
+eastern_reforms.0012 = {
+	title = eastern_reforms.0012.title
+	desc = eastern_reforms.0012.desc
+	theme = war
+
+	option = {
+		name = eastern_reforms.0012.a
+	}
+
+	option = {
+		name = eastern_reforms.0012.b
+	}
+}
+
+eastern_reforms.0013 = {
+	title = eastern_reforms.0013.title
+	desc = eastern_reforms.0013.desc
+	theme = realm
+	left_portrait = root
+
+	option = {
+		name = eastern_reforms.0013.a
+		faith:aversarinas_aautokrata_reformed = {
+			remove_doctrine = tenet_dummy_tenet
+		}
+		set_character_faith_with_conversion = faith:aversarinas_aautokrata_reformed
+	}
+}
+
+# Handle Tetradia's death before Hecaeda can get to him
+eastern_reforms.0100 = {
+	title = eastern_reforms.0100.title
+	desc = eastern_reforms.0100.desc
+	theme = war
+
+	option = {
+		name = eastern_reforms.0100.a
+
+		hidden_effect = {
+			add_character_flag = sided_with_mongols
+			add_character_flag = the_governor_is_purged
+			add_to_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:eastern_reforms_picked_side
+			}
+		}
+	}
+}
+
+eastern_reforms.0101 = {
+	title = eastern_reforms.0101.title
+	desc = eastern_reforms.0101.desc
+	theme = war
+
+	option = {
+		name = eastern_reforms.0101.a
+
+		hidden_effect = {
+			add_character_flag = the_governor_is_purged
+			add_to_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:eastern_reforms_picked_side
+			}
+		}
+	}
+}

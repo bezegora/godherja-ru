@@ -1,0 +1,21 @@
+﻿reunite_the_empire_required_empire_count = {
+	# if the trigger_ifs fail the number of required empires will differ
+	value = -1 # need 1 less than the total
+	if = {
+		limit = { title:e_etepezea = { any_in_de_jure_hierarchy = { tier = tier_county } } }
+		add = 1
+	}
+	if = {
+		limit = { title:e_malcois = { any_in_de_jure_hierarchy = { tier = tier_county } } }
+		add = 1
+	}
+	if = {
+		limit = { title:e_aironoi = { any_in_de_jure_hierarchy = { tier = tier_county } } }
+		add = 1
+	}
+	if = {
+		limit = { title:e_opakhasia = { any_in_de_jure_hierarchy = { tier = tier_county } } }
+		add = 1
+	}
+	min = 2
+}

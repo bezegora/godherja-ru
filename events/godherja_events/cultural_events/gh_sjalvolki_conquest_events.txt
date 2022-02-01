@@ -1,0 +1,2732 @@
+﻿namespace = sjalvolki_conquest
+
+# Call to arms to a vassal
+sjalvolki_conquest.0001 = {
+	type = character_event
+	theme = war
+	title = sjalvolki_conquest.0001.t
+	desc = sjalvolki_conquest.0001.desc
+	
+	trigger = {
+		NOT = {
+			has_character_flag = aversarian_migration
+		}
+		is_landed = yes
+	}
+	
+	override_background = {
+		event_background = throne_room_tribal
+	}
+	
+	left_portrait = {
+		character = scope:attacker
+		animation = war_attacker
+	}
+	
+	right_portrait = {
+		character = root
+		animation = personality_bold
+	}
+	
+	immediate = {
+		if = {
+			limit = {
+				NOT = {
+					has_variable = sjalvolki_conquest_contribution
+				}
+			}
+			set_variable = {
+				name = sjalvolki_conquest_contribution
+				value = 0
+			}
+		}
+		if = {
+			limit = {
+				NOT = {
+					has_variable = sjalvolki_conquest_tribe_size
+				}
+			}
+			set_variable = {
+				name = sjalvolki_conquest_tribe_size
+				value = 15
+			}
+		}
+	}
+	
+	option = {	# Gather up troops and fight yourself!
+		name = sjalvolki_conquest.0001.a
+		trigger = { 
+			NOR = { 
+				has_character_flag = holdover_in_old_lands 
+				has_character_flag = created_for_migration
+			} 
+		}
+		custom_tooltip = current_contribution_tt
+		custom_tooltip = risky_tt
+		if = {
+			limit = { var:sjalvolki_conquest_tribe_size <= 0 }
+			remove_short_term_gold = medium_gold_value
+		}
+		else = {
+			custom_tooltip = saps_development_tt
+			change_variable = {
+				name = sjalvolki_conquest_tribe_size
+				subtract = 1
+			}
+		}
+		add_prestige = sjalvolki_conquest_prestige_from_gathering_troops_value
+		if = {
+			limit = { exists = dynasty }
+			dynasty = {
+				add_dynasty_prestige = prev.sjalvolki_conquest_contribution_from_gathering_troops_value
+			}
+		}
+		scope:attacker = {
+			if = {
+				limit = { NOT = { has_variable = sjalvolki_conquest_total_host_size } }
+				set_variable = {
+					name = sjalvolki_conquest_total_host_size
+					value = root.sjalvolki_conquest_gathered_troops_number_value
+				}
+			}
+			else = {
+				change_variable = {
+					name = sjalvolki_conquest_total_host_size
+					add = root.sjalvolki_conquest_gathered_troops_number_value
+				}
+			}
+		}
+		change_variable = {
+			name = sjalvolki_conquest_contribution
+			add = sjalvolki_conquest_contribution_from_gathering_troops_value
+		}
+		ai_chance = {
+			base = 90
+			modifier = {
+				factor = 5
+				has_trait = ambitious
+			}
+			modifier = {
+				factor = 0.2
+				has_trait = craven
+			}
+			modifier = {
+				factor = 0
+				AND = {
+					has_trait = content	# Content characters will only join out of a sense of duty
+					NOR = {
+						has_trait = just
+						has_trait = honest
+						has_relation_friend = scope:attacker
+					}
+				}
+			}
+			ai_value_modifier = {
+				ai_boldness = 0.5
+			}
+		}
+		trigger_event = {
+			on_action = sjalvolki_conquest_events
+			days = { 15 30 }
+		}
+	}
+	
+	option = {	# Not interested at the moment
+		name = sjalvolki_conquest.0001.b
+		trigger = { 
+			NOR = { 
+				has_character_flag = holdover_in_old_lands 
+				has_character_flag = created_for_migration
+			}
+		}
+		ai_chance = {	# AI will never pick this unless they have legitimate temporary circumstances that make participating difficult
+			base = 0
+			modifier = {
+				add = 150
+				is_pregnant = yes
+			}
+			modifier = {
+				add = 300
+				has_trait = wounded_3
+			}
+			modifier = {
+				add = 200
+				has_trait = wounded_2
+			}
+			modifier = {
+				add = 100
+				has_trait = wounded_1
+			}
+			modifier = {
+				add = 50
+				has_trait = ill
+			}
+		}
+	}
+	
+	option = {	# Not interested, ever
+		name = sjalvolki_conquest.0001.c
+		custom_tooltip = no_more_sjalvolki_conquest_tt
+		add_character_flag = aversarian_migration
+		if = {
+			limit = { 
+				var:sjalvolki_conquest_tribe_size > 0 
+				trigger_if = {
+					limit = { exists = capital_county }
+					NOT = { capital_county = { has_county_modifier = gh_sjalvolki_resettlement_modifier } }
+				}
+			}
+			capital_county = {
+				change_development_level = prev.var:sjalvolki_conquest_tribe_size
+				add_county_modifier = {
+					modifier = gh_sjalvolki_resettlement_modifier
+					years = 20
+				}
+			}
+		}
+		ai_chance = {
+			base = 10
+			modifier = {	# Ambitious characters are extremely likely to stay in the conquest until they get a kingdom
+				factor = 0.1
+				has_trait = ambitious
+				NOR = {
+					highest_held_title_tier >= tier_kingdom
+					capital_county = { is_sjalvolki_kingdom_capital = yes }
+				}
+			}
+			modifier = {	# Characters become drastically more likely to drop out after receiving land unless motivated by glory or duty
+				factor = 10
+				has_character_flag = already_received_lands
+				NOR = {
+					AND = {
+						has_trait = arrogant
+						OR = {
+							has_trait = brave
+							has_trait = ambitious
+						}
+					}
+					AND = {
+						has_trait = just
+						has_trait = honest
+					}
+					has_relation_friend = scope:attacker
+				}
+			}
+		}
+	}
+}
+
+# Hidden event for Cenware to get his troops
+sjalvolki_conquest.0002 = {
+	hidden = yes
+	
+	immediate = {
+		if = {
+			limit = { 
+				has_variable = sjalvolki_conquest_total_host_size
+				is_at_war = yes
+			}
+			random_character_war = {
+				save_scope_as = imperrech_war
+			}
+			while = {
+				limit = {
+					root.var:sjalvolki_conquest_total_host_size > 10000
+				}
+				change_variable = {
+					name = sjalvolki_conquest_total_host_size
+					subtract = 10000
+				}
+				spawn_army = {
+					name = "IMPERRECH_HOST"
+					men_at_arms = {
+						type = armored_footmen
+						men = 10000
+					}
+					location = root.capital_province
+					war = scope:imperrech_war
+				}
+			}
+			spawn_army = {
+				name = "IMPERRECH_HOST"
+				men_at_arms = {
+					type = armored_footmen
+					men = root.var:sjalvolki_conquest_total_host_size
+				}
+				location = root.capital_province
+				war = scope:imperrech_war
+			}
+			debug_log = "IMPERRECH HOST SIZE: [THIS.Var('sjalvolki_conquest_total_host_size').GetValue|0]"
+		}
+		set_variable = {
+			name = sjalvolki_conquest_total_host_size
+			value = 0
+		}
+	}
+}
+
+# Offer to vanguard rulers to swear fealty
+sjalvolki_conquest.0003 = {
+	type = character_event
+	theme = war
+	title = sjalvolki_conquest.0003.t
+	desc = sjalvolki_conquest.0003.desc
+	
+	override_background = {
+		event_background = throne_room_tribal
+	}
+	
+	left_portrait = {
+		character = scope:attacker
+		animation = war_attacker
+	}
+
+	right_portrait = {
+		character = root
+		animation = war_over_win
+	}
+	
+	option = {	# Swear fealty
+		name = sjalvolki_conquest.0003.a
+		if = {
+			limit = {
+				trigger_if = {
+					limit = { exists = scope:war }
+					scope:war = {
+						any_war_defender = {
+							this = root
+						}
+					}
+				}
+			}
+			scope:war = {
+				remove_participant = root
+			}
+		}
+		set_variable = sjalvolki_vanguard
+		create_title_and_vassal_change = {
+			type = swear_fealty
+			save_scope_as = title_change
+			add_claim_on_loss = no
+		}
+		change_liege = {
+			liege = scope:attacker
+			change = scope:title_change
+		}
+		resolve_title_and_vassal_change = scope:title_change
+		custom_tooltip = sjalvolki_conquest_vanguard_tt
+	}
+	
+	option = {	# Die on this hill, for some reason
+		name = sjalvolki_conquest.0003.b
+		
+		if = {
+			limit = {
+				trigger_if = {
+					limit = { exists = scope:war }
+					scope:war = {
+						NOT = {
+							any_war_defender = {
+								this = root
+							}
+						}
+					}
+				}
+			}
+			scope:war = {
+				add_defender = prev
+			}
+		}
+		trigger = { is_ai = no }
+	}
+}
+
+scripted_trigger wont_beg_for_mercy = {
+	OR = {
+		this = character:western_imperial_1		# Aeschraes
+		this = character:aversaria_isles_4		# Dexios
+		this = character:southern_imperial_2	# Megistos
+		this = character:southern_imperial_15	# Gorassos
+		this = character:aironoi_79				# Hecaeda
+		is_black_sun_trigger = yes				# Black Sun
+	}
+}
+
+scripted_trigger wont_give_mercy = {
+	# This would be so out of character for these three that it's outright prohibited, even if controlled by the player. Not that Cenware would ever accept anyway.
+	OR = {
+		this = character:western_imperial_1		# Aeschraes
+		this = character:southern_imperial_15	# Gorassos
+		this = character:clanlands_imperial_1	# Black Sun
+	}
+}
+
+# Offer to Aversarian rulers to grovel for mercy
+sjalvolki_conquest.0004 = {
+	type = character_event
+	theme = war
+	title = sjalvolki_conquest.0004.t
+	desc = sjalvolki_conquest.0004.desc
+	
+	override_background = {
+		event_background = throne_room
+	}
+	
+	left_portrait = {
+		character = scope:attacker
+		animation = war_attacker
+	}
+
+	right_portrait = {
+		character = root
+		animation = worry
+	}
+	
+	option = {	# Beg for mercy
+		name = sjalvolki_conquest.0004.a
+		add_prestige = -500
+		custom_tooltip = sjalvolki_conquest_request_submission_aversarian_tt
+		trigger = {
+			wont_beg_for_mercy = no
+		}
+		save_scope_as = aversarian_mercy_requester
+		scope:attacker = {
+			trigger_event = sjalvolki_conquest.0005
+		}
+		
+		ai_chance = {
+			base = 10
+			ai_value_modifier = {
+				ai_rationality = 0.5
+			}
+			ai_value_modifier = {
+				ai_energy = -0.25
+			}
+			ai_value_modifier = {
+				ai_honor = -0.25
+			}
+			ai_value_modifier = {
+				ai_boldness = -0.5
+			}
+			modifier = {
+				factor = 0.25
+				has_trait = brave
+			}
+			modifier = {
+				factor = 0.1
+				AND = {
+					has_trait = zealous
+					NOT = { this.religion = scope:attacker.religion }
+				}
+			}
+			modifier = {	# Some characters will never beg for mercy
+				factor = 0
+				wont_beg_for_mercy = yes
+			}
+			modifier = {	# Iordanes will always ask
+				add = 500
+				this = character:southern_imperial_6		# Iordanes
+			}
+		}
+	}
+	
+	option = {	# Die like a true Aversarian!
+		name = sjalvolki_conquest.0004.b
+		ai_chance = {
+			base = 90
+			modifier = {	# Iordanes will always ask
+				factor = 0
+				this = character:southern_imperial_6		# Iordanes
+			}
+		}
+	}
+}
+
+sjalvolki_conquest.0005 = { # Event for Cenware when he receives an offer of submission from an Aversarian
+	type = character_event
+	theme = war
+	title = sjalvolki_conquest.0005.t
+	desc = sjalvolki_conquest.0005.desc
+	
+	override_background = {
+		event_background = throne_room_tribal
+	}
+	
+	left_portrait = {
+		character = root
+		animation = war_attacker
+	}
+
+	right_portrait = {
+		character = scope:aversarian_mercy_requester
+		animation = beg
+	}
+	
+	option = {	# Accept
+		name = sjalvolki_conquest.0005.a
+		scope:aversarian_mercy_requester = {
+			trigger_event = sjalvolki_conquest.0006
+		}
+		ai_chance = {
+			base = 10
+			modifier = {
+				add = scope:aversarian_mercy_requester.diplomacy
+			}
+			ai_value_modifier = {	# Cenware is far more likely to be merciful towards honorable and compassionate Aversarians
+				who = scope:aversarian_mercy_requester
+				ai_honor = 1.0
+				ai_compassion = 0.5
+			}
+			modifier = { # Will never accept if from these characters
+				factor = 0
+				wont_give_mercy = yes
+			}
+		}
+	}
+
+	option = {	# Refuse
+		name = sjalvolki_conquest.0005.c
+		scope:aversarian_mercy_requester = {
+			trigger_event = sjalvolki_conquest.0007
+		}
+		ai_chance = {	# Will always accept from these characters
+			base = 5
+			modifier = {	
+				factor = 0
+				OR = {
+					scope:aversarian_mercy_requester = character:southern_imperial_6	# Iordanes
+					scope:aversarian_mercy_requester = character:cois_1					# Cois
+				}
+			}
+		}
+	}
+}
+
+# Cenware accepted submission
+sjalvolki_conquest.0006 = {
+	type = character_event
+	theme = war
+	title = sjalvolki_conquest.0006.t
+	desc = sjalvolki_conquest.0006.desc
+	
+	override_background = {
+		event_background = throne_room_tribal
+	}
+	
+	left_portrait = {
+		character = scope:attacker
+		animation = war_attacker
+	}
+
+	right_portrait = {
+		character = root
+		animation = beg
+	}
+	
+	immediate = {
+		if = {
+			limit = { 
+				NOT = { primary_title = title:d_myrapolis }
+				highest_held_title_tier = tier_duchy
+			}
+			primary_title = {
+				save_scope_as = title_to_be_kept
+			}
+		}
+		else_if = {
+			limit = {
+				any_held_title = {
+					NOT = { this = title:d_myrapolis }
+				}
+			}
+			if = {
+				limit = { 
+					NOT = { capital_county.duchy = title:d_myrapolis }
+				}
+				capital_county.duchy = { save_scope_as = title_to_be_kept }
+			}
+			else = {
+				random_held_title = {
+					limit = { 
+						tier = tier_duchy
+						NOT = { this = title:d_myrapolis }
+					}
+					save_scope_as = title_to_be_kept
+				}
+			}
+		}
+		else_if = {
+			limit = { 
+				NOT = { capital_county = title:c_halium }
+			}
+			capital_county = { save_scope_as = title_to_be_kept }
+		}
+		else = {
+			random_held_title = {
+				limit = {
+					NOT = { this = title:c_halium }
+					tier = tier_county
+				}
+				save_scope_as = title_to_be_kept
+			}
+		}
+	}
+	
+	option = {	# Accept the terms of surrender
+		name = sjalvolki_conquest.0006.a
+		custom_tooltip = sjalvolki_conquest_aversarian_titled_redistributed_tt
+		scope:war = {
+			remove_participant = root
+		}
+		hidden_effect = {
+			every_held_title = {
+				limit = {
+					tier >= tier_duchy
+					NOT = { this = scope:title_to_be_kept }
+				}
+				scope:attacker = {
+					destroy_title = prev
+				}
+			}
+			every_vassal = {
+				limit = {
+					NOT = { primary_title.de_jure_liege = scope:title_to_be_kept }
+				}
+				create_title_and_vassal_change = {
+					type = independency
+					save_scope_as = change
+					add_claim_on_loss = yes
+				}
+				becomes_independent = {
+					change = scope:change
+				}
+				resolve_title_and_vassal_change = scope:change
+				scope:war = {
+					add_defender = prev
+				}
+			}
+			every_held_title = {
+				limit = {
+					tier = tier_county
+					NOR = { 
+						this = scope:title_to_be_kept 
+						this.de_jure_liege = scope:title_to_be_kept
+					}
+				}
+				save_scope_as = abandoned_non_de_jure_county
+				random_neighboring_county = {
+					limit = { 
+						NOR = { 
+							holder = root
+							holder.liege = root
+						} 
+					}
+					holder = {
+						get_title = scope:abandoned_non_de_jure_county
+					}
+				}
+			}
+			every_vassal_or_below = {
+				limit = {
+					save_temporary_scope_as = vassal_at_war
+					scope:war = {
+						any_war_participant = {
+							this = scope:vassal_at_war
+						}
+					}
+				}
+				scope:war = {
+					remove_participant = prev
+				}
+			}
+		}
+		create_title_and_vassal_change = {
+			type = swear_fealty
+			save_scope_as = title_change
+			add_claim_on_loss = no
+		}
+		change_liege = {
+			liege = scope:attacker
+			change = scope:title_change
+		}
+		resolve_title_and_vassal_change = scope:title_change
+	}
+	
+	option = {	# These terms suck, I change my mind
+		name = sjalvolki_conquest.0006.b
+		trigger = { is_ai = no }	# AI knows what its getting into with the first event already
+	}
+}
+
+# Cenware rejects submission
+sjalvolki_conquest.0007 = {
+	type = character_event
+	theme = war
+	title = sjalvolki_conquest.0007.t
+	desc = sjalvolki_conquest.0007.desc
+	
+	override_background = {
+		event_background = throne_room_tribal
+	}
+	
+	left_portrait = {
+		character = scope:attacker
+		animation = war_attacker
+	}
+
+	right_portrait = {
+		character = root
+		animation = rage
+	}
+	
+	option = {	# RIP
+		name = sjalvolki_conquest.0007.a
+	}
+}
+
+# Offered a conquered title
+sjalvolki_conquest.0010 = {
+	type = character_event
+	theme = war
+	title = sjalvolki_conquest.0010.t
+	desc = sjalvolki_conquest.0010.desc
+	
+	override_background = {
+		event_background = throne_room_tribal
+	}
+	
+	left_portrait = {
+		character = scope:attacker
+		animation = war_over_win
+	}
+	
+	right_portrait = {
+		character = root
+		animation = happiness
+	}
+	
+	immediate = {
+		set_variable = {
+			name = sjalvolki_conquest_contribution_previous	# For loc purposes
+			value = var:sjalvolki_conquest_contribution
+			days = 3
+		}
+		if = {
+			limit = { has_variable = sjalvolki_conquest_contribution_previous }
+			# What's the purpose of this utterly pointless looking line? Well, the error log gets spammed to the brim with warnings that the variable isn't used otherwise
+		}
+	}
+
+	option = { # Accept
+		name = sjalvolki_conquest.0010.a
+		trigger = {
+			NOT = { has_character_flag = already_received_lands }
+		}
+		custom_tooltip = current_contribution_post_conquest_tt
+		custom_tooltip = highest_contribution_character_tt
+		if = {
+			limit = { scope:title_to_be_given = { is_sjalvolki_kingdom_capital = yes } }
+			custom_tooltip = new_kingdom_capital_tt
+		}
+		if = {
+			limit = { 
+				scope:title_to_be_given = { tier = tier_duchy }
+			}
+			scope:title_to_be_given = {
+				ordered_in_de_jure_hierarchy = {
+					limit = { tier = tier_county }
+					order_by = sjalvolki_conquest_county_value
+					
+					set_county_culture = root.culture
+					set_county_faith = root.faith
+			
+					remove_from_list = migration_counties
+					save_scope_as = new_capital
+				}
+			}
+			scope:new_capital = {
+				remove_from_list = migration_counties
+				set_variable = {
+					name = already_distributed
+					days = 10
+				}
+				root = {
+					get_title = prev
+					if = {
+						limit = { NOT = { has_variable = sjalvolki_vanguard } }
+						set_realm_capital = prev
+						hidden_effect = {
+							migrate_from_lands = yes
+						}
+					}
+				}
+				every_in_de_jure_hierarchy = {
+					limit = { NOT = { holder = scope:new_character } }
+					scope:new_character = { get_title = prev }
+				}
+			}
+			scope:title_to_be_given = {
+				remove_from_list = migration_duchies
+				set_variable = {
+					name = already_distributed
+					days = 10
+				}
+				root = {
+					get_title = prev
+				}
+			}
+		}
+		else = {
+			scope:title_to_be_given = {
+				remove_from_list = migration_counties
+				
+				set_variable = {
+					name = already_distributed
+					days = 10
+				}
+				
+				root = {
+					get_title = prev
+					if = {
+						limit = { NOT = { has_variable = sjalvolki_vanguard } }
+						set_realm_capital = prev
+						migrate_from_lands = yes
+					}
+				}
+				every_in_de_jure_hierarchy = {
+					limit = { NOT = { holder = scope:new_character } }
+					scope:new_character = { get_title = prev }
+				}
+			}
+		}
+		add_character_flag = already_received_lands
+		remove_from_list = migration_vassals
+		set_variable = {
+			name = sjalvolki_conquest_contribution
+			value = 0
+		}
+		ai_chance = {
+			base = 100
+			modifier = {	# Characters will never accept a title downgrade, unless a potential kingdom is in the cards
+				factor = 0
+				AND = {
+					scope:title_to_be_given.tier < highest_held_title_tier
+					trigger_if = {
+						limit = { exists = scope:new_capital }
+						scope:new_capital = { NOT = { is_sjalvolki_kingdom_capital = yes } }
+					}
+					trigger_else = {
+						always = yes
+					}
+				}
+			}
+			modifier = {	# Culture heads will never accept anything less than a kingdom
+				factor = 0
+				root = { culture.culture_head = this }
+				trigger_if = {
+					limit = { exists = scope:new_capital }
+					scope:new_capital = { NOT = { is_sjalvolki_kingdom_capital = yes } }
+				}
+				trigger_else = {
+					always = yes
+				}
+			}
+			modifier = {	# Ambitious characters will try and save up contribution for a kingdom
+				factor = 0.1
+				AND = {
+					trigger_if = {
+						limit = { exists = scope:new_capital }
+						scope:new_capital = { NOT = { is_sjalvolki_kingdom_capital = yes } }
+					}
+					trigger_else = {
+						always = yes
+					}
+					has_trait = ambitious
+				}
+			}
+		}
+	}
+
+	option = { # Refuse
+		name = sjalvolki_conquest.0010.b
+		trigger = {
+			NOR = { 
+				has_character_flag = already_received_lands 
+				has_character_flag = created_for_migration
+			}
+		}
+		custom_tooltip = choose_another_title_tt
+		set_variable = {
+			name = refused_title
+			value = scope:title_to_be_given
+			days = 10
+		}
+		ai_chance = {	# AI never have a reason to be picky about a title within a kingdom, they only care about the tier
+			base = 0
+		}
+	}
+	
+	option = { # Refuse for the kingdom
+		name = sjalvolki_conquest.0010.c
+		trigger = {
+			NOT = { 
+				has_character_flag = already_received_lands
+			}
+			trigger_if = {
+				limit = { is_ai = yes }
+				has_character_flag = created_for_migration
+			}
+			trigger_else = {
+				always = yes
+			}
+		}
+		custom_tooltip = not_interested_in_title_tt
+		remove_from_list = migration_vassals
+		debug_log = "A character has refused a title!"
+		debug_log_scopes = yes
+		ai_chance = {
+			base = 20
+		}
+	}
+	
+	option = { # Convert contribution to renown
+		name = sjalvolki_conquest.0010.d
+		trigger = {
+			NOT = { has_character_flag = created_for_migration }
+		}
+		custom_tooltip = convert_contribution_tt
+		remove_from_list = migration_vassals
+		add_prestige = sjalvolki_conquest_prestige_from_current_contribution
+		if = {
+			limit = { exists = dynasty }
+			dynasty = {
+				add_dynasty_prestige = prev.sjalvolki_conquest_renown_from_current_contribution
+			}
+		}
+		set_variable = {
+			name = sjalvolki_conquest_contribution
+			value = 0
+		}
+		ai_chance = {
+			base = 20
+			modifier = {
+				factor = 3
+				has_trait = arrogant
+			}
+		}
+	}
+	
+	after = {
+		scope:attacker = {
+			assign_titles_to_characters_new_sjalvolki_conquest = {
+				CHARACTER_LIST = migration_vassals
+				DUCHY_LIST = migration_duchies
+				COUNTY_LIST = migration_counties
+			}
+		}
+	}
+}
+
+# Not offered a title (Player only)
+sjalvolki_conquest.0011 = {
+	type = character_event
+	theme = war
+	title = sjalvolki_conquest.0011.t
+	desc = sjalvolki_conquest.0011.desc
+	
+	override_background = {
+		event_background = throne_room_tribal
+	}
+	
+	left_portrait = {
+		character = scope:attacker
+		animation = war_over_win
+	}
+	
+	right_portrait = {
+		character = root
+		animation = happiness
+	}
+	
+	immediate = {
+		set_variable = {
+			name = sjalvolki_conquest_contribution_previous	# For loc purposes
+			value = var:sjalvolki_conquest_contribution
+			days = 1
+		}
+	}
+	
+	option = { # Convert contribution to renown
+		name = sjalvolki_conquest.0011.a
+		custom_tooltip = convert_contribution_tt
+		custom_tooltip = current_contribution_post_conquest_tt
+		custom_tooltip = highest_contribution_character_tt
+		
+		add_prestige = sjalvolki_conquest_prestige_from_current_contribution
+		if = {
+			limit = { exists = dynasty }
+			dynasty = {
+				add_dynasty_prestige = prev.sjalvolki_conquest_renown_from_current_contribution
+			}
+		}
+		set_variable = {
+			name = sjalvolki_conquest_contribution
+			value = 0
+		}
+		ai_chance = {
+			base = 100
+		}
+	}
+	
+	option = { # Refuse
+		name = sjalvolki_conquest.0011.b
+		trigger = {
+			NOR = { 
+				has_character_flag = already_received_lands
+				has_character_flag = created_for_migration
+				is_ai = yes
+			}
+		}
+		ai_chance = {
+			base = 0
+		}
+	}
+	
+	after = {
+		remove_from_list = migration_vassals
+	}
+}
+
+##########################
+# RANDOM CONQUEST EVENTS #
+##########################
+
+# You die in battle
+sjalvolki_conquest.0100 = {
+	type = character_event
+	theme = war
+	title = sjalvolki_conquest.0100.t
+	desc = sjalvolki_conquest.0100.desc
+	
+	override_background = {
+		event_background = battlefield
+	}
+	
+	left_portrait = {
+		character = root
+		animation = severelywounded
+	}
+	
+	immediate = {
+		if = {
+			limit = { NOT = { has_trait = wounded } }
+			add_trait = wounded_2
+		}
+	}
+	
+	option = {
+		name = sjalvolki_conquest.0100.a
+		death = { death_reason = death_battle }
+		remove_from_list = migration_vassals
+	}
+}
+
+# You find a nice villa to loot
+sjalvolki_conquest.0101 = {
+	type = character_event
+	theme = war
+	title = sjalvolki_conquest.0101.t
+	desc = sjalvolki_conquest.0101.desc
+	
+	override_background = {
+		event_background = farmland
+	}
+	
+	left_portrait = {
+		character = root
+		animation = personality_greedy
+	}
+	
+	immediate = {
+		scope:target_title = {
+			random_in_de_jure_hierarchy = {
+				limit = {
+					tier = tier_county
+					NOT = { holder.top_liege = scope:attacker }
+				}
+				save_scope_as = villa_location
+			}
+		}
+	}
+	
+	option = {
+		name = sjalvolki_conquest.0101.a
+		random_list = {
+			70 = {
+				add_gold = minor_gold_value
+			}
+			20 = {
+				add_gold = medium_gold_value
+			}
+			10 = {
+				add_gold = major_gold_value
+			}
+		}
+		stress_impact = {
+			greedy = medium_stress_loss
+			generous = medium_stress_gain
+		}
+	}
+	
+	option = {
+		name = sjalvolki_conquest.0101.b
+		random_list = {
+			70 = {
+				custom_tooltip = gain_5_contribution
+				hidden_effect = {
+					change_variable = {
+						name = sjalvolki_conquest_contribution
+						add = 5
+					}
+				}
+			}
+			20 = {
+				custom_tooltip = gain_15_contribution
+				hidden_effect = {
+					change_variable = {
+						name = sjalvolki_conquest_contribution
+						add = 15
+					}
+				}
+			}
+			10 = {
+				custom_tooltip = gain_30_contribution
+				hidden_effect = {
+					change_variable = {
+						name = sjalvolki_conquest_contribution
+						add = 30
+					}
+				}
+			}
+		}
+		stress_impact = {
+			greedy = medium_stress_gain
+			generous = medium_stress_loss
+		}
+	}
+}
+
+###events- wolverine422 0120 to 0129
+# You come across an aversarian slave plantation
+sjalvolki_conquest.0120 = {
+	type = character_event
+	theme = war
+	title = sjalvolki_conquest.0120.t
+	desc = sjalvolki_conquest.0120.desc
+	
+	override_background = {
+		event_background = burning_building
+	}
+	
+	left_portrait = {
+		character = root
+		animation = personality_vengeful
+	}
+	
+	immediate = {
+		scope:target_title = {
+			random_in_de_jure_hierarchy = {
+				limit = {
+					tier = tier_county
+					NOT = { holder.top_liege = scope:attacker }
+				}
+				save_scope_as = plantation_location
+			}
+		}
+	}
+	
+	option = { ###wait it out and move on
+		name = sjalvolki_conquest.0120.a
+		add_gold = 200
+		add_prestige = -50
+		stress_impact = {
+			greedy = medium_stress_loss
+			generous = medium_stress_gain
+		}
+	}
+
+	
+	option = { ###aid the slaves
+		name = sjalvolki_conquest.0120.b	
+		duel = {
+			skill = prowess
+			value = 12
+			15 = {
+				desc = sjalvolki_conquest.0120.b.success
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = 0.5
+				}
+				send_interface_toast = {		
+					title = sjalvolki_conquest.0120.b.success		
+				}
+				trigger_event = sjalvolki_conquest.0121
+				custom_tooltip = defeat_plantation_aversarians
+			}
+			6 = {
+				desc = sjalvolki_conquest.0120.b.injured
+				send_interface_toast = {	
+					title = sjalvolki_conquest.0120.b.injured				
+					increase_wounds_effect = { REASON = hunting_accident }
+				}
+				custom_tooltip = defeat_plantation_aversarians
+				trigger_event = sjalvolki_conquest.0121
+			}
+			1 = {
+				desc = sjalvolki_conquest.0120.b.death
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = -0.5
+				}
+				send_interface_toast = {	
+					title = sjalvolki_conquest.0120.b.death				
+					death = {
+						death_reason = death_battle
+					}
+				}
+			}
+		}
+	}
+}
+###event after helping the slaves
+sjalvolki_conquest.0121 = {
+	type = character_event
+	theme = war
+	title = sjalvolki_conquest.0121.t
+	desc = sjalvolki_conquest.0121.desc
+	
+	override_background = {
+		event_background = burning_building
+	}
+	
+	left_portrait = {
+		character = root
+		animation = war_over_win
+	}
+	
+	right_portrait = {
+		character = scope:slave_leader
+		animation = admiration
+	}	
+	
+	immediate = {
+		create_character = {
+			template = aversarian_slave_character_template
+			save_scope_as = slave_leader
+			location = root.capital_province
+		}
+	}
+
+	option = { ###have them join you
+		name = sjalvolki_conquest.0121.a
+		add_prestige = medium_prestige_gain
+		recruit_courtier = scope:slave_leader
+		spawn_slave_troops_effect = yes
+	}
+
+	option = { ###have them help in the war effort
+		name = sjalvolki_conquest.0121.b
+		add_prestige = medium_prestige_gain
+		random_list = {
+			70 = {
+				custom_tooltip = gain_5_contribution
+				hidden_effect = {
+					change_variable = {
+						name = sjalvolki_conquest_contribution
+						add = 5
+					}
+				}
+			}
+			20 = {
+				custom_tooltip = gain_15_contribution
+				hidden_effect = {
+					change_variable = {
+						name = sjalvolki_conquest_contribution
+						add = 15
+					}
+				}
+			}
+			10 = {
+				custom_tooltip = gain_30_contribution
+				hidden_effect = {
+					change_variable = {
+						name = sjalvolki_conquest_contribution
+						add = 30
+					}
+				}
+			}
+		}
+		stress_impact = {
+			greedy = medium_stress_gain
+			generous = medium_stress_loss
+		}
+		hidden_effect = {
+			scope:slave_leader = {
+				death = {
+					death_reason = death_vanished
+				}
+			}
+		}
+	}
+}
+
+###ruin event	
+sjalvolki_conquest.0122 = {
+	type = character_event
+	theme = war
+	title = sjalvolki_conquest.0122.t
+	desc = sjalvolki_conquest.0122.desc
+	
+	override_background = {
+		event_background = farmland
+	}
+	
+	left_portrait = {
+		character = root
+		animation = happiness
+	}
+
+	option = { ##appreciate the ruin, remark on the past
+		name = sjalvolki_conquest.0122.a
+		add_learning_lifestyle_xp = minor_lifestyle_xp
+	}
+	
+	option = { ##something witty about the fall of empires
+		name = sjalvolki_conquest.0122.b
+		trigger = { has_trait = cynical }
+		add_learning_lifestyle_xp = minor_lifestyle_xp
+	}	
+	
+	option = { ##study the ruins
+		name = sjalvolki_conquest.0122.c
+		trigger = { 
+			OR = {
+				has_trait = education_learning_4
+				has_trait = education_learning_3
+				has_trait = education_learning_2
+				has_trait = education_learning_1
+				learning >= high_skill_rating
+			}
+		}					
+		add_learning_lifestyle_xp = major_lifestyle_xp
+		add_prestige = 100
+	}
+	
+	option = { ##tear it down for the war effort
+		name = sjalvolki_conquest.0122.d
+		custom_tooltip = gain_5_contribution
+		hidden_effect = {
+			change_variable = {
+				name = sjalvolki_conquest_contribution
+				add = 5
+			}
+		}
+	}
+}	
+###art event
+sjalvolki_conquest.0123 = {
+	type = character_event
+	theme = war
+	title = sjalvolki_conquest.0123.t
+	desc = sjalvolki_conquest.0123.desc
+	
+	override_background = {
+		event_background = burning_building
+	}
+	
+	left_portrait = {
+		character = root
+		animation = happiness
+	}
+
+	option = { ##appreciate the art, remark on its beauty
+		name = sjalvolki_conquest.0123.a
+		add_learning_lifestyle_xp = minor_lifestyle_xp
+	}
+	
+	option = { ##maybe something witty about how aversarian art blows
+		name = sjalvolki_conquest.0123.b
+		trigger = { has_trait = cynical }
+		add_learning_lifestyle_xp = minor_lifestyle_xp
+	}	
+	
+	option = { ##sell it
+		name = sjalvolki_conquest.0123.c
+		trigger = { has_trait = greedy }
+		add_gold = 150
+	}
+	
+	option = { ##burn heathen crap
+		name = sjalvolki_conquest.0123.d
+		trigger = { has_trait = zealous }
+		add_piety = major_piety_gain
+	}	
+}
+###fossil collector its based off a book i read!! ppl did this!!
+sjalvolki_conquest.0124 = {  
+	type = character_event
+	theme = war
+	title = sjalvolki_conquest.0124.t
+	desc = sjalvolki_conquest.0124.desc
+	
+	override_background = {
+		event_background = farmland
+	}
+	
+	left_portrait = {
+		character = root
+		animation = personality_bold
+	}
+	
+	right_portrait = {
+		character = scope:collector
+		animation = beg
+	}	
+	
+	immediate = {
+		create_character = {
+			save_scope_as = collector
+			location = root.capital_province
+			faith = aversarinas_aautokrata
+			culture = culture:westernimperial
+			age = { 50 70 }
+			gender_female_chance = 20
+			random_traits = yes
+			trait = education_learning_3
+			trait = scholar
+			trait = content
+			trait = shy
+			trait = stubborn
+		}
+	}		
+
+	option = { ##kill the old fool, take anything of value
+		name = sjalvolki_conquest.0124.a
+		add_gold = 100
+		custom_tooltip = gain_5_contribution
+		hidden_effect = {
+			change_variable = {
+				name = sjalvolki_conquest_contribution
+				add = 5
+			}
+		}
+		scope:collector = {
+			death = {
+				death_reason = death_execution
+			}
+		}		
+	}
+	
+	option = { ##spare the guy, let him live in peace
+		name = sjalvolki_conquest.0124.b
+		trigger_event = sjalvolki_conquest.0125	
+		custom_tooltip = collector_customtooltip
+	}		
+}
+###event where u talk with the collector, he talks about his collections/wonders of the natural world
+sjalvolki_conquest.0125 = { 
+	type = character_event
+	theme = war
+	title = sjalvolki_conquest.0125.t
+	desc = sjalvolki_conquest.0125.desc
+	
+	override_background = {
+		event_background = farmland
+	}
+	
+	left_portrait = {
+		character = root
+		animation = boredom
+	}
+	
+	right_portrait = {
+		character = scope:collector
+		animation = happiness
+	}	
+	
+	option = { ##gives u cool artifact as thanks (aelfir skull)
+		name = sjalvolki_conquest.0125.a
+		hidden_effect = {
+			add_artifact = {ARTIFACT = artifact_skullofanancient}
+		}		
+		custom_tooltip = strange_skull
+	}	
+	
+	option = { #nah u keep it
+		name = sjalvolki_conquest.0125.b
+		add_prestige = 25
+	}
+}	
+
+###recruitment events- a soldier in your army did cool shit, can now recruit them
+sjalvolki_conquest.0126 = {  ##Berserker
+	type = character_event
+	theme = war
+	title = sjalvolki_conquest.0126.t
+	desc = sjalvolki_conquest.0126.desc
+	
+	override_background = {
+		event_background = battlefield
+	}
+	
+	left_portrait = {
+		character = root
+		animation = personality_bold
+	}
+	
+	right_portrait = {
+		character = scope:berserker
+		animation = personality_bold
+	}
+	
+	trigger = { ##so you dont get spammed
+		is_ai = no
+		NOT = { 
+			has_variable = sjalvolki_recruitment_event
+		}	
+		OR = {
+			number_of_knights < max_number_of_knights
+			any_knight = {
+				prowess < 6
+			}
+		}
+	}	
+	
+	immediate = {
+		set_variable = {
+			name = sjalvolki_recruitment_event
+			days = 1460
+		}	
+		create_character = {
+			save_scope_as = berserker
+			location = root.capital_province
+			culture = culture:vrodkin
+			faith = sjalvolki
+			gender_female_chance = 0
+			trait = berserker
+			trait = brave
+			trait = stubborn
+			trait = gregarious
+			trait = strong
+			trait = physique_good_2
+			trait = aggressive_attacker
+			age = { 18 40 }
+			random_traits_list = {
+				count = 1
+				education_martial_2 = {}
+				education_martial_3 = {}
+				education_martial_4 = {}
+			}
+			martial = 10
+			prowess = 20
+		}
+	}
+
+	option = { #join me
+		name = sjalvolki_conquest.0126.a
+		recruit_courtier = scope:berserker
+	}	
+	
+	option = { #im good
+		name = sjalvolki_conquest.0126.b
+	}	
+}
+sjalvolki_conquest.0127 = {  ##Sarminian Shieldmaiden (sarminians have alot of female warriors)
+	type = character_event
+	theme = war
+	title = sjalvolki_conquest.0127.t
+	desc = sjalvolki_conquest.0127.desc
+	
+	override_background = {
+		event_background = battlefield
+	}
+	
+	left_portrait = {
+		character = root
+		animation = personality_bold
+	}
+	
+	right_portrait = {
+		character = scope:shieldmaiden
+		animation = personality_bold
+	}
+	
+	trigger = { ##so you dont get spammed
+		is_ai = no
+		NOT = { 
+			has_variable = sjalvolki_recruitment_event
+		}	
+		OR = {
+			number_of_knights < max_number_of_knights
+			any_knight = {
+				prowess < 6
+			}
+		}
+	}	
+	
+	immediate = {
+		set_variable = {
+			name = sjalvolki_recruitment_event
+			days = 1460
+		}	
+		create_character = {
+			save_scope_as = shieldmaiden
+			location = root.capital_province
+			culture = culture:sarminians
+			faith = salacad
+			gender_female_chance = 100
+			trait = brave
+			trait = impatient
+			trait = gregarious
+			trait = physique_good_1
+			trait = blademaster_3
+			trait = open_terrain_expert
+			age = { 18 30 }
+			random_traits_list = {
+				count = 1
+				education_martial_2 = {}
+				education_martial_3 = {}
+				education_martial_4 = {}
+			}
+			martial = 10
+			prowess = 15
+		}
+	}
+
+	option = { #join me
+		name = sjalvolki_conquest.0127.a
+		recruit_courtier = scope:shieldmaiden
+	}	
+	
+	option = { #im good
+		name = sjalvolki_conquest.0127.b
+	}	
+}	
+sjalvolki_conquest.0128 = {  ##Moonkin (light infantry mondecny men at arms)
+	type = character_event
+	theme = war
+	title = sjalvolki_conquest.0128.t
+	desc = sjalvolki_conquest.0128.desc
+	
+	override_background = {
+		event_background = battlefield
+	}
+	
+	left_portrait = {
+		character = root
+		animation = personality_bold
+	}
+	
+	right_portrait = {
+		character = scope:moonkin
+		animation = personality_bold
+	}
+	
+	trigger = { ##so you dont get spammed
+		is_ai = no
+		NOT = { 
+			has_variable = sjalvolki_recruitment_event
+		}	
+		OR = {
+			number_of_knights < max_number_of_knights
+			any_knight = {
+				prowess < 6
+			}
+		}
+	}	
+	
+	immediate = {
+		set_variable = {
+			name = sjalvolki_recruitment_event
+			days = 1460
+		}	
+		create_character = {
+			save_scope_as = moonkin
+			location = root.capital_province
+			culture = culture:mondecny
+			faith = portenchant
+			gender_female_chance = 15
+			trait = calm
+			trait = deceitful
+			trait = ambitious
+			trait = physique_good_1
+			trait = blademaster_2
+			trait = forest_fighter
+			age = { 18 35 }
+			random_traits_list = {
+				count = 1
+				education_martial_2 = {}
+				education_martial_3 = {}
+				education_martial_4 = {}
+			}
+			martial = 12
+			intrigue = 12
+			prowess = 15
+		}
+	}
+
+	option = { #join me
+		name = sjalvolki_conquest.0128.a
+		recruit_courtier = scope:moonkin
+	}	
+	
+	option = { #im good
+		name = sjalvolki_conquest.0128.b
+	}	
+}
+sjalvolki_conquest.0129 = {  ##sjalvolki reaver
+	type = character_event
+	theme = war
+	title = sjalvolki_conquest.0129.t
+	desc = sjalvolki_conquest.0128.desc
+	
+	override_background = {
+		event_background = battlefield
+	}
+	
+	left_portrait = {
+		character = root
+		animation = personality_bold
+	}
+	
+	right_portrait = {
+		character = scope:reaver
+		animation = personality_bold
+	}
+	
+	trigger = { ##so you dont get spammed
+		is_ai = no
+		NOT = { 
+			has_variable = sjalvolki_recruitment_event
+		}	
+		OR = {
+			number_of_knights < max_number_of_knights
+			any_knight = {
+				prowess < 6
+			}
+		}
+	}	
+	
+	immediate = {
+		set_variable = {
+			name = sjalvolki_recruitment_event
+			days = 1460
+		}	
+		create_character = {
+			save_scope_as = reaver
+			location = root.capital_province
+			culture = culture:adrakamp
+			faith = sjalvolki
+			gender_female_chance = 10
+			trait = gregarious
+			trait = wrathful
+			trait = brave
+			trait = strong
+			trait = reaver
+			trait = forder
+			age = { 18 35 }
+			random_traits_list = {
+				count = 1
+				education_martial_2 = {}
+				education_martial_3 = {}
+				education_martial_4 = {}
+			}
+			martial = 15
+			prowess = 18
+		}
+	}
+
+	option = { #join me
+		name = sjalvolki_conquest.0129.a
+		recruit_courtier = scope:reaver
+	}	
+	
+	option = { #im good
+		name = sjalvolki_conquest.0129.b
+	}	
+}
+##kardwens eating fallen soldiers
+sjalvolki_conquest.0130 = {  
+	type = character_event
+	theme = war
+	title = sjalvolki_conquest.0130.t
+	desc = sjalvolki_conquest.0130.desc
+	
+	override_background = {
+		event_background = battlefield
+	}
+	
+	left_portrait = {
+		character = root
+		animation = shock
+	}
+	
+	right_portrait = {
+		character = scope:kardwen_soldier
+		animation = ecstasy
+	}
+	
+	immediate = {
+		create_character = {
+			save_scope_as = kardwen_soldier
+			location = root.capital_province
+			gender_female_chance = 0
+			culture = culture:kardwens
+			faith = kardawai
+			random_traits = yes
+			random_traits_list = {
+				count = 1
+				education_martial_2 = {}
+				education_martial_3 = {}
+				education_martial_4 = {}
+			}
+			martial = 15
+			age = { 20 50 }
+		}
+	}
+	
+	option = { #interesting...
+		name = sjalvolki_conquest.0130.a
+		add_prestige = 25
+	}
+
+	option = { #hang them
+		name = sjalvolki_conquest.0130.b
+		scope:kardwen_soldier = {
+			death = {
+				death_reason = death_execution
+			}
+		}				
+	}	
+
+	option = { #join in on the fun!
+		name = sjalvolki_conquest.0130.c
+		trigger = { 
+			OR = {
+				has_trait = cannibal
+				has_trait = lunatic_genetic
+				has_trait = lunatic_1
+				has_religion = religion:kardawai_religion
+			}
+		}
+		add_character_modifier = feast_hearty_diet_modifier	
+	}		
+}
+###animal menagerie
+sjalvolki_conquest.0131 = {  
+	type = character_event
+	theme = war
+	title = sjalvolki_conquest.0131.t
+	desc = sjalvolki_conquest.0131.desc
+	
+	override_background = {
+		event_background = burning_building
+	}
+	
+	left_portrait = {
+		character = root
+		animation = personality_greedy
+	}
+	
+	option = { 
+		name = sjalvolki_conquest.0131.a
+		hidden_effect = {
+			add_artifact = {ARTIFACT = artifact_mountdreadwolf }
+		}		
+		duel = {
+			skill = prowess
+			value = 12
+			15 = {
+				desc = sjalvolki_conquest.0131.a.success
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = 0.5
+				}
+				send_interface_toast = {		
+					title = sjalvolki_conquest.0131.a.success		
+				}
+				custom_tooltip = tamewolf_tooltip
+			}
+			6 = {
+				desc = sjalvolki_conquest.0131.a.injured
+				send_interface_toast = {	
+					title = sjalvolki_conquest.0131.a.injured				
+					increase_wounds_effect = { REASON = hunting_accident }
+				}
+				custom_tooltip = tamewolf_tooltip
+			}
+			1 = {
+				desc = sjalvolki_conquest.0131.a.death
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = -0.5
+				}
+				send_interface_toast = {	
+					title = sjalvolki_conquest.0131.a.death				
+					death = {
+						death_reason = death_hunting_accident
+					}
+				}
+			}
+		}
+	}	
+	
+	option = { 
+		name = sjalvolki_conquest.0131.b
+		hidden_effect = {
+			add_artifact = {ARTIFACT = artifact_mountwarhorse }
+		}		
+		custom_tooltip = gethorse_tooltip
+	}
+
+	option = { 
+		name = sjalvolki_conquest.0131.c
+		hidden_effect = {
+			add_artifact = {ARTIFACT = artifact_mountmammoth }
+		}		
+		duel = {
+			skill = prowess
+			value = 12
+			6 = {
+				desc = sjalvolki_conquest.0131.c.success
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = 0.5
+				}
+				send_interface_toast = {		
+					title = sjalvolki_conquest.0131.c.success		
+				}
+				custom_tooltip = tamemammoth_tooltip
+			}
+			10 = {
+				desc = sjalvolki_conquest.0131.c.injured
+				send_interface_toast = {	
+					title = sjalvolki_conquest.0131.c.injured				
+					increase_wounds_effect = { REASON = mammoth }
+				}
+			}
+			6 = {
+				desc = sjalvolki_conquest.0131.c.death
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = -0.5
+				}
+				send_interface_toast = {	
+					title = sjalvolki_conquest.0131.c.death				
+					death = {
+						death_reason = death_mammoth
+					}
+				}
+			}
+		}
+	}
+
+	option = { #maybe this can help the war effort
+		name = sjalvolki_conquest.0131.d
+		custom_tooltip = gain_5_contribution
+		hidden_effect = {
+			change_variable = {
+				name = sjalvolki_conquest_contribution
+				add = 5
+			}
+		}
+	}
+}	
+###city loot event chain-uses stuff from the artifact market-kinda buggy rn
+sjalvolki_conquest.0132 = {  
+	type = character_event
+	theme = war
+	title = sjalvolki_conquest.0132.t
+	desc = sjalvolki_conquest.0132.desc
+	
+	override_background = {
+		event_background = burning_building
+	}
+	
+	left_portrait = {
+		character = root
+		animation = personality_greedy
+	}
+	
+	option = { #armory
+		name = sjalvolki_conquest.0132.a
+		trigger_event = sjalvolki_conquest.0133
+	}	
+	
+	option = { #library
+		name = sjalvolki_conquest.0132.b
+		trigger_event = sjalvolki_conquest.0134
+	}	
+
+	option = { #vault
+		name = sjalvolki_conquest.0132.c
+		trigger_event = sjalvolki_conquest.0135
+	}
+		
+	option = { #nevermind
+		name = sjalvolki_conquest.0132.d
+	}
+}
+sjalvolki_conquest.0133 = {  #armory
+	type = character_event
+	theme = war
+	title = sjalvolki_conquest.0133.t
+	desc = sjalvolki_conquest.0133.desc
+	
+	override_background = {
+		event_background = armory
+	}
+	
+	left_portrait = {
+		character = root
+		animation = personality_greedy
+	}
+	
+	immediate = {
+		pick_random_artifact_weapon = { SLOT = 1 }
+		pick_random_artifact_weapon = { SLOT = 2 }
+	}
+
+	option = {
+		name = sjalvolki_conquest.0133.a
+		fetch_all_artifacts_for_slot = { SLOT = 1 }
+	}
+	option = {
+		name = sjalvolki_conquest.0133.b
+		fetch_all_artifacts_for_slot = { SLOT = 2 }
+	}
+
+	option = { #Nothing
+		name = sjalvolki_conquest.0133.c
+	}
+}	
+sjalvolki_conquest.0134 = {  #library
+	type = character_event
+	theme = war
+	title = sjalvolki_conquest.0134.t
+	desc = sjalvolki_conquest.0134.desc
+	
+	override_background = {
+		event_background = study
+	}
+	
+	left_portrait = {
+		character = root
+		animation = personality_greedy
+	}
+	
+	immediate = {
+		pick_random_artifact_book = { SLOT = 1 }
+		pick_random_artifact_book = { SLOT = 2 }
+	}
+
+	option = {
+		name = sjalvolki_conquest.0134.a
+		fetch_all_artifacts_for_slot = { SLOT = 1 }
+	}
+	option = {
+		name = sjalvolki_conquest.0134.b
+		fetch_all_artifacts_for_slot = { SLOT = 2 }
+	}
+
+	option = { #Nothing
+		name = sjalvolki_conquest.0134.c
+	}
+}
+sjalvolki_conquest.0135 = {  #vault
+	type = character_event
+	theme = war
+	title = sjalvolki_conquest.0135.t
+	desc = sjalvolki_conquest.0135.desc
+	
+	override_background = {
+		event_background = corridor_night
+	}
+	
+	left_portrait = {
+		character = root
+		animation = personality_greedy
+	}
+	
+	immediate = {
+		pick_random_artifact_arcana = { SLOT = 1 }
+		pick_random_artifact_arcana = { SLOT = 2 }
+	}
+
+	option = {
+		name = sjalvolki_conquest.0135.a
+		fetch_all_artifacts_for_slot = { SLOT = 1 }
+	}
+	option = {
+		name = sjalvolki_conquest.0135.b
+		fetch_all_artifacts_for_slot = { SLOT = 2 }
+	}
+
+	option = { #Nothing
+		name = sjalvolki_conquest.0135.c
+	}
+}
+###alternate ruin event	
+sjalvolki_conquest.0136 = {
+	type = character_event
+	theme = war
+	title = sjalvolki_conquest.0136.t
+	desc = sjalvolki_conquest.0136.desc
+	
+	override_background = {
+		event_background = farmland
+	}
+	
+	left_portrait = {
+		character = root
+		animation = happiness
+	}
+
+	option = { ##appreciate the ruin, remark on the past
+		name = sjalvolki_conquest.0122.a
+		add_learning_lifestyle_xp = minor_lifestyle_xp
+	}
+	
+	option = { ##something witty about the fall of empires
+		name = sjalvolki_conquest.0122.b
+		trigger = { has_trait = cynical }
+		add_learning_lifestyle_xp = minor_lifestyle_xp
+	}	
+	
+	option = { ##study the ruins
+		name = sjalvolki_conquest.0122.c
+		trigger = { 
+			OR = {
+				has_trait = education_learning_4
+				has_trait = education_learning_3
+				has_trait = education_learning_2
+				has_trait = education_learning_1
+				learning >= high_skill_rating
+			}
+		}					
+		add_learning_lifestyle_xp = major_lifestyle_xp
+		add_prestige = 100
+	}
+	
+	option = { ##tear it down for the war effort
+		name = sjalvolki_conquest.0122.d
+		custom_tooltip = gain_5_contribution
+		hidden_effect = {
+			change_variable = {
+				name = sjalvolki_conquest_contribution
+				add = 5
+			}
+		}
+	}
+}	
+###alternate art event 
+sjalvolki_conquest.0137 = {
+	type = character_event
+	theme = war
+	title = sjalvolki_conquest.0137.t
+	desc = sjalvolki_conquest.0137.desc
+	
+	override_background = {
+		event_background = burning_building
+	}
+	
+	left_portrait = {
+		character = root
+		animation = happiness
+	}
+
+	option = { ##appreciate the art, remark on its beauty
+		name = sjalvolki_conquest.0123.a
+		add_learning_lifestyle_xp = minor_lifestyle_xp
+	}
+	
+	option = { ##maybe something witty about how aversarian art blows
+		name = sjalvolki_conquest.0123.b
+		trigger = { has_trait = cynical }
+		add_learning_lifestyle_xp = minor_lifestyle_xp
+	}	
+	
+	option = { ##sell it
+		name = sjalvolki_conquest.0123.c
+		trigger = { has_trait = greedy }
+		add_gold = 150
+	}
+	
+	option = { ##burn heathen crap
+		name = sjalvolki_conquest.0123.d
+		trigger = { has_trait = zealous }
+		add_piety = 250
+	}	
+}
+###campfire/religious ceremony
+sjalvolki_conquest.0138 = { 
+	type = character_event
+	theme = faith
+	title = sjalvolki_conquest.0138.t
+	desc = sjalvolki_conquest.0138.desc
+	
+	override_background = {
+		event_background = wilderness_forest_pine
+	}
+	
+	left_portrait = {
+		character = root
+		animation = admiration
+	}	
+	
+	right_portrait = {
+		character = scope:realm_priest
+		animation = personality_zealous
+	}
+	
+	immediate = {
+		cp:councillor_court_chaplain = {
+			save_scope_as = realm_priest
+		}
+	}
+
+	trigger = {
+		has_religion = religion:sjalvolki_religion
+	}
+	
+	option = { ##why do we fight wise one (talks about the homeland)
+		name = sjalvolki_conquest.0138.a
+		trigger_event = sjalvolki_conquest.0139
+		add_piety = 25
+	}
+
+	option = { ##I wish to hear of the gods this night
+		name = sjalvolki_conquest.0138.b
+		trigger_event = sjalvolki_conquest.0140
+		add_piety = 25
+	}
+	
+	option = { ##I have no time for this, bring out the ale
+		name = sjalvolki_conquest.0138.c
+		add_piety = -10
+	}	
+}	
+sjalvolki_conquest.0139 = { ##why do we fight wise one (talks about the homeland)
+	type = character_event
+	theme = faith
+	title = sjalvolki_conquest.0139.t
+	desc = sjalvolki_conquest.0139.desc
+	
+	override_background = {
+		event_background = wilderness_forest_pine
+	}
+	
+	left_portrait = {
+		character = root
+		animation = admiration
+	}	
+	
+	right_portrait = {
+		character = scope:realm_priest
+		animation = personality_zealous
+	}
+
+	option = { #we have come so far
+		name = sjalvolki_conquest.0139.a
+	}
+	
+	option = { #and have so far to go
+		name = sjalvolki_conquest.0139.b
+	}
+}
+sjalvolki_conquest.0140 = { ##distorted story about velos/sjalvolki religion (actually the godherja)
+	type = character_event
+	theme = faith
+	title = sjalvolki_conquest.0140.t
+	desc = sjalvolki_conquest.0140.desc
+	
+	override_background = {
+		event_background = wilderness_forest_pine
+	}
+	
+	left_portrait = {
+		character = root
+		animation = admiration
+	}	
+	
+	right_portrait = {
+		character = scope:realm_priest
+		animation = personality_zealous
+	}
+	
+	option = { #a time of legends long past
+		name = sjalvolki_conquest.0140.a
+	}
+	
+	option = { #just stories right?
+		name = sjalvolki_conquest.0140.b
+	}
+}	
+##partic stuff
+sjalvolki_conquest.0141 = { ##patrolling your camp, see some partics hanging around some trees
+	type = character_event
+	theme = war
+	title = sjalvolki_conquest.0141.t
+	desc = sjalvolki_conquest.0141.desc
+	
+	override_background = {
+		event_background = army_camp
+	}
+	
+	left_portrait = {
+		character = root
+		animation = personality_cynical
+	}	
+
+	trigger = {
+		NOT = { has_religion = religion:partic_religion }
+	}
+	
+	option = { #how strange
+		name = sjalvolki_conquest.0141.a
+	}
+	
+	option = { #investigate further
+		name = sjalvolki_conquest.0141.b
+		trigger_event = sjalvolki_conquest.0142
+	}
+}
+sjalvolki_conquest.0142 = { ##their guard says some weird partic shit, druids all babbling
+	type = character_event
+	theme = war
+	title = sjalvolki_conquest.0142.t
+	desc = sjalvolki_conquest.0142.desc
+	
+	override_background = {
+		event_background = wilderness_forest
+	}
+	
+	left_portrait = {
+		character = root
+		animation = personality_cynical
+	}
+
+	option = { #oh...cool haha
+		name = sjalvolki_conquest.0142.a
+	}
+	
+	option = { #hey we got a job to do, no lollygagging
+		name = sjalvolki_conquest.0142.b
+		trigger_event = sjalvolki_conquest.0143
+		custom_tooltip = dontdothisoryoullgetshanked
+	}	
+}
+sjalvolki_conquest.0143 = { ##you get stabbed, try to defend youself
+	type = character_event
+	theme = war
+	title = sjalvolki_conquest.0143.t
+	desc = sjalvolki_conquest.0143.desc
+	
+	trigger = { is_ai = no }
+	
+	override_background = {
+		event_background = wilderness_forest
+	}
+	
+	left_portrait = {
+		character = root
+		animation = shock
+	}
+
+	option = { #you get jumped
+		name = sjalvolki_conquest.0143.a
+		duel = {
+			skill = prowess
+			value = 12
+			6 = {
+				desc = sjalvolki_conquest.0143.a.failure
+				send_interface_toast = {	
+					title = sjalvolki_conquest.0143.a.failure				
+					increase_wounds_effect = { REASON = fight }
+				}
+			}
+			6 = {
+				desc = sjalvolki_conquest.0143.a.critical_failure
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = -0.5
+				}
+				send_interface_toast = {	
+					title = sjalvolki_conquest.0143.a.critical_failure				
+					death = {
+						death_reason = death_fight
+					}
+				}
+			}
+		}
+	}
+}
+#fueding tribes
+sjalvolki_conquest.0144 = { ##two clans fueding need to come up w/ a good conflict
+	type = character_event
+	theme = war
+	title = sjalvolki_conquest.0144.t
+	desc = sjalvolki_conquest.0144.desc
+	
+	override_background = {
+		event_background = army_camp
+	}
+	
+	left_portrait = {
+		character = root
+		animation = personality_cynical
+	}
+	
+	option = { #one tribe wants to use resources for themselves
+		name = sjalvolki_conquest.0144.a
+		add_gold = 100
+	}
+	
+	option = { #another wants to share? contribution
+		name = sjalvolki_conquest.0144.b
+		custom_tooltip = gain_5_contribution
+		hidden_effect = {
+			change_variable = {
+				name = sjalvolki_conquest_contribution
+				add = 5
+			}
+		}
+	}
+	
+	option = { #bring me a drink, i want to see the fight
+		name = sjalvolki_conquest.0144.c
+		add_prestige = 100
+	}
+}
+sjalvolki_conquest.0145 = { ##captured aversarian magi, gave us info
+	type = character_event
+	theme = war
+	title = sjalvolki_conquest.0145.t
+	desc = sjalvolki_conquest.0145.desc
+	
+	override_background = {
+		event_background = battlefield
+	}
+	
+	left_portrait = {
+		character = root
+		animation = personality_cynical
+	}
+	
+	right_portrait = {
+		character = scope:aversarian_magi
+		animation = beg
+	}
+	
+	immediate = {
+		create_character = {
+			save_scope_as = aversarian_magi
+			location = root.capital_province
+			faith = aversarinas_aautokrata
+			culture = culture:westernimperial
+			age = { 30 60 }
+			gender_female_chance = 30
+			random_traits = yes
+			trait = education_intrigue_3
+			trait = magic_good_3
+			trait = education_living_magic_3
+			trait = cynical
+			trait = arbitrary
+			trait = patient
+		}
+	}
+	
+	option = { #kill him
+		name = sjalvolki_conquest.0145.a
+		add_piety = 100
+		add_prestige = 100
+		scope:aversarian_magi = {
+			death = {
+				death_reason = death_execution_blood_eagle
+			}
+		}
+	}
+	
+	option = { #hand chop
+		name = sjalvolki_conquest.0145.b
+		scope:aversarian_magi = { add_trait = maimed }
+		add_piety = 100
+		add_prestige = 100
+	}
+	
+	option = { #recruit?
+		name = sjalvolki_conquest.0145.c
+		add_piety = -100
+		add_prestige = -100
+		recruit_courtier = scope:aversarian_magi
+	}
+}
+sjalvolki_conquest.0146 = { ##city looting, lose control of your soldiers
+	type = character_event
+	theme = war
+	title = sjalvolki_conquest.0146.t
+	desc = sjalvolki_conquest.0146.desc
+	
+	override_background = {
+		event_background = burning_building
+	}
+	
+	left_portrait = {
+		character = root
+		animation = personality_cynical
+	}
+	
+	option = { #let the boys have their fun
+		name = sjalvolki_conquest.0146.a
+		add_gold = 200
+		trigger_event = sjalvolki_conquest.0147
+		stress_impact = {
+			compassionate = major_stress_gain
+			honest = medium_stress_gain
+			just = major_stress_gain
+		}
+	}
+	
+	option = { #order the men to stop
+		name = sjalvolki_conquest.0146.b
+		add_prestige = -25
+	}
+}
+sjalvolki_conquest.0147 = { ##day after, reflect on the carnage
+	type = character_event
+	theme = war
+	title = sjalvolki_conquest.0147.t
+	desc = sjalvolki_conquest.0147.desc
+	
+	override_background = {
+		event_background = burning_building
+	}
+	
+	left_portrait = {
+		character = root
+		animation = shame
+	}
+	
+	option = { #it is what it is
+		name = sjalvolki_conquest.0147.a
+		add_dread = medium_dread_gain
+	}
+	
+	option = { #damn this messed up
+		name = sjalvolki_conquest.0147.b
+		add_dread = medium_dread_gain
+	}
+}	
+##priest/refugee events
+sjalvolki_conquest.0148 = { ##priest w/ refugees at temple, asks for safe passage-notice some shifty folks in the back
+	type = character_event
+	theme = war
+	title = sjalvolki_conquest.0148.t
+	desc = sjalvolki_conquest.0148.desc
+	
+	override_background = {
+		event_background = farmland
+	}
+	
+	left_portrait = {
+		character = root
+		animation = personality_cynical
+	}
+	
+	right_portrait = {
+		character = scope:aversarian_priest
+		animation = beg
+	}
+	
+	immediate = {
+		create_character = {
+			save_scope_as = aversarian_priest
+			location = root.capital_province
+			faith = aversarinas_aautokrata
+			culture = culture:westernimperial
+			age = { 40 75 }
+			gender_female_chance = 20
+			random_traits = yes
+			trait = education_learning_3
+			trait = theologian
+			trait = gregarious
+			trait = zealous
+			trait = patient
+		}
+	}
+	
+	option = { #they are suffering-let them go/leave them in peace
+		name = sjalvolki_conquest.0148.a
+		trigger_event = {
+		id = sjalvolki_conquest.0149
+		days = 15
+		}
+	}
+	
+	option = { #better keep them contained
+		name = sjalvolki_conquest.0148.b
+		trigger_event = {
+		id = sjalvolki_conquest.0150
+		days = 3
+		}
+	}
+}
+sjalvolki_conquest.0149 = { ##got ambushed by those soldiers a few days later
+	type = character_event
+	theme = war
+	title = sjalvolki_conquest.0149.t
+	desc = sjalvolki_conquest.0149.desc
+	
+	override_background = {
+		event_background = battlefield
+	}
+	
+	left_portrait = {
+		character = root
+		animation = personality_vengeful
+	}
+
+	option = { #shouldve known
+		name = sjalvolki_conquest.0149.a
+		add_prestige = -50
+	}
+
+	option = { #aversarian dogs!
+		name = sjalvolki_conquest.0149.b
+		add_prestige = -50
+	}
+}
+sjalvolki_conquest.0150 = { ##stuff gets out of hand at the temple/ aversarians complaining
+	type = character_event
+	theme = war
+	title = sjalvolki_conquest.0150.t
+	desc = sjalvolki_conquest.0150.desc
+	
+	override_background = {
+		event_background = temple_church
+	}
+	
+	left_portrait = {
+		character = root
+		animation = personality_cynical
+	}
+	
+	right_portrait = {
+		character = scope:aversarian_priest
+		animation = personality_zealous
+	}
+	
+	option = { #let them go/gave them some money
+		name = sjalvolki_conquest.0150.a
+		trigger_event = {
+		id = sjalvolki_conquest.0149
+		days = 15
+		}
+	}
+	
+	option = { #buzz off-lock them in
+		name = sjalvolki_conquest.0150.b
+		trigger_event = {
+		id = sjalvolki_conquest.0151
+		days = 3
+		}
+	}
+}	
+sjalvolki_conquest.0151 = { ##fire breaks out
+	type = character_event
+	theme = war
+	title = sjalvolki_conquest.0151.t
+	desc = sjalvolki_conquest.0151.desc
+	
+	override_background = {
+		event_background = burning_building
+	}
+	
+	left_portrait = {
+		character = root
+		animation = personality_cynical
+	}
+	
+	option = { ##dear god...
+		name = sjalvolki_conquest.0151.a
+		stress_impact = {
+			compassionate = major_stress_gain
+			honest = medium_stress_gain
+			just = major_stress_gain
+		}
+		add_dread = major_dread_gain
+	}
+	
+	option = { ##let them burn
+		name = sjalvolki_conquest.0151.b
+		trigger = { 
+			OR = {
+				has_trait = sadistic
+				has_trait = wrathful
+				has_trait = arbitrary
+			}
+		}
+		add_dread = major_dread_gain
+	}
+}
+
+
+# Inform players that haven't received a title as to who did, and offer them renown instead
+sjalvolki_conquest.1000 = {
+	hidden = yes
+	
+	immediate = {
+		every_in_list = {
+			list = migration_vassals
+			limit = { is_ai = no }
+			trigger_event = sjalvolki_conquest.0011
+		}
+	}
+}
+
+# Maintenance event for immediately launching a new war after Cenware wins the previous one
+sjalvolki_conquest.1001 = {
+	hidden = yes
+	
+	immediate = {
+		cenware_ai_effect = yes
+	}
+}
+
+# One of the few outright cheats AI Cenware has, but only because the AI is just so bloody terrible. For Assocaea only
+#sjalvolki_conquest.1002 = {
+#	hidden = yes
+#	
+#	trigger = {
+#		is_ai = yes
+#		any_in_list = {
+#			list = target_titles
+#			this = title:k_assocaea
+#		}
+#		NOT = {
+#			any_in_list = {
+#				list = defenders
+#				is_ai = no
+#			}
+#		}
+#	}
+#	
+#	immediate = {
+#		every_character_war = {
+#			limit = {
+#				casus_belli = sjalvolki_conquest_cb
+#			}
+#			end_war = attacker
+#		}
+#	}
+#}

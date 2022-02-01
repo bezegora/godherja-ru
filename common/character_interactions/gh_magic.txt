@@ -1,0 +1,745 @@
+﻿dehand_interaction = {
+	interface_priority = 30
+
+	category = interaction_category_prison
+
+	desc = dehand_interaction_desc
+
+	is_shown = {
+		bilateral_ruin_diplomatic_block = yes
+		scope:recipient = {
+			is_imprisoned_by = scope:actor
+			can_access_magic = yes
+		}
+		scope:actor = {
+			is_adult = yes
+			OR = {
+				has_culture_group = culture_group:gh_imperial_group
+				faith = {
+					has_doctrine = doctrine_magic_crime
+				}
+				faith = {
+					has_doctrine = doctrine_magic_shunned
+				}
+			}
+		}
+	}
+
+	is_valid_showing_failures_only = {
+		scope:recipient = {
+			custom_description = {
+				text = "currently_being_tortured"
+				NOT = { has_character_flag = is_being_tortured }
+			}
+		}
+	}
+
+	is_highlighted = {
+		OR = {
+			scope:actor = { has_trait = sadistic }
+			scope:actor = { has_relation_rival = scope:recipient }
+		}
+	}
+
+	on_accept = {
+		scope:recipient = {
+			add_character_flag = {
+				flag = is_being_tortured
+				months = 6
+			}
+		}
+
+		blind_and_castrate_actor_effect = yes #Stress & dread
+
+		show_as_tooltip = {
+			scope:recipient = {
+				add_trait = gh_dehanded
+				release_from_prison = yes
+			}
+		}
+		
+		hidden_effect = {
+			scope:recipient = {
+				add_trait = gh_dehanded
+				release_from_prison = yes
+			}
+		}
+
+		torture_blind_castrate_opinion_effect = { VERB = dehanded }
+	}
+
+	auto_accept = yes
+
+	ai_targets = {
+		ai_recipients = prisoners
+	}
+
+	ai_potential = {
+		always = yes
+	}
+
+	ai_will_do = {
+		base = -20
+
+		modifier = {
+			has_trait = sadistic
+			add = 20
+		}
+		ai_value_modifier = {
+			ai_compassion = tiny_chance_impact_negative_ai_value #Adds +50 for highly uncompassionate characters, -50 for highly compassionate characters
+		}
+		opinion_modifier = {
+			opinion_target = scope:recipient
+			multiplier = -0.25
+		}
+	}
+
+	ai_frequency = 36
+}
+
+add_to_magic_list_interaction = {
+	interface_priority = 30
+
+	category = interaction_category_magic
+
+	desc = add_to_magic_list_desc
+
+	is_shown = {
+		bilateral_ruin_diplomatic_block = yes
+		scope:actor = {
+			OR = {
+				can_access_magic = yes
+				exists = cp:councillor_court_mage
+			}
+			is_ai = no
+			NOT = {
+				is_target_in_variable_list = {
+					name = custom_magic_list
+					target = scope:recipient
+				}
+			}
+		}
+	}
+
+	is_valid_showing_failures_only = {
+		always = yes
+	}
+
+	on_accept = {
+		scope:actor = {
+			add_to_variable_list = {
+				name = custom_magic_list
+				target = scope:recipient
+			}
+			add_to_variable_list = {
+				name = enemy_in_realm
+				target = scope:recipient
+			}
+		}
+	}
+
+	auto_accept = yes
+
+	ai_potential = {
+		always = no
+	}
+
+	ai_will_do = {
+		base = -1000
+	}
+
+	ai_frequency = 360
+}
+
+remove_from_magic_list_interaction = {
+	interface_priority = 30
+
+	category = interaction_category_magic
+
+	desc = remove_from_magic_list_desc
+
+	is_shown = {
+		scope:actor = {
+			OR = {
+				can_access_magic = yes
+				exists = cp:councillor_court_mage
+			}
+			is_ai = no
+			is_target_in_variable_list = {
+				name = custom_magic_list
+				target = scope:recipient
+			}
+		}
+	}
+
+	is_valid_showing_failures_only = {
+		always = yes
+	}
+
+	on_accept = {
+		scope:actor = {
+			remove_list_variable = {
+				name = custom_magic_list
+				target = scope:recipient
+			}
+			remove_list_variable = {
+				name = enemy_in_realm
+				target = scope:recipient
+			}
+			remove_list_variable = {
+				name = spell_target
+				target = scope:recipient
+			}
+		}
+	}
+
+	auto_accept = yes
+
+	ai_potential = {
+		always = no
+	}
+
+	ai_will_do = {
+		base = -1000
+	}
+
+	ai_frequency = 360
+}
+
+# COMMENTED OUT BY HAPCHAZZARD DUE TO ERROR LOG SPAM UNTIL WE ACTUALLY IMPLEMENT THIS THING PROPERLY
+
+#pryonism_negative_dreams = {	
+#	category = interaction_category_magic
+#	desc = pryonism_negative_dreams_desc
+#	common_interaction = yes
+#	greeting = negative
+#	can_send_despite_rejection = yes
+#	cooldown_against_recipient = { days = 200 }
+#
+#	
+#
+#	notification_text = pryonism_negative_dreams_notification
+#
+#	is_shown = {
+#		scope:actor = { has_trait = pryonism}
+#		
+#	}
+#
+#	auto_accept = {
+#		custom_description = {
+#			text = auto_accept_interaction_ai	
+#			object = scope:recipient
+#			scope:recipient = {
+#				is_ai = yes
+#			}
+#		}
+#	}
+#
+#	on_accept = {
+#        scope:recipient = {
+#
+#			add_opinion = {
+#				modifier = pryonism_bad_dreams
+#				target = scope:actor
+#			}
+#           
+#        }
+#
+#        scope:actor = {
+#
+#          
+#
+#            stress_impact = {
+#                compassionate = medium_stress_impact_gain
+#                forgiving = medium_stress_impact_gain
+#            }
+#            hidden_effect = {
+#                send_interface_message = {
+#                    type = event_generic_neutral
+#                    title = magic.41.t
+#                    right_icon = scope:recipient
+#                    
+#                }
+#            }
+#            trigger_event = magic.41
+#        }
+#    }
+#}
+#
+#pryonism_positive_dreams = {
+#	category = interaction_category_magic
+#	desc = pryonism_positive_dreams_desc
+#	common_interaction = yes
+#	greeting = positive
+#	can_send_despite_rejection = yes
+#	cooldown_against_recipient = { days = 200 }
+#
+#
+#	notification_text = pryonism_positive_dreams_notification
+#
+#	is_shown = {
+#		scope:actor = { has_trait = pryonism}
+#		
+#	}
+#
+#	auto_accept = {
+#		custom_description = {
+#			text = auto_accept_interaction_ai	
+#			object = scope:recipient
+#			scope:recipient = {
+#				is_ai = yes
+#			}
+#		}
+#	}
+#
+#	on_accept = {
+#        scope:recipient = {
+#
+#			add_opinion = {
+#				modifier = pryonism_good_dreams
+#				target = scope:actor
+#			}
+#           
+#        }
+#
+#        scope:actor = {
+#
+#          
+#
+#            stress_impact = {
+#                compassionate = medium_stress_impact_gain
+#                forgiving = medium_stress_impact_gain
+#            }
+#            hidden_effect = {
+#                send_interface_message = {
+#                    type = event_generic_neutral
+#                    title = magic.42.t
+#                    right_icon = scope:recipient
+#                    
+#                }
+#            }
+#            trigger_event = magic.42
+#        }
+#	}
+#}	
+#
+#
+#ethereal_necromancy_possess = {
+#	category = interaction_category_magic
+#	desc = ethereal_necromancy_possess_desc
+#	common_interaction = yes
+#	greeting = negative
+#	can_send_despite_rejection = yes
+#	cooldown_against_recipient = { days = 200 }
+#
+#
+#	notification_text = ethereal_necromancy_possess_notification
+#
+#	is_shown = {
+#		scope:actor = { has_trait = ethereal_necromancy}
+#		
+#	}
+#
+#	auto_accept = {
+#		custom_description = {
+#			text = auto_accept_interaction_ai	
+#			object = scope:recipient
+#			scope:recipient = {
+#				is_ai = yes
+#			}
+#		}
+#	}
+#
+#	on_accept = {
+#        scope:recipient = {
+#			trigger_event = {
+#				id  = magic.0104
+#			}
+#           
+#        }
+#
+#        scope:actor = {
+#
+#          
+#
+#            stress_impact = {
+#                compassionate = medium_stress_impact_gain
+#                forgiving = medium_stress_impact_gain
+#            }
+#        }
+#	}
+#}
+#
+#living_magic_thinning_spell = {
+#	category = interaction_category_hostile
+#	desc = living_magic_thinning_spell_desc
+#	common_interaction = yes
+#	greeting = negative
+#	can_send_despite_rejection = yes
+#	cooldown_against_recipient = { days = 200 }
+#	cooldown = { years = 5 }
+#
+#	notification_text = living_magic_thinning_spell_notification
+#
+#	is_shown = {
+#		scope:actor = {
+#			has_perk = livingmagic_perk2_tree2
+#		}
+#	}
+#
+#	is_valid_showing_failures_only = {
+#		scope:actor = {
+#			var:magic_counter >= tier_2_spell
+#		}
+#	}
+#
+#	on_accept = {
+#		scope:recipient = {
+#			add_character_modifier = {
+#				modifier = thinning_mod
+#				years = 1
+#			}
+#		}
+#		scope:actor = {
+#			change_variable = {
+#				name = magic_counter
+#				subtract = tier_2_spell
+#			}
+#		}
+#	}
+#}
+
+#living_magic_poison_spell = {
+#	category = interaction_category_hostile
+#	desc = living_magic_poison_spell_desc
+#	common_interaction = yes
+#	greeting = negative
+#	can_send_despite_rejection = yes
+#	cooldown_against_recipient = { days = 200 }
+#	cooldown = { years = 5 }
+#
+#	notification_text = living_magic_thinning_spell_notification
+#
+#	is_shown = {
+#		scope:actor = {
+#			has_perk = livingmagic_perk5_tree1
+#		}
+#	}
+#
+#	is_valid_showing_failures_only = {
+#		scope:actor = {
+#			var:magic_counter >= tier_2_spell
+#		}
+#	}
+#
+#	on_accept = {
+#		scope:actor = {
+#			change_variable = {
+#				name = magic_counter
+#				subtract = tier_2_spell
+#			}
+#		}
+#		scope:recipient = {
+#			add_character_modifier = {
+#				modifier = blood_poisoned_mod
+#				years = 10
+#			}
+#		}
+#		if = {
+#			limit = {
+#				scope:actor = {  
+#					is_scheming_against = {
+#						target = scope:recipient
+#						type = murder
+#					}
+#				}
+#				trigger_event = {
+#					id = magic_decisions.1005
+#				}
+#			}
+#		}
+#	}
+#}
+
+#living_magic_domination = {
+#    category = interaction_category_hostile
+#    desc = living_magic_domination_desc
+#    common_interaction = yes
+#    greeting = negative
+#    can_send_despite_rejection = yes
+#    cooldown_against_recipient = { days = 200 }
+#    cooldown = { years = 10 }
+#
+#    notification_text = domination_notification
+#
+#    is_shown = {
+#        scope:actor = {
+#        	has_perk = livingmagic_perk6_tree1
+#        }
+#    }
+#
+#    is_valid_showing_failures_only = {
+#        scope:actor = {
+#            var:magic_counter >= tier_2_spell
+#        }
+#    }
+#
+#    on_accept = {
+#        scope:actor = {
+#            add_hook = {
+#                type = loyalty_hook 
+#                target = scope:recipient
+#                years = 10
+#            }
+#        }
+#        scope:actor = {
+#            change_variable = {
+#                name = magic_counter
+#                subtract = tier_2_spell
+#            }
+#        }
+#    }
+#}
+
+#living_magic_annihilation = {
+#    category = interaction_category_hostile
+#    desc = living_magic_annihilation_desc
+#    common_interaction = yes
+#    greeting = negative
+#    can_send_despite_rejection = yes
+#    cooldown_against_recipient = { days = 200 }
+#    cooldown = { years = 10 }
+#
+#    notification_text = domination_notification
+#
+#    is_shown = {
+#        scope:actor = {
+#        	has_perk = livingmagic_perk7_tree2
+#        }
+#    }
+#
+#    is_valid_showing_failures_only = {
+#        scope:actor = {
+#            var:magic_counter >= tier_4_spell
+#        }
+#    }
+#
+#    on_accept = {
+#        scope:recipient = {
+#			capital_county = {
+#				change_development_level = major_development_level_loss
+#				add_county_modifier = {
+#					modifier = annihilation_mod
+#					years = 5
+#				}
+#			}
+#        }
+#         scope:actor = {
+#            change_variable = {
+#                name = magic_counter
+#                subtract = tier_4_spell
+#            }
+#        }
+#    }
+#}
+
+#living_magic_thralldom = {
+#	category = interaction_category_hostile
+#	desc = living_magic_thralldom_desc
+#	common_interaction = yes
+#	greeting = negative
+#	can_send_despite_rejection = yes
+#
+#	cooldown_against_recipient = { days = 200 }
+#	cooldown = { years = 5 }
+#
+#	notification_text = living_magic_thralldom_notification
+#
+#	is_shown = {
+#		scope:actor = {
+#			has_perk = livingmagic_perk2_tree1
+#		}
+#	}
+#
+#	is_valid_showing_failures_only = {
+#		scope:actor = {
+#			var:magic_counter >= tier_3_spell
+#		}
+#		scope:recipient = {
+#			NOT = {
+#				is_landed = yes
+#			}
+#		}
+#	}
+#
+#	on_accept = {
+#		scope:actor = {
+#			change_variable = {
+#				name = magic_counter
+#				subtract = tier_3_spell
+#			}
+#		}
+#
+#		if = {
+#			limit = {
+#				scope:recipient = {
+#					is_courtier_of = scope:actor
+#					NOT = {
+#						is_lowborn = yes
+#					}
+#				}
+#			}
+#			add_tyranny = major_tyranny_gain
+#			every_close_family_member = {
+#				add_opinion = {
+#					modifier = thralled_my_familymember
+#					years = 10
+#					target = scope:actor
+#				}
+#			}
+#			add_opinion = {
+#				modifier = thralled
+#				years = 10
+#				target = scope:actor
+#			}
+#		}
+#
+#		if = {
+#			limit = {
+#				scope:recipient = {
+#					is_lowborn = no
+#					NOT = {
+#						is_courtier_of = scope:actor
+#					}
+#				}
+#			}
+#			add_tyranny = major_tyranny_gain
+#			every_close_family_member = {
+#				add_opinion = {
+#					modifier = thralled_my_familymember
+#					years = 10
+#					target = scope:actor
+#				}
+#			}
+#			scope:actor = {
+#				add_courtier = scope:recipient
+#			}
+#			add_opinion = {
+#				modifier = thralled
+#				years = 10
+#				target = scope:actor
+#			}
+#		}
+#
+#		if = {
+#			limit = {
+#				scope:recipient = {
+#					AND = {
+#						is_lowborn = yes
+#						is_courtier_of = scope:actor
+#					}
+#				}
+#			}
+#			add_opinion = {
+#				modifier = thralled
+#				years = 10
+#				target = scope:actor
+#			}
+#		}
+#	}
+#}
+
+
+#ethereal_necromancy_Send_Spirit_Assassin = {
+#	category = interaction_category_magic
+#	desc = ethereal_necromancy_possess_desc
+#	common_interaction = yes
+#	greeting = negative
+#	can_send_despite_rejection = yes
+#	cooldown_against_recipient = { days = 200 }
+#
+#
+#	notification_text = ethereal_necromancy_possess_notification
+#
+#	is_shown = {
+#		scope:actor = {  
+#			is_scheming_against = {
+#				target = scope:recipient
+#				type = murder
+#			}
+#		}
+#		
+#	}
+#
+#	auto_accept = {
+#		custom_description = {
+#			text = auto_accept_interaction_ai	
+#			object = scope:recipient
+#			scope:recipient = {
+#				is_ai = yes
+#			}
+#		}
+#	}
+#
+#	on_accept = {
+#        scope:recipient = {
+#			trigger_event = {
+#				id  = magic.0104
+#			}
+#           
+#        }
+#
+#        scope:actor = {
+#
+#          
+#
+#            stress_impact = {
+#                compassionate = medium_stress_impact_gain
+#                forgiving = medium_stress_impact_gain
+#            }
+#        }
+#	}
+#}
+
+#dead_magic_crush_armor = {
+#	category = interaction_category_hostile
+#	desc = dead_magic_crush_armor_desc
+#	common_interaction = yes
+#	greeting = negative
+#	can_send_despite_rejection = yes
+#
+#	cooldown_against_recipient = { days = 200 }
+#	cooldown = { years = 5 }
+#
+#	notification_text = dead_magic_crush_armor_notification
+#
+#	is_shown = {
+#		scope:actor = {
+#			has_perk = deadmagic_perk2_tree2
+#		}
+#	}
+#
+#	is_valid_showing_failures_only = {
+#		scope:actor = {
+#			var:magic_counter >= tier_1_spell
+#		}
+#		scope:recipient = {
+#			is_in_army = yes
+#		}
+#	}
+#
+#	on_accept = {
+#		scope:actor = {
+#			change_variable = {
+#				name = magic_counter
+#				subtract = tier_1_spell
+#			}
+#		}
+#		scope:recipient = {
+#			add_character_modifier = {
+#				modifier = crushed_armor
+#				months = 3
+#			}
+#		}
+#	}
+#}

@@ -1,0 +1,896 @@
+﻿
+vampiric_drain_shown = {
+	root = {
+		has_perk = livingmagic_perk9_tree1
+	}
+	NOT = {
+		has_character_flag = stopped_vampirism
+	}
+}
+vampiric_drain_trigger = {
+	spell_magic_cost_raw = { COST = vampiric_drain_cost }
+	NOT = {
+		has_trait = gh_extended_life
+		OR = {
+			has_character_flag = casted_vampiric_drain
+			has_trait = incapable
+		}
+	}
+}
+thinning_shown = {
+	OR = {
+		spell_requires_court_mage_trait_rank = { TRAIT_NAME = education_living_magic RANK = 2 }
+		spell_requires_perk = { PERK_NAME = livingmagic_perk2_tree2 }
+	}
+}
+thinning_trigger = {
+	spell_magic_cost_raw = { COST = thinning_cost }
+	NOT = {
+		OR = {
+			has_character_flag = casted_thinning
+			has_trait = incapable
+		}
+	}
+}
+
+poison_shown = {
+	OR = {
+		spell_requires_court_mage_trait_rank = { TRAIT_NAME = education_living_magic RANK = 2 }
+		spell_requires_perk = { PERK_NAME = livingmagic_perk5_tree1 }
+	}
+}
+#start of syzy's rewrites so you know who to blame when it's broken
+posion_trigger = {
+	spell_magic_cost_raw = { COST = posion_cost }
+	NOT = {
+		OR = {
+			has_character_flag = casted_poison
+			has_trait = incapable
+		}
+	}
+}
+
+thralldom_shown = {
+	OR = {
+		spell_requires_court_mage_trait_rank = { TRAIT_NAME = education_living_magic RANK = 2 }
+		spell_requires_perk = { PERK_NAME = livingmagic_perk2_tree1 }
+	}
+}
+
+thralldom_trigger = {
+	spell_magic_cost_raw = { COST = thralldom_cost }
+	NOT = {
+		OR = {
+			has_character_flag = casted_thralldom
+			has_trait = incapable
+		}
+	}
+}
+
+domination_shown = {
+	OR = {
+		spell_requires_court_mage_trait_rank = { TRAIT_NAME = education_living_magic RANK = 2 }
+		spell_requires_perk = { PERK_NAME = livingmagic_perk6_tree1 }
+	}
+}
+
+domination_trigger = {
+	spell_magic_cost_raw = { COST = domination_cost }
+	NOT = {
+		OR = {
+			has_character_flag = casted_domination 
+			has_trait = incapable
+		}
+	}
+}
+
+strengthening_shown = {
+	OR = {
+		spell_requires_court_mage_trait_rank = { TRAIT_NAME = education_living_magic RANK = 1 }
+		spell_requires_perk = { PERK_NAME = livingmagic_perk5_tree2 }
+	}				
+}
+strengthening_trigger = {
+	spell_magic_cost_raw = { COST = strengthening_cost }
+	NOT = {
+		OR = {
+			has_character_flag = casted_strengthening
+			has_trait = incapable
+		}
+	}
+}
+
+fire_magick_shown = {
+	OR = {
+		spell_requires_court_mage_trait_rank = { TRAIT_NAME = education_living_magic RANK = 1 }
+		spell_requires_perk = { PERK_NAME = livingmagic_perk1_tree2 }
+		}
+	}
+}
+
+fire_magick_trigger = {
+	spell_magic_cost_raw = { COST = fire_magick_cost }
+	NOT = {
+		OR = {
+			has_character_flag = casted_fire_magick
+			has_trait = incapable
+		}
+	}
+}
+
+
+mending_shown = {
+	OR = {
+		spell_requires_court_mage_trait_rank = { TRAIT_NAME = education_living_magic RANK = 2 }
+		spell_requires_perk = { PERK_NAME = livingmagic_perk4_tree1 }
+	}
+}
+
+mending_trigger = {
+	spell_magic_cost_raw = { COST = mending_cost }
+	NOT = {
+		OR = {
+			has_character_flag = casted_mending 
+			has_trait = incapable
+		}
+	}
+	OR = {
+		has_trait = wounded_1
+		has_trait = wounded_2
+		has_trait = wounded_3
+		has_trait = maimed
+		has_trait = one_eyed
+		has_trait = one_legged
+		has_trait = disfigured
+		has_trait = infirm
+		has_trait = gout_ridden
+		has_trait = consumption
+		has_trait = cancer
+		has_trait = typhus
+		has_trait = bubonic_plague
+		has_trait = smallpox
+		has_trait = eunuch
+		has_trait = blind
+		has_trait = bleeder
+		has_trait = wheezing
+		has_trait = weak
+		has_trait = scaly
+		has_trait = impotent
+		has_trait = infertile
+		has_trait = ill
+		has_trait = pneumonic
+		has_trait = great_pox
+		has_trait = early_great_pox
+		has_trait = lovers_pox
+		has_trait = leper
+		has_trait = clubfooted
+		has_trait = hunchbacked
+		has_trait = lisping
+	}
+}
+
+purification_shown = {
+	OR = {
+		spell_requires_court_mage_trait_rank = { TRAIT_NAME = education_living_magic RANK = 1 }
+		spell_requires_perk = { PERK_NAME = livingmagic_perk4_tree3 }
+	}
+}
+
+purification_trigger = {
+	spell_magic_cost_raw = { COST = purification_cost }
+	NOT = {
+		OR = {
+			has_character_flag = casted_purification
+			has_trait = incapable
+		}
+	}
+}
+
+unveiling_shown = {
+	OR = {
+		spell_requires_court_mage_trait_rank = { TRAIT_NAME = education_living_magic RANK = 2 }
+		spell_requires_perk = { PERK_NAME = livingmagic_perk7_tree1 }
+	}
+}
+
+unveiling_trigger = {
+	spell_magic_cost_raw = { COST = unveiling_cost }
+	NOT = {
+		OR = {
+			has_character_flag = casted_mending
+			has_trait = incapable
+		}
+	}
+	OR = {
+		has_trait = depressed_1
+		has_trait = depressed_genetic
+		has_trait = lunatic_1
+		has_trait = lunatic_genetic
+		has_trait = possessed_genetic
+		has_trait = possessed
+		has_trait = intellect_bad_1
+		has_trait = intellect_bad_2
+		has_trait = intellect_bad_3
+		has_trait = dull
+		has_trait = stuttering
+	}
+}
+
+creation_shown = {
+		spell_requires_trait_rank = { TRAIT_NAME = education_living_magic RANK = 1 }
+	}
+}
+
+creation_trigger = {
+	spell_magic_cost_raw = { COST = creation_cost }
+	NOT = {
+		OR = {
+			has_character_flag = casted_creation
+			has_trait = incapable
+		}
+	}
+}
+	
+divination_shown = {
+	OR = {
+		spell_requires_court_mage_trait_rank = { TRAIT_NAME = education_living_magic RANK = 3 }
+		spell_requires_perk = { PERK_NAME = livingmagic_perk3_tree3 }
+	}
+}
+
+divination_trigger = {
+	spell_magic_cost_raw = { COST = divination_cost }
+	NOT = {
+		OR = {
+			has_character_flag = casted_divination
+			has_trait = incapable
+		}
+	}
+}
+
+healing_water_shown = {
+	OR = {
+		spell_requires_court_mage_trait_rank = { TRAIT_NAME = education_living_magic RANK = 3 }
+		spell_requires_perk = { PERK_NAME = livingmagic_perk6_tree3 }
+	}
+}
+
+healing_water_trigger = {
+	spell_magic_cost_raw = { COST = healing_water_cost }
+	NOT = {
+		OR = {
+			has_character_flag = casted_healing_water
+			has_trait = incapable
+		}
+	}
+}
+
+annihilation_shown = {
+	OR = {
+		spell_requires_court_mage_trait_rank = { TRAIT_NAME = education_living_magic RANK = 3 }
+		spell_requires_perk = { PERK_NAME = livingmagic_perk7_tree2 }
+	}
+}
+
+annihilation_trigger = {
+	spell_magic_cost_raw = { COST = annihilation_cost }
+	NOT = {
+		OR = {
+			has_trait = incapable
+			has_character_flag = casted_annihilation
+		}
+	}
+}
+
+raise_undead_shown = {
+	OR = {
+		spell_requires_court_mage_trait_rank = { TRAIT_NAME = education_living_magic RANK = 4 }
+		spell_requires_perk = { PERK_NAME = livingmagic_perk7_tree1 }
+	}
+}
+
+
+raise_undead_trigger = {
+	spell_magic_cost_raw = { COST = raise_undead_cost }
+	NOT = {
+		OR = {
+			has_character_flag = casted_raise_dead_living
+			has_trait = incapable
+		}
+	}
+}
+quicken_shown = {
+	OR = {
+		spell_requires_court_mage_trait_rank = { TRAIT_NAME = education_living_magic RANK = 1 }
+		spell_requires_perk = { PERK_NAME = livingmagic_perk4_tree2 }
+	}
+}
+
+quicken_trigger = {
+	spell_magic_cost_raw = { COST = quicken_cost }
+	NOT = {
+		OR = {
+			has_character_flag = casted_quicken
+			has_trait = incapable
+		}
+	}
+}
+
+battle_rage_shown = {
+	OR = {
+		spell_requires_court_mage_trait_rank = { TRAIT_NAME = education_living_magic RANK = 3 }
+		spell_requires_perk = { PERK_NAME = livingmagic_perk8_tree2 }
+	}
+}
+battle_rage_trigger = {
+	spell_magic_cost_raw = { COST = battle_rage_cost }
+	NOT = {
+		OR = {
+			has_character_flag = casted_battle_rage
+			has_trait = incapable
+		}
+	}
+}
+
+genocide_region_shown = {
+	this = character:western_imperial_1
+}
+
+genocide_region_trigger = {
+	spell_magic_cost_raw = { COST = genocide_region_cost }
+	NOT = {
+		OR = {
+			has_character_flag = casted_genocide_region
+			has_trait = incapable
+		}
+		custom_description = {
+			has_variable_list = spell_targets
+			text = DESELECT_CHAR
+		}
+	}
+	custom_description = {
+		has_variable_list = spell_l_targets
+		text = SELECT_LAND
+	}
+}
+#the spacing is odd so i'm not going to delete it yet just in case it has esoteric coding meaning
+	#is_valid = {
+	#	spell_magic_cost_by_tier = { TIER = 5 }
+	#	NOT = {
+	#		OR = {
+	#			has_character_flag = casted_genocide_region
+	#			has_trait = incapable
+	#			}
+	#		custom_description = {
+	#			has_variable_list = spell_targets
+	#			text = DESELECT_CHAR
+	#		}
+	#	}
+	#	custom_description = {
+	#		has_variable_list = spell_l_targets
+	#		text = SELECT_LAND
+	#	}
+	#}
+	#effect = {}
+	#}
+
+### DEAD MAGIC ###
+raise_undead2_shown = {
+	OR = {
+		spell_requires_court_mage_trait_rank = { TRAIT_NAME = education_dead_magic RANK = 3 }
+		spell_requires_perk = { PERK_NAME = deadmagic_perk5_tree1 }
+	}
+}
+
+raise_undead2_trigger = {
+	spell_magic_cost_raw = { COST = raise_undead2_cost }
+	NOT = {
+		OR = {
+			has_character_flag = casted_raise_dead
+			has_trait = incapable
+		}
+	}
+}
+	
+lead_to_gold_shown = {
+	OR = {
+		spell_requires_court_mage_trait_rank = { TRAIT_NAME = education_dead_magic RANK = 1 }
+		spell_requires_perk = { PERK_NAME = deadmagic_perk2_tree1 }
+	}
+}
+
+lead_to_gold_trigger = {
+	spell_magic_cost_raw = { COST = lead_to_gold_cost }
+	NOT = {
+		OR = {
+			has_character_flag = cast_lead_to_gold
+			has_trait = incapable
+		}
+	}
+}
+
+create_golems_shown = {
+	OR = {
+		spell_requires_court_mage_trait_rank = { TRAIT_NAME = education_dead_magic RANK = 2 }
+		spell_requires_perk = { PERK_NAME = deadmagic_perk6_tree1 }
+	}
+}
+
+create_golems_trigger = {
+	spell_magic_cost_raw = { COST = create_golems_cost }
+	NOT = {
+		OR = {
+			has_character_flag = casted_create_golems
+			has_trait = incapable
+		}
+	}
+}
+
+stone_serpent_shown = {
+	OR = {
+		spell_requires_court_mage_trait_rank = { TRAIT_NAME = education_dead_magic RANK = 1 }
+		spell_requires_perk = { PERK_NAME = deadmagic_perk4_tree2 }
+	}
+}
+
+stone_serpent_trigger = {
+	spell_magic_cost_raw = { COST = stone_serpent_cost }
+	NOT = {
+		OR = {
+			has_character_flag = casted_stone_serpent
+			has_trait = incapable
+		}
+	}
+}
+
+#this didn't have an OR argument so I guess it's fine as is?
+astromancy_shown = {
+	spell_requires_court_mage_trait_rank = { TRAIT_NAME = education_dead_magic RANK = 2 }
+	spell_requires_perk = { PERK_NAME = deadmagic_perk2_tree1 }
+}
+
+astromancy_trigger = {
+	spell_magic_cost_raw = { COST = astromancy_cost }
+	NOT = {
+		OR = {
+			has_character_flag = casted_astromancy
+			has_trait = incapable
+		}
+	}
+}
+	
+necrotic_boon_shown = {
+	OR = {
+		spell_requires_court_mage_trait_rank = { TRAIT_NAME = education_dead_magic RANK = 2 }
+		spell_requires_perk = { PERK_NAME = deadmagic_perk4_tree1 }
+	}
+}
+necrotic_boon_trigger = {
+	spell_magic_cost_raw = { COST = necrotic_boon_cost }
+	NOT = {
+		OR = {
+			has_trait = incapable
+			has_character_flag = casted_necrotic_boon
+		}
+	}
+}
+	
+pull_metor_shown = {
+	OR = {
+		spell_requires_court_mage_trait_rank = { TRAIT_NAME = education_dead_magic RANK = 3 }
+		spell_requires_perk = { PERK_NAME = deadmagic_perk7_tree2 }
+	}
+}
+
+pull_metor_trigger = {
+	spell_magic_cost_raw = { COST = pull_metor_cost }
+	NOT = {
+		OR = {
+			has_trait = incapable
+			has_character_flag = casted_pulled_meteor
+		}
+	}
+}
+
+crush_armor_shown = {
+	OR = {
+		spell_requires_court_mage_trait_rank = { TRAIT_NAME = education_dead_magic RANK = 1 }
+		spell_requires_perk = { PERK_NAME = deadmagic_perk2_tree2 }
+	}
+}
+
+crush_armor_trigger = {
+	spell_magic_cost_raw = { COST = crush_armor_cost }
+	NOT = {
+		OR = {
+			has_trait = incapable
+			has_character_flag = casted_crush_armor
+		}
+	}
+}
+
+craft_greater_golem_shown = {
+	OR = {
+		spell_requires_court_mage_trait_rank = { TRAIT_NAME = education_dead_magic RANK = 4 }
+		spell_requires_perk = { PERK_NAME = deadmagic_perk8_tree1 }
+	}
+}
+craft_greater_golem_trigger = {
+	spell_magic_cost_raw = { COST = craft_greater_golem_cost }
+	NOT = {
+		has_character_flag = casted_craft_greater_golem
+		has_trait = incapable #added this in since it's in every trigger 
+	}
+}
+
+boneshaping_shown = {
+	OR = {
+		spell_requires_court_mage_trait_rank = { TRAIT_NAME = education_dead_magic RANK = 4 }
+		spell_requires_perk = { PERK_NAME = deadmagic_perk7_tree1 }
+	}
+}
+boneshaping_trigger = {
+	spell_magic_cost_raw = { COST = boneshaping_cost }
+	NOT = {
+		has_character_flag = casted_boneshaping
+	}
+}
+
+### MIXED MAGIC ###
+ # a lot of these didn't have incapable arguments so I added them in
+dementation_shown = {
+	OR = {
+		spell_requires_court_mage_trait_rank = { TRAIT_NAME = education_mixed_magic RANK = 2 }
+		spell_requires_perk = { PERK_NAME = mixedmagic_perk2_tree1 }
+	}
+}
+dementation_trigger = {
+	spell_magic_cost_raw = { COST = dementation_cost }
+	NOT = {
+		has_character_flag = casted_dementation
+	}
+}
+
+rift_walk_shown = {
+	OR = {
+		spell_requires_court_mage_trait_rank = { TRAIT_NAME = education_mixed_magic RANK = 2 }
+		spell_requires_perk = { PERK_NAME = mixedmagic_perk2_tree3 }
+	}
+}
+
+rift_walk_trigger = {
+	spell_magic_cost_raw = { COST = rift_walk_cost }
+	NOT = {
+		has_character_flag = casted_rift_walk
+	}
+}
+
+haunting_power_shown = {
+	OR = {
+		spell_requires_court_mage_trait_rank = { TRAIT_NAME = education_mixed_magic RANK = 1 }
+		spell_requires_perk = { PERK_NAME = mixedmagic_perk3_tree2 }
+	}
+}
+
+haunting_power_trigger = {
+	spell_magic_cost_raw = { COST = haunting_power_cost }
+	NOT = {
+		has_character_flag = casted_haunting_power
+	}
+}
+
+summon_lesser_shown = {
+	OR = {
+		spell_requires_court_mage_trait_rank = { TRAIT_NAME = education_mixed_magic RANK = 4 }
+		spell_requires_perk = { PERK_NAME = mixedmagic_perk6_tree1 }
+	}
+}
+
+summon_lesser_trigger = {
+	spell_magic_cost_raw = { COST = summon_lesser_cost }
+	NOT = {
+		has_character_flag = summon_lesser_beings
+	}
+}
+	#this next one is actually summon greater fogbeast
+fog_cast_shown = {
+	OR = {
+		spell_requires_court_mage_trait_rank = { TRAIT_NAME = education_mixed_magic RANK = 4 }
+		spell_requires_perk = { PERK_NAME = mixedmagic_perk6_tree1 }
+	}
+}
+fog_cast_trigger = {
+	spell_magic_cost_raw = { COST = fog_cast_cost }
+	NOT = {
+		has_character_flag = fog_casted
+	}
+}
+
+rift_gaze_shown = {
+	OR = {
+		spell_requires_court_mage_trait_rank = { TRAIT_NAME = education_mixed_magic RANK = 4 }
+		spell_requires_perk = { PERK_NAME = mixedmagic_perk8_tree1 }
+	}
+}
+
+rift_gaze_trigger = {
+	spell_magic_cost_raw = { COST = rift_gaze_cost }
+	NOT = {
+		has_character_flag = rift_gazed\
+	}
+}
+
+raise_lesser_fogbeast_shown = {
+	OR = {
+		spell_requires_court_mage_trait_rank = { TRAIT_NAME = education_mixed_magic RANK = 4 }
+		spell_requires_perk = { PERK_NAME = mixedmagic_perk5_tree1 }
+	}
+}
+
+raise_lesser_fogbeasts_trigger = {
+	spell_magic_cost_raw = { COST = raise_lesser_fogbeasts_cost }
+	NOT = {
+		has_character_flag = casted_raise_lesser_fogbeasts
+	}
+}
+
+obliterate_memory_shown = {
+	OR = {
+		spell_requires_court_mage_trait_rank = { TRAIT_NAME = education_mixed_magic RANK = 4 }
+		spell_requires_perk = { PERK_NAME = mixedmagic_perk9_tree3 }
+	}
+}
+
+obliterate_memory_trigger = {
+	spell_magic_cost_raw = { COST = obliterate_memory_cost }
+	NOT = {
+		has_character_flag = casted_obliterate_memory
+	}
+}
+
+remove_burdens_shown = {
+	OR = {
+		spell_requires_court_mage_trait_rank = { TRAIT_NAME = education_mixed_magic RANK = 3 }
+		spell_requires_perk = { PERK_NAME = mixedmagic_perk7_tree3 }
+	}
+}
+remove_burdens_trigger = {
+	spell_magic_cost_raw = { COST = remove_burdens_cost }
+	NOT = {
+		has_character_flag = casted_remove_burden
+	}
+}
+	
+###  OTHER MAGIC ###
+
+
+
+#### GENERATE MAGIC ###
+
+study_arcane_shown = {
+		can_access_magic = yes
+	}
+study_arcane_trigger = {
+	NOT = {
+		OR = {
+			has_character_flag = studied_arcane
+			has_trait = incapable
+		}
+	}
+}
+
+flagellate_shown = {
+	NOT = {
+		has_culture_group = culture_group:gh_partic_group
+	}
+	root = {
+		has_perk = has_perk = livingmagic_perk1_tree1
+	}
+}
+flagellate_trigger = {
+	NOT = {
+		OR = {
+			has_character_flag = inflicted_self_harm
+			has_trait = incapable
+		}
+		custom_description = {
+			has_variable_list = spell_l_targets
+			text = DESELECT_LAND
+		}
+		custom_description = {
+			has_variable_list = spell_targets
+			text = DESELECT_CHAR
+		}
+	}
+}
+ritual_sacrifice_shown = {
+	NOT = {
+		root = {
+			has_culture_group = culture_group:gh_partic_group
+		}
+	}
+	root = {
+		has_perk = livingmagic_perk8_tree1
+	}
+}
+ritual_sacrifice_trigger = {
+	NOT = {
+		has_character_flag = sacrificed_someone
+		has_trait = incapable
+		custom_description = {
+			has_variable_list = spell_l_targets
+			text = DESELECT_LAND
+		}
+	}
+	custom_description = {
+		has_variable_list = spell_targets
+		text = SELECT_CHAR_INV
+	}
+}
+
+sacrifice_population_shown = {
+	NOT = {
+		root = {
+			has_culture_group = culture_group:gh_partic_group
+		}
+		root = {
+			has_perk = livingmagic_perk8_tree1
+		}
+	}
+}
+
+sacrifice_population_trigger = {
+	NOT = {
+		OR = {
+			has_character_flag = sacrificed_population
+			has_trait = incapable
+		}
+		custom_description = {
+			has_variable_list = spell_targets
+			text = DESELECT_CHAR
+		}
+	}
+	custom_description = {
+		has_variable_list = spell_l_targets
+		text = SELECT_LAND
+	}
+}
+
+sacrifice_plants_shown = {
+	root = {
+		OR = {
+			has_culture_group = culture_group:gh_partic_group
+			has_perk = livingmagic_perk2_tree3
+		}
+	}
+}
+sacrifice_plants_trigger = {
+	NOT = {
+		OR = {
+			has_character_flag = killed_plants
+			has_trait = incapable
+		}
+	}
+}
+
+communed_with_the_way_shown = {
+	has_culture_group = culture_group:gh_partic_group
+	OR = {
+		has_trait_rank = {
+			trait = education_living_magic
+			rank >= 1
+		}
+		has_trait_rank = {
+			trait = education_dead_magic
+			rank >- 1
+		}
+		has_trait_rank = {
+			trait = education_mixed_magic
+			rank >= 1
+		}
+	}
+}
+communed_with_the_way_trigger = {
+	NOT = {
+		OR = {
+			has_character_flag = communed_with_the_way
+			has_trait = incapable
+		}
+	}
+}
+seeped_into_madness_shown = {
+	has_perk = mixedmagic_perk1_tree1
+}
+
+seeped_into_madness_trigger = {
+	NOT = {
+		has_character_flag = seeps_into_madness
+	}
+}
+
+communed_with_eldritch_shown = {
+	has_perk = mixedmagic_perk4_tree1
+}
+
+communed_with_eldritch_trigger = {
+	NOT = {
+		has_character_flag = communes_with_eldritch
+	}
+}
+
+dreamwalk_shown = {
+	has_perk = mixedmagic_perk1_tree3
+}
+
+dreamwalk_trigger = {
+	NOT = {
+		has_character_flag = dreamwalked
+	}
+}
+
+dream_invasion_shown = {
+	has_perk = mixedmagic_perk5_tree3
+}
+
+dream_invasion_trigger = {
+	NOT = {
+		has_character_flag = dream_invaded
+	}
+}
+
+ethereal_ritual_shown = {
+	has_perk = mixedmagic_perk1_tree3
+}
+ethereal_ritual_trigger = {
+	NOT = {
+		has_character_flag = communes_with_ethereals
+	}
+}
+
+moon_read_shown = {
+	has_perk = deadmagic_perk1_tree2
+}
+
+moon_read_trigger = {
+	NOT = {
+		OR = {
+			has_character_flag = moon_read_already
+			has_trait = incapable
+		}
+	}
+}
+
+moon_pull_shown = {
+	has_perk = deadmagic_perk4_tree2
+}
+moon_pull_trigger = {
+	NOT = {
+		OR = {
+			moon_pull_already
+			has_trait = incapable
+		}
+	}
+}
+
+skeletal_craft_shown = {
+	has_perk = deadmagic_perk3_tree1
+}
+skeletal_craft_trigger = {
+	NOT = {
+		OR = {
+			has_character_flag = casted_skeletal_craft
+			has_trait = incapable
+		}
+	}
+}
+expedition_shown = {
+	has_perk = deadmagic_perk1_tree3
+}
+expedition_trigger = {
+	NOT = {
+		OR = {
+			has_trait = incapable
+			has_character_flag = went_on_expedition
+		}
+	}
+}

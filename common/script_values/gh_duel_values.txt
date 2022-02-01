@@ -1,0 +1,229 @@
+﻿length_of_duel = 14
+cooldown_after_duel = 7
+
+duel_cooldown_total = {
+	value = length_of_duel
+	add = cooldown_after_duel
+}
+
+
+stratchoice_multiplier = 10
+
+mult_disadv_rep = 1
+mult_disadv_hurt = 1
+disadv_rep = {
+	value = mult_disadv_rep
+	multiply = stratchoice_multiplier
+}
+disadv_hurt = {
+	value = mult_disadv_hurt
+	multiply = stratchoice_multiplier
+}
+
+preduel_bonuses = {
+	value = 0
+	if = {
+		limit = { has_character_flag = hurt }
+		add = disadv_hurt
+	}
+	if = {
+		limit = { has_character_flag = reputation_tarnished }
+		add = disadv_rep
+	}
+	if = {
+		limit = { has_character_flag = unequal_footing }
+		add = disadv_hurt
+	}
+}
+
+
+duel_win_chance = {
+	value = prowess
+	subtract = {
+		this.var:OTHER = prowess
+	}
+}
+
+duel_bribe_cost = {
+	#value = duel_win_chance
+	value = major_gold_value
+}
+
+
+
+
+duel_calc_adv_low = {
+	value = this.var:OTHER.var:stratchoice
+	subtract = this.var:stratchoice
+	if = {
+		limit = {
+			2 = {
+				value = this.var:OTHER.var:stratchoice
+				subtract = this.var:stratchoice
+			}
+		} # diff is 2, so you're aggresively attacking and they're defending
+		value = -1
+	}
+	# otherwise if it's 0 or 1, the code works out
+
+	add = preduel_bonuses
+	this.var:OTHER = {
+		subtract = preduel_bonuses
+	}
+}
+
+
+duel_other_stratchoice = {
+	this.var:OTHER.var:stratchoice
+}
+
+duel_calc_adv = {
+	if = {
+		limit = { this.var:stratchoice > duel_other_stratchoice }
+		this.var:OTHER = {
+			value = duel_calc_adv_low
+		}
+		multiply = -1
+	}
+	else = {
+		value = duel_calc_adv_low
+
+	}
+
+	multiply = stratchoice_multiplier
+}
+
+flee_bonus = {
+	value = prowess
+	add = {
+		value = intrigue
+		divide = 3
+	}
+}
+
+flee_bonus_other = {
+	this.var:OTHER = {
+		value = prowess
+		add = {
+			value = intrigue
+			divide = 4
+		}
+		multiply = { # will increase by (dip-12)x2 percent
+			value = diplomacy
+			subtract = decent_skill_rating
+			divide = 50
+			add = 1
+		}
+	}
+}
+
+
+stubbornloop_chance = {
+	value = 1
+	if = {
+		limit = { has_trait = stubborn }
+		add = 5
+	}
+
+	min = 0
+	max = 100
+}
+
+stubbornloop_minus = {
+	value = 100
+	subtract = stubbornloop_chance
+}
+
+
+
+
+duel_battle_chance = 2
+
+duel_battle_notice_chance = {
+	value = 40
+	add = learning
+	max = 100
+}
+
+duel_prestige_cost = {
+	value = massive_prestige_value # using value because it's not a gain
+	if = {
+		limit = {
+			scope:actor = {
+				has_relation_nemesis = scope:recipient
+			}
+		}
+		multiply = 0.5
+	}
+}
+
+get_meet_chance_subjective = {
+	value = 50
+	multiply = {
+		value = this.var:duel_choice
+		subtract = 2
+	}
+}
+
+get_duel_battle_final_meet_chance = {
+	value = 50
+	add = get_meet_chance_subjective
+
+	this.var:OTHER = {
+		add = get_meet_chance_subjective
+	}
+
+	min = 0
+	max = 100
+}
+
+av_duel_bonus = 10
+
+av_get_duel_bonus = {
+	if = {
+		limit = {
+			OR = {
+				var:stratchoice = var:OTHER.var:stratchoice
+				AND = {
+					var:stratchoice = 4
+					var:OTHER.var:stratchoice = 1
+				}
+				AND = {
+					var:OTHER.var:stratchoice = 4
+					var:stratchoice = 1
+				}
+			}
+		}
+		value = 0
+	}
+	else_if = {
+		limit = {
+			OR = {
+				AND = {
+					var:stratchoice = 1
+					var:OTHER.var:stratchoice = 2
+				}
+				AND = {
+					var:stratchoice = 2
+					var:OTHER.var:stratchoice = 3
+				}
+				AND = {
+					var:stratchoice = 3
+					OR = {
+						var:OTHER.var:stratchoice = 1
+						var:OTHER.var:stratchoice = 4
+					}
+				}
+				AND = {
+					var:stratchoice = 4
+					var:OTHER.var:stratchoice = 2
+				}
+			}
+		}
+		value = av_duel_bonus
+	}
+	else = {
+		value = av_duel_bonus
+		multiply = -1
+	}
+}

@@ -1,0 +1,142 @@
+﻿##################
+##DECISIONS LIST##
+# search_for_mage_decision
+# add_magic
+##################
+
+##################
+# Search for Court Magi
+# by ThePinkPanzer
+search_for_mage_decision = {
+	ai_check_interval = 12
+	picture = "gfx/interface/illustrations/decisions/decision_magi.dds"
+	
+	cooldown = { years = 5 }
+	
+	desc = search_for_mage_decision_desc
+	selection_tooltip = search_for_mage_decision_desc_tooltip
+	
+	is_shown = {
+		can_have_court_magi_trigger = yes
+	}
+	
+	effect = {
+		if = {
+			limit = {
+				faith = { has_doctrine = doctrine_magic_crime }
+			}
+			add_piety = massive_piety_loss
+		}
+		else_if = {
+			limit = {
+				faith = { has_doctrine = doctrine_magic_shunned }
+			}
+			add_piety = major_piety_loss
+		}
+		
+		trigger_event = magic.0031
+		custom_tooltip = search_for_mage_decision_tooltip
+
+	}
+	
+	ai_potential = {
+		always = yes
+	}
+	
+	ai_will_do = {
+		base = 0
+		modifier = {
+			add = 100
+			NOT = {
+				exists = cp:councillor_court_mage
+			}
+		}
+	}
+}
+
+##################
+# Add Magic (DEBUG)
+# by ThePinkPanzer
+add_magic = {
+	ai_check_interval = 12
+	desc = get_blood_desc
+	is_shown = {
+		﻿can_access_magic = yes
+		debug_only = yes
+	}
+
+	is_valid = {
+		has_trait_rank = {
+			trait = magic_good
+			rank > 0
+		}
+	}
+
+	effect = {
+		if = {
+			limit = { has_variable = magic_counter }
+			change_variable = {
+				name = magic_counter
+				add = 1000
+			}
+		}
+	}
+}
+
+##################
+# Search for Bones
+# by Bommelom
+bonefinding_decision = {
+	ai_check_interval = 12
+	picture = "gfx/interface/illustrations/decisions/decision_magi.dds"
+	desc = bonefinding_decision_desc
+	
+	cooldown = { days = standard_bonefinding_cooldown_time }
+	
+	selection_tooltip = bonefinding_decision_desc_tooltip
+	
+	is_shown = {
+		has_perk = deadmagic_perk3_tree1
+	}
+	
+	effect = {
+		trigger_event = bonecrafting.0100
+		custom_tooltip = bonefinding_decision_tooltip
+	}
+	
+	ai_potential = {
+		always = no
+	}
+	
+	ai_will_do = {
+		base = 50
+	}
+}
+
+##################
+# Craft Bone Artifact
+# by Bommelom
+craft_bone_artifact_decision = {
+	ai_check_interval = 12
+	picture = "gfx/interface/illustrations/decisions/decision_magi.dds"
+	desc = craft_bone_artifact_decision_desc
+	
+	selection_tooltip = craft_bone_artifact_decision_desc_tooltip
+	
+	is_shown = {
+		has_perk = deadmagic_perk4_tree1
+	}
+	
+	effect = {
+		trigger_event = bonecrafting.0201
+		custom_tooltip = craft_bone_artifact_decision_tooltip
+	}
+	
+	ai_potential = {
+		always = no
+	}
+	
+	ai_will_do = {
+		base = 50
+	}
+}

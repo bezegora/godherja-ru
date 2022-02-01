@@ -1,0 +1,329 @@
+﻿heresy_hostility = {
+	group = "not_creatable"
+	is_available_on_create = {
+		has_doctrine = heresy_hostility_doctrine
+	}
+	heresy_hostility_doctrine = {
+		parameters = {
+			hostility_same_religion = 2
+		}
+	}
+}
+
+nudity_doctrine = {
+	group = "special"
+	is_available_on_create = {
+		has_doctrine = special_doctrine_naked_priests
+	}
+
+	special_doctrine_naked_priests = {
+		parameters = {
+			naked_priests_active = yes
+		}
+	}
+}
+
+agionist_faith = {
+	group = "not_creatable"
+	is_available_on_create = {
+		always = yes # Goes away on reformation
+	}
+
+	forgotten_faith_doctrine = {
+		visible = no
+	}
+	eight_faith_doctrine = {
+		visible = no
+	}
+	saint_faith_doctrine = {
+		visible = no
+	}
+	seven_faith_doctrine = {
+		visible = no
+	}
+}
+
+sjalvoki_faith = {
+	group = "not_creatable"
+	is_available_on_create = {
+		always = no # Goes away on reformation
+	}
+
+	sjalvoki_faith_doctrine = {
+		visible = no
+	}
+}
+
+marcher_faith = {
+	group = "not_creatable"
+	is_available_on_create = {
+		always = no # Goes away on reformation
+	}
+
+	marcher_faith_doctrine = {
+		visible = no
+	}
+}
+
+unreformed_faith = {
+	group = "not_creatable"
+	is_available_on_create = {
+		always = no # Goes away on reformation
+	}
+	unreformed_faith_doctrine = {
+		visible = no
+		parameters = {
+			# unreformed = yes also serves as the basis for the unreformed_syncretic tenet.
+			unreformed = yes
+			unreformed_syncretic_recipient_opinion_active = yes
+			opinion_of_unreformed_syncretic_actor_opinion_active = 30
+			conquest_cb_enabled = yes
+		}
+
+		character_modifier = {
+			monthly_prestige_gain_mult = 0.2
+			clan_government_vassal_opinion = -20
+			feudal_government_vassal_opinion = -20
+			republic_government_vassal_opinion = -20
+		}
+	}
+	
+	tenet_dummy_tenet = {
+		visible = no
+
+		piety_cost = {
+			value = 2000000 # Make sure nobody can convert to this religion
+	
+			# Multiplier for keeping same tenet
+			if = {
+				limit = { has_doctrine = tenets }
+				multiply = faith_unchanged_doctrine_cost_mult
+			}
+		}
+	
+		character_modifier = {
+			knight_limit = 0
+		}
+	}
+}
+
+divine_destiny = {
+	group = "special"
+	is_available_on_create = {
+		has_doctrine = divine_destiny_doctrine
+	}
+	divine_destiny_doctrine = {
+		piety_cost = {
+			value = faith_doctrine_cost_low
+		}
+		parameters = {
+			divine_destiny_holy_war_cost_reduction = yes
+		}
+	}
+}
+
+is_aversarian_faith = {
+	group = "special"
+	
+	is_available_on_create = {
+		has_doctrine = special_doctrine_is_aversarian_faith
+	}
+
+	special_doctrine_is_aversarian_faith = {
+		parameters = {
+			# Since doctrines cannot modify other faith's views of us, only our view of others, all Christian faiths are given this special doctrine which makes them friendlier to Faiths with the Christian Syncretism tenet.
+			hostility_override_tenet_aversarian_syncretism = 2
+			aversarinas_aautokrata_religion_syncretic_recipient_opinion_active = yes
+			opinion_of_aversarinas_aautokrata_religion_syncretic_actor_opinion_active = 30
+		}
+	}
+}
+
+	is_sjalvolki_faith = {
+		group = "special"
+		
+		is_available_on_create = {
+			has_doctrine = special_doctrine_is_sjalvolki_faith
+		}
+	
+		special_doctrine_is_sjalvolki_faith = {
+			parameters = {
+				# Since doctrines cannot modify other faith's views of us, only our view of others, all Christian faiths are given this special doctrine which makes them friendlier to Faiths with the Christian Syncretism tenet.
+				hostility_override_tenet_sjalvolki_syncretism = 2
+				sjalvolki_religion_syncretic_recipient_opinion_active = yes
+				opinion_of_sjalvolki_religion_syncretic_actor_opinion_active = 30
+			}
+		}
+}
+
+is_marcher_faith = {
+	group = "special"
+	
+	is_available_on_create = {
+		has_doctrine = special_doctrine_is_marcher_faith
+	}
+
+	special_doctrine_is_marcher_faith = {
+		parameters = {
+			# Since doctrines cannot modify other faith's views of us, only our view of others, all Christian faiths are given this special doctrine which makes them friendlier to Faiths with the Christian Syncretism tenet.
+			hostility_override_tenet_marcher_syncretism = 2
+			marcher_religion_syncretic_recipient_opinion_active = yes
+			opinion_of_marcher_religion_syncretic_actor_opinion_active = 30
+		}
+	}
+}
+
+is_partic_faith = {
+	group = "special"
+	
+	is_available_on_create = {
+		has_doctrine = special_doctrine_is_partic_faith
+	}
+
+	special_doctrine_is_partic_faith = {
+		parameters = {
+			# Since doctrines cannot modify other faith's views of us, only our view of others, all Christian faiths are given this special doctrine which makes them friendlier to Faiths with the Christian Syncretism tenet.
+			hostility_override_tenet_partic_syncretism = 2
+			partic_religion_syncretic_recipient_opinion_active = yes
+			opinion_of_partic_religion_syncretic_actor_opinion_active = 30
+		}
+	}
+}
+
+is_sarradonian_faith = {
+	group = "special"
+	
+	is_available_on_create = {
+		has_doctrine = special_doctrine_is_wardenite_faith
+	}
+
+	special_doctrine_is_wardenite_faith = {
+		parameters = {
+			# Since doctrines cannot modify other faith's views of us, only our view of others, all Christian faiths are given this special doctrine which makes them friendlier to Faiths with the Christian Syncretism tenet.
+			hostility_override_tenet_wardenite_syncretism = 2
+			wardenite_religion_syncretic_recipient_opinion_active = yes
+			opinion_of_wardenite_religion_syncretic_actor_opinion_active = 30
+		}
+	}
+}
+
+is_ritualist_faith = {
+	group = "special"
+	
+	is_available_on_create = {
+		has_doctrine = special_doctrine_is_ritualist_faith
+	}
+
+	special_doctrine_is_ritualist_faith = {
+		parameters = {
+			# Since doctrines cannot modify other faith's views of us, only our view of others, all Christian faiths are given this special doctrine which makes them friendlier to Faiths with the Christian Syncretism tenet.
+			hostility_override_tenet_ritualist_syncretism = 2
+			ritualist_religion_syncretic_recipient_opinion_active = yes
+			opinion_of_ritualist_religion_syncretic_actor_opinion_active = 30
+		}
+	}
+}
+
+is_graveright_faith = {
+	group = "special"
+	
+	is_available_on_create = {
+		has_doctrine = special_doctrine_is_graveright_faith
+	}
+
+	special_doctrine_is_graveright_faith = {
+		parameters = {
+			# Since doctrines cannot modify other faith's views of us, only our view of others, all Christian faiths are given this special doctrine which makes them friendlier to Faiths with the Christian Syncretism tenet.
+			hostility_override_tenet_graveright_syncretism = 2
+			graveright_religion_syncretic_recipient_opinion_active = yes
+			opinion_of_graveright_religion_syncretic_actor_opinion_active = 30
+		}
+	}
+}
+
+is_iyrossi_faith = {
+	group = "special"
+	
+	is_available_on_create = {
+		has_doctrine = special_doctrine_is_iyrossi_faith
+	}
+
+	special_doctrine_is_iyrossi_faith = {
+		parameters = {
+			# Since doctrines cannot modify other faith's views of us, only our view of others, all Christian faiths are given this special doctrine which makes them friendlier to Faiths with the Christian Syncretism tenet.
+			hostility_override_tenet_iyrossi_syncretism = 2
+			iyrossi_religion_syncretic_recipient_opinion_active = yes
+			opinion_of_iyrossi_religion_syncretic_actor_opinion_active = 30
+		}
+	}
+}
+
+is_amsari_faith = {
+	group = "special"
+	
+	is_available_on_create = {
+		has_doctrine = special_doctrine_is_amsari_faith
+	}
+
+	special_doctrine_is_amsari_faith = {
+		parameters = {
+			# Since doctrines cannot modify other faith's views of us, only our view of others, all Christian faiths are given this special doctrine which makes them friendlier to Faiths with the Christian Syncretism tenet.
+			hostility_override_tenet_amsari_syncretism = 2
+			amsari_religion_syncretic_recipient_opinion_active = yes
+			opinion_of_amsari_religion_syncretic_actor_opinion_active = 30
+		}
+	}
+}
+
+is_sherharddi_faith = {
+	group = "special"
+	
+	is_available_on_create = {
+		has_doctrine = special_doctrine_is_sherhaddi_faith
+	}
+
+	special_doctrine_is_sherhaddi_faith = {
+		parameters = {
+			# Since doctrines cannot modify other faith's views of us, only our view of others, all Christian faiths are given this special doctrine which makes them friendlier to Faiths with the Christian Syncretism tenet.
+			hostility_override_tenet_sherhaddi_syncretism = 2
+			sherhaddi_religion_syncretic_recipient_opinion_active = yes
+			opinion_of_sherhaddi_religion_syncretic_actor_opinion_active = 30
+		}
+	}
+}
+
+is_khmet_faith = {
+	group = "special"
+	
+	is_available_on_create = {
+		has_doctrine = special_doctrine_is_khmet_faith
+	}
+
+	special_doctrine_is_khmet_faith = {
+		parameters = {
+			# Since doctrines cannot modify other faith's views of us, only our view of others, all Christian faiths are given this special doctrine which makes them friendlier to Faiths with the Christian Syncretism tenet.
+			hostility_override_tenet_khmet_syncretism = 2
+			khmet_religion_syncretic_recipient_opinion_active = yes
+			opinion_of_khmet_religion_syncretic_actor_opinion_active = 30
+		}
+	}
+}
+
+
+
+
+#Game rule only 
+full_tolerance = {
+	group = "special"
+	is_available_on_create = {
+		has_doctrine = special_doctrine_full_tolerance
+	}
+	
+	special_doctrine_full_tolerance = {
+		parameters = {
+			hostility_override_special_doctrine_full_tolerance = 0
+		}
+	}
+}
+
+

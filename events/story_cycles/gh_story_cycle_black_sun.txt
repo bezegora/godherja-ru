@@ -1,0 +1,40 @@
+﻿namespace = black_sun
+
+black_sun.0001 = {
+	title = black_sun.0001.title
+	desc = black_sun.0001.desc
+	theme = dread
+	left_portrait = {
+		character = this
+		animation = personality_bold
+	}
+
+	immediate = {
+		# For text
+		capital_province = {
+			barony = {
+				save_scope_as = capital
+			}
+		}
+	}
+
+	option = {
+		name = black_sun.0001.a
+		add_prestige = 1000
+	}
+}
+
+black_sun.0002 = {
+	title = black_sun.0002.title
+	desc = black_sun.0002.desc
+	theme = dread
+	left_portrait = {
+		character = this
+		animation = personality_bold
+	}
+
+	option = {
+		name = black_sun.0002.a
+		set_character_faith_with_conversion = faith:aversarinas_suncult
+	}
+}

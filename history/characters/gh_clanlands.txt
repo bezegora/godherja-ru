@@ -1,0 +1,1752 @@
+﻿##SJALVOLKI##
+
+clanlands_sjalvolki_1 = {
+	name = "Cenware" #Cenware Witch-Breaker
+	dna = cenware_witch_breaker_1
+	dynasty = dyn_sjalvolki_1
+	martial = 16
+	diplomacy = 15
+	intrigue = 12
+	stewardship = 14
+	religion = "sjalvolki"
+	culture = "daukeni"
+	trait = brave
+	trait = ambitious
+	trait = just
+	trait = scarred
+	trait = confider
+	trait = beauty_good_2
+	trait = physique_good_3
+	trait = intellect_good_3
+	trait = education_martial_4
+	trait = blademaster_3
+
+	father = clanlands_sjalvoki_100
+	mother = clanlands_sjalvoki_101
+
+	1219.6.18 = {
+		birth = yes
+	        effect = {
+			add_character_flag = has_scripted_appearance
+		}
+	}
+	1242.2.16 = {
+		add_pressed_claim = e_sjalvolki
+	}
+	1244.6.24 = {
+		give_nickname = nick_witch_breaker
+		effect = {
+			add_prestige = 5000
+			add_prestige_experience = 5000
+			dynasty = { add_dynasty_prestige_level = 4 }
+		}
+	}
+	1244.9.12 = {
+		effect = {
+			# Troops that goes away
+			spawn_army = {
+				name = honored_of_cenware
+				levies = 4000
+				men_at_arms = {
+					type = armored_footmen
+					stacks = 4
+				}
+				men_at_arms = {
+					type = onager
+					stacks = 2
+				}
+				location = 3169
+				origin = 3537
+				inheritable = no
+			}
+		}
+	}
+	1252.1.1 = {
+		trait = gh_veteran_of_elysia_sjalvolki
+	}
+}
+
+clanlands_sjalvolki_2 = {
+	name = "Cormag_Fenrus"
+        dna = cormag_fenrus
+	dynasty = dyn_sjalvolki_2
+	religion = "sjalvolki"
+	culture = "fenvir"
+	martial = 10
+	diplomacy = 10
+	intrigue = 9
+	stewardship = 4
+	learning = 11
+	trait = education_learning_3
+	trait = intellect_good_1
+	trait = stubborn
+	trait = vengeful
+	trait = zealous
+	trait = one_eyed
+	trait = one_legged
+	1192.4.12 = {
+		birth = yes
+	        effect = {
+			add_character_flag = has_scripted_appearance
+		}
+	}
+	1239.7.11 = {
+		give_nickname = nick_the_old_dog
+	}
+}
+
+clanlands_sjalvolki_3 = {
+	name = "Claus"
+	religion = "sjalvolki"
+	culture = "daukeni"
+	trait = hunter_3
+	1220.4.12 = {
+		birth = yes
+	}
+}
+
+clanlands_sjalvolki_4 = {
+	name = "Altan"
+	religion = "cumani"
+	culture = "kiykardid"
+	1220.4.12 = {
+		birth = yes
+	}
+}
+
+### shaman theocracy
+
+clanlands_sjalvolki_5 = { #shaman dude
+	name = Serapion
+        dna = serapion 
+	religion = "sjalvolki"
+	culture = "daukeni"
+	trait = education_learning_3
+	trait = mystic_2
+	trait = theologian
+	trait = zealous
+	trait = arrogant
+	trait = honest 
+	1191.4.12 = {
+		birth = yes
+                effect = {
+			add_character_flag = has_scripted_appearance
+		}
+	}
+}
+
+clanlands_sjalvolki_6 = {
+	name = Volkwin
+	religion = "sjalvolki"
+	culture = "mastikigni"
+	trait = hunter_1
+	1210.4.12 = {
+		birth = yes
+	}
+}
+mistel_1 = {
+	name = Ninoslav
+	religion = "sjalvolki"
+	culture = "daukeni"
+	1222.4.12 = {
+		birth = yes
+	}
+}
+mistel_2 = {
+	name = Slobodan
+	religion = "sjalvolki"
+	culture = "daukeni"
+	1224.4.12 = {
+		birth = yes
+	}
+}
+
+#### cenwares uncle
+
+wolfsfeld_1 = { #cenwares uncle #11 in lore doc
+	name = Mihovil
+        dna = mihovil 
+	religion = "sjalvolki"
+	culture = "daukeni"
+	dynasty = dyn_sjalvolki_1
+
+	father = clanlands_sjalvoki_102
+	1202.4.12 = {
+		birth = yes
+	}
+	1245.1.1 = {
+		effect = {
+			set_relation_friend = character:clanlands_sjalvolki_1
+		}
+	}	
+}
+wolfsfeld_2 = {
+	name = Goran
+	religion = "cumani"
+	culture = "kiykardid"
+	1202.4.12 = {
+		birth = yes
+	}
+}
+wolfsfeld_3 = {
+	name = Vlastimir
+	religion = "sjalvolki"
+	culture = "daukeni"
+	1215.4.12 = {
+		birth = yes
+	}
+}
+wolfsfeld_4 = {
+	name = Godimir
+	religion = "sjalvolki"
+	culture = "daukeni"
+	trait = hunter_1
+	1220.4.12 = {
+		birth = yes
+	}
+}
+wolfsfeld_5 = {
+	name = Jovanka
+	female = yes
+	religion = "sjalvolki"
+	culture = "daukeni"
+	1218.4.12 = {
+		birth = yes
+	}
+}
+wolfsfeld_6 = {
+	name = Visarion
+	religion = "sjalvolki"
+	culture = "daukeni"
+	1220.4.12 = {
+		birth = yes
+	}
+}
+
+####
+
+clanlands_sjalvolki_7 = { ##cenwares friend #6 in lore doc
+	name = Adalgar
+        dna = adalgar
+	religion = "sjalvolki"
+	culture = "mastikigni"
+	trait = education_martial_3
+	trait = brave
+	trait = honest
+	trait = content
+	trait = strong
+	martial = 10
+	diplomacy = 10
+	1224.4.12 = {
+		birth = yes
+	        effect = {
+			add_character_flag = has_scripted_appearance
+		}
+	}
+	1245.1.1 = {
+		effect = {
+			set_relation_friend = character:clanlands_sjalvolki_1
+		}
+	}
+}
+
+hestfjoror_1 = {
+	name = Herberd
+	religion = "sjalvolki"
+	culture = "mastikigni"
+	trait = hunter_2
+	1225.4.12 = {
+		birth = yes
+	}
+}
+
+hestfjoror_2 = {
+	name = Banzleib
+	religion = "sjalvolki"
+	culture = "mastikigni"
+	1210.4.12 = {
+		birth = yes
+	}
+}
+
+hestfjoror_3 = {
+	name = Radegund
+	female = yes
+	religion = "sjalvolki"
+	culture = "barki"
+	trait = hunter_1
+	1212.4.12 = {
+		birth = yes
+	}
+}
+
+hestfjoror_4 = {
+	name = Balthasar
+	religion = "sjalvolki"
+	culture = "mastikigni"
+	trait = hunter_1
+	1204.4.12 = {
+		birth = yes
+	}
+}
+
+hestfjoror_5 = {
+	name = Marbold
+	religion = "sjalvolki"
+	culture = "mastikigni"
+	1211.4.12 = {
+		birth = yes
+	}
+}
+
+hestfjoror_6 = {
+	name = Reineke
+	religion = "sjalvolki"
+	culture = "mastikigni"
+	1221.4.12 = {
+		birth = yes
+	}
+}
+
+hestfjoror_7 = {
+	name = Wolter
+	religion = "sjalvolki"
+	culture = "mastikigni"
+	1229.4.12 = {
+		birth = yes
+	}
+}
+
+### barki
+
+clanlands_sjalvolki_8 = {
+	name = Goswin
+	religion = "sjalvolki"
+	culture = "barki"
+	1205.4.12 = {
+		birth = yes
+	}
+}
+
+
+clanlands_sjalvolki_9 = {
+	name = Esiko
+	religion = "sjalvolki"
+	culture = "barki"
+	trait = hunter_1
+	1209.4.12 = {
+		birth = yes
+	}
+}
+
+barki_1 = {
+	name = Boddic
+	religion = "sjalvolki"
+	culture = "barki"
+	trait = hunter_2
+	1226.4.12 = {
+		birth = yes
+	}
+}
+barki_2 = {
+	name = Imma
+	religion = "sjalvolki"
+	culture = "barki"
+	female = yes
+	trait = hunter_1
+	1221.4.12 = {
+		birth = yes
+	}
+}
+barki_3 = {
+	name = Warinechin
+	religion = "sjalvolki"
+	culture = "barki"
+	1230.4.12 = {
+		birth = yes
+	}
+}
+barki_4 = {
+	name = Diederik
+	religion = "sjalvolki"
+	culture = "barki"
+	1215.4.12 = {
+		birth = yes
+	}
+}
+barki_5 = {
+	name = Donar
+	religion = "sjalvolki"
+	culture = "barki"
+	1211.4.12 = {
+		birth = yes
+	}
+}
+barki_6 = {
+	name = Eilika
+	religion = "sjalvolki"
+	culture = "barki"
+	female = yes
+	1222.4.12 = {
+		birth = yes
+	}
+}
+barki_7 = {
+	name = Werneke
+	religion = "sjalvolki"
+	culture = "barki"
+	trait = hunter_1
+	1224.4.12 = {
+		birth = yes
+	}
+}
+
+
+### fenvir vassals
+
+clanlands_sjalvoki_10 = {
+	name = "Lulach"
+	religion = "sjalvolki"
+	culture = "fenvir"
+	1215.6.12 = {
+		birth = yes
+	}
+}
+
+clanlands_sjalvoki_11 = {
+	name = "Neacal"
+	religion = "sjalvolki"
+	culture = "fenvir"
+	1222.2.2 = {
+		birth = yes
+	}
+}
+
+clanlands_sjalvoki_12 = {
+	name = "Iomhar"
+	religion = "sjalvolki"
+	culture = "fenvir"
+	trait = hunter_3
+	1225.3.21 = {
+		birth = yes
+	}
+}
+
+clanlands_sjalvoki_13 = {
+	name = "Adhamh"
+	religion = "sjalvolki"
+	culture = "fenvir"
+	trait = hunter_1
+	1200.4.12 = {
+		birth = yes
+	}
+}
+
+clanlands_sjalvoki_14 = {
+	name = "Eachann"
+	religion = "sjalvolki"
+	culture = "fenvir"
+	1210.10.12 = {
+		birth = yes
+	}
+}
+
+clanlands_sjalvoki_15 = {
+	name = "Tiobaid"
+	religion = "sjalvolki"
+	culture = "fenvir"
+	1223.1.12 = {
+		birth = yes
+	}
+}
+
+clanlands_sjalvoki_16 = {
+	name = "Angaidh"
+	religion = "sjalvolki"
+	culture = "fenvir"
+	1230.7.8 = {
+		birth = yes
+	}
+}
+
+clanlands_sjalvoki_17 = {
+	name = "Marc"
+	religion = "sjalvolki"
+	culture = "fenvir"
+	1223.4.30 = {
+		birth = yes
+	}
+}
+
+clanlands_sjalvoki_18 = {
+	name = "Horas"
+	religion = "sjalvolki"
+	culture = "fenvir"
+	1222.2.22 = {
+		birth = yes
+	}
+}
+
+clanlands_sjalvoki_19 = {
+	name = "Beathan"
+	religion = "sjalvolki"
+	culture = "fenvir"
+	1229.1.12 = {
+		birth = yes
+	}
+}
+
+clanlands_sjalvoki_20 = {
+	name = "Mungan"
+	religion = "sjalvolki"
+	culture = "fenvir"
+	1227.2.12 = {
+		birth = yes
+	}
+}
+
+clanlands_sjalvoki_21 = {
+	name = "Ualraig"
+	religion = "sjalvolki"
+	culture = "fenvir"
+	trait = hunter_2
+	1221.6.5 = {
+		birth = yes
+	}
+}
+
+clanlands_sjalvoki_22 = {
+	name = "Fionn"
+	religion = "sjalvolki"
+	culture = "fenvir"
+	trait = hunter_1
+	1225.3.14 = {
+		birth = yes
+	}
+}
+
+clanlands_sjalvoki_23 = {
+	name = "Frang"
+	religion = "sjalvolki"
+	culture = "fenvir"
+	1229.4.29 = {
+		birth = yes
+	}
+}
+
+clanlands_sjalvoki_24 = {
+	name = "Seathan"
+	religion = "sjalvolki"
+	culture = "fenvir"
+	1223.3.13 = {
+		birth = yes
+	}
+}
+
+clanlands_sjalvoki_25 = {
+	name = "Seoras"
+	religion = "sjalvolki"
+	culture = "fenvir"
+	trait = hunter_3
+	1200.6.10 = {
+		birth = yes
+	}
+}
+
+clanlands_sjalvoki_26 = {
+	name = "Daidh"
+	religion = "sjalvolki"
+	culture = "fenvir"
+	1213.4.12 = {
+		birth = yes
+	}
+}
+
+clanlands_sjalvoki_27 = {
+	name = "Ailig"
+	religion = "sjalvolki"
+	culture = "fenvir"
+	1225.5.12 = {
+		birth = yes
+	}
+}
+
+clanlands_sjalvoki_28 = {
+	name = "Oisean"
+	religion = "sjalvolki"
+	culture = "fenvir"
+	1227.7.9 = {
+		birth = yes
+	}
+}
+
+clanlands_sjalvoki_29 = {
+	name = "Gillebride"
+	religion = "sjalvolki"
+	culture = "fenvir"
+	trait = hunter_2
+	1212.2.12 = {
+		birth = yes
+	}
+}
+
+
+clanlands_sjalvolki_30 = {
+	name = "Peadrus"
+	religion = "sjalvolki"
+	culture = "fenvir"
+	trait = hunter_1
+	1220.4.12 = {
+		birth = yes
+	}
+}
+
+clanlands_sjalvoki_31 = {
+	name = "Fearchar"
+	religion = "sjalvolki"
+	culture = "fenvir"
+	1220.4.12 = {
+		birth = yes
+	}
+}
+
+###kteumaxa vassals
+
+clanlands_sjalvoki_32 = {
+	name = "Suyiketu"
+	religion = "cumani"
+	culture = "kiykardid"
+	1222.4.12 = {
+		birth = yes
+	}
+}
+
+
+clanlands_sjalvoki_33 = {
+	name = "Jajiradai"
+	religion = "cumani"
+	culture = "kiykardid"
+	1224.4.12 = {
+		birth = yes
+	}
+}
+
+clanlands_sjalvoki_34 = {
+	name = "Alagh"
+	religion = "cumani"
+	culture = "kiykardid"
+	1226.4.12 = {
+		birth = yes
+	}
+}
+
+clanlands_sjalvoki_35 = {
+	name = "Chiledu"
+	religion = "cumani"
+	culture = "kiykardid"
+	1225.4.12 = {
+		birth = yes
+	}
+}
+
+clanlands_sjalvoki_36 = {
+	name = "Tumen"
+	religion = "cumani"
+	culture = "kiykardid"
+	1215.4.12 = {
+		birth = yes
+	}
+}
+
+clanlands_sjalvoki_37 = {
+	name = "Bartan"
+	religion = "cumani"
+	culture = "kiykardid"
+	1218.4.12 = {
+		birth = yes
+	}
+}
+
+clanlands_sjalvoki_38 = {
+	name = "Ogodei"
+	religion = "cumani"
+	culture = "kiykardid"
+	1232.4.12 = {
+		birth = yes
+	}
+}
+
+clanlands_sjalvoki_39 = {
+	name = "Dayir"
+	religion = "cumani"
+	culture = "kiykardid"
+	1228.4.12 = {
+		birth = yes
+	}
+}
+
+clanlands_sjalvoki_40 = {
+	name = ""
+	religion = "cumani"
+	culture = "kiykardid"
+	1222.4.12 = {
+		birth = yes
+	}
+}
+
+clanlands_sjalvoki_41 = {
+	name = "Duua"
+	religion = "cumani"
+	culture = "kiykardid"
+	1209.4.12 = {
+		birth = yes
+	}
+}
+
+clanlands_sjalvoki_42 = {
+	name = "Mongke"
+	religion = "cumani"
+	culture = "kiykardid"
+	1212.4.12 = {
+		birth = yes
+	}
+}
+
+clanlands_sjalvoki_43 = {
+	name = "Arasen"
+	religion = "cumani"
+	culture = "kiykardid"
+	1234.4.12 = {
+		birth = yes
+	}
+}
+
+clanlands_sjalvoki_44 = {
+	name = "Khuyildar"
+	religion = "cumani"
+	culture = "kiykardid"
+	1221.4.12 = {
+		birth = yes
+	}
+}
+
+clanlands_sjalvoki_45 = {
+	name = "Arkhai"
+	religion = "cumani"
+	culture = "kiykardid"
+	1217.4.12 = {
+		birth = yes
+	}
+}
+
+clanlands_sjalvoki_46 = {
+	name = "Daritai"
+	religion = "cumani"
+	culture = "kiykardid"
+	1218.4.12 = {
+		birth = yes
+	}
+}
+
+clanlands_sjalvoki_47 = {
+	name = "Tokhtamis"
+	religion = "cumani"
+	culture = "kiykardid"
+	1226.4.12 = {
+		birth = yes
+	}
+}
+#start generation
+clanlands_sjalvoki_48 = {
+	name = "Gehrke"
+	religion = "sjalvolki"
+	culture = "daukeni"
+	1220.4.12 = {
+		birth = yes
+	}
+}
+
+clanlands_sjalvoki_49 = {
+	name = "Liawizo"
+	religion = "sjalvolki"
+	culture = "daukeni"
+	1220.4.12 = {
+		birth = yes
+	}
+}
+
+clanlands_sjalvoki_50 = {
+	name = "Goswin"
+	religion = "sjalvolki"
+	culture = "daukeni"
+	1220.4.12 = {
+		birth = yes
+	}
+}
+
+clanlands_sjalvoki_51 = {
+	name = "Ekbert"
+	religion = "sjalvolki"
+	culture = "daukeni"
+	1220.4.12 = {
+		birth = yes
+	}
+}
+
+clanlands_sjalvoki_52 = {
+	name = "Hoger"
+	religion = "sjalvolki"
+	culture = "daukeni"
+	trait = hunter_1
+	1220.4.12 = {
+		birth = yes
+	}
+}
+
+clanlands_sjalvoki_53 = {
+	name = "Aelle"
+	religion = "sjalvolki"
+	culture = "daukeni"
+	1220.4.12 = {
+		birth = yes
+	}
+}
+
+clanlands_sjalvoki_54 = {
+	name = "Isidor"
+	religion = "sjalvolki"
+	culture = "daukeni"
+	1220.4.12 = {
+		birth = yes
+	}
+}
+
+clanlands_sjalvoki_55 = {
+	name = "Hans"
+	religion = "sjalvolki"
+	culture = "daukeni"
+	1220.4.12 = {
+		birth = yes
+	}
+}
+
+clanlands_sjalvoki_56 = {
+	name = "Gelder"
+	religion = "sjalvolki"
+	culture = "daukeni"
+	1220.4.12 = {
+		birth = yes
+	}
+}
+
+clanlands_sjalvoki_57 = {
+	name = "Egilmar"
+	religion = "sjalvolki"
+	culture = "daukeni"
+	1220.4.12 = {
+		birth = yes
+	}
+}
+
+clanlands_sjalvoki_58 = {
+	name = "Volrad"
+	religion = "sjalvolki"
+	culture = "daukeni"
+	1220.4.12 = {
+		birth = yes
+	}
+}
+
+clanlands_sjalvoki_59 = {
+	name = "Reineke"
+	religion = "sjalvolki"
+	culture = "daukeni"
+	1220.4.12 = {
+		birth = yes
+	}
+}
+
+clanlands_sjalvoki_60 = {
+	name = "Cobbo"
+	religion = "sjalvolki"
+	culture = "daukeni"
+	1220.4.12 = {
+		birth = yes
+	}
+}
+
+clanlands_sjalvoki_61 = {
+	name = "Sigbert"
+	religion = "sjalvolki"
+	culture = "daukeni"
+	1220.4.12 = {
+		birth = yes
+	}
+}
+
+clanlands_sjalvoki_62 = {
+	name = "Diederik"
+	religion = "sjalvolki"
+	culture = "daukeni"
+	trait = hunter_1
+	1220.4.12 = {
+		birth = yes
+	}
+}
+
+clanlands_sjalvoki_63 = {
+	name = "Merten"
+	religion = "sjalvolki"
+	culture = "daukeni"
+	1220.4.12 = {
+		birth = yes
+	}
+}
+
+clanlands_sjalvoki_64 = {
+	name = "Benno"
+	religion = "sjalvolki"
+	culture = "daukeni"
+	1220.4.12 = {
+		birth = yes
+	}
+}
+
+clanlands_sjalvoki_65 = {
+	name = "Theodoric"
+	religion = "sjalvolki"
+	culture = "daukeni"
+	trait = hunter_3
+	1220.4.12 = {
+		birth = yes
+	}
+}
+
+clanlands_sjalvoki_66 = {
+	name = "Reinmar"
+	religion = "sjalvolki"
+	culture = "daukeni"
+	1220.4.12 = {
+		birth = yes
+	}
+}
+
+clanlands_sjalvoki_67 = {
+	name = "Claus"
+	religion = "sjalvolki"
+	culture = "daukeni"
+	trait = hunter_1
+	1220.4.12 = {
+		birth = yes
+	}
+}
+
+clanlands_sjalvoki_68 = {
+	name = "Harthgate"
+	religion = "sjalvolki"
+	culture = "daukeni"
+	1220.4.12 = {
+		birth = yes
+	}
+}
+
+clanlands_sjalvoki_69 = {
+	name = "Reinbern"
+	religion = "sjalvolki"
+	culture = "daukeni"
+	1220.4.12 = {
+		birth = yes
+	}
+}
+
+clanlands_sjalvoki_70 = {
+	name = "Hoger"
+	religion = "sjalvolki"
+	culture = "daukeni"
+	trait = hunter_2
+	1220.4.12 = {
+		birth = yes
+	}
+}
+
+clanlands_sjalvoki_71 = {
+	name = "Detmar"
+	religion = "sjalvolki"
+	culture = "daukeni"
+	1220.4.12 = {
+		birth = yes
+	}
+}
+
+clanlands_sjalvoki_72 = {
+	name = "Frederik"
+	religion = "sjalvolki"
+	culture = "daukeni"
+	trait = hunter_1
+	1220.4.12 = {
+		birth = yes
+	}
+}
+
+clanlands_sjalvoki_73 = {
+	name = "Gelder"
+	religion = "sjalvolki"
+	culture = "daukeni"
+	1220.4.12 = {
+		birth = yes
+	}
+}
+
+clanlands_sjalvoki_74 = {
+	name = "Ewald"
+	religion = "sjalvolki"
+	culture = "daukeni"
+	1220.4.12 = {
+		birth = yes
+	}
+}
+
+clanlands_sjalvoki_75 = {
+	name = "Radke"
+	religion = "sjalvolki"
+	culture = "daukeni"
+	1220.4.12 = {
+		birth = yes
+	}
+}
+
+clanlands_sjalvoki_76 = {
+	name = "Kersten"
+	religion = "sjalvolki"
+	culture = "daukeni"
+	1220.4.12 = {
+		birth = yes
+	}
+}
+
+clanlands_sjalvoki_77 = {
+	name = "Meinwerk"
+	religion = "sjalvolki"
+	culture = "daukeni"
+	1220.4.12 = {
+		birth = yes
+	}
+}
+
+clanlands_sjalvoki_78 = {
+	name = "Udo"
+	religion = "sjalvolki"
+	culture = "daukeni"
+	1220.4.12 = {
+		birth = yes
+	}
+}
+
+###
+
+clanlands_sjalvolki_79 = {
+	name = "Meinwerk"
+	religion = "sjalvolki"
+	culture = "fenvir"
+	1212.1.1 = {
+		birth = yes
+	}
+}
+
+clanlands_sjalvolki_80 = {
+	name = "Albrecht"
+	religion = "sjalvolki"
+	culture = "fenvir"
+	trait = hunter_1
+	1218.1.1 = {
+		birth = yes
+	}
+}
+
+clanlands_sjalvolki_81 = {
+	name = "Tymmeke"
+	religion = "sjalvolki"
+	culture = "fenvir"
+	1230.1.1 = {
+		birth = yes
+	}
+}
+
+clanlands_sjalvolki_82 = {
+	name = "Thankmar"
+	religion = "sjalvolki"
+	culture = "fenvir"
+	1220.1.1 = {
+		birth = yes
+	}
+}
+
+clanlands_sjalvolki_83 = {
+	name = "Giselmar"
+	religion = "sjalvolki"
+	culture = "fenvir"
+	1225.1.1 = {
+		birth = yes
+	}
+}
+
+clanlands_sjalvolki_84 = {
+	name = "Jochim"
+	religion = "sjalvolki"
+	culture = "fenvir"
+	1215.1.1 = {
+		birth = yes
+	}
+}
+
+clanlands_sjalvolki_85 = {
+	name = "Balthasar"
+	religion = "sjalvolki"
+	culture = "fenvir"
+	1222.1.1 = {
+		birth = yes
+	}
+}
+
+clanlands_sjalvolki_86 = {
+	name = "Gelder"
+	religion = "sjalvolki"
+	culture = "fenvir"
+	1226.1.1 = {
+		birth = yes
+	}
+}
+
+clanlands_sjalvolki_87 = {
+	name = "Irmgard"
+	religion = "sjalvolki"
+	culture = "fenvir"
+	female = yes
+	1228.1.1 = {
+		birth = yes
+	}
+}
+
+clanlands_sjalvolki_88 = {
+	name = "Theodoric"
+	religion = "sjalvolki"
+	culture = "fenvir"
+	1206.1.1 = {
+		birth = yes
+	}
+}
+
+clanlands_sjalvolki_89 = {
+	name = "Hinrik"
+	religion = "sjalvolki"
+	culture = "fenvir"
+	1207.1.1 = {
+		birth = yes
+	}
+}
+
+clanlands_sjalvolki_90 = {
+	name = "Leuderic"
+	religion = "sjalvolki"
+	culture = "fenvir"
+	trait = hunter_1
+	1211.1.1 = {
+		birth = yes
+	}
+}
+
+### unnamed magocracy
+
+thururii_1 = {
+	name = Lycaon
+	religion = "aversarinas_aautokrata"
+	culture = "practitioner"
+	trait = magic_good_3
+	trait = education_living_magic_2
+	1200.1.1 = {
+		birth = yes
+	}
+	1230.1.1 = {
+		capital = c_poios
+	}
+}
+thururii_2 = {
+	name = Inachus
+	religion = "aversarinas_aautokrata"
+	culture = "practitioner"
+	trait = magic_good_2
+	trait = education_living_magic_1
+	1200.1.1 = {
+		birth = yes
+	}
+}
+thururii_3 = {
+	name = Eugenius
+	religion = "aversarinas_aautokrata"
+	culture = "northernimperial"
+	1208.1.1 = {
+		birth = yes
+	}
+}
+thururii_4 = {
+	name = Eurynome
+	female = yes
+	religion = "aversarinas_aautokrata"
+	culture = "northernimperial"
+	1225.1.1 = {
+		birth = yes
+	}
+}
+
+###
+
+clanlands_sjalvolki_91 = {
+	name = "Radegund"
+	religion = "sjalvolki"
+	culture = "fenvir"
+	female = yes
+	1222.1.1 = {
+		birth = yes
+	}
+}
+
+clanlands_sjalvolki_92 = {
+	name = "Volkwin"
+	religion = "sjalvolki"
+	culture = "fenvir"
+	trait = hunter_2
+	1230.1.1 = {
+		birth = yes
+	}
+}
+
+clanlands_sjalvolki_93 = {
+	name = "Odo"
+	religion = "sjalvolki"
+	culture = "fenvir"
+	trait = hunter_1
+	1229.1.1 = {
+		birth = yes
+	}
+}
+
+clanlands_sjalvolki_94 = {
+	name = "Gosschalk"
+	religion = "sjalvolki"
+	culture = "fenvir"
+	1221.1.1 = {
+		birth = yes
+	}
+}
+
+clanlands_sjalvolki_95 = {
+	name = "Widukind"
+	religion = "sjalvolki"
+	culture = "fenvir"
+	1225.1.1 = {
+		birth = yes
+	}
+}
+
+clanlands_sjalvolki_96 = {
+	name = "Sigfrid"
+	religion = "sjalvolki"
+	culture = "fenvir"
+	1215.1.1 = {
+		birth = yes
+	}
+}
+
+clanlands_sjalvolki_97 = {
+	name = "Wichbert"
+	religion = "sjalvolki"
+	culture = "fenvir"
+	1216.1.1 = {
+		birth = yes
+	}
+}
+
+clanlands_sjalvolki_98 = {
+	name = "Heilwig"
+	religion = "sjalvolki"
+	culture = "fenvir"
+	female = yes
+	trait = hunter_3
+	1230.1.1 = {
+		birth = yes
+	}
+}
+
+clanlands_sjalvolki_99 = {
+	name = "Mathias"
+	religion = "sjalvolki"
+	culture = "fenvir"
+	1221.1.1 = {
+		birth = yes
+	}
+}
+
+clanlands_sjalvolki_100 = {
+	name = "Egilmar"
+	religion = "sjalvolki"
+	culture = "fenvir"
+	1222.1.1 = {
+		birth = yes
+	}
+}
+
+clanlands_sjalvolki_101 = {
+	name = "Bisina"
+	religion = "sjalvolki"
+	culture = "fenvir"
+	female = yes
+	1227.1.1 = {
+		birth = yes
+	}
+}
+
+clanlands_sjalvolki_102 = {
+	name = "Cobbo"
+	religion = "sjalvolki"
+	culture = "fenvir"
+	1230.1.1 = {
+		birth = yes
+	}
+}
+
+clanlands_sjalvolki_103 = {
+	name = "Radke"
+	religion = "sjalvolki"
+	culture = "fenvir"
+	trait = hunter_1
+	1212.1.1 = {
+		birth = yes
+	}
+}
+
+#End Generation
+
+##AVERSARIANS##
+#moved to gh_epavarion.txt
+
+#Kingdom North of the Black Sun (k_fill_67) (Nordrurik)
+
+#Characters Generated at 2020/10/11 22:55:09 by mpjama
+clanlands_sjalvoki_80 = {
+	name = "Steffen"
+	dna = steffen
+	religion = "sjalvolki"
+	culture = "warisnik"
+	female = no
+
+	trait = brave
+	trait = stubborn
+	trait = wrathful
+
+	trait = education_martial_1
+	trait = intellect_bad_1
+
+	1229.1.1 = {
+		birth = yes
+		effect = {
+			add_character_flag = has_scripted_appearance
+			add_pressed_claim = d_faisitelbouren
+			add_pressed_claim = c_jonishas
+			add_pressed_claim = c_schittsgrad
+		}
+	}
+
+	1250.1.1 = {
+		add_spouse = clanlands_sjalvoki_81
+	}
+}
+
+#Characters Generated at 2020/10/11 23:00:23 by mpjama
+#d_jastrlawy
+clanlands_sjalvoki_81 = 
+{
+ name = "Glismod"
+ dna = glismod
+ religion = "sjalvolki"
+ culture = "warisnik"
+female = yes
+
+trait = content
+trait = intellect_good_1
+trait = brave
+trait = vengeful
+
+trait = education_martial_3
+1229.1.1 =
+{
+	birth = yes
+        effect = {
+			add_character_flag = has_scripted_appearance
+		}
+}
+
+}
+#d_sverdok
+clanlands_sjalvoki_82 = 
+{
+ name = "Wiltrud"
+ religion = "sjalvolki"
+ culture = "warisnik"
+female = yes
+1229.1.1 =
+{
+	birth = yes
+        effect = {
+			add_character_flag = has_scripted_appearance
+		}
+}
+
+}
+#d_lokduu
+clanlands_sjalvoki_83 = 
+{
+ name = "Aelle"
+ dna = aelle 
+ religion = "sjalvolki"
+ culture = "warisnik"
+female = no
+trait = education_diplomacy_1
+trait = gregarious
+trait = drunkard
+trait = gluttonous
+trait = brave
+trait = hunter_1
+1220.1.1 =
+{
+	birth = yes
+        effect = {
+			add_character_flag = has_scripted_appearance
+		}
+}
+
+}
+#d_borgberg
+clanlands_sjalvoki_84 = 
+{
+ name = "Frederuna"
+ dna = frederuna2
+ religion = "sjalvolki"
+ culture = "warisnik"
+female = yes
+
+trait = ambitious
+trait = brave
+trait = vengeful
+
+trait = education_martial_4
+
+1231.1.1 =
+{
+	birth = yes
+	add_pressed_claim = k_vyshtanka
+        effect = {
+			add_character_flag = has_scripted_appearance
+		}
+}
+
+}
+#d_zhyhachow
+clanlands_sjalvoki_85 = 
+{
+ name = "Marquard"
+ religion = "sjalvolki"
+ culture = "warisnik"
+female = no
+1231.1.1 =
+{
+	birth = yes
+}
+
+}
+#c_penzwerder
+clanlands_sjalvoki_86 = 
+{
+ name = "Giselmar"
+ religion = "sjalvolki"
+ culture = "warisnik"
+female = no
+trait = hunter_3
+1230.1.1 =
+{
+	birth = yes
+}
+
+}
+#c_cudzona
+clanlands_sjalvoki_87 = 
+{
+ name = "Ida"
+ religion = "sjalvolki"
+ culture = "warisnik"
+ trait = hunter_1
+female = yes
+1232.1.1 =
+{
+	birth = yes
+}
+
+}
+#c_lonsdalur
+clanlands_sjalvoki_88 = 
+{
+ name = "Reinmar"
+ religion = "sjalvolki"
+ culture = "warisnik"
+female = no
+1227.1.1 =
+{
+	birth = yes
+}
+
+}
+#c_eglisnir
+clanlands_sjalvoki_89 = 
+{
+ name = "Simon"
+ religion = "sjalvolki"
+ culture = "warisnik"
+female = no
+1220.1.1 =
+{
+	birth = yes
+}
+
+}
+#c_varmahsandur
+clanlands_sjalvoki_90 = 
+{
+ name = "Reginbern"
+ religion = "sjalvolki"
+ culture = "warisnik"
+female = no
+1234.1.1 =
+{
+	birth = yes
+}
+
+}
+#Characters Generated at 2020/10/11 23:30:10 by mpjama
+#d_vadhammar
+clanlands_sjalvoki_91 = 
+{
+ name = "Gertrud"
+ religion = "sjalvolki"
+ culture = "daukeni"
+female = yes
+trait = hunter_1
+1218.1.1 =
+{
+	birth = yes
+}
+
+}
+#d_keurava
+clanlands_sjalvoki_92 = 
+{
+ name = "Gevert"
+ religion = "sjalvolki"
+ culture = "daukeni"
+female = no
+1217.1.1 =
+{
+	birth = yes
+}
+
+}
+#d_visazys
+clanlands_sjalvoki_93 = 
+{
+ name = "Sophia"
+ religion = "sjalvolki"
+ culture = "daukeni"
+female = yes
+1216.1.1 =
+{
+	birth = yes
+}
+
+}
+#d_baustene
+clanlands_sjalvoki_94 = 
+{
+ name = "Enda"
+ religion = "sjalvolki"
+ culture = "daukeni"
+female = yes
+1218.1.1 =
+{
+	birth = yes
+}
+
+}
+#d_jekabnde
+clanlands_sjalvoki_95 = 
+{
+ name = "Agnes"
+ religion = "sjalvolki"
+ culture = "daukeni"
+female = yes
+1230.1.1 =
+{
+	birth = yes
+}
+
+}
+#d_riihihamina
+clanlands_sjalvoki_96 = 
+{
+ name = "Glismod"
+ religion = "sjalvolki"
+ culture = "warisnik"
+female = yes
+1222.1.1 =
+{
+	birth = yes
+}
+
+}
+#d_kunra
+clanlands_sjalvoki_97 = 
+{
+ name = "Gerberga"
+ religion = "sjalvolki"
+ culture = "warisnik"
+female = yes
+trait = hunter_1
+1221.1.1 =
+{
+	birth = yes
+}
+
+}
+#d_kallin
+clanlands_sjalvoki_98 = 
+{
+ name = "Alebrand"
+	religion = "cumani"
+	culture = "kiykardid"
+female = no
+trait = hunter_3
+1216.1.1 =
+{
+	birth = yes
+}
+
+}
+
+clanlands_sjalvoki_99 = 
+{
+ name = "Krasimir_Vulchaen"
+ religion = "sjalvolki"
+ culture = "daukeni"
+1216.1.1 =
+{
+	birth = yes
+}
+
+}
+
+clanlands_sjalvolki_104 = {
+	name = "Gosschalk"
+	religion = "sjalvolki"
+	culture = "caemansi"
+	1221.1.1 = {
+		birth = yes
+	}
+}
+
+clanlands_sjalvoki_100 = { #father of cenware
+	name = "Sobekeni"
+        dna = sobekeni
+	religion = "sjalvolki"
+	culture = "daukeni"
+	dynasty = dyn_sjalvolki_1
+	female = no
+
+	father = clanlands_sjalvoki_102
+
+	1201.2.22 = {
+		birth = yes
+	        effect = {
+			add_character_flag = has_scripted_appearance
+		}
+	}
+	1216.9.12 = {
+		add_spouse = clanlands_sjalvoki_101
+	}
+	1223.11.4 = {
+		death = yes
+	}
+}
+
+clanlands_sjalvoki_101 = { #mother of cenware
+	name = "Yarakeni"
+        dna = yarakeni
+	religion = "sjalvolki"
+	culture = "daukeni"
+	female = yes
+
+	1203.4.14 = {
+		birth = yes
+	        effect = {
+			add_character_flag = has_scripted_appearance
+		}
+	}
+	1229.11.18 = {
+		death = yes
+	}
+}
+
+clanlands_sjalvoki_102 = { #grandfather of cenware
+	name = "Volkwin"
+        dna = volkwin
+	religion = "sjalvolki"
+	culture = "daukeni"
+	dynasty = dyn_sjalvolki_1
+	female = no
+
+	1163.12.3 = {
+		birth = yes
+	        effect = {
+			add_character_flag = has_scripted_appearance
+		}
+	}
+	1203.4.14 = {
+		death = yes
+	}
+}
+
+clanlands_sjalvoki_103 = { #brother of cenware
+	name = "Eofwine"
+        dna = eofwine
+	religion = "sjalvolki"
+	culture = "daukeni"
+	female = no
+	dynasty = dyn_sjalvolki_1
+	father = clanlands_sjalvoki_100
+	mother = clanlands_sjalvoki_101
+	trait = content
+	trait = brave
+	trait = impatient
+	trait = hunter_2
+
+	1215.12.3 = {
+		birth = yes
+	        effect = {
+			add_character_flag = has_scripted_appearance
+		}
+	}
+	1230.3.13 = {
+		effect = {
+			set_relation_friend = character:clanlands_sjalvolki_1
+		}
+	}
+	1252.1.1 = {
+		trait = gh_veteran_of_elysia_sjalvolki
+	}
+}

@@ -1,0 +1,371 @@
+﻿namespace = aervalr
+# Events related to the moon
+
+#Table of contents 
+
+#Cycle shifting, events moving the cycle around and informing dead magi
+#Orginal code by Piemantheman
+# 0001 - 
+
+#Shifts cycle recursively 
+# COMMENTED OUT BY HAPCHAZZARD UNTIL WE IMPLEMENT THIS PROPERLY
+aervalr.0001 = {
+    type = empty
+    hidden = yes
+
+    
+    immediate = {
+        #next_aervalr_cycle_effect = global_var:aervalr_cycle
+        #trigger_event = {
+        #    id = aervalr.0001
+        #    days = 15
+        #}
+    }
+}
+
+aervalr.0100 = {	# A piece of the moon falls on some unlucky bastard's head, check to see how big it is
+	type = empty
+	hidden = yes
+	
+	immediate = {
+		random_county = {
+			limit = { has_aelvalr_shard = no }
+			random_list = {
+				40 = { # A small shard
+					debug_log = "A small shard has fallen!"
+					debug_log_scopes = yes
+					save_scope_as = aervalr_shard_landing_site
+					title_province = { save_scope_as = aervalr_shard_landing_site_province }
+					holder = { trigger_event = aervalr.0101 }
+				}	
+				30 = { # A medium shard
+					debug_log = "A medium shard has fallen!"
+					debug_log_scopes = yes
+					save_scope_as = aervalr_shard_landing_site
+					title_province = { save_scope_as = aervalr_shard_landing_site_province }
+					holder = { trigger_event = aervalr.0102 }
+				}
+				20 = { # A large shard
+					debug_log = "A big shard has fallen!"
+					debug_log_scopes = yes
+					save_scope_as = aervalr_shard_landing_site
+					title_province = { save_scope_as = aervalr_shard_landing_site_province }
+					holder = { trigger_event = aervalr.0103 }
+				}	
+				8 = { # A huge shard
+					debug_log = "A huge shard has fallen!"
+					debug_log_scopes = yes
+					save_scope_as = aervalr_shard_landing_site
+					title_province = { save_scope_as = aervalr_shard_landing_site_province }
+					holder = { trigger_event = aervalr.0104 }
+				}
+				2 = { # lol
+					debug_log = "A colossal shard has fallen!"
+					debug_log_scopes = yes
+					save_scope_as = aervalr_shard_landing_site
+					title_province = { save_scope_as = aervalr_shard_landing_site_province }
+					holder = { trigger_event = aervalr.0105 }
+				}	
+			}
+			every_player = {
+				set_variable = {
+					name = recent_aervalr_shard
+					value = scope:aervalr_shard_landing_site
+					days = 90
+				}
+			}
+		}
+	}
+}
+
+aervalr.0101 = {
+	type = character_event
+	title = aervalr.0101.t
+	desc = aervalr.0101.desc.capital_county
+	theme = intrigue
+	
+	override_icon = {
+		reference = "gfx/interface/icons/event_types/type_aervalr.dds"
+	}
+	
+	left_portrait = {
+		character = root
+		animation = admiration
+	}
+	
+	option = {
+		name = aervalr.0101.a
+		scope:aervalr_shard_landing_site = {
+			add_county_modifier = aervalr_debris_field
+		}
+	}
+}
+
+aervalr.0102 = {
+	type = character_event
+	title = aervalr.0102.t
+	desc = aervalr.0102.desc.capital_county
+	theme = intrigue
+	
+	override_icon = {
+		reference = "gfx/interface/icons/event_types/type_aervalr.dds"
+	}
+	
+	left_portrait = {
+		character = root
+		animation = admiration
+	}
+	
+	option = {
+		name = aervalr.0102.a
+		scope:aervalr_shard_landing_site = {
+			change_development_level = -5
+			title_province = {
+				add_special_building = special_aervalr_shard_01
+			}
+		}
+	}
+}
+
+aervalr.0103 = {
+	type = character_event
+	title = aervalr.0103.t
+	desc = aervalr.0103.desc.capital_county
+	theme = feast_activity
+	
+	override_icon = {
+		reference = "gfx/interface/icons/event_types/type_aervalr.dds"
+	}
+	
+	left_portrait = {
+		character = root
+		animation = worry
+	}
+	
+	option = {
+		name = aervalr.0103.a
+		scope:aervalr_shard_landing_site = {
+			change_development_level = -10
+			title_province = {
+				add_special_building = special_aervalr_shard_02
+			}
+		}
+	}
+}
+
+aervalr.0104 = {
+	type = character_event
+	title = aervalr.0104.t
+	desc = aervalr.0104.desc.capital_county
+	theme = intrigue
+	
+	override_icon = {
+		reference = "gfx/interface/icons/event_types/type_aervalr.dds"
+	}
+	
+	left_portrait = {
+		character = root
+		animation = shock
+	}
+	
+	option = {
+		name = aervalr.0104.a
+		scope:aervalr_shard_landing_site = {
+			change_development_level = -20
+			title_province = {
+				add_special_building = special_aervalr_shard_03
+			}
+			if = {
+				limit = { root.capital_county = scope:aervalr_shard_landing_site }
+				root = {
+					custom_tooltip = aervalr.many_die_county.tt
+					hidden_effect = {
+						every_courtier_or_guest = {
+							limit = { is_at_location = scope:aervalr_shard_landing_site_province }
+							random_list = {
+								75 = {}
+								25 = { death = { death_reason = death_aervalr } }
+							}
+						}
+						every_councillor = {
+							limit = { is_at_location = scope:aervalr_shard_landing_site_province }
+							random_list = {
+								75 = {}
+								25 = { death = { death_reason = death_aervalr } }
+							}
+						}
+						every_close_or_extended_family_member = {
+							limit = { is_at_location = scope:aervalr_shard_landing_site_province }
+							random_list = {
+								75 = {}
+								25 = { death = { death_reason = death_aervalr } }
+							}
+						}
+						every_spouse = {
+							limit = { is_at_location = scope:aervalr_shard_landing_site_province }
+							random_list = {
+								75 = {}
+								25 = { death = { death_reason = death_aervalr } }
+							}
+						}
+					}
+					random_list = {
+						75 = {}
+						25 = { death = { death_reason = death_aervalr } }
+					}
+				}
+			}
+		}
+	}
+}
+
+aervalr.0105 = {
+	type = character_event
+	title = aervalr.0105.t
+	desc = aervalr.0105.desc.capital_county
+	theme = intrigue
+	
+	override_icon = {
+		reference = "gfx/interface/icons/event_types/type_aervalr.dds"
+	}
+	
+	left_portrait = {
+		character = root
+		animation = fear
+	}
+	
+	option = {
+		name = aervalr.0105.a.capital_county
+		custom_tooltip = aervalr.colossal_shard_falls.tt
+		scope:aervalr_shard_landing_site = {
+			if = {
+				limit = { root.capital_county = scope:aervalr_shard_landing_site }
+				root = {
+					custom_tooltip = aervalr.everyone_dies_county.tt
+					hidden_effect = {
+						every_courtier_or_guest = {
+							limit = { is_at_location = scope:aervalr_shard_landing_site_province }
+							death = { death_reason = death_aervalr }
+						}
+						every_councillor = {
+							limit = { is_at_location = scope:aervalr_shard_landing_site_province }
+							death = { death_reason = death_aervalr }
+						}
+						every_close_or_extended_family_member = {
+							limit = { is_at_location = scope:aervalr_shard_landing_site_province }
+							death = { death_reason = death_aervalr }
+						}
+						every_spouse = {
+							limit = { is_at_location = scope:aervalr_shard_landing_site_province }
+							death = { death_reason = death_aervalr }
+						}
+					}
+					death = { death_reason = death_aervalr }
+				}
+				custom_tooltip = devastate_county.tt
+				custom_tooltip = aervalr.duchy_damage.tt
+				title_province = {
+					add_special_building = special_aervalr_shard_04
+				}
+				hidden_effect = {
+					devastate_county = yes
+					every_neighboring_county = {
+						add_county_modifier = aervalr_debris_field
+						change_development_level = -20
+						holder = {
+							if = { limit = { prev = capital_county } }
+							trigger_event = aervalr.0106
+						}
+					}
+					every_player = {
+						trigger_event = aervalr.0110
+					}
+				}
+			}
+		}
+	}
+}
+
+aervalr.0106 = {
+	type = character_event
+	title = aervalr.0106.t
+	desc = aervalr.0106.desc.capital_county
+	theme = intrigue
+	
+	override_icon = {
+		reference = "gfx/interface/icons/event_types/type_aervalr.dds"
+	}
+	
+	left_portrait = {
+		character = root
+		animation = worry
+	}
+	
+	option = {
+		name = aervalr.0106.a
+		custom_tooltip = aervalr.colossal_shard_falls.tt
+		custom_tooltip = aervalr.colossal_shard_falls_neighbor.tt
+		scope:aervalr_shard_landing_site = {
+			root = {
+				custom_tooltip = aervalr.many_die_county.tt
+				hidden_effect = {
+					every_courtier_or_guest = {
+						limit = { is_at_location = scope:aervalr_shard_landing_site_province }
+						random_list = {
+							75 = {}
+							25 = { death = { death_reason = death_aervalr } }
+						}
+					}
+					every_councillor = {
+						limit = { is_at_location = scope:aervalr_shard_landing_site_province }
+						random_list = {
+							75 = {}
+							25 = { death = { death_reason = death_aervalr } }
+						}
+					}
+					every_close_or_extended_family_member = {
+						limit = { is_at_location = scope:aervalr_shard_landing_site_province }
+						random_list = {
+							75 = {}
+							25 = { death = { death_reason = death_aervalr } }
+						}
+					}
+					every_spouse = {
+						limit = { is_at_location = scope:aervalr_shard_landing_site_province }
+						random_list = {
+							75 = {}
+							25 = { death = { death_reason = death_aervalr } }
+						}
+					}
+				}
+				random_list = {
+					75 = {}
+					25 = { death = { death_reason = death_aervalr } }
+				}
+			}
+		}
+	}
+}
+
+aervalr.0110 = {
+	type = character_event
+	title = aervalr.0110.t
+	desc = aervalr.0110.desc
+	theme = intrigue
+	
+	override_icon = {
+		reference = "gfx/interface/icons/event_types/type_aervalr.dds"
+	}
+	
+	left_portrait = {
+		character = root
+		animation = admiration
+	}
+	
+	option = {
+		name = aervalr.0110.a
+		custom_tooltip = aervalr.colossal_shard_falls.tt
+	}
+}
+
+

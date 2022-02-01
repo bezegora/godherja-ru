@@ -1,0 +1,923 @@
+﻿aversarinas_aautokrata_religion = {
+	family = rf_imperial
+	graphical_faith = "hellenism_gfx"
+
+	doctrine_background_icon = core_tenet_banner_christian.dds
+	doctrine = imperial_hostility_doctrine
+
+	#Main Group
+	doctrine = doctrine_no_head
+	doctrine = doctrine_gender_equal
+	doctrine = doctrine_pluralism_righteous
+	doctrine = doctrine_theocracy_temporal
+
+	#Belief
+	doctrine = doctrine_autonomous_tradition
+	doctrine = doctrine_syncretic_mythology
+	doctrine = doctrine_spiritual
+	doctrine = doctrine_dualistic
+	doctrine = doctrine_aspects
+	doctrine = doctrine_avatars
+	doctrine = doctrine_promised_deliverer
+	doctrine = doctrine_underworld
+
+	#Practices
+	doctrine = doctrine_avatars_2
+	doctrine = doctrine_recommended
+	doctrine = doctrine_curtailed
+	doctrine = doctrine_monk_not_clergy_enforced
+	doctrine = doctrine_atonement_none
+	doctrine = doctrine_encouraged_alms
+
+	#Marriage
+	doctrine = doctrine_monogamy
+	doctrine = doctrine_paramourial
+	doctrine = doctrine_divorce_approval
+	doctrine = doctrine_bastardry_legitimization
+	doctrine = doctrine_consanguinity_aunt_nephew_and_uncle_niece
+	doctrine = doctrine_worldly_marriage
+
+	#Crimes
+	doctrine = doctrine_homosexuality_shunned
+	doctrine = doctrine_adultery_men_shunned
+	doctrine = doctrine_adultery_women_shunned
+	doctrine = doctrine_kinslaying_close_kin_crime
+	doctrine = doctrine_deviancy_crime
+	doctrine = doctrine_magic_supremacy
+	doctrine = doctrine_slavery_encouraged
+
+	#Clerical Functions
+	doctrine = doctrine_clerical_function_taxation
+	doctrine = doctrine_clerical_gender_male_only
+	doctrine = doctrine_clerical_marriage_allowed
+	doctrine = doctrine_clerical_succession_temporal_appointment
+	doctrine = doctrine_formal_coronation
+
+	#Special Doctrine for Aversarian Syncretism
+	doctrine = special_doctrine_is_aversarian_faith
+
+	traits = {
+		virtues = { wrathful ambitious }
+		sins = { calm content }
+	}
+
+	reserved_male_names = {
+	}
+	reserved_female_names = {
+	}
+
+	custom_faith_icons = {
+		aversarian_custom_blue_icon aversarian_custom_green_icon aversarian_custom_pink_icon aversarian_custom_purple_icon aversarian_custom_red_icon aversarian_custom_teal_icon aversarian_icon aversarian_aeschraes_icon aversarian_pope_icon aversarian_aversarian_axiaotheaism_icon aversaria_cumani_icon aversaria_island_icon
+	}
+
+	holy_order_names = {
+		{ name = "The Purest Blades" }
+		{ name = "Shield of Asclepates" }
+		{ name = "Cutters of Perophonus" }
+		{ name = "The Fated of Soter"}
+		{ name = "The Blooded Guard"}
+		{ name = "The Pure at Heart"}
+	}
+
+	holy_order_maa = { arcane_auxiliaries }
+
+	localization = {
+		#HighGod
+		HighGodName = aversarinas_aautokrata_high_god_name
+		HighGodNamePossessive = aversarinas_aautokrata_high_god_name_possessive
+		HighGodNameSheHe = CHARACTER_SHEHE_HE
+		HighGodHerselfHimself = CHARACTER_HIMSELF
+		HighGodHerHis = CHARACTER_HERHIS_HIS
+		HighGodNameAlternate = aversarinas_aautokrata_high_god_name_alternate
+		HighGodNameAlternatePossessive = aversarinas_aautokrata_high_god_name_alternate_possessive
+
+		#Creator
+		CreatorName = aversarinas_aautokrata_creator_god_name
+		CreatorNamePossessive = aversarinas_aautokrata_creator_god_name_possessive
+		CreatorSheHe = CHARACTER_SHEHE_HE
+		CreatorHerHis = CHARACTER_HERHIS_HIS
+		CreatorHerHim = CHARACTER_HERHIM_HIM
+
+		#HealthGod
+		HealthGodName = aversarinas_aautokrata_health_god_name
+		HealthGodNamePossessive = aversarinas_aautokrata_health_god_name_possessive
+		HealthGodSheHe = CHARACTER_SHEHE_HE
+		HealthGodHerHis = CHARACTER_HERHIS_HIS
+		HealthGodHerHim = CHARACTER_HERHIM_HIM
+		
+		#FertilityGod
+		FertilityGodName = aversarinas_aautokrata_fertility_god_name
+		FertilityGodNamePossessive = aversarinas_aautokrata_fertility_god_name_possessive
+		FertilityGodSheHe = CHARACTER_SHEHE_SHE
+		FertilityGodHerHis = CHARACTER_HERHIS_HER
+		FertilityGodHerHim = CHARACTER_HERHIM_HER
+
+		#WealthGod
+		WealthGodName = aversarinas_aautokrata_wealth_god_name
+		WealthGodNamePossessive = aversarinas_aautokrata_wealth_god_name_possessive
+		WealthGodSheHe = CHARACTER_SHEHE_HE
+		WealthGodHerHis = CHARACTER_HERHIS_HIS
+		WealthGodHerHim = CHARACTER_HERHIM_HIM
+
+		#HouseholdGod
+		HouseholdGodName = aversarinas_aautokrata_household_god_name
+		HouseholdGodNamePossessive = aversarinas_aautokrata_household_god_name_possessive
+		HouseholdGodSheHe = CHARACTER_SHEHE_SHE
+		HouseholdGodHerHis = CHARACTER_HERHIS_HER
+		HouseholdGodHerHim = CHARACTER_HERHIM_HER
+
+		#FateGod
+		FateGodName = aversarinas_aautokrata_fate_god_name
+		FateGodNamePossessive = aversarinas_aautokrata_fate_god_name_possessive
+		FateGodSheHe = CHARACTER_SHEHE_HE
+		FateGodHerHis = CHARACTER_HERHIS_HIS
+		FateGodHerHim = CHARACTER_HERHIM_HIM
+
+		#KnowledgeGod
+		KnowledgeGodName = aversarinas_aautokrata_knowledge_god_name
+		KnowledgeGodNamePossessive = aversarinas_aautokrata_knowledge_god_name_possessive
+		KnowledgeGodSheHe = CHARACTER_SHEHE_SHE
+		KnowledgeGodHerHis = CHARACTER_HERHIS_HER
+		KnowledgeGodHerHim = CHARACTER_HERHIM_HER
+
+		#WarGod
+		WarGodName = aversarinas_aautokrata_war_god_name
+		WarGodNamePossessive = aversarinas_aautokrata_war_god_name_possessive
+		WarGodSheHe = CHARACTER_SHEHE_HE
+		WarGodHerHis = CHARACTER_HERHIS_HIS
+		WarGodHerHim = CHARACTER_HERHIM_HIM
+
+		#TricksterGod
+		TricksterGodName = aversarinas_aautokrata_trickster_god_name
+		TricksterGodNamePossessive = aversarinas_aautokrata_trickster_god_name_possessive
+		TricksterGodSheHe = CHARACTER_SHEHE_HE
+		TricksterGodHerHis = CHARACTER_HERHIS_HIS
+		TricksterGodHerHim = CHARACTER_HERHIM_HIM
+
+		#NightGod
+		NightGodName = aversarinas_aautokrata_night_god_name
+		NightGodNamePossessive = aversarinas_aautokrata_night_god_name_possessive
+		NightGodSheHe = CHARACTER_SHEHE_SHE
+		NightGodHerHis = CHARACTER_HERHIS_HER
+		NightGodHerHim = CHARACTER_HERHIM_HER
+
+		#WaterGod
+		WaterGodName = aversarinas_aautokrata_water_god_name
+		WaterGodNamePossessive = aversarinas_aautokrata_water_god_name_possessive
+		WaterGodSheHe = CHARACTER_SHEHE_HE
+		WaterGodHerHis = CHARACTER_HERHIS_HER
+		WaterGodHerHim = CHARACTER_HERHIM_HER
+
+		PantheonTerm = aversarinas_aautokrata_pantheon_term
+		PantheonTermHasHave = pantheon_term_have
+		GoodGodNames = {
+			aversarinas_aautokrata_war_god_name
+			aversarinas_aautokrata_fertility_god_name
+			aversarinas_aautokrata_knowledge_god_name
+		}
+		DevilName = aversarinas_aautokrata_devil_name
+		DevilNamePossessive = aversarinas_aautokrata_devil_name_possessive
+		DevilSheHe = CHARACTER_SHEHE_HE
+		DevilHerHis = CHARACTER_HERHIS_HIS
+		DevilHerHis = CHARACTER_HERHIS_HIS
+		DevilHerselfHimself = CHARACTER_HIMSELF
+		EvilGodNames = {
+			aversarinas_aautokrata_devil_name
+			aversarinas_aautokrata_witchgodname
+			aversarinas_aautokrata_death_deity_name
+		}
+		HouseOfWorship = aversarinas_aautokrata_house_of_worship
+		HouseOfWorshipPlural = aversarinas_aautokrata_house_of_worship_plural
+		ReligiousSymbol = aversarinas_aautokrata_religious_symbol
+		ReligiousText = aversarinas_aautokrata_religious_text
+		ReligiousHeadName = aversarinas_aautokrata_religious_head_title
+		ReligiousHeadTitleName = aversarinas_aautokrata_religious_head_title_name
+		DevoteeMale = aversarinas_aautokrata_devotee_male
+		DevoteeMalePlural = aversarinas_aautokrata_devotee_male_plural
+		DevoteeFemale = aversarinas_aautokrata_devotee_female
+		DevoteeFemalePlural = aversarinas_aautokrata_devotee_female_plural
+		DevoteeNeuter = aversarinas_aautokrata_devotee_neuter
+		DevoteeNeuterPlural = aversarinas_aautokrata_devotee_neuter_plural
+		PriestMale = aversarinas_aautokrata_priest_male
+		PriestMalePlural = aversarinas_aautokrata_priest_male_plural
+		PriestFemale = aversarinas_aautokrata_priest_male
+		PriestFemalePlural = aversarinas_aautokrata_priest_male_plural
+		PriestNeuter = aversarinas_aautokrata_priest_male
+		PriestNeuterPlural = aversarinas_aautokrata_priest_male_plural
+		AltPriestTermPlural = aversarinas_aautokrata_priest_alternate_plural
+		BishopMale = aversarinas_aautokrata_bishop
+		BishopMalePlural = aversarinas_aautokrata_bishop_plural
+		BishopFemale = aversarinas_aautokrata_bishop
+		BishopFemalePlural = aversarinas_aautokrata_bishop_plural
+		BishopNeuter = aversarinas_aautokrata_bishop
+		BishopNeuterPlural = aversarinas_aautokrata_bishop_plural
+		DivineRealm = aversarinas_aautokrata_positive_afterlife
+		PositiveAfterLife = aversarinas_aautokrata_positive_afterlife
+		NegativeAfterLife = aversarinas_aautokrata_negative_afterlife
+		DeathDeityName = aversarinas_aautokrata_death_deity_name
+		DeathDeityNamePossessive = aversarinas_aautokrata_death_deity_name_possessive
+		DeathDeitySheHe = CHARACTER_SHEHE_HE
+		DeathDeityHerHis = CHARACTER_HERHIS_HIS
+		WitchGodName = aversarinas_aautokrata_witchgodname
+		WitchGodHerHis = CHARACTER_HERHIS_HER
+		WitchGodSheHe = CHARACTER_SHEHE_SHE
+		WitchGodHerHim = CHARACTER_HERHIM_HER
+		WitchGodMistressMaster = mistress
+		WitchGodMotherFather = mother
+
+
+		GHWName = ghw_crusade
+		GHWNamePlural = ghw_crusades
+
+	}
+	
+	piety_icon_group = "christian"
+
+	faiths = {
+        aversarinas_aautokrata = {
+			color = { 0.4 0 0 }
+			graphical_faith = "hellenism_gfx"
+			icon = aversarian_icon
+			religious_head = d_aversaria_rel
+			
+			
+			#Special Tolerance
+			doctrine = divine_destiny_doctrine
+
+			#Tenets
+			doctrine = tenet_pursuit_of_power
+			doctrine = tenet_the_bloodright
+			doctrine = tenet_unrelenting_faith
+
+			holy_order_names = {
+			}
+
+
+			holy_site = oraispol
+			holy_site = vounill
+			holy_site = mayikprolollan
+			holy_site = drakavil
+			holy_site = thebastro
+			holy_site = kasmeze
+
+			localization = { 
+				#FertilityGod
+				FertilityGodName = aversarinas_aautokrata_fertility_god_name
+				FertilityGodNamePossessive = aversarinas_aautokrata_fertility_god_name_possessive
+				FertilityGodSheHe = CHARACTER_SHEHE_SHE
+				FertilityGodHerHis = CHARACTER_HERHIS_HER
+				FertilityGodHerHim = CHARACTER_HERHIM_HER
+
+				#WealthGod
+				WealthGodName = aversarinas_aautokrata_wealth_god_name
+				WealthGodNamePossessive = aversarinas_aautokrata_wealth_god_name_possessive
+				WealthGodSheHe = CHARACTER_SHEHE_HE
+				WealthGodHerHis = CHARACTER_HERHIS_HIS
+				WealthGodHerHim = CHARACTER_HERHIM_HIM
+
+				#HouseholdGod
+				HouseholdGodName = aversarinas_aautokrata_household_god_name
+				HouseholdGodNamePossessive = aversarinas_aautokrata_household_god_name_possessive
+				HouseholdGodSheHe = CHARACTER_SHEHE_HE
+				HouseholdGodHerHis = CHARACTER_HERHIS_HIS
+				HouseholdGodHerHim = CHARACTER_HERHIM_HIM
+
+				#KnowledgeGod
+				KnowledgeGodName = aversarinas_aautokrata_knowledge_god_name
+				KnowledgeGodNamePossessive = aversarinas_aautokrata_knowledge_god_name_possessive
+				KnowledgeGodSheHe = CHARACTER_SHEHE_SHE
+				KnowledgeGodHerHis = CHARACTER_HERHIS_HER
+				KnowledgeGodHerHim = CHARACTER_HERHIM_HER
+
+				#WarGod
+				WarGodName = aversarinas_aautokrata_war_god_name
+				WarGodNamePossessive = aversarinas_aautokrata_war_god_name_possessive
+				WarGodSheHe = CHARACTER_SHEHE_HE
+				WarGodHerHis = CHARACTER_HERHIS_HIS
+				WarGodHerHim = CHARACTER_HERHIM_HIM
+
+				#WaterGod
+				WaterGodName = aversarinas_aautokrata_water_god_name
+				WaterGodNamePossessive = aversarinas_aautokrata_water_god_name_possessive
+				WaterGodSheHe = CHARACTER_SHEHE_HE
+				WaterGodHerHis = CHARACTER_HERHIS_HIS
+				WaterGodHerHim = CHARACTER_HERHIM_HIM
+			}
+		}
+		aversarinas_suncult = {
+			color = { 0.4 0.2 0.2 }
+			graphical_faith = "hellenism_gfx"
+			icon = aversarian_icon
+			religious_head = d_aversaria_rel
+			
+			
+			#Special Tolerance
+			doctrine = divine_destiny_doctrine
+
+			#Tenets
+			doctrine = tenet_warmonger
+			doctrine = tenet_the_bloodright
+			doctrine = tenet_citizenship_through_service
+
+			doctrine = tenet_dummy_tenet
+			
+			holy_order_names = {
+				{ name = "Orphans of Kataraddia" }
+				{ name = "The Chosen" }
+			}
+
+			holy_site = oraispol
+			holy_site = vounill
+			holy_site = mayikprolollan
+			holy_site = drakavil
+			holy_site = thebastro
+			holy_site = kasmeze
+
+			localization = { 
+				#FertilityGod
+				FertilityGodName = aversarinas_aautokrata_fertility_god_name
+				FertilityGodNamePossessive = aversarinas_aautokrata_fertility_god_name_possessive
+				FertilityGodSheHe = CHARACTER_SHEHE_SHE
+				FertilityGodHerHis = CHARACTER_HERHIS_HER
+				FertilityGodHerHim = CHARACTER_HERHIM_HER
+
+				#WealthGod
+				WealthGodName = aversarinas_aautokrata_wealth_god_name
+				WealthGodNamePossessive = aversarinas_aautokrata_wealth_god_name_possessive
+				WealthGodSheHe = CHARACTER_SHEHE_HE
+				WealthGodHerHis = CHARACTER_HERHIS_HIS
+				WealthGodHerHim = CHARACTER_HERHIM_HIM
+
+				#HouseholdGod
+				HouseholdGodName = aversarinas_aautokrata_household_god_name
+				HouseholdGodNamePossessive = aversarinas_aautokrata_household_god_name_possessive
+				HouseholdGodSheHe = CHARACTER_SHEHE_HE
+				HouseholdGodHerHis = CHARACTER_HERHIS_HIS
+				HouseholdGodHerHim = CHARACTER_HERHIM_HIM
+
+				#KnowledgeGod
+				KnowledgeGodName = aversarinas_aautokrata_knowledge_god_name
+				KnowledgeGodNamePossessive = aversarinas_aautokrata_knowledge_god_name_possessive
+				KnowledgeGodSheHe = CHARACTER_SHEHE_SHE
+				KnowledgeGodHerHis = CHARACTER_HERHIS_HER
+				KnowledgeGodHerHim = CHARACTER_HERHIM_HER
+
+				#WarGod
+				WarGodName = aversarinas_aautokrata_war_god_name
+				WarGodNamePossessive = aversarinas_aautokrata_war_god_name_possessive
+				WarGodSheHe = CHARACTER_SHEHE_HE
+				WarGodHerHis = CHARACTER_HERHIS_HIS
+				WarGodHerHim = CHARACTER_HERHIM_HIM
+
+				#WaterGod
+				WaterGodName = aversarinas_aautokrata_water_god_name
+				WaterGodNamePossessive = aversarinas_aautokrata_water_god_name_possessive
+				WaterGodSheHe = CHARACTER_SHEHE_HE
+				WaterGodHerHis = CHARACTER_HERHIS_HIS
+				WaterGodHerHim = CHARACTER_HERHIM_HIM
+			}
+		}
+		aversarian_megistos = {
+			color = { 0.8 0.5 0.3 }
+			graphical_faith = "hellenism_gfx"
+			icon = aversarian_megistos_icon
+			religious_head = d_aversarian_megistos_rel
+			
+			#Special Tolerance
+			doctrine = divine_destiny_doctrine
+
+			#Tenets
+			doctrine = tenet_pursuit_of_power
+			doctrine = tenet_the_bloodright
+			doctrine = tenet_carnal_exaltation
+
+			holy_site = oraispol
+			holy_site = vounill
+			holy_site = mayikprolollan
+			holy_site = drakavil
+			holy_site = thebastro
+			holy_site = kasmeze
+
+			#Laws
+			doctrine = doctrine_adultery_men_accepted
+			doctrine = doctrine_adultery_women_crime
+			doctrine = doctrine_gender_male_dominated
+			doctrine = doctrine_polygamy
+			doctrine = doctrine_deviancy_accepted
+			
+			holy_order_names = {
+				{ name = "Chosen of Megistos the Fair" }
+				{ name = "Believers of Megistos the Beautiful" }
+				{ name = "Handsomest Sons of Megistos" }
+				{ name = "Swords of Megistos the Mighty" }
+				{ name = "Spears of Megistos the Pure" }
+			}
+			
+			localization = {
+				#FertilityGod
+				FertilityGodName = aversarinas_aautokrata_fertility_god_name
+				FertilityGodNamePossessive = aversarinas_aautokrata_fertility_god_name_possessive
+				FertilityGodSheHe = CHARACTER_SHEHE_SHE
+				FertilityGodHerHis = CHARACTER_HERHIS_HER
+				FertilityGodHerHim = CHARACTER_HERHIM_HER
+
+				#WealthGod
+				WealthGodName = aversarinas_aautokrata_wealth_god_name
+				WealthGodNamePossessive = aversarinas_aautokrata_wealth_god_name_possessive
+				WealthGodSheHe = CHARACTER_SHEHE_HE
+				WealthGodHerHis = CHARACTER_HERHIS_HIS
+				WealthGodHerHim = CHARACTER_HERHIM_HIM
+
+				#HouseholdGod
+				HouseholdGodName = aversarinas_aautokrata_household_god_name
+				HouseholdGodNamePossessive = aversarinas_aautokrata_household_god_name_possessive
+				HouseholdGodSheHe = CHARACTER_SHEHE_HE
+				HouseholdGodHerHis = CHARACTER_HERHIS_HIS
+				HouseholdGodHerHim = CHARACTER_HERHIM_HIM
+
+				#KnowledgeGod
+				KnowledgeGodName = aversarinas_aautokrata_knowledge_god_name
+				KnowledgeGodNamePossessive = aversarinas_aautokrata_knowledge_god_name_possessive
+				KnowledgeGodSheHe = CHARACTER_SHEHE_SHE
+				KnowledgeGodHerHis = CHARACTER_HERHIS_HER
+				KnowledgeGodHerHim = CHARACTER_HERHIM_HER
+
+				#WarGod
+				WarGodName = aversarinas_aautokrata_war_god_name
+				WarGodNamePossessive = aversarinas_aautokrata_war_god_name_possessive
+				WarGodSheHe = CHARACTER_SHEHE_HE
+				WarGodHerHis = CHARACTER_HERHIS_HIS
+				WarGodHerHim = CHARACTER_HERHIM_HIM
+
+				#WaterGod
+				WaterGodName = aversarinas_aautokrata_water_god_name
+				WaterGodNamePossessive = aversarinas_aautokrata_water_god_name_possessive
+				WaterGodSheHe = CHARACTER_SHEHE_HE
+				WaterGodHerHis = CHARACTER_HERHIS_HIS
+				WaterGodHerHim = CHARACTER_HERHIM_HIM
+			}
+		}
+		aversarian_cumani = {
+			color = { 0.7 0.6 0.1 }
+			icon = aversaria_cumani_icon
+			religious_head = d_aversaria_cumani_rel
+			#Special 
+			doctrine = divine_destiny_doctrine
+
+			#Tenets
+			doctrine = tenet_superiority_in_bloodshed
+			doctrine = tenet_communal_identity
+			doctrine = tenet_pursuit_of_power
+
+			holy_order_names = {
+				{ name = "The Chosen Men" }
+			}
+
+			holy_site = oraispol
+			holy_site = vounill
+			holy_site = mayikprolollan
+			holy_site = drakavil
+			holy_site = thebastro
+			holy_site = kasmeze
+
+			#doctrines
+			doctrine = doctrine_adultery_men_accepted
+			doctrine = doctrine_adultery_women_accepted
+			doctrine = doctrine_homosexuality_accepted
+			doctrine = doctrine_clerical_function_recruitment
+			doctrine = doctrine_deviancy_shunned
+		}
+		aversarian_iyrossi = {
+			color = { 0.5 0.3 0.4 }
+			icon = aversarian_iyrossi_icon.dds
+			religious_head = d_aversaria_iyrossi_rel
+			#Special 
+			doctrine = divine_destiny_doctrine
+
+			#Tenets
+			doctrine = tenet_the_bloodright
+			doctrine = tenet_esotericism
+			doctrine = tenet_pursuit_of_power
+
+			holy_order_names = {
+				{ name = "The Sons of Freedom" }
+				{ name = "The Slayers of Aversaria"}
+			}
+
+			holy_site = myrespiae
+			holy_site = cures
+			holy_site = iopus
+			holy_site = seuthona
+
+			#doctrines
+			doctrine = doctrine_adultery_men_accepted
+			doctrine = doctrine_adultery_women_accepted
+			doctrine = doctrine_homosexuality_accepted
+			doctrine = doctrine_clerical_function_recruitment
+			doctrine = doctrine_deviancy_shunned
+		}		
+		aversarian_axiaotheaism = {
+			color = { 0.7 0.3 0.3 }
+			icon = aversarian_axiaotheaism_icon
+			# religious_head = d_aversaria_axiaotheism_rel
+			
+			# doctrine = doctrine_temporal_head
+			
+			#Special 
+			doctrine = divine_destiny_doctrine
+
+			#Tenets
+			doctrine = tenet_the_bloodright
+			doctrine = tenet_axiaothea_legacy
+			doctrine = tenet_communal_identity
+
+			holy_order_names = {
+				{ name = "Daughters of the Lost Empress" }
+				{ name = "Sons of the Lost Empress" }
+				{ name = "Order of Her Most Pure Vengeance Upon the Wicked" }
+			}
+
+			holy_site = oraispol
+			holy_site = vounill
+			holy_site = mayikprolollan
+			holy_site = drakavil
+			holy_site = thebastro
+			holy_site = asiupoli
+			holy_site = kasmeze
+
+			#doctrines
+			doctrine = doctrine_adultery_men_accepted
+			doctrine = doctrine_adultery_women_accepted
+			doctrine = doctrine_homosexuality_accepted
+			doctrine = doctrine_clerical_function_recruitment
+			doctrine = doctrine_deviancy_shunned
+		}
+		aversarian_sjalvolki = {
+			color = { 0.3 0.4 0.1 }
+			icon = aversarian_sjalvolki_icon
+			#Special 
+			doctrine = divine_destiny_doctrine
+
+			#Tenets
+			doctrine = tenet_the_sjalvolki_bloodright
+			doctrine = tenet_communal_identity
+			doctrine = tenet_pursuit_of_power
+
+			holy_order_names = {
+				{ name = "The Pure Huntsmen" }
+			}
+
+			holy_site = oraispol
+			holy_site = vounill
+			holy_site = mayikprolollan
+			holy_site = drakavil
+			holy_site = thebastro
+			holy_site = kasmeze
+
+			#doctrines
+			doctrine = doctrine_adultery_men_accepted
+			doctrine = doctrine_adultery_women_accepted
+			doctrine = doctrine_homosexuality_accepted
+			doctrine = doctrine_clerical_function_recruitment
+			doctrine = doctrine_deviancy_shunned
+		}
+		aversarian_gorassos = {
+			color = { 0.2 0.05 0.05 }
+			icon = aversarian_gorassos_icon
+			#Special 
+			doctrine = divine_destiny_doctrine
+
+			#Tenets
+			doctrine = tenet_the_bloodright
+			doctrine = tenet_way_of_the_skulltaker
+			doctrine = tenet_human_sacrifice
+
+			holy_order_names = {
+				{ name = "The Bloodletters" }
+				{ name = "The BloodThirsters" }
+				{ name = "Anointed of Gorassos" }
+			}
+
+			holy_site = oraispol
+			holy_site = vounill
+			holy_site = mayikprolollan
+			holy_site = drakavil
+			holy_site = thebastro
+			holy_site = kasmeze
+
+			#doctrines
+			doctrine = doctrine_adultery_men_accepted
+			doctrine = doctrine_adultery_women_accepted
+			doctrine = doctrine_homosexuality_accepted
+			doctrine = doctrine_clerical_function_recruitment
+			doctrine = doctrine_deviancy_shunned
+			doctrine = doctrine_gender_male_dominated
+		}    
+		aversarian_pope = {
+			color = { 0.2 0 0 }
+			religious_head = d_aversarian_priesthood
+			graphical_faith = "hellenism_gfx"
+			icon = aversarian_pope_icon
+			
+			
+			#Special Tolerance
+			doctrine = divine_destiny_doctrine
+
+			#Tenets
+			doctrine = tenet_pursuit_of_power
+			doctrine = tenet_the_bloodright
+			doctrine = tenet_unrelenting_faith
+			
+			doctrine = doctrine_theocracy_temporal
+			doctrine = doctrine_spiritual_head
+			
+			doctrine = doctrine_sacred_scriptures
+			doctrine = doctrine_encouraged_atone
+			doctrine = doctrine_mandatory_alms
+			doctrine = doctrine_no_concubinage
+			doctrine = doctrine_sacred_marriage
+			doctrine = doctrine_slavery_neutral
+			doctrine = doctrine_clerical_succession_spiritual_fixed_appointment
+			doctrine = doctrine_religious_coronation
+
+			holy_order_names = {
+				{ name = "The Faithful Swords of the High Omitlos" }
+				{ name = "The Poor Magi of the Temple" }
+				{ name = "Guardians of the Pure Naon" }
+			}
+
+			holy_site = oraispol
+			holy_site = vounill
+			holy_site = mayikprolollan
+			holy_site = drakavil
+			holy_site = thebastro
+			holy_site = kasmeze
+
+			localization = { 
+				#FertilityGod
+				FertilityGodName = aversarinas_aautokrata_fertility_god_name
+				FertilityGodNamePossessive = aversarinas_aautokrata_fertility_god_name_possessive
+				FertilityGodSheHe = CHARACTER_SHEHE_SHE
+				FertilityGodHerHis = CHARACTER_HERHIS_HER
+				FertilityGodHerHim = CHARACTER_HERHIM_HER
+
+				#WealthGod
+				WealthGodName = aversarinas_aautokrata_wealth_god_name
+				WealthGodNamePossessive = aversarinas_aautokrata_wealth_god_name_possessive
+				WealthGodSheHe = CHARACTER_SHEHE_HE
+				WealthGodHerHis = CHARACTER_HERHIS_HIS
+				WealthGodHerHim = CHARACTER_HERHIM_HIM
+
+				#HouseholdGod
+				HouseholdGodName = aversarinas_aautokrata_household_god_name
+				HouseholdGodNamePossessive = aversarinas_aautokrata_household_god_name_possessive
+				HouseholdGodSheHe = CHARACTER_SHEHE_HE
+				HouseholdGodHerHis = CHARACTER_HERHIS_HIS
+				HouseholdGodHerHim = CHARACTER_HERHIM_HIM
+
+				#KnowledgeGod
+				KnowledgeGodName = aversarinas_aautokrata_knowledge_god_name
+				KnowledgeGodNamePossessive = aversarinas_aautokrata_knowledge_god_name_possessive
+				KnowledgeGodSheHe = CHARACTER_SHEHE_SHE
+				KnowledgeGodHerHis = CHARACTER_HERHIS_HER
+				KnowledgeGodHerHim = CHARACTER_HERHIM_HER
+
+				#WarGod
+				WarGodName = aversarinas_aautokrata_war_god_name
+				WarGodNamePossessive = aversarinas_aautokrata_war_god_name_possessive
+				WarGodSheHe = CHARACTER_SHEHE_HE
+				WarGodHerHis = CHARACTER_HERHIS_HIS
+				WarGodHerHim = CHARACTER_HERHIM_HIM
+
+				#WaterGod
+				WaterGodName = aversarinas_aautokrata_water_god_name
+				WaterGodNamePossessive = aversarinas_aautokrata_water_god_name_possessive
+				WaterGodSheHe = CHARACTER_SHEHE_HE
+				WaterGodHerHis = CHARACTER_HERHIS_HIS
+				WaterGodHerHim = CHARACTER_HERHIM_HIM
+			}
+		}
+        aversarian_aeschraes = {
+			color = { 0.1 0 0 }
+			graphical_faith = "hellenism_gfx"
+			icon = aversarian_aeschraes_icon
+			
+			doctrine = doctrine_pluralism_fundamentalist
+			
+			#Special Tolerance
+			doctrine = divine_destiny_doctrine
+
+			#Tenets
+			doctrine = tenet_pursuit_of_power
+			doctrine = tenet_the_bloodright
+			doctrine = tenet_aeschres_legacy
+			
+			doctrine = doctrine_anointed_deliverer
+			doctrine = doctrine_autonomous
+			doctrine = doctrine_almsgiving_none
+			doctrine = doctrine_divorce_allowed
+			doctrine = doctrine_kinslaying_accepted
+			doctrine = doctrine_clerical_function_recruitment
+			doctrine = doctrine_no_restrictions
+
+			holy_order_names = {
+				{ name = "Chosen of the True Emperor" }
+				{ name = "Champions of the True Emperor" }
+				{ name = "Breakers of the World" }
+			}
+
+			holy_site = oraispol
+			holy_site = vounill
+			holy_site = mayikprolollan
+			holy_site = drakavil
+			holy_site = thebastro
+			holy_site = kasmeze
+
+			localization = { 
+				#FertilityGod
+				FertilityGodName = aversarinas_aautokrata_fertility_god_name
+				FertilityGodNamePossessive = aversarinas_aautokrata_fertility_god_name_possessive
+				FertilityGodSheHe = CHARACTER_SHEHE_SHE
+				FertilityGodHerHis = CHARACTER_HERHIS_HER
+				FertilityGodHerHim = CHARACTER_HERHIM_HER
+
+				#WealthGod
+				WealthGodName = aversarinas_aautokrata_wealth_god_name
+				WealthGodNamePossessive = aversarinas_aautokrata_wealth_god_name_possessive
+				WealthGodSheHe = CHARACTER_SHEHE_HE
+				WealthGodHerHis = CHARACTER_HERHIS_HIS
+				WealthGodHerHim = CHARACTER_HERHIM_HIM
+
+				#HouseholdGod
+				HouseholdGodName = aversarinas_aautokrata_household_god_name
+				HouseholdGodNamePossessive = aversarinas_aautokrata_household_god_name_possessive
+				HouseholdGodSheHe = CHARACTER_SHEHE_HE
+				HouseholdGodHerHis = CHARACTER_HERHIS_HIS
+				HouseholdGodHerHim = CHARACTER_HERHIM_HIM
+
+				#KnowledgeGod
+				KnowledgeGodName = aversarinas_aautokrata_knowledge_god_name
+				KnowledgeGodNamePossessive = aversarinas_aautokrata_knowledge_god_name_possessive
+				KnowledgeGodSheHe = CHARACTER_SHEHE_SHE
+				KnowledgeGodHerHis = CHARACTER_HERHIS_HER
+				KnowledgeGodHerHim = CHARACTER_HERHIM_HER
+
+				#WarGod
+				WarGodName = aversarinas_aautokrata_war_god_name
+				WarGodNamePossessive = aversarinas_aautokrata_war_god_name_possessive
+				WarGodSheHe = CHARACTER_SHEHE_HE
+				WarGodHerHis = CHARACTER_HERHIS_HIS
+				WarGodHerHim = CHARACTER_HERHIM_HIM
+
+				#WaterGod
+				WaterGodName = aversarinas_aautokrata_water_god_name
+				WaterGodNamePossessive = aversarinas_aautokrata_water_god_name_possessive
+				WaterGodSheHe = CHARACTER_SHEHE_HE
+				WaterGodHerHis = CHARACTER_HERHIS_HIS
+				WaterGodHerHim = CHARACTER_HERHIM_HIM
+			}
+		}
+        aversarian_island = {
+			color = { 0.4 0.1 0.3 }
+			graphical_faith = "hellenism_gfx"
+			icon = aversaria_island_icon
+			
+			#Special Tolerance
+			doctrine = divine_destiny_doctrine
+
+			#Tenets
+			doctrine = tenet_sanctity_of_nature
+			doctrine = tenet_the_bloodright
+			doctrine = tenet_unrelenting_faith
+
+			holy_order_names = {
+				{ name = "The Anointed of the Waves" }
+				{ name = "Salt Baptised Swords" }
+			}
+
+			holy_site = oraispol
+			holy_site = vounill
+			holy_site = mayikprolollan
+			holy_site = drakavil
+			holy_site = thebastro
+			holy_site = kasmeze
+			holy_site = chorosina
+
+			localization = { 
+				#FertilityGod
+				FertilityGodName = aversarinas_aautokrata_fertility_god_name
+				FertilityGodNamePossessive = aversarinas_aautokrata_fertility_god_name_possessive
+				FertilityGodSheHe = CHARACTER_SHEHE_SHE
+				FertilityGodHerHis = CHARACTER_HERHIS_HER
+				FertilityGodHerHim = CHARACTER_HERHIM_HER
+
+				#WealthGod
+				WealthGodName = aversarinas_aautokrata_wealth_god_name
+				WealthGodNamePossessive = aversarinas_aautokrata_wealth_god_name_possessive
+				WealthGodSheHe = CHARACTER_SHEHE_HE
+				WealthGodHerHis = CHARACTER_HERHIS_HIS
+				WealthGodHerHim = CHARACTER_HERHIM_HIM
+
+				#HouseholdGod
+				HouseholdGodName = aversarinas_aautokrata_household_god_name
+				HouseholdGodNamePossessive = aversarinas_aautokrata_household_god_name_possessive
+				HouseholdGodSheHe = CHARACTER_SHEHE_HE
+				HouseholdGodHerHis = CHARACTER_HERHIS_HIS
+				HouseholdGodHerHim = CHARACTER_HERHIM_HIM
+
+				#KnowledgeGod
+				KnowledgeGodName = aversarinas_aautokrata_knowledge_god_name
+				KnowledgeGodNamePossessive = aversarinas_aautokrata_knowledge_god_name_possessive
+				KnowledgeGodSheHe = CHARACTER_SHEHE_SHE
+				KnowledgeGodHerHis = CHARACTER_HERHIS_HER
+				KnowledgeGodHerHim = CHARACTER_HERHIM_HER
+
+				#WarGod
+				WarGodName = aversarinas_aautokrata_war_god_name
+				WarGodNamePossessive = aversarinas_aautokrata_war_god_name_possessive
+				WarGodSheHe = CHARACTER_SHEHE_HE
+				WarGodHerHis = CHARACTER_HERHIS_HIS
+				WarGodHerHim = CHARACTER_HERHIM_HIM
+
+				#WaterGod
+				WaterGodName = aversarinas_aautokrata_water_god_name
+				WaterGodNamePossessive = aversarinas_aautokrata_water_god_name_possessive
+				WaterGodSheHe = CHARACTER_SHEHE_HE
+				WaterGodHerHis = CHARACTER_HERHIS_HIS
+				WaterGodHerHim = CHARACTER_HERHIM_HIM
+			}
+		}
+        aversarinas_aautokrata_reformed = {
+			color = { 0.4 0 0 }
+			graphical_faith = "hellenism_gfx"
+			icon = aversarian_icon
+			religious_head = d_aversaria_rel
+			
+			#Special Tolerance
+			doctrine = divine_destiny_doctrine
+
+			#Tenets
+			doctrine = tenet_pursuit_of_power
+			doctrine = tenet_citizenship_through_service
+			doctrine = tenet_unrelenting_faith
+			
+			doctrine = doctrine_slavery_banned
+			doctrine = tenet_dummy_tenet
+			doctrine = doctrine_magic_accepted
+
+			holy_order_names = {
+			}
+
+			holy_site = oraispol
+			holy_site = vounill
+			holy_site = mayikprolollan
+			holy_site = drakavil
+			holy_site = thebastro
+			holy_site = kasmeze
+
+			localization = { 
+				#FertilityGod
+				FertilityGodName = aversarinas_aautokrata_fertility_god_name
+				FertilityGodNamePossessive = aversarinas_aautokrata_fertility_god_name_possessive
+				FertilityGodSheHe = CHARACTER_SHEHE_SHE
+				FertilityGodHerHis = CHARACTER_HERHIS_HER
+				FertilityGodHerHim = CHARACTER_HERHIM_HER
+
+				#WealthGod
+				WealthGodName = aversarinas_aautokrata_wealth_god_name
+				WealthGodNamePossessive = aversarinas_aautokrata_wealth_god_name_possessive
+				WealthGodSheHe = CHARACTER_SHEHE_HE
+				WealthGodHerHis = CHARACTER_HERHIS_HIS
+				WealthGodHerHim = CHARACTER_HERHIM_HIM
+
+				#HouseholdGod
+				HouseholdGodName = aversarinas_aautokrata_household_god_name
+				HouseholdGodNamePossessive = aversarinas_aautokrata_household_god_name_possessive
+				HouseholdGodSheHe = CHARACTER_SHEHE_HE
+				HouseholdGodHerHis = CHARACTER_HERHIS_HIS
+				HouseholdGodHerHim = CHARACTER_HERHIM_HIM
+
+				#KnowledgeGod
+				KnowledgeGodName = aversarinas_aautokrata_knowledge_god_name
+				KnowledgeGodNamePossessive = aversarinas_aautokrata_knowledge_god_name_possessive
+				KnowledgeGodSheHe = CHARACTER_SHEHE_SHE
+				KnowledgeGodHerHis = CHARACTER_HERHIS_HER
+				KnowledgeGodHerHim = CHARACTER_HERHIM_HER
+
+				#WarGod
+				WarGodName = aversarinas_aautokrata_war_god_name
+				WarGodNamePossessive = aversarinas_aautokrata_war_god_name_possessive
+				WarGodSheHe = CHARACTER_SHEHE_HE
+				WarGodHerHis = CHARACTER_HERHIS_HIS
+				WarGodHerHim = CHARACTER_HERHIM_HIM
+
+				#WaterGod
+				WaterGodName = aversarinas_aautokrata_water_god_name
+				WaterGodNamePossessive = aversarinas_aautokrata_water_god_name_possessive
+				WaterGodSheHe = CHARACTER_SHEHE_HE
+				WaterGodHerHis = CHARACTER_HERHIS_HIS
+				WaterGodHerHim = CHARACTER_HERHIM_HIM
+			}
+		}
+	}
+}

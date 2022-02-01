@@ -1,0 +1,20 @@
+pdxmesh = {
+	name = "broken_statue_arm_mesh"
+	file = "broken_statue_arm.mesh"
+
+	meshsettings = {
+		name = "pCube11Shape"
+		index = 0
+		texture_diffuse = "broken_statue_arm_color.dds"
+		texture_normal = "broken_statue_arm_normal.dds"
+		texture_specular = "broken_statue_arm_properties.dds"
+		texture = { file = "broken_statue_arm_unique.dds" index = 5 }
+		shader = "standard_atlas"
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+}
+
+entity = {
+	name = "broken_statue_arm_entity"
+	pdxmesh = "broken_statue_arm_mesh"
+}

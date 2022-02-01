@@ -1,0 +1,3573 @@
+﻿namespace = sjalvolki_decisions
+
+##1000-1999 rebuilding de jure title
+##2000-2999 character migrations
+##3000-3999 new migration stuff, move this into the 1000 level once it works
+# Reorganize Aversarian lands into new duchies (later), kingdoms, and empires
+# sjalvolki_decisions.1001 = {
+# 	hidden = yes
+
+# 	immediate = {
+# 		title:k_kerkonia = { set_de_jure_liege_title = title:e_sjevregard }
+# 		title:k_cycladecia = { set_de_jure_liege_title = title:e_sjevregard }
+# 		# scope:destroyer = { get_title = title:e_sjevregard }
+
+# 		# e_maskiv
+# 		title:d_erosia = { set_de_jure_liege_title = title:k_sgrad }
+# 		title:d_myrapolis = { set_de_jure_liege_title = title:k_sgrad }
+# 		title:d_ranthus = { set_de_jure_liege_title = title:k_sgrad }
+# 		title:d_aytissos = { set_de_jure_liege_title = title:k_sgrad }
+# 		title:d_eleuteneia = { set_de_jure_liege_title = title:k_sgrad }
+# 		title:d_aegythrae = { set_de_jure_liege_title = title:k_sgrad }
+# 		title:d_acaphos = { set_de_jure_liege_title = title:k_sgrad }
+# 		title:d_chalcioch = { set_de_jure_liege_title = title:k_sgrad }
+# 		title:d_hieridos = { set_de_jure_liege_title = title:k_sgrad }
+# 		title:d_erethosia = { set_de_jure_liege_title = title:k_sgrad }
+# 		title:d_eultine = { set_de_jure_liege_title = title:k_sgrad }
+# 		title:d_thronidon = { set_de_jure_liege_title = title:k_sgrad }
+# 		title:d_pheraea = { set_de_jure_liege_title = title:k_sgrad }
+		
+# 		title:d_aegela = { set_de_jure_liege_title = title:k_sajrag }
+# 		title:d_kourorion = { set_de_jure_liege_title = title:k_sajrag }
+# 		title:d_itos = { set_de_jure_liege_title = title:k_sajrag }
+# 		title:d_gangrynthos = { set_de_jure_liege_title = title:k_sajrag }
+
+# 		# e_keiskad
+# 		title:d_himonia = { set_de_jure_liege_title = title:k_plekig }
+# 		title:d_smyrnurii = { set_de_jure_liege_title = title:k_plekig }
+# 		title:d_bouthretus = { set_de_jure_liege_title = title:k_plekig }
+# 		title:d_zakria = { set_de_jure_liege_title = title:k_plekig }
+# 		title:d_abdeze = { set_de_jure_liege_title = title:k_plekig }
+# 		title:d_theodesmos = { set_de_jure_liege_title = title:k_plekig }
+# 		title:d_metedon = { set_de_jure_liege_title = title:k_plekig }
+# 		title:d_kasmippi = { set_de_jure_liege_title = title:k_plekig }
+# 		title:d_iolcegea = { set_de_jure_liege_title = title:k_plekig }
+# 		title:d_marthos = { set_de_jure_liege_title = title:k_plekig }
+# 		title:d_amona = { set_de_jure_liege_title = title:k_plekig }
+# 		title:d_artyros = { set_de_jure_liege_title = title:k_plekig }
+# 		title:d_tragiae = { set_de_jure_liege_title = title:k_plekig }
+# 		title:d_lampseidonia = { set_de_jure_liege_title = title:k_plekig }
+# 		title:d_metatrea = { set_de_jure_liege_title = title:k_plekig }
+		
+# 		title:d_tyraea = { set_de_jure_liege_title = title:k_vraved }
+# 		title:d_idendos = { set_de_jure_liege_title = title:k_vraved }
+# 		title:d_orous = { set_de_jure_liege_title = title:k_vraved }
+# 		title:d_prienyn = { set_de_jure_liege_title = title:k_vraved }
+# 		title:d_thassacuse = { set_de_jure_liege_title = title:k_vraved }
+# 		title:d_elatigeneia = { set_de_jure_liege_title = title:k_vraved }
+# 		title:d_stenais = { set_de_jure_liege_title = title:k_vraved }
+# 		title:d_epigus = { set_de_jure_liege_title = title:k_vraved }
+# 		title:d_semympia = { set_de_jure_liege_title = title:k_vraved }
+# 		title:d_andrurii = { set_de_jure_liege_title = title:k_vraved }
+		
+# 		title:d_gythinus = { set_de_jure_liege_title = title:k_sjas }
+# 		title:d_gorteutherna = { set_de_jure_liege_title = title:k_sjas }
+# 		title:d_helleia = { set_de_jure_liege_title = title:k_sjas }
+# 		title:d_nysakros = { set_de_jure_liege_title = title:k_sjas }
+# 		title:d_toskopeion = { set_de_jure_liege_title = title:k_sjas }
+# 		title:d_kamaronesos = { set_de_jure_liege_title = title:k_sjas }
+# 		title:d_kyragas = { set_de_jure_liege_title = title:k_sjas }
+# 		title:d_edapeze = { set_de_jure_liege_title = title:k_sjas }
+# 		title:d_knidomenus = { set_de_jure_liege_title = title:k_sjas }
+# 		title:d_theodonion = { set_de_jure_liege_title = title:k_sjas }
+# 		title:d_maritake = { set_de_jure_liege_title = title:k_sjas }
+# 		title:d_thermyra = { set_de_jure_liege_title = title:k_sjas }
+# 		title:d_platamum = { set_de_jure_liege_title = title:k_sjas }
+# 		title:d_eleutidrus = { set_de_jure_liege_title = title:k_sjas }
+		
+# 		# e_stukad
+# 		title:d_zakrerna = { set_de_jure_liege_title = title:k_dahagrad }
+# 		title:d_dodaphos = { set_de_jure_liege_title = title:k_dahagrad }
+# 		title:d_ambaseia = { set_de_jure_liege_title = title:k_dahagrad }
+# 		title:d_cnidystus = { set_de_jure_liege_title = title:k_dahagrad }
+# 		title:d_astyn = { set_de_jure_liege_title = title:k_dahagrad }
+# 		title:d_pantosthena = { set_de_jure_liege_title = title:k_dahagrad }
+# 		title:d_paphenion = { set_de_jure_liege_title = title:k_dahagrad }
+
+# 		title:d_eleutembria = { set_de_jure_liege_title = title:k_dgask }
+# 		title:d_zacope = { set_de_jure_liege_title = title:k_dgask }
+# 		title:d_doranais = { set_de_jure_liege_title = title:k_dgask }
+# 		title:d_kerna = { set_de_jure_liege_title = title:k_dgask }
+# 		title:d_hyblagoria = { set_de_jure_liege_title = title:k_dgask }
+		
+# 		title:d_asketta = { set_de_jure_liege_title = title:k_krakaw }
+# 		title:d_epidila = { set_de_jure_liege_title = title:k_krakaw }
+# 		title:d_alidnae = { set_de_jure_liege_title = title:k_krakaw }
+# 		title:d_hyelocaea = { set_de_jure_liege_title = title:k_krakaw }
+# 		title:d_spartena = { set_de_jure_liege_title = title:k_krakaw }
+# 		title:d_hemerane = { set_de_jure_liege_title = title:k_krakaw }
+		
+# 		# e_guggarv
+# 		title:d_rizitake = { set_de_jure_liege_title = title:k_casked }
+# 		title:d_kameirerna = { set_de_jure_liege_title = title:k_casked }
+# 		title:d_vasyma = { set_de_jure_liege_title = title:k_casked }
+# 		title:d_tegyra = { set_de_jure_liege_title = title:k_casked }
+# 		# title:d_tehodonion = { set_de_jure_liege_title = title:k_casked }
+# 		title:d_demarnae = { set_de_jure_liege_title = title:k_casked }
+# 		title:d_kydone = { set_de_jure_liege_title = title:k_casked }
+# 		title:d_zakripolis = { set_de_jure_liege_title = title:k_casked }
+# 		title:d_seutheia = { set_de_jure_liege_title = title:k_casked }
+# 		title:d_mytanes = { set_de_jure_liege_title = title:k_casked }
+# 		title:d_megelis = { set_de_jure_liege_title = title:k_casked }
+		
+# 		title:d_naxithos = { set_de_jure_liege_title = title:k_sjaklaki }
+# 		title:d_hemerollonia = { set_de_jure_liege_title = title:k_sjaklaki }
+# 		title:d_tomantina = { set_de_jure_liege_title = title:k_sjaklaki }
+# 		title:d_tarontos = { set_de_jure_liege_title = title:k_sjaklaki }
+# 		title:d_petsotiri = { set_de_jure_liege_title = title:k_sjaklaki }
+# 		title:d_pandia = { set_de_jure_liege_title = title:k_sjaklaki }
+# 		title:d_cumystus = { set_de_jure_liege_title = title:k_sjaklaki }
+# 		title:d_oenares = { set_de_jure_liege_title = title:k_sjaklaki }
+
+# 		# e_yiev
+# 		title:d_myonassus = { set_de_jure_liege_title = title:k_berlisk }
+# 		title:d_hyblossos = { set_de_jure_liege_title = title:k_berlisk }
+# 		title:d_pylynthus = { set_de_jure_liege_title = title:k_berlisk }
+# 		title:d_trapona = { set_de_jure_liege_title = title:k_berlisk }
+# 		title:d_trastro = { set_de_jure_liege_title = title:k_berlisk }
+# 		title:d_pisenae = { set_de_jure_liege_title = title:k_berlisk }
+# 		title:d_uggleberg = { set_de_jure_liege_title = title:k_berlisk }
+# 		title:d_dymydna = { set_de_jure_liege_title = title:k_berlisk }
+		
+# 		title:d_weidingen = { set_de_jure_liege_title = title:k_bledlik }
+# 		title:d_eutingen = { set_de_jure_liege_title = title:k_bledlik }
+# 		title:d_landet = { set_de_jure_liege_title = title:k_bledlik }
+# 		title:d_jokk = { set_de_jure_liege_title = title:k_bledlik }
+# 		title:d_aspelt = { set_de_jure_liege_title = title:k_bledlik }
+# 		title:d_elsane = { set_de_jure_liege_title = title:k_bledlik }
+# 		title:d_sestajovice = { set_de_jure_liege_title = title:k_bledlik }
+
+# 		# e_ruski
+# 		title:d_gornji_crnci = { set_de_jure_liege_title = title:k_akiev }
+# 		title:d_birnbaum = { set_de_jure_liege_title = title:k_akiev }
+# 		title:d_wakelterhof = { set_de_jure_liege_title = title:k_akiev }
+# 		title:d_kadan = { set_de_jure_liege_title = title:k_akiev }
+# 		title:d_geislersfeld = { set_de_jure_liege_title = title:k_akiev }
+		
+# 		title:d_zehendhof = { set_de_jure_liege_title = title:k_snalav }
+# 		title:d_oberpaindorf = { set_de_jure_liege_title = title:k_snalav }
+# 		title:d_lelov = { set_de_jure_liege_title = title:k_snalav }
+# 		title:d_haimburg = { set_de_jure_liege_title = title:k_snalav }
+# 		title:d_kremkau = { set_de_jure_liege_title = title:k_snalav }
+# 		title:d_dresbruch = { set_de_jure_liege_title = title:k_snalav }
+		
+# 		title:d_rameldange = { set_de_jure_liege_title = title:k_krava }
+# 		title:d_nadost = { set_de_jure_liege_title = title:k_krava }
+# 		title:d_hattmannsdorf = { set_de_jure_liege_title = title:k_krava }
+# 		title:d_tisvildeleje = { set_de_jure_liege_title = title:k_krava }
+# 		title:d_paroz = { set_de_jure_liege_title = title:k_krava }
+# 		title:d_doerrigsen = { set_de_jure_liege_title = title:k_krava }
+# 		title:d_ettelbruck = { set_de_jure_liege_title = title:k_krava }
+# 		title:d_sjalwagram = { set_de_jure_liege_title = title:k_krava }
+# 		title:d_reepsholt = { set_de_jure_liege_title = title:k_krava }
+
+# 		# e_bleskci
+# 		title:d_jaszfalu = { set_de_jure_liege_title = title:k_devk }
+# 		title:d_strazgonjci = { set_de_jure_liege_title = title:k_devk }
+# 		title:d_gajer = { set_de_jure_liege_title = title:k_devk }
+# 		title:d_zbynice = { set_de_jure_liege_title = title:k_devk }
+# 		title:d_feldingbjerg = { set_de_jure_liege_title = title:k_devk }
+# 		title:d_dalmsdorf = { set_de_jure_liege_title = title:k_devk }
+# 		title:d_rupensdorf = { set_de_jure_liege_title = title:k_devk }
+# 		title:d_limpertsberg = { set_de_jure_liege_title = title:k_devk }
+# 		title:d_attenhofen = { set_de_jure_liege_title = title:k_devk }
+# 		title:d_tingstaede = { set_de_jure_liege_title = title:k_devk }
+		
+# 		title:d_laubend = { set_de_jure_liege_title = title:k_cvradk }
+# 		title:d_steinenkirch = { set_de_jure_liege_title = title:k_cvradk }
+# 		title:d_mirsdorf = { set_de_jure_liege_title = title:k_cvradk }
+# 		title:d_baromut = { set_de_jure_liege_title = title:k_cvradk }
+# 		title:d_perne = { set_de_jure_liege_title = title:k_cvradk }
+		
+# 		title:d_maly_biel = { set_de_jure_liege_title = title:k_uvusk }
+# 		title:d_prihova = { set_de_jure_liege_title = title:k_uvusk }
+# 		title:d_dvorek = { set_de_jure_liege_title = title:k_uvusk }
+# 		title:d_radous = { set_de_jure_liege_title = title:k_uvusk }
+# 		title:d_klemensdorf = { set_de_jure_liege_title = title:k_uvusk }
+# 		title:d_perbetsky_dvor = { set_de_jure_liege_title = title:k_uvusk }
+
+# 		# e_desiv
+# 		title:d_addia = { set_de_jure_liege_title = title:k_deskivi }
+# 		title:d_seopuse = { set_de_jure_liege_title = title:k_deskivi }
+# 		title:d_thururii = { set_de_jure_liege_title = title:k_deskivi }
+# 		title:d_gelale = { set_de_jure_liege_title = title:k_deskivi }
+# 		title:d_moorende = { set_de_jure_liege_title = title:k_deskivi }
+# 		title:d_rumanja_vas = { set_de_jure_liege_title = title:k_deskivi }
+
+# 		title:d_gelovizza = { set_de_jure_liege_title = title:k_vka }
+# 		title:d_wschechrom = { set_de_jure_liege_title = title:k_vka }
+# 		title:d_kulm = { set_de_jure_liege_title = title:k_vka }
+# 		title:d_zirnetschlag = { set_de_jure_liege_title = title:k_vka }
+# 		title:d_bogdanic = { set_de_jure_liege_title = title:k_vka }
+# 		title:d_podkoren = { set_de_jure_liege_title = title:k_vka }
+# 		title:d_grosbous = { set_de_jure_liege_title = title:k_vka }
+# 		title:d_heinrichsheim = { set_de_jure_liege_title = title:k_vka }
+		
+# 		#e_faragard
+# 		title:k_krassovce = { set_de_jure_liege_title = title:e_faragard }
+# 		# title:d_svyavatich = { set_de_jure_liege_title = title:k_krassovce }
+		
+# 		title:d_otvovice = { set_de_jure_liege_title = title:k_nrakeved }
+# 		title:d_wanzer = { set_de_jure_liege_title = title:k_nrakeved }
+# 		title:d_brennporitschen = { set_de_jure_liege_title = title:k_nrakeved }
+# 		title:d_blatta = { set_de_jure_liege_title = title:k_nrakeved }
+# 		title:d_westerhusen = { set_de_jure_liege_title = title:k_nrakeved }
+# 		title:d_visazys = { set_de_jure_liege_title = title:k_nrakeved }
+		
+
+# 		title:d_mosebeck = { set_de_jure_liege_title = title:k_dievd }
+# 		title:d_baustene = { set_de_jure_liege_title = title:k_dievd }
+# 		title:d_halmbro = { set_de_jure_liege_title = title:k_dievd }
+# 		title:d_kurisinki = { set_de_jure_liege_title = title:k_dievd }
+# 		title:d_gumpolding = { set_de_jure_liege_title = title:k_dievd }
+		
+# 		#e_gurdurbok
+# 		title:d_wolfsfeld = { set_de_jure_liege_title = title:k_buzi }
+# 		title:d_kehla = { set_de_jure_liege_title = title:k_buzi }
+# 		title:d_lankum = { set_de_jure_liege_title = title:k_buzi }
+# 		title:d_alsbruck = { set_de_jure_liege_title = title:k_buzi }
+		
+# 		title:d_vabalgala = { set_de_jure_liege_title = title:k_maskav }
+# 		title:d_kunra = { set_de_jure_liege_title = title:k_maskav }
+# 		title:d_jekabnde = { set_de_jure_liege_title = title:k_maskav }
+# 		title:d_keurava = { set_de_jure_liege_title = title:k_maskav }
+# 		title:d_vadhammar = { set_de_jure_liege_title = title:k_maskav }
+		
+# 		#e_vevred
+# 		title:d_talde = { set_de_jure_liege_title = title:k_wakrav }
+# 		title:d_mistel = { set_de_jure_liege_title = title:k_wakrav }
+# 		title:d_hestfjoror = { set_de_jure_liege_title = title:k_wakrav }
+# 		title:d_mladovice = { set_de_jure_liege_title = title:k_wakrav }
+# 		title:d_cisichie = { set_de_jure_liege_title = title:k_wakrav }
+		
+# 		title:d_ludwigsthal = { set_de_jure_liege_title = title:k_veik }
+# 		title:d_freusburg =  { set_de_jure_liege_title = title:k_veik }
+# 		title:d_ahle =  { set_de_jure_liege_title = title:k_veik }
+# 		title:d_ujezd =  { set_de_jure_liege_title = title:k_veik }
+		
+# 		title:d_skrbovice =  { set_de_jure_liege_title = title:k_kakra }
+# 		title:d_schalkshofen = { set_de_jure_liege_title = title:k_kakra }
+# 		title:d_nepasice = { set_de_jure_liege_title = title:k_kakra }
+		
+# 		#e_peferania
+# 		title:d_otterzhofen = { set_de_jure_liege_title = title:k_dlef }
+# 		title:d_imsovci = { set_de_jure_liege_title = title:k_dlef }
+# 		title:d_wischezahn = { set_de_jure_liege_title = title:k_dlef }
+		
+# 		title:d_reddereitz = { set_de_jure_liege_title = title:k_sadak }
+# 		title:d_zgornje_vrtice = { set_de_jure_liege_title = title:k_sadak }
+# 		title:d_kautenbach = { set_de_jure_liege_title = title:k_sadak }
+# 		title:d_mihla = { set_de_jure_liege_title = title:k_sadak }
+			
+# 		title:d_oprostovice = { set_de_jure_liege_title = title:k_blecked }
+# 		title:d_walthersdorf = { set_de_jure_liege_title = title:k_blecked }
+# 		title:d_muehldorf = { set_de_jure_liege_title = title:k_blecked }
+		
+# 		title:d_dobritsch = { set_de_jure_liege_title = title:k_scadav }
+# 		title:d_padochov = { set_de_jure_liege_title = title:k_scadav }
+# 		title:d_kleinsee = { set_de_jure_liege_title = title:k_scadav }
+# 		title:d_moosleiten = { set_de_jure_liege_title = title:k_scadav }
+		
+# 		#e_peresk
+# 		title:d_srbetsch = { set_de_jure_liege_title = title:k_dievs }
+# 		title:d_popelna = { set_de_jure_liege_title = title:k_dievs }
+# 		title:d_cisotin = { set_de_jure_liege_title = title:k_dievs }
+# 		title:d_uhrov = { set_de_jure_liege_title = title:k_dievs }
+# 		title:d_merl = { set_de_jure_liege_title = title:k_dievs }
+# 		title:d_krakovany = { set_de_jure_liege_title = title:k_dievs }
+# 		title:d_karwina = { set_de_jure_liege_title = title:k_dievs }
+# 		title:d_litrbachy = { set_de_jure_liege_title = title:k_dievs }
+		
+# 		title:d_bambousek = { set_de_jure_liege_title = title:k_kevek }
+# 		title:d_blaschdorf = { set_de_jure_liege_title = title:k_kevek }
+# 		title:d_sieding = { set_de_jure_liege_title = title:k_kevek }
+		
+# 		title:d_plossen = { set_de_jure_liege_title = title:k_bladka }
+# 		title:d_kisujfalu = { set_de_jure_liege_title = title:k_bladka }
+# 		title:d_diviaky_nad_nitricou = { set_de_jure_liege_title = title:k_bladka }
+# 		# title:d_sanseln = { set_de_jure_liege_title = title:k_bladka }
+# 		title:d_kreenried = { set_de_jure_liege_title = title:k_bladka }
+# 		title:d_bylany = { set_de_jure_liege_title = title:k_bladka }
+# 		title:d_pyhrn = { set_de_jure_liege_title = title:k_bladka }
+# 		title:d_senseln = { set_de_jure_liege_title = title:k_bladka }
+		
+# 		#e_vedrelkv
+# 		title:d_pirnitz = { set_de_jure_liege_title = title:k_mowask }
+# 		title:d_bircna_vas = { set_de_jure_liege_title = title:k_mowask }
+# 		title:d_radvanovice = { set_de_jure_liege_title = title:k_mowask }
+# 		title:d_ordos = { set_de_jure_liege_title = title:k_mowask }
+		
+# 		title:d_rex = { set_de_jure_liege_title = title:k_cesk }
+# 		title:d_oberneufahrn = { set_de_jure_liege_title = title:k_cesk }
+# 		title:d_engelswald = { set_de_jure_liege_title = title:k_cesk }
+		
+# 		title:d_autschowa = { set_de_jure_liege_title = title:k_crecew }
+# 		title:d_pirken = { set_de_jure_liege_title = title:k_crecew }
+# 		title:d_puscava = { set_de_jure_liege_title = title:k_crecew }
+# 		title:d_salvenberg = { set_de_jure_liege_title = title:k_crecew }
+		
+# 		#migrating now
+		
+# 		trigger_event = {
+# 			id = west_migration.0001
+# 		}
+# 	}
+# }
+
+# sjalvolki_decisions.1003 = {
+# 	hidden = yes
+
+# 	immediate = {
+# 		# e_daavragard
+# 		title:d_ithna = { set_de_jure_liege_title = title:k_descki }
+# 		title:d_knokidbes = { set_de_jure_liege_title = title:k_descki }
+# 		title:d_maadoran = { set_de_jure_liege_title = title:k_descki }
+# 		title:d_oekevrokanne = { set_de_jure_liege_title = title:k_descki }
+
+# 		title:d_prirkos = { set_de_jure_liege_title = title:k_kradaov }
+# 		title:d_saris = { set_de_jure_liege_title = title:k_kradaov }
+# 		title:d_olythssoessa = { set_de_jure_liege_title = title:k_kradaov }
+# 		title:d_elrhyos = { set_de_jure_liege_title = title:k_kradaov }
+# 		title:d_dryn = { set_de_jure_liege_title = title:k_kradaov }
+		
+# 		title:d_vrekennus = { set_de_jure_liege_title = title:k_djav }
+# 		title:d_oradoth = { set_de_jure_liege_title = title:k_djav }
+# 		title:d_oedi = { set_de_jure_liege_title = title:k_djav }
+# 		title:d_iopolos = { set_de_jure_liege_title = title:k_djav }
+
+# 		# e_kalav
+# 		title:d_askigos = { set_de_jure_liege_title = title:k_pdvi }
+# 		title:d_abene = { set_de_jure_liege_title = title:k_pdvi }
+# 		title:d_kethetis = { set_de_jure_liege_title = title:k_pdvi }
+# 		title:d_grylothephon = { set_de_jure_liege_title = title:k_pdvi }
+# 		title:d_adne = { set_de_jure_liege_title = title:k_pdvi }
+
+# 		title:d_anadres = { set_de_jure_liege_title = title:k_hvak }
+# 		title:d_dephoephladus = { set_de_jure_liege_title = title:k_hvak }
+# 		title:d_cose = { set_de_jure_liege_title = title:k_hvak }
+# 		title:d_oios = { set_de_jure_liege_title = title:k_hvak }
+# 		title:d_olafos = { set_de_jure_liege_title = title:k_hvak }
+
+# 		title:d_vroradi = { set_de_jure_liege_title = title:k_kradal }
+# 		title:d_anphon = { set_de_jure_liege_title = title:k_kradal }
+# 		title:d_grydi = { set_de_jure_liege_title = title:k_kradal }
+# 		title:d_diath = { set_de_jure_liege_title = title:k_kradal }
+# 		title:d_skyympene = { set_de_jure_liege_title = title:k_kradal }
+# 		title:d_myris = { set_de_jure_liege_title = title:k_kradal }
+# 		title:d_dine = { set_de_jure_liege_title = title:k_kradal }
+
+# 		# e_sajliov
+# 		title:d_herainai = { set_de_jure_liege_title = title:k_sakc }
+# 		title:d_skylos = { set_de_jure_liege_title = title:k_sakc }
+# 		title:d_migoelni = { set_de_jure_liege_title = title:k_sakc }
+# 		title:d_paos = { set_de_jure_liege_title = title:k_sakc }
+# 		title:d_heriris = { set_de_jure_liege_title = title:k_sakc }
+
+# 		title:d_mekipia = { set_de_jure_liege_title = title:k_bledl }
+# 		title:d_akkos = { set_de_jure_liege_title = title:k_bledl }
+# 		title:d_armos = { set_de_jure_liege_title = title:k_bledl }
+# 		title:d_eene = { set_de_jure_liege_title = title:k_bledl }
+# 		title:d_cregoeis = { set_de_jure_liege_title = title:k_bledl }
+
+# 		title:d_rhophones = { set_de_jure_liege_title = title:k_dlak }
+# 		title:d_antaphos = { set_de_jure_liege_title = title:k_dlak }
+# 		title:d_dulia = { set_de_jure_liege_title = title:k_dlak }
+# 		title:d_hacelia = { set_de_jure_liege_title = title:k_dlak }
+# 		title:d_midia = { set_de_jure_liege_title = title:k_dlak }
+# 		title:d_pedi = { set_de_jure_liege_title = title:k_dlak }
+		
+# 		title:d_eretrona = { set_de_jure_liege_title = title:k_vlisck }
+# 		title:d_monaros = { set_de_jure_liege_title = title:k_vlisck }
+# 		title:d_teron = { set_de_jure_liege_title = title:k_vlisck }
+# 		title:d_olynthagoria = { set_de_jure_liege_title = title:k_vlisck }
+# 		title:d_myonea = { set_de_jure_liege_title = title:k_vlisck }
+
+# 		title:d_elrio = { set_de_jure_liege_title = title:k_helski }
+# 		title:d_gryike = { set_de_jure_liege_title = title:k_helski }
+# 		title:d_chsolythth = { set_de_jure_liege_title = title:k_helski }
+# 		title:d_keblaia = { set_de_jure_liege_title = title:k_helski }
+# 		title:d_akthon = { set_de_jure_liege_title = title:k_helski }
+
+# 		# e_fethealf
+# 		title:d_paphepios = { set_de_jure_liege_title = title:k_cevrek }
+# 		title:d_crotapezus = { set_de_jure_liege_title = title:k_cevrek }
+# 		title:d_kamarosse = { set_de_jure_liege_title = title:k_cevrek }
+# 		title:d_arysarnaria = { set_de_jure_liege_title = title:k_cevrek }
+# 		title:d_ephgive = { set_de_jure_liege_title = title:k_cevrek }
+
+# 		title:d_platiae = { set_de_jure_liege_title = title:k_spedk }
+# 		title:d_philoli = { set_de_jure_liege_title = title:k_spedk }
+# 		title:d_spartenion = { set_de_jure_liege_title = title:k_spedk }
+# 		title:d_sedypethedia = { set_de_jure_liege_title = title:k_spedk }
+# 		title:d_olylama = { set_de_jure_liege_title = title:k_spedk }
+		
+# 		title:d_hieraros = { set_de_jure_liege_title = title:k_glicin }
+# 		title:d_apa = { set_de_jure_liege_title = title:k_glicin }
+# 		title:d_diysthon = { set_de_jure_liege_title = title:k_glicin }
+# 		title:d_aarpazdea = { set_de_jure_liege_title = title:k_glicin }
+# 		title:d_pesandros = { set_de_jure_liege_title = title:k_glicin }
+# 		title:d_asglekeia = { set_de_jure_liege_title = title:k_glicin }
+# 		title:d_skukoi = { set_de_jure_liege_title = title:k_glicin }
+
+# 		# e_slaj
+# 		title:k_kollos = { set_de_jure_liege_title = title:e_slaj }
+
+# 		title:d_larespontos = { set_de_jure_liege_title = title:k_gevek }
+# 		title:d_epidyros = { set_de_jure_liege_title = title:k_gevek }
+# 		title:d_aigemita = { set_de_jure_liege_title = title:k_gevek }
+# 		title:d_petra = { set_de_jure_liege_title = title:k_gevek }
+# 		title:d_lapitholi = { set_de_jure_liege_title = title:k_gevek }
+# 		title:d_pelelis = { set_de_jure_liege_title = title:k_gevek }
+# 		title:d_pavlasae = { set_de_jure_liege_title = title:k_gevek }
+# 		title:d_heraclon = { set_de_jure_liege_title = title:k_gevek }
+# 		title:d_tegina = { set_de_jure_liege_title = title:k_gevek }
+		
+# 		title:d_throneos = { set_de_jure_liege_title = title:k_bakav }
+# 		title:d_boramea = { set_de_jure_liege_title = title:k_bakav }
+# 		title:d_petsitake = { set_de_jure_liege_title = title:k_bakav }
+# 		title:d_pelossos = { set_de_jure_liege_title = title:k_bakav }
+
+# 		# e_bjaor
+# 		title:d_erythralamis = { set_de_jure_liege_title = title:k_sabalv }
+# 		title:d_elatepios = { set_de_jure_liege_title = title:k_sabalv }
+# 		title:d_myligeneia = { set_de_jure_liege_title = title:k_sabalv }
+# 		title:d_rizesos = { set_de_jure_liege_title = title:k_sabalv }
+# 		title:d_megalarina = { set_de_jure_liege_title = title:k_sabalv }
+# 		title:d_argatis = { set_de_jure_liege_title = title:k_sabalv }
+# 		title:d_phanaca = { set_de_jure_liege_title = title:k_sabalv }
+		
+# 		title:d_phalalia = { set_de_jure_liege_title = title:k_slavka }
+# 		title:d_aphini = { set_de_jure_liege_title = title:k_slavka }
+# 		title:d_agrinyreum = { set_de_jure_liege_title = title:k_slavka }
+# 		title:d_taureum = { set_de_jure_liege_title = title:k_slavka }
+
+# 		# e_bajriland
+# 		title:d_pellactus = { set_de_jure_liege_title = title:k_provdanov }
+# 		title:d_demymna = { set_de_jure_liege_title = title:k_provdanov }
+# 		title:d_kameireia = { set_de_jure_liege_title = title:k_provdanov }
+# 		title:d_elatollo = { set_de_jure_liege_title = title:k_provdanov }
+
+# 		title:d_pandena = { set_de_jure_liege_title = title:k_sladia }
+# 		title:d_trapopolis = { set_de_jure_liege_title = title:k_sladia }
+# 		title:d_kamymna = { set_de_jure_liege_title = title:k_sladia }
+# 		title:d_thuramos = { set_de_jure_liege_title = title:k_sladia }
+# 		title:d_psacus = { set_de_jure_liege_title = title:k_sladia }
+# 		title:d_ayteos = { set_de_jure_liege_title = title:k_sladia }
+
+# 		title:d_astaseia = { set_de_jure_liege_title = title:k_siktak }
+# 		title:d_eresarnassus = { set_de_jure_liege_title = title:k_siktak }
+# 		title:d_kamaramum = { set_de_jure_liege_title = title:k_siktak }
+# 		title:d_rhypontum = { set_de_jure_liege_title = title:k_siktak }
+# 		title:d_pylypes = { set_de_jure_liege_title = title:k_siktak }
+
+# 		# e_balav
+# 		title:d_dymetra = { set_de_jure_liege_title = title:k_poaclav }
+# 		title:d_ithina = { set_de_jure_liege_title = title:k_poaclav }
+# 		title:d_epenae = { set_de_jure_liege_title = title:k_poaclav }
+# 		title:d_mochlocaea = { set_de_jure_liege_title = title:k_poaclav }
+# 		title:d_binth = { set_de_jure_liege_title = title:k_poaclav }
+# 		title:d_eryras = { set_de_jure_liege_title = title:k_poaclav }
+# 		title:d_itilene = { set_de_jure_liege_title = title:k_poaclav }
+
+# 		title:d_thurios = { set_de_jure_liege_title = title:k_cershuv }
+# 		title:d_hellane = { set_de_jure_liege_title = title:k_cershuv }
+# 		title:d_byllyrian = { set_de_jure_liege_title = title:k_cershuv }
+# 		title:d_epacuse = { set_de_jure_liege_title = title:k_cershuv }
+# 		title:d_halaca = { set_de_jure_liege_title = title:k_cershuv }
+# 		title:d_chalcela = { set_de_jure_liege_title = title:k_cershuv }
+
+# 		# e_kursv
+# 		title:d_tomeira = { set_de_jure_liege_title = title:k_vytva }
+# 		title:d_cyrydon = { set_de_jure_liege_title = title:k_vytva }
+# 		title:d_rhegyra = { set_de_jure_liege_title = title:k_vytva }
+# 		title:d_olendos = { set_de_jure_liege_title = title:k_vytva }
+# 		title:d_thyrodosia = { set_de_jure_liege_title = title:k_vytva }
+
+# 		title:d_cythioch = { set_de_jure_liege_title = title:k_tolmat }
+# 		title:d_lampsantina = { set_de_jure_liege_title = title:k_tolmat }
+# 		title:d_sozydos = { set_de_jure_liege_title = title:k_tolmat }
+# 		title:d_sozegion = { set_de_jure_liege_title = title:k_tolmat }
+
+# 		title:d_demylos = { set_de_jure_liege_title = title:k_karvice }
+# 		title:d_kepapetra = { set_de_jure_liege_title = title:k_karvice }
+# 		title:d_massatrea = { set_de_jure_liege_title = title:k_karvice }
+# 		title:d_stenitida = { set_de_jure_liege_title = title:k_karvice }
+# 		title:d_phaistetus = { set_de_jure_liege_title = title:k_karvice }
+		
+# 		title:d_phanokampos = { set_de_jure_liege_title = title:k_krary }
+# 		title:d_eleutoezen = { set_de_jure_liege_title = title:k_krary }
+# 		title:d_antiphoron = { set_de_jure_liege_title = title:k_krary }
+# 		title:d_cyralos = { set_de_jure_liege_title = title:k_krary }
+# 		title:d_paeschaes = { set_de_jure_liege_title = title:k_krary }
+# 		title:d_apenae = { set_de_jure_liege_title = title:k_krary }
+
+# 		# e_sjakal
+# 		title:d_stratopedon = { set_de_jure_liege_title = title:k_kochod }
+# 		title:d_he_vrerai = { set_de_jure_liege_title = title:k_kochod }
+# 		title:d_helesthemna = { set_de_jure_liege_title = title:k_kochod }
+# 		title:d_gvasiklea = { set_de_jure_liege_title = title:k_kochod }
+# 		title:d_proletheros = { set_de_jure_liege_title = title:k_kochod }
+
+# 		title:d_myrmomenus = { set_de_jure_liege_title = title:k_parclav }
+# 		title:d_smyrnonnos = { set_de_jure_liege_title = title:k_parclav }
+# 		title:d_stenyrian = { set_de_jure_liege_title = title:k_parclav }
+# 		title:d_assila = { set_de_jure_liege_title = title:k_parclav }
+# 		title:d_messopus = { set_de_jure_liege_title = title:k_parclav }
+
+# 		title:d_mochlurion = { set_de_jure_liege_title = title:k_lubry }
+# 		title:d_gangredon = { set_de_jure_liege_title = title:k_lubry }
+# 		title:d_idon = { set_de_jure_liege_title = title:k_lubry }
+# 		title:d_tukhei = { set_de_jure_liege_title = title:k_lubry }
+# 		title:d_actox = { set_de_jure_liege_title = title:k_lubry }
+# 		title:d_akragas = { set_de_jure_liege_title = title:k_lubry }
+		
+# 		# e_vurkv
+# 		title:d_epidamnus = { set_de_jure_liege_title = title:k_horav }
+# 		title:d_sthenoumnos = { set_de_jure_liege_title = title:k_horav }
+# 		title:d_lampsacus = { set_de_jure_liege_title = title:k_horav }
+# 		title:d_aakthmai = { set_de_jure_liege_title = title:k_horav }
+# 		title:d_coucounaries = { set_de_jure_liege_title = title:k_horav }
+# 		title:d_menelaion = { set_de_jure_liege_title = title:k_horav }
+# 		title:d_nisara = { set_de_jure_liege_title = title:k_horav }
+
+# 		title:d_tomi = { set_de_jure_liege_title = title:k_alman }
+# 		title:d_posidonia = { set_de_jure_liege_title = title:k_alman }
+# 		title:d_jaraea = { set_de_jure_liege_title = title:k_alman }
+# 		title:d_nisoni = { set_de_jure_liege_title = title:k_alman }
+# 		title:d_busaraphae = { set_de_jure_liege_title = title:k_alman }
+# 		title:d_kalkathoi = { set_de_jure_liege_title = title:k_alman }
+
+# 		#migrating now
+		
+# 		trigger_event = {
+# 		 	id = west_migration.0003
+# 		}
+# 	}
+# }
+
+# sjalvolki_decisions.2000 = {
+# 	hidden = yes
+# 	immediate = {
+# 		generate_vassal_list = {
+# 			CULTURE = culture:daukeni
+# 			FAITH = faith:sjalvolki
+# 			LIST = daukeni_vassals
+# 		}
+		
+# 		generate_vassal_list = {
+# 			CULTURE = culture:adrakamp
+# 			FAITH = faith:sjalvolki
+# 			LIST = adrakamp_vassals
+# 		}
+		
+# 		generate_vassal_list = {
+# 			CULTURE = culture:caemansi
+# 			FAITH = faith:sjalvolki
+# 			LIST = caemansi_vassals
+# 		}
+		
+# 		generate_vassal_list = {
+# 			CULTURE = culture:fenvir
+# 			FAITH = faith:sjalvolki
+# 			LIST = fenvir_vassals
+# 		}
+		
+# 		generate_vassal_list = {
+# 			CULTURE = culture:curgerski
+# 			FAITH = faith:sjalvolki
+# 			LIST = curgerski_vassals
+# 		}
+
+# 		generate_vassal_list = {
+# 			CULTURE = culture:irmionoth
+# 			FAITH = faith:sjalvolki
+# 			LIST = irmionoth_vassals
+# 		}
+	
+# 		generate_vassal_list = {
+# 			CULTURE = culture:greulokin
+# 			FAITH = faith:sjalvolki
+# 			LIST = greulokin_vassals
+# 		}
+
+# 		generate_vassal_list = {
+# 			CULTURE = culture:mastikigni
+# 			FAITH = faith:sjalvolki
+# 			LIST = mastikigni_vassals
+# 		}
+		
+# 		generate_vassal_list = {
+# 			CULTURE = culture:barki
+# 			FAITH = faith:sjalvolki
+# 			LIST = barki_vassals
+# 		}
+		
+# 		generate_vassal_list = {
+# 			CULTURE = culture:tribocicai
+# 			FAITH = faith:sjalvolki
+# 			LIST = tribocicai_vassals
+# 		}
+
+# 		generate_vassal_list = {
+# 			CULTURE = culture:warisnik
+# 			FAITH = faith:sjalvolki
+# 			LIST = warisnik_vassals
+# 		}
+		
+# 		generate_vassal_list = {
+# 			CULTURE = culture:vrodkin
+# 			FAITH = faith:sjalvolki
+# 			LIST = vrodkin_vassals
+# 		}
+
+# 		generate_vassal_list = {
+# 			CULTURE = culture:goans
+# 			FAITH = faith:gethian
+# 			LIST = goan_vassals
+# 		}
+
+# 		generate_vassal_list = {
+# 			CULTURE = culture:huegodocs
+# 			FAITH = faith:apti
+# 			LIST = huegodoc_vassals
+# 		}
+
+# 		generate_vassal_list = {
+# 			CULTURE = culture:kardwens
+# 			FAITH = faith:kardawai
+# 			LIST = kardwen_vassals
+# 		}
+
+# 		generate_vassal_list = {
+# 			CULTURE = culture:karzarads
+# 			FAITH = faith:kakarataki
+# 			LIST = karzarad_vassals
+# 		}
+
+# 		generate_vassal_list = {
+# 			CULTURE = culture:mondecny
+# 			FAITH = faith:portenchant
+# 			LIST = mondecny_vassals
+# 		}
+
+# 		generate_vassal_list = {
+# 			CULTURE = culture:sarminians
+# 			FAITH = faith:salacad
+# 			LIST = sarminian_vassals
+# 		}
+
+# 		title:k_dahagrad = { add_to_list = daukeni_kingdoms }
+# 		title:k_dgask = { add_to_list = daukeni_kingdoms }
+# 		title:k_krakaw = { add_to_list = daukeni_kingdoms }
+# 		title:k_casked = { add_to_list = daukeni_kingdoms }
+# 		title:k_sjaklaki = { add_to_list = daukeni_kingdoms }
+# 		title:k_berlisk = { add_to_list = daukeni_kingdoms }
+
+# 		generate_title_list = {
+# 			INPUT_LIST = daukeni_kingdoms
+# 			OUTPUT_DUCHIES = daukeni_duchies
+# 			OUTPUT_COUNTIES = daukeni_counties
+# 		}
+
+# 		assign_titles_to_characters = {
+# 			CHARACTER_LIST = daukeni_vassals
+# 			KINGDOM_LIST = daukeni_kingdoms
+# 			DUCHY_LIST = daukeni_duchies
+# 			COUNTY_LIST = daukeni_counties
+# 		}
+
+# 		title:k_bledlik = { add_to_list = adrakamp_kingdoms }
+
+# 		generate_title_list = {
+# 			INPUT_LIST = adrakamp_kingdoms
+# 			OUTPUT_DUCHIES = adrakamp_duchies
+# 			OUTPUT_COUNTIES = adrakamp_counties
+# 		}
+
+# 		assign_titles_to_characters = {
+# 			CHARACTER_LIST = adrakamp_vassals
+# 			KINGDOM_LIST = adrakamp_kingdoms
+# 			DUCHY_LIST = adrakamp_duchies
+# 			COUNTY_LIST = adrakamp_counties
+# 		}
+
+# 		title:k_akiev = { add_to_list = caemansi_kingdoms }
+
+# 		generate_title_list = {
+# 			INPUT_LIST = caemansi_kingdoms
+# 			OUTPUT_DUCHIES = caemansi_duchies
+# 			OUTPUT_COUNTIES = caemansi_counties
+# 		}
+
+# 		assign_titles_to_characters = {
+# 			CHARACTER_LIST = caemansi_vassals
+# 			KINGDOM_LIST = caemansi_kingdoms
+# 			DUCHY_LIST = caemansi_duchies
+# 			COUNTY_LIST = caemansi_counties
+# 		}
+
+# 		title:k_snalav = { add_to_list = fenvir_kingdoms }
+
+# 		generate_title_list = {
+# 			INPUT_LIST = fenvir_kingdoms
+# 			OUTPUT_DUCHIES = fenvir_duchies
+# 			OUTPUT_COUNTIES = fenvir_counties
+# 		}
+
+# 		assign_titles_to_characters = {
+# 			CHARACTER_LIST = fenvir_vassals
+# 			KINGDOM_LIST = fenvir_kingdoms
+# 			DUCHY_LIST = fenvir_duchies
+# 			COUNTY_LIST = fenvir_counties
+# 		}
+
+# 		title:k_krava = { add_to_list = curgerski_kingdoms }
+
+# 		generate_title_list = {
+# 			INPUT_LIST = curgerski_kingdoms
+# 			OUTPUT_DUCHIES = curgerski_duchies
+# 			OUTPUT_COUNTIES = curgerski_counties
+# 		}
+
+# 		assign_titles_to_characters = {
+# 			CHARACTER_LIST = curgerski_vassals
+# 			KINGDOM_LIST = curgerski_kingdoms
+# 			DUCHY_LIST = curgerski_duchies
+# 			COUNTY_LIST = curgerski_counties
+# 		}
+
+# 		title:k_devk = { add_to_list = irmionoth_kingdoms }
+
+# 		generate_title_list = {
+# 			INPUT_LIST = irmionoth_kingdoms
+# 			OUTPUT_DUCHIES = irmionoth_duchies
+# 			OUTPUT_COUNTIES = irmionoth_counties
+# 		}
+
+# 		assign_titles_to_characters = {
+# 			CHARACTER_LIST = irmionoth_vassals
+# 			KINGDOM_LIST = irmionoth_kingdoms
+# 			DUCHY_LIST = irmionoth_duchies
+# 			COUNTY_LIST = irmionoth_counties
+# 		}
+
+# 		title:k_cvradk = { add_to_list = greulokin_kingdoms }
+
+# 		generate_title_list = {
+# 			INPUT_LIST = greulokin_kingdoms
+# 			OUTPUT_DUCHIES = greulokin_duchies
+# 			OUTPUT_COUNTIES = greulokin_counties
+# 		}
+
+# 		assign_titles_to_characters = {
+# 			CHARACTER_LIST = greulokin_vassals
+# 			KINGDOM_LIST = greulokin_kingdoms
+# 			DUCHY_LIST = greulokin_duchies
+# 			COUNTY_LIST = greulokin_counties
+# 		}
+
+# 		title:k_uvusk = { add_to_list = mastikigni_kingdoms }
+
+# 		generate_title_list = {
+# 			INPUT_LIST = mastikigni_kingdoms
+# 			OUTPUT_DUCHIES = mastikigni_duchies
+# 			OUTPUT_COUNTIES = mastikigni_counties
+# 		}
+
+# 		assign_titles_to_characters = {
+# 			CHARACTER_LIST = mastikigni_vassals
+# 			KINGDOM_LIST = mastikigni_kingdoms
+# 			DUCHY_LIST = mastikigni_duchies
+# 			COUNTY_LIST = mastikigni_counties
+# 		}
+
+# 		title:k_deskivi = { add_to_list = barki_kingdoms }
+
+# 		generate_title_list = {
+# 			INPUT_LIST = barki_kingdoms
+# 			OUTPUT_DUCHIES = barki_duchies
+# 			OUTPUT_COUNTIES = barki_counties
+# 		}
+
+# 		assign_titles_to_characters = {
+# 			CHARACTER_LIST = barki_vassals
+# 			KINGDOM_LIST = barki_kingdoms
+# 			DUCHY_LIST = barki_duchies
+# 			COUNTY_LIST = barki_counties
+# 		}
+
+# 		title:k_vka = { add_to_list = tribocicai_kingdoms }
+
+# 		generate_title_list = {
+# 			INPUT_LIST = tribocicai_kingdoms
+# 			OUTPUT_DUCHIES = tribocicai_duchies
+# 			OUTPUT_COUNTIES = tribocicai_counties
+# 		}
+
+# 		assign_titles_to_characters = {
+# 			CHARACTER_LIST = tribocicai_vassals
+# 			KINGDOM_LIST = tribocicai_kingdoms
+# 			DUCHY_LIST = tribocicai_duchies
+# 			COUNTY_LIST = tribocicai_counties
+# 		}
+
+# 		title:k_crecew = { add_to_list = warisnik_kingdoms }
+
+# 		generate_title_list = {
+# 			INPUT_LIST = warisnik_kingdoms
+# 			OUTPUT_DUCHIES = warisnik_duchies
+# 			OUTPUT_COUNTIES = warisnik_counties
+# 		}
+
+# 		assign_titles_to_characters = {
+# 			CHARACTER_LIST = warisnik_vassals
+# 			KINGDOM_LIST = warisnik_kingdoms
+# 			DUCHY_LIST = warisnik_duchies
+# 			COUNTY_LIST = warisnik_counties
+# 		}
+
+# 		title:k_bladka = { add_to_list = vrodkin_kingdoms }
+
+# 		generate_title_list = {
+# 			INPUT_LIST = vrodkin_kingdoms
+# 			OUTPUT_DUCHIES = vrodkin_duchies
+# 			OUTPUT_COUNTIES = vrodkin_counties
+# 		}
+
+# 		assign_titles_to_characters = {
+# 			CHARACTER_LIST = vrodkin_vassals
+# 			KINGDOM_LIST = vrodkin_kingdoms
+# 			DUCHY_LIST = vrodkin_duchies
+# 			COUNTY_LIST = vrodkin_counties
+# 		}
+
+# 		title:k_kevek = { add_to_list = goan_kingdoms }
+# 		title:k_dievs = { add_to_list = goan_kingdoms }
+
+# 		generate_title_list = {
+# 			INPUT_LIST = goan_kingdoms
+# 			OUTPUT_DUCHIES = goan_duchies
+# 			OUTPUT_COUNTIES = goan_counties
+# 		}
+
+# 		assign_titles_to_characters = {
+# 			CHARACTER_LIST = goan_vassals
+# 			KINGDOM_LIST = goan_kingdoms
+# 			DUCHY_LIST = goan_duchies
+# 			COUNTY_LIST = goan_counties
+# 		}
+
+# 		title:k_cesk = { add_to_list = huegodoc_kingdoms }
+# 		title:k_mowask = { add_to_list = huegodoc_kingdoms }
+
+# 		generate_title_list = {
+# 			INPUT_LIST = huegodoc_kingdoms
+# 			OUTPUT_DUCHIES = huegodoc_duchies
+# 			OUTPUT_COUNTIES = huegodoc_counties
+# 		}
+
+# 		assign_titles_to_characters = {
+# 			CHARACTER_LIST = huegodoc_vassals
+# 			KINGDOM_LIST = huegodoc_kingdoms
+# 			DUCHY_LIST = huegodoc_duchies
+# 			COUNTY_LIST = huegodoc_counties
+# 		}
+		
+# 		title:k_scadav = { add_to_list = kardwen_kingdoms }
+# 		title:k_blecked = { add_to_list = kardwen_kingdoms }
+# 		title:k_sadak = { add_to_list = kardwen_kingdoms }
+
+# 		generate_title_list = {
+# 			INPUT_LIST = kardwen_kingdoms
+# 			OUTPUT_DUCHIES = kardwen_duchies
+# 			OUTPUT_COUNTIES = kardwen_counties
+# 		}
+
+# 		assign_titles_to_characters = {
+# 			CHARACTER_LIST = kardwen_vassals
+# 			KINGDOM_LIST = kardwen_kingdoms
+# 			DUCHY_LIST = kardwen_duchies
+# 			COUNTY_LIST = kardwen_counties
+# 		}
+		
+# 		title:k_krassovce = { add_to_list = karzarad_kingdoms }
+# 		title:k_nrakeved = { add_to_list = karzarad_kingdoms }
+
+# 		generate_title_list = {
+# 			INPUT_LIST = karzarad_kingdoms
+# 			OUTPUT_DUCHIES = karzarad_duchies
+# 			OUTPUT_COUNTIES = karzarad_counties
+# 		}
+
+# 		assign_titles_to_characters = {
+# 			CHARACTER_LIST = karzarad_vassals
+# 			KINGDOM_LIST = karzarad_kingdoms
+# 			DUCHY_LIST = karzarad_duchies
+# 			COUNTY_LIST = karzarad_counties
+# 		}
+		
+# 		title:k_dievd = { add_to_list = mondecny_kingdoms }
+# 		title:k_maskav = { add_to_list = mondecny_kingdoms }
+
+# 		generate_title_list = {
+# 			INPUT_LIST = mondecny_kingdoms
+# 			OUTPUT_DUCHIES = mondecny_duchies
+# 			OUTPUT_COUNTIES = mondecny_counties
+# 		}
+
+# 		assign_titles_to_characters = {
+# 			CHARACTER_LIST = mondecny_vassals
+# 			KINGDOM_LIST = mondecny_kingdoms
+# 			DUCHY_LIST = mondecny_duchies
+# 			COUNTY_LIST = mondecny_counties
+# 		}
+		
+# 		title:k_dlef = { add_to_list = sarminian_kingdoms }
+# 		title:k_buzi = { add_to_list = sarminian_kingdoms }
+# 		title:k_wakrav = { add_to_list = sarminian_kingdoms }
+# 		title:k_kakra = { add_to_list = sarminian_kingdoms }
+# 		title:k_veik = { add_to_list = sarminian_kingdoms }
+
+# 		generate_title_list = {
+# 			INPUT_LIST = sarminian_kingdoms
+# 			OUTPUT_DUCHIES = sarminian_duchies
+# 			OUTPUT_COUNTIES = sarminian_counties
+# 		}
+
+# 		assign_titles_to_characters = {
+# 			CHARACTER_LIST = sarminian_vassals
+# 			KINGDOM_LIST = sarminian_kingdoms
+# 			DUCHY_LIST = sarminian_duchies
+# 			COUNTY_LIST = sarminian_counties
+# 		}
+
+# 		# Rebuild dejure hierarchy
+# 		create_title_and_vassal_change = {
+# 			type = granted
+# 			save_scope_as = change
+# 			add_claim_on_loss = no
+# 		}
+
+# 		# This block is a workaround because every_ruler seems to ignore pre-generated characters for some reason
+# 		# If possible use the commented every_ruler block instead
+# 		title:e_sjevregard = { add_to_list = kingdoms_to_add }
+# 		title:e_maskiv = { add_to_list = kingdoms_to_add }
+# 		title:e_keiskad = { add_to_list = kingdoms_to_add }
+# 		title:e_stukad = { add_to_list = kingdoms_to_add }
+# 		title:e_guggarv = { add_to_list = kingdoms_to_add }
+# 		title:e_yiev = { add_to_list = kingdoms_to_add }
+# 		title:e_ruski = { add_to_list = kingdoms_to_add }
+# 		title:e_bleskci = { add_to_list = kingdoms_to_add }
+# 		title:e_desiv = { add_to_list = kingdoms_to_add }
+# 		title:e_peresk = { add_to_list = kingdoms_to_add }
+# 		title:e_vedrelkv = { add_to_list = kingdoms_to_add }
+# 		title:e_peferania = { add_to_list = kingdoms_to_add }
+# 		title:e_faragard = { add_to_list = kingdoms_to_add }
+# 		title:e_jsav = { add_to_list = kingdoms_to_add }
+# 		title:e_vevred = { add_to_list = kingdoms_to_add }
+
+# 		every_in_list = {
+# 			list = kingdoms_to_add
+# 			every_in_de_jure_hierarchy = {
+# 				limit = {
+# 					holder = {
+# 						primary_title.tier >= tier_county
+# 						has_character_flag = aversarian_migration
+# 						NOT = {
+# 							liege = primary_title.de_jure_liege.holder
+# 						}
+# 					}
+# 				}
+# 				holder = {
+# 					IF = {
+# 						limit = {
+# 							primary_title.tier = tier_county
+# 						}
+
+# 						IF = {
+# 							limit = {
+# 								exists = primary_title.duchy.holder
+# 							}
+							
+# 							# 95%, 4.8%, 0.2%
+# 							random_list = {
+# 								475 = {
+# 									change_liege = {
+# 										liege = primary_title.duchy.holder
+# 										change = scope:change
+# 									}
+# 								}
+# 								24 = {
+# 									change_liege = {
+# 										liege = primary_title.kingdom.holder
+# 										change = scope:change
+# 									}
+# 								}
+# 								1 = {
+# 									change_liege = {
+# 										liege = scope:destroyer
+# 										change = scope:change
+# 									}
+# 								}
+# 							}
+# 						}
+# 						ELSE = {
+# 							random_list = {
+# 								95 = {
+# 									change_liege = {
+# 										liege = primary_title.kingdom.holder
+# 										change = scope:change
+# 									}
+# 								}
+# 								5 = {
+# 									change_liege = {
+# 										liege = scope:destroyer
+# 										change = scope:change
+# 									}
+# 								}
+# 							}
+# 						}
+# 					}
+# 					ELSE_IF = {
+# 						limit = {
+# 							primary_title.tier = tier_duchy
+# 						}
+
+# 						random_list = {
+# 							90 = {
+# 								change_liege = {
+# 									liege = primary_title.kingdom.holder
+# 									change = scope:change
+# 								}
+# 							}
+# 							10 = {
+# 								change_liege = {
+# 									liege = scope:destroyer
+# 									change = scope:change
+# 								}
+# 							}
+# 						}
+# 					}
+# 					ELSE_IF = {
+# 						limit = {
+# 							primary_title.tier = tier_kingdom
+# 						}
+# 						change_liege = {
+# 							liege = scope:destroyer
+# 							change = scope:change
+# 						}
+# 					}
+# 				}
+# 			}
+# 		}
+
+# 		# every_ruler = {
+# 		# 	limit = {
+# 		# 		primary_title.tier >= tier_county
+# 		# 		has_character_flag = aversarian_migration
+# 		# 		NOT = {
+# 		# 			liege = primary_title.de_jure_liege
+# 		# 		}
+# 		# 	}
+# 		# 	IF = {
+# 		# 		limit = {
+# 		# 			primary_title.tier = tier_county
+# 		# 		}
+
+# 		# 		IF = {
+# 		# 			limit = {
+# 		# 				exists = primary_title.duchy.holder
+# 		# 			}
+					
+# 		#			# 95%, 4.8%, 0.2%
+# 		# 			# random_list = {
+# 		# 			# 	475 = {
+# 		# 					change_liege = {
+# 		# 						liege = primary_title.duchy.holder
+# 		# 						change = scope:change
+# 		# 					}
+# 		# 			# 	}
+# 		# 			# 	24 = {
+# 		# 			# 		change_liege = {
+# 		# 			# 			liege = primary_title.kingdom.holder
+# 		# 			# 			change = scope:change
+# 		# 			# 		}
+# 		# 			# 	}
+# 		# 			# 	1 = {
+# 		# 			# 		change_liege = {
+# 		# 			# 			liege = scope:destroyer
+# 		# 			# 			change = scope:change
+# 		# 			# 		}
+# 		# 			# 	}
+# 		# 			# }
+# 		# 		}
+# 		# 		ELSE = {
+# 		# 			# random_list = {
+# 		# 			# 	95 = {
+# 		# 					change_liege = {
+# 		# 						liege = primary_title.kingdom.holder
+# 		# 						change = scope:change
+# 		# 					}
+# 		# 			# 	}
+# 		# 			# 	5 = {
+# 		# 			# 		change_liege = {
+# 		# 			# 			liege = scope:destroyer
+# 		# 			# 			change = scope:change
+# 		# 			# 		}
+# 		# 			# 	}
+# 		# 			# }
+# 		# 		}
+# 		# 	}
+# 		# 	ELSE_IF = {
+# 		# 		limit = {
+# 		# 			primary_title.tier = tier_duchy
+# 		# 		}
+
+# 		# 		# random_list = {
+# 		# 		# 	90 = {
+# 		# 				change_liege = {
+# 		# 					liege = primary_title.kingdom.holder
+# 		# 					change = scope:change
+# 		# 				}
+# 		# 		# 	}
+# 		# 		# 	10 = {
+# 		# 		# 		change_liege = {
+# 		# 		# 			liege = scope:destroyer
+# 		# 		# 			change = scope:change
+# 		# 		# 		}
+# 		# 		# 	}
+# 		# 		# }
+# 		# 	}
+# 		# 	ELSE_IF = {
+# 		# 		limit = {
+# 		# 			primary_title.tier = tier_kingdom
+# 		# 		}
+# 		# 		change_liege = {
+# 		#			liege = scope:destroyer
+# 		#			change = scope:change
+# 		#		}
+# 		# 	}
+# 		# }
+
+# 		resolve_title_and_vassal_change = scope:change
+# 	}
+# }
+
+# sjalvolki_decisions.2001 = {
+# 	hidden = yes
+# 	immediate = {
+# 		generate_vassal_list = {
+# 			CULTURE = culture:daukeni
+# 			FAITH = faith:sjalvolki
+# 			LIST = daukeni_vassals
+# 		}
+		
+# 		generate_vassal_list = {
+# 			CULTURE = culture:adrakamp
+# 			FAITH = faith:sjalvolki
+# 			LIST = adrakamp_vassals
+# 		}
+		
+# 		generate_vassal_list = {
+# 			CULTURE = culture:caemansi
+# 			FAITH = faith:sjalvolki
+# 			LIST = caemansi_vassals
+# 		}
+		
+# 		generate_vassal_list = {
+# 			CULTURE = culture:fenvir
+# 			FAITH = faith:sjalvolki
+# 			LIST = fenvir_vassals
+# 		}
+		
+# 		generate_vassal_list = {
+# 			CULTURE = culture:curgerski
+# 			FAITH = faith:sjalvolki
+# 			LIST = curgerski_vassals
+# 		}
+
+# 		generate_vassal_list = {
+# 			CULTURE = culture:irmionoth
+# 			FAITH = faith:sjalvolki
+# 			LIST = irmionoth_vassals
+# 		}
+
+# 		generate_vassal_list = {
+# 			CULTURE = culture:greulokin
+# 			FAITH = faith:sjalvolki
+# 			LIST = greulokin_vassals
+# 		}
+
+# 		generate_vassal_list = {
+# 			CULTURE = culture:mastikigni
+# 			FAITH = faith:sjalvolki
+# 			LIST = mastikigni_vassals
+# 		}
+		
+# 		generate_vassal_list = {
+# 			CULTURE = culture:barki
+# 			FAITH = faith:sjalvolki
+# 			LIST = barki_vassals
+# 		}
+		
+# 		generate_vassal_list = {
+# 			CULTURE = culture:tribocicai
+# 			FAITH = faith:sjalvolki
+# 			LIST = tribocicai_vassals
+# 		}
+
+# 		generate_vassal_list = {
+# 			CULTURE = culture:warisnik
+# 			FAITH = faith:sjalvolki
+# 			LIST = warisnik_vassals
+# 		}
+		
+# 		generate_vassal_list = {
+# 			CULTURE = culture:vrodkin
+# 			FAITH = faith:sjalvolki
+# 			LIST = vrodkin_vassals
+# 		}
+
+# 		generate_vassal_list = {
+# 			CULTURE = culture:goans
+# 			FAITH = faith:gethian
+# 			LIST = goan_vassals
+# 		}
+
+# 		generate_vassal_list = {
+# 			CULTURE = culture:huegodocs
+# 			FAITH = faith:apti
+# 			LIST = huegodoc_vassals
+# 		}
+
+# 		generate_vassal_list = {
+# 			CULTURE = culture:kardwens
+# 			FAITH = faith:kardawai
+# 			LIST = kardwen_vassals
+# 		}
+
+# 		generate_vassal_list = {
+# 			CULTURE = culture:karzarads
+# 			FAITH = faith:kakarataki
+# 			LIST = karzarad_vassals
+# 		}
+
+# 		generate_vassal_list = {
+# 			CULTURE = culture:mondecny
+# 			FAITH = faith:portenchant
+# 			LIST = mondecny_vassals
+# 		}
+
+# 		generate_vassal_list = {
+# 			CULTURE = culture:sarminians
+# 			FAITH = faith:salacad
+# 			LIST = sarminian_vassals
+# 		}
+
+# 		title:k_helski = { add_to_list = daukeni_kingdoms }
+# 		title:k_dlak = { add_to_list = daukeni_kingdoms }
+# 		title:k_sakc = { add_to_list = daukeni_kingdoms }
+# 		title:k_vlisck = { add_to_list = daukeni_kingdoms }
+# 		title:k_bledl = { add_to_list = daukeni_kingdoms }
+
+# 		generate_title_list = {
+# 			INPUT_LIST = daukeni_kingdoms
+# 			OUTPUT_DUCHIES = daukeni_duchies
+# 			OUTPUT_COUNTIES = daukeni_counties
+# 		}
+
+# 		assign_titles_to_characters = {
+# 			CHARACTER_LIST = daukeni_vassals
+# 			KINGDOM_LIST = daukeni_kingdoms
+# 			DUCHY_LIST = daukeni_duchies
+# 			COUNTY_LIST = daukeni_counties
+# 		}
+		
+# 		title:k_parclav = { add_to_list = adrakamp_kingdoms }
+
+# 		generate_title_list = {
+# 			INPUT_LIST = adrakamp_kingdoms
+# 			OUTPUT_DUCHIES = adrakamp_duchies
+# 			OUTPUT_COUNTIES = adrakamp_counties
+# 		}
+
+# 		assign_titles_to_characters = {
+# 			CHARACTER_LIST = adrakamp_vassals
+# 			KINGDOM_LIST = adrakamp_kingdoms
+# 			DUCHY_LIST = adrakamp_duchies
+# 			COUNTY_LIST = adrakamp_counties
+# 		}
+
+# 		title:k_kradal = { add_to_list = caemansi_kingdoms }
+
+# 		generate_title_list = {
+# 			INPUT_LIST = caemansi_kingdoms
+# 			OUTPUT_DUCHIES = caemansi_duchies
+# 			OUTPUT_COUNTIES = caemansi_counties
+# 		}
+
+# 		assign_titles_to_characters = {
+# 			CHARACTER_LIST = caemansi_vassals
+# 			KINGDOM_LIST = caemansi_kingdoms
+# 			DUCHY_LIST = caemansi_duchies
+# 			COUNTY_LIST = caemansi_counties
+# 		}
+
+# 		title:k_karvice = { add_to_list = fenvir_kingdoms }
+# 		title:k_krary = { add_to_list = fenvir_kingdoms }
+# 		title:k_vytva = { add_to_list = fenvir_kingdoms }
+# 		title:k_tolmat = { add_to_list = fenvir_kingdoms }
+
+# 		generate_title_list = {
+# 			INPUT_LIST = fenvir_kingdoms
+# 			OUTPUT_DUCHIES = fenvir_duchies
+# 			OUTPUT_COUNTIES = fenvir_counties
+# 		}
+
+# 		assign_titles_to_characters = {
+# 			CHARACTER_LIST = fenvir_vassals
+# 			KINGDOM_LIST = fenvir_kingdoms
+# 			DUCHY_LIST = fenvir_duchies
+# 			COUNTY_LIST = fenvir_counties
+# 		}
+
+# 		title:k_hvak = { add_to_list = curgerski_kingdoms }
+
+# 		generate_title_list = {
+# 			INPUT_LIST = curgerski_kingdoms
+# 			OUTPUT_DUCHIES = curgerski_duchies
+# 			OUTPUT_COUNTIES = curgerski_counties
+# 		}
+
+# 		assign_titles_to_characters = {
+# 			CHARACTER_LIST = curgerski_vassals
+# 			KINGDOM_LIST = curgerski_kingdoms
+# 			DUCHY_LIST = curgerski_duchies
+# 			COUNTY_LIST = curgerski_counties
+# 		}
+
+# 		title:k_pdvi = { add_to_list = irmionoth_kingdoms }
+
+# 		generate_title_list = {
+# 			INPUT_LIST = irmionoth_kingdoms
+# 			OUTPUT_DUCHIES = irmionoth_duchies
+# 			OUTPUT_COUNTIES = irmionoth_counties
+# 		}
+
+# 		assign_titles_to_characters = {
+# 			CHARACTER_LIST = irmionoth_vassals
+# 			KINGDOM_LIST = irmionoth_kingdoms
+# 			DUCHY_LIST = irmionoth_duchies
+# 			COUNTY_LIST = irmionoth_counties
+# 		}
+
+# 		title:k_lubry = { add_to_list = greulokin_kingdoms }
+
+# 		generate_title_list = {
+# 			INPUT_LIST = greulokin_kingdoms
+# 			OUTPUT_DUCHIES = greulokin_duchies
+# 			OUTPUT_COUNTIES = greulokin_counties
+# 		}
+
+# 		assign_titles_to_characters = {
+# 			CHARACTER_LIST = greulokin_vassals
+# 			KINGDOM_LIST = greulokin_kingdoms
+# 			DUCHY_LIST = greulokin_duchies
+# 			COUNTY_LIST = greulokin_counties
+# 		}
+
+# 		title:k_kochod = { add_to_list = mastikigni_kingdoms }
+
+# 		generate_title_list = {
+# 			INPUT_LIST = mastikigni_kingdoms
+# 			OUTPUT_DUCHIES = mastikigni_duchies
+# 			OUTPUT_COUNTIES = mastikigni_counties
+# 		}
+
+# 		assign_titles_to_characters = {
+# 			CHARACTER_LIST = mastikigni_vassals
+# 			KINGDOM_LIST = mastikigni_kingdoms
+# 			DUCHY_LIST = mastikigni_duchies
+# 			COUNTY_LIST = mastikigni_counties
+# 		}
+
+# 		title:k_sladia = { add_to_list = barki_kingdoms }
+
+# 		generate_title_list = {
+# 			INPUT_LIST = barki_kingdoms
+# 			OUTPUT_DUCHIES = barki_duchies
+# 			OUTPUT_COUNTIES = barki_counties
+# 		}
+
+# 		assign_titles_to_characters = {
+# 			CHARACTER_LIST = barki_vassals
+# 			KINGDOM_LIST = barki_kingdoms
+# 			DUCHY_LIST = barki_duchies
+# 			COUNTY_LIST = barki_counties
+# 		}
+
+# 		title:k_provdanov = { add_to_list = tribocicai_kingdoms }
+
+# 		generate_title_list = {
+# 			INPUT_LIST = tribocicai_kingdoms
+# 			OUTPUT_DUCHIES = tribocicai_duchies
+# 			OUTPUT_COUNTIES = tribocicai_counties
+# 		}
+
+# 		assign_titles_to_characters = {
+# 			CHARACTER_LIST = tribocicai_vassals
+# 			KINGDOM_LIST = tribocicai_kingdoms
+# 			DUCHY_LIST = tribocicai_duchies
+# 			COUNTY_LIST = tribocicai_counties
+# 		}
+
+# 		title:k_siktak = { add_to_list = warisnik_kingdoms }
+
+# 		generate_title_list = {
+# 			INPUT_LIST = warisnik_kingdoms
+# 			OUTPUT_DUCHIES = warisnik_duchies
+# 			OUTPUT_COUNTIES = warisnik_counties
+# 		}
+
+# 		assign_titles_to_characters = {
+# 			CHARACTER_LIST = warisnik_vassals
+# 			KINGDOM_LIST = warisnik_kingdoms
+# 			DUCHY_LIST = warisnik_duchies
+# 			COUNTY_LIST = warisnik_counties
+# 		}
+
+# 		title:k_glicin = { add_to_list = vrodkin_kingdoms }
+
+# 		generate_title_list = {
+# 			INPUT_LIST = vrodkin_kingdoms
+# 			OUTPUT_DUCHIES = vrodkin_duchies
+# 			OUTPUT_COUNTIES = vrodkin_counties
+# 		}
+
+# 		assign_titles_to_characters = {
+# 			CHARACTER_LIST = vrodkin_vassals
+# 			KINGDOM_LIST = vrodkin_kingdoms
+# 			DUCHY_LIST = vrodkin_duchies
+# 			COUNTY_LIST = vrodkin_counties
+# 		}
+
+# 		title:k_sabalv = { add_to_list = goan_kingdoms }
+# 		title:k_slavka = { add_to_list = goan_kingdoms }
+
+# 		generate_title_list = {
+# 			INPUT_LIST = goan_kingdoms
+# 			OUTPUT_DUCHIES = goan_duchies
+# 			OUTPUT_COUNTIES = goan_counties
+# 		}
+
+# 		assign_titles_to_characters = {
+# 			CHARACTER_LIST = goan_vassals
+# 			KINGDOM_LIST = goan_kingdoms
+# 			DUCHY_LIST = goan_duchies
+# 			COUNTY_LIST = goan_counties
+# 		}
+		
+# 		title:k_cevrek = { add_to_list = huegodoc_kingdoms }
+# 		title:k_spedk = { add_to_list = huegodoc_kingdoms }
+
+# 		generate_title_list = {
+# 			INPUT_LIST = huegodoc_kingdoms
+# 			OUTPUT_DUCHIES = huegodoc_duchies
+# 			OUTPUT_COUNTIES = huegodoc_counties
+# 		}
+
+# 		assign_titles_to_characters = {
+# 			CHARACTER_LIST = huegodoc_vassals
+# 			KINGDOM_LIST = huegodoc_kingdoms
+# 			DUCHY_LIST = huegodoc_duchies
+# 			COUNTY_LIST = huegodoc_counties
+# 		}
+		
+# 		title:k_horav = { add_to_list = kardwen_kingdoms }
+# 		title:k_alman = { add_to_list = kardwen_kingdoms }
+
+# 		generate_title_list = {
+# 			INPUT_LIST = kardwen_kingdoms
+# 			OUTPUT_DUCHIES = kardwen_duchies
+# 			OUTPUT_COUNTIES = kardwen_counties
+# 		}
+
+# 		assign_titles_to_characters = {
+# 			CHARACTER_LIST = kardwen_vassals
+# 			KINGDOM_LIST = kardwen_kingdoms
+# 			DUCHY_LIST = kardwen_duchies
+# 			COUNTY_LIST = kardwen_counties
+# 		}
+		
+# 		title:k_poaclav = { add_to_list = karzarad_kingdoms }
+# 		title:k_cershuv = { add_to_list = karzarad_kingdoms }
+
+# 		generate_title_list = {
+# 			INPUT_LIST = karzarad_kingdoms
+# 			OUTPUT_DUCHIES = karzarad_duchies
+# 			OUTPUT_COUNTIES = karzarad_counties
+# 		}
+
+# 		assign_titles_to_characters = {
+# 			CHARACTER_LIST = karzarad_vassals
+# 			KINGDOM_LIST = karzarad_kingdoms
+# 			DUCHY_LIST = karzarad_duchies
+# 			COUNTY_LIST = karzarad_counties
+# 		}
+
+# 		title:k_descki = { add_to_list = mondecny_kingdoms }
+# 		title:k_kradaov = { add_to_list = mondecny_kingdoms }
+# 		title:k_djav = { add_to_list = mondecny_kingdoms }
+
+# 		generate_title_list = {
+# 			INPUT_LIST = mondecny_kingdoms
+# 			OUTPUT_DUCHIES = mondecny_duchies
+# 			OUTPUT_COUNTIES = mondecny_counties
+# 		}
+
+# 		assign_titles_to_characters = {
+# 			CHARACTER_LIST = mondecny_vassals
+# 			KINGDOM_LIST = mondecny_kingdoms
+# 			DUCHY_LIST = mondecny_duchies
+# 			COUNTY_LIST = mondecny_counties
+# 		}
+		
+# 		title:k_bakav = { add_to_list = sarminian_kingdoms }
+# 		title:k_gevek = { add_to_list = sarminian_kingdoms }
+
+# 		generate_title_list = {
+# 			INPUT_LIST = sarminian_kingdoms
+# 			OUTPUT_DUCHIES = sarminian_duchies
+# 			OUTPUT_COUNTIES = sarminian_counties
+# 		}
+
+# 		assign_titles_to_characters = {
+# 			CHARACTER_LIST = sarminian_vassals
+# 			KINGDOM_LIST = sarminian_kingdoms
+# 			DUCHY_LIST = sarminian_duchies
+# 			COUNTY_LIST = sarminian_counties
+# 		}
+
+# 		# Rebuild dejure hierarchy
+# 		create_title_and_vassal_change = {
+# 			type = granted
+# 			save_scope_as = change
+# 			add_claim_on_loss = no
+# 		}
+
+# 		# Same as the redraw the west event, try to find a better way to do this
+# 		title:e_daavragard = { add_to_list = kingdoms_to_add }
+# 		title:e_kalav = { add_to_list = kingdoms_to_add }
+# 		title:e_sajliov = { add_to_list = kingdoms_to_add }
+# 		title:e_slaj = { add_to_list = kingdoms_to_add }
+# 		title:e_bjaor = { add_to_list = kingdoms_to_add }
+# 		title:e_bajriland = { add_to_list = kingdoms_to_add }
+# 		title:e_balav = { add_to_list = kingdoms_to_add }
+# 		title:e_fethealf = { add_to_list = kingdoms_to_add }
+# 		title:e_kursv = { add_to_list = kingdoms_to_add }
+# 		title:e_sjakal = { add_to_list = kingdoms_to_add }
+# 		title:e_vurkv = { add_to_list = kingdoms_to_add }
+
+# 		every_in_list = {
+# 			list = kingdoms_to_add
+# 			every_in_de_jure_hierarchy = {
+# 				limit = {
+# 					holder = {
+# 						primary_title.tier >= tier_county
+# 						has_character_flag = aversarian_migration
+# 						NOT = {
+# 							liege = primary_title.de_jure_liege.holder
+# 						}
+# 					}
+# 				}
+# 				holder = {
+# 					IF = {
+# 						limit = {
+# 							primary_title.tier = tier_county
+# 						}
+
+# 						IF = {
+# 							limit = {
+# 								exists = primary_title.duchy.holder
+# 							}
+							
+# 							# 95%, 4.8%, 0.2%
+# 							random_list = {
+# 								475 = {
+# 									change_liege = {
+# 										liege = primary_title.duchy.holder
+# 										change = scope:change
+# 									}
+# 								}
+# 								24 = {
+# 									change_liege = {
+# 										liege = primary_title.kingdom.holder
+# 										change = scope:change
+# 									}
+# 								}
+# 								1 = {
+# 									change_liege = {
+# 										liege = scope:destroyer
+# 										change = scope:change
+# 									}
+# 								}
+# 							}
+# 						}
+# 						ELSE = {
+# 							random_list = {
+# 								95 = {
+# 									change_liege = {
+# 										liege = primary_title.kingdom.holder
+# 										change = scope:change
+# 									}
+# 								}
+# 								5 = {
+# 									change_liege = {
+# 										liege = scope:destroyer
+# 										change = scope:change
+# 									}
+# 								}
+# 							}
+# 						}
+# 					}
+# 					ELSE_IF = {
+# 						limit = {
+# 							primary_title.tier = tier_duchy
+# 						}
+
+# 						random_list = {
+# 							90 = {
+# 								change_liege = {
+# 									liege = primary_title.kingdom.holder
+# 									change = scope:change
+# 								}
+# 							}
+# 							10 = {
+# 								change_liege = {
+# 									liege = scope:destroyer
+# 									change = scope:change
+# 								}
+# 							}
+# 						}
+# 					}
+# 					ELSE_IF = {
+# 						limit = {
+# 							primary_title.tier = tier_kingdom
+# 						}
+# 						change_liege = {
+# 							liege = scope:destroyer
+# 							change = scope:change
+# 						}
+# 					}
+# 				}
+# 			}
+# 		}
+		
+# 		resolve_title_and_vassal_change = scope:change
+# 	}
+# }
+
+sjalvolki_decisions.3000 = {
+	hidden = yes
+
+	immediate = {
+		save_scope_as = destroyer
+
+		title:d_myonassus = { set_de_jure_liege_title = title:k_berlisk }
+		title:d_gorteutherna = { set_de_jure_liege_title = title:k_berlisk }
+		title:d_pylynthus = { set_de_jure_liege_title = title:k_berlisk }
+		title:d_naxithos = { set_de_jure_liege_title = title:k_berlisk }
+
+		title:k_berlisk = {
+			rebuild_kingdom_around_capital_effect = { NEW_CAPITAL = c_messiopolis }
+			set_variable = protected_from_migration_destruction
+		}
+		title:e_yiev = {
+			set_capital_county = title:c_messiopolis
+		}
+	}
+}
+
+sjalvolki_decisions.3001 = {
+	hidden = yes
+
+	immediate = {
+		save_scope_as = destroyer
+		
+		title:d_weidingen = { set_de_jure_liege_title = title:k_sjaklaki }
+		title:d_oenares = { set_de_jure_liege_title = title:k_sjaklaki }
+		title:d_eutingen = { set_de_jure_liege_title = title:k_sjaklaki }
+		title:d_pandia = { set_de_jure_liege_title = title:k_sjaklaki }
+		title:d_pisenae = { set_de_jure_liege_title = title:k_sjaklaki }
+		title:d_uggleberg = { set_de_jure_liege_title = title:k_sjaklaki }
+	
+		title:k_sjaklaki = {
+			rebuild_kingdom_around_capital_effect = { NEW_CAPITAL = c_ostrozno_brdo }
+			set_variable = protected_from_migration_destruction
+		}
+	}
+}
+
+sjalvolki_decisions.3002 = {
+	hidden = yes
+
+	immediate = {
+		save_scope_as = destroyer
+
+		title:d_mytanes = { set_de_jure_liege_title = title:k_casked }
+		title:d_kydone = { set_de_jure_liege_title = title:k_casked }
+		title:d_vasyma = { set_de_jure_liege_title = title:k_casked }
+		title:d_kameirerna = { set_de_jure_liege_title = title:k_casked }
+		title:d_theodonion = { set_de_jure_liege_title = title:k_casked }
+		title:d_edapeze = { set_de_jure_liege_title = title:k_casked }
+
+		title:k_casked = {
+			rebuild_kingdom_around_capital_effect = { NEW_CAPITAL = c_ampholgi }
+			set_variable = protected_from_migration_destruction
+		}
+		title:e_guggarv = {
+			set_capital_county = title:c_milymna
+		}
+	}
+}
+
+sjalvolki_decisions.3003 = {
+	hidden = yes
+
+	immediate = {
+		hidden_effect = {
+			save_scope_as = destroyer
+			
+			title:d_nysakros = { set_de_jure_liege_title = title:k_sjas }
+			title:d_toskopeion = { set_de_jure_liege_title = title:k_sjas }
+			title:d_knidomenus = { set_de_jure_liege_title = title:k_sjas }
+			title:d_seutheia = { set_de_jure_liege_title = title:k_sjas }
+			title:d_hemerollonia = { set_de_jure_liege_title = title:k_sjas }
+			title:d_tomantina = { set_de_jure_liege_title = title:k_sjas }
+			title:d_tarontos = { set_de_jure_liege_title = title:k_sjas }
+			
+			title:k_sjas = {
+				rebuild_kingdom_around_capital_effect = { NEW_CAPITAL = c_cnidolis }
+				set_variable = protected_from_migration_destruction
+			}
+		}
+	}
+}
+
+sjalvolki_decisions.3004 = {
+	title = sjalvolki_decisions.3004.title
+	desc = sjalvolki_decisions.3004.desc
+
+	theme = stewardship_domain_focus
+	left_portrait = {
+		character = root
+		animation = war_over_win
+	}
+
+	immediate = {
+		hidden_effect = {
+			save_scope_as = destroyer
+
+			title:d_metedon = { set_de_jure_liege_title = title:k_plekig }
+			title:d_artyros = { set_de_jure_liege_title = title:k_plekig }
+			title:d_tragiae = { set_de_jure_liege_title = title:k_plekig }
+		}
+	}
+
+	# Keep kingdom for self
+	option = {
+		name = sjalvolki_decisions.3004.a
+		custom_tooltip = sjalvolki_migration_keep_kingdom
+
+		hidden_effect = {
+			get_title = title:k_plekig
+			title:k_plekig = {
+				remove_from_list = migration_kingdoms
+				set_capital_county = title:c_spanatoria
+				set_variable = protected_from_migration_destruction
+				every_in_de_jure_hierarchy = {
+					limit = {
+						tier = tier_county
+					}
+					random_list = {
+						90 = { 
+							set_county_faith = root.faith
+							set_county_culture = root.culture
+						}
+						5 = {
+							set_county_faith = holder.faith
+							set_county_culture = holder.culture
+						}
+						5 = {  }
+					}
+				}
+			}
+		}
+	}
+
+	# Give out kingdom to vassal
+	option = {
+		name = sjalvolki_decisions.3004.b
+		trigger = {
+			is_ai = no
+		}
+		custom_tooltip = sjalvolki_migration_give_kingdom
+		hidden_effect = {
+			title:k_plekig = {
+				rebuild_kingdom_around_capital_effect = { NEW_CAPITAL = c_spanatoria }
+				set_variable = protected_from_migration_destruction
+			}
+		}
+	}
+}
+
+sjalvolki_decisions.3005 = {
+	title = sjalvolki_decisions.3005.title
+	desc = sjalvolki_decisions.3005.desc
+
+	theme = stewardship_domain_focus
+	left_portrait = {
+		character = root
+		animation = war_over_win
+	}
+
+	immediate = {
+		hidden_effect = {
+			save_scope_as = destroyer
+		
+			title:d_hieridos = { set_de_jure_liege_title = title:k_vraved }
+			title:d_erethosia = { set_de_jure_liege_title = title:k_vraved }
+			title:d_eultine = { set_de_jure_liege_title = title:k_vraved }
+			title:d_pheraea = { set_de_jure_liege_title = title:k_vraved }
+			title:d_aegela = { set_de_jure_liege_title = title:k_vraved }
+			title:d_idendos = { set_de_jure_liege_title = title:k_vraved }
+		}
+	}
+
+	# Keep kingdom for self
+	option = {
+		name = sjalvolki_decisions.3005.a
+		custom_tooltip = sjalvolki_migration_keep_kingdom
+
+		hidden_effect = {
+			get_title = title:k_vraved
+			title:k_vraved = {
+				remove_from_list = migration_kingdoms
+				set_capital_county = title:c_trina
+				set_variable = protected_from_migration_destruction
+				every_in_de_jure_hierarchy = {
+					limit = {
+						tier = tier_county
+					}
+					random_list = {
+						90 = { 
+							set_county_faith = root.faith
+							set_county_culture = root.culture
+						}
+						5 = {
+							set_county_faith = holder.faith
+							set_county_culture = holder.culture
+						}
+						5 = {  }
+					}
+				}
+			}
+		}
+	}
+
+	# Give out kingdom to vassal
+	option = {
+		name = sjalvolki_decisions.3005.b
+		trigger = {
+			is_ai = no
+		}
+		custom_tooltip = sjalvolki_migration_give_kingdom
+		hidden_effect = {
+			title:k_vraved = {
+				rebuild_kingdom_around_capital_effect = { NEW_CAPITAL = c_trina }
+			set_variable = protected_from_migration_destruction
+			}
+		}
+	}
+}
+
+sjalvolki_decisions.3006 = {
+	hidden = yes
+
+	immediate = {
+		save_scope_as = destroyer
+
+		title:d_myrapolis = { set_de_jure_liege_title = title:k_sgrad }
+		title:d_aytissos = { set_de_jure_liege_title = title:k_sgrad }
+		title:d_acaphos = { set_de_jure_liege_title = title:k_sgrad }
+		title:d_zakria = { set_de_jure_liege_title = title:k_sgrad }
+		title:d_himonia = { set_de_jure_liege_title = title:k_sgrad }
+		title:d_smyrnurii = { set_de_jure_liege_title = title:k_sgrad }
+		
+		get_title = title:k_sgrad
+		title:k_sgrad = {
+			remove_from_list = migration_kingdoms
+		}
+		if = {
+			limit = { title:d_myrapolis = { NOT = { holder = root } } }
+			get_title = title:d_myrapolis
+		}
+		title:d_myrapolis = {
+			remove_from_list = migration_duchies
+		}
+		if = {
+			limit = { title:c_halium = { NOT = { holder = root } } }
+			get_title = title:c_halium
+		}
+		title:c_halium = {
+			remove_from_list = migration_counties
+		}
+		
+		set_realm_capital = title:c_halium
+	
+		create_title_and_vassal_change = {
+			type = independency
+			save_scope_as = change
+			add_claim_on_loss = no
+		}
+		
+		every_held_title = {
+			limit = {
+				OR = {
+					tier = tier_county
+					tier = tier_duchy
+					tier = tier_kingdom
+				}
+				NOR = {
+					kingdom = title:k_sgrad
+					empire = title:e_etepezea
+				}
+			}
+	
+			IF = {
+				limit = {
+					tier >= tier_duchy
+					NOT = {
+						has_variable = protected_from_migration_destruction
+					}
+				}
+				prev = {
+					destroy_title = prev
+				}
+			}
+			ELSE_IF = {
+				limit = { NOT = { has_variable = protected_from_migration_destruction } }
+				create_character = {
+					location = root.top_liege.capital_province
+					gender_female_chance = 50
+					template_character = root
+					random_traits = yes
+					age = { 20 50 }
+					
+					save_scope_as = fill
+				}
+				
+				change_title_holder = {
+					holder = scope:fill
+					change = scope:change
+				}
+				
+				IF = {
+					limit = {
+						tier = tier_county
+					}
+					
+					scope:fill = {
+						change_liege = {
+							CHANGE = scope:change
+							LIEGE = scope:destroyer
+						}
+					}
+				}
+			}
+		}
+		resolve_title_and_vassal_change = scope:change
+
+		title:k_sgrad = {
+			rebuild_kingdom_around_capital_effect = { NEW_CAPITAL = c_halium }
+			set_variable = protected_from_migration_destruction
+		}
+		title:e_maskiv = {
+			set_capital_county = title:c_halium
+		}
+	}
+}
+
+sjalvolki_decisions.3007 = {
+	hidden = yes
+
+	immediate = {
+		save_scope_as = destroyer
+
+		title:k_cycladecia = {
+			rebuild_kingdom_around_capital_effect = { NEW_CAPITAL = c_sidalos }
+			set_variable = protected_from_migration_destruction
+		}
+	}
+}
+
+sjalvolki_decisions.3008 = {
+	hidden = yes
+
+	immediate = {
+		save_scope_as = destroyer
+
+		title:k_kerkonia = { set_de_jure_liege_title = title:e_sjevregard }
+		title:k_cycladecia = { set_de_jure_liege_title = title:e_sjevregard }
+		title:e_sjevregard = { set_capital_county = title:c_kyzous }
+
+		title:k_kerkonia = {
+			rebuild_kingdom_around_capital_effect = { NEW_CAPITAL = c_kyzous }
+			set_variable = protected_from_migration_destruction
+		}
+	}
+}
+
+sjalvolki_decisions.3009 = {
+	title = sjalvolki_decisions.3009.title
+	desc = sjalvolki_decisions.3009.desc
+
+	theme = stewardship_domain_focus
+	left_portrait = {
+		character = root
+		animation = war_over_win
+	}
+
+	immediate = {
+		hidden_effect = {
+			save_scope_as = destroyer
+		
+			title:d_kourorion = { set_de_jure_liege_title = title:k_sajrag }
+			title:d_itos = { set_de_jure_liege_title = title:k_sajrag }
+			title:d_thassacuse = { set_de_jure_liege_title = title:k_sajrag }
+			title:d_epigus = { set_de_jure_liege_title = title:k_sajrag }
+			title:d_semympia = { set_de_jure_liege_title = title:k_sajrag }
+			title:d_prienyn = { set_de_jure_liege_title = title:k_sajrag }
+			title:d_andrurii = { set_de_jure_liege_title = title:k_sajrag }
+			title:d_gythinus = { set_de_jure_liege_title = title:k_sajrag }
+	
+			generate_vassal_list = {
+				CULTURE = culture:daukeni
+				FAITH = faith:sjalvolki
+				LIST = migration_vassals
+			}
+	
+			title:k_sajrag = {
+				add_to_list = migration_kingdoms
+			}
+			generate_title_list = {
+				INPUT_LIST = migration_kingdoms
+				OUTPUT_DUCHIES = migration_duchies
+				OUTPUT_COUNTIES = migration_counties
+			}
+		}
+	}
+
+	# Keep kingdom for self
+	option = {
+		name = sjalvolki_decisions.3009.a
+		custom_tooltip = sjalvolki_migration_keep_kingdom
+
+		hidden_effect = {
+			get_title = title:k_sajrag
+			title:k_sajrag = {
+				remove_from_list = migration_kingdoms
+				set_capital_county = title:c_amberae
+			}
+			title:e_keiskad = {
+				set_capital_county = title:c_amberae
+			}
+		}
+	}
+
+	# Give out kingdom to vassal
+	option = {
+		name = sjalvolki_decisions.3009.b
+		trigger = {
+			is_ai = no
+		}
+		custom_tooltip = sjalvolki_migration_give_kingdom
+		title:k_sajrag = {
+			rebuild_kingdom_around_capital_effect = { NEW_CAPITAL = c_amberae }
+			set_variable = protected_from_migration_destruction
+		}
+		title:e_keiskad = {
+			set_capital_county = title:c_amberae
+		}
+	}
+}
+
+sjalvolki_decisions.3010 = {
+	hidden = yes
+
+	immediate = {
+		save_scope_as = destroyer
+		
+		title:d_zakrerna = { set_de_jure_liege_title = title:k_dahagrad }
+		title:d_cnidystus = { set_de_jure_liege_title = title:k_dahagrad }
+		title:d_astyn = { set_de_jure_liege_title = title:k_dahagrad }
+		title:d_paphenion = { set_de_jure_liege_title = title:k_dahagrad }
+
+		title:k_dahagrad = {
+			rebuild_kingdom_around_capital_effect = { NEW_CAPITAL = c_myonippi }
+			set_variable = protected_from_migration_destruction
+		}
+	}
+}
+
+sjalvolki_decisions.3011 = {
+	hidden = yes
+
+	immediate = {
+		save_scope_as = destroyer
+
+		title:d_eleutembria = { set_de_jure_liege_title = title:k_dgask }
+		title:d_zacope = { set_de_jure_liege_title = title:k_dgask }
+		title:d_doranais = { set_de_jure_liege_title = title:k_dgask }
+		title:d_hyblagoria = { set_de_jure_liege_title = title:k_dgask }
+
+		title:k_dgask = {
+			rebuild_kingdom_around_capital_effect = { NEW_CAPITAL = c_imbrares }
+			set_variable = protected_from_migration_destruction
+		}
+	}
+}
+
+sjalvolki_decisions.3012 = {
+	hidden = yes
+
+	immediate = {
+		save_scope_as = destroyer
+		
+		title:d_epidila = { set_de_jure_liege_title = title:k_krakaw }
+		title:d_alidnae = { set_de_jure_liege_title = title:k_krakaw }
+		title:d_hyelocaea = { set_de_jure_liege_title = title:k_krakaw }
+		title:d_spartena = { set_de_jure_liege_title = title:k_krakaw }
+		title:d_hemerane = { set_de_jure_liege_title = title:k_krakaw }
+
+		title:k_krakaw = {
+			rebuild_kingdom_around_capital_effect = { NEW_CAPITAL = c_todosia }
+			set_variable = protected_from_migration_destruction
+		}
+		title:e_stukad = {
+			set_capital_county = title:c_todosia
+		}
+	}
+}
+
+sjalvolki_decisions.3013 = {
+	title = sjalvolki_decisions.3014.title
+	desc = sjalvolki_decisions.3014.desc
+
+	theme = stewardship_domain_focus
+	left_portrait = {
+		character = root
+		animation = war_over_win
+	}
+
+	immediate = {
+		hidden_effect = {
+			save_scope_as = destroyer
+		
+			title:k_kollos = { set_de_jure_liege_title = title:e_slaj }
+		}
+	}
+
+	# Keep kingdom for self
+	option = {
+		name = sjalvolki_decisions.3014.a
+		custom_tooltip = sjalvolki_migration_keep_kingdom
+
+		hidden_effect = {
+			get_title = title:k_kollos
+			title:k_kollos = {
+				remove_from_list = migration_kingdoms
+				set_capital_county = title:c_hemikon
+				set_variable = protected_from_migration_destruction
+				every_in_de_jure_hierarchy = {
+					limit = {
+						tier = tier_county
+					}
+					random_list = {
+						90 = { 
+							set_county_faith = root.faith
+							set_county_culture = root.culture
+						}
+						5 = {
+							set_county_faith = holder.faith
+							set_county_culture = holder.culture
+						}
+						5 = {  }
+					}
+				}
+			}
+		}
+	}
+
+	# Give out kingdom to vassal
+	option = {
+		name = sjalvolki_decisions.3014.b
+		trigger = {
+			is_ai = no
+		}
+		custom_tooltip = sjalvolki_migration_give_kingdom
+		title:k_kollos = {
+			rebuild_kingdom_around_capital_effect = { NEW_CAPITAL = c_hemikon }
+			set_variable = protected_from_migration_destruction
+		}
+	}
+}
+
+sjalvolki_decisions.3014 = {
+	hidden = yes
+
+	immediate = {
+		save_scope_as = destroyer
+
+		title:d_larespontos = { set_de_jure_liege_title = title:k_gevek }
+		title:d_epidyros = { set_de_jure_liege_title = title:k_gevek }
+		title:d_aigemita = { set_de_jure_liege_title = title:k_gevek }
+		title:d_petra = { set_de_jure_liege_title = title:k_gevek }
+		title:d_lapitholi = { set_de_jure_liege_title = title:k_gevek }
+		title:d_pelelis = { set_de_jure_liege_title = title:k_gevek }
+		title:d_pavlasae = { set_de_jure_liege_title = title:k_gevek }
+		title:d_heraclon = { set_de_jure_liege_title = title:k_gevek }
+		title:d_tegina = { set_de_jure_liege_title = title:k_gevek }
+
+		title:k_gevek = {
+			rebuild_kingdom_around_capital_effect = { NEW_CAPITAL = c_tinitida }
+			set_variable = protected_from_migration_destruction
+		}
+		title:e_slaj = {
+			set_capital_county = title:c_tinitida
+		}
+	}
+}
+
+sjalvolki_decisions.3015 = {
+	hidden = yes
+
+	immediate = {
+		save_scope_as = destroyer
+		
+		title:d_throneos = { set_de_jure_liege_title = title:k_bakav }
+		title:d_boramea = { set_de_jure_liege_title = title:k_bakav }
+		title:d_petsitake = { set_de_jure_liege_title = title:k_bakav }
+		title:d_pelossos = { set_de_jure_liege_title = title:k_bakav }
+
+		title:k_bakav = {
+			rebuild_kingdom_around_capital_effect = { NEW_CAPITAL = c_prienoupoli }
+			set_variable = protected_from_migration_destruction
+		}
+	}
+}
+
+sjalvolki_decisions.3016 = {
+	hidden = yes
+
+	immediate = {
+		save_scope_as = destroyer
+
+		title:d_erythralamis = { set_de_jure_liege_title = title:k_sabalv }
+		title:d_elatepios = { set_de_jure_liege_title = title:k_sabalv }
+		title:d_myligeneia = { set_de_jure_liege_title = title:k_sabalv }
+		title:d_rizesos = { set_de_jure_liege_title = title:k_sabalv }
+		title:d_megalarina = { set_de_jure_liege_title = title:k_sabalv }
+		title:d_argatis = { set_de_jure_liege_title = title:k_sabalv }
+		title:d_phanaca = { set_de_jure_liege_title = title:k_sabalv }
+
+		title:k_sabalv = {
+			rebuild_kingdom_around_capital_effect = { NEW_CAPITAL = c_setrias }
+			set_variable = protected_from_migration_destruction
+		}
+	}
+}
+
+sjalvolki_decisions.3017 = {
+	hidden = yes
+
+	immediate = {
+		save_scope_as = destroyer
+		
+		title:d_phalalia = { set_de_jure_liege_title = title:k_slavka }
+		title:d_aphini = { set_de_jure_liege_title = title:k_slavka }
+		title:d_agrinyreum = { set_de_jure_liege_title = title:k_slavka }
+		title:d_taureum = { set_de_jure_liege_title = title:k_slavka }
+
+		title:k_slavka = {
+			rebuild_kingdom_around_capital_effect = { NEW_CAPITAL = c_abdenes }
+			set_variable = protected_from_migration_destruction
+		}
+		title:e_bjaor = {
+			set_capital_county = title:c_abdenes
+		}
+	}
+}
+
+sjalvolki_decisions.3018 = {
+	hidden = yes
+
+	immediate = {
+		save_scope_as = destroyer
+
+		title:d_pandena = { set_de_jure_liege_title = title:k_sladia }
+		title:d_trapopolis = { set_de_jure_liege_title = title:k_sladia }
+		title:d_kamymna = { set_de_jure_liege_title = title:k_sladia }
+		title:d_thuramos = { set_de_jure_liege_title = title:k_sladia }
+		title:d_psacus = { set_de_jure_liege_title = title:k_sladia }
+		title:d_ayteos = { set_de_jure_liege_title = title:k_sladia }
+
+		title:k_sladia = {
+			rebuild_kingdom_around_capital_effect = { NEW_CAPITAL = c_byzenes }
+			set_variable = protected_from_migration_destruction
+		}
+	}
+}
+
+sjalvolki_decisions.3019 = {
+	hidden = yes
+
+	immediate = {
+		save_scope_as = destroyer
+
+		title:d_pellactus = { set_de_jure_liege_title = title:k_provdanov }
+		title:d_demymna = { set_de_jure_liege_title = title:k_provdanov }
+		title:d_kameireia = { set_de_jure_liege_title = title:k_provdanov }
+		title:d_elatollo = { set_de_jure_liege_title = title:k_provdanov }
+
+		title:k_provdanov = {
+			rebuild_kingdom_around_capital_effect = { NEW_CAPITAL = c_paraieus }
+			set_variable = protected_from_migration_destruction
+		}
+	}
+}
+
+sjalvolki_decisions.3020 = {
+	hidden = yes
+
+	immediate = {
+		save_scope_as = destroyer
+
+		title:d_astaseia = { set_de_jure_liege_title = title:k_siktak }
+		title:d_eresarnassus = { set_de_jure_liege_title = title:k_siktak }
+		title:d_kamaramum = { set_de_jure_liege_title = title:k_siktak }
+		title:d_rhypontum = { set_de_jure_liege_title = title:k_siktak }
+		title:d_pylypes = { set_de_jure_liege_title = title:k_siktak }
+
+		title:k_siktak = {
+			rebuild_kingdom_around_capital_effect = { NEW_CAPITAL = c_olynthope }
+			set_variable = protected_from_migration_destruction
+		}
+	}
+}
+
+sjalvolki_decisions.3021 = {
+	hidden = yes
+
+	immediate = {
+		save_scope_as = destroyer
+
+		title:d_paphepios = { set_de_jure_liege_title = title:k_cevrek }
+		title:d_crotapezus = { set_de_jure_liege_title = title:k_cevrek }
+		title:d_kamarosse = { set_de_jure_liege_title = title:k_cevrek }
+		title:d_arysarnaria = { set_de_jure_liege_title = title:k_cevrek }
+		title:d_ephgive = { set_de_jure_liege_title = title:k_cevrek }
+
+		title:k_cevrek = {
+			rebuild_kingdom_around_capital_effect = { NEW_CAPITAL = c_sicerna }
+			set_variable = protected_from_migration_destruction
+		}
+	}
+}
+
+sjalvolki_decisions.3022 = {
+	hidden = yes
+
+	immediate = {
+		save_scope_as = destroyer
+
+		title:d_platiae = { set_de_jure_liege_title = title:k_spedk }
+		title:d_philoli = { set_de_jure_liege_title = title:k_spedk }
+		title:d_spartenion = { set_de_jure_liege_title = title:k_spedk }
+		title:d_sedypethedia = { set_de_jure_liege_title = title:k_spedk }
+		title:d_olylama = { set_de_jure_liege_title = title:k_spedk }
+
+		title:k_spedk = {
+			rebuild_kingdom_around_capital_effect = { NEW_CAPITAL = c_chais }
+			set_variable = protected_from_migration_destruction
+		}
+	}
+}
+
+sjalvolki_decisions.3023 = {
+	hidden = yes
+
+	immediate = {
+		save_scope_as = destroyer
+
+		title:d_dymetra = { set_de_jure_liege_title = title:k_poaclav }
+		title:d_ithina = { set_de_jure_liege_title = title:k_poaclav }
+		title:d_epenae = { set_de_jure_liege_title = title:k_poaclav }
+		title:d_mochlocaea = { set_de_jure_liege_title = title:k_poaclav }
+		title:d_binth = { set_de_jure_liege_title = title:k_poaclav }
+		title:d_eryras = { set_de_jure_liege_title = title:k_poaclav }
+		title:d_itilene = { set_de_jure_liege_title = title:k_poaclav }
+
+		title:k_poaclav = {
+			rebuild_kingdom_around_capital_effect = { NEW_CAPITAL = c_tylai }
+			set_variable = protected_from_migration_destruction
+		}
+	}
+}
+
+sjalvolki_decisions.3024 = {
+	hidden = yes
+
+	immediate = {
+		save_scope_as = destroyer
+
+		title:d_thurios = { set_de_jure_liege_title = title:k_cershuv }
+		title:d_hellane = { set_de_jure_liege_title = title:k_cershuv }
+		title:d_byllyrian = { set_de_jure_liege_title = title:k_cershuv }
+		title:d_epacuse = { set_de_jure_liege_title = title:k_cershuv }
+		title:d_halaca = { set_de_jure_liege_title = title:k_cershuv }
+		title:d_chalcela = { set_de_jure_liege_title = title:k_cershuv }
+
+		title:k_cershuv = {
+			rebuild_kingdom_around_capital_effect = { NEW_CAPITAL = c_tylissotiri }
+			set_variable = protected_from_migration_destruction
+		}
+	}
+}
+
+sjalvolki_decisions.3025 = {
+	hidden = yes
+
+	immediate = {
+		save_scope_as = destroyer
+
+		title:d_tomeira = { set_de_jure_liege_title = title:k_vytva }
+		title:d_cyrydon = { set_de_jure_liege_title = title:k_vytva }
+		title:d_rhegyra = { set_de_jure_liege_title = title:k_vytva }
+		title:d_olendos = { set_de_jure_liege_title = title:k_vytva }
+		title:d_thyrodosia = { set_de_jure_liege_title = title:k_vytva }
+
+		title:k_vytva = {
+			rebuild_kingdom_around_capital_effect = { NEW_CAPITAL = c_diosippi }
+			set_variable = protected_from_migration_destruction
+		}
+	}
+}
+
+sjalvolki_decisions.3026 = {
+	hidden = yes
+
+	immediate = {
+		save_scope_as = destroyer
+
+		title:d_demylos = { set_de_jure_liege_title = title:k_karvice }
+		title:d_kepapetra = { set_de_jure_liege_title = title:k_karvice }
+		title:d_massatrea = { set_de_jure_liege_title = title:k_karvice }
+		title:d_stenitida = { set_de_jure_liege_title = title:k_karvice }
+		title:d_phaistetus = { set_de_jure_liege_title = title:k_karvice }
+		title:d_apenae = { set_de_jure_liege_title = title:k_karvice }
+
+		title:k_karvice = {
+			rebuild_kingdom_around_capital_effect = { NEW_CAPITAL = c_mallilene }
+			set_variable = protected_from_migration_destruction
+		}
+	}
+}
+
+sjalvolki_decisions.3027 = {
+	hidden = yes
+
+	immediate = {
+		save_scope_as = destroyer
+
+		title:d_cythioch = { set_de_jure_liege_title = title:k_tolmat }
+		title:d_lampsantina = { set_de_jure_liege_title = title:k_tolmat }
+		title:d_sozydos = { set_de_jure_liege_title = title:k_tolmat }
+		title:d_sozegion = { set_de_jure_liege_title = title:k_tolmat }
+
+		title:k_tolmat = {
+			rebuild_kingdom_around_capital_effect = { NEW_CAPITAL = c_lassidos }
+			set_variable = protected_from_migration_destruction
+		}
+	}
+}
+
+sjalvolki_decisions.3028 = {
+	hidden = yes
+
+	immediate = {
+		save_scope_as = destroyer
+		
+		title:d_hieraros = { set_de_jure_liege_title = title:k_glicin }
+		title:d_apa = { set_de_jure_liege_title = title:k_glicin }
+		title:d_diysthon = { set_de_jure_liege_title = title:k_glicin }
+		title:d_aarpazdea = { set_de_jure_liege_title = title:k_glicin }
+		title:d_pesandros = { set_de_jure_liege_title = title:k_glicin }
+		title:d_asglekeia = { set_de_jure_liege_title = title:k_glicin }
+		title:d_skukoi = { set_de_jure_liege_title = title:k_glicin }
+
+		generate_vassal_list = {
+			CULTURE = culture:vrodkin
+			FAITH = faith:sjalvolki
+			LIST = migration_vassals
+		}
+
+		title:k_glicin = {
+			rebuild_kingdom_around_capital_effect = { NEW_CAPITAL = c_neascyike }
+			set_variable = protected_from_migration_destruction
+		}
+	}
+}
+
+sjalvolki_decisions.3029 = {
+	hidden = yes
+
+	immediate = {
+		save_scope_as = destroyer
+		
+		title:d_stratopedon = { set_de_jure_liege_title = title:k_kochod }
+		title:d_he_vrerai = { set_de_jure_liege_title = title:k_kochod }
+		title:d_helesthemna = { set_de_jure_liege_title = title:k_kochod }
+		title:d_gvasiklea = { set_de_jure_liege_title = title:k_kochod }
+		title:d_proletheros = { set_de_jure_liege_title = title:k_kochod }
+
+		title:k_kochod = {
+			rebuild_kingdom_around_capital_effect = { NEW_CAPITAL = c_knossus }
+			set_variable = protected_from_migration_destruction
+		}
+	}
+}
+
+sjalvolki_decisions.3030 = {
+	hidden = yes
+
+	immediate = {
+		save_scope_as = destroyer
+
+		title:d_myrmomenus = { set_de_jure_liege_title = title:k_parclav }
+		title:d_smyrnonnos = { set_de_jure_liege_title = title:k_parclav }
+		title:d_stenyrian = { set_de_jure_liege_title = title:k_parclav }
+		title:d_assila = { set_de_jure_liege_title = title:k_parclav }
+		title:d_messopus = { set_de_jure_liege_title = title:k_parclav }
+
+		title:k_parclav = {
+			rebuild_kingdom_around_capital_effect = { NEW_CAPITAL = c_tylissithos }
+			set_variable = protected_from_migration_destruction
+		}
+	}
+}
+
+sjalvolki_decisions.3031 = {
+	hidden = yes
+
+	immediate = {
+		save_scope_as = destroyer
+		
+		title:d_phanokampos = { set_de_jure_liege_title = title:k_krary }
+		title:d_eleutoezen = { set_de_jure_liege_title = title:k_krary }
+		title:d_cyralos = { set_de_jure_liege_title = title:k_krary }
+		title:d_paeschaes = { set_de_jure_liege_title = title:k_krary }
+		title:d_idon = { set_de_jure_liege_title = title:k_krary }
+
+		title:k_krary = {
+			rebuild_kingdom_around_capital_effect = { NEW_CAPITAL = c_kameiron }
+			set_variable = protected_from_migration_destruction
+		}
+	}
+}
+
+sjalvolki_decisions.3032 = {
+	hidden = yes
+
+	immediate = {
+		save_scope_as = destroyer
+
+		title:d_mochlurion = { set_de_jure_liege_title = title:k_lubry }
+		title:d_gangredon = { set_de_jure_liege_title = title:k_lubry }
+		title:d_tukhei = { set_de_jure_liege_title = title:k_lubry }
+		title:d_actox = { set_de_jure_liege_title = title:k_lubry }
+		title:d_akragas = { set_de_jure_liege_title = title:k_lubry }
+
+		title:k_lubry = {
+			rebuild_kingdom_around_capital_effect = { NEW_CAPITAL = c_thermion }
+			set_variable = protected_from_migration_destruction
+		}
+	}
+}
+
+sjalvolki_decisions.3033 = {
+	hidden = yes
+
+	immediate = {
+		save_scope_as = destroyer
+
+		title:d_epidamnus = { set_de_jure_liege_title = title:k_horav }
+		title:d_lampsacus = { set_de_jure_liege_title = title:k_horav }
+		title:d_aakthmai = { set_de_jure_liege_title = title:k_horav }
+		title:d_coucounaries = { set_de_jure_liege_title = title:k_horav }
+		title:d_menelaion = { set_de_jure_liege_title = title:k_horav }
+		title:d_nisara = { set_de_jure_liege_title = title:k_horav }
+
+		title:k_horav = {
+			rebuild_kingdom_around_capital_effect = { NEW_CAPITAL = c_mesembria }
+			set_variable = protected_from_migration_destruction
+		}
+	}
+}
+
+sjalvolki_decisions.3034 = {
+	hidden = yes
+
+	immediate = {
+		save_scope_as = destroyer
+
+		title:d_tomi = { set_de_jure_liege_title = title:k_alman }
+		title:d_posidonia = { set_de_jure_liege_title = title:k_alman }
+		title:d_jaraea = { set_de_jure_liege_title = title:k_alman }
+		title:d_nisoni = { set_de_jure_liege_title = title:k_alman }
+		title:d_busaraphae = { set_de_jure_liege_title = title:k_alman }
+		title:d_kalkathoi = { set_de_jure_liege_title = title:k_alman }
+
+		title:k_alman = {
+			rebuild_kingdom_around_capital_effect = { NEW_CAPITAL = c_karbyion }
+			set_variable = protected_from_migration_destruction
+		}
+	}
+}
+
+sjalvolki_decisions.3035 = {
+	hidden = yes
+
+	immediate = {
+		save_scope_as = destroyer
+
+		title:d_addia = { set_de_jure_liege_title = title:k_deskivi }
+		title:d_seopuse = { set_de_jure_liege_title = title:k_deskivi }
+		title:d_thururii = { set_de_jure_liege_title = title:k_deskivi }
+		title:d_gelale = { set_de_jure_liege_title = title:k_deskivi }
+		title:d_moorende = { set_de_jure_liege_title = title:k_deskivi }
+		title:d_rumanja_vas = { set_de_jure_liege_title = title:k_deskivi }
+
+		title:k_deskivi = {
+			set_capital_county = title:c_poios
+		}
+	}
+}
+
+sjalvolki_decisions.3036 = {
+	hidden = yes
+
+	immediate = {
+		save_scope_as = destroyer
+
+		title:d_ithna = { set_de_jure_liege_title = title:k_descki }
+		title:d_knokidbes = { set_de_jure_liege_title = title:k_descki }
+		title:d_maadoran = { set_de_jure_liege_title = title:k_descki }
+		title:d_oekevrokanne = { set_de_jure_liege_title = title:k_descki }
+
+		title:k_descki = {
+			rebuild_kingdom_around_capital_effect = { NEW_CAPITAL = c_emos }
+			set_variable = protected_from_migration_destruction
+		}
+	}
+}
+
+sjalvolki_decisions.3037 = {
+	hidden = yes
+
+	immediate = {
+		save_scope_as = destroyer
+
+		title:d_prirkos = { set_de_jure_liege_title = title:k_kradaov }
+		title:d_saris = { set_de_jure_liege_title = title:k_kradaov }
+		title:d_olythssoessa = { set_de_jure_liege_title = title:k_kradaov }
+		title:d_elrhyos = { set_de_jure_liege_title = title:k_kradaov }
+		title:d_dryn = { set_de_jure_liege_title = title:k_kradaov }
+
+		title:k_kradaov = {
+			rebuild_kingdom_around_capital_effect = { NEW_CAPITAL = c_chopphos }
+			set_variable = protected_from_migration_destruction
+		}
+		title:e_daavragard = {
+			set_capital_county = title:c_chopphos
+		}
+		destroy_title = title:k_kradaov
+	}
+}
+
+sjalvolki_decisions.3038 = {
+	hidden = yes
+
+	immediate = {
+		save_scope_as = destroyer
+
+		title:d_vrekennus = { set_de_jure_liege_title = title:k_djav }
+		title:d_oradoth = { set_de_jure_liege_title = title:k_djav }
+		title:d_oedi = { set_de_jure_liege_title = title:k_djav }
+		title:d_iopolos = { set_de_jure_liege_title = title:k_djav }
+
+		title:k_djav = {
+			rebuild_kingdom_around_capital_effect = { NEW_CAPITAL = c_pythria }
+			set_variable = protected_from_migration_destruction
+		}
+	}
+}
+
+sjalvolki_decisions.3039 = {
+	hidden = yes
+
+	immediate = {
+		save_scope_as = destroyer
+
+		title:d_askigos = { set_de_jure_liege_title = title:k_pdvi }
+		title:d_abene = { set_de_jure_liege_title = title:k_pdvi }
+		title:d_kethetis = { set_de_jure_liege_title = title:k_pdvi }
+		title:d_grylothephon = { set_de_jure_liege_title = title:k_pdvi }
+		title:d_adne = { set_de_jure_liege_title = title:k_pdvi }
+
+		title:k_pdvi = {
+			rebuild_kingdom_around_capital_effect = { NEW_CAPITAL = c_saponoeum }
+			set_variable = protected_from_migration_destruction
+		}
+	}
+}
+
+sjalvolki_decisions.3040 = {
+	hidden = yes
+
+	immediate = {
+		save_scope_as = destroyer
+
+		title:d_anadres = { set_de_jure_liege_title = title:k_hvak }
+		title:d_dephoephladus = { set_de_jure_liege_title = title:k_hvak }
+		title:d_cose = { set_de_jure_liege_title = title:k_hvak }
+		title:d_oios = { set_de_jure_liege_title = title:k_hvak }
+		title:d_olafos = { set_de_jure_liege_title = title:k_hvak }
+
+		title:k_hvak = {
+			rebuild_kingdom_around_capital_effect = { NEW_CAPITAL = c_rhoum }
+			set_variable = protected_from_migration_destruction
+		}
+	}
+}
+
+sjalvolki_decisions.3041 = {
+	hidden = yes
+
+	immediate = {
+		save_scope_as = destroyer
+
+		title:d_vroradi = { set_de_jure_liege_title = title:k_kradal }
+		title:d_anphon = { set_de_jure_liege_title = title:k_kradal }
+		title:d_grydi = { set_de_jure_liege_title = title:k_kradal }
+		title:d_diath = { set_de_jure_liege_title = title:k_kradal }
+		title:d_skyympene = { set_de_jure_liege_title = title:k_kradal }
+		title:d_myris = { set_de_jure_liege_title = title:k_kradal }
+		title:d_dine = { set_de_jure_liege_title = title:k_kradal }
+
+		title:k_kradal = {
+			rebuild_kingdom_around_capital_effect = { NEW_CAPITAL = c_rhoea }
+			set_variable = protected_from_migration_destruction
+		}
+	}
+}
+
+sjalvolki_decisions.3042 = {
+	hidden = yes
+
+	immediate = {
+		save_scope_as = destroyer
+
+		title:d_herainai = { set_de_jure_liege_title = title:k_sakc }
+		title:d_skylos = { set_de_jure_liege_title = title:k_sakc }
+		title:d_migoelni = { set_de_jure_liege_title = title:k_sakc }
+		title:d_paos = { set_de_jure_liege_title = title:k_sakc }
+		title:d_heriris = { set_de_jure_liege_title = title:k_sakc }
+
+		title:k_sakc = {
+			rebuild_kingdom_around_capital_effect = { NEW_CAPITAL = c_dryssooe }
+			set_variable = protected_from_migration_destruction
+		}
+	}
+}
+
+sjalvolki_decisions.3043 = {
+	hidden = yes
+
+	immediate = {
+		save_scope_as = destroyer
+
+		title:d_elrio = { set_de_jure_liege_title = title:k_helski }
+		title:d_gryike = { set_de_jure_liege_title = title:k_helski }
+		title:d_chsolythth = { set_de_jure_liege_title = title:k_helski }
+		title:d_keblaia = { set_de_jure_liege_title = title:k_helski }
+		title:d_akthon = { set_de_jure_liege_title = title:k_helski }
+
+		title:k_helski = {
+			rebuild_kingdom_around_capital_effect = { NEW_CAPITAL = c_pochodia }
+			set_variable = protected_from_migration_destruction
+		}
+	}
+}
+
+sjalvolki_decisions.3044 = {
+	hidden = yes
+
+	immediate = {
+		save_scope_as = destroyer
+
+		title:d_mekipia = { set_de_jure_liege_title = title:k_bledl }
+		title:d_akkos = { set_de_jure_liege_title = title:k_bledl }
+		title:d_armos = { set_de_jure_liege_title = title:k_bledl }
+		title:d_eene = { set_de_jure_liege_title = title:k_bledl }
+		title:d_cregoeis = { set_de_jure_liege_title = title:k_bledl }
+
+		title:k_bledl = {
+			rebuild_kingdom_around_capital_effect = { NEW_CAPITAL = c_rhephon }
+			set_variable = protected_from_migration_destruction
+		}
+	}
+}
+
+sjalvolki_decisions.3045 = {
+	hidden = yes
+
+	immediate = {
+		save_scope_as = destroyer
+
+		title:d_rhophones = { set_de_jure_liege_title = title:k_dlak }
+		title:d_antaphos = { set_de_jure_liege_title = title:k_dlak }
+		title:d_dulia = { set_de_jure_liege_title = title:k_dlak }
+		title:d_hacelia = { set_de_jure_liege_title = title:k_dlak }
+		title:d_midia = { set_de_jure_liege_title = title:k_dlak }
+		title:d_pedi = { set_de_jure_liege_title = title:k_dlak }
+
+		generate_vassal_list = {
+			CULTURE = culture:daukeni
+			FAITH = faith:sjalvolki
+			LIST = migration_vassals
+		}
+
+		title:k_dlak = {
+			add_to_list = migration_kingdoms
+		}
+		generate_title_list = {
+			INPUT_LIST = migration_kingdoms
+			OUTPUT_DUCHIES = migration_duchies
+			OUTPUT_COUNTIES = migration_counties
+		}
+
+		assign_titles_to_characters_new = {
+			CHARACTER_LIST = migration_vassals
+			KINGDOM_LIST = migration_kingdoms
+			DUCHY_LIST = migration_duchies
+			COUNTY_LIST = migration_counties
+		}
+
+		title:k_dlak = {
+			rebuild_title_hierarchy = yes
+		}
+	}
+}
+
+sjalvolki_decisions.3046 = {
+	hidden = yes
+
+	immediate = {
+		save_scope_as = destroyer
+
+		title:d_eretrona = { set_de_jure_liege_title = title:k_vlisck }
+		title:d_monaros = { set_de_jure_liege_title = title:k_vlisck }
+		title:d_teron = { set_de_jure_liege_title = title:k_vlisck }
+		title:d_olynthagoria = { set_de_jure_liege_title = title:k_vlisck }
+		title:d_myonea = { set_de_jure_liege_title = title:k_vlisck }
+
+		generate_vassal_list = {
+			CULTURE = culture:daukeni
+			FAITH = faith:sjalvolki
+			LIST = migration_vassals
+		}
+
+		title:k_vlisck = {
+			add_to_list = migration_kingdoms
+		}
+		generate_title_list = {
+			INPUT_LIST = migration_kingdoms
+			OUTPUT_DUCHIES = migration_duchies
+			OUTPUT_COUNTIES = migration_counties
+		}
+
+		assign_titles_to_characters_new = {
+			CHARACTER_LIST = migration_vassals
+			KINGDOM_LIST = migration_kingdoms
+			DUCHY_LIST = migration_duchies
+			COUNTY_LIST = migration_counties
+		}
+
+		title:k_vlisck = {
+			rebuild_title_hierarchy = yes
+		}
+	}
+}
+
+sjalvolki_decisions.3047 = {
+	hidden = yes
+
+	immediate = {
+		save_scope_as = destroyer
+
+		title:d_kordabad = { set_de_jure_liege_title = title:k_glicvice }
+		title:d_ezia = { set_de_jure_liege_title = title:k_glicvice }
+		title:d_povia = { set_de_jure_liege_title = title:k_glicvice }
+
+		generate_vassal_list = {
+			CULTURE = culture:daukeni
+			FAITH = faith:sjalvolki
+			LIST = migration_vassals
+		}
+
+		title:k_glicvice = {
+			add_to_list = migration_kingdoms
+		}
+		generate_title_list = {
+			INPUT_LIST = migration_kingdoms
+			OUTPUT_DUCHIES = migration_duchies
+			OUTPUT_COUNTIES = migration_counties
+		}
+
+		assign_titles_to_characters_new = {
+			CHARACTER_LIST = migration_vassals
+			KINGDOM_LIST = migration_kingdoms
+			DUCHY_LIST = migration_duchies
+			COUNTY_LIST = migration_counties
+		}
+
+		title:k_glicvice = {
+			rebuild_title_hierarchy = yes
+		}
+	}
+}
+
+sjalvolki_decisions.3048 = {
+	hidden = yes
+
+	immediate = {
+		save_scope_as = destroyer
+
+		title:d_sthenoumnos = { set_de_jure_liege_title = title:k_slavkinzi }
+		title:d_antiphoron = { set_de_jure_liege_title = title:k_slavkinzi }
+		title:d_hemaiod = { set_de_jure_liege_title = title:k_slavkinzi }
+		title:d_ketnax = { set_de_jure_liege_title = title:k_slavkinzi }
+
+		generate_vassal_list = {
+			CULTURE = culture:daukeni
+			FAITH = faith:sjalvolki
+			LIST = migration_vassals
+		}
+
+		title:k_slavkinzi = {
+			add_to_list = migration_kingdoms
+		}
+		generate_title_list = {
+			INPUT_LIST = migration_kingdoms
+			OUTPUT_DUCHIES = migration_duchies
+			OUTPUT_COUNTIES = migration_counties
+		}
+
+		assign_titles_to_characters_new = {
+			CHARACTER_LIST = migration_vassals
+			KINGDOM_LIST = migration_kingdoms
+			DUCHY_LIST = migration_duchies
+			COUNTY_LIST = migration_counties
+		}
+
+		title:k_slavkinzi = {
+			rebuild_title_hierarchy = yes
+		}
+	}
+}
+
+sjalvolki_decisions.3049 = {
+	hidden = yes
+
+	immediate = {
+		save_scope_as = destroyer
+
+		title:d_kunnae = { set_de_jure_liege_title = title:k_cravgrad }
+		title:d_syracus = { set_de_jure_liege_title = title:k_cravgrad }
+		title:d_aregodau = { set_de_jure_liege_title = title:k_cravgrad }
+		title:d_kathardd = { set_de_jure_liege_title = title:k_cravgrad }
+		title:d_mulgarrartar = { set_de_jure_liege_title = title:k_cravgrad }
+		title:d_oltedic = { set_de_jure_liege_title = title:k_cravgrad }
+		
+		generate_vassal_list = {
+			CULTURE = culture:daukeni
+			FAITH = faith:sjalvolki
+			LIST = migration_vassals
+		}
+
+		title:k_cravgrad = {
+			add_to_list = migration_kingdoms
+		}
+		generate_title_list = {
+			INPUT_LIST = migration_kingdoms
+			OUTPUT_DUCHIES = migration_duchies
+			OUTPUT_COUNTIES = migration_counties
+		}
+
+		assign_titles_to_characters_new = {
+			CHARACTER_LIST = migration_vassals
+			KINGDOM_LIST = migration_kingdoms
+			DUCHY_LIST = migration_duchies
+			COUNTY_LIST = migration_counties
+		}
+
+		title:k_cravgrad = {
+			rebuild_title_hierarchy = yes
+		}
+	}
+}
+
+sjalvolki_decisions.3050 = {
+	hidden = yes
+
+	immediate = {
+		save_scope_as = destroyer
+
+		title:d_naekytikid = { set_de_jure_liege_title = title:k_crelkvania }
+		title:d_bruttac = { set_de_jure_liege_title = title:k_crelkvania }
+		title:d_peletakki = { set_de_jure_liege_title = title:k_crelkvania }
+		title:d_karth = { set_de_jure_liege_title = title:k_crelkvania }
+		title:d_kallin = { set_de_jure_liege_title = title:k_crelkvania }
+		
+		generate_vassal_list = {
+			CULTURE = culture:daukeni
+			FAITH = faith:sjalvolki
+			LIST = migration_vassals
+		}
+
+		title:k_crelkvania = {
+			add_to_list = migration_kingdoms
+		}
+		generate_title_list = {
+			INPUT_LIST = migration_kingdoms
+			OUTPUT_DUCHIES = migration_duchies
+			OUTPUT_COUNTIES = migration_counties
+		}
+
+		assign_titles_to_characters_new = {
+			CHARACTER_LIST = migration_vassals
+			KINGDOM_LIST = migration_kingdoms
+			DUCHY_LIST = migration_duchies
+			COUNTY_LIST = migration_counties
+		}
+
+		title:k_crelkvania = {
+			rebuild_title_hierarchy = yes
+		}
+	}
+}
+
+sjalvolki_decisions.3051 = {
+	hidden = yes
+
+	immediate = {
+		save_scope_as = destroyer
+		
+		title:d_rameldange = { set_de_jure_liege_title = title:k_snalav }
+		title:d_oberpaindorf = { set_de_jure_liege_title = title:k_snalav }
+		title:d_lelov = { set_de_jure_liege_title = title:k_snalav }
+		title:d_haimburg = { set_de_jure_liege_title = title:k_snalav }
+		title:d_kremkau = { set_de_jure_liege_title = title:k_snalav }
+		title:d_dresbruch = { set_de_jure_liege_title = title:k_snalav }
+
+		title:k_snalav = {
+			rebuild_kingdom_around_capital_effect = { NEW_CAPITAL = c_narin }
+			set_variable = protected_from_migration_destruction
+		}
+	}
+}
+
+sjalvolki_decisions.3052 = {
+	hidden = yes
+
+	immediate = {
+		save_scope_as = destroyer
+		
+		title:d_landet = { set_de_jure_liege_title = title:k_bledlik }
+		title:d_jokk = { set_de_jure_liege_title = title:k_bledlik }
+		title:d_aspelt = { set_de_jure_liege_title = title:k_bledlik }
+		title:d_elsane = { set_de_jure_liege_title = title:k_bledlik }
+		title:d_sestajovice = { set_de_jure_liege_title = title:k_bledlik }
+
+		title:k_bledlik = {
+			rebuild_kingdom_around_capital_effect = { NEW_CAPITAL = c_hejnice }
+			set_variable = protected_from_migration_destruction
+		}
+	}
+}
+
+sjalvolki_decisions.3053 = {
+	hidden = yes
+
+	immediate = {
+		save_scope_as = destroyer
+		
+		title:d_gornji_crnci = { set_de_jure_liege_title = title:k_akiev }
+		title:d_zehendhof = { set_de_jure_liege_title = title:k_akiev }
+		title:d_birnbaum = { set_de_jure_liege_title = title:k_akiev }
+		title:d_wakelterhof = { set_de_jure_liege_title = title:k_akiev }
+		title:d_kadan = { set_de_jure_liege_title = title:k_akiev }
+		title:d_geislersfeld = { set_de_jure_liege_title = title:k_akiev }
+
+		title:k_akiev = {
+			rebuild_kingdom_around_capital_effect = { NEW_CAPITAL = c_gancani }
+			set_variable = protected_from_migration_destruction
+		}
+	}
+}
+
+sjalvolki_decisions.3054 = {
+	hidden = yes
+
+	immediate = {
+		save_scope_as = destroyer
+		
+		title:d_nadost = { set_de_jure_liege_title = title:k_krava }
+		title:d_hattmannsdorf = { set_de_jure_liege_title = title:k_krava }
+		title:d_tisvildeleje = { set_de_jure_liege_title = title:k_krava }
+		title:d_paroz = { set_de_jure_liege_title = title:k_krava }
+		title:d_sjalwagram = { set_de_jure_liege_title = title:k_krava }
+		title:d_reepsholt = { set_de_jure_liege_title = title:k_krava }
+
+		title:k_krava = {
+			rebuild_kingdom_around_capital_effect = { NEW_CAPITAL = c_choltash }
+			set_variable = protected_from_migration_destruction
+		}
+		title:e_ruski = {
+			set_capital_county = title:c_choltash
+		}
+		destroy_title = title:k_leskovec
+	}
+}
+
+sjalvolki_decisions.3055 = {
+	hidden = yes
+
+	immediate = {
+		save_scope_as = destroyer
+
+		title:d_jaszfalu = { set_de_jure_liege_title = title:k_devk }
+		title:d_strazgonjci = { set_de_jure_liege_title = title:k_devk }
+		title:d_gajer = { set_de_jure_liege_title = title:k_devk }
+		title:d_zbynice = { set_de_jure_liege_title = title:k_devk }
+		title:d_dalmsdorf = { set_de_jure_liege_title = title:k_devk }
+		title:d_rupensdorf = { set_de_jure_liege_title = title:k_devk }
+		title:d_limpertsberg = { set_de_jure_liege_title = title:k_devk }
+		title:d_tingstaede = { set_de_jure_liege_title = title:k_devk }
+
+		title:k_devk = {
+			rebuild_kingdom_around_capital_effect = { NEW_CAPITAL = c_kankaanviisa }
+			set_variable = protected_from_migration_destruction
+		}
+		title:e_bleskci = {
+			set_capital_county = title:c_kankaanviisa
+		}
+	}
+}
+
+sjalvolki_decisions.3056 = {
+	hidden = yes
+
+	immediate = {
+		save_scope_as = destroyer
+		
+		#change_de_jure_liege_conditional = { TITLE = d_prihova NEW_DE_JURE_LIEGE = k_cvradk NOT_ALREADY_PART_OF = k_uvusk }
+		#change_de_jure_liege_conditional = { TITLE = d_dvorek NEW_DE_JURE_LIEGE = k_cvradk NOT_ALREADY_PART_OF = k_uvusk }
+		title:d_prihova = { set_de_jure_liege_title = title:k_cvradk }
+		title:d_dvorek = { set_de_jure_liege_title = title:k_cvradk }
+		title:d_laubend = { set_de_jure_liege_title = title:k_cvradk }
+		title:d_steinenkirch = { set_de_jure_liege_title = title:k_cvradk }
+		title:d_mirsdorf = { set_de_jure_liege_title = title:k_cvradk }
+		title:d_baromut = { set_de_jure_liege_title = title:k_cvradk }
+		title:d_perne = { set_de_jure_liege_title = title:k_cvradk }
+
+		title:k_cvradk = {
+			rebuild_kingdom_around_capital_effect = { NEW_CAPITAL = c_tattertorp }
+			set_variable = protected_from_migration_destruction
+		}
+	}
+}
+
+sjalvolki_decisions.3057 = {
+	hidden = yes
+
+	immediate = {
+		save_scope_as = destroyer
+		
+		title:d_radous = { set_de_jure_liege_title = title:k_uvusk }
+		title:d_klemensdorf = { set_de_jure_liege_title = title:k_uvusk }
+		title:d_perbetsky_dvor = { set_de_jure_liege_title = title:k_uvusk }
+		title:d_attenhofen = { set_de_jure_liege_title = title:k_uvusk }
+		title:d_plossen = { set_de_jure_liege_title = title:k_uvusk }
+		title:d_kisujfalu = { set_de_jure_liege_title = title:k_uvusk }
+		title:d_sieding = { set_de_jure_liege_title = title:k_uvusk }
+
+		title:k_uvusk = {
+			rebuild_kingdom_around_capital_effect = { NEW_CAPITAL = c_ernster }
+			set_variable = protected_from_migration_destruction
+		}
+		destroy_title = title:k_obkirchen
+	}
+}
+
+sjalvolki_decisions.3058 = {
+	hidden = yes
+
+	immediate = {
+		save_scope_as = destroyer
+		
+		title:d_gelovizza = { set_de_jure_liege_title = title:k_vka }
+		title:d_kulm = { set_de_jure_liege_title = title:k_vka }
+		title:d_bogdanic = { set_de_jure_liege_title = title:k_vka }
+		title:d_podkoren = { set_de_jure_liege_title = title:k_vka }
+		title:d_grosbous = { set_de_jure_liege_title = title:k_vka }
+		title:d_heinrichsheim = { set_de_jure_liege_title = title:k_vka }
+		title:d_autschowa = { set_de_jure_liege_title = title:k_vka }
+		title:d_puscava = { set_de_jure_liege_title = title:k_vka }
+		title:d_salvenberg = { set_de_jure_liege_title = title:k_vka }
+
+		title:k_vka = {
+			rebuild_kingdom_around_capital_effect = { NEW_CAPITAL = c_krinian }
+			set_variable = protected_from_migration_destruction
+		}
+		title:e_desiv = {
+			set_capital_county = title:c_krinian
+		}
+	}
+}
+
+sjalvolki_decisions.3059 = {
+	hidden = yes
+
+	immediate = {
+		save_scope_as = destroyer
+		
+		title:d_otvovice = { set_de_jure_liege_title = title:k_nrakeved }
+		title:d_wanzer = { set_de_jure_liege_title = title:k_nrakeved }
+		title:d_blatta = { set_de_jure_liege_title = title:k_nrakeved }
+		title:d_westerhusen = { set_de_jure_liege_title = title:k_nrakeved }
+		title:d_visazys = { set_de_jure_liege_title = title:k_nrakeved }
+
+		title:k_nrakeved = {
+			rebuild_kingdom_around_capital_effect = { NEW_CAPITAL = c_krinian }
+			set_variable = protected_from_migration_destruction
+		}
+	}
+}
+
+sjalvolki_decisions.3060 = {
+	hidden = yes
+
+	immediate = {
+		save_scope_as = destroyer
+		
+		title:d_mosebeck = { set_de_jure_liege_title = title:k_dievd }
+		title:d_baustene = { set_de_jure_liege_title = title:k_dievd }
+		title:d_gumpolding = { set_de_jure_liege_title = title:k_dievd }
+
+		title:k_dievd = {
+			rebuild_kingdom_around_capital_effect = { NEW_CAPITAL = c_adamsfreiheit }
+			set_variable = protected_from_migration_destruction
+		}
+	}
+}
+
+sjalvolki_decisions.3061 = {
+	hidden = yes
+
+	immediate = {
+		save_scope_as = destroyer
+		
+		title:d_wolfsfeld = { set_de_jure_liege_title = title:k_buzi }
+		title:d_kehla = { set_de_jure_liege_title = title:k_buzi }
+		title:d_lankum = { set_de_jure_liege_title = title:k_buzi }
+		title:d_alsbruck = { set_de_jure_liege_title = title:k_buzi }
+		title:d_kurisinki = { set_de_jure_liege_title = title:k_buzi }
+		title:d_halmbro = { set_de_jure_liege_title = title:k_buzi }
+		title:d_vabalgala = { set_de_jure_liege_title = title:k_buzi }
+
+		title:k_buzi = {
+			rebuild_kingdom_around_capital_effect = { NEW_CAPITAL = c_breithdalsvogur }
+			set_variable = protected_from_migration_destruction
+		}
+	}
+}
+
+sjalvolki_decisions.3062 = {
+	hidden = yes
+
+	immediate = {
+		save_scope_as = destroyer
+		
+		title:d_kunra = { set_de_jure_liege_title = title:k_maskav }
+		title:d_jekabnde = { set_de_jure_liege_title = title:k_maskav }
+		title:d_keurava = { set_de_jure_liege_title = title:k_maskav }
+		title:d_vadhammar = { set_de_jure_liege_title = title:k_maskav }
+
+		title:k_maskav = {
+			rebuild_kingdom_around_capital_effect = { NEW_CAPITAL = c_bausnazi }
+			set_variable = protected_from_migration_destruction
+		}
+	}
+}
+
+sjalvolki_decisions.3063 = {
+	hidden = yes
+
+	immediate = {
+		save_scope_as = destroyer
+		
+		title:d_talde = { set_de_jure_liege_title = title:k_wakrav }
+		title:d_mistel = { set_de_jure_liege_title = title:k_wakrav }
+		title:d_hestfjoror = { set_de_jure_liege_title = title:k_wakrav }
+		title:d_mladovice = { set_de_jure_liege_title = title:k_wakrav }
+		title:d_cisichie = { set_de_jure_liege_title = title:k_wakrav }
+
+		title:k_wakrav = {
+			rebuild_kingdom_around_capital_effect = { NEW_CAPITAL = c_bogeborg }
+			set_variable = protected_from_migration_destruction
+		}
+	}
+}
+
+sjalvolki_decisions.3064 = {
+	hidden = yes
+
+	immediate = {
+		save_scope_as = destroyer
+		
+		title:d_ludwigsthal = { set_de_jure_liege_title = title:k_veik }
+		title:d_freusburg =  { set_de_jure_liege_title = title:k_veik }
+		title:d_ahle =  { set_de_jure_liege_title = title:k_veik }
+		title:d_ujezd =  { set_de_jure_liege_title = title:k_veik }
+
+		title:k_veik = {
+			rebuild_kingdom_around_capital_effect = { NEW_CAPITAL = c_roddt }
+			set_variable = protected_from_migration_destruction
+		}
+	}
+}
+
+sjalvolki_decisions.3065 = {
+	hidden = yes
+
+	immediate = {
+		save_scope_as = destroyer
+		
+		title:d_skrbovice =  { set_de_jure_liege_title = title:k_kakra }
+		title:d_schalkshofen = { set_de_jure_liege_title = title:k_kakra }
+		title:d_nepasice = { set_de_jure_liege_title = title:k_kakra }
+
+		title:k_kakra = {
+			rebuild_kingdom_around_capital_effect = { NEW_CAPITAL = c_hradsko }
+			set_variable = protected_from_migration_destruction
+		}
+	}
+}
+
+sjalvolki_decisions.3066 = {
+	hidden = yes
+
+	immediate = {
+		save_scope_as = destroyer
+		
+		title:d_otterzhofen = { set_de_jure_liege_title = title:k_dlef }
+		title:d_imsovci = { set_de_jure_liege_title = title:k_dlef }
+		title:d_wischezahn = { set_de_jure_liege_title = title:k_dlef }
+
+		title:k_dlef = {
+			rebuild_kingdom_around_capital_effect = { NEW_CAPITAL = c_mosenhof }
+			set_variable = protected_from_migration_destruction
+		}
+	}
+}
+
+sjalvolki_decisions.3067 = {
+	hidden = yes
+
+	immediate = {
+		save_scope_as = destroyer
+		
+		title:d_reddereitz = { set_de_jure_liege_title = title:k_sadak }
+		title:d_zgornje_vrtice = { set_de_jure_liege_title = title:k_sadak }
+		title:d_kautenbach = { set_de_jure_liege_title = title:k_sadak }
+		title:d_mihla = { set_de_jure_liege_title = title:k_sadak }
+
+		title:k_sadak = {
+			rebuild_kingdom_around_capital_effect = { NEW_CAPITAL = c_roketnitz }
+			set_variable = protected_from_migration_destruction
+		}
+	}
+}
+
+sjalvolki_decisions.3068 = {
+	hidden = yes
+
+	immediate = {
+		save_scope_as = destroyer
+		
+		title:d_oprostovice = { set_de_jure_liege_title = title:k_blecked }
+		title:d_walthersdorf = { set_de_jure_liege_title = title:k_blecked }
+		title:d_muehldorf = { set_de_jure_liege_title = title:k_blecked }
+
+		title:k_blecked = {
+			rebuild_kingdom_around_capital_effect = { NEW_CAPITAL = c_kayl }
+			set_variable = protected_from_migration_destruction
+		}
+	}
+}
+
+sjalvolki_decisions.3069 = {
+	hidden = yes
+
+	immediate = {
+		save_scope_as = destroyer
+		
+		title:d_dobritsch = { set_de_jure_liege_title = title:k_scadav }
+		title:d_padochov = { set_de_jure_liege_title = title:k_scadav }
+		title:d_kleinsee = { set_de_jure_liege_title = title:k_scadav }
+		title:d_moosleiten = { set_de_jure_liege_title = title:k_scadav }
+
+		title:k_scadav = {
+			rebuild_kingdom_around_capital_effect = { NEW_CAPITAL = c_fojtovice }
+			set_variable = protected_from_migration_destruction
+		}
+	}
+}
+
+sjalvolki_decisions.3070 = {
+	hidden = yes
+
+	immediate = {
+		save_scope_as = destroyer
+		
+		# title:d_srbetsch = { set_de_jure_liege_title = title:k_dievs }
+		title:d_popelna = { set_de_jure_liege_title = title:k_dievs }
+		title:d_cisotin = { set_de_jure_liege_title = title:k_dievs }
+		title:d_uhrov = { set_de_jure_liege_title = title:k_dievs }
+		title:d_krakovany = { set_de_jure_liege_title = title:k_dievs }
+
+		title:k_dievs = {
+			rebuild_kingdom_around_capital_effect = { NEW_CAPITAL = c_bischenrech }
+			set_variable = protected_from_migration_destruction
+		}
+	}
+}
+
+sjalvolki_decisions.3071 = {
+	hidden = yes
+
+	immediate = {
+		save_scope_as = destroyer
+		
+		title:d_bambousek = { set_de_jure_liege_title = title:k_kevek }
+		title:d_blaschdorf = { set_de_jure_liege_title = title:k_kevek }
+		title:d_karwina = { set_de_jure_liege_title = title:k_kevek }
+		title:d_litrbachy = { set_de_jure_liege_title = title:k_kevek }
+
+		title:k_kevek = {
+			rebuild_kingdom_around_capital_effect = { NEW_CAPITAL = c_kbelany }
+			set_variable = protected_from_migration_destruction
+		}
+	}
+}
+
+sjalvolki_decisions.3072 = {
+	hidden = yes
+
+	immediate = {
+		save_scope_as = destroyer
+		
+		title:d_bylany = { set_de_jure_liege_title = title:k_bladka }
+		title:d_pyhrn = { set_de_jure_liege_title = title:k_bladka }
+		title:d_senseln = { set_de_jure_liege_title = title:k_bladka }
+
+		title:k_bladka = {
+			rebuild_kingdom_around_capital_effect = { NEW_CAPITAL = c_weiten }
+			set_variable = protected_from_migration_destruction
+		}
+	}
+}
+
+sjalvolki_decisions.3073 = {
+	hidden = yes
+
+	immediate = {
+		save_scope_as = destroyer
+		
+		title:d_pirnitz = { set_de_jure_liege_title = title:k_mowask }
+		title:d_bircna_vas = { set_de_jure_liege_title = title:k_mowask }
+		title:d_radvanovice = { set_de_jure_liege_title = title:k_mowask }
+		title:d_ordos = { set_de_jure_liege_title = title:k_mowask }
+
+		title:k_mowask = {
+			rebuild_kingdom_around_capital_effect = { NEW_CAPITAL = c_looh }
+			set_variable = protected_from_migration_destruction
+		}
+	}
+}
+
+sjalvolki_decisions.3074 = {
+	hidden = yes
+
+	immediate = {
+		save_scope_as = destroyer
+		
+		title:d_oberneufahrn = { set_de_jure_liege_title = title:k_cesk }
+		title:d_engelswald = { set_de_jure_liege_title = title:k_cesk }
+
+		title:k_cesk = {
+			rebuild_kingdom_around_capital_effect = { NEW_CAPITAL = c_budyowi }
+			set_variable = protected_from_migration_destruction
+		}
+	}
+}
+
+#sjalvolki_decisions.3075 = {
+#	hidden = yes
+#
+#	immediate = {
+#		save_scope_as = destroyer
+#
+#		title:k_crecew = {
+#			rebuild_kingdom_around_capital_effect = { NEW_CAPITAL = c_radamos }
+#			set_variable = protected_from_migration_destruction
+#		}
+#	}
+#}
+
+sjalvolki_decisions.3076 = {
+	hidden = yes
+
+	immediate = {
+		save_scope_as = destroyer
+
+		title:d_srbetsch = { set_de_jure_liege_title = title:k_krassovce }
+		title:k_krassovce = { set_de_jure_liege_title = title:e_faragard }
+
+		title:k_krassovce = {
+			set_capital_county = title:c_sedlovice
+		}
+	}
+}

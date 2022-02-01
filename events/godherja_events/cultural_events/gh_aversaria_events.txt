@@ -1,0 +1,133 @@
+﻿namespace = aversaria
+
+aversaria.0001 = { ###event for reuniting aversaria
+	title = aversaria.0001.t
+	desc = aversaria.0001.desc
+	type = character_event
+	theme = realm
+	left_portrait = {
+		character = scope:aversaria_uniter
+		animation = personality_bold
+	}
+
+	immediate = {
+		play_music_cue = "mx_cue_epic_sacral_moment"
+		reunite_the_empire_decision_effects = yes	
+	}
+	option = {
+		name = aversaria.0001.a
+		if = {
+			limit = {
+				prestige_level < 5
+			}
+			add_prestige_level = 1
+		}		
+	}	
+}
+
+aversaria.0002 = { ###event everyone else gets
+	title = aversaria.0002.t
+	desc = aversaria.0002.desc
+	type = character_event
+	theme = realm
+	right_portrait = {
+		character = scope:aversaria_uniter
+		animation = personality_bold
+	}	
+	immediate = {
+		play_music_cue = "mx_cue_epic_sacral_moment"	
+	}
+	option = {
+		name = aversaria.0002.a
+	}
+}
+
+aversaria.0003 = { # event the people who lose their titles get
+	title = aversaria.0003.t
+	desc = aversaria.0003.desc
+	type = character_event
+	theme = realm
+
+	trigger = { # so the event isn't received more than once
+		NOT = { has_character_flag = has_lost_land_in_aversarian_reorganisation }
+	}
+
+	right_portrait = {
+		character = scope:aversaria_uniter
+		animation = personality_bold
+	}	
+	immediate = {
+		show_as_tooltip = {
+			every_in_list = {
+				variable = titles_claim_gained_on
+				root = {
+					add_pressed_claim = prev
+				}
+			}
+		}
+		add_prestige = major_prestige_loss # sad!
+
+		stress_impact = {
+			ambitious = medium_stress_gain
+			content = medium_stress_loss
+		}
+	}
+	option = {
+		name = aversaria.0003.a
+	}
+}
+
+aversaria.9001 = { ##destroying bloodied throne
+	type = empty
+	hidden = yes
+	
+	immediate = {
+		destroy_title = title:k_the_bloodied_throne			
+	}
+}
+
+aversaria.9000 = { ##destroying bloodied throne
+	type = empty
+	hidden = yes
+	
+	immediate = {
+		if = {
+			limit = {
+				NOT = { has_character_flag = reaffirmed_bloody_throne }
+			}
+			trigger_event = {
+				id = aversaria.9001
+			}
+		}					
+	}
+}
+
+aversaria.9005 = { ##religion stuff
+	type = empty
+	hidden = yes
+	
+	immediate = {
+		if = {
+			limit = {
+				primary_title.tier > tier_barony
+				exists = capital_county
+			}
+			capital_county = {
+				set_county_faith = root.faith
+			}
+		}
+		every_spouse = {
+			limit = {
+				is_landed = no
+			}
+			set_character_faith = root.faith
+		}
+		every_child = {
+			limit = {
+				target_is_liege_or_above = root 
+			}
+			set_character_faith_with_conversion = root.faith 
+		}		
+	}
+}
+

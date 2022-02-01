@@ -1,0 +1,23 @@
+pdxmesh = {
+	name = "plain_cloth_mesh"
+	file = "plain_cloth.mesh"
+
+	blend_shape = { id = "plc_fat"					type = "plc_fat.mesh" }
+
+	meshsettings = {
+		name = "plc_finalShape"
+		index = 0
+		texture_diffuse = "plc_color.dds"
+		texture_normal = "plc_normal.dds"
+		texture_specular = "plc_properties.dds"
+		shader = "portrait_attachment"
+		shader_file = "gfx/FX/jomini/portrait.shader"
+	}
+}
+
+entity = {
+	name = "plain_cloth_entity"
+	pdxmesh = "plain_cloth_mesh"
+
+	attribute = { name = "bs_fat_1"										blend_shape = "plc_fat" }
+}

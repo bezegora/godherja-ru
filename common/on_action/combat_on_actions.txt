@@ -1,0 +1,18 @@
+﻿# Root = Winning combat side
+# scope:wipe - Was this a wipe?
+on_combat_end_winner = {
+	events = {
+		combat_event.0001 # Victorious commander gains progress towards earning "The Undefeated" nickname (obtained after winning 100 victorie without a loss).
+		combat_event.1001 # Winner imprisons commanders/knights on the losing side.
+		kardawai_flavor.1000 #kardawai only event letting them eat a fallen soldier
+	}
+}
+
+# Root = Losing combat side
+# scope:wipe - Was this a wipe?
+on_combat_end_loser = {
+	events = {
+		combat_event.0002 # Defeated commander loses shot at getting 'The Undefeated' nickname.
+		almohad.0003 # Check whether Ibn Tumert should die
+	}
+}

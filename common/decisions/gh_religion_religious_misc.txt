@@ -1,0 +1,40 @@
+﻿##################
+##DECISIONS LIST##
+# spirit_journey_decision
+##################
+
+##################
+# Spirit Journey
+# by ThePinkPanzer
+spirit_journey_decision = {
+	picture = "gfx/interface/illustrations/decisions/decision_personal_religious.dds"
+
+	desc = spirit_journey_decision_desc
+	selection_tooltip = spirit_journey_decision_tooltip
+
+	is_shown = {
+		faith = {
+			has_doctrine_parameter = spirit_journey_active
+		}
+	}
+
+
+	effect = {
+		add_character_flag = spirit_journey_ongoing
+		trigger_event = {
+			id = gh_religious_decision.0001
+			days = { 14 28 }
+		}
+		custom_tooltip = spirit_journey_effect
+	}
+
+	ai_check_interval = 60
+	
+	ai_potential = {
+		always = yes
+	}
+
+	ai_will_do = {
+		base = 100
+	}
+}

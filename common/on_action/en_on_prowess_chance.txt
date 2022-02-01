@@ -1,0 +1,828 @@
+﻿on_prowess_nickname = 
+{
+	trigger = { 
+		    #is_landed = no		    
+		    OR = { 
+			   has_trait = blademaster_1 
+			   has_trait = blademaster_2 
+			   has_trait = blademaster_3
+			   has_trait = viking 
+			   has_trait = berserker
+			   has_trait = varangian
+			   has_trait = education_martial_prowess_4
+			   has_trait = order_member
+			  }	
+  	             prowess >= 25	
+		  }
+	first_valid_on_action = 
+	{
+		on_sword_nickname
+		on_axe_nickname
+		on_hammer_nickname
+		on_shield_nickname 
+		on_knight_nickname
+		on_random_prowess		
+	}
+
+	fallback = on_injury_nickname
+}
+
+#brave sword
+#wrath axe
+#zealous hammer
+#temperate shield 
+
+########################################################################
+################### SWORD ##############################################
+########################################################################
+
+on_sword_nickname = 
+{
+	trigger = 
+	{ 
+		is_landed = yes
+		has_trait = brave
+	}
+	first_valid_on_action = 
+	{
+		on_sword_justice
+		on_sword_vengeful
+		on_sword_cynical
+		#on_sword_sadistic
+		on_sword_humble
+		on_sword_lustful
+		on_sword_arbitrary
+		on_sword_zealous
+		on_sword_widowmaker
+		on_sword_oathkeeper 
+	}
+
+	fallback = on_axe_nickname
+}
+
+on_sword_justice = 
+{
+	trigger = { has_trait = just}
+	effect = { give_nickname = nick_sword_of_justice }
+}
+
+on_sword_vengeful = 
+{
+	trigger = { has_trait = vengeful}
+	effect = { give_nickname = nick_sword_of_vengeance }
+}
+
+on_sword_cynical = 
+{
+	trigger = { has_trait = cynical}
+	effect = { give_nickname = nick_the_heathen_sword }
+}
+
+on_sword_sadistic = 
+{
+	trigger = { has_trait = sadistic}
+	effect = { give_nickname = nick_the_cruel_sword }
+}
+
+on_sword_humble = 
+{
+	trigger = { has_trait = humble}
+	effect = { give_nickname = nick_the_humble_sword }
+}
+
+on_sword_lustful = 
+{
+	trigger = { has_trait = lustful}
+	effect = { give_nickname = nick_the_sword_of_love }
+}
+
+on_sword_arbitrary = 
+{
+	trigger = { has_trait = arbitrary}
+	effect = { give_nickname = nick_the_sword_of_order }
+}
+
+on_sword_zealous = 
+{
+	trigger = { has_trait = zealous}
+	effect = { give_nickname = nick_the_holy_sword }
+}
+
+on_sword_widowmaker = 
+{
+	trigger = {  
+		    has_trait = callous
+		    has_trait = torturer
+	}
+	effect = { give_nickname = nick_the_widowmaker }
+}
+
+on_sword_oathkeeper = 
+{
+	trigger = {  
+		    has_trait = just
+		    has_trait = honest
+	}
+	effect = { give_nickname = nick_the_oathkeeper }
+}
+
+########################################################################
+################### AXE ################################################
+########################################################################
+
+on_axe_nickname = 
+{
+	trigger = { 
+			is_landed = yes
+			has_trait = wrathful 
+	}
+	first_valid_on_action = 
+	{
+		on_axe_justice
+		on_axe_vengeful 
+		on_axe_cynical 
+		on_axe_sadistic 
+		on_axe_humble
+		on_axe_lustful
+		on_axe_arbitrary
+		on_axe_zealous
+		on_axe_bloodfury 
+	}
+
+	fallback = on_hammer_nickname
+}
+
+on_axe_justice = 
+{
+	trigger = { has_trait = just}
+	effect = { give_nickname = nick_axe_of_justice }
+}
+
+on_axe_vengeful = 
+{
+	trigger = { has_trait = vengeful}
+	effect = { give_nickname = nick_axe_of_vengeance }
+}
+
+on_axe_cynical = 
+{
+	trigger = { has_trait = cynical}
+	effect = { give_nickname = nick_the_heathen_axe }
+}
+
+on_axe_sadistic = 
+{
+	trigger = { has_trait = sadistic}
+	effect = { give_nickname = nick_the_cruel_axe }
+}
+
+on_axe_humble = 
+{
+	trigger = { has_trait = humble}
+	effect = { give_nickname = nick_the_humble_axe }
+}
+
+on_axe_lustful = 
+{
+	trigger = { has_trait = lustful}
+	effect = { give_nickname = nick_the_axe_of_love }
+}
+
+on_axe_arbitrary = 
+{
+	trigger = { has_trait = arbitrary}
+	effect = { give_nickname = nick_the_axe_of_order }
+}
+
+on_axe_zealous = 
+{
+	trigger = { has_trait = zealous}
+	effect = { give_nickname = nick_the_holy_axe }
+}
+
+on_axe_bloodfury = 
+{
+	trigger = { has_trait = murderer 
+		    OR = { has_trait = kinslayer_1 
+			has_trait = kinslayer_2
+			has_trait = kinslayer_3
+			}
+	}
+	effect = { give_nickname = nick_bloodfury }
+}
+
+########################################################################
+################### HAMMER #############################################
+########################################################################
+
+on_hammer_nickname = 
+{
+	trigger = { 		
+		is_landed = yes
+		has_trait = zealous 
+	}
+	first_valid_on_action = 
+	{
+		on_hammer_justice
+		on_hammer_vengeful
+		on_hammer_sadistic
+		on_hammer_humble
+		on_hammer_lustful
+		on_hammer_arbitrary
+ 		on_hammer_wrathful
+	}
+
+	fallback = on_shield_nickname
+}
+
+on_hammer_justice = 
+{
+	trigger = { has_trait = just }
+	effect = { give_nickname = nick_the_hammer_of_justice }
+}
+
+on_hammer_vengeful = 
+{
+	trigger = { has_trait = vengeful }
+	effect = { give_nickname = nick_the_hammer_of_vengeance }
+}
+
+on_hammer_sadistic = 
+{
+	trigger = { has_trait = sadistic}
+	effect = { give_nickname = nick_the_cruel_hammer }
+}
+
+on_hammer_humble = 
+{
+	trigger = { has_trait = humble}
+	effect = { give_nickname = nick_the_humble_hammer }
+}
+
+on_hammer_lustful = 
+{
+	trigger = { has_trait = lustful}
+	effect = { give_nickname = nick_the_hammer_of_lust }
+}
+
+on_hammer_arbitrary = 
+{
+	trigger = { has_trait = arbitrary}
+	effect = { give_nickname = nick_the_hammer_of_order }
+}
+
+on_hammer_wrathful = 
+{
+	trigger = { has_trait = wrathful }
+	effect = { give_nickname = nick_the_hammer_of_wrath }
+}
+
+
+########################################################################
+################### SHIELD #############################################
+########################################################################
+
+on_shield_nickname = 
+{
+	trigger = { 		
+		is_landed = yes
+		has_trait = temperate 
+	}
+	first_valid_on_action = 
+	{
+		on_shield_just
+		on_shield_vengeful
+		on_shield_cynical
+		on_shield_sadistic
+		on_shield_humble
+		on_shield_lustful
+		on_shield_arbitrary
+		on_shield_zealous 
+	}
+
+	fallback = on_knight_nickname
+}
+
+on_shield_just = 
+{
+	trigger = { has_trait = just}
+	effect = { give_nickname = nick_shield_of_justice }
+}
+
+on_shield_vengeful= 
+{
+	trigger = { has_trait = vengeful}
+	effect = { give_nickname = nick_shield_of_vengeance }
+}
+
+on_shield_cynical = 
+{
+	trigger = { has_trait = cynical}
+	effect = { give_nickname = nick_the_heathen_shield }
+}
+
+on_shield_sadistic= 
+{
+	trigger = { has_trait = sadistic}
+	effect = { give_nickname = nick_the_cruel_shield }
+}
+
+on_shield_humble = 
+{
+	trigger = { has_trait = humble}
+	effect = { give_nickname = nick_the_humble_shield }
+}
+
+on_shield_lustful= 
+{
+	trigger = { has_trait = lustful}
+	effect = { give_nickname = nick_the_indecent_shield }
+}
+
+on_shield_arbitrary = 
+{
+	trigger = { has_trait = arbitrary}
+	effect = { give_nickname = nick_the_shield_of_order }
+}
+
+on_shield_zealous = 
+{
+	trigger = { has_trait = zealous}
+	effect = { give_nickname = nick_the_holy_shield }
+}
+
+
+########################################################################
+###################  KNIGHT ############################################
+########################################################################
+
+on_knight_nickname = 
+{
+	trigger = 
+	{ 
+		is_knight = yes 
+	}
+
+	first_valid_on_action = 
+	{
+		on_broken_knight
+		on_holy_knight
+		on_beggar_knight
+		on_knight_of_the_blades
+		on_knight_of_the_roses
+		on_knight_of_the_swamp
+		on_jewelled_knight
+		on_desert_knight
+	}
+
+	fallback = on_random_prowess
+}
+
+############### TRAIT KNIGHT ###############
+
+on_broken_knight = 
+{
+	trigger = { 
+		prestige_level >= 2 
+		OR = { 
+		has_trait = maimed
+		has_trait = one_eyed
+		has_trait = one_legged
+		has_trait = disfigured
+		}
+	}
+	effect = { give_nickname = nick_the_broken_knight }
+}
+
+on_holy_knight = 
+{
+	trigger = {
+		piety_level >= 2 
+		OR = { 
+		has_trait = devoted
+		has_trait = holy_warrior
+		}
+	}
+	effect = { give_nickname = nick_the_holy_knight }
+}
+
+on_beggar_knight = 
+{
+	trigger = {
+		gold <= -1000
+	}
+	effect = { give_nickname = nick_the_beggar_knight }
+}
+
+on_knight_of_the_blades = 
+{
+	trigger = {
+		has_trait = blademaster_3
+		has_trait = education_martial_prowess_4		
+	}
+	effect = { give_nickname = nick_the_knight_of_the_blades }
+}
+
+on_knight_of_the_roses = 
+{
+	trigger = {
+		has_trait = beauty_good_3
+		has_trait = gallant
+	}
+	effect = { give_nickname = nick_knight_of_the_roses }
+}
+
+on_knight_of_the_swamp = 
+{
+	trigger = {
+		has_trait = beauty_bad_3
+	}
+	effect = { give_nickname = nick_knight_of_the_swamp }
+}
+
+on_jewelled_knight =
+{
+	trigger = {
+		has_trait = avaricious
+	}
+	effect = { give_nickname = nick_the_jewelled_knight }
+}
+
+on_desert_knight =
+{
+	trigger = {
+		has_trait = blademaster_3
+		has_trait = desert_warrior
+	}
+	effect = { give_nickname = nick_the_desert_knight }
+}
+
+########################################################################
+################### RANDOM #############################################
+########################################################################
+
+on_random_prowess = 
+{
+	random_on_action = 
+	{
+		20 = 0
+		10 = on_prowess_the_slayer
+		10 = on_prowess_the_legionnaire
+		10 = on_prowess_the_behemoth
+		10 = on_prowess_the_executioner
+		10 = on_prowess_the_serpent
+		10 = on_prowess_the_fierce
+		10 = on_prowess_the_rabid
+		10 = on_prowess_the_silencer
+		10 = on_prowess_the_silent
+		10 = on_prowess_the_guardian
+		10 = on_prowess_the_phantom
+		10 = on_prowess_the_beast
+		10 = on_prowess_the_greatclaw
+		10 = on_prowess_death_claw
+		10 = on_prowess_strong_fang
+		10 = on_prowess_the_gravekeeper
+		10 = on_prowess_the_invincible
+		10 = on_prowess_the_tempest
+		10 = on_prowess_the_night_blade
+		10 = on_prowess_night_hide
+		10 = on_prowess_nightfury
+		10 = on_prowess_stormroar
+		10 = on_prowess_ironhair
+		10 = on_prowess_ironflayer
+		10 = on_prowess_boneblade
+		10 = on_prowess_gorehammer
+		10 = on_prowess_dragonheart
+		10 = on_prowess_thunder_fury
+		10 = on_prowess_stonecleaver
+		10 = on_prowess_true_mane
+		10 = on_prowess_silversword
+		10 = on_crimson_knight
+		10 = on_emerald_knight
+		10 = on_golden_knight
+		10 = on_dark_knight
+		10 = on_azure_knight
+		10 = on_ginger_knight
+		10 = on_indigo_knight
+		10 = on_silver_knight
+		10 = on_lavender_knight
+		10 = on_ebony_knight
+		10 = on_onix_knight
+		10 = on_amethyst_knight
+		10 = on_knight_of_the_mountains
+		10 = on_knight_of_the_lakes
+		10 = on_knight_of_the_forests
+		10 = on_knight_of_the_north
+		10 = on_knight_of_the_south
+		10 = on_knight_of_the_west
+		10 = on_knight_of_the_east
+		10 = on_knight_of_the_dawn
+		10 = on_hollow_knight
+		10 = on_moon_knight
+		10 = on_sun_knight
+		10 = on_winter_knight
+		10 = on_summer_knight
+		10 = on_autumn_knight
+		10 = on_spring_knight
+	}
+}
+
+on_prowess_the_slayer= 
+{
+	effect = { give_nickname = nick_the_slayer }
+}
+
+on_prowess_the_legionnaire= 
+{
+	effect = { give_nickname = nick_the_legionnaire }
+}
+
+on_prowess_the_behemoth= 
+{
+	effect = { give_nickname = nick_the_behemoth }
+}
+
+on_prowess_the_executioner= 
+{
+	effect = { give_nickname = nick_the_executioner }
+}
+
+on_prowess_the_serpent= 
+{
+	effect = { give_nickname = nick_the_serpent }
+}
+
+on_prowess_the_fierce= 
+{
+	effect = { give_nickname = nick_the_fierce }
+}
+
+on_prowess_the_rabid= 
+{
+	effect = { give_nickname = nick_the_rabid }
+}
+
+on_prowess_the_silencer= 
+{
+	effect = { give_nickname = nick_the_silencer }
+}
+
+on_prowess_the_silent= 
+{
+	effect = { give_nickname = nick_the_silent }
+}
+
+on_prowess_the_guardian= 
+{
+	effect = { give_nickname = nick_the_guardian }
+}
+
+on_prowess_the_phantom= 
+{
+	effect = { give_nickname = nick_the_phantom }
+}
+
+on_prowess_the_beast= 
+{
+	effect = { give_nickname = nick_the_beast }
+}
+
+on_prowess_the_greatclaw= 
+{
+	effect = { give_nickname = nick_the_greatclaw }
+}
+
+on_prowess_death_claw= 
+{
+	effect = { give_nickname = nick_death_claw }
+}
+
+on_prowess_strong_fang= 
+{
+	effect = { give_nickname = nick_strong_fang }
+}
+
+on_prowess_the_gravekeeper= 
+{
+	effect = { give_nickname = nick_the_gravekeeper }
+}
+
+on_prowess_the_invincible= 
+{
+	effect = { give_nickname = nick_the_invincible }
+}
+
+on_prowess_the_tempest = 
+{
+	effect = { give_nickname = nick_the_tempest }
+}
+
+
+on_prowess_the_night_blade =
+{
+	effect = { give_nickname = nick_the_night_blade }
+}
+
+
+on_prowess_night_hide =
+{
+	effect = { give_nickname = nick_night_hide }
+}
+
+on_prowess_nightfury =
+{
+	effect = { give_nickname = nick_nightfury }
+}
+
+on_prowess_stormroar =
+{
+	effect = { give_nickname = nick_stormroar }
+}
+
+on_prowess_ironhair =
+{
+	effect = { give_nickname = nick_ironhair }
+}
+
+on_prowess_ironflayer = 
+{
+	effect = { give_nickname = nick_ironflayer }
+}
+
+on_prowess_boneblade =
+{
+	effect = { give_nickname = nick_boneblade }
+}
+
+on_prowess_gorehammer =
+{
+	effect = { give_nickname = nick_gorehammer }
+}
+
+on_prowess_dragonheart=
+{
+	effect = { give_nickname = nick_dragonheart }
+}
+
+on_prowess_thunder_fury=
+{
+	effect = { give_nickname = nick_thunder_fury }
+}
+
+on_prowess_stonecleaver=
+{
+	effect = { give_nickname = nick_stonecleaver }
+}
+
+on_prowess_true_mane =
+{
+	effect = { give_nickname = nick_true_mane }
+}
+
+on_prowess_silversword =
+{
+	effect = { give_nickname = nick_silversword }
+}
+
+########### RANDOM KNIGHT ##########
+
+on_crimson_knight = 
+{
+	effect = { give_nickname = nick_the_crimson_knight }
+}
+
+on_emerald_knight= 
+{
+	effect = { give_nickname = nick_the_emerald_knight }
+}
+
+on_golden_knight= 
+{
+	effect = { give_nickname = nick_the_golden_knight }
+}
+
+on_dark_knight= 
+{
+	effect = { give_nickname = nick_the_dark_knight }
+}
+
+on_azure_knight= 
+{
+	effect = { give_nickname = nick_the_azure_knight }
+}
+
+on_ginger_knight =
+{
+	effect = { give_nickname = nick_the_ginger_knight }
+}
+
+on_indigo_knight = 
+{
+	effect = { give_nickname = nick_the_indigo_knight }
+}
+
+on_silver_knight =
+{
+	effect = { give_nickname = nick_the_silver_knight }
+}
+
+on_lavender_knight = 
+{
+	effect = { give_nickname = nick_the_lavender_knight }
+}
+
+on_ebony_knight= 
+{
+	effect = { give_nickname = nick_the_ebony_knight }
+}
+
+on_onix_knight = 
+{
+	effect = { give_nickname = nick_the_onix_knight }
+}
+
+on_amethyst_knight = 
+{
+	effect = { give_nickname = nick_the_amethyst_knight }
+}
+
+on_knight_of_the_mountains = 
+{
+	effect = { give_nickname = nick_the_knight_of_the_mountains }
+}
+
+on_knight_of_the_lakes= 
+{
+	effect = { give_nickname = nick_the_knight_of_the_lakes }
+}
+
+on_knight_of_the_forests= 
+{
+	effect = { give_nickname = nick_the_knight_of_the_forests }
+}
+
+on_knight_of_the_north = 
+{
+	effect = { give_nickname = nick_the_knight_of_the_north }
+}
+
+on_knight_of_the_south = 
+{
+	effect = { give_nickname = nick_the_knight_of_the_south }
+}
+
+on_knight_of_the_west= 
+{
+	effect = { give_nickname = nick_the_knight_of_the_west }
+}
+
+on_knight_of_the_east= 
+{
+	effect = { give_nickname = nick_the_knight_of_the_east }
+}
+
+on_knight_of_the_dawn =
+{
+	effect = { give_nickname = nick_the_knight_of_the_dawn }
+}
+
+on_hollow_knight =
+{
+	effect = { give_nickname = nick_the_hollow_knight }
+}
+
+on_moon_knight =
+{
+	effect = { give_nickname = nick_the_moon_knight }
+}
+
+on_sun_knight =
+{
+	effect = { give_nickname = nick_the_sun_knight }
+}
+
+on_winter_knight =
+{
+	effect = { give_nickname = nick_the_winter_knight }
+}
+
+on_summer_knight =
+{
+	effect = { give_nickname = nick_the_summer_knight }
+}
+
+on_autumn_knight =
+{
+	effect = { give_nickname = nick_the_autumn_knight }
+}
+
+on_spring_knight =
+{
+	effect = { give_nickname = nick_the_spring_knight }
+}
+
+
+
+
+
+

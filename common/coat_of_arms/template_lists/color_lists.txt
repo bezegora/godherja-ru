@@ -1,0 +1,219 @@
+color_lists = {
+	all_color_list = { # PM : basically the average of medieval frequencies in roll of arms (strong bias towards 13th c), with values cut in half
+		30 = "red"
+		12 = "blue"
+		1 = "green"
+		14 = "black"
+		0 = "purple"
+		24 = "yellow" 
+		26 = "white"
+		special_selection = {
+			trigger = {
+				has_religion = religion:fogeater_religion
+			}
+			100 = "red"
+			100 = "blue"
+			100 = "green"
+			100 = "black"
+			100 = "purple"
+			100 = "orange"
+			100 = "grey"
+			100 = "brown"
+			100 = "green_light"
+			100 = "blue_light"
+			100 = "yellow" 
+			100 = "white"
+		}
+		special_selection = {
+			trigger = {
+				has_religion = religion:amsari_religion
+			}
+			12 = "blue"
+			14 = "black"	
+			6 = "green"
+			6 = "orange"
+			8 = "purple"
+		}
+		special_selection = {
+			trigger = {
+				has_religion = religion:partic_religion	
+			}
+			30 = "red"
+			10 = "orange"
+			15 = "blue"
+			20 = "green"
+			10 = "black"
+		}
+		special_selection = {
+			trigger = {
+				has_religion = religion:marcher_religion
+				NOT = { has_culture_group = culture_group:gh_konijkemener_group }
+			}
+			20 = "blue"		
+			5 = "purple"
+			2 = "green"	
+			5 = "red"
+			2 = "black"
+		}
+		special_selection = {
+			trigger = {
+				has_culture_group = culture_group:gh_konijkemener_group
+			}
+			20 = "blue"		
+			20 = "blue_light"
+			20 = "green_light"		
+			80 = "orange"
+			10 = "red"
+			5 = "black"
+		}
+	}	
+	
+	normal_colors = {
+		30 = "red"
+		12 = "blue"
+		1 = "green"
+		14 = "black"
+		0 = "purple"
+
+		### Imperial
+		special_selection = {
+			trigger = {
+				has_culture_group = culture_group:gh_imperial_group
+			}
+			400 = "red"
+			20 = "blue"
+			300 = "black"
+			200 = "purple"
+			special_selection = {
+				trigger = {
+					has_culture = culture:westernimperial
+				}
+				800 = "red"
+				600 = "black"
+				100 = "grey_dark"
+			}
+			special_selection = {
+				trigger = {
+					has_culture = culture:southernimperial # Opakhasia
+				}
+				400 = "purple"
+				800 = "orange"
+			}
+			special_selection = {
+				trigger = {
+					has_culture = culture:centralimperial # Malcois
+				}
+				100 = "grey_dark"
+				800 = "blue"
+				400 = "black"
+			}
+			special_selection = {
+				trigger = {
+					has_culture = culture:easternimperial # Aironoi
+				}
+				800 = "purple"
+				400 = "pink"
+				400 = "teal"
+			}
+			special_selection = {
+				trigger = {
+					OR = {
+						has_culture = culture:northernimperial # Kalathipsomi
+						has_culture = culture:apokiakas
+					}	
+				}
+				200 = "green"
+				400 = "black"
+				100 = "grey_dark"
+				800 = "red"
+			}
+		}
+
+		special_selection = {
+			trigger = {
+				has_religion = religion:marcher_religion
+				NOT = { has_culture_group = culture_group:gh_konijkemener_group }
+			}
+			20 = "blue"		
+			5 = "purple"
+			2 = "green"	
+			5 = "red"
+			2 = "black"
+		}
+		special_selection = {
+			trigger = {
+				has_culture_group = culture_group:gh_konijkemener_group
+			}
+			20 = "blue"		
+			20 = "blue_light"
+			20 = "green_light"		
+			80 = "orange"
+			10 = "red"
+			5 = "black"
+		}
+		special_selection = {
+			trigger = {
+				has_religion = religion:agionism_religion
+			}
+			20 = "red"
+			80 = "orange"
+			20 = "blue"
+			30 = "black"
+			10 = "green"
+		}
+		special_selection = {
+			trigger = {
+				OR = { 
+					has_religion = religion:sjalvolki_religion
+					has_religion = religion:partic_religion
+					has_religion = religion:iyrossi_religion
+				}	
+			}
+			30 = "red"
+			10 = "orange"
+			15 = "blue"
+			20 = "green"
+			10 = "black"
+			0 = "purple"
+		}
+		special_selection = {
+			trigger = {
+				OR = {
+					has_religion = religion:sarradonian_religion
+					has_religion = religion:khmet_religion
+				}	
+			}
+			18 = "blue"
+			6 = "black"	
+			29 = "green"
+		}
+		special_selection = {
+			trigger = {
+				has_religion = religion:amsari_religion
+			}
+			12 = "blue"
+			14 = "black"	
+			6 = "green"
+			6 = "orange"
+			8 = "purple"
+		}
+	}
+	metal_colors = {
+		24 = "yellow"
+		26 = "white"
+
+		### Imperial
+		special_selection = {
+			trigger = {
+				has_culture = culture:westernimperial
+			}
+			52 = "yellow"
+		}
+		special_selection = {
+			trigger = {
+				has_culture = culture:centralimperial # Malcois
+			}
+			48 = "white"
+		}
+	}
+}

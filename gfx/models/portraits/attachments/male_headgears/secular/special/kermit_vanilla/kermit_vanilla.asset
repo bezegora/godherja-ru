@@ -1,0 +1,19 @@
+pdxmesh = {
+	name = "kermit_vanilla_mesh"
+	file = "kermit_vanilla.mesh"
+
+	meshsettings = {
+		name = "kermit_vanillaShape"
+		index = 0
+		texture_diffuse = "vkermit_color.dds"
+		texture_normal = "vkermit_normal.dds"
+		texture_specular = "vkermit_properties.dds"
+		shader = "portrait_attachment"
+		shader_file = "gfx/FX/jomini/portrait.shader"
+	}
+}
+
+entity = {
+	name = "kermit_vanilla_entity"
+	pdxmesh = "kermit_vanilla_mesh"
+}

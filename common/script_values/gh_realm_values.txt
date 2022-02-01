@@ -1,0 +1,57 @@
+﻿tyranny_from_confiscations_value = {
+	value = 0
+	every_in_list = {
+		list = target_kingdoms
+		add = 20
+	}
+	every_in_list = {
+		list = target_duchies
+		add = 10
+	}
+	every_in_list = {
+		list = target_counties
+		add = 5
+	}
+}
+
+dread_from_confiscations_value = {
+	value = 0
+	every_in_list = {
+		list = target_kingdoms
+		add = 20
+	}
+	every_in_list = {
+		list = target_duchies
+		add = 10
+	}
+	every_in_list = {
+		list = target_counties
+		add = 5
+	}
+}
+
+faith_hostility_level_conversion_malus = {
+	value = 1
+	if = {
+		limit = {
+			faith = {
+				faith_hostility_level = {
+					target = scope:councillor.faith
+					value >= faith_hostile_level
+				}
+			}
+		}
+		add = 2
+	}
+	if = {
+		limit = {
+			faith = {
+				faith_hostility_level = {
+					target = scope:councillor.faith
+					value >= faith_evil_level
+				}
+			}
+		}
+		add = 3
+	}
+}

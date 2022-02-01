@@ -1,0 +1,135 @@
+﻿duel_interaction = {
+	category = interaction_category_diplomacy
+	common_interaction = yes
+	greeting = negative
+	notification_text = duel_interaction
+	can_send_despite_rejection = yes
+
+	desc = duel_interaction_desc
+	notification_text = duel_interaction_notification
+	prompt = duel_interaction_prompt #
+	show_effects_in_notification = no
+
+	cooldown = { months = 12 }
+	cooldown_against_recipient = { years = 3 } #
+
+
+	is_shown = {
+		NOT = {
+			scope:recipient = scope:actor
+		}
+		scope:actor = {
+			has_relation_rival = scope:recipient
+		}
+	}
+
+	can_be_blocked = {
+		scope:recipient = { has_strong_usable_hook = scope:actor }
+	}
+
+	is_valid_showing_failures_only = {
+		
+		scope:actor = {
+			can_duel = yes
+			has_perk = chivalric_dominance_perk
+		}
+		scope:recipient = {
+			can_duel = yes
+		}
+
+		NOT = {
+			scope:recipient = {
+				has_character_flag = dueled_recently
+			}
+		}
+	}
+
+	on_accept = {
+		start_duel = {
+					CHALLENGER = scope:actor
+					CHALLENGED = scope:recipient
+#					TOTHEDEATH = no
+		}
+	}
+
+	answer_block_key = duel_interaction_sender_block
+
+	answer_accept_key = duel_interaction_sender_accept
+
+	answer_reject_key = duel_interaction_sender_reject
+
+	cost = {
+		prestige = duel_prestige_cost
+	}
+
+	ai_target_quick_trigger = {
+		adult = yes
+		prison = no
+	}
+	ai_accept = 100
+}
+
+
+debug_duel = {
+	category = interaction_debug_main
+	common_interaction = yes
+	greeting = negative
+	notification_text = duel_interaction
+	can_send_despite_rejection = yes
+
+	desc = duel_interaction_desc
+	notification_text = duel_interaction_notification
+	prompt = duel_interaction_prompt #
+	show_effects_in_notification = no
+
+
+	is_shown = {
+		debug_only = yes
+	}
+
+	on_accept = {
+		start_duel = {
+			CHALLENGER = scope:actor
+			CHALLENGED = scope:recipient
+#			TOTHEDEATH = no
+		}
+	}
+
+	answer_block_key = duel_interaction_sender_block
+
+	answer_accept_key = duel_interaction_sender_accept
+
+	answer_reject_key = duel_interaction_sender_reject
+
+	cost = {
+		prestige = duel_prestige_cost
+	}
+	
+	ai_accept = 100
+}
+
+debug_duel_set_actors = { # WARNING: causes memory leak
+	category = interaction_debug_main
+	common_interaction = no
+	greeting = negative
+	can_send_despite_rejection = yes
+
+	is_shown = {
+		debug_only = yes
+	}
+
+	on_accept = {
+		scope:actor = {
+			set_variable = {
+				name = OTHER
+				value = scope:recipient
+			}
+		}
+		scope:recipient = {
+			set_variable = {
+				name = OTHER
+				value = scope:actor
+			}
+		}
+	}
+}

@@ -1,0 +1,179 @@
+﻿#example criminalization
+magic_crime = {
+	opinion = -20
+	imprisonment_reason = yes
+	revoke_title_reason = yes
+}
+
+magic_intolerant = {
+	opinion = -10
+}
+
+magic_supreme = {
+	opinion = 10
+}
+
+pryonism_bad_dreams = {
+	opinion = -20
+
+}
+
+pryonism_good_dreams = {
+	opinion = 20
+
+}
+
+ethereal_necromancy_possess = {
+	opinion = 60
+
+}
+
+gave_minor_title_normal_vassal_opinion = {
+	opinion = 10
+	decaying = no
+	years = 10
+}
+
+gave_minor_title_powerful_vassal_opinion = {
+	opinion = -40
+	decaying = no
+	years = 10
+}
+
+gave_minor_title_court_mage_opinion = {
+	opinion = -40
+	decaying = no
+	years = 10
+}
+
+
+duel_went_free = {
+	opinion = 40
+
+	decaying = yes
+	monthly_change = 2
+}
+
+duel_refused_to_back_down = {
+	opinion = -15
+
+	decaying = yes
+	monthly_change = 1
+}
+
+duel_didnt_flee = {
+	opinion = 20
+
+	decaying = yes
+	monthly_change = 5
+}
+
+duel_fled = {
+	opinion = -40
+
+	months = 18
+
+	imprisonment_reason = yes
+
+	disable_non_aggression_pacts = yes
+}
+
+av_succ_didnt_challenge = {
+	opinion = 20
+
+	months = 12
+}
+
+sjalvolki_core_vassal_opinion = {
+	opinion = 45
+	non_aggression_pact = yes
+	obedient = yes
+	stacking = yes
+}
+
+sjalvolki_coalition_vassal_opinion = {
+	opinion = 25
+	non_aggression_pact = yes
+	obedient = yes
+	stacking = yes
+}
+
+accepted_multi_realm_war_call = {
+	opinion = 35
+
+	decaying = yes
+	monthly_change = 1
+}
+
+rejected_multi_realm_war_call = {
+	opinion = -10
+
+	decaying = yes
+	monthly_change = 1
+}
+
+thralled_my_familymember = {
+	opinion = -50
+	decaying = no
+	years = 10
+}
+
+thralled_minor = {
+	opinion = 50
+	decaying = no
+	years = 5
+}
+
+thralled_mid = {
+	opinion = 100
+	decaying = no
+	years = 5
+}
+
+thralled_major = {
+	opinion = 200
+	decaying = no
+	years = 5
+}
+
+dehanded_family_member = {
+	opinion = -20
+	years = 20
+	decaying = yes
+}
+
+dehanded_me = {
+	opinion = -50
+	decaying = yes
+	years = 50
+	imprisonment_reason = yes
+}
+
+gh_cormag_dislike = {
+	opinion = -80
+	years = 50
+}
+
+court_magi_refused_research_help = {
+	opinion = -20
+	decaying = yes
+	years = 10
+}
+
+refused_hunt_help = {
+	opinion = -15
+	decaying = yes
+	years = 15
+}
+
+bad_hunt_help = {
+	opinion = -10
+	decaying = yes
+	years = 10
+}
+
+hunt_child_disobedience = {
+	opinion = -20
+	years = 20
+	decaying = yes
+}

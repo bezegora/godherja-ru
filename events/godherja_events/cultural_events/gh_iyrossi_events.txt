@@ -1,0 +1,51 @@
+﻿namespace = iyrossi_monthly
+
+iyrossi_monthly.1000 = { #yearly pulse event for Iyrossi refugee Aversarians encounter
+	type = character_event
+	title = iyrossi_monthly.1000.t
+	desc = iyrossi_monthly.1000.desc
+	theme = realm
+	left_portrait = {
+		character = root
+		animation = schadenfreude
+	}
+	trigger = {
+		faith.religion = religion:iyrossi_religion
+	}
+
+	option = {
+		name = iyrossi_monthly.1000.a
+		stress_impact = {
+			just = minor_stress_impact_gain
+			vengeful = medium_stress_impact_gain
+			compassionate = medium_stress_loss
+		}
+		add_piety = medium_piety_loss
+	}
+	option = {
+		name = iyrossi_monthly.1000.b
+		random_sub_realm_county = {
+			limit = {
+				holder = root
+			}
+			change_development_level = 2
+		}
+	}
+	option = {
+		name = iyrossi_monthly.1000.c
+		trigger = {
+			faith = { 
+				NOT = {
+					OR = {
+						has_doctrine = doctrine_slavery_banned
+						has_doctrine = doctrine_slavery_discouraged
+					}
+				}
+			}
+		}
+		stress_impact = {
+			compassionate = medium_stress_impact_gain
+		}
+		add_gold = medium_gold_value
+	}
+}

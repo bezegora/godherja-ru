@@ -1,0 +1,263 @@
+﻿
+on_norse_nickname = 
+{
+	trigger = { has_culture_group = culture_group:gh_sjalvoki_group }
+	first_valid_on_action = 
+	{
+		on_berserker
+		on_son_of_the_gods
+	}
+	fallback = on_brave_nickname
+}
+
+on_berserker = 
+{
+	trigger = { 
+		prowess >= 25
+		has_trait = berserker
+	 }
+	first_valid_on_action = 
+	{
+		on_berserker_the_red
+		on_berserker_the_black
+		on_berserker_the_white
+		on_berserker_the_broken
+		on_berserker_the_wicked
+		on_berserker_the_crazy
+		on_berserker_the_she_bear
+		on_berserker_the_little_bear
+		on_berserker_the_kraken
+		on_berserker_random	
+	}
+}
+
+on_berserker_the_white = 
+{
+	trigger = { has_trait = albino }
+	effect = { give_nickname = nick_the_white_bear }
+}
+
+on_berserker_the_red = 
+{
+	trigger = { has_trait = kinslayer_1 has_trait = kinslayer_2 has_trait = kinslayer_3}
+	effect = { give_nickname = nick_the_red_bear }
+}
+
+on_berserker_the_black = 
+{
+	trigger = { has_trait = bastard }
+	effect = { give_nickname = nick_the_black_bear }
+}
+
+on_berserker_the_broken = 
+{
+	trigger = { 
+		OR = { 
+			   has_trait = maimed 
+			   has_trait = blind 
+			 }
+	}
+	effect = { give_nickname = nick_the_broken_bear }
+}
+
+on_berserker_the_wicked = 
+{
+	trigger = { has_trait = deviant }
+	effect = { give_nickname = nick_the_wicked_bear }
+}
+
+on_berserker_the_kraken = 
+{
+	trigger = 
+	{ 
+		prowess >= 30 
+		has_trait = viking 
+	}
+	effect = { give_nickname = nick_the_kraken }
+}
+
+on_berserker_the_crazy = 
+{
+	trigger = { OR = { has_trait = lunatic  has_trait = possessed_1 has_trait = possessed_genetic }  }
+	effect = { give_nickname = nick_the_crazy_bear }
+}
+
+on_berserker_the_she_bear = 
+{
+	trigger = { is_male = no }
+	effect = { give_nickname = nick_the_she_bear }
+}
+
+on_berserker_the_little_bear = 
+{
+	trigger = { OR = { has_trait = dwarf has_trait = weak } }
+	effect = { give_nickname = nick_the_little_bear }
+}
+
+on_berserker_random = 
+{
+	random_on_action = 
+	{
+		10 = on_ale_lover
+		10 = on_foul_fart
+		10 = on_witch_breaker
+		10 = on_leather_neck
+		10 = on_troll_burster
+		10 = on_squint_eyed
+		10 = on_moss_neck
+		10 = on_blue_cheek
+		10 = on_fast_sailing
+		10 = on_coal_brow
+		10 = on_shape_shifting
+		10 = on_war_tooth
+	}
+}
+
+on_ale_lover = 
+{
+	effect = { give_nickname = nick_the_ale_lover }
+}
+
+on_foul_fart = 
+{
+	effect = { give_nickname = nick_foul_fart }
+}
+
+on_witch_breaker = 
+{
+	effect = { give_nickname = nick_witch_breaker }
+}
+
+on_leather_neck = 
+{
+	effect = { give_nickname = nick_leather_neck }
+}
+
+on_troll_burster = 
+{
+	effect = { give_nickname = nick_troll_burster }
+}
+
+on_squint_eyed = 
+{
+	effect = { give_nickname = nick_squint_eyed }
+}
+
+on_moss_neck = 
+{
+	effect = { give_nickname = nick_moss_neck }
+}
+
+on_blue_cheek = 
+{
+	effect = { give_nickname = nick_blue_cheek }
+}
+
+on_fast_sailing = 
+{
+	effect = { give_nickname = nick_fast_sailing }
+}
+
+on_coal_brow = 
+{
+	effect = { give_nickname = nick_coal_brow }
+}
+
+on_shape_shifting = 
+{
+	effect = { give_nickname = nick_the_shape_shifting }
+}
+
+on_war_tooth = 
+{
+	effect = { give_nickname = nick_war_tooth }
+}
+
+#########################################################
+
+on_son_of_the_gods = 
+{
+	trigger = { 
+		piety >= 1500		
+	 }
+	first_valid_on_action = 
+	{
+		on_son_thor
+		on_son_odin
+		on_son_balder
+		on_son_loki
+		on_son_heimdall
+		on_daugter_freya 
+		on_daugter_frigg 
+	}
+}
+
+on_son_thor = 
+{
+	trigger = { 
+		is_male = yes 
+		prowess >= 30 
+		has_trait = strong
+	}
+	effect = { give_nickname = nick_son_of_thor }
+}
+
+on_son_odin = 
+{
+	trigger = { 
+		learning >= 40 
+		has_trait = one_eyed 
+	}
+	effect = { give_nickname = nick_son_of_odin }
+}
+
+on_son_balder = 
+{
+	trigger = { 
+		is_male = yes 
+		has_trait = just
+		has_trait = honest
+	}
+	effect = { give_nickname = nick_son_of_balder }
+}
+
+on_son_loki = 
+{
+	trigger = { 
+		has_trait = callous
+		has_trait = deceitful
+	}
+	effect = { give_nickname = nick_son_of_loki }
+}
+
+on_son_heimdall = 
+{
+	trigger = { 
+		has_trait = diligent
+		has_trait = calm
+	}
+	effect = { give_nickname = nick_son_of_heimdall }
+}
+
+on_daugter_freya = 
+{
+	trigger = { is_male = no prowess >= 30 }
+	effect = { give_nickname = nick_daughter_freya }
+}
+
+on_daugter_frigg = 
+{
+	trigger = { is_male = no has_trait = beauty_good_3 OR = { has_trait = mystic_2 has_trait = mystic_3 } }
+	effect = { give_nickname = nick_daughter_frigg }
+}
+
+
+
+
+
+
+
+
+
+
+

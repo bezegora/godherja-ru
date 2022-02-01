@@ -1,0 +1,36 @@
+DoodleSM's Magic System or "HOW TO CREATE SPELLS IN GODHERJA"
+
+Hello! This is a short and simple guide to creating spells using the Magic System. I'll make this brief.
+Here is an exampe magi spell that adds a 100 piety to your character.
+
+example_spell = {
+	ai_check_interval = 12 #how often the AI checks this.
+	desc = example_spell_desc #the description
+	is_shown = { #only shows if conditions are met
+		is_target_in_global_variable_list = {
+			name = blood_magi_list
+			target = root
+		}
+		is_landed = yes
+	}
+	is_valid = { #only works if conditions are met
+		is_target_in_global_variable_list = {
+			name = blood_magi_list #there are three lists: "blood_magi_list", "moon_magi_list", and "mixed_magi_list"
+			target = root
+		}
+		this.var:magic_counter >= 1 #this spell will only activate if the player has 1 Magic
+	}
+	effect = { #the effect and cost of the spell.
+		change_variable = {
+			name = magic_counter
+			subtract = 1
+		}
+		add_piety = medium_piety_gain
+	}
+}
+
+The important variable is magic_counter. All spells have costs, if you want to have that cost simply put:
+change_variable = {
+	name = magic_counter
+	subtract = X #this is the cost of the spell
+}

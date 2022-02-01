@@ -1,0 +1,82 @@
+﻿namespace = metropolis
+
+metropolis.0001 = { # Repaired a Ruin
+	title = metropolis.0001.t
+	theme = stewardship
+	
+	desc = metropolis.0001.desc
+	
+	right_portrait = { 
+		character = this
+		animation = happiness
+	}
+
+	option = {
+		name = metropolis.0001.a
+		custom_tooltip = metropolis.0001.a.tt
+		hidden_effect = {
+			scope:cleared_ruins_province = {
+				set_holding_type = palatial_district_holding
+			}
+		}
+	}
+	option = {
+		name = metropolis.0001.b
+		custom_tooltip = metropolis.0001.b.tt
+		hidden_effect = {
+			scope:cleared_ruins_province = {
+				set_holding_type = military_district_holding
+			}
+		}
+	}
+	option = {
+		name = metropolis.0001.c
+		custom_tooltip = metropolis.0001.c.tt
+		hidden_effect = {
+			scope:cleared_ruins_province = {
+				set_holding_type = trade_district_holding
+			}
+		}
+	}
+	option = {
+		name = metropolis.0001.d
+		custom_tooltip = metropolis.0001.d.tt
+		trigger = {
+			scope:cleared_ruins_province = {
+				is_coastal = yes
+			}
+		}
+		hidden_effect = {
+			scope:cleared_ruins_province = {
+				set_holding_type = maritime_district_holding
+			}
+		}
+	}
+	option = {
+		name = metropolis.0001.e
+		custom_tooltip = metropolis.0001.e.tt
+		hidden_effect = {
+			scope:cleared_ruins_province = {
+				set_holding_type = temple_district_holding
+			}
+		}
+	}
+	option = {
+		name = metropolis.0001.f
+		custom_tooltip = metropolis.0001.f.tt
+		hidden_effect = {
+			scope:cleared_ruins_province = {
+				set_holding_type = urban_district_holding
+			}
+		}
+	}
+	option = {
+		name = metropolis.0001.g
+		custom_tooltip = metropolis.0001.g.tt
+		hidden_effect = {
+			scope:cleared_ruins_province = {
+				set_holding_type = workshop_district_holding
+			}
+		}
+	}
+}

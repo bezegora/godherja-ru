@@ -1,0 +1,295 @@
+﻿@holding_illustration_western = "gfx/interface/illustrations/holding_types/city_western.dds"
+@holding_illustration_india = "gfx/interface/illustrations/holding_types/city_india.dds"
+@holding_illustration_mediterranean = "gfx/interface/illustrations/holding_types/city_mediterranean.dds"
+@holding_illustration_mena = "gfx/interface/illustrations/holding_types/city_mena.dds"
+
+############################
+# RUINED DISTRICT FEATURES #
+############################
+
+ruined_district_01 = {
+	construction_time = slow_construction_time
+	
+	asset = {
+		type = pdxmesh
+		names = {
+			"building_western_city_02_mesh"
+		}
+		illustration = @holding_illustration_western
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/City/western_city" soundparameter = { "Tier" = 2 } }
+		graphical_regions = { world_ga_marcher_kingdoms }
+		graphical_cultures = { western_building_gfx slavic_building_gfx }
+	}
+	
+	asset = {
+		type = pdxmesh
+		names = {
+			"building_mena_city_02_mesh"
+		}
+		illustration = @holding_illustration_mena
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/City/mena_city" soundparameter = { "Tier" = 2 } }
+		graphical_regions = { world_sarradon }
+		graphical_cultures = { mena_building_gfx }
+	}
+	
+	asset = {
+		type = pdxmesh
+		names = {
+			"building_india_city_02_mesh"
+		}
+		illustration = @holding_illustration_india
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/City/indian_city" soundparameter = { "Tier" = 2 } }
+		graphical_cultures = { indian_building_gfx }
+	}
+	
+	asset = {
+		type = pdxmesh
+		names = {
+			"building_mediterranean_city_02_mesh"
+		}
+		illustration = @holding_illustration_mediterranean
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/City/mediterranean_city" soundparameter = { "Tier" = 2 } }
+		graphical_regions = { world_ga_aversarian_homelands world_ga_clanlands }
+		graphical_cultures = { mediterranean_building_gfx }
+	}
+	
+	can_construct_potential = {
+		always = no 	# Only historical and maybe via event/decision
+	}
+	
+	cost_gold = main_building_tier_1_cost
+		
+	flag = city
+	
+	ai_value = {
+		base = 0
+	}
+}
+
+palace_ruins_01 = {
+	construction_time = slow_construction_time
+	can_construct_potential = {
+		always = no
+	}
+	
+	cost_gold = main_building_tier_1_cost
+	next_building = palace_ruins_02
+	
+	type_icon = "icon_building_ruined_palace.dds"
+}
+
+palace_ruins_02 = {
+	construction_time = slow_construction_time
+	
+	cost_gold = main_building_tier_3_cost
+	
+	on_complete = {
+		clear_ruin_effect = yes
+	}
+}
+
+house_ruins_01 = {
+	construction_time = slow_construction_time
+	can_construct_potential = {
+		always = no
+	}
+	
+	cost_gold = main_building_tier_1_cost
+	next_building =	house_ruins_02
+	type_icon = "icon_building_generic_house.dds"
+}
+
+house_ruins_02 = {
+	construction_time = slow_construction_time
+	
+	cost_gold = main_building_tier_3_cost
+	on_complete = {
+		clear_ruin_effect = yes
+	}
+}
+
+garden_ruins_01 = {
+	construction_time = slow_construction_time
+	can_construct_potential = {
+		always = no
+	}
+	
+	cost_gold = main_building_tier_1_cost
+	next_building = garden_ruins_02
+	type_icon = "icon_building_ruined_palace.dds"
+}
+
+garden_ruins_02 = {
+	construction_time = slow_construction_time
+	
+	cost_gold = main_building_tier_3_cost
+	on_complete = {
+		clear_ruin_effect = yes
+	}
+}
+
+fountain_ruins_01 = {
+	construction_time = slow_construction_time
+	can_construct_potential = {
+		always = no
+	}
+	
+	cost_gold = main_building_tier_1_cost
+	next_building = fountain_ruins_02
+	type_icon = "icon_building_ruined_palace.dds"
+}
+
+fountain_ruins_02 = {
+	construction_time = slow_construction_time
+	
+	cost_gold = main_building_tier_3_cost
+	on_complete = {
+		clear_ruin_effect = yes
+	}
+}
+
+plaza_ruins_01 = {
+	construction_time = slow_construction_time
+	can_construct_potential = {
+		always = no
+	}
+	
+	cost_gold = main_building_tier_1_cost
+	next_building = plaza_ruins_02
+	type_icon = "icon_building_ruined_palace.dds"
+}
+
+plaza_ruins_02 = {
+	construction_time = slow_construction_time
+	
+	cost_gold = main_building_tier_3_cost
+	on_complete = {
+		clear_ruin_effect = yes
+	}
+}
+
+crater_ruins_01 = {
+	construction_time = slow_construction_time
+	can_construct_potential = {
+		always = no
+	}
+	
+	cost_gold = main_building_tier_1_cost
+	next_building = crater_ruins_02
+	
+	type_icon = "icon_building_ruined_palace.dds"
+}
+
+crater_ruins_02 = {
+	construction_time = slow_construction_time
+	
+	cost_gold = main_building_tier_3_cost
+	on_complete = {
+		clear_ruin_effect = yes
+	}
+}
+
+maritime_ruins_01 = {
+	construction_time = slow_construction_time
+	can_construct_potential = {
+		always = no
+	}
+	
+	cost_gold = main_building_tier_1_cost
+	next_building = maritime_ruins_02
+	
+	type_icon = "icon_building_tradeport.dds"
+}
+
+maritime_ruins_02 = {
+	construction_time = slow_construction_time
+	
+	cost_gold = main_building_tier_3_cost
+	on_complete = {
+		clear_ruin_effect = yes
+	}
+}
+
+waterway_ruins_01 = {
+	construction_time = slow_construction_time
+	can_construct_potential = {
+		always = no
+	}
+	
+	cost_gold = main_building_tier_1_cost
+	next_building = waterway_ruins_02
+	
+	type_icon = "icon_building_ruined_palace.dds"
+}
+
+waterway_ruins_02 = {
+	construction_time = slow_construction_time
+	
+	cost_gold = main_building_tier_3_cost
+	on_complete = {
+		clear_ruin_effect = yes
+	}
+}
+
+citadel_ruins_01 = {
+	construction_time = slow_construction_time
+	can_construct_potential = {
+		always = no
+	}
+	
+	cost_gold = main_building_tier_1_cost
+	next_building = citadel_ruins_02
+	
+	type_icon = "icon_building_curtain_walls.dds"
+}
+
+citadel_ruins_02 = {
+	construction_time = slow_construction_time
+	
+	cost_gold = main_building_tier_3_cost
+	on_complete = {
+		clear_ruin_effect = yes
+	}
+}
+
+nexus_ruins_01 = {
+	construction_time = slow_construction_time
+	can_construct_potential = {
+		always = no
+	}
+	
+	cost_gold = main_building_tier_1_cost
+	next_building = nexus_ruins_02
+	
+	type_icon = "icon_building_ruined_palace.dds"
+}
+
+nexus_ruins_02 = {
+	construction_time = slow_construction_time
+	
+	cost_gold = main_building_tier_3_cost
+	on_complete = {
+		clear_ruin_effect = yes
+	}
+}
+
+monument_ruins_01 = {
+	construction_time = slow_construction_time
+	can_construct_potential = {
+		always = no
+	}
+	
+	cost_gold = main_building_tier_1_cost
+	next_building = monument_ruins_02
+	
+	type_icon = "icon_building_ruined_palace.dds"
+}
+
+monument_ruins_02 = {
+	construction_time = slow_construction_time
+	
+	cost_gold = main_building_tier_3_cost
+	on_complete = {
+		clear_ruin_effect = yes
+	}
+}

@@ -1,0 +1,62 @@
+﻿namespace = kardawai_flavor
+
+kardawai_flavor.1000 = { #battle victory on_action triggering cannibalism event
+	hidden = yes
+	scope = combat_side
+	
+	trigger = {
+		exists = side_commander
+		side_commander = {
+			AND = {
+				faith.religion = religion:kardawai_religion
+				prestige_level > 2
+				faith = {
+					has_doctrine = tenet_ritual_cannibalism
+				}
+			}
+			NOR = {
+				has_trait = cannibal
+				has_character_flag = had_event_kardawai_cannibal_chance
+			}
+		}
+	}
+	immediate = {
+	side_commander = {
+		trigger_event = {
+				id = kardawai_flavor.1001
+				days = 1
+			}
+		}
+	}
+}
+
+kardawai_flavor.1001 = { #battle victory action for prestigious character to get to eat somebody
+	type = character_event
+	title = kardawai_flavor.1001.t
+	desc = kardawai_flavor.1001.desc
+	theme = war
+	
+	left_portrait = {
+		character = root
+		animation = war_over_win
+	}
+	
+	option = {
+		name = kardawai_flavor.1001.a
+		add_piety = medium_piety_gain
+		add_trait = cannibal
+		stress_impact = {
+			compassionate = medium_stress_impact_gain
+		}
+	}
+	option = {
+		name = kardawai_flavor.1001.b
+		stress_impact = {
+			humble = medium_stress_loss
+		}
+		add_character_flag = {
+			flag = had_event_kardawai_cannibal_chance
+			years = 5
+		}
+	}
+}

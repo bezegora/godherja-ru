@@ -1,0 +1,19 @@
+﻿gave_minor_title_effect = {
+	if = {
+		limit = { is_powerful_vassal = no }
+		add_opinion = {
+			modifier = gave_minor_title_normal_vassal_opinion
+			target = liege
+		}
+	}
+	else_if = {
+		add_opinion = {
+			modifier = gave_minor_title_powerful_vassal_opinion
+			target = liege
+		}
+	}
+}
+
+gave_minor_title_court_mage_effect = {
+	gave_minor_title_effect = yes
+}

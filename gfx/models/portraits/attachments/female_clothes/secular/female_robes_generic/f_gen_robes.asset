@@ -1,0 +1,47 @@
+pdxmesh = {
+	name = "f_gen_robes_mesh"
+	file = "f_gen_robes.mesh"
+
+	blend_shape = { id = "f_gen_robes_infant"		type = "f_gen_robes_infant.mesh" }
+	blend_shape = { id = "f_gen_robes_fat"			type = "f_gen_robes_fat.mesh" }
+	blend_shape = { id = "f_gen_robes_gaunt"		type = "f_gen_robes_gaunt.mesh" }
+	blend_shape = { id = "f_gen_robes_muscular"		type = "f_gen_robes_muscular.mesh" }
+	blend_shape = { id = "f_gen_robes_old"			type = "f_gen_robes_old.mesh" }
+	blend_shape = { id = "f_gen_robes_breast_min"	type = "f_gen_robes_breast_min.mesh" }
+	blend_shape = { id = "f_gen_robes_breast_max"	type = "f_gen_robes_breast_max.mesh" }
+	blend_shape = { id = "f_gen_robes_dwarf"		type = "f_gen_robes_dwarf.mesh" }
+	
+	meshsettings = {
+		name = "female_magi_robesShape"
+		index = 0
+		texture_diffuse = "f_gen_robes_color.dds"
+		texture_normal = "f_gen_robes_normal.dds"
+		texture_specular = "f_gen_robes_properties.dds"
+		shader = "portrait_attachment_pattern"
+		shader_file = "gfx/FX/jomini/portrait.shader"
+	}
+}
+
+entity = {
+	name = "f_gen_robes_entity"
+	pdxmesh = "f_gen_robes_mesh"
+
+	attribute = { name = "bs_body_infant_1"						blend_shape = "f_gen_robes_infant" }
+	attribute = { name = "bs_body_fat_1"						blend_shape = "f_gen_robes_fat" }
+	attribute = { name = "bs_body_gaunt_1"						blend_shape = "f_gen_robes_gaunt" }
+	attribute = { name = "bs_body_muscular_1"					blend_shape = "f_gen_robes_muscular" }
+	attribute = { name = "bs_body_old_1"						blend_shape = "f_gen_robes_old" }
+	attribute = { name = "bs_body_breast_size_min"				blend_shape = "f_gen_robes_breast_min" }
+	attribute = { name = "bs_body_breast_size_max"				blend_shape = "f_gen_robes_breast_max" }
+	attribute = { name = "bs_body_dwarf_1"						blend_shape = "f_gen_robes_dwarf" }
+	
+	
+	game_data = {
+		portrait_accessory = {
+			pattern_mask = "gfx/models/portraits/attachments/female_clothes/secular/female_robes_generic/f_gen_robes_mask.dds"	#Any 4-channel texture. Each channel will be used to mask a pattern from the variation object
+			variation = "female_robes_generic"	#A "variation" object in gfx/portraits/accessory_variations/
+		}
+	}
+}
+
+

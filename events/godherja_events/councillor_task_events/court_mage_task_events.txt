@@ -1,0 +1,234 @@
+﻿#Events related to the Court Mage's tasks
+
+namespace = court_mage_task
+
+#Monthly education event
+court_mage_task.0001 = {
+	hidden = yes
+
+	immediate = {
+		calculate_tutoring_output = { MAGIC_TYPE = living_magic }
+		calculate_tutoring_output = { MAGIC_TYPE = dead_magic }
+		calculate_tutoring_output = { MAGIC_TYPE = mixed_magic }
+		
+		save_scope_as = tutor
+		liege = {
+			save_scope_as = court_mage_liege
+		}
+		
+		if = {	# If the liege themselves are a child, tutor them. If for some reason the liege is an infant and their heir is teachable, focus on the heir rather than twiddle their thumbs
+			limit = { 
+				scope:court_mage_liege = { 
+					is_adult = no 
+					age >= 6
+				} 
+			}
+			scope:court_mage_liege = {
+				apply_tutoring_to_character = { MAGIC_TYPE = living_magic TUTOR = tutor EFFICIENCY = 1 EVENT_ID_PREFIX = 001}
+				apply_tutoring_to_character = { MAGIC_TYPE = dead_magic TUTOR = tutor EFFICIENCY = 1 EVENT_ID_PREFIX = 002}
+				apply_tutoring_to_character = { MAGIC_TYPE = mixed_magic TUTOR = tutor EFFICIENCY = 1 EVENT_ID_PREFIX = 003}
+			}
+		}
+		else_if = {	# Otherwise, heir has highest priority unless they're an adult
+			limit = { exists = scope:court_mage_liege.player_heir }
+			scope:court_mage_liege.player_heir = {
+				if = {
+					limit = {
+						is_adult = no
+						age >= 6
+					}
+					apply_tutoring_to_character = { MAGIC_TYPE = living_magic TUTOR = tutor EFFICIENCY = 1 EVENT_ID_PREFIX = 001}
+					apply_tutoring_to_character = { MAGIC_TYPE = dead_magic TUTOR = tutor EFFICIENCY = 1 EVENT_ID_PREFIX = 002}
+					apply_tutoring_to_character = { MAGIC_TYPE = mixed_magic TUTOR = tutor EFFICIENCY = 1 EVENT_ID_PREFIX = 003}
+				}
+			}
+		} 
+		else = {	# If the heir is an adult, start instructing the ruler instead, but with markedly less efficiency, and only up to the mage's skill. 
+			scope:court_mage_liege = {
+				if = {
+					limit = {
+						is_incapable = no
+						#has_trait_rank = {
+						#	trait = education_living_magic
+						#	character < scope:court_mage
+						#}
+					}
+					apply_tutoring_to_character = { MAGIC_TYPE = living_magic TUTOR = tutor EFFICIENCY = 0.3 EVENT_ID_PREFIX = 001}
+					apply_tutoring_to_character = { MAGIC_TYPE = dead_magic TUTOR = tutor EFFICIENCY = 0.3 EVENT_ID_PREFIX = 002}
+					apply_tutoring_to_character = { MAGIC_TYPE = mixed_magic TUTOR = tutor EFFICIENCY = 0.3 EVENT_ID_PREFIX = 003}
+				}
+			}
+		}
+		
+		scope:court_mage_liege = {	# Tutor other kids with a lower efficiency
+			every_child = {
+				limit = { 
+					NOT = { is_heir_of = scope:court_mage_liege } 
+					is_adult = no 
+					age >= 6
+				}
+				apply_tutoring_to_character = { MAGIC_TYPE = living_magic TUTOR = tutor EFFICIENCY = 0.5 EVENT_ID_PREFIX = 001}
+				apply_tutoring_to_character = { MAGIC_TYPE = dead_magic TUTOR = tutor EFFICIENCY = 0.5 EVENT_ID_PREFIX = 002}
+				apply_tutoring_to_character = { MAGIC_TYPE = mixed_magic TUTOR = tutor EFFICIENCY = 0.5 EVENT_ID_PREFIX = 003}
+			}
+		}
+		
+		if = {
+			limit = {
+				any_relation = {
+					type = ward
+					count >= 1
+				}
+			}
+			every_relation = {	# By popular acclaim, tutor wards
+				type = ward
+				apply_tutoring_to_character = { MAGIC_TYPE = living_magic TUTOR = tutor EFFICIENCY = 0.75 EVENT_ID_PREFIX = 001}
+				apply_tutoring_to_character = { MAGIC_TYPE = dead_magic TUTOR = tutor EFFICIENCY = 0.75 EVENT_ID_PREFIX = 002}
+				apply_tutoring_to_character = { MAGIC_TYPE = mixed_magic TUTOR = tutor EFFICIENCY = 0.75 EVENT_ID_PREFIX = 003}
+			}
+		}
+	}
+}
+
+#Level up living magic - displayed to guardian if player
+court_mage_task.0010 = {
+	title = court_mage_task.0010.t
+	desc = court_mage_task.0010.desc
+	theme = education
+	
+	right_portrait = {
+		character = scope:court_mage
+		animation = happiness
+	}
+	left_portrait = {
+		character = this
+		animation = happiness
+	}
+	
+	option = {
+		name = court_mage_task.0010.a
+		upgrade_magic_education_effect = { MAGIC_TYPE = living_magic }
+	}
+}
+
+#Level up living magic - displayed to guardian if player
+court_mage_task.0011 = {
+	title = court_mage_task.0011.t
+	desc = court_mage_task.0011.desc
+	theme = education
+	
+	right_portrait = {
+		character = scope:court_mage
+		animation = happiness
+	}
+	left_portrait = {
+		character = this
+		animation = happiness
+	}
+	
+	option = {
+		name = court_mage_task.0010.a
+		if = {
+			limit = { exists = scope:magic_tutored_child }
+			scope:magic_tutored_child = {
+				upgrade_magic_education_effect = { MAGIC_TYPE = living_magic }
+			}
+		}
+	}
+}
+
+#Level up dead magic - displayed to guardian if player
+court_mage_task.0020 = {
+	title = court_mage_task.0020.t
+	desc = court_mage_task.0020.desc
+	theme = education
+	
+	right_portrait = {
+		character = scope:court_mage
+		animation = happiness
+	}
+	left_portrait = {
+		character = this
+		animation = happiness
+	}
+	
+	option = {
+		name = court_mage_task.0020.a
+		upgrade_magic_education_effect = { MAGIC_TYPE = dead_magic }
+	}
+}
+
+#Level up dead magic - displayed to guardian if player
+court_mage_task.0021 = {
+	title = court_mage_task.0021.t
+	desc = court_mage_task.0021.desc
+	theme = education
+	
+	right_portrait = {
+		character = scope:court_mage
+		animation = happiness
+	}
+	left_portrait = {
+		character = this
+		animation = happiness
+	}
+	
+	option = {
+		name = court_mage_task.0020.a
+		if = {
+			limit = { exists = scope:magic_tutored_child }
+			scope:magic_tutored_child = {
+				upgrade_magic_education_effect = { MAGIC_TYPE = dead_magic }
+			}
+		}
+	}
+}
+
+#Level up mixed magic - displayed to guardian if player
+court_mage_task.0030 = {
+	title = court_mage_task.0030.t
+	desc = court_mage_task.0030.desc
+	theme = education
+	
+	right_portrait = {
+		character = scope:court_mage
+		animation = happiness
+	}
+	left_portrait = {
+		character = this
+		animation = happiness
+	}
+	
+	option = {
+		name = court_mage_task.0030.a
+		scope:magic_tutored_child = {
+			upgrade_magic_education_effect = { MAGIC_TYPE = mixed_magic }
+	 	}
+	}
+}
+
+#Level up mixed magic - displayed to guardian if player
+court_mage_task.0031 = {
+	title = court_mage_task.0031.t
+	desc = court_mage_task.0031.desc
+	theme = education
+	
+	right_portrait = {
+		character = scope:court_mage
+		animation = happiness
+	}
+	left_portrait = {
+		character = this
+		animation = happiness
+	}
+	
+	option = {
+		name = court_mage_task.0030.a
+		if = {
+			limit = { exists = scope:magic_tutored_child }
+			scope:magic_tutored_child = {
+				upgrade_magic_education_effect = { MAGIC_TYPE = mixed_magic }
+			}
+		}
+	}
+}

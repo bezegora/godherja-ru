@@ -1,0 +1,2052 @@
+﻿namespace = cois
+
+##################################################
+
+### Cois Storyline Events
+
+# 0001 - Cenware Approaches
+# 0010 - Defeated Cenware for the First Time
+# 0020 - Defeated Cenware for the Second Time
+# 0200 - Rhesus Events
+# 0300 - Defeated Rhesus
+# 0400 - Cenware dies prematurely
+
+##################################################
+
+##################################################
+# Cenware Approaches
+# by Hapchazzard
+##################################################
+
+cois.0001 = {
+	type = character_event
+	theme = murder_scheme
+	title = cois.0001.t
+	desc = cois.0001.desc
+	
+	left_portrait = {
+		character = root
+		animation = worry
+	}
+	
+	lower_left_portrait = character:rhesus_1
+	
+	right_portrait = {
+		character = scope:attacker
+		animation = war_attacker
+	}
+	
+	trigger = {
+		root = character:cois_1
+		NOT = { has_character_flag = already_offered_vassalage_cois }
+	}
+	
+	immediate = {
+		if = {
+			limit = { NOT = { exists = scope:attacker } }
+			character:clanlands_sjalvolki_1 = { save_scope_as = attacker }
+		}
+		add_character_flag = already_offered_vassalage_cois
+	}
+	
+	option = {	# Flee to Cenware's court, get a duchy in exchange. Palitake collapses
+		name = cois.0001.a
+		highlight_portrait = scope:attacker
+		custom_tooltip = cois_join_cenware_tt
+		custom_tooltip = cois_rhesus_seizes_power_tt
+		
+		add_prestige = -1000
+		add_prestige_level = -1
+		
+		save_scope_as = aversarian_mercy_requester
+		scope:attacker = {
+			trigger_event = cois.0002
+		}
+		ai_chance = {
+			base = 2
+		}
+	}
+
+	option = {	# I'm not going anywhere!
+		name = cois.0001.b
+		custom_tooltip = cois_resist_cenware_tt
+		trait = brave
+		add_internal_flag = dangerous
+		highlight_portrait = character:rhesus_1
+		ai_chance = {	# AI Cenware will resist 80% of the time
+			base = 8
+		}
+	}
+}
+
+cois.0002 = { # Event for Cenware when he receives an offer of submission from Cois specifically
+	type = character_event
+	theme = war
+	title = cois.0002.t
+	desc = cois.0002.desc
+	
+	override_background = {
+		event_background = throne_room_tribal
+	}
+	
+	left_portrait = {
+		character = root
+		animation = war_attacker
+	}
+
+	right_portrait = {
+		character = scope:aversarian_mercy_requester
+		animation = beg
+	}
+	
+	option = {	# Accept
+		name = cois.0002.a
+		scope:aversarian_mercy_requester = {
+			trigger_event = cois.0003
+		}
+		ai_chance = {	# AI Cenware will always accept this
+			base = 100
+		}
+	}
+
+	option = {	# Refuse
+		name = cois.0002.b
+		imprison = {
+			target = scope:aversarian_mercy_requester
+			type = house_arrest
+		}
+		hidden_effect = {
+			scope:aversarian_mercy_requester = {
+				scope:war = {
+					remove_participant = root
+				}
+				every_vassal_or_below = {
+					limit = {
+						save_temporary_scope_as = vassal_at_war
+						scope:war = {
+							any_war_participant = {
+								this = scope:vassal_at_war
+							}
+						}
+					}
+					scope:war = {
+						remove_participant = prev
+					}
+				}
+				#every_held_title = {
+				#	limit = { tier >= tier_kingdom }
+				#	root = { destroy_title = prev }
+				#}
+				every_held_title = {
+					faith:aversarian_pope.religious_head = {
+						get_title = prev
+					}
+				}
+				faith:aversarian_pope.religious_head = {
+					set_realm_capital = title:c_halium
+				}
+			}
+		}
+		ai_chance = {	# AI Cenware will never refuse this
+			base = 0
+		}
+	}
+}
+
+# Cenware accepted submission
+cois.0003 = {
+	type = character_event
+	theme = war
+	title = cois.0003.t
+	desc = cois.0003.desc
+	
+	override_background = {
+		event_background = throne_room_tribal
+	}
+	
+	left_portrait = {
+		character = scope:attacker
+		animation = personality_forgiving
+	}
+
+	right_portrait = {
+		character = root
+		animation = beg
+		outfit_tags = { beggar_rags }
+	}
+	
+	immediate = {
+		random_held_title = {
+			limit = { 
+				tier = tier_county
+				NOT = { this = title:c_halium }
+			}
+			save_scope_as = title_to_be_kept
+		}
+	}
+	
+	option = {	# Accept the terms of surrender (Cois can't refuse as he has already fled from Oraispol to do this)
+		name = cois.0003.a
+		custom_tooltip = sjalvolki_conquest_aversarian_titled_redistributed_tt
+		remove_nickname = yes
+		remove_trait = gh_puppet
+		scope:attacker = {
+			add_hook = {
+				type = loyalty_hook
+				target = root
+			}
+		}
+		hidden_effect = {
+			scope:war = {
+				remove_participant = root
+			}
+			every_held_title = {
+				limit = { NOT = { this = scope:title_to_be_kept } }
+				faith:aversarian_pope.religious_head = {
+					get_title = prev
+				}
+			}
+			faith:aversarian_pope.religious_head = {
+				set_realm_capital = title:c_halium
+			}
+			every_vassal_or_below = {
+				limit = {
+					save_temporary_scope_as = vassal_at_war
+					scope:war = {
+						any_war_participant = {
+							this = scope:vassal_at_war
+						}
+					}
+				}
+				scope:war = {
+					remove_participant = prev
+				}
+			}
+		}
+		create_title_and_vassal_change = {
+			type = swear_fealty
+			save_scope_as = title_change
+			add_claim_on_loss = no
+		}
+		change_liege = {
+			liege = scope:attacker
+			change = scope:title_change
+		}
+		resolve_title_and_vassal_change = scope:title_change
+	}
+}
+
+# You are defeated by Cenware in the first round, and exiled
+cois.0004 = {
+	type = character_event
+	theme = war
+	title = cois.0004.t
+	desc = cois.0004.desc
+	
+	override_background = {
+		event_background = throne_room_tribal
+	}
+	trigger = {
+		#is_ai = no
+		title:c_alukdus = {
+			NOT = { has_county_modifier = fogswept_modifier }
+		}
+	}
+	
+	left_portrait = {
+		character = scope:attacker
+		animation = war_over_win
+	}
+
+	right_portrait = {
+		character = root
+		animation = sadness
+	}
+	
+	immediate = {
+		title:d_mistel.holder = {
+			save_scope_as = exile_captor
+		}
+		hidden_effect = {
+			every_held_title = {
+				limit = {
+					tier >= tier_duchy
+					NOT = { this = scope:title_to_be_kept }
+				}
+				scope:attacker = {
+					destroy_title = prev
+				}
+			}
+			scope:exile_captor = {
+				imprison = {
+					target = root
+					type = house_arrest
+				}
+			}
+			pay_short_term_gold = {
+				target = scope:attacker
+				gold = root.gold
+			}
+		}
+	}
+	
+	option = {	# You are shipped off to the most remote boonies of Kalathipsomi
+		name = cois.0004.a
+		custom_tooltip = cois_exiled_to_mistel_tt
+		remove_nickname = yes
+		remove_trait = gh_puppet
+		create_title_and_vassal_change = {
+			type = swear_fealty
+			save_scope_as = title_change
+			add_claim_on_loss = no
+		}
+		change_liege = {
+			liege = scope:exile_captor
+			change = scope:title_change
+		}
+		resolve_title_and_vassal_change = scope:title_change
+	}
+}
+
+# You are defeated by Cenware in the second round, and your heir is exiled
+cois.0005 = {
+	type = character_event
+	theme = war
+	title = cois.0005.t
+	desc = cois.0005.desc
+	
+	override_background = {
+		event_background = battlefield
+	}
+	
+	left_portrait = {
+		character = scope:attacker
+		animation = war_over_win
+	}
+
+	right_portrait = {
+		character = root
+		animation = personality_bold
+	}
+	
+	immediate = {
+		ordered_child = {
+			order_by = age
+			save_scope_as = exiled_heir
+		}
+		title:k_orudsar = {
+			random_in_de_jure_hierarchy = {
+				limit = { 
+					trigger_if = {
+						limit = { tier = tier_county }
+						any_county_province = { is_coastal = yes } 
+					}
+					trigger_else = {
+						always = no
+					}
+				}
+				save_scope_as = exile_county
+			}
+		}
+		create_title_and_vassal_change = {
+			type = conquest
+			save_scope_as = change
+			add_claim_on_loss = yes
+		}
+		scope:exile_county = {
+			change_title_holder = {
+				holder = scope:exiled_heir
+				change = scope:change
+			}
+		}
+		resolve_title_and_vassal_change = scope:change
+		set_player_character = scope:exiled_heir
+	}
+	
+	option = {
+		name = cois.0005.a
+		bloodline_set_founder = { TRAIT = cois_defeated }
+		custom_tooltip = cois_smuggled_to_sarradon_tt
+		remove_nickname = yes
+		give_nickname = nick_the_last_aautokratir
+		dynasty = {
+			add_dynasty_prestige = 1000
+		}
+		death = {
+			death_reason = death_battle
+			killer = scope:attacker
+		}
+	}
+}
+
+##################################################
+# Defeated Cenware for the First Time
+# by Hapchazzard
+##################################################
+
+cois.0010 = {
+	type = character_event
+	theme = war
+	title = cois.0010.t
+	desc = cois.0010.desc
+	
+	override_background = {
+		event_background = throne_room_mediterranean
+	}
+	
+	left_portrait = {
+		character = root
+		animation = war_over_win
+	}
+
+	right_portrait = {
+		character = scope:attacker
+		animation = rage
+	}
+	
+	immediate = {
+		random_realm_county = {
+			save_scope_as = battle_county
+		}
+		add_character_flag = beat_cenware_cois
+		title:e_etepezea = {
+			every_in_de_jure_hierarchy = {
+				limit = {
+					holder = {
+						NOR = { 
+							this = root 
+							this = character:western_imperial_1
+							has_culture_group = culture_group:gh_sjalvoki_group
+							is_in_list = etepezean_warlords_to_be_vassalized
+						}
+						highest_held_title_tier <= tier_kingdom
+						is_independent_ruler = yes
+					}
+					trigger_if = {
+						limit = { tier = tier_kingdom }
+						NOR = {
+							this = title:k_kerkonia
+							this = title:k_cycladecia
+						}
+					}
+					trigger_else_if = {
+						limit = { tier < tier_kingdom }
+						NOR = {
+							kingdom = title:k_kerkonia
+							kingdom = title:k_cycladecia
+						}
+					}
+					trigger_else = {
+						always = no
+					}
+				}
+				holder = {
+					add_to_list = etepezean_warlords_to_be_vassalized
+				}
+			}
+		}
+	}
+	
+	option = {	# You become Emperor of Etepezea, not including Tower Isle
+		name = cois.0010.a
+		custom_tooltip = cois_cenware_will_come_back_tt
+		remove_trait = gh_puppet
+		change_trait_rank = {
+			trait = intellect_good
+			rank = 1
+		}
+		add_martial_skill = 5
+		add_prowess_skill = 3
+		change_trait_rank = {
+			trait = lifestyle_blademaster
+			rank = 1
+		}
+		get_title = title:e_etepezea
+		custom_tooltip = cois_etepezea_unites_tt
+		custom_tooltip = cois_conclave_distracted_tt
+		set_relation_rival = scope:attacker
+		hidden_effect = {
+			every_in_list = {
+				list = etepezean_warlords_to_be_vassalized
+				create_title_and_vassal_change = {
+					type = swear_fealty
+					save_scope_as = title_change
+					add_claim_on_loss = no
+				}
+				change_liege = {
+					liege = root
+					change = scope:title_change
+				}
+				resolve_title_and_vassal_change = scope:title_change
+			}
+			every_child = {
+				random_list = {
+					50 = {}
+					50 = {
+						change_trait_rank = {
+							trait = intellect_good
+							rank = 1
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+# Abolish the Conclave
+cois.0011 = {
+	hidden = yes
+	
+	immediate = {
+		hidden_effect = {
+			every_county = {
+				limit = { faith = faith:aversarian_pope }
+				set_county_faith = faith:aversarinas_aautokrata
+			}
+			every_living_character = {
+				limit = { has_faith = faith:aversarian_pope }
+				set_character_faith = faith:aversarinas_aautokrata
+			}
+			set_character_faith = faith:aversarinas_aautokrata
+		}
+	}
+}
+
+# Invite Sjalvolki Defectors
+cois.0013 = {
+	type = character_event
+	theme = stewardship_domain_focus
+	title = cois.0013.t
+	desc = cois.0013.desc
+	
+	override_background = {
+		event_background = throne_room_mediterranean
+	}
+	
+	left_portrait = {
+		character = root
+		animation = personality_rational
+	}
+	
+	right_portrait = {
+		character = scope:negotiating_sjalvolki_chief
+		animation = personality_honorable
+	}
+	
+	immediate = {
+		hidden_effect = {
+			set_variable = {
+				name = sjalvolki_troops_to_be_received
+				days = 3
+				value = 0
+			}
+			set_variable = {
+				name = sjalvolki_elite_troops_to_be_received
+				days = 3
+				value = 0
+			}
+			character:clanlands_sjalvolki_1 = {
+				random_realm_county = {
+					limit = { NOT = { culture_group = culture_group:gh_imperial_group } }
+					save_scope_as = origin_county
+				}
+			}
+			random_realm_county = {
+				limit = { 
+					NOR = { 
+						has_county_modifier = gh_sjalvolki_resettlement_modifier
+						this = title:c_halium
+					} 
+				}
+				add_to_list = counties_to_be_settled
+				root = {
+					change_variable = {
+						name = sjalvolki_troops_to_be_received
+						add = 1
+					}
+				}
+				if = {
+					limit = {
+						holder = {
+							any_held_title = {
+								count >= 2
+								tier = tier_county
+								NOT = { is_in_list = counties_to_be_granted_to_sjalvolki }
+							}
+						}
+					}
+					add_to_list = counties_to_be_granted_to_sjalvolki
+					create_character = {
+						employer = root
+						gender_female_chance = 50
+						culture = scope:origin_county.culture
+						faith = scope:origin_county.faith
+						random_traits = yes
+						age = { 20 50 }
+						
+						save_scope_as = generated_sjalvolki_chief
+					}
+					scope:generated_sjalvolki_chief = {
+						set_variable = {
+							name = title_to_be_granted_to_sjalvolki_chief
+							value = prev
+							days = 3
+						}
+						add_to_list = sjalvolki_chiefs
+					}
+					root = {
+						change_variable = {
+							name = sjalvolki_troops_to_be_received
+							add = 1
+						}
+						change_variable = {
+							name = sjalvolki_elite_troops_to_be_received
+							add = 1
+						}
+					}
+				}
+				every_neighboring_county = {
+					limit = {
+						NOR = { 
+							has_county_modifier = gh_sjalvolki_resettlement_modifier
+							this = title:c_halium
+						} 
+					}
+					add_to_list = counties_to_be_settled
+					root = {
+						change_variable = {
+							name = sjalvolki_troops_to_be_received
+							add = 1
+						}
+					}
+					if = {
+						limit = {
+							holder = {
+								any_held_title = {
+									count >= 2
+									tier = tier_county
+									NOT = { is_in_list = counties_to_be_granted_to_sjalvolki }
+								}
+							}
+						}
+						add_to_list = counties_to_be_granted_to_sjalvolki
+						create_character = {
+							employer = root
+							gender_female_chance = 50
+							culture = scope:origin_county.culture
+							faith = scope:origin_county.faith
+							random_traits = yes
+							age = { 20 50 }
+							
+							save_scope_as = generated_sjalvolki_chief
+						}
+						scope:generated_sjalvolki_chief = {
+							set_variable = {
+								name = title_to_be_granted_to_sjalvolki_chief
+								value = prev
+								days = 3
+							}
+							add_to_list = sjalvolki_chiefs
+						}
+						root = {
+							change_variable = {
+								name = sjalvolki_troops_to_be_received
+								add = 1
+							}
+							change_variable = {
+								name = sjalvolki_elite_troops_to_be_received
+								add = 1
+							}
+						}
+					}
+				}
+			}
+			random_in_list = {
+				list = sjalvolki_chiefs
+				save_scope_as = negotiating_sjalvolki_chief	# To be displayed in event
+			}
+		}
+	}
+	
+	option = {
+		name = cois.0013.a
+		every_in_list = {
+			list = counties_to_be_settled
+			set_county_faith = scope:origin_county.faith
+			set_county_culture = scope:origin_county.culture
+			change_development_level = 10
+			add_county_modifier = {
+				modifier = gh_sjalvolki_resettlement_modifier
+				years = 20
+			}
+		}
+		every_in_list = {
+			list = sjalvolki_chiefs
+			get_title = var:title_to_be_granted_to_sjalvolki_chief
+			create_title_and_vassal_change = {
+				type = swear_fealty
+				save_scope_as = title_change
+				add_claim_on_loss = no
+			}
+			change_liege = {
+				liege = root
+				change = scope:title_change
+			}
+			resolve_title_and_vassal_change = scope:title_change
+		}
+		spawn_army = {
+			name = sjalvolki_auxiliaries
+			men_at_arms = {
+				type = light_footmen
+				stacks = var:sjalvolki_troops_to_be_received
+			}
+			men_at_arms = {
+				type = sjalvoki_berserkers
+				stacks = var:sjalvolki_elite_troops_to_be_received
+			}
+			location = 3169
+			origin = 3537
+			inheritable = no
+		}
+	}
+	
+	option = {
+		name = cois.0013.b
+		hidden_effect = {
+			every_in_list = {
+				list = sjalvolki_chiefs
+				death = {
+					death_reason = death_vanished
+				}
+			}
+		}
+	}
+}
+
+# Vassalize Legio XXI
+cois.0014 = {
+	type = character_event
+	theme = stewardship_domain_focus
+	title = cois.0014.t
+	desc = cois.0014.desc
+	
+	override_background = {
+		event_background = throne_room_mediterranean
+	}
+	
+	left_portrait = {
+		character = root
+		animation = personality_rational
+	}
+	
+	right_portrait = {
+		character = scope:axiaothea_legon
+		animation = personality_bold
+	}
+	
+	immediate = {
+		hidden_effect = {
+			character:western_imperial_1 = {
+				save_scope_as = aeschraes
+			}
+			title:k_legio_xxi_axiothea.holder = {
+				save_scope_as = axiaothea_legon
+			}
+			random_held_title = {
+				limit = { 
+					tier = tier_county 
+					NOT = { this = title:c_halium }
+				}
+				save_scope_as = new_hq
+			}
+		}
+	}
+	
+	option = {
+		name = cois.0014.a
+		scope:axiaothea_legon = {
+			get_title = scope:new_hq
+			set_capital_county = scope:new_hq
+			root = {
+				spawn_army = {
+					name = legio_xxi
+					levies = 1000
+					men_at_arms = {
+						type = aversarian_legionaires
+						stacks = 10
+					}
+					men_at_arms = {
+						type = home_legions
+						stacks = 2
+					}
+					location = scope:new_hq
+					inheritable = yes
+				}
+			}
+			create_title_and_vassal_change = {
+				type = swear_fealty
+				save_scope_as = title_change
+				add_claim_on_loss = no
+			}
+			change_liege = {
+				liege = root
+				change = scope:title_change
+			}
+			resolve_title_and_vassal_change = scope:title_change
+			hidden_effect = {
+				every_vassal = {
+					create_title_and_vassal_change = {
+						type = independency
+						save_scope_as = change
+						add_claim_on_loss = yes
+					}
+					becomes_independent = {
+						change = scope:change
+					}
+					resolve_title_and_vassal_change = scope:change
+				}
+				every_held_title = {
+					limit = {
+						tier = tier_duchy
+					}
+					scope:axiaothea_legon = { destroy_title = prev }
+				}
+				every_held_title = {
+					limit = {
+						tier = tier_county
+						NOT = { this = scope:new_hq }
+					}
+					create_character = {
+						employer = root
+						gender_female_chance = 50
+						culture = scope:axiaothea_legon.culture
+						faith = scope:axiaothea_legon.faith
+						random_traits = yes
+						age = { 20 50 }
+						
+						save_scope_as = generated_axiaotheaist_character
+					}
+					scope:generated_axiaotheaist_character = {
+						get_title = prev
+						create_title_and_vassal_change = {
+							type = independency
+							save_scope_as = change
+							add_claim_on_loss = yes
+						}
+						becomes_independent = {
+							change = scope:change
+						}
+						resolve_title_and_vassal_change = scope:change
+					}
+				}
+				scope:new_hq.duchy = {
+					every_in_de_jure_hierarchy = {
+						limit = { 
+							tier = tier_county
+							holder.highest_held_title_tier = tier_county
+						}
+						holder = {
+							create_title_and_vassal_change = {
+								type = swear_fealty
+								save_scope_as = title_change
+								add_claim_on_loss = no
+							}
+							change_liege = {
+								liege = scope:axiaothea_legon
+								change = scope:title_change
+							}
+							resolve_title_and_vassal_change = scope:title_change
+						}
+					}
+				}
+			}
+			if = {
+				limit = { 
+					scope:new_hq = { 
+						duchy = { 
+							NOR = { 
+								this = root.capital_county.duchy
+								holder = faith:aversarian_pope.religious_head
+							} 
+						} 
+					} 
+				}
+				get_title = scope:new_hq.duchy
+			}
+		}
+	}
+}
+
+# Ask the Conclave for help WIP
+cois.0015 = {
+	type = character_event
+	theme = stewardship_domain_focus
+	title = cois.0015.t
+	desc = cois.0015.desc
+	
+	override_background = {
+		event_background = throne_room_mediterranean
+	}
+	
+	left_portrait = {
+		character = root
+		animation = personality_rational
+	}
+	
+	right_portrait = {
+		character = character:rhesus_1
+		animation = personality_dishonorable
+	}
+	
+	immediate = {
+		character:rhesus_1 = { save_scope_as = conclave_head }
+	}
+	
+	option = {
+		name = cois.0015.a
+		faith:aversarian_pope.religious_head = {
+			generate_web_of_intrigue = yes
+		}
+		spawn_army = {
+			name = conclave_host
+			levies = 2000
+			men_at_arms = {
+				type = home_legions
+				stacks = 4
+			}
+			location = root.capital_province
+			inheritable = no
+		}
+	}
+}
+
+# You kicked Cenware's ass a second time. GG.
+cois.0020 = {
+	type = character_event
+	theme = war
+	title = cois.0020.t
+	desc = cois.0020.desc
+	
+	override_background = {
+		event_background = throne_room_mediterranean
+	}
+	
+	left_portrait = {
+		character = root
+		animation = war_over_win
+	}
+
+	right_portrait = {
+		character = scope:attacker
+		animation = rage
+	}
+	
+	immediate = {
+		random_realm_county = {
+			save_scope_as = battle_county
+		}
+	}
+	
+	option = {
+		name = cois.0020.a
+		custom_tooltip = cois_can_use_reconquest_tt
+		custom_tooltip = cois_imperrech_collapses_tt
+		bloodline_set_founder = { TRAIT = cois_victorious }
+		add_martial_skill = 5
+		add_prowess_skill = 3
+		change_trait_rank = {
+			trait = intellect_good
+			rank = 1
+		}
+		change_trait_rank = {
+			trait = lifestyle_blademaster
+			rank = 1
+		}
+		if = {
+			limit = { NOT = { has_trait = ambitious } }
+			remove_trait = shy
+			add_trait = ambitious
+		}
+		add_prestige = monumental_prestige_gain
+		add_prestige_level = high_prestige_level
+		add_piety = stupendous_piety_gain
+		dynasty = {
+			add_dynasty_prestige = 1500
+		}
+		set_relation_nemesis = scope:attacker
+		hidden_effect = {
+			every_child = {
+				random_list = {
+					50 = {}
+					50 = {
+						change_trait_rank = {
+							trait = intellect_good
+							rank = 1
+						}
+					}
+				}
+			}
+			force_end_the_conquest = yes	# Just to make extra turbo sure the Imperrech gets destroyed, but should already be covered under the casus belli
+			add_character_flag = beat_cenware_twice_cois
+		}
+	}
+}
+
+# Move against the Conclave
+cois.0030 = {
+	type = character_event
+	theme = murder_scheme
+	title = cois.0030.t
+	desc = cois.0030.desc
+	
+	left_portrait = {
+		character = root
+		animation = scheme
+	}
+	
+	right_portrait = {
+		character = scope:scheme_target
+		animation = worry
+	}
+	
+	immediate = {
+		random_targeting_faction = {
+			limit = { faction_is_type = omiltos_conclave_faction }
+			random_faction_member = {
+				limit = { NOT = { this = faith:aversarian_pope.religious_head } }
+				save_scope_as = scheme_target
+			}
+		}
+		faith:aversarian_pope.religious_head = {
+			save_scope_as = conclave_head
+		}
+	}
+	
+	option = {
+		name = cois.0030.a
+		duel = {
+			skill = intrigue
+			target = scope:scheme_target
+			5 = {
+				custom_tooltip = cois.0030.a.success
+				trigger_event = { 
+					id = cois.0031
+					days = 7
+				}
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = 0.5
+				}
+				modifier = {
+					factor = 1.4
+					scope:scheme_target = {
+						has_trait = trusting
+					}
+				}
+				modifier = {
+					factor = 1.2
+					scope:scheme_target = {
+						has_trait = intellect_bad
+					}
+				}
+				modifier = {
+					factor = 1.2
+					scope:scheme_target = {
+						has_trait = honest
+					}
+				}
+				modifier = {
+					factor = 0.8
+					scope:scheme_target = {
+						prowess >= 10
+					}
+				}
+				modifier = {
+					factor = 0.5
+					scope:scheme_target = {
+						has_trait = paranoid
+					}
+				}
+			}
+			5 = {
+				custom_tooltip = cois.0030.a.failure
+				trigger_event = { 
+					id = cois.0032
+					days = 7
+				}
+			}
+		}
+		duel = {
+			skill = intrigue
+			target = scope:conclave_head
+			50 = {
+				custom_tooltip = cois.0030.a.undiscovered
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = 0.5
+				}
+			}
+			50 = {
+				custom_tooltip = cois.0030.a.discovered
+				set_variable = {
+					name = conclave_scheme_discovered
+					days = 10
+				}
+			}
+		}
+	}
+	
+	option = {
+		name = cois.0030.b
+		duel = {
+			skill = intrigue
+			target = scope:scheme_target
+			5 = {
+				custom_tooltip = cois.0030.b.success
+				trigger_event = { 
+					id = cois.0033
+					days = 7
+				}
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = 0.5
+				}
+				modifier = {
+					factor = 1.4
+					scope:scheme_target = {
+						has_trait = lustful
+					}
+				}
+				modifier = {
+					factor = 1.4
+					scope:scheme_target = {
+						has_trait = gluttonous
+					}
+				}
+				modifier = {
+					factor = 1.4
+					scope:scheme_target = {
+						has_trait = drunkard
+					}
+				}
+				modifier = {
+					factor = 1.4
+					scope:scheme_target = {
+						has_trait = trusting
+					}
+				}
+				modifier = {
+					factor = 1.2
+					scope:scheme_target = {
+						has_trait = intellect_bad
+					}
+				}
+				modifier = {
+					factor = 1.2
+					scope:scheme_target = {
+						has_trait = impatient
+					}
+				}
+				modifier = {
+					factor = 0.5
+					scope:scheme_target = {
+						has_trait = chaste
+					}
+				}
+				modifier = {
+					factor = 0.5
+					scope:scheme_target = {
+						has_trait = temperate
+					}
+				}
+				modifier = {
+					factor = 0.5
+					scope:scheme_target = {
+						has_trait = paranoid
+					}
+				}
+			}
+			15 = {
+				custom_tooltip = cois.0030.b.failure
+				trigger_event = { 
+					id = cois.0034
+					days = 7
+				}
+			}
+		}
+		duel = {
+			skill = intrigue
+			target = scope:conclave_head
+			100 = {
+				custom_tooltip = cois.0030.a.undiscovered
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = 0.5
+				}
+			}
+			50 = {
+				custom_tooltip = cois.0030.a.discovered
+				set_variable = {
+					name = conclave_scheme_discovered
+					days = 10
+				}
+			}
+		}
+	}
+	
+	option = {
+		name = cois.0030.c
+		duel = {
+			skill = intrigue
+			target = scope:conclave_head
+			5 = {
+				custom_tooltip = cois.0030.c.success
+				trigger_event = { 
+					id = cois.0035
+					days = 7
+				}
+			}
+			5 = {
+				custom_tooltip = cois.0030.c.failure
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = -0.5
+				}
+				trigger_event = { 
+					id = cois.0036
+					days = 7
+				}
+				min = 2
+			}
+		}
+		duel = {
+			skill = intrigue
+			target = scope:conclave_head
+			100 = {
+				custom_tooltip = cois.0030.a.undiscovered
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = 0.5
+				}
+			}
+			50 = {
+				custom_tooltip = cois.0030.a.discovered
+				set_variable = {
+					name = conclave_scheme_discovered
+					days = 10
+				}
+			}
+		}
+	}
+}
+
+# Successfully assassinated a Conclave member
+cois.0031 = {
+	type = character_event
+	theme = murder_scheme
+	title = cois.0031.t
+	#desc = cois.0031.desc
+	
+	desc = {
+		random_valid = {
+			triggered_desc = {
+				trigger = {
+					scope:scheme_target = { has_trait = gregarious }
+				}
+				desc = cois.0031.desc.gregarious
+			}
+			triggered_desc = {
+				trigger = {
+					scope:scheme_target = { has_trait = shy }
+				}
+				desc = cois.0031.desc.shy
+			}
+			triggered_desc = {
+				trigger = {
+					always = yes
+				}
+				desc = cois.0031.desc
+			}
+		}
+	}
+	
+	left_portrait = {
+		character = root
+		animation = scheme
+	}
+	
+	right_portrait = {
+		character = scope:scheme_target
+		animation = worry
+	}
+	
+	option = {
+		name = cois.0031.a
+		scope:scheme_target = {
+			death = {
+				death_reason = death_murder
+				killer = root
+			}
+		}
+		add_secret = {
+			type = secret_murder
+			target = scope:scheme_target
+		}
+		if = {
+			limit = { has_variable = conclave_scheme_discovered }
+			random_targeting_faction = {
+				limit = { faction_is_type = omiltos_conclave_faction }
+				add_faction_discontent = 200
+			}
+		}
+	}
+}
+
+# Assassination fails
+cois.0032 = {
+	type = character_event
+	theme = murder_scheme
+	title = cois.0032.t
+	desc = cois.0032.desc
+	
+	left_portrait = {
+		character = root
+		animation = scheme
+	}
+	
+	right_portrait = {
+		character = scope:scheme_target
+		animation = worry
+	}
+	
+	option = {
+		name = cois.0032.a
+		if = {
+			limit = { has_variable = conclave_scheme_discovered }
+			random_targeting_faction = {
+				limit = { faction_is_type = omiltos_conclave_faction }
+				add_faction_discontent = 100
+			}
+		}
+	}
+}
+
+# Successfully blackmailed a Conclave member
+cois.0033 = {
+	type = character_event
+	theme = murder_scheme
+	title = cois.0033.t
+	desc = cois.0033.desc
+	
+	left_portrait = {
+		character = root
+		animation = scheme
+	}
+	
+	right_portrait = {
+		character = scope:scheme_target
+		animation = worry
+	}
+	
+	option = {
+		name = cois.0033.a
+		scope:scheme_target = {
+			set_variable = {
+				name = blocked_from_conclave
+				years = 10
+			}
+			add_character_flag = former_conclave_member
+			add_prestige = -500
+			add_piety = -500
+		}
+		root = {
+			random_targeting_faction = {
+				limit = { faction_is_type = omiltos_conclave_faction }
+				scope:scheme_target = {
+					leave_faction = prev
+				}
+			}
+		}
+		if = {
+			limit = { has_variable = conclave_scheme_discovered }
+			random_targeting_faction = {
+				limit = { faction_is_type = omiltos_conclave_faction }
+				add_faction_discontent = 100
+			}
+		}
+	}
+}
+
+# Failed to blackmail a Conclave member
+cois.0034 = {
+	type = character_event
+	theme = murder_scheme
+	title = cois.0034.t
+	desc = cois.0034.desc
+	
+	left_portrait = {
+		character = root
+		animation = scheme
+	}
+	
+	right_portrait = {
+		character = scope:scheme_target
+		animation = worry
+	}
+	
+	option = {
+		name = cois.0034.a
+		if = {
+			limit = { has_variable = conclave_scheme_discovered }
+			random_targeting_faction = {
+				limit = { faction_is_type = omiltos_conclave_faction }
+				add_faction_discontent = 50
+			}
+		}
+	}
+}
+
+# Successfully recruited a Conclave member
+cois.0035 = {
+	type = character_event
+	theme = murder_scheme
+	title = cois.0035.t
+	desc = cois.0035.desc
+	
+	left_portrait = {
+		character = root
+		animation = scheme
+	}
+	
+	right_portrait = {
+		character = scope:scheme_target
+		animation = worry
+	}
+	
+	option = {
+		name = cois.0035.a
+		scope:scheme_target = {
+			set_variable = {
+				name = blocked_from_conclave
+				years = 10
+			}
+			add_hook = {
+				target = root
+				type = favor_hook
+			}
+		}
+		root = {
+			random_targeting_faction = {
+				limit = { faction_is_type = omiltos_conclave_faction }
+				scope:scheme_target = {
+					leave_faction = prev
+				}
+			}
+		}
+		if = {
+			limit = { has_variable = conclave_scheme_discovered }
+			random_targeting_faction = {
+				limit = { faction_is_type = omiltos_conclave_faction }
+				add_faction_discontent = 60
+			}
+		}
+		hidden_effect = {
+			random_list = {
+				20 = {}	# Small chance they remain a double agent
+				80 = {
+					scope:conclave_head = {
+						remove_hook = {
+							target = prev
+							type = favor_hook
+						}
+						remove_hook = {
+							target = prev
+							type = loyalty_hook
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+# Failed to recruit a Conclave member
+cois.0036 = {
+	type = character_event
+	theme = murder_scheme
+	title = cois.0036.t
+	desc = cois.0036.desc
+	
+	left_portrait = {
+		character = root
+		animation = scheme
+	}
+	
+	right_portrait = {
+		character = scope:scheme_target
+		animation = worry
+	}
+	
+	option = {
+		name = cois.0036.a
+		if = {
+			limit = { has_variable = conclave_scheme_discovered }
+			random_targeting_faction = {
+				limit = { faction_is_type = omiltos_conclave_faction }
+				add_faction_discontent = 30
+			}
+		}
+	}
+}
+
+# The Conclave throws you into house arrest
+cois.0100 = {
+	type = character_event
+	theme = murder_scheme
+	title = cois.0100.t
+	desc = cois.0100.desc
+	
+	left_portrait = {
+		character = root
+		animation = rage
+	}
+	
+	right_portrait = {
+		character = scope:faction_leader
+		animation = personality_dishonorable
+	}
+	
+	override_background = {
+		event_background = bedchamber
+	}
+	
+	immediate = {
+		
+	}
+	
+	option = {
+		name = cois.0100.a
+		scope:faction_leader = {
+			imprison = {
+				target = root
+				type = house_arrest
+			}
+		}
+		random_targeting_faction = {
+			limit = { faction_is_type = omiltos_conclave_faction }
+			add_faction_discontent = -100
+		}
+	}
+}
+
+# The Conclave hits you at the wallet
+cois.0101 = {
+	type = character_event
+	theme = stewardship_domain_focus
+	title = cois.0101.t
+	desc = cois.0101.desc
+	
+	left_portrait = {
+		character = root
+		animation = rage
+	}
+	
+	right_portrait = {
+		character = scope:faction_leader
+		animation = personality_dishonorable
+	}
+	
+	immediate = {
+		
+	}
+	
+	option = {
+		name = cois.0101.a
+		pay_short_term_gold = {
+			target = scope:faction_leader
+			gold = root.gold
+		}
+		add_character_modifier = {
+			modifier = gh_locked_out_of_treasury
+			years = 1
+		}
+		random_targeting_faction = {
+			limit = { faction_is_type = omiltos_conclave_faction }
+			add_faction_discontent = -100
+		}
+	}
+}
+
+# The Conclave sabotages your army
+cois.0102 = {
+	type = character_event
+	theme = murder_scheme
+	title = cois.0102.t
+	desc = cois.0102.desc
+	
+	left_portrait = {
+		character = root
+		animation = rage
+	}
+	
+	right_portrait = {
+		character = scope:faction_leader
+		animation = personality_dishonorable
+	}
+	
+	override_background = {
+		event_background = armory
+	}
+	
+	immediate = {
+		
+	}
+	
+	option = {
+		name = cois.0102.a
+		add_character_modifier = {
+			modifier = gh_levies_sabotaged
+			years = 3
+		}
+		add_character_modifier = {
+			modifier = gh_bodyguards_replaced
+			years = 3
+		}
+		random_targeting_faction = {
+			limit = { faction_is_type = omiltos_conclave_faction }
+			add_faction_discontent = -100
+		}
+	}
+}
+
+# The Conclave gives out weak hooks like candy to random vassals
+cois.0103 = {
+	type = character_event
+	theme = murder_scheme
+	title = cois.0103.t
+	desc = cois.0103.desc
+	
+	left_portrait = {
+		character = root
+		animation = rage
+	}
+	
+	right_portrait = {
+		character = scope:faction_leader
+		animation = personality_dishonorable
+	}
+	
+	override_background = {
+		event_background = throne_room_mediterranean
+	}
+	
+	immediate = {
+		hidden_effect = {
+			while = {
+				count = 3
+				random_vassal = {
+					limit = { 
+						NOT = { 
+							has_usable_hook = root
+						}
+						highest_held_title_tier >= tier_county
+					}
+					add_to_list = vassals_to_be_given_hooks
+				}
+			}
+		}
+	}
+	
+	option = {
+		name = cois.0103.a
+		every_in_list = {
+			list = vassals_to_be_given_hooks
+			add_hook = {
+				target = root
+				type = favor_hook
+			}
+		}
+	}
+}
+
+# The Conclave gives out a random strong hook on you
+cois.0104 = {
+	type = character_event
+	theme = murder_scheme
+	title = cois.0104.t
+	desc = cois.0104.desc
+	
+	left_portrait = {
+		character = root
+		animation = rage
+	}
+	
+	right_portrait = {
+		character = scope:faction_leader
+		animation = personality_dishonorable
+	}
+	
+	override_background = {
+		event_background = throne_room_mediterranean
+	}
+	
+	immediate = {
+		if = {
+			limit = {
+				scope:faction_leader = {
+					NOT = { has_strong_usable_hook = root }
+				}
+			}
+			scope:faction_leader = {
+				save_scope_as = hook_receiver
+			}
+		}
+		else_if = {
+			limit = {
+				any_targeting_faction = {
+					faction_is_type = omiltos_conclave_faction
+					any_faction_member = {
+						NOT = { has_strong_usable_hook = root }
+					}
+				}
+			}
+			random_targeting_faction = {
+				limit = { faction_is_type = omiltos_conclave_faction }
+				random_faction_member = {
+					limit = { NOT = { has_strong_usable_hook = root } }
+					save_scope_as = hook_receiver
+				}
+			}
+		}
+		else = {
+			random_vassal = {
+				limit = { NOT = { has_strong_usable_hook = root } }
+				save_scope_as = hook_receiver
+			}
+		}
+	}
+	
+	option = {
+		name = cois.0104.a
+		scope:hook_receiver = {
+			add_hook = {
+				target = root
+				type = fabrication_hook
+			}
+		}
+	}
+}
+
+# Rhesus successfully recruits someone
+cois.0200 = {
+	type = character_event
+	theme = murder_scheme
+	title = cois.0200.t
+	desc = cois.0200.desc
+	
+	left_portrait = {
+		character = root
+		animation = worry
+	}
+	
+	right_portrait = {
+		character = character:rhesus_1
+		animation = personality_dishonorable
+	}
+	
+	lower_right_portrait = {
+		character = scope:vassal_to_be_recruited
+	}
+	
+	override_background = {
+		event_background = throne_room_mediterranean
+	}
+	
+	immediate = {
+		character:rhesus_1 = {
+			save_scope_as = conclave_head
+		}
+	}
+	
+	option = {
+		name = cois.0200.a
+		hidden_effect = {
+			character:rhesus_1 = {
+				add_hook = {
+					target = scope:vassal_to_be_recruited
+					type = favor_hook
+				}
+			}
+			scope:vassal_to_be_recruited = {
+				join_faction = scope:conclave_faction
+			}
+		}
+		custom_tooltip = vassal_joins_the_conclave
+	}
+}
+
+# Rhesus enters berzerk mode
+cois.0201 = {
+	type = character_event
+	theme = murder_scheme
+	title = cois.0201.t
+	desc = cois.0201.desc
+	
+	left_portrait = {
+		character = root
+		animation = worry
+	}
+	
+	right_portrait = {
+		character = character:rhesus_1
+		animation = worry
+	}
+	
+	option = {
+		name = cois.0201.a
+		custom_tooltip = rhesus_final_phase_tt
+		custom_tooltip = rhesus_final_phase_finish_him_tt
+		set_relation_rival = character:rhesus_1
+	}
+}
+
+# The Purge
+cois.0250 = {
+	type = character_event
+	theme = murder_scheme
+	title = cois.0250.t
+	desc = cois.0250.desc
+	
+	left_portrait = {
+		character = root
+		animation = anger
+	}
+	
+	override_background = {
+		event_background = throne_room_mediterranean
+	}
+	
+	immediate = {
+		random_targeting_faction = {
+			limit = { faction_is_type = omiltos_conclave_faction }
+			every_faction_member = {
+				limit = { NOT = { this = character:rhesus_1 } }
+				random_list = {	# Purge should be a bit more chaotic, so some people will get killed, some banished, while some will escape and rebel
+					70 = {
+						add_to_list = people_to_be_purged
+						random_list = {
+							60 = {
+								add_character_flag = land_to_be_confiscated
+							}
+							40 = {
+								
+							}
+						}
+					}
+					20 = {
+						add_to_list = people_to_be_banished
+						random_list = {
+							60 = {
+								add_character_flag = land_to_be_confiscated
+							}
+							40 = {
+								
+							}
+						}
+					}
+				}
+			}
+		}
+		every_vassal_or_below = {
+			limit = { 
+				has_character_flag = former_conclave_member
+				NOR = {
+					is_in_list = people_to_be_purged
+					is_in_list = people_to_be_banished
+				}
+			}
+			random_list = {	# Purge should be a bit more chaotic, so some people will get killed, some banished, while some will escape and rebel
+				70 = {
+					add_to_list = people_to_be_purged
+					random_list = {
+						60 = {
+							add_character_flag = land_to_be_confiscated
+						}
+						40 = {
+							
+						}
+					}
+				}
+				20 = {
+					add_to_list = people_to_be_banished
+					random_list = {
+						60 = {
+							add_character_flag = land_to_be_confiscated
+						}
+						40 = {
+							
+						}
+					}
+				}
+			}
+		}
+	}
+	
+	option = {
+		name = cois.0250.a
+		remove_trait = cynical
+		add_trait = callous
+		add_piety = -1000
+		add_tyranny = 100
+		add_dread = 50
+		
+		add_character_flag = purged_conclave
+		
+		every_in_list = {
+			list = people_to_be_purged
+			if = {
+				limit = { has_character_flag = land_to_be_confiscated }
+				custom_tooltip = lands_will_be_confiscated_tt
+				hidden_effect = {
+					every_held_title = {
+						character:cois_1 = {
+							get_title = prev
+						}
+					}
+				}
+			}
+			death = {
+				death_reason = death_execution_killer
+				killer = character:cois_1
+			}
+		}
+		every_in_list = {
+			list = people_to_be_banished
+			if = {
+				limit = { has_character_flag = land_to_be_confiscated }
+				hidden_effect = {
+					every_held_title = {
+						character:cois_1 = {
+							get_title = prev
+						}
+					}
+				}
+			}
+			banish = yes
+		}
+		trigger_event = cois.0300
+	}
+}
+
+# Defeat Rhesus! (Part 1)
+cois.0300 = {
+	type = character_event
+	theme = murder_scheme
+	title = cois.0300.t
+	desc = cois.0300.desc
+	
+	left_portrait = {
+		character = root
+		animation = anger
+	}
+	
+	right_portrait = {
+		character = character:rhesus_1
+		animation = sadness
+	}
+	
+	override_background = {
+		event_background = throne_room_mediterranean
+	}
+	
+	option = {
+		name = cois.0300.a
+		trigger_event = cois.0301
+	}
+}
+
+# Defeat Rhesus! (Part 2)
+cois.0301 = {
+	type = character_event
+	theme = murder_scheme
+	title = cois.0301.t
+	desc = cois.0301.desc
+	
+	left_portrait = {
+		character = root
+		animation = war_over_win
+	}
+	
+	right_portrait = {
+		character = character:rhesus_1
+		animation = shock
+	}
+	
+	override_background = {
+		event_background = throne_room_mediterranean
+	}
+	
+	option = {
+		name = cois.0301.a
+		remove_trait = shy
+		add_trait = ambitious
+		if = {	# A reward for taking the more difficult path
+			limit = { NOT = { has_character_flag = purged_conclave } }
+			add_intrigue_skill = 10
+			add_trait = shrewd
+			add_prestige = 1000
+		}
+		if = {
+			limit = { has_trait = education_intrigue }
+			change_trait_rank = {
+				trait = education_intrigue
+				rank = 1
+				max = 4
+			}
+		}
+		else = {
+			add_intrigue_skill = 2
+			add_prestige = 200
+		}
+		change_trait_rank = {
+			trait = intellect_good
+			rank = 1
+		}
+		get_title = faith:aversarian_pope.religious_head_title
+		character:rhesus_1 = {
+			death = {
+				death_reason = death_execution_killer
+				killer = character:cois_1
+			}
+		}
+		add_character_flag = defeated_rhesus
+	}
+}
+
+# Cenware dies, you only beat him once
+cois.0400 = {
+	type = character_event
+	theme = war
+	title = cois.0400.t
+	desc = cois.0400.desc
+	
+	left_portrait = {
+		character = root
+		animation = war_over_win
+	}
+	
+	right_portrait = {
+		character = character:clanlands_sjalvolki_1
+		animation = idle
+	}
+	
+	option = {
+		name = cois.0400.a
+		bloodline_set_founder = { TRAIT = cois_victorious }
+		add_prestige_level = low_prestige_level
+		dynasty = {
+			add_dynasty_prestige = 750
+		}
+	}
+}

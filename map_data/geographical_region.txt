@@ -1,0 +1,273 @@
+# Geographical regions
+# Regions can be declared with one or more of the following fields:
+#	duchies = { }, takes duchy title names declared in landed_titles.txt
+#	counties = { }, takes county title names declared in landed_titles.txt
+#	provinces = { }, takes province id numbers declared in /history/provinces
+#	regions = { }, a region can also include other regions, however the subregions needs to be declared before the parent region. 
+#		E.g. If the region world_europe contains the region world_europe_west then world_europe_west needs to be declared as a region before (i.e. higher up in this file) world_europe.
+
+###########################################################################
+# World Regions
+#	These groups are mutually exclusive on the same tier & should cover every part of the map
+###########################################################################
+
+# world_greater_aversaria
+# > world_ga_lichdoms
+# > world_ga_marcher_kingdoms
+# >> world_ga_western_marcher_kingdoms
+# >> world_ga_eastern_marcher_kingdoms
+# > world_ga_clanlands
+# >> world_ga_eastern_clanlands
+# >>> world_ga_mountainheights
+# >> world_ga_western_clanlands
+# >> world_ga_mayikprolollan
+# > world_ga_aversarian_homelands
+# >> world_ga_western_aversaria
+# >>> world_ga_imperial_isle
+# >> world_ga_northern_aversaria
+# >> world_ga_central_aversaria
+# >>> world_ga_aversarian_isles
+# >> world_ga_eastern_aversaria
+# >> world_ga_foglands
+
+# world_sarradon
+# > world_eastern_sarradon
+# >> world_es_desert
+# >> world_es_eastern_coast
+# >>> world_es_forgotten_isle
+# >> world_es_hajjan_mountains
+# >>> world_es_adabyss
+# > world_central_sarradon
+# >> world_cs_usfeh
+# >> world_cs_udhaliyya
+# > world_western_sarradon
+# >> world_ws_amsari
+# >> world_ws_kamsaria
+# >> world_ws_ayyar
+
+world_ga_lichdoms = {
+	duchies = {
+		d_vascas
+	}
+}
+
+world_ga_western_marcher_kingdoms = {
+	duchies = {
+		d_peti_gisredde d_grande_gisredde d_clois_en_cleusaun d_mozenac d_oneviel d_saulxvil d_chaute_albaux d_montmoyedgne d_colarmas d_viridivie d_sauvessagne d_devex d_bassons d_lalande d_tournezat d_feinde d_ferrond d_hangancourt d_vy d_poutours d_aast d_pontgonez d_heerde d_genoleux
+	}
+	counties = {
+		c_pekwarde c_tireic
+	}
+	provinces = {
+		2412 2411
+	}
+}
+
+world_ga_eastern_marcher_kingdoms = {
+	duchies = {
+		d_dellec d_canard d_ziemojycz d_elnwo d_montcornet d_banereset d_cherborne d_crastif d_tuirein d_lascony d_gurein d_vallguedoc d_novre d_dreviex d_itiuelc d_brofec d_toufranc d_nafele d_irenux d_grascoi d_prusca d_cavrine d_varusiex d_duravux d_marenoc d_faisitelbouren d_evrinesgoen d_baresc d_xaruns d_callesc d_tracsony
+	}
+	counties = {
+		c_prafocori
+	}
+	provinces = {
+		2413
+	}
+}
+
+world_ga_marcher_kingdoms = {
+	regions = {
+		world_ga_western_marcher_kingdoms world_ga_eastern_marcher_kingdoms
+	}
+}
+
+world_ga_mountainheights = {
+	duchies = {
+		d_neufrisa d_eriksvall d_zhyhachow d_dudsky d_tinec d_banaia d_cantedru d_kezly d_zhabirhon d_jastrlawy d_sverdok d_kopafirthi d_borgarreyri d_borgberg d_lokduu d_vadhammar d_keurava d_hnukovo d_prynyk d_pagidia d_wloclablag d_halita
+	}
+}
+
+world_ga_eastern_clanlands = {
+	duchies = {
+		d_shepezhyn d_trebily d_srbetsch d_comamara d_otvovice d_wanzer d_westerhusen d_visazys d_baustene d_mosebeck d_gumpolding d_kurisinki d_halmbro d_jekabnde d_kunra d_kallin d_vabalgala d_lankum d_kehla d_wolfsfeld d_alsbruck d_mistel d_hestfjoror d_talde d_cisichie d_mladovice d_ludwigsthal d_ahle d_schalkshofen d_skrbovice d_nepasice d_otterzhofen d_imsovci d_wischezahn d_reddereitz d_padochov d_dobritsch d_kautenbach d_zgornje_vrtice d_kleinsee d_oprostovice d_moosleiten d_walthersdorf d_muehldorf d_pirnitz d_bircna_vas d_blatta d_radvanovice d_ordos d_cisotin d_uhrov d_engelswald d_autschowa d_oberneufahrn
+	}
+	regions = {
+		world_ga_mountainheights
+	}
+}
+
+world_ga_western_clanlands = {
+	duchies = {
+		d_popelna d_karwina d_litrbachy d_bambousek d_blaschdorf d_krakovany d_senseln d_bylany d_pyhrn d_heinrichsheim d_gelovizza d_kulm d_podkoren d_bogdanic d_puscava d_salvenberg d_rumanja_vas d_moorende d_limpertsberg d_attenhofen d_klemensdorf d_radous d_perbetsky_dvor d_sieding d_kisujfalu d_plossen d_prihova d_dvorek d_perne d_baromut d_mirsdorf d_steinenkirch d_laubend d_dresbruch d_oberpaindorf d_lelov d_haimburg d_kremkau d_rameldange d_sjalwagram d_paroz d_tisvildeleje d_hattmannsdorf d_nadost d_reepsholt d_zehendhof d_geislersfeld d_kadan  d_birnbaum d_gornji_crnci d_wakelterhof d_jaszfalu d_strazgonjci d_zbynice d_gajer d_dalmsdorf d_rupensdorf d_sestajovice d_elsane d_aspelt d_jokk d_landet d_uggleberg d_eutingen d_weidingen d_thururii d_seopuse d_addia d_gelale
+	}
+}
+
+world_ga_mayikprolollan = {
+	duchies = {
+		d_geres d_arth d_vredynai d_emiodi d_peonopnes d_clamae d_tadi d_oseinia d_cukirhaeus d_thothous
+	}
+}
+
+world_ga_clanlands = {
+	regions = {
+		world_ga_western_clanlands world_ga_eastern_clanlands world_ga_mayikprolollan
+	}
+}
+
+world_ga_imperial_isle = {
+	duchies = {
+		d_dioscauros d_lissox d_psissos d_naxembria d_sozenia d_argontos d_theodosse d_kameiraseia d_asidrus
+	}
+}
+
+world_ga_western_aversaria = {
+	duchies = {
+		 d_ranthus d_myrapolis d_aytissos d_eultine d_erethosia d_pheraea d_acaphos d_hieridos d_metedon d_artyros d_himonia d_smyrnurii d_tragiae d_zakria d_pandia d_pisenae d_pylynthus d_myonassus d_gorteutherna d_naxithos d_oenares d_aegela d_orous d_idendos d_kourorion d_thassacuse d_prienyn d_itos d_epigus d_semympia d_andrurii d_zakrerna d_cnidystus d_astyn d_paphenion d_nysakros d_toskopeion d_hemerollonia d_knidomenus d_tarontos d_tomantina d_seutheia d_gythinus d_edapeze d_theodonion d_kydone d_mytanes d_vasyma d_kameirerna d_eleutembria d_doranais d_zacope d_epidila d_hyblagoria d_hyelocaea d_alidnae d_spartena d_hemerane
+	}
+	regions = {
+		world_ga_imperial_isle
+	}
+}
+
+world_ga_northern_aversaria = {
+	duchies = {
+		d_ithna d_knokidbes d_maadoran d_oradoth d_oekevrokanne d_vrekennus d_prirkos d_elrhyos d_dryn d_saris d_olythssoessa d_oedi d_iopolos d_anphon d_askigos d_vroradi d_anadres d_kethetis d_abene d_grydi d_dephoephladus d_grylothephon d_olafos d_adne d_diath d_cose d_oios d_skyympene d_myris d_dine d_herainai d_skylos d_gryike d_pedi d_midia d_dulia d_hacelia d_heriris d_cregoeis d_paos d_armos d_eene d_migoelni d_mekipia d_akkos d_teron d_elrio d_chsolythth d_keblaia d_akthon d_arysarnaria d_ephgive d_sedypethedia d_olylama d_apa d_diysthon d_hieraros d_rhophones d_antaphos d_myonea d_eretrona d_monaros d_olynthagoria
+	}
+}
+
+world_ga_aversarian_isles = {
+	duchies = {
+		d_psikai d_kedrassos d_petalounia d_ephoupoli d_hyelegea d_coridaea d_eretithos d_akrigeneia d_ankissos
+	}
+}
+
+world_ga_central_aversaria = {
+	duchies = {
+		 d_epidyros d_larespontos d_aigemita d_petra d_lapitholi d_megalarina d_pelelis d_rizesos d_pavlasae d_erythralamis d_elatepios d_myligeneia d_ithina d_phalalia d_phanaca d_argatis d_aphini d_pandena d_trapopolis d_kamymna d_thuramos d_psacus d_ayteos d_kamaramum d_throneos d_tegina d_petsitake d_boramea d_heraclon d_paphepios d_crotapezus d_pelossos d_platiae d_kamarosse d_philoli d_spartenion d_agrinyreum d_demymna d_taureum d_vathopus d_kameireia d_pellactus d_elatollo d_pylypes d_rhypontum d_astaseia d_eresarnassus d_epenae d_mochlocaea d_dymetra d_eryras d_binth d_itilene d_byllyrian d_thurios d_hellane d_epacuse d_halaca d_chalcela d_cyrydon d_tomeira d_olendos d_rhegyra d_lampsantina d_thyrodosia d_sozegion d_cythioch d_kepapetra d_sozydos d_demylos
+	}
+	regions = {
+		world_ga_aversarian_isles
+	}
+}
+
+world_ga_eastern_aversaria = {
+	duchies = {
+		d_aarpazdea d_pesandros d_stratopedon d_asglekeia d_skukoi d_he_vrerai d_helesthemna d_proletheros d_gvasiklea d_myrmomenus d_paeschaes d_phaistetus d_cyralos d_smyrnonnos d_stenitida d_phanokampos d_eleutoezen d_idon d_gangredon d_massatrea d_apenae d_stenyrian d_assila d_messopus d_antiphoron d_sthenoumnos d_mochlurion d_tukhei d_aakthmai d_actox d_akragas d_coucounaries d_epidamnus d_lampsacus d_menelaion d_nisara d_posidonia d_tomi d_jaraea d_nisoni d_busaraphae d_kalkathoi 
+	}
+}
+
+world_ga_aversarian_homelands = {
+	regions = {
+		world_ga_eastern_aversaria world_ga_central_aversaria world_ga_northern_aversaria world_ga_western_aversaria
+	}
+}
+
+world_ga_foglands = {
+	duchies = {
+		d_adaitiron d_emkichaae d_zaryns d_cordae d_bwlcheit d_durtri d_gwynavony d_owylglas d_ardawaedd d_iwydin d_pyggindan d_kyndi d_undyygylad d_ludwigit d_pyrtryddy d_bidiggad d_bydww d_arrdnyn d_pynn
+	}
+}
+
+world_greater_aversaria = {
+	regions = {
+		world_ga_aversarian_homelands world_ga_foglands world_ga_clanlands world_ga_marcher_kingdoms world_ga_lichdoms
+	}
+}
+
+world_es_forgotten_isle = {
+	duchies = {
+		d_hajjarut d_mahasrakh d_kafabulus d_albaybischa d_al_ruheiniyas d_qudsashniyah d_amadaya d_aljabish
+	}
+}
+
+world_es_eastern_coast = {
+	duchies = {
+		d_geyime d_almudir d_kemayeri d_waziden d_almilada d_kamyaneh d_at_tash d_yasi d_gonatian d_fourveh d_tall_falludariyah d_bijaker d_sirghadani d_hararwad
+	}
+	regions = {
+		world_es_forgotten_isle
+	}
+}
+
+world_es_desert = {
+	duchies = {
+		d_hadirah d_babojarm d_miavaz d_baimar
+	}
+}
+
+world_es_adabyss = {
+	duchies = {
+		d_sokoi d_dungaca d_ainamba d_dahahilaz d_sahate d_duban d_wezemi d_gheccia d_zurba
+	}
+}
+
+world_es_hajjan_mountains = {
+	duchies = {
+		d_al_oyoodah d_thuwabha d_al_miqdayah d_al_kuhdad d_alzarshut d_dedezkale d_taliwahin d_lawdarut d_ghasab d_dorousan d_qazvijarm d_safbleh d_almasab d_yada d_al_miwf d_ain_el_kezouar d_madada d_chenitour d_melloutia d_khekech d_hamchar d_noualal
+	}
+	regions = {
+		world_es_adabyss
+	}
+}
+
+world_eastern_sarradon = {
+	regions = {
+		world_es_hajjan_mountains world_es_eastern_coast world_es_desert
+	}
+}
+
+world_cs_usfeh = {
+	duchies = {
+		d_ksar_mora d_koshra_ul_mandeb d_bakhresh d_infideh d_tihlal d_al_mawah d_zinain d_khish d_rifeh d_ul_gazho d_tikshesh d_tefsirah d_al_miryani d_befeen_al_bitr d_khoribad d_qamran d_wushailah d_markezabad d_bofaireh d_tibah d_hireb d_sanatabad d_radnaabah d_tifquiteh d_magaubeh d_mikkha d_bascarch d_kvahjza d_naharin d_saasaliyah d_hararayya d_al_lidah d_jughazi d_mougoub d_alaversarsad d_as_subwa d_bidiyyeh d_al_kheft d_der_ayyasn d_ghinwah d_mowaighleh d_nuwaideh d_kulaybeh d_mekherzah d_akhramaneh d_hesshour d_kwarazliye d_dyazmineh d_dehlat d_tajerouah d_maamoreh d_munchur d_righeilat d_wehlah d_vidareyat_mahlmun d_beid_faluh d_himharuyye d_al_hadded d_karibad d_qambelbasi d_twalebedh 
+	}
+}
+
+world_cs_udhaliyya = {
+	duchies = {
+		d_serikoyunlu d_ghilaj d_bir_zekra d_scegaraa d_dakhani_arg d_layah_goerigah d_deir_el_fatahb d_korah_sofladah d_wadi_bharem d_kwetcheb d_kiyeh d_sehelineh d_rabiqraa d_musais d_veedma d_bahcehisar d_qayfa d_heedzaki d_matrooth d_hita d_vidba d_sarawda d_ras_nasrafa d_dozzan d_abu_lebdour d_banaidat d_mesail d_abu_tiyum d_tel_habja d_lavagheh d_al_jafemmam d_mukawdar d_abyajeran d_wadi_al_samriri d_dartibou d_zazakirmid d_tall_hillana d_azi_zahima d_tirife d_sabt_al_zaalayah d_khefyyih d_merrha d_al_saitan d_saiballa d_konuli d_janomah d_al_shaji d_winirah
+	}
+}
+
+world_central_sarradon = {
+	regions = {
+		world_cs_usfeh world_cs_udhaliyya
+	}
+}
+
+world_ws_amsari = {
+	duchies = {
+		d_prathatha d_rakrundur d_garathanka d_karracdid d_dashrukun d_burjaki d_gaud d_kord_kandi d_paye_godar d_qushlaneh d_tolombehye_habibabad d_varastu d_sar_dasht d_kulisarak d_fill_1000 d_dehfiruzvand d_darundel d_owrya_chuq d_dejkuh d_almaraviyeh d_khvoshinane_sofla d_payi_baz d_shastakan d_kondeh_gordak d_makalvan d_raziabad d_kahrizeh d_mesin d_ney_kan d_humedan d_goshte_sofla d_kalbafaraj_mahalleh d_qalameh d_chashmeh_gilag d_nian_kand d_gerd_mehdiabad d_chah_gaz d_gandab d_takyeh d_borveh d_nushabad d_deh_sufiyan d_bala_shahraj d_laman d_dehe_dez
+	}
+}
+
+world_ws_kamsaria = {
+	duchies = {
+		d_impekheret d_deshsenuseret d_kamun d_khepesh d_khamt d_thokheret d_ptebet d_khepradeshret d_kheprahedjet d_jshekh_wratam d_diuhedju d_mtkhet d_snenys d_srenmakaure d_khety d_neshwyserem d_wadjet d_amtnebthi d_koremheb d_neswf d_orokhtabat d_djedemhor d_desdjet d_rakhamenakaure d_nehekeresh d_sekhmwy d_mtakheret d_urkhamur d_uwar d_sammur d_kdahheresh d_temys
+	}
+}
+
+world_ws_ayyar = {
+	duchies = {
+		d_dafranistan d_vidhan d_grabhdav d_vabrapur d_khavradur d_vabhkrun d_akfradur d_bahazradad d_laskrehuk d_sashravun d_brakrani d_daravabhun d_skivravi d_devyyar d_vabhrund d_zakhred d_dehv d_naraparthana d_payyak d_dokkdur d_rara d_haradad d_saddur d_bharemhev d_bverenu
+	}
+}
+
+world_western_sarradon = {
+	regions = {
+		world_ws_ayyar world_ws_kamsaria world_ws_amsari
+	}
+}
+
+world_sarradon = {
+	regions = {
+		world_western_sarradon world_central_sarradon world_eastern_sarradon
+	}
+}
+
+###########################################################################
+# Custom Regions
+###########################################################################
+
+custom_legacy_of_elysia_region = {
+	
+}

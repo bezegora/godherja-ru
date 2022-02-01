@@ -1,0 +1,118 @@
+﻿increase_uncoronated_debuff = {
+	if = {
+		limit = {
+			has_character_modifier = uncoronated_modifier_6
+		}
+		# Nothing
+	}
+	else_if = {
+		limit = {
+			has_character_modifier = uncoronated_modifier_5
+		}
+		remove_character_modifier = uncoronated_modifier_5
+		add_character_modifier = uncoronated_modifier_6
+	}
+	else_if = {
+		limit = {
+			has_character_modifier = uncoronated_modifier_4
+		}
+		remove_character_modifier = uncoronated_modifier_4
+		add_character_modifier = uncoronated_modifier_5
+	}
+	else_if = {
+		limit = {
+			has_character_modifier = uncoronated_modifier_3
+		}
+		remove_character_modifier = uncoronated_modifier_3
+		add_character_modifier = uncoronated_modifier_4
+	}
+	else_if = {
+		limit = {
+			has_character_modifier = uncoronated_modifier_2
+		}
+		remove_character_modifier = uncoronated_modifier_2
+		add_character_modifier = uncoronated_modifier_3
+	}
+	else_if = {
+		limit = {
+			has_character_modifier = uncoronated_modifier_1
+		}
+		remove_character_modifier = uncoronated_modifier_1
+		add_character_modifier = uncoronated_modifier_2
+	}
+	else = {
+		add_character_modifier = uncoronated_modifier_1
+	}
+}
+
+clear_uncoronated_debuff = {
+	remove_character_modifier = uncoronated_modifier_1
+	remove_character_modifier = uncoronated_modifier_2
+	remove_character_modifier = uncoronated_modifier_3
+	remove_character_modifier = uncoronated_modifier_4
+	remove_character_modifier = uncoronated_modifier_5
+	remove_character_modifier = uncoronated_modifier_6
+	# Maybe add lingering modifiers here if you took too long?
+}
+
+assign_coronation_traits = {
+	every_living_character = {
+		if = {
+			limit = {
+				faith = {
+					has_doctrine_parameter = can_perform_coronations_3_stage
+				}
+				is_adult = yes
+				is_ruler = yes
+				highest_held_title_tier > 2 # Dukes and above
+			}
+			random_list = {
+				5 = {
+					add_trait = coronated_by_head_of_religion
+				}
+				45 = {
+					add_trait = coronated_by_high_priest
+				}
+				50 = {
+					add_trait = coronated_by_bishop
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				faith = {
+					has_doctrine_parameter = can_perform_coronations_2_stage
+				}
+				is_adult = yes
+				is_ruler = yes
+				highest_held_title_tier > 2 # Dukes and above
+			}
+			random_list = {
+				10 = {
+					add_trait = coronated_formal_3
+				}
+				60 = {
+					add_trait = coronated_formal_2
+				}
+				30 = {
+					add_trait = coronated_formal_1
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				faith = {
+					has_doctrine_parameter = can_perform_coronations_1_stage
+				}
+				is_adult = yes
+				is_ruler = yes
+				highest_held_title_tier > 2 # Dukes and above
+			}
+			random_list = {
+				100 = {
+					add_trait = coronated_celebration
+				}
+			}
+		}
+	}
+}

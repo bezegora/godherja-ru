@@ -1,0 +1,42 @@
+﻿#Special succession types
+#If adding new types to the decision, use a trigger, otherwise they may break if the culture is split.
+
+special_succession_type_available_trigger = { # update this with new successions
+	OR = {
+		special_succession_aversarian_trigger = yes
+		special_succession_sjalvolki_trigger = yes
+	}
+}
+
+special_succession_aversarian_trigger = {
+	culture_group = culture_group:gh_imperial_group
+}
+
+special_succession_sjalvolki_trigger = {
+	culture_group = culture_group:gh_sjalvoki_group
+}
+
+historical_succession_access_single_heir_succession_law_trigger = {
+	culture_group = culture_group:gh_marcher_group
+}
+
+eligible_for_aversarian_succession = {
+	is_alive = yes		# Could feasibly happen if the person dies for unrelated reasons during the succession
+	is_imprisoned = no	# Same as above
+	is_incapable = no	# When we have events during the duels themselves that could result in this, checking for it will be critical
+	trigger_if = {
+		limit = { age < 16 }
+		age >= 12
+		OR = {
+			has_trait = brave
+			has_trait = ambitious
+		}
+	}
+	trigger_if = {
+		limit = { has_variable = magical_prowess }
+		var:magical_prowess > 0
+	}
+	trigger_else = {
+		always = no
+	}
+}

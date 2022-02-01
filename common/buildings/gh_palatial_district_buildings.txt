@@ -1,0 +1,820 @@
+﻿@holding_illustration_western = "gfx/interface/illustrations/holding_types/city_western.dds"
+@holding_illustration_india = "gfx/interface/illustrations/holding_types/city_india.dds"
+@holding_illustration_mediterranean = "gfx/interface/illustrations/holding_types/city_mediterranean.dds"
+@holding_illustration_mena = "gfx/interface/illustrations/holding_types/city_mena.dds"
+
+###################
+# PALACE DISTRICT #
+###################
+
+palace_01 = {
+	construction_time = slow_construction_time
+	
+	asset = {
+		type = pdxmesh
+		names = {
+			"building_western_city_02_mesh"
+		}
+		illustration = @holding_illustration_western
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/City/western_city" soundparameter = { "Tier" = 2 } }
+		graphical_regions = { world_ga_marcher_kingdoms }
+		graphical_cultures = { western_building_gfx slavic_building_gfx }
+	}
+	
+	asset = {
+		type = pdxmesh
+		names = {
+			"building_mena_city_02_mesh"
+		}
+		illustration = @holding_illustration_mena
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/City/mena_city" soundparameter = { "Tier" = 2 } }
+		graphical_regions = { world_sarradon }
+		graphical_cultures = { mena_building_gfx }
+	}
+	
+	asset = {
+		type = pdxmesh
+		names = {
+			"building_india_city_02_mesh"
+		}
+		illustration = @holding_illustration_india
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/City/indian_city" soundparameter = { "Tier" = 2 } }
+		graphical_cultures = { indian_building_gfx }
+	}
+	
+	asset = {
+		type = pdxmesh
+		names = {
+			"building_mediterranean_city_02_mesh"
+		}
+		illustration = @holding_illustration_mediterranean
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/City/mediterranean_city" soundparameter = { "Tier" = 2 } }
+		graphical_regions = { world_ga_aversarian_homelands world_ga_clanlands }
+		graphical_cultures = { mediterranean_building_gfx }
+	}
+	
+	can_construct_potential = {
+		always = no 	# Only historical and maybe via event/decision
+	}
+	
+	can_construct = {	
+		always = no
+	}
+	
+	can_construct_showing_failures_only = {
+		always = no
+	}
+	
+	cost_gold = main_building_tier_1_cost
+	next_building = palace_02
+	
+	levy = normal_building_levy_tier_2
+	max_garrison = normal_building_max_garrison_tier_2
+	garrison_reinforcement_factor = building_garrison_reinforcement_factor_tier_2
+	province_modifier = {
+		monthly_prestige_gain_mult = 0.25
+		monthly_prestige = 0.25
+	}
+	
+	character_modifier = {
+		monthly_prestige_gain_mult = 0.05
+		stress_loss_mult = 0.05
+	}
+		
+	flag = city
+	
+	ai_value = {
+		base = 0
+	}
+}
+
+palace_02 = {
+	construction_time = slow_construction_time
+	
+	asset = {
+		type = pdxmesh
+		names = {
+			"building_western_city_02_mesh"
+		}
+		illustration = @holding_illustration_western
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/City/western_city" soundparameter = { "Tier" = 2 } }
+		graphical_regions = { world_ga_marcher_kingdoms }
+		graphical_cultures = { western_building_gfx slavic_building_gfx }
+	}
+	
+	asset = {
+		type = pdxmesh
+		names = {
+			"building_mena_city_02_mesh"
+		}
+		illustration = @holding_illustration_mena
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/City/mena_city" soundparameter = { "Tier" = 2 } }
+		graphical_regions = { world_sarradon }
+		graphical_cultures = { mena_building_gfx }
+	}
+	
+	asset = {
+		type = pdxmesh
+		names = {
+			"building_india_city_02_mesh"
+		}
+		illustration = @holding_illustration_india
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/City/indian_city" soundparameter = { "Tier" = 2 } }
+		graphical_cultures = { indian_building_gfx }
+	}
+	
+	asset = {
+		type = pdxmesh
+		names = {
+			"building_mediterranean_city_02_mesh"
+		}
+		illustration = @holding_illustration_mediterranean
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/City/mediterranean_city" soundparameter = { "Tier" = 2 } }
+		graphical_regions = { world_ga_aversarian_homelands world_ga_clanlands }
+		graphical_cultures = { mediterranean_building_gfx }
+	}
+	
+	can_construct_potential = {
+	}
+	
+	can_construct_showing_failures_only = {
+	}
+	
+	cost_gold = main_building_tier_2_cost
+	next_building = palace_03
+	
+	levy = normal_building_levy_tier_2
+	max_garrison = normal_building_max_garrison_tier_2
+	garrison_reinforcement_factor = building_garrison_reinforcement_factor_tier_2
+	province_modifier = {
+		monthly_prestige_gain_mult = 0.5
+		monthly_prestige = 0.5
+	}
+	
+	character_modifier = {
+		monthly_prestige_gain_mult = 0.10
+		stress_loss_mult = 0.10
+	}
+		
+	flag = city
+	
+	ai_value = {
+		base = 0
+	}
+}
+
+palace_03 = {
+	construction_time = slow_construction_time
+	
+	asset = {
+		type = pdxmesh
+		names = {
+			"building_western_city_02_mesh"
+		}
+		illustration = @holding_illustration_western
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/City/western_city" soundparameter = { "Tier" = 2 } }
+		graphical_regions = { world_ga_marcher_kingdoms }
+		graphical_cultures = { western_building_gfx slavic_building_gfx }
+	}
+	
+	asset = {
+		type = pdxmesh
+		names = {
+			"building_mena_city_02_mesh"
+		}
+		illustration = @holding_illustration_mena
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/City/mena_city" soundparameter = { "Tier" = 2 } }
+		graphical_regions = { world_sarradon }
+		graphical_cultures = { mena_building_gfx }
+	}
+	
+	asset = {
+		type = pdxmesh
+		names = {
+			"building_india_city_02_mesh"
+		}
+		illustration = @holding_illustration_india
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/City/indian_city" soundparameter = { "Tier" = 2 } }
+		graphical_cultures = { indian_building_gfx }
+	}
+	
+	asset = {
+		type = pdxmesh
+		names = {
+			"building_mediterranean_city_02_mesh"
+		}
+		illustration = @holding_illustration_mediterranean
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/City/mediterranean_city" soundparameter = { "Tier" = 2 } }
+		graphical_regions = { world_ga_aversarian_homelands world_ga_clanlands }
+		graphical_cultures = { mediterranean_building_gfx }
+	}
+	
+	can_construct_potential = {
+	}
+	
+	can_construct_showing_failures_only = {
+	}
+	
+	cost_gold = main_building_tier_3_cost
+	next_building = palace_04
+	
+	levy = normal_building_levy_tier_2
+	max_garrison = normal_building_max_garrison_tier_2
+	garrison_reinforcement_factor = building_garrison_reinforcement_factor_tier_2
+	province_modifier = {
+		monthly_prestige_gain_mult = 0.75
+		monthly_prestige = 0.75
+	}
+	
+	character_modifier = {
+		monthly_prestige_gain_mult = 0.15
+		stress_loss_mult = 0.15
+	}
+		
+	flag = city
+	
+	ai_value = {
+		base = 0
+	}
+}
+
+palace_04 = {
+	construction_time = slow_construction_time
+	
+	asset = {
+		type = pdxmesh
+		names = {
+			"building_western_city_02_mesh"
+		}
+		illustration = @holding_illustration_western
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/City/western_city" soundparameter = { "Tier" = 2 } }
+		graphical_regions = { world_ga_marcher_kingdoms }
+		graphical_cultures = { western_building_gfx slavic_building_gfx }
+	}
+	
+	asset = {
+		type = pdxmesh
+		names = {
+			"building_mena_city_02_mesh"
+		}
+		illustration = @holding_illustration_mena
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/City/mena_city" soundparameter = { "Tier" = 2 } }
+		graphical_regions = { world_sarradon }
+		graphical_cultures = { mena_building_gfx }
+	}
+	
+	asset = {
+		type = pdxmesh
+		names = {
+			"building_india_city_02_mesh"
+		}
+		illustration = @holding_illustration_india
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/City/indian_city" soundparameter = { "Tier" = 2 } }
+		graphical_cultures = { indian_building_gfx }
+	}
+	
+	asset = {
+		type = pdxmesh
+		names = {
+			"building_mediterranean_city_02_mesh"
+		}
+		illustration = @holding_illustration_mediterranean
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/City/mediterranean_city" soundparameter = { "Tier" = 2 } }
+		graphical_regions = { world_ga_aversarian_homelands world_ga_clanlands }
+		graphical_cultures = { mediterranean_building_gfx }
+	}
+	
+	can_construct_potential = {
+	}
+	
+	can_construct_showing_failures_only = {
+	}
+	
+	cost_gold = main_building_tier_4_cost
+	
+	levy = normal_building_levy_tier_2
+	max_garrison = normal_building_max_garrison_tier_2
+	garrison_reinforcement_factor = building_garrison_reinforcement_factor_tier_2
+	province_modifier = {
+		monthly_prestige_gain_mult = 1.0
+		monthly_prestige = 1.0
+	}
+	
+	character_modifier = {
+		monthly_prestige_gain_mult = 0.20
+		stress_loss_mult = 0.20
+	}
+		
+	flag = city
+	
+	ai_value = {
+		base = 0
+	}
+}
+
+luxury_goods_01 = {
+	construction_time = slow_construction_time
+	
+	can_construct_potential = {
+		NOT = {
+			has_ruins_trigger = yes
+		}
+	}
+	
+	cost_gold = main_building_tier_1_cost
+	character_modifier = {
+		monthly_prestige = 0.25
+		diplomatic_range_mult = 0.05
+	}
+	province_modifier = {
+		monthly_income = good_building_tax_tier_1
+	}
+	next_building = luxury_goods_02
+	
+	type_icon = "icon_building_market_villages.dds"
+}
+
+luxury_goods_02 = {
+	construction_time = slow_construction_time
+	can_construct_potential = {
+		NOT = {
+			has_ruins_trigger = yes
+		}
+	}
+	
+	cost_gold = main_building_tier_2_cost
+	character_modifier = {
+		monthly_prestige = 0.5
+		diplomatic_range_mult = 0.10
+	}
+	province_modifier = {
+		monthly_income = good_building_tax_tier_2
+	}
+	next_building = luxury_goods_03
+}
+
+luxury_goods_03 = {
+	construction_time = slow_construction_time
+	can_construct_potential = {
+		NOT = {
+			has_ruins_trigger = yes
+		}
+	}
+	
+	cost_gold = main_building_tier_3_cost
+	character_modifier = {
+		monthly_prestige = 0.75
+		diplomatic_range_mult = 0.15
+	}
+	province_modifier = {
+		monthly_income = good_building_tax_tier_3
+	}
+	next_building = luxury_goods_04
+}
+
+luxury_goods_04 = {
+	construction_time = slow_construction_time
+	can_construct_potential = {
+		NOT = {
+			has_ruins_trigger = yes
+		}
+	}
+	
+	cost_gold = main_building_tier_4_cost
+	character_modifier = {
+		monthly_prestige = 1.0
+		diplomatic_range_mult = 0.20
+	}
+	province_modifier = {
+		monthly_income = good_building_tax_tier_4
+	}
+	next_building = luxury_goods_05
+}
+
+luxury_goods_05 = {
+	construction_time = slow_construction_time
+	
+	can_construct_potential = {
+		NOT = {
+			has_ruins_trigger = yes
+		}
+	}
+	
+	cost_gold = 1000
+	character_modifier = {
+		monthly_prestige = 1.25
+		diplomatic_range_mult = 0.25
+	}
+	province_modifier = {
+		monthly_income = good_building_tax_tier_5
+	}
+	next_building = luxury_goods_06
+}
+
+luxury_goods_06 = {
+	construction_time = slow_construction_time
+	can_construct_potential = {
+		NOT = {
+			has_ruins_trigger = yes
+		}
+	}
+	
+	cost_gold = 1250
+	character_modifier = {
+		monthly_prestige = 1.5
+		diplomatic_range_mult = 0.30
+	}
+	province_modifier = {
+		monthly_income = good_building_tax_tier_6
+	}
+	next_building = luxury_goods_07
+}
+
+luxury_goods_07 = {
+	construction_time = slow_construction_time
+	can_construct_potential = {
+		NOT = {
+			has_ruins_trigger = yes
+		}
+	}
+	
+	cost_gold = 1500
+	character_modifier = {
+		monthly_prestige = 1.75
+		diplomatic_range_mult = 0.35
+	}
+	province_modifier = {
+		monthly_income = good_building_tax_tier_7
+	}
+	next_building = luxury_goods_08
+}
+
+luxury_goods_08 = {
+	construction_time = slow_construction_time
+	can_construct_potential = {
+		NOT = {
+			has_ruins_trigger = yes
+		}
+	}
+	
+	cost_gold = 2000
+	character_modifier = {
+		monthly_prestige = 2.0
+		diplomatic_range_mult = 0.40
+	}
+	province_modifier = {
+		monthly_income = good_building_tax_tier_8
+	}
+}
+
+library_01 = {
+	construction_time = slow_construction_time
+	
+	cost_gold = main_building_tier_1_cost
+	next_building = library_02
+	
+	character_modifier = {
+		cultural_head_fascination_mult = 0.05
+	}
+	
+	type_icon = "icon_building_library.dds"
+}
+
+library_02 = {
+	construction_time = slow_construction_time
+	
+	cost_gold = main_building_tier_2_cost
+	next_building = library_03
+	
+    character_modifier = {
+		cultural_head_fascination_mult = 0.10
+	}
+}
+
+library_03 = {
+	construction_time = slow_construction_time
+	
+	cost_gold = main_building_tier_3_cost
+	next_building = library_04
+	
+	character_modifier = {
+		cultural_head_fascination_mult = 0.15
+	}
+}
+
+library_04 = {
+	construction_time = slow_construction_time
+	
+	cost_gold = main_building_tier_4_cost
+	next_building = library_05
+	
+	character_modifier = {
+		cultural_head_fascination_mult = 0.20
+	}
+}
+
+library_05 = {
+	construction_time = slow_construction_time
+	
+	cost_gold = 1000
+	next_building = library_06
+	
+	character_modifier = {
+		cultural_head_fascination_mult = 0.25
+	}
+}
+
+library_06 = {
+	construction_time = slow_construction_time
+	
+	cost_gold = 1250
+	next_building = library_07
+
+	
+	character_modifier = {
+		cultural_head_fascination_mult = 0.30
+	}
+}
+
+library_07 = {
+	construction_time = slow_construction_time
+	
+	cost_gold = 1500
+	next_building = library_08
+
+	
+	character_modifier = {
+		cultural_head_fascination_mult = 0.35
+	}
+}
+
+library_08 = {
+	construction_time = slow_construction_time
+	
+	cost_gold = 2000
+	
+	character_modifier = {
+		cultural_head_fascination_mult = 0.40
+	}
+}
+
+mint_01 = {
+	can_construct_potential = {
+		county = {
+			NOT = {
+				any_county_province = {
+					has_building = mint_01 
+				}
+			}
+		}
+	}
+	
+    construction_time = slow_construction_time
+    
+    cost_gold = main_building_tier_1_cost
+    next_building = mint_02
+    
+    province_modifier = {
+        tax_mult = 0.05
+		development_growth_factor = 0.05
+		monthly_county_control_change_factor = 0.05
+    }
+    
+    type_icon = "icon_building_tax_assessor.dds"
+}
+
+mint_02 = {
+    construction_time = slow_construction_time
+    
+    cost_gold = main_building_tier_2_cost
+    next_building = mint_03
+    
+    province_modifier = {
+        tax_mult = 0.1
+		development_growth_factor = 0.08
+		monthly_county_control_change_factor = 0.1
+    }
+
+}
+
+mint_03 = {
+    construction_time = slow_construction_time
+    
+    cost_gold = main_building_tier_3_cost
+    next_building = mint_04
+    
+    province_modifier = {
+        tax_mult = 0.15
+		development_growth_factor = 0.12
+		monthly_county_control_change_factor = 0.12
+    }
+    
+}
+
+mint_04 = {
+    construction_time = slow_construction_time
+    
+    cost_gold = main_building_tier_4_cost
+    
+    province_modifier = {
+        tax_mult = 0.2
+		development_growth_factor = 0.15
+		monthly_county_control_change_factor = 0.18
+		
+    }
+	
+	character_modifier = {
+		monthly_prestige_gain_mult = 0.05
+	}
+    
+}
+
+embassy_01 = {
+	can_construct_potential = {
+		county = {
+			NOT = {
+				any_county_province = {
+					has_building = embassy_01 
+				}
+			}
+		}
+	}
+	
+    construction_time = slow_construction_time
+    
+    cost_gold = main_building_tier_1_cost
+    next_building = embassy_02
+    
+    character_modifier = {
+		monthly_prestige = 0.2
+		monthly_dynasty_prestige = 0.5
+	}
+    
+    type_icon = "icon_building_military_academy.dds"
+}
+
+embassy_02 = {
+    construction_time = slow_construction_time
+    
+    cost_gold = main_building_tier_2_cost
+    next_building = embassy_03
+    
+    character_modifier = {
+		monthly_prestige = 0.4
+		monthly_dynasty_prestige = 0.75
+	}
+
+}
+
+embassy_03 = {
+    construction_time = slow_construction_time
+    
+    cost_gold = main_building_tier_3_cost
+    next_building = embassy_04
+    
+    character_modifier = {
+		monthly_prestige = 0.6
+		monthly_dynasty_prestige = 1
+	}
+
+}
+
+embassy_04 = {
+    construction_time = slow_construction_time
+    
+    cost_gold = main_building_tier_4_cost
+    
+    character_modifier = {
+		monthly_prestige = 1
+		monthly_dynasty_prestige = 1.2
+		different_culture_opinion = 10
+		opinion_of_different_culture = 10
+	}
+    
+}
+
+
+fencing_School_01 = {
+	can_construct_potential = {
+		county = {
+			NOT = {
+				any_county_province = {
+					has_building = fencing_School_01 
+				}
+			}
+		}
+	}
+	
+    construction_time = slow_construction_time
+    
+    cost_gold = main_building_tier_1_cost
+    next_building = fencing_School_02
+    
+    character_modifier = {
+		monthly_prestige_gain_per_knight_mult = 0.1
+		knight_effectiveness_mult = 0.05
+	}
+    
+    type_icon = "icon_building_military_academy.dds"
+}
+
+fencing_School_02 = {
+    construction_time = slow_construction_time
+    
+    cost_gold = main_building_tier_2_cost
+    next_building = fencing_School_03
+    
+    character_modifier = {
+		monthly_prestige_gain_per_knight_mult = 0.15
+		knight_effectiveness_mult = 0.1
+	}
+
+}
+
+fencing_School_03 = {
+    construction_time = slow_construction_time
+    
+    cost_gold = main_building_tier_3_cost
+    next_building = fencing_School_04
+    
+    character_modifier = {
+		monthly_prestige_gain_per_knight_mult = 0.2
+		knight_effectiveness_mult = 0.15
+	}
+    
+}
+
+fencing_School_04 = {
+    construction_time = slow_construction_time
+    
+    cost_gold = main_building_tier_4_cost
+    
+    character_modifier = {
+		monthly_prestige_gain_per_knight_mult = 0.2
+		knight_effectiveness_mult = 0.2
+	}
+    
+}
+
+gh_university_01 = {
+	can_construct_potential = {
+		county = {
+			NOT = {
+				any_county_province = {
+					has_building = gh_university_01 
+				}
+			}
+		}
+	}
+	
+    construction_time = slow_construction_time
+    
+    cost_gold = main_building_tier_1_cost
+    next_building = gh_university_02
+    
+    character_modifier = {
+		learning = 1
+		learning_scheme_power = 5
+	}
+    
+    type_icon = "icon_building_university.dds"
+}
+
+gh_university_02 = {
+    construction_time = slow_construction_time
+    
+    cost_gold = main_building_tier_2_cost
+    next_building = gh_university_03
+    
+    character_modifier = {
+		learning = 2
+		learning_scheme_power = 10
+	}
+
+}
+
+gh_university_03 = {
+    construction_time = slow_construction_time
+    
+    cost_gold = main_building_tier_3_cost
+    next_building = gh_university_04
+    
+    character_modifier = {
+		learning = 3
+		learning_scheme_power = 15
+	}
+    
+}
+
+gh_university_04 = {
+    construction_time = slow_construction_time
+    
+    cost_gold = main_building_tier_4_cost
+    
+    character_modifier = {
+		learning = 4
+		learning_scheme_power = 20
+	}
+    
+}
+

@@ -1,0 +1,65 @@
+﻿namespace = background_historian
+
+background_historian.0001 = {	# Copies global historical info into player characters
+	type = empty
+    hidden = yes
+	
+	immediate = {
+		trigger_event = background_historian.0010
+		every_player = {
+			copy_global_variable_into_local = { GLOBAL_VAR = reigning_aautokratir }
+		}
+	}
+}
+
+background_historian.0010 = {	# Record widely recognized reigning Aversarian emperors
+    hidden = yes
+	
+	immediate = {
+		if = {
+			limit = {
+				title:e_aversaria = { is_title_created = no }
+				title:e_oraispol_aautokratia = { is_title_created = no }
+				title:e_asiupoli_aautokratia = { is_title_created = no }
+			}
+			set_global_variable = {
+				name = last_aautokratir
+				value = root
+			}
+		}
+		else_if = {
+			limit = { title:e_aversaria = { is_title_created = yes } }
+			title:e_aversaria = { 
+				holder = { 
+					set_global_variable = {
+						name = reigning_aautokratir
+						value = this
+					}
+				} 
+			}
+		}
+		else_if = {
+			limit = { title:e_oraispol_aautokratia = { is_title_created = yes } }
+			title:e_oraispol_aautokratia = { 
+				holder = { 
+					set_global_variable = {
+						name = reigning_aautokratir
+						value = this
+					}
+				} 
+			}
+		}
+		else_if = {
+			limit = { title:e_asiupoli_aautokratia = { is_title_created = yes } }
+			title:e_asiupoli_aautokratia = { 
+				holder = { 
+					set_global_variable = {
+						name = reigning_aautokratir
+						value = this
+					}
+				} 
+			}
+		}
+		trigger_event = background_historian.0001
+	}
+}

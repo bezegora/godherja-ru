@@ -1,0 +1,989 @@
+﻿bloodline_cenware = {
+	index = 300
+
+	martial = 2
+	stewardship = 1
+	monthly_prestige = 0.2
+	monthly_piety = 0.1
+
+	flag = no_message
+	flag = bloodline #marked as bloodline, for any_/every_bloodline_character
+	flag = bloodline_cenware #for specific bloodline
+
+	# test for has_trait_with_flag = bloodline_$TRAIT$_matri/$TRAIT$_patri etc
+	flag = bloodline_cenware_patri #_matri/_patri/_all - inhertance
+	flag = bloodline_cenware_matri_override #allow inheritance for opposite marriages - mother will pass patri in matri marriage & father will pass matri in normal marriae
+	#flag = bloodline_cenware_allow_bastards #do bastards inherits
+
+	flag = bloodline_cenware_special_inheritance
+
+	shown_in_ruler_designer = no
+	shown_in_encyclopedia = no
+
+	desc = { #The description is not shown. it is used to hide/show appropriately
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = bloodline_no
+			}
+			desc = bloodline_desc_blank
+		}
+	}
+}
+
+bloodline_nikaryin = {
+	index = 301
+
+	martial = 2
+	prowess = 3
+	monthly_prestige = 0.2
+	same_culture_opinion = 5
+
+	flag = no_message
+	flag = bloodline #marked as bloodline, for any_/every_bloodline_character
+	flag = bloodline_nikaryin #for specific bloodline
+
+	# test for has_trait_with_flag = bloodline_$TRAIT$_matri/$TRAIT$_patri etc
+	flag = bloodline_nikaryin_patri #_matri/_patri/_all - inhertance
+	flag = bloodline_nikaryin_matri_override #allow inheritance for opposite marriages - mother will pass patri in matri marriage & father will pass matri in normal marriae
+
+	flag = bloodline_nikaryin_special_inheritance
+
+	shown_in_ruler_designer = no
+	shown_in_encyclopedia = no
+
+	desc = { #The description is not shown. it is used to hide/show appropriately
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = bloodline_no
+			}
+			desc = bloodline_desc_blank
+		}
+	}
+}
+
+bloodline_diplomacy_skill = {
+	index = 302
+
+	diplomacy = 2
+	monthly_prestige = 0.1
+
+	flag = no_message
+	flag = bloodline #marked as bloodline, for any_/every_bloodline_character
+	flag = bloodline_diplomacy_skill #for specific bloodline
+
+	# test for has_trait_with_flag = bloodline_$TRAIT$_matri/$TRAIT$_patri etc
+	flag = bloodline_diplomacy_skill_all #_matri/_patri/_all - inhertance
+	flag = bloodline_diplomacy_skill_matri_override #allow inheritance for opposite marriages - mother will pass patri in matri marriage & father will pass matri in normal marriae
+	flag = bloodline_diplomacy_skill_allow_bastards #do bastards inherits
+
+	shown_in_ruler_designer = no
+	shown_in_encyclopedia = no
+
+	desc = { #The description is not shown. it is used to hide/show appropriately
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = bloodline_no
+			}
+			desc = bloodline_desc_blank
+		}
+	}
+}
+
+bloodline_martial_skill = {
+	index = 303
+
+	martial = 2
+	monthly_prestige = 0.1
+
+	flag = no_message
+	flag = bloodline #marked as bloodline, for any_/every_bloodline_character
+	flag = bloodline_martial_skill #for specific bloodline
+
+	# test for has_trait_with_flag = bloodline_$TRAIT$_matri/$TRAIT$_patri etc
+	flag = bloodline_martial_skill_all #_matri/_patri/_all - inhertance
+	flag = bloodline_martial_skill_matri_override #allow inheritance for opposite marriages - mother will pass patri in matri marriage & father will pass matri in normal marriae
+	flag = bloodline_martial_skill_allow_bastards #do bastards inherits
+
+	shown_in_ruler_designer = no
+	shown_in_encyclopedia = no
+
+	desc = { #The description is not shown. it is used to hide/show appropriately
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = bloodline_no
+			}
+			desc = bloodline_desc_blank
+		}
+	}
+}
+
+bloodline_stewardship_skill = {
+	index = 304
+
+	stewardship = 2
+	monthly_prestige = 0.1
+
+	flag = no_message
+	flag = bloodline #marked as bloodline, for any_/every_bloodline_character
+	flag = bloodline_stewardship_skill #for specific bloodline
+
+	# test for has_trait_with_flag = bloodline_$TRAIT$_matri/$TRAIT$_patri etc
+	flag = bloodline_stewardship_skill_all #_matri/_patri/_all - inhertance
+	flag = bloodline_stewardship_skill_matri_override #allow inheritance for opposite marriages - mother will pass patri in matri marriage & father will pass matri in normal marriae
+	flag = bloodline_stewardship_skill_allow_bastards #do bastards inherits
+
+	shown_in_ruler_designer = no
+	shown_in_encyclopedia = no
+
+	desc = { #The description is not shown. it is used to hide/show appropriately
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = bloodline_no
+			}
+			desc = bloodline_desc_blank
+		}
+	}
+}
+
+bloodline_intrigue_skill = {
+	index = 305
+
+	intrigue = 2
+	monthly_prestige = 0.1
+
+	flag = no_message
+	flag = bloodline #marked as bloodline, for any_/every_bloodline_character
+	flag = bloodline_intrigue_skill #for specific bloodline
+
+	# test for has_trait_with_flag = bloodline_$TRAIT$_matri/$TRAIT$_patri etc
+	flag = bloodline_intrigue_skill_all #_matri/_patri/_all - inhertance
+	flag = bloodline_intrigue_skill_matri_override #allow inheritance for opposite marriages - mother will pass patri in matri marriage & father will pass matri in normal marriae
+	flag = bloodline_intrigue_skill_allow_bastards #do bastards inherits
+
+	shown_in_ruler_designer = no
+	shown_in_encyclopedia = no
+
+	desc = { #The description is not shown. it is used to hide/show appropriately
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = bloodline_no
+			}
+			desc = bloodline_desc_blank
+		}
+	}
+}
+
+bloodline_learning_skill = {
+	index = 306
+
+	learning = 2
+	monthly_prestige = 0.1
+
+	flag = no_message
+	flag = bloodline #marked as bloodline, for any_/every_bloodline_character
+	flag = bloodline_learning_skill #for specific bloodline
+
+	# test for has_trait_with_flag = bloodline_$TRAIT$_matri/$TRAIT$_patri etc
+	flag = bloodline_learning_skill_all #_matri/_patri/_all - inhertance
+	flag = bloodline_learning_skill_matri_override #allow inheritance for opposite marriages - mother will pass patri in matri marriage & father will pass matri in normal marriae
+	flag = bloodline_learning_skill_allow_bastards #do bastards inherits
+
+	shown_in_ruler_designer = no
+	shown_in_encyclopedia = no
+
+	desc = { #The description is not shown. it is used to hide/show appropriately
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = bloodline_no
+			}
+			desc = bloodline_desc_blank
+		}
+	}
+}
+
+bloodline_phanagorax = {
+	index = 307
+
+	learning = 1
+	intrigue = 1
+	monthly_prestige = 0.1
+	monthly_piety = 0.1
+	same_culture_opinion = 5
+	religious_head_opinion = 10
+	
+	flag = no_message
+	flag = bloodline #marked as bloodline, for any_/every_bloodline_character
+	flag = bloodline_phanagorax #for specific bloodline
+
+	# test for has_trait_with_flag = bloodline_$TRAIT$_matri/$TRAIT$_patri etc
+	flag = bloodline_phanagorax_patri #_matri/_patri/_all - inhertance
+	flag = bloodline_phanagorax_matri_override #allow inheritance for opposite marriages - mother will pass patri in matri marriage & father will pass matri in normal marriae
+	flag = bloodline_phanagorax_allow_bastards #do bastards inherits
+
+	flag = bloodline_phanagorax_special_inheritance
+
+	shown_in_ruler_designer = no
+	shown_in_encyclopedia = no
+
+	desc = { #The description is not shown. it is used to hide/show appropriately
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = bloodline_no
+			}
+			desc = bloodline_desc_blank
+		}
+	}
+}
+
+bloodline_dhacixen = {
+	index = 308
+
+	martial = 2
+	monthly_prestige = 0.2
+	same_culture_opinion = 5
+
+	flag = no_message
+	flag = bloodline #marked as bloodline, for any_/every_bloodline_character
+	flag = bloodline_dhacixen #for specific bloodline
+
+	# test for has_trait_with_flag = bloodline_$TRAIT$_matri/$TRAIT$_patri etc
+	flag = bloodline_dhacixen_patri #_matri/_patri/_all - inhertance
+	flag = bloodline_dhacixen_matri_override #allow inheritance for opposite marriages - mother will pass patri in matri marriage & father will pass matri in normal marriae
+	flag = bloodline_matilda_allow_bastards #do bastards inherits
+
+	flag = bloodline_dhacixen_special_inheritance
+
+	shown_in_ruler_designer = no
+	shown_in_encyclopedia = no
+
+	desc = { #The description is not shown. it is used to hide/show appropriately
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = bloodline_no
+			}
+			desc = bloodline_desc_blank
+		}
+	}
+}
+
+bloodline_aexionarax = {
+	index = 309
+
+	prowess = 2
+	intrigue = 1
+	monthly_piety = 0.2
+	same_culture_opinion = 5
+
+	flag = no_message
+	flag = bloodline #marked as bloodline, for any_/every_bloodline_character
+	flag = bloodline_aexionarax #for specific bloodline
+
+	# test for has_trait_with_flag = bloodline_$TRAIT$_matri/$TRAIT$_patri etc
+	flag = bloodline_aexionarax_patri #_matri/_patri/_all - inhertance
+	flag = bloodline_aexionarax_matri_override #allow inheritance for opposite marriages - mother will pass patri in matri marriage & father will pass matri in normal marriae
+	flag = bloodline_aexionarax_allow_bastards #do bastards inherits
+
+	flag = bloodline_aexionarax_special_inheritance
+
+	shown_in_ruler_designer = no
+	shown_in_encyclopedia = no
+
+	desc = { #The description is not shown. it is used to hide/show appropriately
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = bloodline_no
+			}
+			desc = bloodline_desc_blank
+		}
+	}
+}
+
+bloodline_maklea = {
+	index = 310
+
+	intrigue = 2
+	monthly_prestige = 0.2
+	same_culture_opinion = 5
+	
+	flag = no_message
+	flag = bloodline #marked as bloodline, for any_/every_bloodline_character
+	flag = bloodline_maklea #for specific bloodline
+
+	# test for has_trait_with_flag = bloodline_$TRAIT$_matri/$TRAIT$_patri etc
+	flag = bloodline_maklea_matri #_matri/_patri/_all - inhertance
+	flag = bloodline_maklea_matri_override #allow inheritance for opposite marriages - mother will pass patri in matri marriage & father will pass matri in normal marriae
+	flag = bloodline_maklea_allow_bastards #do bastards inherits
+
+	flag = bloodline_maklea_special_inheritance
+
+	shown_in_ruler_designer = no
+	shown_in_encyclopedia = no
+
+	desc = { #The description is not shown. it is used to hide/show appropriately
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = bloodline_no
+			}
+			desc = bloodline_desc_blank
+		}
+	}
+}
+
+bloodline_nothyx = {
+	index = 311
+
+	prowess = 3
+	martial = 1
+	monthly_prestige = 0.3
+
+	flag = no_message
+	flag = bloodline #marked as bloodline, for any_/every_bloodline_character
+	flag = bloodline_nothyx #for specific bloodline
+
+	# test for has_trait_with_flag = bloodline_$TRAIT$_matri/$TRAIT$_patri etc
+	flag = bloodline_nothyx_all #_matri/_patri/_all - inhertance
+	flag = bloodline_nothyx_matri_override #allow inheritance for opposite marriages - mother will pass patri in matri marriage & father will pass matri in normal marriae
+	flag = bloodline_nothyx_allow_bastards #do bastards inherits
+
+	flag = bloodline_nothyx_special_inheritance
+
+	shown_in_ruler_designer = no
+	shown_in_encyclopedia = no
+
+	desc = { #The description is not shown. it is used to hide/show appropriately
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = bloodline_no
+			}
+			desc = bloodline_desc_blank
+		}
+	}
+}
+
+bloodline_axiaothea = {
+	index = 312
+
+	monthly_prestige = 0.1
+	monthly_piety = 0.1
+	same_culture_opinion = 10
+
+	flag = no_message
+	flag = bloodline #marked as bloodline, for any_/every_bloodline_character
+	flag = bloodline_axiaothea #for specific bloodline
+
+	# test for has_trait_with_flag = bloodline_$TRAIT$_matri/$TRAIT$_patri etc
+	flag = bloodline_axiaothea_all #_matri/_patri/_all - inhertance
+	flag = bloodline_axiaothea_matri_override #allow inheritance for opposite marriages - mother will pass patri in matri marriage & father will pass matri in normal marriae
+	flag = bloodline_axiaothea_allow_bastards #do bastards inherits
+
+	flag = bloodline_axiaothea_special_inheritance
+
+	shown_in_ruler_designer = no
+	shown_in_encyclopedia = no
+
+	desc = { #The description is not shown. it is used to hide/show appropriately
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = bloodline_no
+			}
+			desc = bloodline_desc_blank
+		}
+	}
+}
+
+bloodline_aeschraes = {
+	index = 313
+
+	monthly_prestige = 0.3
+	general_opinion = -5
+
+	flag = no_message
+	flag = bloodline #marked as bloodline, for any_/every_bloodline_character
+	flag = bloodline_aeschraes #for specific bloodline
+
+	# test for has_trait_with_flag = bloodline_$TRAIT$_matri/$TRAIT$_patri etc
+	flag = bloodline_aeschraes_patri #_matri/_patri/_all - inhertance
+	flag = bloodline_aeschraes_matri_override #allow inheritance for opposite marriages - mother will pass patri in matri marriage & father will pass matri in normal marriae
+	flag = bloodline_aeschraes_allow_bastards #do bastards inherits
+
+	flag = bloodline_aeschraes_special_inheritance
+
+	shown_in_ruler_designer = no
+	shown_in_encyclopedia = no
+
+	desc = { #The description is not shown. it is used to hide/show appropriately
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = bloodline_no
+			}
+			desc = bloodline_desc_blank
+		}
+	}
+}
+
+bloodline_pothacleas = {
+	index = 314
+
+	prowess = 3
+	martial = 2
+	monthly_prestige = 0.2
+	same_culture_opinion = 10
+
+	flag = no_message
+	flag = bloodline #marked as bloodline, for any_/every_bloodline_character
+	flag = bloodline_pothacleas #for specific bloodline
+
+	# test for has_trait_with_flag = bloodline_$TRAIT$_matri/$TRAIT$_patri etc
+	flag = bloodline_pothacleas_all #_matri/_patri/_all - inhertance
+	flag = bloodline_pothacleas_matri_override #allow inheritance for opposite marriages - mother will pass patri in matri marriage & father will pass matri in normal marriae
+	flag = bloodline_pothacleas_allow_bastards #do bastards inherits
+
+	flag = bloodline_pothacleas_special_inheritance
+
+	shown_in_ruler_designer = no
+	shown_in_encyclopedia = no
+
+	desc = { #The description is not shown. it is used to hide/show appropriately
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = bloodline_no
+			}
+			desc = bloodline_desc_blank
+		}
+	}
+}
+
+bloodline_the_skull_taker = {
+	index = 315
+
+	prowess = 5
+	monthly_prestige = 0.1
+
+	flag = no_message
+	flag = bloodline #marked as bloodline, for any_/every_bloodline_character
+	flag = bloodline_the_skull_taker #for specific bloodline
+
+	# test for has_trait_with_flag = bloodline_$TRAIT$_matri/$TRAIT$_patri etc
+	flag = bloodline_the_skull_taker_patri #_matri/_patri/_all - inhertance
+	flag = bloodline_the_skull_taker_matri_override #allow inheritance for opposite marriages - mother will pass patri in matri marriage & father will pass matri in normal marriae
+	flag = bloodline_the_skull_taker_allow_bastards #do bastards inherits
+
+	flag = bloodline_the_skull_taker_special_inheritance
+
+	shown_in_ruler_designer = no
+	shown_in_encyclopedia = no
+
+	desc = { #The description is not shown. it is used to hide/show appropriately
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = bloodline_no
+			}
+			desc = bloodline_desc_blank
+		}
+	}
+}
+
+bloodline_gardfrei = {
+	index = 316
+
+	martial = 1
+	diplomacy = 1
+	monthly_prestige = 0.1
+	same_culture_opinion = 10
+
+	flag = no_message
+	flag = bloodline #marked as bloodline, for any_/every_bloodline_character
+	flag = bloodline_gardfrei #for specific bloodline
+
+	# test for has_trait_with_flag = bloodline_$TRAIT$_matri/$TRAIT$_patri etc
+	flag = bloodline_gardfrei_patri #_matri/_patri/_all - inhertance
+	flag = bloodline_gardfrei_matri_override #allow inheritance for opposite marriages - mother will pass patri in matri marriage & father will pass matri in normal marriae
+	flag = bloodline_gardfrei_allow_bastards #do bastards inherits
+
+	flag = bloodline_gardfrei_special_inheritance
+
+	shown_in_ruler_designer = no
+	shown_in_encyclopedia = no
+
+	desc = { #The description is not shown. it is used to hide/show appropriately
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = bloodline_no
+			}
+			desc = bloodline_desc_blank
+		}
+	}
+}
+
+bloodline_huegons = {
+	index = 317
+
+	martial = 1
+	diplomacy = 1
+	monthly_prestige = 0.1
+	same_culture_opinion = 10
+
+	flag = no_message
+	flag = bloodline #marked as bloodline, for any_/every_bloodline_character
+	flag = bloodline_huegons #for specific bloodline
+
+	# test for has_trait_with_flag = bloodline_$TRAIT$_matri/$TRAIT$_patri etc
+	flag = bloodline_huegons_patri #_matri/_patri/_all - inhertance
+	flag = bloodline_huegons_matri_override #allow inheritance for opposite marriages - mother will pass patri in matri marriage & father will pass matri in normal marriae
+	flag = bloodline_huegons_allow_bastards #do bastards inherits
+
+	flag = bloodline_huegons_special_inheritance
+
+	shown_in_ruler_designer = no
+	shown_in_encyclopedia = no
+
+	desc = { #The description is not shown. it is used to hide/show appropriately
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = bloodline_no
+			}
+			desc = bloodline_desc_blank
+		}
+	}
+}
+
+bloodline_the_good_king = {
+	index = 318
+
+	martial = 1
+	diplomacy = 1
+	monthly_prestige = 0.1
+	same_culture_opinion = 10
+
+	flag = no_message
+	flag = bloodline #marked as bloodline, for any_/every_bloodline_character
+	flag = bloodline_the_good_king #for specific bloodline
+
+	# test for has_trait_with_flag = bloodline_$TRAIT$_matri/$TRAIT$_patri etc
+	flag = bloodline_the_good_king_all #_matri/_patri/_all - inhertance
+	flag = bloodline_the_good_king_matri_override #allow inheritance for opposite marriages - mother will pass patri in matri marriage & father will pass matri in normal marriae
+	flag = bloodline_the_good_king_allow_bastards #do bastards inherits
+
+	flag = bloodline_the_good_king_special_inheritance
+
+	shown_in_ruler_designer = no
+	shown_in_encyclopedia = no
+
+	desc = { #The description is not shown. it is used to hide/show appropriately
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = bloodline_no
+			}
+			desc = bloodline_desc_blank
+		}
+	}
+}
+
+bloodline_the_prophet = {
+	index = 319
+
+	learning = 1
+	monthly_piety = 0.2
+	same_culture_opinion = 5 
+
+	flag = no_message
+	flag = bloodline #marked as bloodline, for any_/every_bloodline_character
+	flag = bloodline_the_prophet #for specific bloodline
+
+	# test for has_trait_with_flag = bloodline_$TRAIT$_matri/$TRAIT$_patri etc
+	flag = bloodline_the_prophet_all #_matri/_patri/_all - inhertance
+	flag = bloodline_the_prophet_matri_override #allow inheritance for opposite marriages - mother will pass patri in matri marriage & father will pass matri in normal marriae
+	flag = bloodline_the_prophet_allow_bastards #do bastards inherits
+
+	flag = bloodline_the_prophet_special_inheritance
+
+	shown_in_ruler_designer = no
+	shown_in_encyclopedia = no
+
+	desc = { #The description is not shown. it is used to hide/show appropriately
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = bloodline_no
+			}
+			desc = bloodline_desc_blank
+		}
+	}
+}
+
+bloodline_the_black_sun = {
+	index = 320
+
+	prowess = 3
+	martial = 2
+	monthly_prestige = 0.1
+	general_opinion = 5
+	
+
+	flag = no_message
+	flag = bloodline #marked as bloodline, for any_/every_bloodline_character
+	flag = bloodline_the_black_sun #for specific bloodline
+
+	# test for has_trait_with_flag = bloodline_$TRAIT$_matri/$TRAIT$_patri etc
+	flag = bloodline_the_black_sun_patri #_matri/_patri/_all - inhertance
+	flag = bloodline_the_black_sun_matri_override #allow inheritance for opposite marriages - mother will pass patri in matri marriage & father will pass matri in normal marriae
+	#flag = bloodline_the_black_sun_allow_bastards #do bastards inherits
+
+	flag = bloodline_the_black_sun_special_inheritance
+
+	shown_in_ruler_designer = no
+	shown_in_encyclopedia = no
+
+	desc = { #The description is not shown. it is used to hide/show appropriately
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = bloodline_no
+			}
+			desc = bloodline_desc_blank
+		}
+	}
+}
+
+bloodline_kathanouxa = {
+	index = 321
+
+	monthly_prestige = 0.05
+	monthly_piety = 0.05
+	same_culture_opinion = 5
+	religious_head_opinion = 10
+
+	flag = no_message
+	flag = bloodline #marked as bloodline, for any_/every_bloodline_character
+	flag = bloodline_kathanouxa #for specific bloodline
+
+	# test for has_trait_with_flag = bloodline_$TRAIT$_matri/$TRAIT$_patri etc
+	flag = bloodline_kathanouxa_all #_matri/_patri/_all - inhertance
+	flag = bloodline_kathanouxa_matri_override #allow inheritance for opposite marriages - mother will pass patri in matri marriage & father will pass matri in normal marriae
+	flag = bloodline_kathanouxa_allow_bastards #do bastards inherits
+
+	flag = bloodline_kathanouxa_special_inheritance
+
+	shown_in_ruler_designer = no
+	shown_in_encyclopedia = no
+
+	desc = { #The description is not shown. it is used to hide/show appropriately
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = bloodline_no
+			}
+			desc = bloodline_desc_blank
+		}
+	}
+}
+
+bloodline_odyr_then = {
+	index = 322
+
+	martial = 1
+	stewardship = 1
+	monthly_prestige = 0.1
+	monthly_piety = 0.1
+	same_culture_opinion = 5
+
+	flag = no_message
+	flag = bloodline #marked as bloodline, for any_/every_bloodline_character
+	flag = bloodline_odyr_then #for specific bloodline
+
+	# test for has_trait_with_flag = bloodline_$TRAIT$_matri/$TRAIT$_patri etc
+	flag = bloodline_odyr_then_all #_matri/_patri/_all - inhertance
+	flag = bloodline_odyr_then_matri_override #allow inheritance for opposite marriages - mother will pass patri in matri marriage & father will pass matri in normal marriae
+	#flag = bloodline_odyr_then_allow_bastards #do bastards inherits
+
+	flag = bloodline_odyr_then_special_inheritance
+
+	shown_in_ruler_designer = no
+	shown_in_encyclopedia = no
+
+	desc = { #The description is not shown. it is used to hide/show appropriately
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = bloodline_no
+			}
+			desc = bloodline_desc_blank
+		}
+	}
+}
+
+bloodline_odyr_lleth = {
+	index = 323
+
+	martial = 1
+	stewardship = 1
+	monthly_prestige = 0.1
+	monthly_piety = 0.1
+	same_culture_opinion = 5
+
+	flag = no_message
+	flag = bloodline #marked as bloodline, for any_/every_bloodline_character
+	flag = bloodline_odyr_lleth #for specific bloodline
+
+	# test for has_trait_with_flag = bloodline_$TRAIT$_matri/$TRAIT$_patri etc
+	flag = bloodline_odyr_lleth_patri #_matri/_patri/_all - inhertance
+	flag = bloodline_odyr_lleth_matri_override #allow inheritance for opposite marriages - mother will pass patri in matri marriage & father will pass matri in normal marriae
+	#flag = bloodline_odyr_lleth_allow_bastards #do bastards inherits
+
+	flag = bloodline_odyr_lleth_special_inheritance
+
+	shown_in_ruler_designer = no
+	shown_in_encyclopedia = no
+
+	desc = { #The description is not shown. it is used to hide/show appropriately
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = bloodline_no
+			}
+			desc = bloodline_desc_blank
+		}
+	}
+}
+
+bloodline_odyr_hune = {
+	index = 324
+
+	martial = 1
+	stewardship = 1
+	monthly_prestige = 0.1
+	monthly_piety = 0.1
+	same_culture_opinion = 5
+
+	flag = no_message
+	flag = bloodline #marked as bloodline, for any_/every_bloodline_character
+	flag = bloodline_odyr_hune #for specific bloodline
+
+	# test for has_trait_with_flag = bloodline_$TRAIT$_matri/$TRAIT$_patri etc
+	flag = bloodline_odyr_hune_patri #_matri/_patri/_all - inhertance
+	flag = bloodline_odyr_hune_matri_override #allow inheritance for opposite marriages - mother will pass patri in matri marriage & father will pass matri in normal marriae
+	#flag = bloodline_odyr_hune_allow_bastards #do bastards inherits
+
+	flag = bloodline_odyr_hune_special_inheritance
+
+	shown_in_ruler_designer = no
+	shown_in_encyclopedia = no
+
+	desc = { #The description is not shown. it is used to hide/show appropriately
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = bloodline_no
+			}
+			desc = bloodline_desc_blank
+		}
+	}
+}
+
+bloodline_vercigex = {
+	index = 325
+
+	diplomacy = 2
+	monthly_prestige = 0.1
+	monthly_piety = 0.1
+	same_culture_opinion = 5
+
+	flag = no_message
+	flag = bloodline #marked as bloodline, for any_/every_bloodline_character
+	flag = bloodline_vercigex #for specific bloodline
+
+	# test for has_trait_with_flag = bloodline_$TRAIT$_matri/$TRAIT$_patri etc
+	flag = bloodline_vercigex_patri #_matri/_patri/_all - inhertance
+	flag = bloodline_vercigex_matri_override #allow inheritance for opposite marriages - mother will pass patri in matri marriage & father will pass matri in normal marriae
+	flag = bloodline_vercigex_allow_bastards #do bastards inherits
+
+	flag = bloodline_vercigex_special_inheritance
+
+	shown_in_ruler_designer = no
+	shown_in_encyclopedia = no
+
+	desc = { #The description is not shown. it is used to hide/show appropriately
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = bloodline_no
+			}
+			desc = bloodline_desc_blank
+		}
+	}
+}
+
+bloodline_cois_defeated = {
+	index = 326
+
+	martial = 2
+	intrigue = 1
+	monthly_prestige = 0.1
+	monthly_piety = 0.2
+	same_culture_opinion = 5
+
+	flag = no_message
+	flag = bloodline #marked as bloodline, for any_/every_bloodline_character
+	flag = bloodline_cois_defeated #for specific bloodline
+
+	flag = bloodline_cois_defeated_patri #_matri/_patri/_all - inhertance
+	flag = bloodline_cois_defeated_matri_override #allow inheritance for opposite marriages - mother will pass patri in matri marriage & father will pass matri in normal marriae
+	#flag = bloodline_cois_defeated_allow_bastards #do bastards inherits
+
+	flag = bloodline_cois_defeated_special_inheritance
+
+	shown_in_ruler_designer = no
+	shown_in_encyclopedia = no
+
+	desc = { #The description is not shown. it is used to hide/show appropriately
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = bloodline_no
+			}
+			desc = bloodline_desc_blank
+		}
+	}
+}
+
+bloodline_cois_victorious = {
+	index = 327
+
+	martial = 3
+	intrigue = 1
+	monthly_prestige = 0.2
+	monthly_piety = 0.1
+	same_culture_opinion = 5
+
+	flag = no_message
+	flag = bloodline #marked as bloodline, for any_/every_bloodline_character
+	flag = bloodline_cois_victorious #for specific bloodline
+
+	flag = bloodline_cois_victorious_patri #_matri/_patri/_all - inhertance
+	flag = bloodline_cois_victorious_matri_override #allow inheritance for opposite marriages - mother will pass patri in matri marriage & father will pass matri in normal marriae
+	#flag = bloodline_cois_victorious_allow_bastards #do bastards inherits
+
+	flag = bloodline_cois_victorious_special_inheritance
+
+	shown_in_ruler_designer = no
+	shown_in_encyclopedia = no
+
+	desc = { #The description is not shown. it is used to hide/show appropriately
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = bloodline_no
+			}
+			desc = bloodline_desc_blank
+		}
+	}
+}
+
+bloodline_salacad = {
+	index = 432
+
+	martial = 2
+	prowess = 3
+	monthly_prestige = 0.2
+	same_culture_opinion = 5
+
+	flag = no_message
+	flag = bloodline #marked as bloodline, for any_/every_bloodline_character
+	flag = bloodline_salacad #for specific bloodline
+
+	# test for has_trait_with_flag = bloodline_$TRAIT$_matri/$TRAIT$_patri etc
+	flag = bloodline_salacad_matri #_matri/_patri/_all - inhertance
+	flag = bloodline_salacad_patri_override #allow inheritance for opposite marriages - mother will pass patri in matri marriage & father will pass matri in normal marriae
+
+	flag = bloodline_salacad_special_inheritance
+
+	shown_in_ruler_designer = no
+	shown_in_encyclopedia = no
+
+	desc = { #The description is not shown. it is used to hide/show appropriately
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = bloodline_no
+			}
+			desc = bloodline_desc_blank
+		}
+	}
+}

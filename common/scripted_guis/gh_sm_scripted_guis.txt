@@ -1,0 +1,1585 @@
+﻿###########################
+# Spell Menu By CASTOX (warning: deleting comments or otherwise manually editing the file may screw with the Python program. Please use that instead. Of course, edit if you wish, but be prepared for Panzer's wrath if it breaks)
+##################
+# Get Spell Lists 
+##################
+get_spell_list = {
+	scope = character
+	effect = {
+		root = {
+	#####################################################
+	#				Living Magic
+	# <-- collapse#######################################
+			add_to_variable_list = {
+				name = list_living_magic
+				target = flag:vampiric_drain
+			}
+
+			add_to_variable_list = {
+				name = list_living_magic
+				target = flag:strengthening
+			}
+
+			add_to_variable_list = {
+				name = list_living_magic
+				target = flag:fire_magick
+			}
+
+
+			#add_to_variable_list = {
+			#	name = list_living_magic
+			#	target = flag:purification
+			#}
+
+			add_to_variable_list = {
+				name = list_living_magic
+				target = flag:thinning
+			}
+
+			add_to_variable_list = {
+				name = list_living_magic
+				target = flag:poison
+			}
+
+			add_to_variable_list = {
+				name = list_living_magic
+				target = flag:domination
+			}
+
+			add_to_variable_list = {
+				name = list_living_magic
+				target = flag:thralldom
+			}
+
+			#add_to_variable_list = {
+			#	name = list_living_magic
+			#	target = flag:mending
+			#}
+
+			add_to_variable_list = {
+				name = list_living_magic
+				target = flag:battle_rage 
+			}
+
+			add_to_variable_list = {
+				name = list_living_magic
+				target = flag:healing_water
+			}
+
+			add_to_variable_list = {
+				name = list_living_magic
+				target = flag:unveiling
+			}
+			add_to_variable_list = {
+				name = list_living_magic
+				target = flag:creation
+			}
+			add_to_variable_list = {
+				name = list_living_magic
+				target = flag:divination
+			}
+			add_to_variable_list = {
+				name = list_living_magic
+				target = flag:raise_undead
+			}
+			add_to_variable_list = {
+				name = list_living_magic
+				target = flag:quicken
+			}
+			add_to_variable_list = {
+				name = list_living_magic
+				target = flag:genocide_region
+			}
+			add_to_variable_list = {
+				name = list_living_magic
+				target = flag:annihilation
+			}
+			
+	#####################################################
+	#				Dead Magic
+	# <-- collapse#######################################
+			add_to_variable_list = {
+				name = list_dead_magic
+				target = flag:raise_undead2
+			}
+			
+			add_to_variable_list = {
+				name = list_dead_magic
+				target = flag:lead_to_gold
+			}
+
+			add_to_variable_list = {
+				name = list_dead_magic
+				target = flag:create_golems
+			}
+
+			add_to_variable_list = {
+				name = list_dead_magic
+				target = flag:astromancy
+			}
+
+			add_to_variable_list = {
+				name = list_dead_magic
+				target = flag:stone_serpent
+			}
+
+			add_to_variable_list = {
+				name = list_dead_magic
+				target = flag:necrotic_boon
+			}
+
+			add_to_variable_list = {
+				name = list_dead_magic
+				target = flag:crush_armor
+			}
+
+			add_to_variable_list = {
+				name = list_dead_magic
+				target = flag:pull_meteor
+			}
+			
+			add_to_variable_list = {
+				name = list_dead_magic
+				target = flag:craft_greater_golem
+			}		
+
+			add_to_variable_list = {
+				name = list_dead_magic
+				target = flag:boneshaping
+			}			
+			
+	#####################################################
+	#				Mixed Magic
+	# <-- collapse#######################################
+
+			add_to_variable_list = {
+				name = list_mixed_magic
+				target = flag:dementation
+			}
+			add_to_variable_list = {
+				name = list_mixed_magic
+				target = flag:rift_walk
+			}
+			add_to_variable_list = {
+				name = list_mixed_magic
+				target = flag:summon_lesser
+			}
+			add_to_variable_list = {
+				name = list_mixed_magic
+				target = flag:fog_cast
+			}
+			add_to_variable_list = {
+				name = list_mixed_magic
+				target = flag:rift_gaze
+			}
+			add_to_variable_list = {
+				name = list_mixed_magic
+				target = flag:haunting_power
+			}
+			add_to_variable_list = {
+				name = list_mixed_magic
+				target = flag:raise_lesser_fogbeasts
+			}
+			add_to_variable_list = {
+				name = list_mixed_magic
+				target = flag:remove_burdens
+			}
+			add_to_variable_list = {
+				name = list_mixed_magic
+				target = flag:obliterate_memory
+			}
+
+
+	#####################################################
+	#				Other Magic
+	# <-- collapse#######################################
+
+	#####################################################
+	#				Generate Magic
+	# <-- collapse#######################################
+
+			add_to_variable_list = {
+				name = generate_magic
+				target = flag:study_arcane
+			}
+			add_to_variable_list = {
+				name = generate_magic
+				target = flag:flagellate
+			}
+			add_to_variable_list = {
+				name = generate_magic
+				target = flag:ethereal_ritual
+			}
+			add_to_variable_list = {
+				name = generate_magic
+				target = flag:ritual_sacrifice
+			}
+			add_to_variable_list = {
+				name = generate_magic
+				target = flag:sacrifice_population
+			}
+			add_to_variable_list = {
+				name = generate_magic
+				target = flag:communed_with_the_way
+			}
+			add_to_variable_list = {
+				name = generate_magic
+				target = flag:sacrifice_plants
+			}
+			add_to_variable_list = {
+				name = generate_magic
+				target = flag:seeped_into_madness
+			}
+			add_to_variable_list = {
+				name = generate_magic
+				target = flag:communed_with_eldritch
+			}
+			add_to_variable_list = {
+				name = generate_magic
+				target = flag:dreamwalk
+			}
+			add_to_variable_list = {
+				name = generate_magic
+				target = flag:dream_invasion
+			}
+			add_to_variable_list = {
+				name = generate_magic
+				target = flag:moon_read
+			}
+			add_to_variable_list = {
+				name = generate_magic
+				target = flag:moon_pull
+			}			
+			add_to_variable_list = {
+				name = generate_magic
+				target = flag:skeletal_craft
+			}
+			add_to_variable_list = {
+				name = generate_magic
+				target = flag:expedition
+			}
+	
+		}# root end dont erase
+	} #effect end dont erase
+}
+################
+# SpellMenuFunc
+# <-- collapse#######################################
+	
+	clear_target_lists = {
+		effect = {
+			clear_variable_list = spell_targets
+			clear_variable_list = spell_l_targets
+		}
+	}
+	set_spell_to_cast = {
+		scope = character
+		
+		effect = {
+			root = {
+				every_in_list = {
+					variable = lands_realm
+					remove_variable = is_selected
+				}
+			}
+		}
+	}
+	realm_char = {
+		scope = character
+		effect = {
+			root = {
+				every_vassal = {
+					limit = {
+						NOT = {
+							is_imprisoned = yes
+						}
+					}
+					root = {
+						add_to_variable_list = {
+							name = character_in_realm
+							target = prev
+						}
+					}
+				}
+			}
+		}
+	}
+
+	enemy_char = {
+		scope = character
+		effect = {
+			every_in_list = {
+				variable = custom_magic_list
+				limit = { is_alive = yes }
+				root = {
+					add_to_variable_list = {
+						name = enemy_in_realm
+						target = prev
+					}
+				}
+			}
+		}
+	}
+
+	prisoner_char = {
+		scope = character
+		effect = {
+			root = {
+				every_prisoner = {
+					limit = {
+						is_imprisoned_by = prev
+						is_alive = yes
+					}
+					root = {
+						add_to_variable_list = {
+							name = prisoner_in_realm
+							target = prev
+						}
+					}
+				}
+			}
+		}
+	}
+	realm_lands = {
+        scope = character
+        effect = {
+            root = {
+                every_held_title = {
+                	limit = {
+                		NOT = {
+                			tier = tier_barony
+                			tier = tier_duchy
+                			tier = tier_kingdom
+                			tier = tier_empire
+                		}
+                	}
+                    root = {
+                    	add_to_variable_list = {
+                        	name = lands_realm
+                        	target = prev
+                    	}
+                	}
+            	}
+        	}
+    	}
+    }
+
+    enemy_realm_lands = {
+    	scope = character
+    	effect = {
+    		every_war_enemy = {
+    			limit = {
+    				is_at_war_with = prev
+    			}
+    			every_sub_realm_county = {
+    				root = {
+    					add_to_variable_list = {
+    						name = enemy_lands
+    						target = prev
+    					}
+    				}
+    			}
+    		}
+    	}
+    }
+
+	title_selected = {
+		scope = character
+		
+		effect = {
+			if = {
+				limit = {
+					is_target_in_variable_list = { name = spell_l_targets target = scope:target }
+				}
+				remove_list_variable = { name = spell_l_targets target = scope:target }
+				clear_variable_list = spell_l_targets
+			}
+			else_if = {
+				clear_variable_list = spell_l_targets
+				add_to_variable_list = {
+					name = spell_l_targets
+					target = scope:target
+				}
+			}
+			root = {
+				every_in_list = {
+					variable = character_in_realm
+					remove_variable = is_selected
+				}
+				clear_variable_list = spell_targets
+			}
+		}
+	}
+	title_select = {
+
+		scope = title
+		effect = {
+
+			root = {
+				clear_selected_char = {}
+			}
+
+			if = {
+				limit ={
+					has_variable = is_selected
+				}
+		
+				remove_variable = is_selected
+			}
+			else = {
+				set_variable = {
+					name = is_selected
+					value = flag:selected
+				}
+			}
+		}
+	}
+	char_selected = {
+		scope = character
+		
+		effect = {
+			if = {
+				limit = {
+					is_target_in_variable_list = { name = spell_targets target = scope:target }
+				}
+				remove_list_variable = { name = spell_targets target = scope:target }
+			}
+			else = {
+				add_to_variable_list = {
+					name = spell_targets
+					target = scope:target
+				}
+			}
+			root = {
+				every_in_list = {
+					variable = lands_realm
+					remove_variable = is_selected
+				}
+				clear_variable_list = spell_l_targets
+			}
+
+		}
+	}
+	char_select = {
+		scope = character
+		effect = {
+			if = {
+				limit ={
+					has_variable = is_selected
+				}
+		
+				remove_variable = is_selected
+			}
+			else = {
+				set_variable = {
+					name = is_selected
+					value = flag:selected
+				}
+			}
+		}
+	}
+
+########################
+# Spells for CHECKS
+# <-- collapse#######################################
+
+	#living
+		vampiric_drain_check = {
+			scope = character
+			is_shown = {
+				root = {
+					has_perk = livingmagic_perk9_tree1
+				}
+				NOT = {
+					has_character_flag = stopped_vampirism
+				}
+			}
+
+			is_valid = {
+				this.var:magic_counter >= tier_5_spell
+				NOT = {
+					has_trait = gh_extended_life
+					OR = {
+						has_character_flag = casted_vampiric_drain
+						has_trait = incapable
+					}
+				}
+			}
+
+			effect = {
+			
+			}
+		}
+
+		thinning_check = {
+			scope = character
+
+			is_shown = {
+				OR = {
+					spell_requires_court_mage_trait_rank = { TRAIT_NAME = education_living_magic RANK = 2 }
+					spell_requires_perk = { PERK_NAME = livingmagic_perk2_tree2 }
+				}	
+			}
+			is_valid = {
+				spell_magic_cost_by_tier = { TIER = 2 }
+				NOT = {
+					OR = {
+						has_character_flag = casted_thinning
+						has_trait = incapable
+					}
+				}
+			}
+		}
+
+		poison_check = {
+			scope = character
+
+			is_shown = {
+				OR = {
+					spell_requires_court_mage_trait_rank = { TRAIT_NAME = education_living_magic RANK = 2 }
+					spell_requires_perk = { PERK_NAME = livingmagic_perk5_tree1 }
+				}	
+			}
+			is_valid = {
+				spell_magic_cost_by_tier = { TIER = 2 }
+				NOT = {
+					OR = {
+						has_character_flag = casted_poison
+						has_trait = incapable
+					}
+				}
+			}
+		}
+
+		thralldom_check = {
+			scope = character
+
+			is_shown = {
+				OR = {
+					spell_requires_court_mage_trait_rank = { TRAIT_NAME = education_living_magic RANK = 2 }
+					spell_requires_perk = { PERK_NAME = livingmagic_perk2_tree1 }
+				}	
+			}
+			is_valid = {
+				spell_magic_cost_by_tier = { TIER = 3 }
+				NOT = {
+					OR = {
+						has_character_flag = casted_thralldom
+						has_trait = incapable
+					}
+				}
+			}
+		}
+
+		domination_check = {
+			scope = character
+
+			is_shown = {
+				OR = {
+					spell_requires_court_mage_trait_rank = { TRAIT_NAME = education_living_magic RANK = 2 }
+					spell_requires_perk = { PERK_NAME = livingmagic_perk6_tree1 }
+				}	
+			}
+			is_valid = {
+				spell_magic_cost_by_tier = { TIER = 3 }
+				NOT = {
+					OR = {
+						has_character_flag = casted_domination
+						has_trait = incapable
+					}
+				}
+			}
+		}
+
+		strengthening_check = {
+			scope = character
+			is_shown = {
+				OR = {
+					spell_requires_court_mage_trait_rank = { TRAIT_NAME = education_living_magic RANK = 1 }
+					spell_requires_perk = { PERK_NAME = livingmagic_perk5_tree2 }
+				}				
+			}
+
+			is_valid = {
+				spell_magic_cost_by_tier = { TIER = 2 }
+				NOT = {
+					OR = {
+						has_character_flag = casted_strengthening
+						has_trait = incapable
+					}
+				}
+			}
+
+			effect = {
+			
+			}
+		}
+
+		fire_magick_check = {
+			scope = character
+			is_shown = {
+				OR = {
+					spell_requires_court_mage_trait_rank = { TRAIT_NAME = education_living_magic RANK = 1 }
+					spell_requires_perk = { PERK_NAME = livingmagic_perk1_tree2 }
+				}
+			}
+
+			is_valid = {
+				spell_magic_cost_by_tier = { TIER = 1 }
+				NOT = {
+					OR = {
+						has_character_flag = casted_fire_magick
+						has_trait = incapable
+					}
+				}
+			}
+			effect = {
+
+			}
+		}
+
+		mending_check = {
+			scope = character
+			is_shown = {
+				OR = {
+					spell_requires_court_mage_trait_rank = { TRAIT_NAME = education_living_magic RANK = 2 }
+					spell_requires_perk = { PERK_NAME = livingmagic_perk4_tree1 }
+				}
+			}
+
+			is_valid = {
+					spell_magic_cost_by_tier = { TIER = 2 }
+					NOT = {
+						OR = {
+							has_character_flag = casted_mending
+							has_trait = incapable
+						}
+					}
+					OR = {
+						has_trait = wounded_1
+						has_trait = wounded_2
+						has_trait = wounded_3
+						has_trait = maimed
+						has_trait = one_eyed
+						has_trait = one_legged
+						has_trait = disfigured
+						has_trait = infirm
+						has_trait = gout_ridden 
+						has_trait = consumption
+						has_trait = cancer
+						has_trait = typhus
+						has_trait = bubonic_plague
+						has_trait = smallpox
+						has_trait = eunuch
+						has_trait = blind
+						has_trait = bleeder
+						has_trait = wheezing
+						has_trait = weak
+						has_trait = scaly
+						has_trait = impotent
+						has_trait = infertile
+						has_trait = ill 
+						has_trait = pneumonic
+						has_trait = great_pox
+						has_trait = early_great_pox
+						has_trait = lovers_pox
+						has_trait = leper
+						has_trait = clubfooted
+						has_trait = hunchbacked
+						has_trait = lisping
+					}
+			}
+
+			effect = {
+
+			}
+		}
+
+		purification_check = {
+			scope = character
+			is_shown = {
+				OR = {
+					spell_requires_court_mage_trait_rank = { TRAIT_NAME = education_living_magic RANK = 1 }	
+					spell_requires_perk = { PERK_NAME = livingmagic_perk4_tree3 }
+				}
+			}
+
+			is_valid = {
+				spell_magic_cost_by_tier = { TIER = 1 }
+				NOT = {
+					OR = {
+						has_character_flag = casted_purification
+						has_trait = incapable
+					}
+				}
+			}
+
+			effect = {
+
+			}
+		}
+
+		unveiling_check = {
+			scope = character
+			is_shown = {
+				OR = {
+					spell_requires_court_mage_trait_rank = { TRAIT_NAME = education_living_magic RANK = 2 }	
+					spell_requires_perk = { PERK_NAME = livingmagic_perk7_tree1 }
+				}
+			}
+
+			is_valid = {
+				spell_magic_cost_by_tier = { TIER = 2 }
+			}
+
+			effect = {
+			
+			}
+		}
+
+		creation_check = {
+			scope = character
+			is_shown = {
+				spell_requires_trait_rank = { TRAIT_NAME = education_living_magic RANK = 1 }	
+			}
+
+			is_valid = {
+				spell_magic_cost_by_tier = { TIER = 1 }
+				NOT = {
+					OR = {
+						has_character_flag = casted_creation
+						has_trait = incapable
+					}
+				}
+			}
+
+			effect = {
+			
+			}
+		}
+
+		divination_check = {
+			scope = character
+			is_shown = {
+				OR = {
+					spell_requires_court_mage_trait_rank = { TRAIT_NAME = education_living_magic RANK = 3 }
+					spell_requires_perk = { PERK_NAME = livingmagic_perk3_tree3 }
+				}
+			}
+
+			is_valid = {
+				spell_magic_cost_by_tier = { TIER = 3 }
+				NOT = {
+					OR = {
+						has_character_flag = casted_divination
+						has_trait = incapable
+					}
+				}
+			}
+
+			effect = {
+
+			}
+		}
+
+		healing_water_check = {
+			scope = character
+
+			is_shown = {
+				OR = {
+					spell_requires_court_mage_trait_rank = { TRAIT_NAME = education_living_magic RANK = 3 }
+					spell_requires_perk = { PERK_NAME = livingmagic_perk6_tree3 }
+				}
+			}
+
+			is_valid = {
+				spell_magic_cost_by_tier = { TIER = 1 }
+				NOT = {
+					has_trait = incapable
+				}
+			}
+		}
+
+		annihilation_check = {
+			scope = character
+
+			is_shown = {
+				OR = {
+					spell_requires_court_mage_trait_rank = { TRAIT_NAME = education_living_magic RANK = 3 }
+					spell_requires_perk = { PERK_NAME = livingmagic_perk7_tree2 }
+				}
+			}
+
+			is_valid = {
+				spell_magic_cost_by_tier = { TIER = 4 }
+				NOT = {
+					OR = {
+						has_trait = incapable
+						has_character_flag = casted_annihilation
+					}
+				}
+			}
+		}
+
+		raise_undead_check = {
+			scope = character
+
+			is_shown = {
+				OR = {
+					spell_requires_court_mage_trait_rank = { TRAIT_NAME = education_living_magic RANK = 4 }	
+					spell_requires_perk = { PERK_NAME = livingmagic_perk4_tree1 }
+				}
+			}
+
+			is_valid = {
+				spell_magic_cost_by_tier = { TIER = 3 }
+				NOT = {
+					OR = {
+						has_character_flag = casted_raise_dead_living
+						has_trait = incapable
+					}
+				}
+			}
+
+			effect = {
+
+			}
+		}
+	quicken_check = {
+		scope = character
+			is_shown = {
+				OR = {
+					spell_requires_court_mage_trait_rank = { TRAIT_NAME = education_living_magic RANK = 1 }
+					spell_requires_perk = { PERK_NAME = livingmagic_perk4_tree2 }
+				}
+			}
+
+			is_valid = {
+				spell_magic_cost_by_tier = { TIER = 1 }
+				NOT = {
+					OR = {
+						has_character_flag = casted_quicken
+						has_trait = incapable
+					}
+				}
+			}
+
+			effect = {
+			
+			}
+	}
+
+	battle_rage_check = {
+		scope = character
+		is_shown = {
+			OR = {
+				spell_requires_court_mage_trait_rank = { TRAIT_NAME = education_living_magic RANK = 3 }	
+				spell_requires_perk = { PERK_NAME = livingmagic_perk8_tree2 }
+			}
+		}
+
+		is_valid = {
+			spell_magic_cost_by_tier = { TIER = 3 }
+			NOT = {
+				OR = {
+					has_character_flag = casted_battle_rage
+					has_trait = incapable
+				}
+			}
+		}
+	}
+
+	genocide_region_check = {
+		scope = character
+
+		is_shown = {
+			this = character:western_imperial_1
+		}
+		is_valid = {
+			spell_magic_cost_by_tier = { TIER = 5 }
+			NOT = {
+				OR = {
+					has_character_flag = casted_genocide_region
+					has_trait = incapable
+					}
+				custom_description = {
+					has_variable_list = spell_targets
+					text = DESELECT_CHAR
+				}
+			}
+				custom_description = {
+					has_variable_list = spell_l_targets
+					text = SELECT_LAND
+				}
+			}
+		effect = {}
+		}
+
+	### DEAD MAGIC ###
+
+		raise_undead2_check = {
+			scope = character
+
+			is_shown = {
+				OR = {
+					spell_requires_court_mage_trait_rank = { TRAIT_NAME = education_dead_magic RANK = 3 }	
+					spell_requires_perk = { PERK_NAME = deadmagic_perk5_tree1 }
+				}
+			}
+
+			is_valid = {
+				spell_magic_cost_by_tier = { TIER = 3 }
+				NOT = {
+					OR = {
+						has_character_flag = casted_raise_dead
+						has_trait = incapable
+					}
+				}
+			}
+
+			effect = {
+			
+			}
+		}
+		
+		lead_to_gold_check = {
+			scope = character
+
+			is_shown = {
+				OR = {
+					spell_requires_court_mage_trait_rank = { TRAIT_NAME = education_dead_magic RANK = 1 }	
+					spell_requires_perk = { PERK_NAME = deadmagic_perk2_tree1 }
+				}
+			}
+
+			is_valid = {
+				spell_magic_cost_by_tier = { TIER = 1 }
+				NOT = {
+					OR = {
+						has_character_flag = cast_lead_to_gold
+						has_trait = incapable
+					}
+				}
+			}
+
+			effect = {
+			
+			}
+		}
+
+		create_golems_check = {
+			scope = character
+
+			is_shown = {
+				OR = {
+					spell_requires_court_mage_trait_rank = { TRAIT_NAME = education_dead_magic RANK = 2 }	
+					spell_requires_perk = { PERK_NAME = deadmagic_perk6_tree1 }
+				}
+			}
+
+			is_valid = {
+				spell_magic_cost_by_tier = { TIER = 2 }
+				NOT = {
+					OR = {
+						has_character_flag = casted_create_golems
+						has_trait = incapable
+					}
+				}
+			}
+		}
+
+		stone_serpent_check = {
+			scope = character
+
+			is_shown = {
+				OR = {
+					spell_requires_court_mage_trait_rank = { TRAIT_NAME = education_dead_magic RANK = 1 }	
+					spell_requires_perk = { PERK_NAME = deadmagic_perk4_tree2 }
+				}
+			}
+
+			is_valid = {
+				spell_magic_cost_by_tier = { TIER = 1 }
+				NOT = {
+					OR = {
+						has_character_flag = casted_stone_serpent
+						has_trait = incapable
+					}
+				}
+			}
+		}
+
+		astromancy_check = {
+			scope = character
+
+			is_shown = {
+				spell_requires_court_mage_trait_rank = { TRAIT_NAME = education_dead_magic RANK = 2 }	
+				spell_requires_perk = { PERK_NAME = deadmagic_perk2_tree1 }
+			}
+
+			is_valid = {
+				spell_magic_cost_by_tier = { TIER = 2 }
+				NOT = {
+					OR = {
+						has_character_flag = casted_astromancy
+						has_trait = incapable
+					}
+				}
+			}
+		}
+
+		necrotic_boon_check = {
+			scope = character
+
+			is_shown = {
+				OR = {
+					spell_requires_court_mage_trait_rank = { TRAIT_NAME = education_dead_magic RANK = 2 }	
+					spell_requires_perk = { PERK_NAME = deadmagic_perk4_tree1 }
+				}
+			}
+
+			is_valid = {
+				spell_magic_cost_by_tier = { TIER = 2 }
+				NOT = {
+					OR = {
+						has_trait = incapable
+						has_character_flag = casted_necrotic_boon
+					}
+				}
+			}
+		}
+
+		pull_meteor_check = {
+			scope = character
+
+			is_shown = {
+				OR = {
+					spell_requires_court_mage_trait_rank = { TRAIT_NAME = education_dead_magic RANK = 3 }	
+					spell_requires_perk = { PERK_NAME = deadmagic_perk7_tree2 }
+				}
+			}
+
+			is_valid = {
+				spell_magic_cost_by_tier = { TIER = 3 }
+				NOT = {
+					OR = {
+						has_trait = incapable
+						has_character_flag = casted_pulled_meteor
+					}
+				}
+			}
+		}
+
+		crush_armor_check = {
+			scope = character
+
+			is_shown = {
+				OR = {
+					spell_requires_court_mage_trait_rank = { TRAIT_NAME = education_dead_magic RANK = 1 }	
+					spell_requires_perk = { PERK_NAME = deadmagic_perk2_tree2 }
+				}
+			}
+
+			is_valid = {
+				spell_magic_cost_by_tier = { TIER = 1 }
+				NOT = {
+					OR = {
+						has_trait = incapable
+						has_character_flag = casted_crush_armor
+					}
+				}
+			}
+		}
+		
+		craft_greater_golem_check = {  
+			scope = character
+			is_shown = {
+				OR = {
+					spell_requires_court_mage_trait_rank = { TRAIT_NAME = education_dead_magic RANK = 4 }	
+					spell_requires_perk = { PERK_NAME = deadmagic_perk8_tree1 }
+				}
+			}
+			
+			is_valid = {
+				spell_magic_cost_by_tier = { TIER = 4 }
+				NOT = {
+					has_character_flag = casted_craft_greater_golem
+				}
+			}			
+		}
+		
+		boneshaping_check = {  
+			scope = character
+			is_shown = {
+				OR = {
+					spell_requires_court_mage_trait_rank = { TRAIT_NAME = education_dead_magic RANK = 4 }	
+					spell_requires_perk = { PERK_NAME = deadmagic_perk7_tree1 }
+				}
+			}
+			
+			is_valid = {
+				spell_magic_cost_by_tier = { TIER = 5 }
+				NOT = {
+					has_character_flag = casted_boneshaping
+				}
+			}			
+		}		
+
+	### MIXED MAGIC ###
+
+		dementation_check = {
+			scope = character
+
+			is_shown = {
+				OR = {
+					spell_requires_court_mage_trait_rank = { TRAIT_NAME = education_mixed_magic RANK = 2 }	
+					spell_requires_perk = { PERK_NAME = mixedmagic_perk2_tree1 }
+				}
+			}
+
+			is_valid = {
+				spell_magic_cost_by_tier = { TIER = 2 }
+				NOT = {
+					has_character_flag = casted_dementation
+				}
+			}
+		}
+
+		rift_walk_check = {
+			scope = character
+
+			is_shown = {
+				OR = {
+					spell_requires_court_mage_trait_rank = { TRAIT_NAME = education_mixed_magic RANK = 2 }	
+					spell_requires_perk = { PERK_NAME = mixedmagic_perk2_tree3 }
+				}
+			}
+
+			is_valid = {
+				spell_magic_cost_by_tier = { TIER = 2 }
+				NOT = {
+					has_character_flag = casted_rift_walk
+				}
+			}
+		}
+
+		haunting_power_check = {
+			scope = characer
+
+			is_shown = {
+				OR = {
+					spell_requires_court_mage_trait_rank = { TRAIT_NAME = education_mixed_magic RANK = 1 }	
+					spell_requires_perk = { PERK_NAME = mixedmagic_perk3_tree2 }
+				}
+			}
+
+			is_valid = {
+				spell_magic_cost_by_tier = { TIER = 1 }
+				NOT = {
+					has_character_flag = casted_haunting_power
+				}
+			}
+		}
+		#this next one is actually summon greater fogbeast
+		summon_lesser_check = {
+			scope = character
+			is_shown = {
+				OR = {
+					spell_requires_court_mage_trait_rank = { TRAIT_NAME = education_mixed_magic RANK = 4 }	
+					spell_requires_perk = { PERK_NAME = mixedmagic_perk6_tree1 }
+				}
+			}
+
+			is_valid = {
+				spell_magic_cost_by_tier = { TIER = 4 }
+				NOT = {
+					has_character_flag = summoned_lesser_beings
+				}
+			}
+		}
+
+		fog_cast_check = {
+			scope = character
+			is_shown = {
+				OR = {
+					spell_requires_court_mage_trait_rank = { TRAIT_NAME = education_mixed_magic RANK = 4 }	
+					spell_requires_perk = { PERK_NAME = mixedmagic_perk6_tree1 }
+				}
+			}
+
+			is_valid = {
+				spell_magic_cost_by_tier = { TIER = 5 }
+				NOT = {
+					has_character_flag = fog_casted
+				}
+			}
+		}
+
+		rift_gaze_check = {
+			scope = character
+			is_shown = {
+				OR = {
+					spell_requires_court_mage_trait_rank = { TRAIT_NAME = education_mixed_magic RANK = 4 }	
+					spell_requires_perk = { PERK_NAME = mixedmagic_perk8_tree1 }
+				}
+			}
+
+			is_valid = {
+				spell_magic_cost_by_tier = { TIER = 4 }
+				NOT = {
+					has_character_flag = rift_gazed
+				}
+			}
+		}
+
+		raise_lesser_fogbeasts_check = {
+			scope = character
+
+			is_shown = {
+				OR = {
+					spell_requires_court_mage_trait_rank = { TRAIT_NAME = education_mixed_magic RANK = 4 }	
+					spell_requires_perk = { PERK_NAME = mixedmagic_perk5_tree1 }
+				}
+			}
+
+			is_valid = {
+				spell_magic_cost_by_tier = { TIER = 4 }
+				NOT = {
+					has_character_flag = casted_raise_lesser_fogbeasts
+				}
+			}
+		}
+
+		obliterate_memory_check = {
+			scope = character 
+
+			is_shown = {
+				OR = {
+					spell_requires_court_mage_trait_rank = { TRAIT_NAME = education_mixed_magic RANK = 4 }	
+					spell_requires_perk = { PERK_NAME = mixedmagic_perk9_tree3 }
+				}
+			}
+
+			is_valid = {
+				spell_magic_cost_by_tier = { TIER = 5 }
+				NOT = {
+					has_character_flag = casted_obliterate_memory
+				}
+			}
+		}
+
+		remove_burdens_check = {
+			scope = characer
+
+			is_shown = {
+				OR = {
+					spell_requires_court_mage_trait_rank = { TRAIT_NAME = education_mixed_magic RANK = 3 }	
+					spell_requires_perk = { PERK_NAME = mixedmagic_perk7_tree3 }
+				}
+			}
+
+			is_valid = {
+				spell_magic_cost_by_tier = { TIER = 3 }
+				NOT = {
+					has_character_flag = casted_remove_burden
+				}
+			}
+		}
+
+
+	###  OTHER MAGIC ###
+
+
+
+	#### GENERATE MAGIC ###
+
+	study_arcane_check = {
+		scope = character
+
+		is_shown = {
+			can_access_magic = yes
+		}
+
+		is_valid = {
+			NOT = {
+				OR = {
+					has_character_flag = studied_arcane
+					has_trait = incapable
+				}
+			}
+		}
+	}
+
+	flagellate_check = {
+		scope = character
+		is_shown = {
+			NOT = {
+				has_culture_group = culture_group:gh_partic_group
+			}
+			root = {
+				has_perk = livingmagic_perk1_tree1
+			}
+		}
+		is_valid = {
+			NOR = {
+				has_trait_rank = {
+					trait = wounded
+					rank = 3
+				}
+				custom_description = {
+					has_variable_list = spell_l_targets
+					text = DESELECT_LAND
+				}
+				custom_description = {
+					has_variable_list = spell_targets
+					text = DESELECT_CHAR
+				}
+			}
+		}
+		effect ={}
+	}
+	ritual_sacrifice_check = {
+		scope = character
+
+		is_shown = {
+			NOT = {
+				root = {
+					has_culture_group = culture_group:gh_partic_group
+				}
+			}
+			root = {
+				has_perk = livingmagic_perk8_tree1
+			}
+		}
+
+		is_valid = {
+			NOT = {
+				has_character_flag = sacrificed_someone
+				has_trait = incapable
+				custom_description = {
+					has_variable_list = spell_l_targets
+					text = DESELECT_LAND
+				}
+			}
+			custom_description = {
+				has_variable_list = spell_targets 
+				text = SELECT_CHAR_INV
+			}
+		}
+
+		effect = {}
+	}
+	sacrifice_population_check = {
+		scope = character
+
+		is_shown = {
+			NOT = {
+				root = {
+					has_culture_group = culture_group:gh_partic_group
+				}
+			}
+			root = {
+				has_perk = livingmagic_perk8_tree1
+			}			
+		}
+
+		is_valid = {
+			NOT = {
+				OR = {
+					has_character_flag = sacrificed_population
+					has_trait = incapable
+				}
+				custom_description = {
+					has_variable_list = spell_targets
+					text = DESELECT_CHAR
+				}
+			}
+				custom_description = {
+					has_variable_list = spell_l_targets
+					text = SELECT_LAND
+				}
+		}
+
+		effect = {}
+	}
+	sacrifice_plants_check = {
+		scope = character
+		is_shown = {
+			root = {
+				OR = {
+					has_culture_group = culture_group:gh_partic_group
+					has_perk = livingmagic_perk2_tree3
+				}
+			}
+		}
+
+		is_valid = {
+			NOT = {
+				OR = {
+					has_character_flag = killed_plants
+					has_trait = incapable
+				}
+			}
+		}
+		effect= {}
+	}
+	communed_with_the_way_check = {
+		scope = character
+		is_shown = {
+			has_culture_group = culture_group:gh_partic_group
+			OR = {
+				has_trait_rank = {
+					trait = education_living_magic
+					rank >= 1
+				}
+				has_trait_rank = {
+					trait = education_dead_magic
+					rank >= 1
+				}
+				has_trait_rank = {
+					trait = education_mixed_magic
+					rank >= 1
+				}
+			}
+		}
+
+		is_valid = {
+			NOT = {
+				OR = {
+					has_character_flag = communed_with_the_way
+					has_trait = incapable
+				}
+			}
+		}
+		effect = {}
+	}
+
+	seeped_into_madness_check = {
+		scope = character
+		is_shown = {
+			has_perk = mixedmagic_perk1_tree1
+		}
+		is_valid = {
+			NOT = {
+				has_character_flag = seeps_into_madness
+			}
+		}
+	}
+
+	communed_with_eldritch_check = {
+		scope = character
+		is_shown = {
+			has_perk = mixedmagic_perk4_tree1
+		}
+		is_valid = {
+			NOT = {
+				has_character_flag = communes_with_eldritch
+			}
+		}
+	}
+
+	dreamwalk_check = {
+		scope = character
+		is_shown = {
+			has_perk = mixedmagic_perk1_tree3
+		}
+
+		is_valid = {
+			NOT = {
+				has_character_flag = dreamwalked
+			}
+		}
+	}
+
+	dream_invasion_check = {
+		scope = character
+		is_shown = {
+			has_perk = mixedmagic_perk5_tree3
+		}
+
+		is_valid = {
+			NOT = {
+				has_character_flag = dream_invaded
+			}
+		}
+	}
+
+	ethereal_ritual_check = {
+		scope = character
+		is_shown = {
+			has_perk = mixedmagic_perk1_tree3
+		}
+
+		is_valid = {
+			NOT = {
+				has_character_flag = communes_with_ethereals
+			}
+		}
+	}
+
+	moon_read_check = {
+		scope = character
+		is_shown = {
+			has_perk = deadmagic_perk1_tree2
+		}
+
+		is_valid = {
+			NOT = {
+				OR = {
+					has_character_flag = moon_read_already
+					has_trait = incapable
+				}
+			}
+		}
+	}
+	
+	moon_pull_check = {
+		scope = character
+		is_shown = {
+			has_perk = deadmagic_perk4_tree2  
+		}
+
+		is_valid = {
+			NOT = {
+				OR = {
+					has_character_flag = moon_pull_already
+					has_trait = incapable
+				}
+			}
+		}
+	}	
+
+	skeletal_craft_check = {
+		scope = character
+		is_shown = {
+			has_perk = deadmagic_perk3_tree1
+		}
+
+		is_valid = {
+			NOT = {
+				OR = {
+					has_character_flag = casted_skeletal_craft
+					has_trait = incapable
+				}
+			}
+		}
+	}
+
+	expedition_check = {
+		scope = character
+		is_shown = {
+			has_perk = deadmagic_perk1_tree3
+		}
+
+		is_valid = {
+			NOT = {
+				OR = {
+					has_trait = incapable
+					has_character_flag = went_on_expedition
+				}
+			}
+		}
+	}
+
+
+# THE END

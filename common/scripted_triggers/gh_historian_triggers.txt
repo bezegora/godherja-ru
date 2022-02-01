@@ -1,0 +1,27 @@
+﻿is_sole_aautokratir = {
+	OR = {
+		has_title = title:e_aversaria
+		has_title = title:e_oraispol_aautokratia
+		has_title = title:e_asiupoli_aautokratia
+	}
+	trigger_if = {
+		limit = { title:e_aversaria = { is_title_created = yes } }
+		title:e_aversaria = { holder = root }
+	}
+	trigger_if = {
+		limit = { title:e_oraispol_aautokratia = { is_title_created = yes } }
+		title:e_oraispol_aautokratia = { holder = root }
+	}
+	trigger_if = {
+		limit = { title:e_asiupoli_aautokratia = { is_title_created = yes } }
+		title:e_asiupoli_aautokratia = { holder = root }
+	}
+}
+
+any_aautokratir_exists = {
+	OR = {
+		title:e_aversaria = { is_title_created = yes }
+		title:e_oraispol_aautokratia = { is_title_created = yes }
+		title:e_asiupoli_aautokratia = { is_title_created = yes }
+	}
+}

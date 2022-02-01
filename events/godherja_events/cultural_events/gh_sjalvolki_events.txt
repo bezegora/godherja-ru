@@ -1,0 +1,642 @@
+﻿###############################
+#	Sjalvolki Flavor Events	  #
+#							  # 
+###############################
+
+namespace = sjalvolki_monthly
+
+sjalvolki_monthly.1000 = { #flavor event for dispute between developing province or leaving it for hunters - By Mayor
+	type = character_event
+	title = sjalvolki_monthly.1000.t
+	desc = sjalvolki_monthly.1000.desc
+	theme = stewardship
+	left_portrait = {
+		character = root
+		animation = idle
+	}
+	immediate = {
+		random_sub_realm_county = {
+			limit = {
+				holder = root
+			}
+			save_scope_as = sjalvolki_province_dispute
+		}
+	}
+	trigger = {
+		faith.religion = religion:sjalvolki_religion
+	}
+
+	option = {
+		name = sjalvolki_monthly.1000.a
+			scope:sjalvolki_province_dispute = {
+				add_county_modifier = {
+					modifier = preserved_for_hunters
+					years = 20
+				}
+				change_county_control = 15
+			}
+			add_piety = medium_piety_gain
+		}
+	option = {
+		name = sjalvolki_monthly.1000.b
+			scope:sjalvolki_province_dispute = {
+				change_development_level = 1
+				change_county_control = -15
+				add_county_modifier = {
+					modifier = expanding_farms
+					years = 20
+				}
+			}
+			add_piety = minor_piety_loss
+		}
+}
+sjalvolki_monthly.1001 = { #hunters find a ruin event chain - By Mayor
+type = character_event
+	title = sjalvolki_monthly.1001.t
+	desc = sjalvolki_monthly.1001.desc
+	theme = stewardship
+	left_portrait = {
+		character = root
+		animation = personality_rational
+	}
+	immediate = {
+		random_sub_realm_county = {
+			limit = {
+				holder = root
+			}
+			save_scope_as = sjalvolki_hunters_find
+		}
+	}
+	trigger = {
+		faith.religion = religion:sjalvolki_religion
+		is_adult = yes
+	}
+	option = {
+		name = sjalvolki_monthly.1001.a
+			remove_short_term_gold = minor_gold_value
+			hidden_effect = {
+				random_list = {
+					20 = { trigger_event = { id = sjalvolki_monthly.1002 days = 15 } }	#hunters find a ruin event chain, library result
+					20 = { trigger_event = { id = sjalvolki_monthly.1003 days = 15 } }	#hunters find a ruin event chain, armory result
+					20 = { trigger_event = { id = sjalvolki_monthly.1004 days = 15 } }	#hunters find a ruin event chain, mill result
+					20 = { trigger_event = { id = sjalvolki_monthly.1005 days = 15 } }	#hunters find a ruin event chain, temple result
+					20 = { trigger_event = { id = sjalvolki_monthly.1006 days = 15 } }	#hunters find a ruin event chain, clockwork menagerie
+				}
+		}
+	}
+	option = {
+		name = sjalvolki_monthly.1001.b
+	}
+}
+ 
+sjalvolki_monthly.1002 = { #hunters find a ruin event chain, library result - By Mayor
+type = character_event
+	title = sjalvolki_monthly.1002.t
+	desc = sjalvolki_monthly.1002.desc
+	theme = hunting
+	left_portrait = {
+		character = root
+		animation = personality_greedy
+	}
+	option = {
+		name = sjalvolki_monthly.1002.a
+		add_gold = medium_gold_value
+	}
+	option = {
+		name = sjalvolki_monthly.1002.b
+		random_list = {
+			10 = {add_artifact = {ARTIFACT = artifact_bookpurebodyfirst} }
+			10 = {add_artifact = {ARTIFACT = artifact_bookmightmagibuxommaiden} }
+			10 = {add_artifact = {ARTIFACT = artifact_bookfiftyshades} }
+			10 = {add_artifact = {ARTIFACT = artifact_bookpurelifefifth} }
+			10 = {add_artifact = {ARTIFACT = artifact_bookpurebodyfifth} }
+			10 = {add_artifact = {ARTIFACT = artifact_bookpuremindfifth} }
+			10 = {add_artifact = {ARTIFACT = artifact_bookaversariancookinginformational} }
+			10 = {add_artifact = {ARTIFACT = artifact_bookskullofthepurest} }
+			10 = {add_artifact = {ARTIFACT = artifact_bookhowtomaimadragon} }
+			10 = {add_artifact = {ARTIFACT = artifact_bookcalystojournal} }
+		}
+	}
+}
+sjalvolki_monthly.1003 = { #hunters find a ruin event chain, armory result - By Mayor
+type = character_event
+	title = sjalvolki_monthly.1003.t
+	desc = sjalvolki_monthly.1003.desc
+	theme = hunting
+	left_portrait = {
+		character = root
+		animation = personality_greedy
+	}
+	option = {
+		name = sjalvolki_monthly.1003.a
+		random_list = {
+			35 = {add_artifact = {ARTIFACT = artifact_17} }
+			10 = {add_artifact = {ARTIFACT = artifact_18} }
+			5 = {add_artifact = {ARTIFACT = artifact_19} }
+			35 = {add_artifact = {ARTIFACT = artifact_4} }
+			10 = {add_artifact = {ARTIFACT = artifact_5} }
+			5 = {add_artifact = {ARTIFACT = artifact_6} }
+		}
+	}
+	option = {
+		name = sjalvolki_monthly.1003.b
+		random_list = {
+			45 = {add_artifact = {ARTIFACT = artifact_28} }
+			45 = {add_artifact = {ARTIFACT = artifact_29} }
+			10 = {add_artifact = {ARTIFACT = artifact_30} }
+		}
+		}
+	option = {
+		name = sjalvolki_monthly.1003.c
+		add_prestige = minor_prestige_value
+	}
+}
+
+sjalvolki_monthly.1004 = { #hunters find a ruin event chain, mill result - By Mayor
+type = character_event
+	title = sjalvolki_monthly.1004.t
+	desc = sjalvolki_monthly.1004.desc
+	theme = hunting
+	left_portrait = {
+		character = root
+		animation = personality_greedy
+	}
+	option = {
+		name = sjalvolki_monthly.1004.a
+		add_gold = medium_gold_value
+	}
+	option = {
+		name = sjalvolki_monthly.1004.b
+		add_gold = medium_gold_value
+		scope:sjalvolki_hunters_find  = {
+			add_county_modifier = {
+				modifier = locals_mollified
+				years = 20
+			}
+		}
+	}
+}
+sjalvolki_monthly.1005 = { #hunters find a ruin event chain, Aversarian temple result - By Mayor
+type = character_event
+	title = sjalvolki_monthly.1005.t
+	desc = sjalvolki_monthly.1005.desc
+	theme = hunting
+	left_portrait = {
+		character = root
+		animation = personality_greedy
+	}
+	option = {
+		name = sjalvolki_monthly.1005.a
+		add_gold = minor_gold_value
+	}
+	option = {
+		name = sjalvolki_monthly.1005.b
+		add_piety = medium_piety_gain
+	}
+	option = { 
+		name = sjalvolki_monthly.1005.c
+		stress_impact = {
+			generous = minor_stress_impact_gain
+			merciful = medium_stress_impact_gain
+		}
+		trigger = {
+			scope:sjalvolki_hunters_find = {
+				religion = religion:aversarinas_aautokrata_religion
+			}
+		}
+		scope:sjalvolki_hunters_find  = {
+			add_county_modifier = {
+				modifier = locals_mollified
+				years = 20
+			}
+		}
+		add_piety = minor_piety_loss
+	}
+	option = { 
+		name = sjalvolki_monthly.1005.d
+		trigger = {
+			scope:sjalvolki_hunters_find = {
+				NOT = {
+					religion = religion:aversarinas_aautokrata_religion
+				}
+			}
+		}
+		stress_impact = {
+			generous = minor_stress_impact_gain
+			merciful = medium_stress_impact_gain
+		}
+		add_piety = minor_piety_loss
+		scope:sjalvolki_hunters_find  = {
+			add_county_modifier = {
+				modifier = locals_enraged
+				years = 20
+			}
+		}
+	}
+}
+sjalvolki_monthly.1006 = { #hunters find a ruin event chain, Aversarian villa with a clockwork menagerie - By Mayor
+	type = character_event
+	title = sjalvolki_monthly.1006.t
+	desc = sjalvolki_monthly.1006.desc
+	theme = hunting
+	left_portrait = {
+		character = root
+		animation = personality_greedy
+	}
+	option = {
+		name = sjalvolki_monthly.1006.a
+		add_gold = minor_gold_value
+	}
+	option = {
+		name = sjalvolki_monthly.1006.b
+		random_list = {
+			25 = {add_artifact = {ARTIFACT = artifact_kartharaddimusicautomata} }
+			25 = {add_artifact = {ARTIFACT = artifact_kartharaddimanautomata} }
+			25 = {add_artifact = {ARTIFACT = artifact_automaticgemlion} }
+			25 = {add_artifact = {ARTIFACT = artifact_brokenavianautomata} }
+		}
+	}
+}
+
+sjalvolki_monthly.1007 = { #childhood event to ask hunter parent to teach you - By Mayor
+	type = character_event
+	title = sjalvolki_monthly.1007.t
+	desc = sjalvolki_monthly.1007.desc
+	theme = hunting
+	left_portrait = {
+		character = root
+		animation = beg
+	}
+	right_portrait = {
+		character = scope:guardian
+		animation = personality_rational
+	}
+	trigger = {
+		faith.religion = religion:sjalvolki_religion
+		is_adult = no
+		age > 8
+		any_relation = {
+			type = guardian
+			has_trait = lifestyle_hunter
+		}
+		NOT = {
+			has_trait = lifestyle_hunter
+			has_character_flag = sjalvolki_child_turned_down_hunt
+		}
+	}
+	immediate = {
+		save_scope_as = hunt_curious_child
+		random_relation = {
+			type = guardian
+			save_scope_as = guardian
+		}
+	}
+	
+	option = { #Nah
+		name = sjalvolki_monthly.1007.a
+		add_character_flag = {
+			flag = sjalvolki_child_turned_down_hunt
+			years = 2
+		}
+		ai_chance = {
+            base = 50
+            ai_value_modifier = {
+				ai_boldness = -0.5
+				ai_zeal = -0.5
+            }
+        }
+	}
+	option = { #Ask your guardian.
+		name = sjalvolki_monthly.1007.b
+		scope:guardian = {
+			trigger_event = { id = sjalvolki_monthly.1008 days = 15 }
+		}
+		ai_chance = {
+            base = 100
+            ai_value_modifier = {
+                ai_boldness = 0.5
+				ai_zeal = 0.5
+            }
+        }
+	}
+}
+
+sjalvolki_monthly.1008 = { #Guardian-side triggered event where they decide how/if to teach you - By Mayor
+	type = character_event
+	title = sjalvolki_monthly.1008.t
+	desc = sjalvolki_monthly.1008.desc
+	theme = hunting
+	left_portrait = {
+		character = root
+		animation = personality_rational
+	}
+	right_portrait = {
+		character = scope:hunt_curious_child
+		animation = beg
+	}
+	option = { #help child personally, success based on your skills
+		name = sjalvolki_monthly.1008.a
+		duel = {
+			skill = martial
+			add_piety = minor_piety_gain
+			40 = { #success! The child gains hunter_1
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = 4
+				}
+				desc = sjalvolki_monthly.1008.a.success
+				scope:hunt_curious_child = {
+				send_interface_toast = {
+					title = sjalvolki_monthly.1008.child_message_success
+					left_icon = scope:hunt_curious_child
+					change_trait_rank = {
+						trait = hunter
+						rank = 1
+						max = 3
+					}
+				}
+				}
+				send_interface_toast = {
+					title = sjalvolki_monthly.1008.adult_message_success
+					left_icon = scope:hunt_curious_child
+					add_piety = minor_piety_gain
+				}
+			}
+			15 = { #failure, child gains nothing
+				compare_modifier = {
+					value = scope:duel_value
+				}
+				desc = sjalvolki_monthly.1008.b.failure
+				scope:hunt_curious_child = {
+					send_interface_toast = {
+						title = sjalvolki_monthly.1008.child_message_failure
+						left_icon = scope:hunt_curious_child
+					}
+				}
+				send_interface_toast = {
+					title = sjalvolki_monthly.1008.adult_message_failure
+					left_icon = scope:hunt_curious_child
+				}
+			}
+			10 = { #disaster, child is wounded! You're such a good parent!
+				compare_modifier = {
+					value = scope:duel_value
+				}
+				desc = sjalvolki_monthly.1008.c.failure
+				scope:hunt_curious_child = {
+					send_interface_toast = {
+						title = sjalvolki_monthly.1008.child_message_crit_fail
+						left_icon = scope:hunt_curious_child
+						add_trait = wounded
+					}
+				}
+				send_interface_toast = {
+					title = sjalvolki_monthly.1008.adult_message_crit_fail
+					left_icon = scope:hunt_curious_child
+				}
+			}
+		}
+		ai_chance = {
+            base = 100
+            ai_value_modifier = {
+                ai_boldness = 0.5
+				ai_zeal = 0.5
+            }
+        }
+		
+	}
+	option = { #Give the kid a bow and send them off into the wilderness. Good parenting!
+		name = sjalvolki_monthly.1008.b
+		scope:hunt_curious_child = {
+			trigger_event = { id = sjalvolki_monthly.1009 days = 15 }
+		}
+		ai_chance = {
+            base = 100
+            ai_value_modifier = {
+                ai_boldness = -0.5
+				ai_energy = -0.5
+				ai_honor = -0.5
+				ai_compassion = -0.5
+            }
+        }
+	}
+	option = { #Forbid them, it's too dangerous! Child receives event where they can sneak off anyway
+		name = sjalvolki_monthly.1008.c
+		scope:hunt_curious_child = {
+			trigger_event = { id = sjalvolki_monthly.1010 days = 15 }
+		}
+		ai_chance = {
+            base = 100
+            ai_value_modifier = {
+				ai_compassion = 0.5
+				ai_sociability = -0.5
+            }
+        }
+	}
+}
+
+sjalvolki_monthly.1009 = { #Guardian-triggers kickback of event, sends you off into the wilderness alone. Have fun!
+	type = character_event
+	title = sjalvolki_monthly.1009.t
+	desc = sjalvolki_monthly.1009.desc
+	theme = hunting
+	left_portrait = {
+		character = root
+		animation = disbelief
+	}
+	option = { #Go off to learn to hunt on your own! Harder but a bigger reward
+		name = sjalvolki_monthly.1009.a
+		scope:hunt_curious_child = {
+		duel = {
+			skill = martial
+			value = 8
+			add_piety = minor_piety_gain
+			50 = { #success! The child gains hunter_1
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = 2
+				}
+				desc = sjalvolki_monthly.1009.a.success
+				send_interface_toast = {
+					title = sjalvolki_monthly.1009.child_message_success
+					left_icon = scope:hunt_curious_child
+					change_trait_rank = {
+						trait = hunter
+						rank = 1
+						max = 3
+					}
+					add_trait = hunter_1
+				}
+				scope:guardian = {
+				send_interface_toast = {
+					title = sjalvolki_monthly.1009.adult_message_success
+					left_icon = scope:hunt_curious_child
+				}
+				}
+			}
+			35 = { #failure, child gains nothing
+				compare_modifier = {
+					value = scope:duel_value
+				}
+				desc = sjalvolki_monthly.1009.b.failure
+				send_interface_toast = {
+					title = sjalvolki_monthly.1009.child_message_failure
+					left_icon = scope:hunt_curious_child
+				}
+				scope:guardian = {
+				send_interface_toast = {
+					title = sjalvolki_monthly.1009.adult_message_failure
+					left_icon = scope:hunt_curious_child
+				}
+				}
+			}
+			15 = { #disaster, child is wounded! Your guardian is such a good parent!
+				compare_modifier = {
+					value = scope:duel_value
+				}
+				desc = sjalvolki_monthly.1009.c.failure
+				send_interface_toast = {
+					title = sjalvolki_monthly.1009.child_message_crit_fail
+					left_icon = scope:hunt_curious_child
+
+					add_trait = wounded_1
+				}
+				scope:guardian = {
+				send_interface_toast = {
+					title = sjalvolki_monthly.1009.adult_message_crit_fail
+					left_icon = scope:hunt_curious_child
+				}
+				}
+			}
+			}
+			
+			}
+			ai_chance = {
+				base = 100
+				ai_value_modifier = {
+					ai_boldness = 0.5
+					ai_zeal = 0.5
+				}
+			}
+	}
+	option = { #Uh.... no. 
+		name = sjalvolki_monthly.1009.b
+		scope:guardian = {
+				send_interface_toast = {
+					title = sjalvolki_monthly.1009.adult_message_giveup
+					left_icon = scope:hunt_curious_child
+				}
+				}
+		ai_chance = {
+				base = 100
+				ai_value_modifier = {
+					ai_boldness = -0.5
+					ai_zeal = -0.5
+					ai_energy = -0.5
+					ai_rationality = 0.5
+				}
+			}
+			add_character_flag = {
+			flag = sjalvolki_child_turned_down_hunt
+			years = 2
+			}
+		}
+	}
+	
+sjalvolki_monthly.1010 = { #Guardian-triggered kickback of event, forbids you to hunt
+	type = character_event
+	title = sjalvolki_monthly.1010.t
+	desc = sjalvolki_monthly.1010.desc
+	theme = secret
+	left_portrait = {
+		character = root
+		animation = rage	
+	}
+	option = { #Go off to learn to hunt on your own!
+		name = sjalvolki_monthly.1010.a
+		scope:hunt_curious_child = {
+		duel = {
+			skill = intrigue
+			value = 8
+			add_piety = minor_piety_gain
+			50 = { #success! You gain hunter_1 and some intrigue for sneakin' skills
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = 2
+				}
+				desc = sjalvolki_monthly.1010.a.success
+				send_interface_toast = {
+					title = sjalvolki_monthly.1010.child_message_success
+					left_icon = scope:hunt_curious_child
+					add_intrigue_skill = 1
+					change_trait_rank = {
+						trait = hunter
+						rank = 1
+						max = 3
+					}
+				}
+				scope:guardian = {
+				send_interface_toast = {
+					title = sjalvolki_monthly.1010.adult_message_success
+					left_icon = scope:hunt_curious_child
+				}
+				}
+			}
+			35 = { #failure, child gains nothing
+				compare_modifier = {
+					value = scope:duel_value
+				}
+				scope:guardian = {
+				send_interface_toast = {
+					title = sjalvolki_monthly.1010.adult_message_failure
+					left_icon = scope:hunt_curious_child
+				}
+				}
+				desc = sjalvolki_monthly.1010.b.failure
+			}
+			15 = { #disaster, child is wounded! You're such a good parent!
+				compare_modifier = {
+					value = scope:duel_value
+				}
+				desc = sjalvolki_monthly.1010.c.failure
+				send_interface_toast = {
+					title = sjalvolki_monthly.1010.child_message_crit_fail
+					left_icon = scope:hunt_curious_child
+					add_trait = wounded_1
+				}
+				scope:guardian = {
+				send_interface_toast = {
+					title = sjalvolki_monthly.1010.adult_message_crit_fail
+					left_icon = scope:hunt_curious_child
+				}
+				}
+			}
+		}
+		}
+		ai_chance = {
+			base = 100
+			ai_value_modifier = {
+				ai_boldness = 0.5
+				ai_zeal = 0.5
+				ai_honor = -0.5
+			}
+		}
+	}
+	option = { #Obey them
+		name = sjalvolki_monthly.1010.b
+		ai_chance = {
+				base = 100
+				ai_value_modifier = {
+					ai_boldness = -0.5
+					ai_zeal = -0.5
+					ai_energy = -0.5
+					ai_rationality = 0.5
+					ai_honor = 0.5
+				}
+			}
+			add_character_flag = {
+			flag = sjalvolki_child_turned_down_hunt
+			years = 2
+			}
+		}
+}

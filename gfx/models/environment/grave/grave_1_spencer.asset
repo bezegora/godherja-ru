@@ -1,0 +1,37 @@
+pdxmesh = {
+	name = "grave_1_spencer_mesh"
+	file = "grave_1_spencer.mesh"
+
+	meshsettings = {
+		name = "pCubeShape2"
+		index = 0
+		shader = "standard"
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "tree_03Shape"
+		index = 0
+		shader = "standard"
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "tree_1_spencerShape"
+		index = 0
+		shader = "standard"
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "DeadTree23:P3D_DeadTree1Shape"
+		index = 0
+		shader = "standard"
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+}
+
+entity = {
+	name = "grave_1_spencer_entity"
+	pdxmesh = "grave_1_spencer_mesh"
+}

@@ -1,0 +1,421 @@
+﻿@holding_illustration_western = "gfx/interface/illustrations/holding_types/city_western.dds"
+@holding_illustration_india = "gfx/interface/illustrations/holding_types/city_india.dds"
+@holding_illustration_mediterranean = "gfx/interface/illustrations/holding_types/city_mediterranean.dds"
+@holding_illustration_mena = "gfx/interface/illustrations/holding_types/city_mena.dds"
+
+############################
+# RUINED DISTRICT FEATURES #
+############################
+
+ruined_citadel_01 = {
+	construction_time = slow_construction_time
+	
+	asset = {
+		type = pdxmesh
+		names = {
+			"building_western_city_02_mesh"
+		}
+		illustration = @holding_illustration_western
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/City/western_city" soundparameter = { "Tier" = 2 } }
+		graphical_regions = { world_ga_marcher_kingdoms }
+		graphical_cultures = { western_building_gfx slavic_building_gfx }
+	}
+	
+	asset = {
+		type = pdxmesh
+		names = {
+			"building_mena_city_02_mesh"
+		}
+		illustration = @holding_illustration_mena
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/City/mena_city" soundparameter = { "Tier" = 2 } }
+		graphical_regions = { world_sarradon }
+		graphical_cultures = { mena_building_gfx }
+	}
+	
+	asset = {
+		type = pdxmesh
+		names = {
+			"building_india_city_02_mesh"
+		}
+		illustration = @holding_illustration_india
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/City/indian_city" soundparameter = { "Tier" = 2 } }
+		graphical_cultures = { indian_building_gfx }
+	}
+	
+	asset = {
+		type = pdxmesh
+		names = {
+			"building_mediterranean_city_02_mesh"
+		}
+		illustration = @holding_illustration_mediterranean
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/City/mediterranean_city" soundparameter = { "Tier" = 2 } }
+		graphical_regions = { world_ga_aversarian_homelands world_ga_clanlands }
+		graphical_cultures = { mediterranean_building_gfx }
+	}
+	
+	can_construct_potential = {
+		always = no 	# Only historical and maybe via event/decision
+	}
+	
+	cost_gold = main_building_tier_1_cost
+	next_building = ruined_citadel_02
+	
+	province_modifier = {
+		fort_level = 1
+	}
+		
+	flag = city
+	
+	ai_value = {
+		base = 0
+	}
+}
+
+ruined_citadel_02 = {
+	construction_time = slow_construction_time
+	
+	asset = {
+		type = pdxmesh
+		names = {
+			"building_western_city_02_mesh"
+		}
+		illustration = @holding_illustration_western
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/City/western_city" soundparameter = { "Tier" = 2 } }
+		graphical_regions = { world_ga_marcher_kingdoms }
+		graphical_cultures = { western_building_gfx slavic_building_gfx }
+	}
+	
+	asset = {
+		type = pdxmesh
+		names = {
+			"building_mena_city_02_mesh"
+		}
+		illustration = @holding_illustration_mena
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/City/mena_city" soundparameter = { "Tier" = 2 } }
+		graphical_regions = { world_sarradon }
+		graphical_cultures = { mena_building_gfx }
+	}
+	
+	asset = {
+		type = pdxmesh
+		names = {
+			"building_india_city_02_mesh"
+		}
+		illustration = @holding_illustration_india
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/City/indian_city" soundparameter = { "Tier" = 2 } }
+		graphical_cultures = { indian_building_gfx }
+	}
+	
+	asset = {
+		type = pdxmesh
+		names = {
+			"building_mediterranean_city_02_mesh"
+		}
+		illustration = @holding_illustration_mediterranean
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/City/mediterranean_city" soundparameter = { "Tier" = 2 } }
+		graphical_regions = { world_ga_aversarian_homelands world_ga_clanlands }
+		graphical_cultures = { mediterranean_building_gfx }
+	}
+	
+	can_construct_potential = {
+		
+	}
+	
+	cost_gold = main_building_tier_1_cost
+	
+	levy = 100
+	
+	province_modifier = {
+		fort_level = 1
+	}
+		
+	flag = city
+	
+	ai_value = {
+		base = 0
+	}
+}
+
+scattered_training_ground_01 = {
+	can_construct_potential = {
+		county = {
+			NOT = {
+				any_county_province = {
+					has_building = scattered_training_ground_01 
+				}
+			}
+		}
+	}
+	
+    construction_time = standard_construction_time
+    
+    cost_gold = 150
+    next_building = scattered_training_ground_02
+    
+    character_modifier = {
+		martial = 1
+    }
+	
+	province_modifier = {
+		monthly_income = 0.2
+	}
+	
+	county_modifier = {
+		county_opinion_add = -5
+	}
+    
+    type_icon = "icon_building_warcamps.dds"
+}
+
+scattered_training_ground_02 = {
+    construction_time = standard_construction_time
+    
+    cost_gold = 150
+    next_building = scattered_training_ground_03
+    
+    character_modifier = {
+		martial = 2
+		monthly_prestige_gain_per_knight_mult = -0.1
+		knight_effectiveness_mult = 0.05
+    }
+	
+	province_modifier = {
+		monthly_income = 0.4
+	}
+	
+	county_modifier = {
+		county_opinion_add = -10
+	}
+
+}
+
+scattered_training_ground_03 = {
+    construction_time = standard_construction_time
+    
+    cost_gold = 150
+    next_building = scattered_training_ground_04
+    
+    character_modifier = {
+		martial = 3
+		monthly_prestige_gain_per_knight_mult = -0.2
+		knight_effectiveness_mult = 0.10
+    }
+	
+	province_modifier = {
+		monthly_income = 0.6
+	}
+	
+	county_modifier = {
+		county_opinion_add = -15
+	}
+    
+}
+
+scattered_training_ground_04 = {
+    construction_time = standard_construction_time
+    
+    cost_gold = 150
+    
+    character_modifier = {
+		martial = 4
+		monthly_prestige_gain_per_knight_mult = -0.4
+		knight_effectiveness_mult = 0.20
+    }
+	
+	province_modifier = {
+		monthly_income = 0.8
+	}
+	
+	county_modifier = {
+		county_opinion_add = -20
+	}
+    
+}
+
+wall_breach_01 = {
+	can_construct_potential = {
+		county = {
+			NOT = {
+				any_county_province = {
+					has_building = wall_breach_01 
+				}
+			}
+		}
+	}
+	
+    construction_time = standard_construction_time
+    
+    cost_gold = 150
+    next_building = wall_breach_02
+    
+    character_modifier = {
+		scheme_resistance = -5
+    }
+	
+	province_modifier = {
+		monthly_income = 0.2
+	}
+	
+	duchy_capital_county_modifier = {
+		monthly_income_mult = -0.1
+	}
+    
+    type_icon = "icon_building_curtain_walls.dds"
+}
+
+wall_breach_02 = {
+    construction_time = standard_construction_time
+    
+    cost_gold = 150
+    next_building = wall_breach_03
+    
+    character_modifier = {
+		scheme_resistance = -10
+    }
+	
+	province_modifier = {
+		monthly_income = 0.3
+	}
+	
+	duchy_capital_county_modifier = {
+		monthly_income_mult = -0.15
+		defender_advantage = -2
+	}
+
+}
+
+wall_breach_03 = {
+    construction_time = standard_construction_time
+    
+    cost_gold = 150
+    next_building = wall_breach_04
+    
+    character_modifier = {
+		scheme_power = 5
+		scheme_resistance = -15
+    }
+	
+	province_modifier = {
+		monthly_income = 0.4
+	}
+	
+	duchy_capital_county_modifier = {
+		monthly_income_mult = -0.20
+		defender_advantage = -5
+	}
+    
+}
+
+wall_breach_04 = {
+    construction_time = standard_construction_time
+    
+    cost_gold = 150
+    
+    character_modifier = {
+		scheme_power = 10
+		scheme_resistance = -20
+    }
+	
+	province_modifier = {
+		monthly_income = 0.5
+	}
+	
+	duchy_capital_county_modifier = {
+		monthly_income_mult = -0.25
+		defender_advantage = -8
+	}
+    
+}
+
+abandoned_headquarters_01 = {
+	can_construct_potential = {
+		county = {
+			NOT = {
+				any_county_province = {
+					has_building = abandoned_headquarters_01 
+				}
+			}
+		}
+	}
+	
+    construction_time = standard_construction_time
+    
+    cost_gold = 150
+    next_building = abandoned_headquarters_02
+    
+    character_modifier = {
+		monthly_prestige_gain_mult = -0.05
+    }
+	
+	county_modifier = {
+		monthly_county_control_change_add = -0.2
+	}
+	
+	province_modifier = {
+		monthly_income_mult = 0.1
+	}
+    
+    type_icon = "icon_building_ramparts.dds"
+}
+
+abandoned_headquarters_02 = {
+    construction_time = standard_construction_time
+    
+    cost_gold = 150
+    next_building = abandoned_headquarters_03
+    
+    character_modifier = {
+		monthly_prestige_gain_mult = -0.1
+    }
+	
+	county_modifier = {
+		monthly_county_control_change_add = -0.3
+	}
+	
+	province_modifier = {
+		monthly_income_mult = 0.2
+		monthly_income = 0.2
+	}
+
+}
+
+abandoned_headquarters_03 = {
+    construction_time = standard_construction_time
+    
+    cost_gold = 150
+    next_building = abandoned_headquarters_04
+    
+    character_modifier = {
+		monthly_prestige_gain_mult = -0.15
+    }
+	
+	county_modifier = {
+		monthly_county_control_change_add = -0.4
+	}
+	
+	province_modifier = {
+		monthly_income_mult = 0.3
+		monthly_income = 0.2
+	}
+    
+}
+
+abandoned_headquarters_04 = {
+    construction_time = standard_construction_time
+    
+    cost_gold = 150
+    
+    character_modifier = {
+		monthly_prestige_gain_mult = -0.2
+    }
+	
+	county_modifier = {
+		monthly_county_control_change_add = -0.5
+	}
+	
+	province_modifier = {
+		monthly_income_mult = 0.4
+		monthly_income = 0.2
+	}
+    
+}

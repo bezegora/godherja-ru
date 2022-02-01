@@ -1,0 +1,416 @@
+scripted_trigger yearly_2000_foreign_traveler_trigger = {
+	is_adult = yes
+	NOR = {
+		faith.religion = root.faith.religion
+		has_same_culture_group_as = root
+		has_trait = zealous
+		has_trait = arrogant
+	}
+}
+
+scripted_trigger yearly_2000_foreign_ruler_for_creation_trigger = {
+	in_diplomatic_range = root
+	NOR = {
+		faith.religion = root.faith.religion
+		has_same_culture_group_as = root
+	}
+}
+
+scripted_effect yearly_2000_add_courtier_effect = {
+	save_scope_as = new_courtier
+	hidden_effect = { root = { add_courtier = scope:new_courtier } }
+	custom_tooltip = yearly_2000_add_courtier_effect.tt
+	add_opinion = {
+		target = root
+		modifier = grateful_opinion
+		opinion = $OPINION$
+	}
+}
+
+scripted_effect pick_random_artifact_weapon = {
+	random_list = {
+		0 = {	# Longsword
+			trigger = {
+				NOT = { has_character_flag = already_picked_artifact_4 }
+			}
+			compare_modifier = {
+				value = artifact_market_chance_level_1 
+			}
+			add_artifact = { ARTIFACT = artifact_4 }
+		}
+		0 = {	# Sharpened Axe
+			trigger = {
+				NOT = { has_character_flag = already_picked_artifact_16 }
+			}
+			compare_modifier = {
+				value = artifact_market_chance_level_1 
+			}
+			add_artifact = { ARTIFACT = artifact_16 }
+		}
+		0 = {	# Fine Lance
+			trigger = {
+				NOT = { has_character_flag = already_picked_artifact_20 }
+			}
+			compare_modifier = {
+				value = artifact_market_chance_level_1 
+			}
+		}
+		0 = {	# Chain Mail
+			trigger = {
+				NOT = { has_character_flag = already_picked_artifact_28 }
+			}
+			compare_modifier = {
+				value = artifact_market_chance_level_1
+			}
+		}
+		0 = {	# A Response to The Fraternity of Magi
+			trigger = {
+				NOT = { has_character_flag = already_picked_artifact_bookfraternityofmagi }
+			}
+			compare_modifier = {
+				value = artifact_market_chance_level_1
+			}
+		}
+		0 = {	# Aversarian Cooking Informational
+			trigger = {
+				NOT = { has_character_flag = already_picked_artifact_bookaversariancookinginformational }
+			}
+			compare_modifier = {
+				value = artifact_market_chance_level_1
+			}
+		}
+		0 = {	# Marchers What do WE Know
+			trigger = {
+				NOT = { has_character_flag = already_picked_artifact_bookmarcherswhatdoweknow }
+			}
+			compare_modifier = {
+				value = artifact_market_chance_level_1
+			}
+		}
+		0 = {	# The Mighty Magi and the Buxom Maiden
+			trigger = {
+				NOT = { has_character_flag = already_picked_artifact_bookmightmagibuxommaiden }
+			}
+			compare_modifier = {
+				value = artifact_market_chance_level_1
+			}
+		}
+		0 = {	# Fifty Shades of Blood
+			trigger = {
+				NOT = { has_character_flag = already_picked_artifact_bookfiftyshades }
+			}
+			compare_modifier = {
+				value = artifact_market_chance_level_1
+			}
+		}
+		0 = {	# The Sound of Air
+			trigger = {
+				NOT = { has_character_flag = already_picked_artifact_booknameofthewindknockoff }
+			}
+			compare_modifier = {
+				value = artifact_market_chance_level_1
+			}
+		}
+		0 = {	# A Tragedy in Oejeynica
+			trigger = {
+				NOT = { has_character_flag = already_picked_artifact_booktragedyinoejeynica }
+			}
+			compare_modifier = {
+				value = artifact_market_chance_level_1
+			}
+		}
+		0 = {	# The Chivalric Code
+			trigger = {
+				NOT = { has_character_flag = already_picked_artifact_bookchivalriccode }
+			}
+			compare_modifier = {
+				value = artifact_market_chance_level_1
+			}
+		}
+		0 = {	# Love and Death in Asiupoli
+			trigger = {
+				NOT = { has_character_flag = already_picked_artifact_bookloveanddeathinasiupoli }
+			}
+			compare_modifier = {
+				value = artifact_market_chance_level_1
+			}
+		}
+		0 = {	# Silas Stavro - Alive or Dead!?
+			trigger = {
+				NOT = { has_character_flag = already_picked_artifact_booksilastavroaliveordead }
+			}
+			compare_modifier = {
+				value = artifact_market_chance_level_1
+			}
+		}
+		0 = {	# How to Read a Book
+			trigger = {
+				NOT = { has_character_flag = already_picked_artifact_bookhowtoreadabook }
+			}
+			compare_modifier = {
+				value = artifact_market_chance_level_1
+			}
+		}
+		0 = {	# On Living a Pure Life - Fifth Edition
+			trigger = {
+				NOT = { has_character_flag = already_picked_artifact_bookpurelifefifth }
+			}
+			compare_modifier = {
+				value = artifact_market_chance_level_1
+			}
+		}
+		0 = {	# On Earning a Pure Body - Fifth Edition
+			trigger = {
+				NOT = { has_character_flag = already_picked_artifact_bookpurebodyfifth }
+			}
+			compare_modifier = {
+				value = artifact_market_chance_level_1
+			}
+		}
+		0 = {	# On Creating a Pure Mind - Fifth Edition
+			trigger = {
+				NOT = { has_character_flag = already_picked_artifact_bookpuremindfifth }
+			}
+			compare_modifier = {
+				value = artifact_market_chance_level_1
+			}
+		}
+		0 = {	# Rending the Chains by Saint Calysto
+			trigger = {
+				NOT = { has_character_flag = already_picked_artifact_bookrendingthechains }
+			}
+			compare_modifier = {
+				value = artifact_market_chance_level_1
+			}
+		}
+		0 = {	# Skull of Pridni the Younger
+			trigger = {
+				NOT = { has_character_flag = already_picked_artifact_skullofpridni }
+				is_unique_artifact_trigger = { ARTIFACT_NAME = artifact_skullofpridni }
+			}
+			compare_modifier = {
+				value = artifact_market_chance_level_1
+			}
+
+		}
+		0 = {	# Skull of Duvaken
+			trigger = {
+				NOT = { has_character_flag = already_picked_artifact_skullofduvaken }
+				is_unique_artifact_trigger = { ARTIFACT_NAME = artifact_skullofduvaken }
+			}
+			compare_modifier = {
+				value = artifact_market_chance_level_1
+			}
+		}
+		0 = {	# Bone of the Worldeater
+			trigger = {
+				NOT = { has_character_flag = already_picked_artifact_boneoftheworldeater }
+			}
+			compare_modifier = {
+				value = artifact_market_chance_level_1
+			}
+		}
+	}
+}
+
+
+#yearly.2000 = { 
+#	type = character_event
+#	title = yearly.2000.t
+#	desc = yearly.2000.desc
+#
+#	theme = crown
+#	override_background = {
+#		event_background = throne_room_west
+#	}
+#	left_portrait = {
+#		character = scope:traveler
+#		animation = beg
+#	}
+#
+#	trigger = {
+#		OR = {
+#			any_pool_character = {
+#				province = root.capital_province
+#				yearly_2000_foreign_traveler_trigger = yes
+#			}
+#			AND = {
+#				is_ai = no #Expensive so only for players
+#				any_independent_ruler = {
+#					yearly_2000_foreign_ruler_for_creation_trigger = yes
+#				}
+#			}
+#		}
+#	}
+#
+#	weight_multiplier = {
+#		base = 1
+#		modifier = {
+#			number_of_knights < max_number_of_knights
+#			add = 1
+#		}
+#	}
+#
+#	immediate = {
+#		hidden_effect = {
+#			random_pool_character = {
+#				province = root.capital_province
+#				limit = { yearly_2000_foreign_traveler_trigger = yes }
+#				weight = {
+#					base = 10
+#
+#					# Likes root
+#					compatibility_modifier = {
+#						compatibility_target = root
+#					}
+#					opinion_modifier = {
+#						opinion_target = root
+#					}
+#					ai_value_modifier = {
+#						ai_compassion = 0.5
+#						ai_zeal = -1
+#					}
+#
+#					# Would be good candidate
+#					modifier = {
+#						guest_knight_candidate_trigger = { HOST = root }
+#						add = {
+#							value = prowess
+#							if = {
+#								limit = { number_of_knights < max_number_of_knights }
+#								multiply = 20
+#							}
+#							else = {
+#								multiply = 10
+#							}
+#						}
+#					}
+#					modifier = {
+#						guest_commander_candidate_trigger = { HOST = root }
+#						add = {
+#							value = martial
+#							multiply = 30
+#						}
+#					}
+#					modifier = {
+#						guest_vassal_candidate_good_traits_trigger = yes
+#						add = 50
+#					}
+#				}
+#				save_scope_as = traveler
+#			}
+#
+#			#No such character? Let's make one
+#			if = {
+#				limit = { NOT = { exists = scope:traveler } }
+#
+#				random_independent_ruler = {
+#					limit = { yearly_2000_foreign_ruler_for_creation_trigger = yes }
+#					save_scope_as = creation_template_ruler
+#				}
+#
+#				random_list = {
+#					3 = {
+#						modifier = {
+#							number_of_knights < max_number_of_knights
+#							add = 10
+#						}
+#						create_character = {
+#							location = root.capital_province
+#							template = pool_repopulate_prowess
+#							culture = scope:creation_template_ruler.culture
+#							faith = scope:creation_template_ruler.faith
+#							save_scope_as = traveler
+#						}
+#					}
+#				}
+#			}
+#		}
+#	}
+#
+#	# They seem good, and get paid to stay
+#	option = {
+#		name = yearly.2000.a
+#		
+#		remove_short_term_gold = medium_gold_value
+#		scope:traveler = {
+#			yearly_2000_add_courtier_effect = { OPINION = 20 }
+#		}
+#
+#		stress_impact = {
+#			paranoid = medium_stress_impact_gain
+#			callous = minor_stress_impact_gain
+#			sadistic = medium_stress_impact_gain
+#		}
+#
+#		hidden_effect = {
+#			if = {
+#				limit = { can_set_relation_potential_friend_trigger = { CHARACTER = scope:traveler } }
+#				set_relation_potential_friend = scope:traveler
+#			}
+#		}
+#
+#		ai_chance = {
+#			base = 100
+#
+#			ai_value_modifier = {
+#				ai_compassion = 1
+#				ai_honor = 1
+#				min = -90
+#			}
+#		}
+#	}
+#	# Pay to find an artefact
+#	option = {
+#		name = yearly.2000.b
+#		
+#		remove_short_term_gold = medium_gold_value
+#		pick_random_artifact_weapon = yes
+#	}
+#	
+#	# I have no room for you
+#	option = {
+#		name = yearly.2000.c
+#
+#		stress_impact = {
+#			compassionate = medium_stress_impact_gain
+#			generous = medium_stress_impact_gain
+#			gregarious = minor_stress_impact_gain
+#		}
+#
+#		ai_chance = {
+#			base = 50
+#			ai_value_modifier = {
+#				ai_compassion = -1
+#				ai_honor = -1
+#			}
+#			modifier = {
+#				faith = {
+#				faith_hostility_level = {
+#					target = scope:traveler.faith
+#					value = faith_astray_level
+#				}
+#			}
+#			add = 50
+#			}
+#			modifier = {
+#				faith = {
+#				faith_hostility_level = {
+#					target = scope:traveler.faith
+#					value = faith_hostile_level
+#				}
+#			}
+#			add = 100
+#			}
+#			modifier = {
+#				faith = {
+#				faith_hostility_level = {
+#					target = scope:traveler.faith
+#					value = faith_evil_level
+#				}
+#			}
+#			add = 200
+#			}
+#		}
+#	}
+#}

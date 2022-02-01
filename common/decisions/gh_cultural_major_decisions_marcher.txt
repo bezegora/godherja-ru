@@ -1,0 +1,622 @@
+﻿##################
+##DECISIONS LIST##
+# reunite_chevalie_decision
+# forge_a_claim_on_chevalie_decision
+# strike_at_the_partic_decision
+# negotiate_with_the_partic_decision
+# demand_independent_lords_swear_fealty_decision
+# codify_the_freedom_of_lifepaths_decision
+# enforce_the_exclusivity_of_lifepaths_decision
+# reforge_the_crown_decision
+# reintegrate_ziemojycz_decision
+# recruit_wayfather_decision
+##################
+
+##################
+# Reunite chevalie
+# by ThePinkPanzer
+reunite_chevalie_decision = {
+	picture = "gfx/interface/illustrations/decisions/decision_invite_knights.dds"
+	major = yes
+	ai_check_interval = 120
+	desc = reunite_chevalie_decision_desc
+
+	is_shown = {
+		has_culture_group = culture_group:gh_marcher_group
+		NOT = {
+			title:e_chevalie = {
+				is_title_created = yes
+			}
+		}
+	}
+
+	is_valid = {
+		has_culture_group = culture_group:gh_marcher_group
+		has_character_modifier = piece_of_the_broken_crown_modifier
+		AND = {
+			OR = {
+				has_title = title:k_de_porte_de_bastione
+				title:k_de_porte_de_bastione = {
+					is_title_created = no
+				}
+			}
+			OR = {
+				has_title = title:k_varrdevet
+				title:k_varrdevet = {
+					is_title_created = no
+				}
+			}
+			OR = {
+				has_title = title:k_rohr
+				title:k_rohr = {
+					is_title_created = no
+				}
+			}
+			OR = {
+				has_title = title:k_marroux
+				title:k_marroux = {
+					is_title_created = no
+				}
+			}
+			OR = {
+				has_title = title:k_perignan
+				title:k_perignan = {
+					is_title_created = no
+				}
+			}
+		}
+	}
+
+	effect = {
+		save_scope_as = chevalie_uniter
+
+		show_as_tooltip = { form_chevalie_scripted_effect = yes } #Actually applied in chevalie.0001 - prestige, laws, title, innovation effects
+
+		#Events
+		trigger_event = marcher_decision.0001
+		every_player = {
+			limit = {
+				NOT = { this = scope:chevalie_uniter }
+				is_within_diplo_range = { CHARACTER = scope:chevalie_uniter }
+			}
+			trigger_event = marcher_decision.0002
+		}
+
+		#Can only be done once
+		add_to_global_variable_list = {
+			name = unavailable_unique_decisions
+			target = flag:reunite_chevalie_decision
+		}
+	}
+	
+
+	ai_potential = {
+		always = yes
+	}
+
+	ai_will_do = {
+		base = 100
+	}
+}
+
+##################
+# Forge a Claim on Chevalie
+# by ThePinkPanzer
+forge_a_claim_on_chevalie_decision = {
+	picture = "gfx/interface/illustrations/decisions/decision_dynasty_house.dds"
+	major = yes
+	ai_check_interval = 120
+	desc = forge_a_claim_on_chevalie_decision_desc
+
+	is_shown = {
+		has_game_rule = story_content_enabled
+		NOT = { title:e_chevalie = { is_title_created = yes } }
+		OR = {
+			has_culture_group = culture_group:gh_marcher_group
+			has_religion = religion:marcher_religion
+		}
+		NOT = {
+			has_character_modifier = piece_of_the_broken_crown_modifier
+		}
+	}
+
+	is_valid = {
+		OR = {
+			has_culture_group = culture_group:gh_marcher_group
+			has_religion = religion:marcher_religion
+		}
+		any_sub_realm_county = {
+			title_province = { geographical_region = world_ga_marcher_kingdoms }
+		}
+		OR = {
+			ROOT = {
+				has_claim_on = title:e_chevalie
+			}
+			prestige >= 1500
+		}
+		AND = {
+			is_capable_adult = yes
+			is_imprisoned = no
+			is_independent_ruler = yes
+		}
+	}
+
+	effect = {
+		#Events
+		trigger_event = chevalie.0003
+		every_player = {
+			limit = {
+				any_sub_realm_county = {
+					title_province = { geographical_region = world_ga_marcher_kingdoms }
+				}
+			}
+			trigger_event = chevalie.0004
+		}
+		add_character_modifier = piece_of_the_broken_crown_modifier
+
+		stress_impact = {
+			content = medium_stress_impact_gain
+		}
+		if = {
+			limit = {
+				NOT = {
+					has_claim_on = title:e_chevalie
+				}
+			}
+			stress_impact = {
+				just = medium_stress_impact_gain
+			}
+		}
+	}
+	
+
+	ai_potential = {
+		always = yes
+	}
+
+	ai_will_do = {
+		base = 100
+	}
+}
+
+##################
+# Strike at the Partic
+# by ThePinkPanzer
+#strike_at_the_partic_decision = { #Commented out to be added right after release rip happy midnight
+#	picture = "gfx/interface/illustrations/decisions/decision_invite_knights.dds"
+#	major = yes
+#	ai_check_interval = 120
+#	desc = strike_at_the_partic_decision_desc
+#
+#		is_shown = {
+#			OR = {
+#				has_culture_group = culture_group:gh_marcher_group
+#				has_religion = religion:marcher_religion
+#			}
+#		}
+#
+#		is_valid = {
+#		}
+#
+#	effect = {
+#	}
+#	
+#
+#	ai_potential = {
+#		always = yes
+#	}
+#
+#	ai_will_do = {
+#		base = 100
+#	}
+#}
+#
+##################
+# Negotiate with the Partic
+# by ThePinkPanzer
+#negotiate_with_the_partic_decision = {
+#	picture = "gfx/interface/illustrations/decisions/decision_realm.dds"
+#	major = yes
+#	ai_check_interval = 120
+#	desc = negotiate_with_the_partic_decision_desc
+#
+#		is_shown = {
+#			OR = {
+#				has_culture_group = culture_group:gh_marcher_group
+#				has_religion = religion:marcher_religion
+#			}
+#		}
+#
+#		is_valid = {
+#		}
+#
+#	effect = {
+#	}
+#	
+#
+#	ai_potential = {
+#		always = yes
+#	}
+#
+#	ai_will_do = {
+#		base = 100
+#	}
+#}
+
+##################
+# Demand Independent Lords Swear Fealty
+# by ThePinkPanzer
+demand_independent_lords_swear_fealty_decision = {
+	picture = "gfx/interface/illustrations/decisions/decision_recruitment.dds"
+	major = yes
+	ai_check_interval = 60
+	desc = demand_independent_lords_swear_fealty_decision_desc
+
+	is_shown = {
+		has_title = title:e_chevalie
+		
+		title:e_chevalie = {
+			any_in_de_jure_hierarchy = {
+				tier = tier_county
+				holder = { is_independent_ruler = yes }
+				OR = {
+					holder.culture_group = culture_group:gh_marcher_group
+					holder.religion = religion:marcher_religion
+				}
+				NOR = {
+					holder.highest_held_title_tier = tier_empire
+					holder.primary_title = title:k_ziemojycz
+				}
+			}
+		}
+	}
+
+	is_valid = {
+		custom_description = {
+			text = demand_independent_lords_swear_fealty_decision_cooldown_tt
+			NOT = { has_character_flag = already_demanded_independent_lords_swear_fealty }
+		}
+	}
+
+	effect = {
+		trigger_event = marcher_decision.0500
+	}
+
+	ai_potential = {
+		always = yes
+	}
+
+	ai_will_do = {
+		base = 100
+	}
+}
+
+##################
+# Codify the Freedom of Lifepaths
+# by ThePinkPanzer
+codify_the_freedom_of_lifepaths_decision = {
+	picture = "gfx/interface/illustrations/decisions/decision_personal_religious.dds"
+	major = yes
+	ai_check_interval = 1 #120
+	desc = codify_the_freedom_of_lifepaths_decision_desc
+
+		is_shown = {
+				has_game_rule = story_content_enabled
+			OR = {
+				has_culture_group = culture_group:gh_marcher_group
+				has_religion = religion:marcher_religion
+			}
+			NOT = {
+				is_target_in_global_variable_list = {
+					name = unavailable_unique_decisions
+					target = flag:lifepath_reformed
+				}
+			}
+		}
+
+		is_valid = {
+			has_trait = education_learning
+			piety_level >= 5
+			completely_controls = title:e_chevalie
+		}
+
+	effect = {
+		add_prestige = -500
+		faith:lifepath = {
+			hidden_effect = {
+				remove_doctrine = tenet_wayfathers
+			}
+			add_doctrine = tenet_wayfathers_freedom
+		}
+		add_to_global_variable_list = {
+			name = unavailable_unique_decisions
+			target = flag:lifepath_reformed
+		}
+		add_to_global_variable_list = {
+			name = unavailable_unique_decisions
+			target = flag:lifepath_reformed_freedom
+		}
+
+		# Announce event
+		save_scope_as = reformer
+		capital_province = {
+			barony = {
+				save_scope_as = capital
+			}
+		}
+		every_player = {
+			limit = {
+				NOT = { this = root }
+				in_diplomatic_range = root
+			}
+			trigger_event = marcher_lifepath.0100
+		}
+	}
+
+	ai_potential = {
+		always = yes
+	}
+
+	ai_will_do = {
+		base = 100
+	}
+}
+
+##################
+# Enforce the Exclusivity of Lifepaths
+# by ThePinkPanzer
+enforce_the_exclusivity_of_lifepaths_decision = {
+	picture = "gfx/interface/illustrations/decisions/decision_major_religion.dds"
+	major = yes
+	ai_check_interval = 1 #120
+	desc = enforce_the_exclusivity_of_lifepaths_decision_desc
+
+		is_shown = {
+				has_game_rule = story_content_enabled
+			OR = {
+				has_culture_group = culture_group:gh_marcher_group
+				has_religion = religion:marcher_religion
+			}
+			NOT = {
+				is_target_in_global_variable_list = {
+					name = unavailable_unique_decisions
+					target = flag:lifepath_reformed
+				}
+			}
+		}
+
+		is_valid = {
+			prestige_level >= 5
+			completely_controls = title:e_chevalie
+		}
+
+	effect = {
+		add_prestige = 500
+		faith:lifepath = {
+			hidden_effect = {
+				remove_doctrine = tenet_wayfathers
+			}
+			add_doctrine = tenet_wayfathers_exclusivity
+		}
+		add_to_global_variable_list = {
+			name = unavailable_unique_decisions
+			target = flag:lifepath_reformed
+		}
+		add_to_global_variable_list = {
+			name = unavailable_unique_decisions
+			target = flag:lifepath_reformed_exclusivity
+		}
+
+		# Announce event
+		save_scope_as = reformer
+		every_player = {
+			limit = {
+				NOT = { this = root }
+				in_diplomatic_range = root
+			}
+			trigger_event = marcher_lifepath.0101
+		}
+	}
+
+	ai_potential = {
+		always = yes
+	}
+
+	ai_will_do = {
+		base = 100
+	}
+}
+
+##################
+# Reforge the Crown
+# by ThePinkPanzer
+reforge_the_crown_decision = {
+	picture = "gfx/interface/illustrations/decisions/decision_dynasty_house.dds"
+	major = yes
+	ai_check_interval = 12
+	desc = reforge_the_crown_decision_desc
+
+	is_shown = {
+		has_character_modifier = piece_of_the_broken_crown_modifier
+	}
+
+	is_valid = {
+		custom_description = {
+			text = reforge_the_crown_decision_valid_condition
+			AND = {
+				has_artifact = { ARTIFACT = artifact_38 }
+				has_artifact = { ARTIFACT = artifact_39 }
+				has_artifact = { ARTIFACT = artifact_40 }
+				has_artifact = { ARTIFACT = artifact_brokencrown1 }
+			}
+		}
+	}
+
+	effect = {
+		hidden_effect = {
+			remove_artifact = { ARTIFACT = artifact_38 }
+			remove_artifact = { ARTIFACT = artifact_39 }
+			remove_artifact = { ARTIFACT = artifact_40 }
+			remove_artifact = { ARTIFACT = artifact_brokencrown1 }
+			remove_character_modifier = piece_of_the_broken_crown_modifier
+		}
+		custom_tooltip =  reforge_the_crown_decision_effect
+		add_artifact = { ARTIFACT = artifact_41 }
+	}
+
+	ai_potential = {
+		always = yes
+	}
+
+	ai_will_do = {
+		base = 100
+	}
+}
+
+##################
+# Reintegrate Ziemojycz
+# by Hapchazzard
+reintegrate_ziemojycz_decision = {
+	picture = "gfx/interface/illustrations/decisions/decision_dynasty_house.dds"
+	major = yes
+	ai_check_interval = 12
+	desc = reintegrate_ziemojycz_decision_desc
+
+	is_shown = {
+		has_title = title:e_chevalie
+		#title:k_ziemojycz = {
+		#	any_in_de_jure_hierarchy = {
+		#		holder = {
+		#			has_primary_title = prev
+		#			is_independent_ruler = yes
+		#		}
+		#	}
+		#}
+		trigger_if = {
+			limit = {
+				title:k_ziemojycz = {
+					is_title_created = yes
+				}
+			}
+			title:k_ziemojycz = {
+				holder = {
+					is_independent_ruler = yes
+					has_primary_title = prev
+				}
+			}
+		}
+	}
+
+	is_valid = {
+		custom_description = {
+			text = reintegrate_ziemojycz_decision_valid_condition
+			NOT = {
+				has_character_flag = requested_ziemojycz_fealty
+			}
+		}
+	}
+
+	effect = {
+		custom_tooltip = reintegrate_ziemojycz_decision_effect
+		add_character_flag = {
+			flag = requested_ziemojycz_fealty
+			years = 5
+		}
+		trigger_event = marcher_decision.0100
+	}
+
+	ai_potential = {
+		always = yes
+	}
+
+	ai_will_do = {
+		base = 100
+	}
+}
+
+#revert_to_gestanwoder_decision = {
+#	major = yes
+#	ai_check_interval = 12
+#	picture = "gfx/interface/illustrations/decisions/decision_major_religion.dds"
+#
+#	is_shown = {
+#		has_game_rule = story_content_enabled
+#		NOT = {
+#			has_global_variable = gestanwoder_reformed
+#		}
+#		has_title = title:k_de_kanzelerij
+#		has_culture_group = culture_group:gh_konijkemener_group
+#	}
+#
+#	is_valid = {
+#		is_at_war = no
+#		has_piety = 1000
+#		has_title = title:k_de_kanzelerij
+#	}
+#
+#	effect = {
+#		add_piety = -1000
+#		trigger_event = marcher_decision.0200
+#		set_global_variable = {
+#			name = gestanwoder_reformed
+#			value = yes
+#		}
+#		every_vassal_or_below = {
+#			if = {
+#				limit = {
+#					has_religion = religion:marcher_religion
+#				}
+#				set_character_religion_with_conversion = religion:gestanwoder_religion
+#			}
+#		}
+#		every_province = {
+#			limit = {
+#				religion = religion:marcher_religion
+#			}
+#			set_county_religion = religion:gestanwoder_religion
+#		}
+#	}
+#
+#	ai_potential = {
+#		always = yes
+#	}
+#
+#	ai_will_do = {
+#		base = 0
+#	}
+#}
+
+recruit_wayfather_decision = {
+	picture = "gfx/interface/illustrations/decisions/decision_major_religion.dds"
+
+	desc = recruit_wayfather_decision_desc
+	ai_check_interval = 12
+	selection_tooltip = recruit_wayfather_decision_tooltip
+
+
+	is_shown = {
+		faith = {
+			has_doctrine_parameter = lifepath_choice
+		}
+		is_ruler = yes
+	}
+
+	cooldown = { years = 1 }
+
+	is_valid_showing_failures_only = {
+		is_available = yes
+	}
+
+	effect = {
+		trigger_event = {
+			id = marcher_decision.0560
+			days = 7
+		}
+	custom_tooltip = recruit_wayfather_decision_tooltip	
+	}
+	
+	
+	ai_will_do = {
+		base = 0
+	}
+}

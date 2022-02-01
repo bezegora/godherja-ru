@@ -1,0 +1,1451 @@
+﻿namespace = artifact
+
+scripted_trigger is_unique_artifact_trigger = {
+	NOT = {
+		any_living_character = {
+			has_character_flag = $ARTIFACT_NAME$
+		}
+	}
+}
+
+scripted_effect pick_random_artifact_weapon = {
+	random_list = {
+		0 = {	# Longsword
+			trigger = {
+				NOT = { has_character_flag = already_picked_artifact_4 }
+			}
+			compare_modifier = {
+				value = artifact_market_chance_level_1 
+			}
+			add_artifact_to_slot = { ARTIFACT_NAME = artifact_4 VALUE = artifact_value_level_1 SLOT = $SLOT$ }
+		}
+		0 = {	# Fine Longsword
+			trigger = {
+				NOT = { has_character_flag = already_picked_artifact_5 }
+			}
+			compare_modifier = {
+				value = artifact_market_chance_level_2 
+			}
+			add_artifact_to_slot = { ARTIFACT_NAME = artifact_5 VALUE = artifact_value_level_2 SLOT = $SLOT$ }
+		}
+		0 = {	# Sword of Heroes
+			trigger = {
+				NOT = { has_character_flag = already_picked_artifact_6 }
+			}
+			compare_modifier = {
+				value = artifact_market_chance_level_4 	
+			}
+			add_artifact_to_slot = { ARTIFACT_NAME = artifact_6 VALUE = artifact_value_level_4 SLOT = $SLOT$ }
+		}
+		0 = {	# Sword of Legends
+			trigger = {
+				NOT = { has_character_flag = already_picked_artifact_7 }
+			}
+			compare_modifier = {
+				value = artifact_market_chance_level_5 	
+			}
+			add_artifact_to_slot = { ARTIFACT_NAME = artifact_7 VALUE = artifact_value_level_5 SLOT = $SLOT$ }
+		}
+		
+		0 = {	# Sharpened Axe
+			trigger = {
+				NOT = { has_character_flag = already_picked_artifact_16 }
+			}
+			compare_modifier = {
+				value = artifact_market_chance_level_1 
+			}
+			add_artifact_to_slot = { ARTIFACT_NAME = artifact_16 VALUE = artifact_value_level_1 SLOT = $SLOT$ }
+		}
+		0 = {	# Ornate Axe
+			trigger = {
+				NOT = { has_character_flag = already_picked_artifact_17 }
+			}
+			compare_modifier = {
+				value = artifact_market_chance_level_2 
+			}
+			add_artifact_to_slot = { ARTIFACT_NAME = artifact_17 VALUE = artifact_value_level_2 SLOT = $SLOT$ }
+		}
+		0 = {	# Gilded Axe
+			trigger = {
+				NOT = { has_character_flag = already_picked_artifact_18 }
+			}
+			compare_modifier = {
+				value = artifact_market_chance_level_4 	
+			}
+			add_artifact_to_slot = { ARTIFACT_NAME = artifact_18 VALUE = artifact_value_level_4 SLOT = $SLOT$ }
+		}
+		0 = {	# Masterwork Axe
+			trigger = {
+				NOT = { has_character_flag = already_picked_artifact_19 }
+			}
+			compare_modifier = {
+				value = artifact_market_chance_level_5 	
+			}
+			add_artifact_to_slot = { ARTIFACT_NAME = artifact_19 VALUE = artifact_value_level_5 SLOT = $SLOT$ }
+		}
+		
+		0 = {	# Fine Lance
+			trigger = {
+				NOT = { has_character_flag = already_picked_artifact_20 }
+			}
+			compare_modifier = {
+				value = artifact_market_chance_level_1 
+			}
+			add_artifact_to_slot = { ARTIFACT_NAME = artifact_20 VALUE = artifact_value_level_1 SLOT = $SLOT$ }
+		}
+		0 = {	# Honed Lance
+			trigger = {
+				NOT = { has_character_flag = already_picked_artifact_21 }
+			}
+			compare_modifier = {
+				value = artifact_market_chance_level_2 
+			}
+			add_artifact_to_slot = { ARTIFACT_NAME = artifact_21 VALUE = artifact_value_level_2 SLOT = $SLOT$ }
+		}
+		0 = {	# Blood-Thirsty Lance
+			trigger = {
+				NOT = { has_character_flag = already_picked_artifact_22 }
+			}
+			compare_modifier = {
+				value = artifact_market_chance_level_4 	
+			}
+			add_artifact_to_slot = { ARTIFACT_NAME = artifact_22 VALUE = artifact_value_level_4 SLOT = $SLOT$ }
+		}
+		0 = {	# Legendary Lance
+			trigger = {
+				NOT = { has_character_flag = already_picked_artifact_23 }
+			}
+			compare_modifier = {
+				value = artifact_market_chance_level_5 	
+			}
+			add_artifact_to_slot = { ARTIFACT_NAME = artifact_23 VALUE = artifact_value_level_5 SLOT = $SLOT$ }
+		}
+		
+		0 = {	# Chain Mail
+			trigger = {
+				NOT = { has_character_flag = already_picked_artifact_28 }
+			}
+			compare_modifier = {
+				value = artifact_market_chance_level_1
+			}
+			add_artifact_to_slot = { ARTIFACT_NAME = artifact_28 VALUE = artifact_value_level_1 SLOT = $SLOT$ }
+		}
+		0 = {	# Splint Mail
+			trigger = {
+				NOT = { has_character_flag = already_picked_artifact_29 }
+			}
+			compare_modifier = {
+				value = artifact_market_chance_level_2 
+			}
+			add_artifact_to_slot = { ARTIFACT_NAME = artifact_29 VALUE = artifact_value_level_2 SLOT = $SLOT$ }
+		}
+		0 = {	# Masterwork Armor
+			trigger = {
+				NOT = { has_character_flag = already_picked_artifact_30 }
+			}
+			compare_modifier = {
+				value = artifact_market_chance_level_4 	
+			}
+			add_artifact_to_slot = { ARTIFACT_NAME = artifact_30 VALUE = artifact_value_level_4 SLOT = $SLOT$ }
+		}
+		0 = {	# Gilded Plate Armor
+			trigger = {
+				NOT = { has_character_flag = already_picked_artifact_31 }
+			}
+			compare_modifier = {
+				value = artifact_market_chance_level_5 	
+			}
+			add_artifact_to_slot = { ARTIFACT_NAME = artifact_31 VALUE = artifact_value_level_6 SLOT = $SLOT$ } # It's literally armor made of GOLD. It should be as expensive as it can get
+		}
+		
+		0 = {	# Alien Whip
+			trigger = {
+				NOT = { has_character_flag = already_picked_artifact_alienwhip }
+			}
+			compare_modifier = {
+				value = artifact_market_chance_level_5
+			}
+			add_artifact_to_slot = { ARTIFACT_NAME = artifact_alienwhip VALUE = artifact_value_level_5 SLOT = $SLOT$ }
+		}
+	}
+}
+
+scripted_effect pick_random_artifact_book = {
+	random_list = {
+		0 = {	# Seventy Seven Cities
+			trigger = {
+				NOT = { has_character_flag = already_picked_artifact_bookseventysevencities }
+			}
+			compare_modifier = {
+				value = artifact_market_chance_level_4
+			}
+			add_artifact_to_slot = { ARTIFACT_NAME = artifact_bookseventysevencities VALUE = artifact_value_level_4 SLOT = $SLOT$ }
+		}
+		0 = {	# Amazing Slaves and Where to find Them
+			trigger = {
+				NOT = { has_character_flag = already_picked_artifact_bookamazingslaves }
+			}
+			compare_modifier = {
+				value = artifact_market_chance_level_2
+			}
+			add_artifact_to_slot = { ARTIFACT_NAME = artifact_bookamazingslaves VALUE = artifact_value_level_2 SLOT = $SLOT$ }
+		}
+		0 = {	# The Kam-Gutaran
+			trigger = {
+				NOT = { has_character_flag = already_picked_artifact_bookkamagutaran }
+			}
+			compare_modifier = {
+				value = artifact_market_chance_level_3
+			}
+			add_artifact_to_slot = { ARTIFACT_NAME = artifact_bookkamagutaran VALUE = artifact_value_level_3 SLOT = $SLOT$ }
+		}
+		0 = {	# The Dragon Tale
+			trigger = {
+				NOT = { has_character_flag = already_picked_artifact_bookthedragontale }
+			}
+			compare_modifier = {
+				value = artifact_market_chance_level_3
+			}
+			add_artifact_to_slot = { ARTIFACT_NAME = artifact_bookthedragontale VALUE = artifact_value_level_3 SLOT = $SLOT$ }
+		}
+		0 = {	# A Fyne Hestoree
+			trigger = {
+				NOT = { has_character_flag = already_picked_artifact_bookafynehestoree }
+			}
+			compare_modifier = {
+				value = artifact_market_chance_level_3
+			}
+			add_artifact_to_slot = { ARTIFACT_NAME = artifact_bookafynehestoree VALUE = artifact_value_level_3 SLOT = $SLOT$ }
+		}
+		0 = {	# Grimoire of Methinoire
+			trigger = {
+				NOT = { has_character_flag = already_picked_artifact_bookgrimoireofmethinoire }
+			}
+			compare_modifier = {
+				value = artifact_market_chance_level_5
+			}
+			add_artifact_to_slot = { ARTIFACT_NAME = artifact_bookgrimoireofmethinoire VALUE = artifact_value_level_5 SLOT = $SLOT$ }
+		}
+		0 = {	# Burnt Grimoire
+			trigger = {
+				NOT = { has_character_flag = already_picked_artifact_bookburntgrimoire }
+			}
+			compare_modifier = {
+				value = artifact_market_chance_level_3
+			}
+			add_artifact_to_slot = { ARTIFACT_NAME = artifact_bookburntgrimoire VALUE = artifact_value_level_3 SLOT = $SLOT$ }
+		}
+		0 = {	# A Pocket Guide to Aversaria
+			trigger = {
+				NOT = { has_character_flag = already_picked_artifact_bookpocketguideaversaria }
+			}
+			compare_modifier = {
+				value = artifact_market_chance_level_2
+			}
+			add_artifact_to_slot = { ARTIFACT_NAME = artifact_bookpocketguideaversaria VALUE = artifact_value_level_2 SLOT = $SLOT$ }
+		}
+		0 = {	# Book of Maps
+			trigger = {
+				NOT = { has_character_flag = already_picked_artifact_bookbookofmaps }
+			}
+			compare_modifier = {
+				value = artifact_market_chance_level_2
+			}
+			add_artifact_to_slot = { ARTIFACT_NAME = artifact_bookbookofmaps VALUE = artifact_value_level_2 SLOT = $SLOT$ }
+		}
+		0 = {	# A Response to The Fraternity of Magi
+			trigger = {
+				NOT = { has_character_flag = already_picked_artifact_bookfraternityofmagi }
+			}
+			compare_modifier = {
+				value = artifact_market_chance_level_1
+			}
+			add_artifact_to_slot = { ARTIFACT_NAME = artifact_bookfraternityofmagi VALUE = artifact_value_level_1 SLOT = $SLOT$ }
+		}
+		0 = {	# Aversarian Cooking Informational
+			trigger = {
+				NOT = { has_character_flag = already_picked_artifact_bookaversariancookinginformational }
+			}
+			compare_modifier = {
+				value = artifact_market_chance_level_1
+			}
+			add_artifact_to_slot = { ARTIFACT_NAME = artifact_bookaversariancookinginformational VALUE = artifact_value_level_1 SLOT = $SLOT$ }
+		}
+		#0 = {	# The Compiled Works of Abael Venodau
+		#	trigger = {
+		#		NOT = { has_character_flag = already_picked_artifact_bookcompiledworksofvenodau }
+		#	}
+		#	compare_modifier = {
+		#		value = artifact_market_chance_level_3
+		#	}
+		#	add_artifact_to_slot = { ARTIFACT_NAME = artifact_bookcompiledworksofvenodau VALUE = artifact_value_level_3 SLOT = $SLOT$ }
+		#}
+		0 = {	# Marchers What do WE Know
+			trigger = {
+				NOT = { has_character_flag = already_picked_artifact_bookmarcherswhatdoweknow }
+			}
+			compare_modifier = {
+				value = artifact_market_chance_level_1
+			}
+			add_artifact_to_slot = { ARTIFACT_NAME = artifact_bookmarcherswhatdoweknow VALUE = artifact_value_level_1 SLOT = $SLOT$ }
+		}
+		0 = {	# The Skull of the Purest
+			trigger = {
+				NOT = { has_character_flag = already_picked_artifact_bookskullofthepurest }
+			}
+			compare_modifier = {
+				value = artifact_market_chance_level_2
+			}
+			add_artifact_to_slot = { ARTIFACT_NAME = artifact_bookskullofthepurest VALUE = artifact_value_level_2 SLOT = $SLOT$ }
+		}
+		0 = {	# The Mighty Magi and the Buxom Maiden
+			trigger = {
+				NOT = { has_character_flag = already_picked_artifact_bookmightmagibuxommaiden }
+			}
+			compare_modifier = {
+				value = artifact_market_chance_level_1
+			}
+			add_artifact_to_slot = { ARTIFACT_NAME = artifact_bookmightmagibuxommaiden VALUE = artifact_value_level_1 SLOT = $SLOT$ }
+		}
+		0 = {	# Fifty Shades of Blood
+			trigger = {
+				NOT = { has_character_flag = already_picked_artifact_bookfiftyshades }
+			}
+			compare_modifier = {
+				value = artifact_market_chance_level_1
+			}
+			add_artifact_to_slot = { ARTIFACT_NAME = artifact_bookfiftyshades VALUE = artifact_value_level_1 SLOT = $SLOT$ }
+		}
+		0 = {	# Adabyssinian Report on Northern Civilization
+			trigger = {
+				NOT = { has_character_flag = already_picked_artifact_bookadabyssianreport }
+			}
+			compare_modifier = {
+				value = artifact_market_chance_level_4
+			}
+			add_artifact_to_slot = { ARTIFACT_NAME = artifact_bookadabyssianreport VALUE = artifact_value_level_4 SLOT = $SLOT$ }
+		}
+		0 = {	# The Tale of Sir Koeveux
+			trigger = {
+				NOT = { has_character_flag = already_picked_artifact_booktaleofsirkoeveux }
+			}
+			compare_modifier = {
+				value = artifact_market_chance_level_2
+			}
+			add_artifact_to_slot = { ARTIFACT_NAME = artifact_booktaleofsirkoeveux VALUE = artifact_value_level_2 SLOT = $SLOT$ }
+		}
+		0 = {	# The Imperial Civil War
+			trigger = {
+				NOT = { has_character_flag = already_picked_artifact_bookimperialcivilwar }
+			}
+			compare_modifier = {
+				value = artifact_market_chance_level_2
+			}
+			add_artifact_to_slot = { ARTIFACT_NAME = artifact_bookimperialcivilwar VALUE = artifact_value_level_2 SLOT = $SLOT$ }
+		}
+		0 = {	# The Sound of Air
+			trigger = {
+				NOT = { has_character_flag = already_picked_artifact_booknameofthewindknockoff }
+			}
+			compare_modifier = {
+				value = artifact_market_chance_level_1
+			}
+			add_artifact_to_slot = { ARTIFACT_NAME = artifact_booknameofthewindknockoff VALUE = artifact_value_level_1 SLOT = $SLOT$ }
+		}
+		0 = {	# A Tragedy in Oejeynica
+			trigger = {
+				NOT = { has_character_flag = already_picked_artifact_booktragedyinoejeynica }
+			}
+			compare_modifier = {
+				value = artifact_market_chance_level_1
+			}
+			add_artifact_to_slot = { ARTIFACT_NAME = artifact_booktragedyinoejeynica VALUE = artifact_value_level_1 SLOT = $SLOT$ }
+		}
+		0 = {	# 1001 Sarradonian Steps
+			trigger = {
+				NOT = { has_character_flag = already_picked_artifact_booksarradoniansteps }
+			}
+			compare_modifier = {
+				value = artifact_market_chance_level_2
+			}
+			add_artifact_to_slot = { ARTIFACT_NAME = artifact_booksarradoniansteps VALUE = artifact_value_level_2 SLOT = $SLOT$ }
+		}
+		0 = {	# The Chivalric Code
+			trigger = {
+				NOT = { has_character_flag = already_picked_artifact_bookchivalriccode }
+			}
+			compare_modifier = {
+				value = artifact_market_chance_level_1
+			}
+			add_artifact_to_slot = { ARTIFACT_NAME = artifact_bookchivalriccode VALUE = artifact_value_level_1 SLOT = $SLOT$ }
+		}
+		0 = {	# Griffon Bestiary
+			trigger = {
+				NOT = { has_character_flag = already_picked_artifact_bookgriffonbestiary }
+			}
+			compare_modifier = {
+				value = artifact_market_chance_level_3
+			}
+			add_artifact_to_slot = { ARTIFACT_NAME = artifact_bookgriffonbestiary VALUE = artifact_value_level_3 SLOT = $SLOT$ }
+		}
+		0 = {	# The Last Hippogriff
+			trigger = {
+				NOT = { has_character_flag = already_picked_artifact_booklasthippogriff }
+			}
+			compare_modifier = {
+				value = artifact_market_chance_level_3
+			}
+			add_artifact_to_slot = { ARTIFACT_NAME = artifact_booklasthippogriff VALUE = artifact_value_level_3 SLOT = $SLOT$ }
+		}
+		0 = {	# How to Maim a Dragon
+			trigger = {
+				NOT = { has_character_flag = already_picked_artifact_bookhowtomaimadragon }
+			}
+			compare_modifier = {
+				value = artifact_market_chance_level_2
+			}
+			add_artifact_to_slot = { ARTIFACT_NAME = artifact_bookhowtomaimadragon VALUE = artifact_value_level_2 SLOT = $SLOT$ }
+		}
+		0 = {	# Love and Death in Asiupoli
+			trigger = {
+				NOT = { has_character_flag = already_picked_artifact_bookloveanddeathinasiupoli }
+			}
+			compare_modifier = {
+				value = artifact_market_chance_level_1
+			}
+			add_artifact_to_slot = { ARTIFACT_NAME = artifact_bookloveanddeathinasiupoli VALUE = artifact_value_level_1 SLOT = $SLOT$ }
+		}
+		0 = {	# Silas Stavro - Alive or Dead!?
+			trigger = {
+				NOT = { has_character_flag = already_picked_artifact_booksilastavroaliveordead }
+			}
+			compare_modifier = {
+				value = artifact_market_chance_level_1
+			}
+			add_artifact_to_slot = { ARTIFACT_NAME = artifact_booksilastavroaliveordead VALUE = artifact_value_level_1 SLOT = $SLOT$ }
+		}
+		0 = {	# How to Read a Book
+			trigger = {
+				NOT = { has_character_flag = already_picked_artifact_bookhowtoreadabook }
+			}
+			compare_modifier = {
+				value = artifact_market_chance_level_1
+			}
+			add_artifact_to_slot = { ARTIFACT_NAME = artifact_bookhowtoreadabook VALUE = artifact_value_level_1 SLOT = $SLOT$ }
+		}
+		0 = {	# On Living a Pure Life - Fifth Edition
+			trigger = {
+				NOT = { has_character_flag = already_picked_artifact_bookpurelifefifth }
+			}
+			compare_modifier = {
+				value = artifact_market_chance_level_1
+			}
+			add_artifact_to_slot = { ARTIFACT_NAME = artifact_bookpurelifefifth VALUE = artifact_value_level_1 SLOT = $SLOT$ }
+		}
+		0 = {	# On Earning a Pure Body - Fifth Edition
+			trigger = {
+				NOT = { has_character_flag = already_picked_artifact_bookpurebodyfifth }
+			}
+			compare_modifier = {
+				value = artifact_market_chance_level_1
+			}
+			add_artifact_to_slot = { ARTIFACT_NAME = artifact_bookpurebodyfifth VALUE = artifact_value_level_1 SLOT = $SLOT$ }
+		}
+		0 = {	# On Creating a Pure Mind - Fifth Edition
+			trigger = {
+				NOT = { has_character_flag = already_picked_artifact_bookpuremindfifth }
+			}
+			compare_modifier = {
+				value = artifact_market_chance_level_1
+			}
+			add_artifact_to_slot = { ARTIFACT_NAME = artifact_bookpuremindfifth VALUE = artifact_value_level_1 SLOT = $SLOT$ }
+		}
+		0 = {	# On Living a Pure Life - First Edition
+			trigger = {
+				NOT = { has_character_flag = already_picked_artifact_bookpurelifefirst }
+			}
+			compare_modifier = {
+				value = artifact_market_chance_level_4
+			}
+			add_artifact_to_slot = { ARTIFACT_NAME = artifact_bookpurelifefirst VALUE = artifact_value_level_4 SLOT = $SLOT$ }
+		}
+		0 = {	# On Earning a Pure Body - First Edition
+			trigger = {
+				NOT = { has_character_flag = already_picked_artifact_bookpurebodyfirst }
+			}
+			compare_modifier = {
+				value = artifact_market_chance_level_4
+			}
+			add_artifact_to_slot = { ARTIFACT_NAME = artifact_bookpurebodyfirst VALUE = artifact_value_level_4 SLOT = $SLOT$ }
+		}
+		0 = {	# On Creating a Pure Mind - First Edition
+			trigger = {
+				NOT = { has_character_flag = already_picked_artifact_bookpuremindfirst }
+			}
+			compare_modifier = {
+				value = artifact_market_chance_level_4
+			}
+			add_artifact_to_slot = { ARTIFACT_NAME = artifact_bookpuremindfirst VALUE = artifact_value_level_4 SLOT = $SLOT$ }
+		}
+		0 = {	# The Travels of Saint Katharitos
+			trigger = {
+				NOT = { has_character_flag = already_picked_artifact_booktravelsofsaintkatharitos }
+			}
+			compare_modifier = {
+				value = artifact_market_chance_level_3
+			}
+			add_artifact_to_slot = { ARTIFACT_NAME = artifact_booktravelsofsaintkatharitos VALUE = artifact_value_level_3 SLOT = $SLOT$ }
+		}
+		0 = {	# The Hundred Trials of Saint Sansia
+			trigger = {
+				NOT = { has_character_flag = already_picked_artifact_bookhundredtrials }
+			}
+			compare_modifier = {
+				value = artifact_market_chance_level_3
+			}
+			add_artifact_to_slot = { ARTIFACT_NAME = artifact_bookhundredtrials VALUE = artifact_value_level_3 SLOT = $SLOT$ }
+		}
+		0 = {	# Thysian Book of Remedies
+			trigger = {
+				NOT = { has_character_flag = already_picked_artifact_bookbookofremedies }
+			}
+			compare_modifier = {
+				value = artifact_market_chance_level_3
+			}
+			add_artifact_to_slot = { ARTIFACT_NAME = artifact_bookbookofremedies VALUE = artifact_value_level_3 SLOT = $SLOT$ }
+		}
+		0 = {	# Saint Dikaynos's Lawbook
+			trigger = {
+				NOT = { has_character_flag = already_picked_artifact_booksaintslawbook }
+			}
+			compare_modifier = {
+				value = artifact_market_chance_level_3
+			}
+			add_artifact_to_slot = { ARTIFACT_NAME = artifact_booksaintslawbook VALUE = artifact_value_level_3 SLOT = $SLOT$ }
+		}
+		0 = {	# Rending the Chains by Saint Calysto
+			trigger = {
+				NOT = { has_character_flag = already_picked_artifact_bookrendingthechains }
+			}
+			compare_modifier = {
+				value = artifact_market_chance_level_1
+			}
+			add_artifact_to_slot = { ARTIFACT_NAME = artifact_bookrendingthechains VALUE = artifact_value_level_1 SLOT = $SLOT$ }
+		}
+		0 = {	# Calysto's Journal
+			trigger = {
+				NOT = { has_character_flag = already_picked_artifact_bookcalystojournal }
+				NOT = { has_character_flag = artifact_bookcalystojournal }
+			}
+			compare_modifier = {
+				value = artifact_market_chance_level_4
+			}
+			add_artifact_to_slot = { ARTIFACT_NAME = artifact_bookcalystojournal VALUE = artifact_value_level_4 SLOT = $SLOT$ }
+		}
+		0 = {	# Eosian Charter
+			trigger = {
+				NOT = { has_character_flag = already_picked_artifact_bookeosianswordcharter }
+			}
+			compare_modifier = {
+				value = artifact_market_chance_level_3
+			}
+			add_artifact_to_slot = { ARTIFACT_NAME = artifact_bookeosianswordcharter VALUE = artifact_value_level_3 SLOT = $SLOT$ }
+		}
+		0 = {	# The Danger of a Thousand Stars
+			trigger = {
+				NOT = { has_character_flag = already_picked_artifact_bookdangerofathousandstars_ }
+			}
+			compare_modifier = {
+				value = artifact_market_chance_level_4
+			}
+			add_artifact_to_slot = { ARTIFACT_NAME = artifact_bookdangerofathousandstars_ VALUE = artifact_value_level_4 SLOT = $SLOT$ }
+		}
+		0 = {	# Book of Banned Iyrossi Poetry
+			trigger = {
+				NOT = { has_character_flag = already_picked_artifact_bookbannediyrossipoetry }
+			}
+			compare_modifier = {
+				value = artifact_market_chance_level_2
+			}
+			add_artifact_to_slot = { ARTIFACT_NAME = artifact_bookbannediyrossipoetry VALUE = artifact_value_level_2 SLOT = $SLOT$ }
+		}
+		0 = {	# From Aeladaxos to Aeliadias
+			trigger = {
+				NOT = { has_character_flag = already_picked_artifact_bookaeladaxostoaeliadias }
+			}
+			compare_modifier = {
+				value = artifact_market_chance_level_2
+			}
+			add_artifact_to_slot = { ARTIFACT_NAME = artifact_bookaeladaxostoaeliadias VALUE = artifact_value_level_2 SLOT = $SLOT$ }
+		}
+		0 = {	# Expedition to the Northern Source
+			trigger = {
+				NOT = { has_character_flag = already_picked_artifact_bookexpeditiontothenorth }
+			}
+			compare_modifier = {
+				value = artifact_market_chance_level_2
+			}
+			add_artifact_to_slot = { ARTIFACT_NAME = artifact_bookexpeditiontothenorth VALUE = artifact_value_level_2 SLOT = $SLOT$ }
+		}
+		0 = {	# How The End Began
+			trigger = {
+				NOT = { has_character_flag = already_artifact_bookhowtheendbegan }
+			}
+			compare_modifier = {
+				value = artifact_market_chance_level_4
+			}
+			add_artifact_to_slot = { ARTIFACT_NAME = artifact_bookhowtheendbegan VALUE = artifact_value_level_4 SLOT = $SLOT$ }
+		}
+		0 = {	# A Refutation of the Phantasmal Mist
+			trigger = {
+				NOT = { has_character_flag = already_artifact_bookrefutation }
+			}
+			compare_modifier = {
+				value = artifact_market_chance_level_1
+			}
+			add_artifact_to_slot = { ARTIFACT_NAME = artifact_bookrefutation VALUE = artifact_value_level_1 SLOT = $SLOT$ }
+		}
+		0 = {	# An Official Inquiry into the Matters of the Fog
+			trigger = {
+				NOT = { has_character_flag = already_artifact_bookinquiryintothefog }
+			}
+			compare_modifier = {
+				value = artifact_market_chance_level_2
+			}
+			add_artifact_to_slot = { ARTIFACT_NAME = artifact_bookinquiryintothefog VALUE = artifact_value_level_2 SLOT = $SLOT$ }
+		}
+		0 = {	# A Clockwork City
+			trigger = {
+				NOT = { has_character_flag = already_artifact_bookclockworkcity }
+			}
+			compare_modifier = {
+				value = artifact_market_chance_level_4
+			}
+			add_artifact_to_slot = { ARTIFACT_NAME = artifact_bookclockworkcity VALUE = artifact_value_level_4 SLOT = $SLOT$ }
+		}
+		0 = {	# The Annals and Lineages of ---------
+			trigger = {
+				NOT = { has_character_flag = already_artifact_bookannalsofblank }
+			}
+			compare_modifier = {
+				value = artifact_market_chance_level_1
+			}
+			add_artifact_to_slot = { ARTIFACT_NAME = artifact_bookannalsofblank VALUE = artifact_value_level_1 SLOT = $SLOT$ }
+		}
+		0 = {	# When Aervalr Bled
+			trigger = {
+				NOT = { has_character_flag = already_artifact_bookwhenaervalbleed }
+			}
+			compare_modifier = {
+				value = artifact_market_chance_level_3
+			}
+			add_artifact_to_slot = { ARTIFACT_NAME = artifact_bookwhenaervalbleed VALUE = artifact_value_level_3 SLOT = $SLOT$ }
+		}
+		0 = {  # The Treatise of Good Practice
+			trigger = {
+				NOT = { has_character_flag = already_artifact_booktreatiseofgoodpractice }
+			}
+			compare_modifier = {
+				value = artifact_market_chance_level_1
+			}
+			add_artifact_to_slot = { ARTIFACT_NAME = artifact_booktreatiseofgoodpractice VALUE = artifact_value_level_1 SLOT = $SLOT$ }
+		}
+		0 = {  # A Chevalien Knight in Oraispol, 1262
+			trigger = {
+				NOT = { has_character_flag = already_artifact_bookchevalienknightinoraispol }
+			}
+			compare_modifier = {
+				value = artifact_market_chance_level_2
+			}
+			add_artifact_to_slot = { ARTIFACT_NAME = artifact_bookchevalienknightinoraispol VALUE = artifact_value_level_2 SLOT = $SLOT$ }
+		}
+		0 = {  # The Witch-Breaker, Hero of Heroes!
+			trigger = {
+				NOT = { has_character_flag = already_artifact_bookwitchbreakerhero }
+			}
+			compare_modifier = {
+				value = artifact_market_chance_level_1
+			}
+			add_artifact_to_slot = { ARTIFACT_NAME = artifact_bookwitchbreakerhero VALUE = artifact_value_level_1 SLOT = $SLOT$ }
+		}
+		0 = {  # Book of Sjalvolki Poetry
+			trigger = {
+				NOT = { has_character_flag = already_artifact_booksjalvolkipoetry }
+			}
+			compare_modifier = {
+				value = artifact_market_chance_level_1
+			}
+			add_artifact_to_slot = { ARTIFACT_NAME = artifact_booksjalvolkipoetry VALUE = artifact_value_level_1 SLOT = $SLOT$ }
+		}
+		0 = {  # Book of the Fallen
+			trigger = {
+				NOT = { has_character_flag = already_artifact_bookbookofthefallen }
+			}
+			compare_modifier = {
+				value = artifact_market_chance_level_1
+			}
+			add_artifact_to_slot = { ARTIFACT_NAME = artifact_bookbookofthefallen VALUE = artifact_value_level_1 SLOT = $SLOT$ }
+		}
+		0 = {  # The Life of Jacot den va Waldisse
+			trigger = {
+				NOT = { has_character_flag = already_artifact_bookjacotwaldisse }
+			}
+			compare_modifier = {
+				value = artifact_market_chance_level_2
+			}
+			add_artifact_to_slot = { ARTIFACT_NAME = artifact_bookjacotwaldisse VALUE = artifact_value_level_2 SLOT = $SLOT$ }
+		}
+	}
+}
+
+scripted_effect pick_random_artifact_menagerie = {
+	random_list = {
+		0 = {	# Camel
+			trigger = {
+				NOT = { has_character_flag = already_picked_artifact_mountcamel }
+			}
+			compare_modifier = {
+				value = artifact_market_chance_level_1
+			}
+			add_artifact_to_slot = { ARTIFACT_NAME = artifact_mountcamel VALUE = artifact_value_level_1 SLOT = $SLOT$ }
+		}
+		0 = {	# Horse
+			trigger = {
+				NOT = { has_character_flag = already_picked_artifact_mounthorse }
+			}
+			compare_modifier = {
+				value = artifact_market_chance_level_1
+			}
+			add_artifact_to_slot = { ARTIFACT_NAME = artifact_mounthorse VALUE = artifact_value_level_1 SLOT = $SLOT$ }
+		}
+		0 = {	# War Horse
+			trigger = {
+				NOT = { has_character_flag = already_picked_artifact_mountwarhorse }
+			}
+			compare_modifier = {
+				value = artifact_market_chance_level_2
+			}
+			add_artifact_to_slot = { ARTIFACT_NAME = artifact_mountwarhorse VALUE = artifact_value_level_2 SLOT = $SLOT$ }
+		}
+		0 = {	# Griffon
+			trigger = {
+				NOT = { has_character_flag = already_picked_artifact_mountgriffon }
+			}
+			compare_modifier = {
+				value = artifact_market_chance_level_2
+			}
+			add_artifact_to_slot = { ARTIFACT_NAME = artifact_mountgriffon VALUE = artifact_value_level_2 SLOT = $SLOT$ }
+		}
+		0 = {	# War Griffon
+			trigger = {
+				NOT = { has_character_flag = already_picked_artifact_mountwargriffon }
+			}
+			compare_modifier = {
+				value = artifact_market_chance_level_3
+			}
+			add_artifact_to_slot = { ARTIFACT_NAME = artifact_mountwargriffon VALUE = artifact_value_level_3 SLOT = $SLOT$ }
+		}
+		0 = {	# Dread Wolf
+			trigger = {
+				NOT = { has_character_flag = already_picked_artifact_mountdreadwolf }
+			}
+			compare_modifier = {
+				value = artifact_market_chance_level_3
+			}
+			add_artifact_to_slot = { ARTIFACT_NAME = artifact_mountdreadwolf VALUE = artifact_value_level_3 SLOT = $SLOT$ }
+		}
+		0 = {	# Great Bear
+			trigger = {
+				NOT = { has_character_flag = already_picked_artifact_mountgreatbear }
+			}
+			compare_modifier = {
+				value = artifact_market_chance_level_3
+			}
+			add_artifact_to_slot = { ARTIFACT_NAME = artifact_mountgreatbear VALUE = artifact_value_level_3 SLOT = $SLOT$ }
+		}
+		0 = {	# Mammoth
+			trigger = {
+				NOT = { has_character_flag = already_picked_artifact_mountmammoth }
+			}
+			compare_modifier = {
+				value = artifact_market_chance_level_3
+			}
+			add_artifact_to_slot = { ARTIFACT_NAME = artifact_mountmammoth VALUE = artifact_value_level_3 SLOT = $SLOT$ }
+		}
+	}
+}
+
+scripted_effect pick_random_artifact_arcana = {
+	random_list = {
+		0 = {	# Mask of the Black Sun
+			trigger = {
+				NOT = { has_character_flag = already_picked_artifact_blacksunmask }
+				is_unique_artifact_trigger = { ARTIFACT_NAME = artifact_blacksunmask }
+			}
+			compare_modifier = {
+				value = artifact_market_chance_level_3
+			}
+			add_artifact_to_slot = { ARTIFACT_NAME = artifact_blacksunmask VALUE = artifact_value_level_3 SLOT = $SLOT$ }
+		}
+		0 = {	# Standard of Legio LXI
+			trigger = {
+				NOT = { has_character_flag = already_picked_artifact_standardofanoterion }
+				is_unique_artifact_trigger = { ARTIFACT_NAME = artifact_standardofanoterion }
+			}
+			compare_modifier = {
+				value = artifact_market_chance_level_3
+			}
+			add_artifact_to_slot = { ARTIFACT_NAME = artifact_standardofanoterion VALUE = artifact_value_level_3 SLOT = $SLOT$ }
+		}
+		0 = {	# Skull of Axiaothea
+			trigger = {
+				NOT = { has_character_flag = already_picked_artifact_skullofaxiaothea }
+				is_unique_artifact_trigger = { ARTIFACT_NAME = artifact_skullofaxiaothea }
+			}
+			compare_modifier = {
+				value = artifact_market_chance_level_3
+			}
+			add_artifact_to_slot = { ARTIFACT_NAME = artifact_skullofaxiaothea VALUE = artifact_value_level_3 SLOT = $SLOT$ }
+		}
+		0 = {	# Skull of Pridni the Younger
+			trigger = {
+				NOT = { has_character_flag = already_picked_artifact_skullofpridni }
+				is_unique_artifact_trigger = { ARTIFACT_NAME = artifact_skullofpridni }
+			}
+			compare_modifier = {
+				value = artifact_market_chance_level_1
+			}
+			add_artifact_to_slot = { ARTIFACT_NAME = artifact_skullofpridni VALUE = artifact_value_level_1 SLOT = $SLOT$ }
+		}
+		0 = {	# Skull of Duvaken
+			trigger = {
+				NOT = { has_character_flag = already_picked_artifact_skullofduvaken }
+				is_unique_artifact_trigger = { ARTIFACT_NAME = artifact_skullofduvaken }
+			}
+			compare_modifier = {
+				value = artifact_market_chance_level_1
+			}
+			add_artifact_to_slot = { ARTIFACT_NAME = artifact_skullofduvaken VALUE = artifact_value_level_1 SLOT = $SLOT$ }
+		}
+		0 = {	# Staff of the Wizard King
+			trigger = {
+				NOT = { has_character_flag = already_picked_artifact_staffofthewizardking }
+				is_unique_artifact_trigger = { ARTIFACT_NAME = artifact_staffofthewizardking }
+			}
+			compare_modifier = {
+				value = artifact_market_chance_level_4
+			}
+			add_artifact_to_slot = { ARTIFACT_NAME = artifact_staffofthewizardking VALUE = artifact_value_level_4 SLOT = $SLOT$ }
+		}
+		0 = {	# Skull of an Ancient
+			trigger = {
+				NOT = { has_character_flag = already_picked_artifact_skullofanancient }
+			}
+			compare_modifier = {
+				value = artifact_market_chance_level_2
+			}
+			add_artifact_to_slot = { ARTIFACT_NAME = artifact_skullofanancient VALUE = artifact_value_level_2 SLOT = $SLOT$ }
+		}
+		0 = {	# Dragon Skull
+			trigger = {
+				NOT = { has_character_flag = already_picked_artifact_dragonskull }
+			}
+			compare_modifier = {
+				value = artifact_market_chance_level_2
+			}
+			add_artifact_to_slot = { ARTIFACT_NAME = artifact_dragonskull VALUE = artifact_value_level_2 SLOT = $SLOT$ }
+		}
+		0 = {	# Bone of the Worldeater
+			trigger = {
+				NOT = { has_character_flag = already_picked_artifact_boneoftheworldeater }
+			}
+			compare_modifier = {
+				value = artifact_market_chance_level_1
+			}
+			add_artifact_to_slot = { ARTIFACT_NAME = artifact_boneoftheworldeater VALUE = artifact_value_level_1 SLOT = $SLOT$ }
+		}
+		0 = {	# Adabyssinian Fire Arbalest
+			trigger = {
+				NOT = { has_character_flag = already_picked_artifact_adabyssianfirearbalest }
+			}
+			compare_modifier = {
+				value = artifact_market_chance_level_4
+			}
+			add_artifact_to_slot = { ARTIFACT_NAME = artifact_adabyssianfirearbalest VALUE = artifact_value_level_4 SLOT = $SLOT$ }
+		}
+		0 = {	# Adabyssinian Control Rod
+			trigger = {
+				NOT = { has_character_flag = already_picked_artifact_adabyssiancontrolrod }
+			}
+			compare_modifier = {
+				value = artifact_market_chance_level_4
+			}
+			add_artifact_to_slot = { ARTIFACT_NAME = artifact_adabyssiancontrolrod VALUE = artifact_value_level_4 SLOT = $SLOT$ }
+		}
+		0 = {	# Whispering Skull
+			trigger = {
+				NOT = { has_character_flag = already_picked_artifact_whisperingskull }
+			}
+			compare_modifier = {
+				value = artifact_market_chance_level_2
+			}
+			add_artifact_to_slot = { ARTIFACT_NAME = artifact_whisperingskull VALUE = artifact_value_level_2 SLOT = $SLOT$ }
+		}
+		0 = {	# Strange Talking Skull
+			trigger = {
+				NOT = { has_character_flag = already_picked_artifact_strangetalkingskull }
+				is_unique_artifact_trigger = { ARTIFACT_NAME = artifact_strangetalkingskull }
+			}
+			compare_modifier = {
+				value = artifact_market_chance_level_5
+			}
+			add_artifact_to_slot = { ARTIFACT_NAME = artifact_strangetalkingskull VALUE = artifact_value_level_5 SLOT = $SLOT$ }
+		}
+		0 = {	# Panicked Eye Amulet
+			trigger = {
+				NOT = { has_character_flag = already_picked_artifact_panickedeye }
+			}
+			compare_modifier = {
+				value = artifact_market_chance_level_3
+			}
+			add_artifact_to_slot = { ARTIFACT_NAME = artifact_panickedeye VALUE = artifact_value_level_3 SLOT = $SLOT$ }
+		}
+		0 = {	# Vial of Blood
+			trigger = {
+				NOT = { has_character_flag = already_picked_artifact_vialofblood }
+			}
+			compare_modifier = {
+				value = artifact_market_chance_level_2
+			}
+			add_artifact_to_slot = { ARTIFACT_NAME = artifact_vialofblood VALUE = artifact_value_level_2 SLOT = $SLOT$ }
+		}
+		0 = {	# Blood of the Arch Magi
+			trigger = {
+				NOT = { has_character_flag = already_picked_artifact_bloodofthearchmagi }
+			}
+			compare_modifier = {
+				value = artifact_market_chance_level_3
+			}
+			add_artifact_to_slot = { ARTIFACT_NAME = artifact_bloodofthearchmagi VALUE = artifact_value_level_3 SLOT = $SLOT$ }
+		}
+		0 = {	# Ancient Tablet
+			trigger = {
+				NOT = { has_character_flag = already_picked_artifact_ancienttablet }
+			}
+			compare_modifier = {
+				value = artifact_market_chance_level_2
+			}
+			add_artifact_to_slot = { ARTIFACT_NAME = artifact_ancienttablet VALUE = artifact_value_level_2 SLOT = $SLOT$ }
+		}
+		0 = {	# Ring of the Lich Kings
+			trigger = {
+				NOT = { has_character_flag = already_picked_artifact_ringofthelich }
+				is_unique_artifact_trigger = { ARTIFACT_NAME = artifact_ringofthelich }
+			}
+			compare_modifier = {
+				value = artifact_market_chance_level_5
+			}
+			add_artifact_to_slot = { ARTIFACT_NAME = artifact_ringofthelich VALUE = artifact_value_level_6 SLOT = $SLOT$ }
+		}
+	}
+}
+
+scripted_effect fetch_all_artifacts_for_slot = {
+	fetch_artifact_from_slot = { ARTIFACT_NAME = artifact_4 SLOT = $SLOT$ }
+	fetch_artifact_from_slot = { ARTIFACT_NAME = artifact_5 SLOT = $SLOT$ }
+	fetch_artifact_from_slot = { ARTIFACT_NAME = artifact_6 SLOT = $SLOT$ }
+	fetch_artifact_from_slot = { ARTIFACT_NAME = artifact_7 SLOT = $SLOT$ }
+	fetch_artifact_from_slot = { ARTIFACT_NAME = artifact_16 SLOT = $SLOT$ }
+	fetch_artifact_from_slot = { ARTIFACT_NAME = artifact_17 SLOT = $SLOT$ }
+	fetch_artifact_from_slot = { ARTIFACT_NAME = artifact_18 SLOT = $SLOT$ }
+	fetch_artifact_from_slot = { ARTIFACT_NAME = artifact_19 SLOT = $SLOT$ }
+	fetch_artifact_from_slot = { ARTIFACT_NAME = artifact_20 SLOT = $SLOT$ }
+	fetch_artifact_from_slot = { ARTIFACT_NAME = artifact_21 SLOT = $SLOT$ }
+	fetch_artifact_from_slot = { ARTIFACT_NAME = artifact_22 SLOT = $SLOT$ }
+	fetch_artifact_from_slot = { ARTIFACT_NAME = artifact_23 SLOT = $SLOT$ }
+	fetch_artifact_from_slot = { ARTIFACT_NAME = artifact_28 SLOT = $SLOT$ }
+	fetch_artifact_from_slot = { ARTIFACT_NAME = artifact_29 SLOT = $SLOT$ }
+	fetch_artifact_from_slot = { ARTIFACT_NAME = artifact_30 SLOT = $SLOT$ }
+	fetch_artifact_from_slot = { ARTIFACT_NAME = artifact_31 SLOT = $SLOT$ }
+	fetch_artifact_from_slot = { ARTIFACT_NAME = artifact_alienwhip SLOT = $SLOT$ }
+	
+	
+	fetch_artifact_from_slot = { ARTIFACT_NAME = artifact_bookseventysevencities 		 SLOT = $SLOT$ }
+	fetch_artifact_from_slot = { ARTIFACT_NAME = artifact_bookamazingslaves 				 SLOT = $SLOT$ }
+	fetch_artifact_from_slot = { ARTIFACT_NAME = artifact_bookkamagutaran				 SLOT = $SLOT$ }
+	fetch_artifact_from_slot = { ARTIFACT_NAME = artifact_bookthedragontale 				 SLOT = $SLOT$ }
+	fetch_artifact_from_slot = { ARTIFACT_NAME = artifact_bookafynehestoree 				 SLOT = $SLOT$ }
+	fetch_artifact_from_slot = { ARTIFACT_NAME = artifact_bookgrimoireofmethinoire 		 SLOT = $SLOT$ }
+	fetch_artifact_from_slot = { ARTIFACT_NAME = artifact_bookburntgrimoire 				 SLOT = $SLOT$ }
+	fetch_artifact_from_slot = { ARTIFACT_NAME = artifact_bookpocketguideaversaria 			 SLOT = $SLOT$ }
+	fetch_artifact_from_slot = { ARTIFACT_NAME = artifact_bookbookofmaps 					 SLOT = $SLOT$ }
+	fetch_artifact_from_slot = { ARTIFACT_NAME = artifact_bookfraternityofmagi 				 SLOT = $SLOT$ }
+	fetch_artifact_from_slot = { ARTIFACT_NAME = artifact_bookaversariancookinginformational SLOT = $SLOT$ }
+	#fetch_artifact_from_slot = { ARTIFACT_NAME = artifact_bookcompiledworksofvenodau 		 SLOT = $SLOT$ }
+	fetch_artifact_from_slot = { ARTIFACT_NAME = artifact_bookmarcherswhatdoweknow  SLOT = $SLOT$ }
+	fetch_artifact_from_slot = { ARTIFACT_NAME = artifact_bookskullofthepurest  SLOT = $SLOT$ }
+	fetch_artifact_from_slot = { ARTIFACT_NAME = artifact_bookmightmagibuxommaiden  SLOT = $SLOT$ }
+	fetch_artifact_from_slot = { ARTIFACT_NAME = artifact_bookfiftyshades  SLOT = $SLOT$ }
+	fetch_artifact_from_slot = { ARTIFACT_NAME = artifact_bookadabyssianreport SLOT = $SLOT$ }
+	fetch_artifact_from_slot = { ARTIFACT_NAME = artifact_booktaleofsirkoeveux SLOT = $SLOT$ }
+	fetch_artifact_from_slot = { ARTIFACT_NAME = artifact_bookimperialcivilwar SLOT = $SLOT$ }
+	fetch_artifact_from_slot = { ARTIFACT_NAME = artifact_booknameofthewindknockoff  SLOT = $SLOT$ }
+	fetch_artifact_from_slot = { ARTIFACT_NAME = artifact_booktragedyinoejeynica   SLOT = $SLOT$ }
+	fetch_artifact_from_slot = { ARTIFACT_NAME = artifact_booksarradoniansteps  SLOT = $SLOT$ }
+	fetch_artifact_from_slot = { ARTIFACT_NAME = artifact_bookchivalriccode  SLOT = $SLOT$ }
+	fetch_artifact_from_slot = { ARTIFACT_NAME = artifact_bookgriffonbestiary  SLOT = $SLOT$ }
+	fetch_artifact_from_slot = { ARTIFACT_NAME = artifact_booklasthippogriff  SLOT = $SLOT$ }
+	fetch_artifact_from_slot = { ARTIFACT_NAME = artifact_bookhowtomaimadragon  SLOT = $SLOT$ }
+	fetch_artifact_from_slot = { ARTIFACT_NAME = artifact_bookloveanddeathinasiupoli SLOT = $SLOT$ }
+	fetch_artifact_from_slot = { ARTIFACT_NAME = artifact_booksilastavroaliveordead  SLOT = $SLOT$ }
+	fetch_artifact_from_slot = { ARTIFACT_NAME = artifact_bookhowtoreadabook  SLOT = $SLOT$ }
+	fetch_artifact_from_slot = { ARTIFACT_NAME = artifact_bookpurelifefifth  SLOT = $SLOT$ }
+	fetch_artifact_from_slot = { ARTIFACT_NAME = artifact_bookpurebodyfifth  SLOT = $SLOT$ }
+	fetch_artifact_from_slot = { ARTIFACT_NAME = artifact_bookpuremindfifth  SLOT = $SLOT$ }
+	fetch_artifact_from_slot = { ARTIFACT_NAME = artifact_bookpurelifefirst  SLOT = $SLOT$ }
+	fetch_artifact_from_slot = { ARTIFACT_NAME = artifact_bookpurebodyfirst  SLOT = $SLOT$ }
+	fetch_artifact_from_slot = { ARTIFACT_NAME = artifact_bookpuremindfirst  SLOT = $SLOT$ }
+	fetch_artifact_from_slot = { ARTIFACT_NAME = artifact_booktravelsofsaintkatharitos  SLOT = $SLOT$ }
+	fetch_artifact_from_slot = { ARTIFACT_NAME = artifact_bookhundredtrials  SLOT = $SLOT$ }
+	fetch_artifact_from_slot = { ARTIFACT_NAME = artifact_bookbookofremedies SLOT = $SLOT$ }
+	fetch_artifact_from_slot = { ARTIFACT_NAME = artifact_booksaintslawbook  SLOT = $SLOT$ }
+	fetch_artifact_from_slot = { ARTIFACT_NAME = artifact_bookrendingthechains  SLOT = $SLOT$ }
+	fetch_artifact_from_slot = { ARTIFACT_NAME = artifact_bookcalystojournal  SLOT = $SLOT$ }
+	fetch_artifact_from_slot = { ARTIFACT_NAME = artifact_bookeosianswordcharter  SLOT = $SLOT$ }
+	fetch_artifact_from_slot = { ARTIFACT_NAME = artifact_bookdangerofathousandstars SLOT = $SLOT$ }
+	fetch_artifact_from_slot = { ARTIFACT_NAME = artifact_bookbannediyrossipoetry SLOT = $SLOT$ }
+	fetch_artifact_from_slot = { ARTIFACT_NAME = artifact_bookaeladaxostoaeliadias  SLOT = $SLOT$ }
+	fetch_artifact_from_slot = { ARTIFACT_NAME = artifact_bookexpeditiontothenorth  SLOT = $SLOT$ }
+	fetch_artifact_from_slot = { ARTIFACT_NAME = artifact_bookhowtheendbegan  SLOT = $SLOT$ }
+	fetch_artifact_from_slot = { ARTIFACT_NAME = artifact_bookrefutation  SLOT = $SLOT$ }
+	fetch_artifact_from_slot = { ARTIFACT_NAME = artifact_bookinquiryintothefog  SLOT = $SLOT$ }
+	fetch_artifact_from_slot = { ARTIFACT_NAME = artifact_bookclockworkcity  SLOT = $SLOT$ }
+	fetch_artifact_from_slot = { ARTIFACT_NAME = artifact_bookannalsofblank  SLOT = $SLOT$ }
+	fetch_artifact_from_slot = { ARTIFACT_NAME = artifact_bookwhenaervalbleed  SLOT = $SLOT$ }
+	fetch_artifact_from_slot = { ARTIFACT_NAME = artifact_booktreatiseofgoodpractice  SLOT = $SLOT$ }
+	fetch_artifact_from_slot = { ARTIFACT_NAME = artifact_bookchevalienknightinoraispol  SLOT = $SLOT$ }
+	fetch_artifact_from_slot = { ARTIFACT_NAME = artifact_bookwitchbreakerhero  SLOT = $SLOT$ }
+	fetch_artifact_from_slot = { ARTIFACT_NAME = artifact_booksjalvolkipoetry  SLOT = $SLOT$ }
+	fetch_artifact_from_slot = { ARTIFACT_NAME = artifact_bookbookofthefallen  SLOT = $SLOT$ }
+	fetch_artifact_from_slot = { ARTIFACT_NAME = artifact_bookjacotwaldisse  SLOT = $SLOT$ }
+
+
+	
+	fetch_artifact_from_slot = { ARTIFACT_NAME = artifact_mountcamel SLOT = $SLOT$ }
+	fetch_artifact_from_slot = { ARTIFACT_NAME = artifact_mounthorse SLOT = $SLOT$ }
+	fetch_artifact_from_slot = { ARTIFACT_NAME = artifact_mountwarhorse SLOT = $SLOT$ }
+	fetch_artifact_from_slot = { ARTIFACT_NAME = artifact_mountgriffon SLOT = $SLOT$ }
+	fetch_artifact_from_slot = { ARTIFACT_NAME = artifact_mountwargriffon SLOT = $SLOT$ }
+	fetch_artifact_from_slot = { ARTIFACT_NAME = artifact_mountdreadwolf SLOT = $SLOT$ }
+	fetch_artifact_from_slot = { ARTIFACT_NAME = artifact_mountgreatbear SLOT = $SLOT$ }
+	fetch_artifact_from_slot = { ARTIFACT_NAME = artifact_mountmammoth SLOT = $SLOT$ }
+	
+	
+	fetch_artifact_from_slot = { ARTIFACT_NAME = artifact_blacksunmask SLOT = $SLOT$ }
+	fetch_artifact_from_slot = { ARTIFACT_NAME = artifact_standardofanoterion SLOT = $SLOT$ }
+	fetch_artifact_from_slot = { ARTIFACT_NAME = artifact_skullofaxiaothea SLOT = $SLOT$ }
+	fetch_artifact_from_slot = { ARTIFACT_NAME = artifact_skullofpridni SLOT = $SLOT$ }
+	fetch_artifact_from_slot = { ARTIFACT_NAME = artifact_staffofthewizardking SLOT = $SLOT$ }
+	fetch_artifact_from_slot = { ARTIFACT_NAME = artifact_skullofanancient SLOT = $SLOT$ }
+	fetch_artifact_from_slot = { ARTIFACT_NAME = artifact_dragonskull SLOT = $SLOT$ }
+	fetch_artifact_from_slot = { ARTIFACT_NAME = artifact_boneoftheworldeater SLOT = $SLOT$ }
+	fetch_artifact_from_slot = { ARTIFACT_NAME = artifact_adabyssianfirearbalest SLOT = $SLOT$ }
+	fetch_artifact_from_slot = { ARTIFACT_NAME = artifact_adabyssiancontrolrod SLOT = $SLOT$ }
+	fetch_artifact_from_slot = { ARTIFACT_NAME = artifact_whisperingskull SLOT = $SLOT$ }
+	fetch_artifact_from_slot = { ARTIFACT_NAME = artifact_bloodofthearchmagi SLOT = $SLOT$ }
+	fetch_artifact_from_slot = { ARTIFACT_NAME = artifact_panickedeye SLOT = $SLOT$ }
+	fetch_artifact_from_slot = { ARTIFACT_NAME = artifact_strangetalkingskull SLOT = $SLOT$ }
+	fetch_artifact_from_slot = { ARTIFACT_NAME = artifact_ringofthelich SLOT = $SLOT$ }
+}
+
+scripted_effect pick_random_stall_effect = {
+	random_list = {
+		10 = {
+			trigger = {
+				NOT = { has_character_flag = weapon_stall } 
+			}
+			add_character_flag = { flag = weapon_stall days = 30 }
+		}
+		10 = {
+			trigger = {
+				NOT = { has_character_flag = book_stall }
+			}
+			add_character_flag = { flag = book_stall days = 30 }
+		}
+		10 = {
+			trigger = {
+				NOT = { has_character_flag = menagerie_stall }
+			}
+			add_character_flag = { flag = menagerie_stall days = 30 }
+		}
+		10 = {
+			trigger = {
+				NOT = { has_character_flag = arcana_stall }
+			}
+			add_character_flag = { flag = arcana_stall days = 30 }
+		}
+	}
+}
+
+scripted_effect add_artifact_to_slot = {
+	add_character_flag = {
+		flag = $ARTIFACT_NAME$_slot_$SLOT$
+		days = 30
+	}
+	add_character_flag = {
+		flag = already_picked_$ARTIFACT_NAME$
+		days = 30
+	}
+	set_variable = {
+		name = slot_$SLOT$_price
+		value = $VALUE$
+		days = 30
+	}
+}
+
+scripted_effect fetch_artifact_from_slot = {
+	if = {
+		limit = { has_character_flag = $ARTIFACT_NAME$_slot_$SLOT$ }
+		add_artifact = {ARTIFACT = $ARTIFACT_NAME$ }
+	}
+}
+
+artifact.0001 = {		# Market event, lets you pick one of two randomly selected stalls
+	title = artifact.0001.t
+	desc = artifact.0001.desc
+	theme = stewardship
+	type = character_event
+	left_portrait = root
+
+	immediate = {
+		pick_random_stall_effect = yes	# Pick two random stalls
+		pick_random_stall_effect = yes 
+	}
+
+	option = {
+		#Weapon stall
+		name = artifact.0001.a
+		trigger = { has_character_flag = weapon_stall }
+		hidden_effect = {
+			trigger_event = artifact.0002
+		}
+	}
+
+	option = {
+		#Book cart
+		name = artifact.0001.b
+		trigger = { has_character_flag = book_stall }
+		hidden_effect = {
+			trigger_event = artifact.0003
+		}
+	}
+	
+	option = {
+		#Menagerie
+		name = artifact.0001.c
+		trigger = { has_character_flag = menagerie_stall }
+		hidden_effect = {
+			trigger_event = artifact.0004
+		}
+	}
+	
+	option = {
+		#Arcana tent
+		name = artifact.0001.d
+		trigger = { has_character_flag = arcana_stall }
+		hidden_effect = {
+			trigger_event = artifact.0005
+		}
+	}
+	
+	option = {
+		#Nothing
+		name = artifact.0001.e
+	}
+}
+
+artifact.0002 = {		# Market event, lets you pick one of three randomly selected artifacts (weapon stall)
+	title = artifact.0002.t
+	desc = artifact.0002.desc
+	theme = stewardship
+	type = character_event
+	left_portrait = root
+
+	immediate = {
+		pick_random_artifact_weapon = { SLOT = 1 }
+		pick_random_artifact_weapon = { SLOT = 2 }
+		pick_random_artifact_weapon = { SLOT = 3 }
+	}
+
+	option = {
+		name = artifact.0002.a
+		fetch_all_artifacts_for_slot = { SLOT = 1 }
+		remove_short_term_gold = var:slot_1_price
+	}
+	option = {
+		name = artifact.0002.b
+		fetch_all_artifacts_for_slot = { SLOT = 2 }
+		remove_short_term_gold = var:slot_2_price
+	}
+	option = {
+		name = artifact.0002.c
+		fetch_all_artifacts_for_slot = { SLOT = 3 }
+		remove_short_term_gold = var:slot_3_price
+	}
+	option = {
+		#Nothing
+		name = artifact.0002.d
+	}
+}
+
+artifact.0003 = {		# Market event, lets you pick one of three randomly selected artifacts (book stall)
+	title = artifact.0003.t
+	desc = artifact.0003.desc
+	theme = stewardship
+	type = character_event
+	left_portrait = root
+
+	immediate = {
+		pick_random_artifact_book = { SLOT = 1 }
+		pick_random_artifact_book = { SLOT = 2 }
+		pick_random_artifact_book = { SLOT = 3 }
+	}
+
+	option = {
+		name = artifact.0003.a
+		fetch_all_artifacts_for_slot = { SLOT = 1 }
+		remove_short_term_gold = var:slot_1_price
+	}
+	option = {
+		name = artifact.0003.b
+		fetch_all_artifacts_for_slot = { SLOT = 2 }
+		remove_short_term_gold = var:slot_2_price
+	}
+	option = {
+		name = artifact.0003.c
+		fetch_all_artifacts_for_slot = { SLOT = 3 }
+		remove_short_term_gold = var:slot_3_price
+	}
+	option = {
+		#Nothing
+		name = artifact.0003.d
+	}
+}
+
+artifact.0004 = {		# Market event, lets you pick one of three randomly selected artifacts (menagerie)
+	title = artifact.0004.t
+	desc = artifact.0004.desc
+	theme = stewardship
+	type = character_event
+	left_portrait = root
+
+	immediate = {
+		pick_random_artifact_menagerie = { SLOT = 1 }
+		pick_random_artifact_menagerie = { SLOT = 2 }
+		pick_random_artifact_menagerie = { SLOT = 3 }
+	}
+
+	option = {
+		name = artifact.0002.a
+		fetch_all_artifacts_for_slot = { SLOT = 1 }
+		remove_short_term_gold = var:slot_1_price
+	}
+	option = {
+		name = artifact.0002.b
+		fetch_all_artifacts_for_slot = { SLOT = 2 }
+		remove_short_term_gold = var:slot_2_price
+	}
+	option = {
+		name = artifact.0002.c
+		fetch_all_artifacts_for_slot = { SLOT = 3 }
+		remove_short_term_gold = var:slot_3_price
+	}
+	option = {
+		#Nothing
+		name = artifact.0004.d
+	}
+}
+
+artifact.0005 = {		# Market event, lets you pick one of three randomly selected artifacts (arcana stall)
+	title = artifact.0005.t
+	desc = artifact.0005.desc
+	theme = stewardship
+	type = character_event
+	left_portrait = root
+
+	immediate = {
+		pick_random_artifact_arcana = { SLOT = 1 }
+		pick_random_artifact_arcana = { SLOT = 2 }
+		pick_random_artifact_arcana = { SLOT = 3 }
+	}
+
+	option = {
+		name = artifact.0005.a
+		fetch_all_artifacts_for_slot = { SLOT = 1 }
+		remove_short_term_gold = var:slot_1_price
+	}
+	option = {
+		name = artifact.0005.b
+		fetch_all_artifacts_for_slot = { SLOT = 2 }
+		remove_short_term_gold = var:slot_2_price
+	}
+	option = {
+		name = artifact.0005.c
+		fetch_all_artifacts_for_slot = { SLOT = 3 }
+		remove_short_term_gold = var:slot_3_price
+	}
+	option = {
+		#Nothing
+		name = artifact.0005.d
+	}
+}
+
+artifact.0010 = {		# Menagerie event, lets you make one in exchange for money
+	title = artifact.0010.t
+	desc = artifact.0010.desc
+	theme = stewardship
+	type = character_event
+	
+	left_portrait = {
+		character = root
+		animation = personality_rational
+	}
+	right_portrait = {
+		character = scope:menagerie_merchant
+		animation = admiration
+	}
+	
+	immediate = {
+		hidden_effect = {
+			random_list = {
+				50 = {
+					trigger = { any_county = { culture = culture:easternimperial } }
+					random_county = {
+						limit = {
+							culture = culture:easternimperial
+						}
+						save_scope_as = origin_county
+					}
+				}
+				50 = {
+					random_county = {
+						limit = {
+							NOT = { faith = faith:fogeater }
+						}
+						save_scope_as = origin_county
+					}
+				}
+			}
+			create_character = {
+				template = menagerie_merchant_template
+				save_scope_as = menagerie_merchant
+				location = root.capital_province
+			}
+			pick_random_artifact_menagerie = { SLOT = 1 }
+			pick_random_artifact_menagerie = { SLOT = 2 }
+			pick_random_artifact_menagerie = { SLOT = 3 }
+		}
+	}
+	
+	option = {
+		name = artifact.0010.a
+		fetch_all_artifacts_for_slot = { SLOT = 1 }
+		remove_short_term_gold = var:slot_1_price
+		ai_chance = {
+			base = 10
+			modifier = {
+				factor = 0.1
+				has_trait = greedy
+			}
+			modifier = {
+				factor = 2
+				has_trait = arrogant
+			}
+			modifier = {
+				factor = 0
+				gold < var:slot_1_price
+			}
+		}
+	}
+	
+	option = {
+		name = artifact.0010.b
+		fetch_all_artifacts_for_slot = { SLOT = 2 }
+		remove_short_term_gold = var:slot_2_price
+		ai_chance = {
+			base = 10
+			modifier = {
+				factor = 0.1
+				has_trait = greedy
+			}
+			modifier = {
+				factor = 2
+				has_trait = arrogant
+			}
+			modifier = {
+				factor = 0
+				gold < var:slot_2_price
+			}
+		}
+	}
+	
+	option = {
+		name = artifact.0010.c
+		fetch_all_artifacts_for_slot = { SLOT = 3 }
+		remove_short_term_gold = var:slot_3_price
+		ai_chance = {
+			base = 10
+			modifier = {
+				factor = 0.1
+				has_trait = greedy
+			}
+			modifier = {
+				factor = 2
+				has_trait = arrogant
+			}
+			modifier = {
+				factor = 0
+				gold < var:slot_3_price
+			}
+		}
+	}
+	
+	option = {
+		name = artifact.0010.d
+		fetch_all_artifacts_for_slot = { SLOT = 1 }
+		fetch_all_artifacts_for_slot = { SLOT = 2 }
+		fetch_all_artifacts_for_slot = { SLOT = 3 }
+		capital_county = { add_county_modifier = menagerie_modifier }
+		add_prestige = major_prestige_value
+		remove_short_term_gold = artifact_menagerie_price
+		ai_chance = {
+			base = 5
+			modifier = {
+				factor = 0
+				has_trait = greedy
+			}
+			modifier = {
+				factor = 10
+				has_trait = arrogant
+			}
+			modifier = {
+				factor = 5
+				has_trait = ambitious
+			}
+			modifier = {
+				factor = 0
+				gold < artifact_menagerie_price
+			}
+		}
+	}
+	
+	option = {
+		name = artifact.0010.e
+	}
+	
+	after = {
+		hidden_effect = {
+			scope:menagerie_merchant = { death = { death_reason = death_vanish } }
+		}
+	}
+}

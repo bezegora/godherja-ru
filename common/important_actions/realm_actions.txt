@@ -1,0 +1,18 @@
+﻿### REALM RELATED ALERTS
+
+action_chevalie_will_shatter = {
+	type = alert
+	check_create_action = {
+		if = {
+			limit = { chevalie_will_shatter = yes }
+			capital_county = { save_scope_as = capital }
+			try_create_important_action = {
+				important_action_type = action_chevalie_will_shatter
+				actor = root
+			}
+		}
+	}
+	effect = {
+		pan_camera_to_title = scope:capital
+	}
+}

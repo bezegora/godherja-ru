@@ -1,0 +1,275 @@
+﻿
+strengthening_cost = {
+	value = tier_2_spell
+}
+quicken_cost = {
+	value = tier_1_spell
+}
+fire_magick_cost = {
+	value = tier_1_spell
+}
+mending_cost = {
+	value = tier_2_spell
+}
+healing_water_cost = {
+	value = tier_1_spell
+}
+purification_cost = {
+	value = tier_1_spell
+}
+unveiling_cost = {
+	value = tier_2_spell
+}
+creation_cost = {
+	value = tier_1_spell
+}
+divination_cost = {
+	value = tier_3_spell
+}
+annihilation_cost = {
+	value = tier_5_spell
+}
+pull_meteor_cost = {
+	value = tier_4dead_spell	
+}
+craft_greater_golem_cost = {
+	value = tier_3dead_spell	
+}
+boneshaping_cost = {
+	value = tier_5dead_spell	
+}
+raise_undead_cost = {
+	value = tier_3dead_spell
+}
+raise_undead2_cost = {
+	value = tier_3dead_spell
+}
+moon_read_cost = {
+	value = tier_1dead_spell
+}
+# Problems if used on multiple targets.
+vampiric_drain_cost = {
+	value = tier_5_spell
+	if = {
+		limit = {
+			has_trait = gh_extended_life
+		}
+		value = magi_potency
+		subtract = 21
+		multiply = num_vampiric_drain_casted
+		multiply = -10
+		# The value is equal to 10 * Inverse of Magi Potency * 10 / Casting
+		# Each casting increases the cost (As per Haps instructions.)
+		# First cast is expensive. (Tier 5)
+	}
+}
+genocide_region_cost = {
+	value = tier_5_spell
+}
+battle_rage_cost = {
+	value = tier_3_spell
+}
+create_golems_cost = {
+	value = tier_4dead_spell
+}
+skeletal_craft_cost = {
+	value = 0
+}
+moon_pull_cost = {
+	value = 0
+}
+necrotic_boon_cost = {
+	value = tier_2_spell
+}
+stone_serpent_cost = {
+	value = tier_1dead_spell
+}
+raise_earth_cost = {
+	value = tier_1dead_spell
+}
+earth_fort_cost = {
+	value = tier_1dead_spell
+}
+find_minerals_cost = {
+	value = tier_3dead_spell
+}
+petrify_cost = {
+	value = tier_2dead_spell
+}
+stoneskin_cost = {
+	value = tier_2dead_spell
+}
+expedition_cost = {
+	value = tier_1_gen
+}
+study_arcane_cost = {
+	value = tier_1_gen
+}
+sacrifice_population_cost = {
+	value = tier_2_gen
+	if = {
+		limit = {
+			faith = {
+				has_doctrine = tenet_aeschres_legacy
+			}
+		}
+		multiply = 1.2
+	}
+	if = {
+		limit = {
+			any_held_title = {
+				trigger_if = {
+					limit = { tier = tier_county }
+					any_county_province = {
+						OR = {
+							has_building = thebloodyard
+							has_building = thebloodyard_02
+						}
+					}
+				}
+				trigger_else = { always = no }
+			}
+		}
+		multiply = 2
+	}
+}
+ritual_sacrifice_cost = 0
+flagellate_cost = {
+	value = 0
+	if = {	# The closer you beat yourself to the brink of death, the more magic you get
+		limit = { 
+			NOT = { 
+				has_trait_rank = {
+					trait = wounded
+					rank >= 1
+				}
+			} 
+		}
+		add = tier_2_gen
+	}
+	else_if = {
+		limit = { 
+			has_trait_rank = {
+				trait = wounded
+				rank = 1
+			}
+		}
+		add = tier_3_gen
+	}
+	else_if = {
+		limit = { 
+			has_trait_rank = {
+				trait = wounded
+				rank = 2
+			}
+		}
+		add = tier_4_gen
+	}
+	if = {
+		limit = { 
+			has_perk = livingmagic_perk3_tree1
+		}
+		multiply = 1.5
+	}
+}
+communed_with_the_way_cost = {
+	value = tier_2_gen
+}
+sacrifice_plants_cost = {
+	value = tier_1_gen
+}
+lead_to_gold_cost = {
+	value = tier_2dead_spell
+}
+
+dementation_cost = {
+	value = tier_2_spell
+}
+
+summon_lesser_cost = {
+	value = tier_4_spell
+}
+
+communed_with_eldritch_cost = {
+	value = tier_3_gen
+}
+
+seeped_into_madness_cost = {
+	value = tier_1_gen
+}
+
+fog_cast_cost = {
+	value = tier_5_spell
+}
+
+dreamwalk_cost = {
+	value = tier_2_gen
+}
+
+rift_gaze_cost = {
+	value = tier_4_spell
+}
+
+raise_lesser_fogbeasts_cost = {
+	value = tier_4_spell
+}
+
+dream_invasion_cost = {
+	value = tier_1_gen
+}
+
+obliterate_memory_cost = {
+	value = tier_5_spell
+}
+
+ethereal_ritual_cost = {
+	value = tier_1_gen
+}
+
+rift_walk_cost = {
+	value = tier_2_spell
+}
+
+remove_burdens_cost = {
+	value = tier_3_spell
+}
+
+haunting_power_cost = {
+	value = tier_1_spell
+}
+
+thinning_cost = {
+	value = tier_2_spell
+}
+
+poison_cost = {
+	value = tier_2_spell
+}
+
+thralldom_cost = {
+	value = tier_3_spell
+}
+
+domination_cost = {
+	value = tier_3_spell
+}
+
+crush_armor_cost = {
+	value = tier_1dead_spell
+}
+
+moon_guidance_cost = {
+	value = tier_1dead_spell
+}
+
+enchant_arms_cost = {
+	value = tier_1dead_spell
+}
+
+earthquake_cost = {
+	value = tier_5dead_spell
+}
+
+improve_soil_cost = {
+	value = tier_2dead_spell
+}

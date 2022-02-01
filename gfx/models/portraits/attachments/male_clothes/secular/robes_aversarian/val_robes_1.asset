@@ -1,0 +1,51 @@
+pdxmesh = {
+	name = "val_robes_1_mesh"
+	file = "val_robes_1.mesh"
+	
+	blend_shape = { id = "robes_old"				type = "robes_old.mesh" }
+	blend_shape = { id = "robes_infant"				type = "robes_infant.mesh" }
+	blend_shape = { id = "robes_fat"				type = "robes_fat.mesh" }
+	blend_shape = { id = "robes_dwarf"				type = "robes_dwarf.mesh" }
+	blend_shape = { id = "robes_gaunt"				type = "robes_gaunt.mesh" }
+	blend_shape = { id = "robes_muscular"			type = "robes_muscular.mesh" }
+
+
+
+
+
+	meshsettings = {
+		name = "val_robes_1Shape"
+		index = 0
+		texture_diffuse = "robes_color.dds"
+		texture_normal = "robes_normal.dds"
+		texture_specular = "robes_rough.dds"
+		shader = "portrait_attachment_pattern"
+		shader_file = "gfx/FX/jomini/portrait.shader"
+	}
+}
+
+entity = {
+	name = "val_robes_1_entity"
+	pdxmesh = "val_robes_1_mesh"
+		
+		attribute = { name = "bs_body_old_1"								blend_shape = "robes_old" }
+		attribute = { name = "bs_body_infant_1"								blend_shape = "robes_infant" }
+		attribute = { name = "bs_body_fat_1"								blend_shape = "robes_fat" }
+		attribute = { name = "bs_body_dwarf_1"								blend_shape = "robes_dwarf" }
+		attribute = { name = "bs_body_gaunt_1"								blend_shape = "robes_gaunt" }
+		attribute = { name = "bs_body_muscular_1"							blend_shape = "robes_muscular" }
+	
+
+
+
+
+
+	game_data = {
+		portrait_accessory = {
+			pattern_mask = "gfx/models/portraits/attachments/male_clothes/secular/robes_aversarian/robes_mask.dds"	#Any 4-channel texture. Each channel will be used to mask a pattern from the variation object
+			variation = "robes_aversarian"	#A "variation" object in gfx/portraits/accessory_variations/
+		}
+	}
+}
+
+

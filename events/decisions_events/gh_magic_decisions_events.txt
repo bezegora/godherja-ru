@@ -1,0 +1,150 @@
+﻿namespace = magic_decisions
+
+magic_decisions.1001 = {
+	title = magic_decisions.1001.t
+	type = character_event
+	desc = magic_decisions.1001.d
+	theme = skull
+
+	left_portrait = {
+		character = root
+	}
+
+	option = { #YES
+		show_as_unavailable = {
+			always = yes
+		}
+		name = magic_decisions.1001.a
+		add_character_modifier = vampiric_drain_mod
+		add_trait = gh_extended_life
+	}
+
+	option = { #NO!
+		name = magic_decisions.1001.b
+	}
+}
+
+magic_decisions.1002 = {
+	title = magic_decisions.1002.t
+	desc = magic_decisions.1002.d
+	type = character_event
+	theme = skull
+
+	left_portrait = {
+		character = root
+	}
+
+	trigger = {
+		AND = {
+			age = 100
+			has_trait = gh_extended_life
+			has_character_flag = casted_vampiric_drain
+		}
+	}
+
+	option = {
+		name = magic_decisions.1002.a
+		remove_trait = gh_extended_life
+		remove_character_flag = casted_vampiric_drain
+	}
+}
+
+magic_decisions.1003 = {
+	title = magic_decisions.1003.t
+	desc = magic_decisions.1003.d
+	type = character_event
+	theme = skull
+
+	left_portrait = {
+		character = root
+	}
+
+	trigger = {
+		AND = {
+			age = 125
+			has_trait = gh_extended_life
+			has_character_flag = casted_vampiric_drain
+		}
+	}
+
+	option = {
+		name = magic_decisions.1003.a
+		remove_trait = gh_extended_life
+		remove_character_flag = casted_vampiric_drain
+	}
+}
+
+magic_decisions.1004 = {
+	title = magic_decisions.1004.t
+	desc = magic_decisions.1004.d
+	type = character_event
+	theme = skull
+
+	trigger = {
+		AND = {
+			age = 150
+			has_trait = gh_extended_life
+			has_character_flag = casted_vampiric_drain
+		}
+	}
+
+	option = {
+		name = magic_decisions.1004.a
+		remove_trait = gh_extended_life
+		remove_character_flag = casted_vampiric_drain
+		death = {
+			killer = root
+		}
+	}
+}
+
+###boneshaping
+
+magic_decisions.2000 = {
+	title = magic_decisions.2000.t
+	type = character_event
+	desc = magic_decisions.2000.d
+	theme = skull
+
+	left_portrait = {
+		character = root
+	}
+	
+	immediate = {
+		hidden_effect = { 
+			remove_trait = beauty_bad_3
+			remove_trait = beauty_bad_2
+			remove_trait = beauty_bad_1
+			remove_trait = physique_bad_1
+			remove_trait = physique_bad_2
+			remove_trait = physique_bad_3
+			remove_trait = clubfooted
+			remove_trait = hunchbacked
+			remove_trait = dwarf
+			remove_trait = spindly
+			remove_trait = scaly
+		}
+	}
+		
+	option = { #beauty
+		name = magic_decisions.2000.a
+		add_character_modifier = boneshaping_mod
+		add_trait = beauty_good_3
+	}
+
+	option = { #physique
+		name = magic_decisions.2000.b
+		add_character_modifier = boneshaping_mod
+		add_trait = physique_good_3	
+	}
+	
+	option = { #giant
+		name = magic_decisions.2000.c
+		add_character_modifier = boneshaping_mod
+		add_trait = giant		
+	}	
+}
+
+
+
+

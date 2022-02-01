@@ -1,0 +1,434 @@
+﻿magic_scholarship_focus_living = {
+	lifestyle = magic_lifestyle_living
+
+	desc = {
+		desc = magic_scholarship_focus_desc
+		desc = line_break
+	}
+	
+	modifier = {
+		learning = 3
+	}
+
+	auto_selection_weight = {
+		value = 11
+		if = {
+			limit = {
+				has_education_magic_trigger = yes
+			}
+			add = 1989
+		}
+		if = {
+			limit = {
+				has_trait = deceitful
+			}
+			multiply = 2
+		}
+		if = {
+			limit = {
+				has_trait = paranoid
+			}
+			multiply = 5
+		}
+		if = {
+			limit = {
+				has_trait = trusting
+			}
+			multiply = 0.1
+		}
+		if = {
+			limit = {
+				has_trait = honest
+			}
+			multiply = 0.1
+		}
+	}
+
+	focus_id = 15
+}
+
+magic_power_focus_living = {
+	lifestyle = magic_lifestyle_living
+
+	desc = {
+		desc = magic_power_focus_desc
+		desc = line_break
+	}
+	
+	modifier = {
+		martial = 1
+		attraction_opinion = 10
+		fertility = 0.25
+	}
+
+	auto_selection_weight = {
+		value = 11
+		if = {
+			limit = {
+				has_education_magic_trigger = yes
+			}
+			add = 1989
+		}
+		if = {
+			limit = {
+				has_trait = lustful
+			}
+			multiply = 7
+		}
+		if = {
+			limit = {
+				OR = {
+					has_trait = celibate
+					has_trait = chaste
+				}
+			}
+			multiply = 0
+		}
+	}
+
+	focus_id = 16
+}
+
+magic_sustainment_focus_living = {
+	lifestyle = magic_lifestyle_living
+
+	desc = {
+		desc = magic_sustainment_focus_desc
+		desc = line_break
+	}
+	
+	modifier = {
+		intrigue = 2
+		dread_baseline_add = 30
+	}
+
+	auto_selection_weight = {
+		value = 11
+		if = {
+			limit = {
+				has_education_magic_trigger = yes
+			}
+			add = 1989
+		}
+		if = {
+			limit = {
+				has_trait = callous
+			}
+			multiply = 3
+		}
+		if = {
+			limit = {
+				has_trait = wrathful
+			}
+			multiply = 2
+		}
+		if = {
+			limit = {
+				has_trait = vengeful
+			}
+			multiply = 2
+		}
+		if = {
+			limit = {
+				OR = {
+					has_trait = craven
+					has_trait = compassionate
+					has_trait = forgiving
+				}
+			}
+			multiply = 0
+		}
+	}
+
+	focus_id = 17
+}
+
+magic_scholarship_focus_dead = {
+	lifestyle = magic_lifestyle_dead
+
+	desc = {
+		desc = magic_scholarship_focus_desc
+		desc = line_break
+	}
+	
+	modifier = {
+		learning = 3
+	}
+
+	auto_selection_weight = {
+		value = 11
+		if = {
+			limit = {
+				has_education_magic_trigger = yes
+			}
+			add = 1989
+		}
+		if = {
+			limit = {
+				has_trait = deceitful
+			}
+			multiply = 2
+		}
+		if = {
+			limit = {
+				has_trait = paranoid
+			}
+			multiply = 5
+		}
+		if = {
+			limit = {
+				has_trait = trusting
+			}
+			multiply = 0.1
+		}
+		if = {
+			limit = {
+				has_trait = honest
+			}
+			multiply = 0.1
+		}
+	}
+
+	focus_id = 18
+}
+
+magic_power_focus_dead = {
+	lifestyle = magic_lifestyle_dead
+
+	desc = {
+		desc = magic_power_focus_desc
+		desc = line_break
+	}
+	
+	modifier = {
+		martial = 1
+		attraction_opinion = 10
+		fertility = 0.25
+	}
+
+	auto_selection_weight = {
+		value = 11
+		if = {
+			limit = {
+				has_education_magic_trigger = yes
+			}
+			add = 1989
+		}
+		if = {
+			limit = {
+				has_trait = lustful
+			}
+			multiply = 7
+		}
+		if = {
+			limit = {
+				OR = {
+					has_trait = celibate
+					has_trait = chaste
+				}
+			}
+			multiply = 0
+		}
+	}
+
+	focus_id = 19
+}
+
+magic_sustainment_focus_dead = {
+	lifestyle = magic_lifestyle_dead
+
+	desc = {
+		desc = magic_sustainment_focus_desc
+		desc = line_break
+	}
+	
+	modifier = {
+		intrigue = 2
+		dread_baseline_add = 30
+	}
+
+	auto_selection_weight = {
+		value = 11
+		if = {
+			limit = {
+				has_education_magic_trigger = yes
+			}
+			add = 1989
+		}
+		if = {
+			limit = {
+				has_trait = callous
+			}
+			multiply = 3
+		}
+		if = {
+			limit = {
+				has_trait = wrathful
+			}
+			multiply = 2
+		}
+		if = {
+			limit = {
+				has_trait = vengeful
+			}
+			multiply = 2
+		}
+		if = {
+			limit = {
+				OR = {
+					has_trait = craven
+					has_trait = compassionate
+					has_trait = forgiving
+				}
+			}
+			multiply = 0
+		}
+	}
+
+	focus_id = 20
+}
+
+magic_scholarship_focus_mixed = {
+	lifestyle = magic_lifestyle_mixed
+
+	desc = {
+		desc = magic_scholarship_focus_desc
+		desc = line_break
+	}
+	
+	modifier = {
+		learning = 3
+	}
+
+	auto_selection_weight = {
+		value = 11
+		if = {
+			limit = {
+				has_education_magic_trigger = yes
+			}
+			add = 1989
+		}
+		if = {
+			limit = {
+				has_trait = deceitful
+			}
+			multiply = 2
+		}
+		if = {
+			limit = {
+				has_trait = paranoid
+			}
+			multiply = 5
+		}
+		if = {
+			limit = {
+				has_trait = trusting
+			}
+			multiply = 0.1
+		}
+		if = {
+			limit = {
+				has_trait = honest
+			}
+			multiply = 0.1
+		}
+	}
+
+	focus_id = 21
+}
+
+magic_power_focus_mixed = {
+	lifestyle = magic_lifestyle_mixed
+
+	desc = {
+		desc = magic_power_focus_desc
+		desc = line_break
+	}
+	
+	modifier = {
+		martial = 1
+		attraction_opinion = 10
+		fertility = 0.25
+	}
+
+	auto_selection_weight = {
+		value = 11
+		if = {
+			limit = {
+				has_education_magic_trigger = yes
+			}
+			add = 1989
+		}
+		if = {
+			limit = {
+				has_trait = lustful
+			}
+			multiply = 7
+		}
+		if = {
+			limit = {
+				OR = {
+					has_trait = celibate
+					has_trait = chaste
+				}
+			}
+			multiply = 0
+		}
+	}
+
+	focus_id = 22
+}
+
+magic_sustainment_focus_mixed = {
+	lifestyle = magic_lifestyle_mixed
+
+	desc = {
+		desc = magic_sustainment_focus_desc
+		desc = line_break
+	}
+	
+	modifier = {
+		intrigue = 2
+		dread_baseline_add = 30
+	}
+
+	auto_selection_weight = {
+		value = 11
+		if = {
+			limit = {
+				has_education_magic_trigger = yes
+			}
+			add = 1989
+		}
+		if = {
+			limit = {
+				has_trait = callous
+			}
+			multiply = 3
+		}
+		if = {
+			limit = {
+				has_trait = wrathful
+			}
+			multiply = 2
+		}
+		if = {
+			limit = {
+				has_trait = vengeful
+			}
+			multiply = 2
+		}
+		if = {
+			limit = {
+				OR = {
+					has_trait = craven
+					has_trait = compassionate
+					has_trait = forgiving
+				}
+			}
+			multiply = 0
+		}
+	}
+
+	focus_id = 23
+}

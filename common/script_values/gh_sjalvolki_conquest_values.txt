@@ -1,0 +1,352 @@
+﻿sjalvolki_conquest_contribution_value = {
+	value = 0
+	if = {
+		limit = { has_variable = sjalvolki_conquest_contribution }
+		add = var:sjalvolki_conquest_contribution
+	}
+	if = {
+		limit = {
+			trigger_if = {
+				limit = { exists = scope:model }
+				has_faith = scope:model.faith
+			}
+			trigger_else = { always = no }
+		}
+		multiply = 2
+	}
+	if = {
+		limit = {
+			trigger_if = {
+				limit = { exists = scope:model }
+				has_culture_group = scope:model.culture_group
+			}
+			trigger_else = { always = no }
+		}
+		multiply = 2
+	}
+	if = {
+		limit = {
+			trigger_if = {
+				limit = { exists = scope:model }
+				has_culture = scope:model.culture
+			}
+			trigger_else = { always = no }
+		}
+		multiply = 2
+	}
+	multiply = sjalvolki_conquest_contribution_tier_multiplier	# Higher tiered characters have an advantage due to realpolitik
+	if = {
+		limit = {	# Cenware's friends, family members, lovers and direct allies get a colossal advantage due to nepotism
+			OR = {
+				has_relation_friend = title:e_sjalvolki.holder
+				has_relation_best_friend = title:e_sjalvolki.holder
+				has_relation_lover = title:e_sjalvolki.holder
+				has_relation_soulmate = title:e_sjalvolki.holder
+				is_close_family_of = title:e_sjalvolki.holder
+				is_allied_to = title:e_sjalvolki.holder
+			}
+		}
+		multiply = 5
+	}
+	if = {
+		limit = {	# Extended family, councillors and powerful vassals gain a smaller boost
+			OR = {
+				is_extended_family_of = title:e_sjalvolki.holder
+				is_councillor_of = title:e_sjalvolki.holder
+				is_powerful_vassal_of = title:e_sjalvolki.holder
+			}
+		}
+		multiply = 2
+	}
+	if = {
+		limit = {	# Culture heads get a massive advantage as well - Cenware gave them serious promises
+			culture.culture_head = this
+		}
+		multiply = 5
+	}
+	if = {
+		limit = {
+			trigger_if = {
+				limit = { 
+					exists = scope:model
+					exists = var:sjalvolki_conquest_contribution
+				}
+				var:sjalvolki_conquest_contribution < sjalvolki_conquest_contribution_minimum_treshold
+			}
+			trigger_else = {
+				always = no
+			}
+		}
+		multiply = 0
+	}
+}
+
+sjalvolki_conquest_contribution_model_value = {
+	value = 0
+	scope:model = {
+		if = {
+			limit = { has_variable = sjalvolki_conquest_contribution_previous }
+			add = var:sjalvolki_conquest_contribution_previous
+		}
+		if = {
+			limit = {
+				trigger_if = {
+					limit = { exists = scope:model }
+					has_faith = scope:model.faith
+				}
+				trigger_else = { always = no }
+			}
+			multiply = 2
+		}
+		if = {
+			limit = {
+				trigger_if = {
+					limit = { exists = scope:model }
+					has_culture_group = scope:model.culture_group
+				}
+				trigger_else = { always = no }
+			}
+			multiply = 2
+		}
+		if = {
+			limit = {
+				trigger_if = {
+					limit = { exists = scope:model }
+					has_culture = scope:model.culture
+				}
+				trigger_else = { always = no }
+			}
+			multiply = 2
+		}
+		multiply = sjalvolki_conquest_contribution_tier_multiplier	# Higher tiered characters have an advantage due to realpolitik
+		if = {
+			limit = {	# Cenware's friends, family members, lovers and direct allies get a colossal advantage due to nepotism
+				OR = {
+					has_relation_friend = title:e_sjalvolki.holder
+					has_relation_best_friend = title:e_sjalvolki.holder
+					has_relation_lover = title:e_sjalvolki.holder
+					has_relation_soulmate = title:e_sjalvolki.holder
+					is_close_family_of = title:e_sjalvolki.holder
+					is_allied_to = title:e_sjalvolki.holder
+				}
+			}
+			multiply = 5
+		}
+		if = {
+			limit = {	# Extended family, councillors and powerful vassals gain a smaller boost
+				OR = {
+					is_extended_family_of = title:e_sjalvolki.holder
+					is_councillor_of = title:e_sjalvolki.holder
+					is_powerful_vassal_of = title:e_sjalvolki.holder
+				}
+			}
+			multiply = 2
+		}
+		if = {
+			limit = {	# Culture heads get a massive advantage as well - Cenware gave them serious promises
+				culture.culture_head = this
+			}
+			multiply = 5
+		}
+		if = {
+			limit = {
+				trigger_if = {
+					limit = { 
+						exists = scope:model
+						exists = var:sjalvolki_conquest_contribution
+					}
+					var:sjalvolki_conquest_contribution < sjalvolki_conquest_contribution_minimum_treshold
+				}
+				trigger_else = {
+					always = no
+				}
+			}
+			multiply = 0
+		}
+	}
+}
+
+sjalvolki_conquest_contribution_tier_multiplier = {	# Higher tier characters should inherently gain more contribution based on their rank alone, because life isn't fair
+	value = 1
+	if = {
+		limit = { highest_held_title_tier = tier_duchy }
+		multiply = 2
+	}
+	else_if = {
+		limit = { highest_held_title_tier >= tier_kingdom }
+		multiply = 4
+	}
+}
+
+sjalvolki_conquest_contribution_minimum_treshold = {	# If below this, you won't even be offered anything in the kingdom
+	value = 0
+	if = {
+		limit = {
+			has_faith = scope:model.faith
+			has_culture = scope:model.culture
+		}
+		add = 0
+	}
+	else_if = {
+		limit = {
+			has_faith = scope:model.faith
+			has_culture_group = scope:model.culture_group
+		}
+		add = 10
+	}
+	else_if = {
+		limit = {
+			OR = {
+				has_faith = scope:model.faith
+				has_culture = scope:model.culture
+			}
+		}
+		add = 15
+	}
+	else_if = {
+		limit = {
+			OR = {
+				has_faith = scope:model.faith
+				has_culture_group = scope:model.culture_group
+			}
+		}
+		add = 20
+	}
+	else = {
+		add = 30
+	}
+}
+
+sjalvolki_conquest_contribution_from_gathering_troops_value = {
+	value = 0
+	add = {
+		value = martial
+		divide = 2
+	}
+	add = {
+		value = prowess
+		divide = 2
+	}
+	add = {
+		value = diplomacy
+		divide = 3
+	}
+}
+
+sjalvolki_conquest_prestige_from_gathering_troops_value = {
+	value = 0
+	add = {
+		value = sjalvolki_conquest_contribution_from_gathering_troops_value
+		multiply = 5
+	}
+}
+
+sjalvolki_conquest_prestige_from_current_contribution = {
+	value = 0
+	add = {
+		value = var:sjalvolki_conquest_contribution
+		multiply = 5
+	}
+}
+
+sjalvolki_conquest_renown_from_current_contribution = {
+	value = 0
+	add = {
+		if = {
+			limit = { has_variable = sjalvolki_conquest_contribution }
+			value = var:sjalvolki_conquest_contribution
+		}
+		multiply = 2
+	}
+}
+
+sjalvolki_conquest_gathered_troops_number_value = {
+	value = 0
+	add = {
+		value = martial
+		multiply = 2
+	}
+	add = {
+		value = prowess
+		multiply = 1
+	}
+	add = {
+		value = diplomacy
+		multiply = 2
+	}
+	multiply = 3.5
+	if = {
+		limit = {
+			character:cois_1 = {
+				has_title = title:k_palitake
+				has_character_flag = beat_cenware_cois
+			}
+		}
+		multiply = 1.5
+	}
+}
+
+sjalvolki_conquest_county_value = {
+	value = 0
+	every_county_province = {
+		add = 2
+		if = {
+			limit = {
+				has_special_building = yes
+			}
+			add = 4
+		}
+		if = {
+			limit = {
+				OR = {
+					has_special_building = yes
+					is_any_metropolis_district = yes
+				}
+			}
+			add = 4
+		}
+	}
+	add = development_level
+	if = {
+		limit = {
+			title_province = { 
+				OR = { 
+					terrain = farmlands 
+					terrain = floodplains
+				}
+			}
+		}
+		multiply = 1.2
+	}
+	else_if = {
+		limit = {
+			title_province = { terrain = hills }
+		}
+		multiply = 0.9
+	}
+	else_if = {
+		limit = {
+			title_province = {
+				OR = { 
+					terrain = mountains
+					terrain = wetlands
+				}
+			}
+		}
+		multiply = 0.75
+	}
+	if = {
+		limit = {
+			is_sjalvolki_kingdom_capital = yes
+		}
+		multiply = 100
+	}
+}
+
+sjalvolki_conquest_duchy_value = {
+	value = 0
+	every_in_de_jure_hierarchy = {
+		limit = { tier = tier_county }
+		add = this.sjalvolki_conquest_county_value
+	}
+}

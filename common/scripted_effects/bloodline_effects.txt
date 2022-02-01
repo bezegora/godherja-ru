@@ -1,0 +1,208 @@
+﻿inherit_all_bloodlines = {
+    bloodline_effect_switch = { EFFECT = inherit_bloodline }
+}
+
+bloodline_effect_switch = {
+    $EFFECT$ = { TRAIT = cenware }
+    $EFFECT$ = { TRAIT = nikaryin }
+    $EFFECT$ = { TRAIT = phanagorax }
+    $EFFECT$ = { TRAIT = dhacixen }
+    $EFFECT$ = { TRAIT = aexionarax }
+    $EFFECT$ = { TRAIT = maklea }
+    $EFFECT$ = { TRAIT = nothyx }
+    $EFFECT$ = { TRAIT = axiaothea }
+    $EFFECT$ = { TRAIT = aeschraes }
+    $EFFECT$ = { TRAIT = pothacleas }
+    $EFFECT$ = { TRAIT = the_skull_taker }
+    $EFFECT$ = { TRAIT = gardfrei }
+    $EFFECT$ = { TRAIT = huegons }
+    $EFFECT$ = { TRAIT = the_good_king }
+    $EFFECT$ = { TRAIT = the_prophet }
+    $EFFECT$ = { TRAIT = the_black_sun }
+    $EFFECT$ = { TRAIT = kathanouxa }
+    $EFFECT$ = { TRAIT = odyr_then }
+    $EFFECT$ = { TRAIT = odyr_lleth }
+    $EFFECT$ = { TRAIT = odyr_hune }
+    $EFFECT$ = { TRAIT = vercigex }
+	$EFFECT$ = { TRAIT = cois_defeated }
+	$EFFECT$ = { TRAIT = cois_victorious }
+    $EFFECT$ = { TRAIT = diplomacy_skill }
+    $EFFECT$ = { TRAIT = martial_skill }
+    $EFFECT$ = { TRAIT = stewardship_skill }
+    $EFFECT$ = { TRAIT = intrigue_skill }
+    $EFFECT$ = { TRAIT = learning_skill }
+}
+
+reorder_traits = {
+    if = {
+        limit = { has_trait = bloodline_$TRAIT$ }
+        remove_trait = bloodline_$TRAIT$
+        add_trait = bloodline_$TRAIT$
+    }
+}
+
+bloodline_set_founder = {
+    set_global_variable = { name = bloodline_$TRAIT$_founder value = THIS }
+	set_variable = already_founded_bloodline
+    add_trait = bloodline_$TRAIT$
+    bloodline_inheritors = { TRAIT = $TRAIT$ }
+}
+
+bloodline_add_member = {
+    if = {
+        limit = { $CHECK$ = no }
+        add_trait = bloodline_$TRAIT$
+    }
+    else = {
+        inherit_bloodline = { TRAIT = $TRAIT$ }
+    }
+    bloodline_inheritors = { TRAIT = $TRAIT$ }
+}
+
+inherit_bloodline = {
+    every_parent = { #should come from birth on_action, this is for history. renamed due to conflict with on birth
+        even_if_dead = yes
+        if = {
+            limit = { is_female = yes }
+            save_temporary_scope_as = bl_mother
+        }
+        else = {
+            save_temporary_scope_as = bl_father
+        }
+    }
+
+    if = {
+        limit = {
+            trigger_if = {
+                limit = { exists = scope:bl_father }
+                scope:bl_father = {
+                    OR = { #patrilineal or all bloodline or matri bloodline override and patri marriage
+                        has_trait_with_flag = bloodline_$TRAIT$_all
+                        has_trait_with_flag = bloodline_$TRAIT$_patri
+                        AND = {
+                            has_trait_with_flag = bloodline_$TRAIT$_matri #technically not needed?
+                            has_trait_with_flag = bloodline_$TRAIT$_matri_override
+                            trigger_if = {
+                                limit = { exists = scope:bl_mother } #should exist at birth, here for history
+                                scope:bl_mother = { is_consort_of = PREV } #mother is wife or concubine
+                                trigger_if = {
+                                    limit = { scope:bl_mother = { is_spouse_of_even_if_dead = PREV } }
+                                    matrilinear_marriage = no #patri marriage
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            trigger_else = { always = no }
+        }
+        save_temporary_scope_value_as = { name = inherit value = yes }
+        #set_variable = $TRAIT$_inherit_father
+    }
+    else_if = {
+        limit = {
+            trigger_if = {
+                limit = { exists = scope:bl_mother }
+                scope:bl_mother = {
+                    OR = { #matrilineal or all bloodline or patri bloodline override and matri marriage
+                        has_trait_with_flag = bloodline_$TRAIT$_all
+                        has_trait_with_flag = bloodline_$TRAIT$_matri
+                        AND = {
+                            has_trait_with_flag = bloodline_$TRAIT$_patri #technically not needed?
+                            has_trait_with_flag = bloodline_$TRAIT$_matri_override
+                            trigger_if = {
+                                limit = { exists = scope:bl_father } #may exist at birth, here for history
+                                scope:bl_father = { is_consort_of = PREV } #father is husband or consort. hopefully consorts are not patrilinear marriage and count as consort
+                                trigger_if = {
+                                    limit = { scope:bl_father = { is_spouse_of_even_if_dead = PREV } }
+                                    patrilinear_marriage = no #matri marriage
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            trigger_else = { always = no }
+        }
+        save_temporary_scope_value_as = { name = inherit value = yes }
+        #set_variable = $TRAIT$_inherit_mother
+    }
+    else = {
+        save_temporary_scope_value_as = { name = inherit value = no }
+        #set_variable = $TRAIT$_not_inherit
+    }
+
+    # Bastard Check
+    if = {
+        limit = {
+            OR = {
+                #NOT = { has_trait_with_flag = illegitimate_bastard } #either not a bastard,
+                NOT = { has_trait = bastard } #either not a bastard,
+                any_parent = { #or bastard inheritance allowed - does this ever go to real_father?
+                    even_if_dead = yes
+                    has_trait_with_flag = bloodline_$TRAIT$_allow_bastards
+                }
+                faith = { has_doctrine_parameter = bastards_none } #or faith has no bastards
+            }
+        }
+        save_temporary_scope_value_as = { name = bastard value = yes }
+        #set_variable = $TRAIT$_not_bastard
+    }
+    else = {
+        save_temporary_scope_value_as = { name = bastard value = no }
+        #set_variable = $TRAIT$_bastard
+    }
+
+    # Special conditions
+    if = {
+        limit = {
+            trigger_if = {
+                limit = {
+                    any_parent = {
+                        even_if_dead = yes
+                        has_trait_with_flag = bloodline_$TRAIT$_special_inheritance
+                    }
+                }
+                any_parent = { # parent religion/culture considered, not child
+                    even_if_dead = yes
+                    bloodline_$TRAIT$_extra_inherit = yes
+                }
+            }
+            trigger_else = { always = yes }
+        }
+        save_temporary_scope_value_as = { name = special value = yes }
+        #set_variable = $TRAIT$_special
+    }
+    else = {
+        save_temporary_scope_value_as = { name = special value = no }
+        #set_variable = $TRAIT$_no_special
+    }
+
+    if = {
+        limit = {
+            scope:inherit = yes
+            scope:bastard = yes
+            scope:special = yes
+        }
+        add_trait = bloodline_$TRAIT$
+    }
+}
+
+bloodline_inheritors = {
+    add_to_list = bloodline_inheritors_$TRAIT$
+    while = {
+        limit = { list_size = { name = bloodline_inheritors_$TRAIT$ value > 0 } }
+        every_in_list = {
+            list = bloodline_inheritors_$TRAIT$
+            remove_from_list = bloodline_inheritors_$TRAIT$
+            every_child = {
+                even_if_dead = yes
+                inherit_all_bloodlines = yes
+                if = {
+                    limit = { has_trait_with_flag = bloodline }
+                    add_to_list = bloodline_inheritors_$TRAIT$
+                }
+            }
+        }
+    }
+}

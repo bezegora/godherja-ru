@@ -1,0 +1,766 @@
+﻿global_magic_calculations = {
+	every_in_global_list = {
+		variable = magi_list
+		limit = {
+			can_access_magic = yes
+		}
+		if
+		{
+			limit = { 
+				is_alive = no
+			}
+			remove_from_magi_list = yes
+		}
+		else = {
+			initialize_monthly_calculation_variables = { RESOURCE_NAME = magic }
+			
+			trait_magic_table_add = yes
+			trait_magic_table_multiply = yes
+			faith_magic_table_add = yes
+			faith_magic_table_multiply = yes
+			county_modifier_magic_table_add = yes
+			county_modifier_magic_table_multiply = yes
+			character_modifier_magic_table_add = yes
+			character_modifier_magic_table_multiply = yes
+			building_magic_table_add = yes
+			building_magic_table_multiply = yes
+			lifestyle_magic_table_add  = yes 
+			lifestyle_magic_table_multiply = yes 
+			lifestyle_focus_magic_table_add  = yes 
+			lifestyle_focus_magic_table_multiply = yes 
+			lifestyle_perk_magic_table_add  = yes 
+			lifestyle_perk_magic_table_multiply = yes
+			dynasty_legacy_magic_table_add = yes
+			dynasty_legacy_magic_table_multiply = yes
+			complex_magic_table_add = yes
+			
+			change_variable = {
+				name = monthly_magic
+				add = var:monthly_magic_add
+			}
+			change_variable = {
+				name = monthly_magic
+				multiply = var:monthly_magic_multiply
+			}
+			if = {
+				limit = { NOT = { has_variable = magic_counter }}
+				set_variable = { name = magic_counter value = 0}
+			}
+			if = {
+				limit = { var:monthly_magic < 0}
+				set_variable = {
+					name = monthly_magic
+					value = 0
+				}
+			}
+			set_variable = {
+				name = monthly_magic_no_transfer
+				value = var:monthly_magic
+			}
+			transfer_from_court_mage_magic = yes
+			transfer_to_liege_court_mage_magic = yes
+			
+			set_variable = {
+				name = monthly_magic_multiply_percentage
+				value = var:monthly_magic_multiply
+			}
+			calculate_multiply_percentage =  yes # For the tooltip
+			
+			change_variable = {
+				name = magic_counter
+				add = var:monthly_magic
+			}
+			
+		
+			#########################################
+			# CALCULATING EDUCATION OUTPUT IF VALID #
+			#########################################
+			calculate_magic_tutoring_outcomes = yes
+
+			###############################
+			# CALCULATING MAGICAL PROWESS #
+			###############################
+
+			#########################################
+			# REDUCING OVERWHELMATION IF APPLICABLE #
+			#########################################
+			reduce_overwhelmation = yes
+		}
+	}
+}
+yearly_magic_calculations = {
+	every_in_global_list = {
+		variable = magi_list
+		limit = {
+			can_access_magic = yes
+		}
+		if
+		{
+			limit = { 
+				is_alive = no
+			}
+			remove_from_magi_list = yes
+		}
+		else = {
+			calculate_magical_prowess = yes
+			combine_regular_and_magic_prowess = { DAYS = 365 }
+		}
+	}
+}
+
+initialize_monthly_calculation_variables = {
+	set_variable = {
+		name = monthly_$RESOURCE_NAME$
+		value = 0
+	}
+	set_variable = {
+		name = monthly_$RESOURCE_NAME$_add
+		value = 0
+	}
+	set_variable = {
+		name = monthly_$RESOURCE_NAME$_multiply
+		value = 1
+	}
+}
+
+start_magical_defines_table = {
+	set_variable = { name = $TABLE_NAME$_$MODE$ value = 0 }
+}
+
+end_magical_defines_table = {
+	if = {
+		limit = { NOT = { exists = var:monthly_magic_$MODE$ } }
+		set_variable = { name = monthly_magic_$MODE$ value = var:$TABLE_NAME$_$MODE$ }
+	}
+	else = {
+		change_variable = { name = monthly_magic_$MODE$ add = var:$TABLE_NAME$_$MODE$ }
+	}
+}
+
+check_trait_magic = {
+	if = {
+		limit = { has_trait = $TRAIT_NAME$ }
+		change_variable = {
+			name = $TABLE_NAME$_$MODE$
+			add = $VALUE$
+		}
+	}
+}
+
+check_faith_magic = {
+	if = {
+		limit = { faith = { has_doctrine_parameter = $DOCTRINE_PARAMETER$ } }
+		change_variable = {
+			name = $TABLE_NAME$_$MODE$
+			add = $VALUE$
+		}
+	}
+}
+
+check_county_modifier_magic = {
+	every_held_title = {
+		limit = { tier = tier_county }
+		if = {
+			limit = { has_county_modifier = $MODIFIER_NAME$ }
+			holder = {
+				change_variable = {
+					name = $TABLE_NAME$_$MODE$
+					add = $VALUE$
+				}
+			}
+		}
+	}
+}
+
+check_county_modifier_magic_magic_type_ranked = {
+	every_held_title = {
+		limit = { tier = tier_county }
+		if = {
+			limit = { has_county_modifier = $MODIFIER_NAME$ }
+			holder = {
+				set_variable = {
+					name = temporary_county_modifier_magic_type_ranked_value
+					value = $VALUE$
+				}
+				if = {
+					limit = { has_trait = education_$MAGIC_TYPE$_4 }
+					change_variable = {
+						name = temporary_county_modifier_magic_type_ranked_value
+						multiply = 4
+					}
+				}
+				else_if = {
+					limit = { has_trait = education_$MAGIC_TYPE$_3 }
+					change_variable = {
+						name = temporary_county_modifier_magic_type_ranked_value
+						multiply = 3
+					}
+				}
+				else_if = {
+					limit = { has_trait = education_$MAGIC_TYPE$_2 }
+					change_variable = {
+						name = temporary_county_modifier_magic_type_ranked_value
+						multiply = 2
+					}
+				}
+				else_if = {
+					limit = { has_trait = education_$MAGIC_TYPE$_1 }
+					change_variable = {
+						name = temporary_county_modifier_magic_type_ranked_value
+						multiply = 1
+					}
+				}
+				else = {
+					change_variable = {
+						name = temporary_county_modifier_magic_type_ranked_value
+						multiply = 0
+					}
+				}
+				change_variable = {
+					name = $TABLE_NAME$_$MODE$
+					add = var:temporary_county_modifier_magic_type_ranked_value
+				}
+				remove_variable = temporary_county_modifier_magic_type_ranked_value
+			}
+		}
+	}
+}
+
+check_character_modifier_magic = {
+	if = {
+		limit = { has_character_modifier = $MODIFIER_NAME$ }
+		change_variable = {
+			name = $TABLE_NAME$_$MODE$
+			add = $VALUE$
+		}
+	}
+}
+
+check_building_magic = {
+	every_held_title = {
+		limit = { tier = tier_county }
+		every_county_province = {
+			if = {
+				limit = { has_building = $BUILDING_NAME$ }
+				county_controller = {
+					change_variable = {
+						name = $TABLE_NAME$_$MODE$
+						add = $VALUE$
+					}
+				}
+			}
+		}
+	}
+}
+
+check_building_magic_magic_type_ranked = {
+	every_held_title = {
+		limit = { tier = tier_county }
+		every_county_province = {
+			if = {
+				limit = { has_building = $BUILDING_NAME$ }
+				county_controller = {
+					debug_log = "SUCCESS"
+					debug_log_scopes = yes
+					set_variable = {
+						name = temporary_building_magic_type_ranked_value
+						value = $VALUE$
+					}
+					if = {
+						limit = { has_trait = education_$MAGIC_TYPE$_4 }
+						change_variable = {
+							name = temporary_building_magic_type_ranked_value
+							multiply = 4
+						}
+					}
+					else_if = {
+						limit = { has_trait = education_$MAGIC_TYPE$_3 }
+						change_variable = {
+							name = temporary_building_magic_type_ranked_value
+							multiply = 3
+						}
+					}
+					else_if = {
+						limit = { has_trait = education_$MAGIC_TYPE$_2 }
+						change_variable = {
+							name = temporary_building_magic_type_ranked_value
+							multiply = 2
+						}
+					}
+					else_if = {
+						limit = { has_trait = education_$MAGIC_TYPE$_1 }
+						change_variable = {
+							name = temporary_building_magic_type_ranked_value
+							multiply = 1
+						}
+					}
+					else = {
+						change_variable = {
+							name = temporary_building_magic_type_ranked_value
+							multiply = 0
+						}
+					}
+					change_variable = {
+						name = $TABLE_NAME$_$MODE$
+						add = var:temporary_building_magic_type_ranked_value
+					}
+					remove_variable = temporary_building_magic_type_ranked_value
+				}
+			}
+		}
+	}
+}
+
+check_lifestyle_magic = {
+	if = {
+		limit = { has_lifestyle = $LIFESTYLE_NAME$ }
+		change_variable = {
+			name = $TABLE_NAME$_$MODE$
+			add = $VALUE$
+		}
+	}
+}
+
+check_lifestyle_focus_magic = {
+	if = {
+		limit = { has_focus = $FOCUS_NAME$ }
+		change_variable = {
+			name = $TABLE_NAME$_$MODE$
+			add = $VALUE$
+		}
+	}
+}
+
+check_lifestyle_perk_magic = {
+	if = {
+		limit = { has_perk = $PERK_NAME$ }
+		change_variable = {
+			name = $TABLE_NAME$_$MODE$
+			add = $VALUE$
+		}
+	}
+}
+
+check_dynasty_legacy_magic = {
+	if = {
+		limit = {
+			trigger_if = {
+				limit = { is_lowborn = no }
+				dynasty = { has_dynasty_perk = $LEGACY_NAME$ }
+			}
+			trigger_else = { always = no }
+		}
+		change_variable = {
+			name = $TABLE_NAME$_$MODE$
+			add = $VALUE$
+		}
+	}
+}
+
+calculate_multiply_percentage = {	# For the tooltip
+	change_variable = {
+		name = monthly_magic_multiply_percentage
+		multiply = 100
+	}
+	change_variable = {
+		name = monthly_magic_multiply_percentage
+		subtract = 100
+	}
+}
+
+###################
+# MAGICAL PROWESS #
+###################
+
+calculate_magical_prowess = {
+	set_variable = {
+		name = magical_prowess
+		value = magical_prowess_value
+	}
+	
+	custom_tooltip = magical_prowess_pure_value
+}
+
+save_pure_prowess = {
+	set_variable = {
+		name = pure_prowess
+		value = prowess
+	}
+}
+
+save_combined_prowess = {
+	set_variable = {
+		name = combined_prowess
+		value = prowess
+	}
+}
+
+combine_regular_and_magic_prowess = {
+	remove_all_character_modifier_instances = temporary_magic_prowess_to_combined_cast_modifier
+	remove_all_character_modifier_instances = temporary_combined_prowess_to_pure_magic_cast_modifier
+	save_pure_prowess = yes
+	if = {
+		limit = { 
+			trigger_if = {
+				limit = { has_variable = magical_prowess }
+				var:magical_prowess > 0
+			}
+			trigger_else = { always = no }
+		}
+		set_variable = {
+			name = decrementor
+			value = var:magical_prowess
+		}
+		while = {
+			limit = { var:decrementor > 0 }
+			add_character_modifier = {
+				modifier = temporary_magic_prowess_to_combined_cast_modifier
+				days = $DAYS$
+			}
+			change_variable = {
+				name = decrementor
+				subtract = 1
+			}
+		}
+	}
+}
+
+convert_to_pure_prowess_only = {
+	remove_all_character_modifier_instances = temporary_magic_prowess_to_combined_cast_modifier
+}
+
+convert_to_magical_prowess_only = {	# A wrapper function for convenience
+	convert_to_pure_magic_prowess_only_with_days_argument = { DAYS = 1 }
+}
+
+convert_to_pure_magic_prowess_only_with_days_argument = {
+	remove_all_character_modifier_instances = temporary_combined_prowess_to_pure_magic_cast_modifier
+	if = {
+		limit = { 
+			always = yes
+		}
+		set_variable = {
+			name = decrementor
+			value = prowess
+		}
+		while = {
+			limit = { var:decrementor > 0 }
+			add_character_modifier = {
+				modifier = temporary_combined_prowess_to_pure_magic_cast_modifier
+				days = $DAYS$
+			}
+			change_variable = {
+				name = decrementor
+				subtract = 1
+			}
+		}
+	}
+}
+
+##############
+# COURT MAGE #
+##############
+
+transfer_from_court_mage_magic = {
+	set_variable = {
+		name = court_mage_magic
+		value = 0
+	}
+	every_councillor = {
+		limit = { is_performing_council_task = task_court_mage_boost_magic_power }
+		save_scope_as = court_mage
+		liege = {
+			change_variable = {
+				name = court_mage_magic
+				add = scope:court_mage.court_mage_transfer_value
+			}
+		}
+	}
+	change_variable = {
+		name = monthly_magic	# Should ignore all your multiplicative modifiers and just give you a flat boost
+		add = var:court_mage_magic
+	}
+}
+
+transfer_to_liege_court_mage_magic = {
+	set_variable = {
+		name = transferred_to_liege_magic
+		value = 0
+	}
+	if = {
+		limit = { is_performing_council_task = task_court_mage_boost_magic_power }
+		change_variable = {
+			name = transferred_to_liege_magic
+			add = court_mage_transfer_value
+		}
+		change_variable = {
+			name = transferred_to_liege_magic
+			multiply = -1
+		}
+	}
+	change_variable = {
+		name = monthly_magic	# Should ignore all your multiplicative modifiers and just give you a flat boost
+		add = var:transferred_to_liege_magic
+	}
+}
+
+###############
+# MISC. STUFF #
+###############
+
+#transfer_monthly_magic_to_liege_for_UI = {
+#	if = { is_performing_council_task = task_court_mage_cast_spells }
+#	set_variable = { name = liege.effective_monthly_magic value = var:monthly_magic }
+#}
+
+set_wayline = {
+	$PROVINCE$ = { 
+		if = { 
+			limit = { NOT = { has_county_modifier = wayline_modifier }}
+			add_county_modifier = wayline_modifier
+		}
+	}
+}
+
+set_antimagic_field = {
+	title:e_chevalie = {
+		every_in_de_jure_hierarchy = {
+			limit = { tier = tier_county }
+			add_county_modifier = antimagic_field
+		}
+	}
+	title:k_de_kanzelerij = {
+		every_in_de_jure_hierarchy = {
+			limit = { tier = tier_county }
+			add_county_modifier = antimagic_field
+		}
+	}
+	title:k_gisredde = {
+		every_in_de_jure_hierarchy = {
+			limit = { tier = tier_county }
+			add_county_modifier = antimagic_field
+		}
+	}
+}
+
+add_to_magi_list = {
+	if = {
+		limit = { 
+			NOT = {
+				is_target_in_global_variable_list = {
+					name = magi_list
+					target = this
+				}
+			}
+		}
+		add_to_global_variable_list = {
+			name = magi_list
+			target = this
+		}
+	}
+}
+
+remove_from_magi_list = {
+	if = {
+		limit = { 
+			is_target_in_global_variable_list = {
+				name = magi_list
+				target = this
+			}
+		}
+		remove_list_global_variable = {	
+			name = magi_list
+			target = this
+		}
+	}
+}
+
+reduce_overwhelmation = {
+	if = {
+		limit = { NOT = { has_variable = overwhelmation } }
+		set_variable = {
+			name = overwhelmation
+			value = 0
+		}
+	}
+	if = {
+		limit = { var:overwhelmation > 0 }
+		change_variable = {
+			name = overwhelmation
+			subtract = monthly_overwhelmation_loss
+		}
+	}
+	if = {
+		limit = {
+			has_trait_rank = {
+				trait = magicsickness
+				rank = 3
+			}
+			var:overwhelmation < overwhelmation_limit_third
+		}
+		change_trait_rank = {
+			trait = magicsickness
+			rank = -1
+		}
+	}
+	if = {
+		limit = {
+			has_trait_rank = {
+				trait = magicsickness
+				rank = 2
+			}
+			var:overwhelmation < overwhelmation_limit_second
+		}
+		change_trait_rank = {
+			trait = magicsickness
+			rank = -1
+		}
+	}
+	if = {
+		limit = {
+			has_trait_rank = {
+				trait = magicsickness
+				rank = 1
+			}
+			var:overwhelmation < overwhelmation_limit_first
+		}
+		change_trait_rank = {
+			trait = magicsickness
+			rank = -1
+		}
+	}
+	if = {
+		limit = {
+			trigger_if = {
+				limit = { has_variable = overwhelmation }
+				var:overwhelmation <= 0
+			}
+			trigger_else = { always = yes }
+			is_target_in_global_variable_list = {
+				name = non_magi_with_exposure
+				target = this
+			}
+		}
+		remove_list_global_variable = {	
+			name = non_magi_with_exposure
+			target = this
+		}
+	}
+}
+
+increase_overwhelmation = {
+	if = {
+		limit = { has_variable = overwhelmation }
+		change_variable = {
+			name = overwhelmation
+			add = $VALUE$
+		}
+	}
+	else = {
+		set_variable = {
+			name = overwhelmation
+			value = $VALUE$
+		}
+	}
+	if = {
+		limit = {
+			NOT = {
+				has_trait_rank = {
+					trait = magicsickness
+					rank >= 1
+				}
+			}
+			trigger_if = {
+				limit = { has_variable = overwhelmation }
+				var:overwhelmation > overwhelmation_limit_first
+			}
+			trigger_else = { always = no }
+		}
+		change_trait_rank = {
+			trait = magicsickness
+			rank = 1
+		}
+	}
+	if = {
+		limit = {
+			NOT = {
+				has_trait_rank = {
+					trait = magicsickness
+					rank >= 2
+				}
+			}
+			trigger_if = {
+				limit = { has_variable = overwhelmation }
+				var:overwhelmation > overwhelmation_limit_second
+			}
+			trigger_else = { always = no }
+		}
+		change_trait_rank = {
+			trait = magicsickness
+			rank = 1
+		}
+	}
+	if = {
+		limit = {
+			NOT = {
+				has_trait_rank = {
+					trait = magicsickness
+					rank >= 3
+				}
+			}
+			trigger_if = {
+				limit = { has_variable = overwhelmation }
+				var:overwhelmation > overwhelmation_limit_third
+			}
+			trigger_else = { always = no }
+		}
+		change_trait_rank = {
+			trait = magicsickness
+			rank = 1
+		}
+	}
+	if = {
+		limit = {
+			can_access_magic = no
+			NOT = { 
+				is_target_in_global_variable_list = {
+					name = non_magi_with_exposure
+					target = this
+				}
+			}
+		}
+		add_to_global_variable_list = {
+			name = non_magi_with_exposure
+			target = this
+		}
+	}
+}
+
+gain_magic = {
+	if = {
+		limit = { $MAGIC$ >= 0 }
+		custom_description = {
+			text = gain_magic_power
+			value = $MAGIC$
+		}
+	}
+	else = {
+		custom_tooltip = {
+			text = lose_magic_power
+			value = {
+				value = $MAGIC$
+				multiply = -1
+			}
+		}
+	}
+	gain_magic_no_tt = {
+		MAGIC = $MAGIC$
+	}
+}
+
+gain_magic_no_tt = {
+	change_variable = {
+		name = magic_counter
+		add = $MAGIC$
+	}
+}

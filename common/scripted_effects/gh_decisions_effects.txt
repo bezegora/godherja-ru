@@ -1,0 +1,493 @@
+﻿form_chevalie_scripted_effect = {
+	add_prestige = monumental_prestige_gain
+	add_piety = massive_piety_gain
+	add_trait = gh_chevalie_uniter
+
+	create_title_and_vassal_change = {
+		type = created
+		save_scope_as = title_change
+		add_claim_on_loss = no
+	}
+	title:e_chevalie = {
+		change_title_holder = {
+			holder = root
+			change = scope:title_change
+		}
+	}
+	resolve_title_and_vassal_change = scope:title_change
+}
+
+initialize_traditional_borders = {
+	every_duchy = {
+		set_variable = {
+			name = traditional_de_jure_kingdom
+			value = this.kingdom
+		}
+	}
+}
+
+restore_traditional_borders = {
+	every_duchy = {
+		limit = { 
+			trigger_if = {
+				limit = { has_variable = traditional_de_jure_kingdom }
+				var:traditional_de_jure_kingdom = title:$KINGDOM_NAME$
+			}
+		}
+		kingdom = {
+			if = {
+				limit = { 
+					is_title_created = yes 
+					NOR = { 
+						this = title:$KINGDOM_NAME$ 
+						empire = title:e_megos_kalathipsomi
+						empire = title:e_mikros_kalathipsomi
+						empire = title:e_etepezea
+						empire = title:e_malcois
+						empire = title:e_opakhasia
+						empire = title:e_aironoi
+					}
+				}
+				holder = {
+					destroy_title = prev
+				}
+			}
+		}
+		set_de_jure_liege_title = title:$KINGDOM_NAME$
+	}
+}
+
+restore_traditional_aversarian_borders_megos_kalathipsomi = {
+	restore_traditional_borders = { KINGDOM_NAME = k_schouweiler }
+	restore_traditional_borders = { KINGDOM_NAME = k_leskovec }
+	restore_traditional_borders = { KINGDOM_NAME = k_volgardr }
+	restore_traditional_borders = { KINGDOM_NAME = k_obkirchen }
+}
+
+restore_traditional_aversarian_borders_mikros_kalathipsomi = {
+	restore_traditional_borders = { KINGDOM_NAME = k_sulzegg }
+	restore_traditional_borders = { KINGDOM_NAME = k_okrouhlice }
+	restore_traditional_borders = { KINGDOM_NAME = k_svyatich }
+	restore_traditional_borders = { KINGDOM_NAME = k_gampern }
+	restore_traditional_borders = { KINGDOM_NAME = k_nedweis }
+	restore_traditional_borders = { KINGDOM_NAME = k_lieben }
+}
+
+restore_traditional_aversarian_borders_etepezea = {
+	restore_traditional_borders = { KINGDOM_NAME = k_parcos }
+	restore_traditional_borders = { KINGDOM_NAME = k_assocaea }
+	restore_traditional_borders = { KINGDOM_NAME = k_pergicos }
+	restore_traditional_borders = { KINGDOM_NAME = k_argyra }
+	restore_traditional_borders = { KINGDOM_NAME = k_zakros }
+	restore_traditional_borders = { KINGDOM_NAME = k_palitake }
+	restore_traditional_borders = { KINGDOM_NAME = k_cycladecia }
+	restore_traditional_borders = { KINGDOM_NAME = k_kerkonia }
+}
+
+restore_traditional_aversarian_borders_malcois = {
+	restore_traditional_borders = { KINGDOM_NAME = k_sanos }
+	restore_traditional_borders = { KINGDOM_NAME = k_kallios }
+	restore_traditional_borders = { KINGDOM_NAME = k_helenai }
+	restore_traditional_borders = { KINGDOM_NAME = k_delphilikos }
+	restore_traditional_borders = { KINGDOM_NAME = k_cyrocaea }
+	restore_traditional_borders = { KINGDOM_NAME = k_mytidon }
+	restore_traditional_borders = { KINGDOM_NAME = k_adgos }
+}
+
+restore_traditional_aversarian_borders_opakhasia = {
+	restore_traditional_borders = { KINGDOM_NAME = k_kollos }
+	restore_traditional_borders = { KINGDOM_NAME = k_arsidos }
+	restore_traditional_borders = { KINGDOM_NAME = k_ithiteia }
+	restore_traditional_borders = { KINGDOM_NAME = k_artesmos }
+	restore_traditional_borders = { KINGDOM_NAME = k_karthos }
+	restore_traditional_borders = { KINGDOM_NAME = k_tanada }
+	restore_traditional_borders = { KINGDOM_NAME = k_kasmiene }
+	restore_traditional_borders = { KINGDOM_NAME = k_agadendon }
+	restore_traditional_borders = { KINGDOM_NAME = k_decateia }
+}
+
+restore_traditional_aversarian_borders_aironoi = {
+	restore_traditional_borders = { KINGDOM_NAME = k_hyrea }
+	restore_traditional_borders = { KINGDOM_NAME = k_bourillai }
+	restore_traditional_borders = { KINGDOM_NAME = k_kalliados }
+	restore_traditional_borders = { KINGDOM_NAME = k_kteumaxia }
+	restore_traditional_borders = { KINGDOM_NAME = k_ephesos }
+	restore_traditional_borders = { KINGDOM_NAME = k_paradawn }
+	restore_traditional_borders = { KINGDOM_NAME = k_arderwan }
+	restore_traditional_borders = { KINGDOM_NAME = k_muthathk }
+}
+
+restore_traditional_aversarian_borders_gurdurbok = {
+	restore_traditional_borders = { KINGDOM_NAME = k_lyckholm }
+	restore_traditional_borders = { KINGDOM_NAME = k_krassovce }
+	restore_traditional_borders = { KINGDOM_NAME = k_vyshtanka }
+	restore_traditional_borders = { KINGDOM_NAME = k_niidinia }
+}
+
+reunite_the_empire_decision_effects = {
+	add_prestige = monumental_prestige_gain
+	add_piety = major_piety_gain
+	if = {
+		limit = {
+			faith = {
+				has_doctrine = tenet_axiaothea_legacy
+			}
+		}
+		add_trait = gh_axiaothea_reborn
+	}
+	
+
+	custom_tooltip = create_new_empire
+	# TODO: improve custom loc here
+
+	hidden_effect = {
+		get_title = title:e_aversaria
+		set_primary_title_to = title:e_aversaria
+
+		reunite_the_empire_decision_effects_all_titles = { EMPIRENAME = aversaria }
+		title:e_aversaria = {
+			set_capital_county = title:c_halium
+		}
+	}
+}
+
+reunite_the_empire_decision_effects_all_titles = { # this is called above and also in the decision that catches the missing bits
+	save_scope_as = founder
+
+	reunite_the_empire_decision_effects_per_title = {
+		TITLENAME = etepezea
+		CAPITAL = c_halium
+		EMPIRENAME = $EMPIRENAME$
+	}
+	reunite_the_empire_decision_effects_per_title = {
+		TITLENAME = malcois
+		CAPITAL = c_smylia
+		EMPIRENAME = $EMPIRENAME$
+	}
+	reunite_the_empire_decision_effects_per_title = {
+		TITLENAME = aironoi
+		CAPITAL = c_mallilene
+		EMPIRENAME = $EMPIRENAME$
+	}
+	reunite_the_empire_decision_effects_per_title = {
+		TITLENAME = opakhasia
+		CAPITAL = c_kamenae
+		EMPIRENAME = $EMPIRENAME$
+	}
+	
+	#reunite_the_empire_decision_effects_per_title = {
+	#	TITLENAME = megos_kalathipsomi
+	#	CAPITAL = c_kankaanviisa
+	#	EMPIRENAME = $EMPIRENAME$
+	#}
+	#reunite_the_empire_decision_effects_per_title = {
+	#	TITLENAME = mikros_kalathipsomi
+	#	CAPITAL = c_chomutowitz
+	#	EMPIRENAME = $EMPIRENAME$
+	#}
+}
+
+reunite_the_empire_decision_effects_per_title = {
+	# uses TITLENAME and CAPITAL
+	title:e_$TITLENAME$ = {	
+		save_temporary_scope_as = my_empire_title
+	}
+	title:k_$TITLENAME$ = {
+		save_temporary_scope_as = my_kingdom_title
+	}
+	if = {
+		limit = {
+			trigger_if = {
+				limit = { scope:my_empire_title = { any_in_de_jure_hierarchy = { tier = tier_county }}}
+				has_title = scope:my_empire_title
+				#completely_controls = scope:my_empire_title
+			}
+			trigger_else = {
+				always = no
+			}
+		}
+
+		get_title = scope:my_kingdom_title
+		title:k_$TITLENAME$ = {
+			set_capital_county = title:$CAPITAL$
+			copy_title_history = scope:my_empire_title
+			set_de_jure_liege_title = title:e_$EMPIRENAME$
+			save_temporary_scope_as = new_kingdom
+		}
+
+		title:e_$TITLENAME$ = {
+			every_claimant = { # transferring claims
+				if = {
+					limit = {
+						has_claim_on = scope:my_empire_title
+					}
+					add_pressed_claim = scope:my_kingdom_title
+				}
+				remove_claim = scope:my_empire_title
+			}
+
+			every_in_de_jure_hierarchy = { # give those who lose their titles a claim on the kingdom
+				continue = {
+					tier > tier_kingdom
+				}
+				limit = {
+					tier = tier_kingdom
+				}
+
+				save_scope_as = kingdom_being_removed
+
+				if = {
+					limit = {
+						is_title_created = yes # someone owns it
+						any_in_de_jure_hierarchy = { tier = tier_county } # it's not titular
+						NOT = { holder = scope:founder }
+					}
+					holder = {
+						add_pressed_claim = scope:my_kingdom_title # this will do nothing if they already have a claim
+
+						trigger_event = {
+							id = aversaria.0003
+							days = 2
+						}
+
+						if = { # storing what the claims are added to
+							limit = {
+								NOT = {
+									is_target_in_variable_list = {
+										name = titles_claim_gained_on
+										target = scope:new_kingdom
+									}
+								}
+							}
+
+							add_to_variable_list = {
+								name = titles_claim_gained_on
+								target = scope:new_kingdom
+							}
+						}
+
+						add_character_flag = { # so the event isn't received more than once
+							flag = has_lost_land_in_aversarian_reorganisation
+							days = 7
+						}
+					}
+				}
+
+				# give those with pressed claims on the old titles unpressed claims on the new ones
+				every_claimant = {
+					limit = { has_claim_on = scope:kingdom_being_removed }
+					add_unpressed_claim = scope:my_kingdom_title
+				}
+
+				scope:founder = {
+					destroy_title = scope:kingdom_being_removed
+				}
+			}
+
+
+			every_in_de_jure_hierarchy = { # set the duchies to go under their new kingdom
+				continue = {
+					tier > tier_duchy
+				}
+				limit = {
+					tier = tier_duchy
+				}
+
+				set_de_jure_liege_title = scope:my_kingdom_title
+			}
+		}
+		scope:founder = {
+			destroy_title = scope:my_empire_title
+		}
+	}
+}
+
+#SUCCESSION
+set_succession_law_gh = {
+	# uses TRIGGER, TT and LAW
+
+	if = {
+		limit = { highest_held_title_tier = tier_empire }
+		every_held_title = {
+			limit = {
+				tier = tier_empire
+				NOR = {
+					has_title_law_flag = advanced_succession_law
+					has_title_law_flag = elective_succession_law
+				}
+			}
+			add_title_law = $LAW$
+		}
+		every_vassal = {
+			limit = { $TRIGGER$ = yes }
+			add_opinion = {
+				modifier = implemented_traditional_succession_law_opinion
+				years = 20
+				target = root
+			}
+			custom = major_decisions.3100.$TT$
+		}
+	}
+	else = {
+		every_held_title = {
+			limit = {
+				tier = tier_kingdom
+				NOR = {
+					has_title_law_flag = advanced_succession_law
+					has_title_law_flag = elective_succession_law
+				}
+			}
+			add_title_law = $LAW$
+		}
+		every_vassal = {
+			limit = { $TRIGGER$ = yes }
+			add_opinion = {
+				modifier = implemented_traditional_succession_law_opinion
+				years = 20
+				target = root
+			}
+			custom = major_decisions.3100.$TT$
+		}
+	}
+}
+
+
+#} # I do not know why this is here; it doesn't work without it
+
+
+special_succession_aversarian_effect = {
+	set_succession_law_gh = {
+		LAW = aversarian_succession_law
+		TRIGGER = special_succession_aversarian_trigger
+		TT = tt_opinion_aversarian
+	}
+}
+
+special_succession_sjalvolki_effect = {
+	set_succession_law_gh = {
+		LAW = sjalvolki_succession_law
+		TRIGGER = special_succession_sjalvolki_trigger
+		TT = tt_opinion_sjalvolki
+	}
+}
+
+#} # iyrossi empire creation effect
+
+create_iyrossi_empire_scripted_effect = {
+	add_trait = gh_iyrossi_unifier
+	give_nickname = nick_motherfather_of_iyrossi
+	#Create Iyrossi Empire, shift dejure/history/laws,
+	hidden_effect = {
+		every_held_title = { #Should shift all dejure of all Empires owned at the time.
+			limit = {
+				tier = tier_empire
+			}
+			every_in_de_jure_hierarchy = {
+				limit = {
+					tier = tier_kingdom
+				}
+				set_de_jure_liege_title = title:e_iyrossi
+				
+			}
+		}
+	}
+	create_title_and_vassal_change = {
+		type = created
+		save_scope_as = change
+		add_claim_on_loss = no
+	}
+	title:e_iyrossi = {
+		change_title_holder = {
+			holder = root
+			change = scope:change
+		}	
+	}
+	resolve_title_and_vassal_change = scope:change
+	hidden_effect = { set_primary_title_to = title:e_iyrossi }
+	every_held_title = { #Should destroy all other Empires owned at the time.
+		limit = {
+			tier = tier_empire
+			NOT = { this = title:e_iyrossi }
+		}
+		root = { destroy_title = prev }
+	}
+	if = { #Automatically move capital to Myrespiae.
+		limit = {
+			NOT = { capital_county = { this = title:c_myrespiae } }
+			exists = title:e_iyrossi.holder
+		}
+		hidden_effect = {
+			if = { #Usurp if not held personally.
+				limit = {
+					NOT = { title:c_myrespiae.holder = { this = root } }
+				}
+				create_title_and_vassal_change = {
+					type = returned
+					save_scope_as = change
+					add_claim_on_loss = no
+				}
+				title:c_myrespiae = {
+					change_title_holder = {
+						holder = root
+						change = scope:change
+					}
+				}
+				resolve_title_and_vassal_change = scope:change
+			}
+		}
+		title:e_iyrossi.holder = { set_realm_capital = title:c_myrespiae }
+	}
+	every_held_title = {
+			limit = {
+				tier = tier_kingdom
+			}
+			if = {
+				limit = {
+					#Check if you need to notify a player
+					exists = empire
+					empire = {
+						exists = holder
+						holder = {
+							NOT = { this = root }
+							is_ai = no
+						}
+					}
+				}
+				add_to_temporary_list = kingdoms_for_notification
+				root = {
+					save_temporary_scope_value_as = {
+						name = send_notifications
+						value = yes
+					}
+				}
+			}
+			set_de_jure_liege_title = title:e_iyrossi
+		}
+	every_sub_realm_county = {
+			limit = {
+				exists = kingdom
+				NOT = { exists = kingdom.holder }
+				holder.top_liege = root
+				kingdom = {
+					save_temporary_scope_as = test_kingdom
+				}
+				holder.top_liege = {
+					completely_controls = title:e_iyrossi
+				}
+			}
+			if = {
+				limit = {
+					NOT = {
+						kingdom = {
+							is_in_list = additional_de_jure_kingdoms
+						}
+					}
+				}
+				kingdom = {
+					set_de_jure_liege_title = title:e_iyrossi
+					add_to_list = additional_de_jure_kingdoms
+				}
+			}
+		}
+	
+}

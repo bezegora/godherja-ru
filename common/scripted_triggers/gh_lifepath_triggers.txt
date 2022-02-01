@@ -1,0 +1,19 @@
+﻿is_valid_lifepath_trigger = {
+	faith = {
+		has_variable = lifepath_trait_available_$LIFEPATH$
+	}
+}
+
+is_wayfather_trigger = {
+	OR = {
+		has_trait = way_of_swords_father
+		has_trait = way_of_family_father
+		has_trait = way_of_coins_father
+		has_trait = way_of_crowns_father
+		has_trait = way_of_harvests_father
+		has_trait = way_of_justice_father
+		has_trait = way_of_knowledge_father
+		has_trait = way_of_crows_father
+		has_trait = way_of_nullification_father
+	}
+}

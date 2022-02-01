@@ -1,0 +1,243 @@
+﻿##################
+##DECISIONS LIST##
+# found_diplomacy_bloodline_decision
+# found_martial_bloodline_decision
+# found_stewardship_bloodline_decision
+# found_intrigue_bloodline_decision
+# found_learning_bloodline_decision
+##################
+
+##################
+# Found Diplomacy Bloodline
+# by 𝑽𝒂𝒓𝒍𝒂𝒕𝒓𝒂
+found_diplomacy_bloodline_decision = {
+    picture = "gfx/interface/illustrations/decisions/decision_dynasty_house.dds"
+
+    desc = found_diplomacy_bloodline_decision_desc
+    selection_tooltip = found_diplomacy_bloodline_decision_tooltip
+
+    is_shown = {
+        is_adult = yes
+        is_ruler = yes
+        NOR = { 
+			exists = global_var:bloodline_diplomacy_skill_founder
+			has_variable = already_founded_bloodline
+		}
+        OR = {
+            diplomacy >= 25
+            AND = {
+                diplomacy >= 20
+                prestige_level >= 4
+            }
+        }
+    }
+
+    is_valid_showing_failures_only = {
+        diplomacy >= 25
+        prestige_level >= 4
+    }
+
+    effect = {
+        #custom_tooltip = found_diplomacy_bloodline_decision_tt
+        #trigger_event = bloodline.001
+        bloodline_set_founder = { TRAIT = diplomacy_skill }
+    }
+
+    ai_check_interval = 96
+
+    ai_potential = {
+        always = yes
+    }
+
+    ai_will_do = {
+        base = 10
+    }
+}
+
+##################
+# Found Martial Bloodline
+# by 𝑽𝒂𝒓𝒍𝒂𝒕𝒓𝒂
+found_martial_bloodline_decision = {
+    picture = "gfx/interface/illustrations/decisions/decision_dynasty_house.dds"
+
+    desc = found_martial_bloodline_decision_desc
+    selection_tooltip = found_martial_bloodline_decision_tooltip
+
+    is_shown = {
+        is_adult = yes
+        is_ruler = yes
+        NOR = { 
+			exists = global_var:bloodline_martial_skill_founder
+			has_variable = already_founded_bloodline
+		}
+        OR = {
+            martial >= 25
+            AND = {
+                martial >= 20
+                prestige_level >= 4
+            }
+        }
+    }
+
+    is_valid_showing_failures_only = {
+        martial >= 25
+        prestige_level >= 4
+    }
+
+    effect = {
+        #custom_tooltip = found_martial_bloodline_decision_tt
+        #trigger_event = bloodline.001
+        bloodline_set_founder = { TRAIT = martial_skill }
+    }
+
+    ai_check_interval = 96
+
+    ai_potential = {
+        always = yes
+    }
+
+    ai_will_do = {
+        base = 10
+    }
+}
+
+##################
+# Found Stewardship Bloodline
+# by 𝑽𝒂𝒓𝒍𝒂𝒕𝒓𝒂
+found_stewardship_bloodline_decision = {
+    picture = "gfx/interface/illustrations/decisions/decision_dynasty_house.dds"
+
+    desc = found_stewardship_bloodline_decision_desc
+    selection_tooltip = found_stewardship_bloodline_decision_tooltip
+
+    is_shown = {
+        is_adult = yes
+        is_ruler = yes
+        NOR = { 
+			exists = global_var:bloodline_stewardship_skill_founder
+			has_variable = already_founded_bloodline
+		}
+        OR = {
+            stewardship >= 25
+            AND = {
+                stewardship >= 20
+                prestige_level >= 4
+            }
+        }
+    }
+
+    is_valid_showing_failures_only = {
+        stewardship >= 25
+        prestige_level >= 4
+    }
+
+    effect = {
+        #custom_tooltip = found_stewardship_bloodline_decision_tt
+        #trigger_event = bloodline.001
+        bloodline_set_founder = { TRAIT = stewardship_skill }
+    }
+
+    ai_check_interval = 96
+
+    ai_potential = {
+        always = yes
+    }
+
+    ai_will_do = {
+        base = 10
+    }
+}
+
+##################
+# Found Intrigue Bloodline
+# by 𝑽𝒂𝒓𝒍𝒂𝒕𝒓𝒂
+found_intrigue_bloodline_decision = {
+    picture = "gfx/interface/illustrations/decisions/decision_dynasty_house.dds"
+
+    desc = found_intrigue_bloodline_decision_desc
+    selection_tooltip = found_intrigue_bloodline_decision_tooltip
+
+    is_shown = {
+        is_adult = yes
+        is_ruler = yes
+        NOR = { 
+			exists = global_var:bloodline_intrigue_skill_founder
+			has_variable = already_founded_bloodline
+		}
+        OR = {
+            intrigue >= 25
+            AND = {
+                intrigue >= 20
+                prestige_level >= 4
+            }
+        }
+    }
+
+    is_valid_showing_failures_only = {
+        intrigue >= 25
+        prestige_level >= 4
+    }
+
+    effect = {
+        #custom_tooltip = found_intrigue_bloodline_decision_tt
+        #trigger_event = bloodline.001
+        bloodline_set_founder = { TRAIT = intrigue_skill }
+    }
+
+    ai_check_interval = 96
+
+    ai_potential = {
+        always = yes
+    }
+
+    ai_will_do = {
+        base = 10
+    }
+}
+
+##################
+# Found Learning Bloodline
+# by 𝑽𝒂𝒓𝒍𝒂𝒕𝒓𝒂
+found_learning_bloodline_decision = {
+    picture = "gfx/interface/illustrations/decisions/decision_dynasty_house.dds"
+
+    desc = found_learning_bloodline_decision_desc
+    selection_tooltip = found_learning_bloodline_decision_tooltip
+
+    is_shown = {
+        is_adult = yes
+        is_ruler = yes
+        NOR = { 
+			exists = global_var:bloodline_learning_skill_founder
+			has_variable = already_founded_bloodline
+		}
+        OR = {
+            learning >= 25
+            AND = {
+                learning >= 20
+                prestige_level >= 4
+            }
+        }
+    }
+
+    is_valid_showing_failures_only = {
+        learning >= 25
+        prestige_level >= 4
+    }
+
+    effect = {
+        #custom_tooltip = found_learning_bloodline_decision_tt
+        #trigger_event = bloodline.001
+        bloodline_set_founder = { TRAIT = learning_skill }
+    }
+
+    ai_check_interval = 96
+
+    ai_potential = {
+        always = yes
+    }
+
+    ai_will_do = {
+        base = 10
+    }
+}

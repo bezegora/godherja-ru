@@ -1,0 +1,112 @@
+#max_provinces = 1466
+definitions = "definition.csv"
+provinces = "provinces.png"
+#positions = "positions.txt"
+rivers = "rivers.png"
+#terrain_definition = "terrain.txt"
+topology = "heightmap.heightmap"
+#tree_definition = "trees.bmp"
+continent = "continent.txt"
+adjacencies = "adjacencies.csv"
+#climate = "climate.txt"
+island_region = "island_region.txt"
+geographical_region = "geographical_region.txt"
+seasons = "seasons.txt"
+
+#############
+# SEA ZONES
+#############
+
+sea_zones = LIST { 7874 7875 3969 3749 8027 8028 8029 8030 8031 8032 8033 8034 8035 8036 8037 8038 }
+sea_zones = RANGE { 7610 7859 }
+sea_zones = RANGE { 8005 8016 }
+
+###############
+# MAJOR RIVERS
+###############
+
+river_provinces = RANGE { 7893 7908 } #riverdebug
+river_provinces = LIST { 7222 4971 4970 4969 4966 4965 4963 4961 4960 4935 4933 4932 4931 4930 4928 4926 4925 4914 7930 7926 7927 5425 3418 }
+
+########
+# LAKES
+########
+
+lakes = LIST { 7363 7364 4767 4944 4878 }
+
+#####################
+# IMPASSABLE TERRAIN
+#####################
+# Can be colored by whoever owns the most of the province's neighbours.
+# Blocks unit movement.
+
+#Marchers
+
+impassable_mountains = RANGE { 7366 7371 } #Western Ranos Mountains
+impassable_mountains = RANGE { 7373 7380 } #Eastern Ranos Mountains
+impassable_mountains = RANGE { 7385 7397 } #Western Bastione Mountains
+impassable_mountains = RANGE { 7398 7401 } #Central Bastione Mountains
+impassable_mountains = RANGE { 7402 7408 } #Eastern Bastione Mountains
+
+#Northern Clanlands
+impassable_mountains = LIST { 7365 7372 7382 7381 7383 7384 } #Black Mountains
+
+#Clanlands
+impassable_mountains = RANGE { 7469 7485 } #South Sjalvolki Debug
+impassable_mountains = RANGE { 7486 7492 } #North Sjalvolki Debug
+impassable_mountains = RANGE { 7493 7501 } #Foglands Debug
+impassable_mountains = LIST { 6298 6303 6307 6309 6319 6320 6328 6334 6335 6338 6339 6341 6336 6612 6614 6618 6584 6598 7452 } #Foglands Debug
+
+#Aversaria
+
+impassable_mountains = RANGE { 7432 7450 } #Southern Aversaria Debug
+impassable_mountains = RANGE { 7453 7468 } #Central Aversaria Debug
+impassable_mountains = RANGE { 7502 7510 } #Mayikprolollan Debug
+impassable_mountains = LIST { 8044 8045 8046 8047 } #Mayikprolollan Debug
+impassable_mountains = LIST { 7409 } #Aironoi Debug
+
+#Sarradon
+
+impassable_mountains = RANGE { 7512 7524 } #Eastern Sarradon Debug
+impassable_mountains = RANGE { 7525 7554 } #Central Sarradon Debug
+impassable_mountains = RANGE { 7555 7609 } #Western Sarradon Debug
+impassable_mountains = LIST { 7862 } #Western Sarradon Debug
+
+#thrown in rip
+
+impassable_mountains = RANGE { 7910 7928 }
+
+impassable_mountains = LIST { 3765 3767 3771 3784 3781 3066 3063 3119 3549 474 3380 6089 3138 3539 3029 3219 3596 3563 2978 3270 6123 6113 6111 3629 6167 2830 6139 6100 6155 6173 4939 5393 5349 4918 4908 5293 5309 5301 5381 5386 4872 4920 5368 4815 4826 4751 5311 4745 4831 4848 5340 4739 3101 2869 2857 6316 4877 3466 6299 6332 6323 6372 6301 6314 6312 6179 6252 6304 6443 6428 6427 6418 6559 6259 6570 6572 6270 6232 6438 6542 6132 6127 6102 6112 6147 6152 6159 6124 6128 6131 6137 6141 6153 6172 6184 6176 6213 6416 6255 6329 6169 6165 6458 6144 6239 6573 6330 5811 6399}
+
+############
+# WASTELAND
+############
+# These are actually supposed to be Wasteland:
+# Cannot be colored. Blocks unit movement, used for things like Sahara desert. 
+
+impassable_mountains = LIST { 7861 7362 4567 3967 }
+
+impassable_mountains = RANGE { 7863 7872 }
+
+#Lichdoms
+impassable_mountains = LIST { 930 } #Floodgrave
+impassable_mountains = LIST { 931 932 992 1317 } #Bonepits
+impassable_mountains = LIST { 592 } #Southern Bonepits
+impassable_mountains = LIST { 593 594 595 } #Lonely Isles
+impassable_mountains = LIST { 596 597 } #Isle of Moaning Vices
+impassable_mountains = LIST { 598 3661 3664 } #Isle of the Waking Cry
+impassable_mountains = LIST { 3645 3646 3660 } #Aesxicvy's Folly
+impassable_mountains = LIST { 3662 3663 3665 3964 3965 3966 4206 5100 5620 5729 } #Isle of People's Sorrow
+impassable_mountains = LIST { 5922  6036 6593 6657 6690 6694 6695 6696 6966 3778 4383 4384 6967 6968 7151 7023 6008 } #Pyrsztanń Jagwidaws
+impassable_mountains = LIST { 7511 7615 7634 7635 7636 7637 7638 7639 7640 7641 7642 7643 7672 7682 7735 7741 7802 } #Lonely Light
+impassable_mountains = LIST { 2859 2860 6300 6313 6624 8040 8041 8042 8043 } #Lichdoms General
+
+# IMPASSABLE SEA ZONES
+# These sea provinces cannot be crossed/sailed
+
+impassable_seas = LIST { 7620 3095 8022 8023 8024 8025 8026 8039 7987 }
+
+# UNUSED PROVINCES
+# These provinces cause issues because they are passable land, but not part of any title.
+# They are probably not visible anywhere on the map, so feel free to reuse them (after double checking that they are actually missing).
+

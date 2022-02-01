@@ -1,0 +1,129 @@
+﻿namespace = marcher_war
+
+# marcher_war.0001 = { #25% chance of varrdevet declaring war on marroux
+# 	title = marcher_war.0001.t
+# 	desc = marcher_war.0001.desc
+# 	theme = battle
+# 	left_portrait = { 
+# 		character = root
+# 	}
+
+# 	trigger = {
+# 		is_ai = yes
+# 	}	
+
+# 	option = {
+# 		name = marcher_war.0001.a
+# 		#random declaration of war if the holders of the two kingdom titles aren't the same
+# 		if = {
+# 			limit = {
+# 				NOT = {
+# 					title:k_marroux.holder = title:k_varrdevet.holder
+# 				}
+# 			}
+# 		random_list = {
+# 				25 = {
+# 					#war if the holders of the titles aren't the same
+# 						start_war = {
+# 							casus_belli = marcher_reunification_cb
+# 							target = title:k_marroux.holder
+# 						}
+# 					}
+# 				75 = {
+# 					#no war, but will trigger the same event in a year
+# 					trigger_event = {
+# 						id = marcher_war.0001
+# 						years = 1
+# 					}
+					
+# 				}
+# 			}
+# 		}
+# 	}
+# }
+
+
+# marcher_war.0002 = { #25% chance of porte de la bastion declaring war on varrdevet
+# 	title = marcher_war.0002.t
+# 	desc = marcher_war.0002.desc
+# 	theme = battle
+# 	left_portrait = { 
+# 		character = root
+# 	}
+
+# 	trigger = {
+# 		is_ai = yes
+# 	}	
+
+# 	option = {
+# 		name = marcher_war.0002.a
+# 		#random declaration of war if the holders of the two kingdom titles aren't the same
+# 		if = {
+# 			limit = {
+# 				NOT = {
+# 					title:k_de_porte_de_bastione.holder = title:k_varrdevet.holder
+# 				}
+# 			}
+# 		random_list = {
+# 				25 = {
+# 					#war if the holders of the titles aren't the same
+# 						start_war = {
+# 							casus_belli = marcher_reunification_cb
+# 							target = title:k_varrdevet.holder
+# 						}
+# 					}
+# 				75 = {
+# 					#no war, but will trigger the same event in a year
+# 					trigger_event = {
+# 						id = marcher_war.0002
+# 						years = 1
+# 					}
+					
+# 				}
+# 			}
+# 		}
+# 	}
+# }
+
+
+# marcher_war.0003 = { #25% chance of marroux declaring war on port de bastion
+# 	title = marcher_war.0003.t
+# 	desc = marcher_war.0003.desc
+# 	theme = battle
+# 	left_portrait = { 
+# 		character = root
+# 	}
+
+# 	trigger = {
+# 		is_ai = yes
+# 	}	
+
+# 	option = {
+# 		name = marcher_war.0003.a
+# 		#random declaration of war if the holders of the two kingdom titles aren't the same
+# 		if = {
+# 			limit = {
+# 				NOT = {
+# 					title:k_de_porte_de_bastione.holder = title:k_marroux.holder
+# 				}
+# 			}
+# 		random_list = {
+# 				25 = {
+# 					#war if the holders of the titles aren't the same
+# 						start_war = {
+# 							casus_belli = marcher_reunification_cb
+# 							target = title:k_de_porte_de_bastione.holder
+# 						}
+# 					}
+# 				75 = {
+# 					#no war, but will trigger the same event in a year
+# 					trigger_event = {
+# 						id = marcher_war.0003
+# 						years = 1
+# 					}
+					
+# 				}
+# 			}
+# 		}
+# 	}
+# }

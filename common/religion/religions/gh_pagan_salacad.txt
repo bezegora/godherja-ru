@@ -1,0 +1,259 @@
+﻿salacad_religion= {
+	family = rf_pagan
+	
+	graphical_faith = "pagan_gfx"
+	doctrine = standard_hostility_doctrine
+
+	doctrine_background_icon = core_tenet_banner_pagan.dds
+
+	#main group 
+	doctrine = doctrine_gender_female_dominated
+	doctrine = doctrine_pluralism_righteous
+	doctrine = doctrine_theocracy_lay_clergy
+	doctrine = doctrine_no_head
+	
+	#Belief
+	doctrine = doctrine_sacred_scriptures
+	doctrine = doctrine_ditheistic
+	doctrine = doctrine_immortal
+	doctrine = doctrine_dualistic
+	doctrine = doctrine_aspects
+	doctrine = doctrine_avatars
+	doctrine = doctrine_apocalypse
+	doctrine = doctrine_eternal_feast
+
+	#Practices
+	doctrine = doctrine_heroes
+	doctrine = doctrine_autonomous
+	doctrine = doctrine_no_restrictions
+	doctrine = doctrine_monk_not_clergy_enforced
+	doctrine = doctrine_encouraged_atone
+	doctrine = doctrine_encouraged_alms
+	
+	#marriage
+	doctrine = doctrine_monogamy
+	doctrine = doctrine_consanguinity_cousins
+	doctrine = doctrine_divorce_approval
+	doctrine = doctrine_bastardry_legitimization
+	doctrine = doctrine_two_concubines
+	doctrine = doctrine_worldly_marriage
+
+	#crimes
+	doctrine = doctrine_homosexuality_accepted
+	doctrine = doctrine_adultery_men_shunned
+	doctrine = doctrine_adultery_women_shunned
+	doctrine = doctrine_kinslaying_extended_family_crime
+	doctrine = doctrine_deviancy_shunned
+	doctrine = doctrine_magic_accepted
+	doctrine = doctrine_slavery_neutral
+	
+	#Clerical Functions
+	doctrine = doctrine_clerical_function_recruitment
+	doctrine = doctrine_clerical_gender_either
+	doctrine = doctrine_clerical_marriage_allowed
+	doctrine = doctrine_clerical_succession_temporal_appointment
+	doctrine = doctrine_celebration_coronation
+
+	traits = {
+		virtues = { brave stubborn impatient }
+		sins = { craven fickle patient }
+	}
+
+	reserved_male_names = {
+	}
+
+	custom_faith_icons = {
+		salacad_custom_green_icon salacad_custom_blue_icon salacad_custom_purple_icon salacad_custom_red_icon salacad_custom_yellow_icon salacad_icon 
+	}
+
+	holy_order_names = {
+		{ name = "SkyMother's Devoted" }
+		{ name = "Eagle's Claws" }
+		{ name = "The Talons of Agbhalla" }
+		{ name = "Haboru's Chosen Band" }
+	}
+
+	holy_order_maa = {  }
+
+	localization = {
+		#HighGod
+		HighGodName = salacad_religion_high_god_name
+		HighGodNamePossessive = salacad_religion_high_god_name_possessive
+		HighGodNameSheHe = CHARACTER_SHEHE_HE
+		HighGodHerselfHimself = CHARACTER_HIMSELF
+		HighGodHerHis = CHARACTER_HERHIS_HIS
+		HighGodNameAlternate = salacad_religion_high_god_name_alternate
+		HighGodNameAlternatePossessive = salacad_religion_high_god_name_alternate_possessive
+
+		#Creator
+		CreatorName = salacad_religion_creator_god_name
+		CreatorNamePossessive = salacad_religion_creator_god_name_possessive
+		CreatorSheHe = CHARACTER_SHEHE_HE
+		CreatorHerHis = CHARACTER_HERHIS_HIS
+		CreatorHerHim = CHARACTER_HERHIM_HIM
+
+		#HealthGod
+		HealthGodName = salacad_religion_health_god_name
+		HealthGodNamePossessive = salacad_religion_health_god_name_possessive
+		HealthGodSheHe = CHARACTER_SHEHE_HE
+		HealthGodHerHis = CHARACTER_HERHIS_HIS
+		HealthGodHerHim = CHARACTER_HERHIM_HIM
+		
+		#FertilityGod
+		FertilityGodName = salacad_religion_fertility_god_name
+		FertilityGodNamePossessive = salacad_religion_fertility_god_name_possessive
+		FertilityGodSheHe = CHARACTER_SHEHE_HE
+		FertilityGodHerHis = CHARACTER_HERHIS_HIS
+		FertilityGodHerHim = CHARACTER_HERHIM_HIM
+
+		#WealthGod
+		WealthGodName = salacad_religion_wealth_god_name
+		WealthGodNamePossessive = salacad_religion_wealth_god_name_possessive
+		WealthGodSheHe = CHARACTER_SHEHE_HE
+		WealthGodHerHis = CHARACTER_HERHIS_HIS
+		WealthGodHerHim = CHARACTER_HERHIM_HIM
+
+		#HouseholdGod
+		HouseholdGodName = salacad_religion_household_god_name
+		HouseholdGodNamePossessive = salacad_religion_household_god_name_possessive
+		HouseholdGodSheHe = CHARACTER_SHEHE_HE
+		HouseholdGodHerHis = CHARACTER_HERHIS_HIS
+		HouseholdGodHerHim = CHARACTER_HERHIM_HIM
+
+		#FateGod
+		FateGodName = salacad_religion_fate_god_name
+		FateGodNamePossessive = salacad_religion_fate_god_name_possessive
+		FateGodSheHe = CHARACTER_SHEHE_HE
+		FateGodHerHis = CHARACTER_HERHIS_HIS
+		FateGodHerHim = CHARACTER_HERHIM_HIM
+
+		#KnowledgeGod
+		KnowledgeGodName = salacad_religion_knowledge_god_name
+		KnowledgeGodNamePossessive = salacad_religion_knowledge_god_name_possessive
+		KnowledgeGodSheHe = CHARACTER_SHEHE_HE
+		KnowledgeGodHerHis = CHARACTER_HERHIS_HIS
+		KnowledgeGodHerHim = CHARACTER_HERHIM_HIM
+
+		#WarGod
+		WarGodName = salacad_religion_war_god_name
+		WarGodNamePossessive = salacad_religion_war_god_name_possessive
+		WarGodSheHe = CHARACTER_SHEHE_HE
+		WarGodHerHis = CHARACTER_HERHIS_HIS
+		WarGodHerHim = CHARACTER_HERHIM_HIM
+
+		#TricksterGod
+		TricksterGodName = salacad_religion_trickster_god_name
+		TricksterGodNamePossessive = salacad_religion_trickster_god_name_possessive
+		TricksterGodSheHe = CHARACTER_SHEHE_HE
+		TricksterGodHerHis = CHARACTER_HERHIS_HIS
+		TricksterGodHerHim = CHARACTER_HERHIM_HIM
+
+		#NightGod
+		NightGodName = salacad_religion_night_god_name
+		NightGodNamePossessive = salacad_religion_night_god_name_possessive
+		NightGodSheHe = CHARACTER_SHEHE_HE
+		NightGodHerHis = CHARACTER_HERHIS_HIS
+		NightGodHerHim = CHARACTER_HERHIM_HIM
+
+		#WaterGod
+		WaterGodName = salacad_religion_water_god_name
+		WaterGodNamePossessive = salacad_religion_water_god_name_possessive
+		WaterGodSheHe = CHARACTER_SHEHE_HE
+		WaterGodHerHis = CHARACTER_HERHIS_HIS
+		WaterGodHerHim = CHARACTER_HERHIM_HIM
+
+
+
+		PantheonTerm = salacad_religion_high_god_name
+		PantheonTermHasHave = pantheon_term_has
+		GoodGodNames = {
+			salacad_religion_high_god_name
+			HighGodNameAlternate
+			salacad_religion_health_god_name
+			salacad_religion_fertility_god_name
+			salacad_religion_household_god_name
+			salacad_religion_knowledge_god_name
+			salacad_religion_night_god_name
+		}
+		DevilName = salacad_religion_devil_name
+		DevilNamePossessive = salacad_religion_devil_name_possessive
+		DevilSheHe = CHARACTER_SHEHE_HE
+		DevilHerHis = CHARACTER_HERHIS_HIS
+		DevilHerselfHimself = CHARACTER_HIMSELF
+		EvilGodNames = {
+			salacad_religion_devil_name
+			salacad_religion_night_god_name
+			salacad_religion_wealth_god_name
+			salacad_religion_trickster_god_name
+			salacad_religion_witchgodname
+		}
+		HouseOfWorship = salacad_religion_house_of_worship
+		HouseOfWorshipPlural = salacad_religion_house_of_worship_plural
+		ReligiousSymbol = salacad_religion_religious_symbol
+		ReligiousText = salacad_religion_religious_text
+		ReligiousHeadName = salacad_religion_religious_head_title
+		ReligiousHeadTitleName = salacad_religion_religious_head_title_name
+		DevoteeMale = salacad_religion_devotee_male
+		DevoteeMalePlural = salacad_religion_devotee_male_plural
+		DevoteeFemale = salacad_religion_devotee_female
+		DevoteeFemalePlural = salacad_religion_devotee_female_plural
+		DevoteeNeuter = salacad_religion_devotee_neuter
+		DevoteeNeuterPlural = salacad_religion_devotee_neuter_plural
+		PriestMale = salacad_religion_priest_male
+		PriestMalePlural = salacad_religion_priest_male_plural
+		PriestFemale = salacad_religion_priest_female
+		PriestFemalePlural = salacad_religion_priest_female_plural
+		PriestNeuter = salacad_religion_priest_male
+		PriestNeuterPlural = salacad_religion_priest_male_plural
+		AltPriestTermPlural = salacad_religion_priest_alternate_plural
+		BishopMale = salacad_religion_bishop
+		BishopMalePlural = salacad_religion_bishop_plural
+		BishopFemale = salacad_religion_bishop
+		BishopFemalePlural = salacad_religion_bishop_plural
+		BishopNeuter = salacad_religion_bishop
+		BishopNeuterPlural = salacad_religion_bishop_plural
+		DivineRealm = salacad_religion_positive_afterlife
+		PositiveAfterLife = salacad_religion_positive_afterlife
+		NegativeAfterLife = salacad_religion_negative_afterlife
+		DeathDeityName = salacad_religion_death_deity_name
+		DeathDeityNamePossessive = salacad_religion_death_deity_name_possessive
+		DeathDeitySheHe = CHARACTER_SHEHE_HE
+		DeathDeityHerHis = CHARACTER_HERHIS_HIS
+		WitchGodName = christianity_witchgodname_iblis
+		WitchGodHerHis = CHARACTER_HERHIS_HIS
+		WitchGodSheHe = CHARACTER_SHEHE_HE
+		WitchGodHerHim = CHARACTER_HERHIM_HIM
+		WitchGodMistressMaster = master
+		WitchGodMotherFather = father
+
+
+		GHWName = ghw_great_holy_war
+		GHWNamePlural = ghw_great_holy_war
+	}
+	faiths = {
+		salacad = { #sjalvolki coalition religion for sarminians
+			color = { 0.70 0.90 0.10 }
+			icon = salacad_icon
+			religious_head = d_salacad_rel
+			reformed_icon = salacad_icon
+
+			doctrine = unreformed_faith_doctrine
+
+			#Tenet:
+			doctrine = tenet_warmonger
+			doctrine = tenet_sky_burials 
+			doctrine = tenet_sanctity_of_nature
+			
+			#Other doctrines
+			doctrine = doctrine_gender_female_dominated
+
+			holy_site = hatzenreuth
+			holy_site = kurscheid
+			holy_site = deutschbundesort
+			holy_site = tarheis
+			holy_site = vounill
+		}
+				
+	}
+	
+}

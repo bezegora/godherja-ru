@@ -1,0 +1,545 @@
+﻿calculate_magic_tutoring_outcomes = {
+	if = {
+		limit = { exists = liege }
+		if = {
+			limit = {
+				OR = {
+					is_performing_council_task = task_court_mage_tutor_magic 
+					liege = { # Sigh... The problem is that custom council tasks are beyond broken. I cannot figure out a way to get the AI to use anything but the first option. Therefore, this is a crutch so the AI actually educates their children - Hap
+						is_ai = yes 
+						any_child = {
+							is_adult = no
+							OR = {
+								has_trait = magic_good_1
+								has_trait = magic_good_2
+								has_trait = magic_good_3
+								has_trait = magic_good_4
+								has_trait = magic_good_5
+								has_trait = magic_good_6
+								has_trait = magic_good_7
+								has_trait = magic_good_8
+								has_trait = magic_good_9
+								has_trait = magic_good_10
+								has_trait = magic_good_11
+								has_trait = magic_good_12
+								has_trait = magic_good_13
+								has_trait = magic_good_14
+								has_trait = magic_good_15
+								has_trait = magic_good_16
+								has_trait = magic_good_17
+								has_trait = magic_good_18
+								has_trait = magic_good_19
+								has_trait = magic_good_20
+							}
+						}
+					}	
+				}
+			}
+			trigger_event = court_mage_task.0001 
+		}
+	}
+}
+
+calculate_tutoring_output = {
+	if = {
+		limit = { has_trait = education_$MAGIC_TYPE$ }
+		set_variable = {
+			name = education_output_$MAGIC_TYPE$
+			value = 0
+			days = 10
+		}
+		if = {
+			limit = { has_trait = education_$MAGIC_TYPE$_1 }
+			change_variable = {
+				name = education_output_$MAGIC_TYPE$
+				add = 1
+			}
+		}
+		if = {
+			limit = { has_trait = education_$MAGIC_TYPE$_2 }
+			change_variable = {
+				name = education_output_$MAGIC_TYPE$
+				add = 2
+			}
+		}
+		if = {
+			limit = { has_trait = education_$MAGIC_TYPE$_3 }
+			change_variable = {
+				name = education_output_$MAGIC_TYPE$
+				add = 3
+			}
+		}
+		if = {
+			limit = { has_trait = education_$MAGIC_TYPE$_4 }
+			change_variable = {
+				name = education_output_$MAGIC_TYPE$
+				add = 4
+			}
+		}
+		if = {
+			limit = { learning >= 10 }
+			change_variable = {
+				name = education_output_$MAGIC_TYPE$
+				add = 1
+			}
+		}
+		if = {
+			limit = { learning >= 20 }
+			change_variable = {
+				name = education_output_$MAGIC_TYPE$
+				add = 1
+			}
+		}
+		if = {
+			limit = { learning >= 30 }
+			change_variable = {
+				name = education_output_$MAGIC_TYPE$
+				add = 1
+			}
+		}
+	}
+}
+
+apply_tutoring_to_character = {
+	if = { 
+		limit = {
+			trigger_if = {
+				limit = { exists = scope:$TUTOR$ }
+				scope:$TUTOR$ = { has_variable = education_output_$MAGIC_TYPE$ } # Tutor needs to be outputting education points in this school
+			}
+			can_level_up_magic = { MAGIC_TYPE = $MAGIC_TYPE$ }
+		}
+		random_list = {
+			50 = { }
+			50 = {
+				if = {
+					limit = { NOT = { exists = var:$MAGIC_TYPE$_education_progress } }
+					set_variable = {
+						name = $MAGIC_TYPE$_education_progress
+						value = 0
+					}
+				}
+				
+				set_variable = {
+					name = monthly_$MAGIC_TYPE$_education_progress
+					value = scope:$TUTOR$.var:education_output_$MAGIC_TYPE$
+				}
+				change_variable = {
+					name = monthly_$MAGIC_TYPE$_education_progress
+					multiply = $EFFICIENCY$
+				}
+				
+				if = {
+					limit = { age >= 30 }
+					change_variable = {
+						name = monthly_$MAGIC_TYPE$_education_progress
+						multiply = 0.3
+					}
+				}
+				if = {
+					limit = { age >= 40 }
+					change_variable = {
+						name = monthly_$MAGIC_TYPE$_education_progress
+						multiply = 0.2
+					}
+				}
+				if = {
+					limit = { age >= 50 }
+					change_variable = {
+						name = monthly_$MAGIC_TYPE$_education_progress
+						multiply = 0.1
+					}
+				}
+				if = {
+					limit = { age >= 60 }
+					change_variable = {
+						name = monthly_$MAGIC_TYPE$_education_progress
+						multiply = 0.1
+					}
+				}
+				if = {
+					limit = { age >= 70 }
+					change_variable = {
+						name = monthly_$MAGIC_TYPE$_education_progress
+						multiply = 0.1
+					}
+				}
+				
+				if = {
+					limit = { NOT = { has_trait = magic_good } }
+					change_variable = {
+						name = monthly_$MAGIC_TYPE$_education_progress	# In the absence of any natural talent whatsoever, most characters will struggle
+						multiply = 0.3	
+					}
+				}
+				else_if = {
+					limit = { has_trait = magic_good_2  }
+					change_variable = {
+						name = monthly_$MAGIC_TYPE$_education_progress	
+						multiply = 0.5
+					}
+				}
+				else_if = {
+					limit = { has_trait = magic_good_3 }
+					change_variable = {
+						name = monthly_$MAGIC_TYPE$_education_progress
+						multiply = 1.0
+					}
+				}
+				else_if = {
+					limit = { has_trait = magic_good_4 }
+					change_variable = {
+						name = monthly_$MAGIC_TYPE$_education_progress
+						multiply = 1.5
+					}
+				}
+				else_if = {
+					limit = { has_trait = magic_good_5 }
+					change_variable = {
+						name = monthly_$MAGIC_TYPE$_education_progress
+						multiply = 1.75
+					}
+				}
+				else_if = {
+					limit = { has_trait = magic_good_6 }
+					change_variable = {
+						name = monthly_$MAGIC_TYPE$_education_progress
+						multiply = 1.9
+					}
+				}
+				else_if = {
+					limit = { has_trait = magic_good_7 }
+					change_variable = {
+						name = monthly_$MAGIC_TYPE$_education_progress
+						multiply = 2.15
+					}
+				}
+				else_if = {
+					limit = { has_trait = magic_good_8 }
+					change_variable = {
+						name = monthly_$MAGIC_TYPE$_education_progress
+						multiply = 2.5
+					}
+				}
+				else_if = {
+					limit = { has_trait = magic_good_9 }
+					change_variable = {
+						name = monthly_$MAGIC_TYPE$_education_progress
+						multiply = 3.0
+					}
+				}
+				else_if = {
+					limit = { has_trait = magic_good_10 }
+					change_variable = {
+						name = monthly_$MAGIC_TYPE$_education_progress
+						multiply = 3.5
+					}
+				}
+				else_if = {
+					limit = { has_trait = magic_good_11 }
+					change_variable = {
+						name = monthly_$MAGIC_TYPE$_education_progress
+						multiply = 4.0
+					}
+				}
+				else_if = {
+					limit = { has_trait = magic_good_12 }
+					change_variable = {
+						name = monthly_$MAGIC_TYPE$_education_progress
+						multiply = 4.5
+					}
+				}
+				else_if = {
+					limit = { has_trait = magic_good_13 }
+					change_variable = {
+						name = monthly_$MAGIC_TYPE$_education_progress
+						multiply = 5.0
+					}
+				}
+				else_if = {
+					limit = { has_trait = magic_good_14 }
+					change_variable = {
+						name = monthly_$MAGIC_TYPE$_education_progress
+						multiply = 5.5
+					}
+				}
+				else_if = {
+					limit = { has_trait = magic_good_15 }
+					change_variable = {
+						name = monthly_$MAGIC_TYPE$_education_progress
+						multiply = 6.0
+					}
+				}
+				else_if = {
+					limit = { has_trait = magic_good_16 }
+					change_variable = {
+						name = monthly_$MAGIC_TYPE$_education_progress
+						multiply = 6.5
+					}
+				}
+				else_if = {
+					limit = { has_trait = magic_good_17 }
+					change_variable = {
+						name = monthly_$MAGIC_TYPE$_education_progress
+						multiply = 7.0
+					}
+				}
+				else_if = {
+					limit = { has_trait = magic_good_18 }
+					change_variable = {
+						name = monthly_$MAGIC_TYPE$_education_progress
+						multiply = 7.5
+					}
+				}
+				else_if = {
+					limit = { has_trait = magic_good_19 }
+					change_variable = {
+						name = monthly_$MAGIC_TYPE$_education_progress
+						multiply = 8.0
+					}
+				}
+				else_if = {
+					limit = { has_trait = magic_good_20 }
+					change_variable = {
+						name = monthly_$MAGIC_TYPE$_education_progress
+						multiply = 10.0
+					}
+				}
+				if = {
+					limit = { has_trait = ambitious }
+					change_variable = {
+						name = monthly_$MAGIC_TYPE$_education_progress
+						multiply = 2
+					}
+				}
+				if = {
+					limit = { has_trait = diligent }
+					change_variable = {
+						name = monthly_$MAGIC_TYPE$_education_progress
+						multiply = 1.5
+					}
+				}
+				if = {
+					limit = { has_trait = arrogant }
+					change_variable = {
+						name = monthly_$MAGIC_TYPE$_education_progress
+						multiply = 0.8
+					}
+				}
+				if = {
+					limit = { has_trait = lazy }
+					change_variable = {
+						name = monthly_$MAGIC_TYPE$_education_progress
+						multiply = 0.5
+					}
+				}
+				
+				##############
+				# CONGENTIAL #
+				##############
+				
+				if = {
+					limit = { has_trait = intellect_bad_3 }
+					change_variable = {
+						name = monthly_$MAGIC_TYPE$_education_progress
+						multiply = 0.1
+					}
+				}
+				if = {
+					limit = { has_trait = intellect_bad_2 }
+					change_variable = {
+						name = monthly_$MAGIC_TYPE$_education_progress
+						multiply = 0.3
+					}
+				}
+				if = {
+					limit = { has_trait = intellect_bad_1 }
+					change_variable = {
+						name = monthly_$MAGIC_TYPE$_education_progress
+						multiply = 0.5
+					}
+				}
+				if = {
+					limit = { has_trait = intellect_good_1 }
+					change_variable = {
+						name = monthly_$MAGIC_TYPE$_education_progress
+						multiply = 1.2
+					}
+				}
+				if = {
+					limit = { has_trait = intellect_good_2 }
+					change_variable = {
+						name = monthly_$MAGIC_TYPE$_education_progress
+						multiply = 1.5
+					}
+				}
+				if = {
+					limit = { has_trait = intellect_good_3 }
+					change_variable = {
+						name = monthly_$MAGIC_TYPE$_education_progress
+						multiply = 3
+					}
+				}
+				
+				if = {
+					limit = { has_trait = shrewd }
+					change_variable = {
+						name = monthly_$MAGIC_TYPE$_education_progress
+						multiply = 1.5
+					}
+				}
+				if = {
+					limit = { has_trait = scholar }
+					change_variable = {
+						name = monthly_$MAGIC_TYPE$_education_progress
+						multiply = 1.5
+					}
+				}
+				if = {
+					limit = { has_trait = curious }
+					change_variable = {
+						name = monthly_$MAGIC_TYPE$_education_progress
+						multiply = 1.5
+					}
+				}
+				
+				change_variable = {
+					name = $MAGIC_TYPE$_education_progress
+					add = var:monthly_$MAGIC_TYPE$_education_progress
+				}
+				
+				remove_variable = monthly_$MAGIC_TYPE$_education_progress # Not needed outside this event, got rid of it to avoid clutter
+				
+				##################
+				# LEVEL UP CHECK #
+				##################
+				
+				if = {
+					limit = { has_leveled_up = { MAGIC_TYPE = $MAGIC_TYPE$ RANK = 5 THRESHOLD = 200 MIN_AGE = 14 } }
+					if = {
+						limit = { 
+							NOT = { any_parent = { is_ai = no } } # In case a parent is the player, fire the event to inform them instead
+						}
+						trigger_event = court_mage_task.$EVENT_ID_PREFIX$0
+					}
+					else = {
+						save_scope_as = magic_tutored_child
+						scope:court_mage_liege = {
+							trigger_event = court_mage_task.$EVENT_ID_PREFIX$1
+						}
+					}
+				}
+				else_if = {
+					limit = { has_leveled_up = { MAGIC_TYPE = $MAGIC_TYPE$ RANK = 4 THRESHOLD = 100 MIN_AGE = 12 } }
+					if = {
+						limit = { 
+							NOT = { any_parent = { is_ai = no } } # In case a parent is the player, fire the event to inform them instead
+						}
+						trigger_event = court_mage_task.$EVENT_ID_PREFIX$0
+					}
+					else = {
+						save_scope_as = magic_tutored_child
+						scope:court_mage_liege = {
+							trigger_event = court_mage_task.$EVENT_ID_PREFIX$1
+						}
+					}
+				}
+				else_if = {
+					limit = { has_leveled_up = { MAGIC_TYPE = $MAGIC_TYPE$ RANK = 3 THRESHOLD = 50 MIN_AGE = 10 } }
+					debug_log = "CHEKING IF LEVELLED UP"
+					debug_log_scopes = yes
+					if = {
+						limit = { 
+							NOT = { any_parent = { is_ai = no } } # In case a parent is the player, fire the event to inform them instead
+						}
+						trigger_event = court_mage_task.$EVENT_ID_PREFIX$0
+					}
+					else = {
+						save_scope_as = magic_tutored_child
+						scope:court_mage_liege = {
+							trigger_event = court_mage_task.$EVENT_ID_PREFIX$1
+						}
+					}
+				}
+				else_if = {
+					limit = { has_leveled_up = { MAGIC_TYPE = $MAGIC_TYPE$ RANK = 2 THRESHOLD = 25 MIN_AGE = 6 } }	# THRESHOLD starts at 2 since the magic education traits don't have a rank 1 for historical reasons
+					if = {
+						limit = { 
+							NOT = { any_parent = { is_ai = no } } # In case a parent is the player, fire the event to inform them instead
+						}
+						trigger_event = court_mage_task.$EVENT_ID_PREFIX$0
+					}
+					else = {
+						save_scope_as = magic_tutored_child
+						scope:court_mage_liege = {
+							trigger_event = court_mage_task.$EVENT_ID_PREFIX$1
+						}
+					}
+				}
+			}
+		} 
+	} 
+}
+
+remove_education_school = {
+	if = {
+		limit = {
+			has_trait = education_$MAGIC_TYPE$_1
+		}
+		remove_trait = education_$MAGIC_TYPE$_1
+	}
+	else_if = {
+		limit = {
+			has_trait = education_$MAGIC_TYPE$_2
+		}
+		remove_trait = education_$MAGIC_TYPE$_2
+	}
+	else_if = {
+		limit = {
+			has_trait = education_$MAGIC_TYPE$_3
+		}
+		remove_trait = education_$MAGIC_TYPE$_3
+	}
+	else_if = {
+		limit = {
+			has_trait = education_$MAGIC_TYPE$_4
+		}
+		remove_trait = education_$MAGIC_TYPE$_4
+	}
+}
+
+upgrade_magic_education_effect = {
+	hidden_effect = {
+		remove_education_school = { MAGIC_TYPE = $MAGIC_TYPE$ }
+		add_to_magi_list = yes
+		give_mixed_magi_riftsight_effect = yes
+	}
+	if = {
+		limit = {
+			var:$MAGIC_TYPE$_education_progress >= 200
+			age >= 14
+		}
+		add_trait = education_$MAGIC_TYPE$_4
+	}
+	else_if = {
+		limit = {
+			var:$MAGIC_TYPE$_education_progress >= 100
+			age >= 12
+		}
+		add_trait = education_$MAGIC_TYPE$_3
+	}
+	else_if = {
+		limit = {
+			var:$MAGIC_TYPE$_education_progress >= 50
+			age >= 10
+		}
+		add_trait = education_$MAGIC_TYPE$_2
+	}
+	else_if = {
+		limit = {
+			var:$MAGIC_TYPE$_education_progress >= 25
+			age >= 6
+		}
+		add_trait = education_$MAGIC_TYPE$_1
+	}
+}

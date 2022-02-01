@@ -1,0 +1,19 @@
+pdxmesh = {
+	name = "kermit_hat_mesh"
+	file = "kermit_hat.mesh"
+
+	meshsettings = {
+		name = "kermit_tiltShape"
+		index = 0
+		texture_diffuse = "kermit_color.dds"
+		texture_normal = "kermit_normal.dds"
+		texture_specular = "kermit_properties.dds"
+		shader = "portrait_attachment"
+		shader_file = "gfx/FX/jomini/portrait.shader"
+	}
+}
+
+entity = {
+	name = "kermit_hat_entity"
+	pdxmesh = "kermit_hat_mesh"
+}

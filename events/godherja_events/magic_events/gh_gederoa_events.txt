@@ -1,0 +1,620 @@
+﻿namespace = gedeora
+
+scripted_trigger is_in_gedeora_target_group = {
+	trigger_if = {
+		limit = { scope:gedeora_epicenter = { has_variable = gedeora_target_nobility } }
+		is_lowborn = no
+	}
+	trigger_else_if = {
+		limit = { scope:gedeora_epicenter = { has_variable = gedeora_target_commoners } }
+		is_lowborn = yes
+	}
+	trigger_else_if = {
+		limit = { scope:gedeora_epicenter = { has_variable = gedeora_target_women } }
+		is_female = yes
+	}
+	trigger_else_if = {
+		limit = { scope:gedeora_epicenter = { has_variable = gedeora_target_men } }
+		is_male = yes
+	}
+	trigger_else_if = {
+		limit = { scope:gedeora_epicenter = { has_variable = gedeora_target_children } }
+		is_adult = no
+	}
+	trigger_else_if = {
+		limit = { scope:gedeora_epicenter = { has_variable = gedeora_target_girls } }
+		is_adult = no
+		is_female = yes
+	}
+	trigger_else_if = {
+		limit = { scope:gedeora_epicenter = { has_variable = gedeora_target_boys } }
+		is_adult = no
+		is_male = yes
+	}
+	trigger_else_if = {
+		limit = { scope:gedeora_epicenter = { has_variable = gedeora_target_magical_ability } }
+		has_trait = magic_good
+	}
+	trigger_else_if = {
+		limit = { scope:gedeora_epicenter = { has_variable = gedeora_target_magi_any } }
+		can_access_magic = yes
+	}
+	trigger_else_if = {
+		limit = { scope:gedeora_epicenter = { has_variable = gedeora_target_living_magi } }
+		has_trait = education_living_magic
+	}
+	trigger_else_if = {
+		limit = { scope:gedeora_epicenter = { has_variable = gedeora_target_dead_magi } }
+		has_trait = education_dead_magic
+	}
+	trigger_else_if = {
+		limit = { scope:gedeora_epicenter = { has_variable = gedeora_target_mixed_magi } }
+		has_trait = education_mixed_magic
+	}
+	trigger_else_if = {
+		limit = { scope:gedeora_epicenter = { has_variable = gedeora_target_diplomats } }
+		OR = {
+			has_trait = education_diplomacy
+			has_trait = gregarious
+			diplomacy >= 15
+		}
+	}
+	trigger_else_if = {
+		limit = { scope:gedeora_epicenter = { has_variable = gedeora_target_schemers } }
+		OR = {
+			has_trait = education_intrigue
+			has_trait = deceitful
+			intrigue >= 15
+		}
+	}
+	trigger_else_if = {
+		limit = { scope:gedeora_epicenter = { has_variable = gedeora_target_warriors } }
+		OR = {
+			has_trait = education_martial
+			has_trait = wrathful
+			martial >= 15
+		}
+	}
+	trigger_else_if = {
+		limit = { scope:gedeora_epicenter = { has_variable = gedeora_target_stewards } }
+		OR = {
+			has_trait = education_stewardship
+			stewardship >= 15
+		}
+	}
+	trigger_else_if = {
+		limit = { scope:gedeora_epicenter = { has_variable = gedeora_target_scholars } }
+		OR = {
+			has_trait = education_learning
+			learning >= 15
+		}
+	}
+	trigger_else = {
+		always = no
+	}
+}
+
+gedeora.0001 = {	# Initialization, picks a random epicenter
+	type = empty
+	hidden = yes
+	
+	trigger = {
+		NOT = {
+			has_global_variable = recent_gedeora
+		}
+	}
+	
+	immediate = {
+		random_county = {
+			save_scope_as = gedeora_epicenter
+			set_global_variable = {
+				name = recent_gedeora
+				value = scope:gedeora_epicenter
+				days = 90
+			}
+			add_to_global_variable_list = {
+				name = gedeora_spread_counties
+				target = this
+			}
+			pick_gedeora_primary_effect = yes
+			pick_gedeora_target_populace = yes
+			pick_gedeora_secondary_effect = yes
+			random_list = {
+				75 = { 
+					set_variable = {	# Needs to be local since several Gedeora variables might overlap in the 90 day cooldown
+						name = small_gedeora
+						days = 90
+					}
+				}
+				15 = { 
+					set_variable = {
+						name = medium_gedeora
+						days = 90
+					}
+				}
+				5 = { 
+					set_variable = {
+						name = big_gedeora
+						days = 90
+					}
+				}
+				4 = { 
+					set_variable = {
+						name = huge_gedeora
+						days = 90
+					}
+				}
+				1 = {
+					set_variable = {
+						name = global_gedeora
+						days = 90
+					}
+				}
+			}
+			if = {
+				limit = { has_variable = global_gedeora }
+				every_county = {
+					every_in_de_facto_hierarchy = {
+						if = {
+							limit = { exists = this }
+							holder = {
+								if = {
+									limit = { 
+										exists = this
+										OR = { 
+											capital_county = prev 
+											highest_held_title_tier = tier_barony
+										}
+									}
+									trigger_event = gedeora.0010
+									every_courtier_or_guest = {
+										trigger_event = gedeora.0010
+									}
+									every_councillor = {
+										limit = { is_at_same_location = prev }
+										trigger_event = gedeora.0010
+									}
+									every_close_or_extended_family_member = {
+										limit = { is_at_same_location = prev }
+										trigger_event = gedeora.0010
+									}
+									every_spouse = {
+										limit = { is_at_same_location = prev }
+										trigger_event = gedeora.0010
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+			else = {
+				while = {
+					count = { gedeora_min_distance_value gedeora_max_distance_value }
+					every_in_global_list = {
+						variable = gedeora_spread_counties
+						remove_variable = next_gedeora_spread_target
+					}
+					every_in_global_list = {
+						variable = gedeora_spread_counties
+						limit = { NOT = { has_variable = next_gedeora_spread_target } }
+						set_variable = {
+							name = recently_hit_by_gedeora
+							days = 3
+						}
+						every_in_de_facto_hierarchy = {
+							limit = { exists = holder }
+							holder = {
+								if = {
+									limit = { 
+										OR = { 
+											capital_county = prev 
+											highest_held_title_tier = tier_barony
+										}
+									}
+									trigger_event = gedeora.0010
+									every_courtier_or_guest = {
+										trigger_event = gedeora.0010
+									}
+									every_councillor = {
+										limit = { is_at_same_location = prev }
+										trigger_event = gedeora.0010
+									}
+									every_close_or_extended_family_member = {
+										limit = { is_at_same_location = prev }
+										trigger_event = gedeora.0010
+									}
+									every_spouse = {
+										limit = { is_at_same_location = prev }
+										trigger_event = gedeora.0010
+									}
+								}
+							}
+						}
+						every_title_to_title_neighboring_county = {
+							limit = { 
+								NOT = { 
+									has_variable = recently_hit_by_gedeora 
+								} 
+							}
+							set_variable = {
+								name = next_gedeora_spread_target	# To avoid adding to the list while reading through it at the same time and encompassing the entire world
+								days = 3
+							}
+							add_to_global_variable_list = {
+								name = gedeora_spread_counties
+								target = this
+							}
+						}
+						remove_list_global_variable = {
+							name = gedeora_spread_counties
+							target = this
+						}
+					}
+				}
+			}
+		}
+	}	
+}
+
+gedeora.0010 = {
+	type = character_event
+	title = gedeora.0010.title
+	
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					scope:gedeora_epicenter = { has_variable = depravity_gedeora }
+				}
+				desc = gedeora.0010.desc.depravity
+			}
+			triggered_desc = {
+				trigger = {
+					scope:gedeora_epicenter = { has_variable = zeal_gedeora }
+				}
+				desc = gedeora.0010.desc.zeal
+			}
+			triggered_desc = {
+				trigger = {
+					scope:gedeora_epicenter = { has_variable = bloodlust_gedeora }
+				}
+				desc = gedeora.0010.desc.bloodlust
+			}
+			triggered_desc = {
+				trigger = {
+					scope:gedeora_epicenter = { has_variable = ambition_gedeora }
+				}
+				desc = gedeora.0010.desc.ambition
+			}
+			desc = gedeora.0010.desc
+		}
+	}
+	
+	trigger = {
+		NOT = {
+			has_variable = already_affected_by_gedeora
+		}
+	}
+	
+	theme = mental_health
+	
+	override_icon = {
+		trigger = { scope:gedeora_epicenter = { has_variable = depravity_gedeora } }
+		reference = "gfx/interface/icons/event_types/type_gedeora_depravity.dds"
+	}
+	
+	override_background = {
+		trigger = { scope:gedeora_epicenter = { has_variable = depravity_gedeora } }
+		event_background = gedeora_depravity
+	}
+	override_background = {
+		trigger = { always = yes }
+		event_background = corridor_night
+	}
+	
+	left_portrait = {
+		character = root
+		triggered_animation = {
+			trigger = {
+				scope:gedeora_epicenter = { has_variable = depravity_gedeora }
+			}
+			animation = flirtation
+		}
+		triggered_animation = {
+			trigger = {
+				scope:gedeora_epicenter = { has_variable = zeal_gedeora }
+			}
+			animation = personality_zealous
+		}
+		triggered_animation = {
+			trigger = {
+				scope:gedeora_epicenter = { has_variable = bloodlust_gedeora }
+			}
+			animation = rage
+		}
+		triggered_animation = {
+			trigger = {
+				scope:gedeora_epicenter = { has_variable = ambition_gedeora }
+			}
+			animation = paranoia
+		}
+		triggered_animation = {
+			trigger = {
+				always = yes
+			}
+			animation = personality_callous
+		}
+	}
+	
+	immediate = {
+		play_music_cue = "mx_cue_stress"
+		set_variable = {
+			name = already_affected_by_gedeora
+			days = 10
+		}
+		pick_gedeora_personality_change_effect = yes
+		if = {
+			limit = { is_pregnant = yes }
+			set_variable = { 
+				name = carrying_gedeora_child
+				months = 12	# Should auto-expire
+			}
+		}
+	}
+	
+	option = {	# Accept the personality change
+		custom_tooltip = gedeora_struck_tt
+		name = {
+			trigger = { scope:gedeora_epicenter = { has_variable = depravity_gedeora } }
+			text = gedeora.0010.a.depravity
+		}
+		name = {
+			trigger = { scope:gedeora_epicenter = { has_variable = zeal_gedeora } }
+			text = gedeora.0010.a.zeal
+		}
+		name = {
+			trigger = { scope:gedeora_epicenter = { has_variable = bloodlust_gedeora } }
+			text = gedeora.0010.a.bloodlust
+		}
+		name = {
+			trigger = { scope:gedeora_epicenter = { has_variable = ambition_gedeora } }
+			text = gedeora.0010.a.ambition
+		}
+		name = {
+			trigger = { scope:gedeora_epicenter = { has_variable = generic_evil_gedeora } }
+			text = gedeora.0010.a
+		}
+		apply_gedeora_effect_to_character = yes
+		if = {
+			limit = {
+				faith = {
+					has_doctrine_parameter = piety_and_stress_loss_for_gedeora
+				}
+			}
+			add_stress = -200
+			add_piety = massive_piety_gain
+		}
+		if = {
+			limit = { is_in_gedeora_target_group = yes }
+			custom_tooltip = gedeora_in_target_populace_tt
+			apply_gedeora_secondary_effect_to_character = yes
+		}
+		ai_chance = {
+			base = 15
+			modifier = {
+				factor = 0
+				gedeora_sadist_resist_cost < 1
+			}
+		}
+	}
+	
+	option = {	# Resist it
+		custom_tooltip = gedeora_struck_tt
+		name = {
+			trigger = { scope:gedeora_epicenter = { has_variable = depravity_gedeora } }
+			text = gedeora.0010.b.depravity
+		}
+		name = {
+			trigger = { scope:gedeora_epicenter = { has_variable = zeal_gedeora } }
+			text = gedeora.0010.b.zeal
+		}
+		name = {
+			trigger = { scope:gedeora_epicenter = { has_variable = bloodlust_gedeora } }
+			text = gedeora.0010.b.bloodlust
+		}
+		name = {
+			trigger = { scope:gedeora_epicenter = { has_variable = ambition_gedeora } }
+			text = gedeora.0010.b.ambition
+		}
+		name = {
+			trigger = { scope:gedeora_epicenter = { has_variable = generic_evil_gedeora } }
+			text = gedeora.0010.b
+		}
+		add_stress = gedeora_sadist_resist_cost
+		if = {
+			limit = {
+				faith = {
+					has_doctrine_parameter = piety_and_stress_loss_for_gedeora
+				}
+			}
+			add_piety = massive_piety_loss
+		}
+		if = {
+			limit = { is_in_gedeora_target_group = yes }
+			custom_tooltip = gedeora_in_target_populace_tt
+			apply_gedeora_secondary_effect_to_character = yes
+		}
+		ai_chance = {
+			base = 10
+			modifier = {
+				factor = 0
+				gedeora_sadist_resist_cost > 200
+			}
+			modifier = {
+				factor = 4
+				has_trait = stubborn
+			}
+			modifier = {
+				factor = 0.5
+				gedeora_sadist_resist_cost > 150
+			}
+			modifier = {
+				factor = 0.5
+				gedeora_sadist_resist_cost > 100
+			}
+			modifier = {
+				factor = 0.5
+				gedeora_sadist_resist_cost > 50
+			}
+		}
+	}
+}
+
+gedeora.0020 = {	# Childhood event for children affected by a Gedeora during pregnancy
+	type = character_event
+	title = gedeora.0020.title
+	desc = gedeora.0020.desc
+	
+	trigger = {
+		has_trait = gh_gedeora_child
+		NOT = {
+			has_variable = already_affected_by_gedeora
+		}
+	}
+	
+	theme = mental_health
+	
+	override_background = {
+		event_background = corridor_night
+	}
+	
+	left_portrait = {
+		character = root
+		animation = rage
+	}
+	
+	immediate = {
+		play_music_cue = "mx_cue_stress"
+		set_variable = {
+			name = already_affected_by_gedeora
+			days = 10
+		}
+		if = {
+			limit = { is_pregnant = yes }
+			set_variable = { 
+				name = carrying_gedeora_child
+				months = 12	# Should auto-expire if for some reason not removed correctly
+			}
+		}
+		random_list = {
+			40 = {
+				set_variable = {
+					name = gedeora_sadistic_effect_flag
+					days = 3
+				}
+			}
+			40 = {
+				set_variable = {
+					name = gedeora_callous_effect_flag
+					days = 3
+				}
+			}
+			20 = {
+				set_variable = {
+					name = gedeora_vengeful_effect_flag
+					days = 3
+				}
+			}
+			10 = {
+				set_variable = {
+					name = gedeora_arrogant_effect_flag
+					days = 3
+				}
+			}
+			10 = {
+				set_variable = {
+					name = gedeora_wrathful_effect_flag
+					days = 3
+				}
+			}
+			10 = {
+				set_variable = {
+					name = gedeora_ambitious_effect_flag
+					days = 3
+				}
+			}
+			10 = {
+				set_variable = {
+					name = gedeora_arbitrary_effect_flag
+					days = 3
+				}
+			}
+		}
+	}
+	
+	option = {	# Accept the personality change
+		custom_tooltip = gedeora_childhood_tt
+		name = gedeora.0020.a
+		apply_gedeora_effect_to_character = yes
+		if = {
+			limit = {
+				faith = {
+					has_doctrine_parameter = piety_and_stress_loss_for_gedeora
+				}
+			}
+			add_stress = -200
+			add_piety = massive_piety_gain
+		}
+		ai_chance = {
+			base = 10
+			modifier = {
+				add = 20
+				faith = {
+					has_doctrine_parameter = piety_and_stress_loss_for_gedeora
+				}
+			}
+			modifier = {
+				add = -10
+				gedeora_sadist_resist_cost < 1
+			}
+		}
+	}
+	
+	option = {	# Resist it
+		custom_tooltip = gedeora_childhood_tt
+		name = gedeora.0020.b
+		add_stress = gedeora_sadist_resist_cost
+		if = {
+			limit = {
+				faith = {
+					has_doctrine_parameter = piety_and_stress_loss_for_gedeora
+				}
+			}
+			add_piety = massive_piety_loss
+		}
+		ai_chance = {
+			base = 10
+			modifier = {
+				factor = 0
+				gedeora_sadist_resist_cost > 200
+			}
+			modifier = {
+				factor = 4
+				has_trait = stubborn
+			}
+			modifier = {
+				factor = 0.5
+				gedeora_sadist_resist_cost > 150
+			}
+			modifier = {
+				factor = 0.5
+				gedeora_sadist_resist_cost > 100
+			}
+			modifier = {
+				factor = 0.5
+				gedeora_sadist_resist_cost > 50
+			}
+		}
+	}
+}

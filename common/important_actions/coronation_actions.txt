@@ -1,0 +1,22 @@
+﻿### CORONATION
+
+action_get_coronated = {
+	check_create_action = {
+		if = {
+			limit = {
+				faith = {
+					has_doctrine_parameter = can_perform_coronations
+				}
+				has_character_flag = can_take_coronations_decision
+				is_adult = yes
+			}
+			try_create_important_action = {
+				important_action_type = action_get_coronated
+				actor = root
+			}
+		}
+	}
+	effect = {
+		open_view_data = decision_detail
+	}
+}

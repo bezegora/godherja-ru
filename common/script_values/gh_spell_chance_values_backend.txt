@@ -1,0 +1,261 @@
+base_standard_spell_difficulty_success_chance_value = {
+	value = 0
+	if = {
+		limit = { root.var:magic_lvl = { compare_value = 0 } }
+		add = 90
+	}
+	if = {
+		limit = { root.var:magic_lvl = { compare_value = 1 } }
+		add = 75
+	}
+	if = {
+		limit = { root.var:magic_lvl = { compare_value = 2 } }
+		add = 50
+	}
+	if = {
+		limit = { root.var:magic_lvl = { compare_value = 3 } }
+		add = 25
+	}
+	min = 0
+}
+
+base_standard_spell_difficulty_failure_chance_value = {
+	value = 0
+	if = {
+		limit = { root.var:magic_lvl = { compare_value = 0 } }
+		add = 10
+	}
+	if = {
+		limit = { root.var:magic_lvl = { compare_value = 1 } }
+		add = 25
+	}
+	if = {
+		limit = { root.var:magic_lvl = { compare_value = 2 } }
+		add = 50
+	}
+	if = {
+		limit = { root.var:magic_lvl = { compare_value = 3 } }
+		add = 75
+	}
+	min = 0
+}
+
+base_difficult_spell_difficulty_success_chance_value = {
+	value = 0
+	if = {
+		limit = { root.var:magic_lvl = { compare_value = 0 } }
+		add = 70
+	}
+	if = {
+		limit = { root.var:magic_lvl = { compare_value = 1 } }
+		add = 50
+	}
+	if = {
+		limit = { root.var:magic_lvl = { compare_value = 2 } }
+		add = 30
+	}
+	if = {
+		limit = { root.var:magic_lvl = { compare_value = 3 } }
+		add = 10
+	}
+	min = 0
+}
+
+base_difficult_spell_difficulty_failure_chance_value = {
+	value = 0
+	if = {
+		limit = { root.var:magic_lvl = { compare_value = 0 } }
+		add = 30
+	}
+	if = {
+		limit = { root.var:magic_lvl = { compare_value = 1 } }
+		add = 50
+	}
+	if = {
+		limit = { root.var:magic_lvl = { compare_value = 2 } }
+		add = 70
+	}
+	if = {
+		limit = { root.var:magic_lvl = { compare_value = 3 } }
+		add = 90
+	}
+	min = 0
+}
+
+magic_crime_defense_value = {
+	value = 0
+	if = {
+		limit = {
+			trigger_if = {
+				limit = { has_variable_list = spell_targets }
+				any_in_list = {
+					variable = spell_targets
+					faith = { has_doctrine = doctrine_magic_crime }
+					NOT = { exists = cp:councillor_court_mage }
+				}
+			}
+			trigger_else = { always = no }
+		}
+		add = magic_defense_from_magic_criminal
+	}
+	min = 0
+}
+
+hostile_magic_defense_value = {
+	value = 0
+	every_in_list = {
+		variable = spell_targets
+		if = {
+			limit = { has_variable = magical_prowess }
+			add = var:magical_prowess
+		}
+		else_if = {
+			limit = {  
+				trigger_if = {
+					limit = { exists = cp:councillor_court_mage }
+					cp:councillor_court_mage = {
+						has_variable = magical_prowess
+					}
+				}
+				trigger_else = {
+					always = no
+				}
+			}
+			cp:councillor_court_mage = {
+				add = var:magical_prowess
+			}
+		}
+	}
+	min = 0
+}
+hostile_magic_defense_county_value = {
+	value = 0
+	every_in_list = {
+		variable = spell_l_targets
+		if = {
+			limit = { 
+			exists = holder
+			holder = { 
+				has_variable = magical_prowess
+				NOT = { this = root}
+				}
+			}
+			add = holder.var:magical_prowess
+		}
+		else_if = {
+			limit = {  
+				trigger_if = {
+					limit = { 
+					exists = holder
+					holder = { 
+						exists = cp:councillor_court_mage
+						NOT ={ this = root}
+						}
+					holder.cp:councillor_court_mage = {
+						has_variable = magical_prowess}
+					}
+				}
+				trigger_else = {
+					always = no
+				}
+			}
+			holder.cp:councillor_court_mage = {
+				add = var:magical_prowess
+			}
+		}
+	}
+	min = 0
+}
+caster_or_court_mage_value = {
+	value = 0
+	if = {
+		limit = {
+			root = {
+				exists = cp:councillor_court_mage
+				cp:councillor_court_mage = {
+					has_variable = magical_prowess
+					is_performing_council_task = task_court_mage_cast_spells
+				}
+			}
+		}
+		root = {
+			cp:councillor_court_mage = {
+				add = var:magical_prowess
+			}
+		}
+	}
+	else_if = {
+		limit = { root = { has_variable = magical_prowess } }
+		add = root.var:magical_prowess
+	}
+	min = 0
+}
+
+legacy_spell_chance_value = {
+	value = 0
+	if = {
+		limit = {
+			trigger_if = {
+				limit = { is_lowborn = no }
+				dynasty = { has_dynasty_perk = magic_legacy_4 }
+			}
+			trigger_else = { always = no }
+		}
+		add = 15
+	}
+	min = 0
+}
+
+good_moon_spell_chance_value = {
+	value = 0
+	if = {
+		limit = {
+			is_any_good_moon_trigger = yes
+			NOT = {
+				has_character_modifier = pulling_moon_mod
+				}
+			}
+		add = 10
+	}
+	if = {
+		limit = {
+			is_any_good_moon_trigger = yes
+			has_perk = deadmagic_perk9_tree3
+			}
+		add = 5
+	}
+	if = {
+		limit = {
+			is_full_moon_trigger = yes
+			NOT = {
+				has_character_modifier = pulling_moon_mod
+				}
+			}
+		add = 10
+	}
+	if = {
+		limit = {
+			is_full_moon_trigger = yes
+			has_perk = deadmagic_perk9_tree3
+			}
+		add = 5
+	}
+	min = 0
+}
+
+bad_moon_spell_chance_value = {
+	value = 0
+	if = {
+		limit = {
+			is_any_bad_moon_trigger = yes
+			}
+		add = 10
+	}
+	if = {
+		limit = {
+			is_new_moon_trigger = yes
+				}
+		add = 10
+	}
+	min = 0
+}

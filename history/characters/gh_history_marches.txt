@@ -1,0 +1,1013 @@
+﻿marcher_1000 = {
+	name = "Gardfrei" #Gardfrei den va Seignon
+	dna = gardfrei_den_va_seignon_1000
+	dynasty = dyn_marcher_1
+	martial = 14
+	diplomacy = 12
+	intrigue = 9
+	stewardship = 11
+	religion = "lifepath"
+	culture = "voyagen"
+	father = marcher_10000
+	trait = brave
+	trait = honest
+	trait = impatient
+	trait = irritable
+	trait = reclusive
+	trait = scarred
+	trait = strong
+	trait = adventurer
+	trait = depressed_1
+	trait = intellect_good_1
+	trait = education_martial_4
+	trait = way_of_swords_follower
+	1205.3.18 = {
+		birth = yes
+		effect = {
+			add_character_flag = has_scripted_appearance
+			add_pressed_claim = e_chevalie
+		}
+	}
+	1224.6.12 = {
+		add_spouse = marcher_1001 #Mathilde den va Seignon
+	}
+	1253.11.12 = {
+		death = {
+			death_reason = death_mysterious_quest
+		}
+	}
+}
+
+marcher_1001 = {
+	name = "Genevieve" #Genevieve den va Seignon
+	dna = mathilde_den_va_seignon_1001
+	female = yes
+	dynasty = dyn_marcher_1
+	martial = 6
+	diplomacy = 16
+	intrigue = 12
+	stewardship = 9
+	religion = "lifepath"
+	culture = "carsavisians"
+	trait = shy
+	trait = arrogant
+	trait = calm
+	trait = education_diplomacy_2
+	1213.3.18 = {
+		birth = yes
+	}
+	1224.6.12 = {
+		add_spouse = marcher_1000 #Gardfrei den va Seignon
+	}
+}
+
+marcher_1002 = {
+	name = "Boevel" #Boevel den va Calmensnon
+	dna = boevel_den_va_calmensnon_1002
+	dynasty = dyn_marcher_3
+	religion = "lifepath"
+	culture = "voyagen"
+	1179.5.14 = {
+		birth = yes
+	        effect = {
+			add_character_flag = has_scripted_appearance
+		}
+	}
+	1245.12.11 = {
+		death = yes
+	}
+	trait = education_diplomacy_4
+	trait = ambitious
+	trait = deceitful
+	trait = diligent
+	trait = shrewd
+	trait = diplomat
+	diplomacy = 9
+	martial = 3
+	intrigue = 11
+	stewardship = 9
+	learning = 4
+}
+
+marcher_1003 = {
+	name = "Dayna" #Dayna den va Seignon
+	dynasty = dyn_marcher_1
+	religion = "lifepath"
+	culture = "voyagen"
+	father = marcher_10000
+	female = yes
+	trait = beauty_good_2
+	trait = way_of_family_follower
+	1204.2.2 = {
+		birth = yes
+	}
+	1251.4.14 = {
+		death = {
+			death_reason = death_ill
+		}
+	}
+}
+
+marcher_1004 = {
+	name = "Breten" #Breten den va Seignon
+	dynasty = dyn_marcher_1
+	religion = "lifepath"
+	culture = "voyagen"
+	father = marcher_10000
+	trait = intellect_good_2
+	trait = way_of_nullification_follower
+	trait = brave
+	trait = vengeful
+	trait = generous
+	trait = education_martial_3
+	1191.2.2 = {
+		birth = yes
+	}
+	1210.1.3 = {
+		death = {
+			death_reason = death_lich_raid
+		}
+	}
+}
+
+##Marcher old history
+
+marcher_10000 = {
+	name = "Dendon" #Dendon den va Seignon
+	dynasty = dyn_marcher_1
+	martial = 2
+	diplomacy = 5
+	intrigue = 3
+	stewardship = 5
+	religion = "lifepath"
+	culture = "voyagen"
+	father = marcher_10001
+	trait = compassionate
+	trait = trusting
+	trait = craven
+	trait = way_of_family_follower
+	trait = education_diplomacy_2
+	1172.3.16 = {
+		birth = yes
+		add_pressed_claim = e_chevalie
+	}
+	1217.4.12 = {
+		death = {
+			death_reason = death_mysterious
+		}
+	}
+}
+
+marcher_10001 = {
+	name = "Cristoff" #Cristoff den va Seignon
+	dynasty = dyn_marcher_1
+	martial = 11
+	diplomacy = 3
+	intrigue = 8
+	stewardship = 6
+	religion = "lifepath"
+	culture = "voyagen"
+	father = marcher_10002
+	trait = sadistic
+	trait = patient
+	trait = ambitious
+	trait = education_martial_4
+	trait = gh_chevalie_uniter
+	trait = way_of_nullification_follower
+	1128.3.11 = {
+		birth = yes
+	}
+	1199.9.26 = {
+		death = {
+			death_reason = death_old_age
+		}
+	}
+}
+
+marcher_10002 = {
+	name = "Kierre" #Kierre den va Seignon
+	dynasty = dyn_marcher_1
+	religion = "lifepath"
+	culture = "voyagen"
+	father = marcher_10003
+	trait = way_of_swords_follower
+	1138.5.4 = {
+		birth = yes
+	}
+	1166.7.21 = {
+		death = {
+			death_reason = death_lich_raid
+		}
+	}
+}
+
+marcher_10003 = {
+	name = "Averd" #Averd den va Seignon
+	dynasty = dyn_marcher_1
+	religion = "lifepath"
+	culture = "voyagen"
+	trait = way_of_crowns_follower
+	1110.2.23 = {
+		birth = yes
+	}
+	1140.3.25 = {
+		death = {
+			death_reason = death_poison
+		}
+	}
+}
+
+marcher_10100 = {
+	name = "Valden" #Valden
+	martial = 12
+	diplomacy = 11
+	intrigue = 9
+	stewardship = 7
+	learning = 8
+	religion = "lifepath"
+	culture = "voyagen"
+	dynasty = dyn_marcher_9
+	trait = just
+	trait = brave
+	trait = ambitious
+	trait = beauty_good_3
+	trait = intellect_good_1
+	trait = education_stewardship_4
+	trait = way_of_justice_follower
+	father = marcher_10101
+	1075.11.5 = {
+		birth = yes
+		add_pressed_claim = e_chevalie
+	}
+	1101.2.30 = {
+		death = {
+			death_reason = death_cancer
+		}
+	}
+}
+
+marcher_10101 = {
+	name = "Oliërs" #Oliers
+	martial = 3
+	diplomacy = 3
+	intrigue = 3
+	stewardship = 5
+	learning = 6
+	religion = "lifepath"
+	culture = "voyagen"
+	dynasty = dyn_marcher_9
+	trait = zealous
+	trait = stubborn
+	trait = paranoid
+	trait = lunatic_genetic
+	trait = education_learning_2
+	trait = way_of_crows_follower
+	father = marcher_10102
+	1029.3.3 = {
+		birth = yes
+		add_pressed_claim = e_chevalie
+	}
+	1077.4.27 = {
+		death = {
+			death_reason = death_suicide
+		}
+	}
+}
+
+marcher_10102 = {
+	name = "Bredan" #Bredan
+	martial = 8
+	diplomacy = 4
+	intrigue = 2
+	stewardship = 1
+	religion = "lifepath"
+	culture = "voyagen"
+	dynasty = dyn_marcher_9
+	trait = content
+	trait = cynical
+	trait = forgiving
+	trait = lunatic_genetic
+	trait = education_martial_2
+	trait = way_of_harvests_follower
+	trait = physique_good_1
+	father = marcher_10103
+	1011.1.2 = {
+		birth = yes
+		add_pressed_claim = e_chevalie
+	}
+	1055.2.30 = {
+		death = {
+			death_reason = death_duel
+		}
+	}
+}
+
+marcher_10103 = {
+	name = "Remi" #Remi
+	martial = 4
+	diplomacy = 4
+	intrigue = 2
+	stewardship = 4
+	learning = 5
+	religion = "lifepath"
+	culture = "voyagen"
+	dynasty = dyn_marcher_9
+	trait = patient
+	trait = shy
+	trait = diligent
+	trait = shrewd
+	trait = education_stewardship_4
+	trait = way_of_crowns_follower
+	father = marcher_10104
+	966.2.2 = {
+		birth = yes
+		add_pressed_claim = e_chevalie
+	}
+	1025.4.26 = {
+		death = {
+			death_reason = death_stress
+		}
+	}
+}
+
+marcher_10104 = {
+	name = "Agiers" #Agiers
+	father = marcher_10105
+	martial = 2
+	diplomacy = 5
+	intrigue = 3
+	stewardship = 2
+	learning = 1
+	religion = "lifepath"
+	culture = "voyagen"
+	dynasty = dyn_marcher_9
+	trait = gluttonous
+	trait = lazy
+	trait = humble
+	trait = education_diplomacy_1
+	trait = lunatic_genetic
+	trait = way_of_crowns_follower
+	trait = gh_chevalie_uniter
+	943.1.12 = {
+		birth = yes
+		add_pressed_claim = e_chevalie
+	}
+	974.12.22 = {
+		death = {
+			death_reason = death_poison
+		}
+	}
+}
+
+marcher_10105 = {
+	name = "Huegons" #Huegons
+	martial = 11
+	diplomacy = 9
+	intrigue = 7
+	stewardship = 9
+	learning = 8
+	religion = "lifepath"
+	culture = "voyagen"
+	trait = patient
+	trait = just
+	trait = ambitious
+	trait = education_martial_4
+	trait = physique_good_3
+	trait = intellect_good_2
+	trait = beauty_good_2
+	trait = way_of_justice_follower
+	trait = gh_chevalie_uniter
+	dynasty = dyn_marcher_9
+	910.3.9 = {
+		birth = yes
+	}
+	963.5.15 = {
+		death = {
+			death_reason = death_ill
+		}
+	}
+}
+
+##Black-Gold League Characters
+marcher_10500 = {
+	name = "Edwin" #Edwin Valadec - totally not Tywin Lannister, believed to have offed Gardfrei's father
+	martial = 6
+	diplomacy = 9
+	intrigue = 9
+	stewardship = 9
+	learning = 4
+	religion = "lifepath"
+	culture = "salisians"
+	father = marcher_10501
+	trait = calm
+	trait = vengeful
+	trait = ambitious
+	trait = schemer
+	trait = education_intrigue_4
+	trait = intellect_good_2
+	trait = way_of_crowns_follower
+	dynasty = dyn_marcher_16
+	1178.11.6 = {
+		birth = yes
+	}
+	1242.4.26 = {
+		death = {
+			death_reason = death_old_age
+		}
+	}
+}
+
+marcher_10501 = {
+	name = "Loden" #Edwin Valadec's father
+	religion = "lifepath"
+	culture = "salisians"
+	trait = way_of_justice_follower
+	dynasty = dyn_marcher_16
+	mother = marcher_10502
+	1139.5.12 = {
+		birth = yes
+	}
+	1183.2.2 = {
+		death = {
+			death_reason = death_ill
+		}
+	}
+}
+
+marcher_10502 = {
+	name = "Metile" #Loden Valadec's mother, daughter of Averd den va Seignon
+	religion = "lifepath"
+	culture = "voyagen"
+	female = yes
+	trait = way_of_nullification_follower
+	dynasty = dyn_marcher_16
+	father = marcher_10003
+	trait = brave
+	trait = chaste
+	trait = zealous
+	1124.4.21 = {
+		birth = yes
+	}
+	1141.1.15 = {
+		give_nickname = nick_rose_of_the_north
+	}
+	1143.3.25 = {
+		death = {
+			death_reason = death_lich_duel
+		}
+	}
+}
+
+##Ancient
+marcher_19995 = {
+	name = "Thamean" #Thamean
+	martial = 4
+	diplomacy = 5
+	intrigue = 7
+	stewardship = 3
+	learning = 4
+	religion = "lifepath"
+	culture = "voyagen"
+	trait = education_diplomacy_2
+	trait = way_of_justice_follower
+	trait = lunatic_1
+	trait = paranoid
+	trait = vengeful
+	trait = craven
+	dynasty = dyn_marcher_10
+	823.3.3 = {
+		birth = yes
+	}
+	878.3.8 = {
+		death = {
+			death_reason = death_suicide
+		}
+	}
+}
+
+marcher_19996 = {
+	name = "Arelli" #Arelli
+	martial = 6
+	diplomacy = 9
+	intrigue = 7
+	stewardship = 7
+	learning = 6
+	female = yes
+	religion = "lifepath"
+	culture = "trustians"
+	trait = education_stewardship_3
+	trait = way_of_coins_follower
+	trait = ambitious
+	dynasty = dyn_marcher_11
+	737.2.11 = {
+		birth = yes
+	}
+	779.2.24 = {
+		death = {
+			death_reason = death_ill
+		}
+	}
+}
+
+marcher_19997 = {
+	name = "Piette" #Piette
+	martial = 1
+	diplomacy = 2
+	intrigue = 5
+	stewardship = 4
+	learning = 3
+	religion = "lifepath"
+	culture = "carsavisians"
+	trait = education_martial_1
+	trait = way_of_swords_follower
+	trait = stubborn
+	trait = ambitious
+	trait = impatient
+	dynasty = dyn_marcher_12
+	389.4.14 = {
+		birth = yes
+	}
+	442.6.16 = {
+		death = {
+			death_reason = death_ritual
+		}
+	}
+}
+
+marcher_19998 = {
+	name = "Aloysian" #Aloysian
+	martial = 9
+	diplomacy = 7
+	intrigue = 5
+	stewardship = 4
+	learning = 5
+	religion = "lifepath"
+	culture = "shewigad"
+	trait = education_martial_3
+	trait = way_of_crowns_follower
+	dynasty = dyn_marcher_13
+	212.2.3 = {
+		birth = yes
+	}
+	242.3.15 = {
+		death = {
+			death_reason = death_ill
+		}
+	}
+}
+
+marcher_19999 = {
+	name = "Vercigex" #Vercigex
+	martial = 5
+	diplomacy = 5
+	intrigue = 4
+	stewardship = 11
+	learning = 14
+	religion = "starvayrd"
+	culture = "shewigad"
+	trait = patient
+	trait = diligent
+	trait = chaste
+	trait = education_stewardship_4
+	trait = intellect_good_3
+	trait = magic_good_4
+	trait = education_dead_magic_3
+	trait = reclusive
+	trait = inappetetic
+	trait = depressed_1
+	trait = way_of_crows_follower
+	trait = physician_3
+	dynasty = dyn_marcher_14
+	13.7.15 = {
+		birth = yes
+	}
+	139.2.11 = {
+		death = {
+			death_reason = death_murder
+		}
+	}
+}
+
+marcher_20000 = {
+	name = "Bastione" #Bastione
+	martial = 11
+	diplomacy = 9
+	intrigue = 7
+	stewardship = 9
+	learning = 8
+	dna = king_bastione_20000
+	religion = "starvayrd"
+	culture = "shewigad"
+	trait = patient
+	trait = just
+	trait = ambitious
+	trait = education_martial_4
+	trait = physique_good_3
+	trait = intellect_good_3
+	trait = way_of_crowns_follower
+	trait = blademaster_3
+	trait = hunter_3
+	trait = gh_chevalie_uniter_og
+	dynasty = dyn_marcher_15
+	0.2.2 = {
+		birth = yes
+	        effect = {
+			add_character_flag = has_scripted_appearance
+		}
+	}
+	39.1.11 = {
+		give_nickname = nick_good_king
+	}
+	85.1.12 = {
+		death = {
+			death_reason = death_old_age
+		}
+	}
+}
+
+##Ancient (Thamean family)
+marcher_20001 = {
+	name = "Giliman" #Gilimans second son
+	religion = "lifepath"
+	culture = "voyagen"
+	father = marcher_19995
+	dynasty = dyn_marcher_10
+	trait = way_of_crows_follower
+	856.2.23 = {
+		birth = yes
+	}
+	878.2.29 = {
+		death = {
+			death_reason = death_murder
+		}
+	}
+}
+marcher_20002 = {
+	name = "Varlen" #Gilimans first son
+	religion = "lifepath"
+	culture = "voyagen"
+	father = marcher_19995
+	dynasty = dyn_marcher_10
+	trait = way_of_crowns_follower
+	851.3.11 = {
+		birth = yes
+	}
+	878.3.7 = {
+		death = {
+			death_reason = death_poison
+			killer = marcher_19995
+		}
+	}
+}
+
+marcher_20003 = {
+	name = "Tancrède" #Gilimans third son
+	religion = "lifepath"
+	culture = "voyagen"
+	father = marcher_19995
+	dynasty = dyn_marcher_10
+	trait = way_of_swords_follower
+	861.4.4 = {
+		birth = yes
+	}
+	878.3.7 = {
+		death = {
+			death_reason = death_poison
+			killer = marcher_19995
+		}
+	}
+}
+
+marcher_20004 = {
+	name = "Heloise" #Gilimans daughter
+	religion = "lifepath"
+	culture = "voyagen"
+	female = yes
+	father = marcher_19995
+	dynasty = dyn_marcher_10
+	trait = way_of_family_follower
+	856.3.15 = {
+		birth = yes
+	}
+	878.3.7 = {
+		death = {
+			death_reason = death_poison
+			killer = marcher_19995
+		}
+	}
+}
+
+#Anarchy of the Five Crowns kings
+#Valadecs of Marroux
+marcher_20005 = {
+	name = "Boaméd" #Boaméd Valadec - King of Marroux during the Anarchy of the Five Crowns, was a minor landowner to the Rysol family which was wiped out in the Brutality
+	religion = "lifepath"
+	culture = "salisians"
+	trait = way_of_nullification_follower
+	dynasty = dyn_marcher_16
+	850.5.21 = {
+		birth = yes
+	}
+	903.4.4 = {
+		death = {
+			death_reason = death_suicide
+		}
+	}
+}
+
+marcher_20006 = {
+	name = "Pierre" #Son of Boaméd Valadec, took over after his father's suicide and became an ally of the Champion of Chevalie, died holding off Silas Stavro as the last Marcher forces escaped west through the pass at Grande Lafadai
+	religion = "lifepath"
+	culture = "salisians"
+	dynasty = dyn_marcher_16
+	father = marcher_20005
+	trait = brave
+	trait = zealous
+	trait = stubborn
+	trait = way_of_justice_follower
+	trait = education_martial_3
+	878.3.15 = {
+		birth = yes
+	}
+	935.1.12 = {
+		death = {
+			death_reason = death_lich_duel
+		}
+	}
+}
+
+#Monteaux of Varrdevet
+marcher_20007 = {
+	name = "Gofrei" #Gofrei was the Duke of Devex during the Brutality but was spared thanks to having been on excursion in the Lichdoms at the time. He quickly rallied his forces and began fighting the War of the Five Kings, and was the only original King alive at the time of Silas's invasion. He attempted to rally the other Kings to fight Silas, but his forces were betrayed by the Pontagets and he was killed by Silas soon after.
+	religion = "lifepath"
+	culture = "salisians"
+	dynasty = dyn_marcher_17
+	trait = brave
+	trait = just
+	trait = ambitious
+	trait = physique_good_2
+	trait = way_of_nullification_follower
+	trait = education_martial_4
+	860.1.12 = {
+		birth = yes
+	}
+	933.3.24 = {
+		death = {
+			death_reason = death_lich_duel
+		}
+	}
+}
+
+#Illurdians of Perignan
+marcher_20008 = {
+	name = "Karth" #Karth Illurdian was an Anti-Magi mercenary who used the chaos of the Brutality to return home with his men and take much of Perignan. More warlord than noble, he would nonetheless secure his position and establish himself as the strongest lord in Perignan despite his birth. 
+	religion = "lifepath"
+	culture = "trustians"
+	dynasty = dyn_marcher_19
+	trait = gh_peasant_birth
+	trait = deceitful
+	trait = zealous
+	trait = shrewd
+	trait = way_of_coins_follower
+	trait = education_stewardship_3
+	841.3.3 = {
+		birth = yes
+	}
+	890.1.2 = {
+		death = {
+			death_reason = death_old_age
+		}
+	}
+}
+
+marcher_20009 = {
+	name = "Erchebars" #Erchebars was the son of Karth. He spent most of his reign struggling to maintain and grow his fathers throne, struggling to overcome a nobility who hated the family for their low origins. He would manage to succeed, though would die of sickness just before Stavro's invasions, and the throne would be thrown into chaos before his daughter could properly respond to the threat.
+	religion = "lifepath"
+	culture = "trustians"
+	dynasty = dyn_marcher_19
+	father = marcher_20008
+	trait = cynical
+	trait = lustful
+	trait = wrathful
+	trait = way_of_coins_follower
+	trait = education_diplomacy_2
+	866.11.12 = {
+		birth = yes
+	}
+	929.5.15 = {
+		death = {
+			death_reason = death_ill
+		}
+	}
+}
+
+marcher_20010 = {
+	name = "Mélanî" #Mélanî Illurdian was the daughter of Karth. The fourth in line, her brothers either died from sickness or war and she was soon after thrown onto the throne after the death of her father. She spent much of her reign struggling to maintain the throne. She fought a brutal civil war against her vassals as Stavro invaded, and was then imprisoned by them. She would eventually escape, and join the Champion of Chevalie in retaking her throne and defeating Stavro. Soon after she would relinquish her throne and begin traveling the world until her death.
+	religion = "lifepath"
+	culture = "trustians"
+	dynasty = dyn_marcher_19
+	father = marcher_20009
+	female = yes
+	trait = brave
+	trait = content
+	trait = honest
+	trait = way_of_swords_follower
+	trait = education_martial_3
+	917.1.1 = {
+		birth = yes
+	}
+	974.12.15 = {
+		death = {
+			death_reason = death_old_age
+		}
+	}
+}
+
+#Den va Seignons of De Porte Den La Bastione
+marcher_20011 = {
+	name = "Widen" #Widen den va Seignon was a mercenary knight and the son of recently uplifted nobility. He took much of Chaute Albaux during the Anarchy of the Five Kings and would marry into the Melsne's of Saulxvil. He would soon after declare himself king and take Montmoyedgne from the risen Gallicaders, though would die before his claim would be recognized. 
+	religion = "lifepath"
+	culture = "voyagen"
+	dynasty = dyn_marcher_1
+	trait = brave
+	trait = ambitious
+	trait = greedy
+	trait = way_of_swords_follower
+	trait = education_martial_3
+	841.3.3 = {
+		birth = yes
+	}
+	890.1.2 = {
+		death = {
+			death_reason = death_old_age
+		}
+	}
+}
+
+marcher_20012 = {
+	name = "Louise" #Louise den va Seignon was a cruel warlord who butchered his way to holding most of the west during the Anarchy of the Five Kings. He was preparing an invasion of the Gisredde's when he was assassinated, many believe by Gisreddian blades. 
+	religion = "lifepath"
+	culture = "voyagen"
+	dynasty = dyn_marcher_1
+	father = marcher_20011
+	trait = ambitious
+	trait = callous
+	trait = sadistic
+	trait = way_of_swords_follower
+	trait = education_martial_3
+	860.12.1 = {
+		birth = yes
+	}
+	902.2.22 = {
+		death = {
+			death_reason = death_poison
+		}
+	}
+}
+
+marcher_20013 = {
+	name = "Gardfrei" #Gardfrei (first of his name) was the son of Louise. After his father's poisoning he fought a rather brutal civil war and barely managed to retain the throne. Largely considered inept, he would march his forces east and annex most of Varrdevet after the death of Gofrei. He would soon after be killed by Stavro's forces.
+	religion = "lifepath"
+	culture = "voyagen"
+	dynasty = dyn_marcher_1
+	father = marcher_20012
+	trait = callous
+	trait = ambitious
+	trait = fickle
+	trait = intellect_bad_1
+	trait = way_of_crowns_follower
+	trait = education_learning_2
+	889.4.21 = {
+		birth = yes
+	}
+	934.5.6 = {
+		death = {
+			death_reason = death_lich_battle
+		}
+	}
+}
+
+marcher_20014 = {
+	name = "Rodald" #Rodald, son of Gardfrei (the first) struggled to maintain the west after his father's death. Quickly abandoning their new lands in Varrdevet, he would ally himself with Mélanî and assist in returning her to the throne. After aiding the Champion of Chevalie, earning great renown at the Battle of Grande Lafadai and then in Peti Gisredde, he would relinquish his claims to kingship and return to the family lands of Chaute Albaux and Saulxvil as duke.
+	religion = "lifepath"
+	culture = "voyagen"
+	dynasty = dyn_marcher_1
+	father = marcher_20013
+	trait = brave
+	trait = humble
+	trait = zealous
+	trait = way_of_nullification_follower
+	trait = beauty_good_2
+	trait = education_stewardship_3
+	910.11.15 = {
+		birth = yes
+	}
+	962.4.12 = {
+		death = {
+			death_reason = death_old_age
+		}
+	}
+}
+
+#Pontagets of Rohr
+marcher_20015 = {
+	name = "Valeri" #Valeri Pontaget was the Chancellor to Theaman before he yeeted everyone in the Brutality. Thanks to his position he got warning beforehand and fled to the northeast where he held Dellec and Cherborne, but he allowed the Brutality to begin without warning his fellow vassals in order to use the chaos to take their lands and beat the others into submission. A cunning dickhead, his son largely took after him.
+	religion = "lifepath"
+	culture = "carsavisians"
+	dynasty = dyn_marcher_18
+	trait = deceitful
+	trait = arbitrary
+	trait = ambitious
+	trait = intellect_good_2
+	trait = way_of_crowns_follower
+	trait = education_intrigue_4
+	860.1.12 = {
+		birth = yes
+	}
+	933.3.24 = {
+		death = {
+			death_reason = death_lich_duel
+		}
+	}
+}
+
+marcher_20016 = {
+	name = "Avenon" #Avenon was the son of Valeri Pontaget and spent most of his life in the shadow of his father. Desperate to outdo him, he would blunder from scheme to scheme attempting to destroy the other Kings during the Anarchy of the Five Kings. When Silas Stavro invaded, he put his men behind King Gofrei of Varrdevet, swearing his life upon the Path that he would stay true to the bond, and without any better options Gofrei accepted. Avenon expectedly betrayed him, his men abandoning the field at the moment the Lich showed up and then blocking Gofrei's retreat, leading to Gofrei's death at the hands of Stavro. Expecting the rest of the campaign to be easy with the Liches forces weakened, he was quite surprised when his armies were then absolutely stomped by Stavro. He would later betray the Champion of Chevalie, who would work to his son to imprison and depose Avenon.
+	religion = "lifepath"
+	culture = "carsavisians"
+	dynasty = dyn_marcher_18
+	father = marcher_20015
+	trait = deceitful
+	trait = arbitrary
+	trait = paranoid
+	trait = intellect_good_1
+	trait = way_of_crows_follower
+	trait = education_intrigue_3
+	889.4.21 = {
+		birth = yes
+	}
+	945.7.17 = {
+		death = {
+			death_reason = death_dungeon_passive
+		}
+	}
+}
+
+marcher_20017 = {
+	name = "Raven" #Raven Pontaget was largely ignored by his father and did not take much after him. Despite being a bit of a scoundrel himself, he nonetheless rejected the throne and traveled across the world as a mercenary for much of his life. He returned to fight in the Red River War against Silas Stavro, and aided the Champion of Chevalie in deposing his father so that Rohr would join the war against the Lich proper. He would give up the throne afterwards, and then abdicate his families lands to his son and retire in Peti Gisredde.
+	religion = "lifepath"
+	culture = "carsavisians"
+	dynasty = dyn_marcher_18
+	father = marcher_20016
+	trait = humble
+	trait = deceitful
+	trait = impatient
+	trait = intellect_good_1
+	trait = way_of_crows_follower
+	trait = education_intrigue_4
+	911.10.5 = {
+		birth = yes
+	}
+	961.11.15 = {
+		death = {
+			death_reason = death_old_age
+		}
+	}
+}
+
+marcher_20019 = {
+	name = "Murchard" #Murchard was Ravens son, and ruled after his fathers abdication. He would assist Huegons Hadcourte-Vedron in uniting Chevalie, becoming his chief minister.
+	religion = "lifepath"
+	culture = "carsavisians"
+	dynasty = dyn_marcher_18
+	father = marcher_20017
+	930.1.17 = {
+		birth = yes
+	}
+	984.7.28 = {
+		death = {
+			death_reason = death_old_age
+		}
+	}
+}
+
+#Anarchy of the Five Crowns misc
+
+marcher_20018 = {
+	name = "Isodor" #Isodor of Vy would depose Mélanî Illurdian during the Anarchy of the Five Crowns. He would be killed by the Champion of Chevalie after a moral choice between having him lead as king instead of Melani and probably would have been a possible companion during the evil or morally neutral route, but the player chose the boss fight instead either for the Melani romance or for the loot and exp.
+	religion = "lifepath"
+	culture = "carsavisians"
+	trait = humble
+	trait = deceitful
+	trait = ambitious
+	trait = way_of_crows_follower
+	trait = education_intrigue_3
+	891.3.21 = {
+		birth = yes
+	}
+	934.12.1 = {
+		death = {
+			death_reason = death_duel
+		}
+	}
+}

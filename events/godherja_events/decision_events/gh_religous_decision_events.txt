@@ -1,0 +1,216 @@
+﻿##################
+# Spirit Journey #
+# by mpjama 0001 #
+##################
+
+namespace = gh_religious_decision
+
+gh_religious_decision.0001 = {
+	type = character_event
+	title = gh_religious_decision.0001.t
+	desc = gh_religious_decision.0001.desc
+	
+	theme = faith
+	
+	override_background = {
+		event_background = corridor_night
+	}
+	left_portrait = root
+	
+	#you are the spirit guide
+	option = {
+		name = gh_religious_decision.0001.a
+		add_character_modifier = 
+		{
+			modifier = recent_spirit_journey
+			years = 5
+		}
+		trigger_event =
+		{
+			id = gh_religious_decision.0002
+			days = { 14 28 }
+		}
+	}
+	#spouse is the spirit guide
+	# option = {
+	#	name = gh_religious_decision.0001.b
+	# }
+	#court chaplain is the spirit guide
+	# option = {
+	#	name = gh_religious_decision.0001.c
+	# }
+}
+
+#You are the spirit guide
+gh_religious_decision.0002 = {
+	type = character_event
+	title = gh_religious_decision.0002.t
+	desc = gh_religious_decision.0002.desc
+	
+	theme = faith
+	
+	override_background = {
+		event_background = corridor_night
+	}
+	left_portrait = root
+	
+	#strong shrooms
+	option = {
+		name = gh_religious_decision.0002.a
+		remove_short_term_gold = medium_gold_value
+		duel = {
+			skill = learning
+			10 = {#success
+				trigger_event = gh_religious_decision.0003
+				compare_modifier = {
+					value = scope:duel_value
+				}
+			}
+			20 = {#failure
+				trigger_event = gh_religious_decision.0004
+			}
+		}
+        
+        ai_chance = { #For Brave Boys
+            base = 100
+            ai_value_modifier = {
+                ai_boldness = 1
+                ai_greed = -0.3
+                ai_zeal = 0.3
+            }
+        }
+	}
+	#weak shrooms
+	option = {
+		name = gh_religious_decision.0002.b
+		remove_short_term_gold = minor_gold_value
+		duel = {
+		skill = learning
+		value = 10
+			20 = {#success
+				trigger_event = gh_religious_decision.0005
+				compare_modifier = {
+					value = scope:duel_value
+				}
+			}
+			10 = {#failure
+				trigger_event = gh_religious_decision.0006
+			}
+		}
+        
+        ai_chance = { #Default Option
+            base = 100
+        }
+	}
+}
+#Great Trip
+gh_religious_decision.0003 = {
+	type = character_event
+	title = gh_religious_decision.0003.t
+	desc = gh_religious_decision.0003.desc
+	
+	theme = faith
+	
+	override_background = {
+		event_background = corridor_night
+	}
+	left_portrait = root
+	option = {
+		name = gh_religious_decision.0003.a
+		remove_character_flag = spirit_journey_ongoing
+		add_piety = major_piety_gain
+		add_prestige = medium_prestige_gain
+		add_stress = major_stress_impact_loss
+		random = {
+		chance = 100
+		random_list = {
+		20 = {
+			add_trait = fickle
+			}
+		20 = {
+			add_trait = lazy
+			}
+		20 = {
+			add_trait = patient
+			}
+		}
+		}
+		
+	}
+}
+#Horrible Trip
+gh_religious_decision.0004 = {
+	type = character_event
+	title = gh_religious_decision.0004.t
+	desc = gh_religious_decision.0004.desc
+	
+	theme = faith
+	
+	override_background = {
+		event_background = corridor_night
+	}
+	left_portrait = root
+	option = {
+		name = gh_religious_decision.0004.a
+		remove_character_flag = spirit_journey_ongoing
+		add_piety = miniscule_piety_gain
+		add_stress = major_stress_impact_gain
+		random = {
+		chance = 100
+		random_list = {
+		20 = {
+			add_trait = paranoid
+			}
+		20 = {
+			add_trait = lunatic_1
+			}
+		20 = {
+			add_trait = possessed_1
+			}
+		}
+		}
+	}
+}
+#Good Trip
+gh_religious_decision.0005 = {
+	type = character_event
+	title = gh_religious_decision.0005.t
+	desc = gh_religious_decision.0005.desc
+	
+	theme = faith
+	
+	override_background = {
+		event_background = corridor_night
+	}
+	left_portrait = root
+	option = {
+		name = gh_religious_decision.0005.a
+		remove_character_flag = spirit_journey_ongoing
+		add_piety = minor_piety_gain
+		add_prestige = miniscule_prestige_gain
+		add_stress = minor_stress_impact_loss
+		
+	}
+	
+}
+#bad Trip
+gh_religious_decision.0006 = {
+	type = character_event
+	title = gh_religious_decision.0006.t
+	desc = gh_religious_decision.0006.desc
+	
+	theme = faith
+	
+	override_background = {
+		event_background = corridor_night
+	}
+	left_portrait = root
+	option = {
+		name = gh_religious_decision.0006.a
+		remove_character_flag = spirit_journey_ongoing
+		add_stress = minor_stress_impact_gain
+		add_piety = miniscule_piety_gain
+		
+	}
+	
+}

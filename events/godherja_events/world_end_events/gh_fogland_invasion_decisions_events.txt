@@ -1,0 +1,108 @@
+﻿namespace = fogland_event
+#repurposed mongol stuff-now for the foglands
+
+################
+# 
+# fogland_invasion.0001 - 0003
+#
+
+#I became the fogeater leader
+fogland_event.0001 = {
+	type = character_event
+	title = fogland_event.0001.t
+	desc = fogland_event.0001.desc
+	theme = war
+	left_portrait = {
+		character = root
+		animation = personality_vengeful
+	}
+	override_background = { event_background = wilderness_forest_pine }
+	
+	immediate = {
+		play_music_cue = "mx_cue_crusade_starts"
+		form_the_fogeater_empire_effect = yes	
+		add_trait = fogeater_invasion_leader
+	}
+
+	option = {
+		name = fogland_event.0001.a
+		custom_tooltip = fogland_event.0001.fogeater_invasion_cb
+		if = {
+			limit = {
+				prestige_level < 5
+			}
+			add_prestige_level = 1
+		}
+	}
+}
+
+
+#My ruler became the fogeater leader
+fogland_event.0002 = {
+	type = character_event
+	title = fogland_event.0002.t
+	desc = fogland_event.0002.desc
+	theme = war
+	left_portrait = {
+		character = scope:fogeater_leader
+		animation = personality_vengeful
+	}
+	override_background = { event_background = wilderness_forest_pine }
+	
+	immediate = {
+		play_music_cue = "mx_cue_crusade_starts"
+		show_as_tooltip = {
+			scope:fogeater_leader = {
+				add_trait_force_tooltip = fogeater_invasion_leader
+				hidden_effect = { set_primary_title_to = title:e_foglands }
+				spawn_fogeater_troops_effect = yes
+			}
+		}
+	}
+
+	option = {
+		name = fogland_event.0002.a
+	}
+}
+
+
+#Someone became the fogeater leader
+fogland_event.0003 = {
+	type = character_event
+	title = fogland_event.0002.t
+	desc = fogland_event.0003.desc
+	theme = war
+	left_portrait = {
+		character = scope:fogeater_leader
+		animation = personality_vengeful
+	}
+	override_background = { event_background = wilderness_forest_pine }
+
+	immediate = {
+		play_music_cue = "mx_cue_combat_2"
+		show_as_tooltip = {
+			scope:fogeater_leader = {
+				add_trait_force_tooltip = fogeater_invasion_leader
+				hidden_effect = { set_primary_title_to = title:e_foglands }
+			}
+		}
+	}
+
+	option = {
+		name = {
+			text = fogland_event.0003.a.neighbor
+			trigger = {
+				any_neighboring_top_liege_realm_owner = {
+					this = scope:fogeater_leader
+				}
+			}
+		}
+		name = {
+			text = fogland_event.0003.a.distant
+		}
+	}
+}
+
+#
+# END Become the great fog vaper events
+#################

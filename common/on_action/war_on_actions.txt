@@ -1,0 +1,404 @@
+﻿# On actions for war events, triggered automatically by the game
+
+# called for wars after being transferred to a new defender
+# root is the primary attacker
+# scope:war is the war
+# scope:defender is the new defender
+
+on_war_transferred = {
+	events = {
+		war_event.2001 # allows attacker to back out of the war
+	}
+}
+
+# called for people joining as a secondary attacker or defender
+# root is the joiner
+# scope:war is the war
+
+on_join_war_as_secondary = {
+	events = {
+		war_event.3000 # Ally gets mad if you do not participate in their wars.
+	}
+}
+
+# called when a war is started.
+# same scopes are available in these events as in the CBs' on_declaration, this just fires for all CBs instead of a specific CB.
+
+on_war_started = {
+	effect = {
+		scope:attacker = {
+			trigger_event = magic_ai.0001
+			if = {
+				limit = {
+					any_vassal_or_below = { is_ai = no }
+				}
+				every_vassal_or_below = {
+					limit = { is_ai = no }
+					send_interface_toast = {
+						type = msg_war_declared_by_liege
+						title = msg_war_declared_by_liege
+						desc = msg_war_declared_by_liege_desc
+						left_icon = scope:attacker
+						right_icon = scope:defender
+					}
+				}
+			}
+		}
+		scope:defender = {
+			trigger_event = magic_ai.0001
+			if = {
+				limit = {
+					any_vassal_or_below = { is_ai = no }
+				}
+				every_vassal_or_below = {
+					limit = { is_ai = no }
+					send_interface_toast = {
+						type = msg_war_declared_on_liege
+						title = msg_war_declared_on_liege
+						desc = msg_war_declared_on_liege_desc
+						left_icon = scope:defender
+						right_icon = scope:attacker
+					}
+				}
+			}
+		}
+	}
+}
+
+# called for when a casus belli resolves in one of the following ways.
+# same scopes are available in these events as in the CBs themselves, this just fires for all CBs instead of a specific CB.
+# note that any events/effects fired here WILL NOT show up in the war summary tooltip; they fire at the same time as the war resolution, but are not actually part of the war resolution itself.
+
+on_war_won_attacker = {
+	# The war notifications are handled in `effect` instead of `events` due to order of operations.
+	# `effect` fires on THIS tick, `events` fires on the NEXT tick, and the war gets destroyed between this tick and the next.
+	effect = {
+		# Save scopes for localization.
+		scope:attacker = { save_scope_as = winner }
+		scope:defender = { save_scope_as = loser }
+
+		# Run scripted effect that iterates through all players and notifies them if necessary.
+		notify_players_about_neighboring_war_resolution_effect = yes
+		
+		scope:war = {
+			every_war_participant = {
+				if = {
+					limit = {
+						is_ai = yes
+						has_character_flag = delayed_cleanse
+					}
+					trigger_event = { id = game_rule.3 days = 1 }
+				}
+			}
+		}
+		
+		# Marcher crown transfer
+		scope:attacker = {
+			hidden_effect = {
+				scope:defender = {
+					if = {
+						limit = {
+							has_artifact = { ARTIFACT = artifact_38 }
+						}
+						transfer_artifact = { A = scope:defender B = scope:attacker ARTIFACT = artifact_38 }
+					}
+					else_if = {
+						limit = {
+							has_artifact = { ARTIFACT = artifact_39 }
+						}
+						transfer_artifact = { A = scope:defender B = scope:attacker ARTIFACT = artifact_39 }
+					}
+					else_if = {
+						limit = {
+							has_artifact = { ARTIFACT = artifact_40 }
+						}
+						transfer_artifact = { A = scope:defender B = scope:attacker ARTIFACT = artifact_40 }
+					}
+					else_if = {
+						limit = {
+							has_artifact = { ARTIFACT = artifact_brokencrown1 }
+						}
+						transfer_artifact = { A = scope:defender B = scope:attacker ARTIFACT = artifact_brokencrown1 }
+					}
+					remove_character_modifier = piece_of_the_broken_crown_modifier
+				}
+			}
+		}
+
+		scope:attacker = {
+			if = {
+				limit = {
+					has_dynasty = {
+						dynasty = dyn_marcher_1
+					}
+				}
+				hidden_effect = {
+					scope:defender = {
+						if = {
+							limit = {
+								has_artifact = { ARTIFACT = artifact_seignonsword }
+							}
+							transfer_artifact = { A = scope:defender B = scope:attacker ARTIFACT = artifact_seignonsword }
+						}
+					remove_character_modifier = artifact_seignonsword_modifier
+					}
+				}
+			}
+		}
+
+
+		# # Fall of Oraispol
+		
+		scope:attacker = {
+			if = {
+				limit = {
+					culture_group = culture_group:gh_sjalvoki_group
+					OR = {
+						any_held_title = {
+							this = title:c_halium #Oraispol
+						}
+						any_vassal_or_below = {
+							any_held_title = {
+								this = title:c_halium
+							}
+						}
+					}
+					NOT = {
+						has_global_variable = oraispol_has_fallen
+					}
+				}
+				save_scope_as = oraispol_conqueror
+				title:c_halium = { save_scope_as = title_c_halium }
+				every_player = {
+					trigger_event = {
+						id = world_story.0001
+						days = 2
+					}
+				}
+				set_global_variable = {
+					name = oraispol_has_fallen
+					value = yes
+				}
+			}
+			if = {	# The Black Sun takes Oraispol
+				limit = {
+					this = character:clanlands_imperial_1
+					OR = {
+						any_held_title = {
+							this = title:c_halium #Oraispol
+						}
+						any_vassal_or_below = {
+							any_held_title = {
+								this = title:c_halium
+							}
+						}
+					}
+					NOT = {
+						has_global_variable = black_sun_conquered_oraispol
+					}
+				}
+				trigger_event = world_story.0100
+				set_global_variable = {
+					name = black_sun_conquered_oraispol
+					value = yes
+				}
+			}
+			if = {	# The Black Sun takes Bastonport
+				limit = {
+					this = character:clanlands_imperial_1
+					OR = {
+						any_held_title = {
+							this = title:c_kankaanviisa #Bastonport
+						}
+						any_vassal_or_below = {
+							any_held_title = {
+								this = title:c_kankaanviisa
+							}
+						}
+					}
+					NOT = {
+						has_global_variable = black_sun_conquered_bastonport
+					}
+				}
+				trigger_event = world_story.0101
+				set_global_variable = {
+					name = black_sun_conquered_bastonport
+					value = yes
+				}
+			}
+			 # Eastern Reform - Retook Asiupoli
+			if = {
+				limit = {
+					scope:winner = character:aironoi_79
+					scope:loser = character:clanlands_sjalvolki_2
+				}
+	
+				create_title_and_vassal_change = {
+					type = conquest
+					save_scope_as = change
+				}
+	
+				# Distribute most of the realm normally
+				title:k_fenvir = {
+					every_in_de_facto_hierarchy = {
+						limit = {
+							tier <= tier_county
+							NOT = {
+								kingdom = title:k_ephesos
+							}
+						}
+						change_title_holder = scope:winner
+					}
+				}
+				# If land was promised to Mongols, they get the southern coast, otherwise the Legan gets it
+				if = {
+					limit = {
+						scope:winner = {
+							has_character_flag = promised_to_share_land
+						}
+					}
+					title:k_kteumaxa.holder = {
+						save_scope_as = receiver
+					}
+	
+					scope:winner = {
+						remove_character_flag = promised_to_share_land
+					}
+				}
+				else = {
+					title:k_legio_lxi_anoterion.holder = {
+						save_scope_as = receiver
+					}
+				}
+	
+				title:k_ephesos = {
+					every_in_de_jure_hierarchy = {
+						limit = {
+							tier <= tier_county
+						}
+						change_title_holder = {
+							holder = scope:receiver
+							change = scope:change
+						}
+					}
+				}
+				resolve_title_and_vassal_change = scope:change
+			}
+		}
+		scope:defender = {
+			if = {
+				limit = {
+					this = character:western_imperial_1
+				}
+				scope:attacker = {
+					imprison = {
+						target = prev
+						type = dungeon
+					}
+				}
+			}
+		}
+	}
+}
+
+on_war_lost_attacker = {
+    effect = {
+        # Save scopes for localization
+        scope:attacker = { save_scope_as = loser }
+        scope:defender = { save_scope_as = winner }
+
+        scope:attacker = {
+            if = {
+                limit={
+                    this = character:western_imperial_1
+                }
+                scope:defender = {
+                   imprison = {
+                      target = prev
+                      type = dungeon
+                   }
+                }
+            }
+        }
+    }
+
+
+on_war_won_defender = {
+	effect = {
+		# Save scopes for localization.
+		scope:attacker = { save_scope_as = loser }
+		scope:defender = { save_scope_as = winner }
+
+		# Run scripted effect that iterates through all players and notifies them if necessary.
+		notify_players_about_neighboring_war_resolution_effect = yes
+		
+		scope:war = {
+			every_war_participant = {
+				if = {
+					limit = {
+						is_ai = yes
+						has_character_flag = delayed_cleanse
+					}
+					trigger_event = { id = game_rule.3 days = 1 }
+				}
+			}
+		}
+	
+		# Eastern Reform - Civil War
+		IF = {
+			limit = {
+				scope:winner = character:aironoi_79
+				scope:loser = character:aironoi_57
+				# has_character_flag = sided_with_mongols
+			}
+			#scope:loser = {
+			#	release_from_prison = yes
+			#}
+			#scope:winner = {
+			#	trigger_event = eastern_reforms.0006
+			#} # NOT NEEDED SINCE IMPRISONMENT WILL AUTOMATICALLY TRIGGER THE EVENT ANYWAY
+		}
+	}
+}
+
+on_war_white_peace = {
+	effect = {
+		scope:war = {
+			every_war_participant = {
+				if = {
+					limit = {
+						is_ai = yes
+						has_character_flag = delayed_cleanse
+					}
+					trigger_event = { id = game_rule.3 days = 1 }
+				}
+			}
+		}
+	}
+}
+
+on_war_invalidated = {
+	effect = {
+		scope:attacker = {
+			send_interface_message = {
+				type = event_war_invalidated
+				title = END_WAR_INVALIDATED_MESSAGE_TITLE
+				desc = END_WAR_INVALIDATED_MESSAGE_DESC
+				left_icon = scope:attacker
+				right_icon = scope:defender
+			}
+		}
+		
+		scope:war = {
+			every_war_participant = {
+				if = {
+					limit = {
+						is_ai = yes
+						has_character_flag = delayed_cleanse
+					}
+					trigger_event = { id = game_rule.3 days = 1 }
+				}
+			}
+		}
+	}
+}

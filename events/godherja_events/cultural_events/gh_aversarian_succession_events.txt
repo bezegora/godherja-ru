@@ -1,0 +1,1159 @@
+﻿namespace = aversarian_succession
+
+## Copied with some changes from the Sjalvoki system
+
+#introduction to aversarian_succession, current ruler
+aversarian_succession.0001 = {
+	type = character_event
+	theme = diplomacy
+	title = aversarian_succession.0001.t
+	
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					eligible_for_aversarian_succession = yes
+				}
+				desc = aversarian_succession.0001.desc # Normal, eligible for succession
+			}
+			triggered_desc = {
+				trigger = {
+					NOT = { eligible_for_aversarian_succession = yes }
+				}
+				desc = aversarian_succession.0001.desc.inelegible # Not eligible
+			}
+		}
+	}
+	
+	right_portrait = {
+		character = root
+		animation = worry
+	}
+	
+	immediate = {
+		#debug_log = "AVERSARIAN SUCCESSION INITIALIZED AT"
+		#debug_log_scopes = yes
+		#title:c_halium = {																# THIS IS PURELY A DEBUG THING. IT SHOULD BE COMMENTED OUT IN THE RELEASE VERSION
+		#	if = {
+		#		limit = { NOT = { exists = var:open_aversarian_successions } }
+		#		set_variable = {
+		#			name = open_aversarian_successions
+		#			value = 1
+		#		}
+		#	}
+		#	else = {
+		#		change_variable = {
+		#			name = open_aversarian_successions
+		#			add = 1
+		#		}
+		#	}
+		#}
+		
+		
+		root.primary_title = {
+			save_scope_as = primary_scope
+		}
+		
+		#adding every held title to the list with the succession law
+		every_held_title = {
+			limit = {
+				AND = {
+					tier = scope:primary_scope.tier
+					has_title_law = aversarian_succession_law
+				}
+			}
+			#putting all of these titles in a variable list so they are linked together, thus whoever wins the big brawl will get all of these titles.	
+			scope:primary_scope = {
+				add_to_variable_list = {
+					name = linked_titles
+					target = prev
+				}
+			}
+		}
+		scope:primary_scope = {
+			if = {	# If the character already holds the de jure capital of the contested title - great! The winner is going to get it if they win
+				limit = {
+					title_capital_county = {
+						holder = { this = root }
+					}
+				}
+				title_capital_county = {
+					save_scope_as = contested_title_capital
+					scope:primary_scope = {
+						add_to_variable_list = {
+							name = linked_titles
+							target = prev
+						}
+					}
+					duchy = {	# If the capital duchy is held by the character, also toss that into the reward pool
+						if = {
+							limit = {
+								holder = {
+									this = root
+								}
+							}
+							scope:primary_scope = {
+								add_to_variable_list = {
+									name = linked_titles
+									target = prev
+								}
+							}
+						}
+						every_in_de_jure_hierarchy = {	# Also toss in any counties that the character holds in the de jure capital duchy
+							limit = {
+								holder = {
+									this = root
+								}
+							}
+							scope:primary_scope = {
+								add_to_variable_list = {
+									name = linked_titles
+									target = prev
+								}
+							}
+						}
+					}
+				}
+			}
+			else = {	# Otherwise, just pick out some random county
+				root = {
+					random_held_title = {
+						limit = { tier = tier_county }
+						scope:primary_scope = {
+							add_to_variable_list = {
+								name = linked_titles
+								target = prev
+							}
+						}
+					}
+				}
+			}
+		}
+		
+		scope:primary_scope = {	# Every regular claimant to the title can be invited to the Blood Senate
+			every_claimant = {
+				limit = { eligible_for_aversarian_succession = yes }
+				trigger_event = {
+					id = aversarian_succession.0003
+					days = { 1 6 }
+				}
+			}
+		}
+		every_vassal = {	# Powerful vassals are also valid contestants
+			limit = { 
+				is_powerful_vassal_of = root 
+				eligible_for_aversarian_succession = yes
+			}
+			trigger_event = {
+				id = aversarian_succession.0003
+				days = { 1 6 }
+			}
+		}
+		scope:previous_holder = {	# The spouse of the deceased ruler is also a potential candidate, if none of their children are contestants or they are sadistic/callous and don't care anyway
+			if = {
+				limit = {
+					exists = this
+				}
+				every_spouse = {
+					if = {
+						limit = {
+							trigger_if = {
+								limit = { exists = this }
+								eligible_for_aversarian_succession = yes
+								OR = {
+									NOT = {
+										any_child = {
+											#scope:primary_scope = {
+											#	is_target_in_variable_list = {
+											#		name = contesting_linked_titles
+											#		target = prev
+											#	}
+											#}
+											eligible_for_aversarian_succession = yes
+										}
+									}
+									has_trait = sadistic
+									has_trait = callous
+								}
+							}
+							trigger_else = { always = no }
+						}
+						trigger_event = {
+							id = aversarian_succession.0003
+							days = { 1 6 }
+						}
+					}
+				}
+			}
+		}
+	}
+	#yes
+	option = {
+		name = aversarian_succession.0001.a
+		trigger = {
+			eligible_for_aversarian_succession = yes
+		}
+		
+		scope:primary_scope = {
+			add_to_variable_list = {
+					name = contesting_linked_titles
+					target = root
+				}
+		}
+		stress_impact = {
+			craven = medium_stress_impact_gain
+			content = medium_stress_impact_gain
+		}
+		trigger_event =
+		{
+			id = aversarian_succession.0002
+			weeks = 1
+		}
+		ai_chance = {
+			base = 20
+			ai_value_modifier = {
+				ai_energy = 0.2
+				ai_boldness = 0.1
+				ai_greed = 0.1
+			}
+			modifier = {	# Slightly increased chance if they're at least a decent magi
+				add = 5
+				var:magical_prowess >= 10
+			}
+			modifier = {	# Significantly increased chance if they're actually a good magi
+				add = 10
+				var:magical_prowess >= 20
+			}
+			modifier = {	# Massively increased chance if they're an excellent magi
+				add = 15
+				var:magical_prowess >= 30
+			}
+		}
+	}
+	#no
+	option = {
+		name = aversarian_succession.0001.b
+		
+		stress_impact = {
+			brave = medium_stress_impact_gain
+			ambitious = medium_stress_impact_gain
+		}
+		
+		trigger_event =
+		{
+			id = aversarian_succession.0002
+			weeks = 1
+		}
+		ai_chance = {
+			base = 10
+		}
+	}
+}
+
+# Check if anyone actually bothered to come
+aversarian_succession.0002 = {
+	hidden = yes
+	
+	immediate = {
+		if = {	# No one bothered to come, or only the temporary holder did
+			limit = {
+				scope:primary_scope = {
+					trigger_if = {
+						limit = { has_variable_list = contesting_linked_titles }
+						OR = {
+							variable_list_size = {
+								name = contesting_linked_titles
+								value = 0
+							}
+							AND = {
+								variable_list_size = {
+									name = contesting_linked_titles
+									value = 1
+								}
+								is_target_in_variable_list = {
+									name = contesting_linked_titles
+									target = root
+								}
+							}
+						}
+					}
+					trigger_else = {
+						always = yes
+					}
+				}
+			}
+			trigger_event = aversarian_succession.0400
+		}
+		else_if = {	# Only one contestant showed up, and they're not the temporary holder
+			limit = {
+				scope:primary_scope = {
+					variable_list_size = {
+						name = contesting_linked_titles
+						value = 1
+					}
+					NOT = {
+						is_target_in_variable_list = {
+							name = contesting_linked_titles
+							target = root
+						}
+					}
+				}
+			}
+			scope:primary_scope = {
+				random_in_list = {
+					variable = contesting_linked_titles
+					save_scope_as = champion_of_the_blood_senate
+				}
+			}
+			trigger_event = aversarian_succession.0401
+		}
+		else = {
+			trigger_event = aversarian_succession.0500
+		}
+	}	
+}
+
+# Introduction to Blood Senate, valid contestant
+aversarian_succession.0003 = {
+	type = character_event
+	theme = diplomacy
+	title = aversarian_succession.0003.t
+	desc = aversarian_succession.0003.desc
+	
+	left_portrait = {
+		character = root
+		animation = personality_rational
+	}
+	immediate = {
+	}
+	#yes
+	option = {
+		name = aversarian_succession.0003.a
+		save_scope_as = new_challenger
+		scope:primary_scope={
+			add_to_variable_list = {
+				name = contesting_linked_titles
+				target = root
+			}
+			holder = {
+				trigger_event = aversarian_succession.0004
+			}
+		}
+		stress_impact = {
+			craven = medium_stress_impact_gain
+			content = medium_stress_impact_gain
+		}
+		ai_chance = {
+			base = 10
+			ai_value_modifier = {
+				ai_energy = 0.2
+				ai_boldness = 0.1
+				ai_greed = 0.1
+			}
+			modifier = {	# Slightly increased chance if they're at least a decent magi
+				add = 5
+				var:magical_prowess >= 10
+			}
+			modifier = {	# Significantly increased chance if they're actually a good magi
+				add = 10
+				var:magical_prowess >= 20
+			}
+			modifier = {	# Massively increased chance if they're an excellent magi
+				add = 15
+				var:magical_prowess >= 30
+			}
+			modifier = {	# Content characters that are landed will never bother risking their necks for more land
+				factor = 0
+				has_trait = content
+				is_landed = yes
+			}
+		}
+	}
+	option = {
+		name = aversarian_succession.0002.b
+		stress_impact = {
+			brave = medium_stress_impact_gain
+			ambitious = medium_stress_impact_gain
+		}
+		ai_chance = {
+			base = 10
+		}
+	}
+}
+
+# Notify the temporary holder about a new contestant
+aversarian_succession.0004 = {
+	type = character_event
+	theme = diplomacy
+	title = aversarian_succession.0004.t
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					scope:new_challenger = {
+						is_close_family_of = root
+					}
+				}
+				desc = aversarian_succession.0004.desc.close_family_member
+			}
+			triggered_desc = {
+				desc = aversarian_succession.0004.desc
+			}
+		}
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					scope:new_challenger = {
+						var:magical_prowess >= 30
+					}
+				}
+				desc = aversarian_succession.0004.desc.formidable_magi
+			}
+			triggered_desc = {
+				trigger = {
+					scope:new_challenger = {
+						var:magical_prowess >= 20
+					}
+				}
+				desc = aversarian_succession.0004.desc.skilled_magi
+			}
+			triggered_desc = {
+				trigger = {
+					scope:new_challenger = {
+						var:magical_prowess >= 10
+					}
+				}
+				desc = aversarian_succession.0004.desc.decent_magi
+			}
+			triggered_desc = {
+				desc = aversarian_succession.0004.desc.poor_magi
+			}
+		}
+	}
+	
+	left_portrait = {
+		character = root
+		animation = admiration
+	}
+	right_portrait = {
+		character = scope:new_challenger
+		animation = dismissal
+	}
+	immediate = {
+	}
+	#yes
+	option = {
+		name = aversarian_succession.0004.a
+	}
+	option = {	# Blackmail them if you have a strong hook
+		name = aversarian_succession.0004.b
+		custom_tooltip = aversarian_succession.0004.b.unlock_text
+		custom_tooltip = aversarian_succession.0004.b.tt
+		trigger = {
+			has_hook_of_type = {
+				target = scope:new_challenger
+				type = strong_blackmail_hook
+			}
+		}
+		hidden_effect = {
+			save_scope_as = blackmailer
+			scope:primary_scope = {
+				remove_list_variable = {
+					name = contesting_linked_titles
+					target = scope:new_challenger
+				}
+				scope:new_challenger = {
+					trigger_event = aversarian_succession.0100
+				}
+			}
+		}
+	}
+}
+
+#lost a fight, disqualified!
+aversarian_succession.0008 = {
+	type = character_event
+	hidden = yes	# This is just used as a stub for the magic duel effect, since it needs a loser event passed as an argument. I might change it in the future so that the magic duel effect doesn't require a loser event
+}
+
+#won a fight, keep going!
+aversarian_succession.0009 = {
+	type = character_event
+	theme = battle
+	title = aversarian_succession.0009.t
+	desc = aversarian_succession.0009.desc
+	
+	left_portrait = {
+		character = root
+		animation = war_over_win
+	}
+	
+	right_portrait = {
+		character = var:partner
+		animation = beg
+	}
+	
+	immediate = {
+		scope:primary_scope = {	# Add them back into the contestant pool
+			add_to_variable_list = {
+				name = contesting_linked_titles
+				target = root
+			}
+		}
+		if = {
+			limit = { var:partner = { has_character_flag = temporary_holder } }
+			transfer_titles_to_temporary_holder = yes
+		}
+	}
+	
+	#kill!
+	option = {
+		name = aversarian_succession.0009.b
+		var:partner = {
+			trigger_event = aversarian_succession.0010
+		}
+		#stress_impact = {
+		#	just = medium_stress_impact_gain
+		#	compassionate = medium_stress_impact_gain
+		#}
+		add_prestige = 100
+		hidden_effect = {
+			save_scope_as = first_ongoing_contestant
+			var:partner = { save_scope_as = second_ongoing_contestant }
+			scope:primary_scope = {
+				every_in_list = {
+					variable = contesting_linked_titles
+					limit = {
+						NOR = { 
+							this = scope:first_ongoing_contestant
+							this = scope:second_ongoing_contestant
+						}
+					}
+					trigger_event = aversarian_succession.0600
+				}
+				if = {
+					limit = {
+						NOR = {
+							is_target_in_variable_list = {
+								name = contesting_linked_titles
+								target = holder
+							}
+							holder = {
+								this = scope:first_ongoing_contestant
+							}
+							holder = {
+								this = scope:second_ongoing_contestant
+							}
+						}
+					}
+					holder = {
+						trigger_event = aversarian_succession.0600
+					}
+				}
+			}
+		}
+	}
+}
+
+#lost a fight, killed!
+aversarian_succession.0010 = {
+	type = character_event
+	theme = battle
+	title = aversarian_succession.0010.t
+	desc = aversarian_succession.0010.desc
+	
+	left_portrait = {
+		character = root
+		animation = beg
+	}
+	
+	right_portrait = {
+		character = var:partner
+		animation = rage
+	}
+	
+	option = {
+		name = aversarian_succession.0010.a
+		death = {
+			killer = var:partner
+			death_reason = death_duel
+		}
+		scope:primary_scope = {
+			if = {
+				limit = {
+					NOT = {
+						variable_list_size = {
+							name = contesting_linked_titles
+							value <= 1
+						}
+					}
+				}
+				random_in_list = {
+					variable = contesting_linked_titles
+					
+					trigger_event = {
+						id = aversarian_succession.0501
+						days = 1
+					}
+				}
+			}
+			else = {
+				every_in_list = {
+					variable = contesting_linked_titles
+					trigger_event = { 
+						id = aversarian_succession.0503
+						days = 1
+					}
+				}
+			}
+		}
+	}
+}
+
+aversarian_succession.0100 = {	# Blocked from participating in a Blood Senate due to a strong hook
+	type = character_event
+	theme = diplomacy
+	title = aversarian_succession.0100.t
+	desc = aversarian_succession.0100.desc
+	
+	left_portrait = {
+		character = root
+		animation = rage
+	}
+	right_portrait = {
+		character = scope:blackmailer
+		animation = scheme
+	}
+	
+	option = {
+		name = aversarian_succession.0100.a
+		custom_tooltip = aversarian_succession.0100.a.tt
+	}
+}
+
+aversarian_succession.0400 = {	# Event if there are no contestants at all
+	type = character_event
+	theme = feast_activity
+	title = aversarian_succession.0400.t
+	
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					age < 12
+				}
+				desc = aversarian_succession.0400.desc.no_contestants_child # No contestants at all, character is child
+			}
+			triggered_desc = {
+				desc = aversarian_succession.0400.desc.no_contestants # No contestants at all
+			}
+		}
+	}
+	
+	right_portrait = {
+		character = root
+		animation = ecstasy
+	}
+	
+	immediate = {
+		#title:c_halium = {																# THIS IS PURELY A DEBUG THING. IT SHOULD BE COMMENTED OUT IN THE RELEASE VERSION
+		#	if = {																		# IT COUNTS THE NUMBER OF AVERSARIAN SUCCESSIONS THAT HAVE REACHED A SUCCESSFUL CONCLUSION
+		#		limit = { exists = var:open_aversarian_successions }					# IF THE NUMBER OF OPEN SUCCESSIONS CONTINUES INCREASING, THE EVENT IS NOT CORRECTLY ENDING IN SOME CASES
+		#		change_variable = {
+		#			name = open_aversarian_successions
+		#			subtract = 1
+		#		}
+		#	}
+		#	if = {
+		#		limit = { NOT = { exists = var:closed_aversarian_successions } }
+		#		set_variable = {
+		#			name = closed_aversarian_successions
+		#			value = 1
+		#		}
+		#	}
+		#	else = {
+		#		change_variable = {
+		#			name = closed_aversarian_successions
+		#			add = 1
+		#		}
+		#	}
+		#}
+		succession_cleanup = yes
+	}
+	option = {
+		trigger = {
+			age < 12
+		}
+		name = aversarian_succession.0400.a.no_contestants_child
+	}
+	option = {
+		trigger = {
+			age >= 12
+		}
+		name = aversarian_succession.0400.a.no_contestants
+	}
+}
+
+aversarian_succession.0401 = {	# Event if there is only one contestant
+	type = character_event
+	theme = feast_activity
+	title = aversarian_succession.0401.t
+	
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					age < 12
+				}
+				desc = aversarian_succession.0401.desc.no_contestants_child # One contestant, character is child
+			}
+			triggered_desc = {
+				desc = aversarian_succession.0401.desc.no_contestants # One contestant
+			}
+		}
+	}
+	
+	left_portrait = {
+		character = root
+		animation = idle
+	}
+	right_portrait = {
+		character = scope:champion_of_the_blood_senate
+		animation = happiness
+	}
+	
+	immediate = {
+		#title:c_halium = {																# THIS IS PURELY A DEBUG THING. IT SHOULD BE COMMENTED OUT IN THE RELEASE VERSION
+		#	if = {																		# IT COUNTS THE NUMBER OF AVERSARIAN SUCCESSIONS THAT HAVE REACHED A SUCCESSFUL CONCLUSION
+		#		limit = { exists = var:open_aversarian_successions }					# IF THE NUMBER OF OPEN SUCCESSIONS CONTINUES INCREASING, THE EVENT IS NOT CORRECTLY ENDING IN SOME CASES
+		#		change_variable = {
+		#			name = open_aversarian_successions
+		#			subtract = 1
+		#		}
+		#	}
+		#	if = {
+		#		limit = { NOT = { exists = var:closed_aversarian_successions } }
+		#		set_variable = {
+		#			name = closed_aversarian_successions
+		#			value = 1
+		#		}
+		#	}
+		#	else = {
+		#		change_variable = {
+		#			name = closed_aversarian_successions
+		#			add = 1
+		#		}
+		#	}
+		#}
+	}
+	option = {
+		name = aversarian_succession.0401.a.no_contestants_child
+		trigger = {
+			age < 12
+		}
+		
+		if = {
+			limit = {
+				trigger_if = {
+					limit = { is_ai = no }
+					dynasty = {
+						any_dynasty_member = {
+							this = scope:champion_of_the_blood_senate
+						}
+					}
+				}
+				trigger_else = { always = no }
+			}
+			set_player_character = scope:champion_of_the_blood_senate
+		}
+		create_title_and_vassal_change = {
+			type = usurped
+			save_scope_as = change
+		}
+		scope:primary_scope = {
+			every_in_list = {
+				variable = linked_titles
+				
+				change_title_holder = {
+					holder = scope:champion_of_the_blood_senate
+					change = scope:change
+				}
+			}
+		}
+		change_liege = {
+			liege = scope:champion_of_the_blood_senate
+			change = scope:change
+		}
+		resolve_title_and_vassal_change = scope:change
+		succession_cleanup = yes
+	}
+	
+	option = {
+		name = aversarian_succession.0401.a.no_contestants
+		trigger = {
+			age >= 12
+		}
+		
+		if = {
+			limit = {
+				trigger_if = {
+					limit = { is_ai = no }
+					dynasty = {
+						any_dynasty_member = {
+							this = scope:champion_of_the_blood_senate
+						}
+					}
+				}
+				trigger_else = { always = no }
+			}
+			set_player_character = scope:champion_of_the_blood_senate
+		}
+		create_title_and_vassal_change = {
+			type = usurped
+			save_scope_as = change
+		}
+		scope:primary_scope = {
+			every_in_list = {
+				variable = linked_titles
+				
+				change_title_holder = {
+					holder = scope:champion_of_the_blood_senate
+					change = scope:change
+				}
+			}
+		}
+		change_liege = {
+			liege = scope:champion_of_the_blood_senate
+			change = scope:change
+		}
+		resolve_title_and_vassal_change = scope:change
+		succession_cleanup = yes
+	}
+}
+
+aversarian_succession.0500 = {
+	type = character_event
+	theme = battle
+	title = aversarian_succession.0500.t
+	
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					scope:primary_scope = {
+						is_target_in_variable_list = {
+							name = contesting_linked_titles
+							target = prev
+						}
+					}
+				}
+				desc = aversarian_succession.0500.desc # Contestant
+			}
+			triggered_desc = {
+				desc = aversarian_succession.0500.desc.not_contestant # Sitting it out
+			}
+		}
+	}
+	
+	left_portrait = {
+		character = root
+		animation = rage
+	}
+	
+	immediate = {
+		scope:primary_scope = {
+			if = {
+				limit = { exists = var:contesting_linked_titles }
+				every_in_list = {
+					variable = contesting_linked_titles
+					limit = { eligible_for_aversarian_succession = no }		# Maintenance check, never hurts to see if the list got messed up for some reason
+					remove_from_list = contesting_linked_titles
+				}
+			}
+			
+			if = {
+				limit = { NOT = { has_variable_list = contesting_linked_titles } } # If there's literally no one contesting the title, let the temporary holder keep it for simplicity's sake
+				holder = { 
+					trigger_event = { 
+						id = aversarian_succession.0503
+						days = 1
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					variable_list_size = {
+						name = contesting_linked_titles
+						value > 1
+					}
+				}
+				random_in_list = {
+					variable = contesting_linked_titles
+					trigger_event = {
+						id = aversarian_succession.0501
+						days = 1
+					}
+				}
+			}
+			else = {
+				every_in_list = {
+					variable = contesting_linked_titles
+					trigger_event = { 
+						id = aversarian_succession.0503
+						days = 1
+					}
+				}
+			}
+		}
+	}
+	option = {
+		name = aversarian_succession.0500.a
+	}
+}
+
+#pairing off a random match
+aversarian_succession.0501 = {
+	type = character_event
+	hidden = yes
+	
+	immediate = {
+	#removing this character from the variable list, getting the random partner, and removing them from the variable list
+		scope:primary_scope = {
+		#removing root character from list
+			remove_list_variable = {
+					name = contesting_linked_titles
+					target = root
+				}
+			debug_log = sjalvolki_debug_remove_root
+		#matching with random partner		
+			random_in_list = {
+				variable = contesting_linked_titles
+				root = {
+					set_variable = {
+						name = partner
+						value = prev
+					}
+				}
+			}
+		}
+		#setting the partner's partner as root
+		var:partner = {
+			set_variable = {
+				name = partner
+				value = root
+			}
+		}
+		if = {
+			limit = { is_ai = no }
+			trigger_event = {
+				id = aversarian_succession.0502
+			}
+		}
+		else = {
+			var:partner = {
+				trigger_event = {
+					id = aversarian_succession.0502
+				}
+			}
+		}
+		scope:primary_scope = {
+		#removing partner from list
+			remove_list_variable = {
+				name = contesting_linked_titles
+				target = root.var:partner
+			}
+		}
+	}
+}
+#alerting the partner to the fight, and determining result (basic)
+aversarian_succession.0502 = {
+	type = character_event
+	theme = battle
+	title = aversarian_succession.0502.t
+	desc = aversarian_succession.0502.desc
+	
+
+	left_portrait = {
+		character = this
+		animation = rage
+	}
+	
+	right_portrait = {
+		character = var:partner
+		animation = rage
+	}
+	
+	immediate = {
+		var:partner = { save_scope_as = opponent }	# For loc
+	}
+	
+	option = {
+		name = aversarian_succession.0502.a
+		custom_tooltip = magical_prowess_duel_tt
+		random_list = {
+			0 = {
+				trigger_event = aversarian_succession.0009
+				modifier = {
+                    add = {
+                        value = var:magical_prowess
+                        multiply = 1
+                    }
+				}
+			}
+			0 = {
+				scope:opponent = { trigger_event = aversarian_succession.0009 }
+				modifier = {
+                    add = {
+                        value = scope:opponent.var:magical_prowess
+                        multiply = 1
+                    }
+				}
+			}
+		}
+	}
+}
+#Alerting the Champion he won
+aversarian_succession.0503 = {
+	type = character_event
+	theme = battle
+	title = aversarian_succession.0503.t
+	desc = aversarian_succession.0503.desc
+	
+
+	left_portrait = {
+		character = this
+		animation = war_over_win
+	}
+	
+	immediate = {
+		#title:c_halium = {																# THIS IS PURELY A DEBUG THING. IT SHOULD BE COMMENTED OUT IN THE RELEASE VERSION
+		#	if = {																		# IT COUNTS THE NUMBER OF AVERSARIAN SUCCESSIONS THAT HAVE REACHED A SUCCESSFUL CONCLUSION
+		#		limit = { exists = var:open_aversarian_successions }					# IF THE NUMBER OF OPEN SUCCESSIONS CONTINUES INCREASING, THE EVENT IS NOT CORRECTLY ENDING IN SOME CASES
+		#		change_variable = {
+		#			name = open_aversarian_successions
+		#			subtract = 1
+		#		}
+		#	}
+		#	if = {
+		#		limit = { NOT = { exists = var:closed_aversarian_successions } }
+		#		set_variable = {
+		#			name = closed_aversarian_successions
+		#			value = 1
+		#		}
+		#	}
+		#	else = {
+		#		change_variable = {
+		#			name = closed_aversarian_successions
+		#			add = 1
+		#		}
+		#	}
+		#}
+		
+		if = {
+			limit = { has_character_flag = temporary_holder }
+			remove_character_flag = temporary_holder
+		}
+		save_scope_as = champion_of_the_blood_senate
+	}
+	
+	option = {
+		name = aversarian_succession.0503.a
+		
+		scope:primary_scope = {
+			if = {
+				limit = {
+					holder = {
+						NOT = { this = root }
+					}
+				}
+				holder = {
+					trigger_event = {
+						id = aversarian_succession.0505
+						days = 1
+					}
+				}
+			}
+		}
+	}
+}
+# Alert the temporary title holder about the winner
+aversarian_succession.0505 = {
+	type = character_event
+	theme = battle
+	title = aversarian_succession.0505.t
+	desc = aversarian_succession.0505.desc
+	
+	left_portrait = {
+		character = root
+	}
+	
+	right_portrait = {
+		character = scope:champion_of_the_blood_senate
+		animation = war_over_win
+	}
+	
+	option = {
+		name = aversarian_succession.0505.a
+
+		if = {
+			limit = {
+				trigger_if = {
+					limit = { is_ai = no }
+					dynasty = {
+						any_dynasty_member = {
+							this = scope:champion_of_the_blood_senate
+						}
+					}
+				}
+				trigger_else = { always = no }
+			}
+			set_player_character = scope:champion_of_the_blood_senate
+		}
+		create_title_and_vassal_change = {
+			type = usurped
+			save_scope_as = change
+		}
+		scope:primary_scope = {
+			every_in_list = {
+				variable = linked_titles
+				
+				change_title_holder = {
+					holder = scope:champion_of_the_blood_senate
+					change = scope:change
+				}
+			}
+			change_title_holder = {
+				holder = scope:champion_of_the_blood_senate
+				change = scope:change
+			}
+		}
+		change_liege = {
+			liege = scope:champion_of_the_blood_senate
+			change = scope:change
+		}
+		resolve_title_and_vassal_change = scope:change
+		succession_cleanup = yes
+	}
+}
+
+# Announce the results a match between two contestants to other living contestants
+aversarian_succession.0600 = {
+	type = character_event
+	theme = battle
+	title = aversarian_succession.0600.t
+	desc = aversarian_succession.0600.desc
+	
+	left_portrait = {
+		character = scope:first_ongoing_contestant
+		animation = anger
+	}
+	
+	right_portrait = {
+		character = scope:second_ongoing_contestant
+		animation = anger
+	}
+	
+	option = {
+		name = aversarian_succession.0600.a
+	}
+}

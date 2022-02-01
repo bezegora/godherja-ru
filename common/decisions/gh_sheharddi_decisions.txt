@@ -1,0 +1,44 @@
+reclaim_eloi = {
+	picture = "gfx/interface/illustrations/decisions/decision_personal_religious.dds"
+	major = yes
+
+	desc = reclaim_eloi_decision_desc
+	selection_tooltip = reclaim_eloi_decision_tooltip
+
+	is_shown = {
+		has_faith = faith:sheharddi
+		is_landed = yes
+		NOT = {
+			is_target_in_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:reclaimed_eloi
+			}
+		}
+	}
+
+	is_valid = {
+		AND = {
+			completely_controls = title:d_tirife
+			completely_controls = title:d_janomah
+			completely_controls = title:d_konuli
+			completely_controls = title:d_lavagheh
+		}
+		piety_level >= 4
+	}
+
+	effect = {
+		add_prestige = major_prestige_gain
+		faith = {
+			change_fervor = minor_fervor_gain
+		}
+		hidden_effect = {
+			trigger_event = sheharddi_flavor.1000
+		}
+		add_to_global_variable_list = {
+			name = unavailable_unique_decisions
+			target = flag:reclaimed_eloi
+		}
+	}
+
+	ai_check_interval = 1
+}

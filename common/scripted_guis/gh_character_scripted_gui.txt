@@ -1,0 +1,24 @@
+﻿merit_display_with_siblings = {
+	scope = character
+	
+	is_shown = {
+		any_parent = {
+			has_title = title:e_chevalie
+		}
+	}
+}
+
+merit_display_without_siblings = {
+	scope = character
+	
+	is_shown = {
+		AND = {
+			has_culture_group = culture_group:gh_marcher_group
+			NOT = {
+				any_parent = {
+					has_title = title:e_chevalie
+				}
+			}
+		}
+	}
+}

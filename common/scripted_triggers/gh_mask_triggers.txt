@@ -1,0 +1,27 @@
+﻿religion_has_mask_trigger = {
+	# Character must be an adult.
+	is_adult = yes
+
+	# Character must have a valid reasion to be masked.
+	OR = {
+		faith = {
+			has_doctrine_parameter = masked_adherents_active
+		}
+		AND = {
+			faith = {
+				has_doctrine_parameter = masked_priests_active
+			}
+			OR = {
+				ai_zeal >= 50
+				has_trait = devoted
+				has_trait = zealous
+				has_government = theocracy_government
+				has_council_position = councillor_court_chaplain
+			}
+		}
+	}
+}
+
+has_custom_armor = {
+	character = clanlands_imperial_1
+}

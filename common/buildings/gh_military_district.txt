@@ -1,0 +1,410 @@
+﻿@holding_illustration_western = "gfx/interface/illustrations/holding_types/city_western.dds"
+@holding_illustration_india = "gfx/interface/illustrations/holding_types/city_india.dds"
+@holding_illustration_mediterranean = "gfx/interface/illustrations/holding_types/city_mediterranean.dds"
+@holding_illustration_mena = "gfx/interface/illustrations/holding_types/city_mena.dds"
+
+
+citadel_01 = {
+	construction_time = slow_construction_time
+	
+	### WESTERN ###
+	asset = {
+		type = pdxmesh
+		names = {
+			"building_western_castle_01_mesh"
+			"building_western_castle_01_b_mesh"
+		}
+		illustration = @holding_illustration_western
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/Castle/western_castle" soundparameter = { "Tier" = 0 } }
+	}
+	
+	
+	can_construct_potential = {
+		always = no 	# Only historical and maybe via event/decision
+	}
+	
+	can_construct = {	
+		always = no
+	}
+	
+	can_construct_showing_failures_only = {
+		always = no
+	}
+	
+	cost_gold = main_building_tier_1_cost
+	#next_building = castle_02
+	
+	levy = normal_building_levy_tier_2
+	max_garrison = normal_building_max_garrison_tier_2
+	garrison_reinforcement_factor = building_garrison_reinforcement_factor_tier_2
+	province_modifier = {
+		monthly_income = poor_building_tax_tier_2
+		fort_level = great_building_fort_level_tier_1
+	}
+		
+	flag = castle
+	
+	ai_value = {
+		base = 0
+	}
+}
+
+guard_barracks_01 = {
+	can_construct_potential = {
+		county = {
+			NOT = {
+				any_county_province = {
+					has_building = guard_barracks_01 
+				}
+			}
+		}
+	}
+	
+    construction_time = slow_construction_time
+    
+    cost_gold = main_building_tier_1_cost
+    next_building = guard_barracks_02
+	
+	levy = excellent_building_levy_tier_2
+    
+    type_icon = "icon_building_ramparts.dds"
+}
+
+guard_barracks_02 = {
+    construction_time = slow_construction_time
+    
+    cost_gold = main_building_tier_2_cost
+    next_building = guard_barracks_03
+    
+    levy = excellent_building_levy_tier_3
+	
+	province_modifier = {
+		garrison_size = 0.1
+	}
+
+}
+
+guard_barracks_03 = {
+    construction_time = slow_construction_time
+    
+    cost_gold = main_building_tier_3_cost
+    next_building = guard_barracks_04
+    
+    levy = excellent_building_levy_tier_4
+	
+	province_modifier = {
+		garrison_size = 0.2
+	}
+    
+}
+
+guard_barracks_04 = {
+    construction_time = slow_construction_time
+    
+    cost_gold = main_building_tier_4_cost
+    
+    levy = excellent_building_levy_tier_5
+	
+	province_modifier = {
+		garrison_size = 0.25
+	}
+    
+}
+
+###
+
+recruitment_post_01 = {
+	can_construct_potential = {
+		county = {
+			NOT = {
+				any_county_province = {
+					has_building = recruitment_post_01 
+				}
+			}
+		}
+	}
+	
+    construction_time = slow_construction_time
+    
+    cost_gold = main_building_tier_1_cost
+    next_building = recruitment_post_02
+	
+	duchy_capital_county_modifier = {
+		levy_reinforcement_rate = 0.05
+	}
+	
+	character_modifier = {
+		army_maintenance_mult = -0.05
+	}
+    
+    type_icon = "icon_building_military_camps.dds"
+}
+
+recruitment_post_02 = {
+    construction_time = slow_construction_time
+    
+    cost_gold = main_building_tier_2_cost
+    next_building = recruitment_post_03
+    
+    duchy_capital_county_modifier = {
+		levy_reinforcement_rate = 0.1
+	}
+	
+	character_modifier = {
+		army_maintenance_mult = -0.05
+	}
+
+}
+
+recruitment_post_03 = {
+    construction_time = slow_construction_time
+    
+    cost_gold = main_building_tier_3_cost
+    next_building = recruitment_post_04
+    
+    duchy_capital_county_modifier = {
+		levy_reinforcement_rate = 0.15
+	}
+	
+	character_modifier = {
+		army_maintenance_mult = -0.1
+	}
+    
+}
+
+recruitment_post_04 = {
+    construction_time = slow_construction_time
+    
+    cost_gold = main_building_tier_4_cost
+    
+    duchy_capital_county_modifier = {
+		levy_reinforcement_rate = 0.2
+	}
+	
+	character_modifier = {
+		army_maintenance_mult = -0.1
+	}
+    
+}
+
+
+###
+
+reinforcement_tunnels_01 = {
+	can_construct_potential = {
+		county = {
+			NOT = {
+				any_county_province = {
+					has_building = reinforcement_tunnels_01 
+				}
+			}
+		}
+	}
+	
+	construction_time = slow_construction_time
+	
+	cost_gold = main_building_tier_1_cost
+	next_building = reinforcement_tunnels_02
+	
+	province_modifier = {
+		fort_level = 1
+	}
+	
+	type_icon = "icon_building_palisades.dds"
+}
+
+reinforcement_tunnels_02 = {
+	construction_time = slow_construction_time
+	
+	cost_gold = main_building_tier_2_cost
+
+	province_modifier = {
+		fort_level = 2
+	}
+}
+
+forge_01 = {
+	can_construct_potential = {
+		county = {
+			NOT = {
+				any_county_province = {
+					has_building = forge_01 
+				}
+			}
+		}
+	}
+	
+    construction_time = slow_construction_time
+    
+    cost_gold = main_building_tier_1_cost
+    next_building = forge_02
+    
+    character_modifier = {
+		men_at_arms_maintenance = -0.1
+		heavy_infantry_damage_mult = 0.03
+		heavy_infantry_toughness_mult = 0.03
+	}
+    
+    type_icon = "icon_building_blacksmiths.dds"
+}
+
+forge_02 = {
+    construction_time = slow_construction_time
+    
+    cost_gold = main_building_tier_2_cost
+    next_building = forge_03
+    
+    character_modifier = {
+		men_at_arms_maintenance = -0.15
+		heavy_infantry_damage_mult = 0.06
+		heavy_infantry_toughness_mult = 0.06
+	}
+
+}
+
+forge_03 = {
+    construction_time = slow_construction_time
+    
+    cost_gold = main_building_tier_3_cost
+    next_building = forge_04
+    
+    character_modifier = {
+		men_at_arms_maintenance = -0.2
+		heavy_infantry_damage_mult = 0.09
+		heavy_infantry_toughness_mult = 0.09
+	}
+    
+}
+
+forge_04 = {
+    construction_time = slow_construction_time
+    
+    cost_gold = main_building_tier_4_cost
+    
+    character_modifier = {
+		men_at_arms_maintenance = -0.25
+		heavy_infantry_damage_mult = 0.12
+		heavy_infantry_toughness_mult = 0.12
+	}
+    
+}
+
+jail_01 = {
+	can_construct_potential = {
+		county = {
+			NOT = {
+				any_county_province = {
+					has_building = jail_01 
+				}
+			}
+		}
+	}
+	
+    construction_time = slow_construction_time
+    
+    cost_gold = main_building_tier_1_cost
+    next_building = jail_02
+    
+    duchy_capital_county_modifier = {
+        monthly_county_control_change_factor = 0.1
+    }
+    
+    type_icon = "icon_building_military_academy.dds"
+}
+
+jail_02 = {
+    construction_time = slow_construction_time
+    
+    cost_gold = main_building_tier_2_cost
+    next_building = jail_03
+    
+    duchy_capital_county_modifier = {
+        monthly_county_control_change_factor = 0.2
+    }
+
+}
+
+jail_03 = {
+    construction_time = slow_construction_time
+    
+    cost_gold = main_building_tier_3_cost
+    next_building = jail_04
+    
+    duchy_capital_county_modifier = {
+        monthly_county_control_change_factor = 0.3
+    }
+    
+}
+
+jail_04 = {
+    construction_time = slow_construction_time
+    
+    cost_gold = main_building_tier_4_cost
+    
+    duchy_capital_county_modifier = {
+        monthly_county_control_change_factor = 0.4
+    }
+    
+}
+
+mercenary_hall_01 = {
+	can_construct_potential = {
+		county = {
+			NOT = {
+				any_county_province = {
+					has_building = mercenary_hall_01 
+				}
+			}
+		}
+	}
+	
+    construction_time = slow_construction_time
+    
+    cost_gold = main_building_tier_1_cost
+    next_building = mercenary_hall_02
+    
+    character_modifier = {
+		mercenary_hire_cost_mult = -0.05
+		same_culture_mercenary_hire_cost_mult = -0.1
+    }
+    
+    type_icon = "icon_building_guild_halls.dds"
+}
+
+mercenary_hall_02 = {
+    construction_time = slow_construction_time
+    
+    cost_gold = main_building_tier_2_cost
+    next_building = mercenary_hall_03
+    
+    character_modifier = {
+		mercenary_hire_cost_mult = -0.1
+        same_culture_mercenary_hire_cost_mult = -0.15
+    }
+
+}
+
+mercenary_hall_03 = {
+    construction_time = slow_construction_time
+    
+    cost_gold = main_building_tier_3_cost
+    next_building = mercenary_hall_04
+    
+    character_modifier = {
+		mercenary_hire_cost_mult = -0.15
+        same_culture_mercenary_hire_cost_mult = -0.2
+    }
+    
+}
+
+mercenary_hall_04 = {
+    construction_time = slow_construction_time
+    
+    cost_gold = main_building_tier_4_cost
+    
+    character_modifier = {
+		mercenary_hire_cost_mult = -0.2
+        same_culture_mercenary_hire_cost_mult = -0.25
+    }
+    
+}

@@ -1,0 +1,57 @@
+﻿##################
+##DECISIONS LIST##
+# make_new_artifact
+##################
+
+##################
+# Make New Artifact
+# by ThePinkPanzer
+make_new_artifact = {
+    picture = "gfx/interface/illustrations/decisions/decision_recruitment.dds"
+    desc = make_new_artifact.desc
+    selection_tooltip = make_new_artifact.tt
+    ai_check_interval = 12
+    cost = {gold = 100}
+    is_shown = {
+        NOR = {
+            has_character_flag = making_artifact
+            has_character_flag = made_artifact
+        }
+    }
+
+    is_valid = {
+        prestige_level >= 3
+
+
+    }
+
+    effect = {
+        custom_tooltip = make_new_artifact.effect.tt
+        trigger_event = artifact_create.0008
+    }
+}
+
+study_malik_cipher = { #Study Fields of Pearls - by Mayor
+	picture = "gfx/interface/illustrations/decisions/decision_recruitment.dds"
+    desc = study_malik_cipher_desc
+    selection_tooltip = study_malik_cipher_tooltip
+    ai_check_interval = 12
+    cost = {gold = 100}
+	cooldown = { years = 5 }
+	is_shown = {
+            has_artifact = { ARTIFACT = artifact_bookmasenmalik }
+            has_trait = education_dead_magic
+    }
+	is_valid = {
+		learning >= 8
+	}
+	cost = {
+		gold = {
+            value = 250
+        }
+	}
+	effect = {
+		custom_tooltip = study_malik_cipher.effect.tt
+		trigger_event = artifacts_flavor.1001
+	}
+}

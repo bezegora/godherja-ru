@@ -1,0 +1,30 @@
+﻿##################
+##DECISIONS LIST##
+# add_magic
+##################
+
+##################
+# Add Magic (DEBUG)
+# by ThePinkPanzer
+add_magic = {
+	ai_check_interval = 12
+	desc = get_blood_desc
+	is_shown = {
+		﻿can_access_magic = yes
+		debug_only = yes
+	}
+
+	is_valid = {
+		has_trait_rank = {
+			trait = magic_good
+			rank > 0
+		}
+	}
+
+	effect = {
+		change_variable = {
+			name = magic_counter
+			add = 1000
+		}
+	}
+}

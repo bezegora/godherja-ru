@@ -1,0 +1,139 @@
+﻿
+on_albino_nickname = 
+{
+	trigger = { has_trait = albino
+		prestige_level >= 2
+		  }
+	first_valid_on_action = 
+	{
+		on_martial_albino
+		on_intrigue_albino
+		on_prowess_albino
+		on_beautiful_albino
+	}
+
+	fallback = on_norse_nickname
+}
+
+##################################################################
+
+on_martial_albino = 
+{
+	trigger = { martial >= 25 }
+	random_on_action = 
+	{
+		10 = on_white_wolf 
+		10 = on_white_lion
+		10 = on_short_friend
+	}
+}
+
+
+on_white_wolf = 
+{
+	effect = { give_nickname = nick_the_white_wolf }
+}
+
+on_white_lion = 
+{
+	effect = { give_nickname = nick_the_white_lion }
+}
+
+on_white_conqueror = 
+{
+	effect = { give_nickname = nick_the_white_conqueror }
+}
+
+##################################################################
+
+on_intrigue_albino = 
+{
+	trigger = { intrigue >= 25 }
+	random_on_action = 
+	{
+		10 = on_white_shadow 
+		10 = on_white_spider
+		10 = on_white_dagger
+	}
+}
+
+on_white_shadow = 
+{
+	effect = { give_nickname = nick_the_white_shadow }
+}
+
+on_white_spider = 
+{
+	effect = { give_nickname = nick_the_white_spider }
+}
+
+on_white_dagger = 
+{
+	effect = { give_nickname = nick_the_white_dagger }
+}
+
+##################################################################
+
+on_prowess_albino = 
+{
+	trigger = { prowess >= 30 }
+	random_on_action = 
+	{
+		10 = on_white_death 
+		10 = on_white_sword
+		10 = on_white_slayer
+	}
+}
+
+on_white_death = 
+{
+	effect = { give_nickname = nick_the_white_death }
+}
+
+on_white_sword = 
+{
+	effect = { give_nickname = nick_the_white_sword }
+}
+
+on_white_slayer = 
+{
+	effect = { give_nickname = nick_the_white_slayer }
+}
+
+##################################################################
+
+on_beautiful_albino = 
+{
+	trigger = { 
+	 	has_trait = beauty_good_3
+	 	is_male = no 
+	 }
+	random_on_action = 
+	{
+		10 = on_white_rose 
+		10 = on_white_beauty
+		10 = on_white_slayer
+	}	
+}
+
+on_white_rose = 
+{
+	effect = { give_nickname = nick_the_white_rose }
+}
+
+on_white_beauty = 
+{
+	effect = { give_nickname = nick_the_white_beauty }
+}
+
+on_snow_touched = 
+{
+	effect = { give_nickname = nick_the_snow_touched }
+}
+
+
+
+
+
+
+

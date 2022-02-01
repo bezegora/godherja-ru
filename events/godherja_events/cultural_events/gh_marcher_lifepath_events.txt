@@ -1,0 +1,183 @@
+﻿namespace = marcher_lifepath
+
+marcher_lifepath.0001 = { #on maturity, choose a path
+	title = marcher_lifepath.0001.t
+	desc = marcher_lifepath.0001.desc
+	theme = faith
+	left_portrait = { 
+		character = root
+	}
+	
+	trigger = {
+		faith = {
+			has_variable = faith_has_lifepaths
+		}
+		NOR = {
+			has_trait = way_of_swords_follower
+			has_trait = way_of_family_follower
+			has_trait = way_of_coins_follower
+			has_trait = way_of_harvests_follower
+			has_trait = way_of_justice_follower
+			has_trait = way_of_knowledge_follower
+			has_trait = way_of_crows_follower
+			has_trait = way_of_crowns_follower
+			has_trait = way_of_nullification_follower
+		}
+	}	
+
+	option = {
+		name = marcher_lifepath.0001.a
+		trigger = {
+			is_valid_lifepath_trigger = { LIFEPATH = way_of_swords }
+		}
+		custom_tooltip = marcher_lifepath.0001.a.tt
+		add_trait = way_of_swords_follower
+		ai_chance = { base = 12 }
+	}
+	option = {
+		name = marcher_lifepath.0001.b
+		trigger = {
+			is_valid_lifepath_trigger = { LIFEPATH = way_of_family }
+		}
+		custom_tooltip = marcher_lifepath.0001.b.tt
+		add_trait = way_of_family_follower
+		ai_chance = { base = 10 }
+	}
+	option = {
+		name = marcher_lifepath.0001.c
+		trigger = {
+			is_valid_lifepath_trigger = { LIFEPATH = way_of_coins }
+		}
+		custom_tooltip = marcher_lifepath.0001.c.tt
+		add_trait = way_of_coins_follower
+		ai_chance = { base = 12 }
+	}
+	option = {
+		name = marcher_lifepath.0001.d
+		trigger = {
+			is_valid_lifepath_trigger = { LIFEPATH = way_of_harvests }
+		}
+		custom_tooltip = marcher_lifepath.0001.d.tt
+		add_trait = way_of_harvests_follower
+		ai_chance = { base = 4 }
+	}
+	option = {
+		name = marcher_lifepath.0001.f
+		trigger = {
+			is_valid_lifepath_trigger = { LIFEPATH = way_of_crowns }
+		}
+		custom_tooltip = marcher_lifepath.0001.f.tt
+		add_trait = way_of_crowns_follower
+		ai_chance = { base = 20 }
+	}
+	option = {
+		name = marcher_lifepath.0001.e
+		custom_tooltip = marcher_lifepath.0001.e.tt
+		trigger_event = marcher_lifepath.0002
+		ai_chance = { base = 18 }
+	}
+}
+
+marcher_lifepath.0002 = { #on maturity, choose a path (page 2)
+	title = marcher_lifepath.0001.t
+	desc = marcher_lifepath.0001.desc
+	theme = faith
+	left_portrait = { 
+		character = root
+	}
+
+	option = {
+		name = marcher_lifepath.0002.a
+		trigger = {
+			is_valid_lifepath_trigger = { LIFEPATH = way_of_justice }
+		}
+		custom_tooltip = marcher_lifepath.0002.a.tt
+		add_trait = way_of_justice_follower
+		ai_chance = { base = 1 }
+	}
+	option = {
+		name = marcher_lifepath.0002.b
+		trigger = {
+			is_valid_lifepath_trigger = { LIFEPATH = way_of_knowledge }
+		}
+		custom_tooltip = marcher_lifepath.0002.b.tt
+		add_trait = way_of_knowledge_follower
+		ai_chance = { base = 6 }
+	}
+	option = {
+		name = marcher_lifepath.0002.c
+		trigger = {
+			is_valid_lifepath_trigger = { LIFEPATH = way_of_crows }
+		}
+		custom_tooltip = marcher_lifepath.0002.c.tt
+		add_trait = way_of_crows_follower
+		ai_chance = { base = 3 }
+	}
+	option = {
+		name = marcher_lifepath.0002.d
+		trigger = {
+			is_valid_lifepath_trigger = { LIFEPATH = way_of_nullification }
+		}
+		custom_tooltip = marcher_lifepath.0002.d.tt
+		add_trait = way_of_nullification_follower
+		ai_chance = { base = 8 }
+	}
+	option = {
+		name = marcher_lifepath.0002.e
+		custom_tooltip = marcher_lifepath.0002.e.tt
+		trigger_event = marcher_lifepath.0001
+		ai_chance = { base = 0 }
+	}
+}
+
+# Freedom reform
+marcher_lifepath.0100 = {
+	title = marcher_lifepath.0100.title
+	desc = marcher_lifepath.0100.desc
+	theme = faith
+	left_portrait = { 
+		character = root
+	}
+
+	option = {
+		trigger = {
+			has_religion = religion:marcher_religion
+		}
+		name = marcher_lifepath.0100.a
+	}
+
+	option = {
+		trigger = {
+			NOT = {
+				has_religion = religion:marcher_religion
+			}
+		}
+		name = marcher_lifepath.0100.b
+	}
+}
+
+# Stratification reform
+marcher_lifepath.0101 = {
+	title = marcher_lifepath.0101.title
+	desc = marcher_lifepath.0101.desc
+	theme = faith
+	left_portrait = { 
+		character = root
+	}
+
+	option = {
+		trigger = {
+			has_religion = religion:marcher_religion
+		}
+		name = marcher_lifepath.0101.a
+	}
+
+	option = {
+		trigger = {
+			NOT = {
+				has_religion = religion:marcher_religion
+			}
+		}
+		name = marcher_lifepath.0101.b
+	}
+}

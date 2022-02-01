@@ -1,0 +1,153 @@
+﻿# faith restrictions are generally bad here as it will not work with any created faiths
+
+# can use global_var:bloodline_<name>_founder to check against founder
+# global_var:bloodline_<name>_founder.faith = ROOT.faith # check founder faith
+
+# trigger_if = { #check founder male/female - should have inherit type set to all
+# 	limit = { global_var:bloodline_<name>_founder = { is_female = yes } }
+# 	is_female = yes
+# }
+# trigger_else = {
+# 	is_male = yes
+# }
+
+bloodline_cenware_extra_inherit = {
+	OR = {
+		has_religion = religion:sjalvolki_religion
+		has_culture_group = culture_group:gh_sjalvoki_group
+	}
+}
+
+bloodline_nikaryin_extra_inherit = {
+	has_culture_group = culture_group:gh_imperial_group
+}
+
+bloodline_phanagorax_extra_inherit = {
+	has_culture_group = culture_group:gh_imperial_group
+	has_faith = faith:aversarinas_aautokrata
+}
+
+bloodline_dhacixen_extra_inherit = {
+	has_culture_group = culture_group:gh_imperial_group
+	has_faith = faith:aerasodiax
+}
+
+bloodline_aexionarax_extra_inherit = {
+	has_culture_group = culture_group:gh_imperial_group
+}
+
+bloodline_maklea_extra_inherit = {
+	has_culture_group = culture_group:gh_imperial_group
+}
+
+bloodline_nothyx_extra_inherit = {
+	has_culture_group = culture_group:gh_imperial_group
+}
+
+bloodline_axiaothea_extra_inherit = {
+	has_culture_group = culture_group:gh_imperial_group
+	OR = {
+		has_faith = faith:aversarinas_aautokrata
+		has_faith = faith:aversarian_axiaotheaism
+	}
+}
+
+bloodline_aeschraes_extra_inherit = {
+	has_culture_group = culture_group:gh_imperial_group
+	has_faith = faith:aversarian_aeschraes
+}
+
+bloodline_pothacleas_extra_inherit = {
+    has_culture_group = culture_group:gh_iyrossi_group
+    OR = {
+        has_religion = religion:iyrossi_religion
+        has_faith = faith:aversarian_iyrossi
+    }
+}
+
+bloodline_the_skull_taker_extra_inherit = {
+	has_culture_group = culture_group:gh_imperial_group
+	has_faith = faith:aversarian_gorassos
+}
+
+bloodline_gardfrei_extra_inherit = {
+	has_culture_group = culture_group:gh_marcher_group
+	has_faith = faith:lifepath
+}
+
+bloodline_huegons_extra_inherit = {
+	has_culture_group = culture_group:gh_marcher_group
+	has_faith = faith:lifepath
+}
+
+bloodline_the_good_king_extra_inherit = {
+	has_culture_group = culture_group:gh_marcher_group
+	OR = {
+		has_faith = faith:lifepath
+		has_faith = faith:starvayrd
+	}
+}
+
+bloodline_the_prophet_extra_inherit = {
+	has_culture_group = culture_group:gh_zarasadari_group
+	has_faith = faith:mahndayana
+}
+
+bloodline_the_black_sun_extra_inherit = {
+	has_culture_group = culture_group:gh_imperial_group
+	has_faith = faith:aversarinas_aautokrata
+}
+
+bloodline_kathanouxa_extra_inherit = {
+	has_faith = faith:kathanouxiac
+}
+
+bloodline_odyr_then_extra_inherit = {
+	OR = {
+		has_faith = faith:mountain_sun_temple
+		has_faith = faith:odyrian
+	}
+}
+
+bloodline_odyr_lleth_extra_inherit = {
+	OR = {
+		has_faith = faith:mountain_sun_temple
+		has_faith = faith:odyrian
+	}
+}
+
+bloodline_odyr_hune_extra_inherit = {
+	OR = {
+		has_faith = faith:mountain_sun_temple
+		has_faith = faith:odyrian
+	}
+}
+
+bloodline_vercigex_extra_inherit = {
+	has_culture_group = culture_group:gh_marcher_group
+	OR = {
+		has_faith = faith:lifepath
+		has_faith = faith:starvayrd
+	}
+}
+
+bloodline_cois_victorious_extra_inherit = {
+	OR = {
+		has_culture_group = culture_group:gh_imperial_group
+		has_religion = religion:aversarinas_aautokrata_religion
+	}
+}
+
+bloodline_cois_defeated_extra_inherit = {
+	OR = {
+		has_culture_group = culture_group:gh_imperial_group
+		has_religion = religion:aversarinas_aautokrata_religion
+	}
+}
+
+# here to stop the error log complaining
+bloodline_diplomacy_skill_extra_inherit = { always = yes }
+bloodline_martial_skill_extra_inherit = { always = yes }
+bloodline_stewardship_skill_extra_inherit = { always = yes }
+bloodline_intrigue_skill_extra_inherit = { always = yes }
+bloodline_learning_skill_extra_inherit = { always = yes }

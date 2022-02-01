@@ -1,0 +1,216 @@
+﻿spell_requires_trait_rank = {
+	OR = {
+		has_trait_rank = {
+			trait = $TRAIT_NAME$
+			rank > $RANK$
+		}
+		any_councillor = {
+			is_performing_council_task = task_court_mage_cast_spells
+			has_trait_rank = {
+				trait = $TRAIT_NAME$
+				rank > $RANK$
+			}
+		}
+	}
+}
+
+spell_requires_court_mage_trait_rank = {
+	any_councillor = {
+		is_performing_council_task = task_court_mage_cast_spells
+		has_trait_rank = {
+			trait = $TRAIT_NAME$
+			rank > $RANK$
+		}
+	}
+}
+
+spell_requires_perk = {	# If I ever figure out how to get it working with unlanded mages
+	has_perk = $PERK_NAME$
+}
+
+spell_magic_cost_raw = {
+	OR = {
+		trigger_if = {
+			limit = { has_variable = magic_counter } 
+			NOT = {
+				any_councillor = {
+					is_performing_council_task = task_court_mage_cast_spells
+				}
+			}
+			var:magic_counter >= $COST$
+		}
+		trigger_else = {
+			always = no
+		}
+		any_councillor = {
+			trigger_if = {
+				limit = { 
+					is_performing_council_task = task_court_mage_cast_spells
+					exists = var:magic_counter 
+				}
+				var:magic_counter >= root.$COST$
+			}
+			trigger_else = {
+				always = no
+			}
+		}
+	}
+}
+
+spell_magic_cost_by_tier = {
+	spell_magic_cost_raw = {
+		COST = tier_$TIER$_spell
+	}
+}
+
+can_access_magic = {
+	is_adult = yes
+	has_trait_with_flag = enables_magic
+	NOT = { has_trait_with_flag = can_not_access_magic }
+}
+
+court_mage_is_casting = {
+	trigger_if = {
+		limit = {exists = cp:councillor_court_mage}
+		AND = {
+		any_councillor = {is_performing_council_task = task_court_mage_cast_spells}
+		cp:councillor_court_mage = {has_variable = magical_prowess}
+			}
+		}
+		trigger_else = {
+			always = no
+		}
+}
+
+############################
+# MAGIC EDUCATION UPGRADES #
+############################
+
+can_level_up_magic = {
+	trigger_if = {
+		limit = { has_trait = magic_good_20 }
+		NOT = { has_trait = education_$MAGIC_TYPE$_4 }	# No point in levelling up anymore if at max
+	}
+	trigger_else_if = {
+		limit = { has_trait = magic_good_19 }
+		NOT = { has_trait = education_$MAGIC_TYPE$_4 }	# No point in levelling up anymore if at max
+	}
+	trigger_else_if = {
+		limit = { has_trait = magic_good_18 }
+		NOT = { has_trait = education_$MAGIC_TYPE$_4 }	# No point in levelling up anymore if at max
+	}
+	trigger_else_if = {
+		limit = { has_trait = magic_good_17 }
+		NOT = { has_trait = education_$MAGIC_TYPE$_4 }	# No point in levelling up anymore if at max
+	}
+	trigger_else_if = {
+		limit = { has_trait = magic_good_16 }
+		NOT = { has_trait = education_$MAGIC_TYPE$_4 }	# No point in levelling up anymore if at max
+	}
+	trigger_else_if = {
+		limit = { has_trait = magic_good_15 }
+		NOT = { has_trait = education_$MAGIC_TYPE$_4 }	# No point in levelling up anymore if at max
+	}
+	trigger_else_if = {
+		limit = { has_trait = magic_good_14 }
+		NOT = { has_trait = education_$MAGIC_TYPE$_4 }	# No point in levelling up anymore if at max
+	}
+	trigger_else_if = {
+		limit = { has_trait = magic_good_13 }
+		NOT = { has_trait = education_$MAGIC_TYPE$_4 }	# No point in levelling up anymore if at max
+	}
+	trigger_else_if = {
+		limit = { has_trait = magic_good_12 }
+		NOT = { has_trait = education_$MAGIC_TYPE$_4 }	# No point in levelling up anymore if at max
+	}
+	trigger_else_if = {
+		limit = { has_trait = magic_good_11 }
+		NOT = { has_trait = education_$MAGIC_TYPE$_4 }	# No point in levelling up anymore if at max
+	}
+	trigger_else_if = {
+		limit = { has_trait = magic_good_10 }
+		NOT = { has_trait = education_$MAGIC_TYPE$_4 }	# No point in levelling up anymore if at max
+	}
+	trigger_else_if = {
+		limit = { has_trait = magic_good_9 }
+		NOT = { has_trait = education_$MAGIC_TYPE$_4 }	# No point in levelling up anymore if at max
+	}
+	trigger_else_if = {
+		limit = { has_trait = magic_good_8 }
+		NOT = { has_trait = education_$MAGIC_TYPE$_4 }	# No point in levelling up anymore if at max
+	}
+	trigger_else_if = {
+		limit = { has_trait = magic_good_7 }
+		NOT = { has_trait = education_$MAGIC_TYPE$_4 }	# No point in levelling up anymore if at max
+	}
+	trigger_else_if = {
+		limit = { has_trait = magic_good_6 }
+		NOT = { has_trait = education_$MAGIC_TYPE$_4 }	# No point in levelling up anymore if at max
+	}
+	trigger_else_if = {
+		limit = { has_trait = magic_good_5 }
+		NOT = { has_trait = education_$MAGIC_TYPE$_4 }	# No point in levelling up anymore if at max
+	}
+	trigger_else_if = {
+		limit = { has_trait = magic_good_4 }
+		NOT = { has_trait = education_$MAGIC_TYPE$_4 }	# No point in levelling up anymore if at max
+	}
+	trigger_else_if = {
+		limit = { has_trait = magic_good_3 }
+		NOT = { has_trait = education_$MAGIC_TYPE$_4 }	# No point in levelling up anymore if at max
+	}
+	trigger_else_if = {
+		limit = { has_trait = magic_good_2 }
+		NOR = { 
+			has_trait = education_$MAGIC_TYPE$_4
+			has_trait = education_$MAGIC_TYPE$_3
+		}
+	}
+	trigger_else_if = {
+		limit = { has_trait = magic_good_1 }
+		NOR = { 
+			has_trait = education_$MAGIC_TYPE$_4
+			has_trait = education_$MAGIC_TYPE$_3
+			has_trait = education_$MAGIC_TYPE$_2
+		}
+	}
+	trigger_else = {
+		always = no
+	}
+}
+
+has_leveled_up = {
+	trigger_if = {
+		limit = { exists = var:$MAGIC_TYPE$_education_progress }
+		AND = {
+			var:$MAGIC_TYPE$_education_progress >= $THRESHOLD$
+			age >= $MIN_AGE$
+			NOT = {	# has_trait_rank is wonky since the ranks for magic education start at lvl 2, in my experience
+				has_trait_rank = {
+					trait = education_$MAGIC_TYPE$
+					rank >= $RANK$
+				}
+			}
+		}
+	}
+	trigger_else = { always = no }
+}
+
+has_magic_education_trait_rank = {
+	OR = {
+		has_trait = education_mixed_magic_$RANK$
+		has_trait = education_dead_magic_$RANK$
+		has_trait = education_living_magic_$RANK$
+	}
+}
+
+can_have_court_magi_trigger = {
+	OR = {
+		has_trait = cynical
+		faith = {
+			NOT = {
+				has_doctrine = doctrine_magic_crime
+			}
+		}
+	}
+}
