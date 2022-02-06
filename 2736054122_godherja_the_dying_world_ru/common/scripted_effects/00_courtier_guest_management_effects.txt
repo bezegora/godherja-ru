@@ -301,29 +301,6 @@ select_and_move_to_pool_effect = {
 						capital_province = { save_scope_as = destination }
 					}
 				}
-				#Secret Witch
-				5 = {
-					trigger = {
-						any_secret = {
-							secret_type = secret_witch
-							any_secret_knower = {
-								is_visitable_relation_trigger = { CHARACTER = scope:mover }
-								is_witch_trigger = yes
-							}
-						}
-					}
-
-					random_secret = {
-						limit = { secret_type = secret_witch }
-						random_secret_knower = {
-							limit = {
-								is_visitable_relation_trigger = { CHARACTER = scope:mover }
-								is_witch_trigger = yes
-							}
-							capital_province = { save_scope_as = destination }
-						}
-					}
-				}
 			}
 		}
 
@@ -459,24 +436,6 @@ courtier_guest_pool_character_secret_giving_effect = {
 			}
 			ai_zeal_target_modifier = { VALUE = -50 }
 			give_non_believer_secret_effect = yes
-		}
-		# Witch
-		100 = {
-			trigger = {
-				NOR = {
-					has_trait = zealous
-					any_secret = { secret_type = secret_witch }
-					has_trait = witch
-				}
-			}
-			modifier = {
-				OR = {
-					has_trait = lifestyle_mystic
-					has_trait = lifestyle_herbalist
-				}
-				add = 50
-			}
-			ai_greed_target_modifier = { VALUE = 50 }
 		}
 	}
 }

@@ -17,7 +17,7 @@ temple_district_01 = {
 		}
 		illustration = @holding_illustration_western
 		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/City/western_city" soundparameter = { "Tier" = 2 } }
-		graphical_regions = { world_ga_marcher_kingdoms }
+		graphical_regions = { gh_graphical_chevalie gh_graphical_continent }
 		graphical_cultures = { western_building_gfx slavic_building_gfx }
 	}
 	
@@ -28,7 +28,7 @@ temple_district_01 = {
 		}
 		illustration = @holding_illustration_mena
 		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/City/mena_city" soundparameter = { "Tier" = 2 } }
-		graphical_regions = { world_sarradon }
+		graphical_regions = { graphical_mena }
 		graphical_cultures = { mena_building_gfx }
 	}
 	
@@ -39,6 +39,7 @@ temple_district_01 = {
 		}
 		illustration = @holding_illustration_india
 		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/City/indian_city" soundparameter = { "Tier" = 2 } }
+		graphical_regions = { graphical_india }
 		graphical_cultures = { indian_building_gfx }
 	}
 	
@@ -49,20 +50,22 @@ temple_district_01 = {
 		}
 		illustration = @holding_illustration_mediterranean
 		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/City/mediterranean_city" soundparameter = { "Tier" = 2 } }
-		graphical_regions = { world_ga_aversarian_homelands world_ga_clanlands }
+		graphical_regions = { graphical_mediterranean }
 		graphical_cultures = { mediterranean_building_gfx }
 	}
 	
 	can_construct_potential = {
-		always = no 	# Only historical and maybe via event/decision
+		is_any_metropolis_or_ruined_district_trigger = yes
 	}
 	
-	can_construct = {	
-		always = no
+	can_construct = {
+		culture = {
+			has_innovation = innovation_city_planning
+		}
 	}
 	
 	can_construct_showing_failures_only = {
-		always = no
+		building_requirement_tribal_holding_in_county = no
 	}
 	
 	cost_gold = main_building_tier_1_cost
@@ -94,7 +97,7 @@ temple_district_02 = {
 		}
 		illustration = @holding_illustration_western
 		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/City/western_city" soundparameter = { "Tier" = 2 } }
-		graphical_regions = { world_ga_marcher_kingdoms }
+		graphical_regions = { gh_graphical_chevalie gh_graphical_continent }
 		graphical_cultures = { western_building_gfx slavic_building_gfx }
 	}
 	
@@ -105,7 +108,7 @@ temple_district_02 = {
 		}
 		illustration = @holding_illustration_mena
 		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/City/mena_city" soundparameter = { "Tier" = 2 } }
-		graphical_regions = { world_sarradon }
+		graphical_regions = { graphical_mena }
 		graphical_cultures = { mena_building_gfx }
 	}
 	
@@ -116,6 +119,7 @@ temple_district_02 = {
 		}
 		illustration = @holding_illustration_india
 		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/City/indian_city" soundparameter = { "Tier" = 2 } }
+		graphical_regions = { graphical_india }
 		graphical_cultures = { indian_building_gfx }
 	}
 	
@@ -126,7 +130,7 @@ temple_district_02 = {
 		}
 		illustration = @holding_illustration_mediterranean
 		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/City/mediterranean_city" soundparameter = { "Tier" = 2 } }
-		graphical_regions = { world_ga_aversarian_homelands world_ga_clanlands }
+		graphical_regions = { graphical_mediterranean }
 		graphical_cultures = { mediterranean_building_gfx }
 	}
 	
@@ -165,7 +169,7 @@ temple_district_03 = {
 		}
 		illustration = @holding_illustration_western
 		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/City/western_city" soundparameter = { "Tier" = 2 } }
-		graphical_regions = { world_ga_marcher_kingdoms }
+		graphical_regions = { gh_graphical_chevalie gh_graphical_continent }
 		graphical_cultures = { western_building_gfx slavic_building_gfx }
 	}
 	
@@ -176,7 +180,7 @@ temple_district_03 = {
 		}
 		illustration = @holding_illustration_mena
 		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/City/mena_city" soundparameter = { "Tier" = 2 } }
-		graphical_regions = { world_sarradon }
+		graphical_regions = { graphical_mena }
 		graphical_cultures = { mena_building_gfx }
 	}
 	
@@ -187,6 +191,7 @@ temple_district_03 = {
 		}
 		illustration = @holding_illustration_india
 		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/City/indian_city" soundparameter = { "Tier" = 2 } }
+		graphical_regions = { graphical_india }
 		graphical_cultures = { indian_building_gfx }
 	}
 	
@@ -197,7 +202,7 @@ temple_district_03 = {
 		}
 		illustration = @holding_illustration_mediterranean
 		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/City/mediterranean_city" soundparameter = { "Tier" = 2 } }
-		graphical_regions = { world_ga_aversarian_homelands world_ga_clanlands }
+		graphical_regions = { graphical_mediterranean }
 		graphical_cultures = { mediterranean_building_gfx }
 	}
 	
@@ -236,7 +241,7 @@ temple_district_04 = {
 		}
 		illustration = @holding_illustration_western
 		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/City/western_city" soundparameter = { "Tier" = 2 } }
-		graphical_regions = { world_ga_marcher_kingdoms }
+		graphical_regions = { gh_graphical_chevalie gh_graphical_continent }
 		graphical_cultures = { western_building_gfx slavic_building_gfx }
 	}
 	
@@ -247,7 +252,7 @@ temple_district_04 = {
 		}
 		illustration = @holding_illustration_mena
 		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/City/mena_city" soundparameter = { "Tier" = 2 } }
-		graphical_regions = { world_sarradon }
+		graphical_regions = { graphical_mena }
 		graphical_cultures = { mena_building_gfx }
 	}
 	
@@ -258,6 +263,7 @@ temple_district_04 = {
 		}
 		illustration = @holding_illustration_india
 		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/City/indian_city" soundparameter = { "Tier" = 2 } }
+		graphical_regions = { graphical_india }
 		graphical_cultures = { indian_building_gfx }
 	}
 	
@@ -268,7 +274,7 @@ temple_district_04 = {
 		}
 		illustration = @holding_illustration_mediterranean
 		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/City/mediterranean_city" soundparameter = { "Tier" = 2 } }
-		graphical_regions = { world_ga_aversarian_homelands world_ga_clanlands }
+		graphical_regions = { graphical_mediterranean }
 		graphical_cultures = { mediterranean_building_gfx }
 	}
 	

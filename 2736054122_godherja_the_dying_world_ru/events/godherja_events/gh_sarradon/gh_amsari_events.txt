@@ -1,0 +1,690 @@
+﻿namespace = amsari
+
+#Events dealing with the Amsari Civil war
+##################
+##EVENT     LIST##
+# amsari.0001
+#
+# amsari.0002
+#
+# amsari.0003
+#
+# amsari.0004
+#
+# amsari.0005
+#
+# amsari.0006
+#
+# amsari.0007
+#
+# amsari.0008
+#
+# amsari.0009
+#
+# amsari.0010
+#
+# amsari.0011
+# Amsari Civil war event chain
+# amsari.0001 #hidden event 
+# > amsari.0002 #The Hiklahn Mourns    For children of canian_1
+# OR > amsari.005 #EVENTNAME  For non-children of canian_1
+# >> amsari.0003 #hidden event 
+##################
+
+# Amsari civil war event chain
+# Hidden event triggers on death of canian_1, his direct children and other non vassals
+# get event to join the civil war or stay neutral, they then declare war on each other 2 days later
+# amsari.0001-amsari.0003,amsari.0005
+# by Netgearghost
+amsari.0001 = { #Initial hidden event when the father dies to set the flags and create independence
+    hidden = yes
+	trigger = { 
+		this = character:canian_1
+    }
+
+    immediate = { #to be used to recreate the title when war is over
+        set_global_variable = {
+            name = amsari_civil_war
+            value = this
+    	}
+
+		title:e_amsari = {
+			holder = {
+				every_child = {
+					limit = {
+						is_landed = yes
+					}
+				}
+				every_vassal = {
+					limit = {
+						OR = { #this is to make sure a player goes independent if they play as a non-child former vassal
+							is_ai = yes
+							is_ai = no
+						}
+					}
+					# And give them their independence.
+					create_title_and_vassal_change = {
+						type = independency
+						save_scope_as = change
+						add_claim_on_loss = yes
+					}
+					becomes_independent = { change = scope:change }
+					resolve_title_and_vassal_change = scope:change
+				}
+				destroy_title = title:e_amsari 
+			}
+		}
+	}
+}
+
+# The Hiklahn Mourns
+# Event for canian_1's direct children for if they want to join the civil war or stay neutral
+# by Netgearghost
+amsari.0002 = { #Event for father's direct children
+	title = amsari.0002.t
+	desc = amsari.0002.desc
+	theme = death
+	right_portrait = {
+		character = ROOT
+		animation = grief
+	}
+
+	option = { # Join the war (It is mine by right!)
+		name = amsari.0002.a
+		custom_tooltip = amsari.0002.a.tt
+
+		hidden_effect = {
+			trigger_event = { 
+				id = amsari.0003 #starts the war with everyone whose on the variable list
+				days = 2
+			}
+		}
+
+		add_to_global_variable_list = { #variable added so the decision can count how many participants are left
+			name = amsari_war
+			target = this
+		}
+		set_variable = { #variable for any war participant
+			name = amsari_war1
+			value = this
+		}
+		spawn_army = {
+			name = "amsari_loyalists"
+			location = capital_province
+			levies = 1000
+			men_at_arms = {
+				type = prophets_sons
+				stacks = 3
+			}
+			men_at_arms = {
+				type = onager
+				stacks = 6
+			}
+			inheritable = yes
+			uses_supply = no
+		}
+        
+        ai_chance = { 
+            base = 50
+			modifier = {
+				add = 50
+				this = character:canian_20
+			}
+		}
+	}
+
+	option = { # Stay neutral (This is not my fight)
+		name = amsari.0002.b
+		custom_tooltip = amsari.0002.b.tt
+		
+		set_variable = { #variable for any neutral participant
+			name = amsari_neutral
+			value = this
+		}
+        
+        ai_chance = {
+            base = 50
+			modifier = {
+				add = -50
+				this = character:canian_20
+			}
+        }
+	}
+}
+
+# by Netgearghost
+amsari.0003 = { #Hidden event that declares war on everyone that tries to take the throne (in previous event)
+  hidden = yes
+  immediate = {
+		every_in_global_list = {
+			variable = amsari_war
+			save_temporary_scope_as = defender
+			primary_title = { save_temporary_scope_as = war_target_title }
+			every_in_global_list = {
+				variable = amsari_war
+				limit = { NOT = { THIS = PREV } }
+				# Declare the war
+				start_war = {
+					cb = amsari_civilwar_cb
+					target = scope:defender
+					target_title = scope:war_target_title
+				}
+			}
+		}
+	}
+}
+
+# A Prince Falls
+# Triggers upon winning any of the wars, 3 options given to the winner. 
+# a) allows taking all lands and titles
+# b) allows taking only the losers titles, vassalizes rest and executes the loser
+# c) Kills the loser but only vassalises the titles, doesn't take any
+# by Netgearghost
+amsari.0004 = { #Event that fires upon winning (or if the primary participant loses) the war
+	title = amsari.0004.t
+	desc = amsari.0004.desc
+	theme = war
+
+	left_portrait = {
+		character = scope:loser
+		animation = shock
+	}
+	right_portrait = {
+		character = ROOT
+		animation = war_over_win
+	}
+
+	immediate = {
+		scope:loser = {
+			every_held_title = {
+				limit = { tier <= scope:loser.primary_title.tier }
+				add_to_list = all_titles_at_stake
+			}
+			every_vassal_or_below = {
+				limit = { NOT = { this = scope:winner } }
+				every_held_title = {
+					limit = { tier <= scope:loser.primary_title.tier }
+					add_to_list = optiona_vassal_land_taken
+				}
+			}
+			primary_title = {
+				save_scope_as = targeted_title
+			}
+			remove_list_global_variable = { name = amsari_war target = scope:loser }
+		}
+		
+		if = {
+			limit = {
+				scope:attacker.primary_title.tier <= scope:loser.primary_title.tier
+			}
+
+			create_title_and_vassal_change = {
+				type = conquest_claim
+				save_scope_as = change
+				add_claim_on_loss = no
+			}
+			
+			setup_claim_cb = {
+				titles = targeted_title
+				attacker = scope:winner
+				defender = scope:targeted_title.holder
+				claimant = scope:winner
+				change = scope:change
+				civil_war = no
+			}
+	
+			resolve_title_and_vassal_change = scope:change
+		}
+	}
+
+	option = { #take all lands and titles
+		name = amsari.0004.a
+		custom_tooltip = amsari.0004.a.tt
+        
+		create_title_and_vassal_change = {
+			type = conquest_claim
+			save_scope_as = change
+			add_claim_on_loss = no
+		}
+		
+		setup_claim_cb = {
+			titles = all_titles_at_stake
+			attacker = scope:winner
+			defender = scope:targeted_title.holder
+			claimant = scope:winner
+			change = scope:change
+			civil_war = no
+		}
+
+		resolve_title_and_vassal_change = scope:change
+
+		create_title_and_vassal_change = {
+			type = conquest_claim
+			save_scope_as = change2
+			add_claim_on_loss = no
+		}
+		
+		setup_claim_cb = {
+			titles = optiona_vassal_land_taken
+			attacker = scope:winner
+			defender = scope:targeted_title.holder
+			claimant = scope:winner
+			change = scope:change2
+			civil_war = no
+		}
+		
+		resolve_title_and_vassal_change = scope:change2
+
+        ai_chance = {
+            base = 33
+        }
+	}
+
+	option = { #kill prince, take demnese, vassalize rest
+		name = amsari.0004.b
+		custom_tooltip = amsari.0004.b.tt
+
+		create_title_and_vassal_change = {
+			type = conquest_claim
+			save_scope_as = change
+			add_claim_on_loss = no
+		}
+		
+		setup_claim_cb = {
+			titles = all_titles_at_stake
+			attacker = scope:winner
+			defender = scope:targeted_title.holder
+			claimant = scope:winner
+			change = scope:change
+			civil_war = no
+		}
+
+		resolve_title_and_vassal_change = scope:change
+
+		scope:loser = {
+			death = {
+				death_reason = death_execution
+				killer = scope:winner
+			}
+		}
+
+		ai_chance = {
+			base = 33
+		}
+	}
+
+	option = { #Execute the brother, but vassalize the lands
+		name = amsari.0004.c
+		custom_tooltip = amsari.0004.c.tt
+		
+		create_title_and_vassal_change = {
+			type = conquest_claim
+			save_scope_as = change
+			add_claim_on_loss = no
+		}
+			
+		scope:targeted_title = {
+			limit = { tier = scope:loser.primary_title.tier }
+			change_title_holder = {
+				holder = scope:winner
+				change = scope:change
+			}
+		}
+
+		resolve_title_and_vassal_change = scope:change
+
+		scope:loser = { 
+			change_liege = {
+				liege = scope:winner
+				change = scope:change2
+			}	
+			every_vassal_or_below = {
+				change_liege = {
+					liege = scope:winner
+					change = scope:change2
+				}				
+			}
+			death = {
+				death_reason = death_execution
+				killer = scope:winner
+			}
+		}
+
+		resolve_title_and_vassal_change = scope:change2
+
+		ai_chance = {
+			base = 33
+		}
+	}
+}
+
+# The Hiklahn Mourns
+# Event for every other (non-canian_1 child) vassal to join the civil war or stay neutral
+# by Netgearghost
+amsari.0005 = { #event for every other (non-canian_1 child) vassal
+	title = amsari.0005.t
+	desc = amsari.0005.desc
+	theme = martial
+	right_portrait = {
+		character = ROOT
+		animation = worry
+	}
+
+	option = { # Join the war (The Throne is mine!)
+		name = amsari.0005.a
+		custom_tooltip = amsari.0005.a.tt
+
+		hidden_effect = {
+			trigger_event = { 
+				id = amsari.0003 #starts the war with everyone whose on the variable list
+				days = 2
+			}
+		}
+
+		spawn_army = {
+			name = "amsari_loyalists"
+			location = capital_province
+			levies = 1000
+			men_at_arms = {
+				type = prophets_sons
+				stacks = 3
+			}
+			men_at_arms = {
+				type = onager
+				stacks = 6
+			}
+			inheritable = yes
+			uses_supply = no
+		}
+
+		add_to_global_variable_list = { ##variable added so the decision can count how many are left
+			name = amsari_war
+			target = this
+		}
+		set_variable = { #variable for any war participant
+			name = amsari_war1
+			value = this
+		}
+        
+        ai_chance = { 
+            base = 50
+		}
+	}
+
+	option = { # Stay neutral (This isn't my fight)
+		name = amsari.0002.b
+		custom_tooltip = amsari.0002.b.tt
+		
+		set_variable = { #variable for any neutral participant
+			name = amsari_neutral
+			value = this
+		}
+        
+        ai_chance = {
+            base = 50
+        }
+	}
+}
+
+# The March into Tchouran
+# Triggers upon winning the war against the Amsari capital holder only
+# a) allows taking all lands and titles
+# by Netgearghost
+amsari.0006 = { #Special event for annexing Tchouran (its the capital, ofc you would take it for yourself.)
+	title = amsari.0006.t
+	desc = amsari.0006.desc
+	theme = war
+
+	left_portrait = {
+		character = scope:loser
+		animation = shock
+	}
+	right_portrait = {
+		character = ROOT
+		animation = war_over_win
+	}
+
+	immediate = {
+        scope:loser = {
+            every_held_title = {
+                limit = { tier <= scope:loser.primary_title.tier }
+                add_to_list = all_titles_at_stake
+            }
+            every_vassal_or_below = {
+                limit = { NOT = { this = scope:winner } }
+                every_held_title = {
+                    limit = { tier <= scope:loser.primary_title.tier }
+                    add_to_list = optiona_vassal_land_taken
+                }
+            }
+            primary_title = {
+                save_scope_as = targeted_title
+            }
+            remove_list_global_variable = { name = amsari_war target = scope:loser }
+        }
+
+		if = {
+			limit = {
+				scope:attacker.primary_title.tier <= scope:loser.primary_title.tier
+			}
+
+			create_title_and_vassal_change = {
+				type = conquest_claim
+				save_scope_as = change
+				add_claim_on_loss = no
+			}
+			
+			setup_claim_cb = {
+				titles = targeted_title
+				attacker = scope:winner
+				defender = scope:targeted_title.holder
+				claimant = scope:winner
+				change = scope:change
+				civil_war = no
+			}
+
+			resolve_title_and_vassal_change = scope:change
+		}
+	}
+
+	option = { #take all lands and titles
+        name = amsari.0006.a
+        custom_tooltip = amsari.0004.a.tt
+        
+        create_title_and_vassal_change = {
+            type = conquest_claim
+            save_scope_as = change
+            add_claim_on_loss = no
+        }
+        
+        setup_claim_cb = {
+            titles = all_titles_at_stake
+            attacker = scope:winner
+            defender = scope:targeted_title.holder
+            claimant = scope:winner
+            change = scope:change
+            civil_war = no
+        }
+
+        resolve_title_and_vassal_change = scope:change
+
+        create_title_and_vassal_change = {
+            type = conquest_claim
+            save_scope_as = change2
+            add_claim_on_loss = no
+        }
+        
+        setup_claim_cb = {
+            titles = optiona_vassal_land_taken
+            attacker = scope:winner
+            defender = scope:targeted_title.holder
+            claimant = scope:winner
+            change = scope:change2
+            civil_war = no
+        }
+        
+        resolve_title_and_vassal_change = scope:change2
+
+        ai_chance = {
+            base = 100
+        }
+    }
+}
+
+# The War Goes On
+# Event informing the heir (player) that the war goes on, also giving a small amount of troops to the heir
+# by Netgearghost
+amsari.0007 = {  #Event informing the new heir the war continues
+	title = amsari.0007.t
+	desc = amsari.0007.desc
+	theme = war
+	right_portrait = {
+		character = ROOT
+		animation = war_attacker
+	}
+
+	trigger = {
+		has_variable = amsari_war1
+	}
+	option = {  #I shall complete what you started...
+		name = amsari.0007.a
+		spawn_army = { #small troop stimulus 
+			name = "amsari_loyalists"
+			location = capital_province
+			levies = 200
+			men_at_arms = {
+				type = prophets_sons
+				stacks = 1
+			}
+			inheritable = yes
+			uses_supply = no
+		}
+		set_variable = {  #just in case somehow the on_actions doesnt work properly
+			name = amsari_war1
+			value = this
+		}
+	}
+}
+
+# Victory at Last! Glory Everlasting!
+# Event for vassalising all the neutral participants, fired when taking the decision when one has won the war
+# by Netgearghost
+amsari.0008 = { #Event that fires when the decision to reunite the Empire is taken
+	title = amsari.0008.t
+	desc = amsari.0008.desc
+	theme = crown
+	right_portrait = {
+		character = ROOT
+		animation = war_over_win
+	}
+
+	immediate = {
+		if = {
+			limit = {
+				has_title = title:e_amsari
+			}
+			save_scope_as = emperor
+		}
+	}
+
+	option = {
+		name = amsari.0008.a
+		custom_tooltip = amsari.0008.tt
+
+		set_realm_capital = title:c_tchouran
+		title:e_amsari = {
+			set_capital_county = title:c_tchouran
+			every_dejure_vassal_title_holder = {
+				limit = {
+					is_landed = yes
+					NOT = { 
+						THIS = PREV
+						has_title = title:d_marcher_amsari_republic
+					}
+				}
+
+				create_title_and_vassal_change = {
+					type = swear_fealty
+					save_scope_as = change
+					add_claim_on_loss = no
+				}
+	
+				change_liege = {
+					liege = scope:emperor
+					change = scope:change
+				}
+				resolve_title_and_vassal_change = scope:change
+			}
+		}
+
+		hidden_effect = {
+			if = {
+				limit = {
+					has_variable = amsari_war
+				}
+				remove_list_global_variable = { name = amsari_war target = scope:emperor }
+			}
+		}
+		remove_global_variable = amsari_civil_war
+	}
+}
+
+# The War Everlasting
+# Flavour event which fires after 50 years and the wars invalidate
+# by Netgearghost
+amsari.0009 = {  #This fires when the civil war is invalidated (should only fire after the 50 years is up)
+	title = amsari.0009.t
+	desc = amsari.0009.desc
+	theme = dread
+
+	trigger = {
+		current_date >= 1304.1.1
+		has_variable = amsari_war1
+	}
+
+	right_portrait = {
+		character = ROOT
+		animation = shock
+	}
+
+	option = {
+		name = amsari.0009.a
+		remove_global_variable = amsari_civil_war
+	}
+}
+
+# The Rot has grown too Large
+# Flavour event for when the 50 years have passed and the amsari throne hasn't had blood of the prophet on it
+# by Netgearghost
+amsari.0010 = {  #The lack of the Blood of the prophet has broken the Empire title
+	title = amsari.0010.t
+	desc = amsari.0010.desc
+	theme = dread
+
+	right_portrait = {
+		character = ROOT
+		animation = shock
+	}
+
+	option = {
+		name = amsari.0010.a
+	}
+}
+
+# War in the West
+# Flavour event for telling players about the Amsari Civil War breaking out
+# by Netgearghost
+amsari.0011 = {  #Flavour event for telling players about the Amsari Civil War breaking out
+	title = amsari.0011.t
+	desc = amsari.0011.desc
+	theme = dread
+
+	right_portrait = {
+		character = ROOT
+		animation = shock
+	}
+
+	option = {
+		name = amsari.0011.a
+	}
+}

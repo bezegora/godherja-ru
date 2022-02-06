@@ -47,7 +47,7 @@ MartialTournamentAdjective = {
 			OR = {		
 				has_government = tribal_government
 				faith = {
-					has_doctrine = pagan_hostility_doctrine
+					has_doctrine = standard_hostility_doctrine
 				}
 				capital_province = {
 					geographical_region = world_ga_clanlands
@@ -96,7 +96,10 @@ ResidenceBuilding = { #Castle, Palace, etc.
 
 	text = {
 		trigger = {
-			has_government = republic_government
+			OR = {
+				has_government = republic_government
+				has_government = republic_playable_government
+			}
 		}
 		localization_key = mansion
 	}
@@ -115,6 +118,7 @@ ResidenceBuilding = { #Castle, Palace, etc.
 		trigger = {
 			NOR = {
 				has_government = republic_government
+				has_government = republic_playable_government
 				has_government = theocracy_government
 				is_theocratic_lessee = yes
 			}
@@ -930,58 +934,289 @@ RandomEntertainmentTextName = {
 
 	text = {
 		trigger = {
-			scope:entertainment_book_title = flag:beowulf
+			scope:entertainment_book_title = flag:mighty_magi_buxom_maiden
 		}
-		localization_key = random_entertainment_text_sjavolki_tales
+		localization_key = random_entertainment_text_mighty_magi_buxom_maiden
 	}
 
 	text = {
 		trigger = {
-			scope:entertainment_book_title = flag:niebelungenlied
+			scope:entertainment_book_title = flag:fifty_shades_of_blood
+		}
+		localization_key = random_entertainment_text_fifty_shades_of_blood
+	}
+
+	text = {
+		trigger = {
+			scope:entertainment_book_title = flag:sound_of_air
+		}
+		localization_key = random_entertainment_text_sound_of_air
+	}
+
+	text = {
+		trigger = {
+			scope:entertainment_book_title = flag:love_and_death_in_asiupoli
+		}
+		localization_key = random_entertainment_text_sound_of_air
+	}
+
+	text = {
+		trigger = {
+			scope:entertainment_book_title = flag:travels_of_saint_katharitos
+		}
+		localization_key = random_entertainment_text_travels_of_saint_katharitos
+	}
+
+	text = {
+		trigger = {
+			scope:entertainment_book_title = flag:tale_of_two_cities
+		}
+		localization_key = random_entertainment_text_tale_of_two_cities
+	}
+
+	text = {
+		trigger = {
+			scope:entertainment_book_title = flag:the_worlds_edge
+		}
+		localization_key = random_entertainment_text_the_worlds_edge
+	}
+
+	text = {
+		trigger = {
+			scope:entertainment_book_title = flag:dragon_and_the_scorpion
+		}
+		localization_key = random_entertainment_text_dragon_and_the_scorpion
+	}
+
+	text = {
+		trigger = {
+			scope:entertainment_book_title = flag:the_dragon_tale
+		}
+		localization_key = random_entertainment_text_the_dragon_tale
+	}
+
+	text = {
+		trigger = {
+			scope:entertainment_book_title = flag:seventy_seven_cities
+		}
+		localization_key = random_entertainment_text_seventy_seven_cities
+	}
+
+	text = {
+		trigger = {
+			scope:entertainment_book_title = flag:pocket_guide_to_aversaria
+		}
+		localization_key = random_entertainment_text_pocket_guide_to_aversaria
+	}
+
+	text = {
+		trigger = {
+			scope:entertainment_book_title = flag:theryion
+		}
+		localization_key = random_entertainment_text_theryion
+	}
+
+	text = {
+		trigger = {
+			scope:entertainment_book_title = flag:the_age_of_purges
+		}
+		localization_key = random_entertainment_text_the_age_of_purges
+	}
+
+	text = {
+		trigger = {
+			scope:entertainment_book_title = flag:the_bloodtext
+		}
+		localization_key = random_entertainment_text_the_bloodtext
+	}
+
+	text = {
+		trigger = {
+			scope:entertainment_book_title = flag:purestifinix
+		}
+		localization_key = random_entertainment_text_purestifinix
+	}
+
+	text = {
+		trigger = {
+			scope:entertainment_book_title = flag:compiled_works_of_abael_venodau
+		}
+		localization_key = random_entertainment_text_compiled_works_of_abael_venodau
+	}
+
+	text = {
+		trigger = {
+			scope:entertainment_book_title = flag:passionate_knight_and_pleasingly_thick_magi
+		}
+		localization_key = random_entertainment_text_passionate_knight_and_pleasingly_thick_magi
+	}
+
+	text = {
+		trigger = {
+			scope:entertainment_book_title = flag:the_chivalric_code
+		}
+		localization_key = random_entertainment_text_the_chivalric_code
+	}
+
+	text = {
+		trigger = {
+			scope:entertainment_book_title = flag:the_last_hippogriff
+		}
+		localization_key = random_entertainment_text_the_last_hippogriff
+	}
+
+	text = {
+		trigger = {
+			scope:entertainment_book_title = flag:griffon_bestiary
+		}
+		localization_key = random_entertainment_text_griffon_bestiary
+	}
+
+	text = {
+		trigger = {
+			scope:entertainment_book_title = flag:a_chevalien_knight_in_oraispol
+		}
+		localization_key = random_entertainment_text_a_chevalien_knight_in_oraispol
+	}
+
+	text = {
+		trigger = {
+			scope:entertainment_book_title = flag:how_to_read_a_book
+		}
+		localization_key = random_entertainment_text_how_to_read_a_book
+	}
+
+	text = {
+		trigger = {
+			scope:entertainment_book_title = flag:tale_of_sir_koeveux
+		}
+		localization_key = random_entertainment_text_tale_of_sir_koeveux
+	}
+
+	text = {
+		trigger = {
+			scope:entertainment_book_title = flag:life_of_jacot_den_va_waldisse
+		}
+		localization_key = random_entertainment_text_life_of_jacot_den_va_waldisse
+	}
+
+	text = {
+		trigger = {
+			scope:entertainment_book_title = flag:the_bastionetale
+		}
+		localization_key = random_entertainment_text_the_bastionetale
+	}
+
+	text = {
+		trigger = {
+			scope:entertainment_book_title = flag:legends_of_the_seven_justicesaints
+		}
+		localization_key = random_entertainment_text_legends_of_the_seven_justicesaints
+	}
+
+	text = {
+		trigger = {
+			scope:entertainment_book_title = flag:velosmyrmyrdarg
+		}
+		localization_key = random_entertainment_text_velosmyrmyrdarg
+	}
+
+	text = {
+		trigger = {
+			scope:entertainment_book_title = flag:the_dragonslayer
+		}
+		localization_key = random_entertainment_text_the_dragonslayer
+	}
+
+	text = {
+		trigger = {
+			scope:entertainment_book_title = flag:jarocish
+		}
+		localization_key = random_entertainment_text_jarocish
+	}
+
+	text = {
+		trigger = {
+			scope:entertainment_book_title = flag:home_of_the_empire_oraispol
+		}
+		localization_key = random_entertainment_text_home_of_the_empire_oraispol
+	}
+
+	text = {
+		trigger = {
+			scope:entertainment_book_title = flag:the_eastern_jewel_asiupoli
+		}
+		localization_key = random_entertainment_text_the_eastern_jewel_asiupoli
+	}
+
+	text = {
+		trigger = {
+			scope:entertainment_book_title = flag:peti_gisredde_the_greatest_of_cities
+		}
+		localization_key = random_entertainment_text_peti_gisredde_the_greatest_of_cities
+	}
+
+	text = {
+		trigger = {
+			scope:entertainment_book_title = flag:grande_gisredde_a_city
+		}
+		localization_key = random_entertainment_text_grande_gisredde_a_city
+	}
+
+	text = {
+		trigger = {
+			scope:entertainment_book_title = flag:travels_to_the_hellworld
+		}
+		localization_key = random_entertainment_text_travels_to_the_hellworld
+	}
+
+	text = {
+		trigger = {
+			scope:entertainment_book_title = flag:travels_to_the_darkest_realm
+		}
+		localization_key = random_entertainment_text_travels_to_the_darkest_realm
+	}
+
+	text = {
+		trigger = {
+			scope:entertainment_book_title = flag:poems_mathilde
 		}
 		localization_key = random_entertainment_text_poems_mathilde
 	}
 
 	text = {
 		trigger = {
-			scope:entertainment_book_title = flag:song_of_roland
+			scope:entertainment_book_title = flag:crimson_ode
 		}
 		localization_key = random_entertainment_text_crimson_ode
 	}
 
 	text = {
 		trigger = {
-			scope:entertainment_book_title = flag:mabinogi
-		}
-		localization_key = random_entertainment_text_marmalicon
-	}
-
-	text = {
-		trigger = {
-			scope:entertainment_book_title = flag:travels_to_jerusalem
+			scope:entertainment_book_title = flag:travels_to_sarradon
 		}
 		localization_key = random_entertainment_text_travels_to_sarradon
 	}
 
 	text = {
 		trigger = {
-			scope:entertainment_book_title = flag:east_of_indus
+			scope:entertainment_book_title = flag:towards_the_sunset
 		}
 		localization_key = random_entertainment_text_towards_the_sunset
 	}
 
 	text = {
 		trigger = {
-			scope:entertainment_book_title = flag:travels_to_byzantium
+			scope:entertainment_book_title = flag:liches_heart
 		}
-		localization_key = random_entertainment_text_adabyss
+		localization_key = random_entertainment_text_liches_heart
 	}
 
 	text = {
 		trigger = {
-			scope:entertainment_book_title = flag:digenes_akrites
+			scope:entertainment_book_title = flag:among_golden_idols
 		}
-		localization_key = random_entertainment_text_liches_heart
+		localization_key = random_entertainment_text_adabyss
 	}
 
 	text = {
@@ -991,7 +1226,6 @@ RandomEntertainmentTextName = {
 		localization_key = random_entertainment_text_riddles_dhacenox
 	}
 }
-
 
 RandomInformativeTextName = {
 	type = character

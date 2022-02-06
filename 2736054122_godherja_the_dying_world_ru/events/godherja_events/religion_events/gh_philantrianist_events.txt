@@ -1,0 +1,659 @@
+﻿namespace = philantrianist
+
+##################################################
+# # Clique Interactions
+# 0001 - 0010	Recruit Kleptiakos Enforcer
+# 0011 - 0020	Urgent Fundraising
+# 0021 - 0030	Hoodwink (Character Interaction)
+##################################################
+
+
+
+
+
+
+
+
+
+
+##################################################
+# CLIQUE INTERACTIONS
+
+##################################################
+# Recruit Kleptiakos Enforcer
+# by Hapchazzard
+# 0001 - 0010
+##################################################
+
+scripted_trigger ai_desires_kleptiakos_trigger = {
+	# Make sure that the AI didn't use this already recently
+	NOT = { has_variable = recently_hired_kleptiakos }
+	# Steward should have cruddy stewardship
+	trigger_if = {
+		limit = { exists = cp:councillor_steward }
+		cp:councillor_steward.stewardship < decent_skill_rating
+	}
+	# Needs to have the required cost
+	# Philantrianists pay with prestige, everyone else chips in money instead
+	trigger_if = {
+		limit = { has_faith = faith:philanthrios }
+		prestige >= kleptiakos_enforcer_recruitment_cost_prestige
+	}
+	trigger_else = {
+		gold >= kleptiakos_enforcer_recruitment_cost_gold
+	}
+}
+
+# Hidden event that picks a clique member to ask for the enforcer
+philantrianist.0001 = {
+	hidden = yes
+	
+	trigger = {
+		trigger_if = {
+			limit = { is_ai = yes }
+			ai_desires_kleptiakos_trigger = yes
+		}
+	}
+	
+	weight_multiplier = {
+		base = 1
+		
+		# Weight up for Philantrianists
+		modifier = {
+			add = 1
+			has_faith = faith:philanthrios
+		}
+		# Weight up for greedy rulers
+		modifier = {
+			add = 1
+			has_trait = greedy
+		}
+		# Weight up for rulers that have a steward with a very bad stewardship skill
+		modifier = {
+			add = 1
+			trigger_if = {
+				limit = { exists = cp:councillor_steward }
+				cp:councillor_steward.stewardship < low_skill_rating
+			}
+		}
+	}
+	
+	immediate = {
+		set_variable = {
+			name = recently_hired_kleptiakos
+		}
+		if = {
+			limit = { has_faith = faith:philanthrios }
+			add_prestige = { 
+				value = kleptiakos_enforcer_recruitment_cost_prestige
+				multiply = -1
+			}
+		}
+		else = {
+			add_gold = {
+				value = kleptiakos_enforcer_recruitment_cost_gold
+				multiply = -1
+			}
+		}
+		# WIP: this should fire the event for a clique member to choose how good an enforcer they send, rather than giving it outright
+		create_character = {
+			employer = root
+			template = kleptiakos_enforcer_character_template
+		}
+	}
+}
+
+##################################################
+# Urgent Fundraising
+# by Hapchazzard
+# 0011 - 0020
+##################################################
+
+scripted_trigger ai_desires_urgent_fundraising_trigger = {
+	# Make sure that the AI didn't use this already recently
+	NOT = { has_variable = recently_used_urgent_fundraising }
+	# Needs to have the required cost
+	prestige >= urgent_fundraising_cost
+	# Shouldn't waste prestige on this unless they're short on cash or greedy
+	OR = {
+		gold <= medium_gold_value
+		has_trait = greedy
+	}
+}
+
+scripted_effect distribute_fundraising_loot_effect = {
+	if = {
+		limit = { exists = scope:clique_member_scope }
+		scope:interaction_requester = {
+			add_gold = {
+				value = $GOLD_AMOUNT$
+				multiply = {
+					value = 100
+					subtract = urgent_fundraising_service_fee_percentage
+					multiply = 0.01
+				}
+			}
+		}
+		scope:clique_member_scope = {
+			add_gold = {
+				value = $GOLD_AMOUNT$
+				multiply = {
+					value = urgent_fundraising_service_fee_percentage
+					multiply = 0.01
+				}
+			}
+		}
+	}
+	else = {
+		scope:interaction_requester = {
+			add_gold = $GOLD_AMOUNT$
+		}
+	}
+}
+
+scripted_effect distribute_fundraising_loot_wrapper_effect = {
+	if = {
+		limit = { exists = scope:clique_member_scope }
+		show_as_tooltip = { distribute_fundraising_loot_effect = { GOLD_AMOUNT = $GOLD_AMOUNT$ } }
+	}
+	else = {
+		distribute_fundraising_loot_effect = { GOLD_AMOUNT = $GOLD_AMOUNT$ }
+	}
+	save_scope_value_as = {
+		name = fundraising_successful
+		value = $GOLD_AMOUNT$
+	}
+}
+
+scripted_effect prestige_from_extortion_effect = {
+	# If the clique member is doing this on their own accord, they shouldn't get any prestige from it
+	if = {
+		limit = { exists = scope:clique_member_scope }
+		add_prestige = $PRESTIGE_AMOUNT$
+	}
+}
+
+scripted_effect piety_from_extortion_effect = {
+	if = {
+		limit = { faith = { trait_is_virtue = greedy } }
+		add_piety = $PIETY_AMOUNT$
+	}
+	else_if = {
+		limit = { faith = { trait_is_virtue = generous } }
+		add_piety = {
+			value = $PIETY_AMOUNT$
+			multiply = -2
+		}
+	}
+	else = {
+		add_piety = {
+			value = $PIETY_AMOUNT$
+			multiply = -1
+		}
+	}
+}
+
+# Event that picks a clique member to ask for the urgent fundraising
+philantrianist.0011 = {
+	type = character_event
+	title = philantrianist.0011.t
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					has_faith = faith:philanthrios
+				}
+				desc = philantrianist.0011.intro.philantrianist
+			}
+			triggered_desc = {
+				trigger = {
+					NOT = { has_faith = faith:philanthrios }
+				}
+				desc = philantrianist.0011.intro.non_philantrianist
+			}
+		}
+	}
+	
+	left_portrait = {
+		character = root
+		animation = personality_greedy
+	}
+	
+	theme = stewardship
+	override_background = {
+		event_background = market_east
+	}
+	
+	trigger = {
+		trigger_if = {
+			limit = { is_ai = yes }
+			ai_desires_urgent_fundraising_trigger = yes
+		}
+	}
+	
+	weight_multiplier = {
+		base = 1
+		
+		# Weight up for Philantrianists
+		modifier = {
+			add = 1
+			has_faith = faith:philanthrios
+		}
+		# Weight up for greedy rulers
+		modifier = {
+			add = 1
+			has_trait = greedy
+		}
+		# Weight up for rulers that are bankrupt
+		modifier = {
+			add = 1
+			gold < 0
+		}
+		# Weight up for rulers that don't have a lot of gold
+		modifier = {
+			add = 0.5
+			gold < minor_gold_value
+		}
+	}
+	
+	option = {
+		name = philantrianist.0011.a
+		save_scope_as = interaction_requester
+		random_held_title = {
+			limit = { tier = tier_county }
+			save_scope_as = fundraising_county
+		}
+		set_variable = {
+			name = recently_used_urgent_fundraising
+		}
+		add_prestige = { 
+			value = urgent_fundraising_cost
+			multiply = -1
+		}
+		# If the character taking the interaction is a member of the clique, have them do the job in their own personal capacity
+		if = {
+			limit = { is_member_of_clique_with_flag_trigger = { FLAG = kleptiakos } }
+			trigger_event = philantrianist.0012
+		}
+		else = { 
+			pick_or_generate_random_clique_member_effect = { CLIQUE = scope:interaction_clique_scope }
+			scope:clique_member_scope = {
+				trigger_event = philantrianist.0012
+			}
+		}
+	}
+}
+
+# Event received by the Kleptiakos, letting them choose how ferocious the fundraising will be
+philantrianist.0012 = {
+	type = character_event
+	title = philantrianist.0012.t
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = scope:clique_member_scope }
+				}
+				desc = philantrianist.0012.intro.kleptiakos
+			}
+			triggered_desc = {
+				trigger = {
+					exists = scope:clique_member_scope
+				}
+				desc = philantrianist.0012.intro.non_kleptiakos
+			}
+		}
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					ai_compassion >= 50
+				}
+				desc = philantrianist.0012.middle.compassionate
+			}
+			triggered_desc = {
+				trigger = {
+					ai_compassion < 50
+					ai_compassion > -50
+				}
+				desc = philantrianist.0012.middle.neutral
+			}
+			triggered_desc = {
+				trigger = {
+					ai_compassion <= -50
+				}
+				desc = philantrianist.0012.middle.sadistic
+			}
+		}
+	}
+	theme = stewardship
+	override_background = {
+		event_background = market_east
+	}
+	
+	option = {
+		name = {
+			trigger = { ai_compassion >= 50 }
+			text = philantrianist.0012.a.compassionate
+		}
+		name = {
+			trigger = { ai_compassion <= -50 }
+			text = philantrianist.0012.a.sadistic
+		}
+		name = {
+			text = philantrianist.0012.a.neutral
+		}
+		
+		duel = {
+			skill = prowess
+			value = low_skill_rating
+			# You successfully beat a few merchants into submission.
+			50 = {
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = 3.5
+					min = -49
+				}
+				desc = philantrianist.0012.a.tt_success
+				send_interface_toast = {
+					title = philantrianist.0012.a.tt_success
+					left_icon = root
+					prestige_from_extortion_effect = { PRESTIGE_AMOUNT = minor_prestige_gain }
+					piety_from_extortion_effect = { PIETY_AMOUNT = miniscule_piety_value }
+					distribute_fundraising_loot_wrapper_effect = { GOLD_AMOUNT = minor_gold_min_value }
+				}
+			}
+			# The locals chase you off.
+			50 = {
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = -3.5
+					min = -49
+				}
+				desc = philantrianist.0012.a.tt_partial_failure
+				send_interface_toast = {	
+					title = philantrianist.0012.a.tt_partial_failure
+					left_icon = root
+					add_prestige = minor_prestige_loss
+				}
+			}
+		}
+		
+		stress_impact = {
+			sadistic = minor_stress_impact_loss
+			callous = minor_stress_impact_loss
+			greedy = minor_stress_impact_loss
+		}
+	}
+	
+	option = {
+		name = {
+			trigger = { ai_compassion >= 50 }
+			text = philantrianist.0012.b.compassionate
+		}
+		name = {
+			trigger = { ai_compassion <= -50 }
+			text = philantrianist.0012.b.sadistic
+		}
+		name = {
+			text = philantrianist.0012.b.neutral
+		}
+		
+		duel = {
+			skill = prowess
+			value = medium_skill_rating
+			50 = {
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = 3.5
+					min = -49
+				}
+				desc = philantrianist.0012.a.tt_success
+				send_interface_toast = {
+					title = philantrianist.0012.a.tt_success
+					left_icon = root
+					prestige_from_extortion_effect = { PRESTIGE_AMOUNT = medium_prestige_gain }
+					piety_from_extortion_effect = { PIETY_AMOUNT = minor_piety_value }
+					distribute_fundraising_loot_wrapper_effect = { GOLD_AMOUNT = medium_gold_min_value }
+				}
+			}
+			50 = {
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = -3.5
+					min = -49
+				}
+				desc = philantrianist.0012.a.tt_partial_failure
+				send_interface_toast = {	
+					title = philantrianist.0012.a.tt_partial_failure
+					left_icon = root
+					add_prestige = minor_prestige_loss
+				}
+			}
+		}
+		
+		stress_impact = {
+			compassionate = medium_stress_impact_gain
+			sadistic = medium_stress_impact_loss
+			callous = medium_stress_impact_loss
+			greedy = medium_stress_impact_loss
+		}
+	}
+	
+	option = {
+		name = {
+			trigger = { ai_compassion >= 50 }
+			text = philantrianist.0012.c.compassionate
+		}
+		name = {
+			trigger = { ai_compassion <= -50 }
+			text = philantrianist.0012.c.sadistic
+		}
+		name = {
+			text = philantrianist.0012.c.neutral
+		}
+		
+		duel = {
+			skill = prowess
+			value = high_skill_rating
+			50 = {
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = 3.5
+					min = -49
+				}
+				desc = philantrianist.0012.a.tt_success
+				send_interface_toast = {
+					title = philantrianist.0012.a.tt_success
+					left_icon = root
+					prestige_from_extortion_effect = { PRESTIGE_AMOUNT = major_prestige_gain }
+					piety_from_extortion_effect = { PIETY_AMOUNT = medium_piety_value }
+					distribute_fundraising_loot_wrapper_effect = { GOLD_AMOUNT = major_gold_min_value }
+				}
+			}
+			50 = {
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = -3.5
+					min = -49
+				}
+				desc = philantrianist.0012.a.tt_partial_failure
+				send_interface_toast = {	
+					title = philantrianist.0012.a.tt_partial_failure
+					left_icon = root
+					add_prestige = minor_prestige_loss
+				}
+			}
+		}
+		
+		stress_impact = {
+			compassionate = major_stress_impact_gain
+			sadistic = major_stress_impact_loss
+			callous = medium_stress_impact_loss
+			greedy = major_stress_impact_loss
+		}
+	}
+	
+	after = {
+		if = {
+			limit = { exists = scope:clique_member_scope }
+			scope:interaction_requester = { trigger_event = philantrianist.0013 }
+		}
+	}
+}
+
+# Event received by the interaction requester, informing them of the outcome
+philantrianist.0013 = {
+	type = character_event
+	title = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					exists = scope:fundraising_successful
+				}
+				desc = philantrianist.0013.t.success
+			}
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = scope:fundraising_successful }
+				}
+				desc = philantrianist.0013.t.failure
+			}
+		}
+	}
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					exists = scope:fundraising_successful
+				}
+				desc = philantrianist.0013.desc.success
+			}
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = scope:fundraising_successful }
+				}
+				desc = philantrianist.0013.desc.failure
+			}
+		}
+	}
+	theme = stewardship
+	override_background = {
+		event_background = market_east
+	}
+	
+	option = {
+		name = {
+			trigger = {
+				exists = scope:fundraising_successful
+			}
+			text = philantrianist.0013.a.success
+		}
+		name = {
+			trigger = {
+				NOT = { exists = scope:fundraising_successful }
+			}
+			text = philantrianist.0013.a.failure
+		}
+		distribute_fundraising_loot_effect = { GOLD_AMOUNT = scope:fundraising_successful }
+	}
+}
+
+##################################################
+# Hoodwink (Character Interaction)
+# by Hapchazzard
+# 0021 - 0030
+##################################################
+
+# You attempt to sucker someone out of their money. Introduction event where you pick the plan of action.
+philantrianist.0021 = {
+	type = character_event
+	title = philantrianist.0021.t
+	desc = philantrianist.0021.desc
+	theme = murder_scheme
+	
+	left_portrait = {
+		character = scope:recipient
+		animation = personality_rational
+	}
+	
+	right_portrait = {
+		character = root
+		animation = scheme
+	}
+	
+	immediate = {
+		generate_event_scam_options_effect = yes
+	}
+	
+	option = {
+		name = philantrianist.0021.a
+		
+		trigger = { exists = scope:first_scam_option }
+		
+		pick_scam_effect = { SCAM = first_scam_option }
+	}
+	
+	option = {
+		name = philantrianist.0021.b
+		
+		trigger = { exists = scope:second_scam_option }
+		
+		pick_scam_effect = { SCAM = second_scam_option }
+	}
+	
+	option = {
+		name = philantrianist.0021.c
+		
+		trigger = { exists = scope:third_scam_option }
+		
+		pick_scam_effect = { SCAM = third_scam_option }
+	}
+}
+
+# Planning phase of the scam.
+philantrianist.0022 = {
+	type = character_event
+	title = philantrianist.0022.t
+	desc = philantrianist.0022.desc
+	theme = murder_scheme
+	
+	left_portrait = {
+		character = scope:recipient
+		animation = personality_rational
+	}
+	
+	right_portrait = {
+		character = root
+		animation = scheme
+	}
+	
+	# Execute the scam
+	option = {
+		name = philantrianist.0022.a
+		
+		execute_scam_effect = { SCAM = scam_being_executed }
+	}
+	
+	# Try to upgrade the scam further
+	option = {
+		name = philantrianist.0022.b
+		
+		upgrade_scam_effect = { SCAM = scam_being_executed }
+		trigger_event = philantrianist.0022
+	}
+	
+	after = {
+		if = {
+			limit = { exists = scope:scam_option_one }
+			scope:scam_option_one = { cleanup_scam_info_effect = yes }
+		}
+		if = {
+			limit = { exists = scope:scam_option_two }
+			scope:scam_option_two = { cleanup_scam_info_effect = yes }
+		}
+		if = {
+			limit = { exists = scope:scam_option_three }
+			scope:scam_option_three = { cleanup_scam_info_effect = yes }
+		}
+	}
+}

@@ -37,6 +37,7 @@ scripted_trigger is_valid_heresiarch = {
 	exists = capital_county
 	NOT = { has_trait = heresiarch }
 	no_heretical_hof_faith_trigger = yes
+	recently_converted_faith_trigger = no # As amusing as it may be, rulers shouldn't 'flip-flop' between Faiths, so we need to enforce a cooldown on heresy conversions.
 }
 
 heresy.0001 = {
@@ -87,39 +88,39 @@ heresy.0001 = {
 					add = 50
 					is_a_faction_member = yes
 				}
-
-				modifier = {
-					factor = 10
-					has_game_rule = strict_regional_heresy
-					trigger_if = {
-						limit = {
-							faith = faith:catholic
-						}
-						capital_county = {
-							title_province = {
-								OR = {
-									geographical_region = world_europe_west_britannia # Lollard
-									geographical_region = world_europe_west_francia # Cathar
-									geographical_region = world_europe_south_italy # Walddensian
-								}
-							}
-						}
-					}
-					trigger_if = {
-						limit = {
-							faith = faith:orthodox
-						}
-						capital_county = {
-							title_province = {
-								OR = {
-									geographical_region = world_asia_minor # Paulician
-									geographical_region = custom_k_thessalonika # Iconoclast
-									geographical_region = world_europe_south_east # Bogomils
-								}
-							}
-						}
-					}
-				}
+				#REPLACEWITHGODHERJAUNIQUE
+				#modifier = {
+				#	factor = 10
+				#	has_game_rule = strict_regional_heresy
+				#	trigger_if = {
+				#		limit = {
+				#			faith = faith:catholic
+				#		}
+				#		capital_county = {
+				#			title_province = {
+				#				OR = {
+				#					geographical_region = world_europe_west_britannia # Lollard
+				#					geographical_region = world_europe_west_francia # Cathar
+				#					geographical_region = world_europe_south_italy # Walddensian
+				#				}
+				#			}
+				#		}
+				#	}
+				#	trigger_if = {
+				#		limit = {
+				#			faith = faith:orthodox
+				#		}
+				#		capital_county = {
+				#			title_province = {
+				#				OR = {
+				#					geographical_region = world_asia_minor # Paulician
+				#					geographical_region = custom_k_thessalonika # Iconoclast
+				#					geographical_region = world_europe_south_east # Bogomils
+				#				}
+				#			}
+				#		}
+				#	}
+				#}
 			}
 
 			save_scope_as = heretic_ruler
@@ -160,45 +161,46 @@ heresy.0001 = {
 					}
 					add_to_list = potential_heresies
 				}
-				if = {
+				#REPLACEWITHGODHERJAUNIQUE
+				#if = {				
 					# Abrahamics also get bonus dualistic heresies
-					limit = {
-						is_in_family = rf_abrahamic
-					}
-					if = {
-						limit = {
-							this = religion:aversarinas_aautokrata_religion
-						}
-						faith:mandeaism = {
-							add_to_list = potential_heresies
-						}
-						faith:priscillianism = {
-							add_to_list = potential_heresies
-						}
-						faith:cainitism = {
-							add_to_list = potential_heresies
-						}
-						# Already extant Christians can't retroactively become jewish converts to Christianity.
-						faith:conversos = {
-							remove_from_list = potential_heresies
-						}
-
-					}
-					else_if = {
-						limit = {
-							this = religion:adabyssian_religion
-						}
-						faith:manichean = {
-							add_to_list = potential_heresies
-						}
-						faith:sabianism = {
-							add_to_list = potential_heresies
-						}
-						faith:valentinianism = {
-							add_to_list = potential_heresies
-						}
-					}
-				}
+					#limit = {
+					#	is_in_family = rf_abrahamic
+					#}				
+					#
+					#if = {
+					#	limit = {
+					#		this = religion:aversarinas_aautokrata_religion
+					#	}
+					#	#faith:mandeaism = {
+					#	#	add_to_list = potential_heresies
+					#	#}
+					#	#faith:priscillianism = {
+					#	#	add_to_list = potential_heresies
+					#	#}
+					#	#faith:cainitism = {
+					#	#	add_to_list = potential_heresies
+					#	#}
+					#	# Already extant Christians can't retroactively become jewish converts to Christianity.
+					#	faith:conversos = {
+					#		remove_from_list = potential_heresies
+					#	}
+					#}
+					#else_if = {
+					#	limit = {
+					#		this = religion:adabyssian_religion
+					#	}
+					#	faith:manichean = {
+					#		add_to_list = potential_heresies
+					#	}
+					#	faith:sabianism = {
+					#		add_to_list = potential_heresies
+					#	}
+					#	faith:valentinianism = {
+					#		add_to_list = potential_heresies
+					#	}
+					#}
+				#}
 			}
 
 			#We want to pick certain faiths to be our heresy over others, assuming they are valid.
@@ -271,132 +273,133 @@ heresy.0001 = {
 						factor = 0
 					}
 
-					# Certain Faiths should be much more rare in general.
-					# Uncommon Faiths
-					modifier = {
-						factor = 0.5
-						OR = {
-							#Dualist
-							this = faith:mandeaism
-							this = faith:sabianism
-						}
-					}
-					#Rare Faiths
-					modifier = {
-						factor = 0.1
-						OR = {
-							this = faith:sethianism
-							this = faith:priscillianism
-							this = faith:cainitism
-						}
-					}
-					# Disabled Faiths
-					modifier = {				
-						factor = 0
-						OR = {
-							this = faith:insular_celtic
-							this = faith:adamites
-							this = faith:bosnian_church
-						}
-					}
-
-					# Lollards more likely in England.
-					modifier = {
-						factor = regional_heresy_factor
-						this = faith:lollard
-						scope:heretic_capital = {
-							title_province = {
-								OR = {
-									geographical_region = custom_netherlands
-									geographical_region = world_europe_west_britannia
-								}
-							}
-						}
-					}
-					# Cathars more likely in France
-					modifier = {
-						factor = regional_heresy_factor
-						this = faith:cathar
-						scope:heretic_capital = {
-							title_province = {
-								OR = {
-									geographical_region = world_europe_west_francia
-								}
-							}
-						}
-					}
-					# Waldensians more likely in Italy/South Germany
-					modifier = {
-						factor = regional_heresy_factor
-						this = faith:waldensian
-						scope:heretic_capital = {
-							title_province = {
-								OR = {
-									geographical_region = world_europe_south_italy
-									geographical_region = custom_germany
-									geographical_region = custom_bavaria
-								}
-							}
-						}
-					}
-
-					# Paulicians more likely in Anatolia
-					modifier = {
-						factor = regional_heresy_factor
-						this = faith:paulician
-						scope:heretic_capital = {
-							title_province = {
-								geographical_region = world_asia_minor
-							}
-						}
-					}
-					# Iconoclasts more likely in Constantinople
-					modifier = {
-						factor = regional_heresy_factor
-						this = faith:iconoclast
-						scope:heretic_capital = {
-							title_province = {
-								geographical_region = custom_k_thessalonika
-							}
-						}
-					}
-					# Bogomils more likely in West ERE
-					modifier = {
-						factor = regional_heresy_factor
-						this = faith:bogomilist
-						scope:heretic_capital = {
-							title_province = {
-								geographical_region = world_europe_south_east
-							}
-						}
-					}
-					# Nestorian more likely in the East
-					modifier = {
-						factor = regional_heresy_factor
-						this = faith:nestorian
-						scope:heretic_capital = {
-							title_province = {
-								OR = {
-									geographical_region = world_india
-									geographical_region = world_middle_east
-
-								}
-							}
-						}
-					}
-					# Priscillianism more likely in Egypt or Iberia
-					modifier = {
-						factor = regional_heresy_factor
-						this = faith:priscillianism
-						scope:heretic_capital = {
-							title_province = {						
-								OR = {
-									geographical_region = world_africa_north_east
-									geographical_region = world_europe_west_iberia
-								}
-							}
-						}
-					}
+					#REPLACEWITHGODHERJAUNIQUE
+					## Certain Faiths should be much more rare in general.
+					## Uncommon Faiths
+					#modifier = {
+					#	factor = 0.5
+					#	OR = {
+					#		#Dualist
+					#		this = faith:mandeaism
+					#		this = faith:sabianism
+					#	}
+					#}
+					##Rare Faiths
+					#modifier = {
+					#	factor = 0.1
+					#	OR = {
+					#		this = faith:sethianism
+					#		this = faith:priscillianism
+					#		this = faith:cainitism
+					#	}
+					#}
+					## Disabled Faiths
+					#modifier = {				
+					#	factor = 0
+					#	OR = {
+					#		this = faith:insular_celtic
+					#		this = faith:adamites
+					#		this = faith:bosnian_church
+					#	}
+					#}
+					#
+					## Lollards more likely in England.
+					#modifier = {
+					#	factor = regional_heresy_factor
+					#	this = faith:lollard
+					#	scope:heretic_capital = {
+					#		title_province = {
+					#			OR = {
+					#				geographical_region = custom_netherlands
+					#				geographical_region = world_europe_west_britannia
+					#			}
+					#		}
+					#	}
+					#}
+					## Cathars more likely in France
+					#modifier = {
+					#	factor = regional_heresy_factor
+					#	this = faith:cathar
+					#	scope:heretic_capital = {
+					#		title_province = {
+					#			OR = {
+					#				geographical_region = world_europe_west_francia
+					#			}
+					#		}
+					#	}
+					#}
+					## Waldensians more likely in Italy/South Germany
+					#modifier = {
+					#	factor = regional_heresy_factor
+					#	this = faith:waldensian
+					#	scope:heretic_capital = {
+					#		title_province = {
+					#			OR = {
+					#				geographical_region = world_europe_south_italy
+					#				geographical_region = custom_germany
+					#				geographical_region = custom_bavaria
+					#			}
+					#		}
+					#	}
+					#}
+					#
+					## Paulicians more likely in Anatolia
+					#modifier = {
+					#	factor = regional_heresy_factor
+					#	this = faith:paulician
+					#	scope:heretic_capital = {
+					#		title_province = {
+					#			geographical_region = world_asia_minor
+					#		}
+					#	}
+					#}
+					## Iconoclasts more likely in Constantinople
+					#modifier = {
+					#	factor = regional_heresy_factor
+					#	this = faith:iconoclast
+					#	scope:heretic_capital = {
+					#		title_province = {
+					#			geographical_region = custom_k_thessalonika
+					#		}
+					#	}
+					#}
+					## Bogomils more likely in West ERE
+					#modifier = {
+					#	factor = regional_heresy_factor
+					#	this = faith:bogomilist
+					#	scope:heretic_capital = {
+					#		title_province = {
+					#			geographical_region = world_europe_south_east
+					#		}
+					#	}
+					#}
+					## Nestorian more likely in the East
+					#modifier = {
+					#	factor = regional_heresy_factor
+					#	this = faith:nestorian
+					#	scope:heretic_capital = {
+					#		title_province = {
+					#			OR = {
+					#				geographical_region = world_india
+					#				geographical_region = world_middle_east
+					#
+					#			}
+					#		}
+					#	}
+					#}
+					## Priscillianism more likely in Egypt or Iberia
+					#modifier = {
+					#	factor = regional_heresy_factor
+					#	this = faith:priscillianism
+					#	scope:heretic_capital = {
+					#		title_province = {						
+					#			OR = {
+					#				geographical_region = world_africa_north_east
+					#				geographical_region = world_europe_west_iberia
+					#			}
+					#		}
+					#	}
+					#}
 				}
 
 				save_scope_as = heretic_faith
@@ -588,13 +591,13 @@ heresy.0005 = {
 			}
 
 			#Religions
-			faith:partic_religion.religion = {
+			religion:partic_religion = {
 				add_to_list = eastern_religions
 			}
-			faith:sjalvolki_religion.religion = {
+			religion:sjalvolki_religion = {
 				add_to_list = eastern_religions
 			}
-			faith:ritualist_religion.religion = {
+			religion:ritualist_religion = {
 				add_to_list = eastern_religions
 			}
 
@@ -678,60 +681,60 @@ heresy.0005 = {
 						factor = 10
 						root.religion = this.religion
 					}
-
-					#Certain Faiths are much more likely to appear/spread than others, due to popularity/obscurity.
-					#Common Faiths
-					modifier = {
-						factor = 1
-						OR = {
-							#Buddhist
-							this = faith:theravada
-							this = faith:mahayana
-							this = faith:vajrayana
-
-							#Hindu
-							this = faith:vaishnavism
-							this = faith:smartism
-							this = faith:srikula_shaktism
-
-							#Jain
-							this = faith:digambara
-							this = faith:svetambara
-
-							#Dualist
-							this = faith:manichean
-						}
-					}
+					##REPLACEWITHGODHERJAUNIQUE
+					##Certain Faiths are much more likely to appear/spread than others, due to popularity/obscurity.
+					##Common Faiths
+					#modifier = {
+					#	factor = 1
+					#	OR = {
+					#		#Buddhist
+					#		this = faith:theravada
+					#		this = faith:mahayana
+					#		this = faith:vajrayana
+					#
+					#		#Hindu
+					#		this = faith:vaishnavism
+					#		this = faith:smartism
+					#		this = faith:srikula_shaktism
+					#
+					#		#Jain
+					#		this = faith:digambara
+					#		this = faith:svetambara
+					#
+					#		#Dualist
+					#		this = faith:manichean
+					#	}
+					#}
 
 					#Uncommon Faiths
-					modifier = {
-						factor = 0.5
-						OR = {
-							#Hindu
-							this = faith:advaitism
-							this = faith:krishnaism
-							this = faith:kalikula_shaktism
-
-							#Jain
-							this = faith:yapaniya
-
-							#Dualist
-							this = faith:mandeaism
-							this = faith:sabianism
-						}
-					}
+					#modifier = {
+					#	factor = 0.5
+					#	OR = {
+					#		#Hindu
+					#		this = faith:advaitism
+					#		this = faith:krishnaism
+					#		this = faith:kalikula_shaktism
+					#
+					#		#Jain
+					#		this = faith:yapaniya
+					#
+					#		#Dualist
+					#		this = faith:mandeaism
+					#		this = faith:sabianism
+					#	}
+					#}
 
 					#Rare Faiths
-					modifier = {
-						factor = 0.1
-						OR = {
-							#Dualist
-							this = faith:valentinianism
-							this = faith:sethianism
-							this = faith:priscillianism
-							this = faith:cainitism
-						}
-					}
+					#modifier = {
+					#	factor = 0.1
+					#	OR = {
+					#		#Dualist
+					#		this = faith:valentinianism
+					#		this = faith:sethianism
+					#		this = faith:priscillianism
+					#		this = faith:cainitism
+					#	}
+					#}
 				}
 				save_scope_as = heretic_faith
 			}
@@ -942,6 +945,13 @@ heresy.0010 = {
 					is_available_ai = yes
 				}
 				set_character_faith = scope:heretic_faith
+
+				hidden_effect = {
+					add_character_flag = {
+						flag = converted_by_heresy_0010_event
+						years = 15
+					}
+				}
 			}
 		}
 
@@ -972,7 +982,7 @@ heresy.0010 = {
 			send_interface_message = {
 				type = event_heresy_outbreak_neutral
 				title = heresy.0010.notification.title
-				desc = heresy.0010.notification
+				custom_tooltip = heresy.0010.notification
 				
 				left_icon = scope:heretic_ruler
 				goto = scope:heretic_ruler
@@ -984,7 +994,7 @@ heresy.0010 = {
 			change_fervor = 100
 		}
 		scope:origin_faith = {
-			change_fervor = 10
+			change_fervor = heretical_defector_fervor_gain
 		}
 	}
 
@@ -1091,6 +1101,7 @@ heresy.0011 = {
 				exists = capital_county
 				is_capable_adult_ai = yes
 				no_heretical_hof_faith_0011_trigger = yes
+				recently_converted_faith_trigger = no # As amusing as it may be, rulers shouldn't 'flip-flop' between Faiths, so we need to enforce a cooldown on heresy conversions.
 			}
 
 			weight = {
@@ -1154,6 +1165,12 @@ heresy.0011 = {
 		if = {
 			limit = {
 				exists = scope:convert_ruler
+			}
+			hidden_effect = {
+				add_character_flag = {
+					flag = converted_by_heresy_0011_event
+					years = 15
+				}
 			}
 
 			#Consume heresy power to fuel this conversion.
@@ -1305,10 +1322,9 @@ heresy.0011 = {
 				}
 			}
 
-
 			#Fervor adjustments to prevent multiple heresy flip-flopping.
 			scope:origin_faith = {
-				change_fervor = 10
+				change_fervor = heretical_defector_fervor_gain
 			}
 		}
 	}

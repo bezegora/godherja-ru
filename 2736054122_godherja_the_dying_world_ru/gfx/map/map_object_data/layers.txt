@@ -1,5 +1,31 @@
 ﻿categories={
 	map_foliage_category
+	map_buildings_category
+	map_other_category
+}
+layer={
+	name="gh_environmental"
+	fade_in=0
+	fade_out=20
+	category="map_buildings_category"
+	masks="low|medium|high"
+	visibility_tags=""
+}
+layer={
+	name="gh_animals"
+	fade_in=0
+	fade_out=20
+	category="map_other_category"
+	masks="low|medium|high"
+	visibility_tags=""
+}
+layer={
+	name="gh_special_buildings"
+	fade_in=0
+	fade_out=20
+	category="map_buildings_category"
+	masks="low|medium|high"
+	visibility_tags=""
 }
 layer={
 	name="grass_layer"

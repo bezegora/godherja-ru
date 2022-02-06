@@ -66,6 +66,11 @@ select_local_animal_effect = {
 					}
 				}
 				5 = {
+					# not in Sarradon
+					modifier = {
+						factor = 0
+						location = { geographical_region = world_sarradon }
+					}
 					set_variable = {
 						name = local_animal
 						value = flag:bear
@@ -187,7 +192,6 @@ big_animal_effect = {
 	}
 }
 
-#Used to find a local dangerous animal
 #Used to find a local dangerous animal
 dangerous_animal_effect = {
 	hidden_effect = {

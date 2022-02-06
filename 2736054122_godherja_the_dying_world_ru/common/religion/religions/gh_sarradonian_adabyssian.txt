@@ -1,10 +1,10 @@
 ﻿adabyssian_religion = {
 	family = gh_sarradonian
-	doctrine = standard_hostility_doctrine
+	doctrine = adabyssian_hostility_doctrine
 	#Main Group
 	doctrine = doctrine_no_head
 	doctrine = doctrine_gender_equal
-	doctrine = doctrine_pluralism_pluralistic
+	doctrine = doctrine_pluralism_fundamentalist
 	doctrine = doctrine_theocracy_temporal
 
 	#Marriage
@@ -52,8 +52,8 @@
 	doctrine = doctrine_formal_coronation
 
 	traits = {
-		virtues = { lustful calm humble }
-		sins = { greedy lazy arrogant }
+		virtues = { patient calm humble }
+		sins = { impatient wrathful arrogant }
 	}
 
 	custom_faith_icons = {
@@ -211,9 +211,8 @@
 		adabyssian = {
 			color = { 0.6 0.25 0.35 }
 			icon = adabyssian_icon
-			religious_head = d_adabyssian_rel
 
-			holy_site = dimnablah
+			##holy_site = dimnablah
 			holy_site = the_isle_tower
 			holy_site = kabekaman
 			holy_site = mayikprolollan

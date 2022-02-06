@@ -1,9 +1,9 @@
 ﻿gh_sarminian_group = { 
 	graphical_cultures = {
-		western_coa_gfx
-		western_building_gfx
-		western_clothing_gfx
-		western_unit_gfx
+        steppe_coa_gfx
+		steppe_building_gfx		
+		mongol_clothing_gfx
+		mongol_unit_gfx
 	}
 	mercenary_names = {
 	}
@@ -13,27 +13,77 @@ sarminians  = { #sjalvolki coalition culture
 		color = { 0.54 0.54 0.29 }
 		
 		cadet_dynasty_names = {
-		"Dandaxarthos"
-		"Gochar"
-		"Pidanos"
-		"Artthammanos"
-		"Phazinamos"
-		"Borena"
-		"Mada"
-		"Tomyris"
-		"Aldi"
+		"dynn_Dandaxarthos"
+		"dynn_Gochar"
+		"dynn_Pidanos"
+		"dynn_Artthammanos"
+		"dynn_Phazinamos"
+		"dynn_Borena"
+		"dynn_Mada"
+		"dynn_Tomyris"
+		"dynn_Aldi"
+		"dynn_Phiarenos"
+		"dynn_Puchar"
+		"dynn_Motynos"
+		"dynn_Etreapha"
+		"dynn_Chylias"
+		"dynn_Omneados"
+		"dynn_Moetis"
+		"dynn_Altirys"
+		"dynn_Arycan"
+		"dynn_Lomymnos"
+		"dynn_Khyrtar"
+		"dynn_Bomnekles"
+		"dynn_Sarminys"
 		}
 
 		dynasty_names = {
-		"Dandaxarthos"
-		"Gochar"
-		"Pidanos"
-		"Artthammanos"
-		"Phazinamos"
-		"Borena"
-		"Mada"
-		"Tomyris"
-		"Aldi"
+		"dynn_Dandaxarthos"
+		"dynn_Gochar"
+		"dynn_Pidanos"
+		"dynn_Artthammanos"
+		"dynn_Phazinamos"
+		"dynn_Borena"
+		"dynn_Mada"
+		"dynn_Tomyris"
+		"dynn_Aldi"
+		"dynn_Radamophourtos"
+		"dynn_Phiarenos"
+		"dynn_Puchar"
+		"dynn_Motynos"
+		"dynn_Etreapha"
+		"dynn_Chylias"
+		"dynn_Omneados"
+		"dynn_Moetis"
+		"dynn_Altirys"
+		"dynn_Arycan"
+		"dynn_Lomymnos"
+		"dynn_Khyrtar"
+		"dynn_Bomnekles"
+		"dynn_Aldithys"
+		"dynn_Omiride"
+		"dynn_Mirinos"
+		"dynn_Argapys"
+		"dynn_Timoclys"
+		"dynn_Chersonetes"
+		"dynn_Skylurides"
+		"dynn_Palakos"
+		"dynn_Sarmatydes"
+		"dynn_Agathys"
+		"dynn_Budynas"
+		"dynn_Aphagymnos"
+		"dynn_Peithys"
+		"dynn_Octamasadys"
+		"dynn_Scythys"
+		"dynn_Kamaznos"
+		"dynn_Nepethys"
+		"dynn_Amynos"
+		"dynn_Tomymnos"
+		"dynn_Nebotys"
+		"dynn_Obybtos"
+		"dynn_Ouranys"
+		"dynn_Phatys"
+		"dynn_Apsymetis"
 		}
 
 		male_names = {
@@ -48,7 +98,7 @@ sarminians  = { #sjalvolki coalition culture
 			Sauagas
 			Siauaskis
 			Bagios
-			Radamophourtos
+			Radamophoer
 			Bidaes
 			Arseochos
 			Artthamnos
@@ -57,6 +107,26 @@ sarminians  = { #sjalvolki coalition culture
 			Patias
 			Arseouachos
 			Saratos
+			Tilles
+			Cleomenos
+			Odroes
+			Theortos
+			Niseoles
+			Sparniklios
+			Octamasades
+			Baccan
+			Arioganos
+			Pheithiarines
+			Sparagamnos
+			Skilurides
+			Zopyrios
+			Ateas
+			Phatyros
+			Cheydan
+			Samsos
+			Barlaskes
+			Gharsanion
+			Khagalas
 		}
 		female_names = {
 			Opoea
@@ -69,16 +139,48 @@ sarminians  = { #sjalvolki coalition culture
 			Burdukhan
 			Arite
 			Mada
-			Tomyris
+			Tomyrea
 			Alda
 			Ababa
 			Pethesilea
 			Amage
 			Leimeie
-			Burdukhan
-			Achaxe
-			Opoea
 			Saruke 
+			Maiosara
+			Badasa
+			Dadaga
+			Respendia
+			Tillesa
+			Xoba
+			Iaza
+			Adragdaka
+			Siauaka
+			Choroua
+			Mynurea
+			Ama
+			Magete
+			Myridan
+			Aureate
+			Boryda
+			Thia
+			Amydeneia
+			Synoea
+			Charydane
+			Orukhan
+			Omynide
+			Samara
+			Agate
+			Roakha
+			Pekhea
+			Samures
+			Teryne
+			Bakhtawa
+			Cheyda
+			Malgalarea
+			Serinua
+			Zuleykha
+			Zurhania
+			Rekhmea
 		}
 
 		pat_grf_name_chance = 50
@@ -90,10 +192,44 @@ sarminians  = { #sjalvolki coalition culture
 		mother_name_chance = 5
 
 		ethnicities = {
-			10 = caucasian_blond
-			5 = caucasian_ginger
-			45 = caucasian_brown_hair
-			35 = caucasian_dark_hair
+			4 = asian_turkic_1_western
+			4 = asian_turkic_2_western
+			4 = asian_turkic_3_western
+			4 = asian_turkic_4_western
+			4 = asian_turkic_5_western
+			4 = asian_turkic_6_western
+			4 = asian_turkic_7_western
+			4 = asian_turkic_8_western 
+			4 = asian_turkic_9_western
+			4 = asian_turkic_15_western 
+			4 = asian_turkic_16_western
+			4 = asian_turkic_17_western
+			4 = asian_turkic_19_western
+			4 = asian_turkic_20_western
+			4 = asian_turkic_23_western
+			4 = asian_turkic_1_kipchak
+			4 = asian_turkic_2_kipchak
+			4 = asian_turkic_3_kipchak
+			4 = asian_turkic_4_kipchak
+			4 = asian_turkic_5_kipchak
+			4 = asian_turkic_6_kipchak
+			4 = asian_turkic_7_kipchak
+			4 = asian_turkic_10_kipchak
+			4 = asian_turkic_11_kipchak
+			4 = asian_turkic_12_kipchak
+			4 = asian_turkic_13_kipchak
+			4 = asian_turkic_14_kipchak
+			4 = asian_turkic_20_kipchak
+			4 = asian_turkic_26
+			4 = asian_turkic_27
+			4 = asian_turkic_28
+			4 = asian_turkic_29
+			4 = asian_turkic_30
+			4 = asian_turkic_36
+			4 = asian_turkic_37
+			4 = asian_turkic_38
+			4 = asian_turkic_39
+			4 = asian_turkic_40
 		}
 	}
 }

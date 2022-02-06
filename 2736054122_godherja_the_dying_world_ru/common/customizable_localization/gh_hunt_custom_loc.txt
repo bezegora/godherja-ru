@@ -1,0 +1,256 @@
+﻿random_hunting_hiding_spot = {
+	type = character
+
+	random_valid = yes
+
+	text = {
+		trigger = { always = yes }
+		localization_key = behind_a_tree
+	}
+	
+	text = {
+		trigger = { always = yes }
+		localization_key = behind_a_boulder
+	}
+	
+	text = {
+		trigger = { always = yes }
+		localization_key = in_deep_grass
+	}
+	
+	text = {
+		trigger = { prowess >= decent_skill_rating }
+		localization_key = atop_a_tree
+	}
+}
+
+random_stag_gender = {
+	type = character
+
+	random_valid = yes
+
+	text = {
+		localization_key = hart
+	}
+	
+	text = {
+		localization_key = hind
+	}
+}
+
+random_fogbeast_pre_intro = {
+	type = character
+
+	random_valid = yes
+
+	text = {
+		localization_key = FOGBEAST_PRE_INTRO_1
+	}
+	
+	text = {
+		localization_key = FOGBEAST_PRE_INTRO_2
+	}
+	
+	text = {
+		localization_key = FOGBEAST_PRE_INTRO_3
+	}
+	
+	#text = {
+	#	localization_key = FOGBEAST_PRE_INTRO_4
+	#}
+	#
+	#text = {
+	#	localization_key = FOGBEAST_PRE_INTRO_5
+	#}
+}
+
+random_fogbeast_intro = {
+	type = character
+
+	random_valid = yes
+
+	text = {
+		localization_key = FOGBEAST_OF_MUTATION_INTRO_1
+		trigger = { has_variable = fogbeast_of_mutation_original_animal }
+	}
+	
+	text = {
+		localization_key = FOGBEAST_OF_THOUGHT_INTRO_1
+		trigger = { NOT = { has_variable = fogbeast_of_mutation_original_animal } }
+	}
+}
+
+random_foglands_intro = {
+	type = character
+
+	random_valid = yes
+
+	text = {
+		localization_key = random_foglands_ambience_1
+	}
+	
+	text = {
+		localization_key = random_foglands_ambience_2
+	}
+	
+	text = {
+		localization_key = random_foglands_ambience_3
+	}
+}
+
+random_creepy_sound = {
+	type = character
+
+	random_valid = yes
+
+	text = {
+		localization_key = womans_scream
+	}
+	
+	text = {
+		localization_key = mans_scream
+	}
+	
+	text = {
+		localization_key = childs_scream
+	}
+	
+	text = {
+		localization_key = womans_wail
+	}
+	
+	text = {
+		localization_key = mans_wail
+	}
+	
+	text = {
+		localization_key = child_crying
+	}
+	
+	text = {
+		localization_key = woman_laughing
+	}
+	
+	text = {
+		localization_key = man_laughing
+	}
+	
+	text = {
+		localization_key = child_giggling
+	}
+	
+	text = {
+		localization_key = children_playing
+	}
+	
+	text = {
+		localization_key = battle_sound
+	}
+	
+	text = {
+		localization_key = demonic_whispers
+	}
+	
+	text = {
+		localization_key = hateful_whispers
+	}
+	
+	text = {
+		localization_key = pleading_whispers
+	}
+	
+	text = {
+		localization_key = revelry_sound
+	}
+	
+	text = {
+		localization_key = casual_conversation
+	}
+	
+	text = {
+		localization_key = two_voices_talking
+	}
+	
+	text = {
+		localization_key = crows
+	}
+	
+	text = {
+		localization_key = gurgling
+	}
+	
+	text = {
+		localization_key = tinnitus
+	}
+	
+	text = {
+		localization_key = static
+	}
+}
+
+random_shahmaran_appearance = {
+	type = character
+
+	random_valid = yes
+
+	text = {
+		localization_key = pale_skin_black_feathers
+	}
+	
+	text = {
+		localization_key = dark_skin_scaled
+	}
+	
+	text = {
+		localization_key = feathered_wimple
+	}
+}
+
+random_shahmaran_spell = {
+	type = character
+
+	random_valid = yes
+
+	text = {
+		localization_key = fire_blast_shahmaran
+	}
+	
+	text = {
+		localization_key = vacuum_implosion_shahmaran
+	}
+	
+	text = {
+		localization_key = screaming_ghosts_shahmaran
+	}
+}
+
+fortune_eater_location_intro = {
+	type = character
+	
+	text = {
+		localization_key = fortune_eater_intro_location_mayikprolollan
+		trigger = {
+			exists = var:temporary_hunt_biozone_variable
+			var:temporary_hunt_biozone_variable = flag:mayikprolollan
+		}
+	}
+	
+	text = {
+		localization_key = fortune_eater_intro_location_generic
+	}
+}
+
+fortune_eater_duszkam_outcome = {
+	type = character
+	
+	text = {
+		localization_key = fortune_eater_duszkam_outcome_disabled
+		trigger = {
+			exists = scope:disabled_duszkam
+		}
+	}
+	
+	text = {
+		localization_key = fortune_eater_duszkam_outcome_destroyed
+	}
+}

@@ -1,0 +1,460 @@
+﻿namespace = quartermaster_task
+
+##################################################
+# #Manage Crew Side Effects
+# 0001 - 0010	Extra Loot From Quartermaster
+# 0011 - 0020	Disorderly Crew
+# 0021 - 0030	Mutiny!
+# 0031 - 0040	Recruitment Drive
+# 0041 - 0050	Quartermaster Spreads Fame
+##################################################
+
+##################################################
+# Extra Loot From Quartermaster
+# by thundershield
+# 0001 - 0010
+##################################################
+
+# A raiding host carries away extra loot due to the quartermaster's manage crew task
+quartermaster_task.0001 = {
+	hidden = yes
+	type = empty
+	scope = army
+	
+	trigger = {
+		exists = scope:raider.cp:councillor_quartermaster
+		scope:raider = {
+			has_character_flag = crew_managed
+		}
+	}
+
+	immediate = {
+		scope:raider.cp:councillor_quartermaster = {
+			save_scope_as = active_councillor
+		}
+		scope:active_councillor = {
+			duel = {
+				skill = stewardship
+				value = 12
+				55 = {
+					compare_modifier = {
+						value = scope:duel_value
+						multiplier = -2
+						min = -54
+					}
+				}
+				30 = {
+					save_scope_value_as = {
+						name = extra_loot
+						value = 5
+					}
+				}
+				15 = {
+					compare_modifier = {
+						value = scope:duel_value
+						multiplier = 1
+					}
+					save_scope_value_as = {
+						name = extra_loot
+						value = 10
+					}
+				}
+				0 = {
+					compare_modifier = {
+						value = scope:duel_value
+						multiplier = 1
+					}
+					save_scope_value_as = {
+						name = extra_loot
+						value = 15
+					}
+				}
+			}
+			if = {
+				limit = { exists = scope:extra_loot }
+				scope:raider = {
+					send_interface_message = {
+						type = event_steward_task_good
+						title = quartermaster_task.0001.notification
+						desc = {
+							triggered_desc = {
+								trigger = {
+									scope:active_councillor = { stewardship <= average_skill_level }
+								}
+								desc = task_stewardship_good_unskilled_notification_tooltip
+							}
+							triggered_desc = {
+								trigger = {
+									scope:active_councillor = { stewardship > average_skill_level }
+								}
+								desc = task_stewardship_good_skilled_notification_tooltip
+							}
+						}
+						
+						right_icon = scope:active_councillor
+						tooltip = task_manage_crew_tooltip
+						root = {
+							add_loot = scope:extra_loot
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+##################################################
+# Disorderly Crew
+# by Hapchazzard
+# 0011 - 0020
+##################################################
+
+quartermaster_task.0011 = {
+	hidden = yes
+	
+	trigger = {
+		exists = cp:councillor_quartermaster
+		scope:councillor = cp:councillor_quartermaster
+		NOT = {
+			has_character_modifier = quartermaster_task_disorganized_crew_modifier
+		}
+		cp:councillor_quartermaster = {
+			stewardship < high_skill_rating
+		}
+	}
+
+	weight_multiplier = {
+		base = 1
+		compare_modifier = {
+			target = scope:councillor
+			value = martial
+			multiplier = -0.2
+			offset = inverted_high_skill_rating
+		}
+		# More likely if the councillor is scatterbrained
+		modifier = {
+			add = 1
+			cp:councillor_quartermaster = { has_trait = fickle }
+		}
+	}
+
+	immediate = {
+		cp:councillor_quartermaster = {
+			save_scope_as = active_councillor
+		}
+		set_variable = {
+			name = had_quartermaster_task_side_effect
+			value = yes
+			days = 365
+		}
+		send_interface_message = {
+			type = event_steward_task_bad
+			title = quartermaster_task.0011.notification
+			desc = {
+				triggered_desc = {
+					trigger = {
+						scope:active_councillor = { stewardship <= average_skill_level }
+					}
+					desc = task_stewardship_good_unskilled_notification_tooltip
+				}
+				triggered_desc = {
+					trigger = {
+						scope:active_councillor = { stewardship > average_skill_level }
+					}
+					desc = task_stewardship_good_skilled_notification_tooltip
+				}
+			}
+			tooltip = task_manage_crew_tooltip
+
+			left_icon = scope:councillor
+
+			add_character_modifier = {
+				modifier = quartermaster_task_disorganized_crew_modifier
+				days = 1825
+			}
+		}
+	}
+}
+
+##################################################
+# Mutiny
+# by Hapchazzard
+# 0021 - 0030
+##################################################
+
+scripted_trigger county_does_not_already_have_mutiny_trigger = {
+	NOT = {
+		has_county_modifier = quartermaster_task_mutiny_modifier
+	}
+}
+
+quartermaster_task.0021 = {
+	hidden = yes
+	
+	trigger = {
+		exists = cp:councillor_quartermaster
+		scope:councillor = cp:councillor_quartermaster
+		any_sub_realm_county = {
+			county_does_not_already_have_mutiny_trigger = yes
+		}
+		cp:councillor_quartermaster = {
+			stewardship < high_skill_rating
+		}
+	}
+
+	weight_multiplier = {
+		base = 1
+		compare_modifier = {
+			target = scope:councillor
+			value = martial
+			multiplier = -0.2
+			offset = inverted_high_skill_rating
+		}
+		# More likely if the councillor is cruel or spineless
+		modifier = {
+			add = 1
+			cp:councillor_quartermaster = { has_trait = sadistic }
+		}
+		modifier = {
+			add = 1
+			cp:councillor_quartermaster = {
+				OR = {
+					has_trait = shy
+					has_trait = craven
+				}
+			}
+		}
+	}
+
+	immediate = {
+		cp:councillor_quartermaster = {
+			save_scope_as = active_councillor
+		}
+		set_variable = {
+			name = had_quartermaster_task_side_effect
+			value = yes
+			days = 365
+		}
+		random_sub_realm_county = {
+			limit = {
+				county_does_not_already_have_mutiny_trigger = yes
+			}
+			save_scope_as = county
+		}
+		send_interface_message = {
+			type = event_steward_task_bad
+			title = quartermaster_task.0021.notification
+			desc = {
+				triggered_desc = {
+					trigger = {
+						scope:active_councillor = { stewardship <= average_skill_level }
+					}
+					desc = task_stewardship_good_unskilled_notification_tooltip
+				}
+				triggered_desc = {
+					trigger = {
+						scope:active_councillor = { stewardship > average_skill_level }
+					}
+					desc = task_stewardship_good_skilled_notification_tooltip
+				}
+			}
+			tooltip = task_manage_crew_tooltip
+
+			left_icon = scope:councillor
+			right_icon = scope:county
+
+			scope:county = {
+				change_county_control = medium_county_control_loss
+				add_county_modifier = {
+					modifier = quartermaster_task_mutiny_modifier
+					days = 1825
+				}
+			}
+		}
+	}
+}
+
+##################################################
+# Recruitment Drive
+# by Hapchazzard
+# 0031 - 0040
+##################################################
+
+quartermaster_task.0031 = {
+	hidden = yes
+	
+	trigger = {
+		exists = cp:councillor_quartermaster
+		scope:councillor = cp:councillor_quartermaster
+		NOT = {
+			has_character_modifier = quartermaster_task_recruitment_drive_modifier
+		}
+		cp:councillor_quartermaster = {
+			stewardship > mediocre_skill_rating
+		}
+	}
+
+	weight_multiplier = {
+		base = 1
+		compare_modifier = {
+			target = scope:councillor
+			value = stewardship
+			multiplier = 0.2
+			offset = inverted_mediocre_skill_rating
+		}
+	}
+
+	immediate = {
+		cp:councillor_quartermaster = {
+			save_scope_as = active_councillor
+		}
+		set_variable = {
+			name = had_quartermaster_task_side_effect
+			value = yes
+			days = 365
+		}
+		send_interface_message = {
+			type = event_steward_task_good
+			title = quartermaster_task.0031.notification
+			desc = {
+				triggered_desc = {
+					trigger = {
+						scope:active_councillor = { stewardship <= average_skill_level }
+					}
+					desc = task_stewardship_good_unskilled_notification_tooltip
+				}
+				triggered_desc = {
+					trigger = {
+						scope:active_councillor = { stewardship > average_skill_level }
+					}
+					desc = task_stewardship_good_skilled_notification_tooltip
+				}
+			}
+			tooltip = task_manage_crew_tooltip
+
+			left_icon = scope:councillor
+
+			add_character_modifier = {
+				modifier = quartermaster_task_recruitment_drive_modifier
+				days = 1825
+			}
+		}
+	}
+}
+
+##################################################
+# Quartermaster Spreads Fame
+# by Hapchazzard
+# 0041 - 0050
+##################################################
+
+quartermaster_task.0041 = {
+	hidden = yes
+	
+	trigger = {
+		exists = cp:councillor_quartermaster
+		scope:councillor = cp:councillor_quartermaster
+		cp:councillor_quartermaster = {
+			stewardship > mediocre_skill_rating
+		}
+	}
+
+	weight_multiplier = {
+		base = 1
+		compare_modifier = {
+			target = scope:councillor
+			value = stewardship
+			multiplier = 0.2
+			offset = inverted_mediocre_skill_rating
+		}
+		# More likely if the councillor is gregarious or deceitful
+		modifier = {
+			add = 1
+			cp:councillor_quartermaster = { has_trait = gregarious }
+		}
+		modifier = {
+			add = 1
+			cp:councillor_quartermaster = { has_trait = deceitful }
+		}
+	}
+
+	immediate = {
+		cp:councillor_quartermaster = {
+			save_scope_as = active_councillor
+		}
+		set_variable = {
+			name = had_quartermaster_task_side_effect
+			value = yes
+			days = 365
+		}
+		send_interface_message = {
+			type = event_steward_task_good
+			title = quartermaster_task.0041.notification
+			desc = {
+				triggered_desc = {
+					trigger = {
+						scope:active_councillor = { stewardship <= average_skill_level }
+					}
+					desc = task_stewardship_good_unskilled_notification_tooltip
+				}
+				triggered_desc = {
+					trigger = {
+						scope:active_councillor = { stewardship > average_skill_level }
+					}
+					desc = task_stewardship_good_skilled_notification_tooltip
+				}
+			}
+			tooltip = task_manage_crew_tooltip
+
+			left_icon = scope:councillor
+
+			add_prestige = medium_prestige_gain
+		}
+	}
+}
+
+##################################################
+# Quartermaster Establishes Black Port
+# by Hapchazzard
+# 0041 - 0050
+##################################################
+
+quartermaster_task.1001 = {
+	type = letter_event
+	opening = {
+		desc = court_chaplain_task.0201.opening
+	}
+	desc = quartermaster_task.1001.desc
+	sender = scope:councillor
+
+	option = {
+		name = quartermaster_task.1001.a
+		remove_short_term_gold = scope:councillor.quartermaster_establish_shadow_port_cost
+		hidden_effect = {
+			if = {
+				limit = {
+					scope:councillor = {
+						has_council_position = councillor_quartermaster
+					}
+				}
+				scope:councillor = {
+					start_default_task = yes
+				}
+			}
+			scope:county = {
+				add_county_modifier = {
+					modifier = shadow_port
+				}
+			}
+			add_to_variable_list = {
+				name = shadow_ports
+				target = scope:county
+			}
+			update_shadow_ports_list_and_value = yes
+		}
+	}
+	option = {
+		name = quartermaster_task.1001.b
+		custom_tooltip = quartermaster_task.1001.b.tt
+	}
+}

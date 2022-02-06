@@ -122,68 +122,61 @@ pilgrimage_additional_reward_effect = {
 			}
 		}
 	}
+	# Thysian physician tenets
+	if = {
+		limit = {
+			faith = { has_doctrine_parameter = thysian_physician_pilgrimage }
+			NOT = { has_trait = physician_3 }
+		}
+		custom_description_no_bullet = {
+			text = pilgrimage_because_i_have_physician_tenet
+			subject = root
+		}
+		random_list = {
+			desc = pilgrimage_learn_from_the_bishops_physician
+			50 = {
+				desc = pilgrimage_learn_from_the_bishops_success
+				compare_modifier = {
+					value = learning
+					multiplier = 5
+				}
+				change_trait_rank = {
+					trait = lifestyle_physician
+					rank = 1
+					max = 3
+				}
+			}
+			50 = {
+				desc = pilgrimage_learn_from_the_bishops_failure
+				send_interface_toast = {
+					title = pilgrimage_learn_from_the_bishops_failure
+					left_icon = root
+				}
+			}
+		}
+	}
 }
 
 short_pilgrimage_reward_effect = {
 	add_piety = short_pilgrimage_piety_gain
-	if = {
-		limit = {
-			faith.religion = religion:adabyssian_religion
-			exists = scope:activity.var:is_hajj
-		}
-		add_trait = pilgrim
-	}
 	pilgrimage_additional_reward_effect = yes
 }
 
 medium_pilgrimage_reward_effect = {
 	add_piety = long_pilgrimage_piety_gain
-	if = {
-		limit = {
-			trigger_if = {
-				limit = {
-					faith.religion = religion:adabyssian_religion
-				}
-				exists = scope:activity.var:is_hajj
-			}
-			trigger_else = { always = yes }
-		}
-		add_trait = pilgrim
-	}
+	add_trait = pilgrim
 	pilgrimage_additional_reward_effect = yes
 }
 
 long_pilgrimage_reward_effect = {
 	add_piety = very_long_pilgrimage_piety_gain
-	if = {
-		limit = {
-			trigger_if = {
-				limit = {
-					faith.religion = religion:adabyssian_religion
-				}
-				exists = scope:activity.var:is_hajj
-			}
-			trigger_else = { always = yes }
-		}
-		add_trait = pilgrim
-	}
+	add_trait = pilgrim
 	pilgrimage_additional_reward_effect = yes
 }
 
 very_long_pilgrimage_reward_effect = {
 	add_piety = exceptionally_long_pilgrimage_piety_gain
-	if = {
-		limit = {
-			trigger_if = {
-				limit = {
-					faith.religion = religion:adabyssian_religion
-				}
-				exists = scope:activity.var:is_hajj
-			}
-			trigger_else = { always = yes }
-		}
-		add_trait = pilgrim
-	}
+	add_trait = pilgrim
 	pilgrimage_additional_reward_effect = yes
 }
 
@@ -212,24 +205,19 @@ select_pilgrimage_effect = {
 		name = distance
 		value = flag:$PILGRIMAGE_DISTANCE$
 	}
-	if = {
-		limit = {
-			NOT = { has_character_flag = is_on_hajj }
+	switch = {
+		trigger = scope:distance
+		flag:short = {
+			remove_short_term_gold = pilgrimage_minimum_cost
 		}
-		switch = {
-			trigger = scope:distance
-			flag:short = {
-				remove_short_term_gold = pilgrimage_minimum_cost
-			}
-			flag:medium = {
-				remove_short_term_gold = pilgrimage_medium_extra_cost
-			}
-			flag:long = {
-				remove_short_term_gold = pilgrimage_long_extra_cost
-			}
-			flag:very_long = {
-				remove_short_term_gold = pilgrimage_very_long_extra_cost
-			}
+		flag:medium = {
+			remove_short_term_gold = pilgrimage_medium_extra_cost
+		}
+		flag:long = {
+			remove_short_term_gold = pilgrimage_long_extra_cost
+		}
+		flag:very_long = {
+			remove_short_term_gold = pilgrimage_very_long_extra_cost
 		}
 	}
 }
@@ -378,18 +366,9 @@ set_up_next_pilgrimage_event_effect = {
 					compare_value < scope:activity.var:pilgrimage_distance
 				}
 			}
-			if = {
-				limit = { exists = scope:activity.var:is_hajj }
-				trigger_event = {
-					on_action = hajj_journey_events
-					days = $DAYS$
-				}
-			}
-			else = {
-				trigger_event = {
-					on_action = pilgrimage_journey_events
-					days = $DAYS$
-				}
+			trigger_event = {
+				on_action = pilgrimage_journey_events
+				days = $DAYS$
 			}
 		}
 		else = {
@@ -547,12 +526,6 @@ abandon_pilgrimage_early_effect = {
 		remove_variable = pilgrimage_cooldown_timer
 		scope:activity = {
 			complete_activity = no
-		}
-		if = {
-			limit = {
-				has_character_flag = is_on_hajj
-			}
-			remove_character_flag = is_on_hajj
 		}
 	}
 } 

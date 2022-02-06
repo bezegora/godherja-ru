@@ -25,3 +25,139 @@
 		base = 50
 	}
 }
+
+hubarite_empire_decision = {
+	picture = "gfx/interface/illustrations/decisions/decision_magi.dds"
+	major = yes
+	ai_check_interval = 120
+	desc = hubarite_empire_decision_desc
+	
+	is_shown = {
+		faith = faith:hubarism
+		NOT = {
+			is_target_in_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:hubarite_empire_decision
+			}
+		}
+	}
+	
+	is_valid = {
+		custom_description = {
+			text = hubarite_empire_decision_valid_desc
+			calc_true_if = {
+				amount >= 3
+					
+				completely_controls = title:k_tifrennesh
+				completely_controls = title:k_gahzi
+				completely_controls = title:k_behbarvan
+				completely_controls = title:k_mukhtab
+				completely_controls = title:k_mohrtag_al_badi
+				completely_controls = title:k_korkanadadd
+				completely_controls = title:k_jamayya
+				completely_controls = title:k_kerkonia
+			}
+		}
+	}
+	
+	effect = {
+		show_as_tooltip = { hubarite_empire_decision_effects = yes }
+		
+		save_scope_as = hubarite_empire_founder
+		if = {
+			limit = { completely_controls = title:k_tifrennesh }
+			title:k_tifrennesh = {
+				add_to_list = hubarite_empire_kingdoms
+			}
+		}
+		
+		if = {
+			limit = { completely_controls = title:k_gahzi }
+			title:k_gahzi = {
+				add_to_list = hubarite_empire_kingdoms
+			}
+		}
+		
+		if = {
+			limit = { completely_controls = title:k_behbarvan }
+			title:k_behbarvan = {
+				add_to_list = hubarite_empire_kingdoms
+			}
+		}
+		
+		if = {
+			limit = { completely_controls = title:k_mukhtab }
+			title:k_mukhtab = {
+				add_to_list = hubarite_empire_kingdoms
+			}
+		}
+		
+		if = {
+			limit = { completely_controls = title:k_mohrtag_al_badi }
+			title:k_mohrtag_al_badi = {
+				add_to_list = hubarite_empire_kingdoms
+			}
+		}
+		
+		if = {
+			limit = { completely_controls = title:k_korkanadadd }
+			title:k_korkanadadd = {
+				add_to_list = hubarite_empire_kingdoms
+			}
+		}
+		
+		if = {
+			limit = { completely_controls = title:k_jamayya }
+			title:k_jamayya = {
+				add_to_list = hubarite_empire_kingdoms
+			}
+		}
+		
+		if = {
+			limit = { completely_controls = title:k_kerkonia }
+			title:k_kerkonia = {
+				add_to_list = hubarite_empire_kingdoms
+			}
+		}
+		
+		if = {
+			limit = { 
+				AND = {
+					completely_controls = title:k_tifrennesh 
+					completely_controls = title:k_mukhtab
+				}
+			}
+			title:k_central_sarradon41244 = {
+				add_to_list = hubarite_empire_kingdoms
+			}
+		}
+		
+		dynasty = {
+			add_dynasty_prestige = 2000
+		}
+		trigger_event = hubarite.0002
+		every_player = {
+			limit = {
+				NOT = { this = scope:hubarite_empire_founder }
+				is_within_diplo_range = { CHARACTER = scope:hubarite_empire_founder }
+			}
+			trigger_event = hubarite.0003
+		}
+		
+		add_to_global_variable_list = {
+			name = unavailable_unique_decisions
+			target = flag:hubarite_empire_decision
+		}
+	}
+	
+	ai_potential = {
+		always = yes
+	}
+	
+	ai_will_do = {
+		base = 100
+	}
+}
+				
+				
+	

@@ -1,0 +1,1444 @@
+﻿namespace = bonecrafting
+
+##################################################
+
+### Bonecrafting
+
+# 0001 - Skeletal Crafting
+# 0100 - Bonefinding
+# 0200 - Crafting Bone Artifacts
+
+##################################################
+
+##################################################
+# You Use Skeletal Crafting
+# by Bommelom
+# 0001 - 0100
+##################################################
+
+bonecrafting.0001 = {
+	title = bonecrafting.0001.t
+	type = character_event
+	desc = bonecrafting.0001.desc
+	theme = skull
+	override_background = {
+		event_background = magic_ritual
+	}
+	
+	left_portrait = {
+		character = root
+	}
+		
+	option = { # Named characters' bones
+		name = bonecrafting.0001.a
+		trigger_event = bonecrafting.0002
+		ai_chance = {
+			base = 10
+		}
+	}
+	
+	option = { # Generic magic bones
+		name = bonecrafting.0001.b
+		trigger_event = bonecrafting.0003
+		ai_chance = {
+			base = 100
+		}
+	}
+	
+	option = { # Creature bones and parts
+		name = bonecrafting.0001.c
+		trigger_event = bonecrafting.0004
+		ai_chance = {
+			base = 100
+		}
+	}
+	option = { # Nothing
+		name = bonecrafting.0001.d
+		ai_chance = {
+			base = 1
+		}
+	}
+}
+
+bonecrafting.0002 = { # Skulls and bones from historical characters
+	title = bonecrafting.0002.t
+	type = character_event
+	desc = bonecrafting.0002.desc
+	theme = skull
+	override_background = {
+		event_background = magic_ritual
+	}
+	
+	left_portrait = {
+		character = root
+	}
+		
+	option = { # Back to first
+		name = bonecrafting.0002.a
+		trigger_event = bonecrafting.0001
+		ai_chance = {
+			base = 1
+		}
+	}
+	
+	option = { # Skull of Duvaken
+		name = bonecrafting.0002.b
+		trigger = {
+			has_artifact = { ARTIFACT = artifact_skullofduvaken }
+		}
+		custom_tooltip = skeletal_crafting_value_2.tt
+		destroy_artifact_bonecrafting = { ARTIFACT = artifact_skullofduvaken }
+		change_variable = {
+    		name = magic_counter
+    		add = tier_2_bone_gen
+    	}
+		ai_chance = {
+			base = 0
+		}
+	}
+	
+	option = { # Skull of Axiaothea
+		name = bonecrafting.0002.c
+		trigger = {
+			has_artifact = { ARTIFACT = artifact_skullofaxiaothea }
+		}
+		custom_tooltip = skeletal_crafting_value_4.tt
+		destroy_artifact_bonecrafting = { ARTIFACT = artifact_skullofaxiaothea }
+		change_variable = {
+    		name = magic_counter
+    		add = tier_4_bone_gen
+    	}
+		ai_chance = {
+			base = 0
+		}
+	}
+}
+
+bonecrafting.0003 = { # Generic bones + other bones from unknown mages/sources
+	title = bonecrafting.0003.t
+	type = character_event
+	desc = bonecrafting.0003.desc
+	theme = skull
+	override_background = {
+		event_background = magic_ritual
+	}
+
+	left_portrait = {
+		character = root
+	}
+		
+	option = { # Back to first
+		name = bonecrafting.0003.a
+		trigger_event = bonecrafting.0001
+		ai_chance = {
+			base = 1
+		}
+	}
+	
+	option = { # Whispering Skull
+		name = bonecrafting.0003.b
+		trigger = {
+			has_artifact = { ARTIFACT = artifact_whisperingskull }
+		}
+		custom_tooltip = skeletal_crafting_value_2.tt
+		destroy_artifact_bonecrafting = { ARTIFACT = artifact_whisperingskull }
+		change_variable = {
+    		name = magic_counter
+    		add = tier_2_bone_gen
+    	}
+		ai_chance = {
+			base = 0
+		}
+	}
+	option = { # Generic bones level 0
+		name = bonecrafting.0003.c
+		trigger = {
+			has_artifact = { ARTIFACT = artifact_genericbones0 }
+		}
+		custom_tooltip = skeletal_crafting_value_0.tt
+		destroy_artifact_bonecrafting = { ARTIFACT = artifact_genericbones0 }
+		change_variable = {
+    		name = magic_counter
+    		add = tier_0_bone_gen
+    	}
+		ai_chance = {
+			base = 5
+		}
+	}
+	option = { # Generic bones level 1
+		name = bonecrafting.0003.d
+		trigger = {
+			has_artifact = { ARTIFACT = artifact_genericbones1 }
+		}
+		custom_tooltip = skeletal_crafting_value_1.tt
+		destroy_artifact_bonecrafting = { ARTIFACT = artifact_genericbones1 }
+		change_variable = {
+    		name = magic_counter
+    		add = tier_1_bone_gen
+    	}
+		ai_chance = {
+			base = 10
+		}
+	}
+	option = { # Generic bones level 2
+		name = bonecrafting.0003.e
+		trigger = {
+			has_artifact = { ARTIFACT = artifact_genericbones2 }
+		}
+		custom_tooltip = skeletal_crafting_value_2.tt
+		destroy_artifact_bonecrafting = { ARTIFACT = artifact_genericbones2 }
+		change_variable = {
+    		name = magic_counter
+    		add = tier_2_bone_gen
+    	}
+		ai_chance = {
+			base = 15
+		}
+	}
+	option = { # Generic bones level 3
+		name = bonecrafting.0003.f
+		trigger = {
+			has_artifact = { ARTIFACT = artifact_genericbones3 }
+		}
+		custom_tooltip = skeletal_crafting_value_3x.tt
+		destroy_artifact_bonecrafting = { ARTIFACT = artifact_genericbones3 }
+		change_variable = {
+    		name = magic_counter
+    		add = tier_3x_bone_gen
+    	}
+		ai_chance = {
+			base = 20
+		}
+	}
+}
+
+bonecrafting.0004 = { # Creature bones and other creature parts
+	title = bonecrafting.0004.t
+	type = character_event
+	desc = bonecrafting.0004.desc
+	theme = skull
+	override_background = {
+		event_background = magic_ritual
+	}
+
+	left_portrait = {
+		character = root
+	}
+		
+	option = { # Back to first
+		name = bonecrafting.0004.a
+		trigger_event = bonecrafting.0001
+		ai_chance = {
+			base = 1
+		}
+	}
+	
+	option = { # Skull of an Ancient
+		name = bonecrafting.0004.b
+		trigger = {
+			has_artifact = { ARTIFACT = artifact_skullofanancient }
+		}
+		custom_tooltip = skeletal_crafting_value_4.tt
+		destroy_artifact_bonecrafting = { ARTIFACT = artifact_skullofanancient }
+		change_variable = {
+    		name = magic_counter
+    		add = tier_4_bone_gen
+    	}
+		ai_chance = {
+			base = 20
+		}
+	}
+	
+	option = { # Skull of a Dragon
+		name = bonecrafting.0004.c
+		trigger = {
+			has_artifact = { ARTIFACT = artifact_dragonskull }
+		}
+		destroy_artifact_bonecrafting = { ARTIFACT = artifact_dragonskull }
+		custom_tooltip = skeletal_crafting_value_3.tt
+		change_variable = {
+    		name = magic_counter
+    		add = tier_3_bone_gen
+    	}
+		ai_chance = {
+			base = 10
+		}
+	}
+}
+
+bonecrafting.0005 = { # Debug event for testing purposes
+	title = bonecrafting.0005.t
+	type = character_event
+	desc = bonecrafting.0005.d
+	theme = skull
+
+	left_portrait = {
+		character = root
+	}
+		
+	option = { # Back to first
+		name = bonecrafting.0005.a
+		add_artifact = {ARTIFACT = artifact_genericbones0}
+		add_artifact = {ARTIFACT = artifact_genericbones1}
+		add_artifact = {ARTIFACT = artifact_genericbones2}
+		add_artifact = {ARTIFACT = artifact_genericbones3}
+		ai_chance = {
+			base = 1
+		}
+	}
+}
+
+##################################################
+# You Search for Bones
+# by Bommelom
+# 0100 - 0200
+##################################################
+
+bonecrafting.0100 = {
+	title = bonecrafting.0100.t
+	type = character_event
+	desc = bonecrafting.0100.desc
+	theme = skull
+
+	immediate = {
+		add_character_flag = { flag = has_searched_for_bones years = 5 }
+		bonefinding_random_effect = yes
+	}
+	
+	left_portrait = {
+		character = root
+	}
+		
+	option = { # Just dig up some nearby graves
+		name = bonecrafting.0100.a
+		ai_chance = {
+			base = 10
+		}
+		custom_tooltip = bonefinding_magical_prowess.tt
+		random_list = {
+			0 = {
+				modifier = {
+				add = bonefinding_magic_bad_success_chance
+				}
+				custom_tooltip = bonefinding_success_bad.tt
+				trigger_event = {
+				id = bonecrafting.0110
+				days = { 10 20}
+				}
+			}
+			0 = {
+				modifier = {
+				add = bonefinding_magic_good_success_chance
+				}
+				custom_tooltip = bonefinding_success_good.tt
+				trigger_event = {
+				id = bonecrafting.0111
+				days = { 10 20}
+				}
+			}
+			0 = {
+				modifier = {
+				add = bonefinding_magic_great_success_chance
+				}
+				custom_tooltip = bonefinding_success_great.tt
+				trigger_event = {
+				id = bonecrafting.0112
+				days = { 10 20}
+				}
+			}
+		}
+	}
+	
+	option = { # Battlefield
+		name = bonecrafting.0100.b
+		ai_chance = {
+			base = 10
+		}
+		custom_tooltip = bonefinding_learning_martial.tt
+		random_list = {
+			0 = {
+				modifier = {
+				add = bonefinding_battlefield_bad_success_chance
+				}
+				custom_tooltip = bonefinding_success_bad.tt
+				trigger_event = {
+				id = bonecrafting.0120
+				days = { 10 20}
+				}
+			}
+			0 = {
+				modifier = {
+				add = bonefinding_battlefield_good_success_chance
+				}
+				custom_tooltip = bonefinding_success_good.tt
+				trigger_event = {
+				id = bonecrafting.0121
+				days = { 10 20}
+				}
+			}
+			0 = {
+				modifier = {
+				add = bonefinding_battlefield_great_success_chance
+				}
+				custom_tooltip = bonefinding_success_great.tt
+				trigger_event = {
+				id = bonecrafting.0122
+				days = { 10 20}
+				}
+			}
+		}
+	}
+	
+	option = { # Find old grave
+		name = bonecrafting.0100.c
+		ai_chance = {
+			base = 10
+		}
+		custom_tooltip = bonefinding_learning_only.tt
+		random_list = {
+			0 = {
+				modifier = {
+				add = bonefinding_old_grave_bad_success_chance
+				}
+				custom_tooltip = bonefinding_success_bad.tt
+				trigger_event = {
+				id = bonecrafting.0130
+				days = { 10 20}
+				}
+			}
+			0 = {
+				modifier = {
+				add = bonefinding_old_grave_good_success_chance
+				}
+				custom_tooltip = bonefinding_success_good.tt
+				trigger_event = {
+				id = bonecrafting.0131
+				days = { 10 20}
+				}
+			}
+			0 = {
+				modifier = {
+				add = bonefinding_old_grave_great_success_chance
+				}
+				custom_tooltip = bonefinding_success_great.tt
+				trigger_event = {
+				id = bonecrafting.0132
+				days = { 10 20}
+				}
+			}
+		}
+	}
+	option = { # Black Market
+		name = bonecrafting.0100.d
+		ai_chance = {
+			base = 10
+		}
+		custom_tooltip = bonefinding_stewardship_intrigue.tt
+		random_list = {
+			0 = {
+				modifier = {
+				add = bonefinding_black_market_contacts_bad_success_chance
+				}
+				custom_tooltip = bonefinding_success_bad.tt
+				trigger_event = {
+				id = bonecrafting.0140
+				days = { 10 20}
+				}
+			}
+			0 = {
+				modifier = {
+				add = bonefinding_black_market_contacts_good_success_chance
+				}
+				custom_tooltip = bonefinding_success_good.tt
+				trigger_event = {
+				id = bonecrafting.0141
+				days = { 10 20}
+				}
+			}
+			0 = {
+				modifier = {
+				add = bonefinding_black_market_contacts_great_success_chance
+				}
+				custom_tooltip = bonefinding_success_great.tt
+				trigger_event = {
+				id = bonecrafting.0142
+				days = { 10 20}
+				}
+			}
+		}
+	}
+}
+
+bonecrafting.0110 = {
+	title = bonecrafting.0110.t
+	type = character_event
+	desc = bonecrafting.0110.desc
+	theme = skull
+	
+	left_portrait = {
+		character = root
+	}
+		
+	option = { #
+		name = bonecrafting.0110.a
+		ai_chance = {
+			base = 10
+		}
+		trigger = {
+			var:bonefinding_random < 6
+		}
+		add_artifact = {ARTIFACT = artifact_genericbones0}
+	}
+	
+	option = { #
+		name = bonecrafting.0110.b
+		ai_chance = {
+			base = 10
+		}
+		trigger = {
+			var:bonefinding_random > 5
+		}
+		add_artifact = {ARTIFACT = artifact_genericbones1}
+	}
+}
+
+bonecrafting.0111 = {
+	title = bonecrafting.0111.t
+	type = character_event
+	desc = bonecrafting.0111.desc
+	theme = skull
+	
+	left_portrait = {
+		character = root
+	}
+		
+	option = { #
+		name = bonecrafting.0111.a
+		ai_chance = {
+			base = 10
+		}
+		trigger = {
+			var:bonefinding_random < 8
+		}
+		add_artifact = {ARTIFACT = artifact_genericbones2}
+	}
+	
+	option = { #
+		name = bonecrafting.0111.b
+		ai_chance = {
+			base = 10
+		}
+		trigger = {
+			var:bonefinding_random > 7
+		}
+		add_artifact = {ARTIFACT = artifact_genericbones3}
+	}
+}
+
+
+bonecrafting.0112 = {
+	title = bonecrafting.0112.t
+	type = character_event
+	desc = bonecrafting.0112.desc
+	theme = skull
+	
+	left_portrait = {
+		character = root
+	}
+		
+	option = { #
+		name = bonecrafting.0112.a
+		ai_chance = {
+			base = 10
+		}
+		trigger = {
+			var:bonefinding_random < 9
+		}
+		add_artifact = {ARTIFACT = artifact_genericbones3}
+	}
+	
+	option = { #
+		name = bonecrafting.0112.b
+		ai_chance = {
+			base = 10
+		}
+		trigger = {
+			var:bonefinding_random > 8
+		}
+		add_artifact = {ARTIFACT = artifact_genericbones3}
+		add_artifact = {ARTIFACT = artifact_genericbones2}
+	}
+}
+
+bonecrafting.0120 = { # Bad battlefield search result
+	title = bonecrafting.0120.t
+	type = character_event
+	desc = bonecrafting.0120.desc
+	theme = battle
+	override_background = { event_background = battlefield }
+	
+	left_portrait = {
+		character = root
+	}
+		
+	option = { #
+		name = bonecrafting.0120.a
+		ai_chance = {
+			base = 10
+		}
+		trigger = {
+			var:bonefinding_random < 4
+		}
+		add_artifact = {ARTIFACT = artifact_genericbones0}
+	}
+	
+	option = { #
+		name = bonecrafting.0120.b
+		ai_chance = {
+			base = 10
+		}
+		trigger = {
+			var:bonefinding_random > 3
+			var:bonefinding_random < 9
+		}
+		add_artifact = {ARTIFACT = artifact_genericbones1}
+	}
+	
+	option = { #
+		name = bonecrafting.0120.c
+		ai_chance = {
+			base = 10
+		}
+		trigger = {
+			var:bonefinding_random > 8
+		}
+		add_artifact = {ARTIFACT = artifact_genericbones1}
+		add_artifact = {ARTIFACT = artifact_genericbones0}
+	}
+}
+
+bonecrafting.0121 = { # Good battlefield search result
+	title = bonecrafting.0121.t
+	type = character_event
+	desc = bonecrafting.0121.desc
+	theme = battle
+	override_background = { event_background = battlefield }
+	
+	left_portrait = {
+		character = root
+	}
+		
+	option = { #
+		name = bonecrafting.0121.a
+		ai_chance = {
+			base = 10
+		}
+		trigger = {
+			var:bonefinding_random < 3
+		}
+		add_artifact = {ARTIFACT = artifact_genericbones2}
+		add_artifact = {ARTIFACT = artifact_genericbones0}
+	}
+	
+	option = { #
+		name = bonecrafting.0121.b
+		ai_chance = {
+			base = 10
+		}
+		trigger = {
+			var:bonefinding_random > 2
+			var:bonefinding_random < 8
+		}
+		add_artifact = {ARTIFACT = artifact_genericbones2}
+		add_artifact = {ARTIFACT = artifact_genericbones0}
+	}
+	
+	option = { #
+		name = bonecrafting.0121.c
+		ai_chance = {
+			base = 10
+		}
+		trigger = {
+			var:bonefinding_random > 7
+		}
+		add_artifact = {ARTIFACT = artifact_genericbones2}
+		add_artifact = {ARTIFACT = artifact_genericbones1}
+		add_artifact = {ARTIFACT = artifact_genericbones0}
+	}
+}
+
+bonecrafting.0122 = { # Great battlefield search result
+	title = bonecrafting.0122.t
+	type = character_event
+	desc = bonecrafting.0122.desc
+	theme = battle
+	override_background = { event_background = battlefield }
+	
+	left_portrait = {
+		character = root
+	}
+	
+	option = { #
+		name = bonecrafting.0122.a
+		ai_chance = {
+			base = 10
+		}
+		trigger = {
+			var:bonefinding_random < 7
+		}
+		add_artifact = {ARTIFACT = artifact_genericbones2}
+		add_artifact = {ARTIFACT = artifact_genericbones1}
+		add_artifact = {ARTIFACT = artifact_genericbones0}
+	}
+	
+	option = { #
+		name = bonecrafting.0122.b
+		ai_chance = {
+			base = 10
+		}
+		trigger = {
+			var:bonefinding_random > 6
+		}
+		add_artifact = {ARTIFACT = artifact_genericbones3}
+		add_artifact = {ARTIFACT = artifact_genericbones2}
+		add_artifact = {ARTIFACT = artifact_genericbones1}
+		add_artifact = {ARTIFACT = artifact_genericbones0}
+	}
+}
+
+bonecrafting.0130 = { # Bad old grave search result
+	title = bonecrafting.0130.t
+	type = character_event
+	desc = bonecrafting.0130.desc
+	theme = learning
+	
+	left_portrait = {
+		character = root
+	}
+		
+	option = { #
+		name = bonecrafting.0130.a
+		ai_chance = {
+			base = 10
+		}
+		trigger = {
+			var:bonefinding_random < 4
+		}
+		add_artifact = {ARTIFACT = artifact_genericbones0}
+	}
+	
+	option = { #
+		name = bonecrafting.0130.b
+		ai_chance = {
+			base = 10
+		}
+		trigger = {
+			var:bonefinding_random > 3
+			var:bonefinding_random < 9
+		}
+		add_artifact = {ARTIFACT = artifact_genericbones1}
+	}
+	
+	option = { #
+		name = bonecrafting.0130.c
+		ai_chance = {
+			base = 10
+		}
+		trigger = {
+			var:bonefinding_random > 9
+		}
+		add_artifact = {ARTIFACT = artifact_genericbones2}
+	}
+}
+
+bonecrafting.0131 = { # Good old grave search result
+	title = bonecrafting.0131.t
+	type = character_event
+	desc = bonecrafting.0131.desc
+	theme = learning
+	
+	left_portrait = {
+		character = root
+	}
+		
+	option = { #
+		name = bonecrafting.0131.a
+		ai_chance = {
+			base = 10
+		}
+		trigger = {
+			var:bonefinding_random < 9
+		}
+		add_artifact = {ARTIFACT = artifact_genericbones2}
+	}
+	
+	option = { #
+		name = bonecrafting.0131.b
+		ai_chance = {
+			base = 10
+		}
+		trigger = {
+			var:bonefinding_random > 8
+		}
+		add_artifact = {ARTIFACT = artifact_genericbones3}
+	}
+}
+
+
+bonecrafting.0132 = { # Great old grave search result
+	title = bonecrafting.0132.t
+	type = character_event
+	desc = bonecrafting.0132.desc
+	theme = learning
+	
+	left_portrait = {
+		character = root
+	}
+		
+	option = { #
+		name = bonecrafting.0132.a
+		ai_chance = {
+			base = 10
+		}
+		trigger = {
+			var:bonefinding_random < 9
+		}
+		add_artifact = {ARTIFACT = artifact_genericbones3}
+	}
+	
+	option = { #
+		name = bonecrafting.0132.b
+		ai_chance = {
+			base = 10
+		}
+		trigger = {
+			var:bonefinding_random > 8
+		}
+		add_artifact = {ARTIFACT = artifact_genericbones3}
+		add_artifact = {ARTIFACT = artifact_genericbones1}
+	}
+}
+
+
+bonecrafting.0140 = { # Bad black market search result
+	title = bonecrafting.0140.t
+	type = character_event
+	desc = bonecrafting.0140.desc
+	theme = stewardship
+	
+	left_portrait = {
+		character = root
+	}
+		
+	option = { #
+		name = bonecrafting.0140.a
+		ai_chance = {
+			base = 10
+		}
+		trigger = {
+			var:bonefinding_random < 3
+		}
+		remove_short_term_gold = 10
+		add_artifact = {ARTIFACT = artifact_genericbones0}
+	}
+	
+	option = { #
+		name = bonecrafting.0140.b
+		ai_chance = {
+			base = 10
+		}
+		trigger = {
+			var:bonefinding_random > 2
+			var:bonefinding_random < 10
+		}
+		remove_short_term_gold = 25
+		add_artifact = {ARTIFACT = artifact_genericbones1}
+	}
+	
+	option = { #
+		name = bonecrafting.0140.c
+		ai_chance = {
+			base = 10
+		}
+		trigger = {
+			var:bonefinding_random > 9
+		}
+		remove_short_term_gold = 25
+		add_artifact = {ARTIFACT = artifact_genericbones1}
+		add_artifact = {ARTIFACT = artifact_genericbones0}
+	}
+	option = { # Don't wanna buy
+		name = bonecrafting.0140.d
+		ai_chance = {
+			base = 0
+		}
+	}
+}
+
+bonecrafting.0141 = { # Good black market search result
+	title = bonecrafting.0141.t
+	type = character_event
+	desc = bonecrafting.0141.desc
+	theme = stewardship
+	
+	left_portrait = {
+		character = root
+	}
+		
+	option = { #
+		name = bonecrafting.0141.a
+		ai_chance = {
+			base = 10
+		}
+		trigger = {
+			var:bonefinding_random < 2
+		}
+		remove_short_term_gold = 15
+		add_artifact = {ARTIFACT = artifact_genericbones1}
+		add_artifact = {ARTIFACT = artifact_genericbones0}
+	}
+	
+	option = { #
+		name = bonecrafting.0141.b
+		ai_chance = {
+			base = 10
+		}
+		trigger = {
+			var:bonefinding_random > 1
+			var:bonefinding_random < 9
+		}
+		remove_short_term_gold = 25
+		add_artifact = {ARTIFACT = artifact_genericbones2}
+		add_artifact = {ARTIFACT = artifact_genericbones0}
+	}
+	
+	option = { #
+		name = bonecrafting.0141.c
+		ai_chance = {
+			base = 10
+		}
+		trigger = {
+			var:bonefinding_random > 8
+		}
+		remove_short_term_gold = 40
+		add_artifact = {ARTIFACT = artifact_genericbones2}
+		add_artifact = {ARTIFACT = artifact_genericbones1}
+		add_artifact = {ARTIFACT = artifact_genericbones0}
+	}
+	option = { # Don't wanna buy
+		name = bonecrafting.0141.d
+		ai_chance = {
+			base = 0
+		}
+	}
+}
+
+
+bonecrafting.0142 = { # Great black market search result
+	title = bonecrafting.0142.t
+	type = character_event
+	desc = bonecrafting.0142.desc
+	theme = stewardship
+	
+	left_portrait = {
+		character = root
+	}
+		
+	option = { #
+		name = bonecrafting.0142.a
+		ai_chance = {
+			base = 10
+		}
+		trigger = {
+			var:bonefinding_random < 2
+		}
+		remove_short_term_gold = 35
+		add_artifact = {ARTIFACT = artifact_genericbones2}
+		add_artifact = {ARTIFACT = artifact_genericbones1}
+	}
+	
+	option = { #
+		name = bonecrafting.0142.b
+		ai_chance = {
+			base = 10
+		}
+		trigger = {
+			var:bonefinding_random > 1
+			var:bonefinding_random < 8
+		}
+		remove_short_term_gold = 50
+		add_artifact = {ARTIFACT = artifact_genericbones3}
+		add_artifact = {ARTIFACT = artifact_genericbones0}
+	}
+	
+	option = { #
+		name = bonecrafting.0142.c
+		ai_chance = {
+			base = 10
+		}
+		trigger = {
+			var:bonefinding_random > 7
+		}
+		remove_short_term_gold = 65
+		add_artifact = {ARTIFACT = artifact_genericbones3}
+		add_artifact = {ARTIFACT = artifact_genericbones1}
+	}
+	option = { # Don't wanna buy
+		name = bonecrafting.0142.d
+		ai_chance = {
+			base = 0
+		}
+	}
+}
+
+##################################################
+# Craft bone artifacts
+# by Bommelom
+# 0201 - 0300
+##################################################
+
+bonecrafting.0201 = {
+	title = bonecrafting.0201.t
+	type = character_event
+	desc = bonecrafting.0201.desc
+	theme = skull
+	override_background = {
+		event_background = magic_ritual
+	}
+	
+	left_portrait = {
+		character = root
+	}
+		
+	option = { # Named characters' bones
+		name = bonecrafting.0201.a
+		trigger_event = bonecrafting.0202
+		ai_chance = {
+			base = 10
+		}
+	}
+	
+	option = { # Generic magic bones
+		name = bonecrafting.0201.b
+		trigger_event = bonecrafting.0203
+		ai_chance = {
+			base = 100
+		}
+	}
+	
+	option = { # Creature bones and parts
+		name = bonecrafting.0201.c
+		trigger_event = bonecrafting.0204
+		ai_chance = {
+			base = 100
+		}
+	}
+	option = { # Nothing
+		name = bonecrafting.0201.d
+		ai_chance = {
+			base = 1
+		}
+	}
+}
+
+bonecrafting.0202 = { # Skulls and bones from historical characters
+	title = bonecrafting.0202.t
+	type = character_event
+	desc = bonecrafting.0202.desc
+	theme = skull
+	override_background = {
+		event_background = magic_ritual
+	}
+	
+	left_portrait = {
+		character = root
+	}
+		
+	option = { # Back to first
+		name = bonecrafting.0202.a
+		trigger_event = bonecrafting.0201
+		ai_chance = {
+			base = 1
+		}
+	}
+	
+	option = { # Skull of Duvaken
+		name = bonecrafting.0202.b
+		trigger = {
+			has_artifact = { ARTIFACT = artifact_skullofduvaken }
+		}
+		destroy_artifact_bonecrafting = { ARTIFACT = artifact_skullofduvaken }
+		save_scope_value_as = { name = bone_level value = 2}
+		custom_tooltip = bone_artifact_value_2.tt
+		trigger_event = bonecrafting.0211
+		ai_chance = {
+			base = 0
+		}
+	}
+	
+	option = { # Skull of Axiaothea
+		name = bonecrafting.0202.c
+		trigger = {
+			has_artifact = { ARTIFACT = artifact_skullofaxiaothea }
+		}
+		destroy_artifact_bonecrafting = { ARTIFACT = artifact_skullofaxiaothea }
+		save_scope_value_as = { name = bone_level value = 4}
+		custom_tooltip = bone_artifact_value_4.tt
+		trigger_event = bonecrafting.0211
+		ai_chance = {
+			base = 0
+		}
+	}
+}
+
+bonecrafting.0203 = { # Generic bones + other bones from unknown mages/sources
+	title = bonecrafting.0203.t
+	type = character_event
+	desc = bonecrafting.0003.desc
+	theme = skull
+	override_background = {
+		event_background = magic_ritual
+	}
+
+	left_portrait = {
+		character = root
+	}
+		
+	option = { # Back to first
+		name = bonecrafting.0203.a
+		trigger_event = bonecrafting.0201
+		ai_chance = {
+			base = 1
+		}
+	}
+	
+	option = { # Whispering Skull
+		name = bonecrafting.0203.b
+		trigger = {
+			has_artifact = { ARTIFACT = artifact_whisperingskull }
+		}
+		destroy_artifact_bonecrafting = { ARTIFACT = artifact_whisperingskull }
+		save_scope_value_as = { name = bone_level value = 2}
+		custom_tooltip = bone_artifact_value_2.tt
+		trigger_event = bonecrafting.0211
+		ai_chance = {
+			base = 0
+		}
+	}
+	option = { # Generic bones level 1
+		name = bonecrafting.0003.d
+		trigger = {
+			has_artifact = { ARTIFACT = artifact_genericbones1 }
+		}
+		destroy_artifact_bonecrafting = { ARTIFACT = artifact_genericbones1 }
+		save_scope_value_as = { name = bone_level value = 1}
+		custom_tooltip = bone_artifact_value_1.tt
+		trigger_event = bonecrafting.0211
+		ai_chance = {
+			base = 10
+		}
+	}
+	option = { # Generic bones level 2
+		name = bonecrafting.0203.e
+		trigger = {
+			has_artifact = { ARTIFACT = artifact_genericbones2 }
+		}
+		destroy_artifact_bonecrafting = { ARTIFACT = artifact_genericbones2 }
+		save_scope_value_as = { name = bone_level value = 2}
+		custom_tooltip = bone_artifact_value_2.tt
+		trigger_event = bonecrafting.0211
+		ai_chance = {
+			base = 15
+		}
+	}
+	option = { # Generic bones level 3
+		name = bonecrafting.0203.f
+		trigger = {
+			has_artifact = { ARTIFACT = artifact_genericbones3 }
+		}
+		destroy_artifact_bonecrafting = { ARTIFACT = artifact_genericbones3 }
+		save_scope_value_as = { name = bone_level value = 3}
+		custom_tooltip = bone_artifact_value_3.tt
+		trigger_event = bonecrafting.0211
+		ai_chance = {
+			base = 20
+		}
+	}
+}
+
+bonecrafting.0204 = { # Creature bones and other creature parts
+	title = bonecrafting.0204.t
+	type = character_event
+	desc = bonecrafting.0204.desc
+	theme = skull
+	override_background = {
+		event_background = magic_ritual
+	}
+
+	left_portrait = {
+		character = root
+	}
+		
+	option = { # Back to first
+		name = bonecrafting.0204.a
+		trigger_event = bonecrafting.0201
+		ai_chance = {
+			base = 1
+		}
+	}
+	
+	option = { # Skull of an Ancient
+		name = bonecrafting.0204.b
+		trigger = {
+			has_artifact = { ARTIFACT = artifact_skullofanancient }
+		}
+		destroy_artifact_bonecrafting = { ARTIFACT = artifact_skullofanancient }
+		save_scope_value_as = { name = bone_level value = 4}
+		custom_tooltip = bone_artifact_value_4.tt
+		trigger_event = bonecrafting.0211
+		ai_chance = {
+			base = 20
+		}
+	}
+	
+	option = { # Skull of a Dragon
+		name = bonecrafting.0204.c
+		trigger = {
+			has_artifact = { ARTIFACT = artifact_dragonskull }
+		}
+		destroy_artifact_bonecrafting = { ARTIFACT = artifact_dragonskull }
+		save_scope_value_as = { name = bone_level value = 3 }
+		custom_tooltip = bone_artifact_value_3.tt
+		trigger_event = bonecrafting.0211
+		ai_chance = {
+			base = 10
+		}
+	}
+}
+
+bonecrafting.0211 = {
+	title = bonecrafting.0211.t
+	type = character_event
+	desc = bonecrafting.0211.desc
+	theme = skull
+	override_background = {
+		event_background = magic_ritual
+	}
+	
+	left_portrait = {
+		character = root
+	}
+		
+	option = { # Headgear
+		name = bonecrafting.0211.a
+		trigger_event = bonecrafting.0212
+		ai_chance = {
+			base = 100
+		}
+	}
+	
+	option = { # Weapons
+		name = bonecrafting.0211.b
+		trigger_event = bonecrafting.0213
+		ai_chance = {
+			base = 100
+		}
+	}
+	
+	option = { # Other handheld
+		name = bonecrafting.0211.c
+		trigger_event = bonecrafting.0214
+		ai_chance = {
+			base = 100
+		}
+	}
+	option = { # Amulets
+		name = bonecrafting.0211.d
+		trigger_event = bonecrafting.0215
+		ai_chance = {
+			base = 100
+		}
+	}
+}
+
+bonecrafting.0212 = { # Headgear
+	title = bonecrafting.0212.t
+	type = character_event
+	desc = bonecrafting.0212.desc
+	theme = skull
+	override_background = {
+		event_background = magic_ritual
+	}
+	
+	left_portrait = {
+		character = root
+	}
+		
+	option = { # Back to first
+		name = bonecrafting.0212.a
+		trigger_event = bonecrafting.0211
+		ai_chance = {
+			base = 0
+		}
+	}
+	
+	option = { # Crown
+		name = bonecrafting.0212.b
+		bone_artifact_craft_effect = { ARTIFACT_TYPE = artifact_bone_crown }
+		ai_chance = {
+			base = 100
+		}
+	}
+	
+	option = { # Mask
+		name = bonecrafting.0212.c
+		bone_artifact_craft_effect = { ARTIFACT_TYPE = artifact_bone_mask }
+		ai_chance = {
+			base = 100
+		}
+	}
+	
+	option = { # Helmet
+		name = bonecrafting.0212.d
+		bone_artifact_craft_effect = { ARTIFACT_TYPE = artifact_bone_helmet }
+		ai_chance = {
+			base = 100
+		}
+	}
+}
+
+bonecrafting.0213 = { # Headgear
+	title = bonecrafting.0213.t
+	type = character_event
+	desc = bonecrafting.0213.desc
+	theme = skull
+	override_background = {
+		event_background = magic_ritual
+	}
+	
+	left_portrait = {
+		character = root
+	}
+		
+	option = { # Back to first
+		name = bonecrafting.0213.a
+		trigger_event = bonecrafting.0211
+		ai_chance = {
+			base = 0
+		}
+	}
+	
+	option = { # Dagger
+		name = bonecrafting.0213.b
+		bone_artifact_craft_effect = { ARTIFACT_TYPE = artifact_bone_dagger }
+		ai_chance = {
+			base = 100
+		}
+	}
+	
+	option = { # Spear
+		name = bonecrafting.0213.c
+		bone_artifact_craft_effect = { ARTIFACT_TYPE = artifact_bone_spear }
+		ai_chance = {
+			base = 100
+		}
+	}
+}
+
+bonecrafting.0214 = { # Other handheld
+	title = bonecrafting.0214.t
+	type = character_event
+	desc = bonecrafting.0214.desc
+	theme = skull
+	override_background = {
+		event_background = magic_ritual
+	}
+	
+	left_portrait = {
+		character = root
+	}
+		
+	option = { # Back to first
+		name = bonecrafting.0214.a
+		trigger_event = bonecrafting.0211
+		ai_chance = {
+			base = 0
+		}
+	}
+	
+	option = { # Scepter
+		name = bonecrafting.0214.b
+		bone_artifact_craft_effect = { ARTIFACT_TYPE = artifact_bone_scepter }
+		ai_chance = {
+			base = 100
+		}
+	}
+	
+	option = { # Staff
+		name = bonecrafting.0214.c
+		bone_artifact_craft_effect = { ARTIFACT_TYPE = artifact_bone_staff }
+		ai_chance = {
+			base = 100
+		}
+	}
+} 	
+
+bonecrafting.0215 = { # Amulets
+	title = bonecrafting.0215.t
+	type = character_event
+	desc = bonecrafting.0215.desc
+	theme = skull
+	override_background = {
+		event_background = magic_ritual
+	}
+	
+	left_portrait = {
+		character = root
+	}
+		
+	option = { # Back to first
+		name = bonecrafting.0215.a
+		trigger_event = bonecrafting.0211
+		ai_chance = {
+			base = 0
+		}
+	}
+	
+	option = { # Magic Amulet
+		name = bonecrafting.0215.b
+		bone_artifact_craft_effect = { ARTIFACT_TYPE = artifact_bone_amulet_magic }
+		ai_chance = {
+			base = 100
+		}
+	}
+	
+	option = { # Dread amulet
+		name = bonecrafting.0215.c
+		bone_artifact_craft_effect = { ARTIFACT_TYPE = artifact_bone_amulet_dread }
+		ai_chance = {
+			base = 100
+		}
+	}
+	option = { # Necrotic health amulet
+		name = bonecrafting.0215.d
+		bone_artifact_craft_effect = { ARTIFACT_TYPE = artifact_bone_amulet_health }
+		ai_chance = {
+			base = 100
+		}
+	}
+	option = { # Amulet of Suspicion
+		name = bonecrafting.0215.e
+		bone_artifact_craft_effect = { ARTIFACT_TYPE = artifact_bone_amulet_watchfulness }
+		ai_chance = {
+			base = 100
+		}
+	}
+	
+	option = { # Amulet of Avarice
+		name = bonecrafting.0215.f
+		bone_artifact_craft_effect = { ARTIFACT_TYPE = artifact_bone_amulet_greed }
+		ai_chance = {
+			base = 100
+		}
+	}
+}

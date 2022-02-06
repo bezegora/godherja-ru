@@ -1,4 +1,4 @@
-amsari_child_kill = {
+﻿amsari_child_kill = {
 	category = interaction_category_hostile
 
 	greeting = positive
@@ -6,8 +6,19 @@ amsari_child_kill = {
 	auto_accept = yes
 
 	is_shown = {
-		has_culture_group = culture_group:gh_zarasadari_group
-		has_succession_law = amsari_succession_law
+		NOT = { scope:actor = scope:recipient }
+		scope:actor = {
+			has_title = title:e_amsari
+			title:e_amsari = {
+				holder = {
+					has_culture_group = culture_group:gh_zarasadari_group
+				}
+			}
+		}
+		scope:recipient = {
+			is_child_of = scope:actor
+			age < 16
+		}
 	}
 
 	on_accept = {
@@ -19,8 +30,8 @@ amsari_child_kill = {
 		}
 		scope:actor.primary_heir = {
 			add_opinion = {
+				modifier = supportive_parent
 				target = scope:actor
-				add = 10
 			}
 			desc = happy_heir
 		}
@@ -32,8 +43,8 @@ amsari_child_kill = {
 					}
 				}
 				add_opinion = { 
+					modifier = supportive_parent
 					target = scope:actor
-					add = 5
 				}
 			}
 			desc = happy_heir
@@ -42,6 +53,7 @@ amsari_child_kill = {
 
 	ai_targets = {
 		ai_recipients = children
+		max = 10
 	}
 	ai_target_quick_trigger = {
 		adult = yes
@@ -49,8 +61,11 @@ amsari_child_kill = {
 	ai_frequency = 72
 	
 	ai_potential = {
+		NOT = {
+			this = character:canian_1
+		}
 		any_child = {
-			count >= 6
+			count >= 3
 		}
 	}
 }

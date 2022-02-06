@@ -58,7 +58,9 @@
 				this = cp:councillor_court_chaplain
 			}
 		}
-
+		NOT = {
+			has_government = wasteland_government
+		}
 		scope:faction.faction_target = liege
 		highest_held_title_tier > tier_barony
 
@@ -121,11 +123,21 @@
 			is_at_war = yes
 		}
 		
-		modifier = {
+		modifier = { #wasteland failsafe
 			add = -1000
-			scope:target = {
+			has_government = wasteland_government
+		}
+		modifier = { #do not join against Cenware
+			add = -1000
+			top_liege = {
 				this = character:clanlands_sjalvolki_1
 				has_title = title:e_sjalvolki
+			}
+		}
+		modifier = { #do not join against Harthah
+			add = -1000
+			top_liege = {
+				this = character:sarradon_1
 			}
 		}
 		
@@ -347,12 +359,21 @@
 				}
 			}
 		}
-		
-		modifier = {
+		modifier = { #wasteland failsafe
 			add = -1000
-			scope:faction.faction_target = {
+			has_government = wasteland_government
+		}
+		modifier = { #do not join against Cenware
+			add = -1000
+			top_liege = {
 				this = character:clanlands_sjalvolki_1
 				has_title = title:e_sjalvolki
+			}
+		}
+		modifier = { #do not join against Harthah
+			add = -1000
+			top_liege = {
+				this = character:sarradon_1
 			}
 		}
 
@@ -529,7 +550,10 @@
 			value = faction_power
 			multiplier = 0.5
 		}
-
+		modifier = { #wasteland failsafe
+			add = -1000
+			has_government = wasteland_government
+		}
 		# Once the faction has a good chance to win (10% stronger than liege) demand chance increases much more rapidly.
 		compare_modifier = {
 			trigger = {	faction_power > 110 }
@@ -550,7 +574,9 @@
 		scope:faction.faction_target = {
 			NOT = { has_strong_hook = root }
 		}
-
+		NOT = {
+			has_government = wasteland_government
+		}
 		OR = {
 			is_ai = no
 			NOR = {
@@ -564,6 +590,10 @@
 			text = character_has_faction_disabling_modifier
 			character_has_faction_disabling_modifier_trigger = yes
 		}
+		
+		NOT = { scope:faction.faction_target = { has_character_flag = adabyss_invader } }
+		NOT = { scope:faction.faction_target = { this = character:clanlands_sjalvolki_1 } }
+
 	}
 
 	can_character_create = {
@@ -577,7 +607,9 @@
 		liege = {
 			is_independent_ruler = yes
 		}
-
+		NOT = {
+			has_government = wasteland_government
+		}
 		NOT = { is_allied_to = scope:target }
 		NOT = { has_truce = scope:target }
 		scope:target = {
@@ -614,6 +646,9 @@
 			subject = scope:target
 			NOT = { scope:target = { immune_to_factions_trigger = yes } }
 		}
+		
+		NOT = { scope:target = { has_character_flag = adabyss_invader } }
+
 
 		custom_description = {
 			text = character_has_faction_disabling_modifier
@@ -754,6 +789,20 @@ liberty_faction = {
 				}
 			}
 		}
+		
+		modifier = { #do not join against Cenware
+			add = -1000
+			scope:faction.faction_target = {
+				this = character:clanlands_sjalvolki_1
+				has_title = title:e_sjalvolki
+			}
+		}
+		modifier = { #do not join against Harthah
+			add = -1000
+			top_liege = {
+				this = character:sarradon_1
+			}
+		}
 
 		#######################
 		# Standard AI Weights #
@@ -847,6 +896,20 @@ liberty_faction = {
 		modifier = {
 			add = -1000
 			is_at_war = yes
+		}
+
+		modifier = { #do not join against Cenware
+			add = -1000
+			scope:target = {
+				this = character:clanlands_sjalvolki_1
+				has_title = title:e_sjalvolki
+			}
+		}
+		modifier = { #do not join against Harthah
+			add = -1000
+			top_liege = {
+				this = character:sarradon_1
+			}
 		}
 
 		# Block characters from joining if they have a high opinion of the target
@@ -1010,6 +1073,9 @@ liberty_faction = {
 			text = character_has_faction_disabling_modifier
 			character_has_faction_disabling_modifier_trigger = yes
 		}
+		
+		NOT = { scope:faction.faction_target = { has_character_flag = adabyss_invader } }
+		NOT = { scope:faction.faction_target = { this = character:clanlands_sjalvolki_1 } }
 	}
 
 	can_character_create = {
@@ -1062,6 +1128,8 @@ liberty_faction = {
 			text = character_has_faction_disabling_modifier
 			character_has_faction_disabling_modifier_trigger = yes
 		}
+		
+		NOT = { scope:target = { has_character_flag = adabyss_invader } }
 	}
 
 	county_allow_join = no
@@ -1271,6 +1339,8 @@ claimant_faction = {
 			NOT = { scope:target = { immune_to_factions_trigger = yes } }
 		}
 
+		NOT = { scope:target = { has_character_flag = adabyss_invader } }
+
 		custom_description = {
 			text = character_has_faction_disabling_modifier
 			character_has_faction_disabling_modifier_trigger = yes
@@ -1290,6 +1360,10 @@ claimant_faction = {
 			text = character_has_faction_disabling_modifier
 			character_has_faction_disabling_modifier_trigger = yes
 		}
+		
+		NOT = { scope:faction.faction_target = { has_character_flag = adabyss_invader } }
+		NOT = { scope:faction.faction_target = { this = character:clanlands_sjalvolki_1 } }
+		
 	}
 
 	is_character_valid = { # Is the character valid to stay in the faction? This is also checked when creating it...

@@ -1,5 +1,30 @@
 ﻿namespace = marcher
 
+##################
+##EVENT     LIST##
+# marcher.0001
+#
+#Pet griffon Event
+# marcher.0101
+# > marcher.0102
+#
+#Convert griffon to War Griffon
+# marcher.0103
+# > marcher.0104   
+# OR > marcher.0105
+#
+# marcher.0110
+#
+# marcher.0115
+#
+#Random Griffon county attack event chain
+#marcher.1150
+# > marcher.1155
+# >> marcher.1160
+# OR > marcher.1165
+# OR > marcher.1170
+##################
+
 marcher.0001 = { #Event for Rene dying
 	title = marcher_war.0001.t
 	desc = marcher_war.0001.desc
@@ -313,8 +338,14 @@ marcher.0115 = {   #person who holds the sword
 	desc = marcher.1150.desc
 	theme = stewardship
 }
-#1150-1170	 Random Griffon county attack event chain.
 
+##################
+# Marcher Random Griffon attack - OPENING
+# Random chance of a griffon attack occuring, this then has a branching possible narrative (3 possible endings)
+# marcher.1150-marcher.1170 (remove if not starting an event chain)
+# marcher.1150
+# A random province in your county is being menaced by a griffon!
+# by Netgearghost
 marcher.1150 = { #yearly pulse event for griffin menacing a province
 	title = marcher.1150.t
 	desc = marcher.1150.desc
@@ -366,6 +397,9 @@ marcher.1150 = { #yearly pulse event for griffin menacing a province
 	}
 }
 
+# marcher.1155
+# The griffon has been found! Figure out whats going on or attack it!
+# by Netgearghost
 marcher.1155 = {   #found the griffon, attack or figure out whats going on?
 	title = marcher.1155.t
 	desc = marcher.1155.desc
@@ -423,6 +457,9 @@ marcher.1155 = {   #found the griffon, attack or figure out whats going on?
 	}
 }
 
+# marcher.1160
+# You have figured out what happened to the griffon, and why it was attacking the county
+# by Netgearghost
 marcher.1160 = {  #finding out what happened to the griffon
 	title = marcher.1160.t
 	desc = marcher.1160.desc
@@ -433,10 +470,10 @@ marcher.1160 = {  #finding out what happened to the griffon
 	
 	option = {
 		name = marcher.1160.a
+		add_prestige = minor_prestige_gain
 		duel = {
 			skill = diplomacy
 			value = 12
-			add_prestige = minor_prestige_gain
 			12 = {
 				compare_modifier = {
 					value = scope:duel_value
@@ -486,6 +523,9 @@ marcher.1160 = {  #finding out what happened to the griffon
 	}
 }
 
+# marcher.1165
+# It was not a griffon at all! Instead a group of rogue knights have attacked
+# by Netgearghost
 marcher.1165 = {    #Rogue knights alternative path
 	title = marcher.1165.t
 	desc = marcher.1165.desc
@@ -595,6 +635,9 @@ marcher.1165 = {    #Rogue knights alternative path
 	}
 }
 
+# marcher.1170
+# Fight to tame the griffon or to slay it!
+# by Netgearghost
 marcher.1170 = {
 	title = marcher.1170.t
 	desc = marcher.1170.desc
@@ -611,10 +654,10 @@ marcher.1170 = {
 
 	option = {   #diplo check to tame griffon
 		name = marcher.1170.b
+		add_prestige = minor_prestige_gain
 		duel = {
 			skill = diplomacy
 			value = 12
-			add_prestige = minor_prestige_gain
 			12 = {
 				compare_modifier = {
 					value = scope:duel_value

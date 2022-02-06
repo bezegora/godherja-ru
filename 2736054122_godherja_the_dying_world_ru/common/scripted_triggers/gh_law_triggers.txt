@@ -1,0 +1,125 @@
+﻿
+can_keep_sjalvolki_succession_law_trigger = {
+	trigger_if = {
+		limit = {
+			AND = {
+				has_culture_group = culture_group:gh_sjalvolki_group
+				has_religion = religion:sjalvolki_religion
+				faith = {
+					has_doctrine = tenet_sjalvolki_syncretism
+				}
+				has_realm_law = sjalvolki_succession_law
+			}			
+		}
+		can_have_sjalvolki_succession_law_trigger = yes
+	}
+}
+
+can_have_sjalvolki_succession_law_trigger = {
+	custom_description = {
+		text = succession_laws_must_have_hereditary_government_tooltip
+		OR = {
+			has_government = feudal_government
+			has_government = tribal_government
+			has_government = clan_government
+		}
+	}
+	custom_description = {
+		text = succession_laws_must_be_sjalvolki_tooltip
+		OR = {
+			has_culture_group = culture_group:gh_sjalvolki_group
+			has_religion = religion:sjalvolki_religion
+			faith = {
+				has_doctrine = tenet_sjalvolki_syncretism
+			}
+		}
+	}
+}
+
+can_keep_aversarian_succession_law_trigger = {
+	trigger_if = {
+		limit = {
+			has_realm_law = aversarian_succession_law
+		}
+		can_have_aversarian_succession_law_trigger = yes
+	}
+}
+
+can_have_aversarian_succession_law_trigger = {
+	custom_description = {
+		text = succession_laws_must_have_hereditary_government_tooltip
+		OR = {
+			has_government = feudal_government
+			has_government = tribal_government
+			has_government = clan_government
+			has_government = magocratic_government
+		}
+	}
+	custom_description = {
+		text = succession_laws_must_be_aversarian_tooltip
+		OR = {
+			has_culture_group = culture_group:gh_imperial_group
+			has_religion = religion:aversarinas_aautokrata_religion
+			faith = { has_doctrine = tenet_aversarian_syncretism }
+		}
+	}
+	custom_description = {
+		text = succession_laws_must_have_magic_supremacy_tooltip
+		faith = { has_doctrine = doctrine_magic_supremacy }
+	}
+}
+
+can_keep_amsari_succession_law_trigger = {
+	trigger_if = {
+		limit = {
+			has_realm_law = amsari_succession_law
+		}
+		can_have_amsari_succession_law_trigger = yes
+	}
+}
+
+can_have_amsari_succession_law_trigger = {
+	custom_description = {
+		text = succession_laws_must_have_hereditary_government_tooltip
+		OR = {
+			has_government = feudal_government
+			has_government = clan_government
+		}
+	}
+	custom_description = {
+		text = succession_laws_must_be_amsari_tooltip
+		OR = {
+			has_culture_group = culture_group:gh_zarasadari_group
+			has_religion = religion:amsari_religion
+		}
+	}
+}
+
+can_keep_landed_order_succession_law_trigger = {
+	trigger_if = {
+		limit = {
+			has_realm_law = holy_order_succession_law
+		}
+		can_have_holy_order_succession_law_trigger = yes
+	}
+}
+
+can_have_landed_order_succession_law_trigger = {
+	has_government = landed_order_government
+}
+
+can_have_military_unit_succession_law_trigger = {
+	has_government = military_unit_government
+}
+
+can_have_magocracy_succession_law_trigger = {
+	has_government = magocratic_government
+}
+
+can_have_theocracy_clique_succession_law_trigger = {
+	has_government = theocracy_government
+}
+
+can_have_magocratic_republic_succession_law_trigger = {
+	has_government = magocratic_republic
+}

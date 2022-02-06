@@ -5,16 +5,68 @@
 
 ## ETERNAL LIFE, ENDLESS TORTURE ## thank you doodle
 vampiric_drain_effect = {
-	add_character_flag = {
-		flag = casted_vampiric_drain
-	}
-	send_interface_toast = {
-		title = vampiric_toast
-	}
-	trigger_event = magic_decisions.1001
 	change_variable = {
 		name = magic_counter
-		subtract = tier_5_spell
+		subtract = vampiric_drain_cost
+	}
+	increase_overwhelmation_from_spell = yes
+	will_increase_overwhelmation = yes
+	root = { save_scope_as = caster }
+	if = {
+		limit = {
+			NOT = { has_trait = gh_extended_life}
+		}
+		add_trait = gh_extended_life
+		set_variable = {
+			name = vampiric_drain_casted_raw
+			value = 0
+		}
+		set_variable = {
+			name = vampiric_drain_health_pool
+			value = 0
+		}
+	}
+	change_variable = { 
+		name = vampiric_drain_casted_raw
+		add = 1
+	}
+	change_variable = { 
+		name = vampiric_drain_health_pool
+		add = 0.25
+	}
+	custom_tooltip = vampirism_health_pool_tt
+	trigger_event = magic_decisions.1001
+}
+
+vampiric_drain_keep_alive_effect = {
+	set_variable = {	
+		name = vampiric_drain_keep_alive_iterator 
+		value = vampirism_health_modifier_add_value
+	}
+	set_variable = {	
+		name = vampiric_drain_amount_show
+		value = vampirism_health_modifier_add_value
+	}
+	change_variable = { 
+		name = vampiric_drain_health_pool
+		subtract = vampirism_health_pool_loss_value
+	}
+	while = {
+		limit = {
+			var:vampiric_drain_keep_alive_iterator > 0
+		}
+		change_variable = { 
+			name = vampiric_drain_keep_alive_iterator 
+			subtract = 1
+		}
+		add_character_modifier = vampirism_mod
+	}
+	if = {
+		limit = { var:vampiric_drain_health_pool > 0 }
+		trigger_event = magic_decisions.1005
+	}
+	else = {
+		trigger_event = magic_decisions.1006
 	}
 }
 
@@ -151,19 +203,101 @@ thinning_effect = {
 			}
 		}
 	}
+
+	root = { save_scope_as = caster }
 }
 
+# contains the actual logic to poison an individual
+poison_failure_effect = {
+	save_scope_as = victim
+	magic_unknown_harm_effect = {
+		CASTER = $CASTER$
+		VICTIM = scope:victim
+	}
+}
+poison_success1_effect = {
+	save_scope_as = victim
+	set_or_upgrade_magic_modifier_to_level = {
+		MODIFIER_NAME = blood_poisoned_mod
+		LEVEL = 0
+		DURATION = 1
+		TIME_UNIT = years
+	}
+	magic_unknown_harm_effect = {
+		CASTER = $CASTER$
+		VICTIM = scope:victim
+	}
+}
+poison_success2_effect = {
+	save_scope_as = victim
+	set_or_upgrade_magic_modifier_to_level = {
+		MODIFIER_NAME = blood_poisoned_mod
+		LEVEL = 1
+		DURATION = 1
+		TIME_UNIT = years
+	}
+	magic_unknown_harm_effect = {
+		CASTER = $CASTER$
+		VICTIM = scope:victim
+	}
+}
+poison_success3_effect = {
+	$CASTER$ = { save_scope_as = caster }
+	save_scope_as = victim
+	custom_tooltip = will_kill_tt
+	trigger_event = magic.2400
+}
+poison_failure_effect = {
+	$CASTER$ = { }
+}
+poison_character_resistable_effect = {
+	magic_calculate_and_apply_resistable_effect = {
+		CASTER = $CASTER$
+		EFFECT_SUCCESS1 = poison_success1_effect
+		EFFECT_SUCCESS2 = poison_success2_effect
+		EFFECT_SUCCESS3 = poison_success3_effect
+		EFFECT_FAILURE = poison_failure_effect
+		SUCCESS50_VALUE = $SUCCESS50_VALUE$
+		RESIST_VALUE = magic_resist_health
+		NUM_SLS = $NUM_SLS$
+	}
+}
 poison_effect = {
-	set_or_upgrade_magic_modifier = { MODIFIER_NAME = blood_poisoned_mod CASTER = root TIME_UNIT = years DURATION = 1 }
 	if = {
+		limit ={
+			root.var:magic_lvl = { compare_value = 0 }
+		}
+		poison_character_resistable_effect = {
+			SUCCESS50_VALUE = 2.5
+			CASTER = root
+			NUM_SLS = 3
+		}
+	}
+	else_if = {
+		limit ={
+			root.var:magic_lvl = { compare_value = 1 }
+		}
+		poison_character_resistable_effect = {
+			SUCCESS50_VALUE = 5
+			CASTER = root
+			NUM_SLS = 3
+		}
+	}
+	else_if = {
 		limit ={
 			root.var:magic_lvl = { compare_value = 2 }
 		}
+		poison_character_resistable_effect = {
+			SUCCESS50_VALUE = 10
+			CASTER = root
+			NUM_SLS = 2
+		}
 		every_child = {
 			limit = { NOT = { this = root } }
-			add_character_modifier = {
-				modifier = blood_poisoned_mod_mid
-				years = 1
+			poison_character_resistable_effect = {
+				SUCCESS50_VALUE = 2.5
+				CASTER = root
+				NUM_SLS = 2
 			}
 		}
 	}
@@ -171,14 +305,21 @@ poison_effect = {
 		limit ={
 			root.var:magic_lvl = { compare_value = 3 }
 		}
+		poison_character_resistable_effect = {
+			SUCCESS50_VALUE = 20
+			CASTER = root
+			NUM_SLS = 3
+		}
 		every_child = {
 			limit = { NOT = { this = root } }
-			add_character_modifier = {
-				modifier = blood_poisoned_mod_major
-				years = 1
+			poison_character_resistable_effect = {
+				SUCCESS50_VALUE = 5
+				CASTER = root
+				NUM_SLS = 2
 			}
 		}
 	}
+
 	if = {
 		limit = {
 			NOT = { this = root }
@@ -600,17 +741,6 @@ strengthening_effect = {
 			root.var:magic_lvl = { compare_value = 3 }
 		}
 		if = {
-			limit = {
-				NOR = {
-					has_trait = strong
-					has_trait = physique_bad
-					has_trait = weak
-					has_trait = physique_good_3
-				}
-			}
-			add_trait = strong
-		}
-		else_if = {
 			limit = { has_trait = weak }
 			remove_trait = weak
 		}
@@ -621,12 +751,17 @@ strengthening_effect = {
 				rank = -1
 			}
 		}
+		else_if = {
+			limit = { NOT = {has_trait = strong } }
+			add_trait = strong
+		}
 		else = {
 			change_trait_rank = {
 				trait = physique_good
 				rank = 1
 			}
 		}
+
 	}
 }
 
@@ -676,41 +811,6 @@ fire_magick_backfire_effect = {
 		}
 	}
 	trigger_event = magic.1012
-}
-
-mending_effect = {
-	if = {
-		limit = {
-			root = {
-				has_variable_list = spell_targets
-			}
-		}
-		root = {
-			deduct_spell_cost_by_tier = { TIER = 2 }
-			add_character_flag = {
-				flag = casted_mending
-				years = 10
-			}
-			send_interface_toast = {
-				title = mending_toast
-			}
-		}
-		every_in_list = {
-			variable = spell_targets
-			mending_spell_effect = yes
-		}
-	}
-	else = {
-		deduct_spell_cost_by_tier = { TIER = 2 }
-		add_character_flag = {
-			flag = casted_mending
-			years = 10
-		}
-		mending_spell_effect = yes
-		send_interface_toast = {
-			title = mending_toast
-		}
-	}
 }
 
 purification_effect = {
@@ -1317,13 +1417,11 @@ genocide_region_effect = {
 					modifier = genocide_region_mod
 					years = 5
 				}
+				set_county_culture = root.culture
+				set_county_faith = root.faith
 			}
 			root = {
 				deduct_spell_cost_by_tier = { TIER = 5 }
-				add_character_flag = {
-					flag = casted_genocide_region
-					years = 10
-				}
 			}
 		}
 	}
@@ -1338,79 +1436,216 @@ genocide_region_effect = {
 }
 
 annihilation_effect = {
-	if = {
-		limit = {
-			root = {
-				has_variable_list = spell_l_targets
-			}
-		}
-		every_in_list = {
-			variable = spell_l_targets
-			save_scope_as = location
-			scope:location = {
-				add_county_modifier = {
-					modifier = annihilation_mod
-					years = 5
-				}
-			}
-			root = {
-				deduct_spell_cost_by_tier = { TIER = 4 }
-				add_character_flag = {
-					flag = casted_annihilation
-					years = 10
-				}
-			}
-		}
-	}
-	else = {
-		if = {
-			limit = { exists = capital_province }
-			capital_province = { save_scope_as = location }
-		}
-	}
+	set_or_upgrade_magic_modifier_county = { MODIFIER_NAME = annihilation_mod CASTER = root TIME_UNIT = years DURATION = 10 }
 
-	send_interface_toast = {
-		title = annihilation_toast
+	root = {
+		send_interface_toast = { title = annihilation_toast }
+		save_scope_as = caster
 	}
-}
+	save_scope_as = affected_county
 
-quicken_effect = {
 	if = {
 		limit ={
 			root.var:magic_lvl = { compare_value = 0 }
 		}
-		add_character_modifier = {
-			modifier = quicken_mod_minor
-			years = 2
-		}
+		change_development_level = -2
 	}
 	else_if = {
 		limit ={
 			root.var:magic_lvl = { compare_value = 1 }
 		}
-		add_character_modifier = {
-			modifier = quicken_mod_mid
-			years = 2
-		}
+		change_development_level = -5
 	}
 	else_if = {
 		limit ={
 			root.var:magic_lvl = { compare_value = 2 }
 		}
-		add_character_modifier = {
-			modifier = quicken_mod_major
-			years = 2
+		change_development_level = -15
+		custom_tooltip = injury_potential_small_tt
+		scope:caster = {
+			set_variable = {
+				name = local_red_tint_activated
+				days = 30
+			}
+			trigger_event = magic.2350
 		}
 	}
 	else_if = {
 		limit ={
 			root.var:magic_lvl = { compare_value = 3 }
 		}
-		add_character_modifier = {
-			modifier = quicken_mod_huge
-			years = 2
+		change_development_level = -30
+		custom_tooltip = injury_potential_large_tt
+		custom_tooltip = wasteland_potential_tt
+		scope:caster = {
+			set_variable = {
+				name = local_red_tint_activated
+				days = 30
+			}
+			trigger_event = magic.2351
 		}
 	}
+}
+
+quicken_effect = {
+	set_or_upgrade_magic_modifier = { MODIFIER_NAME = quicken_mod CASTER = root TIME_UNIT = years DURATION = 2 }
+}
+
+magic_cannibalism_effect = {
+	random_in_list = {
+		variable = spell_targets
+		save_scope_as = cannibalism_victim
+	}
+	root = {
+		save_scope_as = caster
+		if = {
+			limit = {
+				has_variable = magic_cannibalism_counter 
+				root.var:magic_cannibalism_counter > 3
+			}
+			custom_tooltip = magic_cannibalism_3.tt
+		}
+		else_if = {
+			limit = {
+				has_variable = magic_cannibalism_counter
+				root.var:magic_lvl = { compare_value < root.var:magic_cannibalism_counter }
+			}
+			custom_tooltip = magic_cannibalism_2.tt
+		}
+		else = {
+			custom_tooltip = magic_cannibalism_1.tt
+			magic_cannibalism_actual_effect = yes
+		}
+	}
+}
+
+magic_cannibalism_actual_effect = {
+	send_interface_toast = { title = magic_cannibalism_toast }
+	if = {
+		limit = { NOT = { has_variable = magic_cannibalism_counter } }
+		set_variable = { name = magic_cannibalism_counter value = 0}
+	}
+	change_variable = {
+		name = magic_cannibalism_counter
+		add = 1
+	}
+	random_list = {
+		1 = { }
+		1000 = { 
+			trigger = {
+				scope:cannibalism_victim = {
+					has_trait = physique_good
+				}
+				OR = {
+					has_trait = physique_bad
+					has_trait = weak
+					NOT = { has_trait = physique_good }
+					cannibalism_physique_value < scope:cannibalism_victim.cannibalism_physique_value
+				}
+			}
+			if = {
+				limit = {
+					has_trait = weak
+				}
+				remove_trait = weak
+			}
+			else_if = {
+				limit = {
+					has_trait = physique_bad
+				}
+				change_trait_rank = {
+					trait = physique_bad
+					rank = -1
+				}
+			}
+			else_if = {
+				limit = { NOT = { has_trait = strong }}
+				add_trait = strong
+			}
+			else = {
+				change_trait_rank = {
+					trait = physique_good
+					rank = 1
+				}
+			}
+		}
+		1000 = { 
+			trigger = {
+				scope:cannibalism_victim = {
+					has_trait = intellect_good
+				}
+				OR = {
+					has_trait = intellect_bad
+					NOT = { has_trait = intellect_good }
+					cannibalism_intellect_value < scope:cannibalism_victim.cannibalism_intellect_value
+				}
+			}
+			if = {
+				limit = { has_trait = intellect_bad }
+				change_trait_rank = {
+					trait = intellect_bad
+					rank = -1
+				}
+			}
+			else_if = {
+				limit = { NOT = { has_trait = shrewd }}
+				add_trait = shrewd
+			}
+			else = {
+				change_trait_rank = {
+					trait = intellect_good
+					rank = 1
+				}
+			}
+		}
+		1000 = { 
+			trigger = {
+				scope:cannibalism_victim = {
+					has_trait = beauty_good
+				}
+				OR = {
+					has_trait = beauty_bad
+					NOT = { has_trait = beauty_good }
+					cannibalism_beauty_value < scope:cannibalism_victim.cannibalism_beauty_value
+				}
+			}
+			if = {
+				limit = { has_trait = beauty_bad }
+				change_trait_rank = {
+					trait = beauty_bad
+					rank = -1
+				}
+			}
+			else = {
+				change_trait_rank = {
+					trait = beauty_good
+					rank = 1
+				}
+			}
+		}
+		1000 = { 
+			trigger = {
+				scope:cannibalism_victim = {
+					has_trait = magic_good
+				}
+				OR = {
+					NOT = { has_trait = magic_good }
+					magi_potency < scope:cannibalism_victim.magi_potency
+				}
+			}
+			change_trait_rank = {
+				trait = magic_good
+				rank = 1
+			}
+		}
+	}
+	if = {
+		limit = {
+			NOT = { has_trait = cannibal }
+		}
+		add_trait = cannibal
+	}
+	scope:cannibalism_victim = { trigger_event = magic.2700 }
 }
 
 battle_rage_effect = {
@@ -1454,180 +1689,310 @@ battle_rage_effect = {
 	}
 }
 
+plant_growth_effect = {
+	set_or_upgrade_magic_modifier_county = { MODIFIER_NAME = plant_growth_mod CASTER = root TIME_UNIT = years DURATION = 1 }
+	root = {send_interface_toast = { title = plant_growth_toast }}
+}
+
+plant_growth_backfire_effect = {
+	if = {
+		limit = { exists = capital_county}
+		random_held_title = {
+			limit = { tier = tier_county}
+			save_scope_as = affected_county
+			set_or_upgrade_magic_modifier_county = { MODIFIER_NAME = plant_growth_malus_mod CASTER = root TIME_UNIT = years DURATION = 1 }
+		}
+		trigger_event = magic.1052
+	}
+}
+
+sacrifice_plants_effect = {
+	save_scope_as = affected_county
+	if = { 
+		limit = { has_county_modifier = sacrifice_plants_mod_huge }
+		custom_tooltip = sacrifice_plants_no_longer_possible.tt
+	}
+	else_if = { 
+		limit = { has_county_modifier = sacrifice_plants_mod_major }
+		remove_county_modifier = sacrifice_plants_mod_major
+		add_county_modifier = { modifier = sacrifice_plants_mod_huge years = 40 }
+		change_county_control = -30
+		sacrifice_plants_show_county_quality_effect = yes
+	}
+	else_if = { 
+		limit = { has_county_modifier = sacrifice_plants_mod_mid }
+		remove_county_modifier = sacrifice_plants_mod_mid
+		add_county_modifier = { modifier = sacrifice_plants_mod_major years = 20 }
+		change_county_control = -10
+		sacrifice_plants_show_county_quality_effect = yes
+	}
+	else_if = { 
+		limit = { has_county_modifier = sacrifice_plants_mod_minor }
+		remove_county_modifier = sacrifice_plants_mod_minor
+		add_county_modifier = { modifier = sacrifice_plants_mod_mid years = 10 }
+		change_county_control = -2
+		sacrifice_plants_show_county_quality_effect = yes
+	}
+	else = { 
+		add_county_modifier = { modifier = sacrifice_plants_mod_minor years = 5 }
+		change_county_control = -1
+		sacrifice_plants_show_county_quality_effect = yes
+	}
+}
+
+sacrifice_plants_show_county_quality_effect = {
+	if = {
+		limit = {
+		sacrifice_plants_gen_county_quality < 1.5
+		}
+		custom_tooltip = vegetation_quality_terrible.tt
+	}
+	else_if = {
+		limit = {
+		sacrifice_plants_gen_county_quality < 2
+		}
+		custom_tooltip = vegetation_quality_bad.tt
+	}
+	else_if = {
+		limit = {
+		sacrifice_plants_gen_county_quality < 2.5
+		}
+		custom_tooltip = vegetation_quality_average.tt
+	}
+	else_if = {
+		limit = {
+		sacrifice_plants_gen_county_quality < 3
+		}
+		custom_tooltip = vegetation_quality_good.tt
+	}
+	else_if = {
+		limit = {
+		sacrifice_plants_gen_county_quality < 3.5
+		}
+		custom_tooltip = vegetation_quality_excellent.tt
+	}
+	else = {
+		custom_tooltip = vegetation_quality_best.tt
+	}
+}
+
 ### DEAD MAGIC ###
 
 raise_undead2_effect = {
-
 	if = {
-		limit = {
-			root = {
-				has_variable_list = spell_l_targets
-			}
-		}
-		every_in_list = {
-			variable = spell_l_targets
-			save_scope_as = location
-		}
-	}
-	else = {
+		limit = { exists = capital_province }
+		capital_province = { save_temporary_scope_as = location }
 		if = {
-			limit = { exists = capital_province }
-			capital_province = { save_scope_as = location }
-		}
-		spawn_army = {
-			name = "Skeleton Army"
-			location = scope:location
-			levies = 0
-			men_at_arms = {
-				type = spirit_regular
-				stacks = 1
+			limit ={
+				root.var:magic_lvl = { compare_value = 0 }
 			}
-			inheritable = no
-			uses_supply = no
+			show_as_tooltip = {
+				spawn_army = {
+					name = "SKELETON_HOST"
+					location = scope:location
+					levies = 100
+					inheritable = no
+					uses_supply = no
+				}
+			}
 		}
-		deduct_spell_cost_by_tier = { TIER = 3 }
-
-		add_character_flag = {
-			flag = casted_raise_dead
-			years = 10
+		else_if = {
+			limit ={
+				root.var:magic_lvl = { compare_value = 1 }
+			}
+			show_as_tooltip = {
+				spawn_army = {
+					name = "SKELETON_HOST"
+					location = scope:location
+					levies = 500
+					inheritable = no
+					uses_supply = no
+				}
+			}
+		}
+		else_if = {
+			limit ={
+				root.var:magic_lvl = { compare_value = 2 }
+			}
+			show_as_tooltip = {
+				spawn_army = {
+					name = "SKELETON_HOST"
+					location = scope:location
+					levies = 1000
+					inheritable = no
+					uses_supply = no
+				}
+			}
+		}
+		else_if = {
+			limit ={
+				root.var:magic_lvl = { compare_value = 3 }
+			}
+			show_as_tooltip = {
+				spawn_army = {
+					name = "SKELETON_HOST"
+					location = scope:location
+					levies = 2500
+					inheritable = no
+					uses_supply = no
+				}
+			}
 		}
 	}
-
+	trigger_event = magic.2050
 	send_interface_toast = {
 		title = undead_dead_toast
 	}
 }
 
 lead_to_gold_effect = {
+	save_scope_as = transmuter
 	if = {
 		limit ={
-			var:magic_lvl = { compare_value = 0 }
+			root.var:magic_lvl = { compare_value = 0 }
 		}
-		add_gold = minor_gold_value
+		add_gold = lead_to_gold_min_value
+		custom_tooltip = lead_to_gold_0.tt
 	}
 	else_if = {
 		limit ={
-			var:magic_lvl = { compare_value = 1 }
+			root.var:magic_lvl = { compare_value = 1 }
 		}
-		add_gold = medium_gold_value
+		add_gold = lead_to_gold_mid_value
+		custom_tooltip = lead_to_gold_1.tt
 	}
 	else_if = {
 		limit ={
-			var:magic_lvl = { compare_value = 2 }
+			root.var:magic_lvl = { compare_value = 2 }
 		}
-		add_gold = major_gold_value
+		add_gold = lead_to_gold_major_value
+		custom_tooltip = lead_to_gold_2.tt
 	}
 	else_if = {
 		limit ={
-			var:magic_lvl = { compare_value = 3 }
+			root.var:magic_lvl = { compare_value = 3 }
 		}
-		add_gold = massive_gold_value
+		add_gold = lead_to_gold_huge_value
+		custom_tooltip = lead_to_gold_3.tt
+	}
+	hidden_effect = {
+		 every_held_title = {
+			limit = {
+				tier = tier_county
+				}
+			add_county_modifier = { modifier = lead_to_gold_inflation years = 5 }
+			if = {
+				limit ={ root.var:magic_lvl = { compare_value > 0 } }
+			add_county_modifier = { modifier = lead_to_gold_inflation years = 5 }
+			}
+			if = {
+				limit ={ root.var:magic_lvl = { compare_value > 1 } }
+			add_county_modifier = { modifier = lead_to_gold_inflation years = 5 }
+			add_county_modifier = { modifier = lead_to_gold_inflation years = 5 }
+			}
+			if = {
+				limit ={ root.var:magic_lvl = { compare_value > 2 } }
+			add_county_modifier = { modifier = lead_to_gold_inflation years = 5 }
+			add_county_modifier = { modifier = lead_to_gold_inflation years = 5 }
+			add_county_modifier = { modifier = lead_to_gold_inflation years = 5 }
+			add_county_modifier = { modifier = lead_to_gold_inflation years = 5 }
+			}
+			every_neighboring_county = {
+				limit = {
+					NOT = {
+						holder = scope:transmuter
+					}
+				}
+				add_county_modifier = { modifier = lead_to_gold_inflation_min years = 5 }
+				if = {
+					limit ={ root.var:magic_lvl = { compare_value = 0 } }
+				add_county_modifier = { modifier = lead_to_gold_inflation_min years = 5 }
+				}
+				if = {
+					limit ={ root.var:magic_lvl = { compare_value > 0 } }
+				add_county_modifier = { modifier = lead_to_gold_inflation years = 5 }
+				}
+				if = {
+					limit ={ root.var:magic_lvl = { compare_value > 1 } }
+				add_county_modifier = { modifier = lead_to_gold_inflation years = 5 }
+				}
+				if = {
+					limit ={ root.var:magic_lvl = { compare_value > 2 } }
+				add_county_modifier = { modifier = lead_to_gold_inflation years = 5 }
+				add_county_modifier = { modifier = lead_to_gold_inflation years = 5 }
+				}
+			}
+		}
 	}
 }
 
 create_golems_effect = {
-	root = {
-		spawn_army = {
-			name = "Golem Army"
-			location = capital_province
-			levies = 1
-			men_at_arms = {
-				type = golems
-				stacks = 1
+	if = {
+		limit = { exists = capital_province }
+		capital_province = { save_temporary_scope_as = location }
+		if = {
+			limit ={
+				root.var:magic_lvl = { compare_value = 0 }
 			}
-			inheritable = no
-			uses_supply = no
+			show_as_tooltip = {
+				spawn_army = {
+					name = "GOLEM_HOST"
+					location = scope:location
+					levies = 10
+					inheritable = no
+					uses_supply = no
+				}
+			}
 		}
-		deduct_spell_cost_by_tier = { TIER = 2 }
-
-		add_character_flag = {
-			flag = casted_created_golems
-			years = 10
+		else_if = {
+			limit ={
+				root.var:magic_lvl = { compare_value = 1 }
 			}
-
-		send_interface_toast = {
-			title = craft_golems_toast
+			show_as_tooltip = {
+				spawn_army = {
+					name = "GOLEM_HOST"
+					location = scope:location
+					levies = 50
+					inheritable = no
+					uses_supply = no
+				}
+			}
+		}
+		else_if = {
+			limit ={
+				root.var:magic_lvl = { compare_value = 2 }
+			}
+			show_as_tooltip = {
+				spawn_army = {
+					name = "GOLEM_HOST"
+					location = scope:location
+					levies = 100
+					inheritable = no
+					uses_supply = no
+				}
+			}
+		}
+		else_if = {
+			limit ={
+				root.var:magic_lvl = { compare_value = 3 }
+			}
+			show_as_tooltip = {
+				spawn_army = {
+					name = "GOLEM_HOST"
+					location = scope:location
+					levies = 250
+					inheritable = no
+					uses_supply = no
+				}
+			}
 		}
 	}
+	trigger_event = magic.2150
 }
 
 stone_serpent_effect = {
-	if = {
-		limit = {
-			root = {
-				has_variable_list = spell_targets
-			}
-		}
-		every_in_list = {
-			variable = spell_targets
-		}
-		if = {
-			limit ={
-				var:magic_lvl = { compare_value = 1 }
-			}
-			every_in_list = {
-				variable = spell_targets
-				add_character_modifier = stone_serpent_1_mod
-			}
-		}
-		if = {
-			limit = {
-				var:magic_lvl = { compare_value = 2 }
-			}
-				every_in_list = {
-					variable = spell_targets
-					add_character_modifier = stone_serpent_2_mod
-				}
-			}
-		if = {
-			limit = {
-				var:magic_lvl = { compare_value = 3 }
-			}
-			every_in_list = {
-				variable = spell_targets
-				add_character_modifier = stone_serpent_3_mod
-			}
-		}
-	}
-	else = {
-		if = {
-			limit = {
-				var:magic_lvl = { compare_value = 0 }
-			}
-			custom_tooltip = level_0_warning.tt
-		}
-		if = {
-			limit = {
-				var:magic_lvl = { compare_value = 1 }
-			}
-			add_character_modifier = stone_serpent_1_mod
-			deduct_spell_cost_by_tier = { TIER = 1 }
-		}
-		if = {
-			limit = {
-					var:magic_lvl = { compare_value = 2 }
-				}
-				add_character_modifier = stone_serpent_2_mod
-				deduct_spell_cost_by_tier = { TIER = 1 }
-			}
-		if = {
-			limit = {
-				var:magic_lvl = { compare_value = 3 }
-			}
-			add_character_modifier = stone_serpent_3_mod
-			deduct_spell_cost_by_tier = { TIER = 1 }
-		}
-	}
-	root = {
-		add_character_flag = {
-			flag = casted_stone_serpent
-			years = 10
-		}
-
-		send_interface_toast = {
-			title = stone_serpent_toast
-		}
-	}
+	set_or_upgrade_magic_modifier = { MODIFIER_NAME = stone_serpent_mod CASTER = root TIME_UNIT = years DURATION = 2 }
+	root = {send_interface_toast = { title = stone_serpent_toast }}
 }
 
 necrotic_boon_effect = {
@@ -1636,7 +2001,7 @@ necrotic_boon_effect = {
 			has_variable_list = spell_targets
 		}
 		every_in_list = {
-			has_variable = spell_targets
+			variable = spell_targets
 			random_list = {
 				50 = {
 					add_martial_skill = 1
@@ -1678,174 +2043,794 @@ necrotic_boon_effect = {
 }
 
 pull_meteor_effect = {
+	set_or_upgrade_magic_modifier_county = { MODIFIER_NAME = meteor_mod CASTER = root TIME_UNIT = years DURATION = 10 }
+	root = {
+		send_interface_toast = { title = pull_meteor_toast }
+		save_scope_as = caster
+	}
+	save_scope_as = affected_county
+	if = {
+		limit ={
+			root.var:magic_lvl = { compare_value = 1 }
+		}
+		change_development_progress_with_overflow = -25
+	}
+	else_if = {
+		limit ={
+			root.var:magic_lvl = { compare_value = 2 }
+		}
+		change_development_level = -1
+		custom_tooltip = injury_potential_small_tt
+		scope:caster = {
+			trigger_event = magic.1028
+		}
+	}
+	else_if = {
+		limit ={
+			root.var:magic_lvl = { compare_value = 3 }
+		}
+		change_development_level = -5
+		custom_tooltip = injury_potential_large_tt
+		custom_tooltip = smash_holding_potential.tt
+		scope:caster = {
+			trigger_event = magic.1029
+		}
+	}
 	if = {
 		limit = {
-			root = {
-				has_variable_list = spell_l_targets
+			holder = {
+				NOT = { this = root }
 			}
 		}
-		every_in_list = {
-			variable = spell_l_targets
-			save_scope_as = location
-			scope:location = {
-				add_county_modifier = {
-					modifier = meteored
-					years = 10
-				}
-			}
-			root = {
-				deduct_spell_cost_by_tier = { TIER = 4 }
-				add_character_flag = {
-					flag = casted_pull_meteor
-					years = 10
-				}
-			}
-		}
+		root = { save_scope_as = caster }
+		holder = { trigger_event = magic.1026}
 	}
-	else = {
-		if = {
-			limit = { exists = capital_province }
-			capital_province = { save_scope_as = location }
-		}
-	}
+	else = { holder = { trigger_event = magic.1027 } }
+}
 
-	send_interface_toast = {
-		title = pull_meteor_toast
+smash_holding_effect = {
+	if = {
+		limit = { is_any_metropolis_district = yes }
+		set_holding_type = ruined_district_holding
+		add_building = house_ruins_01
+		save_scope_value_as = { name = metropolis_destroyed value = yes }
+	}
+	if = {
+		limit = { has_holding_type = castle_holding}
+		set_holding_type = wasteland_empty_holding
+		set_holding_type = castle_holding
+	}
+	if = {
+		limit = { has_holding_type = city_holding}
+		set_holding_type = wasteland_empty_holding
+		set_holding_type = city_holding
+	}
+	if = {
+		limit = { has_holding_type = tribal_holding}
+		set_holding_type = wasteland_empty_holding
+		set_holding_type = tribal_holding
+	}
+	if = {
+		limit = { has_holding_type = church_holding}
+		set_holding_type = wasteland_empty_holding
+		set_holding_type = church_holding
+	}
+}
+
+
+smash_random_holding_effect = {
+	random_county_province = {
+		save_scope_as = affected_province
+		smash_holding_effect = yes
+	}
+}
+
+show_smash_random_holding_effect = {
+	if = { 
+		limit = { scope:metropolis_destroyed = yes}
+		custom_tooltip = smash_holding_metropolis.tt
+	}
+	else = { 
+		custom_tooltip = smash_holding_normal.tt
+	}
+}
+
+smash_all_holdings_effect = {
+	every_county_province = {
+		save_scope_as = affected_province
+		smash_holding_effect = yes
+	}
+}
+
+show_smash_all_holdings_effect = {
+		custom_tooltip = smash_all_holdings.tt
+}
+
+earthquake_effect = {
+	set_or_upgrade_magic_modifier_county = { MODIFIER_NAME = earthquake_mod CASTER = root TIME_UNIT = years DURATION = 6 }
+	save_scope_as = affected_county
+	custom_tooltip = earthquake.tt
+	root = { save_scope_as = caster }
+	if = {
+		limit = {
+			NOT = { this = root }
+		}
+		trigger_event = magic.1041
+		root = {send_interface_toast = { title = earthquake_toast }}
+	}
+	else = { trigger_event = magic.1042 }
+	hidden_effect = {
+		every_neighboring_county = {
+			earthquake_neighbour_effect = yes
+			add_to_list = earthquake_neighbours
+		}
+	}
+	if = {
+		limit ={
+			root.var:magic_lvl = { compare_value = 1 }
+		}
+		change_development_progress_with_overflow = -25
+	}
+	else_if = {
+		limit ={
+			root.var:magic_lvl = { compare_value = 2 }
+		}
+		change_development_level = -1
+		custom_tooltip = injury_potential_micro_tt
+		scope:caster = {
+			trigger_event = magic.1043
+		}
+	}
+	else_if = {
+		limit ={
+			root.var:magic_lvl = { compare_value = 3 }
+		}
+		change_development_level = -4
+		custom_tooltip = injury_potential_small_tt
+		custom_tooltip = injury_potential_micro_neighbour_tt
+		custom_tooltip = smash_all_holdings_and_neighbours_potential.tt
+		scope:caster = {
+			trigger_event = magic.1044
+		}
+	}
+}
+
+earthquake_neighbour_effect = {
+	if = {
+		limit ={
+			root.var:magic_lvl = { compare_value = 1 }
+		}
+		set_or_upgrade_magic_modifier_to_level_county = {
+		MODIFIER_NAME = earthquake_mod
+		LEVEL = 0
+		DURATION = 6
+		TIME_UNIT = years
+		}
+	}
+	else_if = {
+		limit ={
+			root.var:magic_lvl = { compare_value = 2 }
+		}
+		set_or_upgrade_magic_modifier_to_level_county = {
+		MODIFIER_NAME = earthquake_mod
+		LEVEL = 1
+		DURATION = 6
+		TIME_UNIT = years
+		}
+		change_development_progress_with_overflow = -25
+	}
+	else_if = {
+		limit ={
+			root.var:magic_lvl = { compare_value = 3 }
+		}
+		set_or_upgrade_magic_modifier_to_level_county = {
+		MODIFIER_NAME = earthquake_mod
+		LEVEL = 2
+		DURATION = 6
+		TIME_UNIT = years
+		}
+		change_development_level = -1
+	}
+}
+
+# contains the actual logic to armor crush an individual
+crush_armor_failure_effect = {
+	save_scope_as = victim
+	magic_unknown_harm_effect = {
+		CASTER = $CASTER$
+		VICTIM = scope:victim
+	}
+}
+crush_armor_success1_effect = {
+	save_scope_as = victim
+	change_trait_rank = {
+			trait = wounded
+			rank = 1
+	}
+	magic_unknown_harm_effect = {
+		CASTER = $CASTER$
+		VICTIM = scope:victim
+	}
+}
+crush_armor_success2_effect = {
+	save_scope_as = victim
+	change_trait_rank = {
+			trait = wounded
+			rank = 2
+	}
+	magic_unknown_harm_effect = {
+		CASTER = $CASTER$
+		VICTIM = scope:victim
+	}
+}
+crush_armor_success3_effect = {
+	$CASTER$ = { save_scope_as = caster }
+	save_scope_as = victim
+	custom_tooltip = will_kill_tt
+	trigger_event = magic.2402
+}
+crush_armor_failure_effect = {
+	$CASTER$ = { }
+}
+crush_armor_character_resistable_effect = {
+	magic_calculate_and_apply_resistable_effect = {
+		CASTER = $CASTER$
+		EFFECT_SUCCESS1 = crush_armor_success1_effect
+		EFFECT_SUCCESS2 = crush_armor_success2_effect
+		EFFECT_SUCCESS3 = crush_armor_success3_effect
+		EFFECT_FAILURE = crush_armor_failure_effect
+		SUCCESS50_VALUE = $SUCCESS50_VALUE$
+		RESIST_VALUE = magic_resist_health_prowess
+		NUM_SLS = $NUM_SLS$
 	}
 }
 
 crush_armor_effect = {
 	if = {
-		limit = {
-			root = {
-				has_variable_list = spell_targets
-			}
+		limit ={
+			root.var:magic_lvl = { compare_value = 0 }
 		}
-		every_in_list = {
-			variable = spell_targets
-			add_character_modifier = {
-				modifier = crushed_armor_mod
-				months = 6
-			}
-			root = {
-				deduct_spell_cost_by_tier = { TIER = 1 }
-				add_character_flag = {
-					flag = casted_crush_armor
-					years = 2
-				}
-			}
-		}
-		send_interface_toast = {
-			title = crush_armor_toast
+		crush_armor_character_resistable_effect = {
+			SUCCESS50_VALUE = 2
+			CASTER = root
+			NUM_SLS = 3
 		}
 	}
-	else = {
-		send_interface_toast = {
-			title = crush_armor_toast_rejection
+	else_if = {
+		limit ={
+			root.var:magic_lvl = { compare_value = 1 }
+		}
+		crush_armor_character_resistable_effect = {
+			SUCCESS50_VALUE = 3.5
+			CASTER = root
+			NUM_SLS = 3
+		}
+	}
+	else_if = {
+		limit ={
+			root.var:magic_lvl = { compare_value = 2 }
+		}
+		crush_armor_character_resistable_effect = {
+			SUCCESS50_VALUE = 7
+			CASTER = root
+			NUM_SLS = 2
+		}
+	}
+	else_if = {
+		limit ={
+			root.var:magic_lvl = { compare_value = 3 }
+		}
+		crush_armor_character_resistable_effect = {
+			SUCCESS50_VALUE = 12
+			CASTER = root
+			NUM_SLS = 3
+		}
+	}
+	if = {
+		limit = {
+			NOT = { this = root }
+		}
+		root = { save_scope_as = caster }
+		trigger_event = magic.1021
+	}
+	else = { trigger_event = magic.1022 }
+}
+
+enchant_arms_effect = {
+	set_or_upgrade_magic_modifier = { MODIFIER_NAME = enchant_armory_mod CASTER = root TIME_UNIT = years DURATION = 1 }
+	set_or_upgrade_magic_modifier = { MODIFIER_NAME = enhanced_arms_mod CASTER = root TIME_UNIT = years DURATION = 1 }
+	root = {send_interface_toast = { title = enchant_arms_toast }}
+	if = {
+		limit ={
+			root.var:magic_lvl = { compare_value = 0 }
+		}
+		custom_tooltip = enchant_arms0.tt
+	}
+	if = {
+		limit ={
+			root.var:magic_lvl = { compare_value = 1 }
+		}
+		custom_tooltip = enchant_arms1.tt
+	}
+	if = {
+		limit ={
+			root.var:magic_lvl = { compare_value = 2 }
+		}
+		custom_tooltip = enchant_arms2.tt
+	}
+	if = {
+		limit ={
+			root.var:magic_lvl = { compare_value = 3 }
+		}
+		custom_tooltip = enchant_arms3.tt
+	}
+	hidden_effect = {
+		every_knight = {
+		set_or_upgrade_magic_modifier = { MODIFIER_NAME = enhanced_arms_mod CASTER = root TIME_UNIT = years DURATION = 1 }
 		}
 	}
 }
 
 craft_greater_golem_effect = {
+	root = { save_scope_as = caster }
+	custom_tooltip = craft_greater_golem2.tt
+	trigger_event = magic.2200
+	root = {send_interface_toast = { title = craft_greater_golem_toast }}
+}
+
+moon_read_effect = {
 	if = {
 		limit = {
-			root = {
-				has_variable_list = spell_targets
-			}
+		has_character_flag = moon_future_divined
 		}
-		every_in_list = {
-			variable = spell_targets
-			root = {
-				deduct_spell_cost_by_tier = { TIER = 4 }
-				add_character_flag = {
-					flag = casted_craft_greater_golem
-					years = 20
-				}
-			}
-			custom_tooltip = craft_greater_golem2.tt
-			hidden_effect = {
-				add_artifact = {ARTIFACT = artifact_mountgreatergolem}
-			}
-		}
-		send_interface_toast = {
-			title = greater_fogbeast_toast
-		}
+	custom_tooltip = moon_read_not_possible.tt
 	}
 	else = {
-		deduct_spell_cost_by_tier = { TIER = 4 }
-		custom_tooltip = craft_greater_golem.tt
 		add_character_flag = {
-			flag = casted_craft_greater_golem
-			years = 10
+			flag = moon_future_divined
+			years = 5
 		}
-		send_interface_toast = {
-			title = craft_greater_golem_toast
+		root = {save_scope_as = caster}
+		trigger_event = magic.2250
+		custom_tooltip = moon_read.tt
+		root = {send_interface_toast = { title = moon_read_toast }}
+	}
+}
+
+read_moon_random_effect = {
+	random_list = {
+		1 = {
+			trigger = {
+				NOT = { has_character_flag = moon_read_war }
+			}
+			add_character_flag = { flag = moon_read_war days = 3 }
 		}
-		hidden_effect = {
-			add_artifact = {ARTIFACT = artifact_mountgreatergolem}
+		1 = {
+			trigger = {
+				NOT = { has_character_flag = moon_read_wealth }
+			}
+			add_character_flag = { flag = moon_read_wealth days = 3 }
 		}
+		1 = {
+			trigger = {
+				NOT = { has_character_flag = moon_read_friendship }
+			}
+			add_character_flag = { flag = moon_read_friendship days = 3 }
+		}
+		1 = {
+			trigger = {
+				NOT = { has_character_flag = moon_read_love }
+			}
+			add_character_flag = { flag = moon_read_love days = 3 }
+		}
+		1 = {
+			trigger = {
+				NOT = { has_character_flag = moon_read_safety }
+			}
+			add_character_flag = { flag = moon_read_safety days = 3 }
+		}
+		1 = {
+			trigger = {
+				NOT = { has_character_flag = moon_read_kill }
+			}
+			add_character_flag = { flag = moon_read_kill days = 3 }
+		}
+		1 = {
+			trigger = {
+				NOT = { has_character_flag = moon_read_learning }
+			}
+			add_character_flag = { flag = moon_read_learning days = 3 }
+		}
+		1 = {
+			trigger = {
+				NOT = { has_character_flag = moon_read_rulership }
+			}
+			add_character_flag = { flag = moon_read_rulership days = 3 }
+		}
+	}
+}
+
+moon_read_backfire_effect = {
+		trigger_event = magic.2251
+		read_moon_random_backfire_effect = yes
+}
+
+read_moon_random_backfire_effect = {
+	random_list = {
+		1 = {
+			set_or_upgrade_magic_modifier = { MODIFIER_NAME = moon_read_battle_false_mod CASTER = root TIME_UNIT = years DURATION = 2 }
+		}
+		1 = {
+			set_or_upgrade_magic_modifier = { MODIFIER_NAME = moon_read_wealth_false_mod CASTER = root TIME_UNIT = years DURATION = 2 }
+		}
+		1 = {
+			set_or_upgrade_magic_modifier = { MODIFIER_NAME = moon_read_friendship_false_mod CASTER = root TIME_UNIT = years DURATION = 2 }
+		}
+		1 = {
+			set_or_upgrade_magic_modifier = { MODIFIER_NAME = moon_read_love_false_mod CASTER = root TIME_UNIT = years DURATION = 2 }
+		}
+		1 = {
+			set_or_upgrade_magic_modifier = { MODIFIER_NAME = moon_read_safety_false_mod CASTER = root TIME_UNIT = years DURATION = 2 }
+		}
+		1 = {
+			set_or_upgrade_magic_modifier = { MODIFIER_NAME = moon_read_kill_false_mod CASTER = root TIME_UNIT = years DURATION = 2 }
+		}
+		1 = {
+			set_or_upgrade_magic_modifier = { MODIFIER_NAME = moon_read_learn_false_mod CASTER = root TIME_UNIT = years DURATION = 2 }
+		}
+		1 = {
+			set_or_upgrade_magic_modifier = { MODIFIER_NAME = moon_read_rulership_false_mod CASTER = root TIME_UNIT = years DURATION = 2 }
+		}
+	}
+}
+
+moon_guidance_effect = {
+	if = {
+		limit = {
+		has_character_flag = moon_guidance_given
+		}
+	custom_tooltip = moon_guidance_not_possible.tt
+	}
+	else = {
+		add_character_flag = {
+			flag = moon_guidance_given
+			years = 1
+		}
+		root = {save_scope_as = caster}
+		trigger_event = magic.2300
+		custom_tooltip = moon_guidance.tt
+		root = {send_interface_toast = { title = moon_guidance_toast }}
+	}
+}
+
+moon_guidance_backfire_effect = {
+		trigger_event = magic.2301
+		moon_guidance_random_backfire_effect = yes
+}
+
+moon_guidance_backfire_effect_from_event = {
+	if = {
+		limit ={
+			root.var:magic_lvl = { compare_value = 0 }
+		}
+		add_stress = 25
+	}
+	else_if = {
+		limit ={
+			root.var:magic_lvl = { compare_value = 1 }
+		}
+		add_stress = 50
+	}
+	else_if = {
+		limit ={
+			root.var:magic_lvl = { compare_value = 2 }
+		}
+		add_stress = 75
+		random_list = {
+			70 = {}
+			10 = { add_trait = possessed_1 }
+			10 = { add_trait = lunatic_1 }
+		}
+	}
+	else_if = {
+		limit ={
+			root.var:magic_lvl = { compare_value = 3 }
+		}
+		add_stress = 100
+		random_list = {
+			10 = { add_trait = possessed_1 }
+			10 = { add_trait = lunatic_1 }
+		}
+	}
+}
+
+moon_guidance_random_backfire_effect = {
+	random_list = {
+		1 = {
+			set_or_upgrade_magic_modifier = { MODIFIER_NAME = moon_guidance_war_false_mod CASTER = root TIME_UNIT = months DURATION = 6 }
+		}
+		1 = {
+			set_or_upgrade_magic_modifier = { MODIFIER_NAME = moon_guidance_wealth_false_mod CASTER = root TIME_UNIT = months DURATION = 6 }
+		}
+		1 = {
+			set_or_upgrade_magic_modifier = { MODIFIER_NAME = moon_guidance_scheme_false_mod CASTER = root TIME_UNIT = months DURATION = 6 }
+		}
+		1 = {
+			set_or_upgrade_magic_modifier = { MODIFIER_NAME = moon_guidance_scheme_discovery_false_mod CASTER = root TIME_UNIT = months DURATION = 6 }
+		}
+		1 = {
+			set_or_upgrade_magic_modifier = { MODIFIER_NAME = moon_guidance_learn_false_mod CASTER = root TIME_UNIT = months DURATION = 6 }
+		}
+	}
+}
+
+raise_earth_effect = {
+	set_or_upgrade_magic_modifier = { MODIFIER_NAME = raise_earth_mod CASTER = root TIME_UNIT = years DURATION = 2 }
+	root = {send_interface_toast = { title = raise_earth_toast }}
+}
+
+earth_magic_backfire_effect = {
+if = {
+		limit ={
+			root.var:magic_lvl = { compare_value = 0 }
+		}
+		remove_short_term_gold = tiny_gold_value
+	}
+	else_if = {
+		limit ={
+			root.var:magic_lvl = { compare_value = 1 }
+		}
+		change_trait_rank = {
+			trait = wounded
+			rank = 1
+			max = 3
+		}
+		remove_short_term_gold = tiny_gold_value
+	}
+	else_if = {
+		limit ={
+			root.var:magic_lvl = { compare_value = 2 }
+		}
+		change_trait_rank = {
+			trait = wounded
+			rank = 1
+			max = 3
+		}
+		remove_short_term_gold = minor_gold_value
+	}
+	else_if = {
+		limit ={
+			root.var:magic_lvl = { compare_value = 3 }
+		}
+		change_trait_rank = {
+			trait = wounded
+			rank = 2
+			max = 3
+		}
+		remove_short_term_gold = minor_gold_value
+	}
+	trigger_event = magic.1046
+}
+
+stoneskin_effect = {
+	set_or_upgrade_magic_modifier = { MODIFIER_NAME = stoneskin_mod CASTER = root TIME_UNIT = years DURATION = 4 }
+	root = {send_interface_toast = { title = stoneskin_toast }}
+}
+
+earth_fort_effect = {
+	set_or_upgrade_magic_modifier_county = { MODIFIER_NAME = earth_fort_mod CASTER = root TIME_UNIT = years DURATION = 2 }
+	root = {send_interface_toast = { title = earth_fort_toast }}
+}
+
+find_minerals_effect = {
+	set_or_upgrade_magic_modifier_county = { MODIFIER_NAME = find_minerals_mod CASTER = root TIME_UNIT = years DURATION = 6 }
+	root = {send_interface_toast = { title = find_minerals_toast }}
+}
+
+improve_soil_effect = {
+	set_or_upgrade_magic_modifier_county = { MODIFIER_NAME = improve_soil_mod CASTER = root TIME_UNIT = years DURATION = 10 }
+	root = {send_interface_toast = { title = improve_soil_toast }}
+}
+
+# contains the actual logic to petrify an individual
+petrify_failure_effect = {
+	save_scope_as = victim
+	magic_unknown_harm_effect = {
+		CASTER = $CASTER$
+		VICTIM = scope:victim
+	}
+}
+petrify_success1_effect = {
+	save_scope_as = victim
+	set_or_upgrade_magic_modifier_to_level = {
+		MODIFIER_NAME = petrify_mod
+		LEVEL = 0
+		DURATION = 1
+		TIME_UNIT = years
+	}
+	magic_unknown_harm_effect = {
+		CASTER = $CASTER$
+		VICTIM = scope:victim
+	}
+}
+petrify_success2_effect = {
+	save_scope_as = victim
+	set_or_upgrade_magic_modifier_to_level = {
+		MODIFIER_NAME = petrify_mod
+		LEVEL = 2
+		DURATION = 1
+		TIME_UNIT = years
+	}
+	magic_unknown_harm_effect = {
+		CASTER = $CASTER$
+		VICTIM = scope:victim
+	}
+}
+petrify_success3_effect = {
+	$CASTER$ = { save_scope_as = caster }
+	save_scope_as = victim
+	custom_tooltip = will_kill_tt
+	trigger_event = magic.2401
+}
+petrify_failure_effect = {
+	$CASTER$ = { }
+}
+petrify_character_resistable_effect = {
+	magic_calculate_and_apply_resistable_effect = {
+		CASTER = $CASTER$
+		EFFECT_SUCCESS1 = petrify_success1_effect
+		EFFECT_SUCCESS2 = petrify_success2_effect
+		EFFECT_SUCCESS3 = petrify_success3_effect
+		EFFECT_FAILURE = petrify_failure_effect
+		SUCCESS50_VALUE = $SUCCESS50_VALUE$
+		RESIST_VALUE = magic_resist_health
+		NUM_SLS = $NUM_SLS$
+	}
+}
+
+petrify_effect = {
+	root = { save_scope_as = caster }
+	if = {
+		limit ={
+			root.var:magic_lvl = { compare_value = 0 }
+		}
+		petrify_character_resistable_effect = {
+			SUCCESS50_VALUE = 1.5
+			CASTER = root
+			NUM_SLS = 3
+		}
+	}
+	else_if = {
+		limit ={
+			root.var:magic_lvl = { compare_value = 1 }
+		}
+		petrify_character_resistable_effect = {
+			SUCCESS50_VALUE = 3
+			CASTER = root
+			NUM_SLS = 3
+		}
+	}
+	else_if = {
+		limit ={
+			root.var:magic_lvl = { compare_value = 2 }
+		}
+		petrify_character_resistable_effect = {
+			SUCCESS50_VALUE = 6
+			CASTER = root
+			NUM_SLS = 2
+		}
+	}
+	else_if = {
+		limit ={
+			root.var:magic_lvl = { compare_value = 3 }
+		}
+		petrify_character_resistable_effect = {
+			SUCCESS50_VALUE = 12
+			CASTER = root
+			NUM_SLS = 3
+		}
+	}
+	if = {
+		limit = {
+			NOT = { this = root }
+		}
+		trigger_event = magic.1016
+		root = {send_interface_toast = { title = petrify_toast }}
+	}
+	else = { trigger_event = magic.1017 }
+}
+
+necrotic_vitality_effect = {
+	set_or_upgrade_magic_modifier = { MODIFIER_NAME = necrotic_vitality_mod CASTER = root TIME_UNIT = years DURATION = 10 }
+	root = {send_interface_toast = { title = necrotic_vitality_toast }}
+	if = {
+		limit ={
+			root.var:magic_lvl = { compare_value = 0 }
+		}
+		custom_tooltip = necrotic_vitality_0.tt
+	}
+	if = {
+		limit ={
+			root.var:magic_lvl = { compare_value = 1 }
+		}
+		custom_tooltip = necrotic_vitality_1.tt
+	}
+	if = {
+		limit ={
+			root.var:magic_lvl = { compare_value = 2 }
+		}
+		custom_tooltip = necrotic_vitality_2.tt
+	}
+	if = {
+		limit ={
+			root.var:magic_lvl = { compare_value = 3 }
+		}
+	}
+	necrotic_vitality_backfire_effect = yes
+}
+
+necrotic_vitality_backfire_effect = {
+	if = {
+		limit ={
+			root.var:magic_lvl = { compare_value = 0 }
+		}
+		necrotic_decay_stack_effect = yes
+	}
+	if = {
+		limit ={
+			root.var:magic_lvl = { compare_value = 1 }
+		}
+		necrotic_decay_stack_effect = yes
+		necrotic_decay_stack_effect = yes
+	}
+	if = {
+		limit ={
+			root.var:magic_lvl = { compare_value = 2 }
+		}
+		necrotic_decay_stack_effect = yes
+		necrotic_decay_stack_effect = yes
+		necrotic_decay_stack_effect = yes
+		necrotic_decay_stack_effect = yes
+	}
+	if = {
+		limit ={
+			root.var:magic_lvl = { compare_value = 3 }
+		}
+		necrotic_decay_stack_effect = yes
+		necrotic_decay_stack_effect = yes
+		necrotic_decay_stack_effect = yes
+		necrotic_decay_stack_effect = yes
+		necrotic_decay_stack_effect = yes
+		necrotic_decay_stack_effect = yes
+	}
+}
+
+necrotic_decay_stack_effect = {
+	hidden_effect = {
+	add_character_modifier = necrotic_vitality_negative_stack
 	}
 }
 
 boneshaping_effect = {
-	add_character_flag = {
-		flag = casted_boneshaping
-		years = 100
-	}
-	send_interface_toast = {
-		title = boneshaping_toast
-	}
-	trigger_event = magic_decisions.2000 ###tbd
-	change_variable = {
-		name = magic_counter
-		subtract = tier_5_spell
-	}
+	root = {send_interface_toast = { title = boneshaping_toast } }
+	save_scope_as = affected_character
+	if = {
+        limit = {
+			scope:affected_character = { has_variable = boneshaping_counter }
+			root.var:magic_lvl = { compare_value < scope:affected_character.var:boneshaping_counter  }
+        }
+        custom_tooltip = boneshaping_2.tt
+    }
+    else = {
+        custom_tooltip = boneshaping_1.tt
+        root = {trigger_event = magic_decisions.2000}
+    }
 }
+
 
 ### MIXED MAGIC ###
 
-dementation_effect = {
 
-	if = {
-		limit = {
-			root = {
-				has_variable_list = spell_targets
-			}
-		}
-		every_in_list = {
-			variable = spell_targets
-			root = {
-				deduct_spell_cost_by_tier = { TIER = 2 }
-				add_character_flag = {
-					flag = casted_dementation
-					years = 10
-				}
-			}
-			add_character_modifier = {
-				modifier = dementation_mod
-				years = 5
-			}
-		}
-		send_interface_toast = {
-			title = dementation_toast
-		}
-
-	}
-	else = {
-		deduct_spell_cost_by_tier = { TIER = 2 }
-		add_character_flag = {
-			flag = casted_dementation
-			years = 10
-		}
-		add_character_modifier = {
-			modifier = dementation_mod
-			years = 5
-		}
-		send_interface_toast = {
-			title = dementation_toast
-		}
-	}
-}
 
 summon_lesser_effect = {
 	if = {
@@ -1929,6 +2914,219 @@ fog_cast_effect = {
 	send_interface_toast = {
 		title = summon_fog_toast
 	}
+}
+
+# riftmark 
+riftmark_failure_effect = {
+	save_scope_as = victim
+	magic_unknown_harm_effect = {
+		CASTER = $CASTER$
+		VICTIM = scope:victim
+	}
+}
+riftmark_success1_effect = {
+	save_scope_as = victim
+	change_trait_rank = { trait = gh_riftmark rank = 1 }
+	magic_unknown_harm_effect = {
+		CASTER = $CASTER$
+		VICTIM = scope:victim
+	}
+}
+riftmark_success2_effect = {
+	save_scope_as = victim
+	change_trait_rank = { trait = gh_riftmark rank = 2 }
+	magic_unknown_harm_effect = {
+		CASTER = $CASTER$
+		VICTIM = scope:victim
+	}
+}
+riftmark_success3_effect = {
+	save_scope_as = victim
+	change_trait_rank = { trait = gh_riftmark rank = 3 }
+	magic_unknown_harm_effect = {
+		CASTER = $CASTER$
+		VICTIM = scope:victim
+	}
+}
+riftmark_character_resistable_effect = {
+	magic_calculate_and_apply_resistable_effect = {
+		CASTER = $CASTER$
+		EFFECT_SUCCESS1 = riftmark_success1_effect
+		EFFECT_SUCCESS2 = riftmark_success2_effect
+		EFFECT_SUCCESS3 = riftmark_success3_effect
+		EFFECT_FAILURE = riftmark_failure_effect
+		SUCCESS50_VALUE = $SUCCESS50_VALUE$
+		RESIST_VALUE = magic_resist_health
+		NUM_SLS = $NUM_SLS$
+	}
+}
+riftmark_effect = {
+	if = {
+		limit = {
+			root.var:magic_lvl = { compare_value = 0 }
+		}
+		riftmark_character_resistable_effect = {
+			SUCCESS50_VALUE = 5
+			CASTER = root
+			NUM_SLS = 1
+		}
+	}
+	else_if = {
+		limit = {
+			root.var:magic_lvl = { compare_value = 1 }
+		}
+		riftmark_character_resistable_effect = {
+			SUCCESS50_VALUE = 10
+			CASTER = root
+			NUM_SLS = 1
+		}
+	}
+	else_if = {
+		limit = {
+			root.var:magic_lvl = { compare_value = 2 }
+		}
+		riftmark_character_resistable_effect = {
+			SUCCESS50_VALUE = 20
+			CASTER = root
+			NUM_SLS = 2
+		}
+	}
+	else_if = {
+		limit ={
+			root.var:magic_lvl = { compare_value = 3 }
+		}
+		riftmark_character_resistable_effect = {
+			SUCCESS50_VALUE = 30
+			CASTER = root
+			NUM_SLS = 3
+		}
+	}
+
+	if = {
+		limit = {
+			NOT = { this = root }
+		}
+		root = { save_scope_as = caster }
+		trigger_event = magic.2550
+	}
+	else = { trigger_event = magic.2551 }
+
+}
+
+# unraveling
+unraveling_random_wound_effect = {
+	random_list = {
+		10 = {
+			trigger = { NOT = { has_trait = maimed } }
+			add_trait = maimed
+		}
+		10 = {
+			trigger = { NOT = { has_trait = one_legged } }
+			add_trait = one_legged
+		}
+		10 = {
+			trigger = { NOT = { has_trait = one_eyed } }
+			add_trait = one_eyed
+		}
+		10 = {
+			trigger = { NOT = { has_trait = eunuch } }
+			add_trait = eunuch
+		}
+	}
+}
+unraveling_failure_effect = {
+	save_scope_as = victim
+	magic_unknown_harm_effect = {
+		CASTER = $CASTER$
+		VICTIM = scope:victim
+	}
+}
+unraveling_success1_effect = {
+	save_scope_as = victim
+	unraveling_random_wound_effect = yes
+	magic_unknown_harm_effect = {
+		CASTER = $CASTER$
+		VICTIM = scope:victim
+	}
+}
+unraveling_success2_effect = {
+	save_scope_as = victim
+	unraveling_random_wound_effect = yes
+	unraveling_random_wound_effect = yes
+	magic_unknown_harm_effect = {
+		CASTER = $CASTER$
+		VICTIM = scope:victim
+	}
+}
+unraveling_success3_effect = {
+	$CASTER$ = { save_scope_as = caster }
+	save_scope_as = victim
+	custom_tooltip = will_kill_tt
+	trigger_event = magic.2400
+}
+unraveling_character_resistable_effect = {
+	magic_calculate_and_apply_resistable_effect = {
+		CASTER = $CASTER$
+		EFFECT_SUCCESS1 = unraveling_success1_effect
+		EFFECT_SUCCESS2 = unraveling_success2_effect
+		EFFECT_SUCCESS3 = unraveling_success3_effect
+		NUM_SLS = $NUM_SLS$
+		EFFECT_FAILURE = unraveling_failure_effect
+		SUCCESS50_VALUE = $SUCCESS50_VALUE$
+		RESIST_VALUE = magic_resist_health
+	}
+}
+unraveling_effect = {
+	if = {
+		limit = {
+			root.var:magic_lvl = { compare_value = 0 }
+		}
+		unraveling_character_resistable_effect = {
+			SUCCESS50_VALUE = 5
+			CASTER = root
+			NUM_SLS = 2
+		}
+	}
+	else_if = {
+		limit = {
+			root.var:magic_lvl = { compare_value = 1 }
+		}
+		unraveling_character_resistable_effect = {
+			SUCCESS50_VALUE = 10
+			CASTER = root
+			NUM_SLS = 2
+		}
+	}
+	else_if = {
+		limit = {
+			root.var:magic_lvl = { compare_value = 2 }
+		}
+		unraveling_character_resistable_effect = {
+			SUCCESS50_VALUE = 20
+			CASTER = root
+			NUM_SLS = 3
+		}
+	}
+	else_if = {
+		limit ={
+			root.var:magic_lvl = { compare_value = 3 }
+		}
+		unraveling_character_resistable_effect = {
+			SUCCESS50_VALUE = 30
+			CASTER = root
+			NUM_SLS = 3
+		}
+	}
+
+	if = {
+		limit = {
+			NOT = { this = root }
+		}
+		root = { save_scope_as = caster }
+		trigger_event = magic.2550
+	}
+	else = { trigger_event = magic.2551 }
+
 }
 
 raise_lesser_fogbeasts_effect = {
@@ -2072,46 +3270,95 @@ obliterate_memory_effect = {
 }
 
 
-#needs work
+# riftwalk
+rift_walk_teleport_effect = {
+	if = {
+		limit = {
+			# always target the general
+			is_commanding_army = yes
+			commanding_army = {
+				army_size <= root.var:rift_walk_max_capacity
+			}
+		}
+		root = {
+			deduct_spell_cost_by_tier = { TIER = 2 }
+		}
+		commanding_army = {
+			set_army_location = scope:target_location
+		}
+		# TODO: add downside
+	} else = {
+		if = {
+			limit = {
+				root.var:magic_lvl = { compare_value = 0 }
+			}
+			custom_tooltip = rift_walk_army_valid_800_tt
+		}
+		else_if = {
+			limit = {
+				root.var:magic_lvl = { compare_value = 1 }
+			}
+			custom_tooltip = rift_walk_army_valid_4000_tt
+		}
+		else_if = {
+			limit = {
+				root.var:magic_lvl = { compare_value = 2 }
+			}
+			custom_tooltip = rift_walk_army_valid_20000_tt
+		}
+		else_if = {
+			limit = {
+				root.var:magic_lvl = { compare_value = 3 }
+			}
+			custom_tooltip = rift_walk_army_valid_100000_tt
+		}
+
+	}
+}
+
 rift_walk_effect = {
 
 	if = {
 		limit = {
+			root.var:magic_lvl = { compare_value = 0 }
+		}
+		set_variable = { name = rift_walk_max_capacity value = 800 }
+	}
+	else_if = {
+		limit = {
+			root.var:magic_lvl = { compare_value = 1 }
+		}
+		set_variable = { name = rift_walk_max_capacity value = 4000 }
+	}
+	else_if = {
+		limit = {
+			root.var:magic_lvl = { compare_value = 2 }
+		}
+		set_variable = { name = rift_walk_max_capacity value = 20000 }
+	}
+	else_if = {
+		limit = {
+			root.var:magic_lvl = { compare_value = 3 }
+		}
+		set_variable = { name = rift_walk_max_capacity value = 100000 }
+	}
+
+	if = {
+		limit = {
 			root = {
-				has_variable_list = spell_targets
+				has_variable_list = spell_l_targets
 			}
 		}
-		every_in_list = {
-			variable = spell_targets
-			root = {
-				deduct_spell_cost_by_tier = { TIER = 2 }
-				add_character_flag = {
-					flag = casted_rift_walk
-					years = 10
-				}
-			}
-			add_character_modifier = {
-				modifier = dementation_mod
-				years = 5
-			}
-		}
-		send_interface_toast = {
-			title = rift_walk_toast
+		random_in_list = {
+			variable = spell_l_targets
+			save_scope_as = target_location
 		}
 	}
-	else = {
-		deduct_spell_cost_by_tier = { TIER = 2 }
-		add_character_flag = {
-			flag = casted_rift_walk
-			years = 10
-		}
-		add_character_modifier = {
-			modifier = dementation_mod
-			years = 5
-		}
-		send_interface_toast = {
-			title = rift_walk_toast
-		}
+
+	rift_walk_teleport_effect = yes
+
+	send_interface_toast = {
+		title = rift_walk_toast
 	}
 }
 
@@ -2158,49 +3405,51 @@ haunting_power_effect = {
 	}
 }
 
+### OTHER MAGIC ###
+
+kemsar_water_spell_effect = {
+	save_scope_as = affected_county
+	root = {send_interface_toast = { title = kemsar_water_spell_toast }}
+	if = {
+		limit = {
+			any_county_province = {
+				is_county_capital = yes
+				OR = {
+					terrain = desert
+					terrain = desert_mountains
+				}
+			}
+		}
+		set_or_upgrade_magic_modifier_county = { MODIFIER_NAME = kemsar_water_spell_desert_mod CASTER = root TIME_UNIT = years DURATION = 2 }
+	}
+	else = {
+		set_or_upgrade_magic_modifier_county = { MODIFIER_NAME = kemsar_water_spell_normal_mod CASTER = root TIME_UNIT = years DURATION = 1 }
+		custom_tooltip = generate_water_non_effective.tt
+	}
+}
+
+kemsar_water_spell_backfire_effect = {
+	if = {
+		limit = { exists = capital_county}
+		random_held_title = {
+			limit = { tier = tier_county}
+			save_scope_as = affected_county
+			set_or_upgrade_magic_modifier_county = { MODIFIER_NAME = kemsar_water_spell_malus_mod CASTER = root TIME_UNIT = years DURATION = 1 }
+		}
+	}
+}
+
+### GENERATE MAGIC STUFF ###
+
 flagellate_effect = {
 	set_variable = {
 		name = magic_lvl
 		value = 1
 	}
 	increase_progress_to_living_magi_trait = yes
-	if = {	# The closer you beat yourself to the brink of death, the more magic you get
-		limit = { 
-			NOT = { 
-				has_trait_rank = {
-					trait = wounded
-					rank >= 1
-				}
-			} 
-		}
-		change_variable = {
-			name = magic_counter
-			add = tier_2_gen
-		}
-	}
-	else_if = {
-		limit = { 
-			has_trait_rank = {
-				trait = wounded
-				rank = 1
-			}
-		}
-		change_variable = {
-			name = magic_counter
-			add = tier_3_gen
-		}
-	}
-	else_if = {
-		limit = { 
-			has_trait_rank = {
-				trait = wounded
-				rank = 2
-			}
-		}
-		change_variable = {
-			name = magic_counter
-			add = tier_4_gen
-		}
+	change_variable = {
+		name = magic_counter
+		add = flagellate_cost
 	}
 	
 	change_trait_rank = {
@@ -2227,4 +3476,13 @@ flagellate_effect = {
 		add_stress = medium_stress_loss
 	}
 	increase_ritual_scars_effect = { VALUE = 1 }
+}
+
+glimpse_reality_effect = {
+	custom_tooltip = glimpse_reality.tooltip
+	trigger_event = glimpse_reality.0001
+	add_character_flag = {
+		flag = casted_glimpse_reality
+		years = 1
+	}
 }

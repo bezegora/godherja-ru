@@ -110,15 +110,6 @@ allowed_to_be_granted_titles_by = {
 }
 
 is_character_allowed_to_be_player = {
-	custom_description = {
-		text = "GAME_OVER_CANNOT_PLAY_MAGOCRATIC_MONARCHY"
-		NOT = { has_government = magocratic_government }
-	}
-
-	custom_description = {
-		text = "GAME_OVER_CANNOT_PLAY_MAGOCRATIC_REPUBLIC"
-		NOT = { has_government = magocratic_republic }
-	}
 	
 	custom_description = {
 		text = "GAME_OVER_CANNOT_PLAY_PEASANT_REPUBLIC"
@@ -134,30 +125,13 @@ is_character_allowed_to_be_player = {
 		text = "GAME_OVER_CANNOT_PLAY_MERCENARY_GOVERNMENT"
 		NOT = { has_government = mercenary_government }
 	}
-
 	custom_description = {
-		text = "GAME_OVER_CANNOT_PLAY_THEOCRACY"
-		NOT = { has_government = theocracy_government }
+		text = "GAME_OVER_CANNOT_PLAY_WASTELAND_GOVERNMENT"
+		NOT = { has_government = wasteland_government }
 	}
-	
 	custom_description = {
-		text = "GAME_OVER_CANNOT_PLAY_LANDED_ORDER"
-		NOT = { has_government = landed_order_government }
-	}
-
-	custom_description = {
-		text = "GAME_OVER_CANNOT_PLAY_MILITARY_UNIT"
-		NOT = { has_government = military_unit_government }
-	}
-
-	custom_description = {
-		text = "GAME_OVER_CANNOT_PLAY_REPUBLIC"
-		NOT = { has_government = republic_government }
-	}
-	
-	custom_description = {
-		text = "GAME_OVER_CANNOT_PLAY_THEOCRACY"
-		NOT = { has_government = theocracy_government }
+		text = "GAME_OVER_CANNOT_PLAY_ADMINISTRATIVE_BUREAUCRACY"
+		NOT = { has_government = administrative_bureaucracy_government }
 	}
 }
 
@@ -276,6 +250,11 @@ is_alliance_valid = {
 				target = root
 			}
 		}
+		AND = {
+			scope:second.religion = root.religion
+			scope:second = { has_government = landed_order_government }
+			root = { has_government = landed_order_government }
+		}
 	}
 }
 
@@ -298,6 +277,12 @@ approves_of_succession_law_change = {
 # Does the character get a second chance when rolling a natural death
 has_natural_death_second_chance = {
 	OR = {
+		AND = {
+			has_trait = gh_extended_life
+			has_variable = vampiric_drain_health_pool
+			var:vampiric_drain_health_pool > 0
+			NOT = { has_character_modifier = vampirism_death_near }
+		}
 		AND = {
 			has_perk = know_thyself_perk
 			NOT = { has_character_flag = know_thyself_has_triggered_delay }
@@ -382,11 +367,12 @@ can_start_raid = {
 # Can this character cross water (sea, rivers) while on raid?
 # root: the potential raider
 can_raid_across_water = {
-	culture = {
-		OR = {
+	OR = {
+		culture = {
 			has_innovation = innovation_longboats
-			has_innovation = innovation_african_canoes
 		}
+		faith = { has_doctrine_parameter = parameter_overseas_raiding_allowed }
+		government_has_flag = government_can_raid_over_water_rule 
 	}
 }
 

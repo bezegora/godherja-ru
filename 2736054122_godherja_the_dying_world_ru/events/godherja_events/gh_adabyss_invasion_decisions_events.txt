@@ -95,9 +95,461 @@ adabyss_event.0003 = {
 	}
 }
 
+adabyss_event.0004 = { #Death of the Lelmand
+	type = character_event
+	title = adabyss_event.0004.t
+	desc = adabyss_event.0004.desc
+	theme = death
+	left_portrait = {
+		character = root
+		animation = disbelief
+	}
+	override_background = { event_background = wilderness_desert }
+	
+	option = {
+		name = adabyss_event.0004.a
+		
+		add_internal_flag = dangerous
+	}
+}
 
+adabyss_event.0005 = {
+type = character_event
+	title = adabyss_event.0005.t
+	desc = adabyss_event.0005.desc
+	theme = death
+	left_portrait = {
+		character = root
+		animation = shame
+	}
+	override_background = { event_background = wilderness_desert }
+	
+	immediate = {
+		destroy_title = title:e_limpegail
+	}
+	
+	option = {
+		name = adabyss_event.0005.a
+		
+		add_internal_flag = dangerous
+		
+		scope:root = {
+			death = {
+				death_reason = death_execution
+				killer = scope:rando
+			}
+		}
+	}
+}
 
+adabyss_event.0006 = {
+type = character_event
+	title = adabyss_event.0006.t
+	desc = adabyss_event.0006.desc
+	theme = war
+	left_portrait = {
+		character = root
+		animation = war_over_win
+	}
+	override_background = { event_background = wilderness_desert }
+	
+	immediate = {
+		play_music_cue = "mx_cue_crusade_starts"
+	}
+	
+	option = {
+		name = adabyss_event.0006.a
+		
+		root = {
+			give_nickname = nick_statuebreaker
+			add_prestige = 1000
+		}
+	}
+}
 
+adabyss_event.0007 = {
+	type = empty
+	hidden = yes
 
+	immediate = {
+		debug_log = "Limpegail appeared!"
+		debug_log_date = yes
+		spawn_kabayo_konsa_character_effect = yes
+	}
+}
 
+adabyss_event.0008 = { #taking the fortress
+	type = character_event
+	title = adabyss_event.0008.t
+	desc = adabyss_event.0008.desc
+	theme = war
+	left_portrait = {
+		character = root
+		animation = war_over_win
+	}
+	
+	immediate = {
+		play_music_cue = "mx_cue_crusade_starts"
+		debug_log = "Adabyss Border War Began!"
+		debug_log_date = yes
+		spawn_adabyss_reclaimer_character_effect = yes
+		set_global_variable = {
+			name = adabyss_borderwar
+			value = yes
+		}
+	}
+	
+	option = {
+		name = adabyss_event.0008.a
+		
+		root = {
+			give_nickname = nick_gatecrasher
+			add_prestige = 5000
+			add_piety = 2000
+		}
+		
+		custom_tooltip = adabyss_event.0008.a.tt
+	}
+}
 
+adabyss_event.0009 = { #Gives reclaimer their troops
+	type = empty
+	hidden = yes
+	
+	immediate = {
+		scope:banerisa = {
+			adabyss_reclamation_army_effect = yes
+		}
+		scope:fort_taker = {
+			start_war = {
+				cb = adabyss_borderwar_cb
+				target = scope:banerisa
+				target_title = c_adabyssfort
+			}
+		}				
+	}
+}
+
+adabyss_event.0010 = { #beat off reclamation force
+	type = character_event
+	title = adabyss_event.0010.t
+	desc = adabyss_event.0010.desc
+	theme = war
+	left_portrait = {
+		character = root
+		animation = war_over_win
+	}
+	
+	immediate = {
+		play_music_cue = "mx_cue_crusade_starts"
+	}
+	
+	option = {
+		name = adabyss_event.0010.a
+		root = {
+			add_prestige = 10000
+			add_piety = 10000
+			bloodline_set_founder = { TRAIT = gatecrasher }
+        }
+		
+		custom_tooltip = adabyss_event.0010.tt
+		
+		hidden_effect = {
+			random_list = {
+				50 = {
+					trigger_event = {
+						id = adabyss_event.9001
+						years = { 180 220 }
+					}
+				}
+				50 = {
+					trigger_event = {
+						id = adabyss_event.9002
+						years = { 180 220 }
+					}
+				}
+			}
+		}
+	}
+}
+
+adabyss_event.0011 = { #lost to reclamation force
+	type = character_event
+	title = adabyss_event.0011.t
+	desc = adabyss_event.0011.desc
+	theme = death
+	left_portrait = {
+		character = root
+		animation = shame
+	}
+	
+	immediate = {
+		every_living_character = {
+			limit = {
+				dynasty = root.dynasty
+			}
+			add_to_global_variable_list = {
+				name = to_be_executed
+				target = this
+			}
+		}			
+	}
+	
+	option = {
+		name = adabyss_event.0011.a
+		
+		add_internal_flag = dangerous
+		
+		every_in_global_list = {
+			variable = to_be_executed
+			death = {
+				death_reason = death_execution
+				killer = scope:adabyss_reclaimer
+			}
+		}
+		
+		custom_tooltip = adabyss_event.0011.tt
+	}
+}	
+
+adabyss_event.0012 = { #Gives damned leader their troops
+	type = empty
+	hidden = yes
+	
+	immediate = {
+		scope:anerali = {
+			adabyss_reclamation_army_effect = yes
+		}
+		scope:fort_taker_heir = {
+			start_war = {
+				cb = adabyss_borderwar_2_cb
+				target = scope:anerali
+				target_title = c_adabyssfort
+			}
+		}				
+	}
+}
+
+adabyss_event.0013 = { #beat damned army
+	type = character_event
+	title = adabyss_event.0013.t
+	desc = adabyss_event.0013.desc
+	theme = war
+	left_portrait = {
+		character = root
+		animation = war_over_win
+	}
+	
+	option = {
+		name = adabyss_event.0013.a
+		custom_tooltip = adabyss_event.0013.tt
+	}
+}
+
+adabyss_event.0014 = { #lost to the damned
+	type = character_event
+	title = adabyss_event.0014.t
+	desc = adabyss_event.0014.desc
+	theme = death
+	left_portrait = {
+		character = root
+		animation = shame
+	}
+	
+	immediate = {
+		every_living_character = {
+			limit = {
+				dynasty = root.dynasty
+			}
+			add_to_global_variable_list = {
+				name = to_be_executed
+				target = this
+			}
+		}			
+	}
+	
+	option = {
+		name = adabyss_event.0014.a
+		
+		add_internal_flag = dangerous
+		
+		every_in_global_list = {
+			variable = to_be_executed
+			death = {
+				death_reason = death_execution
+				killer = scope:anerali
+			}
+		}
+		
+		custom_tooltip = adabyss_event.0014.tt
+	}
+}
+
+adabyss_event.0015 = { #notifies player of the Army of the Damned
+	type = character_event
+	title = adabyss_event.0015.t
+	desc = adabyss_event.0015.desc
+	theme = war
+	left_portrait = {
+		character = root
+		animation = shock
+	}
+	
+	immediate = {
+		play_music_cue = "mx_cue_crusade_starts"
+		debug_log = "Army of the Damned arrived!"
+		debug_log_date = yes
+	}
+	
+	option = {
+		name = adabyss_event.0015.a
+		
+		custom_tooltip = adabyss_event.0015.tt
+	}
+}
+
+adabyss_event.0016 = { #notifies player of warlord arrival
+	type = character_event
+	title = adabyss_event.0016.t
+	desc = adabyss_event.0016.desc
+	theme = war
+	left_portrait = {
+		character = root
+		animation = shock
+	}
+	
+	immediate = {
+		play_music_cue = "mx_cue_crusade_starts"
+		debug_log = "Adabyss Warlord arrived!"
+		debug_log_date = yes
+	}
+	
+	option = {
+		name = adabyss_event.0016.a
+		
+		custom_tooltip = adabyss_event.0016.tt
+	}
+}
+
+adabyss_event.0017 = {
+	type = empty
+	hidden = yes
+	
+	immediate = {
+		scope:anerali = {
+			adabyss_reclamation_army_effect = yes
+		}
+		scope:fort_taker_heir = {
+			start_war = {
+				cb = adabyss_borderwar_3_cb
+				target = scope:anerali
+				target_title = c_adabyssfort
+			}
+		}				
+	}
+}
+
+adabyss_event.0018 = { #beat warlord
+	type = character_event
+	title = adabyss_event.0018.t
+	desc = adabyss_event.0018.desc
+	theme = war
+	left_portrait = {
+		character = root
+		animation = war_over_win
+	}
+	
+	option = {
+		name = adabyss_event.0018.a
+		custom_tooltip = adabyss_event.0018.tt
+	}
+}
+
+adabyss_event.0019 = { #lost to warlord
+	type = character_event
+	title = adabyss_event.0019.t
+	desc = adabyss_event.0019.desc
+	theme = death
+	left_portrait = {
+		character = root
+		animation = shame
+	}
+	
+	immediate = {
+		every_living_character = {
+			limit = {
+				dynasty = root.dynasty
+			}
+			add_to_global_variable_list = {
+				name = to_be_executed
+				target = this
+			}
+		}			
+	}
+	
+	option = {
+		name = adabyss_event.0019.a
+		
+		add_internal_flag = dangerous
+		
+		every_in_global_list = {
+			variable = to_be_executed
+			death = {
+				death_reason = death_execution
+				killer = scope:anerali
+			}
+		}
+		
+		custom_tooltip = adabyss_event.0019.tt
+	}
+}
+
+adabyss_event.9000 = { ###this event will launch invasion
+	type = empty
+	hidden = yes
+
+	immediate = {
+		if = {
+			limit = {
+				NOT = { has_global_variable = adabyss_invasion_triggered }
+			}
+			if = {
+				limit = {
+					has_game_rule = default_adabyss_invasion
+				}
+				trigger_event = {
+					id = adabyss_event.0007
+					years = { 50 80 }
+				}
+				set_global_variable = {
+					name = adabyss_invasion_triggered
+					value = yes
+				}
+			}		
+			else_if = { 
+				limit = {
+					has_game_rule = never_adabyss_invasion
+				}
+				debug_log = "Adabyssian Invasion Disabled"
+			}
+		}
+	}
+}
+
+adabyss_event.9001 = { #ARMY OF THE DAMNED
+	type = empty
+	hidden = yes
+	
+	immediate = {
+		spawn_damned_leader_effect = yes
+	}
+}
+
+adabyss_event.9002 = { #Warlord comes north
+	type = empty
+	hidden = yes
+	
+	immediate = {
+		spawn_warlord_leader_effect = yes
+	}
+}

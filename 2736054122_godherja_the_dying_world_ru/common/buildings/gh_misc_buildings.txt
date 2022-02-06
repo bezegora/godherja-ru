@@ -1,4 +1,4 @@
-﻿@holding_illustration_empty = "gfx/interface/illustrations/holding_types/holding_empty.dds"
+﻿@holding_illustration_wasteland = "gfx/interface/illustrations/holding_types/holding_empty.dds"
 
 ####################
 # Misc Buildings #
@@ -8,16 +8,6 @@ empty_building = {
 	construction_time = quick_construction_time
 
 	type_icon = "icon_building_empty_building.dds"
-	
-	
-	asset = {
-		type = pdxmesh
-		names = {
-			#"building_western_city_02_mesh"
-		}
-		illustration = @holding_illustration_empty
-		graphical_cultures = { slavic_building_gfx }
-	}
 	
 	can_construct_potential = {
 		always = no 	# Absolutely never, ever outside events

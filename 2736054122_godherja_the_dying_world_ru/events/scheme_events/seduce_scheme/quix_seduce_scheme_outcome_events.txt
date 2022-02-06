@@ -1,4 +1,4 @@
-##################################
+﻿##################################
 # Quixotic Seduction
 # quix_seduce_scheme_outcome_events.txt
 # Version:1.2.2.001
@@ -1010,82 +1010,6 @@ quix_seduce_outcome.2302 = {
 	after = {
 		scope:target = {
 			trigger_event = quix_seduce_outcome.3302
-		}
-		show_as_tooltip = {
-			scope:scheme = {
-				end_scheme = yes
-			}
-		}
-	}
-}
-
-# I Put A Spell On You...
-quix_seduce_outcome.2303 = {
-	type = character_event
-	title = quix_seduce_outcome.2303.t
-	desc = quix_seduce_outcome.2303.desc
-	
-	theme = seduce_scheme
-	left_portrait = scope:target
-	widget = {
-		gui = "event_window_widget_scheme"
-		container = "custom_widgets_container"
-	}
-
-	trigger = {
-		has_trait = witch
-		scope:target = { has_trait = witch }
-	}
-
-	weight_multiplier = {
-		base = 0.5
-		modifier = { #More likely if you're also gregarious!
-			add = 2
-			has_trait = gregarious
-		}
-	}
-
-	immediate = {
-		get_quirk_character_effect = yes
-		scope:target = {
-			if = {
-				limit = { root = { is_ai = no }	}
-				assign_quirk_effect = yes
-			}
-		}
-		#Either runs had_sex_with_effect or shows a tooltip of it (effect is always just run once per success):
-		owner_seduce_outcome_sex_effect = yes
-	}
-
-	option = { #Go for both consummation and relationship
-		name = quix_seduce_outcome.2303.a
-		trigger = { seduce_outcome_become_lovers_trigger = yes } #Enabled if a player target said "lovers please" or target is AI
-		
-		owner_seduce_outcome_become_lovers_option_effects = yes
-
-		ai_chance = {
-			base = 100
-		}
-	}
-
-	option = { #I'm just here for the fun time!
-		name = quix_seduce_outcome.2303.b
-		trigger = { seduce_outcome_just_sex_trigger = yes } #Blocks this option for AI owners if the target is a player who said "lovers please"
-
-		owner_seduce_outcome_just_sex_effects = yes
-
-		ai_chance = {
-			base = 0
-			ai_value_modifier = {
-				ai_greed = 0.25
-				ai_vengefulness = 0.25
-			}
-		}
-	}
-
-	after = {
-		scope:target = {
-			trigger_event = quix_seduce_outcome.3303
 		}
 		show_as_tooltip = {
 			scope:scheme = {

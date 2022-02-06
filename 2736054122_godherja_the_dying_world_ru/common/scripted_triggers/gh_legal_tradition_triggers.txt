@@ -1,0 +1,137 @@
+﻿
+legal_tradition_has_flag_trigger = {
+	trigger_if = {
+		limit = { exists = scope:legal_tradition_scope }
+		scope:legal_tradition_scope = {
+			has_variable = $FLAG$
+		}
+	}
+	trigger_else_if = {
+		limit = { exists = var:character_legal_tradition }
+		var:character_legal_tradition = {
+			has_variable = $FLAG$
+		}
+	}
+	trigger_else = {
+		has_variable = $FLAG$
+	}
+}
+
+can_use_legal_tradition_trigger = {
+	faith = {
+		has_doctrine_parameter = uses_legal_traditions
+	}
+}
+
+should_adopt_legal_tradition_trigger = {
+	can_use_legal_tradition_trigger = yes
+	OR = {
+		is_landed = yes
+		has_trait = education_learning
+	}
+}
+
+can_use_legal_action_character_interaction_trigger = {
+	scope:actor.faith = { has_doctrine_parameter = uses_legal_traditions }
+	trigger_if = {
+		limit = { 
+			exists = scope:actor.faith.religious_head_title
+			exists = scope:recipient.faith.religious_head_title
+		}
+		scope:actor.faith.religious_head_title = scope:recipient.faith.religious_head_title
+	}
+	trigger_else = {
+		scope:recipient.faith = { 
+			has_doctrine_parameter = uses_legal_traditions
+			faith_hostility_level = {
+				target = scope:actor.faith
+				value <= 1
+			}
+		}
+	}
+	
+	# The head of faith probably has legal immunity unless there are exceptional circumstances
+	trigger_if = {
+		limit = { exists = scope:actor.faith.religious_head }
+		NOT = { scope:actor.faith.religious_head = scope:recipient }
+	}
+	# You can't sue your spouse
+	NOT = { scope:recipient = { is_spouse_of = scope:actor } }
+}
+
+can_be_censured_trigger = {
+	OR = {
+		trigger_if = {
+			limit = { has_variable = radicalism }
+			var:radicalism > 50
+		}
+		trigger_else = { always = no }
+		trigger_if = {
+			limit = { has_variable = corruption }
+			var:corruption > 50
+		}
+		trigger_else = { always = no }
+	}
+}
+
+can_be_censured_for_vices_trigger = {
+	num_sinful_traits > 0
+}
+
+high_court_seat_is_vacant_trigger = {
+	OR = {	# A seat is considered empty if it was either never assigned an occupant in the first place, or the "current" one is dead
+		NOT = { has_variable = seat_occupant }
+		var:seat_occupant = { is_alive = no }
+	}
+}
+
+should_use_legalism_dynasty_legacy_trigger = {
+	NOT = { has_dynasty_perk = law_legacy_1 }
+	OR = {
+		dynast.faith = { has_doctrine_parameter = enables_practising_law }
+		has_dynasty_perk = wardenite_legacy_1
+	}
+}
+
+legal_tradition_eligible_for_deletion_trigger = {
+	save_temporary_scope_as = tradition_being_checked
+	var:legal_tradition_level <= 0
+	# Don't delete traditions that were recently founded
+	NOT = { exists = var:legal_tradition_creation_cooldown }
+	# Prevent deleting traditions that a player is patronizing otherwise it might get annoying
+	trigger_if = {
+		limit = { has_variable_list = legal_tradition_patrons }
+		NOT = {
+			any_in_list = {
+				variable = legal_tradition_patrons
+				is_ai = no
+			}
+		}
+	}
+	# Don't delete traditions that have at least one High Judgeship, or if the Mamur themself supports it
+	trigger_if = {
+		limit = { root = { has_variable_list = high_court_seat_list } }
+		NOT = {
+			root = {
+				any_in_list = {
+					variable = high_court_seat_list
+					exists = var:seat_occupant
+					var:seat_occupant = {  
+						exists = var:character_legal_tradition
+						var:character_legal_tradition = scope:tradition_being_checked
+					}
+				}
+			}
+		}
+	}
+	trigger_if = {
+		limit = { 
+			exists = root.var:high_court_mamuramat
+			exists = root.var:high_court_mamuramat.holder
+			exists = root.var:high_court_mamuramat.holder.var:character_legal_tradition
+		}
+		NOT = {
+			root.var:high_court_mamuramat.holder.var:character_legal_tradition = scope:tradition_being_checked
+		}
+	}
+}

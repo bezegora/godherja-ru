@@ -37,12 +37,18 @@ reunite_the_empire_decision = {
 		}
 		calc_true_if = { # do enough of the original empires remain to make this worthwhile?
 			amount >= 2
+			title:k_etepezea = { any_in_de_jure_hierarchy = { tier = tier_county } }
 			title:e_etepezea = { any_in_de_jure_hierarchy = { tier = tier_county } }
 			title:e_malcois = { any_in_de_jure_hierarchy = { tier = tier_county } }
+			title:k_malcois = { any_in_de_jure_hierarchy = { tier = tier_county } }
 			title:e_aironoi = { any_in_de_jure_hierarchy = { tier = tier_county } }
+			title:k_aironoi = { any_in_de_jure_hierarchy = { tier = tier_county } }
 			title:e_opakhasia = { any_in_de_jure_hierarchy = { tier = tier_county } }
+			title:k_opakhasia = { any_in_de_jure_hierarchy = { tier = tier_county } }
 			title:e_megos_kalathipsomi = { any_in_de_jure_hierarchy = { tier = tier_county } }
+			title:k_megos_kalathipsomi = { any_in_de_jure_hierarchy = { tier = tier_county } }
 			title:e_mikros_kalathipsomi = { any_in_de_jure_hierarchy = { tier = tier_county } }
+			title:k_mikros_kalathipsomi = { any_in_de_jure_hierarchy = { tier = tier_county } }
 		}
 	}
 
@@ -62,6 +68,18 @@ reunite_the_empire_decision = {
 				has_title = title:e_megos_kalathipsomi
 				has_title = title:e_mikros_kalathipsomi
 				has_title = title:e_gurdurbok
+				has_title = title:k_etepezea
+				has_title = title:k_malcois
+				has_title = title:k_aironoi
+				has_title = title:k_opakhasia
+				has_title = title:k_megos_kalathipsomi
+				has_title = title:k_mikros_kalathipsomi
+				any_vassal_or_below = { has_title = title:k_etepezea }
+				any_vassal_or_below = { has_title = title:k_malcois }
+				any_vassal_or_below = { has_title = title:k_aironoi }
+				any_vassal_or_below = { has_title = title:k_opakhasia }
+				any_vassal_or_below = { has_title = title:k_megos_kalathipsomi }
+				any_vassal_or_below = { has_title = title:k_mikros_kalathipsomi }
 				
 				#reunite_the_empire_complete_control_trigger = yes
 			}
@@ -75,6 +93,8 @@ reunite_the_empire_decision = {
 			has_primary_title = title:e_megos_kalathipsomi
 			has_primary_title = title:e_mikros_kalathipsomi
 			has_primary_title = title:e_gurdurbok
+			has_primary_title = title:e_oraispol_aautokratia
+			has_primary_title = title:e_asiupoli_aautokratia
 		}
 	}
 
@@ -83,6 +103,9 @@ reunite_the_empire_decision = {
 
 		show_as_tooltip = { reunite_the_empire_decision_effects = yes } #Actually applied in aversaria.0001 - prestige, laws, title, innovation effects
 
+		dynasty = {
+			add_dynasty_prestige = 3000
+		}
 		#Events
 		trigger_event = aversaria.0001
 		every_player = {
@@ -297,7 +320,7 @@ announce_aversaria_voreias_decision = {
 		has_culture_group = culture_group:gh_imperial_group
 		has_game_rule = story_content_enabled
 		# character:clanlands_imperial_1 = {
-			has_title = title:k_epavarion
+		#	has_title = title:k_epavarion
 		# }
 			
 		is_ai = no
@@ -374,6 +397,8 @@ convert_to_suncult_decision = {
 	major = yes
 	ai_check_interval = 12
 	picture = "gfx/interface/illustrations/decisions/decision_major_religion.dds"
+	desc = convert_to_suncult_decision_desc
+	selection_tooltip = convert_to_suncult_decision_tooltip
 
 	is_shown = {
 		has_game_rule = story_content_enabled
@@ -396,22 +421,6 @@ convert_to_suncult_decision = {
 		set_global_variable = {
 			name = suncult_reformed
 			value = yes
-		}
-		every_vassal_or_below = {
-			if = {
-				limit = {
-					has_religion = religion:aversarinas_aautokrata_religion
-				}
-				set_character_faith_with_conversion = faith:aversarinas_suncult
-			}
-		}
-		every_province = {
-			limit = {
-				faith = faith:aversarinas_aautokrata
-			}
-			scope:county = {
-				set_county_faith = faith:aversarinas_suncult
-			}
 		}
 	}
 
@@ -520,7 +529,7 @@ reform_aversarian_religion = {
 	is_valid = {
 		custom_description = {
 			text = reform_aversarian_religion_own_kasmeze
-			title:c_kasmeze = {
+			title:c_salikon = {
 				OR = {
 					holder = prev
 					holder.top_liege = prev
@@ -723,7 +732,6 @@ restore_etepezea_decision = {
 				is_not_in_traditional_kingdom = { KINGDOM_NAME = k_argyra }
 				is_not_in_traditional_kingdom = { KINGDOM_NAME = k_zakros }
 				is_not_in_traditional_kingdom = { KINGDOM_NAME = k_palitake }
-				is_not_in_traditional_kingdom = { KINGDOM_NAME = k_cycladecia }
 				is_not_in_traditional_kingdom = { KINGDOM_NAME = k_kerkonia }
 			}
 		}
@@ -741,7 +749,6 @@ restore_etepezea_decision = {
 						is_not_in_traditional_kingdom = { KINGDOM_NAME = k_argyra }
 						is_not_in_traditional_kingdom = { KINGDOM_NAME = k_zakros }
 						is_not_in_traditional_kingdom = { KINGDOM_NAME = k_palitake }
-						is_not_in_traditional_kingdom = { KINGDOM_NAME = k_cycladecia }
 						is_not_in_traditional_kingdom = { KINGDOM_NAME = k_kerkonia }
 					}
 					NOT = { 
@@ -865,8 +872,8 @@ restore_mikros_kalathipsomi_decision = {
 		is_independent_ruler = yes
 		any_realm_de_jure_duchy = {
 			OR = {
-				is_not_in_traditional_kingdom = { KINGDOM_NAME = k_sulzegg }
-				is_not_in_traditional_kingdom = { KINGDOM_NAME = k_okrouhlice }
+				## is_not_in_traditional_kingdom = { KINGDOM_NAME = k_sulzegg }
+				## is_not_in_traditional_kingdom = { KINGDOM_NAME = k_okrouhlice }
 				is_not_in_traditional_kingdom = { KINGDOM_NAME = k_svyatich }
 				is_not_in_traditional_kingdom = { KINGDOM_NAME = k_gampern }
 				is_not_in_traditional_kingdom = { KINGDOM_NAME = k_nedweis }
@@ -881,8 +888,8 @@ restore_mikros_kalathipsomi_decision = {
 			NOT = {
 				any_duchy = {
 					OR = {
-						is_not_in_traditional_kingdom = { KINGDOM_NAME = k_sulzegg }
-						is_not_in_traditional_kingdom = { KINGDOM_NAME = k_okrouhlice }
+						## is_not_in_traditional_kingdom = { KINGDOM_NAME = k_sulzegg }
+						## is_not_in_traditional_kingdom = { KINGDOM_NAME = k_okrouhlice }
 						is_not_in_traditional_kingdom = { KINGDOM_NAME = k_svyatich }
 						is_not_in_traditional_kingdom = { KINGDOM_NAME = k_gampern }
 						is_not_in_traditional_kingdom = { KINGDOM_NAME = k_nedweis }
@@ -1022,7 +1029,7 @@ restore_opakhasia_decision = {
 				is_not_in_traditional_kingdom = { KINGDOM_NAME = k_karthos }
 				is_not_in_traditional_kingdom = { KINGDOM_NAME = k_tanada }
 				is_not_in_traditional_kingdom = { KINGDOM_NAME = k_kasmiene }
-				is_not_in_traditional_kingdom = { KINGDOM_NAME = k_agadendon }
+				### is_not_in_traditional_kingdom = { KINGDOM_NAME = k_agadendon }
 				is_not_in_traditional_kingdom = { KINGDOM_NAME = k_decateia }
 			}
 		}
@@ -1041,7 +1048,7 @@ restore_opakhasia_decision = {
 						is_not_in_traditional_kingdom = { KINGDOM_NAME = k_karthos }
 						is_not_in_traditional_kingdom = { KINGDOM_NAME = k_tanada }
 						is_not_in_traditional_kingdom = { KINGDOM_NAME = k_kasmiene }
-						is_not_in_traditional_kingdom = { KINGDOM_NAME = k_agadendon }
+						### is_not_in_traditional_kingdom = { KINGDOM_NAME = k_agadendon }
 						is_not_in_traditional_kingdom = { KINGDOM_NAME = k_decateia }
 					}
 					NOT = { 
@@ -1096,9 +1103,9 @@ restore_aironoi_decision = {
 		any_realm_de_jure_duchy = {
 			OR = {
 				is_not_in_traditional_kingdom = { KINGDOM_NAME = k_hyrea }
-				is_not_in_traditional_kingdom = { KINGDOM_NAME = k_bourillai }
+			### is_not_in_traditional_kingdom = { KINGDOM_NAME = k_bourillai }
 				is_not_in_traditional_kingdom = { KINGDOM_NAME = k_kalliados }
-				is_not_in_traditional_kingdom = { KINGDOM_NAME = k_kteumaxia }
+				is_not_in_traditional_kingdom = { KINGDOM_NAME = k_kteumaxa }
 				is_not_in_traditional_kingdom = { KINGDOM_NAME = k_ephesos }
 				is_not_in_traditional_kingdom = { KINGDOM_NAME = k_paradawn }
 				is_not_in_traditional_kingdom = { KINGDOM_NAME = k_arderwan }
@@ -1114,9 +1121,9 @@ restore_aironoi_decision = {
 				any_duchy = {
 					OR = {
 						is_not_in_traditional_kingdom = { KINGDOM_NAME = k_hyrea }
-						is_not_in_traditional_kingdom = { KINGDOM_NAME = k_bourillai }
+					###	is_not_in_traditional_kingdom = { KINGDOM_NAME = 		k_bourillai }
 						is_not_in_traditional_kingdom = { KINGDOM_NAME = k_kalliados }
-						is_not_in_traditional_kingdom = { KINGDOM_NAME = k_kteumaxia }
+						is_not_in_traditional_kingdom = { KINGDOM_NAME = k_kteumaxa }
 						is_not_in_traditional_kingdom = { KINGDOM_NAME = k_ephesos }
 						is_not_in_traditional_kingdom = { KINGDOM_NAME = k_paradawn }
 						is_not_in_traditional_kingdom = { KINGDOM_NAME = k_arderwan }
@@ -1226,5 +1233,46 @@ restore_gurdurbok_decision = {
 
 	ai_will_do = {
 		base = 50
+	}
+}
+
+##################
+# Form a new Eastern Empire
+# by Netgearghost
+new_eastern_empire = {
+	major = yes
+	picture = "gfx/interface/illustrations/decisions/decision_aversaria.dds"
+	ai_check_interval = 60
+	desc = new_eastern_empire_desc
+
+	is_shown = {
+		this = character:aironoi_79
+		NOT = {
+			is_target_in_global_variable_list = {
+			name = unavailable_unique_decisions
+			target = flag:new_eastern_empire
+			}	
+		}	
+	}
+
+	is_valid = {
+		has_title = title:k_kalliados
+		has_title = title:k_hyrea
+		has_title = title:k_ephesos
+		OR = {
+			has_title = title:k_kteumaxa
+			has_title = title:k_arderwan
+		}
+		completely_controls = title:c_mallilene
+		prestige_level >= 4
+		piety_level >= 3
+	}
+
+	effect = {
+		get_title = title:e_aironoi
+		add_to_global_variable_list = {
+			name = unavailable_unique_decisions
+			target = flag:new_eastern_empire
+		}
 	}
 }

@@ -1,227 +1,266 @@
 ﻿southern_imperial_1 = {
 	name = "Dryanius"
 	religion = "aversarinas_aautokrata"
-	culture = "islander"
+	culture = "centralislander"
 	1230.1.1 = {
 		birth = yes
 	}
 }
+
 ### #2 in dev bible, caligula type character, should give him lots of kids
 
 southern_imperial_2 = { #punkass bitch
 	name = "Megistos"
-        dna = megistos_the_handsome
+	dna = megistos_the_handsome
 	trait = gregarious
 	trait = arrogant
 	trait = lustful
 	trait = education_diplomacy_1
 	trait = lunatic_genetic
 	trait = weak
-        trait = deviant
+	trait = deviant
 	trait = reveler_1
 	religion = "aversarian_megistos"
 	culture = "southernimperial"
+	
 	1224.1.1 = {
 		birth = yes
-	        effect = {
+		effect = {
 			add_character_flag = has_scripted_appearance
 		}
 	}
+
 	1244.1.1 = {
 		give_nickname = nick_the_most_fair_and_beautiful_ruler
 		effect = {
-        	add_artifact = {ARTIFACT = artifact_grandportraitofmegistos}
-        	add_artifact = {ARTIFACT = artifact_grandportraitofmegistos2}
-        	add_artifact = {ARTIFACT = artifact_grandportraitofmegistos3}
-        	add_artifact = {ARTIFACT = artifact_grandportraitofmegistos4}
-        	add_artifact = {ARTIFACT = artifact_grandportraitofmegistos5}
-    	}
+			add_artifact = {ARTIFACT = artifact_grandportraitofmegistos}
+			add_artifact = {ARTIFACT = artifact_grandportraitofmegistos2}
+			add_artifact = {ARTIFACT = artifact_grandportraitofmegistos3}
+			add_artifact = {ARTIFACT = artifact_grandportraitofmegistos4}
+			add_artifact = {ARTIFACT = artifact_grandportraitofmegistos5}
+		}
 	}
+
 	1249.6.12 = {
 		add_spouse = kasmiene_2 
 		add_character_modifier = prince_of_madness_modifier
 	}
-        1249.7.13 = {
+	
+	1249.7.13 = {
 		add_spouse = kasmiene_13
-        }
-        1249.8.14 = {
+		}
+	
+	1249.8.14 = {
 		add_spouse = kasmiene_14
 	}
-        1249.9.15 = {
+	
+	1249.9.15 = {
 		add_spouse = kasmiene_15
 	}
-        1249.6.13= {
+	
+	1249.6.13 = {
 		effect = {
 			set_relation_lover = character:kasmiene_2
 		}
-	} 
-        1249.7.14 = {
+	}
+	
+	1249.7.14 = {
 		effect = {
 			set_relation_lover = character:kasmiene_13
 		}
-	} 
-        1249.8.15 = {
+	}
+	
+	1249.8.15 = {
 		effect = {
 			set_relation_lover = character:kasmiene_14
 		}
-	} 
-        1249.9.16 = {
+	}
+	
+	1249.9.16 = {
 		effect = {
 			set_relation_lover = character:kasmiene_15
 		}
-	} 
+	}
 }
+
 kasmiene_1 = {
 	name = "Phokas"
 	religion = "aversarian_megistos"
 	culture = "southernimperial"
+
 	1222.1.1 = {
 		birth = yes
 	}
 }
+
 kasmiene_2 = {
 	name = "Anastasia"
-        dna = anastasia
+	dna = anastasia
 	female = yes
-        trait = beauty_good_3
-        trait = lustful
+	trait = beauty_good_3
+	trait = lustful
 	trait = ambitious
 	religion = "aversarian_megistos"
 	culture = "southernimperial"
+
 	1228.1.1 = {
 		birth = yes
 	}
 }
+
 kasmiene_3 = {
 	name = "Petros"
 	religion = "aversarinas_aautokrata"
 	culture = "southernimperial"
+
 	1230.1.1 = {
 		birth = yes
 	}
 }
+
 kasmiene_4 = {
 	name = "Gabriel"
 	religion = "aversarinas_aautokrata"
 	culture = "southernimperial"
+
 	1212.1.1 = {
 		birth = yes
 	}
 }
+
 kasmiene_5 = {
 	name = "Ioannikios"
 	religion = "aversarinas_aautokrata"
 	culture = "southernimperial"
+
 	1215.1.1 = {
 		birth = yes
 	}
 }
+
 kasmiene_6 = { #kid
 	name = "Megistos"
 	father = southern_imperial_2
 	mother = kasmiene_2
-        trait = beauty_good_3
+	trait = beauty_good_3
 	religion = "aversarian_megistos"
 	culture = "southernimperial"
+
 	1251.1.1 = {
 		birth = yes
 	}
-        1248.1.2 = {
+	
+	1248.1.2 = {
 		give_nickname = nick_III_the_younger_Megistos
 	}
 }
+
 kasmiene_7 = { #kid
 	name = "Aikaterine"
 	father = southern_imperial_2
 	mother = kasmiene_2
 	female = yes
-        trait = beauty_good_2
+	trait = beauty_good_2
 	religion = "aversarian_megistos"
 	culture = "southernimperial"
+
 	1250.1.1 = {
 		birth = yes
 	}
 }
+
 kasmiene_8 = { #kid
 	name = "Megistos"
 	father = southern_imperial_2
-        mother = kasmiene_15
-        trait = beauty_good_1
+	mother = kasmiene_15
+	trait = beauty_good_1
 	religion = "aversarian_megistos"
 	culture = "southernimperial"
+
 	1248.1.1 = {
 		birth = yes
 	}
-        1248.1.2 = {
+	
+	1248.1.2 = {
 		give_nickname = nick_III_the_older_Megistos
 	}
 }
+
 kasmiene_9 = { #kid
 	name = "Megistos"
 	father = southern_imperial_2
 	mother = kasmiene_14
-        trait = beauty_good_1
+	trait = beauty_good_1
 	religion = "aversarian_megistos"
 	culture = "southernimperial"
+
 	1247.1.1 = {
 		birth = yes
 	}
-        1247.1.2 = {
+	
+	1247.1.2 = {
 		give_nickname = nick_II
 	}
 }
+
 kasmiene_10 = { #kid
 	name = "Demetra"
 	father = southern_imperial_2
 	mother = kasmiene_13
 	female = yes
-        trait = beauty_good_2
+	trait = beauty_good_2
 	religion = "aversarian_megistos"
 	culture = "southernimperial"
+
 	1245.1.1 = {
 		birth = yes
 	}
 }
+
 kasmiene_11 = { #kid
 	name = "Eirene"
 	father = southern_imperial_2
 	mother = kasmiene_15
 	female = yes
-        trait = beauty_good_1
+	trait = beauty_good_1
 	religion = "aversarian_megistos"
 	culture = "southernimperial"
+
 	1246.1.1 = {
 		birth = yes
 	}
 }
+
 kasmiene_12 = { #kid
 	name = "Megistos"
 	father = southern_imperial_2
 	mother = kasmiene_2
-        trait = beauty_good_2
+	trait = beauty_good_2
 	religion = "aversarian_megistos"
 	culture = "southernimperial"
-         
+
 	1243.1.1 = {
 		birth = yes
 	}
-        1243.1.2 = {
+	
+	1243.1.2 = {
 		give_nickname = nick_I
 	}
 }
 
 kasmiene_13 = {
 	name = "Aura"
-        dna = aura
+	dna = aura
 	female = yes
-        trait = beauty_good_3
+	trait = beauty_good_3
 	trait = lustful
-        trait = albino
+	trait = albino
 	religion = "aversarian_megistos"
 	culture = "southernimperial"
+
 	1230.1.1 = {
 		birth = yes
-	        effect = {
+		effect = {
 			add_character_flag = has_scripted_appearance
 		}
 	}
@@ -229,16 +268,17 @@ kasmiene_13 = {
 
 kasmiene_14 = {
 	name = "Laurentias"
-        dna = laurentias
+	dna = laurentias
 	female = yes
-        trait = beauty_good_3
+	trait = beauty_good_3
 	trait = gregarious
-        trait = dwarf
+	trait = dwarf
 	religion = "aversarian_megistos"
 	culture = "southernimperial"
+
 	1230.1.1 = {
 		birth = yes
-	        effect = {
+		effect = {
 			add_character_flag = has_scripted_appearance
 		}
 	}
@@ -246,30 +286,32 @@ kasmiene_14 = {
 
 kasmiene_15 = {
 	name = "Iskra"
-        dna = dominatrix
+	dna = dominatrix
 	female = yes
-        trait = beauty_good_3
-        trait = giant
-        trait = education_martial_2 
-        trait = blademaster_1
-        trait = physique_good_3
+	trait = beauty_good_3
+	trait = giant
+	trait = education_martial_2 
+	trait = blademaster_1
+	trait = physique_good_3
 	religion = "sjalvolki"
 	culture = "adrakamp"
+
 	1228.1.1 = {
 		birth = yes
-                effect = {
+		effect = {
 			add_character_flag = has_scripted_appearance
 		}
 	}
 }
-        
+		
 ### Legio XXI Axiothea- #3 in dev bible
 
 southern_imperial_3 = { ##legion commander- protecting the south from chaos
 	name = "Zenobios"
-        dna = zenobios
+	dna = zenobios
 	religion = "aversarian_axiaotheaism"
 	culture = "southernimperial"
+	
 	trait = education_martial_3
 	trait = callous
 	trait = diligent
@@ -281,18 +323,22 @@ southern_imperial_3 = { ##legion commander- protecting the south from chaos
 	intrigue = 10
 	stewardship = 10
 	learning = 10
+
 	1210.1.1 = {
 		birth = yes
-	        effect = {
+		effect = {
 			add_character_flag = has_scripted_appearance
 		}
 	}
+
 	1239.6.12 = {
 		add_spouse = legio_axiothea_8
-	}	
+	}
 }
+
 legio_axiothea_1 = {
 	name = "Gennadios"
+	
 	trait = bastard
 	father = southern_imperial_3
 	trait = education_martial_4
@@ -302,83 +348,102 @@ legio_axiothea_1 = {
 	trait = ambitious
 	religion = "aversarian_axiaotheaism"
 	culture = "southernimperial"
+
 	1232.1.1 = {
 		birth = yes
 	}
 }
+
 legio_axiothea_2 = {
 	name = "Christophoros"
 	religion = "aversarian_axiaotheaism"
 	culture = "southernimperial"
+
 	1228.1.1 = {
 		birth = yes
 	}
 }
+
 legio_axiothea_3 = {
 	name = "Ioseph"
 	religion = "aversarian_axiaotheaism"
 	culture = "southernimperial"
+
 	1224.1.1 = {
 		birth = yes
 	}
 }
+
 legio_axiothea_4 = {
 	name = "Iordanes"
 	religion = "aversarian_axiaotheaism"
 	culture = "southernimperial"
+
 	1225.1.1 = {
 		birth = yes
 	}
 }
+
 legio_axiothea_5 = {
 	name = "Kyriakos"
 	religion = "aversarian_axiaotheaism"
 	culture = "southernimperial"
+
 	1220.1.1 = {
 		birth = yes
 	}
 }
+
 legio_axiothea_6 = {
 	name = "Valerios"
 	religion = "aversarian_axiaotheaism"
 	culture = "southernimperial"
+
 	1219.1.1 = {
 		birth = yes
 	}
 }
+
 legio_axiothea_7 = {
 	name = "Gallephon"
 	religion = "aversarian_axiaotheaism"
 	culture = "southernimperial"
+
 	1215.1.1 = {
 		birth = yes
 	}
 }
+
 legio_axiothea_8 = { ##wife
 	name = "Anna"
 	female = yes
 	religion = "aversarian_axiaotheaism"
 	culture = "southernimperial"
+
 	1214.1.1 = {
 		birth = yes
 	}
 }
+
 legio_axiothea_9 = {
 	name = "Adrianos"
 	mother = legio_axiothea_8
 	father = southern_imperial_3
 	religion = "aversarian_axiaotheaism"
 	culture = "southernimperial"
+
 	1242.1.1 = {
 		birth = yes
 	}
 }
+
 legio_axiothea_10 = {
 	name = "Alexandros"
 	mother = legio_axiothea_8
 	father = southern_imperial_3
 	religion = "aversarian_axiaotheaism"
 	culture = "southernimperial"
+
 	1245.1.1 = {
 		birth = yes
 	}
@@ -389,17 +454,18 @@ legio_axiothea_10 = {
 southern_imperial_4 = {
 	name = "Narses"
 	religion = "aversarinas_aautokrata"
-	culture = "islander"
+	culture = "centralislander"
 	1230.1.1 = {
 		birth = yes
-	}		
+	}
 }
 
 southern_imperial_5 = {
 	name = "Demetra"
 	religion = "aversarinas_aautokrata"
-	culture = "islander"
+	culture = "centralislander"
 	female = yes
+
 	1230.1.1 = {
 		birth = yes
 	}
@@ -409,99 +475,123 @@ southern_imperial_5 = {
 
 southern_imperial_6 = { #good dude
 	name = "Iordanes"
-        dna = iordanes
+	dna = iordanes
 	religion = "aversarinas_aautokrata"
 	culture = "southernimperial"
+	father = southern_imperial_51
+	mother = southern_imperial_52
+	
 	trait = education_diplomacy_3
 	trait = honest
 	trait = gregarious
 	trait = just
 	dynasty = dyn_aversarian_8
+
 	1215.1.1 = {
 		birth = yes
-	        effect = {
+		effect = {
 			add_character_flag = has_scripted_appearance
 		}
 	}
+
 	1247.6.12 = {
 		add_spouse = aigemita_9
-	}	
+	}
 }
+
 aigemita_1 = {
 	name = "Meletios"
 	religion = "aversarinas_aautokrata"
 	culture = "southernimperial"
+
 	1232.1.1 = {
 		birth = yes
 	}
 }
+
 aigemita_2 = {
 	name = "Maria"
 	female = yes
 	religion = "aversarinas_aautokrata"
 	culture = "southernimperial"
+
 	1220.1.1 = {
 		birth = yes
 	}
 }
+
 aigemita_3 = {
 	name = "Staurakios"
 	religion = "aversarinas_aautokrata"
 	culture = "southernimperial"
+
 	1222.1.1 = {
 		birth = yes
 	}
 }
+
 aigemita_4 = {
 	name = "Taurulon"
 	religion = "aversarinas_aautokrata"
 	culture = "southernimperial"
+
 	1210.1.1 = {
 		birth = yes
 	}
 }
+
 aigemita_5 = {
 	name = "Petros"
 	religion = "aversarinas_aautokrata"
 	culture = "southernimperial"
+
 	1215.1.1 = {
 		birth = yes
 	}
 }
+
 aigemita_6 = {
 	name = "Konstan"
 	religion = "aversarinas_aautokrata"
 	culture = "southernimperial"
+
 	1216.1.1 = {
 		birth = yes
 	}
 }
+
 aigemita_7 = {
 	name = "Dionysia"
 	female = yes
 	religion = "aversarinas_aautokrata"
 	culture = "southernimperial"
+
 	1219.1.1 = {
 		birth = yes
 	}
 }
+
 aigemita_8 = {
 	name = "Nikephoros"
 	religion = "aversarinas_aautokrata"
 	culture = "southernimperial"
+
 	1230.1.1 = {
 		birth = yes
 	}
 }
+
 aigemita_9 = {
 	name = "Eirene"
 	female = yes
 	religion = "aversarinas_aautokrata"
 	culture = "southernimperial"
+
 	1225.1.1 = {
 		birth = yes
 	}
 }
+
 aigemita_10 = {
 	name = "Anastasia"
 	female = yes
@@ -509,11 +599,11 @@ aigemita_10 = {
 	father = southern_imperial_6
 	religion = "aversarinas_aautokrata"
 	culture = "southernimperial"
+
 	1248.1.1 = {
 		birth = yes
 	}
 }
-
 
 ##### #7-declared himself emperor
 
@@ -521,50 +611,61 @@ southern_imperial_7 = {
 	name = "Philaretos"
 	religion = "aversarinas_aautokrata"
 	culture = "southernimperial"
+	
 	trait = ambitious
 	trait = arrogant
 	trait = gregarious
 	trait = education_stewardship_2
 	trait = magic_good_2
 	trait = education_living_magic_2
+
 	1226.1.1 = {
 		birth = yes
 	}
+
 	1245.1.1 = {
 		effect = {
 			set_relation_rival = character:southern_imperial_6
 		}
-	}		
+	}
 }
+
 lapitholi_1 = {
 	name = "Hector"
 	religion = "aversarinas_aautokrata"
 	culture = "southernimperial"
+
 	1202.1.1 = {
 		birth = yes
 	}
 }
+
 lapitholi_2 = {
 	name = "Gorion"
 	religion = "aversarinas_aautokrata"
 	culture = "southernimperial"
+
 	1232.1.1 = {
 		birth = yes
 	}
 }
+
 lapitholi_3 = {
 	name = "Alexios"
 	religion = "aversarinas_aautokrata"
 	culture = "southernimperial"
+
 	1214.1.1 = {
 		birth = yes
 	}
 }
+
 lapitholi_4 = {
 	name = "Dryanius"
 	father = southern_imperial_7
 	religion = "aversarinas_aautokrata"
 	culture = "southernimperial"
+
 	1249.1.1 = {
 		birth = yes
 	}
@@ -582,71 +683,87 @@ southern_imperial_8 = {
 	trait = magic_good_1
 	trait = education_living_magic_1
 	trait = education_diplomacy_2
+
 	1233.1.1 = {
 		birth = yes
 	}
 }
+
 pelelis_1 = {
 	name = "Boethios"
 	religion = "aversarinas_aautokrata"
 	culture = "southernimperial"
+
 	1221.1.1 = {
 		birth = yes
 	}
 }
+
 pelelis_2 = {
 	name = "Anastasia"
 	religion = "aversarinas_aautokrata"
 	culture = "southernimperial"
 	female = yes
+
 	1218.1.1 = {
 		birth = yes
 	}
 }
+
 pelelis_3 = {
 	name = "Iakobos"
 	religion = "aversarinas_aautokrata"
 	culture = "southernimperial"
+
 	1224.1.1 = {
 		birth = yes
 	}
 }
+
 pelelis_4 = {
 	name = "Kallistos"
 	religion = "aversarinas_aautokrata"
 	culture = "southernimperial"
+
 	1229.1.1 = {
 		birth = yes
 	}
 }
+
 pelelis_5 = {
 	name = "Eirene"
 	female = yes
 	religion = "aversarinas_aautokrata"
 	culture = "southernimperial"
+
 	1212.1.1 = {
 		birth = yes
 	}
+
 	1232.6.12 = {
 		add_spouse = pelelis_6
 		add_pressed_claim = d_pelelis
-	}		
+	}
 }
+
 pelelis_6 = {
 	name = "Gennadios"
 	religion = "aversarinas_aautokrata"
 	culture = "southernimperial"
+
 	1210.1.1 = {
 		birth = yes
 		add_pressed_claim = d_pelelis
 	}
 }
+
 pelelis_7 = {
 	name = "Gerasimos"
 	father = pelelis_6
 	mother = pelelis_5
 	religion = "aversarinas_aautokrata"
 	culture = "southernimperial"
+
 	1234.1.1 = {
 		birth = yes
 	}
@@ -658,6 +775,7 @@ southern_imperial_9 = {
 	name = "Thasios"
 	religion = "aversarinas_aautokrata"
 	culture = "southernimperial"
+
 	1230.1.1 = {
 		birth = yes
 	}
@@ -667,22 +785,27 @@ southern_imperial_10 = {
 	name = "Gelios"
 	religion = "aversarinas_aautokrata"
 	culture = "southernimperial"
+
 	1226.1.1 = {
 		birth = yes
 	}
 }
+
 argatis_1 = {
 	name = "Thasselon"
 	religion = "aversarinas_aautokrata"
 	culture = "southernimperial"
+
 	1220.1.1 = {
 		birth = yes
 	}
 }
+
 argatis_2 = {
 	name = "Ixode"
 	religion = "aversarinas_aautokrata"
 	culture = "southernimperial"
+
 	1221.1.1 = {
 		birth = yes
 	}
@@ -693,120 +816,148 @@ argatis_2 = {
 southern_imperial_11 = {
 	name = "Ixoduis"
 	religion = "saintly_order"
-	culture = "southernimperial"
+	culture = "agiopadis"
+	
 	trait = zealous
 	trait = just
 	trait = peasant_leader
+
 	1224.1.1 = {
 		birth = yes
 	}
+
 	1232.6.12 = {
 		add_spouse = phanaca_10
 		add_pressed_claim = d_argatis
-	}			
+	}
 }
+
 phanaca_1 = {
 	name = "Methodios"
 	religion = "saintly_order"
-	culture = "southernimperial"
+	culture = "agiopadis"
+
 	1200.1.1 = {
 		birth = yes
 	}
 }
+
 phanaca_2 = {
 	name = "Christophoros"
 	religion = "saintly_order"
-	culture = "southernimperial"
+	culture = "agiopadis"
+
 	1212.1.1 = {
 		birth = yes
 	}
 }
+
 phanaca_3 = {
 	name = "Andreas"
 	religion = "saintly_order"
-	culture = "southernimperial"
+	culture = "agiopadis"
+
 	1234.1.1 = {
 		birth = yes
 	}
 }
+
 phanaca_4 = {
 	name = "Andronikos"
 	religion = "saintly_order"
-	culture = "southernimperial"
+	culture = "agiopadis"
+
 	1228.1.1 = {
 		birth = yes
 	}
 }
+
 phanaca_5 = {
 	name = "Kallistos"
 	religion = "saintly_order"
-	culture = "southernimperial"
+	culture = "agiopadis"
+
 	1211.1.1 = {
 		birth = yes
 	}
 }
+
 phanaca_6 = {
 	name = "Hippolytos"
 	religion = "saintly_order"
-	culture = "southernimperial"
+	culture = "agiopadis"
+
 	1204.1.1 = {
 		birth = yes
 	}
 }
+
 phanaca_7 = {
 	name = "Polykarpos"
 	religion = "saintly_order"
-	culture = "southernimperial"
+	culture = "agiopadis"
+
 	1229.1.1 = {
 		birth = yes
 	}
 }
+
 phanaca_8 = {
 	name = "Narses"
 	religion = "saintly_order"
-	culture = "southernimperial"
+	culture = "agiopadis"
+
 	1230.1.1 = {
 		birth = yes
 	}
 }
+
 phanaca_9 = {
 	name = "Kosmas"
 	religion = "saintly_order"
-	culture = "southernimperial"
+	culture = "agiopadis"
+
 	1222.1.1 = {
 		birth = yes
 	}
 }
+
 phanaca_10 = {
 	name = "Irene"
 	female = yes
 	religion = "saintly_order"
-	culture = "southernimperial"
+	culture = "agiopadis"
+	
 	trait = peasant_leader
 	trait = compassionate
 	trait = beauty_good_2
+
 	1224.1.1 = {
 		birth = yes
 	}
 }
+
 phanaca_11 = {
 	name = "Astera"
 	female = yes
 	mother = phanaca_10
 	father = southern_imperial_11	
 	religion = "saintly_order"
-	culture = "southernimperial"
+	culture = "agiopadis"
+
 	1248.1.1 = {
 		birth = yes
 	}
 }
+
 phanaca_12 = {
 	name = "Lalage"
 	female = yes
 	mother = phanaca_10
 	father = southern_imperial_11
 	religion = "saintly_order"
-	culture = "southernimperial"
+	culture = "agiopadis"
+
 	1250.1.1 = {
 		birth = yes
 	}
@@ -816,72 +967,92 @@ phanaca_12 = {
 
 southern_imperial_12 = {
 	name = "Parakios"
+	
 	trait = magic_good_3
 	trait = education_living_magic_3
 	religion = "aversarinas_aautokrata"
 	culture = "practitioner"
+
 	1201.1.1 = {
 		birth = yes
 	}
 }
+
 magi_island_1 = {
 	name = "Gabriel"
 	religion = "aversarinas_aautokrata"
 	culture = "practitioner"
+	
 	trait = magic_good_2
 	trait = education_living_magic_2
+
 	1212.1.1 = {
 		birth = yes
 	}
 }
+
 magi_island_2 = {
 	name = "Konstas"
 	religion = "aversarinas_aautokrata"
 	culture = "practitioner"
+	
 	trait = magic_good_2
 	trait = education_living_magic_3
+
 	1231.1.1 = {
 		birth = yes
 	}
 }
+
 magi_island_3 = {
 	name = "Komitas"
 	religion = "aversarinas_aautokrata"
 	culture = "practitioner"
+	
 	trait = magic_good_1
 	trait = education_living_magic_1
+
 	1220.1.1 = {
 		birth = yes
 	}
 }
+
 magi_island_4 = {
 	name = "Helene"
 	female = yes
 	religion = "aversarinas_aautokrata"
 	culture = "practitioner"
+	
 	trait = magic_good_2
 	trait = education_living_magic_2	
+
 	1222.1.1 = {
 		birth = yes
 	}
 }
+
 magi_island_5 = {
 	name = "Polykarpos"
 	religion = "aversarinas_aautokrata"
 	culture = "practitioner"
+	
 	trait = magic_good_1
 	trait = education_living_magic_2	
+
 	1210.1.1 = {
 		birth = yes
 	}
 }
+
 magi_island_6 = {
 	name = "Demetra"
 	female = yes
 	religion = "aversarinas_aautokrata"
 	culture = "practitioner"
+	
 	trait = magic_good_2
 	trait = education_living_magic_1	
+
 	1214.1.1 = {
 		birth = yes
 	}
@@ -893,33 +1064,41 @@ southern_imperial_13 = {
 	name = "Phokis"
 	religion = "aversarinas_aautokrata"
 	culture = "southernimperial"
+	
 	trait = magic_good_2
 	trait = education_martial_2
 	trait = education_living_magic_2
+
 	1230.1.1 = {
 		birth = yes
 	}
 }
+
 agrinyreum_1 = {
 	name = "Adrianos"
 	religion = "aversarinas_aautokrata"
 	culture = "southernimperial"
+
 	1210.1.1 = {
 		birth = yes
 	}
 }
+
 agrinyreum_2 = {
 	name = "Theochra"
 	religion = "aversarinas_aautokrata"
 	culture = "southernimperial"
+
 	1221.1.1 = {
 		birth = yes
 	}
 }
+
 agrinyreum_3 = {
 	name = "Porphyrion"
 	religion = "aversarinas_aautokrata"
 	culture = "southernimperial"
+
 	1232.1.1 = {
 		birth = yes
 	}
@@ -931,6 +1110,7 @@ southern_imperial_14 = {
 	name = "Eugenios"
 	religion = "aversarinas_aautokrata"
 	culture = "southernimperial"
+
 	1225.1.1 = {
 		birth = yes
 	}
@@ -954,61 +1134,75 @@ southern_imperial_15 = {
 	trait = sadistic
 	trait = brave
 	trait = berserker
-        trait = giant
+	trait = giant
 	culture = "southernimperial"
+
 	1218.2.11 = {
 		birth = yes
-	        effect = {
-			add_character_flag = has_scripted_appearance			
+		effect = {
+			add_character_flag = has_scripted_appearance		
 		}
 	}
+
 	1238.5.12 = {
 		give_nickname = nick_skull_taker
-		add_character_modifier = butcher_of_aversaria_modifier		
+		add_character_modifier = butcher_of_aversaria_modifier	
 	}
 }
+
 tanada_1 = {
 	name = "Hippolytos"
 	religion = "aversarinas_aautokrata"
 	culture = "southernimperial"
+
 	1218.1.1 = {
 		birth = yes
 	}
 }
+
 tanada_2 = {
 	name = "Anastasios"
 	religion = "aversarinas_aautokrata"
 	culture = "southernimperial"
+
 	1220.1.1 = {
 		birth = yes
 	}
 }
+
 tanada_3 = {
 	name = "Maxios"
 	religion = "aversarian_gorassos"
 	culture = "southernimperial"
+	
 	trait = infertile
 	trait = lustful
 	trait = greedy
 	trait = sadistic
 	trait = shrewd
+
 	1221.2.3 = {
 		birth = yes
 	}
+
 	1242.3.4 = {
 		give_nickname = nick_little_prick_maxios
 	}
 }
+
 tanada_4 = {
 	name = "Hippolytos"
 	religion = "aversarinas_aautokrata"
 	culture = "southernimperial"
+
 	1228.1.1 = {
 		birth = yes
 	}
 }
+
 tanada_5 = {
 	name = "Elaiodora"
+	
 	trait = cannibal
 	trait = gregarious
 	trait = greedy
@@ -1018,79 +1212,99 @@ tanada_5 = {
 	religion = "aversarian_gorassos"
 	culture = "southernimperial"
 	female = yes
+
 	1224.1.3 = {
 		birth = yes
 	}
+
 	1244.2.1 = {
 		give_nickname = nick_skin_muncher
 	}
+
 	1247.4.14 = {
 		trait = lovers_pox
 	}
+
 	1250.2.2 = {
 		trait = scarred
 	}
 }
+
 tanada_6 = {
 	name = "Philotheos"
 	religion = "aversarinas_aautokrata"
 	culture = "southernimperial"
+	
 	trait = one_eyed
 	trait = education_stewardship_2
 	trait = cynical
+
 	1234.1.1 = {
 		birth = yes
 	}
 }
+
 tanada_7 = {
 	name = "Zacharias"
 	religion = "aversarian_gorassos"
 	culture = "southernimperial"
+
 	1212.1.1 = {
 		birth = yes
 	}
 }
+
 tanada_8 = {
 	name = "Anastasia"
 	religion = "aversarian_gorassos"
 	culture = "southernimperial"
 	female = yes
+
 	1215.1.1 = {
 		birth = yes
 	}
 }
+
 tanada_9 = {
 	name = "Symmachos"
 	religion = "aversarian_gorassos"
 	culture = "southernimperial"
+
 	1219.1.1 = {
 		birth = yes
 	}
 }
+
 tanada_10 = { #Black Braxos, former lieutenant of Gorassos
 	name = "Braxos"
 	religion = "aversarian_gorassos"
 	culture = "southernimperial"
+	
 	trait = sadistic
 	trait = greedy
 	trait = brave
 	trait = education_intrigue_2
 	trait = gh_peasant_birth
+
 	1222.1.1 = {
 		birth = yes
 	}
+
 	1242.3.14 = {
 		give_nickname = nick_black_braxos
 	}
 }
+
 tanada_11 = {
 	name = "Kimonion"
 	religion = "aversarinas_aautokrata"
 	culture = "southernimperial"
+
 	1209.1.1 = {
 		birth = yes
 	}
 }
+
 tanada_12 = {
 	name = "Evanthia"
 	trait = ambitious
@@ -1107,17 +1321,21 @@ tanada_12 = {
 	religion = "aversarian_gorassos"
 	culture = "southernimperial"
 	female = yes
+
 	1221.2.11 = {
 		birth = yes
 	}
+
 	1230.3.14 = {
 		give_nickname = nick_big_wailer
 	}
 }
+
 tanada_13 = {
 	name = "Euphemios"
 	religion = "aversarian_gorassos"
 	culture = "southernimperial"
+	
 	trait = cannibal
 	trait = physique_good_2
 	trait = intellect_bad_2
@@ -1127,33 +1345,41 @@ tanada_13 = {
 	trait = gluttonous
 	trait = gh_peasant_birth
 	father = western_imperial_15026
+
 	1221.2.11 = {
 		birth = yes
 	}
+
 	1230.3.14 = {
 		give_nickname = nick_little_wailer
 	}
 }
+
 tanada_14 = {
 	name = "Maurikios"
 	religion = "aversarian_gorassos"
 	culture = "southernimperial"
+	
 	trait = education_martial_2
 	trait = physique_good_3
 	trait = callous
 	trait = vengeful
 	trait = cynical
+
 	1219.3.11 = {
 		birth = yes
 	}
+
 	1235.1.2 = {
 		give_nickname = nick_stone_fist
 	}
 }
+
 tanada_15 = {
 	name = "Andreas"
 	religion = "aversarian_gorassos"
 	culture = "southernimperial"
+	
 	trait = craven
 	trait = sadistic
 	trait = zealous
@@ -1161,9 +1387,11 @@ tanada_15 = {
 	trait = gh_peasant_birth
 	trait = magic_good_1
 	trait = education_living_magic_1
+
 	1229.4.15 = {
 		birth = yes
 	}
+
 	1247.5.21 = {
 		give_nickname = nick_one_eye
 		trait = one_eyed
@@ -1174,43 +1402,53 @@ tanada_15 = {
 
 cyrydon_1 = {
 	name = "Pavron"
+	
 	trait = brave
 	trait = education_martial_3
 	martial = 10
 	religion = "aversarinas_aautokrata"
 	culture = "southernimperial"
+
 	1208.1.1 = {
 		birth = yes
 	}
 }
+
 cyrydon_2 = {
 	name = "Phrixus"
 	religion = "aversarinas_aautokrata"
 	culture = "southernimperial"
+
 	1215.1.1 = {
 		birth = yes
 	}
 }
+
 cyrydon_3 = {
 	name = "Talaus"
 	religion = "aversarinas_aautokrata"
 	culture = "southernimperial"
+
 	1212.1.1 = {
 		birth = yes
 	}
 }
+
 cyrydon_4 = {
 	name = "Amyntas"
 	religion = "aversarinas_aautokrata"
 	culture = "southernimperial"
+
 	1226.1.1 = {
 		birth = yes
 	}
 }
+
 cyrydon_5 = {
 	name = "Euneas"
 	religion = "aversarinas_aautokrata"
 	culture = "southernimperial"
+
 	1222.1.1 = {
 		birth = yes
 	}
@@ -1222,6 +1460,7 @@ southern_imperial_17 = {
 	name = "Meletios"
 	religion = "aversarinas_aautokrata"
 	culture = "southernimperial"
+
 	1231.1.1 = {
 		birth = yes
 	}
@@ -1231,6 +1470,7 @@ southern_imperial_18 = {
 	name = "Mathos"
 	religion = "aversarinas_aautokrata"
 	culture = "southernimperial"
+
 	1224.1.1 = {
 		birth = yes
 	}
@@ -1240,18 +1480,1162 @@ southern_imperial_19 = {
 	name = "Aetios"
 	religion = "aversarinas_aautokrata"
 	culture = "southernimperial"
+
 	1225.1.1 = {
 		birth = yes
 	}
 }
 
+southern_imperial_20 = {
+    name = "Isaakios" 
+
+    dynasty = dyn_aversarian_8
+    religion = aversarinas_aautokrata
+    culture = southernimperial
+
+    sexuality = heterosexual
+
+    trait = sadistic
+    trait = deceitful
+    trait = chaste
+
+    diplomacy = 3
+    martial = 7
+    stewardship = 5
+    intrigue = 5
+    learning = 2
+    prowess = 7
+
+    trait = education_martial_2
+
+    923.6.3 = {
+        birth = yes
+    }
+
+    958.10.17 = {
+        add_spouse = southern_imperial_21
+    }
+
+    1024.10.25 = {
+        death = { death_reason = death_drowned  }
+    }
+}
+
+southern_imperial_21 = {
+    name = "Kyra" 
+    female = yes
+
+    religion = aversarinas_aautokrata
+    culture = southernimperial
+
+    sexuality = heterosexual
+
+    trait = ambitious
+    trait = arrogant
+    trait = sadistic
+
+    diplomacy = 5
+    martial = 4
+    stewardship = 6
+    intrigue = 3
+    learning = 8
+    prowess = 4
+
+    trait = education_learning_3
+
+    932.10.16 = {
+        birth = yes
+    }
+
+    1002.9.17 = {
+        death = { death_reason = death_natural_causes }
+    }
+}
+
+southern_imperial_22 = {
+    name = "Philotheos" 
+
+    dynasty = dyn_aversarian_8
+    religion = aversarinas_aautokrata
+    culture = southernimperial
+
+    father = southern_imperial_20
+    mother = southern_imperial_21
+
+    sexuality = heterosexual
+
+    trait = deceitful
+    trait = wrathful
+    trait = vengeful
+
+    diplomacy = 11
+    martial = 20
+    stewardship = 16
+    intrigue = 26
+    learning = 4
+    prowess = 28
+
+    trait = education_intrigue_4
+
+    974.8.20 = {
+        birth = yes
+    }
+
+    991.10.2 = {
+        add_spouse = southern_imperial_23
+    }
+
+    1051.4.16 = {
+        death = { death_reason = death_natural_causes }
+    }
+}
+
+southern_imperial_23 = {
+    name = "Apollonia" 
+    female = yes
+
+    religion = aversarinas_aautokrata
+    culture = southernimperial
+
+    sexuality = heterosexual
+
+    trait = lustful
+    trait = gluttonous
+    trait = ambitious
+
+    diplomacy = 6
+    martial = 5
+    stewardship = 5
+    intrigue = 10
+    learning = 10
+    prowess = 10
+
+    trait = education_intrigue_2
+
+    974.10.27 = {
+        birth = yes
+    }
+
+    1038.6.10 = {
+        death = { death_reason = death_natural_causes }
+    }
+}
+
+southern_imperial_24 = {
+    name = "Konstantia" 
+    female = yes
+
+    religion = aversarinas_aautokrata
+    culture = southernimperial
+
+    father = southern_imperial_22
+    mother = southern_imperial_23
+
+    sexuality = heterosexual
+
+    trait = sadistic
+    trait = diligent
+    trait = gregarious
+
+    diplomacy = 8
+    martial = 4
+    stewardship = 6
+    intrigue = 4
+    learning = 5
+    prowess = 6
+
+    trait = education_diplomacy_2
+
+    993.7.6 = {
+        birth = yes
+    }
+
+    1082.6.22 = {
+        death = { death_reason = death_dungeon  }
+    }
+}
+
+southern_imperial_25 = {
+    name = "Adriane" 
+    female = yes
+
+    religion = aversarinas_aautokrata
+    culture = southernimperial
+
+    father = southern_imperial_22
+    mother = southern_imperial_23
+
+    sexuality = heterosexual
+
+    trait = ambitious
+    trait = arrogant
+    trait = callous
+
+    diplomacy = 4
+    martial = 7
+    stewardship = 7
+    intrigue = 4
+    learning = 6
+    prowess = 7
+
+    trait = education_martial_2
+
+    998.4.23 = {
+        birth = yes
+    }
+
+    1042.10.18 = {
+        death = { death_reason = death_consumption }
+    }
+}
+
+southern_imperial_26 = {
+    name = "Manuel" 
+
+    dynasty = dyn_aversarian_8
+    religion = aversarinas_aautokrata
+    culture = southernimperial
+
+    father = southern_imperial_22
+    mother = southern_imperial_23
+
+    sexuality = heterosexual
+
+    trait = ambitious
+    trait = chaste
+    trait = trusting
+
+    diplomacy = 7
+    martial = 6
+    stewardship = 5
+    intrigue = 4
+    learning = 4
+    prowess = 5
+
+    trait = education_diplomacy_2
+
+    1002.6.16 = {
+        birth = yes
+    }
+
+    1030.9.28 = {
+        add_spouse = southern_imperial_27
+    }
+
+    1040.4.3 = {
+        death = { death_reason = death_battle }
+    }
+}
+
+southern_imperial_27 = {
+    name = "Elaiodora" 
+    female = yes
+
+    religion = aversarinas_aautokrata
+    culture = southernimperial
+
+    sexuality = heterosexual
+
+    trait = greedy
+    trait = gluttonous
+    trait = deceitful
+
+    diplomacy = 2
+    martial = 6
+    stewardship = 4
+    intrigue = 4
+    learning = 5
+    prowess = 6
+
+    trait = education_martial_3
+
+    1004.8.10 = {
+        birth = yes
+    }
+
+    1040.9.8 = {
+        death = { death_reason = death_mysterious  }
+    }
+}
+
+southern_imperial_28 = {
+    name = "Athanasia" 
+    female = yes
+
+    religion = aversarinas_aautokrata
+    culture = southernimperial
+
+    father = southern_imperial_26
+    mother = southern_imperial_27
+
+    sexuality = heterosexual
+
+    trait = cynical
+    trait = vengeful
+    trait = callous
+
+    diplomacy = 4
+    martial = 6
+    stewardship = 6
+    intrigue = 2
+    learning = 8
+    prowess = 7
+
+    trait = education_learning_1
+
+    1031.2.20 = {
+        birth = yes
+    }
+
+    1090.3.2 = {
+        death = { death_reason = death_natural_causes }
+    }
+}
+
+southern_imperial_29 = {
+    name = "Boethios" 
+
+    dynasty = dyn_aversarian_8
+    religion = aversarinas_aautokrata
+    culture = southernimperial
+
+    father = southern_imperial_26
+    mother = southern_imperial_27
+
+    sexuality = heterosexual
+
+    trait = sadistic
+    trait = arrogant
+    trait = lustful
+
+    diplomacy = 7
+    martial = 7
+    stewardship = 5
+    intrigue = 5
+    learning = 6
+    prowess = 6
+
+    trait = education_diplomacy_4
+
+    1033.3.24 = {
+        birth = yes
+    }
+
+    1077.6.2 = {
+        add_spouse = southern_imperial_30
+    }
+
+    1105.11.17 = {
+        death = { death_reason = death_natural_causes }
+    }
+}
+
+southern_imperial_30 = {
+    name = "Konstantine" 
+    female = yes
+
+    religion = aversarinas_aautokrata
+    culture = southernimperial
+
+    sexuality = heterosexual
+
+    trait = arrogant
+    trait = sadistic
+    trait = paranoid
+
+    diplomacy = 6
+    martial = 4
+    stewardship = 5
+    intrigue = 11
+    learning = 6
+    prowess = 6
+
+    trait = education_intrigue_2
+
+    1060.5.19 = {
+        birth = yes
+    }
+
+    1121.6.5 = {
+        death = { death_reason = death_natural_causes }
+    }
+}
+
+southern_imperial_31 = {
+    name = "Adrianos" 
+
+    dynasty = dyn_aversarian_8
+    religion = aversarinas_aautokrata
+    culture = southernimperial
+
+    father = southern_imperial_29
+    mother = southern_imperial_30
+
+    sexuality = heterosexual
+
+    trait = wrathful
+    trait = gluttonous
+    trait = ambitious
+
+    diplomacy = 21
+    martial = 9
+    stewardship = 16
+    intrigue = 29
+    learning = 28
+    prowess = 18
+
+    trait = education_intrigue_4
+
+    1091.8.27 = {
+        birth = yes
+    }
+
+    1123.11.10 = {
+        add_spouse = southern_imperial_32
+    }
+
+    1153.11.26 = {
+        death = { death_reason = death_hunting_accident  }
+    }
+}
+
+southern_imperial_32 = {
+    name = "Dorothea" 
+    female = yes
+
+    religion = aversarinas_aautokrata
+    culture = southernimperial
+
+    sexuality = heterosexual
+
+    trait = greedy
+    trait = cynical
+    trait = temperate
+
+    diplomacy = 5
+    martial = 8
+    stewardship = 8
+    intrigue = 5
+    learning = 8
+    prowess = 4
+
+    trait = education_martial_2
+
+    1106.1.7 = {
+        birth = yes
+    }
+
+    1133.10.14 = {
+        death = { death_reason = death_poison  }
+    }
+}
+
+southern_imperial_33 = {
+    name = "Philippos" 
+
+    dynasty = dyn_aversarian_8
+    religion = aversarinas_aautokrata
+    culture = southernimperial
+
+    father = southern_imperial_31
+    mother = southern_imperial_32
+
+    sexuality = heterosexual
+
+    trait = humble
+    trait = cynical
+    trait = wrathful
+
+    diplomacy = 6
+    martial = 6
+    stewardship = 6
+    intrigue = 3
+    learning = 5
+    prowess = 3
+
+    trait = education_diplomacy_1
+
+    1125.1.26 = {
+        birth = yes
+    }
+
+    1175.3.16 = {
+        add_spouse = southern_imperial_34
+    }
+
+    1194.9.7 = {
+        death = { death_reason = death_natural_causes }
+    }
+}
+
+southern_imperial_34 = {
+    name = "Eudokia" 
+    female = yes
+
+    religion = aversarinas_aautokrata
+    culture = southernimperial
+
+    sexuality = heterosexual
+
+    trait = sadistic
+    trait = wrathful
+    trait = vengeful
+
+    diplomacy = 6
+    martial = 4
+    stewardship = 4
+    intrigue = 4
+    learning = 3
+    prowess = 6
+
+    trait = education_diplomacy_3
+
+    1158.9.24 = {
+        birth = yes
+    }
+
+    1217.11.8 = {
+        death = { death_reason = death_natural_causes }
+    }
+}
+
+southern_imperial_35 = {
+    name = "Isaakios" 
+
+    dynasty = dyn_aversarian_8
+    religion = aversarinas_aautokrata
+    culture = southernimperial
+
+    father = southern_imperial_26
+    mother = southern_imperial_27
+
+    sexuality = heterosexual
+
+    trait = content
+    trait = shy
+    trait = arrogant
+
+    diplomacy = 5
+    martial = 7
+    stewardship = 8
+    intrigue = 4
+    learning = 7
+    prowess = 6
+
+    trait = education_stewardship_2
+
+    1035.6.2 = {
+        birth = yes
+    }
+
+    1085.3.5 = {
+        add_spouse = southern_imperial_36
+    }
+
+    1106.9.10 = {
+        death = { death_reason = death_natural_causes }
+    }
+}
+
+southern_imperial_36 = {
+    name = "Elaiodora" 
+    female = yes
+
+    religion = aversarinas_aautokrata
+    culture = southernimperial
+
+    sexuality = heterosexual
+
+    trait = cynical
+    trait = gregarious
+    trait = paranoid
+
+    diplomacy = 8
+    martial = 7
+    stewardship = 5
+    intrigue = 4
+    learning = 8
+    prowess = 6
+
+    trait = education_diplomacy_3
+
+    1068.10.17 = {
+        birth = yes
+    }
+
+    1095.10.21 = {
+        death = { death_reason = death_crushed  }
+    }
+}
+
+southern_imperial_37 = {
+    name = "Agathe" 
+    female = yes
+
+    religion = aversarinas_aautokrata
+    culture = southernimperial
+
+    father = southern_imperial_35
+    mother = southern_imperial_36
+
+    sexuality = heterosexual
+
+    trait = ambitious
+    trait = lazy
+    trait = just
+
+    diplomacy = 11
+    martial = 4
+    stewardship = 5
+    intrigue = 11
+    learning = 5
+    prowess = 7
+
+    trait = education_diplomacy_1
+
+    1090.4.4 = {
+        birth = yes
+    }
+
+    1164.7.27 = {
+        death = { death_reason = death_natural_causes }
+    }
+}
+
+southern_imperial_38 = {
+    name = "Ioustinos" 
+
+    dynasty = dyn_aversarian_8
+    religion = aversarinas_aautokrata
+    culture = southernimperial
+
+    father = southern_imperial_35
+    mother = southern_imperial_36
+
+    sexuality = heterosexual
+
+    trait = arrogant
+    trait = greedy
+    trait = fickle
+
+    diplomacy = 5
+    martial = 4
+    stewardship = 6
+    intrigue = 4
+    learning = 9
+    prowess = 8
+
+    trait = education_learning_3
+
+    1092.10.16 = {
+        birth = yes
+    }
+
+    1115.12.6 = {
+        add_spouse = southern_imperial_39
+    }
+
+    1167.10.1 = {
+        death = { death_reason = death_natural_causes }
+    }
+}
+
+southern_imperial_39 = {
+    name = "Markia" 
+    female = yes
+
+    religion = aversarinas_aautokrata
+    culture = southernimperial
+
+    sexuality = heterosexual
+
+    trait = arrogant
+    trait = ambitious
+    trait = trusting
+
+    diplomacy = 5
+    martial = 8
+    stewardship = 4
+    intrigue = 8
+    learning = 9
+    prowess = 8
+
+    trait = education_learning_4
+
+    1095.12.4 = {
+        birth = yes
+    }
+
+    1156.7.3 = {
+        death = { death_reason = death_natural_causes }
+    }
+}
+
+southern_imperial_40 = {
+    name = "Isidoros" 
+
+    dynasty = dyn_aversarian_8
+    religion = aversarinas_aautokrata
+    culture = southernimperial
+
+    father = southern_imperial_38
+    mother = southern_imperial_39
+
+    sexuality = heterosexual
+
+    trait = lustful
+    trait = deceitful
+    trait = arrogant
+
+    diplomacy = 6
+    martial = 4
+    stewardship = 5
+    intrigue = 6
+    learning = 6
+    prowess = 5
+
+    trait = education_diplomacy_4
+
+    1135.12.24 = {
+        birth = yes
+    }
+
+    1184.5.5 = {
+        add_spouse = southern_imperial_41
+    }
+
+    1196.10.23 = {
+        death = { death_reason = death_natural_causes }
+    }
+}
+
+southern_imperial_41 = {
+    name = "Dorothea" 
+    female = yes
+
+    religion = aversarinas_aautokrata
+    culture = southernimperial
+
+    sexuality = heterosexual
+
+    trait = stubborn
+    trait = paranoid
+    trait = temperate
+
+    diplomacy = 6
+    martial = 5
+    stewardship = 4
+    intrigue = 8
+    learning = 6
+    prowess = 2
+
+    trait = education_intrigue_2
+
+    1167.3.10 = {
+        birth = yes
+    }
+
+    1243.4.8 = {
+        death = { death_reason = death_natural_causes }
+    }
+}
+
+southern_imperial_42 = {
+    name = "Konstantinos" 
+
+    dynasty = dyn_aversarian_8
+    religion = aversarinas_aautokrata
+    culture = southernimperial
+
+    father = southern_imperial_26
+    mother = southern_imperial_27
+
+    sexuality = heterosexual
+
+    trait = sadistic
+    trait = ambitious
+    trait = arrogant
+
+    diplomacy = 9
+    martial = 4
+    stewardship = 8
+    intrigue = 7
+    learning = 6
+    prowess = 5
+
+    trait = education_diplomacy_4
+
+    1037.9.28 = {
+        birth = yes
+    }
+
+    1075.2.4 = {
+        add_spouse = southern_imperial_43
+    }
+
+    1113.2.25 = {
+        death = { death_reason = death_natural_causes }
+    }
+}
+
+southern_imperial_43 = {
+    name = "Kyriake" 
+    female = yes
+
+    religion = aversarinas_aautokrata
+    culture = southernimperial
+
+    sexuality = asexual
+
+    trait = ambitious
+    trait = callous
+    trait = brave
+
+    diplomacy = 6
+    martial = 9
+    stewardship = 4
+    intrigue = 6
+    learning = 7
+    prowess = 5
+
+    trait = education_martial_2
+
+    1053.5.3 = {
+        birth = yes
+    }
+
+    1123.4.13 = {
+        death = { death_reason = death_natural_causes }
+    }
+}
+
+southern_imperial_44 = {
+    name = "Makarios" 
+
+    dynasty = dyn_aversarian_8
+    religion = aversarinas_aautokrata
+    culture = southernimperial
+
+    father = southern_imperial_42
+    mother = southern_imperial_43
+
+    sexuality = heterosexual
+
+    trait = fickle
+    trait = lazy
+    trait = wrathful
+
+    diplomacy = 6
+    martial = 7
+    stewardship = 7
+    intrigue = 6
+    learning = 8
+    prowess = 3
+
+    trait = education_learning_4
+
+    1084.4.20 = {
+        birth = yes
+    }
+
+    1085.4.27 = {
+        give_nickname = nick_the_silly
+        effect = {
+            add_character_flag = {
+                flag = had_nickname_event
+            }
+        }
+    }
+
+    1139.2.25 = {
+        add_spouse = southern_imperial_45
+    }
+
+    1151.7.13 = {
+        death = { death_reason = death_natural_causes }
+    }
+}
+
+southern_imperial_45 = {
+    name = "Sibylla" 
+    female = yes
+
+    religion = aversarinas_aautokrata
+    culture = southernimperial
+
+    sexuality = heterosexual
+
+    trait = arrogant
+    trait = trusting
+    trait = calm
+
+    diplomacy = 6
+    martial = 7
+    stewardship = 6
+    intrigue = 7
+    learning = 5
+    prowess = 3
+
+    trait = education_martial_4
+
+    1122.2.21 = {
+        birth = yes
+    }
+
+    1160.11.10 = {
+        death = { death_reason = death_bubonic_plague }
+    }
+}
+
+southern_imperial_46 = {
+    name = "Ignatios" 
+
+    dynasty = dyn_aversarian_8
+    religion = aversarinas_aautokrata
+    culture = southernimperial
+
+    father = southern_imperial_44
+    mother = southern_imperial_45
+
+    sexuality = heterosexual
+
+    trait = ambitious
+    trait = arrogant
+    trait = sadistic
+
+    diplomacy = 6
+    martial = 6
+    stewardship = 7
+    intrigue = 6
+    learning = 9
+    prowess = 6
+
+    trait = education_learning_2
+
+    1140.1.20 = {
+        birth = yes
+    }
+
+    1172.7.9 = {
+        add_spouse = southern_imperial_47
+    }
+
+    1216.6.11 = {
+        death = { death_reason = death_natural_causes }
+    }
+}
+
+southern_imperial_47 = {
+    name = "Pulcheria" 
+    female = yes
+
+    religion = aversarinas_aautokrata
+    culture = southernimperial
+
+    sexuality = heterosexual
+
+    trait = generous
+    trait = gluttonous
+    trait = brave
+
+    diplomacy = 6
+    martial = 8
+    stewardship = 9
+    intrigue = 6
+    learning = 9
+    prowess = 4
+
+    trait = education_stewardship_3
+
+    1144.3.7 = {
+        birth = yes
+    }
+
+    1213.12.14 = {
+        death = { death_reason = death_natural_causes }
+    }
+}
+
+southern_imperial_48 = {
+    name = "Niphon" 
+
+    dynasty = dyn_aversarian_8
+    religion = aversarinas_aautokrata
+    culture = southernimperial
+
+    father = southern_imperial_44
+    mother = southern_imperial_45
+
+    sexuality = heterosexual
+
+    trait = shy
+    trait = paranoid
+    trait = sadistic
+
+    diplomacy = 10
+    martial = 8
+    stewardship = 8
+    intrigue = 6
+    learning = 6
+    prowess = 8
+
+    trait = education_diplomacy_3
+
+    1143.10.21 = {
+        birth = yes
+    }
+
+    1164.10.20 = {
+        add_spouse = southern_imperial_49
+    }
+
+    1219.6.24 = {
+        death = { death_reason = death_natural_causes }
+    }
+}
+
+southern_imperial_49 = {
+    name = "Elaiodora" 
+    female = yes
+
+    religion = aversarinas_aautokrata
+    culture = southernimperial
+
+    sexuality = asexual
+
+    trait = honest
+    trait = ambitious
+    trait = arrogant
+
+    diplomacy = 5
+    martial = 6
+    stewardship = 4
+    intrigue = 5
+    learning = 5
+    prowess = 4
+
+    trait = education_martial_3
+
+    1147.2.2 = {
+        birth = yes
+    }
+
+    1212.7.12 = {
+        death = { death_reason = death_natural_causes }
+    }
+}
+
+southern_imperial_50 = {
+    name = "Markia" 
+    female = yes
+
+    religion = aversarinas_aautokrata
+    culture = southernimperial
+
+    father = southern_imperial_44
+    mother = southern_imperial_45
+
+    sexuality = heterosexual
+
+    trait = arrogant
+    trait = ambitious
+    trait = calm
+
+    diplomacy = 6
+    martial = 7
+    stewardship = 7
+    intrigue = 5
+    learning = 6
+    prowess = 6
+
+    trait = education_martial_1
+
+    1145.3.19 = {
+        birth = yes
+    }
+
+    1193.4.19 = {
+        death = { death_reason = death_feast_accident  }
+    }
+}
+
+southern_imperial_51 = {
+    name = "Basileios" 
+
+    dynasty = dyn_aversarian_8
+    religion = aversarinas_aautokrata
+    culture = southernimperial
+
+    father = southern_imperial_44
+    mother = southern_imperial_45
+
+    sexuality = heterosexual
+
+    trait = cynical
+    trait = deceitful
+    trait = arrogant
+
+    diplomacy = 3
+    martial = 9
+    stewardship = 4
+    intrigue = 7
+    learning = 5
+    prowess = 4
+
+    trait = education_martial_2
+
+    1147.5.4 = {
+        birth = yes
+    }
+
+    1163.2.12 = {
+        add_spouse = southern_imperial_52
+    }
+
+    1222.10.25 = {
+        death = { death_reason = death_natural_causes }
+    }
+}
+
+southern_imperial_52 = {
+    name = "Eugenia" 
+    female = yes
+
+    religion = aversarinas_aautokrata
+    culture = southernimperial
+
+    sexuality = heterosexual
+
+    trait = ambitious
+    trait = compassionate
+    trait = impatient
+
+    diplomacy = 6
+    martial = 4
+    stewardship = 5
+    intrigue = 8
+    learning = 4
+    prowess = 5
+
+    trait = education_intrigue_2
+
+    1186.10.2 = {
+        birth = yes
+    }
+
+    1217.5.5 = {
+        death = { death_reason = death_natural_causes }
+    }
+}
+
 ##SJALVOLKI##
 
-aversaria_sjalvolki_1 = { ##blood drinking insane sjalvoki- #1 for southern empire in dev bible
+aversaria_sjalvolki_1 = { ##blood drinking insane sjalvolki- #1 for southern empire in dev bible
 	name = "Magnus"
-        dna = magnus 
+	dna = magnus 
 	religion = "praznarva"
 	culture = "irmionoth"
+	
 	trait = cannibal
 	trait = lunatic_genetic
 	trait = sadistic
@@ -1259,9 +2643,10 @@ aversaria_sjalvolki_1 = { ##blood drinking insane sjalvoki- #1 for southern empi
 	trait = wrathful
 	trait = reaver
 	trait = education_martial_2
+
 	1218.1.1 = {
 		birth = yes
-	        effect = {
+		effect = {
 			add_character_flag = has_scripted_appearance			
 		}
 	}
@@ -1271,22 +2656,27 @@ blood_drinker_1 = {
 	name = "Egilmar"
 	religion = "praznarva"
 	culture = "irmionoth"
+
 	1224.1.1 = {
 		birth = yes
 	}
 }
+
 blood_drinker_2 = {
 	name = "Harthgate"
 	religion = "praznarva"
 	culture = "irmionoth"
+
 	1220.1.1 = {
 		birth = yes
 	}
 }
+
 blood_drinker_3 = {
 	name = "Tymmeke"
 	religion = "praznarva"
 	culture = "irmionoth"
+
 	1226.1.1 = {
 		birth = yes
 	}
@@ -1306,17 +2696,19 @@ aversaria_sjalvolki_2 = {
 	trait = magic_good_3
 	trait = education_mixed_magic_3
 	trait = education_intrigue_3
-	trait = schemer
-	
+	trait = schemer	
+
 	1205.1.1 = {
 		birth = yes
-	        effect = {
+		effect = {
 			add_character_flag = has_scripted_appearance
 		}
 	}
+
 	1227.4.5 = {
 		give_nickname = nick_serpent_speaker
 	}
+
 	1252.1.5 = {
 		religion = aversarian_sjalvolki
 	}
@@ -1324,9 +2716,10 @@ aversaria_sjalvolki_2 = {
 
 aversaria_sjalvolki_3 = {
 	name = "MaelColuim"
-        dna = maelcoluim
+	dna = maelcoluim
 	religion = "aversarian_sjalvolki"
 	culture = "adrakamp"
+	
 	trait = education_learning_3
 	trait = magic_good_3
 	trait = zealous
@@ -1339,12 +2732,14 @@ aversaria_sjalvolki_3 = {
 	intrigue = 8
 	stewardship = 6
 	learning = 12
+
 	1210.1.1 = {
 		birth = yes
-            effect = {
+		effect = {
 			add_character_flag = has_scripted_appearance
 		}
 	}
+
 	1212.1.1 = {
 		give_nickname = nick_the_acolyte
 	}
@@ -1354,12 +2749,15 @@ aversaria_sjalvolki_4 = {
 	name = "Kosmin"
 	religion = "sjalvolki"
 	culture = "adrakamp"
+	
 	trait = magic_good_3
 	trait = education_dead_magic_3
 	trait = education_intrigue_3
+
 	1219.1.1 = {
 		birth = yes
 	}
+
 	1252.1.5 = {
 		religion = aversarian_sjalvolki
 	}
@@ -1369,61 +2767,90 @@ aversaria_sjalvolki_5 = {
 	name = "Serapion"
 	religion = "sjalvolki"
 	culture = "adrakamp"
+
 	1222.1.1 = {
 		birth = yes
 	}
 }
+
 aversaria_sjalvolki_6 = {
 	name = "Aldimir"
 	religion = "sjalvolki"
 	culture = "adrakamp"
+
 	1232.1.1 = {
 		birth = yes
 	}
 }
+
 aversaria_sjalvolki_7 = {
 	name = "Dmitar"
 	religion = "sjalvolki"
 	culture = "adrakamp"
+
 	1202.1.1 = {
 		birth = yes
 	}
+
 	1252.1.5 = {
 		religion = aversarian_sjalvolki
 	}
 }
+
 aversaria_sjalvolki_8 = {
 	name = "Lazar"
 	religion = "aversarian_sjalvolki"
 	culture = "adrakamp"
+
 	1212.1.1 = {
 		birth = yes
 	}
 }
+
 aversaria_sjalvolki_9 = {
 	name = "Vukan"
 	religion = "aversarian_sjalvolki"
 	culture = "adrakamp"
+
 	1227.1.1 = {
 		birth = yes
 	}
 }
+
 aversaria_sjalvolki_10 = {
 	name = "Kasjan"
 	religion = "aversarian_sjalvolki"
 	culture = "adrakamp"
+
 	1225.1.1 = {
 		birth = yes
 	}
 }
+
 aversaria_sjalvolki_11 = {
 	name = "Ilija"
 	religion = "sjalvolki"
 	culture = "adrakamp"
+
 	1220.1.1 = {
 		birth = yes
 	}
+
 	1252.1.5 = {
+		religion = aversarian_sjalvolki
+		}
+	}
+
+aversaria_sjalvolki_12 = {
+	name = "Tynjo"
+	religion = "sjalvolki"
+	culture = "irmionoth"
+
+	1228.7.8 = {
+		birth = yes
+	}
+
+	1244.7.8 = {
 		religion = aversarian_sjalvolki
 	}
 }

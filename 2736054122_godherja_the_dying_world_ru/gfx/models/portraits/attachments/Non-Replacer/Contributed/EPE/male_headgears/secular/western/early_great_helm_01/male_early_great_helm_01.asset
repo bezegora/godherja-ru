@@ -1,0 +1,104 @@
+pdxmesh = {
+	name = "male_early_great_helm_01_mesh"
+	file = "male_early_great_helm_01.mesh"
+
+	#blend_shape = { id = "male_early_great_helm_01_bs_fat"		type = "male_early_great_helm_01_bs_fat.mesh" }
+	blend_shape = { id = "male_early_great_helm_01_bs_muscular"		type = "male_early_great_helm_01_bs_muscular.mesh" }
+
+
+	meshsettings = {
+		name = "western_coif_01_early"
+		index = 0
+		texture_diffuse = "western_coif_01_diffuse.dds"
+		texture_normal = "western_coif_01_normal.dds"
+		texture_specular = "western_coif_01_properties.dds"
+		shader = "portrait_attachment"
+		shader_file = "gfx/FX/jomini/portrait.shader"
+	}
+
+	meshsettings = {
+		name = "early_great_helm_01"
+		index = 0
+		texture_diffuse = "early_great_helm_01_diffuse.dds"
+		texture_normal = "early_great_helm_01_normal.dds"
+		texture_specular = "early_great_helm_01_properties.dds"
+		shader = "portrait_attachment"
+		shader_file = "gfx/FX/jomini/portrait.shader"
+	}
+	
+}
+
+entity = {
+	name = "male_early_great_helm_01_entity"
+	pdxmesh = "male_early_great_helm_01_mesh"
+
+	#attribute = { name = "bs_fat_1" blend_shape = "male_early_great_helm_01_bs_fat" }
+	attribute = { name = "bs_muscular_1"						blend_shape = "male_early_great_helm_01_bs_muscular" }	
+	
+}
+
+####Painted version
+
+entity = {
+	name = "male_early_great_helm_01_painted_entity"
+	pdxmesh = "male_early_great_helm_01_mesh"
+
+	#attribute = { name = "bs_fat_1" blend_shape = "male_early_great_helm_01_bs_fat" }
+	attribute = { name = "bs_muscular_1"						blend_shape = "male_early_great_helm_01_bs_muscular" }	
+
+	meshsettings = {
+		name = "western_coif_01_early"
+		index = 0
+		texture_diffuse = "western_coif_01_diffuse.dds"
+		texture_normal = "western_coif_01_normal.dds"
+		texture_specular = "western_coif_01_properties.dds"
+		shader = "portrait_attachment"
+		shader_file = "gfx/FX/jomini/portrait.shader"
+	}
+
+	meshsettings = {
+		name = "early_great_helm_01"
+		index = 0
+		texture_diffuse = "early_great_helm_01_painted_diffuse.dds"
+		texture_normal = "early_great_helm_01_painted_normal.dds"
+		texture_specular = "early_great_helm_01_painted_properties.dds"
+		shader = "portrait_attachment_pattern"
+		shader_file = "gfx/FX/jomini/portrait.shader"
+	}
+	
+	game_data = {
+		portrait_accessory = {
+			pattern_mask = "gfx/models/portraits/attachments/Non-Replacer/Contributed/EPE/male_headgears/secular/western/early_great_helm_01/early_great_helm_01_painted_mask.dds"	#Any 4-channel texture. Each channel will be used to mask a pattern from the variation object
+			variation = "early_great_helm_01_painted"	#A "variation" object in gfx/portraits/accessory_variations/
+		}
+	}
+}
+
+    ###Sir Eplerud's Great Helm		
+entity = {
+	name = "male_sir_eplerud_helmet_01_entity"
+	pdxmesh = "male_early_great_helm_01_mesh"
+
+	#attribute = { name = "bs_fat_1" blend_shape = "male_early_great_helm_01_bs_fat" }
+	attribute = { name = "bs_muscular_1"						blend_shape = "male_early_great_helm_01_bs_muscular" }	
+	
+	meshsettings = {
+		name = "western_coif_01_early"
+		index = 0
+		texture_diffuse = "western_coif_01_diffuse.dds"
+		texture_normal = "western_coif_01_normal.dds"
+		texture_specular = "western_coif_01_properties.dds"
+		shader = "portrait_attachment"
+		shader_file = "gfx/FX/jomini/portrait.shader"
+	}
+
+	meshsettings = {
+		name = "early_great_helm_01"
+		index = 0
+		texture_diffuse = "sir_eplerud_helmet_01_diffuse.dds"
+		texture_normal = "sir_eplerud_helmet_01_normal.dds"
+		texture_specular = "sir_eplerud_helmet_01_properties.dds"
+		shader = "portrait_attachment"
+		shader_file = "gfx/FX/jomini/portrait.shader"
+	}	
+}

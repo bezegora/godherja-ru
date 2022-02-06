@@ -30,7 +30,22 @@ coat_of_arms_template_lists = {
 		#1 = basic_ordinary_division_02
 		#3 = basic_ordinary_chief_01
 		#1 = basic_ordinary_chief_02
-		
+
+		# Dravidarian templates
+		special_selection = {	
+			trigger = {	
+				OR = {
+					has_religion = religion:dravidian_religion 
+                	has_religion = religion:viyagaric_religion
+				}
+			}			
+			16000 = basic_dravidarian_template_1
+			16000 = basic_dravidarian_template_1_b
+			16000 = basic_dravidarian_template_2
+			16000 = basic_dravidarian_template_2_b
+			16000 = basic_dravidarian_template_3
+			16000 = basic_dravidarian_template_3_b
+		}		
 		# Aversarian-specific templates
 		special_selection = {	
 			trigger = {	
@@ -100,7 +115,7 @@ coat_of_arms_template_lists = {
 		special_selection = {	      
 			trigger = {	
 				OR = {
-					has_religion = religion:cumani_religion 
+					scope:faith = faith:cumani 
 					scope:faith = faith:aversarian_cumani 
 				}
 			}			
@@ -211,42 +226,67 @@ coat_of_arms_template_lists = {
 					has_religion = religion:samojitian_religion # TEMP
 					has_religion = religion:allemani_religion # TEMP
 				}	
-			}			
-			8000 = sjalvolki_roundel_template
-			8000 = sjalvolki_roundel_template_alt
-			4000 = sjalvolki_roundel_template_2
-			4000 = sjalvolki_roundel_template_2_alt
-			4000 = sjalvolki_roundel_template_3
-			4000 = sjalvolki_roundel_template_3_alt
-			4000 = sjalvolki_roundel_template_4
-			4000 = sjalvolki_roundel_template_4_alt
-			4000 = sjalvolki_large_roundel_template
-			4000 = sjalvolki_large_roundel_template_alt
-			2000 = sjalvolki_large_roundel_template_2
-			2000 = sjalvolki_large_roundel_template_2_alt
-			1000 = sjalvolki_large_roundel_template_3
-			1000 = sjalvolki_large_roundel_template_3_alt
-			1000 = sjalvolki_large_roundel_template_4
-			1000 = sjalvolki_large_roundel_template_4_alt
-			16000 = sjalvolki_ring_template
-			16000 = sjalvolki_ring_template_alt
-			4000 = sjalvolki_diamond_template
-			4000 = sjalvolki_diamond_template_alt
-			4000 = sjalvolki_diamond_template_2
-			4000 = sjalvolki_diamond_template_2_alt
-			2000 = sjalvolki_diamond_template_3
-			2000 = sjalvolki_diamond_template_3_alt
-			4000 = sjalvolki_diamond_template_4
-			4000 = sjalvolki_diamond_template_4_alt
-
-			16000 = sjalvolki_animal_template
-			4000 = sjalvolki_animal_template_inverted
-			16000 = sjalvolki_animal_template_alt
-			4000 = sjalvolki_animal_template_alt_inverted
-			8000 = sjalvolki_borders_template
-			8000 = sjalvolki_borders_template_alt
-			8000 = sjalvolki_borders_template_2
-			8000 = sjalvolki_borders_template_2_alt
+			}	
+			special_selection = {	  
+				trigger = {	
+					NOT = { has_government = feudal_government }
+				}  		
+				8000 = sjalvolki_roundel_template
+				8000 = sjalvolki_roundel_template_alt
+				4000 = sjalvolki_roundel_template_2
+				4000 = sjalvolki_roundel_template_2_alt
+				4000 = sjalvolki_roundel_template_3
+				4000 = sjalvolki_roundel_template_3_alt
+				4000 = sjalvolki_roundel_template_4
+				4000 = sjalvolki_roundel_template_4_alt
+				4000 = sjalvolki_large_roundel_template
+				4000 = sjalvolki_large_roundel_template_alt
+				2000 = sjalvolki_large_roundel_template_2
+				2000 = sjalvolki_large_roundel_template_2_alt
+				1000 = sjalvolki_large_roundel_template_3
+				1000 = sjalvolki_large_roundel_template_3_alt
+				1000 = sjalvolki_large_roundel_template_4
+				1000 = sjalvolki_large_roundel_template_4_alt
+				16000 = sjalvolki_ring_template
+				16000 = sjalvolki_ring_template_alt
+				4000 = sjalvolki_diamond_template
+				4000 = sjalvolki_diamond_template_alt
+				4000 = sjalvolki_diamond_template_2
+				4000 = sjalvolki_diamond_template_2_alt
+				2000 = sjalvolki_diamond_template_3
+				2000 = sjalvolki_diamond_template_3_alt
+				4000 = sjalvolki_diamond_template_4
+				4000 = sjalvolki_diamond_template_4_alt
+				16000 = sjalvolki_animal_template
+				4000 = sjalvolki_animal_template_inverted
+				16000 = sjalvolki_animal_template_alt
+				4000 = sjalvolki_animal_template_alt_inverted
+				8000 = sjalvolki_borders_template
+				8000 = sjalvolki_borders_template_alt
+				8000 = sjalvolki_borders_template_2
+				8000 = sjalvolki_borders_template_2_alt
+				8000 = sjalvolki_frame_template
+				2000 = sjalvolki_frame_template_inverted
+				8000 = sjalvolki_longship_template
+				2000 = sjalvolki_longship_template_inverted
+				8000 = sjalvolki_longship_template_alt
+				2000 = sjalvolki_longship_template_alt_inverted
+			}
+			special_selection = {	  
+				trigger = {	
+					has_government = feudal_government
+				}  
+				16000 = sjalvolki_feudal_template
+				4000 = sjalvolki_feudal_template_inverted
+				16000 = sjalvolki_feudal_template_2
+				4000 = sjalvolki_feudal_template_2_inverted
+				16000 = sjalvolki_feudal_template_3
+				4000 = sjalvolki_feudal_template_3_inverted
+				16000 = sjalvolki_feudal_template_4
+				4000 = sjalvolki_feudal_template_4_inverted
+				16000 = sjalvolki_feudal_template_5
+				4000 = sjalvolki_feudal_template_5_inverted
+			}
 		}
 		# Agionist-specific templates
 		special_selection = {	      
@@ -270,12 +310,10 @@ coat_of_arms_template_lists = {
 				OR = {
 					has_religion = religion:sarradonian_religion 
 
-					has_religion = religion:adabyssian_religion # TEMP
 					has_religion = religion:anaanides_religion # TEMP
 					has_religion = religion:hubarism_religion # TEMP
 					has_religion = religion:hulawite_religion # TEMP
 					has_religion = religion:manats_religion # TEMP
-					has_religion = religion:mogowai_religion # TEMP
 					has_religion = religion:quwazaw_religion # TEMP
 					has_religion = religion:ritualist_religion # TEMP
 					has_religion = religion:yuagaug_religion # TEMP
@@ -295,6 +333,28 @@ coat_of_arms_template_lists = {
 			8000 = wardenite_pillars_template_alt
 			4000 = wardenite_pillars_template_inverted
 			4000 = wardenite_pillars_template_inverted_alt
+		}
+
+		# Adabyssian-specific templates
+		special_selection = {	      
+			trigger = {	
+				has_religion = religion:adabyssian_religion
+			}			
+			16000 = adabyssian_elvish_template
+			4000 = adabyssian_elvish_template_inverted
+		}
+
+		# Mogowai-specific templates
+		special_selection = {	      
+			trigger = {	
+				has_religion = religion:mogowai_religion
+			}			
+			16000 = mogowai_knot_template
+			4000 = mogowai_knot_template_inverted
+			16000 = mogowai_cross_template
+			4000 = mogowai_cross_template_inverted
+			16000 = mogowai_square_template
+			4000 = mogowai_square_template_inverted
 		}
 
 		# Khmetic-specific templates

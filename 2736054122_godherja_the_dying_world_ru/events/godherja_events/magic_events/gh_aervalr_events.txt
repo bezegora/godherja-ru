@@ -1,27 +1,4 @@
 ﻿namespace = aervalr
-# Events related to the moon
-
-#Table of contents 
-
-#Cycle shifting, events moving the cycle around and informing dead magi
-#Orginal code by Piemantheman
-# 0001 - 
-
-#Shifts cycle recursively 
-# COMMENTED OUT BY HAPCHAZZARD UNTIL WE IMPLEMENT THIS PROPERLY
-aervalr.0001 = {
-    type = empty
-    hidden = yes
-
-    
-    immediate = {
-        #next_aervalr_cycle_effect = global_var:aervalr_cycle
-        #trigger_event = {
-        #    id = aervalr.0001
-        #    days = 15
-        #}
-    }
-}
 
 aervalr.0100 = {	# A piece of the moon falls on some unlucky bastard's head, check to see how big it is
 	type = empty
@@ -29,39 +6,32 @@ aervalr.0100 = {	# A piece of the moon falls on some unlucky bastard's head, che
 	
 	immediate = {
 		random_county = {
-			limit = { has_aelvalr_shard = no }
+			limit = { 
+				has_aelvalr_shard = no 
+				title_province = { province_has_underground_terrain = no }
+			}
 			random_list = {
 				40 = { # A small shard
-					debug_log = "A small shard has fallen!"
-					debug_log_scopes = yes
 					save_scope_as = aervalr_shard_landing_site
 					title_province = { save_scope_as = aervalr_shard_landing_site_province }
 					holder = { trigger_event = aervalr.0101 }
 				}	
 				30 = { # A medium shard
-					debug_log = "A medium shard has fallen!"
-					debug_log_scopes = yes
 					save_scope_as = aervalr_shard_landing_site
 					title_province = { save_scope_as = aervalr_shard_landing_site_province }
 					holder = { trigger_event = aervalr.0102 }
 				}
 				20 = { # A large shard
-					debug_log = "A big shard has fallen!"
-					debug_log_scopes = yes
 					save_scope_as = aervalr_shard_landing_site
 					title_province = { save_scope_as = aervalr_shard_landing_site_province }
 					holder = { trigger_event = aervalr.0103 }
 				}	
 				8 = { # A huge shard
-					debug_log = "A huge shard has fallen!"
-					debug_log_scopes = yes
 					save_scope_as = aervalr_shard_landing_site
 					title_province = { save_scope_as = aervalr_shard_landing_site_province }
 					holder = { trigger_event = aervalr.0104 }
 				}
 				2 = { # lol
-					debug_log = "A colossal shard has fallen!"
-					debug_log_scopes = yes
 					save_scope_as = aervalr_shard_landing_site
 					title_province = { save_scope_as = aervalr_shard_landing_site_province }
 					holder = { trigger_event = aervalr.0105 }

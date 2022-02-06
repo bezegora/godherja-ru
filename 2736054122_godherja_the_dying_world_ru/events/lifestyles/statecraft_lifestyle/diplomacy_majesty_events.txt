@@ -2075,10 +2075,10 @@ diplomacy_majesty_special.1010 = {
 					opposing_ai_values_trigger = { TARGET = scope:debater VALUE = zeal }
 					OR = {
 						root.faith = {
-							has_doctrine = abrahamic_hostility_doctrine
+							has_doctrine = imperial_hostility_doctrine
 						}
 						scope:debater.faith = {
-							has_doctrine = abrahamic_hostility_doctrine
+							has_doctrine = imperial_hostility_doctrine
 						}
 					}
 				}
@@ -2121,18 +2121,6 @@ diplomacy_majesty_special.1010 = {
 				save_scope_value_as = {
 					name = topic
 					value = flag:chivalry #the value of chivalry
-				}
-			}
-			10 = {
-				trigger = {
-					AND = {
-						root.faith = faith:catholic
-						scope:debater.faith = faith:catholic
-					}
-				}
-				save_scope_value_as = {
-					name = topic
-					value = flag:seven_virtues #the most important of the seven virtues
 				}
 			}
 			10 = {

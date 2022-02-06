@@ -1055,6 +1055,9 @@ birth.1002 = {
 		add_character_flag = peasant_affair_already_looking
 		custom_tooltip = search_for_real_father_tt
 	}
+	after = {
+		bastard_real_father_discovery_on_birth_effect = yes
+	}
 }
 
 
@@ -2727,41 +2730,7 @@ birth.8001 = { #by Mathilda Bjarnehed
 			
 		}
 	}
-}		
-
-# Born in the Purple allocation
-#	by Ewan Cowhig Croft
-birth.8011 = {
-	type = character_event
-	hidden = yes
-	
-	trigger = {
-		any_parent = {
-			OR = {
-				has_title = title:e_byzantium	#Must be the current emperor.
-				has_title = title:e_roman_empire	#Or the other emperor.
-			}
-			capital_county = title:c_byzantion	#Must rule from the Bucoleon Palace.
-		}
-		mother = {
-			OR = {
-				AND = {	#Landless mothers must be actually at court to use the chamber.
-					is_ruler = no
-					location = title:c_byzantion.title_province
-				}
-				AND = {	#Landed rulers can be assumed to make the journey, unless they have some extremely pressing reason not to.
-					is_ruler = yes
-					NOT = { is_at_war_with = root.father }
-				}
-			}
-			is_imprisoned = no	#Cannot use the purple chamber from prison.
-			is_commanding_army = no	#Cannot use the purple chamber whilst commanding an army.
-		}
-	}
-
-	immediate = { add_trait = born_in_the_purple }
 }
-
 
 #################
 # NAMING EVENTS # by Mathilda Bjarnehed
@@ -3720,6 +3689,10 @@ birth.9002 = {
 		custom_tooltip = birth.9002.b.tt
 
 		trigger_event = birth.9003
+	}
+	
+	after = {
+		bastard_real_father_discovery_on_birth_effect = yes
 	}
 }
 

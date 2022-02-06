@@ -1,0 +1,358 @@
+﻿namespace = harthah_war
+
+#Events dealing with the Amsari Civil war
+##################
+##EVENT     LIST##
+# harthah_war.0100 - invading an Agionist order with Wardenite territory/vassals, kicks everything off
+#
+# harthah_war.0101 - Vassals of the Agionists are called up to fight
+#
+# harthah_war.0003
+#
+# harthah_war.0004
+#
+# harthah_war.0005
+#
+# harthah_war.0006
+#
+# harthah_war.0007
+#
+# harthah_war.0008
+#
+# harthah_war.0009
+#
+# harthah_war.0010
+#
+# harthah_war.0011
+# Amsari Civil war event chain
+##################
+
+# Events helping Harthah out in his reconquest.
+# by Mayor
+harthah_war.0100 = { #invading an Agionist order with Wardenite territory/vassals
+	title = harthah_war.0100.t
+	desc = harthah_war.0100.desc
+	theme = war
+	right_portrait = {
+		character = ROOT
+		animation = war_attacker
+	}
+	left_portrait = {
+		character = scope:harthahwar_defender
+		animation = war_attacker
+	}
+	immediate = {
+		scope:harthahwar_defender = {
+			every_vassal_or_below = {
+				limit = {
+					religion = religion:sarradonian_religion
+					is_imprisoned = no
+				}
+				add_to_list = harthahs_rebels
+			}
+		}
+		scope:harthahwar_defender.primary_title = {
+			every_in_de_facto_hierarchy = {
+				limit = {
+					tier = tier_county
+					religion = religion:sarradonian_religion
+				}
+				add_to_list = wardenite_provinces_helping
+			}
+		}
+		scope:harthahwar_defender.primary_title = {
+			every_in_de_facto_hierarchy = {
+				limit = {
+					tier = tier_county
+					religion = religion:ritualist_religion
+				}
+				add_to_list = ritualist_provinces_helping
+			}
+			#temporary until a larger system is in place for Harthah negotiating with ritualists
+		}
+	}
+	option = {
+		name = harthah_war.0100.a		#call on your boys to rise up!
+		#custom_tooltip = harthah_war.0100.a.tt
+		every_in_list = {
+			list = harthahs_rebels
+			trigger_event = {
+				id = harthah_war.0101		#Asking the boys to rise up,
+				days = { 1 5 }
+			}
+		}
+		trigger_event = {
+			id = harthah_war.0102
+		}
+	}
+    option = {
+		trigger = { is_ai = no }
+		name = harthah_war.0100.b		#nah, don't call them. dunno why you'd choose this though. 
+		#custom_tooltip = harthah_war.0100.b.tt
+		every_in_list = {
+			list = harthahs_rebels 
+			remove_from_list = harthahs_rebels
+		}
+		every_in_list = {
+			list = wardenite_provinces_helping
+			remove_from_list = wardenite_provinces_helping
+		}
+		every_in_list = {
+			list = ritualist_provinces_helping
+			remove_from_list = ritualist_provinces_helping
+		}
+	}
+}
+
+harthah_war.0101 = {
+	title = harthah_war.0101.t
+	desc = harthah_war.0101.desc
+	theme = war
+	right_portrait = {
+		character = ROOT
+		animation = war_attacker
+	}
+	left_portrait = {
+		character = scope:harthahwar_defender
+		animation = war_attacker
+	}
+	option = {
+		name = harthah_war.0101.a
+		#custom_tooltip = harthah_war.0101.a.tt
+		scope:harthahswar = {
+			add_attacker = ROOT
+		}
+		character:sarradon_1 = {
+			spawn_army = {
+				name = sarradon_reconquest_troops
+				uses_supply = yes
+				inheritable = no
+				location = 5182
+				levies = {
+					value = 1500
+				}
+				men_at_arms = {
+					type = camel_rider
+					stacks = 2
+				}
+				men_at_arms = {
+					type = mangonel
+					stacks = 2
+				}
+				men_at_arms = {
+					type = light_footmen
+					stacks = 2
+				}
+			}
+		}
+	}
+	option = {
+		trigger = {
+			is_ai = no
+		}
+		name = harthah_war.0101.b
+		remove_from_list = harthahs_rebels
+	}
+}
+
+harthah_war.0102 = {
+	hidden = yes
+	immediate = { 
+		if = {
+			limit = {
+				list_size = {
+					name = wardenite_provinces_helping
+					value >= 3
+				}
+			}
+			character:sarradon_1 = {
+				spawn_army = {
+					name = sarradon_reconquest_troops
+					uses_supply = yes
+					inheritable = no
+					location = 5182
+					levies = {
+						value = 1000
+					}
+					men_at_arms = {
+						type = camel_rider
+						stacks = 2
+					}
+					men_at_arms = {
+						type = mangonel
+						stacks = 2
+					}
+					men_at_arms = {
+						type = light_footmen
+						stacks = 2
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				list_size = {
+					name = wardenite_provinces_helping
+					value >= 6
+				}
+			}
+			character:sarradon_1 = {
+				spawn_army = {
+					name = sarradon_reconquest_troops
+					uses_supply = yes
+					inheritable = no
+					location = 5182
+					levies = {
+						value = 2000
+					}
+					men_at_arms = {
+						type = camel_rider
+						stacks = 4
+					}
+					men_at_arms = {
+						type = mangonel
+						stacks = 4
+					}
+					men_at_arms = {
+						type = light_footmen
+						stacks = 4
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				list_size = {
+					name = wardenite_provinces_helping
+					value >= 9
+				}
+			}
+			character:sarradon_1 = {
+				spawn_army = {
+					name = sarradon_reconquest_troops
+					uses_supply = yes
+					inheritable = no
+					location = 5182
+					levies = {
+						value = 3000
+					}
+					men_at_arms = {
+						type = camel_rider
+						stacks = 6
+					}
+					men_at_arms = {
+						type = mangonel
+						stacks = 6
+					}
+					men_at_arms = {
+						type = light_footmen
+						stacks = 6
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				list_size = {
+					name = ritualist_provinces_helping
+					value >= 4
+				}
+			}
+			character:sarradon_1 = {
+				spawn_army = {
+					name = sarradon_reconquest_troops
+					uses_supply = yes
+					inheritable = no
+					location = 5182
+					levies = {
+						value = 1000
+					}
+					men_at_arms = {
+						type = camel_rider
+						stacks = 2
+					}
+					men_at_arms = {
+						type = mangonel
+						stacks = 2
+					}
+					men_at_arms = {
+						type = light_footmen
+						stacks = 2
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				list_size = {
+					name = ritualist_provinces_helping
+					value >= 8
+				}
+			}
+			character:sarradon_1 = {
+				spawn_army = {
+					name = sarradon_reconquest_troops
+					uses_supply = yes
+					inheritable = no
+					location = 5182
+					levies = {
+						value = 2000
+					}
+					men_at_arms = {
+						type = camel_rider
+						stacks = 4
+					}
+					men_at_arms = {
+						type = mangonel
+						stacks = 4
+					}
+					men_at_arms = {
+						type = light_footmen
+						stacks = 4
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				list_size = {
+					name = ritualist_provinces_helping
+					value >= 12
+				}
+			}
+			character:sarradon_1 = {
+				spawn_army = {
+					name = sarradon_reconquest_troops
+					uses_supply = yes
+					inheritable = no
+					location = 5182
+					levies = {
+						value = 3000
+					}
+					men_at_arms = {
+						type = camel_rider
+						stacks = 6
+					}
+					men_at_arms = {
+						type = mangonel
+						stacks = 6
+					}
+					men_at_arms = {
+						type = light_footmen
+						stacks = 6
+					}
+				}
+			}
+		}
+	}
+	after = {
+		every_in_list ={
+			list = wardenite_provinces_helping
+			remove_from_list = wardenite_provinces_helping
+		}
+		every_in_list ={
+			list = ritualist_provinces_helping
+			remove_from_list = ritualist_provinces_helping
+		}
+	}
+}

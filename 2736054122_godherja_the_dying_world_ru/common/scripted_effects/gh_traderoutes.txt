@@ -1,0 +1,309 @@
+﻿
+set_traderoute = {
+	$PROVINCE$ = { 
+		if = { 
+			limit = { NOT = { has_county_modifier = traderoute_modifier }}
+			add_county_modifier = traderoute_modifier
+		}
+	}
+}
+
+set_harbour = {
+	$PROVINCE$ = { 
+		if = { 
+			limit = { NOT = { has_county_modifier = harbour_modifier }}
+			add_county_modifier = harbour_modifier
+		}
+	}
+}
+
+set_entrepot = {
+	$PROVINCE$ = { 
+		if = { 
+			limit = { NOT = { has_county_modifier = entrepot_modifier }}
+			add_county_modifier = entrepot_modifier
+		}
+	}
+}
+
+set_entrepots = { #Should be major centres of trade, mainly metropolis
+	set_entrepot = { PROVINCE = title:c_baqerabad }
+	set_entrepot = { PROVINCE = title:c_peti_gisredde }
+	set_entrepot = { PROVINCE = title:c_gradiene }
+	set_entrepot = { PROVINCE = title:c_halium }
+	set_entrepot = { PROVINCE = title:c_tinitida }
+	set_entrepot = { PROVINCE = title:c_sereksi }
+	set_entrepot = { PROVINCE = title:c_el_qulatha }
+	set_entrepot = { PROVINCE = title:c_mallilene }
+	set_entrepot = { PROVINCE = title:c_gonan }
+	set_entrepot = { PROVINCE = title:c_hadaril }
+	set_entrepot = { PROVINCE = title:c_messis }
+	set_entrepot = { PROVINCE = title:c_hadewa }
+	set_entrepot = { PROVINCE = title:c_geyiva }
+}
+
+set_harbours = { #These should be any province in which a major harbour is located
+	set_harbour = { PROVINCE = title:c_tchouran }
+	set_harbour = { PROVINCE = title:c_peti_gisredde }
+	set_harbour = { PROVINCE = title:c_astassus }
+	set_harbour = { PROVINCE = title:c_gradiene }
+	## set_harbour = { PROVINCE = title:c_apenia }
+	set_harbour = { PROVINCE = title:c_poios }
+	set_harbour = { PROVINCE = title:c_halium }
+	set_harbour = { PROVINCE = title:c_kyzous }
+	set_harbour = { PROVINCE = title:c_tinitida }
+	set_harbour = { PROVINCE = title:c_palan }
+	set_harbour = { PROVINCE = title:c_baqerabad }
+	set_harbour = { PROVINCE = title:c_sereksi }
+	set_harbour = { PROVINCE = title:c_uzliya }
+	set_harbour = { PROVINCE = title:c_tseelay }
+	set_harbour = { PROVINCE = title:c_wedhil }
+	set_harbour = { PROVINCE = title:c_geyiva }
+	set_harbour = { PROVINCE = title:c_khotoorah }
+	set_harbour = { PROVINCE = title:c_mallilene }
+	set_harbour = { PROVINCE = title:c_disuwai }
+	set_harbour = { PROVINCE = title:c_mehmeslu }
+	set_harbour = { PROVINCE = title:c_hadaril }
+	set_harbour = { PROVINCE = title:c_cadeni }
+	set_harbour = { PROVINCE = title:c_kankaanviisa }
+	set_harbour = { PROVINCE = title:c_iolcicus }
+}
+
+set_traderoutes = { #mostly follows the white marble road seen on the map
+	set_traderoute = { PROVINCE = title:c_de_rheu }
+	set_traderoute = { PROVINCE = title:c_arlanex }
+	set_traderoute = { PROVINCE = title:c_chevarie }
+	set_traderoute = { PROVINCE = title:c_sant_de_ranos }
+	set_traderoute = { PROVINCE = title:c_aarlass }
+	set_traderoute = { PROVINCE = title:c_lestoffe }
+	set_traderoute = { PROVINCE = title:c_cande }
+	set_traderoute = { PROVINCE = title:c_noganad }
+	set_traderoute = { PROVINCE = title:c_axencourte }
+	set_traderoute = { PROVINCE = title:c_maanasc }
+	set_traderoute = { PROVINCE = title:c_manavoi }
+	set_traderoute = { PROVINCE = title:c_permapilese }
+	set_traderoute = { PROVINCE = title:c_nambre }
+	set_traderoute = { PROVINCE = title:c_craocastinies }
+	set_traderoute = { PROVINCE = title:c_taris }
+	set_traderoute = { PROVINCE = title:c_bacsi }
+	set_traderoute = { PROVINCE = title:c_faiville }
+	set_traderoute = { PROVINCE = title:c_aastauxporte }
+	set_traderoute = { PROVINCE = title:c_fauxterre }
+	set_traderoute = { PROVINCE = title:c_varidean }
+	set_traderoute = { PROVINCE = title:c_gourdaine }
+	set_traderoute = { PROVINCE = title:c_derentiede }
+	set_traderoute = { PROVINCE = title:c_vavrican }
+	set_traderoute = { PROVINCE = title:c_puiveres }
+	set_traderoute = { PROVINCE = title:c_bereque }
+	set_traderoute = { PROVINCE = title:c_raguinge }
+	set_traderoute = { PROVINCE = title:c_troscease }
+	set_traderoute = { PROVINCE = title:c_deleceu }
+	set_traderoute = { PROVINCE = title:c_brabein }
+	set_traderoute = { PROVINCE = title:c_arene }
+	set_traderoute = { PROVINCE = title:c_proffengeim }
+	set_traderoute = { PROVINCE = title:c_cadeni }
+	set_traderoute = { PROVINCE = title:c_teredilna }
+	set_traderoute = { PROVINCE = title:c_soroci }
+	set_traderoute = { PROVINCE = title:c_nagyamiklos }
+	set_traderoute = { PROVINCE = title:c_pldov }
+	set_traderoute = { PROVINCE = title:c_viendorf }
+	set_traderoute = { PROVINCE = title:c_stolzenhan }
+	set_traderoute = { PROVINCE = title:c_gradisce }
+	set_traderoute = { PROVINCE = title:c_lampertsfeld }
+	set_traderoute = { PROVINCE = title:c_mauthstadt }
+	set_traderoute = { PROVINCE = title:c_allmannsweier }
+	set_traderoute = { PROVINCE = title:c_mayerhofen }
+	set_traderoute = { PROVINCE = title:c_vrcholtovice }
+	set_traderoute = { PROVINCE = title:c_kanice }
+	set_traderoute = { PROVINCE = title:c_neuluckow }
+	set_traderoute = { PROVINCE = title:c_paunovac }
+	set_traderoute = { PROVINCE = title:c_kratschen }
+	set_traderoute = { PROVINCE = title:c_kyje }
+	set_traderoute = { PROVINCE = title:c_wollomoos }
+	set_traderoute = { PROVINCE = title:c_osweiler }
+	set_traderoute = { PROVINCE = title:c_ulsted }
+	set_traderoute = { PROVINCE = title:c_bartum }
+	set_traderoute = { PROVINCE = title:c_bigelbach }
+	set_traderoute = { PROVINCE = title:c_adergas }
+	set_traderoute = { PROVINCE = title:c_robstrup }
+	set_traderoute = { PROVINCE = title:c_aeldarn }
+	set_traderoute = { PROVINCE = title:c_radovesice }
+	set_traderoute = { PROVINCE = title:c_lobeditz }
+	set_traderoute = { PROVINCE = title:c_stefanikovo }
+	set_traderoute = { PROVINCE = title:c_viehbig }
+	set_traderoute = { PROVINCE = title:c_halberbracht }
+	set_traderoute = { PROVINCE = title:c_rinnen }
+	set_traderoute = { PROVINCE = title:c_kleinbor }
+	set_traderoute = { PROVINCE = title:c_gamlaberget }
+	set_traderoute = { PROVINCE = title:c_klinkby }
+	set_traderoute = { PROVINCE = title:c_ottetstift }
+	set_traderoute = { PROVINCE = title:c_sikkios }
+	set_traderoute = { PROVINCE = title:c_seniakovce }
+	set_traderoute = { PROVINCE = title:c_loce }
+	set_traderoute = { PROVINCE = title:c_sydow }
+	set_traderoute = { PROVINCE = title:c_masseron }
+	set_traderoute = { PROVINCE = title:c_lorenzergraben }
+	set_traderoute = { PROVINCE = title:c_seniakovce }
+	set_traderoute = { PROVINCE = title:c_sveti_andraz }
+	set_traderoute = { PROVINCE = title:c_skjellund }
+	set_traderoute = { PROVINCE = title:c_libna }
+	set_traderoute = { PROVINCE = title:c_weimerskirch }
+	set_traderoute = { PROVINCE = title:c_menzel }
+	set_traderoute = { PROVINCE = title:c_hupperdange }
+	set_traderoute = { PROVINCE = title:c_abborrholmberget }
+	set_traderoute = { PROVINCE = title:c_hochbronn }
+	set_traderoute = { PROVINCE = title:c_byzhradec }
+	set_traderoute = { PROVINCE = title:c_icksjo }
+	set_traderoute = { PROVINCE = title:c_hegningen }
+	set_traderoute = { PROVINCE = title:c_motiri }
+	set_traderoute = { PROVINCE = title:c_lamithos }
+	set_traderoute = { PROVINCE = title:c_cebregion }
+	set_traderoute = { PROVINCE = title:c_niederheischbach }
+	set_traderoute = { PROVINCE = title:c_phalida }
+	set_traderoute = { PROVINCE = title:c_messiopolis }
+	set_traderoute = { PROVINCE = title:c_tominope }
+	set_traderoute = { PROVINCE = title:c_tegidon }
+	set_traderoute = { PROVINCE = title:c_rakros }
+	set_traderoute = { PROVINCE = title:c_asserma }
+	set_traderoute = { PROVINCE = title:c_pydneidonia }
+	set_traderoute = { PROVINCE = title:c_kerkaki }
+	set_traderoute = { PROVINCE = title:c_syroe }
+	set_traderoute = { PROVINCE = title:c_phanona }
+	set_traderoute = { PROVINCE = title:c_hyelium }
+	set_traderoute = { PROVINCE = title:c_lampsodes }
+	set_traderoute = { PROVINCE = title:c_magnonion }
+	set_traderoute = { PROVINCE = title:c_kameirebes }
+	set_traderoute = { PROVINCE = title:c_olyntheutherna }
+	set_traderoute = { PROVINCE = title:c_borame }
+	set_traderoute = { PROVINCE = title:c_syramnus }
+	set_traderoute = { PROVINCE = title:c_kepanes }
+	set_traderoute = { PROVINCE = title:c_amberae }
+	set_traderoute = { PROVINCE = title:c_vaselea }
+	set_traderoute = { PROVINCE = title:c_kannystus }
+	set_traderoute = { PROVINCE = title:c_rhithissa }
+	set_traderoute = { PROVINCE = title:c_imbrares }
+	set_traderoute = { PROVINCE = title:c_thuromnos }
+	set_traderoute = { PROVINCE = title:c_cythone }
+	set_traderoute = { PROVINCE = title:c_hargen }
+	set_traderoute = { PROVINCE = title:c_harskirchen }
+	set_traderoute = { PROVINCE = title:c_engelsdorf }
+	set_traderoute = { PROVINCE = title:c_unterfahrenbach }
+	set_traderoute = { PROVINCE = title:c_nollidiri }
+	set_traderoute = { PROVINCE = title:c_thraadmis }
+	set_traderoute = { PROVINCE = title:c_ticycortatis }
+	set_traderoute = { PROVINCE = title:c_heropta }
+	set_traderoute = { PROVINCE = title:c_dubes }
+	set_traderoute = { PROVINCE = title:c_othedryres }
+	set_traderoute = { PROVINCE = title:c_rhece }
+	set_traderoute = { PROVINCE = title:c_thete }
+	set_traderoute = { PROVINCE = title:c_tion }
+	set_traderoute = { PROVINCE = title:c_merarhyla }
+	set_traderoute = { PROVINCE = title:c_knoike }
+	set_traderoute = { PROVINCE = title:c_assoesnai }
+	set_traderoute = { PROVINCE = title:c_saadgos }
+	set_traderoute = { PROVINCE = title:c_zaphi }
+	set_traderoute = { PROVINCE = title:c_cordes }
+	set_traderoute = { PROVINCE = title:c_dryssooe }
+	set_traderoute = { PROVINCE = title:c_ithi }
+	set_traderoute = { PROVINCE = title:c_drydoes }
+	set_traderoute = { PROVINCE = title:c_duseisparacfos }
+	set_traderoute = { PROVINCE = title:c_olynario }
+	set_traderoute = { PROVINCE = title:c_paecyris }
+	set_traderoute = { PROVINCE = title:c_myloton }
+	set_traderoute = { PROVINCE = title:c_phararnae }
+	set_traderoute = { PROVINCE = title:c_myrespiae }
+	set_traderoute = { PROVINCE = title:c_herkaneus }
+	set_traderoute = { PROVINCE = title:c_sycugas }
+	set_traderoute = { PROVINCE = title:c_akroezen }
+	set_traderoute = { PROVINCE = title:c_aiganos }
+	set_traderoute = { PROVINCE = title:c_epidetra }
+	set_traderoute = { PROVINCE = title:c_purias }
+	set_traderoute = { PROVINCE = title:c_chersila }
+	set_traderoute = { PROVINCE = title:c_chelea }
+	set_traderoute = { PROVINCE = title:c_thassopolis }
+	set_traderoute = { PROVINCE = title:c_kallicapaeum }
+	set_traderoute = { PROVINCE = title:c_knossodosia }
+	set_traderoute = { PROVINCE = title:c_oenini }
+	set_traderoute = { PROVINCE = title:c_tylope }
+	set_traderoute = { PROVINCE = title:c_metethra }
+	set_traderoute = { PROVINCE = title:c_astissos }
+	set_traderoute = { PROVINCE = title:c_mylicapaeum }
+	set_traderoute = { PROVINCE = title:c_dimioch }
+	set_traderoute = { PROVINCE = title:c_abacia }
+	set_traderoute = { PROVINCE = title:c_sklavoricus }
+	set_traderoute = { PROVINCE = title:c_laporion }
+	set_traderoute = { PROVINCE = title:c_kimmollo }
+	set_traderoute = { PROVINCE = title:c_pixoezen }
+	set_traderoute = { PROVINCE = title:c_helila }
+	set_traderoute = { PROVINCE = title:c_tarigeneia }
+	set_traderoute = { PROVINCE = title:c_dioscada }
+	set_traderoute = { PROVINCE = title:c_alae }
+	set_traderoute = { PROVINCE = title:c_taurela }
+	set_traderoute = { PROVINCE = title:c_idossos }
+	set_traderoute = { PROVINCE = title:c_seolympdi }
+	set_traderoute = { PROVINCE = title:c_oenus }
+	set_traderoute = { PROVINCE = title:c_nines }
+	set_traderoute = { PROVINCE = title:c_oegora }
+	set_traderoute = { PROVINCE = title:c_dyryns }
+	set_traderoute = { PROVINCE = title:c_lekerio }
+	set_traderoute = { PROVINCE = title:c_nullnos }
+	set_traderoute = { PROVINCE = title:c_megalarta }
+	set_traderoute = { PROVINCE = title:c_hermeidonia }
+	set_traderoute = { PROVINCE = title:c_maesan }
+	set_traderoute = { PROVINCE = title:c_nysion }
+	set_traderoute = { PROVINCE = title:c_delikon }
+	set_traderoute = { PROVINCE = title:c_messenai }
+	set_traderoute = { PROVINCE = title:c_aigera } #Start of Sarradon downwards
+	set_traderoute = { PROVINCE = title:c_tall_iskaya }
+	set_traderoute = { PROVINCE = title:c_thibischa }
+	set_traderoute = { PROVINCE = title:c_sakamim }
+	set_traderoute = { PROVINCE = title:c_el_banayem }
+	set_traderoute = { PROVINCE = title:c_agandik }
+	set_traderoute = { PROVINCE = title:c_alghairbah }
+	set_traderoute = { PROVINCE = title:c_iskariya }
+	set_traderoute = { PROVINCE = title:c_kilahijan }
+	set_traderoute = { PROVINCE = title:c_alqurrani }
+	set_traderoute = { PROVINCE = title:c_brounawat }
+	set_traderoute = { PROVINCE = title:c_maarableh }
+	set_traderoute = { PROVINCE = title:c_jarane }
+	set_traderoute = { PROVINCE = title:c_barinet }
+	set_traderoute = { PROVINCE = title:c_ifralimane }
+	set_traderoute = { PROVINCE = title:c_samsankum }
+	set_traderoute = { PROVINCE = title:c_mishemayn }
+	set_traderoute = { PROVINCE = title:c_ash_shabbri }
+	set_traderoute = { PROVINCE = title:c_ulad_salem }
+	set_traderoute = { PROVINCE = title:c_abemah }
+	set_traderoute = { PROVINCE = title:c_tel_ethra }
+	set_traderoute = { PROVINCE = title:c_tel_narn }
+	set_traderoute = { PROVINCE = title:c_khor_siluma }
+	set_traderoute = { PROVINCE = title:c_dayr_natar }
+	set_traderoute = { PROVINCE = title:c_dalasil }
+	set_traderoute = { PROVINCE = title:c_corradin }
+	set_traderoute = { PROVINCE = title:c_tel_nammoura }
+	set_traderoute = { PROVINCE = title:c_mellakesh }
+	set_traderoute = { PROVINCE = title:c_ibran }
+	set_traderoute = { PROVINCE = title:c_dech_al_wansah }
+	set_traderoute = { PROVINCE = title:c_jumaineh }
+	set_traderoute = { PROVINCE = title:c_andipur }
+	set_traderoute = { PROVINCE = title:c_sanala }
+	set_traderoute = { PROVINCE = title:c_sebaail }
+	set_traderoute = { PROVINCE = title:c_erilah }
+	set_traderoute = { PROVINCE = title:c_dahayyil }
+	set_traderoute = { PROVINCE = title:c_adlayya }
+	set_traderoute = { PROVINCE = title:c_kawreht }
+	set_traderoute = { PROVINCE = title:c_siligat }
+	set_traderoute = { PROVINCE = title:c_anrifal }
+	set_traderoute = { PROVINCE = title:c_ul_raysh }
+	set_traderoute = { PROVINCE = title:c_tel_yabrud }
+	set_traderoute = { PROVINCE = title:c_al_cakili }
+	set_traderoute = { PROVINCE = title:c_qalet_al_shams }
+	set_traderoute = { PROVINCE = title:c_arasar }
+	set_traderoute = { PROVINCE = title:c_al_mahar }
+	set_traderoute = { PROVINCE = title:c_eyyem }
+	set_traderoute = { PROVINCE = title:c_muamilleh }
+	set_traderoute = { PROVINCE = title:c_douhar_fenaz }
+	set_traderoute = { PROVINCE = title:c_taytuzlikha }
+	set_traderoute = { PROVINCE = title:c_wadi_tredem }
+	set_traderoute = { PROVINCE = title:c_ash_shabesh }
+	set_traderoute = { PROVINCE = title:c_kalatehye_kabireh }
+}

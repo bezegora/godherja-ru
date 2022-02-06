@@ -1,4 +1,4 @@
-tahariat_evader = {
+﻿tahariat_evader = {
 	index = 600
 	minimum_age = 16
 
@@ -32,4 +32,35 @@ tahariat_evader = {
 		generous = @neg_compat_medium
 		content = @neg_compat_medium
 	}
+}
+
+gh_temporarily_disinherited = {
+	index = 601
+
+	can_inherit = no
+	
+	shown_in_ruler_designer = no
+	
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_temporarily_disinherited_desc
+			}
+			desc = trait_temporarily_disinherited_character_desc
+		}
+	}
+}
+
+malaak = {
+	index = 602
+
+	same_opinion_if_same_faith = 10
+	same_faith_opinion = 20
+	martial = 2;
+	learning = 2;
+
+	desc = gh_malaak_desc
 }

@@ -92,6 +92,27 @@ on_war_won_attacker = {
 			}
 		}
 		
+		if = {
+			limit = {
+				NOT = {
+					title:c_adabyssfort.holder.top_liege = {
+						has_culture = culture:adabyann
+                        has_faith = faith:adabyssian
+					}
+				}
+				NOR = {
+					has_global_variable = adabyss_borderwar
+					has_global_variable = adabyss_chaos
+					}
+				}
+			title:c_adabyssfort.holder.top_liege = {
+				trigger_event = {
+					id = adabyss_event.0008
+					days = 7
+				}
+			}
+		}
+		
 		# Marcher crown transfer
 		scope:attacker = {
 			hidden_effect = {
@@ -127,11 +148,6 @@ on_war_won_attacker = {
 
 		scope:attacker = {
 			if = {
-				limit = {
-					has_dynasty = {
-						dynasty = dyn_marcher_1
-					}
-				}
 				hidden_effect = {
 					scope:defender = {
 						if = {
@@ -152,7 +168,7 @@ on_war_won_attacker = {
 		scope:attacker = {
 			if = {
 				limit = {
-					culture_group = culture_group:gh_sjalvoki_group
+					culture_group = culture_group:gh_sjalvolki_group
 					OR = {
 						any_held_title = {
 							this = title:c_halium #Oraispol
@@ -168,6 +184,10 @@ on_war_won_attacker = {
 					}
 				}
 				save_scope_as = oraispol_conqueror
+				set_global_variable = {
+					name = oraispol_fallen
+					value = character:clanlands_sjalvolki_1
+				}
 				title:c_halium = { save_scope_as = title_c_halium }
 				every_player = {
 					trigger_event = {
@@ -226,7 +246,37 @@ on_war_won_attacker = {
 					value = yes
 				}
 			}
-			 # Eastern Reform - Retook Asiupoli
+			if = {
+				limit = {
+					culture_group = culture_group:gh_marcher_group
+					OR = {
+						any_held_title = {
+							this = title:c_tchouran #Tchouran
+						}
+						any_vassal_or_below = {
+							any_held_title = {
+								this = title:c_tchouran
+							}
+						}
+					}
+					NOT = {
+						has_global_variable = tchouran_taken_by_marchers
+					}
+				}
+				save_scope_as = tchouran_conquerer
+				title:c_halium = { save_scope_as = title_c_tchouran }
+				every_player = {
+					trigger_event = {
+						id = world_story.0150
+						days = 2
+					}
+				}
+				set_global_variable = {
+					name = tchouran_taken_by_marchers
+					value = yes
+				}
+			}
+			# Eastern Reform - Retook Asiupoli
 			if = {
 				limit = {
 					scope:winner = character:aironoi_79
@@ -301,28 +351,6 @@ on_war_won_attacker = {
 	}
 }
 
-on_war_lost_attacker = {
-    effect = {
-        # Save scopes for localization
-        scope:attacker = { save_scope_as = loser }
-        scope:defender = { save_scope_as = winner }
-
-        scope:attacker = {
-            if = {
-                limit={
-                    this = character:western_imperial_1
-                }
-                scope:defender = {
-                   imprison = {
-                      target = prev
-                      type = dungeon
-                   }
-                }
-            }
-        }
-    }
-
-
 on_war_won_defender = {
 	effect = {
 		# Save scopes for localization.
@@ -342,21 +370,6 @@ on_war_won_defender = {
 					trigger_event = { id = game_rule.3 days = 1 }
 				}
 			}
-		}
-	
-		# Eastern Reform - Civil War
-		IF = {
-			limit = {
-				scope:winner = character:aironoi_79
-				scope:loser = character:aironoi_57
-				# has_character_flag = sided_with_mongols
-			}
-			#scope:loser = {
-			#	release_from_prison = yes
-			#}
-			#scope:winner = {
-			#	trigger_event = eastern_reforms.0006
-			#} # NOT NEEDED SINCE IMPRISONMENT WILL AUTOMATICALLY TRIGGER THE EVENT ANYWAY
 		}
 	}
 }

@@ -1,0 +1,393 @@
+﻿
+# if this needs to destroy a title (e.g. a 1-county duke with no vassals), it reads the destroying character from scope:destroyer
+spawn_ruin = {
+	if = {
+		limit = {
+			# Standard checks
+			$COUNTY$ = {
+				tier = tier_county
+				exists = title_province
+			}
+		}
+		create_character = {
+			template = ruin_template
+			location = $COUNTY$.title_province
+			save_scope_as = ruin
+		}
+		# Create an empire-tier title to give the dummy wasteland character in order to ensure he is never anyone's vassal.
+		# This will prevent the wastelanded county from being immediately revoked if it's a 1-county emperor's last county
+		# (since default game behavior is that such an emperor would immediately steal a county from one of their vassals,
+		# of which Count Wasteland briefly is one).
+		# We have to do this instead of granting them independence since independence fires _after_ the revocation, so it never
+		# actually works.
+		hidden_effect = {
+			if = {	# Only create a dynamic title if one such utility title does not already exist, to prevent extreme bloat
+				limit = { NOT = { exists = global_var:wasteland_utility_empire } }
+				create_dynamic_title = { # always saves to scope:new_title
+					tier = empire
+					name = fp1_varangian_adventurer_conquest # literally any name will do, since this title is immediately destroyed
+				}
+				set_global_variable = {
+					name = wasteland_utility_empire
+					value = scope:new_title
+				}
+			}
+			else = {
+				global_var:wasteland_utility_empire = { save_scope_as = new_title }
+			}
+			create_title_and_vassal_change = {
+				type = created
+				save_scope_as = setup_change
+				add_claim_on_loss = no
+			}
+			scope:new_title = {
+				set_delete_on_destroy = yes
+				set_capital_county = title:c_karson
+				set_landless_title = yes
+				set_no_automatic_claims = yes
+				set_can_be_named_after_dynasty = no
+				change_title_holder = {
+					holder = scope:ruin
+					change = scope:setup_change
+				}
+				save_scope_as = ruin_empire
+			}
+			resolve_title_and_vassal_change = scope:setup_change
+		}
+		$COUNTY$ = {
+			save_temporary_scope_as = ruined_county
+			holder = {
+				save_scope_as = old_holder
+				# first, if this is the last county of a single count, then we destroy any higher titles they may have
+				# (otherwise we won't be able to take their last county from them to give to the dummy wasteland char)
+				if = {
+					limit = {
+						# doesn't directly hold any counties other than this one
+						NOT = { 
+							any_held_title = {
+								NOT = { this = $COUNTY$ }
+								tier = tier_county
+							} 
+						}
+						# no vassals
+						vassal_count = 0
+					}
+					# destroy all titles above county
+					every_held_title = {
+						limit = { tier > tier_county }
+						save_temporary_scope_as = destroyed_title
+						if = {
+							limit = { exists = scope:destroyer }
+							scope:destroyer = { destroy_title = scope:destroyed_title }
+						}
+						else = {
+							scope:ruin = { destroy_title = scope:destroyed_title } 
+						}
+					}
+				}
+				# then, if this is the target of a claim war, end the war (so it isn't inherited by Count Wasteland)
+				every_character_war = {
+					limit = {
+						casus_belli = {
+							any_target_title = { this = $COUNTY$ }
+						}
+					}
+					end_war = invalidated
+				}
+			}
+		
+			# then do the actual wastelanding, but as a hidden effect (and show a custom tooltip for it instead)
+			custom_tooltip = wasteland_effect_tt
+			hidden_effect = {
+				set_county_culture = culture:wasteland
+				set_county_faith = faith:wasteland_faith
+				every_county_province = {
+					limit = {
+						NOT = { this = $COUNTY$.title_province } 
+					}
+					scope:ruin = { get_title = prev.barony }
+				}
+				every_county_province = {
+					limit = { 
+						OR = {
+							has_holding_type = castle_holding
+							has_holding_type = city_holding
+							has_holding_type = church_holding
+							has_holding_type = tribal_holding
+						}
+					}
+					set_holding_type = wasteland_empty_holding
+				}
+				every_county_province = {
+					limit = { 
+						OR = {
+							is_any_metropolis_district = yes
+						}
+					}
+					set_holding_type = ruined_district_holding
+				}
+				if = {
+					limit = { has_variable = colonization_story }
+					var:colonization_story = { end_story = yes }
+				}
+			}
+		}
+		hidden_effect = {
+			scope:ruin = {
+				get_title = $COUNTY$
+				destroy_title = scope:ruin_empire # clean up the fake empire we created
+				change_government = wasteland_government
+			}
+			# For aesthetic reasons we want to unify wastelands under kingdoms
+			if = {
+				limit = { $COUNTY$.kingdom = { has_variable = kingdom_wasteland_title } }
+				$COUNTY$.kingdom.var:kingdom_wasteland_title = { save_temporary_scope_as = kingdom_wasteland_title }
+				if = {
+					limit = { NOT = { exists = scope:kingdom_wasteland_title.holder } }
+					scope:ruin = { get_title = scope:kingdom_wasteland_title }
+				}
+				else = {
+					#scope:ruin = {
+					#	create_title_and_vassal_change = {
+					#		type = created
+					#		save_scope_as = change
+					#		add_claim_on_loss = no
+					#	}
+					#	change_liege = {
+					#		liege = scope:kingdom_wasteland_title.holder
+					#		change = scope:change
+					#	}
+					#	resolve_title_and_vassal_change = scope:change
+					#}
+					scope:kingdom_wasteland_title.holder = {
+						get_title = $COUNTY$
+					}
+				}
+			}
+			else = {
+				$COUNTY$.kingdom = { save_scope_as = temporary_kingdom_scope }
+				create_dynamic_title = {
+					tier = kingdom
+					name = BLANK_KINGDOM_NAME
+				}
+				scope:new_title = {
+					generate_coa = yes
+					set_color_from_title = title:k_wasteland_black
+				}
+				scope:ruin = { get_title = scope:new_title }
+				$COUNTY$.kingdom = { 
+					set_variable = {
+						name = kingdom_wasteland_title
+						value = scope:new_title
+					}
+					save_scope_as = last_created_wasteland_kingdom
+				}
+			}
+			if = {
+				limit = { exists = scope:ruin.liege }
+				scope:ruin = {
+					create_title_and_vassal_change = {
+						type = independency
+						save_scope_as = change
+					}
+					change_liege_or_become_independent = {
+						CHANGE = scope:change
+						VASSAL = this
+					}
+					resolve_title_and_vassal_change = scope:change
+				}
+			}
+		}
+	}
+}
+
+remove_ruin = {
+	$COUNTY$ = {
+		if = {
+			limit = {
+				exists = title_province
+				holder = { is_ruin = yes } 
+			}
+			$NEW_OWNER$ = { get_title = prev }
+			title_province = {
+				if = {
+					limit = { has_holding_type = wasteland_empty_holding }
+					if = {
+						limit = { $NEW_OWNER$ = { has_government = tribal_government } }
+						set_holding_type = tribal_holding
+					}
+					else = {
+						set_holding_type = castle_holding
+					}
+				}
+			}
+			if = {
+				limit = { NOT = { $NEW_OWNER$ = { has_government = tribal_government } } }
+				every_county_province = {
+					limit = {
+						NOT = { this = $COUNTY$.title_province } 
+					}
+					barony = {
+						$NEW_OWNER$ = { get_title = prev }
+					}
+					settle_ruin_province_effect = yes
+				}
+			}
+		}
+	}
+}
+
+settle_ruin_county_effect = {
+	save_temporary_scope_as = county_being_settled
+	if = {
+		limit = { exists = title_province }
+		title_province = { settle_ruin_province_effect = yes }
+	}
+	set_county_culture = $NEW_OWNER$.culture
+	set_county_faith = $NEW_OWNER$.faith
+	every_county_province = {
+		if = {
+			limit = {
+				NOT = { this = scope:county_being_settled.title_province } 
+			}
+			barony = {
+				$NEW_OWNER$ = { get_title = prev }
+			}
+		}
+		settle_ruin_province_effect = yes
+	}
+}
+
+settle_ruin_province_effect = {
+	if = {
+		limit = {
+			exists = county
+			county = {
+				NOT = {
+					any_county_province = {
+						has_holding_type = castle_holding
+					}
+				}
+			}
+		}
+		set_holding_type = castle_holding
+	}
+	else_if = {
+		limit = {
+			exists = county
+			county = {
+				NOT = {
+					any_county_province = {
+						has_holding_type = city_holding
+					}
+				}
+			}
+		}
+		set_holding_type = city_holding
+	}
+	else_if = {
+		limit = {
+			exists = county
+			county = {
+				NOT = {
+					any_county_province = {
+						has_holding_type = church_holding
+					}
+				}
+			}
+		}
+		set_holding_type = church_holding
+	}
+	else = {
+		limit = { has_holding_type = wasteland_empty_holding }
+		random_list = {
+			30 = { set_holding_type = castle_holding }
+			30 = { set_holding_type = city_holding }
+			30 = { set_holding_type = church_holding }
+		}
+	}
+}
+
+spawn_red_waste = {
+	title:k_karros = {
+		every_in_de_jure_hierarchy = {
+			limit = { 
+				tier = tier_county
+				NOT = { this = title:c_golgembria }
+			}
+			save_temporary_scope_as = ruined_county
+			spawn_ruin = { COUNTY = scope:ruined_county }
+		}
+		if = {
+			limit = { exists = scope:last_created_wasteland_kingdom }
+			scope:last_created_wasteland_kingdom = { set_title_name = "Red Waste" }
+			title:c_karson = { holder = { save_scope_as = redwaste_holder } }
+			scope:redwaste_holder = { get_title = title:k_red_waste }
+		}
+	}
+	scope:redwaste_holder = {
+		set_primary_title_to = title:k_red_waste
+	}
+}
+
+spawn_eripomvuno = {
+	title:k_eripomvuno = {
+		if = {
+			limit = { exists = holder}
+			holder = { save_scope_as = eripomvuno_holder }
+		}
+		else = {
+			spawn_ruin = { COUNTY = title:c_aersanoxthynx }
+			title:c_aersanoxthynx = { holder = { save_scope_as = eripomvuno_holder } }
+			scope:eripomvuno_holder = { get_title = title:k_eripomvuno }
+		}
+		scope:eripomvuno_holder = { change_government = wasteland_government  }
+	}
+	title:d_emetythion = {
+		every_in_de_jure_hierarchy = {
+			limit = { 
+				tier = tier_county
+			}
+			save_temporary_scope_as = ruined_county
+			spawn_ruin = { COUNTY = scope:ruined_county }
+			
+			holder = {
+				change_government = wasteland_government
+				create_title_and_vassal_change = {
+					type = created
+					save_scope_as = change
+					add_claim_on_loss = no
+				}
+				change_liege = {
+					liege = scope:eripomvuno_holder
+					change = scope:change
+				}
+				resolve_title_and_vassal_change = scope:change
+			}
+		}
+	}
+	scope:eripomvuno_holder = {
+		set_primary_title_to = title:k_eripomvuno
+	}
+}
+
+########################
+# COLONIZATION EFFECTS #
+########################
+
+#add_colonization_progress_effect = {
+#	if = {
+#		limit = { has_variable = colonization_story }
+#		custom_description = {
+#			text = gain_colonization_progress
+#			subject = this
+#			value = $VALUE$
+#			var:colonization_story = {
+#				change_variable = {
+#					name = colonization_progress
+#					add = $VALUE$
+#				}
+#			}
+#		}
+#	}
+#}

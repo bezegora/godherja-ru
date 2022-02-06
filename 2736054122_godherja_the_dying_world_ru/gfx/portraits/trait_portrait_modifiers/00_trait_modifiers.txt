@@ -66,7 +66,10 @@
 	}
 
 	gigantism = {
-		traits = { giant }
+		traits = { 
+			giant 
+			gh_boneshaped_giant 
+		}
 		dna_modifiers = {
 			morph = {
 				mode = modify
@@ -120,6 +123,8 @@ beauty = {
 			beauty_good_1
 			beauty_good_2
 			beauty_good_3
+			gh_boneshaped_beauty_1
+			gh_boneshaped_beauty_2
 		}
 		dna_modifiers = {
 			morph = {
@@ -150,7 +155,7 @@ beauty = {
 
 albino = {
 	albino = {
-		traits = { albino gh_excessively_pale }
+		traits = { albino }
 		dna_modifiers = {
 			color = {
 				gene = skin_color
@@ -713,11 +718,6 @@ blind = {
 		traits = {
 			disfigured
 		}
-		trigger = {
-			NOT = {
-				this = character:clanlands_imperial_1
-			}
-		}
 		dna_modifiers = {
 			accessory = {
 				mode = add				
@@ -726,7 +726,7 @@ blind = {
 				value = 0.5
 			}
 			accessory = {
-				mode = modify				
+				mode = add				
 				gene = beards
 				template = no_beard
 				value = 0.5
@@ -951,15 +951,11 @@ blind = {
 		}
 		trigger = {
 			should_show_disturbing_portrait_modifiers = no
-			NOT = {
-				this = character:clanlands_imperial_1
-			}
 		}
 	}
 	blind = {
 		traits = {
 			blind
-			gh_nearly_blind
 		}
 		dna_modifiers = {
 			accessory = {
@@ -988,6 +984,13 @@ blind = {
 				template = eye_patch
 				value = 0.5
 			}
+		}
+	}
+	temporarily_one_eyed = {
+		base = one_eyed
+		trigger = {
+			exists = root
+			has_character_flag = wears_fake_eye_patch
 		}
 	}
 }
@@ -1019,13 +1022,13 @@ spindly = {
 			morph = {
 				mode = modify_multiply
 				gene = gene_bs_body_type
-				value = 0.5
+				value = 0.6
 				# template = spindly
 			}
 			morph = {
-				mode = modify
+				mode = modify_multiply
 				gene = gene_bs_body_shape
-				value = -0.5
+				value = 0.5
 				# template = spindly
 			}
 		}

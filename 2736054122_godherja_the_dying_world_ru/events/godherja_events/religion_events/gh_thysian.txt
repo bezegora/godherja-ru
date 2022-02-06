@@ -1,0 +1,54 @@
+﻿namespace = thysian
+
+##################################################
+#
+# 0001 - Thysian physician education
+##################################################
+
+
+
+##################################################
+# Chance for Thysians to gain physician trait with learning education
+# by Bommelom
+# 0001
+##################################################
+
+# Chance to give physician traits to Thysian children with learning education
+
+thysian.0001 = {
+	type = character_event
+	hidden = yes
+	
+	trigger = {
+		faith = { has_doctrine_parameter = thysian_physician_education }
+		has_trait = education_learning
+	}
+	
+	immediate = {
+		random = {
+			chance = 5
+			modifier = {
+				add = 5
+				has_trait_rank = {
+					trait = education_learning
+					rank > 1
+				}
+			}
+			modifier = {
+				add = 10
+				has_trait_rank = {
+					trait = education_learning
+					rank > 2
+				}
+			}
+			modifier = {
+				add = 10
+				has_trait_rank = {
+					trait = education_learning
+					rank > 3
+				}
+			}
+			add_trait = physician_1
+		}	
+	}
+}

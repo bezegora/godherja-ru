@@ -1,0 +1,112 @@
+﻿namespace = gh_realm_maintenance
+
+# Destroys Agionist holy order titles if held by an infidel
+# TBD make a distinction between other Agionists, Aversarians and Sarradonians. Allow the option to instead downgrade them to a duchy
+gh_realm_maintenance.0001 = {
+    hidden = yes
+	
+	trigger = {
+		NOT = {
+			religion = religion:agionism_religion
+		}
+		OR = {
+			scope:title = title:k_saint_sansias_rose
+			scope:title = title:k_forlorn_guardian
+			scope:title = title:k_golden_hand
+			scope:title = title:k_saint_calystos_key
+			scope:title = title:k_bleeding_martyr
+			scope:title = title:k_pure_heart
+			scope:title = title:k_blind_watcher
+			scope:title = title:k_forgotten_saint
+		}
+	}
+	
+	immediate = {
+		destroy_title = scope:title
+	}
+}
+
+# Destroys Mamuramat titles if taken by a rival Mamuramat or school that doesn't allow them
+gh_realm_maintenance.0011 = {
+    hidden = yes
+	
+	trigger = {
+		scope:title = { has_variable = is_mamuramat_title }
+		OR = {
+			faith = { has_doctrine_parameter = ideal_tradition_choice }
+			faith = { has_doctrine_parameter = rad_tradition_choice }
+			any_held_title = {
+				NOT = {
+					this = scope:title
+				}
+				has_variable = is_mamuramat_title
+			}
+		}
+	}
+	
+	immediate = {
+		destroy_title = scope:title
+		update_mamuramat_name = yes
+		random_held_title = {
+			limit = { has_variable = is_mamuramat_title }
+			save_scope_as = main_mamuramat_title
+		}
+		religion:sarradonian_religion = {
+			every_faith = {	# Make all mainliners recognize the new sole Mamuramat
+				limit = { has_doctrine_parameter = main_tradition_choice }
+				set_variable = {	# Mainliners only recognize one Mamuramat, the Central, at start
+					name = recognised_mamuramat
+					value = scope:main_mamuramat_title
+				}
+				if = {
+					limit = { 
+						religious_head_title = {
+							trigger_if = {
+								limit = { is_title_created = yes }
+								NOT = { holder = root }
+							}
+							trigger_else = {
+								always = no
+							}
+						}
+					}
+					religious_head_title = { save_temporary_scope_as = religious_head_title_to_be_destroyed }
+					root = { destroy_title = scope:religious_head_title_to_be_destroyed }
+				}
+				else_if = {
+					limit = {
+						this = root.faith
+						NOT = { religious_head = root }
+					}
+					religious_head_title = { save_temporary_scope_as = title_to_get }
+					root = { get_title = scope:title_to_get }
+				}
+			}
+		}
+	}
+}
+
+# Destroys or gives away clique-bearing titles if seized by someone that's already holding a clique-bearing title
+gh_realm_maintenance.0021 = {
+    hidden = yes
+	
+	trigger = {
+		scope:title = { has_variable = clique_number }
+		any_held_title = {
+			NOT = { this = scope:title }
+			has_variable = clique_number
+			tier >= scope:title.tier	# Only do this if the already held title is the same or higher tier
+		}
+	}
+	
+	immediate = {
+		if = {
+			limit = { scope:previous_holder = { is_alive = yes } }
+			save_scope_as = potential_
+		}
+	}
+	
+	option = {
+		# 
+	}
+}

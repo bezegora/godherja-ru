@@ -150,6 +150,7 @@
 				has_claim_on = scope:title
 				has_weak_claim_on = scope:title
 			}
+			NOT = { has_variable = councillor_clique_claim }
 		}
 		add = {
 			if = {
@@ -392,12 +393,6 @@ elector_voting_pattern_circumstances_feudal_elective_modifier = {
 		root.culture = scope:candidate.culture
 		add = {
 			add = 10
-			if = { #Boost for Scandinavian Elective.
-				limit = {
-					scope:title = { has_title_law = scandinavian_elective_succession_law }
-				}
-				add = 10
-			}
 		}
 	}
 	modifier = {
@@ -408,12 +403,6 @@ elector_voting_pattern_circumstances_feudal_elective_modifier = {
 		NOT = { is_close_family_of = scope:candidate }
 		add = {
 			subtract = 15
-			if = { #Boost for Scandinavian Elective.
-				limit = {
-					scope:title = { has_title_law = scandinavian_elective_succession_law }
-				}
-				subtract = 15
-			}
 		}
 	}
 	modifier = {
@@ -423,12 +412,6 @@ elector_voting_pattern_circumstances_feudal_elective_modifier = {
 		NOT = { is_close_family_of = scope:candidate }
 		add = {
 			subtract = 30
-			if = { #Boost for Scandinavian Elective.
-				limit = {
-					scope:title = { has_title_law = scandinavian_elective_succession_law }
-				}
-				subtract = 30
-			}
 		}
 	}
 	modifier = { #Candidate is a foreigner's pet
@@ -442,12 +425,6 @@ elector_voting_pattern_circumstances_feudal_elective_modifier = {
 		NOT = { is_close_family_of = scope:candidate }
 		add = {
 			subtract = 10
-			if = { #Boost for Scandinavian Elective.
-				limit = {
-					scope:title = { has_title_law = scandinavian_elective_succession_law }
-				}
-				subtract = 10
-			}
 		}
 	}
 	modifier = { #Candidate is a foreigner's pet
@@ -460,12 +437,6 @@ elector_voting_pattern_circumstances_feudal_elective_modifier = {
 		NOT = { is_close_family_of = scope:candidate }
 		add = {
 			subtract = 15
-			if = { #Boost for Scandinavian Elective.
-				limit = {
-					scope:title = { has_title_law = scandinavian_elective_succession_law }
-				}
-				subtract = 15
-			}
 		}
 	}
 	modifier = { #If candidate is elected, he will rule from a capital outside this de jure.
@@ -495,12 +466,6 @@ elector_voting_pattern_circumstances_feudal_elective_modifier = {
 		}
 		add = {
 			subtract = 15
-			if = { #Boost for Scandinavian Elective.
-				limit = {
-					scope:title = { has_title_law = scandinavian_elective_succession_law }
-				}
-				subtract = 15
-			}
 		}
 	}
 	modifier = { #Candidate is a foreign ruler.
@@ -519,12 +484,6 @@ elector_voting_pattern_circumstances_feudal_elective_modifier = {
 				}
 				subtract = 470
 			}
-			if = { #Boost for Scandinavian Elective.
-				limit = {
-					scope:title = { has_title_law = scandinavian_elective_succession_law }
-				}
-				subtract = 50
-			}
 		}
 	}
 	#Faithism
@@ -540,12 +499,6 @@ elector_voting_pattern_circumstances_feudal_elective_modifier = {
 		}
 		add = {
 			subtract = 25
-			if = { #Further increased for Princely Elective.
-				limit = {
-					scope:title = { has_title_law = princely_elective_succession_law }
-				}
-				subtract = 25
-			}
 		}
 	}
 	modifier = { #Astray (Catholic vs Orthodox)
@@ -559,12 +512,6 @@ elector_voting_pattern_circumstances_feudal_elective_modifier = {
 		}
 		add = {
 			subtract = 50
-			if = { #Further increased for Princely Elective.
-				limit = {
-					scope:title = { has_title_law = princely_elective_succession_law }
-				}
-				subtract = 50
-			}
 		}
 	}
 	modifier = { #Heretic (Catholic vs Cathar)
@@ -588,12 +535,6 @@ elector_voting_pattern_circumstances_feudal_elective_modifier = {
 					ai_zeal >= high_positive_zeal
 				}
 				subtract = 50
-			}
-			if = { #Further increased for Princely Elective.
-				limit = {
-					scope:title = { has_title_law = princely_elective_succession_law }
-				}
-				subtract = 100
 			}
 		}
 		NOT = { root.faith = scope:candidate.faith }
@@ -626,12 +567,6 @@ elector_voting_pattern_circumstances_feudal_elective_modifier = {
 				}
 				subtract = 75
 			}
-			if = { #Further increased for Princely Elective.
-				limit = {
-					scope:title = { has_title_law = princely_elective_succession_law }
-				}
-				subtract = 150
-			}
 		}
 		NOT = { root.faith = scope:candidate.faith }
 		faith = {
@@ -649,6 +584,7 @@ elector_voting_pattern_circumstances_feudal_elective_modifier = {
 		OR = {
 			has_government = feudal_government
 			has_government = republic_government
+			has_government = republic_playable_government
 		}
 		scope:candidate = {
 			OR = {
@@ -730,12 +666,6 @@ elector_voting_pattern_circumstances_feudal_elective_modifier = {
 		}
 		add = {
 			add = 15
-			if = {
-				limit = { # Scandinavian elective boost
-					scope:title = { has_title_law = scandinavian_elective_succession_law }
-				}
-				multiply = 2
-			}
 		}
 	}
 	modifier = { # Diplomatic society prefers stewards and diplomats
@@ -785,13 +715,19 @@ elector_voting_pattern_circumstances_feudal_elective_modifier = {
 		add = 30
 		desc = tooltip_feudal_elector_vote_strong_claimant
 		NOT = { this = scope:candidate }
-		scope:candidate = { has_claim_on = scope:title }
+		scope:candidate = { 
+			has_claim_on = scope:title 
+			NOT = { has_variable = councillor_clique_claim  }
+		}
 	}
 	modifier = {
 		add = 15
 		desc = tooltip_feudal_elector_vote_weak_claimant
 		NOT = { this = scope:candidate }
-		scope:candidate = { has_weak_claim_on = scope:title }
+		scope:candidate = { 
+			has_weak_claim_on = scope:title 
+			NOT = { has_variable = councillor_clique_claim  }
+		}
 	}
 }
 
@@ -841,22 +777,13 @@ elector_voting_pattern_prestige_piety_feudal_elective_modifier = {
 	#Piety
 	modifier = {
 		desc = tooltip_feudal_elector_vote_piety_negative
-		NOT = { scope:title = { has_title_law = princely_elective_succession_law } }
 		add = -10
 		NOT = { this = scope:candidate }
 		ai_zeal > 0
 		scope:candidate = { piety_level < 1 }
 	}
-	modifier = { #More extreme for Princely Elective
-		desc = tooltip_feudal_elector_vote_piety_negative
-		scope:title = { has_title_law = princely_elective_succession_law }
-		NOT = { this = scope:candidate }
-		ai_zeal > -30
-		scope:candidate = { piety_level < 1 }
-	}
 	modifier = {
 		desc = tooltip_feudal_elector_vote_piety_positive
-		NOT = { scope:title = { has_title_law = princely_elective_succession_law } }
 		add = {
 			value = scope:candidate.piety_level
 			subtract = 1
@@ -865,19 +792,6 @@ elector_voting_pattern_prestige_piety_feudal_elective_modifier = {
 		NOT = { this = scope:candidate }
 		faith = scope:candidate.faith
 		ai_zeal > 0
-		scope:candidate = { piety_level >= 2 }
-	}
-	modifier = { #More extreme for Princely Elective
-		desc = tooltip_feudal_elector_vote_piety_positive
-		scope:title = { has_title_law = princely_elective_succession_law }
-		add = {
-			value = scope:candidate.piety_level
-			subtract = 1
-			multiply = 10
-		}
-		NOT = { this = scope:candidate }
-		faith = scope:candidate.faith
-		ai_zeal > -30
 		scope:candidate = { piety_level >= 2 }
 	}
 }
@@ -932,12 +846,6 @@ elector_voting_pattern_traits_feudal_elective_modifier = {
 				}
 				subtract = 5
 			}
-			if = { #Princely elective more unforgiving.
-				limit = {
-					scope:title = { has_title_law = princely_elective_succession_law }
-				}
-				multiply = 2
-			}
 			multiply = ai_zeal #...Multiply by Elector Zeal.
 			multiply = 0.1 #Reduce overall to avoid extreme numbers.
 		}
@@ -976,12 +884,6 @@ elector_voting_pattern_traits_feudal_elective_modifier = {
 				}
 				add = 5
 			}
-			if = { #Princely elective more unforgiving.
-				limit = {
-					scope:title = { has_title_law = princely_elective_succession_law }
-				}
-				multiply = 2
-			}
 			multiply = ai_zeal #...Multiply by Elector Zeal.
 			multiply = 0.1 #Reduce overall to avoid extreme numbers.
 		}
@@ -1006,12 +908,6 @@ elector_voting_pattern_traits_feudal_elective_modifier = {
 					value = ai_zeal
 					multiply = 0.5
 				}
-			}
-			if = { #Princely Elective doubles.
-				limit = {
-					scope:title = { has_title_law = princely_elective_succession_law }
-				}
-				multiply = 2
 			}
 		}
 	}
@@ -1222,12 +1118,6 @@ elector_voting_pattern_traits_feudal_elective_modifier = {
 					is_close_family_of = scope:candidate
 				}
 				subtract = 30
-			}
-			if = { #Boost for Scandinavian Elective.
-				limit = {
-					scope:title = { has_title_law = scandinavian_elective_succession_law }
-				}
-				multiply = 1.5
 			}
 		}
 	}
@@ -1510,12 +1400,6 @@ elector_voting_pattern_traits_feudal_elective_modifier = {
 		scope:candidate = { has_trait = incapable }
 		add = {
 			subtract = 50
-			if = { #Scandinavian elective more unforgiving.
-				limit = {
-					scope:title = { has_title_law = scandinavian_elective_succession_law }
-				}
-				multiply = 2
-			}
 		}
 	}
 	modifier = {
@@ -1535,15 +1419,8 @@ elector_voting_pattern_traits_feudal_elective_modifier = {
 	modifier = {
 		desc = tooltip_feudal_elector_vote_disfigured
 		this_is_martial_society_trigger = no
-		NOT = { has_culture_group = culture_group:byzantine_group }
 		scope:candidate = { has_trait = disfigured }
 		add = -15
-	}
-	modifier = {
-		desc = tooltip_feudal_elector_vote_disfigured_byzantine
-		has_culture_group = culture_group:byzantine_group
-		scope:candidate = { has_trait = disfigured }
-		add = -100
 	}
 	modifier = {
 		desc = tooltip_feudal_elector_vote_disfigured_warrior
@@ -1551,16 +1428,6 @@ elector_voting_pattern_traits_feudal_elective_modifier = {
 		scope:candidate = { has_trait = disfigured }
 		add = {
 			subtract = 5
-			if = {
-				limit = { has_culture_group = culture_group:byzantine_group }
-				subtract = 45
-			}
-			if = { #Scandinavian elective more unforgiving.
-				limit = {
-					scope:title = { has_title_law = scandinavian_elective_succession_law }
-				}
-				multiply = 2
-			}
 		}
 	}
 	modifier = {
@@ -1575,20 +1442,7 @@ elector_voting_pattern_traits_feudal_elective_modifier = {
 		scope:candidate = { has_trait = maimed }
 		add = {
 			subtract = 15
-			if = { #Scandinavian elective more unforgiving.
-				limit = {
-					scope:title = { has_title_law = scandinavian_elective_succession_law }
-				}
-				multiply = 2
-			}
 		}
-	}
-	modifier = {
-		desc = tooltip_feudal_elector_vote_born_in_the_purple
-		NOT = { this = scope:candidate } #Do not judge yourself.
-		has_culture_group = culture_group:byzantine_group
-		scope:candidate = { has_trait = born_in_the_purple }
-		add = 50
 	}
 	modifier = {
 		desc = tooltip_feudal_elector_vote_genius_diplomat
@@ -1742,12 +1596,6 @@ elector_voting_pattern_traits_feudal_elective_modifier = {
 				}
 				add = 15
 			}
-			if = { #Scandinavian elective more unforgiving.
-				limit = {
-					scope:title = { has_title_law = scandinavian_elective_succession_law }
-				}
-				multiply = 2
-			}
 		}
 	}
 	modifier = {
@@ -1830,10 +1678,6 @@ elector_voting_pattern_traits_feudal_elective_modifier = {
 		scope:candidate = { has_trait = clubfooted }
 		add = {
 			subtract = 5
-			if = {
-				limit = { has_culture_group = culture_group:byzantine_group }
-				subtract = 10
-			}
 		}
 	}
 	modifier = {
@@ -1843,10 +1687,6 @@ elector_voting_pattern_traits_feudal_elective_modifier = {
 		scope:candidate = { has_trait = dwarf }
 		add = {
 			subtract = 15
-			if = {
-				limit = { has_culture_group = culture_group:byzantine_group }
-				subtract = 20
-			}
 		}
 	}
 	modifier = {
@@ -1856,16 +1696,6 @@ elector_voting_pattern_traits_feudal_elective_modifier = {
 		scope:candidate = { has_trait = dwarf }
 		add = {
 			subtract = 30
-			if = {
-				limit = { has_culture_group = culture_group:byzantine_group }
-				subtract = 30
-			}
-			if = { #Scandinavian elective more unforgiving.
-				limit = {
-					scope:title = { has_title_law = scandinavian_elective_succession_law }
-				}
-				multiply = 2
-			}
 		}
 	}
 	modifier = {
@@ -1875,10 +1705,7 @@ elector_voting_pattern_traits_feudal_elective_modifier = {
 		scope:candidate = {has_trait = hunchbacked }
 		add = {
 			subtract = 15
-			if = {
-				limit = { has_culture_group = culture_group:byzantine_group }
-				subtract = 30
-			}
+
 		}
 	}
 	modifier = {
@@ -1888,16 +1715,6 @@ elector_voting_pattern_traits_feudal_elective_modifier = {
 		scope:candidate = { has_trait = hunchbacked }
 		add = {
 			subtract = 30
-			if = {
-				limit = { has_culture_group = culture_group:byzantine_group }
-				subtract = 30
-			}
-			if = { #Scandinavian elective more unforgiving.
-				limit = {
-					scope:title = { has_title_law = scandinavian_elective_succession_law }
-				}
-				multiply = 2
-			}
 		}
 	}
 	modifier = {
@@ -1915,10 +1732,6 @@ elector_voting_pattern_traits_feudal_elective_modifier = {
 		}
 		add = {
 			subtract = 15
-			if = {
-				limit = { has_culture_group = culture_group:byzantine_group }
-				subtract = 60
-			}
 		}
 	}
 	modifier = {
@@ -1927,10 +1740,6 @@ elector_voting_pattern_traits_feudal_elective_modifier = {
 		scope:candidate = { has_trait = lisping }
 		add = {
 			subtract = 5
-			if = {
-				limit = { has_culture_group = culture_group:byzantine_group }
-				subtract = 10
-			}
 		}
 	}
 	modifier = {
@@ -2058,13 +1867,6 @@ elector_voting_pattern_traits_feudal_elective_modifier = {
 		NOT = { this = scope:candidate } #Do not judge yourself.
 		this_is_martial_society_trigger = no
 		scope:candidate = { has_trait = blind }
-		add = {
-			subtract = 10
-			if = {
-				limit = { has_culture_group = culture_group:byzantine_group }
-				subtract = 140
-			}
-		}
 	}
 	modifier = { #Shunned for being blind
 		desc = tooltip_feudal_elector_vote_blinded_negative_warrior
@@ -2073,26 +1875,12 @@ elector_voting_pattern_traits_feudal_elective_modifier = {
 		scope:candidate = { has_trait = blind }
 		add = {
 			subtract = 20
-			if = {
-				limit = { has_culture_group = culture_group:byzantine_group }
-				subtract = 130
-			}
-			if = { #Scandinavian elective more unforgiving.
-				limit = {
-					scope:title = { has_title_law = scandinavian_elective_succession_law }
-				}
-				multiply = 2
-			}
 		}
 	}
 	modifier = { #Shunned for being eunuch
 		desc = tooltip_feudal_elector_vote_eunuch_negative
 		NOT = { this = scope:candidate } #Do not judge yourself.
 		this_is_martial_society_trigger = no
-		NOR = {
-			has_culture_group = culture_group:byzantine_group
-			faith = { religion_tag = islam_religion }
-		}
 		scope:candidate = {has_trait = eunuch }
 		add = -25
 	}
@@ -2100,22 +1888,8 @@ elector_voting_pattern_traits_feudal_elective_modifier = {
 		desc = tooltip_feudal_elector_vote_eunuch_negative_warrior
 		NOT = { this = scope:candidate } #Do not judge yourself.
 		this_is_martial_society_trigger = yes
-		NOR = {
-			has_culture_group = culture_group:byzantine_group
-			faith = { religion_tag = islam_religion }
-		}
 		scope:candidate = {has_trait = eunuch }
 		add = -50
-	}
-	modifier = { #Shunned for being eunuch
-		desc = tooltip_feudal_elector_vote_eunuch_negative_byzantine
-		NOT = { this = scope:candidate } #Do not judge yourself.
-		OR = {
-			has_culture_group = culture_group:byzantine_group
-			faith = { religion_tag = islam_religion }
-		}
-		scope:candidate = { has_trait = eunuch }
-		add = -150
 	}
 	modifier = { #Praised for being Giant
 		add = 10
@@ -2355,12 +2129,6 @@ elector_voting_pattern_opinion_feudal_elective_modifier = {
 				}
 				subtract = 50 #-150 total
 			}
-			if = { #Further increased for Tanistry.
-				limit = {
-					scope:title = { has_title_law = gaelic_elective_succession_law }
-				}
-				multiply = 1.5
-			}
 		}
 	}
 	modifier = { #Raw Opinion bonus (positive)
@@ -2410,12 +2178,6 @@ elector_voting_pattern_opinion_feudal_elective_modifier = {
 					}
 				}
 				add = 30 #100 total
-			}
-			if = { #Further increased for Tanistry.
-				limit = {
-					scope:title = { has_title_law = gaelic_elective_succession_law }
-				}
-				multiply = 1.5
 			}
 		}
 	}
@@ -2944,13 +2706,19 @@ elector_voting_pattern_circumstances_gaelic_elective_modifier = {
 		add = 15
 		desc = tooltip_feudal_elector_vote_strong_claimant
 		NOT = { this = scope:candidate }
-		scope:candidate = { has_claim_on = scope:title }
+		scope:candidate = { 
+			has_claim_on = scope:title 
+			NOT = { has_variable = councillor_clique_claim }
+		}
 	}
 	modifier = {
 		add = 5
 		desc = tooltip_feudal_elector_vote_weak_claimant
 		NOT = { this = scope:candidate }
-		scope:candidate = { has_weak_claim_on = scope:title }
+		scope:candidate = { 
+			has_weak_claim_on = scope:title 
+			NOT = { has_variable = councillor_clique_claim }
+		}
 	}
 	#Vassals will tend to pick heirs that are not the current ruler's children/close relatives when under Tanistry.
 	modifier = {
@@ -3177,12 +2945,6 @@ hook_for_vote_interaction_ai_modifier = {
 					has_relation_rival = scope:candidate
 				}
 				subtract = 50 #-150 total
-			}
-			if = { #Further increased for Tanistry.
-				limit = {
-					scope:title = { has_title_law = gaelic_elective_succession_law }
-				}
-				multiply = 1.5
 			}
 		}
 	}

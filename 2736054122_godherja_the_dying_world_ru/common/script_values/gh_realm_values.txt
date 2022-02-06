@@ -55,3 +55,46 @@ faith_hostility_level_conversion_malus = {
 		add = 3
 	}
 }
+
+duchies_in_kingdom_value = {
+	value = 0
+	every_in_de_jure_hierarchy = {
+		limit = { tier = tier_duchy }
+		add = 1
+	}
+}
+
+duchies_in_kingdom_inverted_value = {
+	value = duchies_in_kingdom_value
+	multiply = -1
+}
+
+duchy_same_to_target_kingdom_neighboring_difference_value = {
+	value = 0
+	every_title_to_title_neighboring_duchy = {
+		limit = { kingdom = prev.kingdom }
+		add = 1
+	}
+	if = {
+		limit = { 
+			exists = scope:target_kingdom
+		}
+		every_title_to_title_neighboring_duchy = {
+			limit = { kingdom = scope:target_kingdom }
+			subtract = 1
+		}
+	}
+}
+
+duchy_same_to_target_kingdom_neighboring_difference_inverted_value = {
+	value = duchy_same_to_target_kingdom_neighboring_difference_value
+	multiply = -1
+}
+
+kingdoms_in_empire_value = {
+	value = 0
+	every_in_de_jure_hierarchy = {
+		limit = { tier = tier_kingdom }
+		add = 1
+	}
+}

@@ -1,4 +1,15 @@
-﻿has_graphical_mena_culture_group_trigger = {
+﻿should_use_tribal_realm_palace_graphics_trigger = {
+	OR = {
+		has_government = clan_government
+		has_government = tribal_government
+	}
+	culture = {
+		has_graphical_india_culture_group_trigger = no
+		has_graphical_mena_culture_group_trigger = no
+	}
+}
+
+has_graphical_mena_culture_group_trigger = {
 	has_graphical_culture = mena_building_gfx
 }
 
@@ -66,7 +77,7 @@ graphical_wilderness_steppe_trigger = {
 		AND = {
 			terrain = hills
 			OR = {
-				geographical_region = world_ga_eastern_aversaria
+				geographical_region = world_ga_aironoi
 			}
 		}
 	}
@@ -90,12 +101,57 @@ title_illustration_save_province_temporary = {
 			}
 		}
 	}
-	trigger_else = {
+	trigger_else_if = {
+		limit = {
+			exists = title_capital_county
+			exists = title_capital_county.title_province
+		}
 		title_capital_county.title_province = {
 			save_temporary_scope_as = province
 		}
 	}
 	always = yes
+}
+
+#has_indian_culture_trigger = {
+has_graphical_india_region_trigger = {
+	trigger_if = {
+		limit = {
+			exists = capital_province
+		}
+		capital_province = {
+			geographical_region = world_kashiyra
+		}
+	}
+	trigger_else_if = {
+		limit = {
+			NOT = { exists = capital_province }
+		}
+		trigger_if = { 
+			limit = { exists = host.capital_province }
+			host.capital_province = {
+				geographical_region = world_kashiyra
+			}
+		}
+		trigger_else_if = {
+			limit = {
+				exists = liege.capital_province
+			}
+			liege.capital_province = {
+				geographical_region = world_kashiyra
+			}
+		}
+		trigger_else_if = {
+			limit = {
+				exists = location.province_owner.capital_province
+			}
+			location.province_owner.capital_province = {
+				geographical_region = world_kashiyra
+			}
+		}
+		trigger_else = { always = yes }
+	}
+	trigger_else = { always = yes }
 }
 
 #has_mediterranean_culture_trigger = {

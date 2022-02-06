@@ -1,4 +1,20 @@
-﻿GetRandomExoticAnimal = {
+﻿GetLadLass = {
+	type = character
+	
+	random_valid = yes
+
+	text = {
+		trigger = { is_female = yes }
+		localization_key = lass
+	}
+
+	text = {
+		trigger = { is_female = no }
+		localization_key = lad
+	}
+}
+
+GetRandomExoticAnimal = {
 	type = character
 	
 	random_valid = yes
@@ -49,5 +65,70 @@
 	
 	text = {
 		localization_key = sarradon_bird
+	}
+}
+
+CommerceRaidingCompetitionExists = {
+	text = {
+		trigger = {
+			save_temporary_scope_as = pirate_strait_info_county
+			any_in_list = {
+				variable = strait_county_list
+				has_government = pirate_government
+				save_temporary_scope_as = first_pirate_in_strait
+				scope:pirate_strait_info_county = {
+					NOT = {
+						any_in_list = {
+							variable = strait_county_list
+							has_government = pirate_government
+							NOT = { top_liege = scope:first_pirate_in_strait.top_liege }
+						}
+					}
+				}
+			}
+		}
+		localization_key = commerce_raiding_competition_exists
+	}
+
+	text = {
+		localization_key = commerce_raiding_competition_does_not_exist
+	}
+}
+
+GetHolyOrderBrotherOrSister = {
+	type = character
+	
+	random_valid = yes
+
+	text = {
+		trigger = { is_female = no }
+		localization_key = holy_order_brother
+	}
+
+	text = {
+		trigger = { is_female = yes }
+		localization_key = holy_order_sister
+	}
+}
+
+GetShadyLocation = {
+	type = character
+
+	random = valid
+
+	text = {
+		localization_key = corridor
+	}
+	text = {
+		localization_key = cellar
+	}
+	text = {
+		localization_key = courtyard
+	}
+	text = {
+		localization_key = alleyway
+	}
+	text = {
+		localization_key = bedroom
 	}
 }

@@ -39,7 +39,7 @@ window = {
 
 			blockoverride "button_close"
 			{
-				onclick = "[ExecuteConsoleCommand('GUI.ClearWidgets interaction_gift_artifact')]"
+				#onclick = "[ExecuteConsoleCommand('GUI.ClearWidgets interaction_gift_artifact')]"
 			}
 
 			icon_character_interaction = {}
@@ -73,7 +73,7 @@ window = {
 							layoutpolicy_horizontal = expanding
 							size = { 400 100 }
 							maximumsize = { 400 100 }
-							onclick = "[ExecuteConsoleCommand(Concatenate(Concatenate('effect select_artifact_to_give = { ARTIFACT =', Scope.GetFlagName),' }'))]"
+							#onclick = "[ExecuteConsoleCommand(Concatenate(Concatenate('effect select_artifact_to_give = { ARTIFACT =', Scope.GetFlagName),' }'))]"
 
 							block "artifact_entry"
 							{}

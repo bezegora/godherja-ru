@@ -1,0 +1,1188 @@
+﻿##################################
+# Recruit Notables by Yogsothoth #
+##################################
+namespace = notable
+
+notable.0001 = {
+	type = character_event
+	theme = learning
+	title = notable.0001.t
+	desc = notable.0001.desc
+	left_portrait = {
+		character = root
+	}
+	
+	option = { # Search for a martial councilor
+		name = notable.0001.a
+		
+		hidden_effect = {
+			trigger_event = {
+				id = notable.0002
+				days = 5
+			}
+		}
+		
+	}
+	
+	option = { # Search for a diplomacy councilor
+		name = notable.0001.b
+		
+		hidden_effect = {
+			trigger_event = {
+				id = notable.0003
+				days = 5
+			}
+		}
+		
+	}
+
+	option = { # Search for a stewardship councilor
+		name = notable.0001.c
+		
+		hidden_effect = {
+			trigger_event = {
+				id = notable.0004
+				days = 5
+			}
+		}
+		
+	}
+
+	option = { # Search for an intrigue councilor
+		name = notable.0001.d
+		
+		hidden_effect = {
+			trigger_event = {
+				id = notable.0005
+				days = 5
+			}
+		}
+		
+	}
+
+	option = { # Search for a debutante
+		name = notable.0001.f
+		
+		hidden_effect = {
+			trigger_event = {
+				id = notable.0006
+				days = 5
+			}
+		}
+		
+	}
+
+	option = { # I'm not really into searching for people right now
+		name = notable.0001.g
+		
+		remove_decision_cooldown = search_for_notable_decision
+		
+	}
+}
+
+notable.0002 = { # Search for a military councilor
+    type = character_event
+	title = notable.0002.t
+	desc = notable.0002.desc
+	theme = martial
+	left_portrait = scope:high_martial_skill_option
+	right_portrait = scope:low_martial_skill_option
+	lower_right_portrait = scope:excellent_martial_skill_option	
+
+	trigger = { exists = capital_province } # Can't recruit anyone if you lose your capital before you get the event
+
+	immediate = {
+		hidden_effect = {
+			#Create our councilors
+
+			if = { #Performance heavy option finding is only for players
+				limit = { is_ai = no }
+
+				#EXCELLENT SKILL CHARACTER (for martial rulers)
+				if = {
+					limit = {
+						OR = {
+							martial >= high_skill_rating
+						}
+					}
+					    #Generate the character
+						create_character = {
+							location = root.capital_province
+							template = pool_repopulate_martial
+							martial = high_skill_rating
+							random_traits = yes
+							gender_female_chance = root_faith_dominant_gender_adjusted_female_chance
+							culture = root.culture
+							faith = root.faith
+							dynasty = none
+                           	    random_traits_list = {
+		                        education_martial_2 = { weight = { base = 50 } }
+		                        education_martial_3 = { weight = { base = 40 } }
+		                        education_martial_4 = { weight = { base = 10 } }
+	                            }
+	                            random_traits_list = {
+		                        count = { 0 1 }
+								strategist = {}
+		                        overseer = {}
+		                        wrathful = {}
+		                        zealous = {}
+		                        impatient = {}
+	                            }
+							age = { 30 45 }
+							save_scope_as = excellent_martial_skill_option
+						}
+					    scope:excellent_martial_skill_option = {
+						    add_trait = strategist
+					    }
+					}			
+				}
+
+				#HIGH-SKILL CHARACTER
+				#Generate the character
+				create_character = {
+					location = root.capital_province
+					template = pool_repopulate_martial
+					martial = decent_skill_rating
+					random_traits = yes
+					gender_female_chance = root_faith_dominant_gender_adjusted_female_chance
+					culture = root.culture
+					faith = root.faith
+				    dynasty = none
+                        random_traits_list = {
+		                    education_martial_1 = { weight = { base = 40 } }
+		                    education_martial_2 = { weight = { base = 40 } }
+		                    education_martial_3 = { weight = { base = 20 } }
+	                    }
+	                    random_traits_list = {
+		                    count = { 0 1 }
+							strategist = {}
+		                    overseer = {}
+		                    wrathful = {}
+		                    zealous = {}
+		                    impatient = {}
+	                    }
+					age = { 30 45 }
+					save_scope_as = high_martial_skill_option
+				}
+
+				#Low-medium skill character
+                #Generate the character
+				create_character = {
+					location = root.capital_province
+					template = pool_repopulate_martial
+					random_traits = yes
+					gender_female_chance = root_faith_dominant_gender_adjusted_female_chance
+					culture = root.culture
+					faith = root.faith
+				    dynasty = none
+                        random_traits_list = {
+		                    education_martial_1 = { weight = { base = 50 } }
+		                    education_martial_2 = { weight = { base = 50 } }
+	                    }
+	                    random_traits_list = {
+		                    count = { 0 1 }
+		                    overseer = {}
+		                    wrathful = {}
+		                    zealous = {}
+		                    impatient = {}
+	                    }
+					age = { 30 45 }
+					martial = { low_skill_rating medium_skill_rating }
+					save_scope_as = low_martial_skill_option
+				}
+			}
+		}
+
+
+	#Amazing skill
+	option = {
+		trigger = {
+			exists = scope:excellent_martial_skill_option
+			is_landed = yes #extra check to make sure they haven't lost their status
+		}
+		name = notable.0002.a
+		skill = martial
+
+		pay_short_term_gold = {
+			target = scope:excellent_martial_skill_option
+			gold = high_skill_court_physician_cost
+		}
+
+		add_courtier = scope:excellent_martial_skill_option
+
+		hidden_effect = {
+			reverse_add_opinion = {
+				target = scope:excellent_martial_skill_option
+				modifier = hired_me_opinion
+			}
+		}
+
+		ai_chance = {
+			factor = 500
+			modifier = {
+				short_term_gold < medium_gold_value
+				factor = 0
+			}
+		}
+	}
+
+	#High skill
+	option = {
+		trigger = {
+			is_landed = yes #extra check to make sure they haven't lost their status
+			exists = scope:high_martial_skill_option
+		}
+		name = notable.0002.b
+
+		pay_short_term_gold = {
+			target = scope:high_martial_skill_option
+			gold = high_skill_court_physician_cost
+		}
+
+		add_courtier = scope:high_martial_skill_option
+
+		hidden_effect = {
+			reverse_add_opinion = {
+				target = scope:high_martial_skill_option
+				modifier = hired_me_opinion
+			}
+		}
+
+		ai_chance = {
+			factor = 100
+			modifier = {
+				short_term_gold < medium_gold_value
+				factor = 0
+			}
+		}
+	}
+
+	#Low
+	option = {
+		trigger = {
+			is_landed = yes #extra check to make sure they haven't lost their status
+		}
+		name = notable.0002.c
+
+		pay_short_term_gold = {
+			target = scope:low_martial_skill_option
+			gold = low_skill_court_physician_cost
+		}
+
+		add_courtier = scope:low_martial_skill_option
+
+		hidden_effect = {
+			reverse_add_opinion = {
+				target = scope:low_martial_skill_option
+				modifier = hired_me_opinion
+			}
+		}
+
+		ai_chance = {
+			factor = 100
+		}
+	}
+
+    option = { # I'm not really into searching for marshals right now
+		name = notable.0001.g
+		
+		remove_decision_cooldown = search_for_notable_decision
+		
+	}
+}
+notable.0003 = { # Search for a diplomacy councilor
+    type = character_event
+	title = notable.0003.t
+	desc = notable.0003.desc
+	theme = diplomacy
+	left_portrait = scope:high_diplomacy_skill_option
+	right_portrait = scope:low_diplomacy_skill_option
+	lower_right_portrait = scope:excellent_diplomacy_skill_option	
+
+	trigger = { exists = capital_province } # Can't recruit anyone if you lose your capital before you get the event
+
+	immediate = {
+		hidden_effect = {
+			#Create our councilors
+
+			if = { #Performance heavy option finding is only for players
+				limit = { is_ai = no }
+
+				#EXCELLENT SKILL CHARACTER (for diplomacy rulers)
+				if = {
+					limit = {
+						OR = {
+							diplomacy >= high_skill_rating
+						}
+					}
+					    #Generate the character
+						create_character = {
+							location = root.capital_province
+							template = pool_repopulate_diplomacy
+							diplomacy = high_skill_rating
+	                        age = { 20 40 }
+	                        gender_female_chance = root_faith_dominant_gender_adjusted_female_chance
+	                        random_traits = yes
+                        	culture = root.culture
+                        	faith = root.faith
+							dynasty = none
+	                            random_traits_list = {
+		                            education_diplomacy_2 = { weight = { base = 50 } }
+		                            education_diplomacy_3 = { weight = { base = 40 } }
+		                            education_diplomacy_4 = { weight = { base = 10 } }
+	                            }
+	                            random_traits_list = {
+		                            count = { 0 1 }
+									diplomat = {}
+									family_first = {}
+									august = {}
+		                            reveler_1 = {}
+		                            generous = {}
+		                            arrogant = {}
+		                            honest = {}
+		                            gregarious = {}
+		                            trusting = {}
+		                            compassionate = {}
+		                            fickle = {}
+		                            forgiving = {}
+	                            }
+							save_scope_as = excellent_diplomacy_skill_option
+						}
+					    scope:excellent_diplomacy_skill_option = {
+						    add_trait = diplomat
+					    }
+					}				
+				}
+
+				#HIGH-SKILL CHARACTER
+				#Generate the character
+				create_character = {
+					location = root.capital_province
+					template = pool_repopulate_diplomacy
+					diplomacy = decent_skill_rating
+	                age = { 20 40 }
+	                gender_female_chance = root_faith_dominant_gender_adjusted_female_chance
+	                random_traits = yes
+                    culture = root.culture
+                    faith = root.faith
+					dynasty = none
+	                    random_traits_list = {
+		                    education_diplomacy_1 = { weight = { base = 40 } }
+		                    education_diplomacy_2 = { weight = { base = 40 } }
+		                    education_diplomacy_3 = { weight = { base = 20 } }
+	                    }
+	                    random_traits_list = {
+		                    count = { 0 1 }
+		                    diplomat = {}
+		                    family_first = {}
+		                    august = {}
+		                    reveler_1 = {}
+		                    generous = {}
+		                    arrogant = {}
+		                    honest = {}
+		                    gregarious = {}
+		                    trusting = {}
+		                    compassionate = {}
+		                    fickle = {}
+		                    forgiving = {}
+	                    }
+					save_scope_as = high_diplomacy_skill_option
+				}
+
+				#Low-medium skill character
+                #Generate the character
+				create_character = {
+					location = root.capital_province
+					template = pool_repopulate_diplomacy
+					diplomacy = { low_skill_rating medium_skill_rating }
+	                age = { 20 40 }
+	                gender_female_chance = root_faith_dominant_gender_adjusted_female_chance
+	                random_traits = yes
+                    culture = root.culture
+                    faith = root.faith
+					dynasty = none
+	                    random_traits_list = {
+		                    education_diplomacy_1 = { weight = { base = 50 } }
+		                    education_diplomacy_2 = { weight = { base = 50 } }
+	                    }
+	                    random_traits_list = {
+		                    count = { 0 1 }
+		                    reveler_1 = {}
+		                    generous = {}
+		                    arrogant = {}
+		                    honest = {}
+		                    gregarious = {}
+		                    trusting = {}
+		                    compassionate = {}
+		                    fickle = {}
+		                    forgiving = {}
+	                    }
+					save_scope_as = low_diplomacy_skill_option
+				}
+			}
+		}
+
+
+	#Amazing skill
+	option = {
+		trigger = {
+			exists = scope:excellent_diplomacy_skill_option
+			is_landed = yes #extra check to make sure they haven't lost their status
+		}
+		name = notable.0003.a
+		skill = diplomacy
+
+		pay_short_term_gold = {
+			target = scope:excellent_diplomacy_skill_option
+			gold = high_skill_court_physician_cost
+		}
+
+		add_courtier = scope:excellent_diplomacy_skill_option
+
+		hidden_effect = {
+			reverse_add_opinion = {
+				target = scope:excellent_diplomacy_skill_option
+				modifier = hired_me_opinion
+			}
+		}
+
+		ai_chance = {
+			factor = 500
+			modifier = {
+				short_term_gold < medium_gold_value
+				factor = 0
+			}
+		}
+	}
+
+	#High skill
+	option = {
+		trigger = {
+			is_landed = yes #extra check to make sure they haven't lost their status
+			exists = scope:high_diplomacy_skill_option
+		}
+		name = notable.0003.b
+
+		pay_short_term_gold = {
+			target = scope:high_diplomacy_skill_option
+			gold = high_skill_court_physician_cost
+		}
+
+		add_courtier = scope:high_diplomacy_skill_option
+
+		hidden_effect = {
+			reverse_add_opinion = {
+				target = scope:high_diplomacy_skill_option
+				modifier = hired_me_opinion
+			}
+		}
+
+		ai_chance = {
+			factor = 100
+			modifier = {
+				short_term_gold < medium_gold_value
+				factor = 0
+			}
+		}
+	}
+
+	#Low
+	option = {
+		trigger = {
+			is_landed = yes #extra check to make sure they haven't lost their status
+		}
+		name = notable.0003.c
+
+		pay_short_term_gold = {
+			target = scope:low_diplomacy_skill_option
+			gold = low_skill_court_physician_cost
+		}
+
+		add_courtier = scope:low_diplomacy_skill_option
+
+		hidden_effect = {
+			reverse_add_opinion = {
+				target = scope:low_diplomacy_skill_option
+				modifier = hired_me_opinion
+			}
+		}
+
+		ai_chance = {
+			factor = 100
+		}
+	}
+
+    option = { # I'm not really into searching for diplomats right now
+		name = notable.0001.g
+		
+		remove_decision_cooldown = search_for_notable_decision
+		
+	}
+}
+notable.0004 = { # Search for a stewardship councilor
+    type = character_event
+	title = notable.0004.t
+	desc = notable.0004.desc
+	theme = stewardship
+	left_portrait = scope:high_stewardship_skill_option
+	right_portrait = scope:low_stewardship_skill_option
+	lower_right_portrait = scope:excellent_stewardship_skill_option	
+
+	trigger = { exists = capital_province } # Can't recruit anyone if you lose your capital before you get the event
+
+	immediate = {
+		hidden_effect = {
+			#Create our councilors
+
+			if = { #Performance heavy option finding is only for players
+				limit = { is_ai = no }
+
+				#EXCELLENT SKILL CHARACTER (for stewardship rulers)
+				if = {
+					limit = {
+						OR = {
+							stewardship >= high_skill_rating
+						}
+					}
+					    #Generate the character
+						create_character = {
+							location = root.capital_province
+							template = pool_repopulate_stewardship
+							stewardship = high_skill_rating
+	                        age = { 20 40 }
+	                        gender_female_chance = root_faith_dominant_gender_adjusted_female_chance
+	                        random_traits = yes
+	                        culture = root.culture
+	                        faith = root.faith
+							dynasty = none
+							save_scope_as = excellent_stewardship_skill_option
+								random_traits_list = {
+                            		education_stewardship_2 = { weight = { base = 50 } }
+                              		education_stewardship_3 = { weight = { base = 40 } }
+                            		education_stewardship_4 = { weight = { base = 10 } }
+	                            }
+                            	random_traits_list = {
+                               		count = { 0 1 }
+									architect = {}
+									administrator = {}
+                            		avaricious = {}
+                            		temperate = {}
+                            		greedy = {}
+                            		just = {}
+                            		stubborn = {}
+                            		ambitious = {}
+                              	}
+						}
+					    scope:excellent_stewardship_skill_option = {
+						    add_trait = administrator
+					    }
+					}				
+				}
+
+				#HIGH-SKILL CHARACTER
+				#Generate the character
+				create_character = {
+					location = root.capital_province
+					template = pool_repopulate_stewardship
+					stewardship = decent_skill_rating
+	                age = { 20 40 }
+	                gender_female_chance = root_faith_dominant_gender_adjusted_female_chance
+	                random_traits = yes
+	                culture = root.culture
+	                faith = root.faith
+					dynasty = none
+						random_traits_list = {
+                       		education_stewardship_1 = { weight = { base = 40 } }
+                       		education_stewardship_2 = { weight = { base = 40 } }
+                       		education_stewardship_3 = { weight = { base = 20 } }
+	                    }
+                       	random_traits_list = {
+                        	count = { 0 1 }
+                        	architect = {}
+                       		administrator = {}
+                       		avaricious = {}
+                       		temperate = {}
+                       		greedy = {}
+                       		just = {}
+                       		stubborn = {}
+                       		ambitious = {}
+                      	}
+					save_scope_as = high_stewardship_skill_option
+				}
+
+				#Low-medium skill character
+                #Generate the character
+				create_character = {
+					location = root.capital_province
+					template = pool_repopulate_stewardship
+					stewardship = { low_skill_rating medium_skill_rating }
+	                age = { 20 40 }
+	                gender_female_chance = root_faith_dominant_gender_adjusted_female_chance
+	                random_traits = yes
+	                culture = root.culture
+	                faith = root.faith
+					dynasty = none
+						random_traits_list = {
+                       		education_stewardship_1 = { weight = { base = 50 } }
+                       		education_stewardship_2 = { weight = { base = 50 } }
+	                    }
+                       	random_traits_list = {
+                        	count = { 0 1 }
+                        	architect = {}
+                       		administrator = {}
+                       		avaricious = {}
+                       		temperate = {}
+                       		greedy = {}
+                       		just = {}
+                       		stubborn = {}
+                       		ambitious = {}
+                      	}
+					save_scope_as = low_stewardship_skill_option
+				}
+			}
+		}
+
+
+	#Amazing skill
+	option = {
+		trigger = {
+			exists = scope:excellent_stewardship_skill_option
+			is_landed = yes #extra check to make sure they haven't lost their status
+		}
+		name = notable.0004.a
+		skill = stewardship
+
+		pay_short_term_gold = {
+			target = scope:excellent_stewardship_skill_option
+			gold = high_skill_court_physician_cost
+		}
+
+		add_courtier = scope:excellent_stewardship_skill_option
+
+		hidden_effect = {
+			reverse_add_opinion = {
+				target = scope:excellent_stewardship_skill_option
+				modifier = hired_me_opinion
+			}
+		}
+
+		ai_chance = {
+			factor = 500
+			modifier = {
+				short_term_gold < medium_gold_value
+				factor = 0
+			}
+		}
+	}
+
+	#High skill
+	option = {
+		trigger = {
+			is_landed = yes #extra check to make sure they haven't lost their status
+			exists = scope:high_stewardship_skill_option
+		}
+		name = notable.0004.b
+
+		pay_short_term_gold = {
+			target = scope:high_stewardship_skill_option
+			gold = high_skill_court_physician_cost
+		}
+
+		add_courtier = scope:high_stewardship_skill_option
+
+		hidden_effect = {
+			reverse_add_opinion = {
+				target = scope:high_stewardship_skill_option
+				modifier = hired_me_opinion
+			}
+		}
+
+		ai_chance = {
+			factor = 100
+			modifier = {
+				short_term_gold < medium_gold_value
+				factor = 0
+			}
+		}
+	}
+
+	#Low
+	option = {
+		trigger = {
+			is_landed = yes #extra check to make sure they haven't lost their status
+		}
+		name = notable.0004.c
+
+		pay_short_term_gold = {
+			target = scope:low_stewardship_skill_option
+			gold = low_skill_court_physician_cost
+		}
+
+		add_courtier = scope:low_stewardship_skill_option
+
+		hidden_effect = {
+			reverse_add_opinion = {
+				target = scope:low_stewardship_skill_option
+				modifier = hired_me_opinion
+			}
+		}
+
+		ai_chance = {
+			factor = 100
+		}
+	}
+
+    option = { # I'm not really into searching for stewards right now
+		name = notable.0001.g
+		
+		remove_decision_cooldown = search_for_notable_decision
+		
+	}
+}	
+notable.0005 = { # Search for an intrigue councilor
+    type = character_event
+	title = notable.0005.t
+	desc = notable.0005.desc
+	theme = intrigue
+	left_portrait = scope:high_intrigue_skill_option
+	right_portrait = scope:low_intrigue_skill_option
+	lower_right_portrait = scope:excellent_intrigue_skill_option	
+
+	trigger = { exists = capital_province } # Can't recruit anyone if you lose your capital before you get the event
+
+	immediate = {
+		hidden_effect = {
+			#Create our councilors
+
+			if = { #Performance heavy option finding is only for players
+				limit = { is_ai = no }
+
+				#EXCELLENT SKILL CHARACTER (for intrigue rulers)
+				if = {
+					limit = {
+						OR = {
+							intrigue >= high_skill_rating
+						}
+					}
+					    #Generate the character
+						create_character = {
+							location = root.capital_province
+							template = pool_repopulate_intrigue
+							intrigue = high_skill_rating
+                            age = { 25 40 }
+                        	random_traits = yes
+                        	gender_female_chance = 50
+                        	culture = root.culture
+                          	faith = root.faith
+                            random_traits_list = {
+                        		education_intrigue_2 = { weight = { base = 50 } }
+                           		education_intrigue_3 = { weight = { base = 40 } }
+                        		education_intrigue_4 = { weight = { base = 10 } }
+                        	}
+                        	random_traits_list = {
+                        		count = { 0 1 }
+								schemer = {}
+								seducer = {}
+                        		torturer = {}
+                        		deceitful = {}
+                        		lustful = {}
+                           		calm = {}
+                          		arbitrary = {}
+                        		paranoid = {}
+                        		callous = {}
+		                        sadistic = {}
+		                        vengeful = {}
+		                        craven = {}
+	                        }
+                        	dynasty = none
+							save_scope_as = excellent_intrigue_skill_option
+						}
+					    scope:excellent_intrigue_skill_option = {
+						    add_trait = schemer
+					    }
+					}				
+				}
+
+				#HIGH-SKILL CHARACTER
+				#Generate the character
+				create_character = {
+					location = root.capital_province
+					template = pool_repopulate_intrigue
+					intrigue = decent_skill_rating
+                    age = { 25 40 }
+                    random_traits = yes
+                    gender_female_chance = 50
+                    culture = root.culture
+                    faith = root.faith
+                    random_traits_list = {
+                        education_intrigue_1 = { weight = { base = 40 } }
+                        education_intrigue_2 = { weight = { base = 40 } }
+                        education_intrigue_3 = { weight = { base = 20 } }
+                    }
+                    random_traits_list = {
+                        count = { 0 1 }
+                        schemer = {}
+                        seducer = {}
+                        torturer = {}
+                        deceitful = {}
+                        lustful = {}
+                        calm = {}
+                        arbitrary = {}
+                        paranoid = {}
+                        callous = {}
+		                sadistic = {}
+		                vengeful = {}
+		                craven = {}
+	                }
+					save_scope_as = high_intrigue_skill_option
+				}
+
+				#Low-medium skill character
+                #Generate the character
+				create_character = {
+					location = root.capital_province
+					template = pool_repopulate_intrigue
+					intrigue = { low_skill_rating medium_skill_rating }
+                    age = { 25 40 }
+                    random_traits = yes
+                    gender_female_chance = 50
+                    culture = root.culture
+                    faith = root.faith
+                    random_traits_list = {
+                        education_intrigue_1 = { weight = { base = 50 } }
+                        education_intrigue_2 = { weight = { base = 50 } }
+                    }
+                    random_traits_list = {
+                        count = { 0 1 }
+                        torturer = {}
+                        deceitful = {}
+                        lustful = {}
+                        calm = {}
+                        arbitrary = {}
+                        paranoid = {}
+                        callous = {}
+		                sadistic = {}
+		                vengeful = {}
+		                craven = {}
+	                }
+					save_scope_as = low_intrigue_skill_option
+				}
+			}
+		}
+
+
+	#Amazing skill
+	option = {
+		trigger = {
+			exists = scope:excellent_intrigue_skill_option
+			is_landed = yes #extra check to make sure they haven't lost their status
+		}
+		name = notable.0005.a
+		skill = intrigue
+
+		pay_short_term_gold = {
+			target = scope:excellent_intrigue_skill_option
+			gold = high_skill_court_physician_cost
+		}
+
+		add_courtier = scope:excellent_intrigue_skill_option
+
+		hidden_effect = {
+			reverse_add_opinion = {
+				target = scope:excellent_intrigue_skill_option
+				modifier = hired_me_opinion
+			}
+		}
+
+		ai_chance = {
+			factor = 500
+			modifier = {
+				short_term_gold < medium_gold_value
+				factor = 0
+			}
+		}
+	}
+
+	#High skill
+	option = {
+		trigger = {
+			is_landed = yes #extra check to make sure they haven't lost their status
+			exists = scope:high_intrigue_skill_option
+		}
+		name = notable.0005.b
+
+		pay_short_term_gold = {
+			target = scope:high_intrigue_skill_option
+			gold = high_skill_court_physician_cost
+		}
+
+		add_courtier = scope:high_intrigue_skill_option
+
+		hidden_effect = {
+			reverse_add_opinion = {
+				target = scope:high_intrigue_skill_option
+				modifier = hired_me_opinion
+			}
+		}
+
+		ai_chance = {
+			factor = 100
+			modifier = {
+				short_term_gold < medium_gold_value
+				factor = 0
+			}
+		}
+	}
+
+	#Low
+	option = {
+		trigger = {
+			is_landed = yes #extra check to make sure they haven't lost their status
+		}
+		name = notable.0005.c
+
+		pay_short_term_gold = {
+			target = scope:low_intrigue_skill_option
+			gold = low_skill_court_physician_cost
+		}
+
+		add_courtier = scope:low_intrigue_skill_option
+
+		hidden_effect = {
+			reverse_add_opinion = {
+				target = scope:low_intrigue_skill_option
+				modifier = hired_me_opinion
+			}
+		}
+
+		ai_chance = {
+			factor = 100
+		}
+	}
+
+    option = { # I'm not really into searching for spymasters right now
+		name = notable.0001.g
+		
+		remove_decision_cooldown = search_for_notable_decision
+		
+	}
+}
+notable.0006 = { # Search for a debutante
+    type = character_event
+	title = notable.0006.t
+	desc = notable.0006.desc
+	theme = diplomacy
+	left_portrait = scope:high_debutante_skill_option
+	right_portrait = scope:low_debutante_skill_option
+	lower_right_portrait = scope:excellent_debutante_skill_option	
+
+	trigger = { exists = capital_province } # Can't recruit anyone if you lose your capital before you get the event
+
+	immediate = {
+		hidden_effect = {
+			#Create our debutante
+
+			if = { #Performance heavy option finding is only for players
+				limit = { is_ai = no }
+
+				#EXCELLENT DEBUTANTE (for diplomacy rulers)
+				if = {
+					limit = {
+						OR = {
+							diplomacy >= high_skill_rating
+						}
+					}
+					    #Generate the character
+						create_character = {
+							location = root.capital_province
+							template = pool_repopulate_spouse
+	                        opposite_gender = root
+	                        age = { 16 26 }
+	                        random_traits = yes
+	                        culture = root.culture
+	                        faith = root.faith
+							random_traits_list = {
+		                        education_diplomacy_2 = { weight = { base = 70 } }
+		                        education_diplomacy_3 = { weight = { base = 20 } }
+		                        education_diplomacy_4 = { weight = { base = 10 } }
+							}
+	                        random_traits_list = {
+		                        count = { 0 1 }
+		                        diplomat = {}
+		                        strategist = {}
+		                        architect = {}
+		                        schemer = {}
+		                        scholar = {}
+		                        whole_of_body = {}
+		                        fecund = {}
+		                        intellect_good_1 = {}
+		                        physique_good_1 = {}
+	                        }
+	                        dynasty = none
+							save_scope_as = excellent_debutante_skill_option
+						}
+					    scope:excellent_debutante_skill_option = {
+						    add_trait = beauty_good_1
+					    }							
+					}				
+				}
+
+				#HIGH-SKILL CHARACTER
+				#Generate the character
+				create_character = {
+					location = root.capital_province
+					template = pool_repopulate_spouse
+	                opposite_gender = root
+	                age = { 16 26 }
+	                random_traits = yes
+	                culture = root.culture
+	                faith = root.faith
+					random_traits_list = {
+		                education_diplomacy_1 = { weight = { base = 35 } }
+		                education_diplomacy_2 = { weight = { base = 35 } }
+		                education_diplomacy_3 = { weight = { base = 30 } }
+					}
+	                random_traits_list = {
+		                count = { 0 1 }
+		                diplomat = {}
+		                strategist = {}
+		                architect = {}
+		                schemer = {}
+		                scholar = {}
+		                whole_of_body = {}
+		                fecund = {}
+		                intellect_good_1 = {}
+		                physique_good_1 = {}
+		                beauty_good_1 = {}
+	                }
+	                dynasty = none
+					save_scope_as = high_debutante_skill_option
+				}
+
+				#Low-medium skill character
+                #Generate the character
+				create_character = {
+					location = root.capital_province
+					template = pool_repopulate_spouse
+	                opposite_gender = root
+	                age = { 16 26 }
+	                random_traits = yes
+	                culture = root.culture
+	                faith = root.faith
+					random_traits_list = {
+		                education_diplomacy_1 = { weight = { base = 50 } }
+		                education_diplomacy_2 = { weight = { base = 50 } }
+					}
+	                random_traits_list = {
+		                count = { 0 1 }
+		                diplomat = {}
+		                strategist = {}
+		                architect = {}
+		                schemer = {}
+		                scholar = {}
+		                whole_of_body = {}
+		                beauty_good_1 = {}
+	                }
+	                dynasty = none
+					save_scope_as = low_debutante_skill_option
+				}
+			}
+		}
+
+
+	#Amazing skill
+	option = {
+		trigger = {
+			exists = scope:excellent_debutante_skill_option
+			is_landed = yes #extra check to make sure they haven't lost their status
+		}
+		name = notable.0006.a
+		skill = intrigue
+
+		pay_short_term_gold = {
+			target = scope:excellent_debutante_skill_option
+			gold = high_skill_court_physician_cost
+		}
+
+		add_courtier = scope:excellent_debutante_skill_option
+
+		hidden_effect = {
+			reverse_add_opinion = {
+				target = scope:excellent_debutante_skill_option
+				modifier = hired_me_opinion
+			}
+		}
+
+		ai_chance = {
+			factor = 500
+			modifier = {
+				short_term_gold < medium_gold_value
+				factor = 0
+			}
+		}
+	}
+
+	#High skill
+	option = {
+		trigger = {
+			is_landed = yes #extra check to make sure they haven't lost their status
+			exists = scope:high_debutante_skill_option
+		}
+		name = notable.0006.b
+
+		pay_short_term_gold = {
+			target = scope:high_debutante_skill_option
+			gold = high_skill_court_physician_cost
+		}
+
+		add_courtier = scope:high_debutante_skill_option
+
+		hidden_effect = {
+			reverse_add_opinion = {
+				target = scope:high_debutante_skill_option
+				modifier = hired_me_opinion
+			}
+		}
+
+		ai_chance = {
+			factor = 100
+			modifier = {
+				short_term_gold < medium_gold_value
+				factor = 0
+			}
+		}
+	}
+
+	#Low
+	option = {
+		trigger = {
+			is_landed = yes #extra check to make sure they haven't lost their status
+		}
+		name = notable.0006.c
+
+		pay_short_term_gold = {
+			target = scope:low_debutante_skill_option
+			gold = low_skill_court_physician_cost
+		}
+
+		add_courtier = scope:low_debutante_skill_option
+
+		hidden_effect = {
+			reverse_add_opinion = {
+				target = scope:low_debutante_skill_option
+				modifier = hired_me_opinion
+			}
+		}
+
+		ai_chance = {
+			factor = 100
+		}
+	}
+
+    option = { # I'm not really into searching for debutantes right now
+		name = notable.0001.g
+		
+		remove_decision_cooldown = search_for_notable_decision
+		
+	}
+}

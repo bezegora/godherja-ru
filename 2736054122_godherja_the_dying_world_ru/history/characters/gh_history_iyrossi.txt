@@ -1,6 +1,6 @@
 ﻿iyrossi_history_1 = { #Pothacleas, the Last Iyrossi
 	name = "Pothacleas"
-        dna = photacleas
+	dna = photacleas
 	religion = "iyrossi"
 	culture = "scusstari"
 	martial = 12
@@ -13,12 +13,14 @@
 	trait = patient
 	trait = education_martial_prowess_4
 	trait = education_martial_4
+	
 	64.2.11 = {
 		birth = yes
-	        effect = {
+		effect = {
 			add_character_flag = has_scripted_appearance
-		}
 	}
+}
+
 	119.6.17 = {
 		give_nickname = nick_the_last_iyrossi
 		death = {
@@ -36,12 +38,15 @@ iyrossi_history_2 = { #Mother of Sirras, murdered by Gorassos, descendent of Pot
 	mother = iyrossi_history_4
 	father = iyrossi_history_5
 	female = yes
+
 	1204.4.14 = {
 		birth = yes
 	}
+
 	1221.5.11 = {
 		add_spouse = iyrossi_history_3
 	}
+
 	1236.1.16 = {
 		death = {
 			death_reason = death_head_ripped_off
@@ -57,9 +62,11 @@ iyrossi_history_6 = { #Uncle of Sirras, murdered by Gorassos
 	dynasty = dyn_iyrossi_8
 	mother = iyrossi_history_4
 	father = iyrossi_history_5
+
 	1199.5.11 = {
 		birth = yes
 	}
+
 	1236.1.16 = {
 		death = {
 			death_reason = death_battle
@@ -76,9 +83,11 @@ iyrossi_history_8 = { #Sister of Sirras, murdered by Gorassos
 	mother = iyrossi_history_2
 	father = iyrossi_history_3
 	female = yes
+
 	1232.3.5 = {
 		birth = yes
 	}
+
 	1236.1.16 = {
 		death = {
 			death_reason = death_whipping
@@ -94,9 +103,11 @@ iyrossi_history_9 = { #Brother of Sirras, murdered by Gorassos
 	dynasty = dyn_iyrossi_8
 	mother = iyrossi_history_2
 	father = iyrossi_history_3
+
 	1233.7.21 = {
 		birth = yes
 	}
+
 	1236.1.16 = {
 		death = {
 			death_reason = death_whipping
@@ -113,9 +124,11 @@ iyrossi_history_10 = { #Aunt of Sirras, died in childbirth
 	mother = iyrossi_history_4
 	father = iyrossi_history_5
 	female = yes
+
 	1200.10.11 = {
 		birth = yes
 	}
+
 	1229.4.21 = {
 		death = {
 			death_reason = death_delivery
@@ -129,9 +142,11 @@ iyrossi_history_11 = { #Cousin of Sirras, died in childbirth
 	culture = "scusstari"
 	dynasty = dyn_iyrossi_8
 	mother = iyrossi_history_10
+
 	1229.4.21 = {
 		birth = yes
 	}
+
 	1229.4.21 = {
 		death = {
 			death_reason = death_childbirth
@@ -143,9 +158,11 @@ iyrossi_history_3 = { #Father of Sirras, murdered by Gorassos
 	name = "Dazidan"
 	religion = "aversarian_iyrossi"
 	culture = "scusstari"
+
 	1198.11.12 = {
 		birth = yes
 	}
+
 	1236.1.16 = {
 		death = {
 			death_reason = death_execution_blood_eagle
@@ -158,15 +175,17 @@ iyrossi_history_4 = { #Grandmother of Sirras (mothers side), murdered by Gorasso
 	name = "Sida"
 	religion = "aversarian_iyrossi"
 	culture = "scusstari"
-	dynasty = dyn_iyrossi_8
 	father = iyrossi_history_7
 	female = yes
+
 	1179.4.4 = {
 		birth = yes
 	}
+
 	1195.4.5 = {
 		add_spouse = iyrossi_history_5
 	}
+
 	1236.1.16 = {
 		death = {
 			death_reason = death_beaten
@@ -179,10 +198,12 @@ iyrossi_history_5 = { #Grandfather of Sirras (mothers side)
 	name = "Agron"
 	religion = "aversarian_iyrossi"
 	culture = "scusstari"
-	dynasty = dyn_iyrossi_8
+	father = iyrossi_history_13
+
 	1170.1.2 = {
 		birth = yes
 	}
+
 	1211.1.2 = {
 		death = {
 			death_reason = death_old_age
@@ -194,14 +215,51 @@ iyrossi_history_7 = { #Great grandfather of Sirras (mothers side)
 	name = "Badar"
 	religion = "aversarian_iyrossi"
 	culture = "scusstari"
-	dynasty = dyn_iyrossi_8
+	father = iyrossi_history_12
+
 	1148.3.4 = {
 		birth = yes
 	}
+
 	1200.3.1 = {
 		death = {
 			death_reason = death_frodbrokna
 			killer = western_imperial_1
+		}
+	}
+}
+
+iyrossi_history_12 = { #Great great grandfather of Sirras (mothers side)
+	name = "Byoukos"
+	religion = "aversarian_iyrossi"
+	culture = "scusstari"
+
+	1080.2.8 = {
+		birth = yes
+	}
+
+	1150.7.1 = {
+		death = {
+			death_reason = death_old_age
+		}
+	}
+}
+
+iyrossi_history_13 = { #Great grandfather of Sirras (fathers side)
+	name = "Bato"
+	religion = "aversarian_iyrossi"
+	culture = "scusstari"
+	dynasty = dyn_iyrossi_8
+	father = iyrossi_84
+	mother = iyrossi_85
+
+	1115.4.6 = {
+		birth = yes
+	}
+
+	1190.5.3 = {
+		death = {
+			death_reason = death_old_age
 		}
 	}
 }

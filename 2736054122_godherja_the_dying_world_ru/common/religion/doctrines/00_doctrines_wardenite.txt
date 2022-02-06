@@ -1,0 +1,340 @@
+﻿doctrine_wardenite_school = {
+	group = "main_group"
+	is_available_on_create = {
+		religion_tag = sarradonian_religion
+	}
+	
+	wardenite_mainstream_doctrine = {
+		piety_cost = {
+			value = faith_doctrine_cost_low
+			if = {
+				limit = { has_doctrine = wardenite_mainstream_doctrine }
+				multiply = 0
+			}
+		}
+		can_pick = {
+			custom_description = {
+				text = doctrine_no_head_of_faith_trigger
+				flag:doctrine_no_head = { is_in_list = selected_doctrines }
+			}
+			custom_description = {
+				text = incompatible_tenet_divine_marriage
+				NOT = { flag:tenet_divine_marriage = { is_in_list = selected_doctrines } }
+			}
+			custom_description = {
+				text = incompatible_tenet_human_sacrifice
+				NOT = { flag:tenet_human_sacrifice = { is_in_list = selected_doctrines } }
+			}
+			custom_description = {
+				text = incompatible_tenet_divine_marriage
+				NOT = { flag:tenet_divine_marriage = { is_in_list = selected_doctrines } }
+			}
+			custom_description = {
+				text = incompatible_tenet_consanguinity_unrestricted
+				NOT = { flag:doctrine_consanguinity_unrestricted = { is_in_list = selected_doctrines } }
+			}
+			custom_description = {
+				text = incompatible_tenet_natural_primitivism
+				NOT = { flag:tenet_natural_primitivism = { is_in_list = selected_doctrines } }
+			}
+			custom_description = {
+				text = incompatible_tenet_ritual_cannibalism
+				NOT = { flag:tenet_ritual_cannibalism = { is_in_list = selected_doctrines } }
+			}
+			custom_description = {
+				text = incompatible_tenet_gedeora_veneration
+				NOT = { flag:tenet_gedeora_veneration = { is_in_list = selected_doctrines } }
+			}
+			custom_description = {
+				text = incompatible_tenet_aversarian_syncretism
+				NOT = { flag:tenet_aversarian_syncretism = { is_in_list = selected_doctrines } }
+			}
+			custom_description = {
+				text = incompatible_tenet_ritualist_syncretism
+				NOT = { flag:tenet_ritualist_syncretism = { is_in_list = selected_doctrines } }
+			}
+			custom_description = {
+				text = incompatible_tenet_worships_death
+				NOT = { flag:tenet_worships_death = { is_in_list = selected_doctrines } }
+			}
+			custom_description = {
+				text = incompatible_tenet_gruesome_festivals
+				NOT = { flag:tenet_gruesome_festivals = { is_in_list = selected_doctrines } }
+			}
+			custom_description = {
+				text = incompatible_tenet_carnal_exaltation
+				NOT = { flag:tenet_carnal_exaltation = { is_in_list = selected_doctrines } }
+			}
+			custom_description = {
+				text = incompatible_doctrine_deviancy_accepted
+				NOT = { flag:doctrine_deviancy_accepted = { is_in_list = selected_doctrines } }
+			}
+			custom_description = {
+				text = incompatible_doctrine_adultery_women_accepted
+				NOT = { flag:doctrine_adultery_women_accepted = { is_in_list = selected_doctrines } }
+			}
+			custom_description = {
+				text = incompatible_doctrine_adultery_men_accepted
+				NOT = { flag:doctrine_adultery_men_accepted = { is_in_list = selected_doctrines } }
+			}
+			custom_description = {
+				text = incompatible_doctrine_kinslaying_accepted
+				NOT = { flag:doctrine_kinslaying_accepted = { is_in_list = selected_doctrines } }
+			}
+			custom_description = {
+				text = incompatible_doctrine_magic_supremacy
+				NOT = { flag:doctrine_magic_supremacy = { is_in_list = selected_doctrines } }
+			}
+		}
+		parameters = {
+			#hostility_override_wardenite_mainstream_doctrine = 1
+			hostility_override_wardenite_idealist_doctrine = 2
+			hostility_override_wardenite_traditionalist_doctrine = 2
+			hostility_override_wardenite_radical_doctrine = 3
+			one_mamur_recognized = yes
+		}
+	}
+	
+	wardenite_idealist_doctrine = {
+		piety_cost = {
+			value = faith_doctrine_cost_low
+			if = {
+				limit = { has_doctrine = wardenite_idealist_doctrine }
+				multiply = 0
+			}
+		}
+		can_pick = {
+			custom_description = {
+				text = doctrine_no_head_of_faith_trigger
+				flag:doctrine_no_head = { is_in_list = selected_doctrines }
+			}
+			custom_description = {
+				text = incompatible_tenet_divine_marriage
+				NOT = { flag:tenet_divine_marriage = { is_in_list = selected_doctrines } }
+			}
+			custom_description = {
+				text = incompatible_tenet_human_sacrifice
+				NOT = { flag:tenet_human_sacrifice = { is_in_list = selected_doctrines } }
+			}
+			custom_description = {
+				text = incompatible_tenet_divine_marriage
+				NOT = { flag:tenet_divine_marriage = { is_in_list = selected_doctrines } }
+			}
+			custom_description = {
+				text = incompatible_tenet_consanguinity_unrestricted
+				NOT = { flag:doctrine_consanguinity_unrestricted = { is_in_list = selected_doctrines } }
+			}
+			custom_description = {
+				text = incompatible_tenet_ritual_cannibalism
+				NOT = { flag:tenet_ritual_cannibalism = { is_in_list = selected_doctrines } }
+			}
+			custom_description = {
+				text = incompatible_tenet_ritualist_syncretism
+				NOT = { flag:tenet_ritualist_syncretism = { is_in_list = selected_doctrines } }
+			}
+			custom_description = {
+				text = incompatible_doctrine_deviancy_accepted
+				NOT = { flag:doctrine_deviancy_accepted = { is_in_list = selected_doctrines } }
+			}
+			custom_description = {
+				text = incompatible_tenet_gruesome_festivals
+				NOT = { flag:tenet_gruesome_festivals = { is_in_list = selected_doctrines } }
+			}
+			custom_description = {
+				text = incompatible_tenet_carnal_exaltation
+				NOT = { flag:tenet_carnal_exaltation = { is_in_list = selected_doctrines } }
+			}
+			custom_description = {
+				text = incompatible_doctrine_adultery_women_accepted
+				NOT = { flag:doctrine_adultery_women_accepted = { is_in_list = selected_doctrines } }
+			}
+			custom_description = {
+				text = incompatible_doctrine_adultery_men_accepted
+				NOT = { flag:doctrine_adultery_men_accepted = { is_in_list = selected_doctrines } }
+			}
+			custom_description = {
+				text = incompatible_doctrine_kinslaying_accepted
+				NOT = { flag:doctrine_kinslaying_accepted = { is_in_list = selected_doctrines } }
+			}
+		}
+		parameters = {
+			hostility_override_wardenite_idealist_doctrine = 1
+			hostility_override_wardenite_mainstream_doctrine = 2
+			hostility_override_wardenite_traditionalist_doctrine = 2
+			hostility_override_wardenite_radical_doctrine = 3
+			no_mamurs_recognized = yes
+		}
+	}
+	
+	wardenite_traditionalist_doctrine = {
+		piety_cost = {
+			value = faith_doctrine_cost_low
+			if = {
+				limit = { has_doctrine = wardenite_traditionalist_doctrine }
+				multiply = 0
+			}
+		}
+		can_pick = {
+			custom_description = {
+				text = doctrine_no_head_of_faith_trigger
+				flag:doctrine_no_head = { is_in_list = selected_doctrines }
+			}
+			custom_description = {
+				text = incompatible_tenet_pacifism_trigger
+				NOT = { flag:tenet_pacifism = { is_in_list = selected_doctrines } }
+			}
+			custom_description = {
+				text = incompatible_tenet_divine_marriage
+				NOT = { flag:tenet_divine_marriage = { is_in_list = selected_doctrines } }
+			}
+			custom_description = {
+				text = incompatible_tenet_divine_marriage
+				NOT = { flag:tenet_divine_marriage = { is_in_list = selected_doctrines } }
+			}
+			custom_description = {
+				text = incompatible_tenet_consanguinity_unrestricted
+				NOT = { flag:doctrine_consanguinity_unrestricted = { is_in_list = selected_doctrines } }
+			}
+			custom_description = {
+				text = incompatible_tenet_natural_primitivism
+				NOT = { flag:tenet_natural_primitivism = { is_in_list = selected_doctrines } }
+			}
+			custom_description = {
+				text = incompatible_tenet_ritual_cannibalism
+				NOT = { flag:tenet_ritual_cannibalism = { is_in_list = selected_doctrines } }
+			}
+			custom_description = {
+				text = incompatible_tenet_gedeora_veneration
+				NOT = { flag:tenet_gedeora_veneration = { is_in_list = selected_doctrines } }
+			}
+			custom_description = {
+				text = incompatible_tenet_aversarian_syncretism
+				NOT = { flag:tenet_aversarian_syncretism = { is_in_list = selected_doctrines } }
+			}
+			custom_description = {
+				text = incompatible_tenet_ritualist_syncretism
+				NOT = { flag:tenet_ritualist_syncretism = { is_in_list = selected_doctrines } }
+			}
+			custom_description = {
+				text = incompatible_tenet_worships_death
+				NOT = { flag:tenet_worships_death = { is_in_list = selected_doctrines } }
+			}
+			custom_description = {
+				text = incompatible_doctrine_deviancy_accepted
+				NOT = { flag:doctrine_deviancy_accepted = { is_in_list = selected_doctrines } }
+			}
+			custom_description = {
+				text = incompatible_doctrine_adultery_women_accepted
+				NOT = { flag:doctrine_adultery_women_accepted = { is_in_list = selected_doctrines } }
+			}
+			custom_description = {
+				text = incompatible_doctrine_adultery_men_accepted
+				NOT = { flag:doctrine_adultery_men_accepted = { is_in_list = selected_doctrines } }
+			}
+			custom_description = {
+				text = incompatible_doctrine_kinslaying_accepted
+				NOT = { flag:doctrine_kinslaying_accepted = { is_in_list = selected_doctrines } }
+			}
+			custom_description = {
+				text = incompatible_doctrine_magic_supremacy
+				NOT = { flag:doctrine_magic_supremacy = { is_in_list = selected_doctrines } }
+			}
+		}
+		parameters = {
+			hostility_override_wardenite_traditionalist_doctrine = 1
+			hostility_override_wardenite_idealist_doctrine = 2
+			hostility_override_wardenite_mainstream_doctrine = 2
+			hostility_override_wardenite_radical_doctrine = 3
+			four_traditional_mamurs_recognized = yes
+		}
+	}
+
+	wardenite_radical_doctrine = {
+		piety_cost = {
+			value = faith_doctrine_cost_low
+			if = {
+				limit = { has_doctrine = wardenite_radical_doctrine }
+				multiply = 0
+			}
+		}
+		parameters = {
+			hostility_override_wardenite_traditionalist_doctrine = 3
+			hostility_override_wardenite_idealist_doctrine = 3
+			hostility_override_wardenite_mainstream_doctrine = 3
+			hostility_override_wardenite_radical_doctrine = 3
+			mamuramat_dependent_on_faith_head_doctrine = yes
+		}
+		character_modifier = {
+			advantage_against_coreligionists = 5
+		}
+	}
+}
+
+doctrine_high_court_legitimacy = {
+	group = "special"
+	is_available_on_create = {
+		religion_tag = sarradonian_religion
+	}
+	
+	wardenite_high_court_legitimacy_very_low_doctrine = {
+		can_pick = {
+			always = yes
+		}
+		character_modifier = {
+			monthly_county_control_change_factor = -0.5
+			piety_level_impact_mult = -0.5
+			monthly_piety_gain_mult = -0.5
+		}
+		parameters = {
+			high_court_very_low_legitimacy_mamur_modifier = yes
+		}
+	}
+	
+	wardenite_high_court_legitimacy_low_doctrine = {
+		can_pick = {
+			always = yes
+		}
+		character_modifier = {
+			monthly_county_control_change_factor = -0.25
+			piety_level_impact_mult = -0.25
+			monthly_piety_gain_mult = -0.25
+		}
+		parameters = {
+			high_court_low_legitimacy_mamur_modifier = yes
+		}
+	}
+	
+	wardenite_high_court_legitimacy_neutral_doctrine = {
+		can_pick = {
+			always = yes
+		}
+	}
+	
+	wardenite_high_court_legitimacy_high_doctrine = {
+		can_pick = {
+			always = yes
+		}
+		character_modifier = {
+			monthly_county_control_change_factor = 0.25
+			piety_level_impact_mult = 0.25
+			monthly_piety_gain_mult = 0.25
+		}
+		parameters = {
+			high_court_high_legitimacy_mamur_modifier = yes
+		}
+	}
+	
+	wardenite_high_court_legitimacy_very_high_doctrine = {
+		can_pick = {
+			always = yes
+		}
+		character_modifier = {
+			monthly_county_control_change_factor = 0.5
+			piety_level_impact_mult = 0.5
+			monthly_piety_gain_mult = 0.5
+		}
+		parameters = {
+			high_court_very_high_legitimacy_mamur_modifier = yes
+		}
+	}
+}

@@ -18,6 +18,13 @@
 				}
 			desc = task_collect_taxes_erudition_bonus_desc
 		}
+		triggered_desc = {
+			trigger = {
+				exists = liege.dynasty
+				liege.dynasty = { has_dynasty_perk = wardenite_legacy_3 }
+			}
+			desc = task_collect_taxes_judicial_council_bonus_desc
+		}
 		desc = {
 			desc = council_task_possible_side_effects
 			triggered_desc = {
@@ -68,6 +75,7 @@
 				}
 			}
 		}
+		wardenite_legacy_3_jurist_progress_effect = yes
 	}
 
 	ai_will_do = {
@@ -204,6 +212,16 @@ task_develop_county = {
 			add = {
 				value = scope:councillor.steward_develop_county_erudition_bonus_monthly_increase
 				desc = ERUDITION_DYNASTY_PERK_BONUS_VALUE
+			}
+		}
+		if = {
+			limit = {
+				exists = scope:councillor_liege.dynasty
+				scope:councillor_liege.dynasty = { has_dynasty_perk = wardenite_legacy_3 }
+			}
+			add = {
+				value = scope:councillor.steward_develop_county_judicial_council_bonus_monthly_increase
+				desc = JUDICIAL_COUNCIL_DYNASTY_PERK_BONUS_VALUE
 			}
 		}
 
@@ -408,6 +426,7 @@ task_develop_county = {
 				}
 			}
 		}
+		wardenite_legacy_3_jurist_progress_effect = yes
 	}
 
 	ai_will_do = {

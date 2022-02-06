@@ -48,13 +48,13 @@ golems = {
 
 	terrain_bonus = {
 		desert = { damage = 50 toughness = 25 }
-		marcher_hills = { damage = -250 toughness = -90 }
-		marcher_farmlands = { damage = -250 toughness = -90 }
-		marcher_plains = { damage = -250 toughness = -90 }
-		marcher_mountains = { damage = -250 toughness = -90 }
-		marcher_forest = { damage = -250 toughness = -90 }
-		marcher_wetlands = { damage = -250 toughness = -90 }
-		marcher_floodplains = { damage = -250 toughness = -90 }
+		marcher_hills = { damage = -50 toughness = -50 }
+		marcher_farmlands = { damage = -50 toughness = -50 }
+		marcher_plains = { damage = -50 toughness = -50 }
+		marcher_mountains = { damage = -50 toughness = -50 }
+		marcher_forest = { damage = -50 toughness = -50 }
+		marcher_wetlands = { damage = -50 toughness = -50 }
+		marcher_floodplains = { damage = -50 toughness = -50 }
 	}
 
 	counters = {
@@ -68,29 +68,52 @@ golems = {
 }
 
 zombies = {	# Living Magi Undead. 
-	type = skirmishers
+	type = undead
 	can_recruit = no
 	
-	damage = 10	# Like light foot, but tougher and slower
-	toughness = 24
-	pursuit = 5
-	screen = 16
+	damage = 6	# Magic puppets for their blood mage creator - sucky offense, but decent defense.
+	toughness = 14
+	pursuit = 0
+	screen = 0
 	
 	terrain_bonus = {
-		forest = { damage = 4 toughness = 6 }
-		taiga = { damage = 4 toughness = 6 }
-		jungle = { damage = 4 toughness = 6 }
-		marcher_hills = { damage = -250 toughness = -90 }
-		marcher_farmlands = { damage = -250 toughness = -90 }
-		marcher_plains = { damage = -250 toughness = -90 }
-		marcher_mountains = { damage = -250 toughness = -90 }
-		marcher_forest = { damage = -250 toughness = -90 }
-		marcher_wetlands = { damage = -250 toughness = -90 }
-		marcher_floodplains = { damage = -250 toughness = -90 }
+		marcher_hills = { damage = -3 toughness = -6 }
+		marcher_farmlands = { damage = -3 toughness = -6 }
+		marcher_plains = { damage = -3 toughness = -6 }
+		marcher_mountains = { damage = -3 toughness = -6 }
+		marcher_forest = { damage = -3 toughness = -6 }
+		marcher_wetlands = { damage = -3 toughness = -6 }
+		marcher_floodplains = { damage = -3 toughness = -6 }
 	}
 
 	counters = {
-		heavy_infantry = 1
+	}
+	
+	stack = 100
+	ai_quality = { value = culture_ai_weight_skirmishers }
+	icon = raised_undead
+}
+
+skeletons_normal = {	# Dead Magi Undead. 
+	type = undead
+	can_recruit = no
+	
+	damage = 12	# Basically just slightly stronger levies
+	toughness = 11
+	pursuit = 0
+	screen = 0
+	
+	terrain_bonus = {
+		marcher_hills = { damage = -8 toughness = -4 }
+		marcher_farmlands = { damage = -8 toughness = -4 }
+		marcher_plains = { damage = -8 toughness = -4 }
+		marcher_mountains = { damage = -8 toughness = -4 }
+		marcher_forest = { damage = -8 toughness = -4 }
+		marcher_wetlands = { damage = -8 toughness = -4 }
+		marcher_floodplains = { damage = -8 toughness = -4 }
+	}
+
+	counters = {
 	}
 	
 	stack = 100

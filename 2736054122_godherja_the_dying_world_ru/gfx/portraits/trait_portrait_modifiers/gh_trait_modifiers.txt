@@ -1,0 +1,84 @@
+﻿visual_traits_boneshaped_giant = {
+	usage = game
+	boneshaped_giant = {
+		traits = {
+			 gh_boneshaped_giant
+		}
+		dna_modifiers = {
+			morph = {
+				mode = modify_multiply
+				gene = gene_head_height
+				#template = head_height_pos
+				value = 0.25
+			}
+			morph = {
+				mode = modify_multiply
+				gene = gene_head_width
+				#template = head_width_pos
+				value = 0.25
+			}
+			morph = {
+				mode = modify_multiply
+				gene = gene_height
+				template = giant_height
+				value = 0
+			}
+		}
+	}
+}
+
+visual_traits_excessively_pale = {
+	excessively_pale = {
+		traits = { gh_excessively_pale }
+		dna_modifiers = {
+			color = {
+				gene = skin_color
+				mode = modify
+				
+				x = -1.0
+				y = -1.0
+			}
+			color = {
+				gene = hair_color
+				mode = modify
+					
+				x = -1.0
+				y = -1.0
+			}
+			color = {
+				gene = eye_color
+				mode = modify
+					
+				x = -1.0
+				y = 0.0
+			}
+			morph = {
+				mode = modify_multiply
+				gene = gene_eyebrows_shape
+				value = 0.3
+			}
+			morph = {
+				mode = modify_multiply
+				gene = gene_eyebrows_fullness
+				value = 0.3
+			}
+		}
+	}
+}
+
+visual_traits_boneshaped_beauty = {
+	boneshaped_beauty = {
+		traits = {
+			gh_boneshaped_beauty_1
+			gh_boneshaped_beauty_2
+		}
+		dna_modifiers = {
+			morph = {
+				mode = replace
+				gene = complexion
+				template = complexion_beauty_1
+				value = 1.0
+			}
+		}
+	}
+}

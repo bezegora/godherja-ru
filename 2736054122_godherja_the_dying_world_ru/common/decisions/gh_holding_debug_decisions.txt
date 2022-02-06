@@ -1,33 +1,31 @@
-change_to_feudal = {
+﻿change_to_feudal = {
+	picture = "gfx/interface/illustrations/decisions/decision_magi.dds"
 	ai_potential = {
 		always = no
 	}
-
-	effect = {
-
-		change_government = feudal_government
-
-
+	
+	is_shown = {
+		debug_only = yes
 	}
 
-
-
+	effect = {
+		change_government = feudal_government
+	}
 }
 
 add_province_modifiers = {
+	picture = "gfx/interface/illustrations/decisions/decision_magi.dds"
 	ai_potential = {
 		always = no
 	}
+	
+	is_shown = {
+		debug_only = yes
+	}
 
 	effect = {
-
 		every_directly_owned_province = {
-
 			add_province_modifier = arcane_fallout
 		}
-
-
 	}
-	
-
 }

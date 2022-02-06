@@ -1,0 +1,24 @@
+pdxmesh = {
+	name = "bronze_vanilla_mesh"
+	file = "bronze_vanilla.mesh"
+
+	blend_shape = { id = "bv_fat"				type = "bv_fat.mesh" }
+
+	meshsettings = {
+		name = "br_low_bu1Shape"
+		index = 0
+		texture_diffuse = "bronze_alien_color.dds"
+		texture_normal = "bronze_alien_normal.dds"
+		texture_specular = "bronze_alien_properties.dds"
+		shader = "portrait_attachment"
+		shader_file = "gfx/FX/jomini/portrait.shader"
+	}
+}
+
+entity = {
+	name = "bronze_vanilla_entity"
+	pdxmesh = "bronze_vanilla_mesh"
+
+	attribute = { name = "bs_fat_1"								blend_shape = "bv_fat" }
+
+}

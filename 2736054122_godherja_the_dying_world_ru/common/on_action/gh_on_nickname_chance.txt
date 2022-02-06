@@ -41,18 +41,6 @@ nickname_random_check = {
 	random_on_action = {
 		chance_to_happen = 4
 		chance_of_no_event = {
-			if = {
-				limit = {
-					has_game_rule = fewer_nicknames_plus_frequency
-				}
-				value = 75 # 1%
-			}
-			else_if = {
-				limit = {
-					has_game_rule = more_nicknames_plus_frequency
-				}
-				value = 0  # 4%
-			}
 			else = {
 				value = 50 # 2%
 			}

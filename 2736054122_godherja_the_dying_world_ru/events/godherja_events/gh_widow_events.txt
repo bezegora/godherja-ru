@@ -1,0 +1,149 @@
+﻿namespace = gh_widow
+
+#spouse dies, potentially gets widow trait
+gh_widow.1 = {
+	type = character_event
+	theme = death
+	desc = gh_widow.1.desc
+	title = gh_widow.1.t
+	hidden = yes
+	left_portrait = root
+	right_portrait = {
+	   character = scope:spouse
+	   animation = grief
+	}
+	
+	trigger = {
+		is_married = yes
+		any_spouse = {
+			is_alive = yes
+			OR = {
+			    opinion = {
+				    target = root
+				    value >= 80
+			    }
+				AND = {
+					is_female = yes
+				    opinion = {
+				       target = root
+				       value >= 80
+			        }
+			    } 
+			}	
+			NOT = { has_trait = gh_widow }
+		}
+	}
+	
+	immediate = {
+		every_spouse = { 
+			limit = {
+				is_alive = yes
+				OR = {
+                  opinion = {
+				    target = root
+				    value >= 80
+			        }
+					AND = {
+						is_female = yes
+					    opinion = {
+				           target = root
+				           value >= 80
+			            }
+					}
+				}
+				NOT = { has_trait = gh_widow }
+			}
+			add_trait = gh_widow
+		}
+	}
+
+	option = {
+		name = gh_widow.1.a
+	}
+}
+#lover dies, potentially gets widowed, commented out until I go ahead and extend this later
+#gh_widow.199 = {
+#	type = character_event
+#	theme = death
+#	desc = gh_widow.199.desc
+#	
+#	left_portrait = root
+#	right_portrait = {
+#	   character = scope:lover
+#	   animation = grief
+#	}
+#	
+#	trigger = {
+#		has_relation_lover = yes
+#		every_relation = {
+#			type = lover
+#			limit = {
+#		    is_alive = yes
+#	        opinion = {
+#				target = root
+#				value >= 0
+#			}
+#			NOT = { has_trait = gh_widow }
+#			NOT = { is_married = ROOT }
+#			NOT = { has_trait = cruel }
+#			NOT = { has_trait = cynical }
+#			NOT = { has_trait = callous }
+#			OR = {
+#				has_trait = chaste
+#				has_trait = compassionate
+#				has_trait = humble
+#				has_trait = honest
+#				has_trait = honorable
+#			}
+#		}
+#	}
+#	
+#	immediate = {
+#		every_relation = {
+#			type = lover
+#			limit = {
+#				is_alive = yes
+#	            opinion = {
+#				    target = root
+#				    value >= 0
+#			    }
+#				NOT = { has_trait = gh_widow }
+#				NOT = { is_married = ROOT }
+#				NOT = { has_trait = cruel }
+#				NOT = { has_trait = cynical }
+#				NOT = { has_trait = callous }
+#				NOT = { has_trait = ruthless }
+#				OR = {
+#					has_trait = chaste
+#					has_trait = compassionate
+#					has_trait = humble
+#					has_trait = honest
+#					has_trait = honorable
+#				}
+#			    add_trait = gh_widow
+#			  }
+#		   }		
+#		}
+#
+#	option = {
+#		name = "gh_widow.199.a"		
+#	}
+#}
+
+gh_widow.2 = {
+	type = character_event
+	theme = death
+	desc = gh_widow.2.desc
+	title = gh_widow.2.t
+	
+	left_portrait = root
+	
+	trigger = {
+		has_trait = gh_widow
+	}
+	
+	option = {
+		name = gh_widow.2.a #I am ready to move on.
+		remove_trait = gh_widow
+	}	
+}

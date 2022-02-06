@@ -27,7 +27,10 @@ grant_vassal_interaction = {
 
 	is_shown = {
 		bilateral_ruin_diplomatic_block = yes
-		NOT = { scope:recipient = scope:actor }
+		NOT = { 
+			scope:recipient = scope:actor 
+			scope:actor = character:canian_1
+		}
 		OR = {
 			AND = {
 				exists = scope:recipient.liege
@@ -72,7 +75,7 @@ grant_vassal_interaction = {
 					primary_title = {
 						kingdom = {
 							OR = {
-								this = title:k_vraved
+								#this = title:k_vraved
 								this = title:k_plekig
 								this = title:k_sgrad
 								this = title:k_sajrag
@@ -84,7 +87,7 @@ grant_vassal_interaction = {
 					primary_title = {
 						kingdom = {
 							NOR = {
-								this = title:k_vraved
+								#this = title:k_vraved
 								this = title:k_plekig
 								this = title:k_sgrad
 								this = title:k_sajrag

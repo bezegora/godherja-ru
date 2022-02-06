@@ -1,19 +1,18 @@
-visual_traits_glowing_eyes_red = {
+﻿visual_traits_glowing_eyes_red = {
 	usage = game
 	glowing_eyes_red = {
 		dna_modifiers = {			
-		
 			accessory = {
 			    mode = modify
 			    gene = eye_accessory
 				template = glowing_eyes_red
-				value = 1.0
+				range = { 0 1 }
 			}	
 			morph = {
 				mode = add
-				gene = gene_gh_glowing_eyes_red
-				value = 1.0 
+				gene = gene_gh_glowing_eyes
 				template = glowing_eyes_red_skin
+				value = 1.0 
 			}		
 		}
 		
@@ -27,11 +26,66 @@ visual_traits_glowing_eyes_red = {
 	}
 }
 
+visual_traits_glowing_eyes_green = {
+	usage = game
+	glowing_eyes_green = {
+		dna_modifiers = {			
+			accessory = {
+			    mode = modify
+			    gene = eye_accessory
+				template = glowing_eyes_green
+				range = { 0 1 }
+			}
+			morph = {
+				mode = add
+				gene = gene_gh_glowing_eyes
+				template = glowing_eyes_green_skin
+				value = 1.0 
+			}		
+		}
+		
+		weight = {
+			base = 0
+			modifier = {
+				add = 150
+				has_trait = gh_glowingeyes_green
+			}
+		}
+	}
+}
+
+visual_traits_glowing_eyes_white = {
+	usage = game
+	glowing_eyes_green = {
+		dna_modifiers = {			
+			accessory = {
+			    mode = modify
+			    gene = eye_accessory
+				template = glowing_eyes_white
+				range = { 0 1 }
+			}
+			morph = {
+				mode = add
+				gene = gene_gh_glowing_eyes
+				template = glowing_eyes_white_skin
+				value = 1.0 
+			}		
+		}
+		
+		weight = {
+			base = 0
+			modifier = {
+				add = 150
+				has_trait = gh_glowingeyes_white
+			}
+		}
+	}
+}
+
 visual_traits_glowing_veins = {
 	usage = game
 	glowing_veins_red = {
 		dna_modifiers = {			
-		
 			morph = {
 				mode = add
 				gene = gene_gh_glowing_veins
@@ -46,19 +100,13 @@ visual_traits_glowing_veins = {
 				add = 150
 				AND = {
 					has_trait = gh_glowing_veins
-					OR = {
-						has_trait = education_living_magic_1
-						has_trait = education_living_magic_2
-						has_trait = education_living_magic_3
-						has_trait = education_living_magic_4
-					}
+					has_education_living_magic_trigger = yes
 				}
 			}
 		}
 	}
 	glowing_veins_green = {
-		dna_modifiers = {			
-		
+		dna_modifiers = {
 			morph = {
 				mode = add
 				gene = gene_gh_glowing_veins
@@ -73,19 +121,13 @@ visual_traits_glowing_veins = {
 				add = 150
 				AND = {
 					has_trait = gh_glowing_veins
-					OR = {
-						has_trait = education_dead_magic_1
-						has_trait = education_dead_magic_2
-						has_trait = education_dead_magic_3
-						has_trait = education_dead_magic_4
-					}
+					has_education_dead_magic_trigger = yes
 				}
 			}
 		}
 	}
 	glowing_veins_white = {
-		dna_modifiers = {			
-		
+		dna_modifiers = {
 			morph = {
 				mode = add
 				gene = gene_gh_glowing_veins
@@ -100,12 +142,7 @@ visual_traits_glowing_veins = {
 				add = 150
 				AND = {
 					has_trait = gh_glowing_veins
-					OR = {
-						has_trait = education_mixed_magic_1
-						has_trait = education_mixed_magic_2
-						has_trait = education_mixed_magic_3
-						has_trait = education_mixed_magic_4
-					}
+					has_education_mixed_magic_trigger = yes
 				}
 			}
 		}

@@ -124,7 +124,7 @@ on_15th_birthday = {
 
 on_16th_birthday = {
 	trigger = { age = 16 }
-	
+
 	events = {
 		childhood_education.9103 #To make sure that every child gets a education
 		child_personality.4011 #To make sure everyone gets a sexuality
@@ -140,8 +140,51 @@ on_16th_birthday = {
 		magic.1202 # Notifies the world of extremely potent magi, and make sure they always gain at least some level of magic education
 		delay = { days = 1 }
 		childhood_education.0005 #To remove education focus
+		thysian.0001 #Physician education for thysians
 		
 		coronation.0001 # Coronations for children
+	}
+	effect = {
+		# Chance of voluntarily studying law at this age
+		if = {
+			limit = {
+				faith = {
+					has_doctrine_parameter = enables_practising_law
+				}
+				OR = {
+					has_focus = education_learning
+					trigger_if = {
+						limit = { exists = dynasty }
+						dynasty = { has_dynasty_perk = wardenite_legacy_2 }
+					}
+				}
+			}
+			random = {
+				chance = 10
+				modifier = {
+					add = 10
+					has_trait = zealous
+				}
+				modifier = {
+					add = 10
+					has_trait = ambitious
+				}
+				modifier = {
+					add = 25
+					any_relation = {
+						type = guardian
+						has_trait = lifestyle_jurist
+						count >= 1
+					}
+				}
+				modifier = {
+					add = 100
+					exists = dynasty
+					dynasty = { has_dynasty_perk = wardenite_legacy_2 }
+				}
+				add_jurist_progress_effect = { VALUE = 500 }
+			}
+		}
 	}
 }
 

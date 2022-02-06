@@ -16,7 +16,7 @@ vbox = {
 				trigger_on_create = yes
 			
 				on_start = "[EventOption.Select]"   
-				on_start = "[ExecuteConsoleCommand('gui.createwidget gui/interaction_gift_artifact.gui interaction_gift_artifact')]"
+				#on_start = "[ExecuteConsoleCommand('gui.createwidget gui/interaction_gift_artifact.gui interaction_gift_artifact')]"
 				duration = 0.3
 				on_finish = "[GetVariableSystem.Clear( 'artifact_window_open')]"
 				#on_finish = "[ExecuteConsoleCommand('GUI.ClearWidgets artifacts_view')]"

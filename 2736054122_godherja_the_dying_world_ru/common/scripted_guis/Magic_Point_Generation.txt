@@ -6,65 +6,18 @@ sacrifice_population = {
 
     effect = {
 		if = {
-			limit = {
-				root = {
+			limit = { 
+				root = { 
 					has_variable_list = spell_l_targets
+					any_in_list = {
+						variable = spell_l_targets
+						holder = root
+					}
 				}
 			}
-			every_in_list = {
-				variable = spell_l_targets
-				save_scope_as = location
-			}
+			root = { trigger_event = magic.2601 }
+			custom_tooltip = sacrifice_population.tt
 		}
-		else = {
-			if = {
-				limit = { exists = capital_province }
-				capital_province = { save_scope_as = location }
-			}
-		}
-		if = {
-			limit = {
-				root.faith = {
-					has_doctrine = tenet_aeschres_legacy
-				}
-			}
-			add_piety = major_piety_value
-		}
-
-		scope:location = {
-			add_county_modifier = {
-				modifier = sacrificed_population_mod
-				years = 10
-			}
-			change_development_level = -2
-			
-		}
-		add_tyranny = 10
-    	change_variable = {
-    		name = magic_counter
-    		add = sacrifice_population_cost
-    	}
-
-    	add_character_flag = {
-    		flag = sacrificed_population
-    		years = 10
-    	}
-        if = {
-            limit = {
-                root = {
-                    has_perk = livingmagic_perk2_tree1
-                }
-            }
-            generate_prowess_or_intrigue = yes
-        }
-        if = {
-            limit = {
-                root = {
-                    has_perk = livingmagic_perk6_tree1
-                }
-            }
-            add_stress = medium_stress_loss
-        }
     }
 }
 
@@ -96,36 +49,46 @@ ritual_sacrifice = {
     }
 }
 
+ritual_consumption = {
+	scope = character
+
+	effect = {
+		if = {
+			limit = {
+				root = {
+					has_variable_list = spell_targets
+					any_in_list = {
+						variable = spell_targets
+						is_imprisoned_by = root
+					}
+				}
+			}
+			custom_tooltip = will_ritually_consume_tt
+			root = { trigger_event = magic.0002 }
+		}
+    }
+}
+
+# actual sacrifice_plants_effect can be found in gh_magic_spell_effects
+
 sacrifice_plants = {
 	scope = character
 
 
     effect = {
-        change_variable = {
-    		name = magic_counter
-    		add = tier_1_gen
-    	}
-
-    	add_character_flag = {
-    		flag = killed_plants
-    		years = 5
-    	}
-    if = {
-        limit = {
-            root = {
-                has_perk = livingmagic_perk2_tree1
-            }
-        }
-        generate_prowess_or_intrigue = yes
-    }
-        if = {
-            limit = {
-                root = {
-                    has_perk = livingmagic_perk6_tree1
-                }
-            }
-            add_stress = medium_stress_loss
-        }
+		if = {
+			limit = { 
+				root = { 
+					has_variable_list = spell_l_targets
+					any_in_list = {
+						variable = spell_l_targets
+						holder = root
+					}
+				}
+			}
+			root = { trigger_event = magic.0021 }
+			custom_tooltip = sacrifice_plants.tt
+		}
     }
 }
 
@@ -161,31 +124,11 @@ communed_with_the_way = {
     }
 }
 
-seeped_into_madness = {
+channel_the_rift = {
     scope = character
 
     effect = {
-        change_variable = {
-            name = magic_counter
-            add = tier_1_gen
-        }
-
-        add_character_flag = {
-            flag = seeps_into_madness
-            years = 10
-        }
-
-        if = {
-            limit = {
-                root = {
-                    has_perk = mixedmagic_perk3_tree1
-                }
-            }
-            add_stress = minor_stress_gain
-        }
-        else = {
-            add_stress = medium_stress_gain
-        }
+        trigger_event = magic.2500
     }
 }
 
@@ -316,33 +259,12 @@ ethereal_ritual = {
     }
 }
 
-moon_read = {
-    scope = character
-
-    effect = {
-        change_variable = {
-            name = magic_counter
-            add = tier_1_gen
-        }
-        add_character_flag = {
-            flag = moon_read_already
-            months = 4
-        }
-    }
-}
-
 skeletal_craft = {
     scope = character
 
     effect = {
-        change_variable = {
-            name = magic_counter
-            add = tier_1_gen
-        }
-        add_character_flag = {
-            flag = casted_skeletal_craft
-            months = 4
-        }
+        trigger_event = bonecrafting.0001
+		custom_tooltip = skeletal_crafting.tt
     }    
 }
 
@@ -350,14 +272,19 @@ moon_pull = {
     scope = character
 
     effect = {
-        change_variable = {
-            name = magic_counter
-            add = tier_2_gen
-        }
-        add_character_flag = {
-            flag = moon_pull_already
-            months = 8
-        }
+		custom_tooltip = moon_pull_1.tt
+		custom_tooltip = moon_pull_2.tt
+        if = {
+			limit = {
+				has_character_modifier = pulling_moon_mod
+				}
+				remove_character_modifier =  pulling_moon_mod
+			}
+		else = {
+			add_character_modifier = {
+				modifier = pulling_moon_mod
+			}
+		}
     }
 }
 
@@ -383,7 +310,7 @@ expedition = {
     effect = {
         change_variable = {
             name = magic_counter
-            add = tier_1_gen
+            add = tier_5_gen
         }
 
         add_character_flag = {

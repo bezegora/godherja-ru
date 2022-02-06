@@ -1,0 +1,10 @@
+﻿monthly_colonization_progress_value = {
+	value = 1
+	if = {
+		limit = { exists = holder }
+		add = {
+			value = holder.stewardship
+			multiply = 0.1
+		}
+	}
+}

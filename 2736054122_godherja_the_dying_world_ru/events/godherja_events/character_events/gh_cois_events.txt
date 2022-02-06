@@ -197,29 +197,46 @@ cois.0003 = {
 			}
 		}
 		hidden_effect = {
-			scope:war = {
-				remove_participant = root
+			if = {
+				limit = { exists = scope:war }
+				scope:war = {
+					remove_participant = root
+				}
+			}
+			if = {
+				limit = { exists = faith:aversarian_pope.religious_head }
+				faith:aversarian_pope.religious_head = { 
+					save_temporary_scope_as = character_to_abdicate_to 
+				}
+			}
+			else = {
+				random_vassal = {
+					save_temporary_scope_as = character_to_abdicate_to
+				}
 			}
 			every_held_title = {
 				limit = { NOT = { this = scope:title_to_be_kept } }
-				faith:aversarian_pope.religious_head = {
+				scope:character_to_abdicate_to = {
 					get_title = prev
 				}
 			}
-			faith:aversarian_pope.religious_head = {
+			scope:character_to_abdicate_to = {
 				set_realm_capital = title:c_halium
 			}
-			every_vassal_or_below = {
-				limit = {
-					save_temporary_scope_as = vassal_at_war
-					scope:war = {
-						any_war_participant = {
-							this = scope:vassal_at_war
+			if = {
+				limit = { exists = scope:war }
+				every_vassal_or_below = {
+					limit = {
+						save_temporary_scope_as = vassal_at_war
+						scope:war = {
+							any_war_participant = {
+								this = scope:vassal_at_war
+							}
 						}
 					}
-				}
-				scope:war = {
-					remove_participant = prev
+					scope:war = {
+						remove_participant = prev
+					}
 				}
 			}
 		}
@@ -248,7 +265,7 @@ cois.0004 = {
 	}
 	trigger = {
 		#is_ai = no
-		title:c_alukdus = {
+		title:c_bogeborg = {
 			NOT = { has_county_modifier = fogswept_modifier }
 		}
 	}
@@ -334,7 +351,7 @@ cois.0005 = {
 			order_by = age
 			save_scope_as = exiled_heir
 		}
-		title:k_orudsar = {
+		title:k_ithoraia = {
 			random_in_de_jure_hierarchy = {
 				limit = { 
 					trigger_if = {
@@ -416,7 +433,7 @@ cois.0010 = {
 						NOR = { 
 							this = root 
 							this = character:western_imperial_1
-							has_culture_group = culture_group:gh_sjalvoki_group
+							has_culture_group = culture_group:gh_sjalvolki_group
 							is_in_list = etepezean_warlords_to_be_vassalized
 						}
 						highest_held_title_tier <= tier_kingdom
@@ -424,16 +441,14 @@ cois.0010 = {
 					}
 					trigger_if = {
 						limit = { tier = tier_kingdom }
-						NOR = {
+						NOT = {
 							this = title:k_kerkonia
-							this = title:k_cycladecia
 						}
 					}
 					trigger_else_if = {
 						limit = { tier < tier_kingdom }
-						NOR = {
+						NOT = {
 							kingdom = title:k_kerkonia
-							kingdom = title:k_cycladecia
 						}
 					}
 					trigger_else = {
@@ -702,7 +717,7 @@ cois.0013 = {
 				stacks = var:sjalvolki_troops_to_be_received
 			}
 			men_at_arms = {
-				type = sjalvoki_berserkers
+				type = sjalvolki_berserkers
 				stacks = var:sjalvolki_elite_troops_to_be_received
 			}
 			location = 3169

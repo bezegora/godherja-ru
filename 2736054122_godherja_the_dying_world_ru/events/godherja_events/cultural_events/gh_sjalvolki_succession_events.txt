@@ -15,10 +15,11 @@ scripted_trigger valid_for_sjalvolki_succession_trigger = {
 	NOR = {
 		has_trait = blind
 		has_trait = gh_dehanded
+		has_title = title:e_sjalvolki
 	}
 	trigger_if = {
 		limit = { is_adult = no }
-		age >= 12
+		age >= 14
 		OR = {
 			has_trait = brave
 			has_trait = ambitious
@@ -147,7 +148,7 @@ sjalvolki_succession.0001 = {
 				ai_zeal = 0.25
 			}
 			modifier = {	# If they can barely hold a sword, they should seriously contemplate how wise this is
-				add = -10
+				add = -40
 				prowess < 1
 			}
 			modifier = {	# Being mediocre should also make them reconsider, unless their vassals all also have godawful prowess
@@ -238,7 +239,7 @@ sjalvolki_succession.0001 = {
 				prowess >= 20
 			}
 			modifier = {	# If they're REALLY good, it's almost surely not worth it to do this
-				add = -20
+				add = -30
 				prowess >= 30
 			}
 			modifier = {	# Zealous and just characters will absolutely never do this
@@ -269,7 +270,7 @@ sjalvolki_succession.0001 = {
 				ai_zeal = -0.25
 			}
 			modifier = {
-				add = 10
+				add = 25
 				prowess < 1
 			}
 			modifier = {
@@ -286,7 +287,7 @@ sjalvolki_succession.0001 = {
 				prowess >= 20
 			}
 			modifier = {
-				add = -10
+				add = -15
 				prowess >= 30
 			}
 			modifier = {	# Content people are even less likely to fight
@@ -302,6 +303,8 @@ sjalvolki_succession.0001 = {
 			every_vassal = {
 				limit = {
 					primary_title.tier >= tier_county
+					has_culture_group = culture_group:gh_sjalvolki_group
+					has_religion = religion:sjalvolki_religion
 					valid_for_sjalvolki_succession_trigger = yes
 				}
 				trigger_event = {
@@ -423,11 +426,11 @@ sjalvolki_succession.0002 = {
 				ai_zeal = 0.25
 			}
 			modifier = {	# If they can barely hold a sword, they should seriously contemplate how wise this is
-				add = -10
+				add = -40
 				prowess < 1
 			}
 			modifier = {	# Being mediocre should also make them reconsider, unless their vassals all also have godawful prowess
-				add = -10
+				add = -15
 				prowess < 5
 				NOT = {
 					scope:temporary_title_holder = {
@@ -442,7 +445,7 @@ sjalvolki_succession.0002 = {
 				prowess >= 20
 			}
 			modifier = {	# As will being extremely good
-				add = 10
+				add = 30
 				prowess >= 30
 			}
 			modifier = {	# Ambitious people are even more likely to fight
@@ -470,7 +473,7 @@ sjalvolki_succession.0002 = {
 				ai_zeal = -0.25
 			}
 			modifier = {
-				add = 10
+				add = 20
 				prowess < 1
 			}
 			modifier = {
@@ -487,7 +490,7 @@ sjalvolki_succession.0002 = {
 				prowess >= 20
 			}
 			modifier = {
-				add = -10
+				add = -20
 				prowess >= 30
 			}
 			modifier = {	# Content people will never bother participating
@@ -929,6 +932,10 @@ sjalvolki_succession.0008 = {
 	option = {
 		name = sjalvolki_succession.0008.a
 		add_prestige = minor_prestige_loss
+		add_character_modifier = { #minor health boost for injured characters so they all dont die after being spared
+			modifier = survived_dovatkning
+			years = 2
+		}
 	}
 }
 
@@ -964,6 +971,72 @@ sjalvolki_succession.0009 = {
 			sadistic = medium_stress_impact_gain
 		}
 		add_prestige = minor_prestige_gain
+		ai_chance = {
+			base = 50
+			ai_value_modifier = {
+				ai_sociability = 0.25
+			}
+			modifier = {	# Character whose content is happy to spare instead of kill
+				add = 20
+				has_trait = content
+			}
+			modifier = {	# Character would rather kill the losers then keep them alive
+				add = -10
+				has_trait = craven
+			}
+			modifier = {	# Character would rather kill the losers then keep them alive
+				add = -25
+				has_trait = wrathful
+			}
+			modifier = {	# Character would rather kill the losers then keep them alive
+				add = -50
+				has_trait = ambitious
+			}
+			modifier = {	# Character thinks its too much effort to kill them all
+				add = 5
+				has_trait = lazy
+			}
+			modifier = {	# A forgiving character would never kill the person he dueled
+				add = 1000
+				has_trait = forgiving
+			}
+			modifier = {	# A just character would probably never kill his competition (although it is fair)
+				add = 80
+				has_trait = just
+			}			
+			modifier = {	# Character would rather kill the losers then keep them alive
+				add = -50
+				has_trait = vengeful
+			}
+			modifier = {	# A shy character would be more predisposed to spare them, not drawing attention to themselves
+				add = 10
+				has_trait = shy
+			}
+			modifier = {	# Character has just as much chance of killing as sparing them
+				add = 10
+				has_trait = arbitrary
+			}
+			modifier = {	# Character would be paranoid the loser would hold a grudge and thus better them being dead
+				add = -10
+				has_trait = paranoid
+			}
+			modifier = {	# A trusting character would let bygones be bygones
+				add = 40
+				has_trait = trusting
+			}
+			modifier = {	# A compassionate character wouldn't kill his foe
+				add = 100
+				has_trait = compassionate
+			}
+			modifier = {	# A sadistic character would always kill his competitor
+				add = -1000
+				has_trait = sadistic
+			}
+			modifier = {	# A callous character would almost always kill his competitor 
+				add = -100
+				has_trait = callous
+			}																											
+		}
 	}
 	
 	#kill!
@@ -977,6 +1050,60 @@ sjalvolki_succession.0009 = {
 			compassionate = medium_stress_impact_gain
 		}
 		add_prestige = minor_prestige_loss
+		ai_chance = {
+			base = 50
+			ai_value_modifier = {
+				ai_vengefulness = 0.5
+			}
+			modifier = {	# A content character wouldn't kill them
+				add = -20
+				has_trait = content
+			}
+			modifier = {	# A cowardly character would take the chance to kill the person
+				add = 5
+				has_trait = craven
+			}
+			modifier = {	# Character would rather kill the losers then keep them alive
+				add = 25
+				has_trait = wrathful
+			}
+			modifier = {	# Character would rather kill the losers then keep them alive
+				add = 50
+				has_trait = ambitious
+			}
+			modifier = {	# A forgiving character would never kill them
+				add = -1000
+				has_trait = forgiving
+			}
+			modifier = {	# Character would rather kill the losers then keep them alive
+				add = 50
+				has_trait = vengeful
+			}
+			modifier = {	# Character has just as much chance of killing as sparing them
+				add = 10
+				has_trait = arbitrary
+			}
+			modifier = {	# A paranoid character would be more likely to kill them (they may hold a grudge!)
+				add = 10
+				has_trait = paranoid
+			}
+			modifier = {	#A trusting character would be less likely to kill them
+				add = -20
+				has_trait = trusting
+			}
+			modifier = {	# A compassionate character would never kill his competitor
+				add = 100
+				has_trait = compassionate
+			}
+			modifier = {	# A sadistic character would always kill his competitor
+				add = 1000
+				has_trait = sadistic
+			}
+			modifier = {	#  A callous character would almost always kill his competitor 
+				add = 100
+				has_trait = callous
+			}
+		}																											
 	}
 }
 
@@ -2156,6 +2283,15 @@ sjalvolki_succession.0506 = {
 		animation = war_over_win
 	}
 	
+	immediate = {
+		scope:primary_scope = {
+			every_in_list = {
+				variable = linked_titles
+				add_to_list = titles_at_stake
+			}
+		}
+	}
+	
 	option = {
 		name = {
 			trigger = {
@@ -2212,67 +2348,24 @@ sjalvolki_succession.0506 = {
 			}
 			set_player_character = scope:champion_of_the_fifth_ring
 		}
+		
 		create_title_and_vassal_change = {
-			type = usurped
+			type = conquest_claim
 			save_scope_as = change
+			add_claim_on_loss = no
 		}
-		scope:primary_scope = {
-			every_in_list = {
-				variable = linked_titles
-				
-				change_title_holder = {
-					holder = scope:champion_of_the_fifth_ring
-					change = scope:change
-				}
-			}
-			if = {
-				limit = {
-					NOT = {
-						any_in_list = {
-							variable = linked_titles
-							tier = tier_county
-						}
-					}
-				}
-				if = {
-					limit = { has_variable = fallback_succession_county }
-					var:fallback_succession_county = {
-						change_title_holder = {
-							holder = scope:champion_of_the_fifth_ring
-							change = scope:change
-						}
-					}
-				}
-				else = {
-					random_held_title = {
-						limit = { tier = tier_county }
-						change_title_holder = {
-							holder = scope:champion_of_the_fifth_ring
-							change = scope:change
-						}
-					}
-				}
-			}
-			if = {
-				limit = {
-					NOT = {
-						is_target_in_variable_list = {
-							name = linked_titles
-							target = scope:primary_scope
-						}
-					}
-				}
-				change_title_holder = {
-					holder = scope:champion_of_the_fifth_ring
-					change = scope:change
-				}
-			}
-		}
-		change_liege = {
-			liege = scope:champion_of_the_fifth_ring
+		
+		setup_claim_cb = {
+			titles = titles_at_stake
+			attacker = scope:champion_of_the_fifth_ring
+			defender = scope:primary_scope.holder
+			claimant = scope:champion_of_the_fifth_ring
 			change = scope:change
+			civil_war = yes
 		}
+	
 		resolve_title_and_vassal_change = scope:change
+		
 		succession_cleanup = yes
 		scope:primary_scope = {
 			scope:primary_scope = {

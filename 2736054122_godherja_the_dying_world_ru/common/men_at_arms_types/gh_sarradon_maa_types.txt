@@ -1,0 +1,389 @@
+﻿# standard costs
+@maa_buy_cost = 150
+@maa_low_maintenance_cost = 1.0
+@maa_high_maintenance_cost = 5.0
+@cultural_maa_extra_ai_score = 25 # Equivalent to having 2.5 extra regiments beyond what the code scoring would indicate (see NEGATIVE_SCORE_PER_EXISTING_REGIMENT)
+
+#################################################################################################
+# PLEASE USE common\script_values\GH_men_at_arms_values.txt FOR costs                           #
+# im not sure why paradox is using a seperate file for man at arm costs but im sticking with it #
+# signed, heisenbee/zslayernslay                                                                #
+###########################################################################################################
+# This spreadsheet was used for balancing:																  #
+# https://docs.google.com/spreadsheets/d/1NmppQ5kwSahGreIq3V78Jhc7mjO_rhEQQHQGhQ4461E/edit#gid=1734818689 #
+# signed, Nocull																						  #
+###########################################################################################################
+# name = {
+	# type = 
+
+	# damage = 
+	# toughness = 
+	# pursuit = 
+	# screen = 
+	# siege_value = 
+	
+	# terrain_bonus = {
+	# }
+	
+	# counters = {
+
+	# }
+	
+	# buy_cost = { 
+	# gold = name_recruitment_cost
+	# prestige = name_recruitment_cost_prestige
+	# piety = name_recruitment_cost_piety
+	# }
+	
+	# low_maintenance_cost = { gold = name_low_maint_cost }
+	# high_maintenance_cost = { gold = name_high_maint_cost }
+	
+	# stack = 
+	# ai_quality = { value = @cultural_maa_extra_ai_score }
+	# icon = 
+# }
+
+waranuux_spearmen = {
+	type = skirmishers
+	
+	damage = 30
+	toughness = 20
+	pursuit = 14
+	screen = 20
+	
+	terrain_bonus = {
+		jungle = { damage = 10 toughness = 10 }
+		forest = { damage = 5 toughness = 5 }
+		marcher_forest = { damage = 5 toughness = 5 }
+	}
+	
+	counters = {
+		heavy_infantry = 1
+	}
+	
+	buy_cost = { gold = waranuux_spearmen_recruitment_cost }
+	low_maintenance_cost = { gold = waranuux_spearmen_low_maint_cost }
+	high_maintenance_cost = { gold = waranuux_spearmen_high_maint_cost }
+	
+	stack = 100
+	ai_quality = { value = @cultural_maa_extra_ai_score }
+	icon = skirmishers
+}
+
+waranuux_spearmen1 = {
+	type = skirmishers
+	
+	damage = 30
+	toughness = 20
+	pursuit = 14
+	screen = 20
+	
+	terrain_bonus = {
+		jungle = { damage = 10 toughness = 10 }
+		forest = { damage = 5 toughness = 5 }
+		marcher_forest = { damage = 5 toughness = 5 }
+	}
+	
+	counters = {
+		heavy_infantry = 1
+	}
+	
+	buy_cost = { gold = waranuux_spearmen1_recruitment_cost }
+	low_maintenance_cost = { gold = waranuux_spearmen1_low_maint_cost }
+	high_maintenance_cost = { gold = waranuux_spearmen1_high_maint_cost }
+	
+	stack = 100
+	ai_quality = { value = @cultural_maa_extra_ai_score }
+	icon = skirmishers
+}
+
+advanced_waranuux = {
+	type = skirmishers
+	
+	damage = 50
+	toughness = 30
+	pursuit = 20
+	screen = 25
+	
+	terrain_bonus = {
+		jungle = { damage = 10 toughness = 10 }
+		forest = { damage = 5 toughness = 5 }
+		marcher_forest = { damage = 5 toughness = 5 }
+	}
+	
+	counters = {
+		heavy_infantry = 1
+	}
+	
+	buy_cost = { gold = advanced_waranuux_recruitment_cost }
+	low_maintenance_cost = { gold = advanced_waranuux_low_maint_cost }
+	high_maintenance_cost = { gold = advanced_waranuux_high_maint_cost }
+}
+
+rayakuux_archers = {
+	type = archers
+	
+	damage = 30
+	toughness = 15
+	pursuit = 5
+	screen = 0
+	
+	terrain_bonus = {
+		jungle = { toughness = 15 damage = 15 pursuit = 5 }
+		forest = { toughness = 10 damage = 10 }
+		wetlands = { damage = 10 toughness = 10 }
+		floodplains = { damage = 10 toughness = 10 }
+		marcher_forest = { damage = 10 toughness = 10 }
+		marcher_wetlands = { damage = 10 toughness = 10 }
+		marcher_floodplains = { damage = 10 toughness = 10 }
+	}
+	
+	counters = {
+		magi = 1
+		heavy_infantry = 1
+	}
+	
+	buy_cost = { gold = rayakuux_archers_recruitment_cost }
+	low_maintenance_cost = { gold = rayakuux_archers_low_maint_cost }
+	high_maintenance_cost = { gold = rayakuux_archers_high_maint_cost }
+	
+	stack = 100
+	ai_quality = { value = @cultural_maa_extra_ai_score }
+	icon = bowmen
+}
+
+rayakuux_archers1 = {
+	type = archers
+	
+	damage = 30
+	toughness = 15
+	pursuit = 5
+	screen = 0
+	
+	terrain_bonus = {
+		jungle = { toughness = 15 damage = 15 pursuit = 5 }
+		forest = { toughness = 10 damage = 10 }
+		wetlands = { damage = 10 toughness = 10 }
+		floodplains = { damage = 10 toughness = 10 }
+		marcher_forest = { damage = 10 toughness = 10 }
+		marcher_wetlands = { damage = 10 toughness = 10 }
+		marcher_floodplains = { damage = 10 toughness = 10 }
+	}
+	
+	counters = {
+		magi = 1
+		heavy_infantry = 1
+	}
+	
+	buy_cost = { gold = rayakuux_archers1_recruitment_cost }
+	low_maintenance_cost = { gold = rayakuux_archers1_low_maint_cost }
+	high_maintenance_cost = { gold = rayakuux_archers1_high_maint_cost }
+	
+	stack = 100
+	ai_quality = { value = @cultural_maa_extra_ai_score }
+	icon = bowmen
+}
+
+advanced_rayakuux = {
+	type = archers
+	
+	damage = 40
+	toughness = 25
+	pursuit = 10
+	screen = 0
+	
+	terrain_bonus = {
+		jungle = { toughness = 15 damage = 15 pursuit = 5 }
+		forest = { toughness = 10 damage = 10 }
+		wetlands = { damage = 10 toughness = 10 }
+		floodplains = { damage = 10 toughness = 10 }
+		marcher_forest = { damage = 10 toughness = 10 }
+		marcher_wetlands = { damage = 10 toughness = 10 }
+		marcher_floodplains = { damage = 10 toughness = 10 }
+	}
+	
+	counters = {
+		magi = 1
+		heavy_infantry = 1
+	}
+	
+	buy_cost = { gold = advanced_rayakuux_recruitment_cost }
+	low_maintenance_cost = { gold = advanced_rayakuux_low_maint_cost }
+	high_maintenance_cost = { gold = advanced_rayakuux_high_maint_cost }
+	
+	stack = 100
+	ai_quality = { value = @cultural_maa_extra_ai_score }
+	icon = bowmen
+}
+
+mezzarb_riders = {
+	type = light_cavalry
+
+	damage = 20
+	toughness = 18
+	pursuit = 20
+	screen = 40
+
+	terrain_bonus = {
+		hills = { damage = 5 toughness = 10  }
+		marcher_hills = { damage = 5 toughness = 10  }
+		wetlands = { damage = -10 pursuit = -5}
+		marcher_wetlands = { damage = -10 pursuit = -5}
+	}
+
+	counters = {
+		archers = 1
+	}
+
+	buy_cost = { gold = mezzarb_riders_recruitment_cost }
+	low_maintenance_cost = { gold = mezzarb_riders_low_maint_cost }
+	high_maintenance_cost = { gold = mezzarb_riders_high_maint_cost }
+
+	stack = 100
+	ai_quality = { value = @cultural_maa_extra_ai_score }
+	icon = light_cavalry
+}
+
+napaq = {
+	type = skirmishers
+
+	damage = 12
+	toughness = 20
+	pursuit = 0
+	screen = 40
+
+	terrain_bonus = {
+		hills = { toughness = 10  }
+		marcher_hills = { toughness = 10  }
+		floodplains = { toughness = 5 screen = 10}
+		marcher_floodplains = { toughness = 5 screen = 10}
+	}
+
+	counters = {
+		heavy_infantry = 1
+	}
+
+	buy_cost = { gold = napaq_recruitment_cost }
+	low_maintenance_cost = { gold = napaq_low_maint_cost }
+	high_maintenance_cost = { gold = napaq_high_maint_cost }
+
+	stack = 100
+	ai_quality = { value = @cultural_maa_extra_ai_score }
+	icon = skirmishers
+}
+
+rearka = {
+	type = pikemen
+
+	damage = 22
+	toughness = 30
+	pursuit = 0
+	screen = 10
+
+	terrain_bonus = {
+		hills = { damage = 5 toughness = 10  }
+		marcher_hills = { damage = 5 toughness = 10  }
+		mountains = { toughness = 10}
+		marcher_mountains = { toughness = 10}
+		desert_mountains = { toughness = 10}
+	}
+
+	counters = {
+		light_cavalry = 1
+		heavy_cavalry = 1
+	}
+
+	buy_cost = { gold = rearka_recruitment_cost }
+	low_maintenance_cost = { gold = rearka_low_maint_cost }
+	high_maintenance_cost = { gold = rearka_high_maint_cost }
+
+	stack = 100
+	ai_quality = { value = @cultural_maa_extra_ai_score }
+	icon = pikemen
+}
+
+shemota_warriors = {
+	type = heavy_infantry
+
+	damage = 32
+	toughness = 16
+	pursuit = 10
+	screen = 0
+
+	terrain_bonus = {
+		hills = { damage = 5 toughness = 10  }
+		marcher_hills = { damage = 5 toughness = 10  }
+		mountains = { toughness = 10}
+		marcher_mountains = { toughness = 10}
+		desert_mountains = { toughness = 10}
+	}
+
+	counters = {
+		heavy_infantry = 1
+		pikemen = 1
+	}
+
+	buy_cost = { gold = shemota_warriors_recruitment_cost }
+	low_maintenance_cost = { gold = shemota_warriors_low_maint_cost }
+	high_maintenance_cost = { gold = shemota_warriors_high_maint_cost }
+
+	stack = 100
+	ai_quality = { value = @cultural_maa_extra_ai_score }
+	icon = heavy_infantry
+}
+
+ahbshaani_devouts = {
+	type = heavy_cavalry
+
+	can_recruit = no
+
+	damage = 150
+	toughness = 100
+	pursuit = 50
+	screen = 0
+
+	terrain_bonus = {
+		hills = { damage = 5 toughness = 10  }
+		marcher_hills = { damage = 5 toughness = 10  }
+		mountains = { toughness = 50}
+		marcher_mountains = { toughness = 50}
+		desert_mountains = { toughness = 50}
+	}
+
+	counters = {
+		heavy_infantry = 1
+		archers = 1
+		magi = 1
+	}
+
+	buy_cost = { gold = abshaani_devouts_recruitment_cost }
+	low_maintenance_cost = { gold = ahbshaani_devouts_low_maint_cost }
+	high_maintenance_cost = { gold = ahbshaani_devouts_high_maint_cost }
+
+	stack = 25
+	icon = heavy_cavalry
+}
+
+sarradon_imitation_legion = {
+	type = heavy_infantry
+	
+	damage = 50
+	toughness = 50
+	pursuit = 0
+	screen = 25
+	terrain_bonus = {
+		wetlands = { damage = -15 toughness = -5 }
+		marcher_wetlands = { damage = -20 toughness = -10 }
+		drylands = { damage = 15 toughness = 10 pursuit = 5 }
+		plains = { damage = 15 toughness = 10 pursuit = 5 }
+		marcher_plains = { damage = 10 toughness = 5 }
+	}
+	
+	buy_cost = { gold = sarradon_imitation_legion_recruitment_cost }
+	low_maintenance_cost = { gold = sarradon_imitation_legion_low_maint_cost }
+	high_maintenance_cost = { gold = sarradon_imitation_legion_high_maint_cost }
+	
+	stack = 100
+	ai_quality = { value = @cultural_maa_extra_ai_score }
+	icon = heavy_infantry
+}

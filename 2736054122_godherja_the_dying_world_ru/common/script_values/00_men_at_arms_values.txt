@@ -232,6 +232,7 @@ war_elephant_recruitment_cost = @[heavy_cavalry_recruitment_cost * 2]
 war_elephant_low_maint_cost = @[heavy_cavalry_low_maint_cost * 1.2]
 war_elephant_high_maint_cost = @[heavy_cavalry_high_maint_cost * 1.4]
 
+
 ##############
 # AI Weights #
 ##############
@@ -246,8 +247,7 @@ culture_ai_weight_skirmishers = {
 				culture_group = culture_group:gh_goans_group
 				culture_group = culture_group:gh_allemani_group
 				culture_group = culture_group:gh_gallieni_group
-				culture_group = culture_group:gh_fog_eater_group
-				culture_group = culture_group:gh_amharian_group
+				culture_group = culture_group:gh_fog_eaters_group
 				culture_group = culture_group:gh_mondecny_group
 				culture_group = culture_group:gh_kikarsag_group
 				culture = culture:centralimperial
@@ -260,7 +260,7 @@ culture_ai_weight_skirmishers = {
 				culture_group = culture_group:gh_huegodocs_group
 			}
 		}
-		add = 30
+		add = 20
 	}
 	if = { # Cultures that dislike skirmishers
 		limit = {
@@ -360,7 +360,7 @@ culture_ai_weight_heavy_infantry = {
 				}
 			}
 		}
-		add = -100
+		add = -500
 	}
 }
 
@@ -415,7 +415,7 @@ culture_ai_weight_light_cavalry = {
 			OR = {
 				culture = culture:easternimperial
 				culture_group = culture_group:gh_sjalvolki_group
-				culture_group = culture_group:gh_gh_canian_group
+				culture_group = culture_group:gh_canian_group
 			}
 		}
 		add = 40
@@ -525,7 +525,9 @@ culture_ai_weight_elephants = {
 	if = { # Cultures that favours war elephants
 		limit = {
 			culture = {
-				has_innovation = innovation_saraddonian_elephantry
+				OR = {
+					has_innovation = innovation_saraddonian_elephantry
+					has_innovation = innovation_kashiryan_elephantry
 			}
 			OR = {
 				culture_group = culture_group:gh_saradari_group

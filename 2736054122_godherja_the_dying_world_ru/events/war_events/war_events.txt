@@ -55,7 +55,7 @@ war_event.1001 = {
 			}
 		}
 		scope:recipient = {
-			trigger_event = war_event.2002
+			trigger_event = war_event.2003
 		}
 	}
 }
@@ -90,6 +90,35 @@ war_event.2001 = {
 			}
 		}
 
+		save_scope_as = invalidator
+		scope:defender = {
+			trigger_event = war_event.2002
+		}
+	}
+	option = {
+		ai_chance = {
+				base = 0
+				modifier = {
+					add = 200
+					scope:defender = {
+						this = character:clanlands_sjalvolki_1
+						has_title = title:e_sjalvolki
+						}
+				}
+			}
+		trigger = {
+			is_ai = yes
+			scope:defender = {
+				this = character:clanlands_sjalvolki_1
+                has_title = title:e_sjalvolki
+			}
+		}
+		name = war_event.2001.c
+		show_as_tooltip = {
+			scope:war = {
+				end_war = invalidated
+			}
+		}
 		save_scope_as = invalidator
 		scope:defender = {
 			trigger_event = war_event.2002
@@ -134,6 +163,46 @@ war_event.2002 = { #by Mathilda Bjarnehed
 
 	option = {
 		name = war_event.2002.a
+	}
+}
+
+war_event.2003 = { #by Linnéa Thimrén
+	type = letter_event
+	opening = war_event.2002.t
+	desc = war_event.2003.desc
+	sender = scope:invalidator
+
+	immediate = {
+		if = {
+			limit = {
+				exists = scope:war
+			}
+			scope:war = {
+				end_war = invalidated
+			}
+		}
+		else = {
+			every_character_war = {
+				limit = {
+					primary_attacker = {
+						is_vassal_or_below_of = scope:liege_invalidator
+						trigger_if = { #Ai should never invalidate a player's war!
+							limit = {
+								this = { is_ai = no }
+							}
+							scope:invalidator = {
+								is_ai = no
+							}
+						}
+					}
+				}
+				end_war = invalidated
+			}
+		}
+	}
+
+	option = {
+		name = war_event.2003.a
 	}
 }
 
@@ -267,6 +336,12 @@ war_event.3001 = {
 		pay_short_term_gold = {
 			target = scope:war_owner
 			gold = major_gold_value
+		}
+
+		#This blocks you from being goaded multiple times if you are in multiple wars.
+		add_character_flag = {
+			flag = recently_contributed_to_allys_war
+			years = 1
 		}
 	}
 

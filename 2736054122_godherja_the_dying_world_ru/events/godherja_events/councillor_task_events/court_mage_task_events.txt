@@ -48,10 +48,6 @@ court_mage_task.0001 = {
 				if = {
 					limit = {
 						is_incapable = no
-						#has_trait_rank = {
-						#	trait = education_living_magic
-						#	character < scope:court_mage
-						#}
 					}
 					apply_tutoring_to_character = { MAGIC_TYPE = living_magic TUTOR = tutor EFFICIENCY = 0.3 EVENT_ID_PREFIX = 001}
 					apply_tutoring_to_character = { MAGIC_TYPE = dead_magic TUTOR = tutor EFFICIENCY = 0.3 EVENT_ID_PREFIX = 002}
@@ -79,6 +75,7 @@ court_mage_task.0001 = {
 					type = ward
 					count >= 1
 				}
+				is_ai = no
 			}
 			every_relation = {	# By popular acclaim, tutor wards
 				type = ward
@@ -201,9 +198,12 @@ court_mage_task.0030 = {
 	
 	option = {
 		name = court_mage_task.0030.a
-		scope:magic_tutored_child = {
-			upgrade_magic_education_effect = { MAGIC_TYPE = mixed_magic }
-	 	}
+		if = {
+			limit = { exists = scope:magic_tutored_child }
+			scope:magic_tutored_child = {
+				upgrade_magic_education_effect = { MAGIC_TYPE = mixed_magic }
+			}
+		}
 	}
 }
 

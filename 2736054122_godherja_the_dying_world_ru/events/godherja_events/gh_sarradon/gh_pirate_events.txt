@@ -1,0 +1,793 @@
+﻿namespace = gh_pirate
+
+scripted_trigger valid_gh_pirate = {
+	is_available_ai_adult = yes
+	is_alive = yes
+	is_ruler = no
+	OR = {
+		any_heir_title = { count = 0 }
+		AND = {
+			save_temporary_scope_as = potential
+			any_heir_title = {
+				place_in_line_of_succession = {
+					target = scope:potential
+					value >= 3
+				}
+			}
+		}
+	}
+}
+
+scripted_trigger valid_godherja_pirate_county_trigger = {
+	#Should be simple enough, but might want to make it more complex in future.
+	OR = {
+		culture_group = culture_group:gh_sjalvolki_group
+		culture_group = culture_group:gh_marcher_group
+	}
+}
+
+scripted_effect pirate_adventurer_start_war_effect = {
+	#Give the adventurer a dynamic title to tide them over.
+	create_dynamic_title = {
+		tier = duchy
+		name = {
+			first_valid = {
+				triggered_desc = {
+					trigger = {
+						faith = { has_doctrine = doctrine_gender_male_dominated }
+					}
+					desc = VIKING_ARMY_MEN_NAME
+				}
+				triggered_desc = {
+					trigger = {
+						faith = { has_doctrine = doctrine_gender_female_dominated }
+					}
+					desc = VIKING_ARMY_WOMEN_NAME
+				}
+				triggered_desc = {
+					trigger = {
+						faith = { has_doctrine = doctrine_gender_equal }
+					}
+					desc = VIKING_ARMY_NEUTRAL_NAME
+				}
+				#Fallback, just in case.
+				desc = VIKING_ARMY_NEUTRAL_NAME
+			}
+		}
+	}
+	create_title_and_vassal_change = {
+		type = created
+		save_scope_as = change
+		add_claim_on_loss = no
+	}
+	scope:new_title = {
+		set_capital_county = scope:adventurer_target.capital_county
+		set_landless_title = yes
+		set_destroy_on_succession = yes
+		set_delete_on_destroy = yes
+		set_no_automatic_claims = yes
+		set_can_be_named_after_dynasty = no
+		change_title_holder = {
+			holder = scope:adventurer
+			change = scope:change
+		}
+	}
+	resolve_title_and_vassal_change = scope:change
+	scope:new_title = {
+		generate_coa = yes
+		set_variable = {
+			name = temporary_title
+			value = yes
+		}
+	}
+	#Declare the war.
+	scope:adventurer = {
+		start_war = {
+			casus_belli = fp1_scandi_adventurer_conquest
+			target = scope:adventurer_target.holder.top_liege
+			target_title = scope:adventurer_target.duchy
+		}
+	}
+	# Setup event troops.
+	scope:adventurer = {
+		# Set a random spawn location.
+		## Try to pick a good spot in Scandinavia.
+		if = {
+			limit = {
+				any_county_in_region = {
+					OR = {
+						geographical_region = world_eastern_sarradon
+						#geographical_region = world_!notindia
+					}
+					valid_adventurer_county_for_embark_trigger = yes
+				}
+			}
+			random_county_in_region = {
+				OR = {
+					geographical_region = world_eastern_sarrado
+					#geographical_region = world_!notindia
+				}
+				limit = { valid_adventurer_county_for_embark_trigger = yes }
+				# Weight up according to development, so armies tend to spawn in places where more randos would congregate.
+				weight = {
+					modifier = {
+						add = {
+							value = development_level
+							multiply = 10
+						}
+					}
+				}
+				save_temporary_scope_as = selected_county
+				scope:adventurer = {
+					set_variable = {
+						name = random_location
+						value = scope:selected_county.title_province
+						days = 365
+					}
+				}
+			}
+		}
+		## Otherwise, we used our backup of Epavarion, the last Sjalvolki province left alive, because fuck Nicanoneus.
+		else = {
+			set_variable = {
+				name = random_location
+				value = title:b_ragencop.title_province
+				days = 365
+			}
+		}
+		# Work out how many event troops we should give the adventurer for a 60:40 fight.
+		spawn_army = {
+			levies = {
+				add = {
+					#Base of 400.
+					add = scope:adventurer_target.holder.top_liege.max_military_strength
+					#Multiply that by the realm size of the target's top_liege.
+					multiply = 1.5
+					#Account for allies, adding more without just nullifying them.
+					scope:adventurer_target.holder.top_liege = {
+						every_ally = { add = this.max_military_strength }
+					}
+					#Cut it off so things don't get too ridiculous.
+					max = 8000
+					#Make sure all adventurers have a moderately respectable force.
+					min = 1000
+				}
+			}
+			inheritable = no
+			uses_supply = no
+			location = scope:adventurer.var:random_location
+			name = scandi_adventurer_event_troops
+		}
+		spawn_army = {
+			men_at_arms = {
+				type = light_footmen
+				stacks = {
+					value = 3
+					multiply = scope:adventurer_target.holder.top_liege.primary_title.tier
+				}
+			}
+			inheritable = no
+			uses_supply = no
+			location = scope:adventurer.var:random_location
+			name = scandi_adventurer_event_troops
+		}
+		# Suppress startup error false-positive
+		if = {
+			limit = { has_variable = random_location }
+			# Do nothing.
+		}
+	}
+}
+
+##################################################
+
+### Pirate events for the Godherja universe
+
+# 0001 - Ship raid
+
+##################################################
+
+gh_pirate.0001 = {
+    type = character_event
+	title = gh_pirate.0001.t
+	desc =  gh_pirate.0001.desc
+	theme = battle
+	override_background = {
+	     event_background = fp1_ocean
+	}
+	    left_portrait = {
+		   character = root
+		   animation = anger
+		}
+	trigger = {
+	   has_government = pirate_government
+	   is_commanding_army = yes
+      exists = commanding_army.location
+      NOT = {
+      exists = commanding_army.location.barony
+       }
+	}
+	
+	option = { #Gold brings glory!
+	   name = gh_pirate.0001.a
+	     stress_impact = {
+			sadistic = minor_stress_impact_loss
+			vengeful = minor_stress_impact_loss
+			wrathful = minor_stress_impact_loss
+			greedy = minor_stress_impact_loss
+			craven = medium_stress_impact_gain
+		}
+	   duel = {
+			skill = martial
+			value = decent_skill_rating
+			10 = {
+				desc = gh_pirate.0001.a.success
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = 1
+				}
+				send_interface_toast = {
+					left_icon = root
+					title = gh_pirate.0001.a.success
+					
+					add_gold = 50
+					add_prestige = 200
+					every_vassal = {
+						add_opinion = {
+							target = root
+							modifier = impressed_opinion
+							opinion = 5
+						}
+					}
+				}			
+			}
+			5 = {
+				desc = gh_pirate.0001.a.failure
+				send_interface_toast = {
+					left_icon = root
+					title = gh_pirate.0001.a.failure
+					
+					add_prestige = -75
+					random_list = {
+						95 = { }
+						5 = { 
+							increase_wounds_effect = {
+								REASON = fight 
+							}
+						}
+					}
+				}
+			}
+		}
+		ai_chance = {
+			base = 50
+			modifier = {
+				add = 50
+				has_trait = brave 
+			}
+			modifier = {
+				add = 50
+				has_trait = education_martial 
+			}
+			modifier = {
+				add = -80
+				martial < 6
+			}
+		}
+	}
+
+
+	option = { # go, don't participate
+		name = gh_pirate.0001.b
+
+	   add_prestige = 50
+
+	   random_list = {
+			10 = { desc = gh_pirate.0001.b.success
+				capital_county = { change_development_level = 3 } 
+			}
+			10 = { desc = gh_pirate.0001.b.failure
+				remove_short_term_gold = 25 
+			} 
+		}
+   
+		ai_chance = {
+			base = 50
+			modifier = {
+				add = 50
+				has_trait = lazy 
+			}                       
+			modifier = {
+				add = 50
+				has_trait = craven 
+			}
+		}
+	}
+
+	option = { # it's a trap!
+		name = gh_pirate.0001.c
+
+		add_prestige = -50
+ 
+		ai_chance = {
+			base = 50
+			modifier = {
+				add = 50
+				has_trait = paranoid 
+			}                       
+			modifier = {
+				add = 50
+				has_trait = craven 
+			}
+		}
+	}
+	
+	option = { #Let them be
+	   name = gh_pirate.0001.d
+	    stress_impact = { 
+		  sadistic = medium_stress_impact_gain
+			vengeful = medium_stress_impact_gain
+			wrathful = medium_stress_impact_gain
+			greedy = medium_stress_impact_gain
+			craven = minor_stress_impact_loss
+     	}
+	   add_prestige = -100
+	
+	}
+
+    option = { #We must proceed with caution
+	   name = gh_pirate.0001.e
+	   trigger = { 
+	          has_trait = strategist 
+		}
+	    trait = strategist
+		add_gold = 50
+		add_prestige = 150
+	}
+}
+
+##################################################
+### Pirate Succession Events
+### By Thundershield
+### Should be replaced by better system
+##################################################
+
+#initial event, where you are told you will have to prove yourself as a captain
+gh_pirate.0002 = {
+	type = character_event
+	title = gh_pirate.0002.t
+	desc = gh_pirate.0002.desc
+
+	theme = crown
+	override_background = {
+		event_background = throne_room_tribal
+	}
+	left_portrait = root
+	right_portrait = scope:previous_holder
+	trigger = {
+		has_government = pirate_government
+		scope:title = scope:previous_holder.primary_title
+		NOT = {has_character_flag = pirate_succession}
+	}
+	immediate = {
+		add_character_flag = {
+			flag = pirate_succession
+		}
+		trigger_event = gh_pirate.0020
+	}
+	option = {
+		name = gh_pirate.0003.a
+		trigger_event = {
+			id = gh_pirate.0003
+			years = 4
+		}
+		trigger_event = {
+			id = gh_pirate.0004
+			years = 5
+		}
+	}
+}
+
+
+#Event to remind the player that they better hurry up if they don't meet the criteria to lead a band of pirates yet
+gh_pirate.0003 = {
+	type = character_event
+	title = gh_pirate.0003.t
+	desc = gh_pirate.0003.desc
+
+	theme = crown
+	override_background = {
+		event_background = throne_room_tribal
+	}
+	left_portrait = {
+		character = root
+		animation = stress
+	}
+	trigger = {
+		martial < 15
+		prestige_level < 3
+		has_government = pirate_government
+	}
+	option = {
+		name = gh_pirate.0003.a
+	}
+}
+
+#Event that evaluates if you are pirate material
+gh_pirate.0004 = {
+	type = character_event
+	hidden = yes
+	immediate = {
+		if = {
+			limit = {
+				NOT = {
+					has_government = pirate_government
+				}
+			}
+			trigger_event = gh_pirate.0007 
+		}
+		else_if = {#if you are a worthy captain
+			limit = {
+				martial >= 15
+				prestige_level >= 3
+			}
+			trigger_event = {
+				id = gh_pirate.0005
+			}
+		}
+		else = {#if you are not good enough
+			trigger_event = {
+				id = gh_pirate.0006
+			}
+		}
+	}
+}
+
+#having proved yourself, you vassals gain an opinion boost to you
+gh_pirate.0005 = {
+	type = character_event
+	title = gh_pirate.0005.t
+	desc = gh_pirate.0005.desc
+
+	theme = crown
+	override_background = {
+		event_background = throne_room_tribal
+	}
+	left_portrait = {
+		character = root
+		animation = personality_bold
+	}
+	immediate = {
+		every_vassal = {
+			add_opinion = {
+				modifier = respect_opinion
+				target = prev
+				opinion = 30
+			}
+		}
+	}
+
+	option = {
+		name = gh_pirate.0005.a
+	}
+}
+
+#your vassals deem you not good enough and go independent
+gh_pirate.0006 = {
+	type = character_event
+	title = gh_pirate.0006.t
+	desc = gh_pirate.0006.desc
+
+	theme = skull
+	left_portrait = {
+		character = root
+		animation = stress
+	}
+	immediate = {
+		every_vassal = {
+			every_held_title = {
+				limit = { NOT = {tier = tier_barony }}
+				save_scope_as = titles
+				set_county_faith = scope:randomized_faith
+				root = {
+					add_unpressed_claim = scope:titles
+				}
+			}
+			create_title_and_vassal_change = {
+				type = independency
+				save_scope_as = change
+				add_claim_on_loss = yes
+			}
+			hidden_effect = {
+				becomes_independent = { change = scope:change }
+				save_scope_as = truce_loc
+			}
+			resolve_title_and_vassal_change = scope:change
+		}
+	}
+
+	option = {
+		name = gh_pirate.0006.a
+	}
+}
+
+#you are no longer a pirate and so the pirate succession is no longer valid
+gh_pirate.0007 = {
+	type = character_event
+	title = gh_pirate.0007.t
+	desc = gh_pirate.0007.desc
+
+	theme = crown
+	left_portrait = {
+		character = root
+		animation = dismissal
+	}
+
+	option = {
+		name = gh_pirate.0007.a
+	}
+}
+
+##################################################
+
+### Embarce and Abandon piracy
+
+### By Thundershield
+
+##################################################
+
+#These events should give the player a bit more detail on what exactly happened to their realm
+
+gh_pirate.0008 = {
+	type = character_event
+	title = gh_pirate_decisions.0001.t
+	desc = gh_pirate_decisions.0001.desc
+
+	theme = battle
+	
+	left_portrait = {
+		character = root
+		animation = personality_bold
+	}
+	
+	override_background = { event_background = fp1_beached_longships }
+	
+	option = {
+		name = {
+			trigger = { ai_greed >= 50 }
+			text = gh_pirate_decisions.0001.a.greedy
+		}
+		name = {
+			trigger = { ai_compassion <= -50 }
+			text = gh_pirate_decisions.0001.a.cruel
+		}
+		name = {
+			trigger = { 
+				NOR = {
+					ai_greed >= 50
+					ai_compassion <= -50
+				}
+			}
+			text = gh_pirate_decisions.0001.a
+		}
+		
+		show_as_tooltip = {
+			change_government = pirate_government
+		}
+	}
+}
+
+gh_pirate.0009 = {
+	type = character_event
+	title = gh_pirate_decisions.00012.t
+	desc = gh_pirate_decisions.0002.desc
+
+	theme = crown
+	option = {
+		name = gh_pirate_decisions.0002.a
+	}
+}
+###########################
+## Pirate host (adventurer) stuff
+## By Netgearghost
+###########################
+
+##	Pre-filter event, check to see if we should keep sending out adventurers.
+#gh_pirate.0010 = {
+#type = empty
+#hidden = yes
+#
+#	trigger = {
+#		NOT = { has_game_rule = fp1_scandi_adventurers_off }
+#	}
+#
+#	immediate = {
+#		#We prefer to use actual characters, but if there aren't any, we try to generate a fallback.
+#		##Populate Western list backup.
+#		if = {
+#			limit = {
+#				NOT = {
+#					any_in_global_list = {
+#						variable = pirate_adventurer_list
+#						count >= 1
+#						valid_gh_pirate = yes
+#					}
+#				}
+#				any_county_in_region = {
+#					#geographical_region = world_pirates
+#					valid_godherja_pirate_county_trigger = yes
+#				}
+#			}
+#			random_county_in_region = {
+#				#geographical_region = world_pirates
+#				limit = { valid_godherja_pirate_county_trigger = yes }
+#				save_scope_as = adventure_county
+#			}
+#			create_character = {
+#				location = scope:adventure_county.title_province
+#				template = gh_pirate_character
+#				save_scope_as = backup_adventurer
+#			}
+#			scope:backup_adventurer = {
+#				add_to_global_variable_list = {
+#					name = pirate_adventurer_list
+#					target = this
+#				}
+#			}
+#		}
+#		#Launch the adventurer spawning events.
+#		trigger_event = gh_pirate.0011
+#		#Trigger the next wave of events.
+#		if = {
+#			limit = { has_game_rule = fp1_scandi_adventurers_apocalyptic }
+#			trigger_event = {
+#				id = gh_pirate.0010
+#				days = 365
+#			}
+#		}
+#		if = {
+#			limit = { has_game_rule = fp1_scandi_adventurers_frequent }
+#			trigger_event = {
+#				id = gh_pirate.0010
+#				days = 1825
+#			}
+#		}
+#		if = {
+#			limit = { has_game_rule = fp1_scandi_adventurers_occasional }
+#			trigger_event = {
+#				id = gh_pirate.0010
+#				days = 3650
+#			}
+#		}
+#		if = {
+#			limit = { has_game_rule = fp1_scandi_adventurers_rare }
+#			trigger_event = {
+#				id = gh_pirate.0010
+#				days = 5475
+#			}
+#		}
+#	}
+#}
+#
+##	General processing event, Pirates.
+#gh_pirate.0011 = {
+#	type = empty
+#	hidden = yes
+#
+#	trigger = {
+#		#At least one valid adventurer. Should always be the case, but just to be sure.
+#		any_in_global_list = {
+#			variable = pirate_adventurer_list
+#			count >= 1
+#			valid_gh_adventurer = yes
+#		}
+#	}
+#
+#	immediate = {
+#		#SORT ACTORS
+#		##Grab the most eligible candidate from the Sjalvolki list.
+#		ordered_in_global_list = {
+#			variable = pirate_adventurer_list
+#			limit = { valid_gh_adventurer = yes }
+#			order_by = { value = scandinavian_adventurer_priority_value }
+#			save_scope_as = scandi_adventurer
+#			add_character_modifier = scandinavian_adventurer_fp1_modifier
+#			add_trait = adventurer
+#		}
+#		##Check through the ordered western targets to see if a region needs a few more Norsemen.
+#
+#		#SORT WAR
+#		if = {
+#			limit = { exists = scope:adventurer_target }
+#			scope:adventurer = { trigger_event = gh_pirate.0014 }
+#		}
+#	}
+#}
+#
+## Startup event, delaying the initial cycle.
+#gh_pirate.0013 = {
+#	type = empty
+#	hidden = yes
+#
+#	immediate = {
+#		trigger_event = {
+#			id = gh_pirate.0010
+#			years = 10
+#		}
+#	}
+#}
+#
+##	Start the war (separate event to config scopes correctly).
+#gh_pirate.0014 = {
+#	hidden = yes
+#
+#	immediate = { pirate_adventurer_start_war_effect = yes }
+#}
+
+##################################################
+### Pirate Maintanience Events
+### By Thundershield
+##################################################
+#Initialize pirates and sets up reoccuring update
+gh_pirate.0020 = {
+	hidden = yes
+	immediate = {
+		update_pirate_commerce_raiding_list = yes
+		update_shadow_ports_list_and_value = yes
+		trigger_event = {
+			id = gh_pirate.0021
+			days = {1 365}
+		}
+	}
+}
+#Runs once a year to update the commerce_raiding_gold_potential for devolpment changes
+#Since devolpment changes slowly, this should be more then enough
+gh_pirate.0021 = {
+	hidden = yes
+	immediate = {
+		update_pirate_commerce_raiding_gold_value = yes
+		trigger_event = {
+			id = gh_pirate.0021
+			days = 365
+		}
+	}
+}
+
+gh_pirate.0031 = {
+	type = character_event
+	title = gh_pirate.0031.t
+	desc = gh_pirate.0031.desc
+
+	theme = crown
+	override_background = {
+		event_background = throne_room_tribal
+	}
+	left_portrait = {
+		character = root
+		animation = personality_bold
+	}
+	immediate = {
+		create_title_and_vassal_change = {
+			type = created
+			save_scope_as = title_change
+			add_claim_on_loss = no
+		}
+		title:k_pirate_coalition = {
+			change_title_holder = {
+				holder = root
+				change = scope:title_change
+			}
+		}
+		resolve_title_and_vassal_change = scope:title_change
+		dynasty = {
+			add_dynasty_prestige = 500
+		}
+		add_character_modifier = {
+			modifier = pirate_king
+		}
+		give_nickname = nick_the_pirate_king
+	}
+	option = {
+		name = gh_pirate.0031.a
+	}
+}

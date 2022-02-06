@@ -7,6 +7,14 @@ long_hunt_max_length = 10000000 # 10M
 medium_hunt_max_length = 5000000 # 1M, slightly larger than 1 'holy roman empire' away
 short_hunt_max_length = 1000000 # 100K, slightly larger than 1 'ireland' away.
 
+hunt_cooldown_value = {
+	value = 24
+	if = {
+		limit = { has_trait = lifestyle_hunter }
+		multiply = 0.25
+	}
+}
+
 # Tracking Power
 tracking_power = {
 	value = 1	# Everyone has a base of at least 1
@@ -67,7 +75,7 @@ tracking_power = {
 		multiply = 1.25
 	}
 	if = {	# Patient won't rush things
-		limit = { has_trait = patientW }
+		limit = { has_trait = patient }
 		multiply = 0.75
 	}
 	if = {	# Scaled by intelligence
@@ -400,22 +408,49 @@ hunting_injury_chance = {
 }
 
 moon_phase_factor = {
-	value = 1
+	value = 0.5
 	if = {
-		limit = { is_full_moon_trigger = yes }
-		multiply = 2
+		limit = {
+			exists = global_var:current_moon_phase
+			global_var:current_moon_phase = {
+				has_variable = aervalr_strength
+			}
+		}
+		add = {
+			value = global_var:current_moon_phase.var:aervalr_strength
+			multiply = 0.01
+		}
+	}
+}
+
+hunting_quest_reward_gold_value = {
+	value = 0
+	if = {
+		limit = { exists = var:quest_tier }
+		if = {
+			limit = { var:quest_tier = flag:mundane }
+			add = tiny_gold_min_value
+		}
+		else_if = {
+			limit = { var:quest_tier = flag:low }
+			add = minor_gold_min_value
+		}
+		else_if = {
+			limit = { var:quest_tier = flag:medium }
+			add = medium_gold_min_value
+		}
+		else_if = {
+			limit = { var:quest_tier = flag:high }
+			add = massive_gold_min_value
+		}
 	}
 	if = {
-		limit = { is_gibbous_moon_trigger = yes }
-		multiply = 1.5
+		limit = { has_focus = adventure_fortune_focus }
+		multiply = 1.3
 	}
 	if = {
-		limit = { is_crescent_moon_trigger = yes }
-		multiply = 0.75
-	}
-	if = {
-		limit = { is_new_moon_trigger = yes }
-		multiply = 0.5
+		limit = { exists = local_var:travel_costs }
+		add = local_var:travel_costs
 	}
 }
 
@@ -431,19 +466,18 @@ vampire_prestige_value = {
 werewolf_prestige_value = {
 	value = major_prestige_value
 	if = {
-		limit = { is_full_moon_trigger = yes }
-		multiply = 2
-	}
-	if = {
-		limit = { is_gibbous_moon_trigger = yes }
-		multiply = 1.5
-	}
-	if = {
-		limit = { is_crescent_moon_trigger = yes }
-		multiply = 0.75
-	}
-	if = {
-		limit = { is_new_moon_trigger = yes }
-		multiply = 0.5
+		limit = {
+			exists = global_var:current_moon_phase
+			global_var:current_moon_phase = {
+				has_variable = aervalr_strength
+			}
+		}
+		multiply = {
+			value = 0.5
+			add = {
+				value = global_var:current_moon_phase.var:aervalr_strength
+				multiply = 0.01
+			}
+		}
 	}
 }

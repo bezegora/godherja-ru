@@ -1,0 +1,8 @@
+﻿#Takes VALUE
+commerce_raiding_income_greater_than = {
+	exists = var:commerce_raiding_gold_potential
+	AND = {
+		quartermaster_commerce_raid_nearby_counties > $VALUE$
+		quartermaster_commerce_shadow_trade_cap > $VALUE$		
+	}
+}

@@ -2537,6 +2537,7 @@ health.1011 = {
 
 	trigger = {
 		can_contract_disease_trigger = { DISEASE = bubonic_plague }
+		always = no
 	}
 
 	weight_multiplier = {
@@ -2553,10 +2554,6 @@ health.1011 = {
 		modifier = {
 			is_adult = no
 			factor = 1.5
-		}
-		modifier = {
-			current_date > 1346.1.1
-			factor = 0
 		}
 	}
 
@@ -5260,16 +5257,6 @@ health.3001 = {
 			reverse_add_opinion = {
 				target = scope:mystic_option
 				modifier = hired_me_opinion
-			}
-			scope:mystic_option = {
-				if = {
-					limit = {
-						NOR = {
-							any_secret = { secret_type = secret_witch }
-							has_trait = witch
-						}
-					}
-				}
 			}
 		}
 
@@ -9755,7 +9742,17 @@ health.7000 = {
 
 	trigger = {
 		NOT = { has_trait = infirm }
-		age >= 60
+		OR = {
+			age >= 50
+			AND = {
+				age >= 30
+				OR = {
+					has_trait = physique_bad
+					has_trait = spindly
+					has_trait = weak
+				}
+			}
+		}
 	}
 
 	weight_multiplier = {
@@ -9774,12 +9771,16 @@ health.7000 = {
 			factor = 5
 		}
 		modifier = {
-			age < 30
-			factor = 0.5
+			has_trait = physique_bad_2
+			factor = 1.2
 		}
 		modifier = {
-			age > 50
+			has_trait = physique_bad_3
 			factor = 1.5
+		}
+		modifier = {
+			age < 50
+			factor = 0.7
 		}
 		modifier = {
 			age > 60
@@ -9787,7 +9788,7 @@ health.7000 = {
 		}
 		modifier = {
 			age > 80
-			factor = 2
+			factor = 3
 		}
 		modifier = {
 			has_trait = athletic 
@@ -9796,6 +9797,18 @@ health.7000 = {
 		modifier = {
 			has_trait = whole_of_body 
 			factor = 0.5
+		}
+		modifier = {
+			has_trait = physique_good_1
+			factor = 0.8
+		}
+		modifier = {
+			has_trait = physique_good_2
+			factor = 0.5
+		}
+		modifier = {
+			has_trait = physique_good_3
+			factor = 0.3
 		}
 		modifier = {
 			has_serious_disease_trigger = yes

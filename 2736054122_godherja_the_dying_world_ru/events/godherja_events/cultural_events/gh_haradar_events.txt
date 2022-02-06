@@ -1,0 +1,344 @@
+﻿namespace = haradar_flavor
+
+haradar_flavor.1000 = { #triggers when a Haradar murders a magi
+	type = character_event
+	hidden = yes
+	immediate = {  #To copy this function to another event copy from here until the end of the effect block
+			root = { 
+					if = {
+						limit = { 
+							scope:murdered_magi = { 
+								NOT = { has_trait = magic_good }	
+								}
+							}
+					}
+					else_if = { # If the magimurder tracking variable does not yet exist, create it. 
+						limit = {
+							NOT = {
+								has_variable = haradar_event_1000_tracker
+							}
+						}
+						set_variable = {
+							name = haradar_event_1000_tracker
+							value = 1
+						}
+						trigger_event = {
+							id = haradar_flavor.2001
+						}
+					}
+					# Otherwise, increment it by 1, the following increments are based on level of magi killed
+					else_if = {
+						limit = { 
+							scope:murdered_magi = { 
+								has_trait = magic_good_1 
+								}
+							}
+						change_variable = {
+							name = haradar_event_1000_tracker
+							add = 1
+						}
+					}
+					# Otherwise, increment it by 2
+					else_if = {
+						limit = { 
+							scope:murdered_magi = { 
+								has_trait = magic_good_2 
+								}
+							}
+						change_variable = {
+							name = haradar_event_1000_tracker
+							add = 2
+						}
+					}
+					# Otherwise, increment it by 4
+					else_if = {
+						limit = { 
+							scope:murdered_magi = { 
+								has_trait = magic_good_3 
+								}
+							}
+						change_variable = {
+							name = haradar_event_1000_tracker
+							add = 4
+						}
+					}
+					# Otherwise, increment it by 6
+					else_if = {
+						limit = { 
+							scope:murdered_magi = { 
+								has_trait = magic_good_4 
+								}
+							}
+						change_variable = {
+							name = haradar_event_1000_tracker
+							add = 6
+						}
+					}
+					# Otherwise, increment it by 8
+					else_if = {
+						limit = { 
+							scope:murdered_magi = { 
+								has_trait = magic_good_5 
+								}
+							}
+						change_variable = {
+							name = haradar_event_1000_tracker
+							add = 8
+						}
+					}
+					# Otherwise, increment it by 10
+					else_if = {
+						limit = { 
+							scope:murdered_magi = { 
+								has_trait = magic_good_6 
+								}
+							}
+						change_variable = {
+							name = haradar_event_1000_tracker
+							add = 10
+						}
+					}
+					# Otherwise, increment it by 12
+					else_if = {
+						limit = { 
+							scope:murdered_magi = { 
+								has_trait = magic_good_7 
+								}
+							}
+						change_variable = {
+							name = haradar_event_1000_tracker
+							add = 10
+						}
+					}
+					# Otherwise, increment it by 14
+					else_if = {
+						limit = { 
+							scope:murdered_magi = { 
+								has_trait = magic_good_8 
+								}
+							}
+						change_variable = {
+							name = haradar_event_1000_tracker
+							add = 14
+						}
+					}
+					# Otherwise, increment it by 18
+					else_if = {
+						limit = { 
+							scope:murdered_magi = { 
+								has_trait = magic_good_9 
+								}
+							}
+						change_variable = {
+							name = haradar_event_1000_tracker
+							add = 18
+						}
+					}
+					# Otherwise, increment it by 22
+					else_if = {
+						limit = { 
+							scope:murdered_magi = { 
+								has_trait = magic_good_10 
+								}
+							}
+						change_variable = {
+							name = haradar_event_1000_tracker
+							add = 22
+						}
+					}
+					# Otherwise, increment it by 26
+					else_if = {
+						limit = { 
+							scope:murdered_magi = { 
+								has_trait = magic_good_11 
+								}
+							}
+						change_variable = {
+							name = haradar_event_1000_tracker
+							add = 26
+						}
+					}
+					# Otherwise, increment it by 30 this level and above are rather arbitrary since there's little chance of magi like this appearing in any game
+					else_if = {
+						limit = { 
+							scope:murdered_magi = { 
+								has_trait = magic_good_12
+								}
+							}
+						change_variable = {
+							name = haradar_event_1000_tracker
+							add = 30
+						}
+					}
+					# Otherwise, increment it by 34 
+					else_if = {
+						limit = { 
+							scope:murdered_magi = { 
+								has_trait = magic_good_13 
+								}
+							}
+						change_variable = {
+							name = haradar_event_1000_tracker
+							add = 34
+						}
+					}
+					# Otherwise, increment it by 38
+					else_if = {
+						limit = { 
+							scope:murdered_magi = { 
+								has_trait = magic_good_14 
+								}
+							}
+						change_variable = {
+							name = haradar_event_1000_tracker
+							add = 38
+						}
+					}
+					# Otherwise, increment it by 42
+					else_if = {
+						limit = { 
+							scope:murdered_magi = { 
+								has_trait = magic_good_15 
+								}
+							}
+						change_variable = {
+							name = haradar_event_1000_tracker
+							add = 42
+						}
+					}
+					# Otherwise, increment it by 44
+					else_if = {
+						limit = { 
+							scope:murdered_magi = { 
+								has_trait = magic_good_16 
+								}
+							}
+						change_variable = {
+							name = haradar_event_1000_tracker
+							add = 44
+						}
+					}
+					# Otherwise, increment it by 46
+					else_if = {
+						limit = { 
+							scope:murdered_magi = { 
+								has_trait = magic_good_17 
+								}
+							}
+						change_variable = {
+							name = haradar_event_1000_tracker
+							add = 46
+						}
+					}
+					# Otherwise, increment it by 48
+					else_if = {
+						limit = { 
+							scope:murdered_magi = { 
+								has_trait = magic_good_18
+								}
+							}
+						change_variable = {
+							name = haradar_event_1000_tracker
+							add = 48
+						}
+					}
+					# Otherwise, increment it by 50
+					else_if = {
+						limit = { 
+							scope:murdered_magi = { 
+								has_trait = magic_good_19 
+								}
+							}
+						change_variable = {
+							name = haradar_event_1000_tracker
+							add = 50
+						}
+					}
+					# finally, increment it by 75
+					else_if = {
+						limit = { 
+							scope:murdered_magi = { 
+								has_trait = magic_good_20 
+								}
+							}
+						change_variable = {
+							name = haradar_event_1000_tracker
+							add = 75
+						}
+					}
+					#Fires an event upon the magi kill assigning the 2nd level trait. threshold is 16-25
+					if = {
+						limit = {
+							var:haradar_event_1000_tracker > 16
+							var:haradar_event_1000_tracker < 25
+						}
+ 
+						# Fire the event which gives the murderer his 2nd level of the trait.
+						trigger_event = {
+							id = haradar_flavor.2002
+							days = 1
+						}
+					}
+					#Fires an event upon magi kill assigning the lvl 3 trait. threshold is 26-40
+					else_if = {
+						limit = {
+							var:haradar_event_1000_tracker > 26
+							var:haradar_event_1000_tracker < 40
+						}
+						# Fire the event which gives the murderer his lvl 3 of the trait.
+						trigger_event = {
+							id = haradar_flavor.2003
+							days = 1
+						}
+					}
+					#Fires an event upon magi kill assigning the lvl 4 trait. threshold is 41-55
+					else_if = {
+						limit = {
+							var:haradar_event_1000_tracker > 41
+							var:haradar_event_1000_tracker < 55
+						}
+						# Fire the event which gives the murderer his lvl 4 of the trait.
+						trigger_event = {
+							id = haradar_flavor.2004
+							days = 1
+						}
+					}
+					#Fires an event upon magi kill assigning the lvl 5 trait. threshold is 56-70
+					else_if = {
+						limit = {
+							var:haradar_event_1000_tracker > 56
+							var:haradar_event_1000_tracker < 70
+						}
+						# Fire the event which gives the murderer his lvl 5 of the trait.
+						trigger_event = {
+							id = haradar_flavor.2005
+							days = 1
+						}
+					}
+					#Fires an event upon magi kill assigning the lvl 6 trait. threshold is 71-99
+					else_if = {
+						limit = {
+							var:haradar_event_1000_tracker > 71
+							var:haradar_event_1000_tracker < 99
+ 
+						}
+						# Fire the event which gives the murderer his lvl 6 of the trait.
+						trigger_event = {
+							id = haradar_flavor.2006
+							days = 1
+						}
+					}
+					#If the Haradar has accumulateed 100 magimurderpoints, fire the event which levels their trait to the max'.
+					else_if = {
+						limit = {
+							var:haradar_event_1000_tracker > 100
+						}
+						# Fire the event which gives them their cool trait.
+						trigger_event = {
+							id = haradar_flavor.2007
+							days = 1
+				}
+			}	
+		}
+	}
+}

@@ -1,0 +1,76 @@
+pdxmesh = {
+	name = "robes_aversarian_mesh"
+	file = "robes_aversarian.mesh"
+	
+	blend_shape = { id = "robes_aversarian_old"					type = "robes_aversarian_old.mesh" }
+	blend_shape = { id = "robes_aversarian_infant"				type = "robes_aversarian_infant.mesh" }
+	blend_shape = { id = "robes_aversarian_fat"					type = "robes_aversarian_fat.mesh" }
+	blend_shape = { id = "robes_aversarian_dwarf"				type = "robes_aversarian_dwarf.mesh" }
+	blend_shape = { id = "robes_aversarian_gaunt"				type = "robes_aversarian_gaunt.mesh" }
+	blend_shape = { id = "robes_aversarian_muscular"			type = "robes_aversarian_muscular.mesh" }
+
+	meshsettings = {
+		name = "robes_aversarian"
+		index = 0
+		texture_diffuse = "robes_aversarian_color.dds"
+		texture_normal = "robes_aversarian_normal.dds"
+		texture_specular = "robes_aversarian_rough.dds"
+		shader = "portrait_attachment_pattern"
+		shader_file = "gfx/FX/jomini/portrait.shader"
+	}
+}
+
+entity = {
+	name = "robes_aversarian_entity"
+	pdxmesh = "robes_aversarian_mesh"
+		
+	attribute = { name = "bs_body_old_1"					blend_shape = "robes_aversarian_old" }
+	attribute = { name = "bs_body_infant_1"					blend_shape = "robes_aversarian_infant" }
+	attribute = { name = "bs_body_fat_1"					blend_shape = "robes_aversarian_fat" }
+	attribute = { name = "bs_body_dwarf_1"					blend_shape = "robes_aversarian_dwarf" }
+	attribute = { name = "bs_body_gaunt_1"					blend_shape = "robes_aversarian_gaunt" }
+	attribute = { name = "bs_body_muscular_1"				blend_shape = "robes_aversarian_muscular" }
+
+	game_data = {
+		portrait_accessory = {
+			pattern_mask = "gfx/models/portraits/attachments/Non-Replacer/Godherja/male_clothes/secular/aversarian/robes_aversarian/robes_aversarian_mask.dds"	#Any 4-channel texture. Each channel will be used to mask a pattern from the variation object
+			variation = "pattern_aversarian_generic"	#A "variation" object in gfx/portraits/accessory_variations/
+		}
+	}
+}
+entity = {
+	name = "robes_aversarian_black_entity"
+	pdxmesh = "robes_aversarian_mesh"
+		
+	attribute = { name = "bs_body_old_1"					blend_shape = "robes_aversarian_old" }
+	attribute = { name = "bs_body_infant_1"					blend_shape = "robes_aversarian_infant" }
+	attribute = { name = "bs_body_fat_1"					blend_shape = "robes_aversarian_fat" }
+	attribute = { name = "bs_body_dwarf_1"					blend_shape = "robes_aversarian_dwarf" }
+	attribute = { name = "bs_body_gaunt_1"					blend_shape = "robes_aversarian_gaunt" }
+	attribute = { name = "bs_body_muscular_1"				blend_shape = "robes_aversarian_muscular" }
+
+	game_data = {
+		portrait_accessory = {
+			pattern_mask = "gfx/models/portraits/attachments/Non-Replacer/Godherja/male_clothes/secular/aversarian/robes_aversarian/robes_aversarian_mask.dds"
+			variation = "pattern_aversarian_black"
+		}
+	}
+}
+entity = {
+	name = "robes_generic_entity"
+	pdxmesh = "robes_aversarian_mesh"
+		
+	attribute = { name = "bs_body_old_1"					blend_shape = "robes_aversarian_old" }
+	attribute = { name = "bs_body_infant_1"					blend_shape = "robes_aversarian_infant" }
+	attribute = { name = "bs_body_fat_1"					blend_shape = "robes_aversarian_fat" }
+	attribute = { name = "bs_body_dwarf_1"					blend_shape = "robes_aversarian_dwarf" }
+	attribute = { name = "bs_body_gaunt_1"					blend_shape = "robes_aversarian_gaunt" }
+	attribute = { name = "bs_body_muscular_1"				blend_shape = "robes_aversarian_muscular" }
+
+	game_data = {
+		portrait_accessory = {
+			pattern_mask = "gfx/models/portraits/attachments/Non-Replacer/Godherja/male_clothes/secular/aversarian/robes_aversarian/robes_aversarian_mask.dds"
+			variation = "pattern_generic"
+		}
+	}
+}

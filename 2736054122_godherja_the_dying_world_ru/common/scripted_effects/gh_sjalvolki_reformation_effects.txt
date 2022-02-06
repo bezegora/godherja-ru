@@ -1,0 +1,115 @@
+﻿reformer_convert_county_effect = {
+	duel = {
+		skill = learning
+		value = $COUNTY$.development_level
+		50 = {
+			compare_modifier = {
+				value = scope:duel_value
+				multiplier = 3.5
+				min = -49
+			}
+			desc = sjalvolki_reformation.conversion_success.tt
+			$COUNTY$.holder = {
+				send_interface_toast = {
+					title = sjalvolki_reformation.conversion_success.tt
+					left_icon = $COUNTY$.holder
+					right_icon = scope:sjalvolki_reformer
+					$COUNTY$ = {
+						set_county_faith = faith:orispolj_rite
+					}
+					scope:sjalvolki_reformer = {
+						add_prestige = {
+							value = $COUNTY$.development_level
+							multiply = 10
+						}
+						add_piety = {
+							value = $COUNTY$.development_level
+							multiply = 5
+						}
+					}
+				}
+			}
+			set_local_variable = {
+				name = notoriety_increase
+				value = {
+					value = $COUNTY$.development_level
+					multiply = 0.1
+					min = 1
+				}
+			}
+			increase_reformer_notoriety_and_fervor_effect = { VALUE = local_var:notoriety_increase }
+		}
+		50 = {
+			compare_modifier = {
+				value = scope:duel_value
+				multiplier = -3.5
+				min = -49
+			}
+			desc = sjalvolki_reformation.conversion_failure.tt
+			send_interface_toast = {
+				title = sjalvolki_reformation.conversion_failure.tt
+				left_icon = $COUNTY$.holder
+				right_icon = scope:sjalvolki_reformer
+				scope:sjalvolki_reformer = {
+					add_prestige = minor_prestige_loss
+				}
+			}
+			increase_reformer_notoriety_and_fervor_effect = { VALUE = 1 }
+		}
+	}
+}
+
+increase_fervor_effect = {
+	if = {
+		limit = { exists = scope:sjalvolki_reformist_story.var:reform_fervor }
+		scope:sjalvolki_reformist_story = {
+			change_variable = {
+				name = reform_fervor
+				add = $VALUE$
+			}
+		}
+	}
+	else = {
+		scope:sjalvolki_reformist_story = {
+			set_variable = {
+				name = reform_fervor
+				add = $VALUE$
+			}
+		}
+	}
+}
+
+increase_reformer_notoriety_and_fervor_effect = {
+	scope:sjalvolki_reformer = {
+		change_variable = {
+			name = notoriety
+			add = $VALUE$
+		}
+		if = {
+			limit = { exists = scope:sjalvolki_reformist_story }
+			if = {
+				limit = { exists = scope:sjalvolki_reformist_story.var:reform_fervor }
+				scope:sjalvolki_reformist_story = {
+					change_variable = {
+						name = reform_fervor
+						add = {
+							value = $VALUE$
+							multiply = 0.5
+						}
+					}
+				}
+			}
+			else = {
+				scope:sjalvolki_reformist_story = {
+					set_variable = {
+						name = reform_fervor
+						add = {
+							value = $VALUE$
+							multiply = 0.5
+						}
+					}
+				}
+			}
+		}
+	}
+}

@@ -59,6 +59,24 @@ opening_event.3 = { #Opener for anyone in Aironoi
 		NOT = {
 			has_title = title:d_phaistetus
 		}
+		NOT = { 
+			has_title = title:k_krehejad
+		}
+		NOT = {
+			has_title = title:c_egd
+		}
+		NOT = {
+			has_title = title:d_ksagro
+		}
+		NOT = {
+			has_title = title:d_shagerali
+		}
+		NOT = {
+			has_title = title:c_ochmati
+		}
+		NOT = {
+			has_title = title:d_ovod
+		}
 	}
 	
 	option = {
@@ -66,7 +84,7 @@ opening_event.3 = { #Opener for anyone in Aironoi
 	}
 }
 
-opening_event.4 = { #Opener for Hecuba
+opening_event.4 = { #Opener for Hecaeda
 	title = opening_event.4.t
 	desc = opening_event.4.desc
 	theme = realm
@@ -158,25 +176,6 @@ opening_event.9 = { #Opener for Heraklios
 
 	option = {
 		name = opening_event.9.a
-	}
-}
-
-opening_event.10 = { #Opener for the Mamur
-	title = opening_event.10.t
-	desc = opening_event.10.desc
-	theme = learning_theology_focus
-	left_portrait = { 
-		character = root
-		animation = worry
-	}
-
-	trigger = {
-		is_ai = no
-		has_title = title:e_sihnamiyah
-	}
-
-	option = {
-		name = opening_event.10.a
 	}
 }
 
@@ -408,25 +407,6 @@ opening_event.22 = { #Opener for Ulfirx
 	}
 }
 
-opening_event.23 = { #Opener for Harthah
-	title = opening_event.23.t
-	desc = opening_event.23.desc
-	theme = battle
-	left_portrait = { 
-		character = root
-		animation = personality_vengeful
-	}
-
-	trigger = {
-		is_ai = no
-		has_title = title:k_khenemhat
-	}
-
-	option = {
-		name = opening_event.23.a
-	}
-}
-
 opening_event.24 = { #Opener for Hammart 
 	title = opening_event.24.t
 	desc = opening_event.24.desc
@@ -443,25 +423,6 @@ opening_event.24 = { #Opener for Hammart
 
 	option = {
 		name = opening_event.24.a
-	}
-}
-
-opening_event.25 = { #Opener for Pejman 
-	title = opening_event.25.t
-	desc = opening_event.25.desc
-	theme = realm
-	left_portrait = { 
-		character = root
-		animation = personality_forgiving
-	}
-
-	trigger = {
-		is_ai = no
-		has_title = title:e_amsari
-	}
-
-	option = {
-		name = opening_event.25.a
 	}
 }
 
@@ -635,3 +596,223 @@ opening_event.34 { #Opener for Iordanes
 		name = opening_event.34.a
 	}
 }
+
+opening_event.42 = { #Opener for Archex of Krehejad
+	title = opening_event.42.t
+	desc = opening_event.42.desc
+	theme = war
+	left_portrait = { 
+		character = root
+		animation = personality_zealous
+	}
+
+	trigger = {
+		is_ai = no
+		has_title = title:k_krehejad
+	}
+
+	option = {
+		name = opening_event.42.a
+	}
+}
+
+opening_event.43 = { #FRIDGEFRIDGEFRIDGEFRIDGEFRIDGE
+	title = opening_event.43.t
+	desc = opening_event.43.desc
+	type = character_event
+	theme = realm
+	left_portrait = {
+		character = root
+		animation = personality_bold
+	}
+
+	immediate = {
+		play_music_cue = "mx_cue_epic_sacral_moment"
+	}
+
+	trigger = {
+		is_ai = no
+		has_title = title:c_egd
+	}
+
+	option = {
+		name = opening_event.43.a
+	}
+}
+
+opening_event.44 = { #Achake of the Sarminians
+	title = opening_event.44.t
+	desc = opening_event.44.desc
+	type = character_event
+	theme = realm
+	left_portrait = {
+		character = root
+		animation = personality_bold
+	}
+
+	immediate = {
+		play_music_cue = "mx_cue_epic_sacral_moment"
+	}
+
+	trigger = {
+		has_title = title:d_puscava
+	}
+
+	option = {
+		name = opening_event.44.a
+		dynasty = {
+		add_dynasty_modifier = {
+		modifier = sarminians_last_boszoj
+		years = 50
+		}
+		add_dynasty_modifier = {
+			modifier = sarminians_last_stand_of_the_clans
+		}
+		}
+	}
+}
+opening_event.45 = { #Opener for Metal Mask
+	title = opening_event.45.t
+	desc = opening_event.45.desc
+	theme = battle
+	left_portrait = { 
+		character = root
+		animation = scheme
+	}
+
+	trigger = {
+		is_ai = no
+		has_title = title:d_ksagro
+	}
+
+	option = {
+		name = opening_event.45.a
+	}
+}
+opening_event.46 = { #Opener for Draneti puppet lord
+	title = opening_event.46.t
+	desc = opening_event.46.desc
+	theme = realm
+	left_portrait = { 
+		character = root
+		animation = personality_honorable
+	}
+
+	trigger = {
+		is_ai = no
+		has_title = title:d_shagerali
+	}
+
+	option = {
+		name = opening_event.46.a
+	}
+}
+opening_event.47 = { #Opener for the White Lion
+	title = opening_event.47.t
+	desc = opening_event.47.desc
+	theme = war
+	left_portrait = { 
+		character = root
+		animation = marshal
+	}
+
+	trigger = {
+		is_ai = no
+		has_title = title:c_ochmati
+	}
+
+	option = {
+		name = opening_event.47.a
+	}
+}
+opening_event.48 = { #Opener for the Last Ertomaxist
+	title = opening_event.48.t
+	desc = opening_event.48.desc
+	theme = realm
+	left_portrait = { 
+		character = root
+		animation = personality_honorable
+	}
+
+	trigger = {
+		is_ai = no
+		has_title = title:d_ovod
+	}
+
+	option = {
+		name = opening_event.48.a
+	}
+}
+opening_event.49 = { #Opener for Vakhtan vampire uncle
+	title = opening_event.49.t
+	desc = opening_event.49.desc
+	theme = realm
+	left_portrait = {
+		character = root
+		animation = personality_zealous
+	}
+	
+	trigger = {
+		is_ai = no
+		has_title = title:d_ksakho
+	}
+	
+	option = {
+		name = opening_event.49.a
+	}
+}
+opening_event.50 = { #Opener for Tarnaz hedonist brother
+	title = opening_event.50.t
+	desc = opening_event.50.desc
+	theme = realm
+	left_portrait = {
+		character = root
+		animation = schadenfreude
+	}
+	
+	trigger = {
+		is_ai = no
+		has_title = title:d_zuri
+	}
+	
+	option = {
+		name = opening_event.50.a
+	}
+}
+opening_event.51 = { #Opener for Khvicha Barbarian Brother
+	title = opening_event.51.t
+	desc = opening_event.51.desc
+	theme = realm
+	left_portrait = {
+		character = root
+		animation = anger
+	}
+	
+	trigger = {
+		is_ai = no
+		has_title = title:d_tshkigri
+	}
+	
+	option = {
+		name = opening_event.51.a
+	}
+}
+opening_event.52 = { #Opener for Parnaz paranoid magi Brother
+	title = opening_event.52.t
+	desc = opening_event.52.desc
+	theme = realm
+	left_portrait = {
+		character = root
+		animation = paranoia
+	}
+	
+	trigger = {
+		is_ai = no
+		has_title = title:d_onemo
+	}
+	
+	option = {
+		name = opening_event.52.a
+	}
+}
+		

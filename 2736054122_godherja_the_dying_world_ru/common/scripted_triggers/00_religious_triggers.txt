@@ -452,11 +452,6 @@ has_negative_attitude_towards_trait_trigger = {
 			scope:negative_status_check = flag:incestuous
 			any_secret = { secret_type = secret_incest }
 		}
-		#WITCH
-		AND = {
-			scope:negative_status_check = flag:witch
-			any_secret = { secret_type = secret_witch }
-		}
 		#CANNIBAL
 		AND = {
 			scope:negative_status_check = flag:cannibal
@@ -530,7 +525,6 @@ secret_is_blackmailable_trigger = {
 }
 
 
-
 ###################
 # Heresy Triggers #
 ###################
@@ -539,6 +533,15 @@ is_preferred_heresy = {
 	is_valid_heresy = {
 		ORIGIN_FAITH = $ORIGIN_FAITH$
 		HERETICAL_FAITH = $HERETICAL_FAITH$
+		AND = {
+			religion_tag = sarradonian_religion
+			OR = {
+				warden_mainstream_schools = {FAITH_1 = $ORIGIN_FAITH$ FAITH_2 = $HERETICAL_FAITH$}
+				warden_traditionalist_schools = {FAITH_1 = $ORIGIN_FAITH$ FAITH_2 = $HERETICAL_FAITH$}
+				warden_idealist_schools = {FAITH_1 = $ORIGIN_FAITH$ FAITH_2 = $HERETICAL_FAITH$}
+			}
+		}
+		
 	}
 }
 
@@ -548,108 +551,32 @@ is_valid_heresy = {
 
 	#Depending on the origin faith's religion/religion group, there may have additional requirements for a heresy to be considered valid.
 	OR = {
-		has_doctrine = pagan_hostility_doctrine
+		has_doctrine = standard_hostility_doctrine
 	}
 }
 
-#Christian Heresy Groups
-faiths_are_in_western_christianity_group = {
-	OR = {
-		$FAITH_1$ = faith:catholic
-		$FAITH_1$ = faith:cathar
-		$FAITH_1$ = faith:waldensian
-		$FAITH_1$ = faith:lollard
-		$FAITH_1$ = faith:insular_celtic
-	}
-	OR = {
-		$FAITH_2$ = faith:catholic
-		$FAITH_2$ = faith:cathar
-		$FAITH_2$ = faith:waldensian
-		$FAITH_2$ = faith:lollard
-		$FAITH_2$ = faith:priscillianism
-		$FAITH_2$ = faith:insular_celtic
-	}
-}
-
-faiths_are_in_orthodox_christianity_group = {
-	OR = {
-		$FAITH_1$ = faith:orthodox
-		$FAITH_1$ = faith:iconoclast
-		$FAITH_1$ = faith:bogomilist
-		$FAITH_1$ = faith:paulician
-		$FAITH_1$ = faith:bosnian_church
-	}
-	OR = {
-		$FAITH_2$ = faith:orthodox
-		$FAITH_2$ = faith:iconoclast
-		$FAITH_2$ = faith:bogomilist
-		$FAITH_2$ = faith:paulician
-		$FAITH_2$ = faith:bosnian_church
-		$FAITH_2$ = faith:cainitism
-	}
-}
-
-faiths_are_in_eastern_christianity_group = {
-	OR = {
-		$FAITH_1$ = faith:coptic
-		$FAITH_1$ = faith:armenian_apostolic
-		$FAITH_1$ = faith:nestorian
-		$FAITH_1$ = faith:messalian
-		$FAITH_1$ = faith:paulician
-	}
-	OR = {
-		$FAITH_2$ = faith:coptic
-		$FAITH_2$ = faith:armenian_apostolic
-		$FAITH_2$ = faith:nestorian
-		$FAITH_2$ = faith:messalian
-		$FAITH_2$ = faith:paulician
-		$FAITH_2$ = faith:mandeaism
-	}
-}
-
-faiths_are_in_sunni_islam_group = {
+wardenite_mainstream_schools = {
 	$FAITH_1$ = {
-		has_doctrine = muhammad_succession_sunni_doctrine
+		has_doctrine = wardenite_mainstream_doctrine
 	}
 	$FAITH_2$ = {
-		OR = {
-			has_doctrine = muhammad_succession_sunni_doctrine
-			has_doctrine = muhammad_succession_muhakkima_doctrine
-			this = faith:sabianism
-			this = faith:manichean
-			this = faith:quranist
-		}
+		has_doctrine = wardenite_mainstream_doctrine
 	}
 }
-
-faiths_are_in_shia_islam_group = {
+warden_idealist_schools = {
 	$FAITH_1$ = {
-		has_doctrine = muhammad_succession_shia_doctrine
+		has_doctrine = wardenite_idealist_doctrine
 	}
 	$FAITH_2$ = {
-		OR = {
-			has_doctrine = muhammad_succession_shia_doctrine
-			has_doctrine = muhammad_succession_muhakkima_doctrine
-			this = faith:valentinianism
-			this = faith:sabianism
-			this = faith:qarmatian
-			this = faith:ghulat
-			this = faith:druze
-			this = faith:alevi
-		}
+		has_doctrine = wardenite_idealist_doctrine
 	}
 }
-
-faiths_are_in_muhakkima_islam_group = {
+warden_traditionalist_schools = {
 	$FAITH_1$ = {
-		has_doctrine = muhammad_succession_muhakkima_doctrine
+		has_doctrine = wardenite_traditionalist_doctrine
 	}
 	$FAITH_2$ = {
-		OR = {
-			has_doctrine = muhammad_succession_muhakkima_doctrine
-			this = faith:manichean
-			this = faith:valentinianism
-		}
+		has_doctrine = wardenite_traditionalist_doctrine
 	}
 }
 
@@ -731,7 +658,7 @@ is_heretic_trigger = {
 is_heathen_trigger = {
 	NOT = { $WHO$.faith.religion = $TARGET$.faith.religion }
 	$TARGET$.faith = {
-		has_doctrine = pagan_hostility_doctrine
+		has_doctrine = standard_hostility_doctrine
 	}
 	$WHO$.faith = {
 		faith_hostility_level = {
@@ -744,7 +671,7 @@ is_heathen_trigger = {
 is_infidel_trigger = {
 	NOT = { $WHO$.faith.religion = $TARGET$.faith.religion }
 	$TARGET$.faith = {
-		NOT = { has_doctrine = pagan_hostility_doctrine }
+		NOT = { has_doctrine = standard_hostility_doctrine }
 	}
 	$WHO$.faith = {
 		faith_hostility_level = {

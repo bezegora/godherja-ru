@@ -82,6 +82,8 @@ scripted_trigger childhood_nice_child_trigger = {
 		ai_compassion >= low_positive_ai_value
 	}
 }
+##################################################
+# STANDARD YEARLIES
 
 ##################################################
 # An Escaping Thrall Robs You
@@ -121,7 +123,7 @@ fp1_yearly.0001 = {
 		#Must be able to raid, or else your thrall economy is being phased out.
 		can_raid_trigger = yes
 		#Should be North Germanic, or the flavour won't make sense.
-		has_culture_group = culture_group:north_germanic_group
+		has_culture_group = culture_group:gh_sjalvolki_group
 		#Needs a knight for scapegoating.
 		any_knight = {
 			count >= 1
@@ -531,8 +533,8 @@ scripted_effect agree_to_courtier_becoming_nithing_effect = {
 	# Then we evict them.
 	banish = yes
 	# Which naturally causes some friction.
-	reverse_add_opinion = {
-		target = scope:offensive_courtier
+	add_opinion = {
+		target = root
 		modifier = hate_opinion
 		opinion = -75
 	}
@@ -1011,7 +1013,7 @@ fp1_yearly.0021 = {
 		NOT = { has_character_flag = had_event_fp1_yearly_0021 }
 		is_landed = yes
 		#Must be North Germanic.
-		has_culture_group = culture_group:north_germanic_group
+		has_culture_group = culture_group:gh_sjalvolki_group
 		#Holmgangs must still be in fashion.
 		NOT = {
 			culture = { has_cultural_era_or_later = culture_era_high_medieval }
@@ -1607,7 +1609,7 @@ fp1_yearly.0031 = {
 		NOT = { has_character_flag = had_event_fp1_yearly_0031 }
 		is_landed = yes
 		#Must be a Sjalvolki or Marcher culture
-		has_culture_group = culture_group:gh_sjalvoki_group
+		has_culture_group = culture_group:gh_sjalvolki_group
 		has_culture_group = culture_group:gh_marcher_group
 		#And that culture must not be too advanced.
 		culture = {
@@ -2171,7 +2173,7 @@ fp1_yearly.0051 = {
 		#With a rural, Sjalvolki capital.
 		capital_county = {
 			#Checking the capital, not the character, since it's a local superstition rather than something you're insisiting on.
-			culture_group = culture_group:gh_sjalvoki_group
+			culture_group = culture_group:gh_sjalvolki_group
 			development_level <= terrible_development_level
 		}
 	}
@@ -3300,7 +3302,7 @@ fp1_yearly.0071 = {
 		# With a rural, Sjalvolki capital.
 		capital_county = {
 			# Checking the capital, not the character, since it's a local superstition rather than something ye're insisiting on.
-			culture_group = culture_group:gh_sjalvoki_group
+			culture_group = culture_group:gh_sjalvolki_group
 			development_level <= terrible_development_level
 			# And ensure it doesn't already have a troll problem.
 			NOT = { has_county_modifier = fp1_yearly_0071_troll_attacks_modifier }
@@ -3719,7 +3721,7 @@ fp1_yearly.0081 = {
 		# With a rural, North Germanic capital.
 		capital_county = {
 			# Checking the capital, not the character, since it's a local superstition rather than something ye're insisiting on.
-			culture_group = culture_group:gh_sjalvoki_group
+			culture_group = culture_group:gh_sjalvolki_group
 			development_level <= terrible_development_level
 		}
 	}
@@ -3871,7 +3873,7 @@ fp1_yearly.0082 = {
 		# With a rural, North Germanic capital.
 		capital_county = {
 			# Checking the capital, not the character, since it's a local superstition rather than something ye're insisiting on.
-			culture_group = culture_group:gh_sjalvoki_group
+			culture_group = culture_group:gh_sjalvolki_group
 			development_level <= terrible_development_level
 		}
 	}
@@ -4023,7 +4025,7 @@ fp1_yearly.0083 = {
 		# With a rural, North Germanic capital.
 		capital_county = {
 			# Checking the capital, not the character, since it's a local superstition rather than something ye're insisiting on.
-			culture_group = culture_group:gh_sjalvoki_group
+			culture_group = culture_group:gh_sjalvolki_group
 			development_level <= terrible_development_level
 		}
 	}
@@ -4175,7 +4177,7 @@ fp1_yearly.0084 = {
 		# With a rural, North Germanic capital.
 		capital_county = {
 			# Checking the capital, not the character, since it's a local superstition rather than something ye're insisiting on.
-			culture_group = culture_group:gh_sjalvoki_group
+			culture_group = culture_group:gh_sjalvolki_group
 			development_level <= terrible_development_level
 		}
 	}
@@ -4340,7 +4342,7 @@ fp1_yearly.0085 = {
 		# With a rural, North Germanic capital.
 		capital_county = {
 			# Checking the capital, not the character, since it's a local superstition rather than something ye're insisiting on.
-			culture_group = culture_group:gh_sjalvoki_group
+			culture_group = culture_group:gh_sjalvolki_group
 			development_level <= terrible_development_level
 		}
 	}
@@ -4734,7 +4736,7 @@ fp1_yearly.0101 = {
 		NOT = { has_character_flag = had_event_fp1_yearly_0101 }
 		is_landed = yes
 		# Valid for North Germanics only.
-		culture_group = culture_group:gh_sjalvoki_group
+		culture_group = culture_group:gh_sjalvolki_group
 		# Has a valid courtier/guest who can quiz you.
 		any_courtier_or_guest = { fp1_valid_riddler_at_court_trigger = yes }
 		# Doesn't have an established extreme hatred of riddles.
@@ -5296,7 +5298,7 @@ scripted_effect fp1_0111_accursed_receives_curse_effect = {
 }
 
 scripted_effect fp1_0111_correct_accusation_effect = {
-	# Give $CHARACTER$ a witch secret & expose it.
+	# Give $CHARACTER$ a Magi secret & expose it.
 	$CHARACTER$ = {
 		# Simply show a nice, easy tooltip.
 		show_as_tooltip = { add_trait = magic_good_1 }
@@ -5607,7 +5609,7 @@ fp1_yearly.0111 = {
 			list = suspicious_courtiers_list
 			weight = {
 				base = 1
-				# Weight up anyone with the witch secret for the main suspect.
+				# Weight up Magi for the main suspect.
 				modifier = {
 					add = 1000
 					has_trait = magic_good
@@ -5621,7 +5623,7 @@ fp1_yearly.0111 = {
 			limit = {
 				NOR = {
 					this = scope:culprit
-					# Forbid secret witches: that's *too* much of a red herring.
+					# Forbid actual magi: that's *too* much of a red herring.
 					has_trait = magic_good
 				}
 			}
@@ -12608,6 +12610,15 @@ fp1_yearly.0692 = {
 	}
 }
 
+
+
+
+
+
+
+
+
+
 ##################################################
 # SPECIAL YEARLIES
 
@@ -12968,7 +12979,7 @@ fp1_yearly.1081 = {
 				trigger = {
 					capital_province = {
 						NOT = {	# People in southern Aversaria are close enough to the Red Waste that it's not particularly noteworthy
-							geographical_region = world_ga_eastern_aversaria
+							geographical_region = world_ga_aironoi
 						}
 					}
 				}

@@ -1,0 +1,627 @@
+namespace = glimpse_reality
+
+###############
+#Glimpse Reality Events
+#By Thundershield
+###############
+
+#opening event for glimpse reality, where you will get a choice of what vision to pursue
+glimpse_reality.0001 = {
+	type = character_event
+	title = glimpse_reality.0001.t
+	desc = glimpse_reality.0001.desc
+	theme = medicine
+	override_background = {
+		event_background = magic_ritual
+	}
+
+	left_portrait = root
+
+	immediate = {
+		glimpse_reality_selection_effect = { CHOICE = choice_1 }
+		glimpse_reality_selection_effect = { CHOICE = choice_2 }
+		glimpse_reality_selection_effect = { CHOICE = choice_3 }
+		glimpse_reality_selection_effect = { CHOICE = choice_4 }
+		glimpse_reality_selection_effect = { CHOICE = choice_5 }
+		set_variable = {
+			name = vision_event
+			days = 1
+		}
+	}
+
+	option = {
+		name = glimpse_reality.0001.a
+		glimpse_reality_choice_effect = { CHOICE = choice_1 }
+	}
+	option = {
+		trigger = { has_perk = mixedmagic_perk8_tree2 }
+		name = glimpse_reality.0001.b
+		glimpse_reality_choice_effect = { CHOICE = choice_5 }
+	}
+	option = {
+		trigger = { has_perk = mixedmagic_perk6_tree2 }
+		name = glimpse_reality.0001.c
+		glimpse_reality_choice_effect = { CHOICE = choice_4 }
+	}
+	option = {
+		trigger = { has_perk = mixedmagic_perk3_tree2 }
+		name = glimpse_reality.0001.d
+		glimpse_reality_choice_effect = { CHOICE = choice_3 }
+	}
+	option = {
+		name = glimpse_reality.0001.e
+		glimpse_reality_choice_effect = { CHOICE = choice_2 }
+	}
+	after = {
+		remove_variable = glimpse_reality_choice_1
+		remove_variable = glimpse_reality_choice_2
+		remove_variable = glimpse_reality_choice_3
+		clear_variable_list = glimpse_reality_choices
+	}
+}
+
+################################
+# 0010 - 0500 : Diplomacy Events
+################################
+glimpse_reality.0010 = {
+	type = character_event
+	title = glimpse_reality.0010.t
+	desc = glimpse_reality.0010.desc
+    theme = hunting
+
+	left_portrait = {
+        character = root
+		animation = spymaster
+    }
+
+	option = {
+		trigger = {
+			has_trait = compassionate
+			NOR = {
+				has_trait = hunter_1
+				has_trait = hunter_2
+				has_trait = hunter_3
+			}
+		}
+        name = glimpse_reality.0010.a
+        add_character_modifier = {
+            modifier = empathy_to_animals
+			years = 10
+        }
+    }
+	option = {
+		trigger = {
+			has_trait = compassionate
+			OR = {
+				has_trait = hunter_1
+				has_trait = hunter_2
+				has_trait = hunter_3
+			}
+		}
+        name = glimpse_reality.0010.b
+        add_character_modifier = {
+            modifier = empathy_to_animals
+			years = 5
+        }
+		add_stress = medium_stress_impact_gain
+    }
+	option = {
+		trigger = {
+			NOT = {
+				has_trait = compassionate
+				OR = {
+					has_trait = hunter_1
+					has_trait = hunter_2
+					has_trait = hunter_3
+				}
+			}
+		}
+        name = glimpse_reality.0010.a
+        add_character_modifier = {
+            modifier = empathy_to_animals
+			years = 10
+        }
+    }
+}
+##############################
+# 0501 - 1000 : Martial Events
+##############################
+
+#Cenwares conquest of Oraispol. Code by thundershield. Writing by Hapchazzard
+glimpse_reality.0501 = {
+	type = character_event
+	title = glimpse_reality.0501.t
+	desc = glimpse_reality.0501.desc
+    theme = war
+    override_background = {
+        event_background = market_west
+    }
+
+    immediate = {
+		hidden_effect = {
+			create_historical_vision_of_character_effect = { CHARACTER = clanlands_sjalvolki_1 AGE = 38 }
+			create_historical_vision_of_character_effect = { CHARACTER = cois_1 AGE = 21 }
+		}
+    }
+
+	left_portrait = {
+        character = scope:clanlands_sjalvolki_1_scope
+        animation = war_over_win
+        outfit_tags = { northern_war fp1_norse }
+        hide_info = yes
+    }
+    
+    right_portrait = {
+        character = scope:cois_1_scope
+        animation = beg
+        hide_info = yes
+    }
+
+
+	option = {#Aversarian Culture before the fall of Oraispol
+		trigger = {
+			has_culture_group = culture_group:gh_imperial_group
+			has_trait = arrogant
+			NOT = { has_global_variable = oraispol_fallen }
+		}
+		name = glimpse_reality.0501.a
+		add_character_modifier = {
+			modifier = martial_visions
+			years = 5
+		}
+	}
+	option = {#Aversarian Culture before the fall of Oraispol
+        trigger = {
+            has_culture_group = culture_group:gh_imperial_group
+            NOT = { has_global_variable = oraispol_fallen }
+        }
+        name = glimpse_reality.0501.b
+        add_character_modifier = {
+            modifier = refusal_of_visions
+			years = 5
+        }
+    }
+    option = {#Aversarian Culture after the fall of Oraispol
+        trigger = {
+            has_culture_group = culture_group:gh_imperial_group
+            has_global_variable = oraispol_fallen
+        }
+        name = glimpse_reality.0501.c
+        add_character_modifier = {
+            modifier = filled_with_vengeance
+			years = 5
+        }
+    }
+    option = {#Sjalvolki Culture before the fall of Oraispol
+        trigger = {
+            has_culture_group = culture_group:gh_sjalvolki_group
+            NOT = { has_global_variable = oraispol_fallen }
+        }
+        name = glimpse_reality.0501.d
+        add_character_modifier = {
+            modifier = great_martial_vision
+			years = 5
+        }
+    }
+    option = {#Sjalvolki Culture after the fall of Oraispol
+        trigger = {
+            has_culture_group = culture_group:gh_sjalvolki_group
+            has_global_variable = oraispol_fallen
+        }
+        name = glimpse_reality.0501.e
+        add_character_modifier = {
+            modifier = great_martial_vision
+			years = 5
+        }
+    }
+    option = {#Everyone else
+        trigger = {
+            NOT = {
+                has_culture_group = culture_group:gh_sjalvolki_group
+                has_culture_group = culture_group:gh_imperial_group
+            }
+        }
+        name = glimpse_reality.0501.f
+        add_character_modifier = {
+            modifier = martial_vision
+			years = 5
+        }
+    }
+	after = {
+        hidden_effect = {
+            scope:clanlands_sjalvolki_1_scope = {
+                death = natural
+            }
+            scope:cois_1_scope = {
+                death = natural
+            }
+        }
+    }
+}
+#Generic martial vision. Writing by Hapchazzard
+glimpse_reality.0502 = {
+	type = character_event
+	title = glimpse_reality.0502.t
+	desc = glimpse_reality.0502.desc
+    theme = war
+	option = {
+		name = glimpse_reality.0502.a
+		add_character_modifier = {
+            modifier = martial_vision
+			years = 5
+        }
+	}
+}
+#marcher battle of the elysian pass. Writing by pwsoap
+#Note to self, gussy this up once I have time
+glimpse_reality.0503 = {
+	type = character_event
+	title = glimpse_reality.0503.t
+	desc = glimpse_reality.0503.desc
+    theme = battle
+	option = {
+		name = glimpse_reality.0503.a
+		add_character_modifier = {
+            modifier = martial_vision
+			years = 5
+        }
+	}
+}
+
+##################################
+# 1001 - 1500 : Stewardship Events
+##################################
+
+glimpse_reality.1001 = {
+	type = character_event
+	title = glimpse_reality.1001.t
+	desc = glimpse_reality.1001.desc
+	theme = stewardship_domain_focus
+
+	option = {
+		name = glimpse_reality.1001.a
+		add_character_modifier = {
+            modifier = stewardship_vision
+			years = 5
+        }
+	}
+}
+
+glimpse_reality.1002 = {
+	type = character_event
+	title = glimpse_reality.1002.t
+	desc = glimpse_reality.1002.desc
+	theme = stewardship_domain_focus
+
+    override_background = {
+        event_background = wilderness_desert
+    }
+
+	option = {
+		name = glimpse_reality.1002.a
+		add_character_modifier = {
+            modifier = feats_of_engineering
+			years = 5
+        }
+	}
+}
+
+###############################
+# 1501 - 2000 : Intrigue Events
+###############################
+
+#Generic Intrigue Vision. Code by thundershield. Writing by Hapchazzard
+glimpse_reality.1501 = {
+	type = character_event
+	title = glimpse_reality.1501.t
+	desc = glimpse_reality.1501.desc
+    theme = intrigue
+
+	left_portrait = {
+        character = root
+		animation = spymaster
+    }
+
+	option = {
+        name = glimpse_reality.1501.a
+        add_character_modifier = {
+            modifier = intrigue_vision
+			years = 5
+        }
+    }
+}
+
+###############################
+# 2001 - 2500 : Learning Events
+###############################
+
+##############################
+# 2501 - 3000 : Prowess Events
+##############################
+
+############################
+# 3001 - 35000 : Magic Events
+############################
+
+#First fogeater. Writing by Hapchazzard
+glimpse_reality.3002 = {
+	type = character_event
+	title = glimpse_reality.3002.t
+	desc = glimpse_reality.3002.desc
+	theme = hunting
+
+	immediate = {
+		create_character = {
+			culture = culture:fog_eaters
+			#faith = fogeater
+			save_scope_as = first_fogeater
+		}
+	}
+
+	left_portrait = {
+		character = scope:first_fogeater
+		animation = shock
+		hide_info = yes
+	}
+
+	option = {
+		name = glimpse_reality.3002.a
+		add_character_modifier = {
+            modifier = insights_of_the_fog
+			years = 5
+        }
+	}
+
+	after = {
+        hidden_effect = {
+            scope:first_fogeater = {
+                death = natural
+            }
+        }
+    }
+}
+
+#Tower Vindeon. Writing by pwsoap
+glimpse_reality.3003 = {
+	type = character_event
+	title = glimpse_reality.3003.t
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					OR = {
+						has_culture_group = culture_group:gh_khemet_group
+						has_culture_group = culture_group:gh_zarasadari_group
+					}
+				}
+				desc = glimpse_reality.3003.desc.a
+			}
+			desc = glimpse_reality.3003.desc.b
+		}
+	}
+	theme = secret
+
+    override_background = {
+        event_background = wilderness_desert
+    }
+
+	left_portrait = {
+		character = scope:first_fogeater
+		animation = shock
+		hide_info = yes
+	}
+
+	option = {
+		name = glimpse_reality.3003.a
+		add_character_modifier = {
+            modifier = fascinated_by_the_towers
+			years = 5
+        }
+	}
+
+	after = {
+        hidden_effect = {
+            scope:first_fogeater = {
+                death = natural
+            }
+        }
+    }
+}
+
+##########################################
+# 3501 - 4000 : Schemes and Secrets Events
+##########################################
+
+#Find out a secret. Code by thundershield. Writing by Parzival 
+glimpse_reality.3501 = {
+	type = character_event
+	title = glimpse_reality.3501.t
+	desc = glimpse_reality.3501.desc
+	theme = intrigue
+
+	immediate = {
+		every_neighboring_and_across_water_top_liege_realm_owner = {
+			limit = {
+				any_secret = {
+					NOT = { is_known_by = root }
+				}
+			}
+			add_to_list = targets
+		}
+		every_vassal = {
+			limit = {
+				any_secret = {
+					NOT = { is_known_by = root }
+				}
+				NOT = { highest_held_title_tier = tier_barony }
+			}
+			add_to_list = targets
+		}
+		every_liege_or_above = {
+			limit = {
+				any_secret = {
+					NOT = { is_known_by = root }
+				}
+			}
+			add_to_list = targets
+		}
+		random_in_list = {
+			list = targets
+			save_scope_as = target
+		}
+	}
+	left_portrait = scope:target
+	option = {
+		name = glimpse_reality.3501.a
+		scope:target = {
+			random_secret = {
+				limit = {
+					NOT = { is_known_by = root }
+				}
+				reveal_to = root
+			}
+		}
+	}
+}
+
+glimpse_reality.3502 = {
+	type = character_event
+	title = glimpse_reality.3502.t
+	desc = glimpse_reality.3502.desc
+
+	option = {
+		name = glimpse_reality.3502.a
+	}
+}
+
+########################################
+# 4001 - 45000 : Recruit Character Events
+########################################
+
+#Recruit Assasin. Code by Thundershield. Writing by Hapchazzard
+glimpse_reality.4001 = {
+	type = character_event
+	title = glimpse_reality.4001.t
+	desc = glimpse_reality.4001.desc
+	theme = intrigue
+	override_background = {
+		event_background = alley_night
+	}
+
+	immediate = {
+		create_character = {
+			template = assassin_template
+			save_scope_as = assassin
+		}
+	}
+
+	left_portrait = {
+		character = scope:assassin
+		animation = spymaster
+	}
+
+	option = {
+		name = glimpse_reality.4001.a
+		pay_short_term_gold = {
+			target = scope:assassin
+			gold = minor_gold_min_value
+		}
+		recruit_courtier = scope:assassin
+	}
+	option = {
+		name = glimpse_reality.4001.b
+	}
+}
+
+#Recruite Commander. Code by Thundershield, Writing by Parzival
+glimpse_reality.4002 = {
+	type = character_event
+	title = glimpse_reality.4002.t
+	desc = glimpse_reality.4002.desc
+	theme = martial
+	override_background = {
+		event_background = army_camp
+	}
+
+	immediate = {
+		create_character = {
+			template = new_commander_character
+			faith = root.faith
+			culture = root.culture
+			save_scope_as = commander
+		}
+	}
+
+	left_portrait = {
+		character = scope:commander
+		animation = marshal
+	}
+
+	option = {
+		name = glimpse_reality.4002.a
+		pay_short_term_gold = {
+			target = scope:commander
+			gold = minor_gold_min_value
+		}
+		recruit_courtier = scope:commander
+	}
+	option = {
+		name = glimpse_reality.4002.b
+	}
+}
+
+##############################
+# 4501 - 5000 : Special Events
+##############################
+
+####################################
+# 9501 - 9999 : Failed Vision Events
+####################################
+
+#See the death of the last dragon. Code by Thundershield. Writing by Parzival
+glimpse_reality.9501 = {
+	type = character_event
+	title = glimpse_reality.9501.t
+	desc = glimpse_reality.9501.desc
+	theme = death
+	override_background = {
+        event_background = courtyard
+    }
+
+	left_portrait = {
+		character = root
+		animation = pain
+	}
+
+	option = {
+		name = glimpse_reality.9501.a
+        add_character_modifier = {
+            modifier = sorrow_of_the_dragons
+			years = 5
+        }
+	}
+}
+
+#puppet king. Writing by pwsoap
+glimpse_reality.9502 = {
+	type = character_event
+	title = glimpse_reality.9502.t
+	desc = glimpse_reality.9502.desc
+	theme = death
+	override_background = {
+        event_background = gallows
+    }
+
+	left_portrait = {
+		character = root
+		animation = pain
+	}
+
+	option = {
+		name = glimpse_reality.9502.a
+        add_character_modifier = {
+            modifier = imprisoned_soul
+			years = 5
+        }
+	}
+}

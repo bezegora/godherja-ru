@@ -1,0 +1,139 @@
+﻿ahridar_1 = { #Tiglath
+	name = "Tiglath"
+	religion = ahridar
+	culture = aiyqarbkhiyl
+	sexuality = heterosexual
+	
+	diplomacy = 8
+	martial = 11
+	stewardship = 5
+	intrigue = 7
+	learning = 4
+	1182.5.19 = {
+		birth = yes
+		trait = magic_good_3
+	}
+	1198.5.19 = {
+		trait = zealous
+		trait = brave
+		trait = chaste
+		trait = ambitious
+		trait = education_martial_3
+		trait = education_living_magic_2
+	}
+	1242.3.28 = {
+		death = yes
+	}
+}
+
+ahridar_2 = { #Taduesz, Tiglath's incompetent son
+	name = "Taduesz"
+	religion = ahridar
+	culture = aiyqarbkhiyl
+	
+	father = ahridar_1
+
+	diplomacy = 2
+	martial = 8
+	1222.1.1 = {
+		birth = yes
+		trait = magic_good_1
+	}
+	1238.5.19 = {
+		trait = gluttonous
+		trait = greedy
+		trait = arrogant
+		trait = education_martial_1
+		trait = education_living_magic_1
+	}
+}
+
+ahridar_3 = {#Taduesz's rival
+	name = "Burab"
+	religion = ahridar
+	culture = aaoyuotaa
+
+	1210.1.1 = {
+		birth = yes
+	}
+	1226.1.1 = {
+		trait = zealous
+		trait = stubborn
+		trait = vengeful
+		trait = education_learning_3
+	}
+	1238.1.1  {
+		set_relation_rival = character:ahridar_2
+	}
+}
+
+ahridar_4 = {#Pirate who stayed behind
+	name = "Arquos"
+	religion = ahridar
+	culture = aaoyuotaa
+
+	1215.1.1 = {
+		birth = yes
+	}
+	1226 = {
+		trait = cynical
+		trait = stubborn
+		trait = greedy
+		trait = education_martial_2
+	}
+}
+
+ahridar_5 = {#merchant
+	name = "Nisruch"
+	religion = ahridar
+	culture = tagrodar
+
+	1234.1.1 = {
+		birth = yes
+	}
+	1250.1.1 = {
+		trait = temperate
+		trait = education_stewardship_3
+	}
+}
+
+ahridar_6 = {
+	name = "Ieshu"
+	religion = ahridar
+	culture = aiyqarbkhiyl
+	1208.1.1 = {
+		birth = yes
+	}
+	1224.1.1 = {
+		trait = stubborn
+		trait = callous
+		trait = humble
+	}
+}
+
+ahridar_7 =  {
+	name = "Masgurda"
+	religion = ahridar
+	culture = tagrodar
+	1222.6.24 = {
+		birth = yes
+	}
+}
+
+ahridar_8 =  {
+	name = "Gharmul"
+	religion = ahridar
+	culture = tagrodar
+	1230.8.12 = {
+		birth = yes
+	}
+}
+
+ahridar_9 =  {
+	name = "irat'e"
+	religion = ahridar
+	culture = aaoyuotaa
+	1222.4.17 = {
+		birth = yes
+	}
+}

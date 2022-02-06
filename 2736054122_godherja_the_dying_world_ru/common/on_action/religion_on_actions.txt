@@ -3,7 +3,6 @@
 # Code on-action: character creates a faith
 # Root is the creator
 # scope:old_faith is the faith they used to have
-# you have to access the new faith through root.faith
 on_faith_created = {
 	effect = {
 		scope:old_faith = {
@@ -16,9 +15,6 @@ on_faith_created = {
 		}
 		set_variable = { name = has_created_a_faith }
 		check_for_equal_doctrine_effect = yes
-		root = {
-			add_achievement_flag = { FLAG = achievement_its_not_a_cult_flag }
-		}
 
 		if = {
 			limit = {
@@ -27,7 +23,7 @@ on_faith_created = {
 
 			if = {
 				limit = {
-					scope:old_faith = 
+					scope:old_faith = {
 						trigger_if = {
 							trigger = {
 								has_doctrine_parameter = lifepath_choice
@@ -53,6 +49,110 @@ on_faith_created = {
 				}
 			}
 		}
+		if = {
+			limit = {
+				# Mainliners should copy over recognized mamuramats
+				scope:old_faith = { has_variable_list = recognized_high_court_list }
+				root.faith = {
+					has_doctrine = wardenite_mainstream_doctrine
+				}
+			}
+			scope:old_faith = {
+				if = {
+					limit = { has_variable = sole_mamur_recognized }
+					every_in_list = {
+						variable = recognized_high_court_list
+						save_temporary_scope_as = high_court_to_copy
+						root.faith = {
+							add_recognized_high_court_faith_effect = {
+								HIGH_COURT = high_court_to_copy
+								SOLE_RECOGNIZED = yes
+							}
+						}
+					}
+				}
+				else = {
+					every_in_list = {
+						variable = recognized_high_court_list
+						save_temporary_scope_as = high_court_to_copy
+						root.faith = {
+							add_recognized_high_court_faith_effect = {
+								HIGH_COURT = high_court_to_copy
+								SOLE_RECOGNIZED = no
+							}
+						}
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				# Traditionalists should copy the classic 4
+				root.faith = {
+					has_doctrine = wardenite_traditionalist_doctrine
+				}
+			}
+			# Yes, I'm a lazy bastard
+			faith:haradar = {
+				every_in_list = {
+					variable = recognized_high_court_list
+					save_temporary_scope_as = high_court_to_copy
+					root.faith = {
+						add_recognized_high_court_faith_effect = {
+							HIGH_COURT = high_court_to_copy
+							SOLE_RECOGNIZED = no
+						}
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				# Idealists should form a new one
+				root.faith = {
+					has_doctrine = wardenite_idealist_doctrine
+				}
+			}
+			create_high_court_effect = { HIGH_COURT_SCOPE_NAME = new_idealist_high_court MAMURAMAT_TITLE = none }
+			root = { save_scope_as = high_judge_template_character }
+			root.faith = {
+				add_recognized_high_court_faith_effect = {
+					HIGH_COURT = new_idealist_high_court
+					SOLE_RECOGNIZED = yes 
+				}
+			}
+			generate_procedural_legal_tradition_effect = { LEVEL = 0 TRAIT_POINTS = 4 }
+			scope:created_legal_tradition = {
+				assign_legal_tradition_to_high_court_effect = { HIGH_COURT = new_idealist_high_court }
+			}
+			generate_procedural_legal_tradition_effect = { LEVEL = 0 TRAIT_POINTS = 4 }
+			scope:created_legal_tradition = {
+				assign_legal_tradition_to_high_court_effect = { HIGH_COURT = new_idealist_high_court }
+			}
+			generate_procedural_legal_tradition_effect = { LEVEL = 0 TRAIT_POINTS = 4 }
+			scope:created_legal_tradition = {
+				assign_legal_tradition_to_high_court_effect = { HIGH_COURT = new_idealist_high_court }
+			}
+			generate_procedural_legal_tradition_effect = { LEVEL = 0 TRAIT_POINTS = 4 }
+			scope:created_legal_tradition = {
+				assign_legal_tradition_to_high_court_effect = { HIGH_COURT = new_idealist_high_court }
+			}
+			generate_procedural_legal_tradition_effect = { LEVEL = 0 TRAIT_POINTS = 4 }
+			scope:created_legal_tradition = {
+				assign_legal_tradition_to_high_court_effect = { HIGH_COURT = new_idealist_high_court }
+			}
+			scope:new_idealist_high_court = {
+				add_several_high_court_seats_effect = { NUMBER = 10 }
+				fill_all_high_court_seats_effect = yes
+			}
+		}
+		# By default, divergent mainliners still recognize the old Mamur, though this can change afterward
+		root.faith = {
+			if = {
+				limit = { has_doctrine = special_doctrine_singular_mamur_hostility }
+				remove_doctrine = special_doctrine_singular_mamur_hostility
+			}
+		}
 	}
 
 	events = {
@@ -74,10 +174,35 @@ on_faith_conversion = {
 			limit = { has_character_modifier = aeschraes_pissed_on_my_wife } # You're not getting out of this that easily, Aeschres
 			set_character_faith = scope:old_faith
 		}
+		if = {
+			limit = { 
+				OR = {
+					has_trait = lifestyle_hunter
+					has_trait = lifestyle_beasthunter
+				}
+			}
+			convert_hunter_to_beasthunter_effect = yes
+		}
+		if = {
+			limit = {
+				NOT = {
+					has_global_variable = rite_wars
+				} 
+				OR = {
+					has_faith = faith:piety_rite
+					has_faith = faith:orispolj_rite
+					has_faith = faith:authority_rite
+					has_faith = faith:eastern_rite
+				}
+			}
+			set_character_faith = scope:old_faith
+		}
 	}
 	events = {
 		faith_conversion.0001	# Convert capital county
 		faith_conversion.0003	# Convert close family
+		faith_conversion.1001	# Player-only narrative-notification event
+		faith_conversion.1101   # Notify vassals of conversion
 	}
 }
 

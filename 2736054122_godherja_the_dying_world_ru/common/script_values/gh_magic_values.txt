@@ -4,6 +4,7 @@ magic_defense_from_magic_criminal = 25
 magic_defense_from_magic_shunned = 25
 magic_defense_from_antimagic_field = 100
 
+
 ##############
 # COURT MAGE #
 ##############
@@ -27,18 +28,6 @@ court_mage_transfer_value = {
 ###################
 # MAGICAL PROWESS #
 ###################
-magical_prowess_add_general = {
-	value = 0
-
-
-}
-
-magical_prowess_multiply_general = {
-	value = 0
-
-	
-}
-
 
 magical_prowess_education_bonus = {
 	value = 0
@@ -119,9 +108,22 @@ magical_prowess_add_traits = {
 	}
 }
 
+##############
+# SPELL COST #
+##############
+
+magic_counter_double = {
+	value = 0
+	if = {
+		limit = { has_variable = magic_counter }
+		add = var:magic_counter
+	}
+	multiply = 2
+}
+
 level_spell_multiplier = {
 	value = 1
-		if = {
+	if = {
 		limit = {
 			trigger_if = {
 				limit = { has_variable = magic_lvl }
@@ -176,7 +178,7 @@ level_spell_multiplier = {
 				}
 			}
 		}
-		multiply = 3
+		multiply = 1.5
 	}
 }
 
@@ -205,21 +207,143 @@ tier_5_spell = {
 	multiply = level_spell_multiplier
 }
 
-dead_magic_moon_pull_multiplier = {
+#############################
+# DEAD MAGIC MUTATION VALUES#
+#############################
+
+dead_magi_trait_progress_1_value = {
 	value = 1
 	if = {
 		limit = {
-		has_character_modifier = pulling_moon_mod
-		is_any_good_moon_trigger = yes
+			is_full_moon_trigger = yes
+			has_character_modifier = pulling_moon_mod
 		}
-	subtract = 0.15
+		add = 0.2
 	}
 	if = {
 		limit = {
-		has_character_modifier = pulling_moon_mod
-		is_full_moon_trigger = yes
+			is_any_good_moon_trigger = yes
+			has_character_modifier = pulling_moon_mod
 		}
-	subtract = 0.15
+		add = 0.2
+	}
+}
+
+dead_magi_trait_progress_2_value = {
+	value = dead_magi_trait_progress_1_value
+	multiply = 2
+}
+
+dead_magi_trait_progress_3_value = {
+	value = dead_magi_trait_progress_1_value
+	multiply = 3
+}
+
+##############
+# DEAD MAGIC #
+##############
+
+dead_magic_moon_spell_cost_multiplier = {
+	value = 1
+	if = {
+		limit = {
+			has_character_modifier = pulling_moon_mod
+			is_any_good_moon_trigger = yes
+		}
+		subtract = 0.10
+	}
+	if = {
+		limit = {
+			has_character_modifier = pulling_moon_mod
+			is_full_moon_trigger = yes
+		}
+		subtract = 0.10
+	}
+	if = { 
+		limit = { is_full_moon_trigger = yes }
+		subtract = 0.10
+	}
+	else_if = { 
+		limit = { is_gibbous_moon_trigger = yes }
+		subtract = 0.05
+	}
+	else_if = {
+		limit = { is_quarter_moon_trigger = yes}
+		add = quarter_moon_spell_cost_multiplier
+	}
+	else_if = {
+		limit = { is_crescent_moon_trigger = yes}
+		add = crescent_moon_spell_cost_multiplier
+	}
+	else_if = {
+		limit = { is_new_moon_trigger = yes}
+		add = crescent_moon_spell_cost_multiplier
+	}
+}
+
+quarter_moon_spell_cost_multiplier = {
+	value = 0
+	if = {
+		limit ={
+			root.var:magic_lvl = { compare_value = 2 }
+		}
+		add = 0.25
+	}
+	else_if = {
+		limit ={
+			root.var:magic_lvl = { compare_value = 3 }
+		}
+		add = 1
+	}
+}
+
+crescent_moon_spell_cost_multiplier = {
+	value = 0
+	if = {
+		limit ={
+			root.var:magic_lvl = { compare_value = 1 }
+		}
+		add = 0.25
+	}
+	else_if = {
+		limit ={
+			root.var:magic_lvl = { compare_value = 2 }
+		}
+		add = 1
+	}
+	else_if = {
+		limit ={
+			root.var:magic_lvl = { compare_value = 3 }
+		}
+		add = 2
+	}
+}
+
+new_moon_spell_cost_multiplier = {
+	value = 0
+	if = {
+		limit ={
+			root.var:magic_lvl = { compare_value = 0 }
+		}
+		add = 0.25
+	}
+	else_if = {
+		limit ={
+			root.var:magic_lvl = { compare_value = 1 }
+		}
+		add = 1
+	}
+	else_if = {
+		limit ={
+			root.var:magic_lvl = { compare_value = 2 }
+		}
+		add = 2
+	}
+	else_if = {
+		limit ={
+			root.var:magic_lvl = { compare_value = 3 }
+		}
+		add = 5
 	}
 }
 
@@ -301,31 +425,31 @@ dead_magic_monthly_magic_4 = {
 tier_1dead_spell = {
 	value = 25
 	multiply = level_spell_multiplier
-	multiply = dead_magic_moon_pull_multiplier
+	multiply = dead_magic_moon_spell_cost_multiplier
 }
 
 tier_2dead_spell = {
 	value = 50
 	multiply = level_spell_multiplier
-	multiply = dead_magic_moon_pull_multiplier
+	multiply = dead_magic_moon_spell_cost_multiplier
 }
 
 tier_3dead_spell = {
 	value = 100
 	multiply = level_spell_multiplier
-	multiply = dead_magic_moon_pull_multiplier
+	multiply = dead_magic_moon_spell_cost_multiplier
 }
 
 tier_4dead_spell = {
 	value = 150
 	multiply = level_spell_multiplier
-	multiply = dead_magic_moon_pull_multiplier
+	multiply = dead_magic_moon_spell_cost_multiplier
 }
 
 tier_5dead_spell = {
 	value = 200
 	multiply = level_spell_multiplier
-	multiply = dead_magic_moon_pull_multiplier
+	multiply = dead_magic_moon_spell_cost_multiplier
 }
 
 tier_1_gen = {
@@ -392,35 +516,43 @@ GetMagicAdditionTT = {
 	value = scope:adding
 }
 
-gedeora_min_distance_value = {
-	value = 1
-	if = {
-		limit = { scope:gedeora_epicenter = { has_variable = medium_gedeora } }
-		add = 4
-	}
-	else_if = {
-		limit = { scope:gedeora_epicenter = { has_variable = big_gedeora } }
-		add = 10
-	}
-	if = {
-		limit = { scope:gedeora_epicenter = { has_variable = huge_gedeora } }
-		add = 20
-	}
-}
 
-gedeora_max_distance_value = {
-	value = 2
+
+gedeora_distance_value = {
+	value = 1
+	# Small Gedeoras affect anything between just one county and a Wales-sized area
 	if = {
-		limit = { scope:gedeora_epicenter = { has_variable = medium_gedeora } }
-		add = 8
+		limit = { scope:gedeora_epicenter = { has_variable = small_gedeora } }
+		add = {
+			fixed_range = {
+				min = 0
+				max = squared_distance_small
+			}
+		}
 	}
+	# Medium Gedeoras affect between a Wales-sized area and an Ireland-sized area
+	else_if = {
+		limit = { scope:gedeora_epicenter = { has_variable = medium_gedeora } }
+		fixed_range = {
+			min = squared_distance_small
+			max = squared_distance_medium
+		}
+	}
+	# Big Gedeoras affect between an Ireland-sized area and a France-sized area
 	else_if = {
 		limit = { scope:gedeora_epicenter = { has_variable = big_gedeora } }
-		add = 20
+		fixed_range = {
+			min = squared_distance_medium
+			max = squared_distance_large
+		}
 	}
-	if = {
+	# Huge Gedeoras affect between a France-sized area and above
+	else_if = {
 		limit = { scope:gedeora_epicenter = { has_variable = huge_gedeora } }
-		add = 40
+		fixed_range = {
+			min = squared_distance_large
+			max = squared_distance_massive
+		}
 	}
 }
 
@@ -504,6 +636,46 @@ overwhelmation_after_spell = {
 			add = 4
 		}
 	}
+}
+
+overwhelmation_after_moon_pull_pre = {
+value = 0
+if = {
+		limit = { root = { has_variable = magic_lvl } }
+		if = {
+			limit = { root.var:magic_lvl = 0 }
+			add = 0.5
+		}
+		else_if = {
+			limit = { root.var:magic_lvl = 1 }
+			add = 1
+		}
+		else_if = {
+			limit = { root.var:magic_lvl = 2 }
+			add = 2
+		}
+		else_if = {
+			limit = { root.var:magic_lvl = 3 }
+			add = 4
+		}
+	}
+	if ={
+		limit = { is_full_moon_trigger = yes }
+		multiply = 1.4
+	}
+	else_if ={
+		limit = { is_any_good_moon_trigger = yes }
+		multiply = 1.2
+	}
+}
+
+overwhelmation_after_moon_pull = {
+	value = 0
+	if = {
+		limit = { has_variable = overwhelmation }
+		add = var:overwhelmation
+	}
+	add = overwhelmation_after_moon_pull_pre
 }
 
 ritual_scars_progress_threshold_first = 3
@@ -629,6 +801,13 @@ sacrifice_value_adjusted = {
 		multiply = 100
 	}
 	add = sacrifice_value
+	if = {
+		limit = { age < 16}
+		multiply = 0.5
+	}
+	if = { limit = { age < 8}
+		multiply = 0.5
+	}
 	multiply = root.sacrifice_value_multiplier
 	if = {
 		limit = {
@@ -681,6 +860,16 @@ sacrifice_value_adjusted = {
 		}
 		multiply = 1.5
 	}
+	if = {
+		limit = { 
+			exists = global_var:current_moon_phase
+			exists = global_var:current_moon_phase.var:magic_from_sacrifices
+		}
+		multiply = {
+			value = global_var:current_moon_phase.var:magic_from_sacrifices
+			multiply = 0.05
+		}
+	}
 }
 
 dread_from_sacrifice = {
@@ -708,6 +897,174 @@ dread_from_sacrifice = {
 	}
 }
 
+sacrifice_population_max_dev = {
+	value = development_level
+	subtract = 1
+	min = 0
+}
+
+sacrifice_population_county_min = {
+	value = 1
+	max = sacrifice_population_max_dev
+}
+
+sacrifice_population_county_mid = {
+	value = 0
+	add = development_level
+	multiply = 0.1
+	ceiling = yes
+	max = sacrifice_population_max_dev
+}
+
+sacrifice_population_county_major = {
+	value = sacrifice_population_county_mid
+	multiply = 2
+	max = sacrifice_population_max_dev
+}
+
+sacrifice_population_county_huge = {
+	value = sacrifice_population_county_mid
+	multiply = 3
+	max = sacrifice_population_max_dev
+}
+
+sacrifice_population_county_tyranny_min = {
+	value = sacrifice_population_county_min
+	multiply = 1.5
+}
+
+sacrifice_population_county_tyranny_mid = {
+	value = sacrifice_population_county_mid
+	multiply = 1.5
+}
+
+sacrifice_population_county_tyranny_major = {
+	value = sacrifice_population_county_major
+	multiply = 1.5
+}
+
+sacrifice_population_county_tyranny_huge = {
+	value = sacrifice_population_county_huge
+	multiply = 1.5
+}
+
+sacrifice_population_dev_malus_min = {
+	value = 0
+	subtract = sacrifice_population_county_min
+}
+
+sacrifice_population_dev_malus_mid = {
+	value = 0
+	subtract = sacrifice_population_county_mid
+}
+
+sacrifice_population_dev_malus_major = {
+	value = 0
+	subtract = sacrifice_population_county_major
+}
+
+sacrifice_population_dev_malus_huge = {
+	value = 0
+	subtract = sacrifice_population_county_huge
+}
+
+sacrifice_population_control_malus_min = {
+	value = 0
+	subtract = sacrifice_population_county_min
+	multiply = 2
+}
+
+sacrifice_population_control_malus_mid = {
+	value = 0
+	subtract = sacrifice_population_county_mid
+	multiply = 2
+}
+
+sacrifice_population_control_malus_major = {
+	value = 0
+	subtract = sacrifice_population_county_major
+	multiply = 2
+}
+
+sacrifice_population_control_malus_huge = {
+	value = 0
+	subtract = sacrifice_population_county_huge
+	multiply = 2
+}
+
+sacrifice_population_magic_multiplier = {
+	value = 35
+	if = {
+		limit = {
+			root.faith = {
+				has_doctrine = tenet_aeschres_legacy
+			}
+		}
+		multiply = 1.2
+	}
+	if = {
+		limit = {
+			root = {
+				any_held_title = {
+					trigger_if = {
+						limit = { tier = tier_county }
+						any_county_province = {
+							OR = {
+								has_building = thebloodyard	
+								has_building = thebloodyard_02
+							}
+						}
+					}
+					trigger_else = { always = no }
+				}
+			}
+		}
+		multiply = 2
+	}
+}
+
+sacrifice_population_magic_min = {
+	value = 1
+	max = sacrifice_population_max_dev
+	multiply = sacrifice_population_magic_multiplier
+}
+
+sacrifice_population_magic_mid = {
+	value = sacrifice_population_county_mid
+	multiply = sacrifice_population_magic_multiplier
+}
+
+sacrifice_population_magic_major = {
+	value = sacrifice_population_county_major
+	multiply = sacrifice_population_magic_multiplier
+}
+
+sacrifice_population_magic_huge = {
+	value = sacrifice_population_county_huge
+	multiply = sacrifice_population_magic_multiplier
+}
+
+sacrifice_population_piety_min = {
+	value = 1
+	max = sacrifice_population_max_dev
+	multiply = 15
+}
+
+sacrifice_population_piety_mid = {
+	value = sacrifice_population_county_mid
+	multiply = 15
+}
+
+sacrifice_population_piety_major = {
+	value = sacrifice_population_county_major
+	multiply = 15
+}
+
+sacrifice_population_piety_huge = {
+	value = sacrifice_population_county_huge
+	multiply = 15
+}
+
 living_magi_trait_progress_threshold = {
 	value = living_magi_trait_progress_threshold_base
 	if = {
@@ -731,13 +1088,13 @@ magi_potency = {
 	value = 0
 	if = { limit = { has_trait = magic_good_1  } add = 1  } 
 	if = { limit = { has_trait = magic_good_2  } add = 2  } 
-	if = { limit = { has_trait = magic_good_3  }  add = 3  }
+	if = { limit = { has_trait = magic_good_3  } add = 3  }
 	if = { limit = { has_trait = magic_good_4  } add = 4  } 
 	if = { limit = { has_trait = magic_good_5  } add = 5  } 
-	if = { limit = { has_trait = magic_good_6  }  add = 6  }
+	if = { limit = { has_trait = magic_good_6  } add = 6  }
 	if = { limit = { has_trait = magic_good_7  } add = 7  } 
 	if = { limit = { has_trait = magic_good_8  } add = 8  } 
-	if = { limit = { has_trait = magic_good_9  }  add = 9  }
+	if = { limit = { has_trait = magic_good_9  } add = 9  }
 	if = { limit = { has_trait = magic_good_10 } add = 10 } 
 	if = { limit = { has_trait = magic_good_11 } add = 11 } 
 	if = { limit = { has_trait = magic_good_12 } add = 12 }

@@ -6,9 +6,6 @@ namespace = poetry
 poetry.0001 = {
 	type = character_event
 	desc = {
-		desc = "Ahem, here is my poem:"
-		desc = poetry_line_break
-		desc = poetry_line_break
 		# First line
 		random_valid = {
 			triggered_desc = {
@@ -152,9 +149,6 @@ poetry.0001 = {
 				desc = fourth_line_text_set_2_B
 			}
 		}
-		desc = poetry_line_break
-		desc = poetry_line_break
-		desc = "Thank you. Thank you all very much."
 	}
 	left_portrait = root
 	theme = learning
@@ -202,7 +196,7 @@ poetry.0001 = {
 	}
 
 	option = {
-		name = "Cool"
+		name = OK_BUTTON
 	}
 }
 
@@ -211,9 +205,6 @@ poetry.0002 = {
 	type = character_event
 	title = poetry.0002.t
 	desc = {
-		desc = "Ahem. Here is my poem:"
-		desc = poetry_line_break
-		desc = poetry_line_break
 		random_valid = {
 			desc = 0002.blank_verse_line_1_A	
 			desc = 0002.blank_verse_line_1_B	
@@ -241,14 +232,11 @@ poetry.0002 = {
 			desc = 0002.blank_verse_line_4_C	
 			desc = 0002.blank_verse_line_4_D	
 		}
-		desc = poetry_line_break
-		desc = poetry_line_break
-		desc = "Thank you all very much."
 	}
 	theme = learning
 
 	option = {
-		name = "Cool."
+		name = OK_BUTTON
 	}
 }
 
@@ -267,11 +255,12 @@ poetry.0003 = {
 	desc = {
 		triggered_desc = {
 			trigger = { NOT = { scope:recipient = scope:actor } }
-			desc = 0003.poetry_from
+			desc = {
+				desc = 0003.poetry_from
+				desc = poetry_line_break
+				desc = poetry_line_break
+			}
 		}
-		desc = "'Ahem. Here is my poem:"
-		desc = poetry_line_break
-		desc = poetry_line_break
 		random_valid = {
 			desc = 0003.line_1_A	
 			desc = 0003.line_1_B	
@@ -299,9 +288,6 @@ poetry.0003 = {
 			#desc = 0003.line_4_C	
 			#desc = 0003.line_4_D	
 		}
-		desc = poetry_line_break
-		desc = poetry_line_break
-		desc = "Thank you all very much.'"
 	}
 	theme = learning
 
@@ -320,30 +306,9 @@ poetry.0003 = {
 				}
 			}
 		}
-		random_list = {
-			50 = {
-				add_character_flag = terrible_poem
-			}
-			50 = {
-				add_character_flag = amazing_poem
-			}
-		}
 	}
 
 	option = {
-		name = "What a terrible poem."
-		trigger = { has_character_flag = terrible_poem }
-	}
-
-	option = {
-		name = "A true poet!"
-		trigger = { has_character_flag = amazing_poem }
-	}
-
-	after = {
-		hidden_effect = {
-			remove_character_flag = terrible_poem
-			remove_character_flag = amazing_poem
-		}
+		name = OK_BUTTON
 	}
 }

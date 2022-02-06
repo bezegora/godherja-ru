@@ -1,0 +1,100 @@
+﻿namespace = sheharddi_flavor
+
+# Setup Dejure titles after taking the 4 duchies
+sheharddi_flavor.1000 = {
+	hidden = yes
+
+	immediate = {
+		title:d_lavagheh = { set_de_jure_liege_title = title:k_itaykvit }
+		title:d_tel_habja = { set_de_jure_liege_title = title:k_itaykvit }
+		title:d_merrha = { set_de_jure_liege_title = title:k_itaykvit }
+		title:d_al_saitan = { set_de_jure_liege_title = title:k_itaykvit }
+		title:d_khefyyih = { set_de_jure_liege_title = title:k_itaykvit }
+
+		title:k_itaykvit = { set_de_jure_liege_title = title:e_udhaliyya}
+	}
+}
+
+# Sheharddi Theologian offers tutelage to the character
+sheharddi_flavor.2000 = {
+	type = character_event
+	title = sheharddi_flavor.2000.t
+	desc = sheharddi_flavor.2000.desc
+	theme = faith
+	left_portrait = {
+		character = ROOT
+		animation = cynical
+	}
+
+	trigger = {
+		NOT = {
+			has_character_flag = had_sheharddi_event_2000
+		}
+		exists = cp:councillor_court_chaplain
+		has_faith = faith:sheharddi
+	}
+
+	immediate = {
+		add_character_flag = had_sheharddi_event_2000
+		cp:councillor_court_chaplain = {
+			save_scope_as = chaplain
+		}
+	}
+
+	option = {
+		name = sheharddi_flavor.2000.a
+	}
+	option = {
+		name = sheharddi_flavor.2000.b
+		remove_short_term_gold = medium_gold_value
+		random = {
+			50 = {
+				add_character_modifier = {
+					modifier = sheharddic_tutelage
+					years = 5
+				}
+			}
+			50 = {
+				send_interface_toast = {
+					type = send_interface_toast
+					title = sheharddi_fraud
+					desc = sheharddi_fraud_desc
+					left_icon = root
+				}
+			}
+		}
+	}
+	option = {
+		name = sheharddi_flavor.2000.c
+		trigger = {
+			OR = {
+				has_trait = scholar
+				has_trait_rank = {
+					trait = intellect_good
+					rank > 0
+				}
+			}
+		}
+		#scope:chaplain = {
+		#	add_opinion = {
+		#		target = root
+		#		modifier = impious_opinion
+		#		opinion = -10
+		#	}
+		#}
+	}
+
+	option = {
+		name = sheharddi_flavor.2000.d
+		trigger = {
+			has_trait = cynical
+		}
+		scope:chaplain = {
+			add_opinion = {
+				target = root
+				modifier = impious_opinion
+				opinion = -10
+			}
+		}
+	}
+}

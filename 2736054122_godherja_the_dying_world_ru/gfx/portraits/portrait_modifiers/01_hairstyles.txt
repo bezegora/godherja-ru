@@ -928,6 +928,10 @@ hairstyles = {
                 add = @african_clothing_no_hair_chance
                 portrait_african_clothing_trigger = yes
             }
+			modifier = {
+                add = 1000
+                has_trait = gh_wasteland
+            }
         }
     }
 
@@ -1003,6 +1007,141 @@ hairstyles = {
                     template = hair_wavy
                 }
                 portrait_fp1_norse_clothing_trigger = yes
+            }
+            modifier = {
+                add = -100
+                OR = {
+                    is_from_ruler_designer = yes
+                    has_character_flag = has_scripted_appearance
+                }
+            }
+        }
+    }
+    ### khemet
+	egyptian_straight = {
+        dna_modifiers = {
+            accessory = {
+                mode = add
+                gene = hairstyles
+                template = egyptian_hairstyles_straight
+                range = { 0 1 } # For the randomness to work correctly
+            }
+        }   
+        weight = {
+            base = 0
+            modifier = {
+                add = 55
+                OR = {
+					has_gene = {
+						category = gene_hair_type
+						template = hair_straight
+					}
+					has_gene = {
+						category = gene_hair_type
+						template = hair_straight_thin_beard
+					}
+				}
+                portrait_egyptian_clothing_trigger = yes
+            }
+            modifier = {
+                add = -100
+                OR = {
+                    is_from_ruler_designer = yes
+                    has_character_flag = has_scripted_appearance
+                }
+            }
+        }
+    }
+
+   egyptian_wavy = {
+        dna_modifiers = {
+            accessory = {
+                mode = add
+                gene = hairstyles
+                template = egyptian_hairstyles_wavy
+                range = { 0 1 } # For the randomness to work correctly
+            }
+        }   
+        weight = {
+            base = 0
+            modifier = {
+                add = 55
+                has_gene = {
+                    category = gene_hair_type
+                    template = hair_wavy
+                }
+                portrait_egyptian_clothing_trigger = yes
+            }
+            modifier = {
+                add = -100
+                OR = {
+                    is_from_ruler_designer = yes
+                    has_character_flag = has_scripted_appearance
+                }
+            }
+        }
+    }
+
+    egyptian_straight_fp1 = {
+        dna_modifiers = {
+            accessory = {
+                mode = add
+                gene = hairstyles
+                template = egyptian_hairstyles_straight_fp1
+                range = { 0 1 } # For the randomness to work correctly
+            }
+        }   
+        weight = {
+            base = 0
+            modifier = {
+                add = 55
+                OR = {
+					has_gene = {
+						category = gene_hair_type
+						template = hair_straight
+					}
+					has_gene = {
+						category = gene_hair_type
+						template = hair_straight_thin_beard
+					}
+				}
+                portrait_egyptian_clothing_trigger = yes
+				has_fp1_dlc_trigger = yes
+            }
+            modifier = {
+                add = -100
+                OR = {
+                    is_from_ruler_designer = yes
+                    has_character_flag = has_scripted_appearance
+                }
+            }
+        }
+    }
+	
+	egyptian_curly = {
+        dna_modifiers = {
+            accessory = {
+                mode = add
+                gene = hairstyles
+                template = egyptian_hairstyles_wavy
+                range = { 0 1 } # For the randomness to work correctly
+            }
+        }   
+        weight = {
+            base = 0
+            modifier = {
+                add = 55
+                OR = {
+					has_gene = {
+						category = gene_hair_type
+						template = hair_curly
+					}
+					has_gene = {
+						category = gene_hair_type
+						template = hair_afro
+					}
+				}
+                portrait_egyptian_clothing_trigger = yes
             }
             modifier = {
                 add = -100

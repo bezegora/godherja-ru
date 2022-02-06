@@ -21,7 +21,7 @@
 #	gender = male
 #	special = holder
 #	tier = kingdom
-	#	governments = { feudal_government clan_government }
+	#	governments = { feudal_government clan_government pirate_government }
 #	religions = { adabyssian_religion }
 #}
 
@@ -81,6 +81,57 @@ idrata = {
 	culture_groups = { gh_zarasadari_group }
 }
 
+##Titular Aversarians (aka Nicanoneus and any claimants to the Aautokrata following Frodbrokna)##
+
+aautokratirgovernorarchlegon = {
+	type = character
+	gender = male
+	special = holder
+	priority = 500
+	culture_groups = { gh_imperial_group }
+	titles = { k_epavarion }
+	only_independent = yes
+}
+
+pretenderaautokratir = {
+	type = character
+	gender = male
+	special = holder
+	priority = 130
+	culture_groups = { gh_imperial_group }
+	titles = { k_the_bloodied_throne k_assocaea k_high_kingdom_of_the_isles k_palitake k_kasmiene }
+	only_independent = yes
+}
+
+pretenderaautokratia = {
+	type = character
+	gender = female
+	special = holder
+	priority = 130
+	culture_groups = { gh_imperial_group }
+	titles = { k_the_bloodied_throne k_assocaea k_high_kingdom_of_the_isles k_palitake k_kasmiene }
+	only_independent = yes
+}
+
+pretender_aautokrata = {
+	type = title
+	tier = kingdom
+	priority = 200
+	culture_groups = { gh_imperial_group }
+	titles = { k_epavarion k_the_bloodied_throne k_assocaea k_high_kingdom_of_the_isles k_palitake k_kasmiene }
+	only_independent = yes
+}
+
+aautokratiagovernorarchlegan = {
+	type = character
+	gender = female
+	special = holder
+	priority = 130
+	culture_groups = { gh_imperial_group }
+	titles = { k_epavarion }
+	only_independent = yes
+}
+
 ##Magocracy##
 magocratic_archmagi = {
 	type = character
@@ -103,7 +154,7 @@ magocratic_firstmagi = {
 chancellery_republic_konijkmener = {
 	type = title
 	titles = { k_de_kanzelerij }
-	governments = { republic_government }
+	governments = { republic_government republic_playable_government }
 	priority = 105
 	cultures = { konijkmener }
 }
@@ -112,7 +163,7 @@ chancellery_republic_male_konijkmener = {
 	type = character
 	gender = male
 	special = holder
-	governments = { republic_government }
+	governments = { republic_government republic_playable_government }
 	priority = 105
 	titles = { k_de_kanzelerij }
 }
@@ -121,30 +172,180 @@ chancellery_republic_female_konijkmener = {
 	type = character
 	gender = female
 	special = holder
-	governments = { republic_government }
+	governments = { republic_government republic_playable_government }
 	priority = 105
 	titles = { k_de_kanzelerij }
 }
 
 ##Agionists
-agionist_ordermaster = {
+agionist_order_empire_male = {
 	type = character
 	special = holder
-	priority = 120
+	priority = 200
 	gender = male
 	religions = { agionism_religion }
 	governments = { landed_order_government }
-	top_liege = yes
+	tier = empire
+	top_liege = no
 }
 
-agionist_ordermaster_female = {
+agionist_order_empire_female = {
 	type = character
 	special = holder
-	priority = 120
+	priority = 200
 	gender = female
 	religions = { agionism_religion }
 	governments = { landed_order_government }
-	top_liege = yes
+	tier = empire
+	top_liege = no
+}
+
+agionist_order_kingdom_male = {
+	type = character
+	special = holder
+	priority = 100
+	gender = male
+	religions = { agionism_religion }
+	governments = { landed_order_government }
+	tier = kingdom
+	top_liege = no
+}
+
+agionist_order_kingdom_female = {
+	type = character
+	special = holder
+	priority = 100
+	gender = female
+	religions = { agionism_religion }
+	governments = { landed_order_government }
+	tier = kingdom
+	top_liege = no
+}
+
+agionist_order_duchy_male = {
+	type = character
+	special = holder
+	priority = 100
+	gender = male
+	religions = { agionism_religion }
+	governments = { landed_order_government }
+	tier = duchy
+	top_liege = no
+}
+
+agionist_order_duchy_female = {
+	type = character
+	special = holder
+	priority = 100
+	gender = female
+	religions = { agionism_religion }
+	governments = { landed_order_government }
+	tier = duchy
+	top_liege = no
+}
+
+agionist_order_county_male = {
+	type = character
+	special = holder
+	priority = 100
+	gender = male
+	religions = { agionism_religion }
+	governments = { landed_order_government }
+	tier = county
+	top_liege = no
+}
+
+agionist_order_county_female = {
+	type = character
+	special = holder
+	priority = 100
+	gender = female
+	religions = { agionism_religion }
+	governments = { landed_order_government }
+	tier = county
+	top_liege = no
+}
+
+agionist_order_barony_male = {
+	type = character
+	special = holder
+	priority = 100
+	gender = male
+	religions = { agionism_religion }
+	governments = { landed_order_government }
+	tier = barony
+	top_liege = no
+}
+
+agionist_order_barony_female = {
+	type = character
+	special = holder
+	priority = 100
+	gender = female
+	religions = { agionism_religion }
+	governments = { landed_order_government }
+	tier = barony
+	top_liege = no
+}
+
+agionist_empire_landed_holy_order = {
+	type = title
+	tier = empire
+	priority = 100
+	religions = { agionism_religion }
+	governments = { landed_order_government }
+}
+
+agionist_kingdom_landed_holy_order = {
+	type = title
+	tier = kingdom
+	priority = 100
+	religions = { agionism_religion }
+	governments = { landed_order_government }
+}
+
+agionist_duchy_landed_holy_order = {
+	type = title
+	tier = duchy
+	priority = 100
+	religions = { agionism_religion }
+	governments = { landed_order_government }
+}
+
+agionist_county_landed_holy_order = {
+	type = title
+	tier = county
+	priority = 100
+	religions = { agionism_religion }
+	governments = { landed_order_government }
+}
+
+empire_landed_holy_order = {
+	type = title
+	tier = empire
+	priority = 200
+	governments = { landed_order_government }
+}
+
+kingdom_landed_holy_order = {
+	type = title
+	tier = kingdom
+	priority = 200
+	governments = { landed_order_government }
+}
+
+duchy_landed_holy_order = {
+	type = title
+	tier = duchy
+	priority = 200
+	governments = { landed_order_government }
+}
+
+county_landed_holy_order = {
+	type = title
+	tier = county
+	priority = 200
+	governments = { landed_order_government }
 }
 
 ##Aversarian fake military
@@ -175,7 +376,7 @@ aversarian_governor_male = {
 	priority = 120
 	gender = male
 	culture_groups = { gh_imperial_group }
-	titles = { d_kyvernis_ti_aironoi k_kyvernis_ti_opakhasia }
+	titles = { d_kyvernis_ti_aironoi k_kyvernis_ti_opakhasia k_pergicos }
 	top_liege = no
 }
 aversarian_governor_female = {
@@ -184,7 +385,7 @@ aversarian_governor_female = {
 	priority = 120
 	gender = female
 	culture_groups = { gh_imperial_group }
-	titles = { d_kyvernis_ti_aironoi k_kyvernis_ti_opakhasia }
+	titles = { d_kyvernis_ti_aironoi k_kyvernis_ti_opakhasia k_pergicos }
 	top_liege = no
 }
 
@@ -333,12 +534,12 @@ king_ziemojycz_female = {
 	only_independent = yes
 }
 
-##Sjalvoki
+##sjalvolki
 
 
 d_warden_title = {
 	type = character
-	titles = { d_warden }
+	titles = { d_warden e_eastern_mamuramat e_far_eastern_mamuramat e_western_mamuramat e_southern_mamuramat }
 	special = holder
 	tier = empire
 	priority = 120
@@ -346,106 +547,212 @@ d_warden_title = {
 	#top_liege = no
 }
 
-
-# emperor_clan_male = {
-# 	type = character
-# 	gender = male
-# 	special = holder
-# 	tier = empire
-# 	priority = 101
-# 	governments = { clan_government }
-# }
-
-emperor_imperrech_tribal_sjalvoki = {
+emperor_imperrech_tribal_sjalvolki = {
 	type = character
 	titles = { e_sjalvolki }
 	special = holder
 	tier = empire
 	priority = 120
 	governments = { tribal_government }	
-	culture_groups = { gh_sjalvoki_group }
-	top_liege = no
-}
-
-emperor_tribal_sjalvoki = {
-	type = character
-	#gender = male
-	special = holder
-	tier = empire
-	priority = 105
-	governments = { tribal_government }	
-	culture_groups = { gh_sjalvoki_group }
-	top_liege = no
-}
-
-king_tribal_sjalvoki = {
-	type = character
-	#gender = male
-	special = holder
-	tier = kingdom
-	priority = 105
-	governments = { tribal_government }	
-	culture_groups = { gh_sjalvoki_group }
-	top_liege = no
-}
-
-duke_male_tribal_sjalvoki = {
-	type = character
-	gender = male
-	special = holder
-	tier = duchy
-	priority = 105
-	governments = { tribal_government }	
-	culture_groups = { gh_sjalvoki_group }
-	top_liege = no
-}
-
-duke_female_tribal_sjalvoki = {
-	type = character
-	gender = female
-	special = holder
-	tier = duchy
-	priority = 105
-	governments = { tribal_government }	
-	culture_groups = { gh_sjalvoki_group }
-	top_liege = no
-}
-
-
-count_tribal_sjalvoki = {
-	type = character
-	#gender = male
-	special = holder
-	tier = county
-	priority = 105
-	governments = { tribal_government }	
-	culture_groups = { gh_sjalvoki_group }
-	top_liege = no
-}
-
-baron_male_tribal_sjalvoki = {
-	type = character
-	gender = male
-	special = holder
-	tier = barony
-	priority = 105
-	governments = { tribal_government }
-	culture_groups = { gh_sjalvoki_group }
-	top_liege = no
-}
-
-baron_female_tribal_sjalvoki = {
-	type = character
-	gender = female
-	special = holder
-	tier = barony
-	priority = 105
-	governments = { tribal_government }
-	culture_groups = { gh_sjalvoki_group }
+	culture_groups = { gh_sjalvolki_group }
 	top_liege = no
 }
 
 ###Sjalvolki Feudal###
+
+emperor_tribal_male_sjalvolki = {
+	type = character
+	gender = male
+	special = holder
+	tier = empire
+	priority = 101
+	governments = { tribal_government }
+	culture_groups = { gh_sjalvolki_group }
+}
+
+emperor_tribal_female_sjalvolki = {
+	type = character
+	gender = female
+	special = holder
+	tier = empire
+	priority = 101
+	governments = { tribal_government }
+	culture_groups = { gh_sjalvolki_group }
+}
+
+king_tribal_male_sjalvolki = {
+	type = character
+	gender = male
+	special = holder
+	tier = kingdom
+	priority = 46
+	governments = { tribal_government }
+	culture_groups = { gh_sjalvolki_group }
+}
+
+king_tribal_female_sjalvolki = {
+	type = character
+	gender = female
+	special = holder
+	tier = kingdom
+	priority = 46
+	governments = { tribal_government }
+	culture_groups = { gh_sjalvolki_group }
+}
+
+kingdom_tribal_sjalvolki = {
+	type = title
+	tier = kingdom
+	priority = 46
+	governments = { tribal_government }
+	culture_groups = { gh_sjalvolki_group }
+}
+
+duke_tribal_male_sjalvolki = {
+	type = character
+	gender = male
+	special = holder
+	tier = duchy
+	priority = 26
+	governments = { tribal_government }
+	culture_groups = { gh_sjalvolki_group }
+}
+
+duke_tribal_female_sjalvolki = {
+	type = character
+	gender = female
+	special = holder
+	tier = duchy
+	priority = 26
+	governments = { tribal_government }
+	culture_groups = { gh_sjalvolki_group }
+}
+
+duke_tribal_male_sjalvolki_independent = {
+	type = character
+	gender = male
+	special = holder
+	tier = duchy
+	priority = 46
+	governments = { tribal_government }
+	culture_groups = { gh_sjalvolki_group }
+	only_independent = yes
+}
+
+duke_tribal_female_sjalvolki_independent = {
+	type = character
+	gender = female
+	special = holder
+	tier = duchy
+	priority = 46
+	governments = { tribal_government }
+	culture_groups = { gh_sjalvolki_group }
+	only_independent = yes
+}
+
+duchy_tribal_sjalvolki = {
+	type = title
+	tier = duchy
+	priority = 27
+	governments = { tribal_government }
+	culture_groups = { gh_sjalvolki_group }
+}
+
+duchy_tribal_sjalvolki_independent = {
+	type = title
+	tier = duchy
+	priority = 47
+	governments = { tribal_government }
+	culture_groups = { gh_sjalvolki_group }
+	only_independent = yes
+}
+
+count_tribal_male_sjalvolki = {
+	type = character
+	gender = male
+	special = holder
+	tier = county
+	priority = 16
+	governments = { tribal_government }
+	culture_groups = { gh_sjalvolki_group }
+}
+
+count_tribal_female_sjalvolki = {
+	type = character
+	gender = female
+	special = holder
+	tier = county
+	priority = 16
+	governments = { tribal_government }
+	culture_groups = { gh_sjalvolki_group }
+}
+
+count_tribal_male_sjalvolki_independent = {
+	type = character
+	gender = male
+	special = holder
+	tier = county
+	priority = 46
+	governments = { tribal_government }
+	culture_groups = { gh_sjalvolki_group }
+	only_independent = yes
+}
+
+count_tribal_female_sjalvolki_independent = {
+	type = character
+	gender = female
+	special = holder
+	tier = county
+	priority = 46
+	governments = { tribal_government }
+	culture_groups = { gh_sjalvolki_group }
+	only_independent = yes
+}
+
+county_tribal_sjalvolki = {
+	type = title
+	tier = county
+	priority = 16
+	governments = { tribal_government }
+	culture_groups = { gh_sjalvolki_group }
+}
+
+county_tribal_sjalvolki_independent = {
+	type = title
+	tier = county
+	priority = 46
+	governments = { tribal_government }
+	culture_groups = { gh_sjalvolki_group }
+	only_independent = yes
+}
+
+baron_tribal_male_sjalvolki = {
+	type = character
+	gender = male
+	special = holder
+	tier = barony
+	priority = 5
+	governments = { tribal_government }
+	culture_groups = { gh_sjalvolki_group }
+}
+
+baron_tribal_female_sjalvolki = {
+	type = character
+	gender = female
+	special = holder
+	tier = barony
+	priority = 5
+	governments = { tribal_government }
+	culture_groups = { gh_sjalvolki_group }
+}
+
+barony_tribal_sjalvolki = {
+	type = title
+	tier = barony
+	priority = 5
+	governments = { tribal_government }
+	culture_groups = { gh_sjalvolki_group }
+}
 
 emperor_feudal_male_sjalvolki = {
 	type = character
@@ -453,8 +760,8 @@ emperor_feudal_male_sjalvolki = {
 	special = holder
 	tier = empire
 	priority = 101
-	governments = { feudal_government }
-	culture_groups = { gh_sjalvoki_group }
+	governments = { feudal_government pirate_government clan_government }
+	culture_groups = { gh_sjalvolki_group }
 }
 
 emperor_feudal_female_sjalvolki = {
@@ -463,8 +770,8 @@ emperor_feudal_female_sjalvolki = {
 	special = holder
 	tier = empire
 	priority = 101
-	governments = { feudal_government }
-	culture_groups = { gh_sjalvoki_group }
+	governments = { feudal_government pirate_government clan_government }
+	culture_groups = { gh_sjalvolki_group }
 }
 
 king_feudal_male_sjalvolki = {
@@ -473,8 +780,8 @@ king_feudal_male_sjalvolki = {
 	special = holder
 	tier = kingdom
 	priority = 46
-	governments = { feudal_government }
-	culture_groups = { gh_sjalvoki_group }
+	governments = { feudal_government pirate_government clan_government }
+	culture_groups = { gh_sjalvolki_group }
 }
 
 king_feudal_female_sjalvolki = {
@@ -483,16 +790,16 @@ king_feudal_female_sjalvolki = {
 	special = holder
 	tier = kingdom
 	priority = 46
-	governments = { feudal_government }
-	culture_groups = { gh_sjalvoki_group }
+	governments = { feudal_government pirate_government clan_government }
+	culture_groups = { gh_sjalvolki_group }
 }
 
 kingdom_feudal_sjalvolki = {
 	type = title
 	tier = kingdom
 	priority = 46
-	governments = { feudal_government }
-	culture_groups = { gh_sjalvoki_group }
+	governments = { feudal_government pirate_government clan_government }
+	culture_groups = { gh_sjalvolki_group }
 }
 
 duke_feudal_male_sjalvolki = {
@@ -501,8 +808,8 @@ duke_feudal_male_sjalvolki = {
 	special = holder
 	tier = duchy
 	priority = 26
-	governments = { feudal_government }
-	culture_groups = { gh_sjalvoki_group }
+	governments = { feudal_government pirate_government clan_government }
+	culture_groups = { gh_sjalvolki_group }
 }
 
 duke_feudal_female_sjalvolki = {
@@ -511,16 +818,47 @@ duke_feudal_female_sjalvolki = {
 	special = holder
 	tier = duchy
 	priority = 26
-	governments = { feudal_government }
-	culture_groups = { gh_sjalvoki_group }
+	governments = { feudal_government pirate_government clan_government }
+	culture_groups = { gh_sjalvolki_group }
+}
+
+duke_feudal_male_sjalvolki_independent = {
+	type = character
+	gender = male
+	special = holder
+	tier = duchy
+	priority = 46
+	governments = { feudal_government pirate_government clan_government }
+	culture_groups = { gh_sjalvolki_group }
+	only_independent = yes
+}
+
+duke_feudal_female_sjalvolki_independent = {
+	type = character
+	gender = female
+	special = holder
+	tier = duchy
+	priority = 46
+	governments = { feudal_government pirate_government clan_government }
+	culture_groups = { gh_sjalvolki_group }
+	only_independent = yes
 }
 
 duchy_feudal_sjalvolki = {
 	type = title
 	tier = duchy
 	priority = 27
-	governments = { feudal_government }
-	culture_groups = { gh_sjalvoki_group }
+	governments = { feudal_government pirate_government clan_government }
+	culture_groups = { gh_sjalvolki_group }
+}
+
+duchy_feudal_sjalvolki_independent = {
+	type = title
+	tier = duchy
+	priority = 47
+	governments = { feudal_government pirate_government clan_government }
+	culture_groups = { gh_sjalvolki_group }
+	only_independent = yes
 }
 
 count_feudal_male_sjalvolki = {
@@ -529,8 +867,8 @@ count_feudal_male_sjalvolki = {
 	special = holder
 	tier = county
 	priority = 16
-	governments = { feudal_government }
-	culture_groups = { gh_sjalvoki_group }
+	governments = { feudal_government pirate_government clan_government }
+	culture_groups = { gh_sjalvolki_group }
 }
 
 count_feudal_female_sjalvolki = {
@@ -539,16 +877,47 @@ count_feudal_female_sjalvolki = {
 	special = holder
 	tier = county
 	priority = 16
-	governments = { feudal_government }
-	culture_groups = { gh_sjalvoki_group }
+	governments = { feudal_government pirate_government clan_government }
+	culture_groups = { gh_sjalvolki_group }
+}
+
+count_feudal_male_sjalvolki_independent = {
+	type = character
+	gender = male
+	special = holder
+	tier = county
+	priority = 46
+	governments = { feudal_government pirate_government clan_government }
+	culture_groups = { gh_sjalvolki_group }
+	only_independent = yes
+}
+
+count_feudal_female_sjalvolki_independent = {
+	type = character
+	gender = female
+	special = holder
+	tier = county
+	priority = 46
+	governments = { feudal_government pirate_government clan_government }
+	culture_groups = { gh_sjalvolki_group }
+	only_independent = yes
 }
 
 county_feudal_sjalvolki = {
 	type = title
 	tier = county
 	priority = 16
-	governments = { feudal_government }
-	culture_groups = { gh_sjalvoki_group }
+	governments = { feudal_government pirate_government clan_government }
+	culture_groups = { gh_sjalvolki_group }
+}
+
+county_feudal_sjalvolki_independent = {
+	type = title
+	tier = county
+	priority = 46
+	governments = { feudal_government pirate_government clan_government }
+	culture_groups = { gh_sjalvolki_group }
+	only_independent = yes
 }
 
 baron_feudal_male_sjalvolki = {
@@ -557,8 +926,8 @@ baron_feudal_male_sjalvolki = {
 	special = holder
 	tier = barony
 	priority = 5
-	governments = { feudal_government }
-	culture_groups = { gh_sjalvoki_group }
+	governments = { feudal_government pirate_government clan_government }
+	culture_groups = { gh_sjalvolki_group }
 }
 
 baron_feudal_female_sjalvolki = {
@@ -567,16 +936,16 @@ baron_feudal_female_sjalvolki = {
 	special = holder
 	tier = barony
 	priority = 5
-	governments = { feudal_government }
-	culture_groups = { gh_sjalvoki_group }
+	governments = { feudal_government pirate_government clan_government }
+	culture_groups = { gh_sjalvolki_group }
 }
 
 barony_feudal_sjalvolki = {
 	type = title
 	tier = barony
 	priority = 5
-	governments = { feudal_government }
-	culture_groups = { gh_sjalvoki_group }
+	governments = { feudal_government pirate_government clan_government }
+	culture_groups = { gh_sjalvolki_group }
 }
 
 #partic
@@ -728,8 +1097,8 @@ baron_tribal_partic = {
 empire_feudal_aversarian = {
 	type = title
 	tier = empire
-	special = holder
-	priority = 120
+	priority = 27
+	governments = { feudal_government pirate_government clan_government }
 	culture_groups = { gh_imperial_group }
 } 
 emperor_feudal_male_aversarian = {
@@ -756,7 +1125,7 @@ king_feudal_male_aversarian = {
 	special = holder
 	tier = kingdom
 	priority = 46
-	governments = { feudal_government }
+	governments = { feudal_government pirate_government clan_government }
 	culture_groups = { gh_imperial_group }
 }
 
@@ -766,7 +1135,7 @@ king_feudal_female_aversarian = {
 	special = holder
 	tier = kingdom
 	priority = 46
-	governments = { feudal_government }
+	governments = { feudal_government pirate_government clan_government }
 	culture_groups = { gh_imperial_group }
 }
 
@@ -774,7 +1143,7 @@ kingdom_feudal_aversarian = {
 	type = title
 	tier = kingdom
 	priority = 46
-	governments = { feudal_government }
+	governments = { feudal_government pirate_government clan_government }
 	culture_groups = { gh_imperial_group }
 }
 
@@ -784,7 +1153,7 @@ duke_feudal_male_aversarian = {
 	special = holder
 	tier = duchy
 	priority = 26
-	governments = { feudal_government }
+	governments = { feudal_government pirate_government clan_government }
 	culture_groups = { gh_imperial_group }
 }
 
@@ -794,7 +1163,7 @@ duke_feudal_female_aversarian = {
 	special = holder
 	tier = duchy
 	priority = 26
-	governments = { feudal_government }
+	governments = { feudal_government pirate_government clan_government }
 	culture_groups = { gh_imperial_group }
 }
 
@@ -802,7 +1171,7 @@ duchy_feudal_aversarian = {
 	type = title
 	tier = duchy
 	priority = 27
-	governments = { feudal_government }
+	governments = { feudal_government pirate_government clan_government }
 	culture_groups = { gh_imperial_group }
 }
 
@@ -812,7 +1181,7 @@ count_feudal_male_aversarian = {
 	special = holder
 	tier = county
 	priority = 16
-	governments = { feudal_government }
+	governments = { feudal_government pirate_government clan_government }
 	culture_groups = { gh_imperial_group }
 }
 
@@ -822,7 +1191,7 @@ count_feudal_female_aversarian = {
 	special = holder
 	tier = county
 	priority = 16
-	governments = { feudal_government }
+	governments = { feudal_government pirate_government clan_government }
 	culture_groups = { gh_imperial_group }
 }
 
@@ -830,7 +1199,7 @@ county_feudal_aversarian = {
 	type = title
 	tier = county
 	priority = 16
-	governments = { feudal_government }
+	governments = { feudal_government pirate_government clan_government }
 	culture_groups = { gh_imperial_group }
 }
 
@@ -840,7 +1209,7 @@ baron_feudal_male_aversarian = {
 	special = holder
 	tier = barony
 	priority = 5
-	governments = { feudal_government }
+	governments = { feudal_government pirate_government clan_government }
 	culture_groups = { gh_imperial_group }
 }
 
@@ -850,7 +1219,7 @@ baron_feudal_female_aversarian = {
 	special = holder
 	tier = barony
 	priority = 5
-	governments = { feudal_government }
+	governments = { feudal_government pirate_government clan_government }
 	culture_groups = { gh_imperial_group }
 }
 
@@ -858,7 +1227,7 @@ barony_feudal_aversarian = {
 	type = title
 	tier = barony
 	priority = 5
-	governments = { feudal_government }
+	governments = { feudal_government pirate_government clan_government }
 	culture_groups = { gh_imperial_group }
 }
 
@@ -911,7 +1280,7 @@ realm_priest_female = {
 
 ###Kikarsagi###
 
-emperor_feudal_male_kikarsagi = {
+emperor_male_kikarsagi = {
 	type = character
 	gender = male
 	special = holder
@@ -920,7 +1289,7 @@ emperor_feudal_male_kikarsagi = {
 	culture_groups = { gh_kikarsag_group }
 }
 
-emperor_feudal_female_kikarsagi = {
+emperor_female_kikarsagi = {
 	type = character
 	gender = female
 	special = holder
@@ -929,14 +1298,14 @@ emperor_feudal_female_kikarsagi = {
 	culture_groups = { gh_kikarsag_group }
 }
 
-empire_feudal_kikarsagi = {
+empire_kikarsagi = {
 	type = title
 	tier = empire
 	priority = 101
 	culture_groups = { gh_kikarsag_group }
 }
 
-king_feudal_male_kikarsagi = {
+king_male_kikarsagi = {
 	type = character
 	gender = male
 	special = holder
@@ -945,7 +1314,7 @@ king_feudal_male_kikarsagi = {
 	culture_groups = { gh_kikarsag_group }
 }
 
-king_feudal_female_kikarsagi = {
+king_female_kikarsagi = {
 	type = character
 	gender = female
 	special = holder
@@ -954,14 +1323,14 @@ king_feudal_female_kikarsagi = {
 	culture_groups = { gh_kikarsag_group }
 }
 
-kingdom_feudal_kikarsagi = {
+kingdom_kikarsagi = {
 	type = title
 	tier = kingdom
 	priority = 46
 	culture_groups = { gh_kikarsag_group }
 }
 
-duke_feudal_male_kikarsagi = {
+duke_male_kikarsagi = {
 	type = character
 	gender = male
 	special = holder
@@ -970,7 +1339,7 @@ duke_feudal_male_kikarsagi = {
 	culture_groups = { gh_kikarsag_group }
 }
 
-duke_feudal_female_kikarsagi = {
+duke_female_kikarsagi = {
 	type = character
 	gender = female
 	special = holder
@@ -979,14 +1348,14 @@ duke_feudal_female_kikarsagi = {
 	culture_groups = { gh_kikarsag_group }
 }
 
-duchy_feudal_kikarsagi = {
+duchy_kikarsagi = {
 	type = title
 	tier = duchy
 	priority = 27
 	culture_groups = { gh_kikarsag_group }
 }
 
-count_feudal_male_kikarsagi = {
+count_male_kikarsagi = {
 	type = character
 	gender = male
 	special = holder
@@ -995,7 +1364,7 @@ count_feudal_male_kikarsagi = {
 	culture_groups = { gh_kikarsag_group }
 }
 
-count_feudal_female_kikarsagi = {
+count_female_kikarsagi = {
 	type = character
 	gender = female
 	special = holder
@@ -1004,14 +1373,14 @@ count_feudal_female_kikarsagi = {
 	culture_groups = { gh_kikarsag_group }
 }
 
-county_feudal_kikarsagi = {
+county_kikarsagi = {
 	type = title
 	tier = county
 	priority = 16
 	culture_groups = { gh_kikarsag_group }
 }
 
-baron_feudal_male_kikarsagi = {
+baron_male_kikarsagi = {
 	type = character
 	gender = male
 	special = holder
@@ -1020,7 +1389,7 @@ baron_feudal_male_kikarsagi = {
 	culture_groups = { gh_kikarsag_group }
 }
 
-baron_feudal_female_kikarsagi = {
+baron_female_kikarsagi = {
 	type = character
 	gender = female
 	special = holder
@@ -1029,7 +1398,7 @@ baron_feudal_female_kikarsagi = {
 	culture_groups = { gh_kikarsag_group }
 }
 
-barony_feudal_kikarsagi = {
+barony_kikarsagi = {
 	type = title
 	tier = barony
 	priority = 5
@@ -1038,7 +1407,7 @@ barony_feudal_kikarsagi = {
 
 ###Vhanavhid###
 
-emperor_feudal_male_vhanavhid = {
+emperor_male_vhanavhid = {
 	type = character
 	gender = male
 	special = holder
@@ -1047,7 +1416,7 @@ emperor_feudal_male_vhanavhid = {
 	culture_groups = { gh_vhanavids_group }
 }
 
-emperor_feudal_female_vhanavhid = {
+emperor_female_vhanavhid = {
 	type = character
 	gender = female
 	special = holder
@@ -1056,14 +1425,14 @@ emperor_feudal_female_vhanavhid = {
 	culture_groups = { gh_vhanavids_group }
 }
 
-empire_feudal_vhanavhid = {
+empire_vhanavhid = {
 	type = title
 	tier = empire
 	priority = 101
 	culture_groups = { gh_vhanavids_group }
 }
 
-king_feudal_male_vhanavhid = {
+king_male_vhanavhid = {
 	type = character
 	gender = male
 	special = holder
@@ -1072,7 +1441,7 @@ king_feudal_male_vhanavhid = {
 	culture_groups = { gh_vhanavids_group }
 }
 
-king_feudal_female_vhanavhid = {
+king_female_vhanavhid = {
 	type = character
 	gender = female
 	special = holder
@@ -1081,14 +1450,14 @@ king_feudal_female_vhanavhid = {
 	culture_groups = { gh_vhanavids_group }
 }
 
-kingdom_feudal_vhanavhid = {
+kingdom_vhanavhid = {
 	type = title
 	tier = kingdom
 	priority = 46
 	culture_groups = { gh_vhanavids_group }
 }
 
-duke_feudal_male_vhanavhid = {
+duke_male_vhanavhid = {
 	type = character
 	gender = male
 	special = holder
@@ -1097,7 +1466,7 @@ duke_feudal_male_vhanavhid = {
 	culture_groups = { gh_vhanavids_group }
 }
 
-duke_feudal_female_vhanavhid = {
+duke_female_vhanavhid = {
 	type = character
 	gender = female
 	special = holder
@@ -1106,14 +1475,14 @@ duke_feudal_female_vhanavhid = {
 	culture_groups = { gh_vhanavids_group }
 }
 
-duchy_feudal_vhanavhid = {
+duchy_vhanavhid = {
 	type = title
 	tier = duchy
 	priority = 27
 	culture_groups = { gh_vhanavids_group }
 }
 
-count_feudal_male_vhanavhid = {
+count_male_vhanavhid = {
 	type = character
 	gender = male
 	special = holder
@@ -1122,7 +1491,7 @@ count_feudal_male_vhanavhid = {
 	culture_groups = { gh_vhanavids_group }
 }
 
-count_feudal_female_vhanavhid = {
+count_female_vhanavhid = {
 	type = character
 	gender = female
 	special = holder
@@ -1131,14 +1500,14 @@ count_feudal_female_vhanavhid = {
 	culture_groups = { gh_vhanavids_group }
 }
 
-county_feudal_vhanavhid = {
+county_vhanavhid = {
 	type = title
 	tier = county
 	priority = 16
 	culture_groups = { gh_vhanavids_group }
 }
 
-baron_feudal_male_vhanavhid = {
+baron_male_vhanavhid = {
 	type = character
 	gender = male
 	special = holder
@@ -1147,7 +1516,7 @@ baron_feudal_male_vhanavhid = {
 	culture_groups = { gh_vhanavids_group }
 }
 
-baron_feudal_female_vhanavhid = {
+baron_female_vhanavhid = {
 	type = character
 	gender = female
 	special = holder
@@ -1156,12 +1525,3806 @@ baron_feudal_female_vhanavhid = {
 	culture_groups = { gh_vhanavids_group }
 }
 
-barony_feudal_vhanavhid = {
+barony_vhanavhid = {
 	type = title
 	tier = barony
 	priority = 5
 	culture_groups = { gh_vhanavids_group }
 }
+
+###Goan###
+emperor_male_goan = {
+	type = character
+	gender = male
+	special = holder
+	tier = empire
+	priority = 101
+	culture_groups = { gh_goans_group }
+}
+
+emperor_female_goan = {
+	type = character
+	gender = female
+	special = holder
+	tier = empire
+	priority = 101
+	culture_groups = { gh_goans_group }
+}
+
+empire_goan = {
+	type = title
+	tier = empire
+	priority = 101
+	culture_groups = { gh_goans_group }
+}
+
+king_male_goan = {
+	type = character
+	gender = male
+	special = holder
+	tier = kingdom
+	priority = 46
+	culture_groups = { gh_goans_group }
+}
+
+king_female_goan = {
+	type = character
+	gender = female
+	special = holder
+	tier = kingdom
+	priority = 46
+	culture_groups = { gh_goans_group }
+}
+
+kingdom_goan = {
+	type = title
+	tier = kingdom
+	priority = 46
+	culture_groups = { gh_goans_group }
+}
+
+duke_male_goan = {
+	type = character
+	gender = male
+	special = holder
+	tier = duchy
+	priority = 26
+	culture_groups = { gh_goans_group }
+}
+
+duke_female_goan = {
+	type = character
+	gender = female
+	special = holder
+	tier = duchy
+	priority = 26
+	culture_groups = { gh_goans_group }
+}
+
+duchy_goan = {
+	type = title
+	tier = duchy
+	priority = 27
+	culture_groups = { gh_goans_group }
+}
+
+count_male_goan = {
+	type = character
+	gender = male
+	special = holder
+	tier = county
+	priority = 16
+	culture_groups = { gh_goans_group }
+}
+
+count_female_goan = {
+	type = character
+	gender = female
+	special = holder
+	tier = county
+	priority = 16
+	culture_groups = { gh_goans_group }
+}
+
+county_goan = {
+	type = title
+	tier = county
+	priority = 16
+	culture_groups = { gh_goans_group }
+}
+
+### Mogowai Religious ###
+
+#realm_priest_mogowai = {
+#	type = character
+#	special = councillor
+#	priority = 300
+#	council_position = councillor_court_chaplain
+#	religion = { religion:mogowai_religion }
+#}
+
+emperor_mogowai_religious = {
+	type = character
+	special = holder
+	tier = empire
+	priority = 103
+	governments = { theocracy_government }
+	religions = { mogowai_religion }
+}
+	
+empire_mogowai_religious = {
+	type = title
+	tier = empire
+	priority = 103
+	governments = { theocracy_government }
+	religions = { mogowai_religion }
+}
+
+king_mogowai_religious = {
+	type = character
+	special = holder
+	tier = king
+	priority = 50
+	governments = { theocracy_government }
+	religions = { mogowai_religion }
+}
+
+kingdom_mogowai_religious = {
+	type = title
+	tier = kingdom
+	priority = 50
+	governments = { theocracy_government }
+	religions = { mogowai_religion }
+}
+
+duke_mogowai_religious = {
+	type = character
+	special = holder
+	tier = duchy
+	priority = 30
+	governments = { theocracy_government }
+	religions = { mogowai_religion }
+}
+
+duchy_mogowai_religious = {
+	type = title
+	tier = duchy
+	priority = 30
+	governments = { theocracy_government }
+	religions = { mogowai_religion }
+}
+
+count_mogowai_religious = {
+	type = character
+	special = holder
+	tier = county
+	priority = 20
+	governments = { theocracy_government }
+	religions = { mogowai_religion }
+}
+
+county_mogowai_religious = {
+	type = title
+	tier = county
+	priority = 20
+	governments = { theocracy_government }
+	religions = { mogowai_religion }
+}
+
+baron_mogowai_religious = {
+	type = character
+	special = holder
+	tier = barony
+	priority = 12
+	governments = { theocracy_government }
+	religions = { mogowai_religion }
+}
+
+barony_mogowai_religious = {
+	type = title
+	tier = barony
+	priority = 12
+	governments = { theocracy_government }
+	religions = { mogowai_religion }
+}
+
+##Damotan Guard##
+
+kabtiyk = { #"Captain"
+	type = character
+	special = holder
+	priority = 99
+	culture_groups = { gh_damotan_group }
+	titles = { d_yenusaawi_boqtada }
+}
+
+###Damotan###
+
+emperor_male_damotan = {
+	type = character
+	gender = male
+	special = holder
+	tier = empire
+	priority = 102
+	culture_groups = { gh_damotan_group }
+}
+
+emperor_female_damotan = {
+	type = character
+	gender = female
+	special = holder
+	tier = empire
+	priority = 102
+	culture_groups = { gh_damotan_group }
+}
+
+empire_damotan = {
+	type = title
+	tier = empire
+	priority = 102
+	culture_groups = { gh_damotan_group }
+}
+
+king_male_damotan = {
+	type = character
+	gender = male
+	special = holder
+	tier = kingdom
+	priority = 47
+	culture_groups = { gh_damotan_group }
+}
+
+king_female_damotan = {
+	type = character
+	gender = female
+	special = holder
+	tier = kingdom
+	priority = 47
+	culture_groups = { gh_damotan_group }
+}
+
+kingdom_damotan = {
+	type = title
+	tier = kingdom
+	priority = 47
+	culture_groups = { gh_damotan_group }
+}
+
+duke_male_damotan = {
+	type = character
+	gender = male
+	special = holder
+	tier = duchy
+	priority = 29
+	culture_groups = { gh_damotan_group }
+}
+
+duke_female_damotan = {
+	type = character
+	gender = female
+	special = holder
+	tier = duchy
+	priority = 29
+	culture_groups = { gh_damotan_group }
+}
+
+duchy_damotan = {
+	type = title
+	tier = duchy
+	priority = 29
+	culture_groups = { gh_damotan_group }
+}
+
+count_male_damotan = {
+	type = character
+	gender = male
+	special = holder
+	tier = county
+	priority = 18
+	culture_groups = { gh_damotan_group }
+}
+
+count_female_damotan = {
+	type = character
+	gender = female
+	special = holder
+	tier = county
+	priority = 18
+	culture_groups = { gh_damotan_group }
+}
+
+county_damotan = {
+	type = title
+	tier = county
+	priority = 17
+	culture_groups = { gh_damotan_group }
+}
+
+baron_male_damotan = {
+	type = character
+	gender = male
+	special = holder
+	tier = barony
+	priority = 11
+	culture_groups = { gh_damotan_group }
+}
+
+baron_female_damotan = {
+	type = character
+	gender = female
+	special = holder
+	tier = barony
+	priority = 11
+	culture_groups = { gh_damotan_group }
+}
+
+barony_damotan = {
+	type = title
+	tier = barony
+	priority = 11
+	culture_groups = { gh_damotan_group }
+}
+
+prince_male_damotan = {
+	type = character
+	gender = male
+	special = ruler_child
+	tier = kingdom
+	culture_groups = { gh_damotan_group }
+	governments = { feudal_government clan_government pirate_government }
+	priority = 46
+	top_liege = no
+}
+
+prince_female_damotan = {
+	type = character
+	gender = female
+	special = ruler_child
+	tier = kingdom
+	culture_groups = { gh_damotan_group }
+	governments = { feudal_government clan_government pirate_government }
+	priority = 46
+	top_liege = no
+}
+
+prince_male_damotan_empire = {
+	type = character
+	gender = male
+	special = ruler_child
+	tier = empire
+	culture_groups = { gh_damotan_group }
+	governments = { feudal_government clan_government pirate_government }
+	priority = 70
+	top_liege = no
+}
+
+prince_female_damotan_empire = {
+	type = character
+	gender = female
+	special = ruler_child
+	tier = empire
+	culture_groups = { gh_damotan_group }
+	governments = { feudal_government clan_government pirate_government }
+	priority = 70
+	top_liege = no
+}
+
+###sarridian###
+
+emperor_male_sarridian = {
+	type = character
+	gender = male
+	special = holder
+	tier = empire
+	priority = 102
+	culture_groups = { gh_sarridian_group }
+}
+
+emperor_female_sarridian = {
+	type = character
+	gender = female
+	special = holder
+	tier = empire
+	priority = 102
+	culture_groups = { gh_sarridian_group }
+}
+
+empire_sarridian = {
+	type = title
+	tier = empire
+	priority = 102
+	culture_groups = { gh_sarridian_group }
+}
+
+king_male_sarridian = {
+	type = character
+	gender = male
+	special = holder
+	tier = kingdom
+	priority = 47
+	culture_groups = { gh_sarridian_group }
+}
+
+king_female_sarridian = {
+	type = character
+	gender = female
+	special = holder
+	tier = kingdom
+	priority = 47
+	culture_groups = { gh_sarridian_group }
+}
+
+kingdom_sarridian = {
+	type = title
+	tier = kingdom
+	priority = 47
+	culture_groups = { gh_sarridian_group }
+}
+
+duke_male_sarridian = {
+	type = character
+	gender = male
+	special = holder
+	tier = duchy
+	priority = 29
+	culture_groups = { gh_sarridian_group }
+}
+
+duke_female_sarridian = {
+	type = character
+	gender = female
+	special = holder
+	tier = duchy
+	priority = 29
+	culture_groups = { gh_sarridian_group }
+}
+
+duchy_sarridian = {
+	type = title
+	tier = duchy
+	priority = 29
+	culture_groups = { gh_sarridian_group }
+}
+
+count_male_sarridian = {
+	type = character
+	gender = male
+	special = holder
+	tier = county
+	priority = 18
+	culture_groups = { gh_sarridian_group }
+}
+
+count_female_sarridian = {
+	type = character
+	gender = female
+	special = holder
+	tier = county
+	priority = 18
+	culture_groups = { gh_sarridian_group }
+}
+
+county_sarridian = {
+	type = title
+	tier = county
+	priority = 17
+	culture_groups = { gh_sarridian_group }
+}
+
+baron_male_sarridian = {
+	type = character
+	gender = male
+	special = holder
+	tier = barony
+	priority = 11
+	culture_groups = { gh_sarridian_group }
+}
+
+baron_female_sarridian = {
+	type = character
+	gender = female
+	special = holder
+	tier = barony
+	priority = 11
+	culture_groups = { gh_sarridian_group }
+}
+
+prince_male_sarridian = {
+	type = character
+	gender = male
+	special = ruler_child
+	tier = kingdom
+	culture_groups = { gh_sarridian_group }
+	governments = { feudal_government clan_government pirate_government }
+	priority = 35
+	top_liege = no
+}
+
+prince_female_sarridian = {
+	type = character
+	gender = female
+	special = ruler_child
+	tier = kingdom
+	culture_groups = { gh_sarridian_group }
+	governments = { feudal_government clan_government pirate_government }
+	priority = 35
+	top_liege = no
+}
+
+prince_male_sarridian_empire = {
+	type = character
+	gender = male
+	special = ruler_child
+	tier = empire
+	culture_groups = { gh_sarridian_group }
+	governments = { feudal_government clan_government pirate_government }
+	priority = 70
+	top_liege = no
+}
+
+prince_female_sarridian_empire = {
+	type = character
+	gender = female
+	special = ruler_child
+	tier = empire
+	culture_groups = { gh_sarridian_group }
+	governments = { feudal_government clan_government pirate_government }
+	priority = 70
+	top_liege = no
+}
+
+###gallieni###
+
+emperor_male_gallieni = {
+	type = character
+	gender = male
+	special = holder
+	tier = empire
+	priority = 102
+	culture_groups = { gh_gallieni_group }
+}
+
+emperor_female_gallieni = {
+	type = character
+	gender = female
+	special = holder
+	tier = empire
+	priority = 102
+	culture_groups = { gh_gallieni_group }
+}
+
+empire_gallieni = {
+	type = title
+	tier = empire
+	priority = 102
+	culture_groups = { gh_gallieni_group }
+}
+
+king_male_gallieni = {
+	type = character
+	gender = male
+	special = holder
+	tier = kingdom
+	priority = 47
+	culture_groups = { gh_gallieni_group }
+}
+
+king_female_gallieni = {
+	type = character
+	gender = female
+	special = holder
+	tier = kingdom
+	priority = 47
+	culture_groups = { gh_gallieni_group }
+}
+
+kingdom_gallieni = {
+	type = title
+	tier = kingdom
+	priority = 47
+	culture_groups = { gh_gallieni_group }
+}
+
+duke_male_gallieni = {
+	type = character
+	gender = male
+	special = holder
+	tier = duchy
+	priority = 29
+	culture_groups = { gh_gallieni_group }
+}
+
+duke_female_gallieni = {
+	type = character
+	gender = female
+	special = holder
+	tier = duchy
+	priority = 29
+	culture_groups = { gh_gallieni_group }
+}
+
+duchy_gallieni = {
+	type = title
+	tier = duchy
+	priority = 29
+	culture_groups = { gh_gallieni_group }
+}
+
+count_male_gallieni = {
+	type = character
+	gender = male
+	special = holder
+	tier = county
+	priority = 18
+	culture_groups = { gh_gallieni_group }
+}
+
+count_female_gallieni = {
+	type = character
+	gender = female
+	special = holder
+	tier = county
+	priority = 18
+	culture_groups = { gh_gallieni_group }
+}
+
+county_gallieni = {
+	type = title
+	tier = county
+	priority = 17
+	culture_groups = { gh_gallieni_group }
+}
+
+baron_male_gallieni = {
+	type = character
+	gender = male
+	special = holder
+	tier = barony
+	priority = 11
+	culture_groups = { gh_gallieni_group }
+}
+
+baron_female_gallieni = {
+	type = character
+	gender = female
+	special = holder
+	tier = barony
+	priority = 11
+	culture_groups = { gh_gallieni_group }
+}
+
+prince_male_gallieni = {
+	type = character
+	gender = male
+	special = ruler_child
+	tier = kingdom
+	culture_groups = { gh_gallieni_group }
+	governments = { feudal_government clan_government pirate_government }
+	priority = 35
+	top_liege = no
+}
+
+prince_female_gallieni = {
+	type = character
+	gender = female
+	special = ruler_child
+	tier = kingdom
+	culture_groups = { gh_gallieni_group }
+	governments = { feudal_government clan_government pirate_government }
+	priority = 35
+	top_liege = no
+}
+
+prince_male_gallieni_empire = {
+	type = character
+	gender = male
+	special = ruler_child
+	tier = empire
+	culture_groups = { gh_gallieni_group }
+	governments = { feudal_government clan_government pirate_government }
+	priority = 70
+	top_liege = no
+}
+
+prince_female_gallieni_empire = {
+	type = character
+	gender = female
+	special = ruler_child
+	tier = empire
+	culture_groups = { gh_gallieni_group }
+	governments = { feudal_government clan_government pirate_government }
+	priority = 70
+	top_liege = no
+}
+
+###karzarads###
+
+emperor_male_karzarads = {
+	type = character
+	gender = male
+	special = holder
+	tier = empire
+	priority = 102
+	culture_groups = { gh_karzarads_group }
+}
+
+emperor_female_karzarads = {
+	type = character
+	gender = female
+	special = holder
+	tier = empire
+	priority = 102
+	culture_groups = { gh_karzarads_group }
+}
+
+empire_karzarads = {
+	type = title
+	tier = empire
+	priority = 102
+	culture_groups = { gh_karzarads_group }
+}
+
+king_male_karzarads = {
+	type = character
+	gender = male
+	special = holder
+	tier = kingdom
+	priority = 47
+	culture_groups = { gh_karzarads_group }
+}
+
+king_female_karzarads = {
+	type = character
+	gender = female
+	special = holder
+	tier = kingdom
+	priority = 47
+	culture_groups = { gh_karzarads_group }
+}
+
+kingdom_karzarads = {
+	type = title
+	tier = kingdom
+	priority = 47
+	culture_groups = { gh_karzarads_group }
+}
+
+duke_male_karzarads = {
+	type = character
+	gender = male
+	special = holder
+	tier = duchy
+	priority = 29
+	culture_groups = { gh_karzarads_group }
+}
+
+duke_female_karzarads = {
+	type = character
+	gender = female
+	special = holder
+	tier = duchy
+	priority = 29
+	culture_groups = { gh_karzarads_group }
+}
+
+duchy_karzarads = {
+	type = title
+	tier = duchy
+	priority = 29
+	culture_groups = { gh_karzarads_group }
+}
+
+count_male_karzarads = {
+	type = character
+	gender = male
+	special = holder
+	tier = county
+	priority = 18
+	culture_groups = { gh_karzarads_group }
+}
+
+count_female_karzarads = {
+	type = character
+	gender = female
+	special = holder
+	tier = county
+	priority = 18
+	culture_groups = { gh_karzarads_group }
+}
+
+county_karzarads = {
+	type = title
+	tier = county
+	priority = 17
+	culture_groups = { gh_karzarads_group }
+}
+
+baron_male_karzarads = {
+	type = character
+	gender = male
+	special = holder
+	tier = barony
+	priority = 11
+	culture_groups = { gh_karzarads_group }
+}
+
+baron_female_karzarads = {
+	type = character
+	gender = female
+	special = holder
+	tier = barony
+	priority = 11
+	culture_groups = { gh_karzarads_group }
+}
+
+prince_male_karzarads = {
+	type = character
+	gender = male
+	special = ruler_child
+	tier = kingdom
+	culture_groups = { gh_karzarads_group }
+	governments = { feudal_government clan_government pirate_government }
+	priority = 35
+	top_liege = no
+}
+
+prince_female_karzarads = {
+	type = character
+	gender = female
+	special = ruler_child
+	tier = kingdom
+	culture_groups = { gh_karzarads_group }
+	governments = { feudal_government clan_government pirate_government }
+	priority = 35
+	top_liege = no
+}
+
+prince_male_karzarads_empire = {
+	type = character
+	gender = male
+	special = ruler_child
+	tier = empire
+	culture_groups = { gh_karzarads_group }
+	governments = { feudal_government clan_government pirate_government }
+	priority = 70
+	top_liege = no
+}
+
+prince_female_karzarads_empire = {
+	type = character
+	gender = female
+	special = ruler_child
+	tier = empire
+	culture_groups = { gh_karzarads_group }
+	governments = { feudal_government clan_government pirate_government }
+	priority = 70
+	top_liege = no
+}
+
+###huegodocs###
+
+emperor_male_huegodocs = {
+	type = character
+	gender = male
+	special = holder
+	tier = empire
+	priority = 102
+	culture_groups = { gh_huegodocs_group }
+}
+
+emperor_female_huegodocs = {
+	type = character
+	gender = female
+	special = holder
+	tier = empire
+	priority = 102
+	culture_groups = { gh_huegodocs_group }
+}
+
+empire_huegodocs = {
+	type = title
+	tier = empire
+	priority = 102
+	culture_groups = { gh_huegodocs_group }
+}
+
+king_male_huegodocs = {
+	type = character
+	gender = male
+	special = holder
+	tier = kingdom
+	priority = 47
+	culture_groups = { gh_huegodocs_group }
+}
+
+king_female_huegodocs = {
+	type = character
+	gender = female
+	special = holder
+	tier = kingdom
+	priority = 47
+	culture_groups = { gh_huegodocs_group }
+}
+
+kingdom_huegodocs = {
+	type = title
+	tier = kingdom
+	priority = 47
+	culture_groups = { gh_huegodocs_group }
+}
+
+duke_male_huegodocs = {
+	type = character
+	gender = male
+	special = holder
+	tier = duchy
+	priority = 29
+	culture_groups = { gh_huegodocs_group }
+}
+
+duke_female_huegodocs = {
+	type = character
+	gender = female
+	special = holder
+	tier = duchy
+	priority = 29
+	culture_groups = { gh_huegodocs_group }
+}
+
+duchy_huegodocs = {
+	type = title
+	tier = duchy
+	priority = 29
+	culture_groups = { gh_huegodocs_group }
+}
+
+count_male_huegodocs = {
+	type = character
+	gender = male
+	special = holder
+	tier = county
+	priority = 18
+	culture_groups = { gh_huegodocs_group }
+}
+
+count_female_huegodocs = {
+	type = character
+	gender = female
+	special = holder
+	tier = county
+	priority = 18
+	culture_groups = { gh_huegodocs_group }
+}
+
+county_huegodocs = {
+	type = title
+	tier = county
+	priority = 17
+	culture_groups = { gh_huegodocs_group }
+}
+
+baron_male_huegodocs = {
+	type = character
+	gender = male
+	special = holder
+	tier = barony
+	priority = 11
+	culture_groups = { gh_huegodocs_group }
+}
+
+baron_female_huegodocs = {
+	type = character
+	gender = female
+	special = holder
+	tier = barony
+	priority = 11
+	culture_groups = { gh_huegodocs_group }
+}
+
+prince_male_huegodocs = {
+	type = character
+	gender = male
+	special = ruler_child
+	tier = kingdom
+	culture_groups = { gh_huegodocs_group }
+	governments = { feudal_government clan_government pirate_government }
+	priority = 35
+	top_liege = no
+}
+
+prince_female_huegodocs = {
+	type = character
+	gender = female
+	special = ruler_child
+	tier = kingdom
+	culture_groups = { gh_huegodocs_group }
+	governments = { feudal_government clan_government pirate_government }
+	priority = 35
+	top_liege = no
+}
+
+prince_male_huegodocs_empire = {
+	type = character
+	gender = male
+	special = ruler_child
+	tier = empire
+	culture_groups = { gh_huegodocs_group }
+	governments = { feudal_government clan_government pirate_government }
+	priority = 70
+	top_liege = no
+}
+
+prince_female_huegodocs_empire = {
+	type = character
+	gender = female
+	special = ruler_child
+	tier = empire
+	culture_groups = { gh_huegodocs_group }
+	governments = { feudal_government clan_government pirate_government }
+	priority = 70
+	top_liege = no
+}
+
+###sarminian###
+
+emperor_male_sarminian = {
+	type = character
+	gender = male
+	special = holder
+	tier = empire
+	priority = 102
+	culture_groups = { gh_sarminian_group }
+}
+
+emperor_female_sarminian = {
+	type = character
+	gender = female
+	special = holder
+	tier = empire
+	priority = 102
+	culture_groups = { gh_sarminian_group }
+}
+
+empire_sarminian = {
+	type = title
+	tier = empire
+	priority = 102
+	culture_groups = { gh_sarminian_group }
+}
+
+king_male_sarminian = {
+	type = character
+	gender = male
+	special = holder
+	tier = kingdom
+	priority = 47
+	culture_groups = { gh_sarminian_group }
+}
+
+king_female_sarminian = {
+	type = character
+	gender = female
+	special = holder
+	tier = kingdom
+	priority = 47
+	culture_groups = { gh_sarminian_group }
+}
+
+kingdom_sarminian = {
+	type = title
+	tier = kingdom
+	priority = 47
+	culture_groups = { gh_sarminian_group }
+}
+
+duke_male_sarminian = {
+	type = character
+	gender = male
+	special = holder
+	tier = duchy
+	priority = 29
+	culture_groups = { gh_sarminian_group }
+}
+
+duke_female_sarminian = {
+	type = character
+	gender = female
+	special = holder
+	tier = duchy
+	priority = 29
+	culture_groups = { gh_sarminian_group }
+}
+
+duchy_sarminian = {
+	type = title
+	tier = duchy
+	priority = 29
+	culture_groups = { gh_sarminian_group }
+}
+
+count_male_sarminian = {
+	type = character
+	gender = male
+	special = holder
+	tier = county
+	priority = 18
+	culture_groups = { gh_sarminian_group }
+}
+
+count_female_sarminian = {
+	type = character
+	gender = female
+	special = holder
+	tier = county
+	priority = 18
+	culture_groups = { gh_sarminian_group }
+}
+
+county_sarminian = {
+	type = title
+	tier = county
+	priority = 17
+	culture_groups = { gh_sarminian_group }
+}
+
+baron_male_sarminian = {
+	type = character
+	gender = male
+	special = holder
+	tier = barony
+	priority = 11
+	culture_groups = { gh_sarminian_group }
+}
+
+baron_female_sarminian = {
+	type = character
+	gender = female
+	special = holder
+	tier = barony
+	priority = 11
+	culture_groups = { gh_sarminian_group }
+}
+
+prince_male_sarminian = {
+	type = character
+	gender = male
+	special = ruler_child
+	tier = kingdom
+	culture_groups = { gh_sarminian_group }
+	governments = { feudal_government clan_government pirate_government }
+	priority = 35
+	top_liege = no
+}
+
+prince_female_sarminian = {
+	type = character
+	gender = female
+	special = ruler_child
+	tier = kingdom
+	culture_groups = { gh_sarminian_group }
+	governments = { feudal_government clan_government pirate_government }
+	priority = 35
+	top_liege = no
+}
+
+prince_male_sarminian_empire = {
+	type = character
+	gender = male
+	special = ruler_child
+	tier = empire
+	culture_groups = { gh_sarminian_group }
+	governments = { feudal_government clan_government pirate_government }
+	priority = 70
+	top_liege = no
+}
+
+prince_female_sarminian_empire = {
+	type = character
+	gender = male
+	special = ruler_child
+	tier = empire
+	culture_groups = { gh_sarminian_group }
+	governments = { feudal_government clan_government pirate_government }
+	priority = 70
+	top_liege = no
+}
+
+###iyrossi###
+
+emperor_male_iyrossi = {
+	type = character
+	gender = male
+	special = holder
+	tier = empire
+	priority = 102
+	culture_groups = { gh_iyrossi_group }
+}
+
+emperor_female_iyrossi = {
+	type = character
+	gender = female
+	special = holder
+	tier = empire
+	priority = 102
+	culture_groups = { gh_iyrossi_group }
+}
+
+empire_iyrossi = {
+	type = title
+	tier = empire
+	priority = 102
+	culture_groups = { gh_iyrossi_group }
+}
+
+king_male_iyrossi = {
+	type = character
+	gender = male
+	special = holder
+	tier = kingdom
+	priority = 47
+	culture_groups = { gh_iyrossi_group }
+}
+
+king_female_iyrossi = {
+	type = character
+	gender = female
+	special = holder
+	tier = kingdom
+	priority = 47
+	culture_groups = { gh_iyrossi_group }
+}
+
+kingdom_iyrossi = {
+	type = title
+	tier = kingdom
+	priority = 47
+	culture_groups = { gh_iyrossi_group }
+}
+
+duke_male_iyrossi = {
+	type = character
+	gender = male
+	special = holder
+	tier = duchy
+	priority = 29
+	culture_groups = { gh_iyrossi_group }
+}
+
+duke_female_iyrossi = {
+	type = character
+	gender = female
+	special = holder
+	tier = duchy
+	priority = 29
+	culture_groups = { gh_iyrossi_group }
+}
+
+duchy_iyrossi = {
+	type = title
+	tier = duchy
+	priority = 29
+	culture_groups = { gh_iyrossi_group }
+}
+
+count_male_iyrossi = {
+	type = character
+	gender = male
+	special = holder
+	tier = county
+	priority = 18
+	culture_groups = { gh_iyrossi_group }
+}
+
+count_female_iyrossi = {
+	type = character
+	gender = female
+	special = holder
+	tier = county
+	priority = 18
+	culture_groups = { gh_iyrossi_group }
+}
+
+county_iyrossi = {
+	type = title
+	tier = county
+	priority = 17
+	culture_groups = { gh_iyrossi_group }
+}
+
+baron_male_iyrossi = {
+	type = character
+	gender = male
+	special = holder
+	tier = barony
+	priority = 11
+	culture_groups = { gh_iyrossi_group }
+}
+
+baron_female_iyrossi = {
+	type = character
+	gender = female
+	special = holder
+	tier = barony
+	priority = 11
+	culture_groups = { gh_iyrossi_group }
+}
+
+prince_male_iyrossi = {
+	type = character
+	gender = male
+	special = ruler_child
+	tier = kingdom
+	culture_groups = { gh_iyrossi_group }
+	governments = { feudal_government clan_government pirate_government }
+	priority = 35
+	top_liege = no
+}
+
+prince_female_iyrossi = {
+	type = character
+	gender = female
+	special = ruler_child
+	tier = kingdom
+	culture_groups = { gh_iyrossi_group }
+	governments = { feudal_government clan_government pirate_government }
+	priority = 35
+	top_liege = no
+}
+
+prince_male_iyrossi_empire = {
+	type = character
+	gender = male
+	special = ruler_child
+	tier = empire
+	culture_groups = { gh_iyrossi_group }
+	governments = { feudal_government clan_government pirate_government }
+	priority = 70
+	top_liege = no
+}
+
+prince_female_iyrossi_empire = {
+	type = character
+	gender = female
+	special = ruler_child
+	tier = empire
+	culture_groups = { gh_iyrossi_group }
+	governments = { feudal_government clan_government pirate_government }
+	priority = 70
+	top_liege = no
+}
+
+###samojitian###
+
+emperor_male_samojitian = {
+	type = character
+	gender = male
+	special = holder
+	tier = empire
+	priority = 102
+	culture_groups = { gh_samojitian_group }
+}
+
+emperor_female_samojitian = {
+	type = character
+	gender = female
+	special = holder
+	tier = empire
+	priority = 102
+	culture_groups = { gh_samojitian_group }
+}
+
+empire_samojitian = {
+	type = title
+	tier = empire
+	priority = 102
+	culture_groups = { gh_samojitian_group }
+}
+
+king_male_samojitian = {
+	type = character
+	gender = male
+	special = holder
+	tier = kingdom
+	priority = 47
+	culture_groups = { gh_samojitian_group }
+}
+
+king_female_samojitian = {
+	type = character
+	gender = female
+	special = holder
+	tier = kingdom
+	priority = 47
+	culture_groups = { gh_samojitian_group }
+}
+
+kingdom_samojitian = {
+	type = title
+	tier = kingdom
+	priority = 47
+	culture_groups = { gh_samojitian_group }
+}
+
+duke_male_samojitian = {
+	type = character
+	gender = male
+	special = holder
+	tier = duchy
+	priority = 29
+	culture_groups = { gh_samojitian_group }
+}
+
+duke_female_samojitian = {
+	type = character
+	gender = female
+	special = holder
+	tier = duchy
+	priority = 29
+	culture_groups = { gh_samojitian_group }
+}
+
+duchy_samojitian = {
+	type = title
+	tier = duchy
+	priority = 29
+	culture_groups = { gh_samojitian_group }
+}
+
+count_male_samojitian = {
+	type = character
+	gender = male
+	special = holder
+	tier = county
+	priority = 18
+	culture_groups = { gh_samojitian_group }
+}
+
+count_female_samojitian = {
+	type = character
+	gender = female
+	special = holder
+	tier = county
+	priority = 18
+	culture_groups = { gh_samojitian_group }
+}
+
+county_samojitian = {
+	type = title
+	tier = county
+	priority = 17
+	culture_groups = { gh_samojitian_group }
+}
+
+baron_male_samojitian = {
+	type = character
+	gender = male
+	special = holder
+	tier = barony
+	priority = 11
+	culture_groups = { gh_samojitian_group }
+}
+
+baron_female_samojitian = {
+	type = character
+	gender = female
+	special = holder
+	tier = barony
+	priority = 11
+	culture_groups = { gh_samojitian_group }
+}
+
+prince_male_samojitian = {
+	type = character
+	gender = male
+	special = ruler_child
+	tier = kingdom
+	culture_groups = { gh_samojitian_group }
+	governments = { feudal_government clan_government pirate_government }
+	priority = 35
+	top_liege = no
+}
+
+prince_female_samojitian = {
+	type = character
+	gender = female
+	special = ruler_child
+	tier = kingdom
+	culture_groups = { gh_samojitian_group }
+	governments = { feudal_government clan_government pirate_government }
+	priority = 35
+	top_liege = no
+}
+
+prince_male_samojitian_empire = {
+	type = character
+	gender = male
+	special = ruler_child
+	tier = empire
+	culture_groups = { gh_samojitian_group }
+	governments = { feudal_government clan_government pirate_government }
+	priority = 70
+	top_liege = no
+}
+
+prince_female_samojitian_empire = {
+	type = character
+	gender = female
+	special = ruler_child
+	tier = empire
+	culture_groups = { gh_samojitian_group }
+	governments = { feudal_government clan_government pirate_government }
+	priority = 70
+	top_liege = no
+}
+
+###ojyczaynz###
+
+emperor_male_ojyczaynz = {
+	type = character
+	gender = male
+	special = holder
+	tier = empire
+	priority = 102
+	culture_groups = { gh_ojyczaynz_group }
+}
+
+emperor_female_ojyczaynz = {
+	type = character
+	gender = female
+	special = holder
+	tier = empire
+	priority = 102
+	culture_groups = { gh_ojyczaynz_group }
+}
+
+empire_ojyczaynz = {
+	type = title
+	tier = empire
+	priority = 102
+	culture_groups = { gh_ojyczaynz_group }
+}
+
+king_male_ojyczaynz = {
+	type = character
+	gender = male
+	special = holder
+	tier = kingdom
+	priority = 47
+	culture_groups = { gh_ojyczaynz_group }
+}
+
+king_female_ojyczaynz = {
+	type = character
+	gender = female
+	special = holder
+	tier = kingdom
+	priority = 47
+	culture_groups = { gh_ojyczaynz_group }
+}
+
+kingdom_ojyczaynz = {
+	type = title
+	tier = kingdom
+	priority = 47
+	culture_groups = { gh_ojyczaynz_group }
+}
+
+duke_male_ojyczaynz = {
+	type = character
+	gender = male
+	special = holder
+	tier = duchy
+	priority = 29
+	culture_groups = { gh_ojyczaynz_group }
+}
+
+duke_female_ojyczaynz = {
+	type = character
+	gender = female
+	special = holder
+	tier = duchy
+	priority = 29
+	culture_groups = { gh_ojyczaynz_group }
+}
+
+duchy_ojyczaynz = {
+	type = title
+	tier = duchy
+	priority = 29
+	culture_groups = { gh_ojyczaynz_group }
+}
+
+count_male_ojyczaynz = {
+	type = character
+	gender = male
+	special = holder
+	tier = county
+	priority = 18
+	culture_groups = { gh_ojyczaynz_group }
+}
+
+count_female_ojyczaynz = {
+	type = character
+	gender = female
+	special = holder
+	tier = county
+	priority = 18
+	culture_groups = { gh_ojyczaynz_group }
+}
+
+county_ojyczaynz = {
+	type = title
+	tier = county
+	priority = 17
+	culture_groups = { gh_ojyczaynz_group }
+}
+
+baron_male_ojyczaynz = {
+	type = character
+	gender = male
+	special = holder
+	tier = barony
+	priority = 11
+	culture_groups = { gh_ojyczaynz_group }
+}
+
+baron_female_ojyczaynz = {
+	type = character
+	gender = female
+	special = holder
+	tier = barony
+	priority = 11
+	culture_groups = { gh_ojyczaynz_group }
+}
+
+prince_male_ojyczaynz = {
+	type = character
+	gender = male
+	special = ruler_child
+	tier = kingdom
+	culture_groups = { gh_ojyczaynz_group }
+	governments = { feudal_government clan_government pirate_government }
+	priority = 35
+	top_liege = no
+}
+
+prince_female_ojyczaynz = {
+	type = character
+	gender = female
+	special = ruler_child
+	tier = kingdom
+	culture_groups = { gh_ojyczaynz_group }
+	governments = { feudal_government clan_government pirate_government }
+	priority = 35
+	top_liege = no
+}
+
+prince_male_ojyczaynz_empire = {
+	type = character
+	gender = male
+	special = ruler_child
+	tier = empire
+	culture_groups = { gh_ojyczaynz_group }
+	governments = { feudal_government clan_government pirate_government }
+	priority = 70
+	top_liege = no
+}
+
+prince_female_ojyczaynz_empire = {
+	type = character
+	gender = female
+	special = ruler_child
+	tier = empire
+	culture_groups = { gh_ojyczaynz_group }
+	governments = { feudal_government clan_government pirate_government }
+	priority = 70
+	top_liege = no
+}
+
+
+###zarasadari###
+
+emperor_male_zarasadari = {
+	type = character
+	gender = male
+	special = holder
+	tier = empire
+	priority = 102
+	culture_groups = { gh_zarasadari_group }
+}
+
+emperor_female_zarasadari = {
+	type = character
+	gender = female
+	special = holder
+	tier = empire
+	priority = 102
+	culture_groups = { gh_zarasadari_group }
+}
+
+king_male_zarasadari = {
+	type = character
+	gender = male
+	special = holder
+	tier = kingdom
+	priority = 47
+	culture_groups = { gh_zarasadari_group }
+}
+
+king_female_zarasadari = {
+	type = character
+	gender = female
+	special = holder
+	tier = kingdom
+	priority = 47
+	culture_groups = { gh_zarasadari_group }
+}
+
+kingdom_zarasadari = {
+	type = title
+	tier = kingdom
+	priority = 47
+	culture_groups = { gh_zarasadari_group }
+}
+
+duke_male_zarasadari = {
+	type = character
+	gender = male
+	special = holder
+	tier = duchy
+	priority = 29
+	culture_groups = { gh_zarasadari_group }
+}
+
+duke_female_zarasadari = {
+	type = character
+	gender = female
+	special = holder
+	tier = duchy
+	priority = 29
+	culture_groups = { gh_zarasadari_group }
+}
+
+duchy_zarasadari = {
+	type = title
+	tier = duchy
+	priority = 29
+	culture_groups = { gh_zarasadari_group }
+}
+
+count_male_zarasadari = {
+	type = character
+	gender = male
+	special = holder
+	tier = county
+	priority = 18
+	culture_groups = { gh_zarasadari_group }
+}
+
+count_female_zarasadari = {
+	type = character
+	gender = female
+	special = holder
+	tier = county
+	priority = 18
+	culture_groups = { gh_zarasadari_group }
+}
+
+county_zarasadari = {
+	type = title
+	tier = county
+	priority = 17
+	culture_groups = { gh_zarasadari_group }
+}
+
+baron_male_zarasadari = {
+	type = character
+	gender = male
+	special = holder
+	tier = barony
+	priority = 11
+	culture_groups = { gh_zarasadari_group }
+}
+
+baron_female_zarasadari = {
+	type = character
+	gender = female
+	special = holder
+	tier = barony
+	priority = 11
+	culture_groups = { gh_zarasadari_group }
+}
+
+prince_male_zarasadari = {
+	type = character
+	gender = male
+	special = ruler_child
+	tier = kingdom
+	culture_groups = { gh_zarasadari_group }
+	governments = { feudal_government clan_government pirate_government }
+	priority = 35
+	top_liege = no
+}
+
+prince_female_zarasadari = {
+	type = character
+	gender = female
+	special = ruler_child
+	tier = kingdom
+	culture_groups = { gh_zarasadari_group }
+	governments = { feudal_government clan_government pirate_government }
+	priority = 35
+	top_liege = no
+}
+
+prince_male_zarasadari_empire = {
+	type = character
+	gender = male
+	special = ruler_child
+	tier = empire
+	culture_groups = { gh_zarasadari_group }
+	governments = { feudal_government clan_government pirate_government }
+	priority = 70
+	top_liege = no
+}
+
+prince_female_zarasadari_empire = {
+	type = character
+	gender = female
+	special = ruler_child
+	tier = empire
+	culture_groups = { gh_zarasadari_group }
+	governments = { feudal_government clan_government pirate_government }
+	priority = 70
+	top_liege = no
+}
+
+###dawic###
+
+emperor_male_dawic = {
+	type = character
+	gender = male
+	special = holder
+	tier = empire
+	priority = 102
+	culture_groups = { gh_dawic_group }
+}
+
+emperor_female_dawic = {
+	type = character
+	gender = female
+	special = holder
+	tier = empire
+	priority = 102
+	culture_groups = { gh_dawic_group }
+}
+
+empire_dawic = {
+	type = title
+	tier = empire
+	priority = 102
+	culture_groups = { gh_dawic_group }
+}
+
+king_male_dawic = {
+	type = character
+	gender = male
+	special = holder
+	tier = kingdom
+	priority = 47
+	culture_groups = { gh_dawic_group }
+}
+
+king_female_dawic = {
+	type = character
+	gender = female
+	special = holder
+	tier = kingdom
+	priority = 47
+	culture_groups = { gh_dawic_group }
+}
+
+kingdom_dawic = {
+	type = title
+	tier = kingdom
+	priority = 47
+	culture_groups = { gh_dawic_group }
+}
+
+duke_male_dawic = {
+	type = character
+	gender = male
+	special = holder
+	tier = duchy
+	priority = 29
+	culture_groups = { gh_dawic_group }
+}
+
+duke_female_dawic = {
+	type = character
+	gender = female
+	special = holder
+	tier = duchy
+	priority = 29
+	culture_groups = { gh_dawic_group }
+}
+
+duchy_dawic = {
+	type = title
+	tier = duchy
+	priority = 29
+	culture_groups = { gh_dawic_group }
+}
+
+count_male_dawic = {
+	type = character
+	gender = male
+	special = holder
+	tier = county
+	priority = 18
+	culture_groups = { gh_dawic_group }
+}
+
+count_female_dawic = {
+	type = character
+	gender = female
+	special = holder
+	tier = county
+	priority = 18
+	culture_groups = { gh_dawic_group }
+}
+
+county_dawic = {
+	type = title
+	tier = county
+	priority = 17
+	culture_groups = { gh_dawic_group }
+}
+
+baron_male_dawic = {
+	type = character
+	gender = male
+	special = holder
+	tier = barony
+	priority = 11
+	culture_groups = { gh_dawic_group }
+}
+
+baron_female_dawic = {
+	type = character
+	gender = female
+	special = holder
+	tier = barony
+	priority = 11
+	culture_groups = { gh_dawic_group }
+}
+
+prince_male_dawic = {
+	type = character
+	gender = male
+	special = ruler_child
+	tier = kingdom
+	culture_groups = { gh_dawic_group }
+	governments = { feudal_government clan_government pirate_government }
+	priority = 35
+	top_liege = no
+}
+
+prince_female_dawic = {
+	type = character
+	gender = female
+	special = ruler_child
+	tier = kingdom
+	culture_groups = { gh_dawic_group }
+	governments = { feudal_government clan_government pirate_government }
+	priority = 35
+	top_liege = no
+}
+
+prince_male_dawic_empire = {
+	type = character
+	gender = male
+	special = ruler_child
+	tier = empire
+	culture_groups = { gh_dawic_group }
+	governments = { feudal_government clan_government pirate_government }
+	priority = 70
+	top_liege = no
+}
+
+prince_female_dawic_empire = {
+	type = character
+	gender = female
+	special = ruler_child
+	tier = empire
+	culture_groups = { gh_dawic_group }
+	governments = { feudal_government clan_government pirate_government }
+	priority = 70
+	top_liege = no
+}
+
+###marmaladid###
+
+emperor_male_marmaladid = {
+	type = character
+	gender = male
+	special = holder
+	tier = empire
+	priority = 102
+	culture_groups = { gh_marmaladid_group }
+}
+
+emperor_female_marmaladid = {
+	type = character
+	gender = female
+	special = holder
+	tier = empire
+	priority = 102
+	culture_groups = { gh_marmaladid_group }
+}
+
+empire_marmaladid = {
+	type = title
+	tier = empire
+	priority = 102
+	culture_groups = { gh_marmaladid_group }
+}
+
+king_male_marmaladid = {
+	type = character
+	gender = male
+	special = holder
+	tier = kingdom
+	priority = 47
+	culture_groups = { gh_marmaladid_group }
+}
+
+king_female_marmaladid = {
+	type = character
+	gender = female
+	special = holder
+	tier = kingdom
+	priority = 47
+	culture_groups = { gh_marmaladid_group }
+}
+
+kingdom_marmaladid = {
+	type = title
+	tier = kingdom
+	priority = 47
+	culture_groups = { gh_marmaladid_group }
+}
+
+duke_male_marmaladid = {
+	type = character
+	gender = male
+	special = holder
+	tier = duchy
+	priority = 29
+	culture_groups = { gh_marmaladid_group }
+}
+
+duke_female_marmaladid = {
+	type = character
+	gender = female
+	special = holder
+	tier = duchy
+	priority = 29
+	culture_groups = { gh_marmaladid_group }
+}
+
+duchy_marmaladid = {
+	type = title
+	tier = duchy
+	priority = 29
+	culture_groups = { gh_marmaladid_group }
+}
+
+count_male_marmaladid = {
+	type = character
+	gender = male
+	special = holder
+	tier = county
+	priority = 18
+	culture_groups = { gh_marmaladid_group }
+}
+
+count_female_marmaladid = {
+	type = character
+	gender = female
+	special = holder
+	tier = county
+	priority = 18
+	culture_groups = { gh_marmaladid_group }
+}
+
+county_marmaladid = {
+	type = title
+	tier = county
+	priority = 17
+	culture_groups = { gh_marmaladid_group }
+}
+
+baron_male_marmaladid = {
+	type = character
+	gender = male
+	special = holder
+	tier = barony
+	priority = 11
+	culture_groups = { gh_marmaladid_group }
+}
+
+baron_female_marmaladid = {
+	type = character
+	gender = female
+	special = holder
+	tier = barony
+	priority = 11
+	culture_groups = { gh_marmaladid_group }
+}
+
+prince_male_marmaladid = {
+	type = character
+	gender = male
+	special = ruler_child
+	tier = kingdom
+	culture_groups = { gh_marmaladid_group }
+	governments = { feudal_government clan_government pirate_government }
+	priority = 35
+	top_liege = no
+}
+
+prince_female_marmaladid = {
+	type = character
+	gender = female
+	special = ruler_child
+	tier = kingdom
+	culture_groups = { gh_marmaladid_group }
+	governments = { feudal_government clan_government pirate_government }
+	priority = 35
+	top_liege = no
+}
+
+prince_male_marmaladid_empire = {
+	type = character
+	gender = male
+	special = ruler_child
+	tier = empire
+	culture_groups = { gh_marmaladid_group }
+	governments = { feudal_government clan_government pirate_government }
+	priority = 70
+	top_liege = no
+}
+
+prince_female_marmaladid_empire = {
+	type = character
+	gender = female
+	special = ruler_child
+	tier = empire
+	culture_groups = { gh_marmaladid_group }
+	governments = { feudal_government clan_government pirate_government }
+	priority = 70
+	top_liege = no
+}
+
+###kharadamatian###
+
+emperor_male_kharadamatian = {
+	type = character
+	gender = male
+	special = holder
+	tier = empire
+	priority = 102
+	culture_groups = { gh_kharadamatian_group }
+}
+
+emperor_female_kharadamatian = {
+	type = character
+	gender = female
+	special = holder
+	tier = empire
+	priority = 102
+	culture_groups = { gh_kharadamatian_group }
+}
+
+empire_kharadamatian = {
+	type = title
+	tier = empire
+	priority = 102
+	culture_groups = { gh_kharadamatian_group }
+}
+
+king_male_kharadamatian = {
+	type = character
+	gender = male
+	special = holder
+	tier = kingdom
+	priority = 47
+	culture_groups = { gh_kharadamatian_group }
+}
+
+king_female_kharadamatian = {
+	type = character
+	gender = female
+	special = holder
+	tier = kingdom
+	priority = 47
+	culture_groups = { gh_kharadamatian_group }
+}
+
+kingdom_kharadamatian = {
+	type = title
+	tier = kingdom
+	priority = 47
+	culture_groups = { gh_kharadamatian_group }
+}
+
+duke_male_kharadamatian = {
+	type = character
+	gender = male
+	special = holder
+	tier = duchy
+	priority = 29
+	culture_groups = { gh_kharadamatian_group }
+}
+
+duke_female_kharadamatian = {
+	type = character
+	gender = female
+	special = holder
+	tier = duchy
+	priority = 29
+	culture_groups = { gh_kharadamatian_group }
+}
+
+duchy_kharadamatian = {
+	type = title
+	tier = duchy
+	priority = 29
+	culture_groups = { gh_kharadamatian_group }
+}
+
+count_male_kharadamatian = {
+	type = character
+	gender = male
+	special = holder
+	tier = county
+	priority = 18
+	culture_groups = { gh_kharadamatian_group }
+}
+
+count_female_kharadamatian = {
+	type = character
+	gender = female
+	special = holder
+	tier = county
+	priority = 18
+	culture_groups = { gh_kharadamatian_group }
+}
+
+county_kharadamatian = {
+	type = title
+	tier = county
+	priority = 17
+	culture_groups = { gh_kharadamatian_group }
+}
+
+baron_male_kharadamatian = {
+	type = character
+	gender = male
+	special = holder
+	tier = barony
+	priority = 11
+	culture_groups = { gh_kharadamatian_group }
+}
+
+baron_female_kharadamatian = {
+	type = character
+	gender = female
+	special = holder
+	tier = barony
+	priority = 11
+	culture_groups = { gh_kharadamatian_group }
+}
+
+prince_male_kharadamatian = {
+	type = character
+	gender = male
+	special = ruler_child
+	tier = kingdom
+	culture_groups = { gh_kharadamatian_group }
+	governments = { feudal_government clan_government pirate_government }
+	priority = 35
+	top_liege = no
+}
+
+prince_female_kharadamatian = {
+	type = character
+	gender = female
+	special = ruler_child
+	tier = kingdom
+	culture_groups = { gh_kharadamatian_group }
+	governments = { feudal_government clan_government pirate_government }
+	priority = 35
+	top_liege = no
+}
+
+prince_male_kharadamatian_empire = {
+	type = character
+	gender = male
+	special = ruler_child
+	tier = empire
+	culture_groups = { gh_kharadamatian_group }
+	governments = { feudal_government clan_government pirate_government }
+	priority = 70
+	top_liege = no
+}
+
+prince_female_kharadamatian_empire = {
+	type = character
+	gender = female
+	special = ruler_child
+	tier = empire
+	culture_groups = { gh_kharadamatian_group }
+	governments = { feudal_government clan_government pirate_government }
+	priority = 70
+	top_liege = no
+}
+
+###dezhun###
+
+emperor_male_dezhun = {
+	type = character
+	gender = male
+	special = holder
+	tier = empire
+	priority = 102
+	culture_groups = { gh_dezhun_group }
+}
+
+emperor_female_dezhun = {
+	type = character
+	gender = female
+	special = holder
+	tier = empire
+	priority = 102
+	culture_groups = { gh_dezhun_group }
+}
+
+empire_dezhun = {
+	type = title
+	tier = empire
+	priority = 102
+	culture_groups = { gh_dezhun_group }
+}
+
+king_male_dezhun = {
+	type = character
+	gender = male
+	special = holder
+	tier = kingdom
+	priority = 47
+	culture_groups = { gh_dezhun_group }
+}
+
+king_female_dezhun = {
+	type = character
+	gender = female
+	special = holder
+	tier = kingdom
+	priority = 47
+	culture_groups = { gh_dezhun_group }
+}
+
+kingdom_dezhun = {
+	type = title
+	tier = kingdom
+	priority = 47
+	culture_groups = { gh_dezhun_group }
+}
+
+duke_male_dezhun = {
+	type = character
+	gender = male
+	special = holder
+	tier = duchy
+	priority = 29
+	culture_groups = { gh_dezhun_group }
+}
+
+duke_female_dezhun = {
+	type = character
+	gender = female
+	special = holder
+	tier = duchy
+	priority = 29
+	culture_groups = { gh_dezhun_group }
+}
+
+duchy_dezhun = {
+	type = title
+	tier = duchy
+	priority = 29
+	culture_groups = { gh_dezhun_group }
+}
+
+count_male_dezhun = {
+	type = character
+	gender = male
+	special = holder
+	tier = county
+	priority = 18
+	culture_groups = { gh_dezhun_group }
+}
+
+count_female_dezhun = {
+	type = character
+	gender = female
+	special = holder
+	tier = county
+	priority = 18
+	culture_groups = { gh_dezhun_group }
+}
+
+county_dezhun = {
+	type = title
+	tier = county
+	priority = 17
+	culture_groups = { gh_dezhun_group }
+}
+
+baron_male_dezhun = {
+	type = character
+	gender = male
+	special = holder
+	tier = barony
+	priority = 11
+	culture_groups = { gh_dezhun_group }
+}
+
+baron_female_dezhun = {
+	type = character
+	gender = female
+	special = holder
+	tier = barony
+	priority = 11
+	culture_groups = { gh_dezhun_group }
+}
+
+prince_male_dezhun = {
+	type = character
+	gender = male
+	special = ruler_child
+	tier = kingdom
+	culture_groups = { gh_dezhun_group }
+	governments = { feudal_government clan_government pirate_government }
+	priority = 35
+	top_liege = no
+}
+
+prince_female_dezhun = {
+	type = character
+	gender = female
+	special = ruler_child
+	tier = kingdom
+	culture_groups = { gh_dezhun_group }
+	governments = { feudal_government clan_government pirate_government }
+	priority = 35
+	top_liege = no
+}
+
+prince_male_dezhun_empire = {
+	type = character
+	gender = male
+	special = ruler_child
+	tier = empire
+	culture_groups = { gh_dezhun_group }
+	governments = { feudal_government clan_government pirate_government }
+	priority = 70
+	top_liege = no
+}
+
+prince_female_dezhun_empire = {
+	type = character
+	gender = female
+	special = ruler_child
+	tier = empire
+	culture_groups = { gh_dezhun_group }
+	governments = { feudal_government clan_government pirate_government }
+	priority = 70
+	top_liege = no
+}
+
+###saraddonian###
+
+emperor_male_saraddonian = {
+	type = character
+	gender = male
+	special = holder
+	tier = empire
+	priority = 102
+	culture_groups = { gh_saraddonian_group }
+}
+
+emperor_female_saraddonian = {
+	type = character
+	gender = female
+	special = holder
+	tier = empire
+	priority = 102
+	culture_groups = { gh_saraddonian_group }
+}
+
+empire_saraddonian = {
+	type = title
+	tier = empire
+	priority = 102
+	culture_groups = { gh_saraddonian_group }
+}
+
+king_male_saraddonian = {
+	type = character
+	gender = male
+	special = holder
+	tier = kingdom
+	priority = 47
+	culture_groups = { gh_saraddonian_group }
+}
+
+king_female_saraddonian = {
+	type = character
+	gender = female
+	special = holder
+	tier = kingdom
+	priority = 47
+	culture_groups = { gh_saraddonian_group }
+}
+
+kingdom_saraddonian = {
+	type = title
+	tier = kingdom
+	priority = 47
+	culture_groups = { gh_saraddonian_group }
+}
+
+duke_male_saraddonian = {
+	type = character
+	gender = male
+	special = holder
+	tier = duchy
+	priority = 29
+	culture_groups = { gh_saraddonian_group }
+}
+
+duke_female_saraddonian = {
+	type = character
+	gender = female
+	special = holder
+	tier = duchy
+	priority = 29
+	culture_groups = { gh_saraddonian_group }
+}
+
+duchy_saraddonian = {
+	type = title
+	tier = duchy
+	priority = 29
+	culture_groups = { gh_saraddonian_group }
+}
+
+count_male_saraddonian = {
+	type = character
+	gender = male
+	special = holder
+	tier = county
+	priority = 18
+	culture_groups = { gh_saraddonian_group }
+}
+
+count_female_saraddonian = {
+	type = character
+	gender = female
+	special = holder
+	tier = county
+	priority = 18
+	culture_groups = { gh_saraddonian_group }
+}
+
+county_saraddonian = {
+	type = title
+	tier = county
+	priority = 17
+	culture_groups = { gh_saraddonian_group }
+}
+
+baron_male_saraddonian = {
+	type = character
+	gender = male
+	special = holder
+	tier = barony
+	priority = 11
+	culture_groups = { gh_saraddonian_group }
+}
+
+baron_female_saraddonian = {
+	type = character
+	gender = female
+	special = holder
+	tier = barony
+	priority = 11
+	culture_groups = { gh_saraddonian_group }
+}
+
+prince_male_saraddonian = {
+	type = character
+	gender = male
+	special = ruler_child
+	tier = kingdom
+	culture_groups = { gh_saraddonian_group }
+	governments = { feudal_government clan_government pirate_government }
+	priority = 35
+	top_liege = no
+}
+
+prince_female_saraddonian = {
+	type = character
+	gender = female
+	special = ruler_child
+	tier = kingdom
+	culture_groups = { gh_saraddonian_group }
+	governments = { feudal_government clan_government pirate_government }
+	priority = 35
+	top_liege = no
+}
+
+prince_male_saraddonian_empire = {
+	type = character
+	gender = male
+	special = ruler_child
+	tier = empire
+	culture_groups = { gh_saraddonian_group }
+	governments = { feudal_government clan_government pirate_government }
+	priority = 70
+	top_liege = no
+}
+
+prince_female_saraddonian_empire = {
+	type = character
+	gender = female
+	special = ruler_child
+	tier = empire
+	culture_groups = { gh_saraddonian_group }
+	governments = { feudal_government clan_government pirate_government }
+	priority = 70
+	top_liege = no
+}
+
+###kosharan###
+
+emperor_male_kosharan = {
+	type = character
+	gender = male
+	special = holder
+	tier = empire
+	priority = 102
+	culture_groups = { gh_kosharan_group }
+}
+
+emperor_female_kosharan = {
+	type = character
+	gender = female
+	special = holder
+	tier = empire
+	priority = 102
+	culture_groups = { gh_kosharan_group }
+}
+
+empire_kosharan = {
+	type = title
+	tier = empire
+	priority = 102
+	culture_groups = { gh_kosharan_group }
+}
+
+king_male_kosharan = {
+	type = character
+	gender = male
+	special = holder
+	tier = kingdom
+	priority = 47
+	culture_groups = { gh_kosharan_group }
+}
+
+king_female_kosharan = {
+	type = character
+	gender = female
+	special = holder
+	tier = kingdom
+	priority = 47
+	culture_groups = { gh_kosharan_group }
+}
+
+kingdom_kosharan = {
+	type = title
+	tier = kingdom
+	priority = 47
+	culture_groups = { gh_kosharan_group }
+}
+
+duke_male_kosharan = {
+	type = character
+	gender = male
+	special = holder
+	tier = duchy
+	priority = 29
+	culture_groups = { gh_kosharan_group }
+}
+
+duke_female_kosharan = {
+	type = character
+	gender = female
+	special = holder
+	tier = duchy
+	priority = 29
+	culture_groups = { gh_kosharan_group }
+}
+
+duchy_kosharan = {
+	type = title
+	tier = duchy
+	priority = 29
+	culture_groups = { gh_kosharan_group }
+}
+
+count_male_kosharan = {
+	type = character
+	gender = male
+	special = holder
+	tier = county
+	priority = 18
+	culture_groups = { gh_kosharan_group }
+}
+
+count_female_kosharan = {
+	type = character
+	gender = female
+	special = holder
+	tier = county
+	priority = 18
+	culture_groups = { gh_kosharan_group }
+}
+
+county_kosharan = {
+	type = title
+	tier = county
+	priority = 17
+	culture_groups = { gh_kosharan_group }
+}
+
+baron_male_kosharan = {
+	type = character
+	gender = male
+	special = holder
+	tier = barony
+	priority = 11
+	culture_groups = { gh_kosharan_group }
+}
+
+baron_female_kosharan = {
+	type = character
+	gender = female
+	special = holder
+	tier = barony
+	priority = 11
+	culture_groups = { gh_kosharan_group }
+}
+
+prince_male_kosharan = {
+	type = character
+	gender = male
+	special = ruler_child
+	tier = kingdom
+	culture_groups = { gh_kosharan_group }
+	governments = { feudal_government clan_government pirate_government }
+	priority = 35
+	top_liege = no
+}
+
+prince_female_kosharan = {
+	type = character
+	gender = female
+	special = ruler_child
+	tier = kingdom
+	culture_groups = { gh_kosharan_group }
+	governments = { feudal_government clan_government pirate_government }
+	priority = 35
+	top_liege = no
+}
+
+prince_male_kosharan_empire = {
+	type = character
+	gender = male
+	special = ruler_child
+	tier = empire
+	culture_groups = { gh_kosharan_group }
+	governments = { feudal_government clan_government pirate_government }
+	priority = 70
+	top_liege = no
+}
+
+prince_female_kosharan_empire = {
+	type = character
+	gender = female
+	special = ruler_child
+	tier = empire
+	culture_groups = { gh_kosharan_group }
+	governments = { feudal_government clan_government pirate_government }
+	priority = 70
+	top_liege = no
+}
+
+###khemet###
+
+emperor_male_khemet = {
+	type = character
+	gender = male
+	special = holder
+	tier = empire
+	priority = 102
+	culture_groups = { gh_khemet_group }
+}
+
+emperor_female_khemet = {
+	type = character
+	gender = female
+	special = holder
+	tier = empire
+	priority = 102
+	culture_groups = { gh_khemet_group }
+}
+
+empire_khemet = {
+	type = title
+	tier = empire
+	priority = 102
+	culture_groups = { gh_khemet_group }
+}
+
+king_male_khemet = {
+	type = character
+	gender = male
+	special = holder
+	tier = kingdom
+	priority = 47
+	culture_groups = { gh_khemet_group }
+}
+
+king_female_khemet = {
+	type = character
+	gender = female
+	special = holder
+	tier = kingdom
+	priority = 47
+	culture_groups = { gh_khemet_group }
+}
+
+kingdom_khemet = {
+	type = title
+	tier = kingdom
+	priority = 47
+	culture_groups = { gh_khemet_group }
+}
+
+duke_male_khemet = {
+	type = character
+	gender = male
+	special = holder
+	tier = duchy
+	priority = 29
+	culture_groups = { gh_khemet_group }
+}
+
+duke_female_khemet = {
+	type = character
+	gender = female
+	special = holder
+	tier = duchy
+	priority = 29
+	culture_groups = { gh_khemet_group }
+}
+
+duchy_khemet = {
+	type = title
+	tier = duchy
+	priority = 29
+	culture_groups = { gh_khemet_group }
+}
+
+count_male_khemet = {
+	type = character
+	gender = male
+	special = holder
+	tier = county
+	priority = 18
+	culture_groups = { gh_khemet_group }
+}
+
+count_female_khemet = {
+	type = character
+	gender = female
+	special = holder
+	tier = county
+	priority = 18
+	culture_groups = { gh_khemet_group }
+}
+
+county_khemet = {
+	type = title
+	tier = county
+	priority = 17
+	culture_groups = { gh_khemet_group }
+}
+
+baron_male_khemet = {
+	type = character
+	gender = male
+	special = holder
+	tier = barony
+	priority = 11
+	culture_groups = { gh_khemet_group }
+}
+
+baron_female_khemet = {
+	type = character
+	gender = female
+	special = holder
+	tier = barony
+	priority = 11
+	culture_groups = { gh_khemet_group }
+}
+
+prince_male_khemet = {
+	type = character
+	gender = male
+	special = ruler_child
+	tier = kingdom
+	culture_groups = { gh_khemet_group }
+	governments = { feudal_government clan_government pirate_government }
+	priority = 35
+	top_liege = no
+}
+
+prince_female_khemet = {
+	type = character
+	gender = female
+	special = ruler_child
+	tier = kingdom
+	culture_groups = { gh_khemet_group }
+	governments = { feudal_government clan_government pirate_government }
+	priority = 35
+	top_liege = no
+}
+
+prince_male_khemet_empire = {
+	type = character
+	gender = male
+	special = ruler_child
+	tier = empire
+	culture_groups = { gh_khemet_group }
+	governments = { feudal_government clan_government pirate_government }
+	priority = 70
+	top_liege = no
+}
+
+prince_female_khemet_empire = {
+	type = character
+	gender = female
+	special = ruler_child
+	tier = empire
+	culture_groups = { gh_khemet_group }
+	governments = { feudal_government clan_government pirate_government }
+	priority = 70
+	top_liege = no
+}
+
+###canian###
+
+emperor_male_canian = {
+	type = character
+	gender = male
+	special = holder
+	tier = empire
+	priority = 102
+	culture_groups = { gh_canian_group }
+}
+
+emperor_female_canian = {
+	type = character
+	gender = female
+	special = holder
+	tier = empire
+	priority = 102
+	culture_groups = { gh_canian_group }
+}
+
+empire_canian = {
+	type = title
+	tier = empire
+	priority = 102
+	culture_groups = { gh_canian_group }
+}
+
+king_male_canian = {
+	type = character
+	gender = male
+	special = holder
+	tier = kingdom
+	priority = 47
+	culture_groups = { gh_canian_group }
+}
+
+king_female_canian = {
+	type = character
+	gender = female
+	special = holder
+	tier = kingdom
+	priority = 47
+	culture_groups = { gh_canian_group }
+}
+
+kingdom_canian = {
+	type = title
+	tier = kingdom
+	priority = 47
+	culture_groups = { gh_canian_group }
+}
+
+duke_male_canian = {
+	type = character
+	gender = male
+	special = holder
+	tier = duchy
+	priority = 29
+	culture_groups = { gh_canian_group }
+}
+
+duke_female_canian = {
+	type = character
+	gender = female
+	special = holder
+	tier = duchy
+	priority = 29
+	culture_groups = { gh_canian_group }
+}
+
+duchy_canian = {
+	type = title
+	tier = duchy
+	priority = 29
+	culture_groups = { gh_canian_group }
+}
+
+count_male_canian = {
+	type = character
+	gender = male
+	special = holder
+	tier = county
+	priority = 18
+	culture_groups = { gh_canian_group }
+}
+
+count_female_canian = {
+	type = character
+	gender = female
+	special = holder
+	tier = county
+	priority = 18
+	culture_groups = { gh_canian_group }
+}
+
+county_canian = {
+	type = title
+	tier = county
+	priority = 17
+	culture_groups = { gh_canian_group }
+}
+
+baron_male_canian = {
+	type = character
+	gender = male
+	special = holder
+	tier = barony
+	priority = 11
+	culture_groups = { gh_canian_group }
+}
+
+baron_female_canian = {
+	type = character
+	gender = female
+	special = holder
+	tier = barony
+	priority = 11
+	culture_groups = { gh_canian_group }
+}
+
+prince_male_canian = {
+	type = character
+	gender = male
+	special = ruler_child
+	tier = kingdom
+	culture_groups = { gh_canian_group }
+	governments = { feudal_government clan_government pirate_government }
+	priority = 35
+	top_liege = no
+}
+
+prince_female_canian = {
+	type = character
+	gender = female
+	special = ruler_child
+	tier = kingdom
+	culture_groups = { gh_canian_group }
+	governments = { feudal_government clan_government pirate_government }
+	priority = 35
+	top_liege = no
+}
+
+prince_male_canian_empire = {
+	type = character
+	gender = male
+	special = ruler_child
+	tier = empire
+	culture_groups = { gh_canian_group }
+	governments = { feudal_government clan_government pirate_government }
+	priority = 70
+	top_liege = no
+}
+
+prince_female_canian_empire = {
+	type = character
+	gender = female
+	special = ruler_child
+	tier = empire
+	culture_groups = { gh_canian_group }
+	governments = { feudal_government clan_government pirate_government }
+	priority = 70
+	top_liege = no
+}
+
+###saradari###
+
+emperor_male_saradari = {
+	type = character
+	gender = male
+	special = holder
+	tier = empire
+	priority = 102
+	culture_groups = { gh_saradari_group }
+}
+
+emperor_female_saradari = {
+	type = character
+	gender = female
+	special = holder
+	tier = empire
+	priority = 102
+	culture_groups = { gh_saradari_group }
+}
+
+empire_saradari = {
+	type = title
+	tier = empire
+	priority = 102
+	culture_groups = { gh_saradari_group }
+}
+
+king_male_saradari = {
+	type = character
+	gender = male
+	special = holder
+	tier = kingdom
+	priority = 47
+	culture_groups = { gh_saradari_group }
+}
+
+king_female_saradari = {
+	type = character
+	gender = female
+	special = holder
+	tier = kingdom
+	priority = 47
+	culture_groups = { gh_saradari_group }
+}
+
+kingdom_saradari = {
+	type = title
+	tier = kingdom
+	priority = 47
+	culture_groups = { gh_saradari_group }
+}
+
+duke_male_saradari = {
+	type = character
+	gender = male
+	special = holder
+	tier = duchy
+	priority = 29
+	culture_groups = { gh_saradari_group }
+}
+
+duke_female_saradari = {
+	type = character
+	gender = female
+	special = holder
+	tier = duchy
+	priority = 29
+	culture_groups = { gh_saradari_group }
+}
+
+duchy_saradari = {
+	type = title
+	tier = duchy
+	priority = 29
+	culture_groups = { gh_saradari_group }
+}
+
+count_male_saradari = {
+	type = character
+	gender = male
+	special = holder
+	tier = county
+	priority = 18
+	culture_groups = { gh_saradari_group }
+}
+
+count_female_saradari = {
+	type = character
+	gender = female
+	special = holder
+	tier = county
+	priority = 18
+	culture_groups = { gh_saradari_group }
+}
+
+county_saradari = {
+	type = title
+	tier = county
+	priority = 17
+	culture_groups = { gh_saradari_group }
+}
+
+baron_male_saradari = {
+	type = character
+	gender = male
+	special = holder
+	tier = barony
+	priority = 11
+	culture_groups = { gh_saradari_group }
+}
+
+baron_female_saradari = {
+	type = character
+	gender = female
+	special = holder
+	tier = barony
+	priority = 11
+	culture_groups = { gh_saradari_group }
+}
+
+prince_male_saradari = {
+	type = character
+	gender = male
+	special = ruler_child
+	tier = kingdom
+	culture_groups = { gh_saradari_group }
+	governments = { feudal_government clan_government pirate_government }
+	priority = 35
+	top_liege = no
+}
+
+prince_female_saradari = {
+	type = character
+	gender = female
+	special = ruler_child
+	tier = kingdom
+	culture_groups = { gh_saradari_group }
+	governments = { feudal_government clan_government pirate_government }
+	priority = 35
+	top_liege = no
+}
+
+prince_male_saradari_empire = {
+	type = character
+	gender = male
+	special = ruler_child
+	tier = empire
+	culture_groups = { gh_saradari_group }
+	governments = { feudal_government clan_government pirate_government }
+	priority = 70
+	top_liege = no
+}
+
+prince_female_saradari_empire = {
+	type = character
+	gender = female
+	special = ruler_child
+	tier = empire
+	culture_groups = { gh_saradari_group }
+	governments = { feudal_government clan_government pirate_government }
+	priority = 70
+	top_liege = no
+}
+
+###Adabyss###
+
+emperor_male_adabyssian = {
+	type = character
+	special = holder
+	tier = empire
+	priority = 101
+	culture_groups = { gh_hadiyan_group }
+}
+
+emperor_female_adabyssian = {
+	type = character
+	gender = female
+	special = holder
+	tier = empire
+	priority = 101
+	culture_groups = { gh_hadiyan_group }
+}
+
+empire_adabyssian = {
+	type = title
+	tier = empire
+	priority = 101
+	culture_groups = { gh_hadiyan_group }
+}
+
+king_male_adabyssian = {
+	type = character
+	special = holder
+	tier = kingdom
+	priority = 80
+	culture_groups = { gh_hadiyan_group }
+}
+
+king_female_adabyssian = {
+	type = character
+	gender = female
+	special = holder
+	tier = kingdom
+	priority = 80
+	culture_groups = { gh_hadiyan_group }
+}
+
+kingdom_adabyssian = {
+	type = title
+	tier = kingdom
+	priority = 80
+	culture_groups = { gh_hadiyan_group }
+}
+
+######Kashirya######
+
+emperor_male_kashirya = {
+	type = character
+	gender = male
+	special = holder
+	tier = empire
+	priority = 102
+	culture_groups = { gh_aafarzay_group gh_aevakori_group gh_aembarisa_group gh_asariyna_group gh_kevaali_group gh_khalai_group gh_veparstva_group gh_adhata_group gh_agnala_group gh_athacaya_group gh_chordhan_group gh_dayatemi_group gh_emanhi_group gh_haraja_group gh_likarkho_group gh_margur_group gh_rekhala_group gh_veparstva_group gh_zonthawa_group }
+}
+
+emperor_female_kashirya = {
+	type = character
+	gender = female
+	special = holder
+	tier = empire
+	priority = 102
+	culture_groups = { gh_aafarzay_group gh_aevakori_group gh_aembarisa_group gh_asariyna_group gh_kevaali_group gh_khalai_group gh_veparstva_group gh_adhata_group gh_agnala_group gh_athacaya_group gh_chordhan_group gh_dayatemi_group gh_emanhi_group gh_haraja_group gh_likarkho_group gh_margur_group gh_rekhala_group gh_veparstva_group gh_zonthawa_group }
+}
+
+kingdom_male_kashirya = {
+	type = character
+	gender = male
+	special = holder
+	tier = kingdom
+	priority = 101
+	culture_groups = { gh_aafarzay_group gh_aevakori_group gh_aembarisa_group gh_asariyna_group gh_kevaali_group gh_khalai_group gh_veparstva_group gh_adhata_group gh_agnala_group gh_athacaya_group gh_chordhan_group gh_dayatemi_group gh_emanhi_group gh_haraja_group gh_likarkho_group gh_margur_group gh_rekhala_group gh_veparstva_group gh_zonthawa_group }
+}
+
+kingdom_female_kashirya = {
+	type = character
+	gender = female
+	special = holder
+	tier = kingdom
+	priority = 101
+	culture_groups = { gh_aafarzay_group gh_aevakori_group gh_aembarisa_group gh_asariyna_group gh_kevaali_group gh_khalai_group gh_veparstva_group gh_adhata_group gh_agnala_group gh_athacaya_group gh_chordhan_group gh_dayatemi_group gh_emanhi_group gh_haraja_group gh_likarkho_group gh_margur_group gh_rekhala_group gh_veparstva_group gh_zonthawa_group }
+}
+
+duke_male_kashirya = {
+	type = character
+	gender = male
+	special = holder
+	tier = duchy
+	priority = 100
+	culture_groups = { gh_aafarzay_group gh_aevakori_group gh_aembarisa_group gh_asariyna_group gh_kevaali_group gh_khalai_group gh_veparstva_group gh_adhata_group gh_agnala_group gh_athacaya_group gh_chordhan_group gh_dayatemi_group gh_emanhi_group gh_haraja_group gh_likarkho_group gh_margur_group gh_rekhala_group gh_veparstva_group gh_zonthawa_group }
+}
+
+duke_female_kashirya = {
+	type = character
+	gender = female
+	special = holder
+	tier = duchy
+	priority = 100
+	culture_groups = { gh_aafarzay_group gh_aevakori_group gh_aembarisa_group gh_asariyna_group gh_kevaali_group gh_khalai_group gh_veparstva_group gh_adhata_group gh_agnala_group gh_athacaya_group gh_chordhan_group gh_dayatemi_group gh_emanhi_group gh_haraja_group gh_likarkho_group gh_margur_group gh_rekhala_group gh_veparstva_group gh_zonthawa_group }
+}
+
+count_male_kashirya = {
+	type = character
+	gender = male
+	special = holder
+	tier = county
+	priority = 100
+	culture_groups = { gh_aafarzay_group gh_aevakori_group gh_aembarisa_group gh_asariyna_group gh_kevaali_group gh_khalai_group gh_veparstva_group gh_adhata_group gh_agnala_group gh_athacaya_group gh_chordhan_group gh_dayatemi_group gh_emanhi_group gh_haraja_group gh_likarkho_group gh_margur_group gh_rekhala_group gh_veparstva_group gh_zonthawa_group }
+}
+
+count_female_kashirya = {
+	type = character
+	gender = female
+	special = holder
+	tier = county
+	priority = 102
+	culture_groups = { gh_aafarzay_group gh_aevakori_group gh_aembarisa_group gh_asariyna_group gh_kevaali_group gh_khalai_group gh_veparstva_group gh_adhata_group gh_agnala_group gh_athacaya_group gh_chordhan_group gh_dayatemi_group gh_emanhi_group gh_haraja_group gh_likarkho_group gh_margur_group gh_rekhala_group gh_veparstva_group gh_zonthawa_group }
+}
+
+baron_male_kashirya = {
+	type = character
+	gender = male
+	special = holder
+	tier = barony
+	priority = 80
+	culture_groups = { gh_aafarzay_group gh_aevakori_group gh_aembarisa_group gh_asariyna_group gh_kevaali_group gh_khalai_group gh_veparstva_group gh_adhata_group gh_agnala_group gh_athacaya_group gh_chordhan_group gh_dayatemi_group gh_emanhi_group gh_haraja_group gh_likarkho_group gh_margur_group gh_rekhala_group gh_veparstva_group gh_zonthawa_group }
+}
+
+baron_female_kashirya = {
+	type = character
+	gender = female
+	special = holder
+	tier = empire
+	priority = 80
+	culture_groups = { gh_aafarzay_group gh_aevakori_group gh_aembarisa_group gh_asariyna_group gh_kevaali_group gh_khalai_group gh_veparstva_group gh_adhata_group gh_agnala_group gh_athacaya_group gh_chordhan_group gh_dayatemi_group gh_emanhi_group gh_haraja_group gh_likarkho_group gh_margur_group gh_rekhala_group gh_veparstva_group gh_zonthawa_group }
+}
+
+prince_male_kashirya = {
+	type = character
+	gender = male
+	special = ruler_child
+	tier = kingdom
+	culture_groups = { gh_aafarzay_group gh_aevakori_group gh_aembarisa_group gh_asariyna_group gh_kevaali_group gh_khalai_group gh_veparstva_group gh_adhata_group gh_agnala_group gh_athacaya_group gh_chordhan_group gh_dayatemi_group gh_emanhi_group gh_haraja_group gh_likarkho_group gh_margur_group gh_rekhala_group gh_veparstva_group gh_zonthawa_group }
+	priority = 80
+}
+
+prince_male_kashirya_empire = {
+	type = character
+	gender = male
+	special = ruler_child
+	tier = empire
+	culture_groups = {  gh_aafarzay_group gh_aevakori_group gh_aembarisa_group gh_asariyna_group gh_kevaali_group gh_khalai_group gh_veparstva_group gh_adhata_group gh_agnala_group gh_athacaya_group gh_chordhan_group gh_dayatemi_group gh_emanhi_group gh_haraja_group gh_likarkho_group gh_margur_group gh_rekhala_group gh_veparstva_group gh_zonthawa_group }
+	priority = 80
+}
+
+prince_female_kashirya = {
+	type = character
+	gender = female
+	special = ruler_child
+	tier = kingdom
+	culture_groups = {  gh_aafarzay_group gh_aevakori_group gh_aembarisa_group gh_asariyna_group gh_kevaali_group gh_khalai_group gh_veparstva_group gh_adhata_group gh_agnala_group gh_athacaya_group gh_chordhan_group gh_dayatemi_group gh_emanhi_group gh_haraja_group gh_likarkho_group gh_margur_group gh_rekhala_group gh_veparstva_group gh_zonthawa_group }
+	priority = 80
+}
+
+prince_female_kashirya_empire = {
+	type = character
+	gender = female
+	special = ruler_child
+	tier = empire
+	culture_groups = {  gh_aafarzay_group gh_aevakori_group gh_aembarisa_group gh_asariyna_group gh_kevaali_group gh_khalai_group gh_veparstva_group gh_adhata_group gh_agnala_group gh_athacaya_group gh_chordhan_group gh_dayatemi_group gh_emanhi_group gh_haraja_group gh_likarkho_group gh_margur_group gh_rekhala_group gh_veparstva_group gh_zonthawa_group }
+	priority = 80
+}
+
+empire_kashirya = {
+	type = title
+	tier = empire
+	priority = 102
+	culture_groups = {  gh_aafarzay_group gh_aevakori_group gh_aembarisa_group gh_asariyna_group gh_kevaali_group gh_khalai_group gh_veparstva_group gh_adhata_group gh_agnala_group gh_athacaya_group gh_chordhan_group gh_dayatemi_group gh_emanhi_group gh_haraja_group gh_likarkho_group gh_margur_group gh_rekhala_group gh_veparstva_group gh_zonthawa_group }
+}
+
+kingdom_kashirya = {
+	type = title
+	tier = kingdom
+	priority = 101
+	culture_groups = {  gh_aafarzay_group gh_aevakori_group gh_aembarisa_group gh_asariyna_group gh_kevaali_group gh_khalai_group gh_veparstva_group gh_adhata_group gh_agnala_group gh_athacaya_group gh_chordhan_group gh_dayatemi_group gh_emanhi_group gh_haraja_group gh_likarkho_group gh_margur_group gh_rekhala_group gh_veparstva_group gh_zonthawa_group }
+}
+
+duchy_kashirya = {
+	type = title
+	tier = duchy
+	priority = 100
+	culture_groups = {  gh_aafarzay_group gh_aevakori_group gh_aembarisa_group gh_asariyna_group gh_kevaali_group gh_khalai_group gh_veparstva_group gh_adhata_group gh_agnala_group gh_athacaya_group gh_chordhan_group gh_dayatemi_group gh_emanhi_group gh_haraja_group gh_likarkho_group gh_margur_group gh_rekhala_group gh_veparstva_group gh_zonthawa_group }
+}
+
+county_kashirya = {
+	type = title
+	tier = county
+	priority = 100
+	culture_groups = {  gh_aafarzay_group gh_aevakori_group gh_aembarisa_group gh_asariyna_group gh_kevaali_group gh_khalai_group gh_veparstva_group gh_adhata_group gh_agnala_group gh_athacaya_group gh_chordhan_group gh_dayatemi_group gh_emanhi_group gh_haraja_group gh_likarkho_group gh_margur_group gh_rekhala_group gh_veparstva_group gh_zonthawa_group }
+}
+
+barony_kashirya = {
+	type = title
+	tier = barony
+	priority = 99
+	culture_groups = {  gh_aafarzay_group gh_aevakori_group gh_aembarisa_group gh_asariyna_group gh_kevaali_group gh_khalai_group gh_veparstva_group gh_adhata_group gh_agnala_group gh_athacaya_group gh_chordhan_group gh_dayatemi_group gh_emanhi_group gh_haraja_group gh_likarkho_group gh_margur_group gh_rekhala_group gh_veparstva_group gh_zonthawa_group }
+}
+
+
+######Mondecny######
+
+emperor_male_mondecny = {
+	type = character
+	gender = male
+	special = holder
+	tier = empire
+	priority = 101
+	culture_groups = { gh_mondecny_group }
+}
+emperor_female_mondecny = {
+	type = character
+	gender = female
+	special = holder
+	tier = empire
+	priority = 101
+	culture_groups = { gh_mondecny_group }
+}
+king_male_mondecny = {
+	type = character
+	gender = male
+	special = holder
+	tier = kingdom
+	priority = 101
+	culture_groups = { gh_mondecny_group }
+}
+
+king_female_mondecny = {
+	type = character
+	gender = female
+	special = holder
+	tier = kingdom
+	priority = 101
+	culture_groups = { gh_mondecny_group }
+}
+
+kingdom_mondecny = {
+	type = title
+	tier = kingdom
+	priority = 27
+	culture_groups = { gh_mondecny_group }
+}
+
+duchy_mondecny = {
+	type = title
+	tier = duchy
+	priority = 27
+	culture_groups = { gh_mondecny_group }
+}
+
+county_mondecny = {
+	type = title
+	tier = county
+	priority = 27
+	culture_groups = { gh_mondecny_group }
+}
+
+barony_mondecny = {
+	type = title
+	tier = barony
+	priority = 27
+	culture_groups = { gh_mondecny_group }
+}
+
+duke_male_mondecny = {
+	type = character
+	gender = male
+	special = holder
+	tier = duchy
+	priority = 101
+	culture_groups = { gh_mondecny_group }
+}
+
+duke_female_mondecny = {
+	type = character
+	gender = female
+	special = holder
+	tier = duchy
+	priority = 101
+	culture_groups = { gh_mondecny_group }
+}
+count_female_mondecny = {
+	type = character
+	gender = female
+	special = holder
+	tier = county
+	priority = 101
+	culture_groups = { gh_mondecny_group }
+}
+count_male_mondecny = {
+	type = character
+	gender = male
+	special = holder
+	tier = county
+	priority = 101
+	culture_groups = { gh_mondecny_group }
+}
+baron_mondecny_male = {
+	type = character
+	gender = male
+	special = holder
+	tier = barony
+	priority = 101
+	culture_groups = { gh_mondecny_group }
+}
+baron_mondecny_female = {
+	type = character
+	gender = female
+	special = holder
+	tier = barony
+	priority = 101
+	culture_groups = { gh_mondecny_group }
+}
+
+###lerrardin###
+
+emperor_male_lerrardin = {
+	type = character
+	gender = male
+	special = holder
+	tier = empire
+	priority = 102
+	culture_groups = { gh_lerrardin_group }
+}
+
+emperor_female_lerrardin = {
+	type = character
+	gender = female
+	special = holder
+	tier = empire
+	priority = 102
+	culture_groups = { gh_lerrardin_group }
+}
+
+empire_lerrardin = {
+	type = title
+	tier = empire
+	priority = 102
+	culture_groups = { gh_lerrardin_group }
+}
+
+king_male_lerrardin = {
+	type = character
+	gender = male
+	special = holder
+	tier = kingdom
+	priority = 47
+	culture_groups = { gh_lerrardin_group }
+}
+
+king_female_lerrardin = {
+	type = character
+	gender = female
+	special = holder
+	tier = kingdom
+	priority = 47
+	culture_groups = { gh_lerrardin_group }
+}
+
+kingdom_lerrardin = {
+	type = title
+	tier = kingdom
+	priority = 47
+	culture_groups = { gh_lerrardin_group }
+}
+
+duke_male_lerrardin = {
+	type = character
+	gender = male
+	special = holder
+	tier = duchy
+	priority = 29
+	culture_groups = { gh_lerrardin_group }
+}
+
+duke_female_lerrardin = {
+	type = character
+	gender = female
+	special = holder
+	tier = duchy
+	priority = 29
+	culture_groups = { gh_lerrardin_group }
+}
+
+duchy_lerrardin = {
+	type = title
+	tier = duchy
+	priority = 29
+	culture_groups = { gh_lerrardin_group }
+}
+
+count_male_lerrardin = {
+	type = character
+	gender = male
+	special = holder
+	tier = county
+	priority = 18
+	culture_groups = { gh_lerrardin_group }
+}
+
+count_female_lerrardin = {
+	type = character
+	gender = female
+	special = holder
+	tier = county
+	priority = 18
+	culture_groups = { gh_lerrardin_group }
+}
+
+county_lerrardin = {
+	type = title
+	tier = county
+	priority = 17
+	culture_groups = { gh_lerrardin_group }
+}
+
+baron_male_lerrardin = {
+	type = character
+	gender = male
+	special = holder
+	tier = barony
+	priority = 11
+	culture_groups = { gh_lerrardin_group }
+}
+
+baron_female_lerrardin = {
+	type = character
+	gender = female
+	special = holder
+	tier = barony
+	priority = 11
+	culture_groups = { gh_lerrardin_group }
+}
+
+prince_male_lerrardin = {
+	type = character
+	gender = male
+	special = ruler_child
+	tier = kingdom
+	culture_groups = { gh_lerrardin_group }
+	governments = { feudal_government clan_government pirate_government }
+	priority = 35
+	top_liege = no
+}
+
+prince_female_lerrardin = {
+	type = character
+	gender = female
+	special = ruler_child
+	tier = kingdom
+	culture_groups = { gh_lerrardin_group }
+	governments = { feudal_government clan_government pirate_government }
+	priority = 35
+	top_liege = no
+}
+
 
  #############################################
  # Default titles by Government. This list should always be below any custom localization that is tied to specific cultures/religion.
@@ -1297,7 +5460,7 @@ baron_republic_male = {
 	tier = barony
 	priority = 7
 	top_liege = no
-	governments = { republic_government }
+	governments = { republic_government republic_playable_government }
 }
 baron_republic_female = {
 	type = character
@@ -1306,14 +5469,14 @@ baron_republic_female = {
 	tier = barony
 	priority = 7
 	top_liege = no
-	governments = { republic_government }
+	governments = { republic_government republic_playable_government }
 }
 barony_republic = {
 	type = title
 	tier = barony
 	top_liege = no
 	priority = 7
-	governments = { republic_government }
+	governments = { republic_government republic_playable_government }
 }
 count_republic_male = {
 	type = character
@@ -1322,7 +5485,7 @@ count_republic_male = {
 	tier = county
 	priority = 17
 	top_liege = no
-	governments = { republic_government }
+	governments = { republic_government republic_playable_government }
 }
 count_republic_female = {
 	type = character
@@ -1331,14 +5494,14 @@ count_republic_female = {
 	tier = county
 	priority = 17
 	top_liege = no
-	governments = { republic_government }
+	governments = { republic_government republic_playable_government }
 }
 county_republic = {
 	type = title
 	tier = county
 	priority = 17
 	top_liege = no
-	governments = { republic_government }
+	governments = { republic_government republic_playable_government }
 }
 duke_republic_male = {
 	type = character
@@ -1347,7 +5510,7 @@ duke_republic_male = {
 	tier = duchy
 	priority = 27
 	top_liege = no
-	governments = { republic_government }
+	governments = { republic_government republic_playable_government }
 }
 duke_republic_female = {
 	type = character
@@ -1356,14 +5519,14 @@ duke_republic_female = {
 	tier = duchy
 	priority = 27
 	top_liege = no
-	governments = { republic_government }
+	governments = { republic_government republic_playable_government }
 }
 duchy_republic = {
 	type = title
 	tier = duchy
 	priority = 28
 	top_liege = no
-	governments = { republic_government }
+	governments = { republic_government republic_playable_government }
 }
 king_republic_male = {
 	type = character
@@ -1371,7 +5534,7 @@ king_republic_male = {
 	special = holder
 	tier = kingdom
 	priority = 47
-	governments = { republic_government }
+	governments = { republic_government republic_playable_government }
 }
 king_republic_female = {
 	type = character
@@ -1379,14 +5542,14 @@ king_republic_female = {
 	special = holder
 	tier = kingdom
 	priority = 47
-	governments = { republic_government }
+	governments = { republic_government republic_playable_government }
 }
 kingdom_republic = {
 	type = title
 	tier = kingdom
 	top_liege = no
 	priority = 47
-	governments = { republic_government }
+	governments = { republic_government republic_playable_government }
 }
 emperor_republic_male = {
 	type = character
@@ -1395,7 +5558,7 @@ emperor_republic_male = {
 	tier = empire
 	priority = 102
 	top_liege = no
-	governments = { republic_government }
+	governments = { republic_government republic_playable_government }
 }
 emperor_republic_female = {
 	type = character
@@ -1404,14 +5567,14 @@ emperor_republic_female = {
 	tier = empire
 	priority = 102
 	top_liege = no
-	governments = { republic_government }
+	governments = { republic_government republic_playable_government }
 }
 empire_republic = {
 	type = title
 	tier = empire
 	top_liege = no
 	priority = 102
-	governments = { republic_government }
+	governments = { republic_government republic_playable_government }
 }
 
  #Default Theocracy tiers
@@ -2152,4 +6315,79 @@ empire = {
 	type = title
 	tier = empire
 	priority = 100
+}
+
+wasteland_barony = {
+	type = title
+	tier = barony
+	governments = { wasteland_government }
+	priority = 1000
+}
+
+wasteland_county = {
+	type = title
+	tier = county
+	governments = { wasteland_government }
+	priority = 1000
+}
+
+wasteland_duchy = {
+	type = title
+	tier = duchy
+	governments = { wasteland_government }
+	priority = 1000
+}
+
+wasteland_kingdom = {
+	type = title
+	tier = kingdom
+	governments = { wasteland_government }
+	priority = 1000
+}
+
+wasteland_empire = {
+	type = title
+	tier = empire
+	governments = { wasteland_government }
+	priority = 1000
+}
+
+wasteland_baron = {
+	type = character
+	special = holder
+	tier = barony
+	governments = { wasteland_government }
+	priority = 1000
+}
+
+wasteland_count = {
+	type = character
+	special = holder
+	tier = county
+	governments = { wasteland_government }
+	priority = 1000
+}
+
+wasteland_duke = {
+	type = character
+	special = holder
+	tier = duchy
+	governments = { wasteland_government }
+	priority = 1000
+}
+
+wasteland_king = {
+	type = character
+	special = holder
+	tier = kingdom
+	governments = { wasteland_government }
+	priority = 1000
+}
+
+wasteland_emperor = {
+	type = character
+	special = holder
+	tier = empire
+	governments = { wasteland_government }
+	priority = 1000
 }

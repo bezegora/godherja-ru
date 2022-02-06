@@ -127,13 +127,15 @@ has_any_all_artifacts = {
     has_any_book_artifacts = yes
 }}
 
-is_artifact_of_type = {# ARTIFACT = X TYPE = Y 
+is_artifact_of_type = {# ARTIFACT = X TYPE = Y
+	exists = $ARTIFACT$
 	is_target_in_global_variable_list = {
 		name = global_artifact_list_$TYPE$
 		target = $ARTIFACT$
 	}
 }
-is_unflagged_artifact_of_type = {# ARTIFACT = X TYPE = Y 
+is_unflagged_artifact_of_type = {# ARTIFACT = X TYPE = Y
+	exists = $ARTIFACT$
 	is_target_in_global_variable_list = {
 		name = global_artifact_list_$TYPE$
 		target = flag:$ARTIFACT$
@@ -154,14 +156,14 @@ is_artifact_equipped = { # ARTIFACT = x (x should be a flag)
 }
 
 is_artifact_equipped_and_selected = {# ARTIFACT = x (x should be a flag)
-		AND = {
-			is_artifact_selected = {ARTIFACT = $ARTIFACT$ }
-			is_artifact_equipped = {ARTIFACT = $ARTIFACT$ }
-		}
+	AND = {
+		is_artifact_selected = {ARTIFACT = $ARTIFACT$ }
+		is_artifact_equipped = {ARTIFACT = $ARTIFACT$ }
 	}
+}
 
 is_selection_equipped = {
-	#exists = var:artifact_selection
+	exists = var:artifact_selection
 	is_target_in_variable_list = {
 		name = artifact_list_equipped
 		target = var:artifact_selection
@@ -169,7 +171,7 @@ is_selection_equipped = {
 }
 
 is_selection_of_rarity = {# RARITY = N
-#exists = var:artifact_selection
+	exists = var:artifact_selection
 	is_target_in_global_variable_list = {
 		name = global_artifact_list_rarity_$RARITY$
 		target = var:artifact_selection
@@ -178,7 +180,7 @@ is_selection_of_rarity = {# RARITY = N
 
 
 is_selection_indestructible = {
-	#exists = var:artifact_selection
+	exists = var:artifact_selection
 	is_target_in_global_variable_list = {
 		name = global_artifact_list_indestructible
 		target = var:artifact_selection

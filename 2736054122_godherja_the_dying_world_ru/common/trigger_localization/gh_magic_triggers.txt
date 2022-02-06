@@ -8,3 +8,15 @@ can_access_magic = {
 	first = I_MUST_BE_A_MAGI
 	first_not = I_AM_NOT_A_MAGI
 }
+
+moon_allows_level_2_dead_magic = {
+		first_not = MUST_NOT_BE_CRESCENT_OR_NEW_MOON
+}
+
+moon_allows_level_3_dead_magic = {
+		first_not = MUST_BE_GIBBOUS_OR_FULL_MOON
+}
+
+full_moon_allows_spell = {
+		first_not = FULL_MOON_ONLY_SPELL
+}

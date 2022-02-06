@@ -19,11 +19,11 @@
 @beauty1min = 0.35
 @beauty1max = 0.65
 
-@beauty2min = 0.4
-@beauty2max = 0.6
+@beauty2min = 0.38
+@beauty2max = 0.62
 
-@beauty3min = 0.45
-@beauty3max = 0.55
+@beauty3min = 0.41
+@beauty3max = 0.59
 
 @blend1min = 0.0
 @blend1max = 0.2
@@ -35,12 +35,13 @@
 @blend3max = 0.8
 
 caucasian_base = {
+    visible = no
     template = "ethnicity_template"
     using = "saxon"
-    visible = no
 }
 
 caucasian = {
+    visible = no
 	template = "caucasian_base"
     
 	# skin_color = {
@@ -95,6 +96,7 @@ caucasian = {
 } 
 
 northern_ruler_designer = {
+    visible = no
 	template = "caucasian"
     using = "swedish"
 } 
@@ -372,33 +374,6 @@ caucasian_northern_dark_hair = {
     visible = no
 	template = "caucasian_dark_hair"
 
-} 
-
-caucasian_northern_blond_fogeater = {
-	template = "caucasian"
-
-	hairstyles = {
-	    10 = { name = northern_hairstyles          range = { 0.0 1.0 } }
-	}
-
-    gene_hair_type = {
-        80 = {  name = hair_straight             range = { 0.35 0.75 }     }
-        15 = {  name = hair_wavy             range = { 0.35 0.75 }     }
-        5 = {  name = hair_curly             range = { 0.35 0.75 }     }
-        0 = {  name = hair_afro             range = { 0.35 0.75 }     }
-        0 = {  name = hair_straight_thin_beard             range = { 0.35 0.75 }     }
-    }
-	eye_color = {
-		# White
-		20 = { 0.0 0.0 0.0 0.1 }
-		# Red
-		20 = { 0.0 0.0 0.0 0.0 }
-		# Blue
-		60 = { 0.67 0.5 1.0 0.8 }
-	}	
-	skin_color = {
-		100 = { 0.0 0.0 0.0 0.1 }
-	}	
 } 
 
 

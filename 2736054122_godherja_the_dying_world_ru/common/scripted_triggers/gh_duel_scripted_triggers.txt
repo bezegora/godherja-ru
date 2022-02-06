@@ -1,0 +1,9 @@
+﻿basic_can_challenge_for_leadership_trigger = {
+	has_realm_law = lawless_succession_law
+}
+
+can_challenge_for_leadership_trigger = {
+	# First, evaluate culture to trim down our potentials list.
+	scope:actor = { basic_can_challenge_for_leadership_trigger = yes }
+	scope:recipient = { basic_can_challenge_for_leadership_trigger = yes }
+}

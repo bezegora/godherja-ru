@@ -55,8 +55,8 @@
 	doctrine = doctrine_formal_coronation
 
 	traits = {
-		virtues = { wrathful deceitful }
-		sins = { calm honest }
+		virtues = { brave ambitious diligent }
+		sins = { craven content lazy }
 	}
 
 	reserved_male_names = {
@@ -238,41 +238,41 @@
 	piety_icon_group = "christian"
 
 	faiths = {
-        sansia = {
+        	sansia = {
 			color = { 0.9 0.85 0.85 }
 			graphical_faith = "catholic_gfx"
 			icon = agionist_sansias_rose
-			religious_head = d_agionist_sansia_rel
 			
 			#Special Tolerance
 			doctrine = divine_destiny_doctrine
+			doctrine = special_doctrine_agionist_order_cooperation_corrupt
 
 			holy_site = zarrishtar
 			holy_site = rhamnamnus
 
 			#Tenets
 			doctrine = tenet_armed_pilgrimages
-			doctrine = tenet_exaltation_of_pain
+			doctrine = tenet_sansia_corrupt
 			doctrine = tenet_unrelenting_faith
 
 			doctrine = doctrine_gender_female_dominated
 			doctrine = doctrine_clerical_gender_female_only
 		}
-		eosos = {
+		eos = {
 			color = { 0.85 0.85 0.9 }
 			graphical_faith = "catholic_gfx"
-			icon = agionist_eosos_icon
-			religious_head = d_agionist_eosos_rel
+			icon = agionist_eos_icon
 			
 			#Special Tolerance
 			doctrine = divine_destiny_doctrine
+			doctrine = special_doctrine_agionist_order_cooperation_corrupt
 
 			holy_site = jasimeh
 			holy_site = hern
 
 			#Tenets
 			doctrine = tenet_armed_pilgrimages
-			doctrine = tenet_Bulwark
+			doctrine = tenet_bulwark
 			doctrine = tenet_unrelenting_faith
 			doctrine = doctrine_adultery_men_crime
 			doctrine = doctrine_adultery_women_crime
@@ -285,17 +285,17 @@
 			color = { 0.9 0.85 0.9 }
 			graphical_faith = "catholic_gfx"
 			icon = agionist_philanthrios_icon
-			religious_head = d_agionist_philanthrios_rel
 			
 			#Special Tolerance
 			doctrine = divine_destiny_doctrine
+			doctrine = special_doctrine_agionist_order_cooperation_corrupt
 
 			holy_site = sheitalun
 			holy_site = mallilene
 
 			#Tenets
 			doctrine = tenet_armed_pilgrimages
-			doctrine = tenet_hedonistic #Probably to be replaced with a 'subversion' of this tenant with the same name-gave hedonistic for rn
+			doctrine = tenet_philanthrios_corrupt
 			doctrine = tenet_unrelenting_faith
 
 			holy_order_names = {
@@ -305,10 +305,12 @@
 			color = { 0.85 0.9 0.85 }
 			graphical_faith = "catholic_gfx"
 			icon = agionist_calysto_icon
-			religious_head = d_agionist_calysto_rel
+			
+			doctrine = doctrine_pluralism_pluralistic
 			
 			#Special Tolerance
 			doctrine = divine_destiny_doctrine
+			doctrine = special_doctrine_agionist_order_cooperation_corrupt
 
 			holy_site = fakkugat
 			holy_site = semaion
@@ -316,7 +318,7 @@
 			#Tenets
 			doctrine = tenet_armed_pilgrimages
 			doctrine = tenet_slavery 
-			doctrine = tenet_unrelenting_faith
+			doctrine = tenet_tax_nonbelievers
 			doctrine = doctrine_slavery_demanded
 
 			holy_order_names = {
@@ -326,10 +328,10 @@
 			color = { 0.85 0.9 0.9 }
 			graphical_faith = "catholic_gfx"
 			icon = agionist_thysia_icon
-			religious_head = d_agionist_thysia_rel
 			
 			#Special Tolerance
 			doctrine = divine_destiny_doctrine
+			doctrine = special_doctrine_agionist_order_cooperation_corrupt
 
 			holy_site = ferihan
 			holy_site = ithi
@@ -346,10 +348,10 @@
 			color = { 0.9 0.75 0.9 }
 			graphical_faith = "catholic_gfx"
 			icon = agionist_katharitos_icon
-			religious_head = d_agionist_katharitos_rel
 			
 			#Special Tolerance
 			doctrine = divine_destiny_doctrine
+			doctrine = special_doctrine_agionist_order_cooperation_corrupt
 
 			holy_site = khokah
 			holy_site = rizonnos
@@ -365,14 +367,14 @@
 			holy_order_names = {
 			}
 		}
-		dikansynos = {
+		dikaynos = {
 			color = { 0.75 0.9 0.85 }
 			graphical_faith = "catholic_gfx"
 			icon = agionist_dikansynite_icon
-			religious_head = d_agionist_dikansynos_rel
 			
 			#Special Tolerance
 			doctrine = divine_destiny_doctrine
+			doctrine = special_doctrine_agionist_order_cooperation_corrupt
 
 			holy_site = baloyeh
 			holy_site = knossos
@@ -394,10 +396,10 @@
 			color = { 0.65 0.65 0.85 }
 			graphical_faith = "catholic_gfx"
 			icon = agionist_forgotten_icon
-			religious_head = d_agionist_forgotten_rel
 			
 			#Special Tolerance
 			doctrine = divine_destiny_doctrine
+			doctrine = special_doctrine_agionist_order_cooperation_corrupt
 
 			holy_site = the_isle_tower
 			holy_site = vounill
@@ -421,7 +423,6 @@
 			color = { 0.8 0.8 0.8 }
 			graphical_faith = "catholic_gfx"
 			icon = agionist_undivided
-			religious_head = d_agionist_eight_rel
 			 
 			#Special Tolerance
 			doctrine = divine_destiny_doctrine
@@ -432,7 +433,7 @@
 			holy_site = rizonnos #home of kathar
 			holy_site = mallilene #home of philantros
 			holy_site = hern #home of eos
-			holy_site = knossos #home of dikayns
+			holy_site = knossos #home of Dikaynos
 			holy_site = vounill #home of the forgotten saint
 
 			#Tenets
@@ -452,7 +453,6 @@
 			icon = agionist_seven_and_the_one
 			#Special Tolerance
 			doctrine = divine_destiny_doctrine
-			religious_head = d_agionist_seven_rel
 
 			#Tenets
 			doctrine = tenet_armed_pilgrimages
@@ -465,7 +465,7 @@
 			holy_site = rizonnos #home of kathar
 			holy_site = mallilene #home of philantros
 			holy_site = hern #home of eos
-			holy_site = knossos #home of dikayns
+			holy_site = knossos #home of Dikaynos
 
 			doctrine = seven_faith_doctrine
 			doctrine = tenet_dummy_tenet
@@ -477,7 +477,6 @@
 			color = { 0.6 0.6 0.6 }
 			graphical_faith = "catholic_gfx"
 			icon = agionist_saintly_order_icon
-			religious_head = d_agionist_generic_rel
 			
 			#Special Tolerance
 			doctrine = divine_destiny_doctrine
@@ -488,7 +487,7 @@
 			holy_site = rizonnos #home of kathar
 			holy_site = mallilene #home of philantros
 			holy_site = hern #home of eos
-			holy_site = knossos #home of dikayns
+			holy_site = knossos #home of Dikaynos
 			holy_site = vounill #home of the forgotten saint
 
 			#Tenets

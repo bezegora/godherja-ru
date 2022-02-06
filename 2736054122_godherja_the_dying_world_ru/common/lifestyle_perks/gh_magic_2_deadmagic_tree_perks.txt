@@ -78,6 +78,7 @@ deadmagic_perk3_tree1 = {
 	
 	effect = {
 		custom_tooltip = dm_perk3.tt
+		custom_tooltip = dm_perk3decision.tt
 	}
 }
 
@@ -188,8 +189,15 @@ deadmagic_perk9_tree1 = {
 		always = yes
 	}
 	
+	character_modifier = {
+		undead_damage_mult = 0.2
+		undead_toughness_mult = 0.3
+		monsters_damage_mult = 0.15
+		monsters_toughness_mult = 0.25
+	}
+	
 	effect = {
-		custom_tooltip = not_yet_implemented.tt
+		custom_tooltip = dm_perk9.tt
 	}
 }
 
@@ -297,9 +305,8 @@ deadmagic_perk3_tree2 = {
 		always = yes
 	}
 	
-	character_modifier = {
-		monsters_toughness_add = 15
-		monsters_damage_add = 15
+	effect = {
+		custom_tooltip = dm2_perk3.tt
 	}
 }
 
@@ -336,10 +343,14 @@ deadmagic_perk5_tree2 = {
 		always = yes
 	}
 	
+	effect = {
+		custom_tooltip = dm2_perk5.tt
+	}
 	character_modifier = {
 		magi_toughness_add = 15
 		magi_damage_add = 15
 	}
+	
 }
 
 deadmagic_perk6_tree2 = {
@@ -410,7 +421,7 @@ deadmagic_perk9_tree2 = {
 	
 	effect = {
 		custom_tooltip = dm2_perk9.tt
-		custom_tooltip = not_yet_implemented.tt
+		custom_tooltip = dm2_perk9_2.tt
 	}
 }
 
@@ -474,7 +485,6 @@ deadmagic_perk2_tree3 = {
 	
 	effect = {
 		custom_tooltip = dm3_perk2.tt
-		custom_tooltip = not_yet_implemented.tt
 	}
 }
 
@@ -490,8 +500,13 @@ deadmagic_perk3_tree3 = {
 		always = yes
 	}
 	
+	character_modifier = {
+		prowess = 2
+		negate_health_penalty_add = 0.5
+	}
+	
 	effect = {
-		custom_tooltip = not_yet_implemented.tt
+		custom_tooltip = dm3_perk3.tt
 	}
 }
 
@@ -507,8 +522,12 @@ deadmagic_perk4_tree3 = {
 		always = yes
 	}
 	
+	character_modifier = {
+		character_capital_county_monthly_development_growth_add = 0.1
+	}
+	
 	effect = {
-		custom_tooltip = not_yet_implemented.tt
+		custom_tooltip = dm3_perk4.tt
 	}
 }
 
@@ -525,7 +544,7 @@ deadmagic_perk5_tree3 = {
 	}
 	
 	effect = {
-		custom_tooltip = not_yet_implemented.tt
+		custom_tooltip = dm3_perk5.tt
 	}	
 }
 
@@ -541,8 +560,12 @@ deadmagic_perk6_tree3 = {
 		always = yes
 	}
 	
+	character_modifier = {
+		fort_level = 1
+	}
+	
 	effect = {
-		custom_tooltip = not_yet_implemented.tt
+		custom_tooltip = dm3_perk6.tt
 	}
 }
 
@@ -560,7 +583,7 @@ deadmagic_perk7_tree3 = {
 	}
 	
 	effect = {
-		custom_tooltip = not_yet_implemented.tt
+		custom_tooltip = dm3_perk7.tt
 	}
 }
 
@@ -578,7 +601,7 @@ deadmagic_perk8_tree3 = {
 	}
 	
 	effect = {
-		custom_tooltip = not_yet_implemented.tt
+		custom_tooltip = dm3_perk8.tt
 	}
 }
 
@@ -596,6 +619,6 @@ deadmagic_perk9_tree3 = {
 	}
 	
 	effect = {
-		custom_tooltip = not_yet_implemented.tt
+		custom_tooltip = dm3_perk9.tt
 	}
 }

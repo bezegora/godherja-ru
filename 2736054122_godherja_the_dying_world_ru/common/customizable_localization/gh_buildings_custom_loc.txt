@@ -1,0 +1,145 @@
+﻿walls_01_building_loc_name = {
+	type = province
+
+	text = {
+		localization_key = building_walls_01
+		trigger = { always = no }
+		fallback = yes
+	}
+	text = {
+		localization_key = old_walls_of_oraispol_name
+		trigger = { 
+			trigger_if = {
+				limit = { exists = county }
+				county = { this = title:c_halium }
+			}
+		}
+	}
+}
+
+walls_01_building_loc_desc = {
+	type = province
+
+	text = {
+		localization_key = building_walls_01_desc
+		trigger = { always = no }
+		fallback = yes
+	}
+	text = {
+		localization_key = old_walls_of_oraispol_desc
+		trigger = { 
+			trigger_if = {
+				limit = { exists = county }
+				county = { this = title:c_halium }
+			}
+		}
+	}
+}
+
+walls_02_building_loc_name = {
+	type = province
+
+	text = {
+		localization_key = building_walls_02
+		trigger = { always = no }
+		fallback = yes
+	}
+	text = {
+		localization_key = eramasic_walls_name
+		trigger = { 
+			trigger_if = {
+				limit = { exists = county }
+				county = { this = title:c_halium }
+			}
+		}
+	}
+}
+
+walls_02_building_loc_desc = {
+	type = province
+
+	text = {
+		localization_key = building_walls_02_desc
+		trigger = { always = no }
+		fallback = yes
+	}
+	text = {
+		localization_key = eramasic_walls_desc
+		trigger = { 
+			trigger_if = {
+				limit = { exists = county }
+				county = { this = title:c_halium }
+			}
+		}
+	}
+}
+
+walls_03_building_loc_name = {
+	type = province
+
+	text = {
+		localization_key = building_walls_03
+		trigger = { always = no }
+		fallback = yes
+	}
+	text = {
+		localization_key = three_gates_of_oraispol_name
+		trigger = { 
+			trigger_if = {
+				limit = { exists = county }
+				county = { this = title:c_halium }
+			}
+		}
+	}
+}
+
+walls_03_building_loc_desc = {
+	type = province
+
+	text = {
+		localization_key = building_walls_03_desc
+		trigger = { always = no }
+		fallback = yes
+	}
+	text = {
+		localization_key = three_gates_of_oraispol_desc
+		trigger = { 
+			trigger_if = {
+				limit = { exists = county }
+				county = { this = title:c_halium }
+			}
+		}
+	}
+}
+
+walls_04_building_loc_name = {
+	type = province
+
+	text = {
+		localization_key = building_walls_04
+		trigger = { always = no }
+		fallback = yes
+	}
+	text = {
+		localization_key = walls_04_custom_loc_name
+		trigger = { 
+			has_variable = walls_04_namesake_var
+		}
+	}
+}
+
+walls_04_building_loc_desc = {
+	type = province
+
+	text = {
+		localization_key = building_walls_04_desc
+		trigger = { always = no }
+		fallback = yes
+	}
+	text = {
+		localization_key = walls_04_custom_loc_desc
+		trigger = { 
+			has_variable = walls_04_namesake_var
+		}
+	}
+}

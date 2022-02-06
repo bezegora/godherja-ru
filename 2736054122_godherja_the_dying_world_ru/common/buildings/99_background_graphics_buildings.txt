@@ -6,19 +6,25 @@ graphic_fog = {
 
 	asset = {
 		type = entity
-		name = "env_sea_fog_large"
+		name = "env_desert_plains"
 	}
 	
 	is_enabled = {
 		is_county_capital = yes
-		county = {
-			has_county_modifier = fogswept_modifier
+		trigger_if = {
+			limit = { exists = county }
+			county = {
+				has_county_modifier = fogswept_modifier
+			}
+		}
+		trigger_else = {
+			always = no
 		}
 	}
 }
 
 # No Walls
-graphics_walls_00 = {
+walls_00 = {
 	is_graphical_background = yes
 
 	asset = {
@@ -27,13 +33,16 @@ graphics_walls_00 = {
 	}
 	
 	is_enabled = {
+		is_county_capital = no
+		fort_level < 1
 		trigger_if = {
 			limit = { exists = county }
 			county = {
-				NOT = {
-					has_county_modifier = fogswept_modifier
-				}
+				NOT = { has_county_modifier = fogswept_modifier }
 			}
+		}
+		trigger_else = {
+			always = yes
 		}
 		OR = {
 			AND = {
@@ -46,7 +55,7 @@ graphics_walls_00 = {
 }
 
 # Any city that must be sieged gets the basic walls
-graphics_walls_01_tribal = {
+walls_01_tribal = {
 	is_graphical_background = yes
 
 	asset = {
@@ -57,6 +66,15 @@ graphics_walls_01_tribal = {
 	}
 	
 	is_enabled = {
+		trigger_if = {
+			limit = { exists = county }
+			county = {
+				NOT = { has_county_modifier = fogswept_modifier }
+			}
+		}
+		trigger_else = {
+			always = yes
+		}
 		OR = {
 			is_county_capital = yes
 			fort_level > 0
@@ -67,10 +85,6 @@ graphics_walls_01_tribal = {
 			has_building_or_higher = "hill_forts_01"
 			has_building_or_higher = "ramparts_01"
 			has_building_or_higher = "watchtowers_01"
-			has_building_or_higher = "theodosian_walls_01"
-			has_building_or_higher = "walls_of_benin_01"
-			has_building_or_higher = "walls_of_genoa_01"
-			has_building_or_higher = "aurelian_walls_01"
 			has_building_or_higher = "walls_01"
 			has_building_or_higher = "creusons_01"
 			has_building_or_higher = "thetowerwatch"	# Looks ugly with pallisades
@@ -79,7 +93,7 @@ graphics_walls_01_tribal = {
 }
 
 # Here the Fort Level building chains take control of the visuals
-graphics_walls_01 = {
+walls_01 = {
 	is_graphical_background = yes
 	asset = {
 		type = pdxmesh
@@ -97,8 +111,36 @@ graphics_walls_01 = {
 		}
 		graphical_regions = { graphical_mena }
 	}
+
+	asset = {
+		type = pdxmesh
+		requires_dlc_flag = the_northern_lords
+		graphical_cultures = { norse_building_gfx }
+		names = {
+			"fp1_norse_walls_01_mesh"
+		}
+	}
+	
+	asset = {
+		type = pdxmesh
+		requires_dlc_flag = the_northern_lords
+		graphical_cultures = { norse_building_gfx }
+		graphical_regions = { graphical_mena }
+		names = {
+			"fp1_norse_walls_01_mena_mesh"
+		}
+	}
 	
 	is_enabled = {
+		trigger_if = {
+			limit = { exists = county }
+			county = {
+				NOT = { has_county_modifier = fogswept_modifier }
+			}
+		}
+		trigger_else = {
+			always = yes
+		}
 		OR = {
 			has_building_or_higher = "palisades_01"
 			has_building_or_higher = "curtain_walls_01"
@@ -112,17 +154,13 @@ graphics_walls_01 = {
 			has_building_or_higher = "hill_forts_02"
 			has_building_or_higher = "ramparts_02"
 			has_building_or_higher = "watchtowers_02"
-			has_building_or_higher = "theodosian_walls_01"
-			has_building_or_higher = "walls_of_benin_01"
-			has_building_or_higher = "walls_of_genoa_01"
-			has_building_or_higher = "aurelian_walls_01"
 			has_building_or_higher = "creusons_01"
 			has_building_or_higher = "walls_01"
 		}
 	}
 }
 
-graphics_walls_02 = {
+walls_02 = {
 	is_graphical_background = yes
 
 	asset = {
@@ -141,8 +179,34 @@ graphics_walls_02 = {
 			"mena_walls_02_a_mesh"
 		}
 	}
+	asset = {
+		type = pdxmesh
+		requires_dlc_flag = the_northern_lords
+		graphical_cultures = { norse_building_gfx }
+		names = {
+			"fp1_norse_walls_02_mesh"
+		}
+	}	
 	
+		asset = {
+		type = pdxmesh
+		requires_dlc_flag = the_northern_lords
+		graphical_cultures = { norse_building_gfx }
+		graphical_regions = { graphical_mena }
+		names = {
+			"fp1_norse_walls_02_mena_mesh"
+		}
+	}
 	is_enabled = {
+		trigger_if = {
+			limit = { exists = county }
+			county = {
+				NOT = { has_county_modifier = fogswept_modifier }
+			}
+		}
+		trigger_else = {
+			always = yes
+		}
 		OR = {
 			has_building_or_higher = "palisades_02"
 			has_building_or_higher = "curtain_walls_02"
@@ -155,17 +219,13 @@ graphics_walls_02 = {
 			has_building_or_higher = "hill_forts_03"
 			has_building_or_higher = "ramparts_03"
 			has_building_or_higher = "watchtowers_03"
-			has_building_or_higher = "theodosian_walls_01"
-			has_building_or_higher = "walls_of_benin_01"
-			has_building_or_higher = "walls_of_genoa_01"
-			has_building_or_higher = "aurelian_walls_01"
 			has_building_or_higher = "creusons_01"
 			has_building_or_higher = "walls_01"
 		}
 	}
 }
 
-graphics_walls_03 = {
+walls_03 = {
 	is_graphical_background = yes
 
 	asset = {
@@ -178,7 +238,7 @@ graphics_walls_03 = {
 	
 	asset = {
 		type = pdxmesh
-		graphical_regions = { graphical_mena graphical_india }
+		graphical_regions = { graphical_mena graphical_india graphical_sea }
 		names = {
 			"mena_walls_04_a_mesh"
 			"mena_walls_04_a_mesh"
@@ -186,9 +246,18 @@ graphics_walls_03 = {
 	}
 	
 	is_enabled = {
-		#scope:holder = {
-		#	NOT = { has_government = tribal_government }
-		#}
+		scope:holder = {
+			NOT = { has_government = tribal_government }
+		}
+		trigger_if = {
+			limit = { exists = county }
+			county = {
+				NOT = { has_county_modifier = fogswept_modifier }
+			}
+		}
+		trigger_else = {
+			always = yes
+		}
 		NOT = {
 			has_building_or_higher = "walls_03"
 		}
@@ -197,16 +266,13 @@ graphics_walls_03 = {
 			has_building_or_higher = "hill_forts_03"
 			has_building_or_higher = "ramparts_03"
 			has_building_or_higher = "watchtowers_03"
-			has_building_or_higher = "walls_of_benin_01"
-			has_building_or_higher = "walls_of_genoa_01"
-			has_building_or_higher = "aurelian_walls_01"
 			has_building_or_higher = "creusons_01"
 			has_building_or_higher = "walls_01"
 		}
 	}
 }
 
-graphics_walls_04 = {
+walls_04 = {
 	is_graphical_background = yes
 
 	asset = {
@@ -219,7 +285,7 @@ graphics_walls_04 = {
 	
 	asset = {
 		type = pdxmesh
-		graphical_regions = { graphical_mena graphical_india }
+		graphical_regions = { graphical_mena graphical_india graphical_sea }
 		names = {
 			"mena_walls_04_a_mesh"
 			"mena_walls_04_a_mesh"
@@ -227,15 +293,23 @@ graphics_walls_04 = {
 	}
 	
 	is_enabled = {
-		#scope:holder = {
-		#	NOT = { has_government = tribal_government }
-		#}
+		scope:holder = {
+			NOT = { has_government = tribal_government }
+		}
+		trigger_if = {
+			limit = { exists = county }
+			county = {
+				NOT = { has_county_modifier = fogswept_modifier }
+			}
+		}
+		trigger_else = {
+			always = yes
+		}
 		OR = {
 			has_building_or_higher = "curtain_walls_06"
 			has_building_or_higher = "hill_forts_06"
 			has_building_or_higher = "ramparts_06"
 			has_building_or_higher = "watchtowers_06"
-			has_building_or_higher = "theodosian_walls_01"
 			has_building_or_higher = "creusons_01"
 			has_building_or_higher = "walls_03"
 		}

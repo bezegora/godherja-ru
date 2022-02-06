@@ -51,6 +51,7 @@
 # migrate_to_kingdom_slavkinzi
 # migrate_to_kingdom_cravgrad
 # migrate_to_kingdom_crelkvania
+# Convert to Fuedalism via the Rite
 ##################
 
 ##################
@@ -82,13 +83,6 @@ migrate_to_kingdom_berlisk = {
 	}
 
 	is_valid = {
-		completely_controls = title:d_hyblossos
-		completely_controls = title:d_myonassus
-		completely_controls = title:d_gorteutherna
-		completely_controls = title:d_helleia
-		completely_controls = title:d_platamum
-		completely_controls = title:d_thermyra
-		completely_controls = title:d_eleutidrus
 		completely_controls = title:d_pylynthus
 		completely_controls = title:d_naxithos
 	}
@@ -135,14 +129,8 @@ migrate_to_kingdom_sjaklaki = {
 	}
 
 	is_valid = {
-		completely_controls = title:d_trapona
-		completely_controls = title:d_dymydna
 		completely_controls = title:d_oenares
-		completely_controls = title:d_cumystus
-		completely_controls = title:d_pandia
-		completely_controls = title:d_trastro
-		completely_controls = title:d_pisenae
-		completely_controls = title:d_uggleberg
+		completely_controls = title:d_weidingen
 	}
 
 	effect = {
@@ -191,11 +179,8 @@ migrate_to_kingdom_casked = {
 	}
 
 	is_valid = {
-		completely_controls = title:d_mytanes
-		completely_controls = title:d_kydone
 		completely_controls = title:d_vasyma
 		completely_controls = title:d_kameirerna
-		completely_controls = title:d_theodonion
 		completely_controls = title:d_edapeze
 	}
 
@@ -245,13 +230,9 @@ migrate_to_kingdom_sjas = {
 	}
 
 	is_valid = {
-		completely_controls = title:d_nysakros
 		completely_controls = title:d_toskopeion
-		completely_controls = title:d_knidomenus
 		completely_controls = title:d_seutheia
-		completely_controls = title:d_hemerollonia
-		completely_controls = title:d_tomantina
-		completely_controls = title:d_tarontos
+		completely_controls = title:d_kydone
 	}
 
 	effect = {
@@ -300,11 +281,9 @@ migrate_to_kingdom_plekig = {
 	}
 
 	is_valid = {
-		completely_controls = title:d_abdeze
-		completely_controls = title:d_theodesmos
 		completely_controls = title:d_metedon
-		completely_controls = title:d_artyros
 		completely_controls = title:d_tragiae
+		completely_controls = title:d_tarontos
 	}
 
 	effect = {
@@ -312,66 +291,6 @@ migrate_to_kingdom_plekig = {
 		add_to_global_variable_list = {
 			name = unavailable_unique_decisions
 			target = flag:plekig_migration
-		}
-	}
-	
-	ai_potential = {
-		always = yes
-	}
-
-	ai_will_do = {
-		base = 60
-	}
-}
-
-##################
-# Migrate to Vraved
-# by ThePinkPanzer
-migrate_to_kingdom_vraved = {
-	picture = "gfx/interface/illustrations/decisions/decision_destiny_goal.dds"
-	major = yes
-	desc = migrate_to_kingdom_desc
-    confirm_text = migrate_to_kingdom_confirm
-
-	ai_check_interval = 1
-
-	is_shown = {
-		primary_title = title:e_sjalvolki
-		has_culture_group = culture_group:gh_sjalvolki_group
-		is_landed = yes
-		has_game_rule = story_content_enabled
-		OR = {
-			is_target_in_global_variable_list = {
-				name = unavailable_unique_decisions
-				target = flag:sajrag_migration
-			}
-			is_target_in_global_variable_list = {
-				name = unavailable_unique_decisions
-				target = flag:sgrad_migration
-			}
-		}
-		NOT = {
-			is_target_in_global_variable_list = {
-				name = unavailable_unique_decisions
-				target = flag:vraved_migration
-			}
-		}
-	}
-
-	is_valid = {
-		completely_controls = title:d_hieridos
-		completely_controls = title:d_erethosia
-		completely_controls = title:d_eultine
-		completely_controls = title:d_aegela
-		completely_controls = title:d_idendos
-		completely_controls = title:d_orous
-	}
-
-	effect = {
-		trigger_event = sjalvolki_decisions.3005
-		add_to_global_variable_list = {
-			name = unavailable_unique_decisions
-			target = flag:vraved_migration
 		}
 	}
 	
@@ -414,12 +333,9 @@ migrate_to_kingdom_sgrad = {
 
 	is_valid = {
 		completely_controls = title:d_myrapolis
-		# completely_controls = title:d_ranthus
 		completely_controls = title:d_aytissos
 		completely_controls = title:d_acaphos
 		completely_controls = title:d_zakria
-		completely_controls = title:d_himonia
-		completely_controls = title:d_smyrnurii
 	}
 
 	effect = {
@@ -427,55 +343,6 @@ migrate_to_kingdom_sgrad = {
 		add_to_global_variable_list = {
 			name = unavailable_unique_decisions
 			target = flag:sgrad_migration
-		}
-	}
-	
-	ai_potential = {
-		always = yes
-	}
-
-	ai_will_do = {
-		base = 60
-	}
-}
-
-##################
-# Migrate to Cycladecia
-# by ThePinkPanzer
-migrate_to_kingdom_cycladecia = {
-	picture = "gfx/interface/illustrations/decisions/decision_destiny_goal.dds"
-	major = yes
-	desc = migrate_to_kingdom_desc
-    confirm_text = migrate_to_kingdom_confirm
-
-	ai_check_interval = 1
-
-	is_shown = {
-		primary_title = title:e_sjalvolki
-		has_culture_group = culture_group:gh_sjalvolki_group
-		is_landed = yes
-		has_game_rule = story_content_enabled
-		is_target_in_global_variable_list = {
-			name = unavailable_unique_decisions
-			target = flag:sgrad_migration
-		}
-		NOT = {
-			is_target_in_global_variable_list = {
-				name = unavailable_unique_decisions
-				target = flag:cycladecia_migration
-			}
-		}
-	}
-
-	is_valid = {
-		completely_controls = title:k_cycladecia
-	}
-
-	effect = {
-		trigger_event = sjalvolki_decisions.3007
-		add_to_global_variable_list = {
-			name = unavailable_unique_decisions
-			target = flag:cycladecia_migration
 		}
 	}
 	
@@ -506,7 +373,7 @@ migrate_to_kingdom_kerkonia = {
 		has_game_rule = story_content_enabled
 		is_target_in_global_variable_list = {
 			name = unavailable_unique_decisions
-			target = flag:cycladecia_migration
+			target = flag:sgrad_migration
 		}
 		NOT = {
 			is_target_in_global_variable_list = {
@@ -567,14 +434,7 @@ migrate_to_kingdom_sajrag = {
 
 	is_valid = {
 		completely_controls = title:d_kourorion
-		completely_controls = title:d_itos
-		completely_controls = title:d_gangrynthos
-		completely_controls = title:d_thassacuse
 		completely_controls = title:d_epigus
-		completely_controls = title:d_semympia
-		completely_controls = title:d_prienyn
-		completely_controls = title:d_andrurii
-		completely_controls = title:d_gythinus
 	}
 
 	effect = {
@@ -630,10 +490,7 @@ migrate_to_kingdom_dahagrad = {
 
 	is_valid = {
 		completely_controls = title:d_zakrerna
-		completely_controls = title:d_dodaphos
 		completely_controls = title:d_cnidystus
-		completely_controls = title:d_astyn
-		completely_controls = title:d_paphenion
 	}
 
 	effect = {
@@ -682,10 +539,7 @@ migrate_to_kingdom_dgask = {
 	}
 
 	is_valid = {
-		completely_controls = title:d_eleutembria
 		completely_controls = title:d_zacope
-		completely_controls = title:d_doranais
-		completely_controls = title:d_hyblagoria
 	}
 
 	effect = {
@@ -734,11 +588,8 @@ migrate_to_kingdom_krakaw = {
 	}
 
 	is_valid = {
-		completely_controls = title:d_epidila
 		completely_controls = title:d_alidnae
 		completely_controls = title:d_hyelocaea
-		completely_controls = title:d_spartena
-		completely_controls = title:d_hemerane
 	}
 
 	effect = {
@@ -789,9 +640,6 @@ migrate_to_kingdom_snalav = {
 
 	is_valid = {
 		completely_controls = title:d_zehendhof
-		completely_controls = title:d_oberpaindorf
-		completely_controls = title:d_lelov
-		completely_controls = title:d_haimburg
 		completely_controls = title:d_kremkau
 		completely_controls = title:d_dresbruch
 	}
@@ -844,10 +692,8 @@ migrate_to_kingdom_krava = {
 
 	is_valid = {
 		completely_controls = title:d_nadost
-		completely_controls = title:d_hattmannsdorf
 		completely_controls = title:d_tisvildeleje
 		completely_controls = title:d_paroz
-		completely_controls = title:d_sjalwagram
 		completely_controls = title:d_reepsholt
 	}
 
@@ -898,11 +744,10 @@ migrate_to_kingdom_akiev = {
 	}
 
 	is_valid = {
-		completely_controls = title:d_gornji_crnci
 		completely_controls = title:d_birnbaum
 		completely_controls = title:d_wakelterhof
-		completely_controls = title:d_kadan
 		completely_controls = title:d_geislersfeld
+		completely_controls = title:d_zehendhof
 	}
 
 	effect = {
@@ -953,15 +798,10 @@ migrate_to_kingdom_devk = {
 
 	is_valid = {
 		completely_controls = title:d_jaszfalu
-		completely_controls = title:d_strazgonjci
-		completely_controls = title:d_gajer
 		completely_controls = title:d_zbynice
-		completely_controls = title:d_feldingbjerg
 		completely_controls = title:d_dalmsdorf
 		completely_controls = title:d_rupensdorf
-		completely_controls = title:d_limpertsberg
 		completely_controls = title:d_attenhofen
-		completely_controls = title:d_tingstaede
 	}
 
 	effect = {
@@ -1000,7 +840,7 @@ migrate_to_kingdom_bledlik = {
 		has_game_rule = story_content_enabled
 		is_target_in_global_variable_list = {
 			name = unavailable_unique_decisions
-			target = flag:devk_migration
+			target = flag:krava_migration
 		}
 		NOT = {
 			is_target_in_global_variable_list = {
@@ -1011,12 +851,8 @@ migrate_to_kingdom_bledlik = {
 	}
 
 	is_valid = {
-		completely_controls = title:d_weidingen
-		completely_controls = title:d_eutingen
-		completely_controls = title:d_landet
-		completely_controls = title:d_jokk
+		completely_controls = title:d_uggleberg
 		completely_controls = title:d_aspelt
-		completely_controls = title:d_elsane
 		completely_controls = title:d_sestajovice
 	}
 
@@ -1067,11 +903,9 @@ migrate_to_kingdom_cvradk = {
 	}
 
 	is_valid = {
-		completely_controls = title:d_laubend
 		completely_controls = title:d_steinenkirch
-		completely_controls = title:d_mirsdorf
-		completely_controls = title:d_baromut
 		completely_controls = title:d_perne
+		completely_controls = title:d_dvorek
 	}
 
 	effect = {
@@ -1121,10 +955,7 @@ migrate_to_kingdom_uvusk = {
 	}
 
 	is_valid = {
-		completely_controls = title:d_prihova
-		completely_controls = title:d_dvorek
-		completely_controls = title:d_radous
-		completely_controls = title:d_klemensdorf
+		completely_controls = title:d_kisujfalu
 		completely_controls = title:d_perbetsky_dvor
 	}
 
@@ -1177,7 +1008,6 @@ migrate_to_kingdom_kevek = {
 	is_valid = {
 		completely_controls = title:d_bambousek
 		completely_controls = title:d_blaschdorf
-		completely_controls = title:d_sieding
 	}
 
 	effect = {
@@ -1185,60 +1015,6 @@ migrate_to_kingdom_kevek = {
 		add_to_global_variable_list = {
 			name = unavailable_unique_decisions
 			target = flag:kevek_migration
-		}
-	}
-	
-	ai_potential = {
-		always = yes
-	}
-
-	ai_will_do = {
-		base = 60
-	}
-}
-
-##################
-# Migrate to Bladka
-# by Hagamablabla
-
-migrate_to_kingdom_bladka = {
-	picture = "gfx/interface/illustrations/decisions/decision_destiny_goal.dds"
-	major = yes
-	desc = migrate_to_kingdom_desc
-    confirm_text = migrate_to_kingdom_confirm
-
-	ai_check_interval = 1
-
-	is_shown = {
-		primary_title = title:e_sjalvolki
-		has_culture_group = culture_group:gh_sjalvolki_group
-		is_landed = yes
-		has_game_rule = story_content_enabled
-		is_target_in_global_variable_list = {
-			name = unavailable_unique_decisions
-			target = flag:uvusk_migration
-		}
-		NOT = {
-			is_target_in_global_variable_list = {
-				name = unavailable_unique_decisions
-				target = flag:bladka_migration
-			}
-		}
-	}
-
-	is_valid = {
-		completely_controls = title:d_plossen
-		completely_controls = title:d_kisujfalu
-		completely_controls = title:d_bylany
-		completely_controls = title:d_pyhrn
-		completely_controls = title:d_senseln
-	}
-
-	effect = {
-		trigger_event = sjalvolki_decisions.3072
-		add_to_global_variable_list = {
-			name = unavailable_unique_decisions
-			target = flag:bladka_migration
 		}
 	}
 	
@@ -1270,7 +1046,7 @@ migrate_to_kingdom_vka = {
 		has_game_rule = story_content_enabled
 		is_target_in_global_variable_list = {
 			name = unavailable_unique_decisions
-			target = flag:bladka_migration
+			target = flag:cershuv_migration
 		}
 		NOT = {
 			is_target_in_global_variable_list = {
@@ -1281,11 +1057,7 @@ migrate_to_kingdom_vka = {
 	}
 
 	is_valid = {
-		completely_controls = title:d_gelovizza
-		completely_controls = title:d_kulm
-		completely_controls = title:d_bogdanic
 		completely_controls = title:d_podkoren
-		completely_controls = title:d_grosbous
 		completely_controls = title:d_heinrichsheim
 	}
 
@@ -1310,53 +1082,52 @@ migrate_to_kingdom_vka = {
 # Migrate to Crecew
 # by Hagamablabla
 
-#migrate_to_kingdom_crecew = {
-#	picture = "gfx/interface/illustrations/decisions/decision_destiny_goal.dds"
-#	major = yes
-#	desc = migrate_to_kingdom_desc
-#    confirm_text = migrate_to_kingdom_confirm
-#
-#	ai_check_interval = 1
-#
-#	is_shown = {
-#		primary_title = title:e_sjalvolki
-#		has_culture_group = culture_group:gh_sjalvolki_group
-#		is_landed = yes
-#		has_game_rule = story_content_enabled
-#		is_target_in_global_variable_list = {
-#			name = unavailable_unique_decisions
-#			target = flag:vka_migration
-#		}
-#		NOT = {
-#			is_target_in_global_variable_list = {
-#				name = unavailable_unique_decisions
-#				target = flag:crecew_migration
-#			}
-#		}
-#	}
-#
-#	is_valid = {
-#		completely_controls = title:d_autschowa
-#		completely_controls = title:d_puscava
-#		completely_controls = title:d_salvenberg
-#	}
-#
-#	effect = {
-#		trigger_event = sjalvolki_decisions.3075
-#		add_to_global_variable_list = {
-#			name = unavailable_unique_decisions
-#			target = flag:crecew_migration
-#		}
-#	}
-#	
-#	ai_potential = {
-#		always = yes
-#	}
-#
-#	ai_will_do = {
-#		base = 60
-#	}
-#}
+migrate_to_kingdom_crecew = {
+	picture = "gfx/interface/illustrations/decisions/decision_destiny_goal.dds"
+	major = yes
+	desc = migrate_to_kingdom_desc
+    confirm_text = migrate_to_kingdom_confirm
+
+	ai_check_interval = 1
+
+	is_shown = {
+		primary_title = title:e_sjalvolki
+		has_culture_group = culture_group:gh_sjalvolki_group
+		is_landed = yes
+		has_game_rule = story_content_enabled
+		is_target_in_global_variable_list = {
+			name = unavailable_unique_decisions
+			target = flag:vka_migration
+		}
+		NOT = {
+			is_target_in_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:crecew_migration
+			}
+		}
+	}
+
+	is_valid = {
+		completely_controls = title:d_autschowa
+		completely_controls = title:d_puscava
+	}
+
+	effect = {
+		trigger_event = sjalvolki_decisions.3075
+		add_to_global_variable_list = {
+			name = unavailable_unique_decisions
+			target = flag:crecew_migration
+		}
+	}
+	
+	ai_potential = {
+		always = yes
+	}
+
+	ai_will_do = {
+		base = 60
+	}
+}
 
 ##################
 # Migrate to Dievs
@@ -1377,7 +1148,7 @@ migrate_to_kingdom_dievs = {
 		has_game_rule = story_content_enabled
 		is_target_in_global_variable_list = {
 			name = unavailable_unique_decisions
-			target = flag:kevek_migration
+			target = flag:crecew_migration
 		}
 		NOT = {
 			is_target_in_global_variable_list = {
@@ -1388,13 +1159,8 @@ migrate_to_kingdom_dievs = {
 	}
 
 	is_valid = {
-		# completely_controls = title:d_srbetsch
-		completely_controls = title:d_popelna
 		completely_controls = title:d_cisotin
-		completely_controls = title:d_uhrov
 		completely_controls = title:d_krakovany
-		completely_controls = title:d_karwina
-		completely_controls = title:d_litrbachy
 	}
 
 	effect = {
@@ -1402,57 +1168,6 @@ migrate_to_kingdom_dievs = {
 		add_to_global_variable_list = {
 			name = unavailable_unique_decisions
 			target = flag:dievs_migration
-		}
-	}
-	
-	ai_potential = {
-		always = yes
-	}
-
-	ai_will_do = {
-		base = 60
-	}
-}
-
-##################
-# Migrate to Cesk
-# by Hagamablabla
-
-migrate_to_kingdom_cesk = {
-	picture = "gfx/interface/illustrations/decisions/decision_destiny_goal.dds"
-	major = yes
-	desc = migrate_to_kingdom_desc
-    confirm_text = migrate_to_kingdom_confirm
-
-	ai_check_interval = 1
-
-	is_shown = {
-		primary_title = title:e_sjalvolki
-		has_culture_group = culture_group:gh_sjalvolki_group
-		is_landed = yes
-		has_game_rule = story_content_enabled
-		is_target_in_global_variable_list = {
-			name = unavailable_unique_decisions
-			target = flag:bladka_migration
-		}
-		NOT = {
-			is_target_in_global_variable_list = {
-				name = unavailable_unique_decisions
-				target = flag:cesk_migration
-			}
-		}
-	}
-
-	is_valid = {
-		completely_controls = title:d_oberneufahrn
-		completely_controls = title:d_engelswald
-	}
-
-	effect = {
-		trigger_event = sjalvolki_decisions.3074
-		add_to_global_variable_list = {
-			name = unavailable_unique_decisions
-			target = flag:cesk_migration
 		}
 	}
 	
@@ -1496,10 +1211,7 @@ migrate_to_kingdom_nrakeved = {
 
 	is_valid = {
 		completely_controls = title:d_otvovice
-		completely_controls = title:d_wanzer
-		completely_controls = title:d_blatta
 		completely_controls = title:d_westerhusen
-		completely_controls = title:d_visazys
 	}
 
 	effect = {
@@ -1536,16 +1248,10 @@ migrate_to_kingdom_mowask = {
 		has_culture_group = culture_group:gh_sjalvolki_group
 		is_landed = yes
 		has_game_rule = story_content_enabled
-		OR = {
-			is_target_in_global_variable_list = {
+		is_target_in_global_variable_list = {
 				name = unavailable_unique_decisions
 				target = flag:nrakeved_migration
 			}
-			is_target_in_global_variable_list = {
-				name = unavailable_unique_decisions
-				target = flag:cesk_migration
-			}
-		}
 		NOT = {
 			is_target_in_global_variable_list = {
 				name = unavailable_unique_decisions
@@ -1555,9 +1261,7 @@ migrate_to_kingdom_mowask = {
 	}
 
 	is_valid = {
-		completely_controls = title:d_pirnitz
 		completely_controls = title:d_bircna_vas
-		completely_controls = title:d_radvanovice
 		completely_controls = title:d_ordos
 	}
 
@@ -1566,6 +1270,57 @@ migrate_to_kingdom_mowask = {
 		add_to_global_variable_list = {
 			name = unavailable_unique_decisions
 			target = flag:mowask_migration
+		}
+	}
+	
+	ai_potential = {
+		always = yes
+	}
+
+	ai_will_do = {
+		base = 60
+	}
+}
+
+##################
+# Migrate to Cesk
+# by TOG
+
+migrate_to_kingdom_cesk = {
+	picture = "gfx/interface/illustrations/decisions/decision_destiny_goal.dds"
+	major = yes
+	desc = migrate_to_kingdom_desc
+    confirm_text = migrate_to_kingdom_confirm
+
+	ai_check_interval = 1
+
+	is_shown = {
+		primary_title = title:e_sjalvolki
+		has_culture_group = culture_group:gh_sjalvolki_group
+		is_landed = yes
+		has_game_rule = story_content_enabled
+		is_target_in_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:devk_migration
+			}
+		NOT = {
+			is_target_in_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:cesk_migration
+			}
+		}
+	}
+
+	is_valid = {
+		completely_controls = title:d_plossen
+		completely_controls = title:d_attenhofen
+	}
+
+	effect = {
+		trigger_event = sjalvolki_decisions.3074
+		add_to_global_variable_list = {
+			name = unavailable_unique_decisions
+			target = flag:cesk_migration
 		}
 	}
 	
@@ -1597,7 +1352,7 @@ migrate_to_kingdom_scadav = {
 		has_game_rule = story_content_enabled
 		is_target_in_global_variable_list = {
 			name = unavailable_unique_decisions
-			target = flag:cesk_migration
+			target = flag:mowask_migration
 		}
 		NOT = {
 			is_target_in_global_variable_list = {
@@ -1608,9 +1363,6 @@ migrate_to_kingdom_scadav = {
 	}
 
 	is_valid = {
-		completely_controls = title:d_dobritsch
-		completely_controls = title:d_padochov
-		completely_controls = title:d_kleinsee
 		completely_controls = title:d_moosleiten
 	}
 
@@ -1668,8 +1420,6 @@ migrate_to_kingdom_blecked = {
 
 	is_valid = {
 		completely_controls = title:d_oprostovice
-		completely_controls = title:d_walthersdorf
-		completely_controls = title:d_muehldorf
 	}
 
 	effect = {
@@ -1719,10 +1469,7 @@ migrate_to_kingdom_sadak = {
 	}
 
 	is_valid = {
-		completely_controls = title:d_reddereitz
 		completely_controls = title:d_zgornje_vrtice
-		completely_controls = title:d_kautenbach
-		completely_controls = title:d_mihla
 	}
 
 	effect = {
@@ -1772,8 +1519,6 @@ migrate_to_kingdom_dlef = {
 	}
 
 	is_valid = {
-		completely_controls = title:d_otterzhofen
-		completely_controls = title:d_imsovci
 		completely_controls = title:d_wischezahn
 	}
 
@@ -1813,7 +1558,7 @@ migrate_to_kingdom_dievd = {
 		has_game_rule = story_content_enabled
 		is_target_in_global_variable_list = {
 			name = unavailable_unique_decisions
-			target = flag:nrakeved_migration
+			target = flag:dlef_migration
 		}
 		NOT = {
 			is_target_in_global_variable_list = {
@@ -1825,10 +1570,6 @@ migrate_to_kingdom_dievd = {
 
 	is_valid = {
 		completely_controls = title:d_mosebeck
-		completely_controls = title:d_baustene
-		completely_controls = title:d_halmbro
-		completely_controls = title:d_kurisinki
-		completely_controls = title:d_gumpolding
 	}
 
 	effect = {
@@ -1878,10 +1619,7 @@ migrate_to_kingdom_buzi = {
 	}
 
 	is_valid = {
-		completely_controls = title:d_wolfsfeld
-		completely_controls = title:d_kehla
 		completely_controls = title:d_lankum
-		completely_controls = title:d_alsbruck
 	}
 
 	effect = {
@@ -1914,13 +1652,14 @@ migrate_to_kingdom_wakrav = {
 	ai_check_interval = 1
 
 	is_shown = {
-		primary_title = title:e_sjalvolki
+#		primary_title = title:e_sjalvolki
+
 		has_culture_group = culture_group:gh_sjalvolki_group
 		is_landed = yes
 		has_game_rule = story_content_enabled
 		is_target_in_global_variable_list = {
 			name = unavailable_unique_decisions
-			target = flag:dlef_migration
+			target = flag:buzi_migration
 		}
 		NOT = {
 			is_target_in_global_variable_list = {
@@ -1931,11 +1670,10 @@ migrate_to_kingdom_wakrav = {
 	}
 
 	is_valid = {
-		completely_controls = title:d_talde
-		completely_controls = title:d_mistel
 		completely_controls = title:d_hestfjoror
 		completely_controls = title:d_mladovice
 		completely_controls = title:d_cisichie
+		completely_controls = title:d_bwlcheit
 	}
 
 	effect = {
@@ -1968,13 +1706,12 @@ migrate_to_kingdom_kakra = {
 	ai_check_interval = 1
 
 	is_shown = {
-		primary_title = title:e_sjalvolki
 		has_culture_group = culture_group:gh_sjalvolki_group
 		is_landed = yes
 		has_game_rule = story_content_enabled
 		is_target_in_global_variable_list = {
 			name = unavailable_unique_decisions
-			target = flag:dlef_migration
+			target = flag:buzi_migration
 		}
 		NOT = {
 			is_target_in_global_variable_list = {
@@ -1987,7 +1724,6 @@ migrate_to_kingdom_kakra = {
 	is_valid = {
 		completely_controls = title:d_skrbovice
 		completely_controls = title:d_schalkshofen
-		completely_controls = title:d_nepasice
 	}
 
 	effect = {
@@ -2011,54 +1747,52 @@ migrate_to_kingdom_kakra = {
 # Migrate to Veik
 # by Hagamablabla
 
-migrate_to_kingdom_veik = {
-	picture = "gfx/interface/illustrations/decisions/decision_destiny_goal.dds"
-	major = yes
-	desc = migrate_to_kingdom_desc
-    confirm_text = migrate_to_kingdom_confirm
-
-	ai_check_interval = 1
-
-	is_shown = {
-		primary_title = title:e_sjalvolki
-		has_culture_group = culture_group:gh_sjalvolki_group
-		is_landed = yes
-		has_game_rule = story_content_enabled
-		is_target_in_global_variable_list = {
-			name = unavailable_unique_decisions
-			target = flag:wakrav_migration
-		}
-		NOT = {
-			is_target_in_global_variable_list = {
-				name = unavailable_unique_decisions
-				target = flag:veik_migration
-			}
-		}
-	}
-
-	is_valid = {
-		completely_controls = title:d_ludwigsthal
-		completely_controls = title:d_freusburg
-		completely_controls = title:d_ahle
-		completely_controls = title:d_ujezd
-	}
-
-	effect = {
-		trigger_event = sjalvolki_decisions.3064
-		add_to_global_variable_list = {
-			name = unavailable_unique_decisions
-			target = flag:veik_migration
-		}
-	}
-	
-	ai_potential = {
-		always = yes
-	}
-
-	ai_will_do = {
-		base = 60
-	}
-}
+# migrate_to_kingdom_veik = {
+#	picture = "gfx/interface/illustrations/decisions/decision_destiny_goal.dds"
+#	major = yes
+#	desc = migrate_to_kingdom_desc
+#    confirm_text = migrate_to_kingdom_confirm
+#
+#	ai_check_interval = 1
+#
+#	is_shown = {
+#		primary_title = title:e_sjalvolki
+#		has_culture_group = culture_group:gh_sjalvolki_group
+#		is_landed = yes
+#		has_game_rule = story_content_enabled
+#		is_target_in_global_variable_list = {
+#			name = unavailable_unique_decisions
+#			target = flag:kakra_migration
+#		}
+#		NOT = {
+#			is_target_in_global_variable_list = {
+#				name = unavailable_unique_decisions
+#				target = flag:veik_migration
+#			}
+#		}
+#	}
+#
+#	is_valid = {
+#		completely_controls = title:d_ludwigsthal
+#		completely_controls = title:d_ahle
+#	}
+#
+#	effect = {
+#		trigger_event = sjalvolki_decisions.3064
+#		add_to_global_variable_list = {
+#			name = unavailable_unique_decisions
+#			target = flag:veik_migration
+#		}
+#	}
+#	
+#	ai_potential = {
+#		always = yes
+#	}
+#
+#	ai_will_do = {
+#		base = 60
+#	}
+# }
 
 ##################
 # Migrate to Krassovce
@@ -2090,7 +1824,7 @@ migrate_to_kingdom_krassovce = {
 	}
 
 	is_valid = {
-		completely_controls = title:k_krassovce
+		completely_controls = title:d_popelna 
 		#completely_controls = title:d_srbetsch
 	}
 
@@ -2141,11 +1875,7 @@ migrate_to_kingdom_maskav = {
 	}
 
 	is_valid = {
-		completely_controls = title:d_vabalgala
-		completely_controls = title:d_kunra
-		completely_controls = title:d_jekabnde
 		completely_controls = title:d_keurava
-		completely_controls = title:d_vadhammar
 	}
 
 	effect = {
@@ -2244,15 +1974,10 @@ migrate_to_kingdom_gevek = {
 	}
 
 	is_valid = {
-		completely_controls = title:d_larespontos
 		completely_controls = title:d_epidyros
-		completely_controls = title:d_aigemita
-		completely_controls = title:d_petra
 		completely_controls = title:d_lapitholi
 		completely_controls = title:d_pelelis
-		completely_controls = title:d_pavlasae
-		completely_controls = title:d_heraclon
-		completely_controls = title:d_tegina
+		completely_controls = title:d_eretithos
 	}
 
 	effect = {
@@ -2302,9 +2027,9 @@ migrate_to_kingdom_bakav = {
 
 	is_valid = {
 		completely_controls = title:d_throneos
-		completely_controls = title:d_boramea
-		completely_controls = title:d_petsitake
 		completely_controls = title:d_pelossos
+		completely_controls = title:d_tegina
+		completely_controls = title:d_karthos_isles1
 	}
 
 	effect = {
@@ -2353,13 +2078,10 @@ migrate_to_kingdom_sabalv = {
 	}
 
 	is_valid = {
-		completely_controls = title:d_erythralamis
 		completely_controls = title:d_elatepios
-		completely_controls = title:d_myligeneia
-		completely_controls = title:d_rizesos
 		completely_controls = title:d_megalarina
-		completely_controls = title:d_argatis
 		completely_controls = title:d_phanaca
+		completely_controls = title:d_itieia_isles1
 	}
 
 	effect = {
@@ -2409,9 +2131,7 @@ migrate_to_kingdom_slavka = {
 
 	is_valid = {
 		completely_controls = title:d_phalalia
-		completely_controls = title:d_aphini
 		completely_controls = title:d_agrinyreum
-		completely_controls = title:d_taureum
 	}
 
 	effect = {
@@ -2461,11 +2181,9 @@ migrate_to_kingdom_sladia = {
 
 	is_valid = {
 		completely_controls = title:d_pandena
-		completely_controls = title:d_trapopolis
-		completely_controls = title:d_kamymna
-		completely_controls = title:d_thuramos
 		completely_controls = title:d_psacus
 		completely_controls = title:d_ayteos
+		completely_controls = title:d_kamaramum
 	}
 
 	effect = {
@@ -2515,9 +2233,7 @@ migrate_to_kingdom_provdanov = {
 
 	is_valid = {
 		completely_controls = title:d_pellactus
-		completely_controls = title:d_demymna
 		completely_controls = title:d_kameireia
-		completely_controls = title:d_elatollo
 	}
 
 	effect = {
@@ -2568,9 +2284,8 @@ migrate_to_kingdom_siktak = {
 	is_valid = {
 		completely_controls = title:d_astaseia
 		completely_controls = title:d_eresarnassus
-		completely_controls = title:d_kamaramum
+		completely_controls = title:d_artesmos_isles
 		completely_controls = title:d_rhypontum
-		completely_controls = title:d_pylypes
 	}
 
 	effect = {
@@ -2619,11 +2334,9 @@ migrate_to_kingdom_cevrek = {
 	}
 
 	is_valid = {
-		completely_controls = title:d_paphepios
+		completely_controls = title:d_hotterfozen
 		completely_controls = title:d_crotapezus
-		completely_controls = title:d_kamarosse
 		completely_controls = title:d_arysarnaria
-		completely_controls = title:d_ephgive
 	}
 
 	effect = {
@@ -2672,9 +2385,7 @@ migrate_to_kingdom_spedk = {
 	}
 
 	is_valid = {
-		completely_controls = title:d_platiae
-		completely_controls = title:d_philoli
-		completely_controls = title:d_spartenion
+		completely_controls = title:d_hieraros
 		completely_controls = title:d_sedypethedia
 		completely_controls = title:d_olylama
 	}
@@ -2733,9 +2444,6 @@ migrate_to_kingdom_poaclav = {
 	is_valid = {
 		completely_controls = title:d_dymetra
 		completely_controls = title:d_ithina
-		completely_controls = title:d_epenae
-		completely_controls = title:d_mochlocaea
-		completely_controls = title:d_binth
 		completely_controls = title:d_eryras
 		completely_controls = title:d_itilene
 	}
@@ -2786,12 +2494,8 @@ migrate_to_kingdom_cershuv = {
 	}
 
 	is_valid = {
-		completely_controls = title:d_thurios
 		completely_controls = title:d_hellane
-		completely_controls = title:d_byllyrian
-		completely_controls = title:d_epacuse
 		completely_controls = title:d_halaca
-		completely_controls = title:d_chalcela
 	}
 
 	effect = {
@@ -2840,11 +2544,8 @@ migrate_to_kingdom_vytva = {
 	}
 
 	is_valid = {
-		completely_controls = title:d_tomeira
 		completely_controls = title:d_cyrydon
-		completely_controls = title:d_rhegyra
 		completely_controls = title:d_olendos
-		completely_controls = title:d_thyrodosia
 	}
 
 	effect = {
@@ -2901,10 +2602,8 @@ migrate_to_kingdom_karvice = {
 	is_valid = {
 		completely_controls = title:d_demylos
 		completely_controls = title:d_kepapetra
-		completely_controls = title:d_massatrea
 		completely_controls = title:d_stenitida
 		completely_controls = title:d_phaistetus
-		completely_controls = title:d_apenae
 	}
 
 	effect = {
@@ -2942,7 +2641,7 @@ migrate_to_kingdom_tolmat = {
 		has_game_rule = story_content_enabled
 		is_target_in_global_variable_list = {
 			name = unavailable_unique_decisions
-			target = flag:karvice_migration
+			target = flag:vytva_migration
 		}
 		NOT = {
 			is_target_in_global_variable_list = {
@@ -2954,9 +2653,6 @@ migrate_to_kingdom_tolmat = {
 
 	is_valid = {
 		completely_controls = title:d_cythioch
-		completely_controls = title:d_lampsantina
-		completely_controls = title:d_sozydos
-		completely_controls = title:d_sozegion
 	}
 
 	effect = {
@@ -3011,13 +2707,10 @@ migrate_to_kingdom_glicin = {
 	}
 
 	is_valid = {
-		completely_controls = title:d_hieraros
-		completely_controls = title:d_apa
-		completely_controls = title:d_diysthon
-		completely_controls = title:d_aarpazdea
 		completely_controls = title:d_pesandros
-		completely_controls = title:d_asglekeia
-		completely_controls = title:d_skukoi
+		completely_controls = title:d_hyrean_isles
+		completely_controls = title:d_helesthemna
+		completely_controls = title:d_he_vrerai
 	}
 
 	effect = {
@@ -3037,7 +2730,7 @@ migrate_to_kingdom_glicin = {
 	}
 }
 
-##################
+################## 
 # Migrate to Kochod
 # by ThePinkPanzer
 migrate_to_kingdom_kochod = {
@@ -3072,11 +2765,10 @@ migrate_to_kingdom_kochod = {
 	}
 
 	is_valid = {
-		completely_controls = title:d_stratopedon
-		completely_controls = title:d_he_vrerai
-		completely_controls = title:d_helesthemna
-		completely_controls = title:d_gvasiklea
-		completely_controls = title:d_proletheros
+
+		completely_controls = title:d_gangredon
+		completely_controls = title:d_kalliados_isles
+		completely_controls = title:d_brass_sea_isles
 	}
 
 	effect = {
@@ -3094,8 +2786,8 @@ migrate_to_kingdom_kochod = {
 	ai_will_do = {
 		base = 60
 	}
-}
-
+ }
+ 
 ##################
 # Migrate to Parclav
 # by ThePinkPanzer
@@ -3136,8 +2828,6 @@ migrate_to_kingdom_parclav = {
 
 	is_valid = {
 		completely_controls = title:d_myrmomenus
-		completely_controls = title:d_smyrnonnos
-		completely_controls = title:d_stenyrian
 		completely_controls = title:d_assila
 		completely_controls = title:d_messopus
 	}
@@ -3194,9 +2884,6 @@ migrate_to_kingdom_krary = {
 	}
 
 	is_valid = {
-		completely_controls = title:d_phanokampos
-		completely_controls = title:d_eleutoezen
-		completely_controls = title:d_cyralos
 		completely_controls = title:d_paeschaes
 		completely_controls = title:d_idon
 	}
@@ -3239,10 +2926,6 @@ migrate_to_kingdom_lubry = {
 				name = unavailable_unique_decisions
 				target = flag:karvice_migration
 			}
-			is_target_in_global_variable_list = {
-				name = unavailable_unique_decisions
-				target = flag:horav_migration
-			}
 		}
 		NOT = {
 			is_target_in_global_variable_list = {
@@ -3254,9 +2937,7 @@ migrate_to_kingdom_lubry = {
 
 	is_valid = {
 		completely_controls = title:d_mochlurion
-		completely_controls = title:d_gangredon
-		completely_controls = title:d_tukhei
-		completely_controls = title:d_actox
+		completely_controls = title:d_kteumaxa_isles
 		completely_controls = title:d_akragas
 	}
 
@@ -3302,10 +2983,6 @@ migrate_to_kingdom_horav = {
 				name = unavailable_unique_decisions
 				target = flag:krary_migration
 			}
-			is_target_in_global_variable_list = {
-				name = unavailable_unique_decisions
-				target = flag:lubry_migration
-			}
 		}
 		NOT = {
 			is_target_in_global_variable_list = {
@@ -3317,11 +2994,8 @@ migrate_to_kingdom_horav = {
 
 	is_valid = {
 		completely_controls = title:d_epidamnus
-		completely_controls = title:d_lampsacus
-		completely_controls = title:d_aakthmai
-		completely_controls = title:d_coucounaries
 		completely_controls = title:d_menelaion
-		completely_controls = title:d_nisara
+		completely_controls = title:d_aakthmai
 	}
 
 	effect = {
@@ -3372,10 +3046,8 @@ migrate_to_kingdom_alman = {
 	is_valid = {
 		completely_controls = title:d_tomi
 		completely_controls = title:d_posidonia
-		completely_controls = title:d_jaraea
 		completely_controls = title:d_nisoni
 		completely_controls = title:d_busaraphae
-		completely_controls = title:d_kalkathoi
 	}
 
 	effect = {
@@ -3428,12 +3100,8 @@ migrate_to_kingdom_deskivi = {
 	}
 
 	is_valid = {
-		completely_controls = title:d_addia
-		#completely_controls = title:d_seopuse
-		#completely_controls = title:d_thururii
 		completely_controls = title:d_gelale
 		completely_controls = title:d_moorende
-		completely_controls = title:d_rumanja_vas
 	}
 
 	effect = {
@@ -3491,7 +3159,7 @@ migrate_to_kingdom_descki = {
 		completely_controls = title:d_ithna
 		completely_controls = title:d_knokidbes
 		completely_controls = title:d_maadoran
-		completely_controls = title:d_oekevrokanne
+		completely_controls = title:d_seopuse
 	}
 
 	effect = {
@@ -3499,65 +3167,6 @@ migrate_to_kingdom_descki = {
 		add_to_global_variable_list = {
 			name = unavailable_unique_decisions
 			target = flag:descki_migration
-		}
-	}
-	
-	ai_potential = {
-		always = yes
-	}
-
-	ai_will_do = {
-		base = 60
-	}
-}
-
-##################
-# Migrate to Kradaov
-# by ThePinkPanzer
-migrate_to_kingdom_kradaov = {
-	picture = "gfx/interface/illustrations/decisions/decision_destiny_goal.dds"
-	major = yes
-	desc = migrate_to_kingdom_desc
-    confirm_text = migrate_to_kingdom_confirm
-
-	ai_check_interval = 1
-
-	is_shown = {
-		primary_title = title:e_sjalvolki
-		has_culture_group = culture_group:gh_sjalvolki_group
-		is_landed = yes
-		has_game_rule = story_content_enabled
-		OR = {
-			is_target_in_global_variable_list = {
-				name = unavailable_unique_decisions
-				target = flag:descki_migration
-			}
-			is_target_in_global_variable_list = {
-				name = unavailable_unique_decisions
-				target = flag:djav_migration
-			}
-		}
-		NOT = {
-			is_target_in_global_variable_list = {
-				name = unavailable_unique_decisions
-				target = flag:kradaov_migration
-			}
-		}
-	}
-
-	is_valid = {
-		completely_controls = title:d_prirkos
-		completely_controls = title:d_saris
-		completely_controls = title:d_olythssoessa
-		completely_controls = title:d_elrhyos
-		completely_controls = title:d_dryn
-	}
-
-	effect = {
-		trigger_event = sjalvolki_decisions.3037
-		add_to_global_variable_list = {
-			name = unavailable_unique_decisions
-			target = flag:kradaov_migration
 		}
 	}
 	
@@ -3586,16 +3195,10 @@ migrate_to_kingdom_djav = {
 		has_culture_group = culture_group:gh_sjalvolki_group
 		is_landed = yes
 		has_game_rule = story_content_enabled
-		OR = {
 			is_target_in_global_variable_list = {
 				name = unavailable_unique_decisions
 				target = flag:descki_migration
 			}
-			is_target_in_global_variable_list = {
-				name = unavailable_unique_decisions
-				target = flag:pdvi_migration
-			}
-		}
 		NOT = {
 			is_target_in_global_variable_list = {
 				name = unavailable_unique_decisions
@@ -3606,9 +3209,8 @@ migrate_to_kingdom_djav = {
 
 	is_valid = {
 		completely_controls = title:d_vrekennus
-		completely_controls = title:d_oradoth
 		completely_controls = title:d_oedi
-		completely_controls = title:d_iopolos
+		completely_controls = title:d_antaphos
 	}
 
 	effect = {
@@ -3663,11 +3265,10 @@ migrate_to_kingdom_pdvi = {
 	}
 
 	is_valid = {
-		completely_controls = title:d_askigos
 		completely_controls = title:d_abene
 		completely_controls = title:d_kethetis
-		completely_controls = title:d_grylothephon
 		completely_controls = title:d_adne
+		completely_controls = title:d_oios
 	}
 
 	effect = {
@@ -3723,10 +3324,7 @@ migrate_to_kingdom_hvak = {
 
 	is_valid = {
 		completely_controls = title:d_anadres
-		completely_controls = title:d_dephoephladus
-		completely_controls = title:d_cose
-		completely_controls = title:d_oios
-		completely_controls = title:d_olafos
+		completely_controls = title:d_vroradi
 	}
 
 	effect = {
@@ -3781,13 +3379,8 @@ migrate_to_kingdom_kradal = {
 	}
 
 	is_valid = {
-		completely_controls = title:d_vroradi
-		completely_controls = title:d_anphon
-		completely_controls = title:d_grydi
-		completely_controls = title:d_diath
 		completely_controls = title:d_skyympene
 		completely_controls = title:d_myris
-		completely_controls = title:d_dine
 	}
 
 	effect = {
@@ -3843,10 +3436,8 @@ migrate_to_kingdom_sakc = {
 
 	is_valid = {
 		completely_controls = title:d_herainai
-		completely_controls = title:d_skylos
-		completely_controls = title:d_migoelni
 		completely_controls = title:d_paos
-		completely_controls = title:d_heriris
+
 	}
 
 	effect = {
@@ -3902,10 +3493,7 @@ migrate_to_kingdom_helski = {
 
 	is_valid = {
 		completely_controls = title:d_elrio
-		completely_controls = title:d_gryike
-		completely_controls = title:d_chsolythth
 		completely_controls = title:d_keblaia
-		completely_controls = title:d_akthon
 	}
 
 	effect = {
@@ -3955,8 +3543,6 @@ migrate_to_kingdom_bledl = {
 
 	is_valid = {
 		completely_controls = title:d_mekipia
-		completely_controls = title:d_akkos
-		completely_controls = title:d_armos
 		completely_controls = title:d_eene
 		completely_controls = title:d_cregoeis
 	}
@@ -4008,10 +3594,7 @@ migrate_to_kingdom_dlak = {
 
 	is_valid = {
 		completely_controls = title:d_rhophones
-		completely_controls = title:d_antaphos
 		completely_controls = title:d_dulia
-		completely_controls = title:d_hacelia
-		completely_controls = title:d_midia
 		completely_controls = title:d_pedi
 	}
 
@@ -4069,9 +3652,7 @@ migrate_to_kingdom_vlisck = {
 	is_valid = {
 		completely_controls = title:d_eretrona
 		completely_controls = title:d_monaros
-		completely_controls = title:d_teron
 		completely_controls = title:d_olynthagoria
-		completely_controls = title:d_myonea
 	}
 
 	effect = {
@@ -4173,8 +3754,8 @@ migrate_to_kingdom_slavkinzi = {
 	is_valid = {
 		completely_controls = title:d_sthenoumnos
 		completely_controls = title:d_antiphoron
-		completely_controls = title:d_hemaiod
 		completely_controls = title:d_ketnax
+		completely_controls = title:d_murdipar
 	}
 
 	effect = {
@@ -4229,7 +3810,6 @@ migrate_to_kingdom_cravgrad = {
 	}
 
 	is_valid = {
-		completely_controls = title:d_kunnae
 		completely_controls = title:d_syracus
 		completely_controls = title:d_aregodau
 		completely_controls = title:d_kathardd
@@ -4307,3 +3887,55 @@ migrate_to_kingdom_crelkvania = {
 	}
 }
 
+########
+# Convert to Fuedalise via Rite
+# By Netgear
+convert_realm_feudalism_rite = {
+	picture = "gfx/interface/illustrations/decisions/decision_realm.dds"
+	major = yes
+	desc = convert_realm_feudalism_rite_desc
+
+	ai_check_interval = 36
+
+	is_shown = {
+		has_government = tribal_government
+		OR = {
+			has_faith = faith:orispolj_rite
+			has_faith = faith:piety_rite
+			has_faith = faith:authority_rite
+			has_faith = faith:eastern_rite
+		}
+	}
+
+	is_valid = {
+		OR = {
+			has_faith = faith:orispolj_rite
+			has_faith = faith:piety_rite
+			has_faith = faith:authority_rite
+			has_faith = faith:eastern_rite
+		}
+		capital_province.county = {
+			development_level >= convert_to_feudalism_development_requirement
+		}
+	}
+
+	effect = {
+		trigger_event = major_decisions.0001
+		save_scope_as = actor
+		add_prestige = 200
+		add_piety = 200
+		convert_whole_realm_to_feudalism_effect = yes
+		hidden_effect = {
+			every_vassal = {
+				trigger_event = {
+					id = major_decisions.0002
+					days = 3
+				}
+			}
+		}
+	}
+
+	ai_will_do = {
+		base = 100
+	}
+}

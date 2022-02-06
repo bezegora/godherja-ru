@@ -1,0 +1,24 @@
+pdxmesh = {
+	name = "sar_bracelet_og_female_mesh"
+	file = "sar_bracelet_og_female.mesh"
+
+	blend_shape = { id = "bf_fat"				type = "bf_fat.mesh" }
+
+	meshsettings = {
+		name = "sar_bracelet_02_fShape"
+		index = 0
+		texture_diffuse = "sarbra_og_color.dds"
+		texture_normal = "sarbra_og_normal.dds"
+		texture_specular = "sarbra_og_properties.dds"
+		shader = "portrait_attachment"
+		shader_file = "gfx/FX/jomini/portrait.shader"
+	}
+}
+
+entity = {
+	name = "sar_bracelet_og_female_entity"
+	pdxmesh = "sar_bracelet_og_female_mesh"
+
+	attribute = { name = "bs_body_fat_1"								blend_shape = "bf_fat" }
+
+}

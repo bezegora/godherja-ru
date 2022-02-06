@@ -24,20 +24,14 @@ k_krassovce = {
 	}
 }
 
-b_simman = {
-	1253.1.1 = {		
-		holder = sjalvolki_krassovce_2
-		liege = k_krassovce
+c_zhahachow = {
+	1253.1.1 = {
+		liege = "e_sjalvolki"
+		holder = sjalvolki_krassovce_1
 	}
 }
 
 k_svyatich = {
-	1250.1.1 = {
-		succession_laws = { sjalvolki_succession_law }
-	}
-}
-
-k_sulzegg = {
 	1250.1.1 = {
 		succession_laws = { sjalvolki_succession_law }
 	}
@@ -70,28 +64,42 @@ d_bambousek = {
 	1215.1.1 = { change_development_level = 7 }
 }
 
-d_halita = { 
-	1215.1.1 = { change_development_level = 6 
-	}
-}
-
 d_shepezhyn = {
+	1232.1.1 = {
+		holder = marcher_531
+		government = feudal_government
+	}
 	1215.1.1 = { change_development_level = 5 
 	}
 }
 
-d_wloclablag = { 
-	1215.1.1 = { change_development_level = 9 
+c_cadeni = {
+	1232.1.1 = {
+		holder = marcher_531
+		government = feudal_government
 	}
 }
+c_hajbas = {
+	1232.1.1 = {
+		holder = marcher_531
+		government = feudal_government
+	}
+}
+c_techirhita = {
+	1232.1.1 = {
+		holder = marcher_531
+		government = feudal_government
+	}
+}
+
 
 d_trebily = { 
 	1215.1.1 = { change_development_level = 13 }
 	1232.5.3 = {	# Methiad
 		holder = northern_aversaria_frodbrokna_12
 	}
-	1252.11.8 = {
-		holder = 0
+	1248.3.8 = {
+		holder = marcher_532
 	}
 }
 
@@ -99,8 +107,8 @@ c_teredilna = {
 	1232.5.3 = {	# Methiad
 		holder = northern_aversaria_frodbrokna_12
 	}
-	1252.11.8 = {
-		holder = 0
+	1248.3.8 = {
+		holder = marcher_532
 	}
 }
 
@@ -113,46 +121,14 @@ d_blaschdorf = {
 	1215.1.1 = { change_development_level = 4 }
 }
 
-d_karwina = {
-1215.1.1 = { change_development_level = 5 }
-}
-
-d_litrbachy = {
-1215.1.1 = { change_development_level = 5 }
-}
-
-d_pagidia = {
-1215.1.1 = { change_development_level = 6 }
-}
-
 d_prynyk = {
 1215.1.1 = { change_development_level = 5 }
-}
-
-d_blatta = {
-1215.1.1 = { change_development_level = 7 }
-}
-
-d_pirnitz = {
-1215.1.1 = { change_development_level = 5 
-	}
-}
-d_radvanovice = { 
-1215.1.1 = { change_development_level = 6}
 }
 
 c_makcji = {
 	1253.1.1 = {
 		liege = "e_sjalvolki"
-		holder = sjalvolki_mikros_2
-		government = tribal_government
-	}
-}
-
-c_latzelsberg = {
-	1253.1.1 = {
-		liege = "e_sjalvolki"
-		holder = sjalvolki_mikros_2
+		holder = sjalvolki_mikros_1
 		government = tribal_government
 	}
 }
@@ -165,49 +141,11 @@ c_herzoghut = {
 	}
 }
 
-c_braunsberg = {
-	1253.1.1 = {
-		liege = "e_sjalvolki"
-		holder = sjalvolki_mikros_3
-		government = tribal_government
-	}
-}
-
-c_cihoscht = {
-	1253.1.1 = {
-		liege = "e_sjalvolki"
-		holder = sjalvolki_mikros_3
-		government = tribal_government
-	}
-}
-
-c_littenki = {
-	1253.1.1 = {
-		liege = "e_sjalvolki"
-		holder = sjalvolki_mikros_3
-		government = tribal_government
-	}
-}
-
-c_hostert = {
+c_paunovac = {
 	1253.1.1 = {
 		liege = "e_sjalvolki"
 		holder = sjalvolki_mikros_1
 		government = tribal_government
-	}
-}
-c_dornfeld = {
-	1253.1.1 = {
-		liege = "e_sjalvolki"
-		holder = sjalvolki_mikros_4
-		government = tribal_government
-	}
-}	
-
-c_paunovac = {
-	1253.1.1 = {
-		liege = "e_sjalvolki"
-		holder = sjalvolki_mikros_4
 	}
 }	
 
@@ -220,6 +158,21 @@ d_popelna = {
 	1215.1.1 = { change_development_level = 5 }
 }
 
+c_nagyacali = {
+	1253.1.1 = {
+		liege = "e_sjalvolki"
+		holder = sjalvolki_mikros_5
+		government = tribal_government
+	}
+}
+c_soroci = {
+	1253.1.1 = {
+		liege = "e_sjalvolki"
+		holder = sjalvolki_mikros_5
+		government = tribal_government
+	}
+}
+
 d_krakovany = {
 	1253.1.1 = {
 		liege = "e_sjalvolki"
@@ -227,15 +180,6 @@ d_krakovany = {
 		government = tribal_government
 	}
 	1215.1.1 = { change_development_level = 3 }
-}
-
-d_senseln = {
-	1253.1.1 = {
-		liege = "e_sjalvolki"
-		holder = sjalvolki_mikros_5
-		government = tribal_government
-	}
-	1215.1.1 = { change_development_level = 5 }
 }
 
 d_srbetsch = {
@@ -246,28 +190,26 @@ d_srbetsch = {
 	}
 	1215.1.1 = { change_development_level = 16 }
 }
-
-#c_apenia = {
-#	1253.1.1 = {
-#		holder = sjalvolki_mikros_6
-#	}
-#}
-
-#b_nymphedon = {
-#	1253.1.1 = {
-#		holder = sjalvolki_mikros_6
-#	}
-#}
-
-#b_corespiae = {
-#	1253.1.1 = {
-#		holder = sjalvolki_mikros_6
-#	}
-#}
-
-
-d_comamara = {
-1215.1.1 = { change_development_level = 8 }
+c_sedlovice = {
+	1253.1.1 = {
+		holder = sjalvolki_mikros_6
+		liege = 0
+		government = magocratic_government
+	}
+}
+c_bonnenbroich = {
+	1253.1.1 = {
+		holder = sjalvolki_mikros_6
+		liege = 0
+		government = magocratic_government
+	}
+}
+c_krodavic = {
+	1253.1.1 = {
+		holder = sjalvolki_mikros_6
+		liege = 0
+		government = magocratic_government
+	}
 }
 c_kyje = {
 	1253.1.1 = {
@@ -282,217 +224,21 @@ c_kanice = {
 		holder = sjalvolki_mikros_8
 		government = tribal_government
 	}
-}	
-
-
-c_paskov = {
-	1253.1.1 = {
-		liege = "d_senseln"
-		holder = sjalvolki_mikros_10
-		government = tribal_government
-	}
-}
-
-c_bischenrech = {
-	1253.1.1 = {
-		liege = "d_senseln"
-		holder = sjalvolki_mikros_11
-		government = tribal_government
-	}
-}
-
-c_jamolitz = {
-	1253.1.1 = {
-		liege = "d_senseln"
-		holder = sjalvolki_mikros_11
-		government = tribal_government
-	}
-}
-
-c_rammeldange = {
-	1253.1.1 = {
-		liege = "d_senseln"
-		holder = sjalvolki_mikros_11
-		government = tribal_government
-	}
 }
 
 c_neuluckow = {
 	1253.1.1 = {
-		liege = "d_senseln"
+		liege = "e_sjalvolki"
 		holder = sjalvolki_mikros_12
 		government = tribal_government
 	}
 }
-#################
-### k_fill_60 ###
-
-k_okrouhlice = {
-	1253.1.1 = {
-		liege = "e_sjalvolki"
-		holder = sjalvolki_mikros_9
-		government = tribal_government
-		succession_laws = { sjalvolki_succession_law }
-	}
-}	
-
-d_bylany = {
-	1253.1.1 = {
-		liege = "e_sjalvolki"
-		holder = sjalvolki_mikros_13
-		government = tribal_government
-	}
-	1215.1.1 = { change_development_level = 6 }
-}
-
-d_pyhrn = {
-	1253.1.1 = {
-		liege = "e_sjalvolki"
-		holder = sjalvolki_mikros_13
-		government = tribal_government
-	}
-	1215.1.1 = { change_development_level = 7 }
-}
-
-c_oberweiling = {
-	1253.1.1 = {
-		liege = "k_okrouhlice"
-		holder = sjalvolki_mikros_14
-		government = tribal_government
-	}
-}
-
-c_hauserbichl = {
-	1253.1.1 = {
-		liege = "k_okrouhlice"
-		holder = sjalvolki_mikros_14
-		government = tribal_government
-	}
-}
-
-c_rovanjska = {
-	1253.1.1 = {
-		liege = "k_okrouhlice"
-		holder = sjalvolki_mikros_14
-		government = tribal_government
-	}
-}
-
-c_hubojedy = {
-	1253.1.1 = {
-		liege = "k_okrouhlice"
-		holder = sjalvolki_mikros_15
-		government = tribal_government
-	}
-}
-
-c_kolpin = {
-	1253.1.1 = {
-		liege = "k_okrouhlice"
-		holder = sjalvolki_mikros_15
-		government = tribal_government
-	}
-}
-
-d_autschowa = {
-	1253.1.1 = {
-		liege = "k_okrouhlice"
-		holder = sjalvolki_mikros_16
-		government = tribal_government
-	}
-	1215.1.1 = { change_development_level = 4 }
-}
-d_bogdanic = {
-1215.1.1 = { change_development_level = 6 }
-}
-
-d_engelswald = {
-	1253.1.1 = {
-		liege = "k_okrouhlice"
-		holder = sjalvolki_mikros_16
-		government = tribal_government
-	}
-	1215.1.1 = { change_development_level = 6 }
-}
-c_schindelhof = {
-	1253.1.1 = {
-		liege = "d_engelswald"
-		holder = sjalvolki_mikros_17
-		government = tribal_government
-	}
-}
-
-c_jagdhase = {
-	1253.1.1 = {
-		liege = "d_engelswald"
-		holder = sjalvolki_mikros_17
-		government = tribal_government
-	}
-}
-
-c_kobyli = {
-	1253.1.1 = {
-		liege = "d_engelswald"
-		holder = sjalvolki_mikros_18
-		government = tribal_government
-	}
-}
-
-c_naschhausen = {
-	1253.1.1 = {
-		liege = "k_okrouhlice"
-		holder = sjalvolki_mikros_19
-		government = tribal_government
-	}
-}
-
-c_pivnisko = {
-	1253.1.1 = {
-		liege = "k_okrouhlice"
-		holder = sjalvolki_mikros_20
-		government = tribal_government
-	}
-}
-
-c_mauthstadt = {
-	1253.1.1 = {
-		liege = "k_okrouhlice"
-		holder = sjalvolki_mikros_21
-		government = tribal_government
-	}
-}
-
-c_radamos = {
-	1253.1.1 = {
-		liege = "k_okrouhlice"
-		holder = sjalvolki_mikros_22
-		government = tribal_government
-	}
-}
-
-d_uhrov = {
-	1253.1.1 = {
-		liege = "k_okrouhlice"
-		holder = sjalvolki_mikros_23
-		government = tribal_government
-	}
-	1215.1.1 = { change_development_level = 5 }
-}
 
 d_cisotin = {
-1215.1.1 = { change_development_level = 7 }
+	1215.1.1 = { change_development_level = 7 }
 }
 #################
 ### k_fill_61 ###
-
-d_salvenberg = {
-	1253.1.1 = {
-		liege = "e_sjalvolki"
-		holder = sjalvolki_mikros_44
-		government = tribal_government
-	}
-	1215.1.1 = { change_development_level = 4 }
-}
 
 d_puscava = {
 	1253.1.1 = {
@@ -503,13 +249,12 @@ d_puscava = {
 	1215.1.1 = { change_development_level = 4 }
 }
 
-d_kulm = {
+c_chumo = {
 	1253.1.1 = {
 		liege = "e_sjalvolki"
-		holder = sjalvolki_mikros_45
+		holder = sjalvolki_mikros_44
 		government = tribal_government
 	}
-	1215.1.1 = { change_development_level = 6 }
 }
 
 c_hemmerwurth = {
@@ -520,29 +265,12 @@ c_hemmerwurth = {
 	}
 }
 
-c_lichten = {
+c_harskirchen = {
 	1253.1.1 = {
-		liege = "e_sjalvolki"
-		holder = sjalvolki_mikros_47
+		holder = clanlands_megos_133
+		liege = d_moorende
 		government = tribal_government
 	}
-}
-
-c_hackberg = {
-	1253.1.1 = {
-		liege = "e_sjalvolki"
-		holder = sjalvolki_mikros_47
-		government = tribal_government
-	}
-}
-
-d_gelovizza = {
-	1253.1.1 = {
-		liege = "e_sjalvolki"
-		holder = sjalvolki_mikros_48
-		government = tribal_government
-	}
-	1215.1.1 = { change_development_level = 6}
 }
 
 d_heinrichsheim = {
@@ -553,11 +281,10 @@ d_heinrichsheim = {
 	}
 	1215.1.1 = { change_development_level = 4 }
 }
-
-c_schiessnig = {
+c_prailing = {
 	1253.1.1 = {
 		liege = "e_sjalvolki"
-		holder = sjalvolki_mikros_49
+		holder = sjalvolki_mikros_48
 		government = tribal_government
 	}
 }
@@ -579,54 +306,6 @@ c_unterfahrenbach = {
 	}
 }
 
-c_strzebowitz = {
-	1253.1.1 = {
-		liege = "e_sjalvolki"
-		holder = sjalvolki_mikros_51
-		government = tribal_government
-	}
-}
-
-c_brunning = {
-	1253.1.1 = {
-		liege = "e_sjalvolki"
-		holder = sjalvolki_mikros_51
-		government = tribal_government
-	}
-}
-
-c_arnim = {
-	1253.1.1 = {
-		liege = "e_sjalvolki"
-		holder = sjalvolki_mikros_51
-		government = tribal_government
-	}
-}
-
-c_krinian = {
-	1253.1.1 = {
-		liege = "e_sjalvolki"
-		holder = sjalvolki_mikros_74
-		government = tribal_government
-	}
-}
-
-c_altenbergen = {
-	1253.1.1 = {
-		liege = "e_sjalvolki"
-		holder = sjalvolki_mikros_49
-		government = tribal_government
-	}
-}
-
-c_wlaschim = {
-	1253.1.1 = {
-		liege = "e_sjalvolki"
-		holder = sjalvolki_mikros_49
-		government = tribal_government
-	}
-}
-
 c_greisingberg = {
 	1253.1.1 = {
 		liege = "d_puscava"
@@ -635,47 +314,15 @@ c_greisingberg = {
 	}
 }
 
-c_libos = {
-	1253.1.1 = {
-		liege = "d_puscava"
-		holder = sjalvolki_mikros_53
-		government = tribal_government
-	}
-}
-
-c_lohhaeuser = {
-	1253.1.1 = {
-		liege = "d_puscava"
-		holder = sjalvolki_mikros_54
-		government = tribal_government
-	}
-}
-
-c_immenstedt = {
-	1253.1.1 = {
-		liege = "d_puscava"
-		holder = sjalvolki_mikros_54
-		government = tribal_government
-	}
-}
-
 c_radvanice = {
 	1253.1.1 = {
-		liege = "d_puscava"
-		holder = sjalvolki_mikros_55
+		liege = "k_gampern"
+		holder = sjalvolki_mikros_16
 		government = tribal_government
 	}
 }
 
 c_zlutice = {
-	1253.1.1 = {
-		liege = "d_puscava"
-		holder = sjalvolki_mikros_56
-		government = tribal_government
-	}
-}
-
-c_olhotta = {
 	1253.1.1 = {
 		liege = "d_puscava"
 		holder = sjalvolki_mikros_56
@@ -701,27 +348,73 @@ k_gampern = {
 		succession_laws = { sjalvolki_succession_law }
 	}
 }	
+c_hauserbichl = {
+	1253.1.1 = {
+		liege = "k_gampern"
+		holder = sjalvolki_mikros_14
+		government = tribal_government
+	}
+}
+
+c_rovanjska = {
+	1253.1.1 = {
+		liege = "k_gampern"
+		holder = sjalvolki_mikros_14
+		government = tribal_government
+	}
+}
+
+c_hubojedy = {
+	1253.1.1 = {
+		liege = d_puscava
+		holder = sjalvolki_mikros_15
+		government = tribal_government
+	}
+}
+
+d_autschowa = {
+	1253.1.1 = {
+		liege = "k_gampern"
+		holder = sjalvolki_mikros_16
+		government = tribal_government
+	}
+	1215.1.1 = { change_development_level = 4 }
+}
+
+c_weitesfeld = {
+	1253.1.1 = {
+		liege = "k_gampern"
+		holder = sjalvolki_mikros_16
+		government = tribal_government
+	}
+}
+c_pivnisko = {
+	1209.10.3 = {	# Iron-Spike
+		holder = northern_aversaria_frodbrokna_10
+	}
+	1229.3.23 = {
+		holder = 0
+	}
+	1215.1.1 = { change_development_level = 7 }
+	1253.1.1 = {
+		liege = "k_gampern"
+		holder = sjalvolki_mikros_78
+		government = tribal_government
+	}
+}
+
+c_mauthstadt = {
+	1253.1.1 = {
+		liege = "k_gampern"
+		holder = sjalvolki_mikros_21
+		government = tribal_government
+	}
+}
 
 c_okarec = {
 	1253.1.1 = {
 		liege = "k_gampern"
 		holder = sjalvolki_mikros_24
-		government = tribal_government
-	}
-}
-
-c_budyowi = {
-	1253.1.1 = {
-		liege = "k_gampern"
-		holder = sjalvolki_mikros_24
-		government = tribal_government
-	}
-}
-
-c_jamnitz = {
-	1253.1.1 = {
-		liege = "k_gampern"
-		holder = sjalvolki_mikros_25
 		government = tribal_government
 	}
 }
@@ -746,14 +439,6 @@ c_nikolsburg = {
 	}
 }
 
-c_lipowetz = {
-	1253.1.1 = {
-		liege = "k_gampern"
-		holder = sjalvolki_mikros_26
-		government = tribal_government
-	}
-}
-
 c_olbramovice = {
 	1253.1.1 = {
 		liege = "k_gampern"
@@ -770,22 +455,6 @@ c_batelov = {
 	}
 }
 
-c_pustimer = {
-	1253.1.1 = {
-		liege = "k_gampern"
-		holder = sjalvolki_mikros_29
-		government = tribal_government
-	}
-}
-
-c_looh = {
-	1253.1.1 = {
-		liege = "k_gampern"
-		holder = sjalvolki_mikros_29
-		government = tribal_government
-	}
-}
-
 d_bircna_vas = {
 	1253.1.1 = {
 		liege = "k_gampern"
@@ -795,27 +464,9 @@ d_bircna_vas = {
 	1215.1.1 = { change_development_level = 6}
 }
 
-d_walthersdorf = {
-	1253.1.1 = {
-		liege = "k_gampern"
-		holder = sjalvolki_mikros_30
-		government = tribal_government
-	}
-	1215.1.1 = { change_development_level = 6}
-}
-
-d_muehldorf = {
-	1253.1.1 = {
-		liege = "k_gampern"
-		holder = sjalvolki_mikros_31
-		government = tribal_government
-	}
-	1215.1.1 = { change_development_level = 5}
-}
-
 c_kayl = {
 	1253.1.1 = {
-		liege = "d_walthersdorf"
+		liege = "k_gampern"
 		holder = sjalvolki_mikros_32
 		government = tribal_government
 	}
@@ -824,20 +475,12 @@ c_kayl = {
 c_giwenich = {
 	1253.1.1 = {
 		liege = "k_gampern"
-		holder = sjalvolki_mikros_33
+		holder = sjalvolki_mikros_30
 		government = tribal_government
 	}
 }
 
 c_chotzen = {
-	1253.1.1 = {
-		liege = "k_gampern"
-		holder = sjalvolki_mikros_33
-		government = tribal_government
-	}
-}
-
-c_going = {
 	1253.1.1 = {
 		liege = "k_gampern"
 		holder = sjalvolki_mikros_33
@@ -887,15 +530,6 @@ c_going = {
 #	}
 #}
 
-d_wanzer = {
-	1253.1.1 = {
-		liege = "e_sjalvolki"
-		holder = sjalvolki_mikros_39
-		government = tribal_government
-	}
-	1215.1.1 = { change_development_level = 5 }
-}
-
 d_westerhusen = {
 	1253.1.1 = {
 		liege = "e_sjalvolki"
@@ -904,7 +538,13 @@ d_westerhusen = {
 	}
 	1215.1.1 = { change_development_level = 7 }
 }
-
+c_gradisce = {
+	1253.1.1 = {
+		liege = "e_sjalvolki"
+		holder = sjalvolki_mikros_39
+		government = tribal_government
+	}
+}
 d_mosebeck = {
 	1253.1.1 = {
 		liege = "e_sjalvolki"
@@ -916,7 +556,7 @@ d_mosebeck = {
 
 c_aigen = {
 	1253.1.1 = {
-		liege = "e_sjalvolki"
+		liege = "k_lyckholm"
 		holder = sjalvolki_mikros_40
 		government = tribal_government
 	}
@@ -932,15 +572,7 @@ c_bukovsko = {
 
 c_siebenhausen = {
 	1253.1.1 = {
-		liege = "d_wanzer"
-		holder = sjalvolki_mikros_41
-		government = tribal_government
-	}
-}
-
-c_adamsfreiheit = {
-	1253.1.1 = {
-		liege = "d_wanzer"
+		liege = "d_westerhusen"
 		holder = sjalvolki_mikros_41
 		government = tribal_government
 	}
@@ -948,23 +580,14 @@ c_adamsfreiheit = {
 
 c_voxhaln = {
 	1253.1.1 = {
-		liege = "d_wanzer"
+		liege = "d_westerhusen"
 		holder = sjalvolki_mikros_42
 		government = tribal_government
 	}
 }
-
-c_scharfberg = {
-	1253.1.1 = {
-		liege = "d_wanzer"
-		holder = sjalvolki_mikros_42
-		government = tribal_government
-	}
-}
-
 c_nestanice = {
 	1253.1.1 = {
-		liege = "d_wanzer"
+		liege = "d_westerhusen"
 		holder = sjalvolki_mikros_43
 		government = tribal_government
 	}
@@ -980,6 +603,20 @@ d_zgornje_vrtice = {
 	}
 	1215.1.1 = { change_development_level = 5}
 }
+c_grenzgrund = {
+	1253.1.1 = {
+		liege = "e_sjalvolki"
+		holder = sjalvolki_mikros_58
+		government = tribal_government
+	}
+}
+c_gesthuysen = {
+	1253.1.1 = {
+		liege = "e_sjalvolki"
+		holder = sjalvolki_mikros_58
+		government = tribal_government
+	}
+}
 
 d_oprostovice = {
 	1253.1.1 = {
@@ -990,23 +627,6 @@ d_oprostovice = {
 	1215.1.1 = { change_development_level = 5}
 }
 
-d_kautenbach = {
-	1253.1.1 = {
-		liege = "e_sjalvolki"
-		holder = sjalvolki_mikros_58
-		government = tribal_government
-	}
-	1215.1.1 = { change_development_level = 4}
-}
-
-c_fojtovice = {
-	1253.1.1 = {
-		liege = "e_sjalvolki"
-		holder = sjalvolki_mikros_59
-		government = tribal_government
-	}
-}
-
 c_starec = {
 	1253.1.1 = {
 		liege = "e_sjalvolki"
@@ -1015,101 +635,10 @@ c_starec = {
 	}
 }
 
-c_ribnian = {
-	1253.1.1 = {
-		liege = "e_sjalvolki"
-		holder = sjalvolki_mikros_60
-		government = tribal_government
-	}
-}
-
-c_hochenegg = {
-	1253.1.1 = {
-		liege = "e_sjalvolki"
-		holder = sjalvolki_mikros_60
-		government = tribal_government
-	}
-}
-
-d_dobritsch = {
-	1253.1.1 = {
-		liege = "e_sjalvolki"
-		holder = sjalvolki_mikros_61
-		government = tribal_government
-	}
-	1215.1.1 = { change_development_level = 4}
-}
-
-c_povrly = {
-	1253.1.1 = {
-		liege = "e_sjalvolki"
-		holder = sjalvolki_mikros_61
-		government = tribal_government
-	}
-}
-
-d_mihla = {
-	1253.1.1 = {
-		liege = "e_sjalvolki"
-		holder = sjalvolki_mikros_62
-		government = tribal_government
-	}
-	1215.1.1 = { change_development_level = 3}
-}
-
-d_padochov = {
-1215.1.1 = { change_development_level = 3}
-}
-
-d_kleinsee = {
-1215.1.1 = { change_development_level = 3}
-}
-
-c_olm = {
-	1253.1.1 = {
-		liege = "e_sjalvolki"
-		holder = sjalvolki_mikros_62
-		government = tribal_government
-	}
-}
-
-c_melc = {
-	1253.1.1 = {
-		liege = "e_sjalvolki"
-		holder = sjalvolki_mikros_62
-		government = tribal_government
-	}
-}
-
 c_simperk = {
 	1253.1.1 = {
 		liege = "e_sjalvolki"
 		holder = sjalvolki_mikros_62
-		government = tribal_government
-	}
-}
-
-c_gladovec = {
-	1253.1.1 = {
-		liege = "e_sjalvolki"
-		holder = sjalvolki_mikros_63
-		government = tribal_government
-	}
-}
-
-d_reddereitz = {
-	1253.1.1 = {
-		liege = "e_sjalvolki"
-		holder = sjalvolki_mikros_64
-		government = tribal_government
-	}
-1215.1.1 = { change_development_level = 3}
-}
-
-c_wenerange = {
-	1253.1.1 = {
-		liege = "e_sjalvolki"
-		holder = sjalvolki_mikros_65
 		government = tribal_government
 	}
 }
@@ -1123,21 +652,10 @@ d_wischezahn = {
 1215.1.1 = { change_development_level = 4}
 }
 
-d_imsovci = {
-1215.1.1 = { change_development_level = 3}
-}
 c_zinkovy = {
 	1253.1.1 = {
 		liege = "e_sjalvolki"
 		holder = sjalvolki_mikros_66
-		government = tribal_government
-	}
-}
-
-c_birkenberg = {
-	1253.1.1 = {
-		liege = "d_wischezahn"
-		holder = sjalvolki_mikros_67
 		government = tribal_government
 	}
 }
@@ -1150,23 +668,7 @@ c_kleinau = {
 	}
 }
 
-c_wschechowitz = {
-	1253.1.1 = {
-		liege = "e_sjalvolki"
-		holder = sjalvolki_mikros_68
-		government = tribal_government
-	}
-}
-
 c_mosenhof = {
-	1253.1.1 = {
-		liege = "e_sjalvolki"
-		holder = sjalvolki_mikros_69
-		government = tribal_government
-	}
-}
-
-c_kojetice = {
 	1253.1.1 = {
 		liege = "e_sjalvolki"
 		holder = sjalvolki_mikros_69
@@ -1182,45 +684,37 @@ c_wltschnau = {
 	}
 }
 
-d_gumpolding = {
-	1253.1.1 = {
-		liege = "e_sjalvolki"
-		holder = sjalvolki_mikros_70
-		government = tribal_government
-	}
-1215.1.1 = { change_development_level = 5}
-}
-
-d_kurisinki = {
-1215.1.1 = { change_development_level = 3}
-}
-
 d_lankum = {
 	1253.1.1 = {
-		liege = "e_sjalvolki"
+		liege = "k_lyckholm"
 		holder = sjalvolki_mikros_70
 		government = tribal_government
 	}
-1215.1.1 = { change_development_level = 4}
+	1215.1.1 = { change_development_level = 4}
 }
-
-c_rathschlag = {
+c_rossmeisl = {
 	1253.1.1 = {
-		liege = "d_oprostovice"
-		holder = sjalvolki_mikros_72
+		liege = "k_lyckholm"
+		holder = sjalvolki_mikros_70
+		government = tribal_government
+	}
+}
+c_dybtrup = {
+	1253.1.1 = {
+		liege = "k_lyckholm"
+		holder = sjalvolki_mikros_70
+		government = tribal_government
+	}
+}
+c_kretgala = {
+	1253.1.1 = {
+		liege = "k_lyckholm"
+		holder = sjalvolki_mikros_70
 		government = tribal_government
 	}
 }
 
 c_wichum = {
-	1253.1.1 = {
-		liege = "d_oprostovice"
-		holder = sjalvolki_mikros_71
-		government = tribal_government
-	}
-}
-
-c_hachenberg = {
 	1253.1.1 = {
 		liege = "d_oprostovice"
 		holder = sjalvolki_mikros_71
@@ -1236,51 +730,9 @@ c_vorhalle = {
 	}
 }
 
-c_knerling = {
-	1253.1.1 = {
-		liege = "d_oprostovice"
-		holder = sjalvolki_mikros_72
-		government = tribal_government
-	}
-}
-
-c_melc = {
-	1253.1.1 = {
-		liege = "d_mihla"
-		holder = sjalvolki_mikros_73
-		government = tribal_government
-	}
-}
-
-c_olm = {
-	1253.1.1 = {
-		liege = "d_mihla"
-		holder = sjalvolki_mikros_73
-		government = tribal_government
-	}
-}
-
-c_chroboly = {
-	1253.1.1 = {
-		liege = "d_mihla"
-		holder = sjalvolki_mikros_73
-		government = tribal_government
-	}
-}
-
-#
-
 c_mayerhofen = {
 	1253.1.1 = {
-		liege = "d_uhrov"
-		holder = sjalvolki_mikros_75
-		government = tribal_government
-	}
-}
-
-c_glasern = {
-	1253.1.1 = {
-		liege = "d_uhrov"
+		liege = "k_gampern"
 		holder = sjalvolki_mikros_75
 		government = tribal_government
 	}
@@ -1288,24 +740,8 @@ c_glasern = {
 
 c_gunzenheim = {
 	1253.1.1 = {
-		liege = "e_sjalvolki"
-		holder = sjalvolki_mikros_76
-		government = tribal_government
-	}
-}
-
-c_baimhofen = {
-	1253.1.1 = {
-		liege = "e_sjalvolki"
-		holder = sjalvolki_mikros_76
-		government = tribal_government
-	}
-}
-
-c_unterwachsenberg = {
-	1253.1.1 = {
-		liege = "e_sjalvolki"
-		holder = sjalvolki_mikros_77
+		liege = "k_gampern"
+		holder = sjalvolki_mikros_30
 		government = tribal_government
 	}
 }
@@ -1327,28 +763,7 @@ d_otvovice = {
 	}
 	1215.1.1 = { change_development_level = 7 }
 	1253.1.1 = {
-		liege = "k_okrouhlice"
-		holder = sjalvolki_mikros_78
-		government = tribal_government
-	}
-}
-c_roehrsdorf = {
-	1209.10.3 = {	# Iron-Spike
-		holder = northern_aversaria_frodbrokna_10
-	}
-	1229.3.23 = {
-		holder = 0
-	}
-	1253.1.1 = {
-		liege = "k_okrouhlice"
-		holder = sjalvolki_mikros_78
-		government = tribal_government
-	}
-}
-
-c_ustupky = {
-	1253.1.1 = {
-		liege = "k_okrouhlice"
+		liege = "k_gampern"
 		holder = sjalvolki_mikros_78
 		government = tribal_government
 	}
@@ -1374,22 +789,6 @@ c_lampertsfeld = {
 	1253.1.1 = {
 		liege = "d_otvovice"
 		holder = sjalvolki_mikros_79
-		government = tribal_government
-	}
-}
-
-c_schwanberg = {
-	1253.1.1 = {
-		liege = "d_otvovice"
-		holder = sjalvolki_mikros_79
-		government = tribal_government
-	}
-}
-
-c_roketnitz = {
-	1253.1.1 = {
-		liege = "d_zgornje_vrtice"
-		holder = sjalvolki_mikros_80
 		government = tribal_government
 	}
 }

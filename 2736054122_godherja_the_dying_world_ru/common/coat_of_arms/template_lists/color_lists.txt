@@ -128,7 +128,19 @@ color_lists = {
 				800 = "red"
 			}
 		}
-
+		special_selection = {
+			trigger = {
+				OR = {
+					has_religion = religion:dravidian_religion 
+                	has_religion = religion:viyagaric_religion
+				}
+			}	
+			40 = "purple"
+			40 = "orange"
+			10 = "green"	
+			20 = "red"
+			10 = "black"
+		}
 		special_selection = {
 			trigger = {
 				has_religion = religion:marcher_religion
@@ -196,6 +208,27 @@ color_lists = {
 			6 = "green"
 			6 = "orange"
 			8 = "purple"
+		}
+		special_selection = {
+			trigger = {
+				has_religion = religion:adabyssian_religion
+			}
+			24 = "blue_light"
+			24 = "green_light"
+			28 = "blue"	
+			16 = "green"		
+			16 = "purple"
+		}
+		special_selection = {
+			trigger = {
+				has_religion = religion:mogowai_religion
+			}
+			8 = "blue_light"
+			14 = "green_light"
+			8 = "blue"	
+			28 = "green"		
+			24 = "purple"
+			16 = "orange"
 		}
 	}
 	metal_colors = {

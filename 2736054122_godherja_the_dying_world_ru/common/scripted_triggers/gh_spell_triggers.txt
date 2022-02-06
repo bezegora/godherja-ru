@@ -119,73 +119,6 @@ fire_magick_trigger = {
 }
 
 
-mending_shown = {
-	OR = {
-		spell_requires_court_mage_trait_rank = { TRAIT_NAME = education_living_magic RANK = 2 }
-		spell_requires_perk = { PERK_NAME = livingmagic_perk4_tree1 }
-	}
-}
-
-mending_trigger = {
-	spell_magic_cost_raw = { COST = mending_cost }
-	NOT = {
-		OR = {
-			has_character_flag = casted_mending 
-			has_trait = incapable
-		}
-	}
-	OR = {
-		has_trait = wounded_1
-		has_trait = wounded_2
-		has_trait = wounded_3
-		has_trait = maimed
-		has_trait = one_eyed
-		has_trait = one_legged
-		has_trait = disfigured
-		has_trait = infirm
-		has_trait = gout_ridden
-		has_trait = consumption
-		has_trait = cancer
-		has_trait = typhus
-		has_trait = bubonic_plague
-		has_trait = smallpox
-		has_trait = eunuch
-		has_trait = blind
-		has_trait = bleeder
-		has_trait = wheezing
-		has_trait = weak
-		has_trait = scaly
-		has_trait = impotent
-		has_trait = infertile
-		has_trait = ill
-		has_trait = pneumonic
-		has_trait = great_pox
-		has_trait = early_great_pox
-		has_trait = lovers_pox
-		has_trait = leper
-		has_trait = clubfooted
-		has_trait = hunchbacked
-		has_trait = lisping
-	}
-}
-
-purification_shown = {
-	OR = {
-		spell_requires_court_mage_trait_rank = { TRAIT_NAME = education_living_magic RANK = 1 }
-		spell_requires_perk = { PERK_NAME = livingmagic_perk4_tree3 }
-	}
-}
-
-purification_trigger = {
-	spell_magic_cost_raw = { COST = purification_cost }
-	NOT = {
-		OR = {
-			has_character_flag = casted_purification
-			has_trait = incapable
-		}
-	}
-}
-
 unveiling_shown = {
 	OR = {
 		spell_requires_court_mage_trait_rank = { TRAIT_NAME = education_living_magic RANK = 2 }
@@ -231,10 +164,27 @@ creation_trigger = {
 	}
 }
 	
+glimpse_reality_shown = {
+	OR = {
+		spell_requires_court_mage_trait_rank = { TRAIT_NAME = education_mixed_magic RANK = 2 }
+		spell_requires_perk = { PERK_NAME = mixedmagic_perk1_tree2 }
+	}
+}
+
 divination_shown = {
 	OR = {
 		spell_requires_court_mage_trait_rank = { TRAIT_NAME = education_living_magic RANK = 3 }
 		spell_requires_perk = { PERK_NAME = livingmagic_perk3_tree3 }
+	}
+}
+
+glimpse_reality_trigger = {
+	spell_magic_cost_raw = { COST = glimpse_reality_cost }
+	NOT = {
+		OR = {
+			has_character_flag = casted_glimpse_reality
+			has_trait = incapable
+		}
 	}
 }
 
@@ -268,7 +218,7 @@ healing_water_trigger = {
 annihilation_shown = {
 	OR = {
 		spell_requires_court_mage_trait_rank = { TRAIT_NAME = education_living_magic RANK = 3 }
-		spell_requires_perk = { PERK_NAME = livingmagic_perk7_tree2 }
+		spell_requires_perk = { PERK_NAME = livingmagic_perk9_tree2 }
 	}
 }
 
@@ -536,28 +486,105 @@ boneshaping_trigger = {
 	}
 }
 
+raise_earth_shown = {
+	OR = {
+		spell_requires_court_mage_trait_rank = { TRAIT_NAME = education_dead_magic RANK = 1 }	
+		spell_requires_perk = { PERK_NAME = deadmagic_perk2_tree3 }
+	}
+}
+raise_earth_trigger = {
+	spell_magic_cost_raw = { COST = raise_earth_cost }
+	NOT = {
+		has_character_flag = casted_raise_earth
+	}
+}
+
+earth_fort_shown = {
+	OR = {
+		spell_requires_court_mage_trait_rank = { TRAIT_NAME = education_dead_magic RANK = 2 }	
+		spell_requires_perk = { PERK_NAME = deadmagic_perk6_tree3 }
+	}
+}
+earth_fort_trigger = {
+	spell_magic_cost_raw = { COST = earth_fort_cost }
+	NOT = {
+		has_character_flag = casted_earth_fort
+	}
+}
+
+stoneskin_shown = {
+	OR = {
+		spell_requires_court_mage_trait_rank = { TRAIT_NAME = education_dead_magic RANK = 2 }	
+		spell_requires_perk = { PERK_NAME = deadmagic_perk3_tree3 }
+	}
+}
+stoneskin_trigger = {
+	spell_magic_cost_raw = { COST = stoneskin_cost }
+	NOT = {
+		has_character_flag = casted_stoneskin
+	}
+}
+
+petrify_shown = {
+	OR = {
+		spell_requires_court_mage_trait_rank = { TRAIT_NAME = education_dead_magic RANK = 3 }	
+		spell_requires_perk = { PERK_NAME = deadmagic_perk5_tree3 }
+	}
+}
+petrify_trigger = {
+	spell_magic_cost_raw = { COST = petrify_cost }
+	NOT = {
+		has_character_flag = casted_petrify
+	}
+}
+
+find_minerals_shown = {
+	OR = {
+		spell_requires_court_mage_trait_rank = { TRAIT_NAME = education_dead_magic RANK = 3 }	
+		spell_requires_perk = { PERK_NAME = deadmagic_perk8_tree3 }
+	}
+}
+find_minerals_trigger = {
+	spell_magic_cost_raw = { COST = find_minerals_cost }
+	NOT = {
+		has_character_flag = find_minerals_petrify
+	}
+}
+
 ### MIXED MAGIC ###
  # a lot of these didn't have incapable arguments so I added them in
-dementation_shown = {
+riftmark_shown = {
 	OR = {
 		spell_requires_court_mage_trait_rank = { TRAIT_NAME = education_mixed_magic RANK = 2 }
 		spell_requires_perk = { PERK_NAME = mixedmagic_perk2_tree1 }
 	}
 }
-dementation_trigger = {
-	spell_magic_cost_raw = { COST = dementation_cost }
+riftmark_trigger = {
+	spell_magic_cost_raw = { COST = riftmark_cost }
 	NOT = {
-		has_character_flag = casted_dementation
+		has_character_flag = casted_riftmark
+	}
+}
+
+unraveling_shown = {
+	OR = {
+		spell_requires_court_mage_trait_rank = { TRAIT_NAME = education_mixed_magic RANK = 2 }
+		spell_requires_perk = { PERK_NAME = mixedmagic_perk5_tree1 }
+	}
+}
+unraveling_trigger = {
+	spell_magic_cost_raw = { COST = unraveling_cost }
+	NOT = {
+		has_character_flag = casted_unraveling
 	}
 }
 
 rift_walk_shown = {
 	OR = {
 		spell_requires_court_mage_trait_rank = { TRAIT_NAME = education_mixed_magic RANK = 2 }
-		spell_requires_perk = { PERK_NAME = mixedmagic_perk2_tree3 }
+		spell_requires_perk = { PERK_NAME = mixedmagic_perk4_tree1 }
 	}
 }
-
 rift_walk_trigger = {
 	spell_magic_cost_raw = { COST = rift_walk_cost }
 	NOT = {
@@ -861,7 +888,7 @@ moon_read_trigger = {
 }
 
 moon_pull_shown = {
-	has_perk = deadmagic_perk4_tree2
+	has_perk = deadmagic_perk3_tree2
 }
 moon_pull_trigger = {
 	NOT = {

@@ -121,27 +121,6 @@ pet_animal.0001 = {
 						value = flag:cat_name_shadow
 					}
 				}
-				1 = {
-					trigger = { has_character_flag = name_gyb }
-					set_variable = {
-						name = story_cycle_cat_name
-						value = flag:cat_name_gyb
-					}
-				}
-				1 = {
-					trigger = { has_character_flag = name_meone }
-					set_variable = {
-						name = story_cycle_cat_name
-						value = flag:cat_name_meone
-					}
-				}
-				1 = {
-					trigger = { has_character_flag = name_cruibne }
-					set_variable = {
-						name = story_cycle_cat_name
-						value = flag:cat_name_cruibne
-					}
-				}
 			}
 		}
 	}
@@ -189,24 +168,6 @@ pet_animal.0001 = {
 						has_character_flag = name_shadow
 					}
 				}
-				default = {
-					localization_key = cat_name_gyb
-					trigger = {
-						has_character_flag = name_gyb
-					}
-				}
-				default = {
-					localization_key = cat_name_meone
-					trigger = {
-						has_character_flag = name_meone
-					}
-				}
-				default = {
-					localization_key = cat_name_cruibne
-					trigger = {
-						has_character_flag = name_cruibne
-					}
-				}
 			}
 		}
 		setup_scope = {
@@ -220,14 +181,11 @@ pet_animal.0001 = {
 
 	after = {
 		remove_character_flag = is_naming_cat
-		remove_character_flag = name_gyb
 		remove_character_flag = name_mite
 		remove_character_flag = name_paws
 		remove_character_flag = name_gray
 		remove_character_flag = name_flame
 		remove_character_flag = name_snow
-		remove_character_flag = name_meone
-		remove_character_flag = name_cruibne
 		
 		if = {
 			# We entered custom text into the pop up
@@ -1040,46 +998,6 @@ pet_animal.0110 = {
 	}
 }
 
-#You inherit a cat
-#by Linnéa Thimrén
-pet_animal.0198 = {
-	type = character_event
-	title = pet_animal.0198.t
-	desc = pet_animal.0198.desc
-	theme = pet
-	left_portrait = scope:original_owner
-
-	immediate = {
-		scope:story = {
-			var:original_owner = {
-				save_scope_as = original_owner
-			}
-		}
-	}
-
-	option = { #Come here
-		name = {
-			trigger = { scope:story = { var:cat_gender = flag:female } }
-			text = pet_animal.1198.a_girl
-		}
-		name = {
-			trigger = { scope:story = { var:cat_gender = flag:male } }
-			text = pet_animal.1198.a_boy
-		}
-		show_as_tooltip = { start_cat_story_cycle_effect = yes }
-	}
-
-	option = { #I don't want it
-		name = pet_animal.1198.b
-		add_gold = 10
-		show_as_tooltip = {
-			remove_cat_story_modifiers_effect = yes
-		}
-		scope:story = {
-			hidden_effect = { end_story = yes }
-		}
-	}
-}
 
 #Cat dies
 #by Linnéa Thimrén
@@ -2283,6 +2201,10 @@ pet_animal.1116 = {
 		animation = happiness
 	}
 
+	trigger = {
+		any_courtier = { NOT = { has_relation_rival = root } }
+	}
+
 	immediate = {
 		random_courtier = {
 			limit = {
@@ -2719,47 +2641,6 @@ pet_animal.1192 = {
 	}
 }
 
-
-#You inherit a dog
-#by Linnéa Thimrén
-pet_animal.1198 = {
-	type = character_event
-	title = pet_animal.1198.t
-	desc = pet_animal.1198.desc
-	theme = pet
-	left_portrait = scope:original_owner
-
-	immediate = {
-		scope:story = {
-			var:original_owner = {
-				save_scope_as = original_owner
-			}
-		}
-	}
-
-	option = { #Come here
-		name = {
-			trigger = { scope:story = { var:dog_gender = flag:female } }
-			text = pet_animal.1198.a_girl
-		}
-		name = {
-			trigger = { scope:story = { var:dog_gender = flag:male } }
-			text = pet_animal.1198.a_boy
-		}
-		show_as_tooltip = { start_dog_story_cycle_effect = yes }
-	}
-
-	option = { #I don't want it
-		name = pet_animal.1198.b
-		add_gold = 10
-		show_as_tooltip = {
-			remove_dog_story_modifiers_effect = yes
-		}
-		scope:story = {
-			hidden_effect = { end_story = yes }
-		}
-	}
-}
 
 
 #Dog dies

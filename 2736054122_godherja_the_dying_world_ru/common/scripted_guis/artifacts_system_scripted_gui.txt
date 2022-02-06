@@ -1,19 +1,4 @@
-﻿artifacts_gui_toggle = {
-	scope = character
-	is_shown = {
-		has_variable = artifacts_gui_toggle
-	}
-	effect = {
-		if = {
-			limit = {has_variable = artifacts_gui_toggle}
-			remove_variable = artifacts_gui_toggle
-		}
-		else = {
-			set_variable = artifacts_gui_toggle
-		}
-	}
-}
-artifacts_gui_close = {
+﻿artifacts_gui_close = {
 	scope = character
 	is_shown = {always = yes}
 	effect = {remove_variable = artifacts_gui_toggle}
@@ -62,38 +47,6 @@ artifacts_equip_artifact = {# Triggers when the "Equip" button is clicked
 	effect = {
 		for_all_slots = {APPLY = unequip_selected_type_artifacts}
 		for_all_artifacts_no_arguments = {APPLY = equip_selected_artifact}
-
-		if = {
-			# This one gets to be special
-			limit = {
-				has_variable = artifact_1_selected
-				faith = faith:catholic
-				highest_held_title_tier >= tier_empire
-			}
-			unequip_headgear_artifacts = yes
-			add_equipped_artifact = {ARTIFACT = artifact_1}
-			add_character_modifier = {
-				modifier = artifact_1_modifier
-			}
-			remove_character_modifier = artifact_1_passive
-			#add_character_flag = artifact_1_equipped
-		}
-		else_if = {#In case the previous didn't fire and you shouldn't be allowed to wear the crown.
-			limit = {has_variable = artifact_1_selected}
-			remove_equipped_artifact = {ARTIFACT = artifact_1}
-		}
-		else_if = {
-			limit = {
-				has_variable = artifact_nightblood_selected
-			}
-			trigger_event = nightblood.1
-		}
-		else_if = {
-			limit = {
-				has_variable = artifact_type_four_biochromatic_entity_selected
-			}
-			trigger_event = awakening.6
-		}
 	}
 }
 artifacts_unequip_artifact = {# Triggers when the Unequip button is clicked
@@ -141,6 +94,114 @@ artifacts_save_character = {
 		}
 		else = {
 			set_variable = artifact_person
+		}
+	}
+}
+
+artifact_name = {
+	effect = {
+		for_handheld_artifacts = {  
+			PREFIX = ""
+			SUFFIX = ""
+			APPLY = artifact_name_effect
+			A = temporary
+			B = temporary
+		}
+		for_armor_artifacts = {  
+			PREFIX = ""
+			SUFFIX = ""
+			APPLY = artifact_name_effect
+			A = temporary
+			B = temporary
+		}
+		for_headgear_artifacts = {
+			PREFIX = ""
+			SUFFIX = ""
+			APPLY = artifact_name_effect
+			A = temporary
+			B = temporary
+		}
+		for_jewelry_artifacts = {
+			PREFIX = ""
+			SUFFIX = ""
+			APPLY = artifact_name_effect
+			A = temporary
+			B = temporary
+		}
+		for_mount_artifacts = {
+			PREFIX = ""
+			SUFFIX = ""
+			APPLY = artifact_name_effect
+			A = temporary
+			B = temporary
+		}
+		for_book_artifacts = {
+			PREFIX = ""
+			SUFFIX = ""
+			APPLY = artifact_name_effect
+			A = temporary
+			B = temporary
+		}
+	}
+}
+
+artifact_desc = {
+	effect = {
+		for_handheld_artifacts = {  
+			PREFIX = ""
+			SUFFIX = ""
+			APPLY = artifact_desc_effect
+			A = temporary
+			B = temporary
+		}
+		for_armor_artifacts = {  
+			PREFIX = ""
+			SUFFIX = ""
+			APPLY = artifact_desc_effect
+			A = temporary
+			B = temporary
+		}
+		for_headgear_artifacts = {
+			PREFIX = ""
+			SUFFIX = ""
+			APPLY = artifact_desc_effect
+			A = temporary
+			B = temporary
+		}
+		for_jewelry_artifacts = {
+			PREFIX = ""
+			SUFFIX = ""
+			APPLY = artifact_desc_effect
+			A = temporary
+			B = temporary
+		}
+		for_mount_artifacts = {
+			PREFIX = ""
+			SUFFIX = ""
+			APPLY = artifact_desc_effect
+			A = temporary
+			B = temporary
+		}
+		for_book_artifacts = {
+			PREFIX = ""
+			SUFFIX = ""
+			APPLY = artifact_desc_effect
+			A = temporary
+			B = temporary
+		}
+	}
+}
+
+select_artifact_scripted_gui = {
+	is_shown = {
+	
+	}
+	
+	effect = {
+		if = {
+			limit = { exists = scope:selected_artifact_scope } 
+			debug_log = "EXECUTING GUI"
+			for_all_artifacts_no_arguments = { APPLY = select_artifact }
 		}
 	}
 }

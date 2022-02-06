@@ -1,4 +1,4 @@
-scripted_trigger yearly_2000_foreign_traveler_trigger = {
+﻿scripted_trigger yearly_2000_foreign_traveler_trigger = {
 	is_adult = yes
 	NOR = {
 		faith.religion = root.faith.religion
@@ -414,3 +414,358 @@ scripted_effect pick_random_artifact_weapon = {
 #		}
 #	}
 #}
+
+namespace = artifacts_flavor
+
+artifacts_flavor.1000 = { #That awful little automata is very creepy by Mayor
+	type = character_event
+	title = artifacts_flavor.1000.t
+	desc = artifacts_flavor.1000.desc
+	theme = crown
+	left_portrait = {
+		character = root
+		animation = beg
+	}
+	
+	trigger = {
+			has_artifact = { ARTIFACT = artifact_kartharaddidancingautomata }
+		}
+	option = {
+		name = artifacts_flavor.1000.a
+		root = {
+			add_stress = 35
+		}
+		stress_impact = {
+			paranoid = minor_stress_impact_gain
+		}
+	}
+}
+
+artifacts_flavor.1001 = { #opener for studying Malik's Cipher by Mayor
+	type = character_event
+	title = artifacts_flavor.1001.t
+	desc = artifacts_flavor.1001.desc
+	theme = crown
+	left_portrait = {
+		character = root
+		animation = beg
+	}
+	
+	trigger = {
+			has_artifact = { ARTIFACT = artifact_kartharaddidancingautomata }
+		}
+	option = {
+		name = artifacts_flavor.1001.a
+		root = {
+			add_stress = 75
+		}
+		duel = {
+			skill = learning
+			value = average_skill_rating
+			
+			10 = { #Exceptional Success, big rewards!
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = 2
+				}
+				desc = artifacts_flavor.1001.a.exceptional_success
+				trigger_event = {
+					id = artifacts_flavor.1002
+					days = 45
+				}
+			}
+			25 = { #Success, modest rewards!
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = 5
+				}
+				desc = artifacts_flavor.1001.a.success
+				trigger_event = {
+					id = artifacts_flavor.1003
+					days = 35
+				}
+			}
+			25 = { #failure, you gain nothing but stress
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = 3
+				}
+				desc = artifacts_flavor.1001.a.failure
+				trigger_event = {
+					id = artifacts_flavor.1004
+					days = 45
+				}
+			}
+			5 = { #disaster, the book has tricks and Malik's patron wanted to ensure the unworthy had a nasty surprise waiting for them
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = 1.5
+				}
+				desc = artifacts_flavor.1001.a.dramatic_failure
+				trigger_event = {
+					id = artifacts_flavor.1005
+					days = 45
+				}
+			}
+		}
+		ai_chance = {
+			base = 100
+			ai_value_modifier = {
+				ai_boldness = 0.50
+				ai_greed = 0.50
+				ai_energy = 0.50
+			}
+		}
+	}
+	option = {
+		name = artifacts_flavor.1001.b
+		root = {
+			add_stress = 25
+		}
+		stress_impact = {
+			paranoid = minor_stress_impact_gain
+		}
+		duel = {
+			skill = learning
+			value = average_skill_rating
+			1 = { #Exceptional Success, big rewards! but you're being careful so less chance of it 
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = 1
+				}
+				desc = artifacts_flavor.1001.a.exceptional_success
+				trigger_event = {
+					id = artifacts_flavor.1002
+					days = 45
+				}
+			}
+			25 = { #Success, modest rewards!
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = 5
+				}
+				desc = artifacts_flavor.1001.a.success
+				trigger_event = {
+					id = artifacts_flavor.1003
+					days = 35
+				}
+			}
+			25 = { #failure, you gain nothing but stress
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = 3
+				}
+				desc = artifacts_flavor.1001.a.failure
+				trigger_event = {
+					id = artifacts_flavor.1004
+					days = 45
+				}
+			}
+			1 = { #disaster, the book has tricks and Malik's patron wanted to ensure the unworthy had a nasty surprise waiting for them but you're being careful so less chance of it
+				compare_modifier = {
+					value = scope:duel_value
+				}
+				desc = artifacts_flavor.1001.a.dramatic_failure
+				trigger_event = {
+					id = artifacts_flavor.1005
+					days = 45
+				}
+			}
+		}
+		ai_chance = {
+			base = 100
+			ai_value_modifier = {
+				ai_rationality = 0.25
+			}
+		}
+	}
+	option = {
+		name = artifacts_flavor.1001.c
+		add_magic_lifestyle_dead_xp = 100
+		ai_chance = {
+			base = 100
+			ai_value_modifier = {
+				ai_boldness = -0.50
+				ai_greed = -0.50
+				ai_energy = -0.50
+			}
+		}
+	}
+}
+
+artifacts_flavor.1002 = { #very good result!
+	type = character_event
+	title = artifacts_flavor.1002.t
+	desc = artifacts_flavor.1002.desc
+	theme = crown
+	left_portrait = {
+		character = root
+		animation = beg
+	}
+	option = {
+		name = artifacts_flavor.1002.a
+		add_magic_lifestyle_dead_xp = 2000
+		add_learning_skill = 1
+		random_list = {
+			50 = {
+				send_interface_toast = {
+					left_icon = root
+					title = artifacts_flavor.1002.a.exceptionalsuccess
+					add_learning_skill = 1
+					change_trait_rank = {
+						trait = education_dead_magic
+						rank = 1
+						max = 4
+					}
+				}
+			}
+			50 = {
+				send_interface_toast = {
+					left_icon = root
+					title = artifacts_flavor.1002.a.exceptionalsuccess
+					change_trait_rank = {
+						trait = education_dead_magic
+						rank = 2
+						max = 4
+					}
+				}
+			}
+		}
+	}
+}
+artifacts_flavor.1003 = { #good result!
+	type = character_event
+	title = artifacts_flavor.1003.t
+	desc = artifacts_flavor.1003.desc
+	theme = crown
+	left_portrait = {
+		character = root
+		animation = beg
+	}
+	option = {
+		name = artifacts_flavor.1003.a
+		add_magic_lifestyle_dead_xp = 1000
+		random_list = {
+			50 = {
+				send_interface_toast = {
+					left_icon = root
+					title = artifacts_flavor.1003.a.success
+					add_learning_skill = 1
+				}
+			}
+			50 = {
+				send_interface_toast = {
+					left_icon = root
+					title = artifacts_flavor.1003.a.success
+					change_trait_rank = {
+						trait = education_dead_magic
+						rank = 1
+						max = 4
+					}
+				}
+			}
+		}
+	}
+}
+artifacts_flavor.1004 = { #neutral failure result
+	type = character_event
+	title = artifacts_flavor.1004.t
+	desc = artifacts_flavor.1004.desc
+	theme = crown
+	left_portrait = {
+		character = root
+		animation = beg
+	}
+	option = {
+		name = artifacts_flavor.1004.a
+		send_interface_toast = {
+			left_icon = root
+			title = artifacts_flavor.1004.a.failure
+		}
+	}
+}
+artifacts_flavor.1005 = { #very bad result
+	type = character_event
+	title = artifacts_flavor.1005.t
+	desc = artifacts_flavor.1005.desc
+	theme = crown
+	left_portrait = {
+		character = root
+		animation = beg
+	}
+	option = {
+		name = artifacts_flavor.1005.a
+		duel = {
+			skill = prowess
+			value = average_skill_rating
+			10 = { #You survive unharmed 
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = 1
+				}
+				desc = artifacts_flavor.1005.a.exceptional_success
+				change_trait_rank = {
+						trait = magicsickness
+						rank = 1
+						max = 3
+					}
+			}
+			25 = { #Success, modest rewards!
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = 5
+				}
+				change_trait_rank = {
+						trait = wounded
+						rank = 2
+						max = 3
+					}
+				change_trait_rank = {
+						trait = magicsickness
+						rank = 1
+						max = 3
+					}
+				desc = artifacts_flavor.1005.a.success
+			}
+			25 = { #failure, you gain nothing but stress
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = 3
+				}
+				change_trait_rank = {
+						trait = wounded
+						rank = 3
+						max = 3
+					}
+				change_trait_rank = {
+						trait = magicsickness
+						rank = 2
+						max = 3
+					}
+				desc = artifacts_flavor.1005.a.failure
+			}
+			1 = { #disaster, the book has tricks and Malik's patron wanted to ensure the unworthy had a nasty surprise waiting for them but you're being careful so less chance of it
+				compare_modifier = {
+					value = scope:duel_value
+				}
+				death = natural
+				desc = artifacts_flavor.1005.a.dramatic_failure
+			}
+		}
+	}
+}
+
+artifacts_flavor.1006 = { #placeholder to be filled in upon implementation of lich mechanics
+	type = character_event
+	title = artifacts_flavor.1006.t
+	desc = artifacts_flavor.1006.desc
+	theme = crown
+}
+
+artifacts_flavor.1007 = { #placeholder to be filled in upon implementation of lich mechanics
+	type = character_event
+	title = artifacts_flavor.1007.t
+	desc = artifacts_flavor.1007.desc
+	theme = crown
+	
+}

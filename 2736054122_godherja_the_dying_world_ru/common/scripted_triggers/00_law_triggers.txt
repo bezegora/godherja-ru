@@ -57,7 +57,18 @@ has_partition_succession_realm_law_trigger = {
 }
 
 realm_law_use_crown_authority = {
-	NOT = { has_government = tribal_government }
+	NOR = { 
+		has_government = tribal_government
+		has_government = pirate_government
+	}
+}
+
+realm_law_use_tribal_authority = {
+	has_government = tribal_government
+}
+
+realm_law_use_pirate_authority = {
+	has_government = pirate_government
 }
 
 can_have_confederate_partition_succession_law_trigger = {
@@ -74,20 +85,7 @@ can_keep_partition_succession_law_trigger = {
 		limit = {
 			has_realm_law = partition_succession_law
 		}
-		OR = {
-			can_have_partition_succession_law_trigger = yes
-
-			# Mongol Empires
-			#has_title = title:e_mongol_empire
-			#has_title = title:e_ilkhanate
-			#has_title = title:e_golden_horde
-			#has_title = title:e_chagatai
-			#has_title = title:e_black_horde
-			#has_title = title:e_white_horde
-			#has_title = title:e_aarlud_khanate
-			#has_title = title:e_togskol_khanate
-			#has_title = title:e_baruun_khanate
-		}
+		can_have_partition_succession_law_trigger = yes
 	}
 }
 
@@ -110,32 +108,13 @@ can_keep_high_partition_succession_law_trigger = {
 		limit = {
 			has_realm_law = high_partition_succession_law
 		}
-		OR = {
-			can_have_high_partition_succession_law_trigger = yes
-
-			# Mongol Empires
-			#has_title = title:e_mongol_empire
-			#has_title = title:e_ilkhanate
-			#has_title = title:e_golden_horde
-			#has_title = title:e_chagatai
-			#has_title = title:e_black_horde
-			#has_title = title:e_white_horde
-			#has_title = title:e_aarlud_khanate
-			#has_title = title:e_togskol_khanate
-			#has_title = title:e_baruun_khanate
-		}
+		can_have_high_partition_succession_law_trigger = yes
 	}
 }
 
 can_have_high_partition_succession_law_trigger = {
 	trigger_if = {
 		limit = {
-			OR = {
-				#has_culture = culture:occitan
-				#has_culture = culture:basque
-				#has_culture = culture:aragonese
-				#has_culture = culture:catalan
-			}
 			culture = {
 				NOT = { has_innovation = innovation_heraldry }
 			}
@@ -176,6 +155,11 @@ can_have_single_heir_succession_law_trigger = {
 				has_innovation = innovation_primogeniture
 			}
 			culture_group = culture_group:gh_marcher_group
+			has_government = landed_order_government
+			AND = {
+				has_government = republic_playable_government
+				highest_held_title_tier >= tier_county
+			}
 		}
 	}
 	# Non-tribals only
@@ -184,6 +168,11 @@ can_have_single_heir_succession_law_trigger = {
 		OR = {
 			has_government = feudal_government
 			has_government = clan_government
+			has_government = landed_order_government
+			AND = {
+				has_government = republic_playable_government
+				highest_held_title_tier >= tier_county
+			}
 		}
 	}
 }
@@ -232,10 +221,6 @@ can_have_single_heir_dynasty_house_trigger = {
 	exists = house
 	trigger_if = {
 		limit = {
-			#OR = {	VANILLA - Removed
-			#	has_culture = culture:czech
-			#	has_culture = culture:slovien
-			#}
 			culture = {
 				NOT = {
 					has_innovation = innovation_heraldry
@@ -278,10 +263,7 @@ can_title_have_law_general_trigger = {
 }
 
 can_have_holy_order_succession_law_trigger = {
-	OR = {
-		has_government = holy_order_government
-		has_government = landed_order_government
-	}
+	has_government = holy_order_government
 }
 
 can_have_mercenary_succession_law_trigger = {
@@ -294,6 +276,7 @@ can_have_mercenary_succession_law_trigger = {
 can_have_city_succession_law_trigger = {
 	OR = {
 		has_government = republic_government
+		has_government = republic_playable_government
 		has_government = magocratic_republic
 		has_government = peasant_republic
 	}

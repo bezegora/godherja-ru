@@ -1,0 +1,941 @@
+﻿namespace = damota
+##################################################
+# #Special Flavor
+# 0001 - 0010	The Boqqarut is Reunited
+#
+# #Standard Yearlies
+# 0101 - 0110	Karavuux Exploitation
+# 0111 - 0120	Karavuux Investments
+# 0121 - 0130	Waranuux Recruitment Cutting Into Farm Hands
+# 0131 - 0140	Waranuux Skirmishes
+# 0141 - 0150	Qabuux Split
+# 0151 - 0160	Qabuux Quibble With Non-Members
+# 0161 - 0170	Rayakuux Fund Expedition
+# 0171 - 0180	Bandits Preying on Rayakuux
+##################################################
+
+
+
+
+
+
+
+
+
+
+##################################################
+# SPECIAL FLAVOR
+
+##################################################
+# The Boqqarut is Reunited
+# by UltimateVictory
+# 0001 - 0010
+##################################################
+
+#	Given to the newly-ascendant Boqqar upon reuniting Damota.
+damota.0001 = {
+	title  = damota.0001.t
+	desc = damota.0001.desc
+	type = character_event
+	theme = realm
+	left_portrait = {
+		character = scope:damota_uniter
+		animation = personality_bold
+	}
+	
+	immediate = {
+		play_music_cue = "mx_cue_epic_sacral_moment"	
+		reunite_boqqarut_decision_effects = yes
+	}
+	
+	option = {
+		name = damota.0001.a
+		remove_nickname = yes
+		give_nickname = nick_liso_inareberit_damotada # 'the restorer of Damota'
+		if = {
+			limit = {
+				prestige_level < 5
+			}
+			add_prestige_level = 1
+		}		
+	}
+}
+
+
+#	Notifies other rulers of the event.
+damota.0002 = {
+	title = damota.0002.t
+	desc = damota.0002.desc
+	type = character_event
+	theme = realm
+	right_portrait = {
+		character = scope:damota_uniter
+		animation = personality_bold
+	}	
+	immediate = {
+		play_music_cue = "mx_cue_epic_sacral_moment"	
+	}
+	option = {
+		name = damota.0002.a
+	}
+}	
+
+##################################################
+# STANDARD YEARLIES
+
+##################################################
+# Karavuux Exploitation
+# by UltimateVictory
+# 0101 - 0110
+##################################################
+
+scripted_trigger is_county_with_karavuux_presence = {
+	tier = tier_county
+	OR = { 
+		has_county_modifier = karavuux_modifier_1
+		has_county_modifier = karavuux_modifier_2
+		has_county_modifier = karavuux_modifier_3
+		has_county_modifier = karavuux_modifier_4
+	}
+}
+
+# The Karavuux of a county are starting to get greedy and arrogant.
+damota.0101 = {
+	type = character_event
+	title = damota.0101.t
+	desc = damota.0101.desc
+	theme = corruption
+	left_portrait = {
+		character = root
+		animation = worry
+	}
+	trigger = {
+		#Standard checks.
+		is_available_even_at_war_adult = yes
+		NOT = { has_character_flag = had_event_damota_yearly_0101 }
+		is_landed = yes
+		#Needs to be Damotan
+		has_culture_group = culture_group:gh_damotan_group
+		#Needs to have a county with Karavuux for the event to take place in
+		any_held_title = {
+			is_county_with_karavuux_presence = yes
+		}
+	}
+	
+	weight_multiplier = {
+		base = 1
+		
+		#Weight up for realms that have counties with low control
+		modifier = {
+			add = 0.5
+			any_held_title = {
+				is_county_with_karavuux_presence = yes
+				county_control <= 75
+			}
+		}
+		modifier = {
+			add = 0.5
+			any_held_title = {
+				is_county_with_karavuux_presence = yes
+				county_control <= 50
+			}
+		}
+		modifier = {
+			add = 1
+			any_held_title = {
+				is_county_with_karavuux_presence = yes
+				county_control <= 25
+			}
+		}
+	}
+	
+	immediate = {
+		add_character_flag = {
+			flag = had_event_damota_yearly_0101
+			days = 1825
+		}
+		random_held_title = {
+			limit = {
+				is_county_with_karavuux_presence = yes
+			}
+			weight = {
+				# Counties with low control are more likely to have this kind of problem
+				base = 10
+				modifier = {
+					add = {
+						value = 100
+						subtract = county_control
+					}
+				}
+				# Counties with a stronger Karavuux presence are more likely to get this
+				modifier = {
+					add = 25
+					has_county_modifier = karavuux_modifier_2
+				}
+				modifier = {
+					add = 50
+					has_county_modifier = karavuux_modifier_3
+				}
+				modifier = {
+					add = 75
+					has_county_modifier = karavuux_modifier_4
+				}
+			}
+			save_scope_as = karavuux_event_county
+		}
+	}
+	
+	# Let them run loose.
+	option = {
+		name = damota.0101.a
+		trigger = {
+			NOT = {
+				scope:karavuux_event_county = {
+					var:combined_faction_powershare = 4
+				}
+			}
+		}
+		stress_impact = {
+			just = minor_stress_impact_gain
+			compassionate = medium_stress_impact_gain
+			sadistic = minor_stress_loss
+		}
+		scope:karavuux_event_county = {
+			increase_caste_power = { NAME = karavuux }
+			add_county_modifier = {
+				modifier = karavuux_abuses
+				years = 10
+			}
+			change_county_control = -15
+		}
+		
+		stress_impact = {
+			compassionate = medium_stress_impact_gain
+			just = minor_stress_impact_gain
+			sadistic = minor_stress_impact_loss
+			callous = minor_stress_impact_loss
+			lazy = medium_stress_impact_loss
+		}
+	}
+	
+	# Get them under control.
+	option = {
+		name = damota.0101.b
+		stress_impact = {
+			just = medium_stress_impact_loss
+			lazy = minor_stress_impact_gain
+			sadistic = minor_stress_impact_gain
+		}
+		scope:karavuux_event_county = {
+			add_county_modifier = {
+				modifier = karavuux_controlled
+				years = 10
+			}
+			change_county_control = 5
+		}
+	}
+	
+	# Crack down.
+	option = { 
+		name = damota.0101.c
+		stress_impact = {
+			compassionate = medium_stress_loss
+			wrathful = minor_stress_loss
+			lazy = medium_stress_impact_gain
+			vengeful = minor_stress_loss
+		}
+		scope:karavuux_event_county = {
+			decrease_caste_power = { NAME = karavuux }
+			add_county_modifier = {
+				modifier = karavuux_crackdown
+				years = 10
+			}
+			change_county_control = 15
+		}
+	}
+	
+	# Join the exploitation!
+	option = {
+		name = damota.0101.d
+		trigger = {
+			has_trait = greedy
+			NOT = {
+				scope:karavuux_event_county = {
+					var:combined_faction_powershare = 4
+				}
+			}
+		}
+		stress_impact = {
+			compassionate = major_stress_impact_gain
+			sadistic = medium_stress_loss
+			greedy = medium_stress_loss
+			just = major_stress_impact_gain
+		}
+		scope:karavuux_event_county = {
+			increase_caste_power = { NAME = karavuux }
+			add_county_modifier = {
+				modifier = karavuux_exploitation
+				years = 10
+			}
+		}
+		add_gold = 100
+	}
+}
+
+##################################################
+# Karavuux Investments
+# by UltimateVictory
+# 0111 - 0120
+##################################################
+
+damota.0111 = {
+	type = character_event
+	title = damota.0111.t
+	desc = damota.0111.desc
+	theme = stewardship
+	left_portrait = {
+		character = root
+		animation = happiness
+	}
+	trigger = {
+		#Standard checks.
+		is_available_even_at_war_adult = yes
+		NOT = { has_character_flag = had_event_damota_yearly_0111 }
+		is_landed = yes
+		#Needs to be Damotan
+		has_culture_group = culture_group:gh_damotan_group
+		#Needs to have a county with Karavuux for the event to take place in
+		any_held_title = {
+			is_county_with_karavuux_presence = yes
+		}
+	}
+	
+	immediate = {
+		random_held_title = {
+			limit = {
+				is_county_with_karavuux_presence = yes
+			}
+			save_scope_as = karavuux_event_county
+		}
+		add_character_flag = {
+			flag = had_event_damota_yearly_0111
+			days = 1825
+		}
+	}
+	
+	option = { #seize the funds for yourself
+		name = damota.0111.a
+		stress_impact = {
+			greedy = medium_stress_loss
+			generous = medium_stress_impact_gain
+			compassionate = medium_stress_impact_gain
+		}
+		scope:karavuux_event_county = {
+			decrease_caste_power = { NAME = karavuux }
+			add_county_modifier = {
+				modifier = karavuux_seized
+				years = 10
+			}
+		}
+		add_gold = 200	
+	}
+	
+	option = { #let it happen
+		name = damota.0111.b
+		stress_impact = {
+			lazy = minor_stress_loss
+			greedy = minor_stress_impact_gain
+		}
+		scope:karavuux_event_county = {
+			add_county_modifier = {
+				modifier = karavuux_donations
+				years = 10
+			}
+			change_county_control = -5
+		}
+	}
+	
+	option = { #assist them with donations
+		name = damota.0111.c
+		trigger = {
+			NOT = {
+				scope:karavuux_event_county = {
+					has_county_modifier = karavuux_modifier_4
+				}
+			}
+		}
+		stress_impact = {
+			greedy = medium_stress_impact_gain
+			compassionate = medium_stress_loss
+			generous = medium_stress_impact_loss
+		}
+		scope:karavuux_event_county = {
+			increase_caste_power = { NAME = karavuux }
+			add_county_modifier = {
+				modifier = karavuux_assisted
+				years = 10
+			}
+		}
+		add_gold = 250
+	}
+}
+
+##################################################
+# Waranuux Recruitment Cutting Into Farm Population
+# by UltimateVictory
+# 0121 - 0130
+##################################################
+
+scripted_trigger is_county_with_waranuux_presence = {
+	tier = tier_county
+	OR = { 
+		has_county_modifier = karavuux_modifier_1
+		has_county_modifier = karavuux_modifier_2
+		has_county_modifier = karavuux_modifier_3
+		has_county_modifier = karavuux_modifier_4
+	}
+}
+
+damota.0121 = {
+	type = character_event
+	title = damota.0121.t
+	desc = damota.0121.desc
+	theme = martial
+	left_portrait = {
+		character = root
+		animation = worry
+	}
+	trigger = {
+		any_held_title = {
+			is_county_with_waranuux_presence = yes
+		}	
+	}
+	
+	immediate = {
+		random_held_title = {
+			limit = {
+				is_county_with_waranuux_presence = yes
+			}
+			save_scope_as = waranuux_event_county
+		}
+	}
+	
+	option = { #restrain their recruitment
+		name = damota.0121.a
+		stress_impact = {
+			stubborn = minor_stress_loss
+			lazy = minor_stress_impact_gain
+			content = minor_stress_impact_gain
+		}
+		scope:waranuux_event_county = {
+			add_county_modifier = {
+				modifier = waranuux_restrained
+				years = 10
+			}
+			change_county_control = 10
+		}
+	}
+	
+	option = { #allow them to recruit freely
+		name = damota.0121.b
+		trigger = {
+			NOT = {
+				scope:waranuux_event_county = {
+					var:combined_faction_powershare = 4
+				}
+			}
+		}
+		stress_impact = {
+			stubborn = minor_stress_impact_gain
+			lazy = minor_stress_loss
+		}
+		scope:waranuux_event_county = {
+			increase_caste_power = { NAME = waranuux }
+			add_county_modifier = {
+				modifier = waranuux_recruitment
+				years = 10
+			}
+			change_county_control = -5
+		}
+	}
+	
+	option = { #Clamp down
+		name = damota.0121.c
+		stress_impact = {
+			wrathful = minor_stress_loss
+			content = medium_stress_impact_gain
+			arbitrary = minor_stress_loss
+			lazy = medium_stress_impact_gain
+		}
+		scope:waranuux_event_county = {
+			decrease_caste_power = { NAME = waranuux }
+			add_county_modifier = {
+				modifier = waranuux_clamped
+				years = 10
+			}
+		}
+	}
+}
+
+##################################################
+# Waranuux Skirmishes
+# by UltimateVictory
+# 0131 - 0140
+##################################################
+
+damota.0131 = {
+	type = character_event
+	title = damota.0131.t
+	desc = damota.0131.desc
+	theme = martial
+	left_portrait = {
+		character = root
+		animation = worry
+	}
+	
+	trigger = {
+		any_held_title = {
+			is_county_with_waranuux_presence = yes
+		}	
+	}
+	
+	immediate = {
+		random_held_title = {
+			limit = {
+				is_county_with_waranuux_presence = yes
+			}
+			save_scope_as = waranuux_event_county
+		}
+	}
+	
+	option = { #let it happen
+		name = damota.0131.a
+		trigger = {
+			NOT = {
+				scope:waranuux_event_county = {
+					var:combined_faction_powershare = 4
+				}
+			}
+		}
+		stress_impact = {
+			lazy = minor_stress_loss
+			compassionate = minor_stress_impact_gain
+			sadistic = minor_stress_loss
+		}
+		scope:waranuux_event_county = {
+			increase_caste_power = { NAME = waranuux }
+			add_county_modifier = {
+				modifier = waranuux_feud
+				years = 10
+			}
+			change_county_control = -10
+		}
+	}
+	
+	option = { #calm them down
+		name = damota.0131.b
+		stress_impact = {
+			compassionate = minor_stress_loss
+			lazy = minor_stress_impact_gain
+			sadistic = minor_stress_impact_gain
+		}
+		scope:waranuux_event_county = {
+			add_county_modifier = {
+				modifier = waranuux_calmed
+				years = 10
+			}
+		}
+		add_prestige = -75
+	}
+	
+	option = { #divid et impera
+	name = damota.0131.c
+		stress_impact = {
+			paranoid = minor_stress_loss
+			lazy = minor_stress_impact_gain
+			sadistic = minor_stress_loss
+		}
+		scope:waranuux_event_county = {
+			decrease_caste_power = { NAME = waranuux }
+			add_county_modifier = {
+				modifier = waranuux_divided
+				years = 10
+			}
+			change_county_control = 10
+		}
+	}
+}
+
+##################################################
+# Qabuux Split
+# by UltimateVictory
+# 0141 - 0150
+##################################################
+
+scripted_trigger is_county_with_qabuux_presence = {
+	tier = tier_county
+	OR = { 
+		has_county_modifier = qabuux_modifier_1
+		has_county_modifier = qabuux_modifier_2
+		has_county_modifier = qabuux_modifier_3
+		has_county_modifier = qabuux_modifier_4
+	}
+}
+
+damota.0141 = {
+	type = character_event
+	title = damota.0141.t
+	desc = damota.0141.desc
+	theme = realm
+	left_portrait = {
+		character = root
+		animation = worry
+	}
+	
+	trigger = {
+		any_held_title = {
+			is_county_with_qabuux_presence = yes
+		}	
+	}
+	
+	immediate = {
+		random_held_title = {
+			limit = {
+				is_county_with_qabuux_presence = yes
+			}
+			save_scope_as = qabuux_event_county
+		}
+	}
+	
+	option = { #attempt to mend the feud
+		name = damota.0141.a
+		trigger = {
+			NOT = {
+				scope:qabuux_event_county = {
+					var:combined_faction_powershare = 4
+				}
+			}
+		}
+		stress_impact = {
+			paranoid = minor_stress_impact_gain
+			gregarious = minor_stress_loss
+			compassionate = minor_stress_loss
+		}
+		scope:qabuux_event_county = {
+			increase_caste_power = { NAME = qabuux }
+			add_county_modifier = {
+				modifier = qabuux_mended
+				years = 10
+			}
+		}
+	}
+	
+	option = { #oversee the split
+		name = damota.0141.b
+		stress_impact = {
+			paranoid = minor_stress_loss
+			lazy = minor_stress_impact_gain
+		}
+		scope:qabuux_event_county = {
+			add_county_modifier = {
+				modifier = qabuux_split
+				years = 10
+			}
+			change_county_control = 5
+		}
+	}
+	
+	option = { #let them break
+		name = damota.0141.c
+		stress_impact = {
+			paranoid = medium_stress_loss
+			lazy = minor_stress_loss
+			compassionate = minor_stress_impact_gain
+		}
+		scope:qabuux_event_county = {
+			decrease_caste_power = { NAME = qabuux }
+			add_county_modifier = {
+				modifier = qabuux_collapse
+				years = 10
+			}
+			change_county_control = 10
+		}
+	}
+}
+
+##################################################
+# Qabuux Quibble With Non-Members
+# by UltimateVictory
+# 0151 - 0160
+##################################################
+
+damota.0151 = { #qabuux quibbling with non-members
+	type = character_event
+	title = damota.0151.t
+	desc = damota.0151.desc
+	theme = intrigue
+	left_portrait = {
+		character = root
+		animation = worry
+	}
+	
+	trigger = {
+		any_held_title = {
+			is_county_with_qabuux_presence = yes
+		}	
+	}
+	
+	immediate = {
+		random_held_title = {
+			limit = {
+				is_county_with_qabuux_presence = yes
+			}
+			save_scope_as = qabuux_event_county
+		}
+	}
+	
+	option = { #settle the dispute in favor of qabuux
+		name = damota.0151.a
+		trigger = {
+			NOT = {
+				scope:qabuux_event_county = {
+					var:combined_faction_powershare = 4
+				}
+			}
+		}
+		stress_impact = {
+			diligent = minor_stress_loss
+			arbitrary = minor_stress_loss
+		}
+		scope:qabuux_event_county = {
+			increase_caste_power = { NAME = qabuux }
+			add_county_modifier = {
+				modifier = qabuux_favor
+				years = 10
+			}
+		}
+	}
+	
+	option = { #split the disputed claim
+		name = damota.0151.b
+		stress_impact = {
+			gregarious = minor_stress_loss
+			lazy = minor_stress_impact_gain
+			just = minor_stress_loss
+		}
+		scope:qabuux_event_county = {
+			add_county_modifier = {
+				modifier = qabuux_even
+				years = 10
+			}
+			change_county_control = 5
+		}
+	}
+	
+	option = { #help the non-members
+		name = damota.0151.c
+		stress_impact = {
+			gregarious = minor_stress_loss
+			arbitrary = minor_stress_loss
+		}
+		scope:qabuux_event_county = {
+			decrease_caste_power = { NAME = qabuux }
+			add_county_modifier = {
+				modifier = qabuux_seized
+				years = 10
+			}
+		}
+	}
+}
+
+##################################################
+# Rayakuux Fund Expedition
+# by UltimateVictory
+# 0161 - 0170
+##################################################
+
+scripted_trigger is_county_with_rayakuux_presence = {
+	tier = tier_county
+	OR = { 
+		has_county_modifier = rayakuux_modifier_1
+		has_county_modifier = rayakuux_modifier_2
+		has_county_modifier = rayakuux_modifier_3
+		has_county_modifier = rayakuux_modifier_4
+	}
+}
+
+damota.0161 = { #rayakuux funding large expedition in an area
+	type = character_event
+	title = damota.0161.t
+	desc = damota.0161.desc
+	theme = stewardship
+	left_portrait = {
+		character = root
+		animation = worry
+	}
+	
+	trigger = {
+		any_held_title = {
+			is_county_with_rayakuux_presence = yes
+		}	
+	}
+	
+	immediate = {
+		random_held_title = {
+			limit = {
+				is_county_with_rayakuux_presence = yes
+			}
+			save_scope_as = rayakuux_event_county
+		}
+	}
+	
+	option = { #direct additional funding
+		name = damota.0161.a
+		
+		trigger = {
+			NOT = {
+				scope:rayakuux_event_county = {
+					var:combined_faction_powershare = 4
+				}
+			}
+		}
+		stress_impact = {
+			generous = minor_stress_loss
+			zealous = minor_stress_loss
+			greedy = medium_stress_impact_gain
+		}
+		remove_short_term_gold = 30
+		scope:rayakuux_event_county = {
+			increase_caste_power = { NAME = rayakuux }
+			add_county_modifier = {
+				modifier = rayakuux_expedition
+				years = 10
+			}
+			change_county_control = -10
+		}
+	}
+	
+	option = { #let the expedition happen
+		name = damota.0161.b
+		stress_impact = {
+			content = minor_stress_loss
+			lazy = minor_stress_loss
+		}
+		scope:rayakuux_event_county = {
+			add_county_modifier = {
+				modifier = rayakuux_allowed
+				years = 10
+			}
+			change_county_control = -5
+		}
+	}
+	
+	option = { #try to stop them
+		name = damota.0161.c
+		stress_impact = {
+			stubborn = minor_stress_loss
+			arbitrary = minor_stress_loss
+			zealous = medium_stress_impact_gain
+		}
+		scope:rayakuux_event_county = {
+			decrease_caste_power = { NAME = rayakuux }
+			add_county_modifier = {
+				modifier = rayakuux_stopped
+				years = 10
+			}
+			change_county_control = 10
+		}
+	}
+}
+
+##################################################
+# Bandits Preying on Rayakuux
+# by UltimateVictory
+# 0171 - 0180
+##################################################
+
+damota.0171 = { #bandits preying on rayakuux travelers
+	type = character_event
+	title = damota.0171.t
+	desc = damota.0171.desc
+	theme = realm
+	left_portrait = {
+		character = root
+		animation = worry
+	}
+	
+	trigger = {
+		any_held_title = {
+			is_county_with_rayakuux_presence = yes
+		}	
+	}
+	
+	immediate = {
+		random_held_title = {
+			limit = {
+				is_county_with_rayakuux_presence = yes
+			}
+			save_scope_as = rayakuux_event_county
+		}
+	}
+	
+	option = { #patrol the roads regularly
+		name = damota.0171.a
+		
+		stress_impact = {
+			compassionate = medium_stress_loss
+			paranoid = minor_stress_loss
+			greedy = minor_stress_impact_gain
+		}
+		remove_short_term_gold = 70
+		scope:rayakuux_event_county = {
+			add_county_modifier = {
+				modifier = rayakuux_patrolled
+				years = 10
+			}
+			change_county_control = 10
+		}
+	}
+	
+	option = { #just escort their travelers
+		name = damota.0171.b
+		trigger = {
+			NOT = {
+				scope:rayakuux_event_county = {
+					var:combined_faction_powershare = 4
+				}
+			}
+		}
+		stress_impact = {
+			content = minor_stress_loss
+			greedy = minor_stress_loss
+			compassionate = minor_stress_loss
+		}
+		add_gold = 40
+		scope:rayakuux_event_county = {
+			increase_caste_power = { NAME = rayakuux }
+			add_county_modifier = {
+				modifier = rayakuux_guarded
+				years = 10
+			}
+			change_county_control = 5
+		}
+	}
+	
+	option = { #do nothing
+		name = damota.0171.c
+		stress_impact = {
+			lazy = minor_stress_loss
+			callous = minor_stress_loss
+			sadistic = minor_stress_loss
+			compassionate = medium_stress_impact_gain
+		}
+		scope:rayakuux_event_county = {
+			decrease_caste_power = { NAME = rayakuux }
+			add_county_modifier = {
+				modifier = rayakuux_robbed
+				years = 10
+			}
+		}
+	}
+}

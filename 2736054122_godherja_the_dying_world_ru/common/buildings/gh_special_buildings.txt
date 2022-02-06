@@ -438,7 +438,7 @@ creusons_01 = { #the crucible
 }
 
 ##########
-# The Citadel of Aqsa
+# The Citadel of Almi 
 ##########
 
 citadel_of_aqsa_01 = { #the citadel
@@ -1079,7 +1079,7 @@ tomb_of_the_lost_01 = { #oejeynica dignity memorial
 	type = special
 }
 
-tomb_of_the_lost_02 = {
+tomb_of_the_lost_02 = { #oejeynica dignity memorial
 	construction_time = very_slow_construction_time
 
 	type_icon = "icon_structure_canterbury_cathedral.dds"
@@ -1116,7 +1116,7 @@ tomb_of_the_lost_02 = {
 	type = special
 }
 
-tomb_of_the_lost_03 = { #bastonport
+tomb_of_the_lost_03 = { #oejeynica dignity memorial
 	construction_time = very_slow_construction_time
 
 	type_icon = "icon_structure_canterbury_cathedral.dds"
@@ -1152,7 +1152,7 @@ tomb_of_the_lost_03 = { #bastonport
 	type = special
 }
 
-tomb_of_the_lost_04 = { #bastonport
+tomb_of_the_lost_04 = { #oejeynica dignity memorial
 	construction_time = very_slow_construction_time
 
 	type_icon = "icon_structure_canterbury_cathedral.dds"
@@ -1364,7 +1364,7 @@ dielecport_02 = { #Dielec Port 2
 	type = special
 }
 
-academyofswords = { #bastonport
+academyofswords = { #Academy of Swords (Mayikprolollan Sto Spathas)
 	construction_time = very_slow_construction_time
 
 	type_icon = "icon_building_ramparts.dds"
@@ -1392,7 +1392,7 @@ academyofswords = { #bastonport
 	type = special
 }
 
-portacademy = { #bastonport
+portacademy = { #Academy of Waves (Mayikprolollan sto Thallas)
 	construction_time = very_slow_construction_time
 
 	type_icon = "icon_building_ramparts.dds"
@@ -1420,7 +1420,7 @@ portacademy = { #bastonport
 	type = special
 }
 
-sunkentower = { #bastonport
+sunkentower = { #Swamp Tower (Konijkmener swamps)
 	construction_time = very_slow_construction_time
 
 	type_icon = "icon_building_watchtowers.dds"
@@ -1447,7 +1447,34 @@ sunkentower = { #bastonport
 	type = special
 }
 
-easterntower = { #bastonport
+kashiryatower = { #Kashiryan Tower - Kaphaladeyyaraada
+	construction_time = very_slow_construction_time
+
+	type_icon = "icon_building_watchtowers.dds"
+	
+	can_construct_potential = {
+		building_requirement_tribal = no
+	}
+
+	county_modifier = {
+		supply_limit_mult = -0.25
+	}
+	
+	province_modifier = {
+		monthly_income = good_building_tax_tier_3
+		levy_reinforcement_rate = -0.25
+		movement_speed = -0.25
+		hostile_county_attrition = -0.1
+	}
+	
+	ai_value = {
+		base = 100
+	}
+	
+	type = special
+}
+
+easterntower = { #Eastern Tower (Ambracia)
 	construction_time = very_slow_construction_time
 
 	type_icon = "icon_building_watchtowers.dds"
@@ -1476,7 +1503,36 @@ easterntower = { #bastonport
 	type = special
 }
 
-blackgates = { #bastonport
+oltenictower = { #Oltenic Tower
+	construction_time = very_slow_construction_time
+
+	type_icon = "icon_building_watchtowers.dds"
+	
+	can_construct_potential = {
+		building_requirement_tribal = no
+	}
+	
+	cost_gold = 3000
+
+	county_modifier = {
+		supply_limit_mult = -0.25
+	}
+	
+	province_modifier = {
+		monthly_income = good_building_tax_tier_3		
+		movement_speed = -0.25
+		hostile_county_attrition = -0.1	
+		levy_reinforcement_rate = -0.25
+	}
+
+	ai_value = {
+		base = 100
+	}
+	
+	type = special
+}
+
+blackgates = { #The Black Gate
 	construction_time = very_slow_construction_time
 
 	type_icon = "icon_building_march.dds"
@@ -1538,7 +1594,7 @@ imperialresort = { #beautiful beach
 	type = special
 }
 
-pathospalace = { #bastonport
+pathospalace = { #Kalathipsomi Palace (Palát tou Pathos)
 	construction_time = very_slow_construction_time
 
 	type_icon = "icon_structure_palace_of_achen.dds"
@@ -1571,7 +1627,7 @@ pathospalace = { #bastonport
 	type = special
 }
 
-malcoispalace_01 = { #bastonport
+malcoispalace_01 = { #Iyrossi/Malcois Palace (Palát to Mytidon)
 	construction_time = very_slow_construction_time
 
 	type_icon = "icon_structure_the_citadel_of_aleppo.dds"
@@ -1606,7 +1662,7 @@ malcoispalace_01 = { #bastonport
 	type = special
 }
 
-malcoispalace_02 = { #bastonport
+malcoispalace_02 = { #Iyrossi/Malcois Palace (Palát to Mytidon)
 	construction_time = very_slow_construction_time
 
 	type_icon = "icon_structure_the_citadel_of_aleppo.dds"
@@ -1641,7 +1697,7 @@ malcoispalace_02 = { #bastonport
 	type = special
 }
 
-malcoispalace_03 = { #bastonport
+malcoispalace_03 = { #Iyrossi/Malcois Palace (Palát to Mytidon)
 	construction_time = very_slow_construction_time
 
 	type_icon = "icon_structure_the_citadel_of_aleppo.dds"
@@ -1674,7 +1730,7 @@ malcoispalace_03 = { #bastonport
 	type = special
 }
 
-malcoisslavefactory = { #bastonport
+malcoisslavefactory = { #Huge Malcois slave hub (Kénitrod Kavaseví)
 	construction_time = very_slow_construction_time
 
 	type_icon = "icon_structure_alhambra.dds"
@@ -1710,7 +1766,7 @@ malcoisslavefactory = { #bastonport
 	type = special
 }
 
-northgate = { #bastonport
+northgate = { #Malcois foglands wall (Voreia Nkéit)
 	construction_time = very_slow_construction_time
 
 	type_icon = "icon_building_curtain_walls.dds"
@@ -1808,7 +1864,7 @@ umlojtemplecomplex_02 = { #ayyar
 	type = special
 }
 
-palaceofthewizardking_01 = { #bastonport
+palaceofthewizardking_01 = { #Palace of the dead Wizard King, Kathanouxa. Decrepid 
 	construction_time = very_slow_construction_time
 
 	type_icon = "icon_building_hill_forts.dds"
@@ -1837,7 +1893,7 @@ palaceofthewizardking_01 = { #bastonport
 	type = special
 }
 
-palaceofthewizardking_02 = { #bastonport
+palaceofthewizardking_02 = { #Palace of the dead Wizard King, Kathanouxa
 	construction_time = very_slow_construction_time
 
 	type_icon = "icon_building_hill_forts.dds"
@@ -3146,9 +3202,9 @@ westtower = { #Vindeon Tower
 	type = special
 }
 
-#########
-# MINES #
-#########
+############
+# GH_MINES #
+############
 
 oetanai_mines_01 = { ###gold
 
@@ -5435,6 +5491,422 @@ ashuku_mines_04 = {
 	type = special
 }
 
+#newmines
+
+paccai_mines_01 = { ###pirate coast mine
+
+	construction_time = slow_construction_time
+
+	type_icon = "icon_structure_mines.dds"
+
+	can_construct_potential = {
+		building_requirement_tribal = no
+		building_requirement_castle_city_church = { LEVEL = 01 }
+		culture = {
+			has_innovation = innovation_crop_rotation
+		}
+	}
+	
+	cost_gold = expensive_building_tier_3_cost
+	
+	province_modifier = {
+		monthly_income = special_mine_building_tax_tier_1
+	}
+	county_modifier = {
+		tax_mult = 0.2
+		development_growth_factor = 0.05
+	}
+	
+	next_building = gujak_mines_02
+	
+	ai_value = {
+		base = 100
+	}
+	
+	type = special
+}
+
+paccai_mines_02 = {
+
+	construction_time = slow_construction_time
+
+	type_icon = "icon_structure_mines.dds"
+
+	can_construct_potential = {
+		building_requirement_tribal = no
+	}
+	can_construct = {
+		building_requirement_castle_city_church = { LEVEL = 02 }
+		culture = {
+			has_innovation = innovation_manorialism
+		}
+	}
+	
+	cost_gold = expensive_building_tier_4_cost
+	
+	province_modifier = {
+		monthly_income = special_mine_building_tax_tier_2
+	}
+	county_modifier = {
+		tax_mult = 0.25
+		development_growth_factor = 0.1
+	}
+	
+	next_building = gujak_mines_03
+	
+	ai_value = {
+		base = 100
+	}
+	
+	type = special
+}
+
+paccai_mines_03 = {
+
+	construction_time = slow_construction_time
+
+	type_icon = "icon_structure_mines.dds"
+
+	can_construct_potential = {
+		
+		building_requirement_tribal = no
+	}
+	can_construct = {
+		building_requirement_castle_city_church = { LEVEL = 03 }
+		culture = {
+			has_innovation = innovation_windmills
+		}
+	}
+	
+	cost_gold = expensive_building_tier_5_cost
+	
+	province_modifier = {
+		monthly_income = special_mine_building_tax_tier_3
+	}
+	county_modifier = {
+		tax_mult = 0.3
+		development_growth_factor = 0.15
+	}
+	
+	next_building = gujak_mines_04
+	
+	ai_value = {
+		base = 100
+	}
+	
+	type = special
+}
+
+paccai_mines_04 = { 
+
+	construction_time = slow_construction_time
+
+	type_icon = "icon_structure_mines.dds"
+
+	can_construct_potential = {
+		
+		building_requirement_tribal = no
+	}
+	can_construct = {
+		building_requirement_castle_city_church = { LEVEL = 04 }
+		culture = {
+			has_innovation = innovation_cranes
+		}
+	}
+	
+	cost_gold = expensive_building_tier_6_cost
+	
+	province_modifier = {
+		monthly_income = special_mine_building_tax_tier_4
+	}
+	county_modifier = {
+		tax_mult = 0.35
+		development_growth_factor = 0.2
+	}
+	
+	ai_value = {
+		base = 100
+	}
+	
+	type = special
+}
+
+vilunnak_mines_01 = { ###kashiryan mine
+
+	construction_time = slow_construction_time
+
+	type_icon = "icon_structure_mines.dds"
+
+	can_construct_potential = {
+		building_requirement_tribal = no
+		building_requirement_castle_city_church = { LEVEL = 01 }
+		culture = {
+			has_innovation = innovation_crop_rotation
+		}
+	}
+	
+	cost_gold = expensive_building_tier_3_cost
+	
+	province_modifier = {
+		monthly_income = special_mine_building_tax_tier_1
+	}
+	county_modifier = {
+		tax_mult = 0.2
+		development_growth_factor = 0.05
+	}
+	
+	next_building = gujak_mines_02
+	
+	ai_value = {
+		base = 100
+	}
+	
+	type = special
+}
+
+vilunnak_mines_02 = {
+
+	construction_time = slow_construction_time
+
+	type_icon = "icon_structure_mines.dds"
+
+	can_construct_potential = {
+		building_requirement_tribal = no
+	}
+	can_construct = {
+		building_requirement_castle_city_church = { LEVEL = 02 }
+		culture = {
+			has_innovation = innovation_manorialism
+		}
+	}
+	
+	cost_gold = expensive_building_tier_4_cost
+	
+	province_modifier = {
+		monthly_income = special_mine_building_tax_tier_2
+	}
+	county_modifier = {
+		tax_mult = 0.25
+		development_growth_factor = 0.1
+	}
+	
+	next_building = gujak_mines_03
+	
+	ai_value = {
+		base = 100
+	}
+	
+	type = special
+}
+
+vilunnak_mines_03 = {
+
+	construction_time = slow_construction_time
+
+	type_icon = "icon_structure_mines.dds"
+
+	can_construct_potential = {
+		
+		building_requirement_tribal = no
+	}
+	can_construct = {
+		building_requirement_castle_city_church = { LEVEL = 03 }
+		culture = {
+			has_innovation = innovation_windmills
+		}
+	}
+	
+	cost_gold = expensive_building_tier_5_cost
+	
+	province_modifier = {
+		monthly_income = special_mine_building_tax_tier_3
+	}
+	county_modifier = {
+		tax_mult = 0.3
+		development_growth_factor = 0.15
+	}
+	
+	next_building = gujak_mines_04
+	
+	ai_value = {
+		base = 100
+	}
+	
+	type = special
+}
+
+vilunnak_mines_04 = { 
+
+	construction_time = slow_construction_time
+
+	type_icon = "icon_structure_mines.dds"
+
+	can_construct_potential = {
+		
+		building_requirement_tribal = no
+	}
+	can_construct = {
+		building_requirement_castle_city_church = { LEVEL = 04 }
+		culture = {
+			has_innovation = innovation_cranes
+		}
+	}
+	
+	cost_gold = expensive_building_tier_6_cost
+	
+	province_modifier = {
+		monthly_income = special_mine_building_tax_tier_4
+	}
+	county_modifier = {
+		tax_mult = 0.35
+		development_growth_factor = 0.2
+	}
+	
+	ai_value = {
+		base = 100
+	}
+	
+	type = special
+}
+
+lachish_mines_01 = { ###not dwarf hold
+
+	construction_time = slow_construction_time
+
+	type_icon = "icon_structure_mines.dds"
+
+	can_construct_potential = {
+		building_requirement_tribal = no
+		building_requirement_castle_city_church = { LEVEL = 01 }
+		culture = {
+			has_innovation = innovation_crop_rotation
+		}
+	}
+	
+	cost_gold = expensive_building_tier_3_cost
+	
+	province_modifier = {
+		monthly_income = special_mine_building_tax_tier_1
+	}
+	county_modifier = {
+		tax_mult = 0.2
+		development_growth_factor = 0.05
+	}
+	
+	next_building = gujak_mines_02
+	
+	ai_value = {
+		base = 100
+	}
+	
+	type = special
+}
+
+lachish_mines_02 = {
+
+	construction_time = slow_construction_time
+
+	type_icon = "icon_structure_mines.dds"
+
+	can_construct_potential = {
+		building_requirement_tribal = no
+	}
+	can_construct = {
+		building_requirement_castle_city_church = { LEVEL = 02 }
+		culture = {
+			has_innovation = innovation_manorialism
+		}
+	}
+	
+	cost_gold = expensive_building_tier_4_cost
+	
+	province_modifier = {
+		monthly_income = special_mine_building_tax_tier_2
+	}
+	county_modifier = {
+		tax_mult = 0.25
+		development_growth_factor = 0.1
+	}
+	
+	next_building = gujak_mines_03
+	
+	ai_value = {
+		base = 100
+	}
+	
+	type = special
+}
+
+lachish_mines_03 = {
+
+	construction_time = slow_construction_time
+
+	type_icon = "icon_structure_mines.dds"
+
+	can_construct_potential = {
+		
+		building_requirement_tribal = no
+	}
+	can_construct = {
+		building_requirement_castle_city_church = { LEVEL = 03 }
+		culture = {
+			has_innovation = innovation_windmills
+		}
+	}
+	
+	cost_gold = expensive_building_tier_5_cost
+	
+	province_modifier = {
+		monthly_income = special_mine_building_tax_tier_3
+	}
+	county_modifier = {
+		tax_mult = 0.3
+		development_growth_factor = 0.15
+	}
+	
+	next_building = gujak_mines_04
+	
+	ai_value = {
+		base = 100
+	}
+	
+	type = special
+}
+
+lachish_mines_04 = { 
+
+	construction_time = slow_construction_time
+
+	type_icon = "icon_structure_mines.dds"
+
+	can_construct_potential = {
+		
+		building_requirement_tribal = no
+	}
+	can_construct = {
+		building_requirement_castle_city_church = { LEVEL = 04 }
+		culture = {
+			has_innovation = innovation_cranes
+		}
+	}
+	
+	cost_gold = expensive_building_tier_6_cost
+	
+	province_modifier = {
+		monthly_income = special_mine_building_tax_tier_4
+	}
+	county_modifier = {
+		tax_mult = 0.35
+		development_growth_factor = 0.2
+	}
+	
+	ai_value = {
+		base = 100
+	}
+	
+	type = special
+}
+
 new_iyrossi_palace_01 = { #Teutrovna Zirrus
 	construction_time = very_slow_construction_time
 
@@ -5662,6 +6134,128 @@ kresoxgrave = {
 	type = special
 }
 
+glowcave = {
+	
+	construction_time = slow_construction_time
+	type_icon = "icon_building_petra.dds"
+	character_modifier = {
+		monthly_prestige_gain_mult = 0.05
+		monthly_dynasty_prestige_mult = 0.05
+		learning = 2
+	}
+
+	province_modifier = {
+		tax_mult = 0.05
+	}
+	
+	ai_value = {
+		base = 100
+	}
+	
+	type = special
+}
+
+
+bigglacier = {
+	
+	construction_time = slow_construction_time
+	type_icon = "icon_building_petra.dds"
+	
+	character_modifier = {
+		monthly_prestige_gain_mult = 0.05
+		prestige_level_impact_mult = 0.25
+		opinion_of_same_faith = 10
+	}
+
+	ai_value = {
+		base = 100
+	}
+	
+	type = special
+}
+
+
+blackforest = {
+	
+	construction_time = slow_construction_time
+	type_icon = "icon_building_royal_forest.dds"
+	character_modifier = {
+		monthly_prestige_gain_mult = 0.05
+		monthly_dynasty_prestige_mult = 0.05
+	}
+
+	province_modifier = {
+		hostile_county_attrition = 0.1
+		enemy_hard_casualty_modifier = 0.1
+		pursue_efficiency = -0.2
+	}
+
+	ai_value = {
+		base = 100
+	}
+	
+	type = special
+}
+
+firstshard = {
+	
+	construction_time = slow_construction_time
+	type_icon = "icon_building_generic_house.dds"
+	
+	character_modifier = {
+		monthly_magic_lifestyle_dead_xp_gain_mult = 0.25
+	}
+
+	ai_value = {
+		base = 100
+	}
+
+	type = special
+}
+
+korkivo_port_02 = {
+	construction_time = very_slow_construction_time
+
+	type_icon = "icon_building_tradeport.dds"
+	
+	can_construct_potential = {
+		building_requirement_tribal = no
+	}
+	
+	cost_gold = 2000
+	character_modifier = {
+		different_faith_opinion = 10
+		intrigue_per_piety_level = 2
+	}
+	province_modifier = {
+		monthly_income = normal_building_tax_tier_2
+	}
+	county_modifier = {
+		development_growth_factor = 0.1
+	}
+	
+	ai_value = {
+		base = 100
+	}
+
+	type = special
+}
+
+redportal = {
+	construction_time = very_slow_construction_time
+	
+	county_modifier = {
+		development_growth_factor = -0.10
+		monthly_income = 1
+	}
+	province_modifier = {
+		movement_speed = -0.2
+	}
+	character_modifier = {
+		general_opinion = -3
+	}
+	type = special
+}
 
 ############
 ### Chevalie
@@ -6644,5 +7238,864 @@ the_minteries_04 = { #Good King Bastione’s Charter of Fellow Minters
 
 	show_disabled = yes
 
+	type = special
+}
+
+four_cliffs_five_walls_01 = { #walls and fortifications of Chalcamahos
+	construction_time = very_slow_construction_time
+	province_modifier = {
+		defender_advantage = normal_building_advantage_tier_2
+		fort_level = good_building_fort_level_tier_2
+	}
+	county_modifier = {
+		development_growth_factor = 0.1
+		tax_mult = -0.50
+	}
+
+	type_icon = "icon_building_thieves_guild.dds"
+	cost_gold = 2000
+	type = special
+	show_disabled = yes
+	next_building = four_cliffs_five_walls_02
+}
+four_cliffs_five_walls_02 = { #walls and fortifications of Chalcamahos
+	construction_time = very_slow_construction_time
+	province_modifier = {
+		defender_advantage = normal_building_advantage_tier_3
+		fort_level = good_building_fort_level_tier_3
+	}
+	county_modifier = {
+		development_growth_factor = 0.15
+		tax_mult = -0.40
+	}
+	type_icon = "icon_building_thieves_guild.dds"
+	cost_gold = 2000
+	type = special
+	show_disabled = yes
+	next_building = four_cliffs_five_walls_03
+}
+four_cliffs_five_walls_03 = { #walls and fortifications of Chalcamahos
+	construction_time = very_slow_construction_time
+		province_modifier = {
+		defender_advantage = normal_building_advantage_tier_4
+		fort_level = good_building_fort_level_tier_4
+	}
+	county_modifier = {
+		development_growth_factor = 0.2
+		tax_mult = -0.25
+	}
+	type_icon = "icon_building_thieves_guild.dds"
+	cost_gold = 2000
+	show_disabled = yes
+	type = special
+	next_building = four_cliffs_five_walls_04
+}
+four_cliffs_five_walls_04 = { #walls and fortifications of Chalcamahos
+	construction_time = very_slow_construction_time
+	province_modifier = {
+		defender_advantage = normal_building_advantage_tier_6
+		fort_level = good_building_fort_level_tier_6
+	}
+	county_modifier = {
+		development_growth_factor = 0.25
+		tax_mult = -0.10
+	}
+	type_icon = "icon_building_thieves_guild.dds"
+	cost_gold = 2000
+	type = special
+	show_disabled = yes
+}
+
+##########
+# Nagom Kakezihi 
+##########
+nagom_kakezihi = {
+	construction_time = slow_construction_time
+	
+	type_icon = "icon_structure_visby_ringmur.dds"
+	
+	is_enabled = {
+		scope:holder = {
+			religion = religion:adabyssian_religion
+			has_culture_group = culture_group:gh_hadiyan_group
+		}
+	}
+	
+	cost_gold = 2000
+
+	province_modifier = {
+		fort_level = 50
+	}
+	
+	ai_value = {
+		base = 100
+	}
+
+	show_disabled = yes
+
+	type = special
+}
+
+##########
+# Ḥāseti Mekab
+##########
+
+haseti_mekab = {
+	construction_time = slow_construction_time
+	
+	type_icon = "icon_structure_temple_of_uppsala.dds"
+	
+	is_enabled = {
+		scope:holder = {
+			religion = religion:mogowai_religion
+		}
+	}
+	
+	cost_gold = 2000
+
+	character_modifier = {
+		monthly_piety = 0.5
+		opinion_of_same_faith = 15
+	}
+	
+	
+	ai_value = {
+		base = 100
+	}
+
+	show_disabled = yes
+
+	type = special
+}
+
+##########
+# Irochi Damotada 
+##########
+irochi_damotada = {
+	construction_time = slow_construction_time
+	
+	type_icon = "icon_structure_golden_Gate_of_kiev.dds"
+	
+	cost_gold = 2000
+	
+	province_modifier = {
+		fort_level = 2
+	}
+	character_modifier = {
+		learning = 4
+		monthly_income = 1.2
+	}
+	
+	ai_value = {
+		base = 100
+	}
+
+	show_disabled = yes
+
+	type = special
+}
+
+##########
+# Bēnorīya Ātawek
+##########
+benoriya_atawek_01 = {
+	construction_time = slow_construction_time
+	
+	type_icon = "icon_structure_the_university_of_sankore.dds"
+	
+	cost_gold = 2000
+	
+	character_modifier = {
+		monthly_magic_lifestyle_living_xp_gain_mult = 0.05
+		monthly_magic_lifestyle_dead_xp_gain_mult = 0.05
+		monthly_magic_lifestyle_mixed_xp_gain_mult = 0.05
+	}
+	
+	ai_value = {
+		base = 100
+	}
+	
+	next_building = benoriya_atawek_02
+	
+	show_disabled = yes
+
+	type = special
+}
+
+benoriya_atawek_02 = {
+	construction_time = slow_construction_time
+	
+	type_icon = "icon_structure_the_university_of_sankore.dds"
+	
+	cost_gold = 1000
+	
+	character_modifier = {
+		monthly_magic_lifestyle_living_xp_gain_mult = 0.1
+		monthly_magic_lifestyle_dead_xp_gain_mult = 0.1
+		monthly_magic_lifestyle_mixed_xp_gain_mult = 0.1
+	}
+	
+	ai_value = {
+		base = 100
+	}
+
+	show_disabled = yes
+
+	type = special
+}
+
+##########
+# Sonas Sikelenizi
+##########
+sonas_sikelenizi = {
+	construction_time = slow_construction_time
+	
+	type_icon = "icon_building_tradeport.dds"
+	
+	cost_gold = 2000
+	
+	character_modifier = {
+		stewardship = 3
+		monthly_income = 0.7
+	}
+	
+	ai_value = {
+		base = 100
+	}
+
+	show_disabled = yes
+
+	type = special
+}
+
+##########
+# Degasho Bedēlam
+##########
+degasho_bedelam = {
+	construction_time = slow_construction_time
+	
+	type_icon = "icon_structure_cathedral_zoroastric.dds"
+	
+	cost_gold = 2000
+	
+	character_modifier = {
+		vassal_opinion = 15
+		monthly_prestige = 0.4
+		stress_loss_mult = 0.2
+	}
+	
+	ai_value = {
+		base = 100
+	}
+
+	show_disabled = yes
+
+	type = special
+}
+
+##########
+# Biyakaddu
+##########
+
+biyakaddu = {
+	construction_time = slow_construction_time
+	
+	type_icon = "icon_structure_cathedral_zoroastric.dds"
+	
+	cost_gold = 2000
+	
+	county_modifier = {
+		development_growth_factor = 0.5
+	}
+	character_modifier = {
+		hostile_scheme_power_add = 5
+	}
+	
+	ai_value = {
+		base = 100
+	}
+
+	show_disabled = yes
+
+	type = special
+}
+
+##########
+# Tabik Bētemisīt
+##########
+
+tabik_betemisit = {
+	construction_time = slow_construction_time
+	
+	type_icon = "icon_plaza.dds"
+	
+	cost_gold = 2000
+	
+	is_enabled = {
+		scope:holder = {
+			religion = religion:mogowai_religion
+		}
+	}
+	
+	county_modifier = {
+		monthly_county_control_change_add = 0.4
+	}
+	character_modifier = {
+		domain_limit = 2
+		monthly_prestige = 0.5
+		monthly_piety = 0.5
+	}
+	
+	ai_value = {
+		base = 100
+	}
+
+	show_disabled = yes
+
+	type = special
+}
+
+##########
+# Dihasma Xiidan
+##########
+dihasma_xiidan = {
+	construction_time = slow_construction_time
+	
+	type_icon = "icon_building_royal_armory.dds"
+	
+	cost_gold = 2000
+	
+	county_modifier = {
+		monthly_county_control_change_add = -0.1
+	}
+	character_modifier = {
+		knight_limit = 5
+		knight_effectiveness_mult = 0.15
+	}
+	
+	ai_value = {
+		base = 100
+	}
+
+	show_disabled = yes
+
+	type = special
+}
+
+##########
+# Blood Market
+##########
+blood_market_00 = { # Blood Orchards
+	construction_time = slow_construction_time
+
+	type_icon = "icon_plaza.dds"
+	
+	next_building = blood_market_01
+	can_construct_potential = {
+		building_requirement_tribal = no
+	}
+
+	county_modifier = {
+		tax_mult = 0.05
+	}
+	character_modifier = {
+		dread_baseline_add = 5
+	}
+	
+	ai_value = {
+		base = 100
+	}
+
+	show_disabled = no
+	type = special
+}
+blood_market_01 = { # Blood Market
+	construction_time = slow_construction_time
+
+	type_icon = "icon_plaza.dds"
+	
+	cost_gold = 1500
+	can_construct_potential = {
+		building_requirement_tribal = no
+	}
+
+	county_modifier = {
+		tax_mult = 0.1
+		development_growth_factor = 0.5
+	}
+	character_modifier = {
+		dread_baseline_add = 10
+		intrigue_per_piety_level = 1
+	}
+	
+	ai_value = {
+		base = 100
+	}
+
+	show_disabled = yes
+	type = special
+}
+
+##########
+# Khanazdar Khanduz
+##########
+#khanazdar_khanduz_01 = {
+#	construction_time = very_slow_construction_time
+#
+#	type_icon = "icon_structure_walls_of_genoa.dds"
+#	
+#	can_construct_potential = {
+#		building_requirement_tribal = no
+#	}
+#	
+#	cost_gold = 500
+#	
+#	county_modifier = {
+#		defender_holding_advantage = 5
+#		hostile_raid_time = 0.25
+#	}
+#	
+#	max_garrison = good_building_max_garrison_tier_1
+#	province_modifier = {
+#		fort_level = good_building_fort_level_tier_1
+#	}
+#	
+#	ai_value = {
+#		base = 100
+#	}
+#	
+#	type = special
+#	next_building = khanazdar_khanduz_01
+#}
+#
+#khanazdar_khanduz_02 = {
+#	construction_time = very_slow_construction_time
+#
+#	type_icon = "icon_structure_walls_of_genoa.dds"
+#	
+#	can_construct_potential = {
+#		building_requirement_tribal = no
+#	}
+#	
+#	can_construct = {
+#		scope:holder.culture = {
+#			has_innovation = innovation_development_01
+#		}
+#	}
+#	
+#	cost_gold = 1000
+#	
+#	county_modifier = {
+#		defender_holding_advantage = 5
+#		development_growth = 0.1
+#		tax_mult = 0.05
+#		hostile_raid_time = 0.5
+#	}
+#	
+#	max_garrison = good_building_max_garrison_tier_2
+#	province_modifier = {
+#		fort_level = good_building_fort_level_tier_2
+#	}
+#	
+#	ai_value = {
+#		base = 100
+#	}
+#	
+#	type = special
+#	next_building = khanazdar_khanduz_03
+#}
+#
+#khanazdar_khanduz_03 = {
+#	construction_time = very_slow_construction_time
+#
+#	type_icon = "icon_structure_walls_of_genoa.dds"
+#	
+#	can_construct_potential = {
+#		building_requirement_tribal = no
+#	}
+#	
+#	can_construct = {
+#		scope:holder.culture = {
+#			has_innovation = innovation_battlements
+#		}
+#	}
+#	
+#	cost_gold = 1500
+#	
+#	county_modifier = {
+#		defender_holding_advantage = 5
+#		development_growth_factor = 0.05
+#		development_growth = 0.2
+#		tax_mult = 0.1
+#		hostile_raid_time = 0.75
+#	}
+#	
+#	max_garrison = good_building_max_garrison_tier_3
+#	province_modifier = {
+#		fort_level = good_building_fort_level_tier_3
+#	}
+#	
+#	ai_value = {
+#		base = 100
+#	}
+#	
+#	type = special
+#	next_building = khanazdar_khanduz_04
+#}
+#
+#khanazdar_khanduz_04 = {
+#	construction_time = very_slow_construction_time
+#
+#	type_icon = "icon_structure_walls_of_genoa.dds"
+#	
+#	can_construct_potential = {
+#		building_requirement_tribal = no
+#	}
+#	
+#	can_construct = {
+#		scope:holder.culture = {
+#			has_innovation = innovation_hoardings
+#		}
+#	}
+#	
+#	cost_gold = 2000
+#	
+#	county_modifier = {
+#		defender_holding_advantage = 5
+#		development_growth_factor = 0.1
+#		development_growth = 0.3
+#		tax_mult = 0.2
+#		hostile_raid_time = 1.0
+#	}
+#	
+#	max_garrison = good_building_max_garrison_tier_4
+#	province_modifier = {
+#		fort_level = good_building_fort_level_tier_4
+#	}
+#	
+#	ai_value = {
+#		base = 100
+#	}
+#	
+#	type = special
+#}
+ 
+#########
+# House of Ohrasik
+#########
+
+house_of_ohrasik = {
+	construction_time = slow_construction_time
+
+	type_icon = "icon_structure_hotin_fortress.dds"
+	
+	cost_gold = 2000
+
+	is_enabled = {
+		custom_description = {
+			text = holy_site_building_trigger
+			barony = {
+				is_holy_site_of = scope:holder.faith
+			}
+		}
+	}
+
+	county_modifier = {
+		tax_mult = 0.2
+		development_growth_factor = 0.2
+	}
+
+	province_modifier = {
+		garrison_size = 0.5
+		fort_level = 3
+	}
+
+	character_modifier = {
+		monthly_prestige = 0.1
+		monthly_dynasty_prestige_mult = 0.05
+		knight_limit = 1
+		knight_effectiveness_mult = 0.2
+		heavy_cavalry_damage_mult = 0.1
+		heavy_cavalry_toughness_mult = 0.1
+	}
+
+	ai_value = {
+		base = 100
+	}
+
+	type = special
+}
+
+#########
+# light wall
+#########
+
+light_wall = {
+	construction_time = slow_construction_time
+
+	type_icon = "icon_building_palisades.dds"
+	
+	cost_gold = 800
+
+	is_enabled = {
+		custom_description = {
+			text = holy_site_building_trigger
+			barony = {
+				is_holy_site_of = scope:holder.faith
+			}
+		}
+	}
+
+	county_modifier = {
+		monthly_county_control_change_add = 0.1
+		development_growth_factor = 0.1
+	}
+
+	province_modifier = {
+		advantage = 2
+		levy_size = 0.5
+		monthly_income = -0.5
+	}
+
+	character_modifier = {
+		monthly_dynasty_prestige_mult = 0.05
+		monthly_piety = 1
+		stewardship_per_piety_level = 2
+		monthly_county_control_change_factor = 0.05
+		levy_reinforcement_rate_same_faith = 0.15
+		same_faith_opinion = 5
+	}
+
+	ai_value = {
+		base = 100
+	}
+
+	type = special
+}
+
+#########
+# Tomb of the sun
+#########
+
+tomb_of_the_suns = {
+	construction_time = slow_construction_time
+
+	type_icon = "icon_structure_the_friday_mosque.dds"
+	
+	cost_gold = 2000
+
+	county_modifier = {
+		development_growth_factor = 0.30
+		development_growth = 0.3
+	}
+
+	province_modifier = {
+		monthly_income = 1.5
+	}
+
+	character_modifier = {
+		monthly_dynasty_prestige_mult = 0.05
+		monthly_piety = 0.5
+		clergy_opinion = 5
+		monthly_county_control_change_factor = 0.05
+	}
+
+	ai_value = {
+		base = 100
+	}
+
+	type = special
+}
+
+#########
+# Stone Battlefield
+#########
+
+stone_battlefield = {
+	construction_time = slow_construction_time
+
+	type_icon = "icon_building_jayla.dds"
+	
+	cost_gold = 2000
+
+	county_modifier = {
+		development_growth_factor = 0.10
+		development_growth = 0.1
+	}
+
+	province_modifier = {
+		monthly_income = 0.5
+		levy_size = 0.25
+	}
+
+	character_modifier = {
+		monthly_dynasty_prestige_mult = 0.05
+		martial_per_prestige_level = 2
+	}
+
+	ai_value = {
+		base = 100
+	}
+
+	type = special
+}
+
+##########
+# The Eternal Grove
+##########
+
+eternal_grove_02 = {
+	construction_time = slow_construction_time
+	
+	type_icon = "icon_building_tree.dds"
+	
+	cost_gold = 3000
+	
+	county_modifier = {
+		development_growth_factor = -1.0
+		development_growth = -0.5
+	}
+	
+	character_modifier = {
+		monthly_magic_lifestyle_living_xp_gain_mult = 1.0
+		monthly_magic_lifestyle_mixed_xp_gain_mult = 1.0
+		monthly_prestige = 0.2
+		monthly_piety = 0.5
+		learning_per_piety_level = 2
+	}
+	
+	next_building = eternal_grove_01
+	
+	type = special
+}
+
+eternal_grove_01 = {
+	construction_time = slow_construction_time
+	
+	type_icon = "icon_building_tree.dds"
+	
+	cost_gold = 3000
+	
+	county_modifier = {
+		development_growth_factor = -1.0
+		development_growth = -0.5
+	}
+	
+	character_modifier = {
+		monthly_magic_lifestyle_living_xp_gain_mult = 0.5
+		monthly_prestige = 0.2
+		monthly_piety = 0.5
+		learning_per_piety_level = 2
+	}
+	
+	type = special
+}
+
+karth_tower_02 = {
+	construction_time = slow_construction_time
+	
+	type_icon = "icon_building_watchtowers.dds"
+	
+	cost_gold = 3000
+	
+	character_modifier = {
+		intrigue = 1
+		intrigue_per_prestige_level = 1
+	}
+	
+	type = special
+}
+
+amagheantower = { #Amaghean Tower
+	construction_time = very_slow_construction_time
+
+	type_icon = "icon_building_watchtowers.dds"
+	
+	can_construct_potential = {
+		building_requirement_tribal = no
+	}
+
+	county_modifier = {
+		supply_limit_mult = -0.25
+	}
+	
+	province_modifier = {
+		monthly_income = good_building_tax_tier_3
+		levy_reinforcement_rate = -0.25
+		movement_speed = -0.25
+		hostile_county_attrition = -0.1
+	}
+	
+	ai_value = {
+		base = 100
+	}
+	
+	type = special
+}
+
+tenenae_01 = {
+	construction_time = very_slow_construction_time
+
+	type_icon = "icon_holding_castle.dds"
+	
+	can_construct_potential = {
+		building_requirement_tribal = no
+	}
+
+	county_modifier = {
+		supply_limit_mult = -0.25
+	}
+	
+	province_modifier = {
+		levy_reinforcement_rate = -0.25
+		movement_speed = -0.25
+		hostile_county_attrition = -0.1
+	}
+	
+	ai_value = {
+		base = 100
+	}
+	
+	type = special
+}
+
+frozenvillage = {
+	construction_time = very_slow_construction_time
+
+	type_icon = "icon_holding_castle.dds"
+	
+
+	county_modifier = {
+		supply_limit_mult = -2
+	}
+	
+	province_modifier = {
+		movement_speed = -2
+	}
+	
+	type = special
+}
+
+yaawdetmaw = {
+	construction_time = very_slow_construction_time
+
+	type_icon = "icon_building_ruined_palace.dds"
+	
+
+	county_modifier = {
+		supply_limit_mult = -1
+	}
+	
+	province_modifier = {
+		movement_speed = -2
+		levy_reinforcement_rate = -0.25
+		monthly_income = normal_building_tax_tier_4
+	}
+	
+	character_modifier = {
+		monthly_prestige = 0.5
+		learning = 2
+	}
+	
 	type = special
 }

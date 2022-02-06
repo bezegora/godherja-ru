@@ -99,6 +99,7 @@ window = {
 					{
 						#onclick = "[ExecuteConsoleCommand('GUI.ClearWidgets artifacts_view')]"
 						onclick = "[GetVariableSystem.Clear('artifact_window_open')]"
+						#onclick = "[GetVariableSystem.Clear('book_window_open')]"
 					}
 				}
 				artifact_spacer_vertical_large = {}
@@ -137,7 +138,6 @@ window = {
 								datacontext = "[GetScriptedGui('artifacts_destroy_artifact')]"
 								visible = "[ScriptedGui.IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
 								name = "artifact_destroy"
-								position = { -25 5 }
 								texture = "gfx/interface/buttons/artifact_destroy.dds"
 								framesize = { 100 100 }
 								size = { 50 50 }
@@ -151,7 +151,6 @@ window = {
 								datacontext = "[GetScriptedGui('artifacts_cant_artifact')]"
 								visible = "[ScriptedGui.IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
 								name = "artifact_indestructible"
-								position = { -25 5 }
 								framesize = { 100 100 }
 								size = { 50 50 }
 								enabled = yes
@@ -195,7 +194,6 @@ window = {
 							button = {
 								visible = "[ScriptedGui.IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
 								name = "artifact_equip"
-								position = { 25 5 }
 								texture = "gfx/interface/buttons/artifact_equip.dds"
 								framesize = { 100 100 }
 								size = { 50 50 }
@@ -208,7 +206,6 @@ window = {
 							button = {
 								visible = "[ScriptedGui.IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
 								name = "artifact_unequip"
-								position = { 25 5 }
 								texture = "gfx/interface/buttons/artifact_unequip.dds"
 								framesize = { 100 100 }
 								size = { 50 50 }
@@ -217,6 +214,26 @@ window = {
 								datacontext = "[GetScriptedGui('artifacts_unequip_artifact')]"
 								enabled = yes
 								onclick = "[ScriptedGui.Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+							}
+							button = {
+								visible = "[Not(EqualTo_string(Concatenate(GetPlayer.MakeScope.Var('artifact_selection').GetFlagName,'_page_1'),Localize(Concatenate(GetPlayer.MakeScope.Var('artifact_selection').GetFlagName,'_page_1'))))]"
+								name = "artifact_read"
+								texture = "gfx/interface/buttons/artifact_equip.dds"
+								framesize = { 100 100 }
+								size = { 50 50 }
+								tooltip = equip_artifact_tt
+								
+								state = {
+									name = _initialize
+									trigger_on_create = yes
+									on_start = "[ExecuteConsoleCommand('gui.createwidget gui/window_book.gui book_view')]"
+								}
+								
+								datacontext = "[GetScriptedGui('artifact_book_has_content')]"
+								enabled = yes
+								onclick = "[GetVariableSystem.Toggle('book_window_open')]"
+								#onclick = "[GetVariableSystem.Set( 'book_page' , '(int32)1' )]"
+								onclick = "[GetScriptedGui('set_first_page').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
 							}
 					
 							text_single = {
@@ -239,7 +256,8 @@ window = {
 						blockoverride "scrollbox_content"
 						{
 							text_multi = {
-								text = selected_artifact_desc
+								#text = selected_artifact_desc
+								text = "#size:1 [GetScriptedGui('artifact_desc').BuildTooltip(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
 								size = { 450 150 }
 								maximumsize = { 450 450 }
 								align = center
@@ -296,10 +314,7 @@ window = {
 										#layoutpolicy_horizontal = expanding
 										size = { 500 100 }
 										maximumsize = { 500 100 }
-										datacontext = "[GetScriptedGui( 'artifacts_scripted' )]"
-										onclick = "[ExecuteConsoleCommand(Concatenate(Concatenate('effect select_artifact = { ARTIFACT =', Scope.GetFlagName),' }'))]"
-										# Fire any extra effects, including conditionals for clicking specific artifacts since artifact_selection has already been set:
-										onclick = "[ScriptedGui.Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+										onclick = "[GetScriptedGui('select_artifact_scripted_gui').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('selected_artifact_scope',MakeScopeFlag(Scope.GetFlagName)).End)]"
 										# To emulate equipment backend system purely in GUI:
 										onclick = "[GetVariableSystem.Set( 'artifact_selection',Scope.GetFlagName)]"
 										# Tooltip shows modifier description, useful for modifiers that affect a lot of different stats.

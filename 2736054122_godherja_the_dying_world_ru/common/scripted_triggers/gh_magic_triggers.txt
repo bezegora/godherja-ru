@@ -24,6 +24,17 @@ spell_requires_court_mage_trait_rank = {
 	}
 }
 
+spell_requires_court_mage_culture_group = {
+	any_councillor = {
+		is_performing_council_task = task_court_mage_cast_spells
+		has_culture_group = $CULTURE_GROUP$
+	}
+}
+
+spell_requires_faith = {
+	has_faith = $FAITH$
+}
+
 spell_requires_perk = {	# If I ever figure out how to get it working with unlanded mages
 	has_perk = $PERK_NAME$
 }
@@ -63,23 +74,130 @@ spell_magic_cost_by_tier = {
 	}
 }
 
+conservative_spell_magic_cost_raw = {
+	OR = {
+		trigger_if = {
+			limit = { has_variable = magic_counter } 
+			NOT = {
+				any_councillor = {
+					is_performing_council_task = task_court_mage_cast_spells
+				}
+			}
+			magic_counter_double >= $COST$
+		}
+		trigger_else = {
+			always = no
+		}
+		any_councillor = {
+			trigger_if = {
+				limit = { 
+					is_performing_council_task = task_court_mage_cast_spells
+					exists = var:magic_counter 
+				}
+				magic_counter_double >= root.$COST$
+			}
+			trigger_else = {
+				always = no
+			}
+		}
+	}
+}
+
+conservative_spell_magic_cost_by_tier = {
+	conservative_spell_magic_cost_raw = {
+		COST = tier_$TIER$_spell
+	}
+}
+
 can_access_magic = {
 	is_adult = yes
 	has_trait_with_flag = enables_magic
 	NOT = { has_trait_with_flag = can_not_access_magic }
 }
 
-court_mage_is_casting = {
-	trigger_if = {
-		limit = {exists = cp:councillor_court_mage}
-		AND = {
-		any_councillor = {is_performing_council_task = task_court_mage_cast_spells}
-		cp:councillor_court_mage = {has_variable = magical_prowess}
-			}
+can_access_magic_including_children = {
+	has_trait_with_flag = enables_magic
+	NOT = { has_trait_with_flag = can_not_access_magic }
+}
+
+############################
+# MOON TRIGGERS			   #
+############################
+
+is_any_good_moon_trigger = {
+	OR = {
+		is_full_moon_trigger = yes
+		is_gibbous_moon_trigger = yes
+	}
+}
+
+is_any_bad_moon_trigger = {
+	OR = {
+		is_new_moon_trigger = yes
+		is_crescent_moon_trigger = yes
+	}
+}
+
+is_gibbous_moon_trigger = {
+	exists = global_var:current_moon_phase
+	global_var:current_moon_phase = {
+		OR = {
+			var:moon_phase_name = flag:waxing_gibbous_moon
+			var:moon_phase_name = flag:waning_gibbous_moon
 		}
-		trigger_else = {
-			always = no
+	}
+}
+
+is_quarter_moon_trigger = {
+	exists = global_var:current_moon_phase
+	global_var:current_moon_phase = {
+		OR = {
+			var:moon_phase_name = flag:first_quarter_moon
+			var:moon_phase_name = flag:last_quarter_moon
 		}
+	}
+}
+
+is_crescent_moon_trigger = {
+	exists = global_var:current_moon_phase
+	global_var:current_moon_phase = {
+		OR = {
+			var:moon_phase_name = flag:waxing_crescent_moon
+			var:moon_phase_name = flag:waning_crescent_moon
+		}
+	}
+}
+
+is_full_moon_trigger = {
+	exists = global_var:current_moon_phase
+	global_var:current_moon_phase = {
+		var:moon_phase_name = flag:full_moon
+	}
+}
+
+is_new_moon_trigger = {
+	exists = global_var:current_moon_phase
+	global_var:current_moon_phase = {
+		var:moon_phase_name = flag:new_moon
+	}
+}
+
+dead_magic_moon_lvl3 = {
+	OR = {
+		is_any_good_moon_trigger = yes
+		NOT = {
+			var:magic_lvl = 3
+		}
+	}
+}
+
+dead_magic_moon_lvl2 = {
+	OR = {
+		is_any_bad_moon_trigger = no
+		NOT = {
+			var:magic_lvl = 2
+		}
+	}
 }
 
 ############################
@@ -205,6 +323,7 @@ has_magic_education_trait_rank = {
 }
 
 can_have_court_magi_trigger = {
+	NOT = { has_trait = gh_wasteland }
 	OR = {
 		has_trait = cynical
 		faith = {
@@ -212,5 +331,15 @@ can_have_court_magi_trigger = {
 				has_doctrine = doctrine_magic_crime
 			}
 		}
+	}
+}
+
+glimpse_reality_choice_not_taken = {
+	NOR = {
+		is_target_in_variable_list = {
+			name = glimpse_reality_choices
+			target = flag:$OPTION$
+		}
+		#has_character_flag = $OPTION$
 	}
 }

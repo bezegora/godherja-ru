@@ -1,12 +1,12 @@
 ﻿calculate_magic_tutoring_outcomes = {
 	if = {
-		limit = { exists = liege }
+		limit = { has_council_position = councillor_court_mage }
 		if = {
 			limit = {
 				OR = {
-					is_performing_council_task = task_court_mage_tutor_magic 
+					is_performing_council_task = task_court_mage_tutor_magic
 					liege = { # Sigh... The problem is that custom council tasks are beyond broken. I cannot figure out a way to get the AI to use anything but the first option. Therefore, this is a crutch so the AI actually educates their children - Hap
-						is_ai = yes 
+						is_ai = yes
 						any_child = {
 							is_adult = no
 							OR = {
@@ -415,7 +415,7 @@ apply_tutoring_to_character = {
 				##################
 				
 				if = {
-					limit = { has_leveled_up = { MAGIC_TYPE = $MAGIC_TYPE$ RANK = 5 THRESHOLD = 200 MIN_AGE = 14 } }
+					limit = { has_leveled_up = { MAGIC_TYPE = $MAGIC_TYPE$ RANK = 4 THRESHOLD = 200 MIN_AGE = 14 } }
 					if = {
 						limit = { 
 							NOT = { any_parent = { is_ai = no } } # In case a parent is the player, fire the event to inform them instead
@@ -430,7 +430,7 @@ apply_tutoring_to_character = {
 					}
 				}
 				else_if = {
-					limit = { has_leveled_up = { MAGIC_TYPE = $MAGIC_TYPE$ RANK = 4 THRESHOLD = 100 MIN_AGE = 12 } }
+					limit = { has_leveled_up = { MAGIC_TYPE = $MAGIC_TYPE$ RANK = 3 THRESHOLD = 100 MIN_AGE = 12 } }
 					if = {
 						limit = { 
 							NOT = { any_parent = { is_ai = no } } # In case a parent is the player, fire the event to inform them instead
@@ -445,7 +445,7 @@ apply_tutoring_to_character = {
 					}
 				}
 				else_if = {
-					limit = { has_leveled_up = { MAGIC_TYPE = $MAGIC_TYPE$ RANK = 3 THRESHOLD = 50 MIN_AGE = 10 } }
+					limit = { has_leveled_up = { MAGIC_TYPE = $MAGIC_TYPE$ RANK = 2 THRESHOLD = 50 MIN_AGE = 10 } }
 					debug_log = "CHEKING IF LEVELLED UP"
 					debug_log_scopes = yes
 					if = {
@@ -462,7 +462,7 @@ apply_tutoring_to_character = {
 					}
 				}
 				else_if = {
-					limit = { has_leveled_up = { MAGIC_TYPE = $MAGIC_TYPE$ RANK = 2 THRESHOLD = 25 MIN_AGE = 6 } }	# THRESHOLD starts at 2 since the magic education traits don't have a rank 1 for historical reasons
+					limit = { has_leveled_up = { MAGIC_TYPE = $MAGIC_TYPE$ RANK = 1 THRESHOLD = 25 MIN_AGE = 6 } }	# THRESHOLD starts at 2 since the magic education traits don't have a rank 1 for historical reasons
 					if = {
 						limit = { 
 							NOT = { any_parent = { is_ai = no } } # In case a parent is the player, fire the event to inform them instead

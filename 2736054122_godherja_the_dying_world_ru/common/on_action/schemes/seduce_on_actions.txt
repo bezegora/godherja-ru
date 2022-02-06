@@ -56,6 +56,8 @@ seduce_ongoing_milestone_2 = {
 	}
 }
 
+
+
 ####################################################################
 # OUTCOME ON ACTIONS
 ####################################################################
@@ -66,9 +68,7 @@ seduce_ongoing_milestone_2 = {
 
 seduce_success = {
 	first_valid = {
-		seduce_outcome.2000 # Bedded the Pope!
 		quix_seduce_outcome.2000 # Imperial Ambition
-		quix_seduce_outcome.2303 # I put a Spell On You
 		seduce_outcome.2307 # Seduce rival/someone you dislike a lot
 		seduce_outcome.2308 # Seduce close family member
 		seduce_outcome.2306 # Spouse seduction
@@ -76,7 +76,7 @@ seduce_success = {
 	fallback = seduce_generic_success
 	effect = {
 		root = {
-			add_achievement_variable = {
+			add_achievement_variable_effect = {
 				VARIABLE = achievement_seductive_variable
 				VALUE = 1
 			}
@@ -101,7 +101,6 @@ seduce_generic_success = {
 		100 = quix_seduce_outcome.2031 # I think we're alone now
 		100 = quix_seduce_outcome.2301 # Clandestine Tryst
 		100 = quix_seduce_outcome.2302 # Stow Away
-		100 = quix_seduce_outcome.2303 # I put a spell on you
 		100 = quix_seduce_outcome.2304 # A Festive Evening
 		100 = quix_seduce_outcome.2305 # Fit for a King
 		150 = seduce_outcome.2010 # Both Drunkards
@@ -117,6 +116,7 @@ seduce_generic_success = {
 		100 = seduce_outcome.2309 # Sex scene is generated
 	}	
 }
+
 
 ############################
 # Fire Failure event

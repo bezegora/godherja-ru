@@ -1,0 +1,320 @@
+﻿
+initialize_all_study_chains_effect = {
+	initialize_study_chain_effect = { NAME = legal_study }
+	scope:legal_study = {
+		add_study_node_effect = { 
+			NAME = the_pillars_of_virtue 
+			TYPE = book
+			PREDECESSOR_NODE_NAME = none
+			DIFFICULTY = 6
+			REWARD_AMOUNT = minor_jurist_progress_value
+		}
+		scope:the_pillars_of_virtue = {
+			add_special_reward_effect = { NAME = learning_reward AMOUNT = 1 }
+		}
+		add_study_node_effect = { 
+			NAME = the_records_of_the_first_wardens_court 
+			TYPE = book 
+			PREDECESSOR_NODE_NAME = the_pillars_of_virtue 
+			DIFFICULTY = 8
+			REWARD_AMOUNT = medium_jurist_progress_value
+		}
+		scope:the_records_of_the_first_wardens_court = {
+			add_special_reward_effect = { NAME = diplomacy_reward AMOUNT = 1 }
+		}
+		add_study_node_effect = { 
+			NAME = the_book_of_days 
+			TYPE = book 
+			PREDECESSOR_NODE_NAME = the_records_of_the_first_wardens_court 
+			DIFFICULTY = 16
+			REWARD_AMOUNT = major_jurist_progress_value
+		}
+		scope:the_book_of_days = {
+			add_special_reward_effect = { NAME = stewardship_reward AMOUNT = 3 }
+		}
+		add_study_node_effect = {
+			NAME = the_visions 
+			TYPE = book 
+			PREDECESSOR_NODE_NAME = the_book_of_days 
+			DIFFICULTY = 10
+			REWARD_AMOUNT = minor_jurist_progress_value
+		}
+		scope:the_visions = {
+			add_special_reward_effect = { NAME = learning_reward AMOUNT = 1 }
+		}
+		add_study_node_effect = {
+			NAME = the_marginalia 
+			TYPE = book 
+			PREDECESSOR_NODE_NAME = the_visions 
+			DIFFICULTY = 10
+			REWARD_AMOUNT = medium_jurist_progress_value
+		}
+		scope:the_marginalia = {
+			add_special_reward_effect = { NAME = learning_reward AMOUNT = 1 }
+		}
+	}
+}
+
+initialize_study_chain_effect = {
+	random_ruler = {
+		create_story = {
+			type = story_generic_storage
+			save_scope_as = $NAME$
+		}
+	}
+	if = {
+		limit = { exists = scope:$NAME$ }
+		scope:$NAME$ = {
+			set_variable = {
+				name = study_chain_name
+				value = flag:$NAME$
+			}
+		}
+		add_to_global_variable_list = {
+			name = study_chains_list
+			target = scope:$NAME$
+		}
+	}
+}
+
+add_study_node_effect = {
+	random_ruler = {
+		create_story = {
+			type = story_generic_storage
+			save_scope_as = $NAME$
+		}
+	}
+	if = {
+		limit = { exists = scope:$NAME$ }
+		add_to_variable_list = {
+			name = all_study_nodes_list
+			target = scope:$NAME$
+		}
+		scope:$NAME$ = {
+			set_variable = {
+				name = study_node_name
+				value = flag:$NAME$
+			}
+			set_variable = {
+				name = study_node_type
+				value = flag:$TYPE$
+			}
+			set_variable = {
+				name = study_node_difficulty
+				value = $DIFFICULTY$
+			}
+			set_variable = {
+				name = study_node_reward_amount
+				value = $REWARD_AMOUNT$
+			}
+		}
+		if = {
+			limit = {
+				any_in_list = {
+					variable = all_study_nodes_list
+					var:study_node_name = flag:$PREDECESSOR_NODE_NAME$
+				}
+			}
+			random_in_list = {
+				variable = all_study_nodes_list
+				limit = {
+					var:study_node_name = flag:$PREDECESSOR_NODE_NAME$
+				}
+				save_scope_as = predecessor_node_scope
+			}
+			if = {
+				limit = { exists = scope:predecessor_node_scope }
+				scope:$NAME$ = {
+					set_variable = {
+						name = predecessor_node
+						value = scope:predecessor_node_scope
+					}
+				}
+				scope:predecessor_node_scope = {
+					add_to_variable_list = {
+						name = successor_nodes_list
+						target = scope:$NAME$
+					}
+				}
+				clear_saved_scope = predecessor_node_scope
+			}
+		}
+		else = {
+			add_to_variable_list = {
+				name = initial_study_nodes_list
+				target = scope:$NAME$
+			}
+		}
+	}
+}
+
+add_special_reward_effect = {
+	add_to_variable_list = {
+		name = special_rewards_list
+		target = flag:$NAME$
+	}
+	set_variable = {
+		name = $NAME$
+		value = $AMOUNT$
+	}
+}
+
+get_study_chain_effect = {
+	random_in_global_list = {
+		variable = study_chains_list
+		limit = { var:study_chain_name = flag:$NAME$ }
+		save_scope_as = $NAME$
+	}
+}
+
+get_random_next_study_node_effect = {
+	save_temporary_scope_as = character_scope
+	if = {
+		limit = { exists = $CHAIN_SCOPE$ }
+		$CHAIN_SCOPE$ = {
+			random_in_list = {
+				variable = all_study_nodes_list
+				limit = {
+					scope:character_scope = {
+						NOR = {
+							is_target_in_variable_list = {
+								name = mastered_study_nodes_list
+								target = prev
+							}
+							is_target_in_variable_list = {
+								name = finished_study_nodes_list
+								target = prev
+							}
+						}
+					}
+					OR = {
+						NOT = { exists = var:predecessor_node }
+						scope:character_scope = {	
+							OR = {
+								is_target_in_variable_list = {
+									name = mastered_study_nodes_list
+									target = prev.var:predecessor_node
+								}
+								is_target_in_variable_list = {
+									name = finished_study_nodes_list
+									target = prev.var:predecessor_node
+								}
+							}
+						}
+					}
+				}
+				save_scope_as = picked_study_node
+			}
+		}
+	}
+}
+
+#######################
+# SKILL CHECK EFFECTS #
+#######################
+
+execute_study_node_learning_check_effect = {
+	if = {
+		limit = { exists = $NODE_SCOPE$ }
+		duel = {
+			skill = learning
+			value = $NODE_SCOPE$.var:study_node_difficulty
+			10 = {
+				desc = study_critical_success_tt
+				trigger = {
+					$NODE_SCOPE$ = { has_variable_list = special_rewards_list }
+					exists = scope:studying_intensively
+					NOT = {
+						is_target_in_variable_list = {
+							name = mastered_study_nodes_list
+							target = $NODE_SCOPE$
+						}
+					}
+				}
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = 2
+					max = 40
+					min = -49
+				}
+				send_interface_toast = {
+					title = study_critical_success_tt
+					left_icon = root
+					
+					$SUCCESS_EFFECT$
+					apply_study_node_reward_effects = { NODE_SCOPE = $NODE_SCOPE$ }
+				}
+				add_to_variable_list = {
+					name = mastered_study_nodes_list
+					target = $NODE_SCOPE$
+				}
+			}
+			50 = {
+				desc = study_success_tt
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = 3.5
+					max = 40
+					min = -49
+				}
+				modifier = {
+					factor = 1.5
+					exists = scope:studying_intensively
+				}
+				send_interface_toast = {
+					title = study_success_tt
+					left_icon = root
+					
+					$SUCCESS_EFFECT$
+				}
+				add_to_variable_list = {
+					name = finished_study_nodes_list
+					target = $NODE_SCOPE$
+				}
+			}
+			50 = {
+				desc = study_failure_tt
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = -3.5
+					min = -40
+				}
+				modifier = {
+					factor = 0.75
+					exists = scope:studying_intensively
+				}
+				send_interface_toast = {
+					title = study_failure_tt
+					left_icon = root
+				}
+			}
+		}
+	}
+}
+
+apply_study_node_reward_effects = {
+	if = {
+		limit = { exists = $NODE_SCOPE$.var:diplomacy_reward }
+		add_diplomacy_skill = $NODE_SCOPE$.var:diplomacy_reward
+	}
+	if = {
+		limit = { exists = $NODE_SCOPE$.var:martial_reward }
+		add_martial_skill = $NODE_SCOPE$.var:martial_reward
+	}
+	if = {
+		limit = { exists = $NODE_SCOPE$.var:stewardship_reward }
+		add_stewardship_skill = $NODE_SCOPE$.var:stewardship_reward
+	}
+	if = {
+		limit = { exists = $NODE_SCOPE$.var:intrigue_reward }
+		add_intrigue_skill = $NODE_SCOPE$.var:intrigue_reward
+	}
+	if = {
+		limit = { exists = $NODE_SCOPE$.var:learning_reward }
+		add_learning_skill = $NODE_SCOPE$.var:learning_reward
+	}
+	if = {
+		limit = { exists = $NODE_SCOPE$.var:prowess_reward }
+		add_prowess_skill = $NODE_SCOPE$.var:prowess_reward
+	}
+}

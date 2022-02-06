@@ -1,8 +1,8 @@
-﻿sarradonian_religion= {
+﻿sarradonian_religion = {
 	family = gh_sarradonian
-	doctrine = standard_hostility_doctrine
+	doctrine = sarradonian_hostility_doctrine
 	doctrine = doctrine_monogamy
-	doctrine = doctrine_gender_male_dominated
+	doctrine = doctrine_gender_equal
 	doctrine = doctrine_consanguinity_aunt_nephew_and_uncle_niece
 	doctrine = doctrine_divorce_allowed
 	doctrine = doctrine_bastardry_none
@@ -20,7 +20,7 @@
 	doctrine = doctrine_theocracy_lay_clergy
 
 	doctrine = doctrine_clerical_function_alms_and_pacification
-	doctrine = doctrine_clerical_gender_male_only
+	doctrine = doctrine_clerical_gender_either
 	doctrine = doctrine_clerical_marriage_allowed
 	doctrine = doctrine_clerical_succession_temporal_fixed_appointment
 	doctrine = doctrine_formal_coronation
@@ -28,7 +28,7 @@
 	
 	#Belief
 	doctrine = doctrine_sacred_scriptures
-	doctrine = doctrine_ditheistic
+	doctrine = doctrine_antitheistic
 	doctrine = doctrine_ethereal_immortal
 	doctrine = doctrine_theistic_creation
 	doctrine = doctrine_archangels
@@ -51,8 +51,8 @@
 	doctrine = special_doctrine_is_wardenite_faith
 
 	traits = {
-		virtues = { temperate just diligent }
-		sins = { gluttonous greedy wrathful }
+		virtues = { honest just = { monthly_piety = 1 learning_per_piety_level = 1 } diligent }
+		sins = { deceitful arbitrary lazy }
 	}
 
 	reserved_male_names = {
@@ -61,7 +61,7 @@
 	}
 
 	custom_faith_icons = {
-		wardenite_custom_blue_icon wardenite_custom_purple_icon wardenite_custom_red_icon wardenite_custom_teal_icon wardenite_icon 
+		wardenite_custom_blue_icon wardenite_custom_purple_icon wardenite_custom_red_icon wardenite_custom_teal_icon wardenite_icon wardenite_haradar_custom_purple_icon wardenite_haradar_custom_green_icon wardenite_haradar_custom_red_icon wardenite_harfi_custom_green_icon wardenite_harfi_custom_blue_icon wardenite_harfi_custom_purple_icon wardenite_kathsiti_custom_blue_icon wardenite_kathsiti_custom_red_icon wardenite_kathsiti_custom_purple_icon wardenite_ruidari_custom_purple_icon wardenite_ruidari_custom_green_icon wardenite_ruidari_custom_red_icon wardenite_kothoria_icon_custom1 wardenite_kothoria_icon_custom2 wardenite_kothoria_icon_custom3 wardenite_kothoria_icon_custom4 wardenite_kothoria_icon_custom5 wardenite_kothoria_icon_custom6 wardenite_kothoria_icon_custom7 wardenite_kothoria_icon_custom8 wardenite_kothoria_icon_custom9 wardenite_kothoria_icon_custom10 wardenite_kothoria_icon_custom11 wardenite_kothoria_icon_custom12 wardenite_kothoria_icon_custom13 wardenite_aversarian_custom_icon
 	}
 
 	holy_order_names = {
@@ -233,22 +233,25 @@
 			icon = wardenite_icon
 			religious_head = d_warden_1
 
-			holy_site = pelinekin
+			holy_site = wardens_dungeon
 			holy_site = el_qulatha
 			holy_site = zabiwkhah
-			holy_site = sulamaniyah
+			holy_site = kudahhar
+			holy_site = disuwai
+			holy_site = kashalfa
 
 			#Tenet:
-			doctrine = tenet_tax_nonbelievers
-			doctrine = tenet_legalism
+			doctrine = tenet_wardenite_legalism
+			doctrine = tenet_legalistic_diversity
 			doctrine = tenet_adaptive
 
 			#DOCTRINES:
 			#succession
-			doctrine = muhammad_succession_sunni_doctrine
+			doctrine = wardenite_mainstream_doctrine
 
 			#Leadership
 			doctrine = doctrine_temporal_head
+			doctrine = doctrine_gender_male_dominated
 
 			#Laws 
 			doctrine = doctrine_pluralism_pluralistic
@@ -258,14 +261,16 @@
 			icon = wardenite_harthahi_icon
 			religious_head = d_warden_2
 
-			doctrine = tenet_literalism
-			doctrine = tenet_religious_legal_pronouncements
+			doctrine = tenet_wardenite_legalism
+			doctrine = tenet_legalistic_diversity
 			doctrine = tenet_tax_nonbelievers
 
-			holy_site = pelinekin
+			holy_site = wardens_dungeon
 			holy_site = el_qulatha
 			holy_site = zabiwkhah
-			holy_site = sulamaniyah
+			holy_site = kudahhar
+			holy_site = disuwai
+			holy_site = kashalfa
 
 			#doctrines
 			doctrine = doctrine_homosexuality_crime
@@ -274,67 +279,76 @@
 			doctrine = doctrine_deviancy_crime
 			doctrine = doctrine_pluralism_fundamentalist
 			doctrine = doctrine_clerical_function_recruitment
+			doctrine = wardenite_mainstream_doctrine
 			
 			localization = {
 				WarGodName = harthahi_war_god_name
 				WarGodNamePossessive = harthahi_war_god_name_possessive
 			}
-		 }
+		}
 		ruidari = {#Mughals
 			color = { 0.4 0.6 0.1}
 			icon = wardenite_ruidari_icon
 			religious_head = d_warden
-
+			
+			doctrine = tenet_wardenite_legalism
 			doctrine = tenet_adaptive
-			doctrine = tenet_religious_legal_pronouncements
 			doctrine = tenet_tax_nonbelievers
 
-			holy_site = pelinekin
+			holy_site = wardens_dungeon
 			holy_site = el_qulatha
 			holy_site = zabiwkhah
-			holy_site = sulamaniyah
+			holy_site = kudahhar
+			holy_site = disuwai
+			holy_site = kashalfa
 
 			#doctrines
 			doctrine = doctrine_pluralism_pluralistic
 			doctrine = doctrine_autonomous
 			doctrine = doctrine_personal
-		 }
+			doctrine = wardenite_mainstream_doctrine
+		}
 		kathsiti = {#Western heresy
 			color = { 0.1 0.3 0.2}
 			icon = wardenite_kathsiti_icon
 			religious_head = d_kathsiti_rel
 
-			doctrine = tenet_literalism
+			doctrine = tenet_wardenite_legalism
 			doctrine = tenet_religious_legal_pronouncements
 			doctrine = tenet_legalism
 			
 			doctrine = doctrine_theocracy_temporal
 
-			holy_site = pelinekin
+			holy_site = wardens_dungeon
 			holy_site = el_qulatha
 			holy_site = zabiwkhah
-			holy_site = sulamaniyah
+			holy_site = kudahhar
+			holy_site = disuwai
+			holy_site = kashalfa
 
 			#doctrines
 			doctrine = doctrine_spiritual_head
 			doctrine = doctrine_clerical_function_recruitment
-		 }
+			doctrine = wardenite_idealist_doctrine
+		}
 		harfi = {#another one
 			color = { 0.3 0.3 0.4}
 			icon = wardenite_harfi_icon
 
 			doctrine = tenet_literalism
-			doctrine = tenet_religious_legal_pronouncements
+			doctrine = tenet_wardenite_legalism
 			doctrine = tenet_pentarchy
 			religious_head = d_harfi_rel
 			
 			doctrine = doctrine_theocracy_lay_clergy
 
-			holy_site = pelinekin
+			holy_site = wardens_dungeon
 			holy_site = el_qulatha
 			holy_site = zabiwkhah
-			holy_site = sulamaniyah
-
+			holy_site = kudahhar
+			holy_site = disuwai
+			holy_site = kashalfa
+			doctrine = wardenite_radical_doctrine
 			#doctrines
 			doctrine = doctrine_homosexuality_crime
 			doctrine = doctrine_adultery_men_crime
@@ -343,7 +357,7 @@
 			doctrine = doctrine_pluralism_fundamentalist
 			doctrine = doctrine_clerical_function_recruitment
 			doctrine = doctrine_immortal
-		 }
+		}
 		haradar = {#Assassins
 			color = { 0.3 0.6 0.3}
 			icon = wardenite_haradar_icon
@@ -351,12 +365,14 @@
 
 			doctrine = tenet_false_conversion_sanction
 			doctrine = tenet_sacred_shadows
-			doctrine = tenet_tax_nonbelievers
+			doctrine = tenet_magi_slayers
 
-			holy_site = pelinekin
+			holy_site = wardens_dungeon
 			holy_site = el_qulatha
 			holy_site = zabiwkhah
-			holy_site = sulamaniyah
+			holy_site = kudahhar
+			holy_site = disuwai
+			holy_site = kashalfa
 
 			#doctrines
 			doctrine = doctrine_homosexuality_crime
@@ -366,8 +382,103 @@
 			doctrine = doctrine_pluralism_fundamentalist
 			doctrine = doctrine_clerical_function_recruitment
 			doctrine = doctrine_magic_crime
+			doctrine = wardenite_traditionalist_doctrine
+		}
+		asdraqi = { #invaders in Damota
+			color = { 0.5 0.6 0.1}
+			icon = wardenite_haradar_custom_red_icon
+			doctrine = tenet_literalism
+			doctrine = tenet_religious_legal_pronouncements
+			doctrine = tenet_warmonger
+			religious_head = d_asdraqi_rel
 			
-		 }
+			doctrine = doctrine_theocracy_lay_clergy
+
+			holy_site = wardens_dungeon
+			holy_site = el_qulatha
+			holy_site = zabiwkhah
+			holy_site = kudahhar
+			holy_site = disuwai
+			holy_site = kashalfa
+			doctrine = wardenite_radical_doctrine
+			#doctrines
+			doctrine = doctrine_homosexuality_crime
+			doctrine = doctrine_adultery_men_crime
+			doctrine = doctrine_adultery_women_crime
+			doctrine = doctrine_deviancy_crime
+			doctrine = doctrine_pluralism_fundamentalist
+			doctrine = doctrine_clerical_function_recruitment
+			doctrine = doctrine_immortal
+		}
+		kothori = {
+			color = { 0.5 0.6 0.5}
+			icon = wardenite_kothoria_icon
+			doctrine = tenet_ritual_hospitality
+			doctrine = tenet_religious_legal_pronouncements
+			doctrine = tenet_pentarchy
+			religious_head = d_kothori_rel
+			
+			doctrine = doctrine_theocracy_lay_clergy
+
+			holy_site = wardens_dungeon
+			holy_site = el_qulatha
+			holy_site = zabiwkhah
+			holy_site = kudahhar
+			holy_site = disuwai
+			holy_site = kashalfa
+			doctrine = wardenite_radical_doctrine
+			#doctrines
+			doctrine = doctrine_homosexuality_crime
+			doctrine = doctrine_adultery_men_crime
+			doctrine = doctrine_adultery_women_crime
+			doctrine = doctrine_deviancy_crime
+			doctrine = doctrine_pluralism_fundamentalist
+			doctrine = doctrine_clerical_function_recruitment
+			doctrine = doctrine_immortal
+		}
+		stranuni = {
+			color = { 0.2 0.6 0.4 }
+			icon = wardenite_kathsiti_custom_blue_icon
+			religious_head = d_stranuni_rel
+
+			holy_site = wardens_dungeon
+			holy_site = el_qulatha
+			holy_site = zabiwkhah
+			holy_site = kashalfa
+			holy_site = geminam
+
+			#Tenet:
+			doctrine = tenet_wardenite_legalism
+			doctrine = tenet_ritual_celebrations
+			doctrine = tenet_communal_identity
+
+			#DOCTRINES:
+			#succession
+			doctrine = wardenite_radical_doctrine
+
+			#Leadership
+			doctrine = doctrine_temporal_head
+		}
+		badari = {
+			color = { 0.75 0.75 0.99 }
+			icon = badari_icon
+			
+			#Special Tolerance
+			doctrine = wardenite_radical_doctrine
+
+			holy_site = wardens_dungeon
+			holy_site = el_qulatha
+			holy_site = zabiwkhah
+			holy_site = knossos
+			holy_site = geminam
+
+			#Tenets
+			doctrine = tenet_wardenite_legalism
+			doctrine = tenet_eight_syncretism
+			doctrine = tenet_blind_justice
+
+			holy_order_names = {
+			}
+		}
     }
-}
-		
+}	

@@ -1,0 +1,59 @@
+﻿hoodwink_interaction = {
+	category = interaction_category_hostile
+	interface_priority = 90
+	icon = gold
+
+	send_name = START_SCHEME
+	ignores_pending_interaction_block = yes
+
+	is_shown = {
+		bilateral_ruin_diplomatic_block = yes
+		NOT = { scope:actor = scope:recipient }
+		scope:recipient = { is_adult = yes }
+		scope:actor = { is_adult = yes }
+
+		# Recipient must actually have some money to their name
+		scope:recipient = { gold >= 0 }
+		
+		# You can't scam fogeaters
+		NOT = {
+			scope:recipient.faith = { has_doctrine = tenet_the_mistmothers_speak }
+		}
+		
+		# You need to have access to the interaction via a clique
+		scope:actor = {
+			trigger_if = {
+				limit = { has_variable = character_clique }
+				clique_has_aspect = { CLIQUE = var:character_clique ASPECT = enables_hoodwink }
+			}
+			trigger_else = {
+				always = no
+			}
+		}
+	}
+
+	is_valid_showing_failures_only = {
+		scope:recipient = { NOT = { has_strong_hook = scope:actor } }
+		scope:recipient = { NOT = { has_variable = was_recently_hoodwinked } }
+	}
+
+	desc = hoodwink_interaction_desc
+
+	on_accept = {
+		scope:actor = {
+			stress_impact = {
+				honest = medium_stress_impact_gain
+				just = medium_stress_impact_gain
+			}
+		}
+		hidden_effect = {
+			scope:actor = {
+				trigger_event = philantrianist.0021
+			}
+		}
+	}
+	
+	auto_accept = yes
+
+	# AI for hoodwinking is handled via event
+}

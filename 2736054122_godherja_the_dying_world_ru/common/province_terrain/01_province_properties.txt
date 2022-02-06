@@ -35,48 +35,69 @@
 # NORMAL PROVINCES
 ##################
 
+##################
+# ADJUSTABLE VALUES FOR CHEVALIE AND SURROUNDING KINGDOMS
+# Values as of 02-04-2021 by Zoneling.
+##################
+# Coastal means sea-level in terms of altitude, so it stretches in-lands a bit.
+@chevalie_coastal_south = 0.20
+@chevalie_coastal_north = 0.25
+# Inland means slightly above sea-level or very far from shore, but still around sea-level.
+@chevalie_inland_south = 0.25
+@chevalie_inland_north = 0.30
+# High altitude means almost mountain level, medium means visibly above sea level but still quite a bit below mountain height.
+# Vhig is very high altitude, reserved for abnormally highly placed provinces
+@chevalie_vhigh_altitude = 0.60
+@chevalie_high_altitude = 0.50
+@chevalie_medium_altitude = 0.40
+# Exclusively for kanzerlerij usage, since it's just slightly more south than the rest and all of it is sea-level.
+@de_kanzerlerij = 0.17
+# Exclusively for k_vascanein usage, since they are slighly more norht than the rest 
+@vascanein = 0.40
+
+
 #### k_gisredde
 ### d_peti_gisredde
 ## c_peti_gisredde
 # b_vallguedoc
 2264 ={
-	winter_severity_bias = 0.40
+	winter_severity_bias = @chevalie_coastal_south
 }
 # b_gressone
 5554 ={
-	winter_severity_bias = 0.45
+	winter_severity_bias = @chevalie_coastal_south
 }
 # b_sur_elorn
 5555 ={
-	winter_severity_bias = 0.40
+	winter_severity_bias = @chevalie_coastal_south
 }
 # b_harelport
 3247 ={
-	winter_severity_bias = 0.45
+	winter_severity_bias = @chevalie_coastal_south
 }
 ## c_aarlass
 # b_grandhurn
 3268 ={
-	winter_severity_bias = 0.40
+	winter_severity_bias = @chevalie_coastal_south
 }
 # b_salagnon
 3155 ={
-	winter_severity_bias = 0.40
+	winter_severity_bias = @chevalie_coastal_south
 }
 
 ### d_grande_gisredde
 ## c_grande_gisredde
 # b_bexidel
 2266 ={
-	winter_severity_bias = 0.40
+	winter_severity_bias = @chevalie_coastal_south
 }
 # b_venete
 2267 ={
-	winter_severity_bias = 0.45
+	winter_severity_bias = @chevalie_coastal_south
 }
 # b_orneux
 2268 ={
-	winter_severity_bias = 0.40
+	winter_severity_bias = @chevalie_coastal_south
 }
 
 #### k_de_kanzelerij
@@ -84,286 +105,286 @@
 ## c_chaminx
 # b_gauein
 2546 ={
-	winter_severity_bias = 0.40
+	winter_severity_bias = @de_kanzerlerij
 }
 # b_graute
 2547 ={
-	winter_severity_bias = 0.40
+	winter_severity_bias = @de_kanzerlerij
 }
 # b_fuixe
 2548 ={
-	winter_severity_bias = 0.40
+	winter_severity_bias = @de_kanzerlerij
 }
 # b_terraf
 2549 ={
-	winter_severity_bias = 0.40
+	winter_severity_bias = @de_kanzerlerij
 }
 ## c_nuevab
 # b_mavaue
 2550 ={
-	winter_severity_bias = 0.40
+	winter_severity_bias = @de_kanzerlerij
 }
 # b_saracourt 
 2551 ={
-	winter_severity_bias = 0.40
+	winter_severity_bias = @de_kanzerlerij
 }
 # b_droins
 2552 = {
-	winter_severity_bias = 0.40
+	winter_severity_bias = @de_kanzerlerij
 }
 # b_wellesmount
 2557 = {
-	winter_severity_bias = 0.40
+	winter_severity_bias = @de_kanzerlerij
 }
 ## c_horavue
 # b_bracein
 2554 = {
-	winter_severity_bias = 0.40
+	winter_severity_bias = @de_kanzerlerij
 }
 # b_cvaein
 2553 = {
-	winter_severity_bias = 0.40
+	winter_severity_bias = @de_kanzerlerij
 }
 # b_nozuex
 2555 = {
-	winter_severity_bias = 0.40
+	winter_severity_bias = @de_kanzerlerij
 }
 # b_ouibau
 2556 = {
-	winter_severity_bias = 0.40
+	winter_severity_bias = @de_kanzerlerij
 }
 ## c_conersc
 # b_cours
 2558 = {
-	winter_severity_bias = 0.40
+	winter_severity_bias = @de_kanzerlerij
 }
 # b_boransc
 2559 = {
-	winter_severity_bias = 0.40
+	winter_severity_bias = @de_kanzerlerij
 }
 ### d_novre
 ## c_gourdaine
 # b_sacetimu
 2576 = {
-	winter_severity_bias = 0.40
+	winter_severity_bias = @de_kanzerlerij
 }
 # b_deirieux
 2577 = {
-	winter_severity_bias = 0.40
+	winter_severity_bias = @de_kanzerlerij
 }
 # b_sassain
 2578 = {
-	winter_severity_bias = 0.40
+	winter_severity_bias = @de_kanzerlerij
 }
 # b_bofsien
 2560 = {
-	winter_severity_bias = 0.40
+	winter_severity_bias = @de_kanzerlerij
 }
 ## c_varidean
 # b_zari
 2562 = {
-	winter_severity_bias = 0.40
+	winter_severity_bias = @de_kanzerlerij
 }
 # b_cariefeue
 2563 = {
-	winter_severity_bias = 0.40
+	winter_severity_bias = @de_kanzerlerij
 }
 # b_cardeiene
 2564 = {
-	winter_severity_bias = 0.40
+	winter_severity_bias = @de_kanzerlerij
 }
 # b_shacoruse
 2561 = {
-	winter_severity_bias = 0.40
+	winter_severity_bias = @de_kanzerlerij
 }
 ### d_itiuelc
 ## c_yaffenguiem
 # b_scurtven
 2572 = {
-	winter_severity_bias = 0.40
+	winter_severity_bias = @de_kanzerlerij
 }
 # b_becene
 2573 = {
-	winter_severity_bias = 0.40
+	winter_severity_bias = @de_kanzerlerij
 }
 # b_docersonc
 2574 = {
-	winter_severity_bias = 0.40
+	winter_severity_bias = @de_kanzerlerij
 }
 # b_salvaige
 2575 = {
-	winter_severity_bias = 0.40
+	winter_severity_bias = @de_kanzerlerij
 }
 ## c_iredenc
 # b_cascaine
 2598 = {
-	winter_severity_bias = 0.40
+	winter_severity_bias = @de_kanzerlerij
 }
 # b_plaienf
 2599 = {
-	winter_severity_bias = 0.40
+	winter_severity_bias = @de_kanzerlerij
 }
 # b_doen
 2600 = {
-	winter_severity_bias = 0.40
+	winter_severity_bias = @de_kanzerlerij
 }
 # b_hacruin
 2601 = {
-	winter_severity_bias = 0.40
+	winter_severity_bias = @de_kanzerlerij
 }
 # b_diacovs
 2605 = {
-	winter_severity_bias = 0.40
+	winter_severity_bias = @de_kanzerlerij
 }
 ## c_eyervened
 # b_govrindhiend
 2602 = {
-	winter_severity_bias = 0.40
+	winter_severity_bias = @de_kanzerlerij
 }
 # b_dovgroius
 2603 = {
-	winter_severity_bias = 0.40
+	winter_severity_bias = @de_kanzerlerij
 }
 # b_favrecuex
 2604 = {
-	winter_severity_bias = 0.40
+	winter_severity_bias = @de_kanzerlerij
 }
 # b_larde
 2594 = {
-	winter_severity_bias = 0.40
+	winter_severity_bias = @de_kanzerlerij
 }
 ### d_toufranc
 ## c_perfeux
 # b_beretrusc
 2565 = {
-	winter_severity_bias = 0.40
+	winter_severity_bias = @de_kanzerlerij
 }
 # b_dacleau
 2566 = {
-	winter_severity_bias = 0.40
+	winter_severity_bias = @de_kanzerlerij
 }
 # b_galment
 2567 = {
-	winter_severity_bias = 0.40
+	winter_severity_bias = @de_kanzerlerij
 }
 # b_duts 
 2568 = {
-	winter_severity_bias = 0.40
+	winter_severity_bias = @de_kanzerlerij
 }
 ## c_mirstreamir
 # b_mostrefeus
 2570 = {
-	winter_severity_bias = 0.40
+	winter_severity_bias = @de_kanzerlerij
 }
 # b_frocreteu
 2569 = {
-	winter_severity_bias = 0.40
+	winter_severity_bias = @de_kanzerlerij
 }
 # b_forcengede
 2571 = {
-	winter_severity_bias = 0.40
+	winter_severity_bias = @de_kanzerlerij
 }
 ## c_hierdein
 # b_godrenscifei
 2582 = {
-	winter_severity_bias = 0.40
+	winter_severity_bias = @de_kanzerlerij
 }
 # b_mrovenguire
 2579 = {
-	winter_severity_bias = 0.40
+	winter_severity_bias = @de_kanzerlerij
 }
 # b_frames
 2580 = {
-	winter_severity_bias = 0.40
+	winter_severity_bias = @de_kanzerlerij
 }
 # b_descres
 2581 = {
-	winter_severity_bias = 0.40
+	winter_severity_bias = @de_kanzerlerij
 }
 ### d_nafele
 ## c_gradiene
 # b_doncei
 2589 = {
-	winter_severity_bias = 0.40
+	winter_severity_bias = @de_kanzerlerij
 }
 # b_theodanes
 3048 = {
-	winter_severity_bias = 0.40
+	winter_severity_bias = @de_kanzerlerij
 }
 # b_arsateia
 3322 = {
-	winter_severity_bias = 0.40
+	winter_severity_bias = @de_kanzerlerij
 }
 # b_phaistias
 3043 = {
-	winter_severity_bias = 0.40
+	winter_severity_bias = @de_kanzerlerij
 }
 ## c_offcensein
 # b_bereind
 2586 = {
-	winter_severity_bias = 0.40
+	winter_severity_bias = @de_kanzerlerij
 }
 # b_oiprens
 2588 = {
-	winter_severity_bias = 0.40
+	winter_severity_bias = @de_kanzerlerij
 }
 ## c_dereintiede
 # b_shraccein
 2583 = {
-	winter_severity_bias = 0.40
+	winter_severity_bias = @de_kanzerlerij
 }
 # b_garuesci
 2584 = {
-	winter_severity_bias = 0.40
+	winter_severity_bias = @de_kanzerlerij
 }
 # b_deppren
 2585 = {
-	winter_severity_bias = 0.40
+	winter_severity_bias = @de_kanzerlerij
 }
 ### d_brofec
 ## c_fiende
 # b_lociederde
 2590 = {
-	winter_severity_bias = 0.40
+	winter_severity_bias = @de_kanzerlerij
 }
 # b_demont
 2587 = {
-	winter_severity_bias = 0.40
+	winter_severity_bias = @de_kanzerlerij
 }
 # b_preddac
 2595 = {
-	winter_severity_bias = 0.40
+	winter_severity_bias = @de_kanzerlerij
 }
 # b_ontilescai
 2596 = {
-	winter_severity_bias = 0.40
+	winter_severity_bias = @de_kanzerlerij
 }
 ## c_feigne
 # b_todurn
 2591 = {
-	winter_severity_bias = 0.40
+	winter_severity_bias = @de_kanzerlerij
 }
 # b_debouis
 2592 = {
-	winter_severity_bias = 0.40
+	winter_severity_bias = @de_kanzerlerij
 }
 # b_nicu
 2593 = {
-	winter_severity_bias = 0.40
+	winter_severity_bias = @de_kanzerlerij
 }
 # b_praifuie
 2597 = {
-	winter_severity_bias = 0.40
+	winter_severity_bias = @de_kanzerlerij
 }
 
 ##### e_chevalie
 #### Impassable Terrain
-@western_ranos_mountains = 0.7
-@eastern_ranos_mountains = 0.7
-@western_bastione_mountains = 0.75
-@huge_western_bastione_mountains = 0.9
-@eastern_bastione_mountains = 0.8
-@central_bastione_mountains = 0.7
+@western_ranos_mountains = 0.6
+@eastern_ranos_mountains = 0.6
+@western_bastione_mountains = 0.65
+@huge_western_bastione_mountains = 0.8
+@eastern_bastione_mountains = 0.7
+@central_bastione_mountains = 0.6
 ### western ranos
 7366 = {
 	winter_severity_bias = @western_ranos_mountains
@@ -447,5710 +468,5238 @@
 ## c_clois
 # b_peyrihac
 2269 = {
-	winter_severity_bias = 0.40
+	winter_severity_bias = @chevalie_coastal_north
 }
 # b_loyatann
 2270 = {
-	winter_severity_bias = 0.40
+	winter_severity_bias = @chevalie_coastal_north
 }
 ## c_montceni
 # b_montcornet
 2271 = {
-	winter_severity_bias = 0.45
+	winter_severity_bias = @chevalie_coastal_north
 }
 # b_prefallias
 2272 = {
-	winter_severity_bias = 0.60
+	winter_severity_bias = @chevalie_coastal_north
 }
 # b_annonais
 2273 = {
-	winter_severity_bias = 0.55
+	winter_severity_bias = @chevalie_inland_north
 }
 ## c_eglenaste
 # b_bivies
 2274 = {
-	winter_severity_bias = 0.40
+	winter_severity_bias = @chevalie_coastal_north
 }
 # b_odoginac
 2275 = {
-	winter_severity_bias = 0.60
+	winter_severity_bias = @chevalie_inland_north
 }
 ## c_levagnane
 # b_vierlucon
 2288 = {
-	winter_severity_bias = 0.45
+	winter_severity_bias = @chevalie_coastal_north
 }
 # b_tillyes
 2289 = {
-	winter_severity_bias = 0.45
+	winter_severity_bias = @chevalie_coastal_north
 }
 # b_collesie
 2290 = {
-	winter_severity_bias = 0.60
+	winter_severity_bias = @chevalie_inland_north
 }
 ## c_vizellia
 # b_briatriste
 2291 = {
-	winter_severity_bias = 0.45
+	winter_severity_bias = @chevalie_coastal_north
 }
 # b_archamp_de_clan
 2292 = {
-	winter_severity_bias = 0.45
+	winter_severity_bias = @chevalie_coastal_north
 }
 # b_fossay
 2293 = {
-	winter_severity_bias = 0.45
+	winter_severity_bias = @chevalie_coastal_north
 }
 ## c_videlier
 # b_boede
 2294 = {
-	winter_severity_bias = 0.60
+	winter_severity_bias = @chevalie_coastal_north
 }
 # b_brixate
 2295 = {
-	winter_severity_bias = 0.50
+	winter_severity_bias = @chevalie_coastal_north
 }
 # b_clois_en_eau
 2296 = {
-	winter_severity_bias = 0.50
+	winter_severity_bias = @chevalie_coastal_north
 }
 ## c_andalau
 # b_saint_anic
 2297 = {
-	winter_severity_bias = 0.55
+	winter_severity_bias = @chevalie_medium_altitude
 }
 # b_moyenposse
 2298 = {
-	winter_severity_bias = 0.65
+	winter_severity_bias = @chevalie_medium_altitude
 }
 ## c_de_bassneux
 # b_cherves
 2311 = {
-	winter_severity_bias = 0.45
+	winter_severity_bias = @chevalie_coastal_north
 }
 # b_chanaclaau
 2312 = {
-	winter_severity_bias = 0.45
+	winter_severity_bias = @chevalie_coastal_north
 }
 # b_mondbastione
 2313 = {
-	winter_severity_bias = 0.50
+	winter_severity_bias = @chevalie_coastal_north
 }
 ## c_queveree
 # b_vilnecroz
 2316 = {
-	winter_severity_bias = 0.50
+	winter_severity_bias = @chevalie_coastal_north
 }
 # b_aspacheux
 2317 = {
-	winter_severity_bias = 0.55
+	winter_severity_bias = @chevalie_coastal_north
 }
 ## c_auberley
 # b_montenee
 2318 = {
-	winter_severity_bias = 0.50
-}
-# b_sevrenex
-2319 = {
-	winter_severity_bias = 0.50
+	winter_severity_bias = @chevalie_coastal_north
 }
 # b_mielede
 2320 = {
-	winter_severity_bias = 0.50
+	winter_severity_bias = @chevalie_inland_north
 }
 ## c_chastencroix
 # b_bradercourte
 2338 = {
-	winter_severity_bias = 0.55
+	winter_severity_bias = @chevalie_inland_north
 }
 # b_vastencas
 2339 = {
-	winter_severity_bias = 0.55
+	winter_severity_bias = @chevalie_inland_north
 }
 # b_pacciontels
 2337 = {
-	winter_severity_bias = 0.60
+	winter_severity_bias = @chevalie_medium_altitude
 }
 ## c_hoekedic
 # b_alonz_den_orbneux
 2332 = {
-	winter_severity_bias = 0.70
+	winter_severity_bias = @chevalie_medium_altitude
 }
 # b_clegrons
 2333 = {
-	winter_severity_bias = 0.70
+	winter_severity_bias = @chevalie_high_altitude
 }
 # b_vergreue
 2334 = {
-	winter_severity_bias = 0.65
+	winter_severity_bias = @chevalie_high_altitude
 }
 ## c_connac
 # b_thonil
 2335 = {
-	winter_severity_bias = 0.70
+	winter_severity_bias = @chevalie_high_altitude
 }
 # b_esclotten
 2336 = {
-	winter_severity_bias = 0.70
+	winter_severity_bias = @chevalie_high_altitude
 }
 ## c_ranosmont 
 # b_montrichaad
 2314 = {
-	winter_severity_bias = 0.55
+	winter_severity_bias = @chevalie_medium_altitude
 }
 # b_sant_albaux
 2315 = {
-	winter_severity_bias = 0.55
+	winter_severity_bias = @chevalie_medium_altitude
 }
 ### d_mozenac
 ## c_sant_de_ranos
 # b_corneux
 2276 = {
-	winter_severity_bias = 0.50
+	winter_severity_bias = @chevalie_inland_north
 }
 # b_ligni
 2278 = {
-	winter_severity_bias = 0.55
+	winter_severity_bias = @chevalie_medium_altitude
 }
 # b_chastel_de_montcornet
 2277 = {
-	winter_severity_bias = 0.45
+	winter_severity_bias = @chevalie_coastal_south
 }
 ## c_tillieze
 # b_marmont
 2281 = {
-	winter_severity_bias = 0.40
+	winter_severity_bias = @chevalie_coastal_south
 }
 # b_de_sur_en_da_aubien
 2282 = {
-	winter_severity_bias = 0.40
+	winter_severity_bias = @chevalie_coastal_south
 }
 # b_chevaliette
 2283 = {
-	winter_severity_bias = 0.40
+	winter_severity_bias = @chevalie_coastal_south
 }
 ## c_luisautte
 # b_orbneux
 2278 = {
-	winter_severity_bias = 0.50
+	winter_severity_bias = @chevalie_inland_south
 }
 # b_elthon
 2280 = {
-	winter_severity_bias = 0.45
+	winter_severity_bias = @chevalie_inland_south
 }
 ## c_chevarie
 # b_maascroen
 2284 = {
-	winter_severity_bias = 0.50
+	winter_severity_bias = @chevalie_inland_south
 }
 # b_auritou
 2285 = {
-	winter_severity_bias = 0.55
+	winter_severity_bias = @chevalie_medium_altitude
 }
 # b_aveli
 2287 = {
-	winter_severity_bias = 0.50
+	winter_severity_bias = @chevalie_inland_south
 }
 # b_banereset
 2286 = {
-	winter_severity_bias = 0.45
+	winter_severity_bias = @chevalie_inland_south
 }
 ## c_arlanex
 # b_coloma
 2300 = {
-	winter_severity_bias = 0.40
+	winter_severity_bias = @chevalie_coastal_south
 }
 # b_mirecourt
 2299 = {
-	winter_severity_bias = 0.60
+	winter_severity_bias = @chevalie_medium_altitude
 }
 # b_upel
 2301 = {
-	winter_severity_bias = 0.60
+	winter_severity_bias = @chevalie_medium_altitude
 }
 ## c_de_rheu
 # b_yevrene
 2302 = {
-	winter_severity_bias = 0.40
+	winter_severity_bias = @chevalie_coastal_south
 }
 # b_gardaray
 2303 = {
-	winter_severity_bias = 0.45
+	winter_severity_bias = @chevalie_inland_south
 }
 ## c_lestoffe
 # b_thair
 2304 = {
-	winter_severity_bias = 0.40
+	winter_severity_bias = @chevalie_coastal_south
 }
 # b_mondraile
 2307 = {
-	winter_severity_bias = 0.40
+	winter_severity_bias = @chevalie_coastal_south
 }
 # b_chaoce
 2305 = {
-	winter_severity_bias = 0.60
+	winter_severity_bias = @chevalie_medium_altitude
 }
 # b_railexcourte
 2306 = {
-	winter_severity_bias = 0.50
+	winter_severity_bias = @chevalie_inland_south
 }
 ## c_morsbac
-# b_chaux
-2308 = {
-	winter_severity_bias = 0.45
-}
 # b_railexcourte_en_de_saulx
 2310 = {
-	winter_severity_bias = 0.55
+	winter_severity_bias = @chevalie_inland_south
 }
 # b_viennde
 2309 = {
-	winter_severity_bias = 0.60
+	winter_severity_bias = @chevalie_medium_altitude
 }
 ## c_oissac
 # b_lann_de_apteaux
 2321 = {
-	winter_severity_bias = 0.40
+	winter_severity_bias = @chevalie_coastal_south
 }
 # b_lingohem
 2323 = {
-	winter_severity_bias = 0.40
+	winter_severity_bias = @chevalie_coastal_south
 }
 # b_cancy
 2322 = {
-	winter_severity_bias = 0.45
+	winter_severity_bias = @chevalie_inland_south
 }
 ## c_cande
 # b_pannecenet
 2324 = {
-	winter_severity_bias = 0.40
+	winter_severity_bias = @chevalie_coastal_south
 }
 # b_mond_cande
 2325 = {
-	winter_severity_bias = 0.40
+	winter_severity_bias = @chevalie_coastal_south
 }
 ## c_noganad
 # b_union
 2329 = {
-	winter_severity_bias = 0.40
+	winter_severity_bias = @chevalie_coastal_south
 }
 # b_damsvale
 2331 = {
-	winter_severity_bias = 0.40
+	winter_severity_bias = @chevalie_coastal_south
+}
+# b_lalande
+2330 = {
+	winter_severity_bias = @chevalie_coastal_south
 }
 ## c_hurginaut
 # b_cornillon
 2326 = {
-	winter_severity_bias = 0.45
-}
-# b_vitrion
-2327 = {
-	winter_severity_bias = 0.50
+	winter_severity_bias = @chevalie_inland_south
 }
 # b_menille
 2328 = {
-	winter_severity_bias = 0.50
+	winter_severity_bias = @chevalie_inland_south
 }
 ## c_cortemes
 # b_julliene
 2344 = {
-	winter_severity_bias = 0.40
+	winter_severity_bias = @chevalie_coastal_south
 }
 # b_lamouran
 2346 = {
-	winter_severity_bias = 0.40
+	winter_severity_bias = @chevalie_coastal_south
 }
 # b_maison_de_sant_timothee
 2345 = {
-	winter_severity_bias = 0.45
+	winter_severity_bias = @chevalie_inland_south
 }
 ## c_axencourte
 # b_vandenville
 2340 = {
-	winter_severity_bias = 0.55
+	winter_severity_bias = @chevalie_medium_altitude
 }
 # b_boez
 2342 = {
-	winter_severity_bias = 0.50
+	winter_severity_bias = @chevalie_inland_south
 }
 # b_lyntte
 2343 = {
-	winter_severity_bias = 0.55
-}
-# b_paschendelles
-2341 = {
-	winter_severity_bias = 0.60
-}
-## c_cortemes
-# b_julliene
-2344 = {
-	winter_severity_bias = 0.40
-}
-# b_lamouran
-2346 = {
-	winter_severity_bias = 0.40
-}
-# b_maison_de_sant_timothee
-2345 = {
-	winter_severity_bias = 0.45
+	winter_severity_bias = @chevalie_inland_south
 }
 ## c_grande_lafadai
 # b_orchinde
 2347 = {
-	winter_severity_bias = 0.60
+	winter_severity_bias = @chevalie_high_altitude
 }
 # b_rejataen
 2348 = {
-	winter_severity_bias = 0.65
+	winter_severity_bias = @chevalie_high_altitude
 }
 #### k_perignan
 ### d_bassons
 ## c_berion
 # b_scasidi
 2436 = {
-	winter_severity_bias = 0.40
+	winter_severity_bias = @chevalie_coastal_south
 }
 # b_niwberde
 2438 = {
-	winter_severity_bias = 0.40
+	winter_severity_bias = @chevalie_coastal_south
 }
 # b_voiye
 2437 = {
-	winter_severity_bias = 0.50
+	winter_severity_bias = @chevalie_inland_south
 }
 ## c_maanasc
 # b_cerohed
 2440 = {
-	winter_severity_bias = 0.40
+	winter_severity_bias = @chevalie_coastal_south
 }
+# b_poiveriens
 2439 = {
-	winter_severity_bias = 0.45
+	winter_severity_bias = @chevalie_inland_south
 }
 ## c_manavoi
 # b_biorsheim
 2442 = {
-	winter_severity_bias = 0.40
+	winter_severity_bias = @chevalie_coastal_south
 }
 # b_doeperone
 2444 = {
-	winter_severity_bias = 0.40
+	winter_severity_bias = @chevalie_coastal_south
 }
 # b_lascoreiux
 2441 = {
-	winter_severity_bias = 0.55
+	winter_severity_bias = @chevalie_medium_altitude
 }
 # b_cirreol
 2443 = {
-	winter_severity_bias = 0.55
+	winter_severity_bias = @chevalie_high_altitude
 }
 ### d_lalande
 ## c_galledoc
 # b_snabriac
 2445 = {
-	winter_severity_bias = 0.40
+	winter_severity_bias = @chevalie_coastal_south
 }
 # b_brenestal
 2447 = {
-	winter_severity_bias = 0.45
+	winter_severity_bias = @chevalie_inland_south
 }
 # b_bialiville
 2446 = {
-	winter_severity_bias = 0.50
+	winter_severity_bias = @chevalie_medium_altitude
 }
 ## c_permapilese
 # b_cieverl
 2449 = {
-	winter_severity_bias = 0.40
+	winter_severity_bias = @chevalie_coastal_south
 }
 # b_braipe
 2448 = {
-	winter_severity_bias = 0.40
+	winter_severity_bias = @chevalie_coastal_south
 }
 # b_brascont
 2450 = {
-	winter_severity_bias = 0.45
+	winter_severity_bias = @chevalie_inland_south
+}
+# b_cambrescou
+2451 = {
+	winter_severity_bias = @chevalie_coastal_south
 }
 ## c_nambre
 # b_aubrsca
 2452 = {
-	winter_severity_bias = 0.40
+	winter_severity_bias = @chevalie_coastal_south
 }
 # b_callebrac
 2453 = {
-	winter_severity_bias = 0.40
+	winter_severity_bias = @chevalie_coastal_south
 }
 # b_santigau
 2454 = {
-	winter_severity_bias = 0.40
+	winter_severity_bias = @chevalie_coastal_south
 }
 ## c_craocastinies
 # b_vascoit
 2456 = {
-	winter_severity_bias = 0.40
+	winter_severity_bias = @chevalie_coastal_south
 }
 # b_porinaut
 2457 = {
-	winter_severity_bias = 0.45
+	winter_severity_bias = @chevalie_inland_south
 }
 # b_brebinac
 2455 = {
-	winter_severity_bias = 0.45
+	winter_severity_bias = @chevalie_inland_south
 }
 ### d_tournezat
 ## c_creprasc
 # b_vallemont
 2458 = {
-	winter_severity_bias = 0.60
+	winter_severity_bias = @chevalie_high_altitude
 }
 # b_predacout
 2459 = {
-	winter_severity_bias = 0.50
+	winter_severity_bias = @chevalie_medium_altitude
 }
 # b_leyledoc
 2460 = {
-	winter_severity_bias = 0.50
+	winter_severity_bias = @chevalie_medium_altitude
 }
 ## c_fuscinaw
 # b_fayien
 2461 = {
-	winter_severity_bias = 0.45
+	winter_severity_bias = @chevalie_inland_south
 }
 # b_dontisc
 2462 = {
-	winter_severity_bias = 0.45
+	winter_severity_bias = @chevalie_inland_south
 }
 ## c_siconbre
 # b_placimont
 2465 = {
-	winter_severity_bias = 0.45
+	winter_severity_bias = @chevalie_inland_south
 }
 # b_brecourt
 2463 = {
-	winter_severity_bias = 0.45
+	winter_severity_bias = @chevalie_medium_altitude
 }
 # b_claci
 2464 = {
-	winter_severity_bias = 0.50
+	winter_severity_bias = @chevalie_medium_altitude
 }
 ### d_vy
 ## c_pefe
 # b_grefein
 2466 = {
-	winter_severity_bias = 0.45
+	winter_severity_bias = @chevalie_medium_altitude
 }
 # b_leci
 2467 = {
-	winter_severity_bias = 0.50
+	winter_severity_bias = @chevalie_high_altitude
 }
 ## c_legaux
 # b_beinen
 2469 = {
-	winter_severity_bias = 0.50
+	winter_severity_bias = @chevalie_medium_altitude
 }
 # b_crefin
 2470 = {
-	winter_severity_bias = 0.50
+	winter_severity_bias = @chevalie_medium_altitude
 }
 # b_harac
 2468 = {
-	winter_severity_bias = 0.45
+	winter_severity_bias = @chevalie_inland_south
 }
 ## c_taris
 # b_grennes
 2471 = {
-	winter_severity_bias = 0.50
+	winter_severity_bias = @chevalie_medium_altitude
 }
 # b_malouse
 2472 = {
-	winter_severity_bias = 0.45
+	winter_severity_bias = @chevalie_medium_altitude
 }
 # b_gryon
 2473 = {
-	winter_severity_bias = 0.45
+	winter_severity_bias = @chevalie_medium_altitude
 }
 ### d_hangancourt
 ## c_pemes
 # b_crem
 2476 = {
-	winter_severity_bias = 0.45
+	winter_severity_bias = @chevalie_inland_south
 }
 # b_seateu
 2477 = {
-	winter_severity_bias = 0.45
+	winter_severity_bias = @chevalie_inland_south
 }
 ## c_niort
 # b_shatceu
 2474 = {
-	winter_severity_bias = 0.40
+	winter_severity_bias = @chevalie_coastal_south
 }
 # b_rios
 2475 = {
-	winter_severity_bias = 0.40
+	winter_severity_bias = @chevalie_coastal_south
 }
 ## c_bregef
 # b_dredoc
 2478 = {
-	winter_severity_bias = 0.40
+	winter_severity_bias = @chevalie_coastal_south
 }
 # b_daawe
 2479 = {
-	winter_severity_bias = 0.40
+	winter_severity_bias = @chevalie_coastal_south
 }
 # b_pratou
 2480 = {
-	winter_severity_bias = 0.40
+	winter_severity_bias = @chevalie_coastal_south
 }
 ## c_paisano
 # b_navis
 2481 = {
-	winter_severity_bias = 0.40
+	winter_severity_bias = @chevalie_coastal_south
 }
 # b_cranpou
 2482 = {
-	winter_severity_bias = 0.40
+	winter_severity_bias = @chevalie_coastal_south
 }
 ### d_poutours
 ## c_bacsi
 # b_vatabi
 2487 = {
-	winter_severity_bias = 0.40
+	winter_severity_bias = @chevalie_coastal_south
 }
 # b_piotes
 2488 = {
-	winter_severity_bias = 0.50
+	winter_severity_bias = @chevalie_inland_south
 }
 # b_grevewiller
 2489 = {
-	winter_severity_bias = 0.45
+	winter_severity_bias = @chevalie_inland_south
 }
 ## c_weversplit
 # b_dilielfince
 2485 = {
-	winter_severity_bias = 0.55
+	winter_severity_bias = @chevalie_medium_altitude
 }
 # b_viglestone
 2486 = {
-	winter_severity_bias = 0.50
+	winter_severity_bias = @chevalie_medium_altitude
 }
 ## c_scoc
 # b_bregasc
 2497 = {
-	winter_severity_bias = 0.55
+	winter_severity_bias = @chevalie_medium_altitude
 }
 # b_courav
 2495 = {
-	winter_severity_bias = 0.50
+	winter_severity_bias = @chevalie_inland_south
 }
 # b_negrevi
 2496 = {
-	winter_severity_bias = 0.45
+	winter_severity_bias = @chevalie_inland_south
 }
 # b_yirac
 2494 = {
-	winter_severity_bias = 0.40
+	winter_severity_bias = @chevalie_coastal_south
 }
 # b_nivettle
 2493 = {
-	winter_severity_bias = 0.40
+	winter_severity_bias = @chevalie_coastal_south
 }
 ## c_ouipaour
 # b_plainount
 2490 = {
-	winter_severity_bias = 0.40
+	winter_severity_bias = @chevalie_coastal_south
 }
 # b_liedeke
 2491 = {
-	winter_severity_bias = 0.40
+	winter_severity_bias = @chevalie_coastal_south
 }
 # b_brucour
 2492 = {
-	winter_severity_bias = 0.40
+	winter_severity_bias = @chevalie_coastal_south
 }
 ### d_aast
 ## c_faiville
 # b_huiex
 2498 ={
-	winter_severity_bias = 0.40
+	winter_severity_bias = @chevalie_coastal_south
 }
 # b_gaurleuf
 2499 = {
-	winter_severity_bias = 0.40
+	winter_severity_bias = @chevalie_coastal_south
 }
 ## c_brauex
 # b_gevrnat
 2500 = {
-	winter_severity_bias = 0.40
+	winter_severity_bias = @chevalie_coastal_south
 }
 # b_opernine
 2501 = {
-	winter_severity_bias = 0.40
+	winter_severity_bias = @chevalie_coastal_south
 }
 # b_iscarni
 2502 = {
-	winter_severity_bias = 0.40
+	winter_severity_bias = @chevalie_coastal_south
 }
 ## c_acsrsc
 # b_manicuri
 2503 = {
-	winter_severity_bias = 0.40
+	winter_severity_bias = @chevalie_coastal_south
 }
 # b_bremcourt
 2504 = {
-	winter_severity_bias = 0.40
+	winter_severity_bias = @chevalie_coastal_south
 }
 ## c_fauxterre
 # b_oberhienten
 2505 = {
-	winter_severity_bias = 0.40
+	winter_severity_bias = @chevalie_coastal_south
 }
 # b_confrede
 2506 = {
-	winter_severity_bias = 0.40
+	winter_severity_bias = @chevalie_coastal_south
 }
 ### d_pontgonez
 ## c_chaudchien
 # b_dravgernhiem
 2507 = {
-	winter_severity_bias = 0.55
+	winter_severity_bias = @chevalie_medium_altitude
 }
 # b_tryniv
 2508 = {
-	winter_severity_bias = 0.50
+	winter_severity_bias = @chevalie_inland_south
 }
 # b_brontmont
 2509 = {
-	winter_severity_bias = 0.50
+	winter_severity_bias = @chevalie_medium_altitude
 }
 ## c_geedern
 # b_scaoport
 2510 = {
-	winter_severity_bias = 0.50
+	winter_severity_bias = @chevalie_medium_altitude
 }
 # b_inclangic
 2511 = {
-	winter_severity_bias = 0.50
+	winter_severity_bias = @chevalie_high_altitude
 }
 # b_zecurdunn
 2512 = {
-	winter_severity_bias = 0.50
+	winter_severity_bias = @chevalie_medium_altitude
 }
 # b_mooringief
 2513 = {
-	winter_severity_bias = 0.45
+	winter_severity_bias = @chevalie_inland_south
 }
 ## c_baliec
 # b_mordorsc
 2515 = {
-	winter_severity_bias = 0.45
+	winter_severity_bias = @chevalie_inland_south
 }
 # b_billagiv
 2516 = {
-	winter_severity_bias = 0.45
+	winter_severity_bias = @chevalie_inland_south
 }
 # b_vaourn
 2514 = {
-	winter_severity_bias = 0.55
+	winter_severity_bias = @chevalie_high_altitude
 }
 ## c_tireic
 # b_saigein
 2408 = {
-	winter_severity_bias = 0.60
+	winter_severity_bias = @chevalie_high_altitude
 }
 # b_kawperde
 2407 = {
-	winter_severity_bias = 0.60
+	winter_severity_bias = @chevalie_high_altitude
 }
 # b_naubor
 2406 = {
-	winter_severity_bias = 0.60
+	winter_severity_bias = @chevalie_high_altitude
 }
 ### d_vallguedoc
 ## c_vaduex
 # b_porfre
 2518 = {
-	winter_severity_bias = 0.40
+	winter_severity_bias = @chevalie_coastal_south
 }
 # b_cavresnof
 2517 = {
-	winter_severity_bias = 0.45
+	winter_severity_bias = @chevalie_coastal_south
 }
 ## c_bevreis
 # b_zinpre
 2519 = {
-	winter_severity_bias = 0.50
+	winter_severity_bias = @chevalie_medium_altitude
 }
 # b_moeux
 2520 = {
-	winter_severity_bias = 0.50
+	winter_severity_bias = @chevalie_inland_south
 }
 ## c_civlaris
 # b_vabline
 2522 = {
-	winter_severity_bias = 0.45
+	winter_severity_bias = @chevalie_coastal_south
 }
 # b_fucinelle
 2521 = {
-	winter_severity_bias = 0.45
+	winter_severity_bias = @chevalie_coastal_south
 }
 ## c_gravgosc
 # b_zaboursc
 2525 = {
-	winter_severity_bias = 0.40
+	winter_severity_bias = @chevalie_coastal_south
 }
 # b_yuicourt
 2523 = {
-	winter_severity_bias = 0.45
+	winter_severity_bias = @chevalie_coastal_south
 }
 # b_dascou
 2526 = {
-	winter_severity_bias = 0.45
+	winter_severity_bias = @chevalie_coastal_south
 }
 # b_ zaboursc
 2525 = {
-	winter_severity_bias = 0.40
+	winter_severity_bias = @chevalie_coastal_south
 }
 # b_meins
 2524 = {
-	winter_severity_bias = 0.40
+	winter_severity_bias = @chevalie_coastal_south
 }
 #### k_varrdevet
 ### d_devex
 ## c_gissegnes
 # b_duralu
 2350 = {
-	winter_severity_bias = 0.50
+	winter_severity_bias = @chevalie_inland_north
 }
 # b_pastriconde
 2349 = {
-	winter_severity_bias = 0.55
+	winter_severity_bias = @chevalie_medium_altitude
 }
 # b_mesnrette
 2351 = {
-	winter_severity_bias = 0.60
+	winter_severity_bias = @chevalie_medium_altitude
 }
 ## c_mandigny
 # b_havenvaulte
 2353 = {
-	winter_severity_bias = 0.55
+	winter_severity_bias = @chevalie_medium_altitude
 }
 # b_sant_sidonnie
 2352 = {
-	winter_severity_bias = 0.55
+	winter_severity_bias = @chevalie_medium_altitude
 }
 # b_hamberly
 2354 = {
-	winter_severity_bias = 0.60
+	winter_severity_bias = @chevalie_high_altitude
 }
 ## c_jochendie
 # b_hambrie
 2355 = {
-	winter_severity_bias = 0.60
+	winter_severity_bias = @chevalie_inland_north
 }
-# b_bianx
+# b_mianx
 2356 = {
-	winter_severity_bias = 0.60
+	winter_severity_bias = @chevalie_inland_north
+}
+# b_ex
+2358 = {
+	winter_severity_bias = @chevalie_inland_north
 }
 # b_leymonde
 2356 = {
-	winter_severity_bias = 0.65
+	winter_severity_bias = @chevalie_medium_altitude
 }
 ### d_ferrond
 ## c_davoi
 # b_lardaur
 2373 = {
-	winter_severity_bias = 0.60
+	winter_severity_bias = @chevalie_medium_altitude
 }
 # b_tregny
 2371 = {
-	winter_severity_bias = 0.65
+	winter_severity_bias = @chevalie_medium_altitude
 }
 # b_crastenties
 2372 = {
-	winter_severity_bias = 0.65
+	winter_severity_bias = @chevalie_high_altitude
 }
 ## c_eslond
 # b_lugleaux
 2374 = {
-	winter_severity_bias = 0.60
+	winter_severity_bias = @chevalie_medium_altitude
 }
 # b_vorsteklooster
 2375 = {
-	winter_severity_bias = 0.65
+	winter_severity_bias = @chevalie_medium_altitude
 }
 # b_opwerde
 2376 = {
-	winter_severity_bias = 0.60
+	winter_severity_bias = @chevalie_medium_altitude
 }
 ## c_suidskolone
 # b_nederwaald
 2377 = {
-	winter_severity_bias = 0.65
+	winter_severity_bias = @chevalie_high_altitude
 }
 # b_korjnull
 2378 = {
-	winter_severity_bias = 0.65
+	winter_severity_bias = @chevalie_high_altitude
 }
 # b_kendzer
 2379 = {
-	winter_severity_bias = 0.60
+	winter_severity_bias = @chevalie_medium_altitude
 }
 # b_wespre
 2380 = {
-	winter_severity_bias = 0.60 
+	winter_severity_bias = @chevalie_medium_altitude 
 }
 ## c_volheis
 # b_draaidermaan
 2381 = {
-	winter_severity_bias = 0.60
+	winter_severity_bias = @chevalie_high_altitude
 }
 # b_hevesliet
 2383 = {
-	winter_severity_bias = 0.65
+	winter_severity_bias = @chevalie_high_altitude
+}
+# b_balderbruge
+2382 = {
+	winter_severity_bias = @chevalie_high_altitude
 }
 ### d_feinde
 ## c_guizforte
 # b_valdore
 2359 = {
-	winter_severity_bias = 0.70
+	winter_severity_bias = @chevalie_high_altitude
 }
 # b_chambrebrande
 2360 = {
-	winter_severity_bias = 0.70
+	winter_severity_bias = @chevalie_high_altitude
 }
 # b_verambye
 2362 = {
-	winter_severity_bias = 0.65
+	winter_severity_bias = @chevalie_high_altitude
 }
 ## c_aubinde
 # b_croutes
 2364 = {
-	winter_severity_bias = 0.65
+	winter_severity_bias = @chevalie_high_altitude
 }
 # b_camien
 2363 = {
-	winter_severity_bias = 0.65
+	winter_severity_bias = @chevalie_high_altitude
 }
 # b_bourande
 2365 = {
-	winter_severity_bias = 0.65
+	winter_severity_bias = @chevalie_high_altitude
 }
 ## c_raincourt
 # b_waldisse
 2369 = {
-	winter_severity_bias = 0.65
+	winter_severity_bias = @chevalie_high_altitude
 }
 # b_murola
 2368 = {
-	winter_severity_bias = 0.65
+	winter_severity_bias = @chevalie_high_altitude
 }
 # b_adainelle
 2370 = {
-	winter_severity_bias = 0.70
+	winter_severity_bias = @chevalie_vhigh_altitude
 }
 ### d_heerde
 ## c_arubosc
 # b_raocourt
 2388 = {
-	winter_severity_bias = 0.70
+	winter_severity_bias = @chevalie_vhigh_altitude
 }
 # b_navarsleit
 2389 = {
-	winter_severity_bias = 0.70
+	winter_severity_bias = @chevalie_high_altitude
 }
 ## c_tarheis
 # b_galac
 2390 = {
-	winter_severity_bias = 0.70
+	winter_severity_bias = @chevalie_vhigh_altitude
 }
 # b_cassot
 2391 = {
-	winter_severity_bias = 0.65
+	winter_severity_bias = @chevalie_high_altitude
 }
 ## c_verheid
 # b_jispinguwte
 2385 = {
-	winter_severity_bias = 0.65
+	winter_severity_bias = @chevalie_high_altitude
 }
 # b_voorhoven
 2384 = {
-	winter_severity_bias = 0.70
+	winter_severity_bias = @chevalie_vhigh_altitude
 }
 # b_ballhuizen
 2386 = {
-	winter_severity_bias = 0.60
+	winter_severity_bias = @chevalie_medium_altitude
 }
 ## c_bourgueit
 # b_roncheine
 2392 = {
-	winter_severity_bias = 0.60
+	winter_severity_bias = @chevalie_high_altitude
 }
 # b_sigolsmont
 2393 = {
-	winter_severity_bias = 0.60
+	winter_severity_bias = @chevalie_high_altitude
 }
 ## c_dontville
 # b_zanderum
 2387 = {
-	winter_severity_bias = 0.55
+	winter_severity_bias = @chevalie_medium_altitude
 }
 # b_caraceit
 2394 = {
-	winter_severity_bias = 0.55
+	winter_severity_bias = @chevalie_medium_altitude
 }
 # b_gaurac
 2395 = {
-	winter_severity_bias = 0.55
+	winter_severity_bias = @chevalie_medium_altitude
 }
 ### d_genoleux
 ## c_nalhallein
 # b_vahfasc
 2401 = {
-	winter_severity_bias = 0.60
+	winter_severity_bias = @chevalie_high_altitude
 }
 # b_laiville
 2400 = {
-	winter_severity_bias = 0.55
+	winter_severity_bias = @chevalie_medium_altitude
 }
 # b_gratz
 2402 = {
-	winter_severity_bias = 0.60
+	winter_severity_bias = @chevalie_medium_altitude
 }
 ## c_fareuex
 # b_grugey
 2396 = {
-	winter_severity_bias = 0.65
+	winter_severity_bias = @chevalie_medium_altitude
 }
 # b_pormont
 2398 = {
-	winter_severity_bias = 0.60
+	winter_severity_bias = @chevalie_medium_altitude
 }
 # b_gareux
 2399 = {
-	winter_severity_bias = 0.60
+	winter_severity_bias = @chevalie_medium_altitude
 }
 # b_giidel
 2397 = {
-	winter_severity_bias = 0.65
+	winter_severity_bias = @chevalie_medium_altitude
 }
 ## c_tretasc
 # b_briyic
 2404 = {
-	winter_severity_bias = 0.60
+	winter_severity_bias = @chevalie_medium_altitude
 }
 # b_ragnec
 2403 = {
-	winter_severity_bias = 0.65
+	winter_severity_bias = @chevalie_medium_altitude
 }
 # b_seenef
 2405 = {
-	winter_severity_bias = 0.65
+	winter_severity_bias = @chevalie_high_altitude
 }
 ### d_portlosmont
 ## c_pekwarde
 # b_snaikporde
 2409 = {
-	winter_severity_bias = 0.65
+	winter_severity_bias = @chevalie_high_altitude
 }
 # b_pording
 2410 = {
-	winter_severity_bias = 0.65
+	winter_severity_bias = @chevalie_high_altitude
 }
 ## c_caxin
 # b_pierroix
 2412 = {
-	winter_severity_bias = 0.60
+	winter_severity_bias = @chevalie_medium_altitude
 }
 # b_fascois
 2413 = {
-	winter_severity_bias = 0.60
+	winter_severity_bias = @chevalie_medium_altitude
 }
 # b_harkinville
 2411 = {
-	winter_severity_bias = 0.65
+	winter_severity_bias = @chevalie_medium_altitude
 }
 ## c_prafocori
 # b_qurancy
 2415 = {
-	winter_severity_bias = 0.60
+	winter_severity_bias = @chevalie_medium_altitude
 }
 # b_acroscra
 2414 = {
-	winter_severity_bias = 0.60
+	winter_severity_bias = @chevalie_medium_altitude
 }
 # b_broaon
 2416 = {
-	winter_severity_bias = 0.60
+	winter_severity_bias = @chevalie_medium_altitude
 }
 # b_yarique
 2417 = {
-	winter_severity_bias = 0.60
+	winter_severity_bias = @chevalie_medium_altitude
 }
 ### d_canard
 ## c_eragasc
 # b_scanacide
 2424 = {
-	winter_severity_bias = 0.60
+	winter_severity_bias = @chevalie_inland_north
 }
 # b_grasse
 2422 = {
-	winter_severity_bias = 0.60
+	winter_severity_bias = @chevalie_inland_north
 }
 # b_pranacce
 2425 = {
-	winter_severity_bias = 0.60
+	winter_severity_bias = @chevalie_inland_north
 }
 # b_bermeiliese
 2423 = {
-	winter_severity_bias = 0.60
+	winter_severity_bias = @chevalie_inland_north
 }
 ## c_granae
 # b_profersleit
 2421 = {
-	winter_severity_bias = 0.65
+	winter_severity_bias = @chevalie_inland_north
 }
 # b_spenica
 2419 = {
-	winter_severity_bias = 0.60
+	winter_severity_bias = @chevalie_inland_north
 }
 # b_praaude
 2418 = {
-	winter_severity_bias = 0.65
+	winter_severity_bias = @chevalie_inland_north
 }
 #### k_vascanein
 ### d_vascas
 ## c_yarincourt
 # b_zasfic
 2814 = {
-	winter_severity_bias = 0.9
+	winter_severity_bias = @vascanein
 }
 # b_varins
 2815 = {
-	winter_severity_bias = 0.9
+	winter_severity_bias = @vascanein
 }
+# Ziemojycz looks pretty high up, but it's relative. In reality it's actually only slightly above sea-level!
 #### k_ziemojycz
 ### d_ziemojycs
 ## c_bytozy
 # b_doni
 2429 = {
-	winter_severity_bias = 0.60
+	winter_severity_bias = @chevalie_inland_north
 }
 # b_douxs
 2431 = {
-	winter_severity_bias = 0.60
+	winter_severity_bias = @chevalie_inland_north
 }
 # b_haives
 2430 = {
-	winter_severity_bias = 0.60
+	winter_severity_bias = @chevalie_inland_north
 }
 ## c_zamoscie_balnzy
 # b_suscosc
 2426 = {
-	winter_severity_bias = 0.65
+	winter_severity_bias = @chevalie_inland_north
 }
 # b_playflaloc
 2427 = {
-	winter_severity_bias = 0.65
+	winter_severity_bias = @chevalie_inland_north
 }
 # b_voriecvude
 2428 = {
-	winter_severity_bias = 0.65
+	winter_severity_bias = @chevalie_inland_north
 }
 ## c_shrascens
 # b_palendoc
 2434 = {
-	winter_severity_bias = 0.65
+	winter_severity_bias = @chevalie_inland_north
 }
 # b_soemsec
 2435 = {
-	winter_severity_bias = 0.65
+	winter_severity_bias = @chevalie_inland_north
 }
 # b_scalentmont
 2433 = {
-	winter_severity_bias = 0.65
+	winter_severity_bias = @chevalie_inland_north
 }
 # b_pianstint
 2432 = {
-	winter_severity_bias = 0.65
+	winter_severity_bias = @chevalie_inland_north
 }
 ### d_elnwo
 ## c_tieresc
 # b_scavdineres
 2624 = {
-	winter_severity_bias = 0.60
+	winter_severity_bias = @chevalie_inland_north
 }
 # b_tovearc
 2625 = {
-	winter_severity_bias = 0.60
+	winter_severity_bias = @chevalie_inland_north
 }
 # b_hartiuex
 2626 = {
-	winter_severity_bias = 0.60
+	winter_severity_bias = @chevalie_inland_north
 }
 # b_goursies
 2627 = {
-	winter_severity_bias = 0.60
+	winter_severity_bias = @chevalie_inland_north
 }
 ## c_sacreinux
 # b_coraniux
 2628 = {
-	winter_severity_bias = 0.65
+	winter_severity_bias = @chevalie_inland_north
 }
 # b_havirens
 2629 = {
-	winter_severity_bias = 0.65
+	winter_severity_bias = @chevalie_inland_north
 }
 # b_scareinuex
 2630 = {
-	winter_severity_bias = 0.65
+	winter_severity_bias = @chevalie_inland_north
 }
 # b_plesex
 2631 = {
-	winter_severity_bias = 0.65
+	winter_severity_bias = @chevalie_inland_north
 }
 ## c_deceiex
 # b_teridderin
 2633 = {
-	winter_severity_bias = 0.65
+	winter_severity_bias = @chevalie_inland_north
 }
 # b_hies
 2634 = {
-	winter_severity_bias = 0.65
+	winter_severity_bias = @chevalie_inland_north
 }
 # b_baridens
 2632 = {
-	winter_severity_bias = 0.65
+	winter_severity_bias = @chevalie_inland_north
 }
+# West Rohr is same altitude as Ziemojycz, East gets higher gradually.
+# Again, looks deceive, check heightmap.
 #### k_rohr
 ### d_dellec
 ## c_horne_au_hornde
 # b_bovrinene
 2606 = {
-	winter_severity_bias = 0.70
+	winter_severity_bias = @chevalie_medium_altitude
 }
 # b_dorsec
 2608 = {
-	winter_severity_bias = 0.70
+	winter_severity_bias = @chevalie_medium_altitude
 }
 # b_capuit
 2607 = {
-	winter_severity_bias = 0.70
+	winter_severity_bias = @chevalie_medium_altitude
 }
 ## c_clois_en_carre
 # b_daesedly
 2609 = {
-	winter_severity_bias = 0.60
+	winter_severity_bias = @chevalie_inland_north
 }
 # b_asclas
 2611 = {
-	winter_severity_bias = 0.60
+	winter_severity_bias = @chevalie_inland_north
 }
 # b_grovedguives
 2610 = {
-	winter_severity_bias = 0.65
+	winter_severity_bias = @chevalie_inland_north
 }
 ## c_gonnelheis
 # b_iporntially
 2614 = {
-	winter_severity_bias = 0.60
+	winter_severity_bias = @chevalie_inland_north
 }
 # b_fescase
 2613 = {
-	winter_severity_bias = 0.60
+	winter_severity_bias = @chevalie_inland_north
 }
 # b_fallenmont
 2612 = {
-	winter_severity_bias = 0.60
+	winter_severity_bias = @chevalie_inland_north
 }
 ### d_montcornet
 ## c_castaisce
 # b_coiuex
 2615 = {
-	winter_severity_bias = 0.60
+	winter_severity_bias = @chevalie_inland_north
 }
 # b_calsouc
 2616 = {
-	winter_severity_bias = 0.60
+	winter_severity_bias = @chevalie_inland_north
 }
 # b_stellsuin
 2617 = {
-	winter_severity_bias = 0.60
+	winter_severity_bias = @chevalie_inland_north
 }
 # b_plaicaruex
 2618 = {
-	winter_severity_bias = 0.60
+	winter_severity_bias = @chevalie_inland_north
 }
 ## c_alescvien
 # b_doriscourt
 2623 = {
-	winter_severity_bias = 0.60
+	winter_severity_bias = @chevalie_inland_north
 }
 # b_porinmont
 2649 = {
-	winter_severity_bias = 0.60
+	winter_severity_bias = @chevalie_inland_north
 }
 ## c_plaffinmont
 # b_bardice
 2620 = {
-	winter_severity_bias = 0.60
+	winter_severity_bias = @chevalie_inland_north
 }
 # b_doines
 2619 = {
-	winter_severity_bias = 0.60
+	winter_severity_bias = @chevalie_inland_north
 }
 # b_doiven
 2622 = {
-	winter_severity_bias = 0.60
+	winter_severity_bias = @chevalie_inland_north
 }
 # b_valeinscour
 2621 = {
-	winter_severity_bias = 0.60
+	winter_severity_bias = @chevalie_inland_north
 }
 ### d_banereset
 ## c_tillyes
 # b_dasctoi
 2650 = {
-	winter_severity_bias = 0.60
+	winter_severity_bias = @chevalie_inland_north
 }
 # b_blaseie
 2651 = {
-	winter_severity_bias = 0.60
+	winter_severity_bias = @chevalie_inland_north
 }
 # b_cosinuvet
 2653 = {
-	winter_severity_bias = 0.65
+	winter_severity_bias = @chevalie_inland_north
 }
 # b_haiotiu
 2652 = {
-	winter_severity_bias = 0.60
+	winter_severity_bias = @chevalie_inland_north
 }
 ## c_rozalie
 # b_garuex
 2655 = {
-	winter_severity_bias = 0.65
+	winter_severity_bias = @chevalie_inland_north
 }
 # b_calscue
 2654 = {
-	winter_severity_bias = 0.60
+	winter_severity_bias = @chevalie_inland_north
 }
 # b_porfeinguire
 2656 = {
-	winter_severity_bias = 0.60
+	winter_severity_bias = @chevalie_inland_north
 }
 # b_sailene
 2657 = {
-	winter_severity_bias = 0.65
+	winter_severity_bias = @chevalie_inland_north
 }
 ## c_chevalliette
 # b_jaievs
 2648 = {
-	winter_severity_bias = 0.60
+	winter_severity_bias = @chevalie_inland_north
 }
 # b_craiuge
 2646 = {
-	winter_severity_bias = 0.60
+	winter_severity_bias = @chevalie_inland_north
 }
 # b_yascin
 2647 = {
-	winter_severity_bias = 0.60
+	winter_severity_bias = @chevalie_inland_north
 }
 ### d_cherborne
 ## c_odoginac
 # b_biavguin
 2640 = {
-	winter_severity_bias = 0.60
+	winter_severity_bias = @chevalie_inland_north
 }
 # b_nopleix
 2638 = {
-	winter_severity_bias = 0.60
+	winter_severity_bias = @chevalie_inland_north
 }
 # b_plevens
 2639 = {
-	winter_severity_bias = 0.60
+	winter_severity_bias = @chevalie_inland_north
 }
 # b_douisve
 2637 = {
-	winter_severity_bias = 0.60
+	winter_severity_bias = @chevalie_inland_north
 }
 ## c_prefallias
 # b_doilderouis
 2636 = {
-	winter_severity_bias = 0.70
+	winter_severity_bias = @chevalie_inland_north
 }
 # b_agnuois
 2635 = {
-	winter_severity_bias = 0.70
+	winter_severity_bias = @chevalie_inland_north
 }
 ## c_brillias
 # b_voughdein
 2641 = {
-	winter_severity_bias = 0.70
+	winter_severity_bias = @chevalie_inland_north
 }
 # b_helec
 2643 = {
-	winter_severity_bias = 0.65
+	winter_severity_bias = @chevalie_inland_north
 }
 # b_dournpor
 2642 = {
-	winter_severity_bias = 0.60
+	winter_severity_bias = @chevalie_inland_north
 }
 ## c_bargonne
 # b_defrein
 2645 = {
-	winter_severity_bias = 0.60
+	winter_severity_bias = @chevalie_inland_north
 }
 # b_hallaloc
 2644 = {
-	winter_severity_bias = 0.60
+	winter_severity_bias = @chevalie_inland_north
 }
 ### d_crastif
 ## c_birxate
 # b_poccerier
 2658 = {
-	winter_severity_bias = 0.65
+	winter_severity_bias = @chevalie_medium_altitude
 }
 # b_loddiver
 2659 = {
-	winter_severity_bias = 0.60
+	winter_severity_bias = @chevalie_medium_altitude
 }
 ## c_dillowe
 # b_proddenscire
 2660 = {
-	winter_severity_bias = 0.60
+	winter_severity_bias = @chevalie_medium_altitude
 }
 # b_jourenfirede
 2661 = {
-	winter_severity_bias = 0.60
+	winter_severity_bias = @chevalie_medium_altitude
 }
 # b_lihive
 2662 = {
-	winter_severity_bias = 0.60
+	winter_severity_bias = @chevalie_medium_altitude
 }
 ### d_lascony
 ## c_freviendor
 # b_ilversmont
 2668 = {
-	winter_severity_bias = 0.60
+	winter_severity_bias = @chevalie_medium_altitude
 }
 # b_diarfuex
 2667 = {
-	winter_severity_bias = 0.60
+	winter_severity_bias = @chevalie_medium_altitude
 }
 # b_gurdeins
 2666 = {
-	winter_severity_bias = 0.60
+	winter_severity_bias = @chevalie_medium_altitude
 }
 ## c_blucei
 # b_focidere
 2663 = {
-	winter_severity_bias = 0.55
+	winter_severity_bias = @chevalie_medium_altitude
 }
 # b_dorenheim
 2664 = {
-	winter_severity_bias = 0.60
+	winter_severity_bias = @chevalie_medium_altitude
 }
 # b_praitven
 2665 = {
-	winter_severity_bias = 0.60
+	winter_severity_bias = @chevalie_medium_altitude
 }
 ## c_halacuirun
 # b_donede
 2669 = {
-	winter_severity_bias = 0.55
+	winter_severity_bias = @chevalie_medium_altitude
 }
 # b_coffeis
 2670 = {
-	winter_severity_bias = 0.60
+	winter_severity_bias = @chevalie_medium_altitude
 }
 # b_druvescrude
 2671 = {
-	winter_severity_bias = 0.60
+	winter_severity_bias = @chevalie_medium_altitude
 }
 ### d_gurein
 ## c_dorduein
 # b_narieves
 2684 = {
-	winter_severity_bias = 0.55
+	winter_severity_bias = @chevalie_medium_altitude
 }
 # b_sucby
 2685 = {
-	winter_severity_bias = 0.55
+	winter_severity_bias = @chevalie_medium_altitude
 }
 # b_bucierien
 2686 = {
-	winter_severity_bias = 0.55
+	winter_severity_bias = @chevalie_medium_altitude
 }
 ## c_noscruex
 # b_dorimes
 2691 = {
-	winter_severity_bias = 0.60
+	winter_severity_bias = @chevalie_medium_altitude
 }
 # b_scouteux
 2692 = {
-	winter_severity_bias = 0.60
+	winter_severity_bias = @chevalie_medium_altitude
 }
 ## c_sarvede
 # b_hacrais
 2690 = {
-	winter_severity_bias = 0.55
+	winter_severity_bias = @chevalie_medium_altitude
 }
 # b_duvinmont
 2689 = {
-	winter_severity_bias = 0.55
+	winter_severity_bias = @chevalie_medium_altitude
 }
 # b_aftrendoc
 2687 = {
-	winter_severity_bias = 0.60
+	winter_severity_bias = @chevalie_medium_altitude
 }
 # b_grenluc
 2688 = {
-	winter_severity_bias = 0.60
+	winter_severity_bias = @chevalie_medium_altitude
 }
 ## c_yuve
 # b_druvensci
 2693 = {
-	winter_severity_bias = 0.60
+	winter_severity_bias = @chevalie_medium_altitude
 }
 # b_navaerue
 2694 = {
-	winter_severity_bias = 0.60
+	winter_severity_bias = @chevalie_medium_altitude
 }
 ## C_laviec
 # b_ardenque
 2695 = {
-	winter_severity_bias = 0.60
+	winter_severity_bias = @chevalie_medium_altitude
 }
 # b_fluziurn
 2696 = {
-	winter_severity_bias = 0.60
+	winter_severity_bias = @chevalie_medium_altitude
 }
 # b_zareinc
 2697 = {
-	winter_severity_bias = 0.60
+	winter_severity_bias = @chevalie_medium_altitude
 }
 ### d_tuirein
 ## c_niruvec
 # b_iuvaens
 2674 = {
-	winter_severity_bias = 0.65
+	winter_severity_bias = @chevalie_medium_altitude
 }
 # b_nugriuens
 2675 = {
-	winter_severity_bias = 0.60
+	winter_severity_bias = @chevalie_medium_altitude
 }
 # b_xavasc
 2673 = {
-	winter_severity_bias = 0.60
+	winter_severity_bias = @chevalie_medium_altitude
 }
 ## c_munz
 # b_etresin
 2676 = {
-	winter_severity_bias = 0.65
+	winter_severity_bias = @chevalie_medium_altitude
 }
 # b_giuosen
 2677 = {
-	winter_severity_bias = 0.60
+	winter_severity_bias = @chevalie_medium_altitude
 }
 # b_loicens
 2678 = {
-	winter_severity_bias = 0.60
+	winter_severity_bias = @chevalie_medium_altitude
 }
 ## c_buis
 # b_baoveux
 2681 = {
-	winter_severity_bias = 0.65
+	winter_severity_bias = @chevalie_medium_altitude
 }
 # b_meediran
 2682 = {
-	winter_severity_bias = 0.60
+	winter_severity_bias = @chevalie_medium_altitude
 }
 # b_luivann
 2683 = {
-	winter_severity_bias = 0.60
+	winter_severity_bias = @chevalie_medium_altitude
 }
 ### d_faisitelbouren
 ## c_farsde
 # b_darprides
 2703 = {
-	winter_severity_bias = 0.60
+	winter_severity_bias = @chevalie_medium_altitude
 }
 # b_safris
 2702 = {
-	winter_severity_bias = 0.60
+	winter_severity_bias = @chevalie_medium_altitude
 }
 ## c_grassceu
 # b_yovein
 2701 = {
-	winter_severity_bias = 0.55
+	winter_severity_bias = @chevalie_medium_altitude
 }
 # b_bercun
 2699 = {
-	winter_severity_bias = 0.55
+	winter_severity_bias = @chevalie_medium_altitude
 }
 # b_plaen
 2700 = {
-	winter_severity_bias = 0.60
+	winter_severity_bias = @chevalie_medium_altitude
 }
 # b_scavreim
 2698 = {
-	winter_severity_bias = 0.60
+	winter_severity_bias = @chevalie_medium_altitude
 }
 ## c_frascute
 # b_pelec
 2705 = {
-	winter_severity_bias = 0.55
+	winter_severity_bias = @chevalie_medium_altitude
 }
 # b_frascrastue
 2704 = {
-	winter_severity_bias = 0.55
+	winter_severity_bias = @chevalie_medium_altitude
 }
 ## c_muisle
 # b_claicen
 2707 = {
-	winter_severity_bias = 0.60
+	winter_severity_bias = @chevalie_medium_altitude
 }
 # b_doiien
 2706 = {
-	winter_severity_bias = 0.60
+	winter_severity_bias = @chevalie_medium_altitude
 }
 # b_toivesc
 2708 = {
-	winter_severity_bias = 0.60
+	winter_severity_bias = @chevalie_medium_altitude
 }
 #### k_marroux
 ### d_grascoi
 ## c_vabsoreades
 # b_nacrevis
 2727 = {
-	winter_severity_bias = 0.40
+	winter_severity_bias = @chevalie_coastal_south
 }
 # b_fiscucs
 2726 = {
-	winter_severity_bias = 0.40
+	winter_severity_bias = @chevalie_coastal_south
 }
 # b_naouisc
 2724 = {
-	winter_severity_bias = 0.40
+	winter_severity_bias = @chevalie_coastal_south
 }
 # b_vavrisic
 2725 = {
-	winter_severity_bias = 0.50
+	winter_severity_bias = @chevalie_inland_south
 }
 ## c_puiveres
 # b_coughes
 2727 = {
-	winter_severity_bias = 0.45
+	winter_severity_bias = @chevalie_inland_south
 }
 # b_kalville
 2728 = {
-	winter_severity_bias = 0.45
+	winter_severity_bias = @chevalie_coastal_south
 }
 # b_poughneix
 2729 = {
-	winter_severity_bias = 0.45
+	winter_severity_bias = @chevalie_inland_south
 }
 ## c_veressirlaluc
 # b_nasicruv
 2730 = {
-	winter_severity_bias = 0.45
+	winter_severity_bias = @chevalie_medium_altitude
 }
 # b_avrinsces
 2731 = {
-	winter_severity_bias = 0.45
+	winter_severity_bias = @chevalie_medium_altitude
 }
 # b_dalaex
 2732 = {
-	winter_severity_bias = 0.45
+	winter_severity_bias = @chevalie_medium_altitude
 }
 # b_darinmont
 2733 = {
-	winter_severity_bias = 0.45
+	winter_severity_bias = @chevalie_medium_altitude
 }
 ### d_irenux
 ## c_bereque
 # b_araine
 2734 = {
-	winter_severity_bias = 0.40
+	winter_severity_bias = @chevalie_coastal_south
 }
 # b_hayric
 2735 = {
-	winter_severity_bias = 0.45
+	winter_severity_bias = @chevalie_inland_south
 }
 # b_tarfiet
 2737 = {
-	winter_severity_bias = 0.45
+	winter_severity_bias = @chevalie_inland_south
 }
 # b_scastie
 2736 = {
-	winter_severity_bias = 0.40
+	winter_severity_bias = @chevalie_coastal_south
 }
 ## c_raguinge
 # b_lacire
 2738 = {
-	winter_severity_bias = 0.40
+	winter_severity_bias = @chevalie_coastal_south
 }
 # b_bournicourt
 2739 = {
-	winter_severity_bias = 0.45
+	winter_severity_bias = @chevalie_inland_south
 }
 ### d_duravux
 ## c_troscease
 # b_adles
 2757 = {
-	winter_severity_bias = 0.45
+	winter_severity_bias = @chevalie_inland_south
 }
 # b_zeledes
 2758 = {
-	winter_severity_bias = 0.45
+	winter_severity_bias = @chevalie_medium_altitude
 }
 # b_quecourt
 2759 = {
-	winter_severity_bias = 0.40
+	winter_severity_bias = @chevalie_inland_south
 }
 ## c_davsleit
 # b_craive
 2760 = {
-	winter_severity_bias = 0.40
+	winter_severity_bias = @chevalie_coastal_south
 }
 # b_broviene
 2761 = {
-	winter_severity_bias = 0.40
+	winter_severity_bias = @chevalie_coastal_south
 }
 # b_radriforte
 2762 = {
-	winter_severity_bias = 0.40
+	winter_severity_bias = @chevalie_coastal_south
 }
 ## c_gradei
 # b_guins
 2763 = {
-	winter_severity_bias = 0.40
+	winter_severity_bias = @chevalie_coastal_south
 }
 # b_yasse
 2764 = {
-	winter_severity_bias = 0.40
+	winter_severity_bias = @chevalie_coastal_south
 }
 ### d_varusiex
 ## c_haravasiet
 # b_pelteain
 2747 = {
-	winter_severity_bias = 0.45
+	winter_severity_bias = @chevalie_medium_altitude
 }
 # b_plaent
 2748 = {
-	winter_severity_bias = 0.45
+	winter_severity_bias = @chevalie_inland_south
 }
 # b_morcenheive
 2749 = {
-	winter_severity_bias = 0.45
+	winter_severity_bias = @chevalie_medium_altitude
 }
 ## c_provensier
 #b_jeins
 2750 = {
-	winter_severity_bias = 0.45
+	winter_severity_bias = @chevalie_inland_south
 }
 # b_dirvensotf
 2752 = {
-	winter_severity_bias = 0.45
+	winter_severity_bias = @chevalie_inland_south
 }
 # b_doceneim
 2751 = {
-	winter_severity_bias = 0.50
+	winter_severity_bias = @chevalie_inland_south
 }
 # b_duzain
 2753 = {
-	winter_severity_bias = 0.50
+	winter_severity_bias = @chevalie_medium_altitude
 }
 ## c_gideureux
 # b_lascifie
 2754 = {
-	winter_severity_bias = 0.50
+	winter_severity_bias = @chevalie_high_altitude
 }
 # b_dousc
 2755 = {
-	winter_severity_bias = 0.50
+	winter_severity_bias = @chevalie_high_altitude
 }
 # b_toruneix
 2756 = {
-	winter_severity_bias = 0.50
+	winter_severity_bias = @chevalie_high_altitude
 }
 ### d_prusca
 ## c_utepode
 # b_terruis
 2710 = {
-	winter_severity_bias = 0.50
+	winter_severity_bias = @chevalie_medium_altitude
 }
 # b_lugufac
 2709 = {
-	winter_severity_bias = 0.60
+	winter_severity_bias = @chevalie_medium_altitude
 }
 # b_cuveirn
 2711 = {
-	winter_severity_bias = 0.50
+	winter_severity_bias = @chevalie_medium_altitude
 }
 ## c_soems
 # b_breciex
 2712 = {
-	winter_severity_bias = 0.50
+	winter_severity_bias = @chevalie_medium_altitude
 }
 # b_dooreciraned
 2713 = {
-	winter_severity_bias = 0.50
+	winter_severity_bias = @chevalie_medium_altitude
 }
 # b_branduic
 2714 = {
-	winter_severity_bias = 0.50
+	winter_severity_bias = @chevalie_inland_south
 }
 # b_dasacs
 2715 = {
-	winter_severity_bias = 0.50
+	winter_severity_bias = @chevalie_inland_south
 }
 ## c_afrarasc
 # b_fanguride
 2716 = {
-	winter_severity_bias = 0.50
+	winter_severity_bias = @chevalie_inland_south
 }
 # b_blandgruide
 2718 = {
-	winter_severity_bias = 0.55
+	winter_severity_bias = @chevalie_medium_altitude
 }
 # b_turnguri
 2717 = {
-	winter_severity_bias = 0.45
+	winter_severity_bias = @chevalie_inland_south
 }
 ## c_quitues
 # b_darfeix
 2720 = {
-	winter_severity_bias = 0.45
+	winter_severity_bias = @chevalie_inland_south
 }
 # b_borimeins
 2721 = {
-	winter_severity_bias = 0.45
+	winter_severity_bias = @chevalie_inland_south
 }
 # b_neregf
 2719 = {
-	winter_severity_bias = 0.45
+	winter_severity_bias = @chevalie_inland_south
 }
 # b_celois
 2722 = {
-	winter_severity_bias = 0.45
+	winter_severity_bias = @chevalie_inland_south
 }
 ### d_cavrine
 ## c_urivi
 # b_queirine
 2742 = {
-	winter_severity_bias = 0.50
+	winter_severity_bias = @chevalie_inland_south
 }
 # b_draveins
 2743 = {
-	winter_severity_bias = 0.50
+	winter_severity_bias = @chevalie_inland_south
 }
 ## c_zaex
 # b_vavismont
 2744 = {
-	winter_severity_bias = 0.50
+	winter_severity_bias = @chevalie_inland_south
 }
 # b_ipeiverde
 2745 = {
-	winter_severity_bias = 0.50
+	winter_severity_bias = @chevalie_inland_south
 }
 # b_lazicuex
 2746 = {
-	winter_severity_bias = 0.50
+	winter_severity_bias = @chevalie_inland_south
 }
-## c_ zaifac
+## c_zaifac
 # b_lasseire
 2741 = {
-	winter_severity_bias = 0.45
+	winter_severity_bias = @chevalie_inland_south
 }
 # b_paourse
 2740 = {
-	winter_severity_bias = 0.45
+	winter_severity_bias = @chevalie_inland_south
 }
 ### d_marenoc
 ## c_deleceu
 # b_gelade
 2675 = {
-	winter_severity_bias = 0.45
+	winter_severity_bias = @chevalie_coastal_south
 }
 # b_aquefewe
 2766 = {
-	winter_severity_bias = 0.45
+	winter_severity_bias = @chevalie_coastal_south
 }
 # b_daleux
 2767 = {
-	winter_severity_bias = 0.40
+	winter_severity_bias = @chevalie_coastal_south
 }
 ## c_sorveue
 # b_proteix
 2771 = {
-	winter_severity_bias = 0.50
+	winter_severity_bias = @chevalie_inland_south
 }
 # b_grafines
 2770 = {
-	winter_severity_bias = 0.50
+	winter_severity_bias = @chevalie_medium_altitude
 }
 # b_stenes
 2769 = {
-	winter_severity_bias = 0.55
+	winter_severity_bias = @chevalie_medium_altitude
 }
 # b_quvere
 2768 = {
-	winter_severity_bias = 0.55
+	winter_severity_bias = @chevalie_medium_altitude
 }
 ## c_foresceux
 # b_bridnun
 2777 = {
-	winter_severity_bias = 0.45
+	winter_severity_bias = @chevalie_inland_south
 }
 # b_vardans
 2778 = {
-	winter_severity_bias = 0.40
+	winter_severity_bias = @chevalie_inland_south
 }
 # b_pareud
 2776 = {
-	winter_severity_bias = 0.40
+	winter_severity_bias = @chevalie_coastal_south
 }
 ## c_brabein
 # b_baurmont
 2772 = {
-	winter_severity_bias = 0.40
+	winter_severity_bias = @chevalie_coastal_south
 }
 # b_sadurmont
 2773 = {
-	winter_severity_bias = 0.40
+	winter_severity_bias = @chevalie_coastal_south
 }
 # b_cadeix
 2774 = {
-	winter_severity_bias = 0.40
+	winter_severity_bias = @chevalie_coastal_south
 }
 # b_paens
 2775 = {
-	winter_severity_bias = 0.40
+	winter_severity_bias = @chevalie_coastal_south
 }
 ### d_baresc
 ## c_arene
 # b_caflinsoure
 2797 = {
-	winter_severity_bias = 0.40
+	winter_severity_bias = @chevalie_coastal_south
 }
 # b_yelles
 2798 = {
-	winter_severity_bias = 0.40
-}
-# b_decrinbouf
-2799 = {
-	winter_severity_bias = 0.40
+	winter_severity_bias = @chevalie_coastal_south
 }
 ## c_usasc
 # b_gaurscourt
 2792 = {
-	winter_severity_bias = 0.40
+	winter_severity_bias = @chevalie_coastal_south
 }
-# b_hovensein
-2793 = {
-	winter_severity_bias = 0.40
-}
-## C_bivenscour
+## c_bivenscour
 # b_operncus
 2801 = {
-	winter_severity_bias = 0.40
+	winter_severity_bias = @chevalie_inland_south
 }
 # b_appensmont
 2800 = {
-	winter_severity_bias = 0.40
+	winter_severity_bias = @chevalie_inland_south
 }
 ## c_zaveux
 # b_effricein
 2794 = {
-	winter_severity_bias = 0.45
+	winter_severity_bias = @chevalie_medium_altitude
 }
 # b_naurx
 2795 = {
-	winter_severity_bias = 0.45
+	winter_severity_bias = @chevalie_medium_altitude
 }
 # b_addenemont
 2796 = {
-	winter_severity_bias = 0.45
+	winter_severity_bias = @chevalie_medium_altitude
 }
 ## c_farienuex
 # b_qupeuz
 2802 = {
-	winter_severity_bias = 0.45
-}
-# b_darescu
-2803 = {
-	winter_severity_bias = 0.45 
+	winter_severity_bias = @chevalie_high_altitude
 }
 # b_yarief
 2804 = {
-	winter_severity_bias = 0.50
+	winter_severity_bias = @chevalie_high_altitude
 }
 ### d_xaruns
 ## c_halcluex
 # b_lasconts
 2808 = {
-	winter_severity_bias = 0.40
+	winter_severity_bias = @chevalie_inland_south
 }
 # b_caffinmount
 2809 = {
-	winter_severity_bias = 0.45
+	winter_severity_bias = @chevalie_medium_altitude
 }
 # b_yaendomi
 2810 = {
-	winter_severity_bias = 0.50
+	winter_severity_bias = @chevalie_high_altitude
 }
 ## c_porentuins
-# b_dariens
-2806 = {
-	winter_severity_bias = 0.40
-}
 # b_toradus
 2805 = {
-	winter_severity_bias = 0.40
+	winter_severity_bias = @chevalie_coastal_south
 }
 # b_zacurvn
 2807 = {
-	winter_severity_bias = 0.40
+	winter_severity_bias = @chevalie_coastal_south
 }
 ## c_proffengeim
 # b_laciurns
 2811 = {
-	winter_severity_bias = 0.40
+	winter_severity_bias = @chevalie_coastal_south
 }
 # b_daruneix
 2812 = {
-	winter_severity_bias = 0.40
+	winter_severity_bias = @chevalie_coastal_south
 }
 # b_navachaw
 5075 = {
-	winter_severity_bias = 0.40
+	winter_severity_bias = @chevalie_coastal_south
 }
 # b_casineux
 2813 = {
-	winter_severity_bias = 0.45
-}
-
-
-
-#mikros_kalathipsomi_e
-4329 = {
-	winter_severity_bias = 0.5
-}
-4332 = {
-	winter_severity_bias = 0.45
-}
-4338 = {
-	winter_severity_bias = 0.5
-}
-4333 = {
-	winter_severity_bias = 0.45
-}
-4331 = {
-	winter_severity_bias = 0.5
-}
-4334 = {
-	winter_severity_bias = 0.45
-}
-4339 = {
-	winter_severity_bias = 0.5
-}
-4340 = {
-	winter_severity_bias = 0.5
-}
-4341 = {
-	winter_severity_bias = 0.5
-}
-4342 = {
-	winter_severity_bias = 0.45
-}
-4343 = {
-	winter_severity_bias = 0.5
-}
-4345 = {
-	winter_severity_bias = 0.5
-}
-4344 = {
-	winter_severity_bias = 0.45
-}
-4340 = {
-	winter_severity_bias = 0.5
-}
-4335 = {
-	winter_severity_bias = 0.5
-}
-4336 = {
-	winter_severity_bias = 0.5
-}
-4337 = {
-	winter_severity_bias = 0.5
-}
-4346 = {
-	winter_severity_bias = 0.45
-}
-4347 = {
-	winter_severity_bias = 0.5
-}
-4348 = {
-	winter_severity_bias = 0.5
-}
-4349 = {
-	winter_severity_bias = 0.5
-}
-4350 = {
-	winter_severity_bias = 0.5
-}
-4351 = {
-	winter_severity_bias = 0.45
-}
-4360 = {
-	winter_severity_bias = 0.5
-}
-4361 = {
-	winter_severity_bias = 0.45
-}
-4362 = {
-	winter_severity_bias = 0.5
-}
-4352 = {
-	winter_severity_bias = 0.5
-}
-4353 = {
-	winter_severity_bias = 0.5
-}
-4354 = {
-	winter_severity_bias = 0.5
-}
-4356 = {
-	winter_severity_bias = 0.45
-}
-4355 = {
-	winter_severity_bias = 0.5
-}
-4365 = {
-	winter_severity_bias = 0.5
-}
-4364 = {
-	winter_severity_bias = 0.5
-}
-4366 = {
-	winter_severity_bias = 0.5
-}
-4357 = {
-	winter_severity_bias = 0.5
-}
-4359 = {
-	winter_severity_bias = 0.5
-}
-4358 = {
-	winter_severity_bias = 0.5
-}
-4368 = {
-	winter_severity_bias = 0.45
-}
-4367 = {
-	winter_severity_bias = 0.45
-}
-4304 = {
-	winter_severity_bias = 0.4
-}
-4357 = {
-	winter_severity_bias = 0.5
-}
-4389 = {
-	winter_severity_bias = 0.5
-}
-4390 = {
-	winter_severity_bias = 0.5
-}
-4391 = {
-	winter_severity_bias = 0.5
-}
-4375 = {
-	winter_severity_bias = 0.5
-}
-4376 = {
-	winter_severity_bias = 0.5
-}
-4392 = {
-	winter_severity_bias = 0.5
-}
-4396 = {
-	winter_severity_bias = 0.45
-}
-4390 = {
-	winter_severity_bias = 0.5
-}
-4391 = {
-	winter_severity_bias = 0.5
-}
-4396 = {
-	winter_severity_bias = 0.45
-}
-4397 = {
-	winter_severity_bias = 0.5
-}
-4398 = {
-	winter_severity_bias = 0.45
-}
-4452 = {
-	winter_severity_bias = 0.5
-}
-4454 = {
-	winter_severity_bias = 0.5
-}
-4451 = {
-	winter_severity_bias = 0.5
-}
-4370 = {
-	winter_severity_bias = 0.4
-}
-4369 = {
-	winter_severity_bias = 0.4
-}
-4371 = {
-	winter_severity_bias = 0.5
-}
-4378 = {
-	winter_severity_bias = 0.5
-}
-4377 = {
-	winter_severity_bias = 0.5
-}
-4381 = {
-	winter_severity_bias = 0.4
-}
-4379 = {
-	winter_severity_bias = 0.4
-}
-4372 = {
-	winter_severity_bias = 0.4
-}
-4374 = {
-	winter_severity_bias = 0.4
-}
-4373 = {
-	winter_severity_bias = 0.4
-}
-4400 = {
-	winter_severity_bias = 0.4
-}
-4399 = {
-	winter_severity_bias = 0.4
-}
-4401 = {
-	winter_severity_bias = 0.4
-}
-4393 = {
-	winter_severity_bias = 0.4
-}
-4395 = {
-	winter_severity_bias = 0.4
-}
-4394 = {
-	winter_severity_bias = 0.4
-}
-4440 = {
-	winter_severity_bias = 0.55
-}
-4446 = {
-	winter_severity_bias = 0.4
-}
-4453 = {
-	winter_severity_bias = 0.4
-}
-4457 = {
-	winter_severity_bias = 0.4
-}
-4456 = {
-	winter_severity_bias = 0.45
-}
-4458 = {
-	winter_severity_bias = 0.4
-}
-4455 = {
-	winter_severity_bias = 0.4
-}
-4447 = {
-	winter_severity_bias = 0.45
-}
-4441 = {
-	winter_severity_bias = 0.45
-}
-4439 = {
-	winter_severity_bias = 0.45
-}
-4420 = {
-	winter_severity_bias = 0.45
-}
-4422 = {
-	winter_severity_bias = 0.45
-}
-4421 = {
-	winter_severity_bias = 0.45
-}
-6693 = {
-	winter_severity_bias = 0.45
-}
-6691 = {
-	winter_severity_bias = 0.40
-}
-6692 = {
-	winter_severity_bias = 0.45
-}
-4382 = {
-	winter_severity_bias = 0.40
-}
-4405 = {
-	winter_severity_bias = 0.5
-}
-3157 = {
-	winter_severity_bias = 0.45
-}
-3222 = {
-	winter_severity_bias = 0.45
-}
-4402 = {
-	winter_severity_bias = 0.5
-}
-4403 = {
-	winter_severity_bias = 0.45
-}
-4404 = {
-	winter_severity_bias = 0.45
-}
-5117 = {
-	winter_severity_bias = 0.45
-}
-5118 = {
-	winter_severity_bias = 0.5
-}
-5119 = {
-	winter_severity_bias = 0.5
-}
-5121 = {
-	winter_severity_bias = 0.5
-}
-5124 = {
-	winter_severity_bias = 0.5
-}
-5125 = {
-	winter_severity_bias = 0.5
-}
-5123 = {
-	winter_severity_bias = 0.5
-}
-4464 = {
-	winter_severity_bias = 0.5
-}
-4465 = {
-	winter_severity_bias = 0.5
-}
-4466 = {
-	winter_severity_bias = 0.5
-}
-4467 = {
-	winter_severity_bias = 0.5
-}
-4613 = {
-	winter_severity_bias = 0.5
-}
-4614 = {
-	winter_severity_bias = 0.5
-}
-4612 = {
-	winter_severity_bias = 0.5
-}
-4610 = {
-	winter_severity_bias = 0.5
-}
-4611 = {
-	winter_severity_bias = 0.5
-}
-4600 = {
-	winter_severity_bias = 0.5
-}
-4601 = {
-	winter_severity_bias = 0.5
-}
-4603 = {
-	winter_severity_bias = 0.5
-}
-4637= {
-	winter_severity_bias = 0.5
-}
-4609 = {
-	winter_severity_bias = 0.5
-}
-4639 = {
-	winter_severity_bias = 0.5
-}
-4640 = {
-	winter_severity_bias = 0.5
-}
-4641 = {
-	winter_severity_bias = 0.5
-}
-4661 = {
-	winter_severity_bias = 0.5
-}
-4659 = {
-	winter_severity_bias = 0.45
-}
-4660 = {
-	winter_severity_bias = 0.45
-}
-4417 = {
-	winter_severity_bias = 0.5
-}
-4416 = {
-	winter_severity_bias = 0.45
-}
-4418 = {
-	winter_severity_bias = 0.45
-}
-4417 = {
-	winter_severity_bias = 0.5
-}
-4418 = {
-	winter_severity_bias = 0.4
-}
-4424 = {
-	winter_severity_bias = 0.4
-}
-4423 = {
-	winter_severity_bias = 0.4
-}
-4419 = {
-	winter_severity_bias = 0.4
-}
-4418 = {
-	winter_severity_bias = 0.4
-}
-4410 = {
-	winter_severity_bias = 0.4
-}
-4415 = {
-	winter_severity_bias = 0.4
-}
-4414 = {
-	winter_severity_bias = 0.4
-}
-4413 = {
-	winter_severity_bias = 0.4
-}
-4411 = {
-	winter_severity_bias = 0.4
-}
-4412 = {
-	winter_severity_bias = 0.4
-}
-4429 = {
-	winter_severity_bias = 0.4
-}
-4428 = {
-	winter_severity_bias = 0.4
-}
-4430 = {
-	winter_severity_bias = 0.4
-}
-4413 = {
-	winter_severity_bias = 0.4
-}
-4411 = {
-	winter_severity_bias = 0.15
-}
-4412 = {
-	winter_severity_bias = 0.4
-}
-4515 = {
-	winter_severity_bias = 0.4
-}
-4513 = {
-	winter_severity_bias = 0.4
-}
-4516 = {
-	winter_severity_bias = 0.4
-}
-4504 = {
-	winter_severity_bias = 0.4
-}
-4503 = {
-	winter_severity_bias = 0.4
-}
-4502 = {
-	winter_severity_bias = 0.4
-}
-4508 = {
-	winter_severity_bias = 0.4
-}
-4506 = {
-	winter_severity_bias = 0.4
-}
-4244 = {
-	winter_severity_bias = 0.4
-}
-4431 = {
-	winter_severity_bias = 0.4
-}
-4520 = {
-	winter_severity_bias = 0.4
-}
-4515 = {
-	winter_severity_bias = 0.4
-}
-4521 = {
-	winter_severity_bias = 0.4
-}
-4432 = {
-	winter_severity_bias = 0.4
-}
-4433 = {
-	winter_severity_bias = 0.4
-}
-4517 = {
-	winter_severity_bias = 0.4
-}
-4519 = {
-	winter_severity_bias = 0.4
-}
-4518 = {
-	winter_severity_bias = 0.45
-}
-4530 = {
-	winter_severity_bias = 0.4
-}
-4532 = {
-	winter_severity_bias = 0.4
-}
-4529 = {
-	winter_severity_bias = 0.4
-}
-4531 = {
-	winter_severity_bias = 0.4
-}
-4525 = {
-	winter_severity_bias = 0.4
-}
-4524 = {
-	winter_severity_bias = 0.4
-}
-4511 = {
-	winter_severity_bias = 0.4
-}
-4509 = {
-	winter_severity_bias = 0.4
-}
-4510 = {
-	winter_severity_bias = 0.4
-}
-4512 = {
-	winter_severity_bias = 0.4
-}
-4526 = {
-	winter_severity_bias = 0.4
-}
-4527 = {
-	winter_severity_bias = 0.4
-}
-4528 = {
-	winter_severity_bias = 0.4
-}
-4544 = {
-	winter_severity_bias = 0.4
-}
-4542 = {
-	winter_severity_bias = 0.4
-}
-4543 = {
-	winter_severity_bias = 0.4
-}
-4533 = {
-	winter_severity_bias = 0.4
-}
-4535 = {
-	winter_severity_bias = 0.4
-}
-4536 = {
-	winter_severity_bias = 0.4
-}
-4534 = {
-	winter_severity_bias = 0.4
-}
-4538 = {
-	winter_severity_bias = 0.4
-}
-4562 = {
-	winter_severity_bias = 0.4
-}
-4566 = {
-	winter_severity_bias = 0.4
-}
-4537 = {
-	winter_severity_bias = 0.4
-}
-4563 = {
-	winter_severity_bias = 0.4
-}
-4564 = {
-	winter_severity_bias = 0.4
-}
-4565 = {
-	winter_severity_bias = 0.4
-}
-4568 = {
-	winter_severity_bias = 0.4
-}
-4569 = {
-	winter_severity_bias = 0.4
-}
-4570 = {
-	winter_severity_bias = 0.4
-}
-4575 = {
-	winter_severity_bias = 0.4
-}
-4574 = {
-	winter_severity_bias = 0.4
-}
-4576 = {
-	winter_severity_bias = 0.5
-}
-4577 = {
-	winter_severity_bias = 0.55
-}
-4585 = {
-	winter_severity_bias = 0.4
-}
-4586 = {
-	winter_severity_bias = 0.4
-}
-4590 = {
-	winter_severity_bias = 0.4
-}
-4594 = {
-	winter_severity_bias = 0.4
-}
-4595 = {
-	winter_severity_bias = 0.4
-}
-4596 = {
-	winter_severity_bias = 0.4
-}
-4591 = {
-	winter_severity_bias = 0.4
-}
-4593 = {
-	winter_severity_bias = 0.5
-}
-4588 = {
-	winter_severity_bias = 0.4
-}
-4587 = {
-	winter_severity_bias = 0.4
-}
-4584 = {
-	winter_severity_bias = 0.4
-}
-4583 = {
-	winter_severity_bias = 0.4
-}
-4582 = {
-	winter_severity_bias = 0.4
-}
-4561 = {
-	winter_severity_bias = 0.5
-}
-4560 = {
-	winter_severity_bias = 0.4
-}
-4559 = {
-	winter_severity_bias = 0.4
-}
-4571 = {
-	winter_severity_bias = 0.4
-}
-4573 = {
-	winter_severity_bias = 0.4
-}
-4572 = {
-	winter_severity_bias = 0.5
-}
-4558 = {
-	winter_severity_bias = 0.4
-}
-4557 = {
-	winter_severity_bias = 0.4
-}
-4556 = {
-	winter_severity_bias = 0.4
-}
-4540 = {
-	winter_severity_bias = 0.4
-}
-4541 = {
-	winter_severity_bias = 0.4
-}
-4539 = {
-	winter_severity_bias = 0.4
-}
-4434 = {
-	winter_severity_bias = 0.5
-}
-4554 = {
-	winter_severity_bias = 0.45
-}
-4555 = {
-	winter_severity_bias = 0.4
-}
-2457 = {
-	winter_severity_bias = 0.4
-}
-4545 = {
-	winter_severity_bias = 0.4
-}
-4546 = {
-	winter_severity_bias = 0.45
-}
-4547 = {
-	winter_severity_bias = 0.4
-}
-4548 = {
-	winter_severity_bias = 0.4
-}
-4549 = {
-	winter_severity_bias = 0.4
-}
-4550 = {
-	winter_severity_bias = 0.4
-}
-4551 = {
-	winter_severity_bias = 0.4
-}
-4552 = {
-	winter_severity_bias = 0.4
-}
-4553 = {
-	winter_severity_bias = 0.4
-}
-4534 = {
-	winter_severity_bias = 0.5
-}
-4554 = {
-	winter_severity_bias = 0.4
-}
-4555 = {
-	winter_severity_bias = 0.45
-}
-4474 = {
-	winter_severity_bias = 0.4
-}
-4476 = {
-	winter_severity_bias = 0.4
-}
-4575 = {
-	winter_severity_bias = 0.4
-}
-4477 = {
-	winter_severity_bias = 0.4
-}
-4478 = {
-	winter_severity_bias = 0.5
-}
-4479 = {
-	winter_severity_bias = 0.4
-}
-4437 = {
-	winter_severity_bias = 0.4
-}
-4435 = {
-	winter_severity_bias = 0.5
-}
-4436 = {
-	winter_severity_bias = 0.4
-}
-4426 = {
-	winter_severity_bias = 0.5
-}
-4427 = {
-	winter_severity_bias = 0.5
-}
-4425 = {
-	winter_severity_bias = 0.45
-}
-4435 = {
-	winter_severity_bias = 0.4
-}
-4482 = {
-	winter_severity_bias = 0.4
-}
-4438 = {
-	winter_severity_bias = 0.4
-}
-4483 = {
-	winter_severity_bias = 0.4
-}
-4480 = {
-	winter_severity_bias = 0.45
-}
-4450 = {
-	winter_severity_bias = 0.45
-}
-4481 = {
-	winter_severity_bias = 0.45
-}
-4443 = {
-	winter_severity_bias = 0.4
-}
-4444 = {
-	winter_severity_bias = 0.4
-}
-4442 = {
-	winter_severity_bias = 0.4
-}
-4484 = {
-	winter_severity_bias = 0.4
-}
-4485 = {
-	winter_severity_bias = 0.4
-}
-4486 = {
-	winter_severity_bias = 0.4
-}
-4449 = {
-	winter_severity_bias = 0.4
-}
-4448 = {
-	winter_severity_bias = 0.4
-}
-4461 = {
-	winter_severity_bias = 0.4
-}
-4459 = {
-	winter_severity_bias = 0.45
-}
-4460 = {
-	winter_severity_bias = 0.5
-}
-4491 = {
-	winter_severity_bias = 0.5
-}
-4493 = {
-	winter_severity_bias = 0.45
-}
-4492 = {
-	winter_severity_bias = 0.5
-}
-4496 = {
-	winter_severity_bias = 0.4
-}
-4495 = {
-	winter_severity_bias = 0.4
-}
-4494 = {
-	winter_severity_bias = 0.4
-}
-4487 = {
-	winter_severity_bias = 0.45
-}
-4488 = {
-	winter_severity_bias = 0.5
-}
-4489 = {
-	winter_severity_bias = 0.4
-}
-4468 = {
-	winter_severity_bias = 0.5
-}
-4469 = {
-	winter_severity_bias = 0.5
-}
-4470 = {
-	winter_severity_bias = 0.4
-}
-4471 = {
-	winter_severity_bias = 0.4
-}
-4472 = {
-	winter_severity_bias = 0.4
-}
-4473 = {
-	winter_severity_bias = 0.5
-}
-4499 = {
-	winter_severity_bias = 0.5
-}
-4500 = {
-	winter_severity_bias = 0.5
-}
-4498 = {
-	winter_severity_bias = 0.5
-}
-4629 = {
-	winter_severity_bias = 0.4
-}
-4490 = {
-	winter_severity_bias = 0.5
-}
-4630 = {
-	winter_severity_bias = 0.5
-}
-4616 = {
-	winter_severity_bias = 0.5
-}
-4617 = {
-	winter_severity_bias = 0.4
-}
-4638 = {
-	winter_severity_bias = 0.5
-}
-4642 = {
-	winter_severity_bias = 0.5
-}
-4644 = {
-	winter_severity_bias = 0.5
-}
-4643 = {
-	winter_severity_bias = 0.5
-}
-4638 = {
-	winter_severity_bias = 0.5
-}
-4633 = {
-	winter_severity_bias = 0.5
-}
-4634 = {
-	winter_severity_bias = 0.5
-}
-4632 = {
-	winter_severity_bias = 0.5
-}
-4638 = {
-	winter_severity_bias = 0.5
-}
-4657 = {
-	winter_severity_bias = 0.45
-}
-4655 = {
-	winter_severity_bias = 0.5
-}
-4658 = {
-	winter_severity_bias = 0.5
-}
-4656 = {
-	winter_severity_bias = 0.5
-}
-4649 = {
-	winter_severity_bias = 0.45
-}
-4650 = {
-	winter_severity_bias = 0.5
-}
-4651 = {
-	winter_severity_bias = 0.5
-}
-4690 = {
-	winter_severity_bias = 0.4
-}
-4692 = {
-	winter_severity_bias = 0.5
-}
-4691 = {
-	winter_severity_bias = 0.5
-}
-4695 = {
-	winter_severity_bias = 0.4
-}
-4698 = {
-	winter_severity_bias = 0.55
-}
-4696 = {
-	winter_severity_bias = 0.4
-}
-4697 = {
-	winter_severity_bias = 0.4
-}
-4638 = {
-	winter_severity_bias = 0.4
-}
-4702 = {
-	winter_severity_bias = 0.5
-}
-4700 = {
-	winter_severity_bias = 0.4
-}
-4699 = {
-	winter_severity_bias = 0.5
-}
-4701 = {
-	winter_severity_bias = 0.4
-}
-4682 = {
-	winter_severity_bias = 0.5
-}
-4693 = {
-	winter_severity_bias = 0.4
-}
-4694 = {
-	winter_severity_bias = 0.5
-}
-4681 = {
-	winter_severity_bias = 0.4
-}
-4679 = {
-	winter_severity_bias = 0.5
-}
-4680 = {
-	winter_severity_bias = 0.5
-}
-4635 = {
-	winter_severity_bias = 0.5
-}
-4683 = {
-	winter_severity_bias = 0.4
-}
-4636 = {
-	winter_severity_bias = 0.5
-}
-4673 = {
-	winter_severity_bias = 0.5
-}
-4672 = {
-	winter_severity_bias = 0.4
-}
-4674 = {
-	winter_severity_bias = 0.45
-}
-4678 = {
-	winter_severity_bias = 0.5
-}
-4677 = {
-	winter_severity_bias = 0.5
-}
-4676 = {
-	winter_severity_bias = 0.5
-}
-4675 = {
-	winter_severity_bias = 0.5
-}
-4708 = {
-	winter_severity_bias = 0.4
-}
-4706 = {
-	winter_severity_bias = 0.5
-}
-4707 = {
-	winter_severity_bias = 0.4
-}
-4687 = {
-	winter_severity_bias = 0.5
-}
-4688 = {
-	winter_severity_bias = 0.5
-}
-4689 = {
-	winter_severity_bias = 0.5
-}
-4721 = {
-	winter_severity_bias = 0.5
-}
-4719 = {
-	winter_severity_bias = 0.5
-}
-4720 = {
-	winter_severity_bias = 0.5
-}
-4684 = {
-	winter_severity_bias = 0.4
-}
-4685 = {
-	winter_severity_bias = 0.5
-}
-4686 = {
-	winter_severity_bias = 0.5
-}
-4746 = {
-	winter_severity_bias = 0.5
-}
-4748 = {
-	winter_severity_bias = 0.5
-}
-4750 = {
-	winter_severity_bias = 0.5
-}
-4749 = {
-	winter_severity_bias = 0.5
-}
-4753 = {
-	winter_severity_bias = 0.5
-}
-4752 = {
-	winter_severity_bias = 0.5
-}
-4754 = {
-	winter_severity_bias = 0.5
-}
-4818 = {
-	winter_severity_bias = 0.5
-}
-4819 = {
-	winter_severity_bias = 0.5
-}
-4829 = {
-	winter_severity_bias = 0.5
-}
-4830 = {
-	winter_severity_bias = 0.5
-}
-4822 = {
-	winter_severity_bias = 0.5
-}
-4823 = {
-	winter_severity_bias = 0.5
-}
-4821 = {
-	winter_severity_bias = 0.5
-}
-4822 = {
-	winter_severity_bias = 0.5
-}
-4757 = {
-	winter_severity_bias = 0.5
-}
-4755 = {
-	winter_severity_bias = 0.5
-}
-4756 = {
-	winter_severity_bias = 0.5
-}
-4824 = {
-	winter_severity_bias = 0.5
-}
-4822 = {
-	winter_severity_bias = 0.5
-}
-4757 = {
-	winter_severity_bias = 0.5
-}
-4773 = {
-	winter_severity_bias = 0.5
-}
-4775 = {
-	winter_severity_bias = 0.5
-}
-4774 = {
-	winter_severity_bias = 0.5
-}
-4834 = {
-	winter_severity_bias = 0.5
-}
-4833 = {
-	winter_severity_bias = 0.5
-}
-4832 = {
-	winter_severity_bias = 0.5
-}
-4844 = {
-	winter_severity_bias = 0.5
-}
-4843 = {
-	winter_severity_bias = 0.5
-}
-4845 = {
-	winter_severity_bias = 0.5
-}
-4842 = {
-	winter_severity_bias = 0.5
-}
-4840 = {
-	winter_severity_bias = 0.5
-}
-4841 = {
-	winter_severity_bias = 0.5
-}
-4839 = {
-	winter_severity_bias = 0.5
-}
-4838 = {
-	winter_severity_bias = 0.5
-}
-4822 = {
-	winter_severity_bias = 0.5
-}
-4836 = {
-	winter_severity_bias = 0.5
-}
-4835 = {
-	winter_severity_bias = 0.5
-}
-4837 = {
-	winter_severity_bias = 0.5
-}
-4822 = {
-	winter_severity_bias = 0.5
-}
-4851 = {
-	winter_severity_bias = 0.5
-}
-4850 = {
-	winter_severity_bias = 0.5
-}
-4852 = {
-	winter_severity_bias = 0.5
-}
-4822 = {
-	winter_severity_bias = 0.5
-}
-4853 = {
-	winter_severity_bias = 0.5
-}
-4849 = {
-	winter_severity_bias = 0.5
-}
-4806 = {
-	winter_severity_bias = 0.5
-}
-4816 = {
-	winter_severity_bias = 0.5
-}
-4807 = {
-	winter_severity_bias = 0.5
-}
-4847 = {
-	winter_severity_bias = 0.5
-}
-4846 = {
-	winter_severity_bias = 0.5
-}
-4803 = {
-	winter_severity_bias = 0.5
-}
-4800 = {
-	winter_severity_bias = 0.5
-}
-4811 = {
-	winter_severity_bias = 0.5
-}
-4814 = {
-	winter_severity_bias = 0.5
-}
-4812 = {
-	winter_severity_bias = 0.5
-}
-4810 = {
-	winter_severity_bias = 0.5
-}
-4808 = {
-	winter_severity_bias = 0.5
-}
-4734 = {
-	winter_severity_bias = 0.5
-}
-4735 = {
-	winter_severity_bias = 0.5
-}
-4733 = {
-	winter_severity_bias = 0.5
-}
-4798 = {
-	winter_severity_bias = 0.5
-}
-4813 = {
-	winter_severity_bias = 0.5
-}
-4797 = {
-	winter_severity_bias = 0.5
-}
-4801 = {
-	winter_severity_bias = 0.5
-}
-4804 = {
-	winter_severity_bias = 0.5
-}
-4806 = {
-	winter_severity_bias = 0.5
-}
-4853 = {
-	winter_severity_bias = 0.5
-}
-4796 = {
-	winter_severity_bias = 0.5
-}
-4795 = {
-	winter_severity_bias = 0.5
-}
-4794 = {
-	winter_severity_bias = 0.5
-}
-4793 = {
-	winter_severity_bias = 0.5
-}
-4792 = {
-	winter_severity_bias = 0.5
-}
-4791 = {
-	winter_severity_bias = 0.5
-}
-4779 = {
-	winter_severity_bias = 0.5
-}
-4780 = {
-	winter_severity_bias = 0.5
-}
-4781 = {
-	winter_severity_bias = 0.5
-}
-4782 = {
-	winter_severity_bias = 0.5
-}
-4791 = {
-	winter_severity_bias = 0.5
-}
-4728 = {
-	winter_severity_bias = 0.5
-}
-4729 = {
-	winter_severity_bias = 0.5
-}
-4727 = {
-	winter_severity_bias = 0.5
-}
-4726 = {
-	winter_severity_bias = 0.5
-}
-4654 = {
-	winter_severity_bias = 0.5
-}
-4652 = {
-	winter_severity_bias = 0.5
-}
-4653 = {
-	winter_severity_bias = 0.5
-}
-4647 = {
-	winter_severity_bias = 0.5
-}
-4645 = {
-	winter_severity_bias = 0.5
-}
-4648 = {
-	winter_severity_bias = 0.5
-}
-4646 = {
-	winter_severity_bias = 0.5
-}
-4583 = {
-	winter_severity_bias = 0.5
-}
-4579 = {
-	winter_severity_bias = 0.5
-}
-4578 = {
-	winter_severity_bias = 0.5
-}
-4581 = {
-	winter_severity_bias = 0.5
-}
-4580 = {
-	winter_severity_bias = 0.5
-}
-4728 = {
-	winter_severity_bias = 0.5
-}
-4727 = {
-	winter_severity_bias = 0.5
-}
-4726 = {
-	winter_severity_bias = 0.5
-}
-4729 = {
-	winter_severity_bias = 0.5
-}
-4731 = {
-	winter_severity_bias = 0.5
-}
-4732 = {
-	winter_severity_bias = 0.5
-}
-4730 = {
-	winter_severity_bias = 0.5
-}
-4703 = {
-	winter_severity_bias = 0.5
-}
-4704 = {
-	winter_severity_bias = 0.5
-}
-4705 = {
-	winter_severity_bias = 0.5
-}
-4791 = {
-	winter_severity_bias = 0.5
-}
-4789 = {
-	winter_severity_bias = 0.5
-}
-4787 = {
-	winter_severity_bias = 0.5
-}
-4788 = {
-	winter_severity_bias = 0.5
-}
-4790 = {
-	winter_severity_bias = 0.5
-}
-4785 = {
-	winter_severity_bias = 0.5
-}
-4783 = {
-	winter_severity_bias = 0.5
-}
-4784 = {
-	winter_severity_bias = 0.5
-}
-4786 = {
-	winter_severity_bias = 0.5
-}
-4777 = {
-	winter_severity_bias = 0.5
-}
-4778 = {
-	winter_severity_bias = 0.5
-}
-4776 = {
-	winter_severity_bias = 0.5
-}
-4701 = {
-	winter_severity_bias = 0.5
-}
-4681 = {
-	winter_severity_bias = 0.5
-}
-4738 = {
-	winter_severity_bias = 0.5
-}
-4736 = {
-	winter_severity_bias = 0.5
-}
-4737 = {
-	winter_severity_bias = 0.5
-}
-4791 = {
-	winter_severity_bias = 0.5
-}
-4710 = {
-	winter_severity_bias = 0.5
-}
-4711 = {
-	winter_severity_bias = 0.5
-}
-4709 = {
-	winter_severity_bias = 0.5
-}
-4743 = {
-	winter_severity_bias = 0.5
-}
-4744 = {
-	winter_severity_bias = 0.5
-}
-4742 = {
-	winter_severity_bias = 0.5
-}
-4770 = {
-	winter_severity_bias = 0.5
-}
-4771 = {
-	winter_severity_bias = 0.5
-}
-4769 = {
-	winter_severity_bias = 0.5
-}
-4725 = {
-	winter_severity_bias = 0.5
-}
-4723 = {
-	winter_severity_bias = 0.5
-}
-4722 = {
-	winter_severity_bias = 0.5
-}
-4724 = {
-	winter_severity_bias = 0.5
-}
-4714 = {
-	winter_severity_bias = 0.5
-}
-4713 = {
-	winter_severity_bias = 0.5
-}
-4712 = {
-	winter_severity_bias = 0.5
-}
-4628 = {
-	winter_severity_bias = 0.5
-}
-4627 = {
-	winter_severity_bias = 0.5
-}
-4631 = {
-	winter_severity_bias = 0.5
-}
-4694 = {
-	winter_severity_bias = 0.5
-}
-4717 = {
-	winter_severity_bias = 0.5
-}
-4715 = {
-    winter_severity_bias = 0.5
-}
-4718 = {
-	winter_severity_bias = 0.5
-}
-4716 = {
-	winter_severity_bias = 0.5
-}
-4740 = {
-	winter_severity_bias = 0.5
-}
-4721 = {
-	winter_severity_bias = 0.5
-}
-4462 = {
-	winter_severity_bias = 0.5
-}
-4470 = {
-	winter_severity_bias = 0.5
+	winter_severity_bias = @chevalie_inland_south
 }
 
 ##### e_megos_kalathipsomi
-#### k_volgardr
-### d_paroz
-## c_haiden
-#b_kap
-3758 = {
-	winter_severity_bias = 0.3
-}
-3747 = {
-	winter_severity_bias = 0.3
-}
-3748 = {
-	winter_severity_bias = 0.3
-}
-3760 = {
-	winter_severity_bias = 0.3
-}
-3759 = {
-	winter_severity_bias = 0.35
-}
-## c_velgen
-3750 = {
-	winter_severity_bias = 0.3
-}
-3752 = {
-	winter_severity_bias = 0.3
-}
-3753 = {
-	winter_severity_bias = 0.3
-}
-## c_hallenscheid
-3762 = {
-	winter_severity_bias = 0.3
-}
-3764 = {
-	winter_severity_bias = 0.3
-}
-3761 = {
-	winter_severity_bias = 0.3
-}
-3763 = {
-	winter_severity_bias = 0.3
-}
-## c_sasznow 
-3754 = {
-	winter_severity_bias = 0.3
-}
-3766 = {
-	winter_severity_bias = 0.3
-}
-3768 = {
-	winter_severity_bias = 0.3
-}
-## c_tkanovice
-3755 = {
-	winter_severity_bias = 0.3
-}
-3756 = {
-	winter_severity_bias = 0.3
-}
-3757 = {
-	winter_severity_bias = 0.3
-}
-## c_kleinbor
-3772 = {
-	winter_severity_bias = 0.3
-}
-3776 = {
-	winter_severity_bias = 0.3
-}
-3773 = {
-	winter_severity_bias = 0.3
-}
-3770 = {
-	winter_severity_bias = 0.3
-}
-## c_velka_trna
-3744 = {
-	winter_severity_bias = 0.3
-}
-3769 = {
-	winter_severity_bias = 0.3
-}
-3783 = {
-	winter_severity_bias = 0.3
-}
-## c_gamlaberget
-3782 = {
-	winter_severity_bias = 0.3
-}
-3779 = {
-	winter_severity_bias = 0.3
-}
-3787 = {
-	winter_severity_bias = 0.45
-}
-3785 = {
-	winter_severity_bias = 0.45
-}
-## c_klinkby
-3780 = {
-	winter_severity_bias = 0.3
-}
-3788 = {
-	winter_severity_bias = 0.5
-}
-3786 = {
-	winter_severity_bias = 0.4
-}
-## c_choltash
-1530 = {
-	winter_severity_bias = 0.35
-}
-1375 = {
-	winter_severity_bias = 0.35
-}
-3956 = {
-	winter_severity_bias = 0.35
-}
-866 = {
-	winter_severity_bias = 0.4
-}
-933 = {
-	winter_severity_bias = 0.45
-}
-935 = {
-	winter_severity_bias = 0.5
-}
-## c_rinnen
-3775 = {
-	winter_severity_bias = 0.3
-}
-3777 = {
-	winter_severity_bias = 0.3
-}
-7414 = {
-	winter_severity_bias = 0.3
-}
-3799 = {
-	winter_severity_bias = 0.3
-}
-## c_hirschham
-3801 = {
-	winter_severity_bias = 0.3
-}
-3798 = {
-	winter_severity_bias = 0.3
-}
-3794 = {
-	winter_severity_bias = 0.35
-}
-## c_varnhalt
-3795 = {
-	winter_severity_bias = 0.45
-}
-3796 = {
-	winter_severity_bias = 0.5
-}
-3800 = {
-	winter_severity_bias = 0.3
-}
-## c_ellends
-3791 = {
-	winter_severity_bias = 0.6
-}
-3789 = {
-	winter_severity_bias = 0.6
-}
-## c_ersange
-3805 = {
-	winter_severity_bias = 0.5
-}
-3806 = {
-	winter_severity_bias = 0.5
-}
-## c_halberbracht
-3802 = {
-	winter_severity_bias = 0.3
-}
-3804 = {
-	winter_severity_bias = 0.3
-}
-3797 = {
-	winter_severity_bias = 0.5
-}
-3803 = {
-	winter_severity_bias = 0.5
-}
-## c_millestau
-3810 = {
-	winter_severity_bias = 0.3
-}
-3812 = {
-	winter_severity_bias = 0.3
-}
-3811 = {
-	winter_severity_bias = 0.3
-}
-3813 = {
-	winter_severity_bias = 0.3
-}
-## c_viehbig
-3814 = {
-	winter_severity_bias = 0.3
-}
-3816 = {
-	winter_severity_bias = 0.3
-}
-3817 = {
-	winter_severity_bias = 0.3
-}
-3815 = {
-	winter_severity_bias = 0.3
-}
-## c_machara
-3807 = {
-	winter_severity_bias = 0.5
-}
-3808 = {
-	winter_severity_bias = 0.4
-}
-3809 = {
-	winter_severity_bias = 0.3
-}
-## c_linderum
-3823 = {
-	winter_severity_bias = 0.6
-}
-## c_neslovice
-3818 = {
-	winter_severity_bias = 0.3
-}
-3819 = {
-	winter_severity_bias = 0.3
-}
-3820 = {
-	winter_severity_bias = 0.3
-}
-3821 = {
-	winter_severity_bias = 0.3
-}
-## c_stefanikovo
-3838 = {
-	winter_severity_bias = 0.3
-}
-3839 = {
-	winter_severity_bias = 0.3
-}
-3841 = {
-	winter_severity_bias = 0.3
-}
-3840 = {
-	winter_severity_bias = 0.3
-}
-## c_lobeditz
-3834 = {
-	winter_severity_bias = 0.4
-}
-3835 = {
-	winter_severity_bias = 0.45
-}
-3837 = {
-	winter_severity_bias = 0.3
-}
-3836 = {
-	winter_severity_bias = 0.45
-}
-## c_venhaus
-3827 = {
-	winter_severity_bias = 0.5
-}
-3828 = {
-	winter_severity_bias = 0.6
-}
-## c_bocksiefen 
-3846 = {
-	winter_severity_bias = 0.3
-}
-3847 = {
-	winter_severity_bias = 0.3
-}
-3848 = {
-	winter_severity_bias = 0.3
-}
-## c_narin 
-3842 = {
-	winter_severity_bias = 0.4
-}
-3843 = {
-	winter_severity_bias = 0.45
-}
-3845 = {
-	winter_severity_bias = 0.3
-}
-3844 = {
-	winter_severity_bias = 0.3
-}
-## c_ziebl
-3830 = {
-	winter_severity_bias = 0.5
-}
-3831 = {
-	winter_severity_bias = 0.5
-}
-3832 = {
-	winter_severity_bias = 0.5
-}
-3833 = {
-	winter_severity_bias = 0.45
-}
-## c_radovesice
-3861 = {
-	winter_severity_bias = 0.3
-}
-3859 = {
-	winter_severity_bias = 0.3
-}
-3860 = {
-	winter_severity_bias = 0.4
-}
-3862 = {
-	winter_severity_bias = 0.4
-}
-## c_saova
-3852 = {
-	winter_severity_bias = 0.5
-}
-3853 = {
-	winter_severity_bias = 0.5
-}
-3854 = {
-	winter_severity_bias = 0.5
-}
-## c_piest
-7411 = {
-	winter_severity_bias = 0.3
-}
-7413= {
-	winter_severity_bias = 0.3
-}
-7412 = {
-	winter_severity_bias = 0.45
-}
-## c_rumelingen
-3864 = {
-	winter_severity_bias = 0.5
-}
-3865 = {
-	winter_severity_bias = 0.3
-}
-## c_harres
-3866 = {
-	winter_severity_bias = 0.3
-}
-3867 = {
-	winter_severity_bias = 0.3
-}
-3868 = {
-	winter_severity_bias = 0.3
-}
-## c_geigers
-3880 = {
-	winter_severity_bias = 0.35
-}
-3881 = {
-	winter_severity_bias = 0.4
-}
-3879 = {
-	winter_severity_bias = 0.5
-}
-## c_gasseldorf
-3872 = {
-	winter_severity_bias = 0.55
-}
-3873 = {
-	winter_severity_bias = 0.6
-}
-## c_insberg
-3888 = {
-	winter_severity_bias = 0.6
-}
-3889 = {
-	winter_severity_bias = 0.6
-}
-3891 = {
-	winter_severity_bias = 0.65
-}
-3890 = {
-	winter_severity_bias = 0.65
-}
-## c_aeldarn
-3882 = {
-	winter_severity_bias = 0.3
-}
-3884 = {
-	winter_severity_bias = 0.3
-}
-3883 = {
-	winter_severity_bias = 0.5
-}
-## c_robstrup
-3898 = {
-	winter_severity_bias = 0.3
-}
-3899 = {
-	winter_severity_bias = 0.3
-}
-3900 = {
-	winter_severity_bias = 0.3
-}
-## c_palbersdorf
-3886 = {
-	winter_severity_bias = 0.3
-}
-3885 = {
-	winter_severity_bias = 0.45
-}
-3887 = {
-	winter_severity_bias = 0.55
-}
-3897 = {
-	winter_severity_bias = 0.6
-}
-## c_tattertorp
-3901 = {
-	winter_severity_bias = 0.3
-}
-3903 = {
-	winter_severity_bias = 0.3
-}
-3902 = {
-	winter_severity_bias = 0.3
-}
-## c_scopo
-3912 = {
-	winter_severity_bias = 0.45
-}
-3914 = {
-	winter_severity_bias = 0.4
-}
-3913 = {
-	winter_severity_bias = 0.5
-}
-3916 = {
-	winter_severity_bias = 0.6
-}
-3918 = {
-	winter_severity_bias = 0.65
-}
-## c_adergas
-3911 = {
-	winter_severity_bias = 0.3
-}
-3910 = {
-	winter_severity_bias = 0.3
-}
-3905 = {
-	winter_severity_bias = 0.4
-}
-3904 = {
-	winter_severity_bias = 0.4
-}
-## c_innerhareth
-3906 = {
-	winter_severity_bias = 0.3
-}
-3907 = {
-	winter_severity_bias = 0.3
-}
-3908 = {
-	winter_severity_bias = 0.3
-}
-3909 = {
-	winter_severity_bias = 0.3
-}
-## c_bigelbach
-3928 = {
-	winter_severity_bias = 0.3
-}
-3931 = {
-	winter_severity_bias = 0.3
-}
-3930 = {
-	winter_severity_bias = 0.3
-}
-3929 = {
-	winter_severity_bias = 0.3
-}
-## c_tletsky 
-3922 = {
-	winter_severity_bias = 0.4
-}
-3923 = {
-	winter_severity_bias = 0.4
-}
-3924 = {
-	winter_severity_bias = 0.4
-}
-## c_jindice
-3919 = {
-	winter_severity_bias = 0.45
-}
-3921 = {
-	winter_severity_bias = 0.45
-}
-3920 = {
-	winter_severity_bias = 0.5
-}
-## c_nienwohlde
-3936 = {
-	winter_severity_bias = 0.3
-}
-3937 = {
-	winter_severity_bias = 0.3
-}
-## c_zgornje
-3933 = {
-	winter_severity_bias = 0.4
-}
-3935 = {
-	winter_severity_bias = 0.4
-}
-3932 = {
-	winter_severity_bias = 0.4
-}
-3934 = {
-	winter_severity_bias = 0.4
-}
-3938 = {
-	winter_severity_bias = 0.5
-}
-3939 = {
-	winter_severity_bias = 0.5
-}
-## c_cernizza
-3943 = {
-	winter_severity_bias = 0.5
-}
-3942 = {
-	winter_severity_bias = 0.45
-}
-3944 = {
-	winter_severity_bias = 0.35
-}
-## c_bartum
-4264 = {
-	winter_severity_bias = 0.3
-}
-4265 = {
-	winter_severity_bias = 0.3
-}
-4266 = {
-	winter_severity_bias = 0.3
-}
-## c_weilitinger
-4250 = {
-	winter_severity_bias = 0.3
-}
-4251 = {
-	winter_severity_bias = 0.4
-}
-4252 = {
-	winter_severity_bias = 0.35
-}
-## c_schwarzberg
-4253 = {
-	winter_severity_bias = 0.45
-}
-4254 = {
-	winter_severity_bias = 0.5
-}
-4255 = {
-	winter_severity_bias = 0.6
-}
-## c_henkenbrink
-4267 = {
-	winter_severity_bias = 0.3
-}
-4268 = {
-	winter_severity_bias = 0.3
-}
-4269 = {
-	winter_severity_bias = 0.3
-}
-## c_bolmaryd
-4270 = {
-	winter_severity_bias = 0.3
-}
-4271 = {
-	winter_severity_bias = 0.3
-}
-## c_ulsted
-4288 = {
-	winter_severity_bias = 0.3
-}
-4289 = {
-	winter_severity_bias = 0.3
-}
-4290 = {
-	winter_severity_bias = 0.3
-}
-## c_schrambach
-4291 = {
-	winter_severity_bias = 0.35
-}
-4293 = {
-	winter_severity_bias = 0.4
-}
-4292 = {
-	winter_severity_bias = 0.4
-}
-4257 = {
-	winter_severity_bias = 0.5
-}
-4259 = {
-	winter_severity_bias = 0.55
-}
-4258 = {
-	winter_severity_bias = 0.6
-}
-## c_potocco
-4294 = {
-	winter_severity_bias = 0.3
-}
-4295 = {
-	winter_severity_bias = 0.3
-}
-4296 = {
-	winter_severity_bias = 0.35
-}
-## c_dillingen
-4261 = {
-	winter_severity_bias = 0.45
-}
-4263 = {
-	winter_severity_bias = 0.5
-}
-4262 = {
-	winter_severity_bias = 0.5
-}
-## c_ernster
-4307 = {
-	winter_severity_bias = 0.4
-}
-4308 = {
-	winter_severity_bias = 0.4
-}
-4309 = {
-	winter_severity_bias = 0.5
-}
-4310 = {
-	winter_severity_bias = 0.55
-}
-4311 = {
-	winter_severity_bias = 0.55
-}
-## c_osweiler
-4297 = {
-	winter_severity_bias = 0.3
-}
-4298 = {
-	winter_severity_bias = 0.3
-}
-4299 = {
-	winter_severity_bias = 0.3
-}
-## c_remlingrade
-4320 = {
-	winter_severity_bias = 0.45
-}
-4321 = {
-	winter_severity_bias = 0.5
-}
-4322 = {
-	winter_severity_bias = 0.45
-}
-4325 = {
-	winter_severity_bias = 0.6
-}
-## c_okroulitz
-4300 = {
-	winter_severity_bias = 0.3
-}
-4301 = {
-	winter_severity_bias = 0.3
-}
-4302 = {
-	winter_severity_bias = 0.3
+#### Mountains
+@south_sjalvolki_mountains = 0.55
+@central_sjalvolki_mountains = 0.60
+
+### South Sjalvolki Mountains
+7469 = {
+	winter_severity_bias = @south_sjalvolki_mountains
+}
+7470 = {
+	winter_severity_bias = @south_sjalvolki_mountains
+}
+7472 = {
+	winter_severity_bias = @south_sjalvolki_mountains
+}
+7918 = {
+	winter_severity_bias = @south_sjalvolki_mountains
+}
+7473 = {
+	winter_severity_bias = @south_sjalvolki_mountains
+}
+7474 = {
+	winter_severity_bias = @south_sjalvolki_mountains
+}
+7916 = {
+	winter_severity_bias = @south_sjalvolki_mountains
+}
+7914 = {
+	winter_severity_bias = @south_sjalvolki_mountains
+}
+7482 = {
+	winter_severity_bias = @south_sjalvolki_mountains
+}
+7481 = {
+	winter_severity_bias = @south_sjalvolki_mountains
+}
+7453 = {
+	winter_severity_bias = @south_sjalvolki_mountains
+}
+4785 = {
+	winter_severity_bias = @south_sjalvolki_mountains
+}
+### Related to d_adaitiron
+2799 = {
+	winter_severity_bias = @south_sjalvolki_mountains
+}
+6309 = {
+	winter_severity_bias = @south_sjalvolki_mountains
+}
+
+
+### Central Sjalvolki Mountains (Tall northmost south sjalvolki mountains that deserve their own value)
+7485 = {
+	winter_severity_bias = @central_sjalvolki_mountains
+}
+7476 = {
+	winter_severity_bias = @central_sjalvolki_mountains
+}
+7477 = {
+	winter_severity_bias = @central_sjalvolki_mountains
+}
+7478 = {
+	winter_severity_bias = @south_sjalvolki_mountains
+}
+
+
+################################################
+# ADJUSTABLE VALUES FOR E_MIKROS_KALATHIPSOMI
+# Climate regions and values as of 03-04-2021 by Zoneling
+################################################
+# Coastal is basically only for that small stretch of Mikros that has contact with the cold stream that also cools chevalie a bit.
+@mc_mikros_coastal = 0.15
+# For the lowlands surrounding the river Pathos and its tributaries.
+@mr_mikros_river = 0.13
+# Below are for most provinces, by altitude.
+@mi_mikros_inland = 0.18
+@mm_mikros_medium_altitude = 0.23
+@mh_mikros_high_altitude = 0.33
+# Provinces under these categories are basically almost at mountain altitude.
+@mv_mikros_vhigh_altitude = 0.48
+@me_mikros_extreme_altitude = 0.60
+# Any provinces that go even higher, will simply share the winter value of the mountains themselves.
+# These are
+@jezica_mountains = 0.7
+@foglands_pass = 0.9
+@lns_low_north_sjalvolki = 0.7
+@north_sjalvolki = 0.8
+# For d_gelovizza, since it is sourth of the north sjalvolki mountains and therefore instead shares climated with e_megos
+@gelovizza_valley = 0.10
+# For k_lieben due to its placement behind a "gate" of tall mountains, blocking warm winds from the lower regions.
+@lr_lieben_river = 0.20
+@li_lieben_inlands = 0.25
+@lm_lieben_medium_altitude = 0.35
+@lh_lieben_high_altitude = 0.45
+@lv_lieben_vhigh_altitude = 0.55
+@le_lieben_extreme_altitude = 0.65
+
+
+##### e_mikros_kalathipsomi
+#### Mountains and Wasteland
+### North Sjalvolki Mountain Chain
+7483 = {
+	winter_severity_bias = @north_sjalvolki
+}
+7489 = {
+	winter_severity_bias = @north_sjalvolki
+}
+7492 = {
+	winter_severity_bias = @north_sjalvolki
+}
+### Foglands Pass Entrance
+7493 = {
+	winter_severity_bias = @foglands_pass
+}
+7494 = {
+	winter_severity_bias = @foglands_pass
+}
+### Jezica Mountain Chain
+4696 = {
+	winter_severity_bias = @jezica_mountains
+}
+### Hindsgrove Mount
+7480 = {
+	winter_severity_bias = @lns_low_north_sjalvolki
+}
+
+#### k_svyatich
+### d_blaschdorf
+## c_herzoghut
+# b_kochovice
+4338 = {
+	winter_severity_bias = @mc_mikros_coastal
+}
+# b_puklica
+4449 = {
+	winter_severity_bias = @mc_mikros_coastal
+}
+# b_kordony
+4335 = {
+	winter_severity_bias = @mc_mikros_coastal
+}
+## c_kratschen
+# b_eicht
+4361 = {
+	winter_severity_bias = @mc_mikros_coastal
+}
+# b_dubovka
+4367 = {
+	winter_severity_bias = @mc_mikros_coastal
+}
+## c_jurknov
+# b_rhypoli
+6357 = {
+	winter_severity_bias = @mc_mikros_coastal
+}
+# b_magoria
+6361 = {
+	winter_severity_bias = @mc_mikros_coastal
+}
+# b_placeholder
+8052 = {
+	winter_severity_bias = @mc_mikros_coastal
+}
+### d_bambousek
+## c_makcji
+# b_olstadtl
+4340 = {
+	winter_severity_bias = @mc_mikros_coastal
+}
+# b_tiborfa
+4345 = {
+	winter_severity_bias = @mc_mikros_coastal
+}
+# b_senohrad
+4346 = {
+	winter_severity_bias = @mc_mikros_coastal
+}
+## c_paunovac
+# b_radvanec
+4349 = {
+	winter_severity_bias = @mc_mikros_coastal
+}
+# b_suchov
+4354 = {
+	winter_severity_bias = @mc_mikros_coastal
+}
+# b_radun
+4353 = {
+	winter_severity_bias = @mc_mikros_coastal
+}
+### d_krakovany
+## c_vrcholtovice
+# b_jassnitz
+4389 = {
+	winter_severity_bias = @mc_mikros_coastal
+}
+# b_hohenedlau
+4397 = {
+	winter_severity_bias = @mc_mikros_coastal
+}
+# b_biederitz
+4466 = {
+	winter_severity_bias = @mm_mikros_medium_altitude
+}
+# b_butzhausen
+4420 = {
+	winter_severity_bias = @mi_mikros_inland
+}
+## c_chomutowitz
+# b_stijak
+4456 = {
+	winter_severity_bias = @mr_mikros_river
+}
+# b_rochov
+4447 = {
+	winter_severity_bias = @mr_mikros_river
+}
+# b_boskowitz
+4451 = {
+	winter_severity_bias = @mi_mikros_inland
+}
+## c_kanice
+# b_trubska
+4399 = {
+	winter_severity_bias = @mm_mikros_medium_altitude
+}
+# b_slabetz
+4382 = {
+	winter_severity_bias = @mi_mikros_inland
+}
+# b_dobroslavice
+4417 = {
+	winter_severity_bias = @mm_mikros_medium_altitude
+}
+### d_kis_ujfalu
+## c_kyje
+# b_goebelsmuhle
+4303 = {
+	winter_severity_bias = @mc_mikros_coastal
+}
+# b_jistebnice
+4378 = {
+	winter_severity_bias = @mi_mikros_inland
+}
+# b_spytovice
+4379 = {
+	winter_severity_bias = @mm_mikros_medium_altitude
 }
 ## c_wollomoos
-4319 = {
-	winter_severity_bias = 0.4
+# b_schwenningdorf
+4300 = {
+	winter_severity_bias = @mc_mikros_coastal
 }
+# b_prestavlky
 4327 = {
-	winter_severity_bias = 0.4
+	winter_severity_bias = @mi_mikros_inland
 }
+# b_hudi_kot
 4328 = {
-	winter_severity_bias = 0.5
+	winter_severity_bias = @mm_mikros_medium_altitude
 }
-## c_dolnia blah blah
-4303 = {
-	winter_severity_bias = 0.3
+## c_bahrenbostel
+# b_oberkornbach
+4320 = {
+	winter_severity_bias = @mm_mikros_medium_altitude
 }
-4305 = {
-	winter_severity_bias = 0.3
-}
-4306 = {
-	winter_severity_bias = 0.4
-}
-###this is so tedious please kill me-Netgear TIME FOR A CHANGE OF PACE
-##PROVINCES DIRECTLY NEXT TO MOUNTAINS IN MEGOS
-3790 = {
-	winter_severity_bias = 0.7
-}
-3792 = {
-	winter_severity_bias = 0.7
-}
-3793 = {
-	winter_severity_bias = 0.7
-}
-3822 = {
-	winter_severity_bias = 0.7
-}
-3824 = {
-	winter_severity_bias = 0.7
-}
-3826 = {
-	winter_severity_bias = 0.7
-}
-3825 = {
-	winter_severity_bias = 0.7
-}
-3829 = {
-	winter_severity_bias = 0.7
-}
-3849 = {
-	winter_severity_bias = 0.7
-}
-3850 = {
-	winter_severity_bias = 0.7
-}
-3851 = {
-	winter_severity_bias = 0.7
-}
-3856 = {
-	winter_severity_bias = 0.7
-}
-3869 = {
-	winter_severity_bias = 0.7
-}
-3863 = {
-	winter_severity_bias = 0.7
-}
-3870 = {
-	winter_severity_bias = 0.7
-}
-3871 = {
-	winter_severity_bias = 0.7
-}
-3874 = {
-	winter_severity_bias = 0.7
-}
-3875 = {
-	winter_severity_bias = 0.75
-}
-3878 = {
-	winter_severity_bias = 0.75
-}
-3877 = {
-	winter_severity_bias = 0.75
-}
-3893 = {
-	winter_severity_bias = 0.75
-}
-3894 = {
-	winter_severity_bias = 0.75
-}
-3892 = {
-	winter_severity_bias = 0.7
-}
-3895 = {
-	winter_severity_bias = 0.7
-}
-3896 = {
-	winter_severity_bias = 0.7
-}
-3915 = {
-	winter_severity_bias = 0.7
-}
-3918 = {
-	winter_severity_bias = 0.7
-}
-3917 = {
-	winter_severity_bias = 0.7
-}
-3925 = {
-	winter_severity_bias = 0.7
-}
-4101 = {
-	winter_severity_bias = 0.7
-}
-3926 = {
-	winter_severity_bias = 0.7
-}
-3927 = {
-	winter_severity_bias = 0.7
-}
-4102 = {
-	winter_severity_bias = 0.7
-}
-3940 = {
-	winter_severity_bias = 0.7
-}
-3941 = {
-	winter_severity_bias = 0.7
-}
-3945 = {
-	winter_severity_bias = 0.7
-}
-4272 = {
-	winter_severity_bias = 0.7
-}
-4276 = {
-	winter_severity_bias = 0.7
-}
-4277 = {
-	winter_severity_bias = 0.7
-}
-4256 = {
-	winter_severity_bias = 0.7
-}
-4260 = {
-	winter_severity_bias = 0.7
-}
-7416 = {
-	winter_severity_bias = 0.7
-}
-7418 = {
-	winter_severity_bias = 0.7
-}
-4312 = {
-	winter_severity_bias = 0.7
-}
-4321 = {
-	winter_severity_bias = 0.7
-}
+# b_lutzenberg
 4324 = {
-	winter_severity_bias = 0.7
+	winter_severity_bias = @mm_mikros_medium_altitude
 }
+# b_borovy
 4326 = {
-	winter_severity_bias = 0.7
+	winter_severity_bias = @mh_mikros_high_altitude
 }
-4380 = {
-	winter_severity_bias = 0.7
+#### k_gampern
+### d_cisotin
+## c_mayerhofen
+# b_potok
+4425 = {
+	winter_severity_bias = @mr_mikros_river
 }
-4275 = {
-	winter_severity_bias = 0.7
+# b_kaltinitz
+4444 = {
+	winter_severity_bias = @mr_mikros_river
 }
-4286 = {
-	winter_severity_bias = 0.7
+# b_kamilov
+4443 = {
+	winter_severity_bias = @mi_mikros_inland
 }
-4287 = {
-	winter_severity_bias = 0.7
+## c_hauserbichl
+# b_drahonice
+4427 = {
+	winter_severity_bias = @mr_mikros_river
 }
-4221 = {
-	winter_severity_bias = 0.7
+# b_pschedborsch
+4435 = {
+	winter_severity_bias = @mi_mikros_inland
 }
-4220 = {
-	winter_severity_bias = 0.7
+## c_allmannsweier
+# b_hinterwasser
+4459 = {
+	winter_severity_bias = @mi_mikros_inland
 }
-4218 = {
-	winter_severity_bias = 0.7
+# b_trebbichau
+4448 = {
+	winter_severity_bias = @mi_mikros_inland
 }
-4216 = {
-	winter_severity_bias = 0.7
+# b_pellheim
+4484 = {
+	winter_severity_bias = @mm_mikros_medium_altitude
 }
-4214 = {
-	winter_severity_bias = 0.7
+### d_autschowa
+## c_weitesfeld
+# b_mezirici
+4482 = {
+	winter_severity_bias = @mm_mikros_medium_altitude
 }
-4212 = {
-	winter_severity_bias = 0.7
+# b_cizova
+4474 = {
+	winter_severity_bias = @mm_mikros_medium_altitude
 }
-4205 = {
-	winter_severity_bias = 0.7
+# b_buttendorf
+4479 = {
+	winter_severity_bias = @mh_mikros_high_altitude
 }
-4207 = {
-	winter_severity_bias = 0.7
+## c_radvanice
+# b_ustup
+4557 = {
+	winter_severity_bias = @mh_mikros_high_altitude
 }
-4208 = {
-	winter_severity_bias = 0.7
+# b_finsing
+4560 = {
+	winter_severity_bias = @mv_mikros_vhigh_altitude
 }
-4209 = {
-	winter_severity_bias = 0.7
+# b_dirnau
+4571 = {
+	winter_severity_bias = @mh_mikros_high_altitude
 }
-4238 = {
-	winter_severity_bias = 0.7
+# b_halltal
+4578 = {
+	winter_severity_bias = @mv_mikros_vhigh_altitude
 }
-4239 = {
-	winter_severity_bias = 0.7
+## c_bojkowitz
+# b_wollsberg
+4582 = {
+	winter_severity_bias = @me_mikros_extreme_altitude
 }
-4241 = {
-	winter_severity_bias = 0.7
+# b_jeseney
+4591 = {
+	winter_severity_bias = @me_mikros_extreme_altitude
 }
-4242 = {
-	winter_severity_bias = 0.7
+# b_ernstberg
+4587 = {
+	winter_severity_bias = @me_mikros_extreme_altitude
 }
-4247 = {
-	winter_severity_bias = 0.7
+### d_otvovice
+## c_krampen
+# b_junolice
+4468 = {
+	winter_severity_bias = @mr_mikros_river
 }
+# b_zasadbreg
+4471 = {
+	winter_severity_bias = @mr_mikros_river
+}
+## c_lampertsfeld
+# b_wittichsthal
+4627 = {
+	winter_severity_bias = @mr_mikros_river
+}
+# b_elendbachel
+4629 = {
+	winter_severity_bias = @mi_mikros_inland
+}
+## c_mauthstadt
+# b_gornje_lezece
+4487 = {
+	winter_severity_bias = @mm_mikros_medium_altitude
+}
+# b_srbce
+4499 = {
+	winter_severity_bias = @mm_mikros_medium_altitude
+}
+# b_idafehn
+4498 = {
+	winter_severity_bias = @mv_mikros_vhigh_altitude
+}
+## c_pivnisko
+# b_rassdorf
+4491 = {
+	winter_severity_bias = @mh_mikros_high_altitude
+}
+# b_garbisdorf
+4495 = {
+	winter_severity_bias = @mv_mikros_vhigh_altitude
+}
+### d_bircna_vas
+## c_gunzenheim
+# b_pripsleben
+4642 = {
+	winter_severity_bias = @mr_mikros_river
+}
+# b_busau
+4644 = {
+	winter_severity_bias = @mr_mikros_river
+}
+## c_chotzen
+# b_dellen
+4672 = {
+	winter_severity_bias = @mr_mikros_river
+}
+# b_sovilji
+4678 = {
+	winter_severity_bias = @mr_mikros_river
+}
+# b_kronsdorf
+4675 = {
+	winter_severity_bias = @mr_mikros_river
+}
+## c_giwenich
+# b_bohuslow
+4633 = {
+	winter_severity_bias = @mi_mikros_inland
+}
+# b_limpach
+4635 = {
+	winter_severity_bias = @mi_mikros_inland
+}
+# b_mendryka
+4636 = {
+	winter_severity_bias = @mi_mikros_inland
+}
+## c_looh
+# b_brockstedt
+4684 = {
+	winter_severity_bias = @mi_mikros_inland
+}
+# b_hotzenplotz
+4679 = {
+	winter_severity_bias = @mi_mikros_inland
+}
+# b_zisov
+4693 = {
+	winter_severity_bias = @mm_mikros_medium_altitude
+}
+### d_ordos
+## c_dammhausen
+# b_zwittau
+4632 = {
+	winter_severity_bias = @mi_mikros_inland
+}
+# b_kalmswiese
+4657 = {
+	winter_severity_bias = @mi_mikros_inland
+}
+# b_fefry
+4656 = {
+	winter_severity_bias = @mm_mikros_medium_altitude
+}
+## c_nikolsburg
+# b_chuderovec
+4690 = {
+	winter_severity_bias = @mm_mikros_medium_altitude
+}
+# b_brambory
+4650 = {
+	winter_severity_bias = @mh_mikros_high_altitude
+}
+# b_poduba
+4646 = {
+	winter_severity_bias = @mv_mikros_vhigh_altitude
+}
+## c_okarec
+# b_roschtin
+4652 = {
+	winter_severity_bias = @me_mikros_extreme_altitude
+}
+# b_hostovlice
+4645 = {
+	winter_severity_bias = @mv_mikros_vhigh_altitude
+}
+#### k_nedweis
+### d_wischezahn
+## c_wtelno
+# b_bradenborg
+4706 = {
+	winter_severity_bias = @mr_mikros_river
+}
+# b_miegersbach
+4907 = {
+	winter_severity_bias = @mr_mikros_river
+}
+## c_kleinau
+# b_tuhanzl
+4748 = {
+	winter_severity_bias = @mr_mikros_river
+}
+# b_oberetrach
+4713 = {
+	winter_severity_bias = @mr_mikros_river
+}
+# b_buchwaldsdorf
+4752 = {
+	winter_severity_bias = @mr_mikros_river
+}
+## c_wlthschnau
+# b_kravsko
+4819 = {
+	winter_severity_bias = @mr_mikros_river
+}
+# b_chrochvice
+4829 = {
+	winter_severity_bias = @mh_mikros_high_altitude
+}
+## c_mosenhof
+# b_andorf
+4823 = {
+	winter_severity_bias = @mh_mikros_high_altitude
+}
+# b_zborowitz
+4825 = {
+	winter_severity_bias = @mv_mikros_vhigh_altitude
+}
+# b_kozolupy
+4755 = {
+	winter_severity_bias = @mv_mikros_vhigh_altitude
+}
+### d_oprostovice
+## c_tomm
+# b_hojanovice
+4688 = {
+	winter_severity_bias = @mr_mikros_river
+}
+# b_kozbana
+4719 = {
+	winter_severity_bias = @mi_mikros_inland
+}
+# b_bundalo
+4720 = {
+	winter_severity_bias = @mi_mikros_inland
+}
+## c_kayl
+# b_lusading
+4686 = {
+	winter_severity_bias = @mi_mikros_inland
+}
+# b_hilgersdorf
+4715 = {
+	winter_severity_bias = @mi_mikros_inland
+}
+# b_bojanov
+4716 = {
+	winter_severity_bias = @mm_mikros_medium_altitude
+}
+## c_wichum
+# b_zapuze
+4740 = {
+	winter_severity_bias = @mm_mikros_medium_altitude
+}
+# b_rossoch
+4783 = {
+	winter_severity_bias = @mm_mikros_medium_altitude
+}
+# b_nuklovice
+4710 = {
+	winter_severity_bias = @mm_mikros_medium_altitude
+}
+### d_moosleiten
+## c_olbramovice
+# b_exenberg
+4737 = {
+	winter_severity_bias = @mm_mikros_medium_altitude
+}
+# b_kocourov
+4702 = {
+	winter_severity_bias = @mm_mikros_medium_altitude
+}
+# b_michelau
+4699 = {
+	winter_severity_bias = @mm_mikros_medium_altitude
+}
+## c_batelov
+# b_nossendorf
+4695 = {
+	winter_severity_bias = @mv_mikros_vhigh_altitude
+}
+# b_miedlingsdorf
+4703 = {
+	winter_severity_bias = @mh_mikros_high_altitude
+}
+# b_wahns
+4726 = {
+	winter_severity_bias = @me_mikros_extreme_altitude
+}
+## c_starec
+# b_bausnitz
+4730 = {
+	winter_severity_bias = @mv_mikros_vhigh_altitude
+}
+# b_kohlhardt
+4734 = {
+	winter_severity_bias = @me_mikros_extreme_altitude
+}
+### d_zgornje_vrtice
+## c_grenzgrund
+# b_kovalovice
+4724 = {
+	winter_severity_bias = @mi_mikros_inland
+}
+# b_sommerau
+4769 = {
+	winter_severity_bias = @mi_mikros_inland
+}
+# b_falkenau
+4742 = {
+	winter_severity_bias = @mm_mikros_medium_altitude
+}
+## c_zinkovy
+# b_dochowa
+4773 = {
+	winter_severity_bias = @mm_mikros_medium_altitude
+}
+# b_tehau
+4832 = {
+	winter_severity_bias = @mv_mikros_vhigh_altitude
+}
+# b_stelzengruen
+4842 = {
+	winter_severity_bias = @me_mikros_extreme_altitude
+}
+## c_gestheysen
+# b_eppeldorf
+4776 = {
+	winter_severity_bias = @mm_mikros_medium_altitude
+}
+# b_nekor
+4779 = {
+	winter_severity_bias = @mv_mikros_vhigh_altitude
+}
+### d_kautenbach
+## c_vorhalle
+# b_hrdlovka
+4786 = {
+	winter_severity_bias = @mh_mikros_high_altitude
+}
+# b_raitenberg
+4796 = {
+	winter_severity_bias = @mv_mikros_vhigh_altitude
+}
+# b_rautendorf
+4801 = {
+	winter_severity_bias = @me_mikros_extreme_altitude
+}
+## c_simperk
+#b_st_leonhard
+4838 = {
+	winter_severity_bias = @me_mikros_extreme_altitude
+}
+# b_zolver
+4839 = {
+	winter_severity_bias = @me_mikros_extreme_altitude
+}
+# b_oberhofschattseite
+4850 = {
+	winter_severity_bias = @me_mikros_extreme_altitude
+}
+## c_divice
+# b_ribnik
+4807 = {
+	winter_severity_bias = @me_mikros_extreme_altitude
+}
+# b_bolevic
+4799 = {
+	winter_severity_bias = @me_mikros_extreme_altitude
+}
+# b_celechovice
+4808 = {
+	winter_severity_bias = @me_mikros_extreme_altitude
+}
+#### k_sulzegg
+### d_heinrichsheim
+## c_rovanjska
+# b_kaludjerovac
+4423 = {
+	winter_severity_bias = @mr_mikros_river
+}
+# b_soleuvre
+4414 = {
+	winter_severity_bias = @mh_mikros_high_altitude
+}
+# b_ejpovice
+4428 = {
+	winter_severity_bias = @mi_mikros_inland
+}
+## c_olhotta
+# b_zarzitz
+4521 = {
+	winter_severity_bias = @mi_mikros_inland
+}
+# b_neuhochstein
+4517 = {
+	winter_severity_bias = @mm_mikros_medium_altitude
+}
+## c_prailing
+# b_drbalov
+4515 = {
+	winter_severity_bias = @mm_mikros_medium_altitude
+}
+# b_leudelange
+4411 = {
+	winter_severity_bias = @mv_mikros_vhigh_altitude
+}
+### d_puscava
+## c_hubojedy
+# b_senava
+4431 = {
+	winter_severity_bias = @mi_mikros_inland
+}
+# b_sipy
+4542 = {
+	winter_severity_bias = @mm_mikros_medium_altitude
+}
+# b_eislingen
+4548 = {
+	winter_severity_bias = @mm_mikros_medium_altitude
+}
+# b_karnzow
+4551 = {
+	winter_severity_bias = @mm_mikros_medium_altitude
+}
+## c_greisingberg
+# b_zampach
+4545 = {
+	winter_severity_bias = @mm_mikros_medium_altitude
+}
+# b_sluhy
+4574 = {
+	winter_severity_bias = @mh_mikros_high_altitude
+}
+# b_reichersdorf
+4569 = {
+	winter_severity_bias = @mv_mikros_vhigh_altitude
+}
+## c_chumo
+# b_osternberg
+4575 = {
+	winter_severity_bias = @mh_mikros_high_altitude
+}
+# b_kochov
+4585 = {
+	winter_severity_bias = @me_mikros_extreme_altitude
+}
+### d_podkoren
+## c_unterfahrenbach
+# b_karrin
+4524 = {
+	winter_severity_bias = @mm_mikros_medium_altitude
+}
+# b_roudne
+4526 = {
+	winter_severity_bias = @mm_mikros_medium_altitude
+}
+# b_johannisbad
+4509 = {
+	winter_severity_bias = @mm_mikros_medium_altitude
+}
+# b_roehenberg
+4539 = {
+	winter_severity_bias = @mh_mikros_high_altitude
+}
+## c_zlutice
+# b_tihava
+4530 = {
+	winter_severity_bias = @mi_mikros_inland
+}
+# b_zelevice
+4532 = {
+	winter_severity_bias = @mi_mikros_inland
+}
+# b_woggersin
+4529 = {
+	winter_severity_bias = @mm_mikros_medium_altitude
+}
+## c_hemmerwurth
+# b_eulenberg
+4537 = {
+	winter_severity_bias = @me_mikros_extreme_altitude
+}
+# b_schauflern
+4564 = {
+	winter_severity_bias = @me_mikros_extreme_altitude
+}
+## c_engelsdorf
+# b_argetzleiten
+4502 = {
+	winter_severity_bias = @mh_mikros_high_altitude
+}
+# b_mijakovic
+4508 = {
+	winter_severity_bias = @mh_mikros_high_altitude
+}
+### d_gelovizza
+## c_dahlitz
+# b_theisseil
+4534 = {
+	winter_severity_bias = @mv_mikros_vhigh_altitude
+}
+# b_donnerskirchen
 4249 = {
-	winter_severity_bias = 0.7
+	winter_severity_bias = @mh_mikros_high_altitude
 }
-4248 = {
-	winter_severity_bias = 0.7
+# b_breznik
+4247 = {
+	winter_severity_bias = @gelovizza_valley
 }
+## c_ernstein
+# b_manternach
 4246 = {
-	winter_severity_bias = 0.7
+	winter_severity_bias = @mm_mikros_medium_altitude
 }
-4237 = {
-	winter_severity_bias = 0.7
+## c_harskirchen
+# b_reisenberg
+4242 = {
+	winter_severity_bias = @gelovizza_valley
 }
-4236 = {
-	winter_severity_bias = 0.7
+# b_seiboldshof
+4241 = {
+	winter_severity_bias = @gelovizza_valley
 }
-4233 = {
-	winter_severity_bias = 0.7
+# b_ladenthin
+4240 = {
+	winter_severity_bias = @gelovizza_valley
 }
-4188 = {
-	winter_severity_bias = 0.6
+#### k_lieben
+### d_oterzhofen
+## c_krtely
+# b_hirschberg
+4861 = {
+	winter_severity_bias = @lr_lieben_river
 }
-4187 = {
-	winter_severity_bias = 0.6
+# b_stankowitz
+4873 = {
+	winter_severity_bias = @li_lieben_inlands
 }
-4185 = {
-	winter_severity_bias = 0.6
+## c_bretno
+# b_hinterwiesthal
+4870 = {
+	winter_severity_bias = @lh_lieben_high_altitude
 }
-4204 = {
-	winter_severity_bias = 0.6
+# b_kamenna
+4871 = {
+	winter_severity_bias = @lv_lieben_vhigh_altitude
 }
-4203 = {
-	winter_severity_bias = 0.6
+## c_werda
+# b_trojavina
+4866 = {
+	winter_severity_bias = @lv_lieben_vhigh_altitude
 }
-4285 = {
-	winter_severity_bias = 0.7
+# b_pressath
+4869 = {
+	winter_severity_bias = @lv_lieben_vhigh_altitude
 }
+# b_hyskow
+4874 = {
+	winter_severity_bias = @lv_lieben_vhigh_altitude
+}
+### d_nepasice
+## c_srvtnov
+# b_hilbringen
+4905 = {
+	winter_severity_bias = @lv_lieben_vhigh_altitude
+}
+# b_niederthal
+4906 = {
+	winter_severity_bias = @le_lieben_extreme_altitude
+}
+# b_heiligen
+4907 = {
+	winter_severity_bias = @lns_low_north_sjalvolki
+}
+## c_hradsko
+# b_feine
+4909 = {
+	winter_severity_bias = @le_lieben_extreme_altitude
+}
+# b_bierstrasz
+4910 = {
+	winter_severity_bias = @lns_low_north_sjalvolki
+}
+### d_skrbovice
+## c_balkham
+# b_kokolajnscak
+4911 = {
+	winter_severity_bias = @lns_low_north_sjalvolki
+}
+# b_sapna
+4913 = {
+	winter_severity_bias = @north_sjalvolki
+}
+## c_gebharts
+# b_spanedt
+4940 = {
+	winter_severity_bias = @lns_low_north_sjalvolki
+}
+# b_loitz
+4945 = {
+	winter_severity_bias = @lns_low_north_sjalvolki
+}
+# b_markvartovice
+4943 = {
+	winter_severity_bias = @lns_low_north_sjalvolki
+}
+### d_schalkshofen
+## c_urfahrhof
+# b_kehlen
+4894 = {
+	winter_severity_bias = @lm_lieben_medium_altitude
+}
+# b_gortytos
+6356 = {
+	winter_severity_bias = @lm_lieben_medium_altitude
+}
+# b_unterhaslau
+4895 = {
+	winter_severity_bias = @lv_lieben_vhigh_altitude
+}
+## c_schotterey
+# b_duhnen
+4896 = {
+	winter_severity_bias = @lh_lieben_high_altitude
+}
+# b_mupferting
+4902 = {
+	winter_severity_bias = @lv_lieben_vhigh_altitude
+}
+# b_malec
+4904 = {
+	winter_severity_bias = @le_lieben_extreme_altitude
+}
+## c_trziblitz
+# b_rantenberg
+4828 = {
+	winter_severity_bias = @le_lieben_extreme_altitude
+}
+# b_blatec
+4936 = {
+	winter_severity_bias = @lns_low_north_sjalvolki
+}
+## c_neujahrsdorf
+# b_altossiach
+4883 = {
+	winter_severity_bias = @lm_lieben_medium_altitude
+}
+# b_khaa
+4885 = {
+	winter_severity_bias = @li_lieben_inlands
+}
+# b_wennigsen
+4897 = {
+	winter_severity_bias = @lh_lieben_high_altitude
+}
+### d_cisichie
+## c_sazena
+# b_stein
+4889 = {
+	winter_severity_bias = @lm_lieben_medium_altitude
+}
+# b_kleinprausitz
+4891 = {
+	winter_severity_bias = @lh_lieben_high_altitude
+}
+## c_lujic
+# b_kopinjovac
+4893 = {
+	winter_severity_bias = @lv_lieben_vhigh_altitude
+}
+# b_wintershagen
+4899 = {
+	winter_severity_bias = @lv_lieben_vhigh_altitude
+}
+# b_brezje_pri_vinjem_vrhu
+4901 = {
+	winter_severity_bias = @le_lieben_extreme_altitude
+}
+### d_mladovice
+## c_sicciole
+# b_unterstaudhausen
+4880 = {
+	winter_severity_bias = @lr_lieben_river
+}
+# b_ohne
+4888 = {
+	winter_severity_bias = @li_lieben_inlands
+}
+# b_slavnic
+4890 = {
+	winter_severity_bias = @lh_lieben_high_altitude
+}
+## c_kolverath
+# b_veliny
+4916 = {
+	winter_severity_bias = @lv_lieben_vhigh_altitude
+}
+# b_polletitz
+4924 = {
+	winter_severity_bias = @lv_lieben_vhigh_altitude
+}
+# b_temenice
+4922 = {
+	winter_severity_bias = @lv_lieben_vhigh_altitude
+}
+## c_osjoen
+# b_rjukanger
+5370 = {
+	winter_severity_bias = @lh_lieben_high_altitude
+}
+# b_sundskrona
+4372 = {
+	winter_severity_bias = @lm_lieben_medium_altitude
+}
+# b_holler
+4921 = {
+	winter_severity_bias = @lh_lieben_high_altitude
+}
+## c_hora
+# b_pyburg
+4917 = {
+	winter_severity_bias = @lv_lieben_vhigh_altitude
+}
+# b_ferchenhaid
+4927 = {
+	winter_severity_bias = @le_lieben_extreme_altitude
+}
+# b_bous
+4915 = {
+	winter_severity_bias = @lv_lieben_vhigh_altitude
+}
+### d_hestfjoror
+## c_hringdalir
+# b_hvinverjadalr
+5387 = {
+	winter_severity_bias = @lm_lieben_medium_altitude
+}
+# b_maelifellsgil
+5388 = {
+	winter_severity_bias = @lv_lieben_vhigh_altitude
+}
+## c_diessenrefin
+# b_skeggjastaoir
+5391 = {
+	winter_severity_bias = @lh_lieben_high_altitude
+}
+# b_kolkumyrar
+5390 = {
+	winter_severity_bias = @lh_lieben_high_altitude
+}
+## c_hernar
+# b_rauoafell_it_eystra
+5392 = {
+	winter_severity_bias = @lv_lieben_vhigh_altitude
+}
+# b_bordovice
+4957 = {
+	winter_severity_bias = @le_lieben_extreme_altitude
+}
+### d_ludwigsthal
+## c_leithum
+# b_lohauserholz
+4959 = {
+	winter_severity_bias = @lns_low_north_sjalvolki
+}
+# b_freiung
+4962 = {
+	winter_severity_bias = @lns_low_north_sjalvolki
+}
+## c_philippsthal
+# b_pacinje
+4954 = {
+	winter_severity_bias = @le_lieben_extreme_altitude
+}
+# b_ritka
+4950 = {
+	winter_severity_bias = @lv_lieben_vhigh_altitude
+}
+## c_nocher
+# b_thonbrunn
+4951 = {
+	winter_severity_bias = @le_lieben_extreme_altitude
+}
+# b_nehodiv
+4929 = {
+	winter_severity_bias = @lns_low_north_sjalvolki
+}
+### d_ahle
+## c_tepla
+# b_hohenegarten
+4964 = {
+	winter_severity_bias = @lns_low_north_sjalvolki
+}
+# b_mutten
+4967 = {
+	winter_severity_bias = @north_sjalvolki
+}
+## c_bukowsko
+# b_antinovica
+4968 = {
+	winter_severity_bias = @north_sjalvolki
+}
+# b_charbuzice
+4973 = {
+	winter_severity_bias = @lns_low_north_sjalvolki
+}
+## c_roddt
+# b_starbach
+4927 = {
+	winter_severity_bias = @lns_low_north_sjalvolki
+}
+# b_borova
+4934 = {
+	winter_severity_bias = @lns_low_north_sjalvolki
+}
+# b_mezholezy
+4953 = {
+	winter_severity_bias = @lns_low_north_sjalvolki
+}
+
+##### e_megos_kalathipsomi
+
+################################################
+# ADJUSTABLE VALUES FOR E_MEGOS_KALATHIPSOMI
+# Climate regions and values as of 05-04-2021 by Zoneling
+################################################
+
+# North Megos, slightly warmer than Kanzlerij
+@nmc_north_megos_coastal = 0.12
+@nmi_north_megos_inland = 0.17
+# Megos is generally very low altitude-wise, so particularly the high and vhigh values are pretty rare except right up against mountains.
+@nmm_north_megos_medium_altitude = 0.22
+@nmh_north_megos_high_altitude = 0.32
+@nmv_north_megos_vhigh_altitude = 0.42
+
+# South Megos, slightly warmer than North Megos
+@smc_south_megos_coastal = 0.07
+@smi_south_megos_inland = 0.12
+@smm_south_megos_medium_altitude = 0.17
+@smh_south_megos_high_altitude = 0.27
+@smv_south_megos_vhigh_altitude = 0.37
+
+# Pathos Bay
+# These are uniquely warmer due to its sheltering from the cold stream coming down from Chevalie.
+# The values specified here are primarily for the northern part, since I later realized that Pathos Bay is bigger than Megos lol.
+@pbc_pathos_bay_coastal = 0.0
+@pbi_pathos_bay_inland = 0.05
+@pbm_pathos_bay_medium_altitude = 0.1
+@pbh_pathos_bay_high_altitude = 0.2
+@pbv_pathos_bay_vhigh_altitude = 0.3
+@pbe_pathos_bay_extreme_altitude = 0.4
+
+
+
+##### e_megos_kalathipsomi
+#### k_obkirchen
+### d_perbetsky_dvor
+## c_osweiler
+# b_arlsdorf
+4297 = {
+	winter_severity_bias = @nmc_north_megos_coastal
+}
+# b_beggen
+4307 = {
+	winter_severity_bias = @nmi_north_megos_inland
+}
+# b_vorderholz
+4294 = {
+	winter_severity_bias = @nmi_north_megos_inland
+}
+## c_ulsted
+# b_oberstiftung
+4270 = {
+	winter_severity_bias = @nmc_north_megos_coastal
+}
+# b_oborin
+4289 = {
+	winter_severity_bias = @nmi_north_megos_inland
+}
+# b_langentriebe
+4290 = {
+	winter_severity_bias = @nmi_north_megos_inland
+}
+## c_bartum
+# b_zelnava
+4267 = {
+	winter_severity_bias = @nmc_north_megos_coastal
+}
+# b_ valcha
+4265 = {
+	winter_severity_bias = @nmc_north_megos_coastal
+}
+# b_zabidovo
+4264 = {
+	winter_severity_bias = @nmc_north_megos_coastal
+}
+### d_plossen
+## c_dillingen
+# b_laastadt
+4261 = {
+	winter_severity_bias = @nmi_north_megos_inland
+}
+# b_lellingen
+4291 = {
+	winter_severity_bias = @nmi_north_megos_inland
+}
+# b_halstenbek
+4257 = {
+	winter_severity_bias = @nmm_north_megos_medium_altitude
+}
+## c_lounowitz
+# b_pietzschwitz
+4310 = {
+	winter_severity_bias = @nmm_north_megos_medium_altitude
+}
+# b_dorscheid
+4258 = {
+	winter_severity_bias = @nmh_north_megos_high_altitude
+}
+### d_dvorek
+## c_weilitinger
+# b_sjalvokrian
+4253 = {
+	winter_severity_bias = @nmm_north_megos_medium_altitude
+}
+# b_oberbodnitz
+4272 = {
+	winter_severity_bias = @nmh_north_megos_high_altitude
+}
+# b_chotin
+4251 = {
+	winter_severity_bias = @nmi_north_megos_inland
+}
+# b_oversulz
+3942 = {
+	winter_severity_bias = @nmi_north_megos_inland
+}
+## c_havneby
+# b_selbeck
+3940 = {
+	winter_severity_bias = @nmv_north_megos_vhigh_altitude
+}
+# b_mladonov
+3938 = {
+	winter_severity_bias = @nmh_north_megos_high_altitude
+}
+## c_bigelbach
+# b_sieringhoek
+3933 = {
+	winter_severity_bias = @nmi_north_megos_inland
+}
+# b_kriegsheim
+3936 = {
+	winter_severity_bias = @nmc_north_megos_coastal
+}
+# b_slativiaka
+3928 = {
+	winter_severity_bias = @nmc_north_megos_coastal
+}
+### d_perne
+## c_adergas
+# b_stratheig
+3907 = {
+	winter_severity_bias = @nmc_north_megos_coastal
+}
+# b_karbow
+3901 = {
+	winter_severity_bias = @nmc_north_megos_coastal
+}
+# b_siebenaler
+3910 = {
+	winter_severity_bias = @nmc_north_megos_coastal
+}
+## c_tlestky
+# b_pist
+3922 = {
+	winter_severity_bias = @nmi_north_megos_inland
+}
+# b_jamolice
+3912 = {
+	winter_severity_bias = @nmi_north_megos_inland
+}
+# b_roschbach
+3919 = {
+	winter_severity_bias = @nmi_north_megos_inland
+}
+## c_uzice
+# b_bratelsbrunn
+3895 = {
+	winter_severity_bias = @nmm_north_megos_medium_altitude
+}
+# b_bermutshain
+3915 = {
+	winter_severity_bias = @nmh_north_megos_high_altitude
+}
+# b_schlempenfeld
+3925 = {
+	winter_severity_bias = @nmh_north_megos_high_altitude
+}
+### d_attenhofen
+## c_unterriedl
+# b_polaci
+4287 = {
+	winter_severity_bias = @nmh_north_megos_high_altitude
+}
+# b_niederottnang
+4220 = {
+	winter_severity_bias = @smh_south_megos_high_altitude
+}
+## c_kollmitzgraben
+# b_michelsdorf
 4283 = {
-	winter_severity_bias = 0.7
+	winter_severity_bias = @smh_south_megos_high_altitude
 }
-4280 = {
-	winter_severity_bias = 0.7
+# b_jeskova
+4281 = {
+	winter_severity_bias = @smm_south_megos_medium_altitude
 }
-4111 = {
-	winter_severity_bias = 0.7
+## c_oberdessing
+# b_hom
+4217 = {
+	winter_severity_bias = @smh_south_megos_high_altitude
 }
-4110 = {
-	winter_severity_bias = 0.7
+# b_horni_kubin
+4215 = {
+	winter_severity_bias = @smh_south_megos_high_altitude
 }
-4108 = {
-	winter_severity_bias = 0.7
+# b_dolina
+4214 = {
+	winter_severity_bias = @smm_south_megos_medium_altitude
 }
-4107 = {
-	winter_severity_bias = 0.7
+# b_cadrg
+4211 = {
+	winter_severity_bias = @smm_south_megos_medium_altitude
 }
-4099 = {
-	winter_severity_bias = 0.7
+#### k_volgardr
+### d_steinenkirch
+## c_robstrup
+# b_niedernkirchen
+3885 = {
+	winter_severity_bias = @nmc_north_megos_coastal
 }
-4103 = {
-	winter_severity_bias = 0.7
+# b_huncherange
+3900 = {
+	winter_severity_bias = @nmc_north_megos_coastal
 }
-4100 = {
-	winter_severity_bias = 0.7
+## c_aeldarn
+# b_ladmovce
+3882 = {
+	winter_severity_bias = @nmc_north_megos_coastal
 }
-4082 = {
-	winter_severity_bias = 0.7
+# b_marielyst
+3867 = {
+	winter_severity_bias = @nmc_north_megos_coastal
 }
-4080 = {
-	winter_severity_bias = 0.7
+# b_plavia_montedoro
+3879 = {
+	winter_severity_bias = @nmi_north_megos_inland
 }
-4079 = {
-	winter_severity_bias = 0.7
+## c_gasseldorf
+# b_wirbelau
+3888 = {
+	winter_severity_bias = @nmi_north_megos_inland
 }
-4071 = {
-	winter_severity_bias = 0.7
+# b_mitterharthausen
+3873 = {
+	winter_severity_bias = @nmh_north_megos_high_altitude
 }
-4070 = {
-	winter_severity_bias = 0.7
+# b_harburg
+3872 = {
+	winter_severity_bias = @nmm_north_megos_medium_altitude
 }
-4045 = {
-	winter_severity_bias = 0.7
+### d_dresbruch
+## c_radovesice
+# b_heindorf
+7412 = {
+	winter_severity_bias = @nmc_north_megos_coastal
 }
-3876 = {
-	winter_severity_bias = 0.7
+# b_prebacevo
+3863 = {
+	winter_severity_bias = @nmi_north_megos_inland
 }
-4042 = {
-	winter_severity_bias = 0.7
+# b_windhausen
+3859 = {
+	winter_severity_bias = @nmi_north_megos_inland
 }
-4041 = {
-	winter_severity_bias = 0.7
+# b_hollstadt
+7411 = {
+	winter_severity_bias = @nmc_north_megos_coastal
 }
-7425 = {
-	winter_severity_bias = 0.7
+## c_venhaus
+# b_floryd
+3852 = {
+	winter_severity_bias = @nmm_north_megos_medium_altitude
 }
-4037 = {
-	winter_severity_bias = 0.7
+# b_mandlegg
+3828 = {
+	winter_severity_bias = @nmh_north_megos_high_altitude
 }
-4039 = {
-	winter_severity_bias = 0.7
+# b_strugarji
+3830 = {
+	winter_severity_bias = @nmi_north_megos_inland
 }
-4038 = {
-	winter_severity_bias = 0.7
+# b_mandlegg
+3828 = {
+	winter_severity_bias = @nmi_north_megos_inland
 }
-4043 = {
-	winter_severity_bias = 0.7
+## c_lobeditz
+# b_velke_pole
+3843 = {
+	winter_severity_bias = @nmc_north_megos_coastal
 }
-3997 = {
-	winter_severity_bias = 0.7
+# b_kamno
+3846 = {
+	winter_severity_bias = @nmc_north_megos_coastal
 }
-3858 = {
-	winter_severity_bias = 0.7
+# b_eriksbo
+3834 = {
+	winter_severity_bias = @nmc_north_megos_coastal
 }
-3857 = {
-	winter_severity_bias = 0.7
+## c_stefanikovo
+# b_dobje
+3841 = {
+	winter_severity_bias = @nmc_north_megos_coastal
 }
-4001 = {
-	winter_severity_bias = 0.7
+# b_kahler
+3838 = {
+	winter_severity_bias = @nmc_north_megos_coastal
 }
-3999 = {
-	winter_severity_bias = 0.7
+# b_walter
+3818 = {
+	winter_severity_bias = @nmc_north_megos_coastal
 }
-3990 = {
-	winter_severity_bias = 0.7
+### d_kremkau
+## c_viehbig
+# b_breitstetten
+3811 = {
+	winter_severity_bias = @nmc_north_megos_coastal
 }
-3988 = {
-	winter_severity_bias = 0.7
+# b_hohnstollen
+3815 = {
+	winter_severity_bias = @nmc_north_megos_coastal
 }
-3983 = {
-	winter_severity_bias = 0.7
+# b_oberstrahlbach
+4286 = {
+	winter_severity_bias = @nmc_north_megos_coastal
 }
-3981 = {
-	winter_severity_bias = 0.7
+## c_halberbracht
+# b_weiler
+3804 = {
+	winter_severity_bias = @nmc_north_megos_coastal
 }
-3976 = {
-	winter_severity_bias = 0.7
+# b_gleichenstein
+3808 = {
+	winter_severity_bias = @nmi_north_megos_inland
 }
-3970 = {
-	winter_severity_bias = 0.7
+# b_klembarok
+3802 = {
+	winter_severity_bias = @nmc_north_megos_coastal
 }
-3968 = {
-	winter_severity_bias = 0.7
+## c_rinnen
+# b_boriano
+7414 = {
+	winter_severity_bias = @nmc_north_megos_coastal
 }
+# b_lodenitz
+3795 = {
+	winter_severity_bias = @nmc_north_megos_coastal
+}
+# b_lentersdorf
+3801 = {
+	winter_severity_bias = @nmc_north_megos_coastal
+}
+## c_ersange
+# b_gallenbach
+3824 = {
+	winter_severity_bias = @nmh_north_megos_high_altitude
+}
+# b_zwickgabel
+3792 = {
+	winter_severity_bias = @nmh_north_megos_high_altitude
+}
+# b_oxhalso
+3805 = {
+	winter_severity_bias = @nmm_north_megos_medium_altitude
+}
+
+# Generally, while the provinces below share latitude with coastal mikros, it is located further "downstream" of the continental gyre, meaning the waters will be slightly warmer.
+# This is my headcannon for justify it having the same temps as the rest of mikros lol
+
+
+### d_paroz
+## c_kleinbor
+# b_udlejre
+3777 = {
+	winter_severity_bias = @nmc_north_megos_coastal
+}
+# b_kloborg
+3776 = {
+	winter_severity_bias = @nmc_north_megos_coastal
+}
+# b_tagewerben
+3772 = {
+	winter_severity_bias = @nmc_north_megos_coastal
+}
+## c_hallenscheid
+# b_neimersk
+3768 = {
+	winter_severity_bias = @nmc_north_megos_coastal
+}
+# b_cretez
+3752 = {
+	winter_severity_bias = @nmc_north_megos_coastal
+}
+# b_murdgruden
+3764 = {
+	winter_severity_bias = @nmc_north_megos_coastal
+}
+## c_haiden
+# b_dol
+3760 = {
+	winter_severity_bias = @nmc_north_megos_coastal
+}
+# b_kap
+3758 = {
+	winter_severity_bias = @nmc_north_megos_coastal
+}
+### d_tisvildeleje
+## c_velka_trna
+# b_lorentzweiler
+3774 = {
+	winter_severity_bias = @nmc_north_megos_coastal
+}
+# b_siikavuopio
+3783 = {
+	winter_severity_bias = @nmc_north_megos_coastal
+}
+## c_gamlaberget
+# b_aborg
+3755 = {
+	winter_severity_bias = @nmc_north_megos_coastal
+}
+# b_bozetechovo
+3782 = {
+	winter_severity_bias = @nmc_north_megos_coastal
+}
+# b_korpika
+3787 = {
+	winter_severity_bias = @nmc_north_megos_coastal
+}
+## c_ellends
+# b_thor
+3785 = {
+	winter_severity_bias = @nmc_north_megos_coastal
+}
+# b_walkenstein
+3791 = {
+	winter_severity_bias = @nmc_north_megos_coastal
+}
+# b_skeppnatorp
+3789 = {
+	winter_severity_bias = @nmc_north_megos_coastal
+}
+### d_nadost
+## c_veggerslev
+# b_theresienbad
 934 = {
-	winter_severity_bias = 0.7
-}
-4000 = {
-	winter_severity_bias = 0.6
-}
-3998 = {
-	winter_severity_bias = 0.6
-}
-3855 = {
-	winter_severity_bias = 0.6
-}
-
-#Gurdurbrok
-
-#Krassovce
-
-5108 = {
-	winter_severity_bias = 0.6
-}
-5107 = {
-	winter_severity_bias = 0.6
-}
-5109 = {
-	winter_severity_bias = 0.6
-}
-5110 = {
-	winter_severity_bias = 0.6
-}
-5111 = {
-	winter_severity_bias = 0.6
-}
-5112 = {
-	winter_severity_bias = 0.6
-}
-5113 = {
-	winter_severity_bias = 0.6
-}
-5114 = {
-	winter_severity_bias = 0.6
-}
-5115 = {
-	winter_severity_bias = 0.6
-}
-5116 = {
-	winter_severity_bias = 0.6
-}
-5120 = {
-	winter_severity_bias = 0.6
-}
-5122 = {
-	winter_severity_bias = 0.6
-}
-5126 = {
-	winter_severity_bias = 0.6
-}
-5127 = {
-	winter_severity_bias = 0.6
-}
-5128 = {
-	winter_severity_bias = 0.6
-}
-5129 = {
-	winter_severity_bias = 0.6
-}
-5130 = {
-	winter_severity_bias = 0.6
-}
-5131 = {
-	winter_severity_bias = 0.6
-}
-5132 = {
-	winter_severity_bias = 0.6
-}
-5133 = {
-	winter_severity_bias = 0.6
-}
-5134 = {
-	winter_severity_bias = 0.6
-}
-5135 = {
-	winter_severity_bias = 0.6
-}
-5136 = {
-	winter_severity_bias = 0.6
-}
-5137 = {
-	winter_severity_bias = 0.6
-}
-5143 = {
-	winter_severity_bias = 0.6
-}
-5144 = {
-	winter_severity_bias = 0.6
-}
-5145 = {
-	winter_severity_bias = 0.6
-}
-5147 = {
-	winter_severity_bias = 0.6
-}
-5149 = {
-	winter_severity_bias = 0.6
-}
-5150 = {
-	winter_severity_bias = 0.6
-}
-5151 = {
-	winter_severity_bias = 0.6
-}
-5154 = {
-	winter_severity_bias = 0.6
-}
-5155 = {
-	winter_severity_bias = 0.6
-}
-5156 = {
-	winter_severity_bias = 0.6
-}
-5157 = {
-	winter_severity_bias = 0.6
-}
-5158 = {
-	winter_severity_bias = 0.6
-}
-5160 = {
-	winter_severity_bias = 0.6
-}
-5161 = {
-	winter_severity_bias = 0.6
-}
-5162 = {
-	winter_severity_bias = 0.6
-}
-5163 = {
-	winter_severity_bias = 0.6
-}
-5164 = {
-	winter_severity_bias = 0.6
-}
-4597 = {
-	winter_severity_bias = 0.6
-}
-4598 = {
-	winter_severity_bias = 0.6
-}
-4599 = {
-	winter_severity_bias = 0.6
-}
-4604 = {
-	winter_severity_bias = 0.6
-}
-4605 = {
-	winter_severity_bias = 0.6
-}
-4606 = {
-	winter_severity_bias = 0.6
-}
-4618 = {
-	winter_severity_bias = 0.6
-}
-4619 = {
-	winter_severity_bias = 0.6
-}
-4620 = {
-	winter_severity_bias = 0.6
-}
-4621 = {
-	winter_severity_bias = 0.6
-}
-4622 = {
-	winter_severity_bias = 0.6
-}
-4623 = {
-	winter_severity_bias = 0.6
-}
-4624 = {
-	winter_severity_bias = 0.6
-}
-4625 = {
-	winter_severity_bias = 0.6
-}
-4626 = {
-	winter_severity_bias = 0.6
-}
-5083 = {
-	winter_severity_bias = 0.6
-}
-5084 = {
-	winter_severity_bias = 0.6
-}
-5085 = {
-	winter_severity_bias = 0.6
-}
-5086 = {
-	winter_severity_bias = 0.6
-}
-5087 = {
-	winter_severity_bias = 0.6
-}
-5088 = {
-	winter_severity_bias = 0.6
-}
-5089 = {
-	winter_severity_bias = 0.6
-}
-5090 = {
-	winter_severity_bias = 0.6
-}
-5091 = {
-	winter_severity_bias = 0.6
-}
-5092 = {
-	winter_severity_bias = 0.6
-}
-5093 = {
-	winter_severity_bias = 0.6
-}
-5094 = {
-	winter_severity_bias = 0.6
-}
-5095 = {
-	winter_severity_bias = 0.6
-}
-5096 = {
-	winter_severity_bias = 0.6
-}
-5097 = {
-	winter_severity_bias = 0.6
-}
-5098 = {
-	winter_severity_bias = 0.6
-}
-5099 = {
-	winter_severity_bias = 0.6
-}
-7410 = {
-	winter_severity_bias = 0.6
-}
-5101 = {
-	winter_severity_bias = 0.6
-}
-5102 = {
-	winter_severity_bias = 0.6
-}
-5103 = {
-	winter_severity_bias = 0.6
-}
-5104 = {
-	winter_severity_bias = 0.6
-}
-5105 = {
-	winter_severity_bias = 0.6
-}
-5106 = {
-	winter_severity_bias = 0.6
-}
-5101 = {
-	winter_severity_bias = 0.6
-}
-5076 = {
-	winter_severity_bias = 0.6
-}
-5077 = {
-	winter_severity_bias = 0.6
-}
-5078 = {
-	winter_severity_bias = 0.6
-}
-5079 = {
-	winter_severity_bias = 0.6
-}
-5080 = {
-	winter_severity_bias = 0.6
-}
-5081 = {
-	winter_severity_bias = 0.6
-}
-5082 = {
-	winter_severity_bias = 0.6
-}
-
-#Nidinia
-
-5138 = {
-	winter_severity_bias = 0.7
-}
-5139 = {
-	winter_severity_bias = 0.7
-}
-5140 = {
-	winter_severity_bias = 0.7
-}
-5141 = {
-	winter_severity_bias = 0.7
-}
-5142 = {
-	winter_severity_bias = 0.7
-}
-5146 = {
-	winter_severity_bias = 0.7
-}
-5067 = {
-	winter_severity_bias = 0.7
-}
-5069 = {
-	winter_severity_bias = 0.7
-}
-5070 = {
-	winter_severity_bias = 0.7
-}
-5053 = {
-	winter_severity_bias = 0.7
-}
-5054 = {
-	winter_severity_bias = 0.7
-}
-5055 = {
-	winter_severity_bias = 0.7
-}
-5056 = {
-	winter_severity_bias = 0.7
-}
-5057 = {
-	winter_severity_bias = 0.7
-}
-5058 = {
-	winter_severity_bias = 0.7
-}
-5058 = {
-	winter_severity_bias = 0.7
-}
-5034 = {
-	winter_severity_bias = 0.7
-}
-5035 = {
-	winter_severity_bias = 0.7
-}
-5036 = {
-	winter_severity_bias = 0.7
-}
-5037 = {
-	winter_severity_bias = 0.7
-}
-5073 = {
-	winter_severity_bias = 0.7
-}
-5065 = {
-	winter_severity_bias = 0.7
-}
-5063 = {
-	winter_severity_bias = 0.7
-}
-5060 = {
-	winter_severity_bias = 0.7
-}
-5061 = {
-	winter_severity_bias = 0.7
-}
-5062 = {
-	winter_severity_bias = 0.7
-}
-5064 = {
-	winter_severity_bias = 0.7
-}
-5066 = {
-	winter_severity_bias = 0.7
-}
-5030 = {
-	winter_severity_bias = 0.7
-}
-5031 = {
-	winter_severity_bias = 0.7
-}
-5032 = {
-	winter_severity_bias = 0.7
-}
-5033 = {
-	winter_severity_bias = 0.7
-}
-5020 = {
-	winter_severity_bias = 0.7
-}
-5021 = {
-	winter_severity_bias = 0.7
-}
-5022 = {
-	winter_severity_bias = 0.7
-}
-5023 = {
-	winter_severity_bias = 0.7
-}
-5024 = {
-	winter_severity_bias = 0.7
-}
-5025 = {
-	winter_severity_bias = 0.7
-}
-5026 = {
-	winter_severity_bias = 0.7
-}
-5027 = {
-	winter_severity_bias = 0.7
-}
-5028 = {
-	winter_severity_bias = 0.7
-}
-5029 = {
-	winter_severity_bias = 0.7
-}
-5010 = {
-	winter_severity_bias = 0.7
-}
-5011 = {
-	winter_severity_bias = 0.7
-}
-5012 = {
-	winter_severity_bias = 0.7
-}
-5013 = {
-	winter_severity_bias = 0.7
-}
-5014 = {
-	winter_severity_bias = 0.7
-}
-5015 = {
-	winter_severity_bias = 0.7
-}
-5016 = {
-	winter_severity_bias = 0.7
-}
-5017 = {
-	winter_severity_bias = 0.7
-}
-5018 = {
-	winter_severity_bias = 0.7
-}
-5019 = {
-	winter_severity_bias = 0.7
-}
-5000 = {
-	winter_severity_bias = 0.7
-}
-5001 = {
-	winter_severity_bias = 0.7
-}
-5002 = {
-	winter_severity_bias = 0.7
-}
-5003 = {
-	winter_severity_bias = 0.7
-}
-5004 = {
-	winter_severity_bias = 0.7
-}
-5005 = {
-	winter_severity_bias = 0.7
-}
-5006 = {
-	winter_severity_bias = 0.7
-}
-5007 = {
-	winter_severity_bias = 0.7
-}
-5008 = {
-	winter_severity_bias = 0.7
-}
-5009 = {
-	winter_severity_bias = 0.7
-}
-4974 = {
-	winter_severity_bias = 0.7
-}
-4975 = {
-	winter_severity_bias = 0.7
-}
-4976 = {
-	winter_severity_bias = 0.7
-}
-4977 = {
-	winter_severity_bias = 0.7
-}
-4978 = {
-	winter_severity_bias = 0.7
-}
-4979 = {
-	winter_severity_bias = 0.7
-}
-4980 = {
-	winter_severity_bias = 0.7
-}
-4981 = {
-	winter_severity_bias = 0.7
-}
-4982 = {
-	winter_severity_bias = 0.7
-}
-4983 = {
-	winter_severity_bias = 0.7
-}
-4984 = {
-	winter_severity_bias = 0.7
-}
-4985 = {
-	winter_severity_bias = 0.7
-}
-4986 = {
-	winter_severity_bias = 0.7
-}
-4987 = {
-	winter_severity_bias = 0.7
-}
-4988 = {
-	winter_severity_bias = 0.7
-}
-4989 = {
-	winter_severity_bias = 0.7
-}
-4990 = {
-	winter_severity_bias = 0.7
-}
-4991 = {
-	winter_severity_bias = 0.7
-}
-4992 = {
-	winter_severity_bias = 0.7
-}
-4993 = {
-	winter_severity_bias = 0.7
-}
-4994 = {
-	winter_severity_bias = 0.7
-}
-4995 = {
-	winter_severity_bias = 0.7
-}
-4996 = {
-	winter_severity_bias = 0.7
-}
-4997 = {
-	winter_severity_bias = 0.7
-}
-4998 = {
-	winter_severity_bias = 0.7
-}
-4999 = {
-	winter_severity_bias = 0.7
-}
-
-#vyshtanka
-
-5038 = {
-	winter_severity_bias = 0.7
-}
-5039 = {
-	winter_severity_bias = 0.7
-}
-5038 = {
-	winter_severity_bias = 0.7
-}
-5040 = {
-	winter_severity_bias = 0.7
-}
-5041 = {
-	winter_severity_bias = 0.7
-}
-5042 = {
-	winter_severity_bias = 0.7
-}
-5043 = {
-	winter_severity_bias = 0.7
-}
-5044 = {
-	winter_severity_bias = 0.7
-}
-5045 = {
-	winter_severity_bias = 0.7
-}
-5046 = {
-	winter_severity_bias = 0.7
-}
-5047 = {
-	winter_severity_bias = 0.7
-}
-5048 = {
-	winter_severity_bias = 0.7
-}
-5049 = {
-	winter_severity_bias = 0.7
-}
-5050 = {
-	winter_severity_bias = 0.7
-}
-5051 = {
-	winter_severity_bias = 0.7
-}
-5052 = {
-	winter_severity_bias = 0.7
-}
-5165 = {
-	winter_severity_bias = 0.7
-}
-5166 = {
-	winter_severity_bias = 0.7
-}
-5167 = {
-	winter_severity_bias = 0.7
-}
-5168 = {
-	winter_severity_bias = 0.7
-}
-5169 = {
-	winter_severity_bias = 0.7
-}
-5165 = {
-	winter_severity_bias = 0.7
-}
-5170 = {
-	winter_severity_bias = 0.7
-}
-5171 = {
-	winter_severity_bias = 0.7
-}
-5172 = {
-	winter_severity_bias = 0.7
-}
-5173 = {
-	winter_severity_bias = 0.7
-}
-5174 = {
-	winter_severity_bias = 0.7
-}
-5175 = {
-	winter_severity_bias = 0.7
-}
-5176 = {
-	winter_severity_bias = 0.7
-}
-5177 = {
-	winter_severity_bias = 0.7
-}
-5178 = {
-	winter_severity_bias = 0.7
-}
-5179 = {
-	winter_severity_bias = 0.7
-}
-5210 = {
-	winter_severity_bias = 0.7
-}
-5211 = {
-	winter_severity_bias = 0.7
-}
-5212 = {
-	winter_severity_bias = 0.7
-}
-5213 = {
-	winter_severity_bias = 0.7
-}
-5214 = {
-	winter_severity_bias = 0.7
-}
-5215 = {
-	winter_severity_bias = 0.7
-}
-5216 = {
-	winter_severity_bias = 0.7
-}
-5217 = {
-	winter_severity_bias = 0.7
-}
-5218 = {
-	winter_severity_bias = 0.7
-}
-5219 = {
-	winter_severity_bias = 0.7
-}
-5220 = {
-	winter_severity_bias = 0.7
-}
-5221 = {
-	winter_severity_bias = 0.7
-}
-5222 = {
-	winter_severity_bias = 0.7
-}
-5223 = {
-	winter_severity_bias = 0.7
-}
-5231 = {
-	winter_severity_bias = 0.7
-}
-5232 = {
-	winter_severity_bias = 0.7
-}
-5233 = {
-	winter_severity_bias = 0.7
-}
-5234 = {
-	winter_severity_bias = 0.7
-}
-5235 = {
-	winter_severity_bias = 0.7
-}
-5236 = {
-	winter_severity_bias = 0.7
-}
-5237 = {
-	winter_severity_bias = 0.7
-}
-5238 = {
-	winter_severity_bias = 0.7
-}
-5231 = {
-	winter_severity_bias = 0.7
-}
-5241 = {
-	winter_severity_bias = 0.7
-}
-5242 = {
-	winter_severity_bias = 0.7
-}
-5243 = {
-	winter_severity_bias = 0.7
-}
-5173 = {
-	winter_severity_bias = 0.7
-}
-5175 = {
-	winter_severity_bias = 0.7
-}
-5071 = {
-	winter_severity_bias = 0.7
-}
-5072 = {
-	winter_severity_bias = 0.7
-}
-5184 = {
-	winter_severity_bias = 0.7
-}
-5185 = {
-	winter_severity_bias = 0.7
-}
-5186 = {
-	winter_severity_bias = 0.7
-}
-5187 = {
-	winter_severity_bias = 0.7
-}
-5188 = {
-	winter_severity_bias = 0.7
-}
-5189 = {
-	winter_severity_bias = 0.7
-}
-5190 = {
-	winter_severity_bias = 0.7
-}
-5191 = {
-	winter_severity_bias = 0.7
-}
-5192 = {
-	winter_severity_bias = 0.7
-}
-5193 = {
-	winter_severity_bias = 0.7
-}
-5194 = {
-	winter_severity_bias = 0.7
-}
-5195 = {
-	winter_severity_bias = 0.7
-}
-5196 = {
-	winter_severity_bias = 0.7
-}
-5263 = {
-	winter_severity_bias = 0.7
-}
-5264 = {
-	winter_severity_bias = 0.7
-}
-5265 = {
-	winter_severity_bias = 0.7
-}
-5266 = {
-	winter_severity_bias = 0.7
-}
-5267 = {
-	winter_severity_bias = 0.7
-}
-5268 = {
-	winter_severity_bias = 0.7
-}
-5299 = {
-	winter_severity_bias = 0.7
-}
-5272 = {
-	winter_severity_bias = 0.7
-}
-5275 = {
-	winter_severity_bias = 0.7
-}
-5276 = {
-	winter_severity_bias = 0.7
-}
-5277 = {
-	winter_severity_bias = 0.7
-}
-5200 = {
-	winter_severity_bias = 0.7
-}
-5201 = {
-	winter_severity_bias = 0.7
-}
-5202 = {
-	winter_severity_bias = 0.7
-}
-5203 = {
-	winter_severity_bias = 0.7
-}
-5204 = {
-	winter_severity_bias = 0.7
-}
-5205 = {
-	winter_severity_bias = 0.7
-}
-5206 = {
-	winter_severity_bias = 0.7
-}
-5207 = {
-	winter_severity_bias = 0.7
-}
-5208 = {
-	winter_severity_bias = 0.7
-}
-5209 = {
-	winter_severity_bias = 0.7
-}
-5260 = {
-	winter_severity_bias = 0.7
-}
-5255 = {
-	winter_severity_bias = 0.7
-}
-5256 = {
-	winter_severity_bias = 0.7
-}
-5257 = {
-	winter_severity_bias = 0.7
-}
-5258 = {
-	winter_severity_bias = 0.7
-}
-5259 = {
-	winter_severity_bias = 0.7
-}
-5224 = {
-	winter_severity_bias = 0.7
-}
-5225 = {
-	winter_severity_bias = 0.7
-}
-5226 = {
-	winter_severity_bias = 0.7
-}
-5227 = {
-	winter_severity_bias = 0.7
-}
-5228 = {
-	winter_severity_bias = 0.7
-}
-5229 = {
-	winter_severity_bias = 0.7
-}
-5230 = {
-	winter_severity_bias = 0.7
-}
-5250 = {
-	winter_severity_bias = 0.7
-}
-5252 = {
-	winter_severity_bias = 0.7
-}
-5253 = {
-	winter_severity_bias = 0.7
-}
-5254 = {
-	winter_severity_bias = 0.7
-}
-5250 = {
-	winter_severity_bias = 0.7
-}
-5244 = {
-	winter_severity_bias = 0.7
-}
-5245 = {
-	winter_severity_bias = 0.7
-}
-5246 = {
-	winter_severity_bias = 0.7
-}
-5247 = {
-	winter_severity_bias = 0.7
-}
-5248 = {
-	winter_severity_bias = 0.7
-}
-
-#Lyckholm
-
-4662 = {
-	winter_severity_bias = 0.6
-}
-4663 = {
-	winter_severity_bias = 0.6
-}
-4664 = {
-	winter_severity_bias = 0.6
-}
-4665 = {
-	winter_severity_bias = 0.6
-}
-4666 = {
-	winter_severity_bias = 0.6
-}
-4667 = {
-	winter_severity_bias = 0.6
-}
-4668 = {
-	winter_severity_bias = 0.6
-}
-4669 = {
-	winter_severity_bias = 0.6
-}
-4670 = {
-	winter_severity_bias = 0.6
-}
-4758 = {
-	winter_severity_bias = 0.6
-}
-4759 = {
-	winter_severity_bias = 0.6
-}
-4760 = {
-	winter_severity_bias = 0.6
-}
-4761 = {
-	winter_severity_bias = 0.6
-}
-4747 = {
-	winter_severity_bias = 0.6
-}
-4762 = {
-	winter_severity_bias = 0.6
-}
-4763 = {
-	winter_severity_bias = 0.6
-}
-5317 = {
-	winter_severity_bias = 0.6
-}
-5319 = {
-	winter_severity_bias = 0.6
-}
-4765 = {
-	winter_severity_bias = 0.6
-}
-4766 = {
-	winter_severity_bias = 0.6
-}
-4768 = {
-	winter_severity_bias = 0.6
-}
-4854 = {
-	winter_severity_bias = 0.6
-}
-4855 = {
-	winter_severity_bias = 0.6
-}
-4856 = {
-	winter_severity_bias = 0.6
-}
-4857 = {
-	winter_severity_bias = 0.6
-}
-4858 = {
-	winter_severity_bias = 0.6
-}
-4859 = {
-	winter_severity_bias = 0.6
-}
-5321 = {
-	winter_severity_bias = 0.6
-}
-5322 = {
-	winter_severity_bias = 0.6
-}
-5323 = {
-	winter_severity_bias = 0.6
-}
-5324 = {
-	winter_severity_bias = 0.6
-}
-5325 = {
-	winter_severity_bias = 0.6
-}
-5326 = {
-	winter_severity_bias = 0.6
-}
-5327 = {
-	winter_severity_bias = 0.6
-}
-5328 = {
-	winter_severity_bias = 0.6
-}
-5297 = {
-	winter_severity_bias = 0.6
-}
-5298 = {
-	winter_severity_bias = 0.6
-}
-5304 = {
-	winter_severity_bias = 0.6
-}
-5306 = {
-	winter_severity_bias = 0.6
-}
-5307 = {
-	winter_severity_bias = 0.6
-}
-5310 = {
-	winter_severity_bias = 0.6
-}
-5312 = {
-	winter_severity_bias = 0.6
-}
-5314 = {
-	winter_severity_bias = 0.6
-}
-5315 = {
-	winter_severity_bias = 0.6
-}
-5316 = {
-	winter_severity_bias = 0.6
-}
-5331 = {
-	winter_severity_bias = 0.6
-}
-5333 = {
-	winter_severity_bias = 0.6
-}
-5334 = {
-	winter_severity_bias = 0.6
-}
-5335 = {
-	winter_severity_bias = 0.6
-}
-5336 = {
-	winter_severity_bias = 0.6
-}
-5337 = {
-	winter_severity_bias = 0.6
-}
-5338 = {
-	winter_severity_bias = 0.6
-}
-5350 = {
-	winter_severity_bias = 0.6
-}
-5351 = {
-	winter_severity_bias = 0.6
-}
-5352 = {
-	winter_severity_bias = 0.6
-}
-5353 = {
-	winter_severity_bias = 0.6
-}
-5354 = {
-	winter_severity_bias = 0.6
-}
-5355 = {
-	winter_severity_bias = 0.6
-}
-5356 = {
-	winter_severity_bias = 0.6
-}
-5357 = {
-	winter_severity_bias = 0.6
-}
-5358 = {
-	winter_severity_bias = 0.6
-}
-5359 = {
-	winter_severity_bias = 0.6
-}
-5361 = {
-	winter_severity_bias = 0.6
-}
-5362 = {
-	winter_severity_bias = 0.6
-}
-5363 = {
-	winter_severity_bias = 0.6
-}
-5373 = {
-	winter_severity_bias = 0.6
-}
-5374 = {
-	winter_severity_bias = 0.6
-}
+	winter_severity_bias = @nmm_north_megos_medium_altitude
+}
+# b_schafpreskeln
+3968 = {
+	winter_severity_bias = @smm_south_megos_medium_altitude
+}
+## c_klinkby
+# b_klim
+3780 = {
+	winter_severity_bias = @nmc_north_megos_coastal
+}
+# b_durdos
+3788 = {
+	winter_severity_bias = @nmc_north_megos_coastal
+}
+# b_verbovo
+3786 = {
+	winter_severity_bias = @nmm_north_megos_medium_altitude
+}
+## c_ottetstift
+# b_karboreh
+1530 = {
+	winter_severity_bias = @smc_south_megos_coastal
+}
+# b_hochheide
+3958 = {
+	winter_severity_bias = @smc_south_megos_coastal
+}
+## c_patragg
+# b_vestsandur
 5377 = {
-	winter_severity_bias = 0.6
+	winter_severity_bias = @smc_south_megos_coastal
 }
-5379 = {
-	winter_severity_bias = 0.6
+# b_leukersdorf
+4718 = {
+	winter_severity_bias = @smc_south_megos_coastal
 }
-5380 = {
-	winter_severity_bias = 0.6
+#### k_leskovec
+### d_reepsholt
+## c_sikkios
+# b_hinkel
+3948 = {
+	winter_severity_bias = @smc_south_megos_coastal
 }
+# b_markfeld
+3952 = {
+	winter_severity_bias = @smc_south_megos_coastal
+}
+# b_eichholz
+3959 = {
+	winter_severity_bias = @smc_south_megos_coastal
+}
+## c_seniakovce
+# b_ryggestan
+3974 = {
+	winter_severity_bias = @smc_south_megos_coastal
+}
+# b_svogerslev
+3973 = {
+	winter_severity_bias = @smc_south_megos_coastal
+}
+# b_humburky
+3979 = {
+	winter_severity_bias = @smc_south_megos_coastal
+}
+## c_bockern
+# b_fachenfelde
+3975 = {
+	winter_severity_bias = @smh_south_megos_high_altitude
+}
+# b_niederanven
+3981 = {
+	winter_severity_bias = @smh_south_megos_high_altitude
+}
+# b_oerlingen
+3890 = {
+	winter_severity_bias = @smc_south_megos_inland
+}
+### d_zehendhof
+## c_loce
+# b_durdice
+3987 = {
+	winter_severity_bias = @smh_south_megos_high_altitude
+}
+# b_georgenberg
+3998 = {
+	winter_severity_bias = @smh_south_megos_high_altitude
+}
+# b_stjak
+3984 = {
+	winter_severity_bias = @smc_south_megos_coastal
+}
+# b_atzensberg
+3993 = {
+	winter_severity_bias = @smc_south_megos_coastal
+}
+## c_petrohrad
+# b_stara_vas
+4000 = {
+	winter_severity_vias = @smv_south_megos_vhigh_altitude
+}
+# b_podolsko
+3858 = {
+	winter_severity_bias = @smv_south_megos_vhigh_altitude
+}
+# b_skarucna
+3856 = {
+	winter_severity_bias = @nmh_north_megos_high_altitude
+}
+# b_greisch
+3849 = {
+	winter_severity_bias = @nmh_north_megos_high_altitude
+}
+### d_geislersfeld
+## c_zgornji_hotic
+# b_lednic
+4037 = {
+	winter_severity_bias = @smv_south_megos_vhigh_altitude
+}
+# b_kaan
+4038 = {
+	winter_severity_bias = @smv_south_megos_vhigh_altitude
+}
+# b_fill_7425
+7425 = {
+	winter_severity_bias = @smh_south_megos_high_altitude
+}
+## c_cezlak
+# b_faubourg
+4040 = {
+	winter_severity_bias = @smh_south_megos_high_altitude
+}
+# b_thalham
+3876 = {
+	winter_severity_bias = @smv_south_megos_vhigh_altitude
+}
+## c_jaroslavice
+# b_sprockhof
+3877 = {
+	winter_severity_bias = @smv_south_megos_vhigh_altitude
+}
+# b_ianezevo_brdo
+3894 = {
+	winter_severity_bias = @south_sjalvolki_mountains
+}
+### d_birnbaum
+## c_sydow
+# b_pittange
+4032 = {
+	winter_severity_bias = @smm_south_megos_medium_altitude
+}
+# b_euenheim
+4025 = {
+	winter_severity_bias = @smi_south_megos_inland
+}
+# b_kladje_pri_krmelju
+4026 = {
+	winter_severity_bias = @smc_south_megos_coastal
+}
+# b_romborna
+4028 = {
+	winter_severity_bias = @smc_south_megos_coastal
+}
+## c_lorenzergraben
+# b_lindenkreuz
+4012 = {
+	winter_severity_bias = @smc_south_megos_coastal
+}
+# b_unglinghausen
+4002 = {
+	winter_severity_bias = @smc_south_megos_coastal
+}
+# b_desinec
+4006 = {
+	winter_severity_bias = @smc_south_megos_coastal
+}
+## c_sveti_andraz
+# b_grabelsdorf
+4007 = {
+	winter_severity_bias = @smc_south_megos_coastal
+}
+# b_tlumatschau
+4016 = {
+	winter_severity_bias = @smc_south_megos_coastal
+}
+# b_gussbo
+4019 = {
+	winter_severity_bias = @smc_south_megos_coastal
+}
+### d_wakelterhof
+## c_skjellund
+# b_tordaeon
+4009 = {
+	winter_severity_bias = @smc_south_megos_coastal
+}
+# b_unterisingen
+4046 = {
+	winter_severity_bias = @smc_south_megos_coastal
+}
+# b_kousted
+4011 = {
+	winter_severity_bias = @smc_south_megos_coastal
+}
+## c_glose
+# b_tarabuc
+4047 = {
+	winter_severity_bias = @smc_south_megos_coastal
+}
+# b_petofa
+4035 = {
+	winter_severity_bias = @smi_south_megos_inland
+}
+# b_hennersdorf
+4048 = {
+	winter_severity_bias = @smi_south_megos_inland
+}
+## c_libna
+# b_vejrs
+4052 = {
+	winter_severity_bias = @smc_south_megos_inland
+}
+# b_sveti_simon
+4050 = {
+	winter_severity_bias = @smc_south_megos_coastal
+}
+# b_ampfenham
+4049 = {
+	winter_severity_bias = @smc_south_megos_coastal
+}
+### d_jaszfalu
+## c_pashgort
+# b_sobocevo
+4784 = {
+	winter_severity_bias = @smc_south_megos_coastal
+}
+# b_leirrum
 5382 = {
-	winter_severity_bias = 0.6
+	winter_severity_bias = @smc_south_megos_coastal
 }
-5383 = {
-	winter_severity_bias = 0.6
+## c_kankaanviisa
+# b_hinterreckenberg
+4066 = {
+	winter_severity_bias = @smc_south_megos_coastal
 }
-5384 = {
-	winter_severity_bias = 0.6
+# b_valza
+5199 = {
+	winter_severity_bias = @smc_south_megos_coastal
 }
-5385 = {
-	winter_severity_bias = 0.6
+# b_eyrarthir
+5197 = {
+	winter_severity_bias = @smc_south_megos_coastal
 }
-5364 = {
-	winter_severity_bias = 0.6
+# b_rezekdus
+5176 = {
+	winter_severity_bias = @smc_south_megos_coastal
 }
-5365 = {
-	winter_severity_bias = 0.6
+## c_weimerskirch
+# b_niederkohlscheid
+4065 = {
+	winter_severity_bias = @smc_south_megos_coastal
 }
-5366 = {
-	winter_severity_bias = 0.6
+# b_kischlitz
+4059 = {
+	winter_severity_bias = @smc_south_megos_coastal
 }
-5367 = {
-	winter_severity_bias = 0.6
+# b_zwietow
+4063 = {
+	winter_severity_bias = @smi_south_megos_inland
 }
-5369 = {
-	winter_severity_bias = 0.6
+# b_hirnstetten
+4073 = {
+	winter_severity_bias = @smi_south_megos_inland
 }
-5339 = {
-	winter_severity_bias = 0.6
+## c_ejsing
+# b_ratukkavaara
+4056 = {
+	winter_severity_bias = @smi_south_megos_inland
 }
-5341 = {
-	winter_severity_bias = 0.6
+# b_unterahrnbach
+4060 = {
+	winter_severity_bias = @smm_south_megos_medium_altitude
 }
-5342 = {
-	winter_severity_bias = 0.6
+# b_brunau
+4061 = {
+	winter_severity_bias = @smm_south_megos_medium_altitude
 }
+# b_baselt
+4077 = {
+	winter_severity_bias = @smi_south_megos_inland
+}
+### d_zbynice
+## c_menzel
+# b_marienwehr
+4124 = {
+	winter_severity_bias = @smc_south_megos_inland
+}
+# b_bichlbach
+4075 = {
+	winter_severity_bias = @smc_south_megos_coastal
+}
+# b_leienkaul
+4088 = {
+	winter_severity_bias = @smc_south_megos_coastal
+}
+## c_monkeshof
+# b_kaadekilde
+4091 = {
+	winter_severity_bias = @smc_south_megos_coastal
+}
+# b_skads
+4092 = {
+	winter_severity_bias = @smc_south_megos_inland
+}
+# b_gradnik
+4089 = {
+	winter_severity_bias = @smi_south_megos_inland
+}
+## c_roodt
+# b_majere
+4072 = {
+	winter_severity_bias = @smi_south_megos_inland
+}
+# b_kollberg
+4070 = {
+	winter_severity_bias = @smm_south_megos_medium_altitude
+}
+# b_harbo
+4071 = {
+	winter_severity_bias = @smh_south_megos_high_altitude
+}
+## c_drazovce
+# b_lieler
+4086 = {
+	winter_severity_bias = @smm_south_megos_medium_altitude
+}
+# b_trestenshult
+4083 = {
+	winter_severity_bias = @smm_south_megos_medium_altitude
+}
+# b_syren
+4080 = {
+	winter_severity_bias = @smh_south_megos_high_altitude
+}
+# b_hondsjang
+4100 = {
+	winter_severity_bias = @smh_south_megos_high_altitude
+}
+### d_dalmsdorf
+## c_unterhochsteg
+# b_juliusburg
+4094 = {
+	winter_severity_bias = @smi_south_megos_inland
+}
+# b_aub
+4093 = {
+	winter_severity_bias = @smm_south_megos_medium_altitude
+}
+## c_krayne
+# b_sassenheim
+4105 = {
+	winter_severity_bias = @smi_south_megos_inland
+}
+# b_oberschopfheim
+4109 = {
+	winter_severity_bias = @smm_south_megos_medium_altitude
+}
+# b_nove_mestopod_siatrom
+4107 = {
+	winter_severity_bias = @smm_south_megos_medium_altitude
+}
+#### k_schouweiler
+### d_aspelt
+## c_hupperdange
+# b_schweich
+4113 = {
+	winter_severity_bias = @smc_south_megos_coastal
+}
+# b_retallas
+4121 = {
+	winter_severity_bias = @smc_south_megos_coastal
+}
+# b_bleibergkreuth
+4126 = {
+	winter_severity_bias = @smc_south_megos_coastal
+}
+## c_fentange 
+# b_schmiede
+4115 = {
+	winter_severity_bias = @smc_south_megos_coastal
+}
+# b_lussdorf
+4116 = {
+	winter_severity_bias = @smc_south_megos_coastal
+}
+## c_hochbronn
+# b_loh
+4118 = {
+	winter_severity_bias = @smc_south_megos_coastal
+}
+# b_damlj
+4120 = {
+	winter_severity_bias = @smc_south_megos_coastal
+}
+# b_sajlerov
+4119 = {
+	winter_severity_bias = @smc_south_megos_coastal
+}
+## c_abborrholmberget
+# b_uttigsdorf
+4127 = {
+	winter_severity_bias = @smc_south_megos_coastal
+}
+# b_pohorje
+4128 = {
+	winter_severity_bias = @smc_south_megos_coastal
+}
+# b_bissen
+4131 = {
+	winter_severity_bias = @smc_south_megos_coastal
+}
+### d_sestajovice
+## c_sachsenthal
+# b_sophienhamm
+4148 = {
+	winter_severity_bias = @smc_south_megos_coastal
+}
+# b_kirchtal
+4151 = {
+	winter_severity_bias = @smc_south_megos_coastal
+}
+# b_ponikve
+4153 = {
+	winter_severity_bias = @smc_south_megos_inland
+}
+## c_zitavce
+# b_podlog
+4173 = {
+	winter_severity_bias = @smi_south_megos_inland
+}
+# b_nievelstein
+4167 = {
+	winter_severity_bias = @smi_south_megos_inland
+}
+# b_krems
+4199 = {
+	winter_severity_bias = @smm_south_megos_medium_altitude
+}
+## c_forse
+# b_goeblange
+4161 = {
+	winter_severity_bias = @smi_south_megos_inland
+}
+# b_damasko
+4155 = {
+	winter_severity_bias = @smi_south_megos_inland
+}
+# b_kaskaradaen
+4157 = {
+	winter_severity_bias = @smi_south_megos_inland
+}
+## c_besa
+# b_jenkofen
+4180 = {
+	winter_severity_bias = @smm_south_megos_medium_altitude
+}
+# b_borac
+4178 = {
+	winter_severity_bias = @smi_south_megos_inland
+}
+### d_weidingen
+## c_icksjo
+# b_alferde
+4163 = {
+	winter_severity_bias = @smi_south_megos_inland
+}
+# b_welshofen
+4198 = {
+	winter_severity_bias = @smi_south_megos_inland
+}
+# b_izlake
+4196 = {
+	winter_severity_bias = @smi_south_megos_inland
+}
+## c_ostrozno_brdo
+# b_gonnhelheis
+2265 = {
+	winter_severity_bias = @pbi_pathos_bay_inland
+}
+# b_histrada
+3093 = {
+	winter_severity_bias = @pbi_pathos_bay_inland
+}
+## c_orgadian
+# b_rickenbach
+4191 = {
+	winter_severity_bias = @smi_south_megos_inland
+}
+# b_braunshausen
+4225 = {
+	winter_severity_bias = @smi_south_megos_inland
+}
+## c_hegningen
+# b_lendvahosszufalu
+4224 = {
+	winter_severity_bias = @pbc_pathos_bay_coastal
+}
+# b_uvlunge
+4227 = {
+	winter_severity_bias = @pbc_pathos_bay_coastal
+}
+### d_uggleberg
+## c_tetrigit
+# b_katais
+7078 = {
+	winter_severity_bias = @smc_south_megos_coastal
+}
+# b_myndomenus
+7163 = {
+	winter_severity_bias = @smc_south_megos_coastal
+}
+# b_ialeneia
+7171 = {
+	winter_severity_bias = @smc_south_megos_coastal
+}
+## c_vernar
+# b_zlatna
+4135 = {
+	winter_severity_bias = @smc_south_megos_coastal
+}
+# b_lultzhausen 
+4133 = {
+	winter_severity_bias = @smc_south_megos_inland
+}
+# b_eichheim
+4136 = {
+	winter_severity_bias = @smi_south_megos_inland
+}
+## c_byzhradec
+# b_salov
+4138 = {
+	winter_severity_bias = @smi_south_megos_inland
+}
+# b_sussa
+4139 = {
+	winter_severity_bias = @smi_south_megos_inland
+}
+# b_brezovica_pri_dobu
+4145 = {
+	winter_severity_bias = @smi_south_megos_inland
+}
+# b_fels
+4146 = {
+	winter_severity_bias = @smi_south_megos_inland
+}
+### d_eutingen
+## c_kordowitz
+# b_regglisweiler
+4142 = {
+	winter_severity_bias = @smi_south_megos_inland
+}
+# b_oberrabenthan
+4143 = {
+	winter_severity_bias = @smi_south_megos_inland
+}
+## c_niederheisbach
+# b_ulfingen
+4192 = {
+	winter_severity_bias = @smi_south_megos_inland
+}
+# b_rodov
+4195 = {
+	winter_severity_bias = @smi_south_megos_inland
+}
+#### k_sanos
+### d_rupensdorf
+## c_sykoria
+# b_schwebsingen
+4170 = {
+	winter_severity_bias = @smi_south_megos_inland
+}
+# b_ioltos
+4171 = {
+	winter_severity_bias = @smi_south_megos_inland
+}
+## c_kringell
+# b_stjernebo
+4121 = {
+	winter_severity_bias = @smm_south_megos_medium_altitude
+}
+# b_honkenswarft
+4201 = {
+	winter_severity_bias = @smm_south_megos_medium_altitude
+}
+# b_monte_di_capodistria
+4174 = {
+	winter_severity_bias = @smi_south_megos_inland
+}
+## c_dobroc
+# b_hifringen
+4203 = {
+	winter_severity_bias = @smm_south_megos_medium_altitude
+}
+# b_aschauberg
+4185 = {
+	winter_severity_bias = @smi_south_megos_inland
+}
+# b_friedenfels
+4187 = {
+	winter_severity_bias = @smi_south_megos_inland
+}
+### d_gelale
+## c_cythone
+# b_planiny
+4182 = {
+	winter_severity_bias = @pbi_pathos_bay_inland
+}
+# b_hyelassus
+5394 = {
+	winter_severity_bias = @pbc_pathos_bay_coastal
+}
+# b_mesorion
+5399 = {
+	winter_severity_bias = @pbc_pathos_bay_coastal
+}
+## c_nollidiri
+# b_magnynthus
+5400 = {
+	winter_severity_bias = @pbc_pathos_bay_coastal
+}
+# b_olbosia
+5398 = {
+	winter_severity_bias = @pbc_pathos_bay_coastal
+}
+# b_karretvrekynryns
+5412 = {
+	winter_severity_bias = @pbm_pathos_bay_medium_altitude
+}
+### d_thururil
+## c_motiri
+# b_lephla
+5404 = {
+	winter_severity_bias = @pbc_pathos_bay_coastal
+}
+# b_doreucia
+5403 = {
+	winter_severity_bias = @pbc_pathos_bay_coastal
+}
+# b_hyrini
+5405 = {
+	winter_severity_bias = @pbc_pathos_bay_coastal
+}
+## c_poios
+# b_sidasus
+3480 = {
+	winter_severity_bias = @pbc_pathos_bay_coastal
+}
+# b_bourais
+3250 = {
+	winter_severity_bias = @pbc_pathos_bay_coastal
+}
+# b_prose
+5424 = {
+	winter_severity_bias = @pbc_pathos_bay_coastal
+}
+### d_seopuse
+## c_akum
+# b_ledes
+5407 = {
+	winter_severity_bias = @pbc_pathos_bay_coastal
+}
+## c_thraadmis
+# b_hyte
+5422 = {
+	winter_severity_bias = @pbc_pathos_bay_coastal
+}
+# b_posia
+5426 = {
+	winter_severity_bias = @pbi_pathos_bay_inland
+}
+# b_mious
+5423 = {
+	winter_severity_bias = @pbc_pathos_bay_coastal
+}
+## c_abia
+# b_tiberyns
+5415 = {
+	winter_severity_bias = @pbi_pathos_bay_inland
+}
+# b_abnai
+5416 = {
+	winter_severity_bias = @pbi_pathos_bay_inland
+}
+# b_deban
+5417 = {
+	winter_severity_bias = @pbm_pathos_bay_medium_altitude
+}
+# b_oetanai
+5420 = {
+	winter_severity_bias = @pbm_pathos_bay_medium_altitude
+}
+## c_pyeis
+# b_pelchoi
+5436 = {
+	winter_severity_bias = @pbm_pathos_bay_medium_altitude
+}
+# b_prorythea
+5419 = {
+	winter_severity_bias = @pbi_pathos_bay_inland
+}
+# b_didi
+5430 = {
+	winter_severity_bias = @pbi_pathos_bay_inland
+}
+### d_knokidbes
+## c_ephsos
+# b_peltis
+5438 = {
+	winter_severity_bias = @pbi_pathos_bay_inland
+}
+# b_vrota
+5442 = {
+	winter_severity_bias = @pbi_pathos_bay_inland
+}
+# b_pyres
+5437 = {
+	winter_severity_bias = @pbh_pathos_bay_high_altitude
+}
+# b_daenas
+5443 = {
+	winter_severity_bias = @pbh_pathos_bay_high_altitude
+}
+## c_emos
+# b_aeus
+5439 = {
+	winter_severity_bias = @pbv_pathos_bay_vhigh_altitude
+}
+# b_prostagmos
+5440 = {
+	winter_severity_bias = @pbv_pathos_bay_vhigh_altitude
+}
+# b_cuthos
+5441 = {
+	winter_severity_bias = @pbe_pathos_bay_extreme_altitude
+}
+# b_abslos
+5448 = {
+	winter_severity_bias = @pbv_pathos_bay_vhigh_altitude
+}
+## c_prophaakike
+# b_igora
+5450 = {
+	winter_severity_bias = @pbe_pathos_bay_extreme_altitude
+}
+# b_pron
+5451 = {
+	winter_severity_bias = @pbv_pathos_bay_vhigh_altitude
+}
+## c_leios
+# b_ithenae
+5444 = {
+	winter_severity_bias = @pbi_pathos_bay_inland
+}
+# b_skygaretios
+5445 = {
+	winter_severity_bias = @pbi_pathos_bay_inland
+}
+# b_pote
+5447 = {
+	winter_severity_bias = @pbm_pathos_bay_medium_altitude
+}
+# b_ephrinos
+5446 = {
+	winter_severity_bias = @pbh_pathos_bay_high_altitude
+}
+
+################################################
+# ADJUSTABLE VALUES FOR E_GURDURBOK
+# Climate regions and values as of 10-04-2021 by Zoneling
+################################################
+# As a general rule, coastal gurdurbok uses the same value as mikros.
+# Moving north it uses chevalies values, and then finally the values of the mountains in the very highly placed provinces, which are:
+@wbp_western_black_mountains_peak = 0.9
+@wbe_western_black_mountains_extreme = 0.75
+@wbh_western_black_mountains_high = 0.65
+@wbl_western_black_mountains_low = 0.55
+
+##### Wasteland / Mountains
+#### Western Black Mountains
+7374 = {
+	winter_severity_bias = @wbp_western_black_mountains_peak
+}
+7373 = {
+	winter_severity_bias = @wbh_western_black_mountains_high
+}
+7381 = {
+	winter_severity_bias = @wbp_western_black_mountains_peak
+}
+7382 = {
+	winter_severity_bias = @wbp_western_black_mountains_peak
+}
+7384 = {
+	winter_severity_bias = @wbh_western_black_mountains_high
+}
+7864 = {
+	winter_severity_bias = @wbh_western_black_mountains_high
+}
+7865 = {
+	winter_severity_bias = @wbh_western_black_mountains_high
+}
+7382 = {
+	winter_severity_bias = @wbh_western_black_mountains_high
+}
+7372 = {
+	winter_severity_bias = @wbl_western_black_mountains_low
+}
+
+##### e_gurdurbok
+#### k_krassovce
+### d_shepezhyn
+## c_nadim
+# b_dave
+5078 = {
+	winter_severity_bias = @mc_mikros_coastal
+}
+## c_cadeni
+# b_olzbrowa
+5081 = {
+	winter_severity_bias = @mc_mikros_coastal
+}
+# b_risriopol
+5080 = {
+	winter_severity_bias = @mc_mikros_coastal
+}
+### d_trebily
+## c_teredilna
+# b_hansachyn
+5108 = {
+	winter_severity_bias = @mc_mikros_coastal
+}
+# b_ostrasko
+5110 = {
+	winter_severity_bias = @mc_mikros_coastal
+}
+# b_korrom
+5111 = {
+	winter_severity_bias = @mc_mikros_coastal
+}
+## c_soroci
+# b_baramanesti
+5116 = {
+	winter_severity_bias = @mi_mikros_inland
+}
+# b_gorle
+5114 = {
+	winter_severity_bias = @mc_mikros_coastal
+}
+### d_halita
+## c_petronicu
+# b_kruna
+5083 = {
+	winter_severity_bias = @chevalie_high_altitude
+}
+# b_lysykivka
+5086 = {
+	winter_severity_bias = @chevalie_high_altitude
+}
+## c_zhatsk
+# b_sokotovy
+5089 = {
+	winter_severity_bias = @chevalie_inland_south
+}
+## c_hajbas
+# b_hajduscag
+5090 = {
+	winter_severity_bias = @chevalie_medium_altitude
+}
+# b_ghinari
+5091 = {
+	winter_severity_bias = @chevalie_vhigh_altitude
+}
+### d_wloclablag
+## c_zawiecin
+# b_borraolt
+5094 = {
+	winter_severity_bias = @chevalie_medium_altitude
+}
+## c_zardov
+# b_dzerzhyn
+5096 = {
+	winter_severity_bias = @chevalie_high_altitude
+}
+## c_nagyamiklos
+# b_tehei
+5101 = {
+	winter_severity_bias = @chevalie_vhigh_altitude
+}
+# b_tsybusko
+5103 = {
+	winter_severity_bias = @chevalie_vhigh_altitude
+}
+### d_pagidia
+## c_schuran
+# b_lyuyory
+5131 = {
+	winter_severity_bias = @chevalie_high_altitude
+}
+# b_revuvce
+5128 = {
+	winter_severity_bias = @chevalie_high_altitude
+}
+## c_pilas
+# b_costedeni
+5135 = {
+	winter_severity_bias = @chevalie_medium_altitude
+}
+# b_pivorosvar
+5134 = {
+	winter_severity_bias = @chevalie_high_altitude
+}
+### d_messolis
+## c_artiraki
+# b_rautenberg
+4402 = {
+	winter_severity_bias = @mc_mikros_coastal
+}
+# b_philippsberg
+4403 = {
+	winter_severity_bias = @mc_mikros_coastal
+}
+## c_apenia
+# b_solidos
+3157 = {
+	winter_severity_bias = @mc_mikros_coastal
+}
+# b_meigelshof
+4405 = {
+	winter_severity_bias = @mc_mikros_coastal
+}
+# b_megopetri
+3222 = {
+	winter_severity_bias = @mc_mikros_coastal
+}
+## c_marurias
+# b_corcagoria
+6347 = {
+	winter_severity_bias = @mc_mikros_coastal
+}
+# b_kreuzweg
+4432 = {
+	winter_severity_bias = @mc_mikros_coastal
+}
+## c_marurias
+# b_simman
+5118 = {
+	winter_severity_bias = @mc_mikros_coastal
+}
+### d_popelna
+## c_viendorf
+# b_edeta
+5123 = {
+	winter_severity_bias = @mc_mikros_coastal
+}
+# b_furschweiler
+4463 = {
+	winter_severity_bias = @mc_mikros_coastal
+}
+## c_hajdujaujhely
+# b_camenresti
+5124 = {
+	winter_severity_bias = @mc_mikros_coastal
+}
+# b_ribpol
+5125 = {
+	winter_severity_bias = @mc_mikros_coastal
+}
+## c_stolzenhan
+# b_mladina
+4465 = {
+	winter_severity_bias = @mi_mikros_inland
+}
+# b_zuccinoios
+4467 = {
+	winter_severity_bias = @mc_mikros_coastal
+}
+### d_blatta
+## c_gradisce
+# b_bagonya
+4611 = {
+	winter_severity_bias = @mr_mikros_river
+}
+# b_plauerhagen
+4600 = {
+	winter_severity_bias = @mr_mikros_river
+}
+## c_achim
+# b_neuhub
+4639 = {
+	winter_severity_bias = @mr_mikros_river
+}
+# b_wolperath
+4609 = {
+	winter_severity_bias = @mi_mikros_inland
+}
+## c_siebenhausen
+# b_sekyrka
+4661 = {
+	winter_severity_bias = @mr_mikros_river
+}
+# b_goricce
+4640 = {
+	winter_severity_bias = @mr_mikros_river
+}
+### d_westerhusen
+## c_voxhaln
+# b_rpety
+4625 = {
+	winter_severity_bias = @mi_mikros_inland
+}
+## c_scharfberg
+# b_tirna
+4623 = {
+	winter_severity_bias = @mr_mikros_river
+}
+# b_stav
+4622 = {
+	winter_severity_bias = @mi_mikros_inland
+}
+## c_nestanice
+# b_leskenthal
+4619 = {
+	winter_severity_bias = @mv_mikros_vhigh_altitude
+}
+### d_wanzer
+## c_zdiarna
+# b_witowa
+4597 = {
+	winter_severity_bias = @mv_mikros_vhigh_altitude
+}
+## c_eibenschitz
+# b_meronitz
+4606 = {
+	winter_severity_bias = @mv_mikros_vhigh_altitude
+}
+### d_hnukovo
+## c_vyerdzyechna
+# b_teva
+5155 = {
+	winter_severity_bias = @mv_mikros_vhigh_altitude
+}
+# b_mojovice
+5156 = {
+	winter_severity_bias = @mv_mikros_vhigh_altitude
+}
+## c_marculelesti
+# b_rahawka
+5154 = {
+	winter_severity_bias = @me_mikros_extreme_altitude
+}
+## c_baighita
+# b_topologhita
+5162 = {
+	winter_severity_bias = @me_mikros_extreme_altitude
+}
+# b_nemlava
+5163 = {
+	winter_severity_bias = @wbh_western_black_mountains_high
+}
+#### k_niidinia
+### d_achomenion
+## c_neaparis
+# b_verrelfurdi
+4974 = {
+	winter_severity_bias = @chevalie_high_altitude
+}
+## c_lochaltwine
+# b_novygoud
+4979 = {
+	winter_severity_bias = @chevalie_vhigh_altitude
+}
+# b_srrata
+4981 = {
+	winter_severity_bias = @chevalie_vhigh_altitude
+}
+## c_spartida
+# b_wintlow
+4976 = {
+	winter_severity_bias = @chevalie_medium_altitude
+}
+# b_surmgad
+4978 = {
+	winter_severity_bias = @chevalie_high_altitude
+}
+## c_mallympia_voreias
+# b_loonten
+4983 = {
+	winter_severity_bias = @chevalie_high_altitude
+}
+### d_nympharos
+## c_schittsgrad
+# b_ragencop
+4985 = {
+	winter_severity_bias = @chevalie_medium_altitude
+}
+# b_losla
+4986 = {
+	winter_severity_bias = @chevalie_medium_altitude
+}
+# b_jarnak
+4987 = {
+	winter_severity_bias = @chevalie_high_altitude
+}
+## c_rhyparta
+# b_nvettbergg
+4995 = {
+	winter_severity_bias = @chevalie_high_altitude
+}
+## c_gjovik
+# b_cholgar
+4991 = {
+	winter_severity_bias = @chevalie_high_altitude
+}
+## c_lapithaki_mikra
+# b_wofsneubach
+4996 = {
+	winter_severity_bias = @chevalie_high_altitude
+}
+# b_ternm
+4998 = {
+	winter_severity_bias = @chevalie_high_altitude
+}
+### d_tinec
+## c_preberec
+# b_koshaz
+5023 = {
+	winter_severity_bias = @chevalie_high_altitude
+}
+## c_batulodar
+# b_zholava
+5020 = {
+	winter_severity_bias = @chevalie_high_altitude
+}
+## c_durlezia
+# b_piziadz
+5027 = {
+	winter_severity_bias = @wbl_western_black_mountains_low
+}
+# b_canteclia
+5025 = {
+	winter_severity_bias = @wbl_western_black_mountains_low
+}
+### d_banaia
+## c_otodauti
+# b_zilivoca
+5029 = {
+	winter_severity_bias = @wbl_western_black_mountains_low
+}
+# b_ilopillia
+5030 = {
+	winter_severity_bias = @wbl_western_black_mountains_low
+}
+## c_zdolsiya
+# b_vyerhichyn
+5032 = {
+	winter_severity_bias = @wbh_western_black_mountains_high
+}
+### d_kezly
+## c_zhokiv
+# b_lilyow
+5055 = {
+	winter_severity_bias = @wbh_western_black_mountains_high
+}
+## c_pldov
+# b_sajoszna
+5058 = {
+	winter_severity_bias = @wbh_western_black_mountains_high
+}
+# b_jinin
+5056 = {
+	winter_severity_bias = @wbh_western_black_mountains_high
+}
+# b_beretkad
+5057 = {
+	winter_severity_bias = @wbl_western_black_mountains_low
+}
+### d_zhabirhon
+## c_myticos
+# b_nyirtad
+5034 = {
+	winter_severity_bias = @wbe_western_black_mountains_extreme
+}
+# b_dubasaru
+5036 = {
+	winter_severity_bias = @wbe_western_black_mountains_extreme
+}
+## c_epestias
+# b_grigorionet
+5037 = {
+	winter_severity_bias = @wbe_western_black_mountains_extreme
+}
+# b_bumaz
+5035 = {
+	winter_severity_bias = @wbe_western_black_mountains_extreme
+}
+## c_dethiclos
+# b_boledilsk
+5065 = {
+	winter_severity_bias = @wbe_western_black_mountains_extreme
+}
+# b_bragazu
+5062 = {
+	winter_severity_bias = @wbe_western_black_mountains_extreme
+}
+# b_fasti
+5073 = {
+	winter_severity_bias = @wbe_western_black_mountains_extreme
+}
+### d_morthex
+## c_tantium
+# b_szarcel
+5146 = {
+	winter_severity_bias = @wbl_western_black_mountains_low
+}
+## c_phaliopol
+# b_focnut
+5138 = {
+	winter_severity_bias = @wbl_western_black_mountains_low
+}
+# b_jelze
+5140 = {
+	winter_severity_bias = @wbl_western_black_mountains_low
+}
+## c_cario
+# b_kromepa
+5067 = {
+	winter_severity_bias = @wbh_western_black_mountains_high
+}
+## c_larastiraki
+# b_martemir
+5069 = {
+	winter_severity_bias = @wbh_western_black_mountains_high
+}
+### d_cantedru
+## c_imbriliki
+# b_toruskie
+5060 = {
+	winter_severity_bias = @wbh_western_black_mountains_high
+}
+# b_bojlinec
+5063 = {
+	winter_severity_bias = @wbh_western_black_mountains_high
+}
+## c_methonnos
+# b_mostytyvl
+5064 = {
+	winter_severity_bias = @wbl_western_black_mountains_low
+}
+#### k_vyshtanka
+### d_jastrlawy
+## c_iziamove
+# b_sviadriia
+5042 = {
+	winter_severity_bias = @chevalie_high_altitude
+}
+## c_kedtom
+# b_kosnovce
+5040 = {
+	winter_severity_bias = @chevalie_medium_altitude
+}
+# b_stana
+5041 = {
+	winter_severity_bias = @chevalie_medium_altitude
+}
+## c_verebony
+# b_hincezia
+5047 = {
+	winter_severity_bias = @chevalie_medium_altitude
+}
+## c_legwiec
+# b_busineu
+5050 = {
+	winter_severity_bias = @chevalie_medium_altitude
+}
+## c_hodomin
+# b_korkunhalas
+5046 = {
+	winter_severity_bias = @chevalie_medium_altitude
+}
+### d_sverdok
+## c_gotnau
+# b_grimschot
+5167 = {
+	winter_severity_bias = @chevalie_high_altitude
+}
+# b_zotteberge
+5166 = {
+	winter_severity_bias = @chevalie_medium_altitude
+}
+# b_groenmolsen
+5168 = {
+	winter_severity_bias = @chevalie_medium_altitude
+}
+## c_varmahsandur
+# b_vitne
+5210 = {
+	winter_severity_bias = @chevalie_medium_altitude
+}
+# b_silva
+5212 = {
+	winter_severity_bias = @chevalie_medium_altitude
+}
+### d_borgberg
+## c_fristed
+# b_valduu
+5218 = {
+	winter_severity_bias = @wbl_western_black_mountains_low
+}
+# b_halhavn
+5216 = {
+	winter_severity_bias = @wbl_western_black_mountains_low
+}
+## c_statkim
+# b_hellev
+5171 = {
+	winter_severity_bias = @wbl_western_black_mountains_low
+}
+# b_ariosniai
+5177 = {
+	winter_severity_bias = @wbl_western_black_mountains_low
+}
+# b_angelgard
+5180 =  {
+	winter_severity_bias = @wbl_western_black_mountains_low
+}
+# b_naansaari
+5174 = {
+	winter_severity_bias = @wbl_western_black_mountains_low
+}
+## c_hafsker
+# b_cesbate
+5222 = {
+	winter_severity_bias = @wbl_western_black_mountains_low
+}
+### d_lokduu
+## c_kivioli
+# b_valkeani
+5173 = {
+	winter_severity_bias = @wbh_western_black_mountains_high
+}
+### d_vadhammar
+## c_hemererna
+# b_drangfjorthur
+5175 = {
+	winter_severity_bias = @wbh_western_black_mountains_high
+}
+# b_damysl
+5071 = {
+	winter_severity_bias = @wbh_western_black_mountains_high
+}
+## c_pajoki
+# b_lintinga
+5189 = {
+	winter_severity_bias = @wbl_western_black_mountains_low
+}
+## c_rudisvalus
+# b_hokkros
+5191 = {
+	winter_severity_bias = @wbl_western_black_mountains_low
+}
+# b_kungsshamn
+5192 = {
+	winter_severity_bias = @chevalie_high_altitude
+}
+### d_borgarreyri
+## c_elekvaris
+# b_honningkan
+5235 = {
+	winter_severity_bias = @wbl_western_black_mountains_low
+}
+## c_borvalla
+# b_ringtrup
+5237 = {
+	winter_severity_bias = @wbl_western_black_mountains_low
+}
+# b_ramytavas
+5223 = {
+	winter_severity_bias = @wbl_western_black_mountains_low
+}
+## c_garrtai
+# b_varakda
+5232 = {
+	winter_severity_bias = @wbl_western_black_mountains_low
+}
+# b_breksos
+5213 = {
+	winter_severity_bias = @wbl_western_black_mountains_low
+}
+## c_rovapio
+# b_melahnes
+5243 = {
+	winter_severity_bias = @wbl_western_black_mountains_low
+}
+### d_kunra
+## c_parra
+# b_kauhasaari
+5272 = {
+	winter_severity_bias = @chevalie_high_altitude
+}
+## c_vopnathir
+# b_lukraukle
+5276 = {
+	winter_severity_bias = @chevalie_high_altitude
+}
+## c_stjordalssund
+# b_uldon
+5299 = {
+	winter_severity_bias = @wbl_western_black_mountains_low
+}
+### d_jekabnde
+## c_salabazi
+# b_notodstrom
+5257 = {
+	winter_severity_bias = @chevalie_high_altitude
+}
+## c_kolvesand
+# b_haghammar
+5259 = {
+	winter_severity_bias = @chevalie_medium_altitude
+}
+### d_keurava
+## c_foskenes
+# b_bergkoga
+5204 = {
+	winter_severity_bias = @chevalie_medium_altitude
+}
+## c_bausnazi
+# b_kazvis
+5201 = {
+	winter_severity_bias = @chevalie_medium_altitude
+}
+# b_utkos
+5200 = {
+	winter_severity_bias = @chevalie_medium_altitude
+}
+### d_visazys
+## c_stavik
+# b_larske
+5224 = {
+	winter_severity_bias = @mi_mikros_inland
+}
+### d_baustene
+## c_salcja
+# b_simvezys
+5245 = {
+	winter_severity_bias = @mi_mikros_inland
+}
+# b_honninghalsen
+5246 = {
+	winter_severity_bias = @mi_mikros_inland
+}
+## c_harjakano
+# b_soljahlith
+5254 = {
+	winter_severity_bias = @mh_mikros_high_altitude
+}
+## c_honninghelle
+# b_elli
+5250 = {
+	winter_severity_bias = @mh_mikros_high_altitude
+}
+# b_hudiksvall
+5248 = {
+	winter_severity_bias = @mh_mikros_high_altitude
+}
+#### k_lyckholm
+### d_mosebeck
+## c_bukovsko
+# b_regenmantel
+4665 = {
+	winter_severity_bias = @mr_mikros_river
+}
+# b_vitonice
+4667 = {
+	winter_severity_bias = @mr_mikros_river
+}
+## c_adamsfreiheit
+# b_taiting
+4664 = {
+	winter_severity_bias = @mr_mikros_river
+}
+## c_aigen
+# b_huldingen
+4670 = {
+	winter_severity_bias = @mh_mikros_high_altitude
+}
+# b_katino
+4671 = {
+	winter_severity_bias = @mr_mikros_river
+}
+### d_gumpolding
+## c_weicht
+# b_michnice
+4760 = {
+	winter_severity_bias = @mi_mikros_inland
+}
+# b_bilduvogur
+5317 = {
+	winter_severity_bias = @mh_mikros_high_altitude
+}
+# b_birkau
+4762 = {
+	winter_severity_bias = @mh_mikros_high_altitude
+}
+### d_lankum
+## c_lind
+# b_sentjost
+4765 = {
+	winter_severity_bias = @mr_mikros_river
+}
+## c_hultschin
+# b_lomnice
+4766 = {
+	winter_severity_bias = @mi_mikros_inland
+}
+# b_vincencov
+4768 = {
+	winter_severity_bias = @lr_lieben_river
+}
+## c_rossmeisl
+# b_scheschim
+4857 = {
+	winter_severity_bias = @lr_lieben_river
+}
+## c_jinonice
+# b_sloupnice
+4855 = {
+	winter_severity_bias = @lr_lieben_river
+}
+# b_bernharts
+4854 = {
+	winter_severity_bias = @li_lieben_inlands
+}
+### d_kurisinki
+## c_dybtrup
+# b_karla
+5327 = {
+	winter_severity_bias = @lm_lieben_medium_altitude
+}
+# b_valsamaa
+5326 = {
+	winter_severity_bias = @lh_lieben_high_altitude
+}
+### d_halmbru
+## c_kretgala
+# b_uzjai
+5321 = {
+	winter_severity_bias = @lh_lieben_high_altitude
+}
+# b_jorpebak
+5322 = {
+	winter_severity_bias = @lh_lieben_high_altitude
+}
+## c_ballsi
+# b_ariozlu
+5298 = {
+	winter_severity_bias = @le_lieben_extreme_altitude
+}
+### d_vabalgala
+## c_hvitheim
+# b_karlby
+5313 = {
+	winter_severity_bias = @lv_lieben_vhigh_altitude
+}
+## c_imavesi
+# b_hvammstathir
+5306 = {
+	winter_severity_bias = @le_lieben_extreme_altitude
+}
+## c_ringkilde
+# b_suurssaare
+5315 = {
+	winter_severity_bias = @le_lieben_extreme_altitude
+}
+## c_rezekbile
+# b_makums
+5331 = {
+	winter_severity_bias = @north_sjalvolki
+}
+### d_wolfsfeld
+## c_sedlale
+# b_brumundheim
+5334 = {
+	winter_severity_bias = @le_lieben_extreme_altitude
+}
+## c_alingtalje
+# b_helsinsjo
+5336 = {
+	winter_severity_bias = @lv_lieben_vhigh_altitude
+}
+# b_esholm
+5338 = {
+	winter_severity_bias = @lh_lieben_high_altitude
+}
+# b_aallev
+5337 = {
+	winter_severity_bias = @lh_lieben_high_altitude
+}
+### d_alsbruck
+## c_teglkilde
+# b_abme
+5351 = {
+	winter_severity_bias = @le_lieben_extreme_altitude
+}
+# b_nilko
+5352 = {
+	winter_severity_bias = @le_lieben_extreme_altitude
+}
+## c_simkininkai
+# b_assoor 
+5359 = {
+	winter_severity_bias = @lv_lieben_vhigh_altitude
+
+## c_tidahammar
+# b_engelsgard 
+5361 = {
+	winter_severity_bias = @lh_lieben_high_altitude
+}
+### d_kehla
+## c_priena
+# b_plapaja
 5343 = {
-	winter_severity_bias = 0.6
+	winter_severity_bias = @lr_lieben_river
 }
-5344 = {
-	winter_severity_bias = 0.6
-}
+# b_anyknas
 5345 = {
-	winter_severity_bias = 0.6
+	winter_severity_bias = @lm_lieben_medium_altitude
 }
-5346 = {
-	winter_severity_bias = 0.6
+## c_paitu
+# b_reyksker
+5342 = {
+	winter_severity_bias = @lm_lieben_medium_altitude
 }
-5347 = {
-	winter_severity_bias = 0.6
-}
+## c_prosjoen
+# b_hemstad
 5348 = {
-	winter_severity_bias = 0.6
+	winter_severity_bias = @lm_lieben_medium_altitude
+}
+# b_oxeloviken
+5347 = {
+	winter_severity_bias = @lh_lieben_high_altitude
+}
+### d_talde
+## c_kuoni
+# b_varkyla
+5364 = {
+	winter_severity_bias = @lr_lieben_river
+}
+# b_garthassandur
+5365 = {
+	winter_severity_bias = @li_lieben_inlands
+}
+# b_gartharas
+5366 = {
+	winter_severity_bias = @lm_lieben_medium_altitude
+}
+## c_ventsgriva
+# b_raseinmariai
+5369 = {
+	winter_severity_bias = @lm_lieben_medium_altitude
+}
+# b_ligatvaine
+5367 = {
+	winter_severity_bias = @lm_lieben_medium_altitude
+}
+## c_bogeborg
+# b_egegard
+5373 = {
+	winter_severity_bias = @lm_lieben_medium_altitude
+}
+### d_mistel
+# b_skaudskelis
+5380 = {
+	winter_severity_bias = @lh_lieben_high_altitude
+}
+## c_borgsas
+# b_lonsheior
+5384 = {
+	winter_severity_bias = @lv_lieben_vhigh_altitude
+}
+# b_sandloekr
+5385 = {
+	winter_severity_bias = @lh_lieben_high_altitude
+}
+## c_statfjord
+# b_karlsfors
+5383 = {
+	winter_severity_bias = @north_sjalvolki
 }
 
 ##### e_crevydion
 #### k_creytos
 ### d_bwlcheit
-## c_lwydmynyd
+## c_lwydmyny
 # b_branyn
 6911 = {
 	winter_severity_bias = 0.90
@@ -8293,6 +7842,9 @@
 	winter_severity_bias = 1.0
 }
 ###Lonely Islands
+3660 = {
+	winter_severity_bias = 1.0
+}
 593 = {
 	winter_severity_bias = 1.0
 }
@@ -8344,7 +7896,222 @@
 3965 = {
 	winter_severity_bias = 1.0
 }
+## Pyrsztann Jagwidaws
+6958 = {
+	winter_severity_bias = 1.0
+}
+6953 = {
+	winter_severity_bias = 1.0
+}
+3778 = {
+	winter_severity_bias = 1.0
+}
+4383 = {
+	winter_severity_bias = 1.0
+}
+4384 = {
+	winter_severity_bias = 1.0
+}
+6966 = {
+	winter_severity_bias = 1.0
+}
+6696 = {
+	winter_severity_bias = 1.0
+}
+6695 = {
+	winter_severity_bias = 1.0
+}
+5922 = {
+	winter_severity_bias = 1.0
+}
+7023 = {
+	winter_severity_bias = 1.0
+}
+6968 = {
+	winter_severity_bias = 1.0
+}
+6967 = {
+	winter_severity_bias = 1.0
+}
+5922 = {
+	winter_severity_bias = 1.0
+}
+6008 = {
+	winter_severity_bias = 1.0
+}
+7151 = {
+	winter_severity_bias = 1.0
+}
+6036 = {
+	winter_severity_bias = 1.0
+}
+6657 = {
+	winter_severity_bias = 1.0
+}
+6690 = {
+	winter_severity_bias = 1.0
+}
+6694 = {
+	winter_severity_bias = 1.0
+}
+## Lonely Light
+7511 = {
+	winter_severity_bias = 1.0
+}
+7594 = {
+	winter_severity_bias = 1.0
+}
+7402 = {
+	winter_severity_bias = 1.0
+}
+7400 = {
+	winter_severity_bias = 1.0
+}
+7405 = {
+	winter_severity_bias = 1.0
+}
+7403 = {
+	winter_severity_bias = 1.0
+}
+7404 = {
+	winter_severity_bias = 1.0
+}
+7802 = {
+	winter_severity_bias = 1.0
+}
+7407 = {
+	winter_severity_bias = 1.0
+}
+7443 = {
+	winter_severity_bias = 1.0
+}
+7461 = {
+	winter_severity_bias = 1.0
+}
+7391 = {
+	winter_severity_bias = 1.0
+}
+7495 = {
+	winter_severity_bias = 1.0
+}
+7511 = {
+	winter_severity_bias = 1.0
+}
+7529 = {
+	winter_severity_bias = 1.0
+}
+7530 = {
+	winter_severity_bias = 1.0
+}
+7541 = {
+	winter_severity_bias = 1.0
+}
+7385 = {
+	winter_severity_bias = 1.0
+}
+7368 = {
+	winter_severity_bias = 1.0
+}
+7387 = {
+	winter_severity_bias = 1.0
+}
+7389 = {
+	winter_severity_bias = 1.0
+}
+7390 = {
+	winter_severity_bias = 1.0
+}
+7464 = {
+	winter_severity_bias = 1.0
+}
+7392 = {
+	winter_severity_bias = 1.0
+}
+7393 = {
+	winter_severity_bias = 1.0
+}
+7395 = {
+	winter_severity_bias = 1.0
+}
+7399 = {
+	winter_severity_bias = 1.0
+}
+7398 = {
+	winter_severity_bias = 1.0
+}
+7400 = {
+	winter_severity_bias = 1.0
+}
+7461 = {
+	winter_severity_bias = 1.0
+}
+7672 = {
+	winter_severity_bias = 1.0
+}
+7642 = {
+	winter_severity_bias = 1.0
+}
+7615 = {
+	winter_severity_bias = 1.0
+}
+7634 = {
+	winter_severity_bias = 1.0
+}
+7635 = {
+	winter_severity_bias = 1.0
+}
+7637 = {
+	winter_severity_bias = 1.0
+}
+7640 = {
+	winter_severity_bias = 1.0
+}
+7642 = {
+	winter_severity_bias = 1.0
+}
+7641 = {
+	winter_severity_bias = 1.0
+}
+7672 = {
+	winter_severity_bias = 1.0
+}
+7636 = {
+	winter_severity_bias = 1.0
+}
+7638 = {
+	winter_severity_bias = 1.0
+}
+7639 = {
+	winter_severity_bias = 1.0
+}
+7741 = {
+	winter_severity_bias = 1.0
+}
+7802 = {
+	winter_severity_bias = 1.0
+}
+7682 = {
+	winter_severity_bias = 1.0
+}
+7636 = {
+	winter_severity_bias = 1.0
+}
+7735 = {
+	winter_severity_bias = 1.0
+}
 ###Foglands
+3418 = {
+	winter_severity_bias = 1.0
+}
+4739 = {
+	winter_severity_bias = 1.0
+}
+6570 = {
+	winter_severity_bias = 1.0
+}
+7503 = {
+	winter_severity_bias = 1.0
+}
 2857 = {
 	winter_severity_bias = 1.0
 }
@@ -8419,5 +8186,282 @@
 }
 8047 = {
 	winter_severity_bias = 1.0
+}
+
+####Malcois
+8047 = {
+	winter_severity_bias = 1.0
+}
+
+####VALUES FOR ETEPEZEA####
+@etepezea_mountain = 0.6
+@etepezea_south_inland = 0.15
+@etepezea_north = 0.3
+####e_etepezea####
+
+#northern etepezea
+
+3274 = {
+	winter_severity_bias = @etepezea_north
+}
+
+3275 = {
+	winter_severity_bias = @etepezea_north
+}
+
+3276 = {
+	winter_severity_bias = @etepezea_north
+}
+
+3272 = {
+	winter_severity_bias = @etepezea_north
+}
+
+3277 = {
+	winter_severity_bias = @etepezea_north
+}
+
+3279 = {
+	winter_severity_bias = @etepezea_north
+}
+
+3538 = {
+	winter_severity_bias = @etepezea_north
+}
+
+3537 = {
+	winter_severity_bias = @etepezea_north
+}
+
+3278 = {
+	winter_severity_bias = @etepezea_north
+}
+
+3172 = {
+	winter_severity_bias = @etepezea_north
+}
+
+3175 = {
+	winter_severity_bias = @etepezea_north
+}
+
+3180 = {
+	winter_severity_bias = @etepezea_north
+}
+
+3281 = {
+	winter_severity_bias = @etepezea_north
+}
+
+3228 = {
+	winter_severity_bias = @etepezea_north
+}
+
+3170 = {
+	winter_severity_bias = @etepezea_north
+}
+
+3169 = {
+	winter_severity_bias = @etepezea_north
+}
+
+3166 = {
+	winter_severity_bias = @etepezea_north
+}
+
+3168 = {
+	winter_severity_bias = @etepezea_north
+}
+
+3256 = {
+	winter_severity_bias = @etepezea_north
+}
+
+3257 = {
+	winter_severity_bias = @etepezea_north
+}
+
+3258 = {
+	winter_severity_bias = @etepezea_north
+}
+
+3255 = {
+	winter_severity_bias = @etepezea_north
+}
+
+3259 = {
+	winter_severity_bias = @etepezea_north
+}
+
+3260 = {
+	winter_severity_bias = @etepezea_north
+}
+
+3261 = {
+	winter_severity_bias = @etepezea_north
+}
+
+3541 = {
+	winter_severity_bias = @etepezea_north
+}
+
+3542 = {
+	winter_severity_bias = @etepezea_north
+}
+
+3498 = {
+	winter_severity_bias = @etepezea_north
+}
+
+3499 = {
+	winter_severity_bias = @etepezea_north
+}
+
+3501 = {
+	winter_severity_bias = @etepezea_north
+}
+
+3208 = {
+	winter_severity_bias = @etepezea_north
+}
+
+3212 = {
+	winter_severity_bias = @etepezea_north
+}
+
+3210 = {
+	winter_severity_bias = @etepezea_north
+}
+
+3206 = {
+	winter_severity_bias = @etepezea_north
+}
+
+3205 = {
+	winter_severity_bias = @etepezea_north
+}
+
+3187 = {
+	winter_severity_bias = @etepezea_north
+}
+
+3236 = {
+	winter_severity_bias = @etepezea_north
+}
+
+3237 = {
+	winter_severity_bias = @etepezea_north
+}
+
+3502 = {
+	winter_severity_bias = @etepezea_north
+}
+
+3504 = {
+	winter_severity_bias = @etepezea_north
+}
+
+3509 = {
+	winter_severity_bias = @etepezea_north
+}
+
+3507 = {
+	winter_severity_bias = @etepezea_north
+}
+
+3508 = {
+	winter_severity_bias = @etepezea_north
+}
+
+3506 = {
+	winter_severity_bias = @etepezea_north
+}
+
+3497 = {
+	winter_severity_bias = @etepezea_north
+}
+
+3496 = {
+	winter_severity_bias = @etepezea_north
+}
+
+3495 = {
+	winter_severity_bias = @etepezea_north
+}
+
+3464 = {
+	winter_severity_bias = @etepezea_north
+}
+
+3238 = {
+	winter_severity_bias = @etepezea_north
+}
+
+3280 = {
+	winter_severity_bias = @etepezea_north
+}
+
+3281 = {
+	winter_severity_bias = @etepezea_north
+}
+
+3239 = {
+	winter_severity_bias = @etepezea_north
+}
+
+3241 = {
+	winter_severity_bias = @etepezea_north
+}
+
+3229 = {
+	winter_severity_bias = @etepezea_mountain
+}
+
+3230 = {
+	winter_severity_bias = @etepezea_mountain
+}
+
+3494 = {
+	winter_severity_bias = @etepezea_mountain
+}
+
+3285 = {
+	winter_severity_bias = @etepezea_mountain
+}
+
+3283 = {
+	winter_severity_bias = @etepezea_mountain
+}
+
+3282 = {
+	winter_severity_bias = @etepezea_mountain
+}
+
+3244 = {
+	winter_severity_bias = @etepezea_mountain
+}
+
+3243 = {
+	winter_severity_bias = @etepezea_mountain
+}
+
+3264 = {
+	winter_severity_bias = @etepezea_mountain
+}
+
+3457 = {
+	winter_severity_bias = @etepezea_mountain
+}
+
+3458 = {
+	winter_severity_bias = @etepezea_mountain
+}
+
+3462 = {
+	winter_severity_bias = @etepezea_mountain
+}
+
+3454 = {
+	winter_severity_bias = @etepezea_mountain
 }
 

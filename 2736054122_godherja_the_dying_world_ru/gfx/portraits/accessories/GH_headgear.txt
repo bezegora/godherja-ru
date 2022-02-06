@@ -1,199 +1,77 @@
 ﻿# These assets are then used in the genes (game/common/genes/..) at the bottom of the file. 
 
-##################
-#	  MALE		#
-##################
+# GODHERJA #
 
-    #set_tags = "no_hair"
-    #set_tags = "no_beard"
-    #set_tags = "crown"
-    #set_tags = "cap"
-    #set_tags = "hat"
-    #set_tags = "hood_beard"
-    #set_tags = "cap_02"
-    #set_tags = "helmet"
-    #set_tags = "headdress"
-    #set_tags = "cap,cap_02"
-    #set_tags = "aventail"
-
-## Special ##
-
-male_headgear_special_head_bandage_01 = {	
-	set_tags = "no_hair"
- 	entity = { required_tags = ""			shared_pose_entity = head		entity = male_headgear_special_head_bandage_01_entity 	 }		
-}
-
-male_headgear_special_eye_patch_01 = {	
-	entity = { required_tags = ""			shared_pose_entity = head		entity = male_headgear_special_eye_patch_01_entity 	 }		
-}
-
-male_headgear_special_face_mask_01 = {	
-	set_tags = "mask"
-	set_tags = "no_hair"
-	set_tags = "no_beard"
-	entity = { required_tags = ""			shared_pose_entity = head		entity = male_headgear_special_face_mask_01_entity 	 }		
-}
-
-male_headgear_special_blindfold_01 = {	
-	entity = { required_tags = ""			shared_pose_entity = head		entity = male_headgear_special_blindfold_01_entity 	 }		
-}
-
-##GODHERJA##
-
-female_hood_aversarian = {	
-	set_tags = "cap"
-	set_tags = "cap_02"
-	entity = { required_tags = ""		shared_pose_entity = head		entity = f_val_hood_entity 	 }	
-	entity = { required_tags = ""			shared_pose_entity = head		entity = f_val_hood_entity 	 }		
-}
+## Generic ##
 
 female_hood_generic = {	
 	set_tags = "cap"
 	set_tags = "cap_02"
-	entity = { required_tags = ""		    shared_pose_entity = head		entity = f_gen_hood_entity 	 }	
-	entity = { required_tags = ""			shared_pose_entity = head		entity = f_gen_hood_entity 	 }		
+	entity = { required_tags = ""			shared_pose_entity = head		entity = f_hood_generic_entity 	 }
 }
-
-hood_aversarian = {	
-	set_tags = "no_hair"
-	entity = { required_tags = "mask"		shared_pose_entity = head		entity = hood_1_entity 	 }	
-	entity = { required_tags = ""			shared_pose_entity = head		entity = hood_1_entity 	 }		
-}
-
 hood_generic = {	
 	set_tags = "no_hair"
-	entity = { required_tags = "mask"		shared_pose_entity = head		entity = hood_gen_entity 	 }	
-	entity = { required_tags = ""			shared_pose_entity = head		entity = hood_gen_entity 	 }		
+	entity = { required_tags = ""			shared_pose_entity = head		entity = hood_generic_entity 	 }		
 }
-helmet_black_sun = {	
+
+## Agionist ##
+
+agionist_helm_var1 = {	
 	set_tags = "no_hair"
 	set_tags = "no_beard"
 	set_tags = "cap"
-	entity = { required_tags = "mask"		shared_pose_entity = head		entity = helmet_test_1_entity 	 }	
+	set_tags = "mask"
+	entity = { required_tags = ""			shared_pose_entity = head		entity = male_agionist_helm_var1_entity 	 }		
+}
+agionist_helm_var2 = {	
+	set_tags = "no_hair"
+	set_tags = "no_beard"
+	set_tags = "cap"
+	set_tags = "mask"
+	entity = { required_tags = ""			shared_pose_entity = head		entity = male_agionist_helm_var2_entity 	 }
+}
+agionist_helm_var3 = {	
+	set_tags = "no_hair"
+	set_tags = "no_beard"
+	set_tags = "cap"
+	set_tags = "mask"
+	entity = { required_tags = ""			shared_pose_entity = head		entity = male_agionist_helm_var3_entity 	 }		
+}
+
+## Sarradon ##
+
+female_hood_sarradon = {	
+	set_tags = "no_hair"
+	entity = { required_tags = ""			shared_pose_entity = head		entity = f_sarra_hood_entity 	 }	
+}
+female_hood_sarradon_var1 = {	
+	set_tags = "no_hair"
+	entity = { required_tags = ""			shared_pose_entity = head		entity = f_sarra_hood_var1_entity 	 }	
+}
+female_hood_sarradon_var2 = {
+	set_tags = "no_hair"
+	entity = { required_tags = ""			shared_pose_entity = head		entity = f_sarra_hood_var2_entity 	 }	
+}
+hood_sarradon = {	
+	set_tags = "no_hair"
+	entity = { required_tags = ""			shared_pose_entity = head		entity = sarra_hood_entity 	 }	
+}
+hood_sarradon_var1 = {	
+	set_tags = "no_hair"
+	set_tags = "no_beard"
+	entity = { required_tags = ""			shared_pose_entity = head		entity = sarra_hood_var1_entity 	 }	
+}
+hood_sarradon_var2 = {	
+	set_tags = "no_hair"
+	set_tags = "no_beard"
+	entity = { required_tags = ""			shared_pose_entity = head		entity = sarra_hood_var2_entity 	 }	
+}
+
+## Special ##
+
+helmet_black_sun = {
+	set_tags = "no_beard"
+	set_tags = "no_hair"
+	set_tags = "helmet"
 	entity = { required_tags = ""			shared_pose_entity = head		entity = helmet_test_1_entity 	 }		
-}
-
-hood_black = {	
-	set_tags = "no_hair"
-	set_tags = "no_beard"
-	set_tags = "cap"
-	entity = { required_tags = "mask"		shared_pose_entity = head		entity = hood_black_entity 	 }	
-	entity = { required_tags = ""			shared_pose_entity = head		entity = hood_black_entity 	 }		
-}
-
-bronze_helmet_vanilla = {	
-	set_tags = "no_hair"
-	set_tags = "no_beard"
-	set_tags = "cap"
-	set_tags = "mask"
-	entity = { required_tags = "mask"		shared_pose_entity = head		entity = bronze_vanilla_entity 	 }	
-	entity = { required_tags = ""			shared_pose_entity = head		entity = bronze_vanilla_entity 	 }		
-}
-
-bronze_helmet_vanilla_female = {	
-	set_tags = "no_hair"
-	set_tags = "no_beard"
-	set_tags = "cap"
-	set_tags = "mask"
-	entity = { required_tags = "mask"		shared_pose_entity = head		entity = bronze_vanilla_female_entity 	 }	
-	entity = { required_tags = ""			shared_pose_entity = head		entity = bronze_vanilla_female_entity 	 }		
-}
-
-full_chainmail = {	
-	set_tags = "no_hair"
-	set_tags = "no_beard"
-	set_tags = "cap"
-	set_tags = "mask"
-	entity = { required_tags = "mask"		shared_pose_entity = head		entity = full_chainmail_entity	 }	
-	entity = { required_tags = ""			shared_pose_entity = head		entity = full_chainmail_entity 	 }		
-}
-
-full_chainmail_female = {	
-	set_tags = "no_hair"
-	set_tags = "no_beard"
-	set_tags = "cap"
-	set_tags = "mask"
-	entity = { required_tags = "mask"		shared_pose_entity = head		entity = full_chainmail_female_entity	 }	
-	entity = { required_tags = ""			shared_pose_entity = head		entity = full_chainmail_female_entity 	 }		
-}
-
-plain_chainmail = {	
-	set_tags = "no_hair"
-	set_tags = "no_beard"
-	set_tags = "cap"
-	set_tags = "mask"
-	entity = { required_tags = "mask"		shared_pose_entity = head		entity = plain_chainmail_entity	 	}	
-	entity = { required_tags = ""			shared_pose_entity = head		entity = plain_chainmail_entity 	 }		
-}
-
-plain_chainmail_female = {	
-	set_tags = "no_hair"
-	set_tags = "no_beard"
-	set_tags = "cap"
-	set_tags = "mask"
-	entity = { required_tags = "mask"		shared_pose_entity = head		entity = plain_chainmail_female_entity	 }	
-	entity = { required_tags = ""			shared_pose_entity = head		entity = plain_chainmail_female_entity 	 }		
-}
-
-plain_cloth_chainmail = {	
-	set_tags = "no_hair"
-	set_tags = "no_beard"
-	set_tags = "cap"
-	set_tags = "mask"
-	entity = { required_tags = "mask"		shared_pose_entity = head		entity = plain_cloth_chainmail_entity 	 }	
-	entity = { required_tags = ""			shared_pose_entity = head		entity = plain_cloth_chainmail_entity 	 }		
-}
-
-plain_cloth_chainmail_female = {	
-	set_tags = "no_hair"
-	set_tags = "no_beard"
-	set_tags = "cap"
-	set_tags = "mask"
-	entity = { required_tags = "mask"		shared_pose_entity = head		entity = plain_cloth_chainmail_female_entity 	 }	
-	entity = { required_tags = ""			shared_pose_entity = head		entity = plain_cloth_chainmail_female_entity 	 }		
-}
-
-plain_cloth = {	
-	set_tags = "no_hair"
-	set_tags = "no_beard"
-	set_tags = "cap"
-	set_tags = "mask"
-	entity = { required_tags = "mask"		shared_pose_entity = head		entity = plain_cloth_entity 	 }	
-	entity = { required_tags = ""			shared_pose_entity = head		entity = plain_cloth_entity 	 }		
-}
-
-plain_cloth_female = {	
-	set_tags = "no_hair"
-	set_tags = "no_beard"
-	set_tags = "cap"
-	set_tags = "mask"
-	entity = { required_tags = "mask"		shared_pose_entity = head		entity = plain_cloth_female_entity 	 }	
-	entity = { required_tags = ""			shared_pose_entity = head		entity = plain_cloth_female_entity 	 }		
-}
-
-kermit_hat = {	
-	set_tags = "no_hair"
-	set_tags = "no_beard"
-	set_tags = "cap"
-	set_tags = "mask"
-	entity = { required_tags = ""		shared_pose_entity = head			entity = kermit_hat_entity 	 }	
-	entity = { required_tags = ""			shared_pose_entity = head		entity = kermit_hat_entity 	 }		
-}
-
-kermit_vanilla = {	
-	set_tags = "no_hair"
-	set_tags = "no_beard"
-	set_tags = "cap"
-	set_tags = "mask"
-	entity = { required_tags = ""			shared_pose_entity = head			entity = kermit_vanilla_entity 	 }	
-	entity = { required_tags = ""			shared_pose_entity = head			entity = kermit_vanilla_entity 	 }		
-}
-
-kermit_vanilla_female = {	
-	set_tags = "no_hair"
-	set_tags = "no_beard"
-	set_tags = "cap"
-	set_tags = "mask"
-	entity = { required_tags = ""			shared_pose_entity = head			entity = kermit_vanilla_female_entity 	 }	
-	entity = { required_tags = ""			shared_pose_entity = head			entity = kermit_vanilla_female_entity  	 }		
 }

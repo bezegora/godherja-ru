@@ -1,0 +1,27 @@
+﻿county_culture_uses_caste_system = {
+	scope = landed_title
+	is_shown = {
+		culture_group = culture_group:gh_damotan_group 
+	}
+	is_valid = {
+		OR = {
+			holder = {
+				culture_group = culture_group:gh_damotan_group
+			}
+			holder.top_liege = {
+				culture_group = culture_group:gh_damotan_group
+			}
+		}
+	}
+}
+
+get_castes_list = {
+	scope = landed_title
+	
+	is_shown = {}
+	
+	effect = {
+		clear_variable_list = caste_list
+		get_castes_list = { MODE = define }
+	}
+}

@@ -13,92 +13,6 @@ d_wolfsfeld = {
 
 }
 
-d_alsbruck = {
-	1250.1.1 = { change_development_level = 2 }
-	
-	1250.1.1 = {
-		holder = wolfsfeld_1
-		government = tribal_government
-	}
-}
-c_rezekbile = {
-	1250.1.1 = {
-		holder = wolfsfeld_3
-		liege = d_wolfsfeld
-		government = tribal_government
-	}
-}
-c_ringkilde = {
-	1250.1.1 = {
-		holder = wolfsfeld_4
-		liege = d_wolfsfeld
-		government = tribal_government
-	}
-}
-c_sedlale = {
-	1250.1.1 = {
-		holder = wolfsfeld_5
-		liege = d_wolfsfeld
-		government = tribal_government
-	}
-}
-c_alingtalje = {
-	1250.1.1 = {
-		holder = wolfsfeld_5
-		liege = d_wolfsfeld
-		government = tribal_government
-	}
-}
-c_teglkilde = {
-	1250.1.1 = {
-		holder = wolfsfeld_6
-		liege = d_wolfsfeld
-		government = tribal_government
-	}
-}
-c_tidahammar = {
-	1250.1.1 = {
-		holder = wolfsfeld_6
-		liege = d_wolfsfeld
-		government = tribal_government
-	}
-}
-
-###
-
-### shaman theocracy
-
-d_mistel = {
-	1250.1.1 = { change_development_level = 2 }
-	
-	1250.1.1 = {
-		government = theocracy_government 
-		holder = clanlands_sjalvolki_5
-	}
-}
-c_diessenrefin = {
-	1250.1.1 = {
-		holder = clanlands_sjalvolki_6
-		liege = d_mistel
-		government = tribal_government
-	}
-}
-c_bogeborg = {
-	1250.1.1 = {
-		holder = mistel_1
-		liege = d_mistel
-		government = tribal_government
-	}
-}
-c_statfjord = {
-	1250.1.1 = {
-		holder = mistel_2
-		liege = d_mistel
-		government = tribal_government
-	}
-}
-
-
 #### cenwares friend- mastikigni
 
 d_hestfjoror = {
@@ -149,8 +63,8 @@ d_ahle = {
 	}
 }
 
-d_talde = {
-	1250.1.1 = { change_development_level = 2 }
+d_bwlcheit = {
+	1250.1.1 = { change_development_level = 1 }
 	
 	1250.1.1 = {
 		holder = clanlands_sjalvolki_7
@@ -158,11 +72,71 @@ d_talde = {
 	}
 }
 
-d_bwlcheit = {
-	1250.1.1 = { change_development_level = 1 }
+c_sedlale = {
+	1250.1.1 = {
+		holder = wolfsfeld_1
+		liege = d_wolfsfeld
+		government = tribal_government
+	}
+}
+c_alingtalje = {
+	1250.1.1 = {
+		holder = wolfsfeld_5
+		liege = d_wolfsfeld
+		government = tribal_government
+	}
+}
+c_teglkilde = {
+	1250.1.1 = {
+		holder = wolfsfeld_6
+		liege = d_wolfsfeld
+		government = tribal_government
+	}
+}
+
+###
+
+### shaman theocracy
+
+d_mistel = {
+	1250.1.1 = { change_development_level = 2 }
 	
 	1250.1.1 = {
-		holder = clanlands_sjalvolki_7
+		government = theocracy_government 
+		holder = clanlands_sjalvolki_5
+	}
+}
+c_borgsas = {
+	1250.1.1 = {
+		government = theocracy_government 
+		holder = clanlands_sjalvolki_5
+	}
+}
+c_porsjoen = {
+	1250.1.1 = {
+		government = theocracy_government 
+		holder = clanlands_sjalvolki_5
+	}
+}
+
+c_diessenrefin = {
+	1250.1.1 = {
+		holder = clanlands_sjalvolki_6
+		liege = d_hestfjoror
+		government = tribal_government
+	}
+}
+c_bogeborg = {
+	1250.1.1 = {
+		holder = mistel_1
+		liege = d_mistel
+		government = tribal_government
+	}
+}
+c_statfjord = {
+	1250.1.1 = {
+		holder = mistel_2
+		liege = d_wolfsfeld
 		government = tribal_government
 	}
 }
@@ -216,7 +190,7 @@ c_sicciole = {
 c_kuoni = {
 	1250.1.1 = {
 		holder = hestfjoror_4
-		liege = d_hestfjoror
+		liege = d_mistel
 		government = tribal_government
 	}
 }
@@ -280,10 +254,9 @@ d_skrbovice = {
 		government = tribal_government
 	}
 }
-c_sommerach = {
+c_srvtnov = {
 	1250.1.1 = {
-		holder = barki_4
-		liege = d_schalkshofen
+		holder = clanlands_sjalvolki_8
 		government = tribal_government
 	}
 }
@@ -297,13 +270,6 @@ c_urfahrhof = {
 c_schotterey = {
 	1250.1.1 = {
 		holder = barki_4
-		liege = d_schalkshofen
-		government = tribal_government
-	}
-}
-c_oberthalheim = {
-	1250.1.1 = {
-		holder = barki_5
 		liege = d_schalkshofen
 		government = tribal_government
 	}
@@ -336,16 +302,7 @@ d_otterzhofen = {
 	1250.1.1 = { change_development_level = 3 }
 	
 	1250.1.1 = {
-		holder = clanlands_sjalvolki_9
-		government = tribal_government
-	}
-}
-
-d_nepasice = {
-	1250.1.1 = { change_development_level = 2 }
-	
-	1250.1.1 = {
-		holder = clanlands_sjalvolki_9
+		holder = barki_1
 		government = tribal_government
 	}
 }
@@ -380,16 +337,12 @@ c_werda = {
 c_balkham = {
 	1250.1.1 = {
 		holder = barki_3
-		liege = d_otterzhofen
+		liege = d_schalkshofen
 		government = tribal_government
 	}
 }
 
 # Unamed Magocracy
-
-d_oberneufahrn = {
-1250.1.1 = { change_development_level = 5 }
-}
 
 d_thururii = {
 	1250.1.1 = { change_development_level = 18 }
@@ -405,13 +358,13 @@ d_seopuse = {
 	1250.1.1 = { change_development_level = 18 }
 	
 	1250.1.1 = {
-		holder = thururii_1
-		government = magocratic_republic
+		holder = clanlands_malcois_4
+		liege = e_sjalvolki
 	}
 }
 c_poios = {
 	1250.1.1 = {
-		government = republic_government
+		government = republic_playable_government
 		holder = thururii_1
 		liege = "d_thururii"
 		government = magocratic_republic
@@ -428,24 +381,10 @@ b_sidasus = {
 		holder = thururii_1
 	}
 }
-#b_deuae = {
-#	1250.1.1 = {
-#		holder = thururii_1
-#	}
-#}
 
-c_sadoum = {
-	1250.1.1 = {
-		holder = thururii_2
-		liege = "d_thururii"
-		government = magocratic_republic
-	}
-}
 c_thraadmis = {
 	1250.1.1 = {
-		holder = thururii_2
-		liege = "d_thururii"
-		government = magocratic_republic
+		holder = clanlands_malcois_4
 	}
 }
 c_motiri = {
@@ -457,7 +396,7 @@ c_motiri = {
 }
 c_akum = {
 	1250.1.1 = {
-		government = republic_government
+		government = republic_playable_government
 		holder = thururii_3
 		liege = "d_thururii"
 		government = magocratic_republic

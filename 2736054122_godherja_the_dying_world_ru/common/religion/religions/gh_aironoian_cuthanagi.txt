@@ -1,0 +1,251 @@
+﻿cuthanagi_religion = {
+	family = gh_aironoian
+	
+	graphical_faith = "catholic_gfx"
+
+	doctrine_background_icon = core_tenet_banner_christian.dds
+	doctrine = standard_hostility_doctrine
+
+	#main group 
+	doctrine = doctrine_gender_equal
+	doctrine = doctrine_pluralism_righteous
+	doctrine = doctrine_theocracy_lay_clergy
+	doctrine = doctrine_no_head
+	
+	#Belief
+	doctrine = doctrine_sacred_scriptures
+	doctrine = doctrine_agnostic
+	doctrine = doctrine_personal
+	doctrine = doctrine_eternal
+	doctrine = doctrine_deities_none
+	doctrine = doctrine_divine_guidance_none
+	doctrine = doctrine_eschatology_none
+	doctrine = doctrine_underworld
+
+	#Practices
+	doctrine = doctrine_saints
+	doctrine = doctrine_autonomous
+	doctrine = doctrine_curtailed
+	doctrine = doctrine_monk_not_clergy_enforced
+	doctrine = doctrine_mandatory_atone
+	doctrine = doctrine_encouraged_alms
+	
+	#marriage
+	doctrine = doctrine_monogamy
+	doctrine = doctrine_consanguinity_cousins
+	doctrine = doctrine_divorce_approval
+	doctrine = doctrine_bastardry_legitimization
+	doctrine = doctrine_worldly_marriage
+	doctrine = doctrine_paramourial
+
+	#crimes
+	doctrine = doctrine_homosexuality_shunned
+	doctrine = doctrine_adultery_men_shunned
+	doctrine = doctrine_adultery_women_shunned
+	doctrine = doctrine_kinslaying_extended_family_crime
+	doctrine = doctrine_deviancy_crime
+	doctrine = doctrine_magic_shunned
+	doctrine = doctrine_slavery_banned
+	
+	#Clerical Functions
+	doctrine = doctrine_clerical_function_recruitment #replace with new called "teaching"
+	doctrine = doctrine_clerical_gender_either
+	doctrine = doctrine_clerical_marriage_allowed
+	doctrine = doctrine_clerical_succession_temporal_appointment
+	doctrine = doctrine_religious_coronation
+
+    
+	traits = {
+		virtues = { diligent gregarious content }
+		sins = { lazy shy ambitious }
+	}
+
+	reserved_male_names = {
+	}
+
+	custom_faith_icons = {
+		yakasak_icon yugaug_icon xaxbaxakanax_icon varodaism_icon vidvaookeyatra_icon thryrionist_icon the_dragon_cult_icon soterism spartan shyatan_icon propitiatism saratarat_icon orgarrd_icon orphism odyrian_icon mfi_zun_sun nabbarek_icon mfi_yggdrasil mfi_zoroastrian mfi_war_child mfi_war_knight mfi_virgin mfi_war mfi_venus_old_red mfi_venus_old_blue mfi_venus_old_pink mfi_venus_new_red mfi_venus_new_pink mfi_venus_new_blue mfi_valknut mfi_triskelion mfi_valentinianism mfi_teutonic mfi_triquerta mfi_technology mfi_tengrism mfi_stoics mfi_romuva_tree mfi_scroll mfi_priscillianism mfi_roman_1 mfi_pentagram mfi_prestige mfi_peace mfi_peace_builder mfi_norse_wolf mfi_murder_peace mfi_murder_rose mfi_murder_child mfi_murder_jester mfi_munificent mfi_murder mfi_mars_old_red mfi_mars_old_blue mfi_mars_old_pink mfi_mars_new_pink mfi_mars_new_red mfi_mars_new_blue mfi_lion mfi_hamsa_red mfi_hamsa_blue mfi_hamsa_gold mfi_goddess_red mfi_goddess_gold mfi_goddess_blue mfi_earth_old_pink mfi_earth_old_blue mfi_earth_new_red mfi_earth_new_blue mfi_earth_new_pink mfi_custom_faith_10 mfi_custom_faith_6 mfi_clover mfi_chaplet_3 mfi_chaplet_4 mfi_chaplet_1 mfi_chaplet_2
+	}
+
+	holy_order_names = {
+		{  }
+	}
+
+	holy_order_maa = { }
+
+	localization = {
+		#HighGod
+		HighGodName = cuthanagi_high_god_name
+		HighGodNamePossessive = cuthanagi_high_god_name_possessive
+		HighGodNameSheHe = CHARACTER_SHEHE_HE
+		HighGodHerselfHimself = CHARACTER_HIMSELF
+		HighGodHerHis = CHARACTER_HERHIS_HIS
+		HighGodNameAlternate = cuthanagi_high_god_name_alternate
+		HighGodNameAlternatePossessive = cuthanagi_high_god_name_alternate_possessive
+
+		#Creator
+		CreatorName = cuthanagi_creator_god_name
+		CreatorNamePossessive = cuthanagi_creator_god_name_possessive
+		CreatorSheHe = CHARACTER_SHEHE_HE
+		CreatorHerHis = CHARACTER_HERHIS_HIS
+		CreatorHerHim = CHARACTER_HERHIM_HIM
+
+		#HealthGod
+		HealthGodName = cuthanagi_health_god_name
+		HealthGodNamePossessive = cuthanagi_health_god_name_possessive
+		HealthGodSheHe = CHARACTER_SHEHE_HE
+		HealthGodHerHis = CHARACTER_HERHIS_HIS
+		HealthGodHerHim = CHARACTER_HERHIM_HIM
+		
+		#FertilityGod
+		FertilityGodName = cuthanagi_fertility_god_name
+		FertilityGodNamePossessive = cuthanagi_fertility_god_name_possessive
+		FertilityGodSheHe = CHARACTER_SHEHE_SHE
+		FertilityGodHerHis = CHARACTER_HERHIS_HER
+		FertilityGodHerHim = CHARACTER_HERHIM_HER
+
+		#WealthGod
+		WealthGodName = cuthanagi_wealth_god_name
+		WealthGodNamePossessive = cuthanagi_wealth_god_name_possessive
+		WealthGodSheHe = CHARACTER_SHEHE_HE
+		WealthGodHerHis = CHARACTER_HERHIS_HIS
+		WealthGodHerHim = CHARACTER_HERHIM_HIM
+
+		#HouseholdGod
+		HouseholdGodName = cuthanagi_household_god_name
+		HouseholdGodNamePossessive = cuthanagi_household_god_name_possessive
+		HouseholdGodSheHe = CHARACTER_SHEHE_HE
+		HouseholdGodHerHis = CHARACTER_HERHIS_HIS
+		HouseholdGodHerHim = CHARACTER_HERHIM_HIM
+
+		#FateGod
+		FateGodName = cuthanagi_fate_god_name
+		FateGodNamePossessive = cuthanagi_fate_god_name_possessive
+		FateGodSheHe = CHARACTER_SHEHE_SHE
+		FateGodHerHis = CHARACTER_HERHIS_HER
+		FateGodHerHim = CHARACTER_HERHIM_HER
+
+		#KnowledgeGod
+		KnowledgeGodName = cuthanagi_knowledge_god_name
+		KnowledgeGodNamePossessive = cuthanagi_knowledge_god_name_possessive
+		KnowledgeGodSheHe = CHARACTER_SHEHE_HE
+		KnowledgeGodHerHis = CHARACTER_HERHIS_HIS
+		KnowledgeGodHerHim = CHARACTER_HERHIM_HIM
+
+		#WarGod
+		WarGodName = cuthanagi_war_god_name
+		WarGodNamePossessive = cuthanagi_war_god_name_possessive
+		WarGodSheHe = CHARACTER_SHEHE_HE
+		WarGodHerHis = CHARACTER_HERHIS_HIS
+		WarGodHerHim = CHARACTER_HERHIM_HIM
+
+		#TricksterGod
+		TricksterGodName = cuthanagi_trickster_god_name
+		TricksterGodNamePossessive = cuthanagi_trickster_god_name_possessive
+		TricksterGodSheHe = CHARACTER_SHEHE_HE
+		TricksterGodHerHis = CHARACTER_HERHIS_HIS
+		TricksterGodHerHim = CHARACTER_HERHIM_HIM
+
+		#NightGod
+		NightGodName = cuthanagi_night_god_name
+		NightGodNamePossessive = cuthanagi_night_god_name_possessive
+		NightGodSheHe = CHARACTER_SHEHE_HE
+		NightGodHerHis = CHARACTER_HERHIS_HIS
+		NightGodHerHim = CHARACTER_HERHIM_HIM
+
+		#WaterGod
+		WaterGodName = cuthanagi_water_god_name
+		WaterGodNamePossessive = cuthanagi_water_god_name_possessive
+		WaterGodSheHe = CHARACTER_SHEHE_SHE
+		WaterGodHerHis = CHARACTER_HERHIS_HER
+		WaterGodHerHim = CHARACTER_HERHIM_HER
+
+
+
+		PantheonTerm = cuthanagi_high_god_name
+		PantheonTermHasHave = pantheon_term_has
+		GoodGodNames = {
+			cuthanagi_high_god_name
+			HighGodNameAlternate
+			cuthanagi_health_god_name
+			cuthanagi_creator_god_name
+			cuthanagi_fertility_god_name
+			cuthanagi_household_god_name
+			cuthanagi_knowledge_god_name
+			cuthanagi_war_god_name
+			cuthanagi_trickster_god_name
+		}
+		DevilName = cuthanagi_devil_name
+		DevilNamePossessive = cuthanagi_devil_name_possessive
+		DevilSheHe = CHARACTER_SHEHE_HE
+		DevilHerHis = CHARACTER_HERHIS_HIS
+		DevilHerselfHimself = CHARACTER_HIMSELF
+		EvilGodNames = {
+			cuthanagi_devil_name
+			cuthanagi_night_god_name
+			cuthanagi_fate_god_name
+		}
+		HouseOfWorship = cuthanagi_house_of_worship
+		HouseOfWorshipPlural = cuthanagi_house_of_worship_plural
+		ReligiousSymbol = cuthanagi_religious_symbol
+		ReligiousText = cuthanagi_religious_text
+		ReligiousHeadName = cuthanagi_religious_head_title
+		ReligiousHeadTitleName = cuthanagi_religious_head_title_name
+		DevoteeMale = cuthanagi_devotee
+		DevoteeMalePlural = cuthanagi_devotee_plural
+		DevoteeFemale = cuthanagi_devotee
+		DevoteeFemalePlural = cuthanagi_devotee_plural
+		DevoteeNeuter = cuthanagi_devotee
+		DevoteeNeuterPlural = cuthanagi_devotee_plural
+		PriestMale = cuthanagi_priest
+		PriestMalePlural = cuthanagi_priest_plural
+		PriestFemale = cuthanagi_priest
+		PriestFemalePlural = cuthanagi_priest_plural
+		PriestNeuter = cuthanagi_priest
+		PriestNeuterPlural = cuthanagi_priest_plural
+		AltPriestTermPlural = cuthanagi_priest_alternate_plural
+		BishopMale = cuthanagi_bishop
+		BishopMalePlural = cuthanagi_bishop_plural
+		BishopFemale = cuthanagi_bishop
+		BishopFemalePlural = cuthanagi_bishop_plural
+		BishopNeuter = cuthanagi_bishop
+		BishopNeuterPlural = cuthanagi_bishop_plural
+		DivineRealm = cuthanagi_positive_afterlife
+		PositiveAfterLife = cuthanagi_positive_afterlife
+		NegativeAfterLife = cuthanagi_negative_afterlife
+		DeathDeityName = cuthanagi_death_deity_name
+		DeathDeityNamePossessive = cuthanagi_death_deity_name_possessive
+		DeathDeitySheHe = CHARACTER_SHEHE_HE
+		DeathDeityHerHis = CHARACTER_HERHIS_HIS
+		WitchGodName = christianity_witchgodname_iblis
+		WitchGodHerHis = CHARACTER_HERHIS_HIS
+		WitchGodSheHe = CHARACTER_SHEHE_SHE
+		WitchGodHerHim = CHARACTER_HERHIM_HER
+		WitchGodMistressMaster = mistress
+		WitchGodMotherFather = mother
+
+
+		GHWName = ghw_great_holy_war
+		GHWNamePlural = ghw_great_holy_war
+	}
+
+	faiths = {
+		cuthanagi = { #cuthanagi river folk.
+
+			color = { 100 75 150 }
+			icon = cuthanagi_icon
+			
+			holy_site = the_neck
+			holy_site = the_far_shore
+			holy_site = the_fork
+			holy_site = the_holy_precinct
+			holy_site = the_emptying
+			holy_site = gods_cup
+
+			doctrine = tenet_holy_river
+			doctrine = tenet_games_for_gods
+			doctrine = tenet_ritual_celebrations
+		}
+	}
+}
+		

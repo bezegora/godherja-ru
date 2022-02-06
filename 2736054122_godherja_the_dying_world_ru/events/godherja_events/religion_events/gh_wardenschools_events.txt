@@ -1,0 +1,248 @@
+﻿namespace = wardenschools
+
+#Events dealing with Wardenite schools and school changes
+
+#
+
+wardenschools.0001 = { #liege changed from my school
+    title = wardenschools.0001.t
+	theme = stewardship
+	desc = wardenschools.0001.desc
+	left_portrait = {
+		character = this
+	}
+	right_portrait = {
+		character = root.liege
+	}
+	option = {
+		ai_chance = {
+			base = 40
+			ai_value_modifier = {
+                ai_energy = -0.5
+                ai_sociability = 0.5
+            }
+			modifier = {
+				root.liege = {
+					OR = {
+						has_trait = theologian
+						has_trait = scholar
+					}
+				}
+				add = 25
+			}
+			modifier = {
+				opinion = {
+					target = root.liege
+					value >= 10
+				}
+				add = 5
+			}
+			modifier = {
+				opinion = {
+					target = root.liege
+					value >= 20
+				}
+				add = 5
+			}
+			modifier = {
+				opinion = {
+					target = root.liege
+					value >= 30
+				}
+				add = 5
+			}
+			modifier = {
+				opinion = {
+					target = root.liege
+					value >= 40
+				}
+				add = 5
+			}
+			modifier = {
+				opinion = {
+					target = root.liege
+					value >= 50
+				}
+				add = 5
+			}
+			modifier = {
+				opinion = {
+					target = root.liege
+					value >= 60
+				}
+				add = 5
+			}
+			modifier = {
+				opinion = {
+					target = root.liege
+					value >= 70
+				}
+				add = 5
+			}
+			modifier = {
+				opinion = {
+					target = root.liege
+					value >= 80
+				}
+				add = 5
+			}
+			modifier = {
+				opinion = {
+					target = root.liege
+					value >= 90
+				}
+				add = 5
+			}
+			modifier = {
+				liege = {
+					has_dynasty_perk = wardenite_legacy_3
+				}
+				add = 20
+			}
+		}
+		name = wardenschools.0001.a
+		custom_tooltip = wardenschools.0001.a.tt
+		add_character_flag = {
+			flag = accepted_liege_school	
+			days = 1
+			}
+		}
+	option = {
+		ai_chance = {
+			base = 60
+			ai_value_modifier = {
+                ai_boldness = 0.5
+                ai_zeal = 0.5
+            }
+			modifier = {
+				liege = {
+					OR = {
+						has_trait = theologian
+						has_trait = scholar
+					}
+				}
+				add = 25
+			}
+
+			modifier = {
+				opinion = {
+					target = root.liege
+					value <= -10
+				}
+				add = 5
+			}
+			modifier = {
+				opinion = {
+					target = root.liege
+					value <= -20
+				}
+				add = 5
+			}
+			modifier = {
+				opinion = {
+					target = root.liege
+					value <= -30
+				}
+				add = 5
+			}
+			modifier = {
+				opinion = {
+					target = root.liege
+					value <= -40
+				}
+				add = 5
+			}
+			modifier = {
+				opinion = {
+					target = root.liege
+					value <= -50
+				}
+				add = 5
+			}
+			modifier = {
+				opinion = {
+					target = root.liege
+					value <= -60
+				}
+				add = 5
+			}
+			modifier = {
+				opinion = {
+					target = root.liege
+					value <= -70
+				}
+				add = 5
+			}
+			modifier = {
+				opinion = {
+					target = root.liege
+					value <= -80
+				}
+				add = 5
+			}
+			modifier = {
+				opinion = {
+					target = root.liege
+					value <= -90
+				}
+				add = 5
+			}
+		}
+		name = wardenschools.0001.b
+		custom_tooltip = wardenschools.0001.b.tt
+		add_opinion = {
+			modifier = changed_from_my_school
+			years = 10
+			target = root.liege
+		}
+		root.liege = {
+			add_opinion = {
+				modifier = refused_my_school
+				years = 10
+				target = root
+			}
+		}
+		add_piety = minor_piety_gain
+	}
+}
+
+wardenschools.0002 = {
+	#informs of liege accepting your school
+	title = wardenschools.0002.t
+	theme = stewardship
+	desc = wardenschools.0002.desc
+	left_portrait = {
+		character = this
+	}
+	right_portrait = {
+		character = root.liege
+	}
+	option = {
+		#yay!
+		name = wardenschools.0002.a
+		custom_tooltip = wardenschools.0002.a.tt
+		add_opinion = {
+			modifier = joined_my_school
+			years = 20
+			target = root.liege
+		}
+	}
+}
+wardenschools.0003 = {
+	#failsafe in case of sudden liege flip flopping due to untimely death
+	title = wardenschools.0003.t
+	theme = stewardship
+	desc = wardenschools.0003.desc
+	left_portrait = {
+		character = this
+	}
+	right_portrait = {
+		character = root.liege
+	}
+	option = {
+		#stare dumbly
+		name = wardenschools.0003.a
+		custom_tooltip = wardenschools.0003.a.tt
+	}
+}
+

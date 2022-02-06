@@ -1,13 +1,89 @@
-﻿reset_valid_lifepaths = {
-	set_valid_lifepath = { FAITH_PARAMETER = lifepath_choice LIFEPATH = way_of_swords }
-	set_valid_lifepath = { FAITH_PARAMETER = lifepath_choice LIFEPATH = way_of_family }
-	set_valid_lifepath = { FAITH_PARAMETER = lifepath_choice LIFEPATH = way_of_coins }
-	set_valid_lifepath = { FAITH_PARAMETER = lifepath_choice LIFEPATH = way_of_crowns }
-	set_valid_lifepath = { FAITH_PARAMETER = lifepath_choice LIFEPATH = way_of_harvests }
-	set_valid_lifepath = { FAITH_PARAMETER = lifepath_choice LIFEPATH = way_of_justice }
-	set_valid_lifepath = { FAITH_PARAMETER = lifepath_choice LIFEPATH = way_of_knowledge }
-	set_valid_lifepath = { FAITH_PARAMETER = lifepath_choice LIFEPATH = way_of_crows }
-	set_valid_lifepath = { FAITH_PARAMETER = lifepath_choice LIFEPATH = way_of_nullification }
+﻿lifepaths_effect = {
+	$MODE$_lifepath = { FAITH_PARAMETER = lifepath_choice LIFEPATH = way_of_swords BASE_WEIGHT = 14 }
+	$MODE$_lifepath = { FAITH_PARAMETER = lifepath_choice LIFEPATH = way_of_family BASE_WEIGHT = 11 }
+	$MODE$_lifepath = { FAITH_PARAMETER = lifepath_choice LIFEPATH = way_of_coins BASE_WEIGHT = 12 }
+	$MODE$_lifepath = { FAITH_PARAMETER = lifepath_choice LIFEPATH = way_of_crowns BASE_WEIGHT = 24 }
+	$MODE$_lifepath = { FAITH_PARAMETER = lifepath_choice LIFEPATH = way_of_harvests BASE_WEIGHT = 20 }
+	$MODE$_lifepath = { FAITH_PARAMETER = lifepath_choice LIFEPATH = way_of_justice BASE_WEIGHT = 1 }
+	$MODE$_lifepath = { FAITH_PARAMETER = lifepath_choice LIFEPATH = way_of_knowledge BASE_WEIGHT = 10 }
+	$MODE$_lifepath = { FAITH_PARAMETER = lifepath_choice LIFEPATH = way_of_crows BASE_WEIGHT = 8 }
+	$MODE$_lifepath = { FAITH_PARAMETER = lifepath_choice LIFEPATH = way_of_nullification BASE_WEIGHT = 9 }
+}
+
+lifepath_trait_effect = {
+	$MODE$_lifepath_trait = { LIFEPATH = way_of_swords TRAIT = wrathful }
+	$MODE$_lifepath_trait = { LIFEPATH = way_of_swords TRAIT = brave }
+	$MODE$_lifepath_trait = { LIFEPATH = way_of_swords TRAIT = impatient }
+	
+	$MODE$_lifepath_trait = { LIFEPATH = way_of_family TRAIT = patient }
+	$MODE$_lifepath_trait = { LIFEPATH = way_of_family TRAIT = compassionate }
+	$MODE$_lifepath_trait = { LIFEPATH = way_of_family TRAIT = brave }
+	
+	$MODE$_lifepath_trait = { LIFEPATH = way_of_coins TRAIT = greedy }
+	$MODE$_lifepath_trait = { LIFEPATH = way_of_coins TRAIT = ambitious }
+	$MODE$_lifepath_trait = { LIFEPATH = way_of_coins TRAIT = shrewd }
+	
+	$MODE$_lifepath_trait = { LIFEPATH = way_of_crowns TRAIT = ambitious }
+	$MODE$_lifepath_trait = { LIFEPATH = way_of_crowns TRAIT = gregarious }
+	$MODE$_lifepath_trait = { LIFEPATH = way_of_crowns TRAIT = arrogant }
+	
+	$MODE$_lifepath_trait = { LIFEPATH = way_of_harvests TRAIT = diligent }
+	$MODE$_lifepath_trait = { LIFEPATH = way_of_harvests TRAIT = content }
+	$MODE$_lifepath_trait = { LIFEPATH = way_of_harvests TRAIT = honest }
+	
+	$MODE$_lifepath_trait = { LIFEPATH = way_of_justice TRAIT = just }
+	$MODE$_lifepath_trait = { LIFEPATH = way_of_justice TRAIT = honest }
+	$MODE$_lifepath_trait = { LIFEPATH = way_of_justice TRAIT = compassionate }
+	
+	$MODE$_lifepath_trait = { LIFEPATH = way_of_knowledge TRAIT = humble }
+	$MODE$_lifepath_trait = { LIFEPATH = way_of_knowledge TRAIT = intellect_good_3 }
+	$MODE$_lifepath_trait = { LIFEPATH = way_of_knowledge TRAIT = shrewd }
+	
+	$MODE$_lifepath_trait = { LIFEPATH = way_of_crows TRAIT = deceitful }
+	$MODE$_lifepath_trait = { LIFEPATH = way_of_crows TRAIT = ambitious }
+	$MODE$_lifepath_trait = { LIFEPATH = way_of_crows TRAIT = callous }
+	
+	$MODE$_lifepath_trait = { LIFEPATH = way_of_nullification TRAIT = zealous }
+	$MODE$_lifepath_trait = { LIFEPATH = way_of_nullification TRAIT = brave }
+	$MODE$_lifepath_trait = { LIFEPATH = way_of_nullification TRAIT = just }
+}
+
+set_global_lifepath = {
+	if = {
+		limit = {
+			NOT = {
+				is_target_in_global_variable_list = {
+					name = all_lifepaths
+					target = flag:$LIFEPATH$
+				}
+			}
+		}
+		random_province = {
+			limit = { NOT = { has_variable = already_assigned_lifepath_storage } }
+			save_temporary_scope_as = storage_province
+			set_variable = already_assigned_lifepath_storage
+			add_to_global_variable_list = {
+				name = all_lifepaths
+				target = scope:storage_province
+			}
+			title:c_halium = {	# For my own sanity
+				add_to_variable_list = {
+					name = all_lifepaths
+					target = scope:storage_province
+				}
+			}
+			set_variable = {
+				name = lifepath_name
+				value = flag:$LIFEPATH$
+			}
+			set_variable = {
+				name = lifepath_base_weight
+				value = $BASE_WEIGHT$
+			}
+			set_variable = tmp_$FAITH_PARAMETER$_$BASE_WEIGHT$	# Error suppression
+			remove_variable = tmp_$FAITH_PARAMETER$_$BASE_WEIGHT$
+		}
+	}
 }
 
 set_valid_lifepath = {
@@ -31,6 +107,65 @@ set_valid_lifepath = {
 		}
 		set_variable = faith_has_lifepaths
 		set_variable = lifepath_trait_available_$LIFEPATH$
+		random_in_global_list = {
+			variable = all_lifepaths
+			limit = { var:lifepath_name = flag:$LIFEPATH$ }
+			save_temporary_scope_as = storage_province
+			prev = {
+				add_to_variable_list = {
+					name = valid_lifepaths
+					target = scope:storage_province
+				}
+			}
+		}
+		set_variable = tmp_$BASE_WEIGHT$ # Error suppression
+		remove_variable = tmp_$BASE_WEIGHT$
+	}
+}
+
+set_ai_lifepath = {
+	if = {
+		limit = { faith = { has_doctrine_parameter = $FAITH_PARAMETER$ } }
+		save_scope_value_as = {
+			name = lifepath_being_checked
+			value = flag:$LIFEPATH$
+		}
+		set_variable = {
+			name = tmp_lifepath_trait_bonus
+			value = 0
+		}
+		lifepath_trait_effect = { MODE = check_ai }
+		random = {
+			chance = $BASE_WEIGHT$
+			modifier = {
+				add = var:tmp_lifepath_trait_bonus
+			}
+			add_to_variable_list = {
+				name = possible_lifepaths
+				target = flag:$LIFEPATH$
+			}
+		}
+		remove_variable = tmp_lifepath_trait_bonus
+	}
+}
+
+add_all_lifepath = {
+	if = {
+		limit = { faith = { has_doctrine_parameter = $FAITH_PARAMETER$ } }
+		save_scope_value_as = {
+			name = lifepath_being_checked
+			value = flag:$LIFEPATH$
+		}
+		set_variable = {
+			name = tmp_lifepath_trait_bonus
+			value = 0
+		}
+		add_to_variable_list = {
+			name = possible_lifepaths
+			target = flag:$LIFEPATH$
+		}
+		set_variable = tmp_$BASE_WEIGHT$ # Error suppression
+		remove_variable = tmp_$BASE_WEIGHT$
 	}
 }
 
@@ -45,11 +180,112 @@ remove_lifepath = {
 	}
 }
 
+assign_trait_lifepath = {
+	if = {
+		limit = { 
+			trigger_if = {
+				limit = { exists = scope:lifepath_to_be_assigned }
+				scope:lifepath_to_be_assigned = flag:$LIFEPATH$
+			}
+			trigger_else = { always = no }
+		}
+		add_trait = $LIFEPATH$_follower
+		set_variable = tmp_$BASE_WEIGHT$_$FAITH_PARAMETER$ # Error suppression
+		remove_variable = tmp_$BASE_WEIGHT$_$FAITH_PARAMETER$
+	}
+}
+
+check_any_lifepath = {
+	if = {
+		limit = { 
+			OR = {
+				has_trait = $LIFEPATH$_follower
+				has_trait = $LIFEPATH$_father
+			}
+		}
+		set_variable = lifepath_assigned
+		set_variable = tmp_$BASE_WEIGHT$_$FAITH_PARAMETER$ # Error suppression
+		remove_variable = tmp_$BASE_WEIGHT$_$FAITH_PARAMETER$
+	}
+}
+
+set_lifepath_trait = {
+	if = {
+		limit = {
+			any_in_global_list = {
+				variable = all_lifepaths
+				var:lifepath_name = flag:$LIFEPATH$
+			}
+		}
+		random_in_global_list = {
+			variable = all_lifepaths
+			limit = { var:lifepath_name = flag:$LIFEPATH$ }
+			add_to_variable_list = {
+				name = aligned_traits
+				target = flag:$TRAIT$
+			}
+		}
+	}
+}
+
+check_ai_lifepath_trait = {
+	if = {
+		limit = {
+			trigger_if = {
+				limit = { exists = scope:lifepath_being_checked }
+				scope:lifepath_being_checked = flag:$LIFEPATH$
+			}
+			trigger_else = { always = no }
+		}
+		if = {
+			limit = { has_trait = $TRAIT$ }
+			change_variable = {
+				name = tmp_lifepath_trait_bonus
+				add = 10
+			}
+		}
+	}
+}
+
 set_valid_lifepaths_all_faiths = {
+	lifepaths_effect = { MODE = set_global }
+	lifepath_trait_effect = { MODE = set }
 	every_religion_global = {
 		every_faith = {
-			reset_valid_lifepaths = yes
+			lifepaths_effect = { MODE = set_valid }
 		}
+	}
+}
+
+add_valid_lifepath_traits = {
+	lifepaths_effect = { MODE = set_ai }
+	if = {
+		limit = { NOT = { has_variable_list = possible_lifepaths } }
+		lifepaths_effect = { MODE = add_all }
+	}
+	random_in_list = {
+		variable = possible_lifepaths
+		save_scope_as = lifepath_to_be_assigned
+	}
+	lifepaths_effect = { MODE = assign_trait }
+	clear_variable_list = lifepath_to_be_assigned
+}
+
+assign_all_lifepath_trait = {
+	every_living_character = {
+		limit = { age >= 13 }
+		lifepaths_effect = { MODE = check_any }
+		assign_lifepath_trait = yes
+	}
+}
+
+assign_lifepath_trait = {
+	if = {
+		limit = {
+			faith = { has_variable = faith_has_lifepaths }
+			is_adult = yes
+		}
+		add_valid_lifepath_traits = yes
 	}
 }
 
@@ -71,8 +307,10 @@ set_lifepath_dedication = {
 
 dedication_impact = {
 	if = {
-		faith = {
-			has_doctrine_parameter = lifepath_choice
+		limit = {
+			faith = {
+				has_doctrine_parameter = lifepath_choice
+			}
 		}
 		faith = {
 			change_variable = {
@@ -84,6 +322,12 @@ dedication_impact = {
 	}
 }
 
+# Usage example :
+# lifepath_impact = {
+#	WAY = coins
+#	NATURE = positive
+#	AMOUNT = major
+#}
 lifepath_impact = {
 	if = {
 		limit = {
@@ -254,9 +498,11 @@ crow_clandestine_impact = { # Produces effect for failed clandestine operations 
 
 crow_zealous_clandestine_impact = { # Produces stress loss for succesful clandestine operations for zealous followers of the Way of Crows. For use in positive randomized outcomes.
 	if = {
-		AND = {
-			has_trait = way_of_crows_follower
-			has_trait = zealous
+		limit = {
+			AND = {
+				has_trait = way_of_crows_follower
+				has_trait = zealous
+			}
 		}
 		stress_impact = {
 			zealous = $STRESS_AMOUNT$_stress_impact_loss
@@ -266,9 +512,11 @@ crow_zealous_clandestine_impact = { # Produces stress loss for succesful clandes
 
 crow_zealous_withtooltip = { # For use in event options with no randomized outcomes. Produces tooltip and effects.
 	if = {
-		AND = {
-			has_trait = way_of_crows_follower
-			has_trait = zealous
+		limit = {
+			AND = {
+				has_trait = way_of_crows_follower
+				has_trait = zealous
+			}
 		}
 		custom_tooltip = lifepath_crow_adherence_zealous.tt
 		stress_impact = {
@@ -305,8 +553,10 @@ lifepath_disadherence_impact = { # Produces the correct tooltips and effects for
 			zealous = $STRESS_AMOUNT$_stress_impact_gain
 		}
 		if = {
-			has_trait = zealous
-			custom_tooltip = lifepath_adherence_zealousbad.tt
+			limit = {
+				has_trait = zealous
+				custom_tooltip = lifepath_adherence_zealousbad.tt
+			}
 		}
 		else = {
 			custom_tooltip = lifepath_adherence_bad.tt
@@ -331,7 +581,7 @@ upgrade_to_wayfather = {
 			max = 2
 		}
 	}
-	if = {
+	else_if = {
 		limit = { has_trait = way_of_coins_follower }
 		change_trait_rank = {
 			trait = way_of_coins
@@ -339,7 +589,7 @@ upgrade_to_wayfather = {
 			max = 2
 		}
 	}
-	if = {
+	else_if = {
 		limit = { has_trait = way_of_crowns_follower }
 		change_trait_rank = {
 			trait = way_of_crowns
@@ -347,7 +597,7 @@ upgrade_to_wayfather = {
 			max = 2
 		}
 	}
-	if = {
+	else_if = {
 		limit = { has_trait = way_of_harvests_follower }
 		change_trait_rank = {
 			trait = way_of_harvests
@@ -355,7 +605,7 @@ upgrade_to_wayfather = {
 			max = 2
 		}
 	}
-	if = {
+	else_if = {
 		limit = { has_trait = way_of_justice_follower }
 		change_trait_rank = {
 			trait = way_of_justice
@@ -363,7 +613,7 @@ upgrade_to_wayfather = {
 			max = 2
 		}
 	}
-	if = {
+	else_if = {
 		limit = { has_trait = way_of_knowledge_follower }
 		change_trait_rank = {
 			trait = way_of_knowledge
@@ -371,7 +621,7 @@ upgrade_to_wayfather = {
 			max = 2
 		}
 	}
-	if = {
+	else_if = {
 		limit = { has_trait = way_of_crows_follower }
 		change_trait_rank = {
 			trait = way_of_crows
@@ -379,13 +629,16 @@ upgrade_to_wayfather = {
 			max = 2
 		}
 	}
-	if = {
+	else_if = {
 		limit = { has_trait = way_of_nullification_follower }
 		change_trait_rank = {
 			trait = way_of_nullification
 			rank = 1
 			max = 2
 		}
+	}
+	else = {
+		add_prestige = 1 #shouldnt get this, good job
 	}
 }
 

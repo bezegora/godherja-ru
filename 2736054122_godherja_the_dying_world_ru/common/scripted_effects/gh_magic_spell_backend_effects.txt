@@ -56,6 +56,86 @@ apply_spell_effect_with_custom_backfire_chance_list = {
 	}
 }
 
+apply_spell_effect_with_custom_backfire_chance_list_self_only = {
+	deduct_spell_cost_by_tier = { TIER = $TIER$ }
+	increase_overwhelmation_from_spell = yes
+	will_increase_overwhelmation = yes
+	random_list = {
+		0 = {
+			modifier = {
+				add = $SUCCESS_CHANCE$
+			}
+			$SPELL_EFFECT$ = yes
+		}
+		0 = {
+			modifier = {
+				add = $FAILURE_CHANCE$
+			}
+			custom_tooltip = spell_backfires_tt
+			hidden_effect = {
+				$BACKFIRE_EFFECT$ = yes
+			}
+		}
+	}
+}
+
+apply_spell_effect_with_custom_backfire_chance_list_land = {
+	deduct_spell_cost_by_tier = { TIER = $TIER$ }
+	increase_overwhelmation_from_spell = yes
+	will_increase_overwhelmation = yes
+	random_list = {
+		0 = {
+			modifier = {
+				add = $SUCCESS_CHANCE$
+			}
+				every_in_list = {
+					variable = spell_l_targets
+					$SPELL_EFFECT$ = yes
+				}
+		}
+		0 = {
+			modifier = {
+				add = $FAILURE_CHANCE$
+			}
+			custom_tooltip = spell_backfires_tt
+			hidden_effect = {
+				$BACKFIRE_EFFECT$ = yes
+			}
+		}
+	}
+}
+
+apply_spell_effect_with_backfire_chance_list_land = {
+	deduct_spell_cost_by_tier = { TIER = $TIER$ }
+	increase_overwhelmation_from_spell = yes
+	will_increase_overwhelmation = yes
+	random_list = {
+		0 = {
+			modifier = {
+				add = $SUCCESS_CHANCE$
+			}
+			every_in_list = {
+				variable = spell_l_targets
+				$SPELL_EFFECT$ = yes
+			}
+		}
+		0 = {
+			modifier = {
+				add = $FAILURE_CHANCE$
+			}
+			custom_tooltip = spell_backfires_tt
+			if = {
+				limit = { exists = capital_county}
+				capital_county = {
+					hidden_effect = {
+						$SPELL_EFFECT$ = yes
+					}
+				}
+			}
+		}
+	}
+}
+
 increase_overwhelmation_from_spell = {
 	if = {
 		limit ={
@@ -119,6 +199,451 @@ will_increase_overwhelmation = {
 			overwhelmation_after_spell > overwhelmation_limit_first
 		}
 		custom_tooltip = will_increase_overwhelmation_standard_tt
+	}
+}
+
+increase_overwhelmation_from_moon_pull = {
+	if = {
+		limit = {
+			is_full_moon_trigger = yes
+			has_character_modifier = pulling_moon_mod
+			}
+	increase_overwhelmation_from_moon_pull_full = yes
+	will_increase_overwhelmation_from_moon_pull = yes
+	}
+	else_if = {
+		limit = {
+			is_any_good_moon_trigger = yes
+			has_character_modifier = pulling_moon_mod
+			}
+	increase_overwhelmation_from_moon_pull_gibbous = yes
+	will_increase_overwhelmation_from_moon_pull = yes
+	}
+}
+
+increase_overwhelmation_from_moon_pull_gibbous = {
+	if = {
+		limit ={
+			root.var:magic_lvl = { compare_value = 0 }
+		}
+		increase_overwhelmation = { VALUE = 0.1 }
+	}
+	else_if = {
+		limit ={
+			root.var:magic_lvl = { compare_value = 1 }
+		}
+		increase_overwhelmation = { VALUE = 0.2 }
+	}
+	else_if = {
+		limit ={
+			root.var:magic_lvl = { compare_value = 2 }
+		}
+		increase_overwhelmation = { VALUE = 0.4 }
+	}
+	else_if = {
+		limit ={
+			root.var:magic_lvl = { compare_value = 3 }
+		}
+		increase_overwhelmation = { VALUE = 0.8 }
+	}
+}
+
+increase_overwhelmation_from_moon_pull_full = {
+	if = {
+		limit ={
+			root.var:magic_lvl = { compare_value = 0 }
+		}
+		increase_overwhelmation = { VALUE = 0.2 }
+	}
+	else_if = {
+		limit ={
+			root.var:magic_lvl = { compare_value = 1 }
+		}
+		increase_overwhelmation = { VALUE = 0.4 }
+	}
+	else_if = {
+		limit ={
+			root.var:magic_lvl = { compare_value = 2 }
+		}
+		increase_overwhelmation = { VALUE = 0.8 }
+	}
+	else_if = {
+		limit ={
+			root.var:magic_lvl = { compare_value = 3 }
+		}
+		increase_overwhelmation = { VALUE = 1.6 }
+	}
+}
+
+will_increase_overwhelmation_from_moon_pull = {
+	if = {
+		limit = {
+			NOT = {
+				has_trait_rank = {
+					trait = magicsickness
+					rank >= 3
+				}
+				overwhelmation_after_spell > overwhelmation_limit_third
+			}
+			overwhelmation_after_moon_pull > overwhelmation_limit_third
+		}
+		custom_tooltip = will_increase_overwhelmation_extreme_tt
+	}
+	else_if = {
+		limit = {
+			NOT = {
+				has_trait_rank = {
+					trait = magicsickness
+					rank >= 2
+				}
+				overwhelmation_after_spell > overwhelmation_limit_second
+			}
+			overwhelmation_after_moon_pull > overwhelmation_limit_second
+		}
+		custom_tooltip = will_increase_overwhelmation_advanced_tt
+	}
+	else_if = {
+		limit = {
+			NOT = {
+				has_trait_rank = {
+					trait = magicsickness
+					rank >= 1
+				}
+				overwhelmation_after_spell > overwhelmation_limit_first
+			}
+			overwhelmation_after_moon_pull > overwhelmation_limit_first
+		}
+		custom_tooltip = will_increase_overwhelmation_standard_tt
+	}
+}
+
+set_or_upgrade_magic_modifier_province = {
+	if = {
+		limit = { $CASTER$ = { has_variable = magic_lvl } }
+		if = {
+			limit = { 
+				$CASTER$.var:magic_lvl = 0
+				NOR = {
+					has_province_modifier = $MODIFIER_NAME$_minor
+					has_province_modifier = $MODIFIER_NAME$_mid
+					has_province_modifier = $MODIFIER_NAME$_major
+					has_province_modifier = $MODIFIER_NAME$_huge
+				}
+			}
+			add_province_modifier = {
+				modifier = $MODIFIER_NAME$_minor
+				$TIME_UNIT$ = $DURATION$
+			}
+		}
+		else_if = {
+			limit = { 
+				$CASTER$.var:magic_lvl = 1
+				NOR = {
+					has_province_modifier = $MODIFIER_NAME$_mid
+					has_province_modifier = $MODIFIER_NAME$_major
+					has_province_modifier = $MODIFIER_NAME$_huge
+				}
+			}
+			if = {
+				limit = { has_province_modifier = $MODIFIER_NAME$_minor }
+				remove_province_modifier = $MODIFIER_NAME$_minor
+			}
+			add_province_modifier = {
+				modifier = $MODIFIER_NAME$_mid
+				$TIME_UNIT$ = $DURATION$
+			}
+		}
+		else_if = {
+			limit = { 
+				$CASTER$.var:magic_lvl = 2
+				NOR = {
+					has_province_modifier = $MODIFIER_NAME$_major
+					has_province_modifier = $MODIFIER_NAME$_huge
+				}
+			}
+			if = {
+				limit = { has_province_modifier = $MODIFIER_NAME$_minor }
+				remove_province_modifier = $MODIFIER_NAME$_minor
+			}
+			if = {
+				limit = { has_province_modifier = $MODIFIER_NAME$_mid }
+				remove_province_modifier = $MODIFIER_NAME$_mid
+			}
+			add_province_modifier = {
+				modifier = $MODIFIER_NAME$_major
+				$TIME_UNIT$ = $DURATION$
+			}
+		}
+		else_if = {
+			limit = { 
+				$CASTER$.var:magic_lvl = 3
+				NOT = {
+					has_province_modifier = $MODIFIER_NAME$_huge
+				}
+			}
+			if = {
+				limit = { has_province_modifier = $MODIFIER_NAME$_minor }
+				remove_province_modifier = $MODIFIER_NAME$_minor
+			}
+			if = {
+				limit = { has_province_modifier = $MODIFIER_NAME$_mid }
+				remove_province_modifier = $MODIFIER_NAME$_mid
+			}
+			if = {
+				limit = { has_province_modifier = $MODIFIER_NAME$_major }
+				remove_province_modifier = $MODIFIER_NAME$_major
+			}
+			add_province_modifier = {
+				modifier = $MODIFIER_NAME$_huge
+				$TIME_UNIT$ = $DURATION$
+			}
+		}
+	}
+}
+
+set_or_upgrade_magic_modifier_county = {
+	if = {
+		limit = { $CASTER$ = { has_variable = magic_lvl } }
+		if = {
+			limit = { 
+				$CASTER$.var:magic_lvl = 0
+				NOR = {
+					has_county_modifier = $MODIFIER_NAME$_minor
+					has_county_modifier = $MODIFIER_NAME$_mid
+					has_county_modifier = $MODIFIER_NAME$_major
+					has_county_modifier = $MODIFIER_NAME$_huge
+				}
+			}
+			add_county_modifier = {
+				modifier = $MODIFIER_NAME$_minor
+				$TIME_UNIT$ = $DURATION$
+			}
+		}
+		else_if = {
+			limit = { 
+				$CASTER$.var:magic_lvl = 1
+				NOR = {
+					has_county_modifier = $MODIFIER_NAME$_mid
+					has_county_modifier = $MODIFIER_NAME$_major
+					has_county_modifier = $MODIFIER_NAME$_huge
+				}
+			}
+			if = {
+				limit = { has_county_modifier = $MODIFIER_NAME$_minor }
+				remove_county_modifier = $MODIFIER_NAME$_minor
+			}
+			add_county_modifier = {
+				modifier = $MODIFIER_NAME$_mid
+				$TIME_UNIT$ = $DURATION$
+			}
+		}
+		else_if = {
+			limit = { 
+				$CASTER$.var:magic_lvl = 2
+				NOR = {
+					has_county_modifier = $MODIFIER_NAME$_major
+					has_county_modifier = $MODIFIER_NAME$_huge
+				}
+			}
+			if = {
+				limit = { has_county_modifier = $MODIFIER_NAME$_minor }
+				remove_county_modifier = $MODIFIER_NAME$_minor
+			}
+			if = {
+				limit = { has_county_modifier = $MODIFIER_NAME$_mid }
+				remove_county_modifier = $MODIFIER_NAME$_mid
+			}
+			add_county_modifier = {
+				modifier = $MODIFIER_NAME$_major
+				$TIME_UNIT$ = $DURATION$
+			}
+		}
+		else_if = {
+			limit = { 
+				$CASTER$.var:magic_lvl = 3
+				NOT = {
+					has_county_modifier = $MODIFIER_NAME$_huge
+				}
+			}
+			if = {
+				limit = { has_county_modifier = $MODIFIER_NAME$_minor }
+				remove_county_modifier = $MODIFIER_NAME$_minor
+			}
+			if = {
+				limit = { has_county_modifier = $MODIFIER_NAME$_mid }
+				remove_county_modifier = $MODIFIER_NAME$_mid
+			}
+			if = {
+				limit = { has_county_modifier = $MODIFIER_NAME$_major }
+				remove_county_modifier = $MODIFIER_NAME$_major
+			}
+			add_county_modifier = {
+				modifier = $MODIFIER_NAME$_huge
+				$TIME_UNIT$ = $DURATION$
+			}
+		}
+	}
+}
+
+set_or_upgrade_magic_modifier_to_level_county = {
+	if = {
+		limit = { 
+			$LEVEL$ = 0
+			NOR = {
+				has_county_modifier = $MODIFIER_NAME$_minor
+				has_county_modifier = $MODIFIER_NAME$_mid
+				has_county_modifier = $MODIFIER_NAME$_major
+				has_county_modifier = $MODIFIER_NAME$_huge
+			}
+		}
+		add_county_modifier = {
+			modifier = $MODIFIER_NAME$_minor
+			$TIME_UNIT$ = $DURATION$
+		}
+	}
+	else_if = {
+		limit = { 
+			$LEVEL$ = 1
+			NOR = {
+				has_county_modifier = $MODIFIER_NAME$_mid
+				has_county_modifier = $MODIFIER_NAME$_major
+				has_county_modifier = $MODIFIER_NAME$_huge
+			}
+		}
+		if = {
+			limit = { has_county_modifier = $MODIFIER_NAME$_minor }
+			remove_county_modifier = $MODIFIER_NAME$_minor
+		}
+		add_county_modifier = {
+			modifier = $MODIFIER_NAME$_mid
+			$TIME_UNIT$ = $DURATION$
+		}
+	}
+	else_if = {
+		limit = { 
+			$LEVEL$ = 2
+			NOR = {
+				has_county_modifier = $MODIFIER_NAME$_major
+				has_county_modifier = $MODIFIER_NAME$_huge
+			}
+		}
+		if = {
+			limit = { has_county_modifier = $MODIFIER_NAME$_minor }
+			remove_county_modifier = $MODIFIER_NAME$_minor
+		}
+		if = {
+			limit = { has_county_modifier = $MODIFIER_NAME$_mid }
+			remove_county_modifier = $MODIFIER_NAME$_mid
+		}
+		add_county_modifier = {
+			modifier = $MODIFIER_NAME$_major
+			$TIME_UNIT$ = $DURATION$
+		}
+	}
+	else_if = {
+		limit = { 
+			$LEVEL$ = 3
+			NOT = {
+				has_county_modifier = $MODIFIER_NAME$_huge
+			}
+		}
+		if = {
+			limit = { has_county_modifier = $MODIFIER_NAME$_minor }
+			remove_county_modifier = $MODIFIER_NAME$_minor
+		}
+		if = {
+			limit = { has_county_modifier = $MODIFIER_NAME$_mid }
+			remove_county_modifier = $MODIFIER_NAME$_mid
+		}
+		if = {
+			limit = { has_county_modifier = $MODIFIER_NAME$_major }
+			remove_county_modifier = $MODIFIER_NAME$_major
+		}
+		add_county_modifier = {
+			modifier = $MODIFIER_NAME$_huge
+			$TIME_UNIT$ = $DURATION$
+		}
+	}
+}
+
+set_or_upgrade_magic_modifier_to_level = {
+	if = {
+		limit = { 
+			$LEVEL$ = 0
+			NOR = {
+				has_character_modifier = $MODIFIER_NAME$_minor
+				has_character_modifier = $MODIFIER_NAME$_mid
+				has_character_modifier = $MODIFIER_NAME$_major
+				has_character_modifier = $MODIFIER_NAME$_huge
+			}
+		}
+		add_character_modifier = {
+			modifier = $MODIFIER_NAME$_minor
+			$TIME_UNIT$ = $DURATION$
+		}
+	}
+	else_if = {
+		limit = { 
+			$LEVEL$ = 1
+			NOR = {
+				has_character_modifier = $MODIFIER_NAME$_mid
+				has_character_modifier = $MODIFIER_NAME$_major
+				has_character_modifier = $MODIFIER_NAME$_huge
+			}
+		}
+		if = {
+			limit = { has_character_modifier = $MODIFIER_NAME$_minor }
+			remove_character_modifier = $MODIFIER_NAME$_minor
+		}
+		add_character_modifier = {
+			modifier = $MODIFIER_NAME$_mid
+			$TIME_UNIT$ = $DURATION$
+		}
+	}
+	else_if = {
+		limit = { 
+			$LEVEL$ = 2
+			NOR = {
+				has_character_modifier = $MODIFIER_NAME$_major
+				has_character_modifier = $MODIFIER_NAME$_huge
+			}
+		}
+		if = {
+			limit = { has_character_modifier = $MODIFIER_NAME$_minor }
+			remove_character_modifier = $MODIFIER_NAME$_minor
+		}
+		if = {
+			limit = { has_character_modifier = $MODIFIER_NAME$_mid }
+			remove_character_modifier = $MODIFIER_NAME$_mid
+		}
+		add_character_modifier = {
+			modifier = $MODIFIER_NAME$_major
+			$TIME_UNIT$ = $DURATION$
+		}
+	}
+	else_if = {
+		limit = { 
+			$LEVEL$ = 3
+			NOT = {
+				has_character_modifier = $MODIFIER_NAME$_huge
+			}
+		}
+		if = {
+			limit = { has_character_modifier = $MODIFIER_NAME$_minor }
+			remove_character_modifier = $MODIFIER_NAME$_minor
+		}
+		if = {
+			limit = { has_character_modifier = $MODIFIER_NAME$_mid }
+			remove_character_modifier = $MODIFIER_NAME$_mid
+		}
+		if = {
+			limit = { has_character_modifier = $MODIFIER_NAME$_major }
+			remove_character_modifier = $MODIFIER_NAME$_major
+		}
+		add_character_modifier = {
+			modifier = $MODIFIER_NAME$_huge
+			$TIME_UNIT$ = $DURATION$
+		}
 	}
 }
 
@@ -206,6 +731,58 @@ set_or_upgrade_magic_modifier = {
 	}
 }
 
+increase_ai_spell_tier_to_ideal_level_conservative = {
+	set_variable = {
+		name = temporary_success_chance_ratio_var
+		value = $SPELL_DIFFICULTY$_difficulty_chance_ratio
+	}
+	while = {
+		limit = {
+			var:magic_lvl < 4
+			conservative_spell_magic_cost_by_tier = { TIER = $TIER$ }
+			OR = {
+				NOT = { overwhelmation_after_spell >= overwhelmation_limit_second }
+				AND = {
+					NOT = { overwhelmation_after_spell >= overwhelmation_limit_third }
+					OR = {	# The very brave or very foolish will exert themselves to their max
+						ai_boldness >= 100
+						ai_rationality <= -50
+					}
+				}
+				AND = {	# The very brave AND very foolish will have no qualms about melting themselves into a puddle
+					ai_boldness >= 100
+					ai_rationality <= -50
+				}
+			}
+			OR = {
+				var:temporary_success_chance_ratio_var >= 75
+				AND = {
+					var:temporary_success_chance_ratio_var >= 50
+					OR = {
+						ai_boldness >= 100
+						ai_rationality <= -50
+					}
+				}
+			}
+		}
+		change_variable = {
+			name = magic_lvl
+			add = 1
+		}
+		set_variable = {
+			name = temporary_success_chance_ratio_var
+			value = $SPELL_DIFFICULTY$_difficulty_chance_ratio
+		}
+	}
+	if = {
+		limit = { var:magic_lvl > 0 }
+		change_variable = {
+			name = magic_lvl
+			subtract = 1
+		}
+	}
+}
+
 increase_ai_spell_tier_to_ideal_level = {
 	set_variable = {
 		name = temporary_success_chance_ratio_var
@@ -244,10 +821,10 @@ increase_ai_spell_tier_to_ideal_level = {
 			name = magic_lvl
 			add = 1
 		}
-	}
-	set_variable = {
-		name = temporary_success_chance_ratio_var
-		value = $SPELL_DIFFICULTY$_difficulty_chance_ratio
+		set_variable = {
+			name = temporary_success_chance_ratio_var
+			value = $SPELL_DIFFICULTY$_difficulty_chance_ratio
+		}
 	}
 	if = {
 		limit = { var:magic_lvl > 0 }
@@ -256,4 +833,87 @@ increase_ai_spell_tier_to_ideal_level = {
 			subtract = 1
 		}
 	}
+}
+
+decrease_ai_dead_magic_spell_tier_by_moon = { # to prevent the AI from wasting magic on overpriced spells on bad moons
+	if = { 
+		limit = { is_new_moon_trigger = yes }
+		set_variable = {
+			name = magic_lvl
+			value = 0
+		}
+	}
+	else_if = { 
+		limit = { 
+			is_crescent_moon_trigger = yes 
+			var:magic_lvl > 1
+		}
+		set_variable = {
+			name = magic_lvl
+			value = 1
+		}
+	}
+	else_if = { 
+		limit = { 
+		is_quarter_moon_trigger = yes 
+		var:magic_lvl > 2
+		}
+		set_variable = {
+			name = magic_lvl
+			value = 2
+		}
+	}
+}
+
+# TODO: stress_impact CTDs right now due to DummyMale use etc; reactivate these
+# after 1.4 and fixes
+
+personal_beneficial_spell_apply_personality_effects = {
+	# sadistic characters get stress for helping others
+	root = {
+		#if = {
+		#	limit = {
+		#		has_variable_list = spell_targets
+		#		any_in_list = {
+		#			variable = spell_targets
+		#			NOT = {
+		#				OR = {
+		#					has_relation_friend = root
+		#					is_close_family_of = root
+		#					this = root
+		#				}
+		#			}
+		#		}
+		#	}
+		#	stress_impact = {
+		#		sadistic = medium_stress_gain
+		#	}
+		#}
+	}
+}
+
+personal_harmful_spell_apply_personality_effects = {
+	#stress_impact = {
+	#	compassionate = medium_stress_gain
+	#}
+}
+
+personal_deadly_spell_apply_personality_effects = {
+	#stress_impact = {
+	#	compassionate = major_stress_gain
+	#	sadistic = minor_stress_loss
+	#}
+}
+
+county_harmful_spell_apply_personality_effects = {
+	#stress_impact = {
+	#	compassionate = medium_stress_gain
+	#}
+}
+
+# this is for "large-scale murder" type effects, like annihilation lv3
+county_deadly_spell_apply_personality_effects = {
+	#stress_impact = {
+	#	compassionate = major_stress_gain
+	#}
 }

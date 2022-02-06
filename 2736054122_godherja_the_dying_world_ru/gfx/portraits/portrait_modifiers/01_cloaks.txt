@@ -28,7 +28,7 @@ cloaks = {
 								portrait_fp1_norse_clothing_trigger = yes
 								NOR = {
 									has_government = tribal_government
-									religion = religion:germanic_religion
+									religion = religion:sjalvolki_religion
 								}
 							}
 						}
@@ -109,10 +109,15 @@ cloaks = {
 					has_trait = berserker
 				}
 			}			
+			modifier = {
+				add = 1000
+				is_ruin = yes
+			}	
 		}
 	}
 
 	fp1_norse = {
+		outfit_tags = { gh_winter_clothes }
 		dna_modifiers = {
 			accessory = {
 				mode = add
@@ -129,6 +134,7 @@ cloaks = {
 				value = 1.0
 			}
 		}	
+		outfit_tags = { fp1_norse }
 		weight = {
 			base = 0
 			modifier = {
@@ -179,85 +185,4 @@ cloaks = {
 			}			
 		}
 	}
-#
-#	pope = {
-#	    dna_modifiers = {
-#	        accessory = {
-#	            mode = add
-#	            gene = capes
-#	            template = pope_capes
-#	            range = { 0 1 }
-#	        }
-#	    }
-#	    weight = {
-#	        base = 100
-#	        modifier = {
-#	            factor = 0
-#				NAND = {
-#					is_ruler = yes
-#					primary_title = {
-#						exists = controlled_faith
-#						controlled_faith = faith:catholic
-#					}
-#				}
-#	        }
-#	    }
-#	}
-	#empty_capes_modifier = {
-	#	dna_modifiers = {
-	#		accessory = {
-	#			mode = add				
-	#			gene = capes
-	#			template = empty_capes_template
-	#			#value = 0.75
-	#		}
-	#	}
-	#	weight = {
-	#		base = 0.001
-	#	}
-	#}	
-	# western_kings_capes_modifier = {
-	# 	dna_modifiers = {
-	# 		accessory = {
-	# 			mode = add				
-	# 			gene = capes
-	# 			template = western_kings_capes_template
-	# 			#value = 0.75
-	# 		}
-	# 	}
-	# 	weight = {
-	# 		base = 0	#if weight is >= 100, this one will be picked without ever doing the weighted random selection
-			
-	# 		#TODO only for Christian religion group
-	# 		#TODO not for tribal
-			
-	# 		modifier = {
-	# 			#humble people just wanna wear rags
-	# 			add = -100
-	# 			has_trait = humble
-	# 		}
-	# 		modifier = {
-	# 			add = 50
-	# 			#arrogant people just wanna show off...
-	# 			has_trait = arrogant
-	# 			OR = {
-	# 				highest_held_title_tier = tier_empire
-	# 				highest_held_title_tier = tier_kingdom
-	# 				AND = {
-	# 					#...and love acting above their station
-	# 					highest_held_title_tier = tier_duchy
-	# 					is_independent_ruler = yes
-	# 				}
-	# 			}
-	# 		}
-	# 		modifier = {
-	# 			#kings and emperors will usually have to look fancy anyway
-	# 			add = 50
-	# 			OR = {
-	# 				highest_held_title_tier = tier_empire
-	# 				highest_held_title_tier = tier_kingdom
-	# 			}
-	# 		}
-	# 	}
-	# }	
 }

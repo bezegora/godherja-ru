@@ -1,0 +1,79 @@
+﻿barrow_overseer_template = {
+	age = { 20 40 }
+	gender_female_chance = 50
+	dynasty = none
+	faith = root.faith
+	culture = root.culture
+	trait = architect
+	random_traits_list = {
+		count = 1
+		education_stewardship_1 = { weight = { base = 50 } }
+		education_stewardship_2 = { weight = { base = 20 } }
+		education_stewardship_3 = { weight = { base = 5 } }
+	}
+	random_traits_list = {
+		count = 1
+		physique_good_1 = { weight = { base = 5 } }
+		physique_good_2 = { weight = { base = 5 } }
+		strong = { weight = { base = 5 } }
+		giant = { weight = { base = 5 } }
+	}
+	random_traits = yes
+	martial = {
+		min_template_low_skill
+		max_template_low_skill
+	}
+	stewardship = {
+		min_template_low_skill
+		max_template_low_skill
+	}
+	diplomacy = {
+		min_template_low_skill
+		max_template_low_skill
+	}
+	intrigue = {
+		min_template_low_skill
+		max_template_low_skill
+	}
+	learning = {
+		min_template_low_skill
+		max_template_low_skill
+	}
+}
+
+historical_vision_template = {
+	age = 30
+	gender_female_chance = {
+		if = {
+			limit = { scope:copied_character = { is_female = no } }
+			add = 0
+		}
+		else = {
+			add = 100
+		}
+	}
+	dynasty = none
+	faith = scope:copied_character.faith
+	culture = scope:copied_character.culture
+	random_traits = no
+	martial = {
+		min_template_low_skill
+		max_template_low_skill
+	}
+	stewardship = {
+		min_template_low_skill
+		max_template_low_skill
+	}
+	diplomacy = {
+		min_template_low_skill
+		max_template_low_skill
+	}
+	intrigue = {
+		min_template_low_skill
+		max_template_low_skill
+	}
+	learning = {
+		min_template_low_skill
+		max_template_low_skill
+	}
+}

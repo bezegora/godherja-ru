@@ -1,0 +1,1071 @@
+﻿namespace = sjalvolki_decision
+
+#######################################################################
+# #Barrow Events
+# 0001 - 0010	Starting Barrow Event: determine the location
+# 0011 - 0020	Determine the scale of the Barrow
+# 0101 - 0110	Barrow construction progress
+# 0201 - 0210	A Barrow is finished!
+# 1001 - 1010	Barrow Maintenance: yearly checks to see how everything is progressing
+#######################################################################
+
+##################################################
+# Starting Barrow Event: determine the location
+# by Hapchazzard
+# 0001 - 0010
+##################################################
+
+scripted_effect overwrite_barrow_location_special = { # Overwrites a 'generic' location pick with a trait-based one. Adapted to work with three options
+	if = {
+		limit = { NOT = { exists = scope:location_option_2 } }	# If two options don't exist, everything will be limited to the first and only one
+		scope:location_option_1 = { save_scope_as = location_option_$LOCATION_OPTION_NAME$ }
+	}
+	else_if = {
+		limit = { NOT = { exists = scope:location_option_3 } }	# Otherwise, randomly pick between the two, with a fallback to either if both are taken
+		random_list = {
+			50 = {
+				trigger = { NOT = { exists = scope:location_1_already_assigned_to_special_option } }
+				scope:location_option_1 = { save_scope_as = location_option_$LOCATION_OPTION_NAME$ }
+				save_scope_value_as = {
+					name = location_1_already_assigned_to_special_option
+					value = yes
+				}
+			}
+			50 = {
+				trigger = { NOT = { exists = scope:location_2_already_assigned_to_special_option } }
+				scope:location_option_2 = { save_scope_as = location_option_$LOCATION_OPTION_NAME$ }
+				save_scope_value_as = {
+					name = location_2_already_assigned_to_special_option
+					value = yes
+				}
+			}
+			100 = {
+				trigger = { 
+					AND = {
+						exists = scope:location_1_already_assigned_to_special_option
+						exists = scope:location_2_already_assigned_to_special_option 
+					} 
+				}
+				random_list = {
+					50 = { scope:location_option_1 = { save_scope_as = location_option_$LOCATION_OPTION_NAME$ } }
+					50 = { scope:location_option_2 = { save_scope_as = location_option_$LOCATION_OPTION_NAME$ } }
+				}
+			}
+		}
+	}
+	else = {	# Otherwise, randomly pick
+		random_list = {
+			30 = {
+				trigger = { NOT = { exists = scope:location_1_already_assigned_to_special_option } }
+				scope:location_option_1 = { save_scope_as = location_option_$LOCATION_OPTION_NAME$ }
+				save_scope_value_as = {
+					name = location_1_already_assigned_to_special_option
+					value = yes
+				}
+			}
+			30 = {
+				trigger = { NOT = { exists = scope:location_2_already_assigned_to_special_option } }
+				scope:location_option_2 = { save_scope_as = location_option_$LOCATION_OPTION_NAME$ }
+				save_scope_value_as = {
+					name = location_2_already_assigned_to_special_option
+					value = yes
+				}
+			}
+			30 = {
+				trigger = { NOT = { exists = scope:location_3_already_assigned_to_special_option } }
+				scope:location_option_3 = { save_scope_as = location_option_$LOCATION_OPTION_NAME$ }
+				save_scope_value_as = {
+					name = location_3_already_assigned_to_special_option
+					value = yes
+				}
+			}
+			100 = {
+				trigger = { 
+					AND = {
+						exists = scope:location_1_already_assigned_to_special_option
+						exists = scope:location_2_already_assigned_to_special_option 
+						exists = scope:location_3_already_assigned_to_special_option 
+					} 
+				}
+				random_list = {
+					30 = { scope:location_option_1 = { save_scope_as = location_option_$LOCATION_OPTION_NAME$ } }
+					30 = { scope:location_option_2 = { save_scope_as = location_option_$LOCATION_OPTION_NAME$ } }
+					30 = { scope:location_option_3 = { save_scope_as = location_option_$LOCATION_OPTION_NAME$ } }
+				}
+			}
+		}
+	}
+}
+
+scripted_effect fickle_stress_effect = {
+	if = {
+		limit = { exists = scope:multiple_options_exist }
+		stress_impact = {
+			fickle = medium_stress_impact_gain
+		}
+	}
+}
+
+sjalvolki_decision.0001 = {
+	type = character_event
+	title = sjalvolki_decision.0001.t
+	desc = sjalvolki_decision.0001.desc
+	theme = faith
+	left_portrait = {
+		character = root
+		animation = personality_rational
+	}
+	
+	override_background = {
+		trigger = { has_government = tribal_government }
+		event_background = fp1_throneroom_tribal
+	}
+	override_background = {
+		trigger = { NOT = { has_government = tribal_government } }
+		event_background = fp1_throneroom_nontribal
+	}
+
+	immediate = {
+		# Pick out ideally three possible locations
+		# If the dynasty already has a dynastic burial ground, it should be the first option
+		if = {
+			limit = { 
+				trigger_if = { 
+					limit = { is_lowborn = no }
+					dynasty = { 
+						has_variable = traditional_dynastic_burial_site
+					}
+				}
+			}
+			if = {
+				limit = { has_title = var:traditional_dynastic_burial_site }
+				var:traditional_dynastic_burial_site = { save_scope_as = location_option_1 }
+				save_scope_value_as = {
+					name = has_available_dynastic_burial_site
+					value = yes
+				}
+			}
+		}
+		# Otherwise, default to the capital, which should always be available
+		if = {
+			limit = { NOT = { exists = scope:location_option_1 } }
+			capital_county = { save_scope_as = location_option_1 }
+		}
+		
+		# Pick the second option. If the first is the dynastic burial ground, use this for the capital
+		if = {
+			limit = { NOT = { scope:location_option_1 = capital_county } }
+			capital_county = { save_scope_as = location_option_2 }
+		}
+		else_if = {	# Otherwise, pick a random title, if possible
+			limit = { 
+				any_held_title = {
+					tier = tier_county
+					NOT = {
+						this = scope:location_option_1
+					}
+				}
+			}
+			random_held_title = {
+				limit = { 
+					tier = tier_county 
+					NOT = {
+						this = scope:location_option_1
+					}
+				}
+				save_scope_as = location_option_2
+			}
+		}
+		
+		# Pick the third option, a random title
+		if = {
+			limit = { 
+				any_held_title = {
+					tier = tier_county
+					NOR = {
+						this = scope:location_option_1
+						this = scope:location_option_2
+					}
+				}
+			}
+			random_held_title = {
+				limit = { 
+					tier = tier_county 
+					NOT = {
+						this = scope:location_option_1
+						this = scope:location_option_2
+					}
+				}
+				save_scope_as = location_option_3
+			}
+		}
+		
+		if = {
+			limit = { exists = scope:location_option_2 }	# For fickle characters to get stress
+			save_scope_value_as = {
+				name = multiple_options_exist
+				value = yes
+			}
+		}
+		if = {	# If the diligent option is available, replace one of the default options
+			limit = {
+				OR = {
+					has_trait = diligent
+					stewardship >= 15
+				}
+			}
+			overwrite_barrow_location_special = { LOCATION_OPTION_NAME = diligent }
+		}
+		if = {	# If the greedy option is available, replace one of the default options
+			limit = {
+				OR = {
+					has_trait = greedy
+					has_trait = humble
+					has_trait = content
+					has_trait = humble
+				}
+			}
+			overwrite_barrow_location_special = { LOCATION_OPTION_NAME = greedy }
+		}
+		if = {	# If the ambitious/arrogant option is available, replace one of the default options
+			limit = {
+				OR = {
+					has_trait = ambitious
+					has_trait = arrogant
+				}
+			}
+			overwrite_barrow_location_special = { LOCATION_OPTION_NAME = arrogant }
+		}
+		if = {	# If the zealous option is available, replace one of the default options
+			limit = {
+				OR = {
+					has_trait = zealous
+					learning >= 15
+				}
+			}
+			overwrite_barrow_location_special = { LOCATION_OPTION_NAME = zealous }
+		}
+		if = {	# Cynical characters can just recycle a random Aversarian tomb
+			limit = {
+				OR = {
+					has_trait = cynical
+					has_trait = scholar
+				}
+			}
+			overwrite_barrow_location_special = { LOCATION_OPTION_NAME = cynical }
+		}
+	}
+
+	# Pick the first location
+	option = {
+		trigger = { NOT = { exists = scope:location_1_already_assigned_to_special_option } } # Don't show this if a special option is using it
+		name = {
+			trigger = { exists = scope:has_available_dynastic_burial_site }
+			text = sjalvolki_decision.0001.a.dynastic_burial_site
+		}
+		name = {
+			trigger = { 
+				NOT = { exists = scope:has_available_dynastic_burial_site }
+			}
+			text = sjalvolki_decision.0001.a
+		}
+		scope:location_option_1 = { save_scope_as = barrow_location }
+		fickle_stress_effect = yes
+		custom_tooltip = will_build_at_location_1_tt
+	}
+	
+	# Pick the second location
+	option = {
+		name = {
+			trigger = { scope:location_option_2 = capital_county }
+			text = sjalvolki_decision.0001.b.capital
+		}
+		name = {
+			trigger = { 
+				NOT = { scope:location_option_2 = capital_county }
+			}
+			text = sjalvolki_decision.0001.b
+		}
+		trigger = {
+			trigger_if = {
+				limit = { exists = scope:location_option_2 }
+				NOT = { exists = scope:location_2_already_assigned_to_special_option }
+			}
+			trigger_else = {
+				always = no
+			}
+		}
+		scope:location_option_2 = { save_scope_as = barrow_location }
+		fickle_stress_effect = yes
+		custom_tooltip = will_build_at_location_2_tt
+	}
+	
+	# Pick the third location
+	option = {
+		name = sjalvolki_decision.0001.c
+		trigger = {
+			trigger_if = {
+				limit = { exists = scope:location_option_3 }
+				NOT = { exists = scope:location_3_already_assigned_to_special_option }
+			}
+			trigger_else = {
+				always = no
+			}
+		}
+		scope:location_option_3 = { save_scope_as = barrow_location }
+		fickle_stress_effect = yes
+		custom_tooltip = will_build_at_location_3_tt
+	}
+	
+	# Pick a random location, if you're a lazy bastard, for stress loss. Fickle characters do not get stress with this
+	option = {
+		name = sjalvolki_decision.0001.d
+		trait = lazy
+		
+		trigger = {
+			has_trait = lazy
+			exists = scope:location_option_2	# There needs to be at least two locations for there to be room for actual randomness
+		}
+		random_list = {
+			30 = {
+				scope:location_option_1 = { save_scope_as = barrow_location }
+			}
+			30 = {
+				scope:location_option_2 = { save_scope_as = barrow_location }
+			}
+			30 = {
+				trigger = { exists = scope:location_option_3 }
+				scope:location_option_3 = { save_scope_as = barrow_location }
+			}
+		}
+		custom_tooltip = will_build_at_random_location_tt
+		stress_impact = {
+			lazy = minor_stress_impact_loss
+		}
+	}
+	
+	# If you're diligent or have high stewardship, pour over each to get possible advantages
+	option = {
+		name = sjalvolki_decision.0001.e
+		trait = diligent
+		skill = stewardship
+		
+		trigger = {
+			OR = {
+				has_trait = diligent
+				stewardship >= 15
+			}
+		}
+		duel = {
+			skill = stewardship
+			value = 15
+			5 = {
+				desc = sjalvolki_decision.0001.e.success_epic
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = 0.5
+				}
+				hidden_effect = {
+					send_interface_toast = {
+						title = sjalvolki_decision.0001.e.success_epic.title
+						custom_tooltip = sjalvolki_decision.0001.e.success_epic.desc
+						left_icon = root
+					}
+				}
+				add_stewardship_lifestyle_perk_points = 1
+				add_prestige = major_prestige_value
+			}
+			15 = {
+				desc = sjalvolki_decision.0001.e.success_good
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = 0.5
+				}
+				hidden_effect = {
+					send_interface_toast = {
+						title = sjalvolki_decision.0001.e.success_good.title
+						custom_tooltip = sjalvolki_decision.0001.e.success_good.desc
+						left_icon = root
+					}
+				}
+				add_prestige = medium_prestige_value
+			}
+			30 = {
+				desc = sjalvolki_decision.0001.e.success_decent
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = 0.5
+				}
+				hidden_effect = {
+					send_interface_toast = {
+						title = sjalvolki_decision.0001.e.success_decent.title
+						custom_tooltip = sjalvolki_decision.0001.e.success_decent.desc
+						left_icon = root
+					}
+				}
+				add_prestige = minor_prestige_value
+			}
+			30 = {
+				desc = sjalvolki_decision.0001.e.failure
+				hidden_effect = {
+					send_interface_toast = {
+						title = sjalvolki_decision.0001.e.failure.title
+						custom_tooltip = sjalvolki_decision.0001.e.failure.desc
+						left_icon = root
+					}
+				}
+				add_stress = minor_stress_gain
+				remove_short_term_gold = minor_gold_value
+			}
+		}
+		scope:location_option_diligent = { save_scope_as = barrow_location }
+		fickle_stress_effect = yes
+		custom_tooltip = will_build_at_location_diligent_tt
+	}
+	
+	# Cheapskates and humble characters won't spend much
+	option = {
+		name = sjalvolki_decision.0001.f
+		trait = greedy
+		trait = humble
+		trait = content
+		trait = temperate
+		
+		trigger = {
+			OR = {
+				has_trait = greedy
+				has_trait = humble
+				has_trait = content
+				has_trait = temperate
+			}
+			exists = scope:location_option_2	# There needs to be at least two locations for there to be room for actual randomness
+		}
+		if = {
+			limit = { exists = scope:location_option_greedy	}
+			scope:location_option_greedy = { save_scope_as = barrow_location }
+		}
+		add_gold = partial_refund_money_barrow
+		add_prestige = minor_prestige_loss
+		fickle_stress_effect = yes
+		custom_tooltip = will_build_at_location_greedy_tt
+		stress_impact = {
+			greedy = minor_stress_impact_loss
+			arrogant = medium_stress_impact_gain
+		}
+	}
+	# Ambitious and arrogant characters get to pay extra for prime real estate
+	option = {
+		name = sjalvolki_decision.0001.g
+		trait = ambitious
+		trait = arrogant
+		
+		trigger = {
+			OR = {
+				has_trait = ambitious
+				has_trait = arrogant
+			}
+		}
+		scope:location_option_arrogant = { save_scope_as = barrow_location }
+		remove_short_term_gold = medium_gold_value
+		add_prestige = medium_prestige_value
+		fickle_stress_effect = yes
+		custom_tooltip = will_build_at_location_arrogant_tt
+		stress_impact = {
+			greedy = medium_stress_impact_gain
+			arrogant = minor_stress_impact_loss
+			ambitious = minor_stress_impact_loss
+		}
+	}
+	# Zealots can pay for piety
+	option = {
+		name = sjalvolki_decision.0001.h
+		trait = zealous
+		skill = learning
+		
+		trigger = {
+			OR = {
+				has_trait = zealous
+				learning >= 15
+			}
+		}
+		scope:location_option_zealous = { save_scope_as = barrow_location }
+		remove_short_term_gold = medium_gold_value
+		add_piety = medium_piety_value
+		fickle_stress_effect = yes
+		custom_tooltip = will_build_at_location_zealous_tt
+		stress_impact = {
+			greedy = medium_stress_impact_gain
+			cynical = medium_stress_impact_gain
+			zealous = minor_stress_impact_loss
+		}
+	}
+	# Cynical characters can just recycle a random Aversarian tomb
+	option = {
+		name = sjalvolki_decision.0001.k
+		trait = cynical 
+		trait = scholar
+		trigger = {
+			OR = {
+				has_trait = cynical
+				has_trait = scholar
+			}
+		}
+		scope:location_option_cynical = { save_scope_as = barrow_location }
+		add_prestige = medium_prestige_value
+		add_piety = medium_piety_loss
+		fickle_stress_effect = yes
+		custom_tooltip = will_build_at_location_cynical_tt
+		stress_impact = {
+			zealous = major_stress_impact_gain
+			cynical = minor_stress_impact_loss
+			greedy = minor_stress_impact_loss 
+		}
+	}
+
+	# Actually, nevermind
+	option = {
+		name = sjalvolki_decision.0001.l
+
+		# Give the initial deposit back
+		add_gold = var:found_barrow_refund
+		remove_variable = found_barrow_refund
+		
+		save_scope_value_as = {
+			name = chose_nothing
+			value = yes
+		}
+		ai_chance = {
+			base = 0
+		}
+	}
+	
+	after = {
+		if = {	# If you backed out, don't trigger this
+			limit = { NOT = { exists = scope:chose_nothing } }
+			trigger_event = {
+				id = sjalvolki_decision.0011
+				days = { 5 10 }
+			}
+		}
+	}
+}
+
+##################################################
+# Determine the scale of the Barrow
+# by Hapchazzard
+# 0011 - 0020
+##################################################
+
+scripted_effect begin_barrow_construction = {
+	$LOCATION$ = {
+		save_temporary_scope_as = barrow_province
+		set_variable = {
+			name = barrow_construction_stage
+			value = 1
+		}
+		set_variable = {
+			name = barrow_construction_final_stage
+			value = $FINAL_STAGE_VALUE$
+		}
+		set_variable = {	# So that we know who to inter whenever the thing actually gets finished
+			name = original_barrow_builder
+			value = root
+		}
+		set_variable = {	# So that we know who is currently doing work with the barrow, if any
+			name = current_barrow_builder
+			value = root
+		}
+		add_province_modifier = {
+			modifier = province_modifier_barrow_unfinished
+			desc = province_modifier_barrow_unfinished_custom_desc
+		}
+		add_to_global_variable_list = {
+			name = provinces_with_active_barrow_construction
+			target = this
+		}
+		set_variable = {
+			name = barrow_construction_cooldown
+			years = 5
+		}
+	}
+}
+
+sjalvolki_decision.0011 = {
+	type = character_event
+	title = sjalvolki_decision.0011.t
+	left_portrait = {
+		character = root
+		animation = happiness
+		triggered_outfit = {
+			trigger = { 
+				OR = {
+					scope:background_terrain_scope = { terrain = mountains }
+					scope:background_terrain_scope = { terrain = taiga }
+				}
+			}
+			outfit_tags = { gh_winter_clothes }
+		}
+	}
+	right_portrait = {
+		character = scope:barrow_overseer
+		animation = personality_rational
+		triggered_outfit = {
+			trigger = { 
+				OR = {
+					scope:background_terrain_scope = { terrain = mountains }
+					scope:background_terrain_scope = { terrain = taiga }
+				}
+			}
+			outfit_tags = { gh_winter_clothes }
+		}
+	}
+	desc = {
+		triggered_desc = {
+			trigger = {
+				OR = {
+					scope:background_terrain_scope = { terrain = farmlands }
+					scope:background_terrain_scope = { terrain = plains }
+					scope:background_terrain_scope = { terrain = floodplains }
+				}
+			}
+			desc = sjalvolki_decision.0011.desc.farmlands
+		}
+		triggered_desc = {
+			trigger = {
+				OR = {
+					scope:background_terrain_scope = { terrain = forest }
+					scope:background_terrain_scope = { terrain = taiga }
+				}
+			}
+			desc = sjalvolki_decision.0011.desc.forest
+		}
+		triggered_desc = {
+			trigger = {
+				OR = {
+					scope:background_terrain_scope = { terrain = hills }
+				}
+			}
+			desc = sjalvolki_decision.0011.desc.hills
+		}
+		triggered_desc = {
+			trigger = {
+				OR = {
+					scope:background_terrain_scope = { terrain = mountains }
+				}
+			}
+			desc = sjalvolki_decision.0011.desc.mountains
+		}
+		triggered_desc = {
+			trigger = {
+				OR = {
+					scope:background_terrain_scope = { terrain = wetlands }
+				}
+			}
+			desc = sjalvolki_decision.0011.desc.wetlands
+		}
+		triggered_desc = {
+			trigger = {
+				OR = {
+					scope:background_terrain_scope = { terrain = steppe }
+				}
+			}
+			desc = sjalvolki_decision.0011.desc.steppe
+		}
+		triggered_desc = {
+			trigger = {
+				NOR = {
+					scope:background_terrain_scope = { terrain = steppe }
+					scope:background_terrain_scope = { terrain = wetlands }
+					scope:background_terrain_scope = { terrain = mountains }
+					scope:background_terrain_scope = { terrain = hills }
+					scope:background_terrain_scope = { terrain = forest }
+					scope:background_terrain_scope = { terrain = taiga }
+					scope:background_terrain_scope = { terrain = farmlands }
+					scope:background_terrain_scope = { terrain = plains }
+					scope:background_terrain_scope = { terrain = floodplains }
+				}
+			}
+			desc = sjalvolki_decision.0011.desc.fallback
+		}
+		desc = sjalvolki_decision.0011.desc.mid
+	}
+	theme = faith
+	override_background = {
+		event_background = terrain_scope
+	}
+	
+	immediate = {
+		scope:barrow_location = {
+			title_province = {
+				save_scope_as = background_terrain_scope
+			}
+		}
+		create_character = {	# Generate the builder for flavor purposes
+			template = barrow_overseer_template
+			employer = root
+			save_scope_as = barrow_overseer
+		}
+	}
+	
+	option = {	# A humble barrow
+		name = sjalvolki_decision.0011.a
+		trait = greedy
+		trait = humble
+		trait = content
+		trait = temperate
+		
+		stress_impact = {
+			arrogant = major_stress_impact_gain
+			ambitious = medium_stress_impact_gain
+		}
+		trigger = {
+			OR = {
+				has_trait = greedy
+				has_trait = humble
+				has_trait = content
+				has_trait = temperate
+			}
+		}
+		remove_short_term_gold = medium_gold_value
+		custom_tooltip = will_build_small_barrow_tt
+		custom_tooltip = will_construct_in_five_years_tt
+		set_variable = {
+			name = building_barrow
+			value = scope:background_terrain_scope
+		}
+		add_character_flag = barrow_small
+		begin_barrow_construction = { LOCATION = scope:background_terrain_scope FINAL_STAGE_VALUE = 1 }
+	}
+	
+	option = {	# A normal barrow
+		name = sjalvolki_decision.0011.b
+		
+		stress_impact = {
+			arrogant = medium_stress_impact_gain
+			ambitious = minor_stress_impact_gain
+			greedy = minor_stress_gain
+		}
+		remove_short_term_gold = major_gold_value
+		custom_tooltip = will_build_medium_barrow_tt
+		custom_tooltip = will_construct_in_ten_years_tt
+		set_variable = {
+			name = building_barrow
+			value = scope:background_terrain_scope
+		}
+		add_character_flag = barrow_medium
+		begin_barrow_construction = { LOCATION = scope:background_terrain_scope FINAL_STAGE_VALUE = 2 }
+	}
+	
+	option = {	# A big barrow
+		name = sjalvolki_decision.0011.c
+		
+		stress_impact = {
+			arrogant = minor_stress_impact_loss
+			ambitious = minor_stress_impact_loss
+			content = minor_stress_gain
+			temperate = minor_stress_gain
+			humble = medium_stress_impact_gain
+			greedy = medium_stress_impact_gain
+		}
+		remove_short_term_gold = massive_gold_value
+		custom_tooltip = will_build_big_barrow_tt
+		custom_tooltip = will_construct_in_fifteen_years_tt
+		set_variable = {
+			name = building_barrow
+			value = scope:background_terrain_scope
+		}
+		add_character_flag = barrow_big
+		begin_barrow_construction = { LOCATION = scope:background_terrain_scope FINAL_STAGE_VALUE = 3 }
+	}
+	
+	option = {	# A bloody huge barrow
+		name = sjalvolki_decision.0011.d
+		trait = ambitious
+		trait = arrogant
+		
+		stress_impact = {
+			arrogant = medium_stress_impact_loss
+			ambitious = medium_stress_impact_loss
+			content = medium_stress_gain
+			temperate = medium_stress_gain
+			humble = major_stress_impact_gain
+			greedy = major_stress_impact_gain
+		}
+		remove_short_term_gold = monumental_gold_value
+		custom_tooltip = will_build_huge_barrow_tt
+		custom_tooltip = will_construct_in_thirty_years_tt
+		set_variable = {
+			name = building_barrow
+			value = scope:background_terrain_scope
+		}
+		add_character_flag = barrow_huge
+		begin_barrow_construction = { LOCATION = scope:background_terrain_scope FINAL_STAGE_VALUE = 5 }
+	}
+	
+	# Actually, nevermind
+	option = {
+		name = sjalvolki_decision.0001.e
+
+		# Give the initial deposit back
+		add_gold = var:found_barrow_refund
+		remove_variable = found_barrow_refund
+		
+		ai_chance = {
+			base = 0
+		}
+	}
+	
+	# Run some mild clean-up.
+	after = {
+		# Clean-up the refund value.
+		remove_variable = found_barrow_refund
+		
+		hidden_effect = {
+			scope:barrow_overseer = {
+				death = {
+					death_reason = death_vanished
+				}
+			}
+		}
+	}
+}
+
+##################################################
+# Barrow progresses to next stage
+# by Hapchazzard
+# 0101 - 0110
+##################################################
+
+scripted_effect upgrade_barrow_construction_level_effect = {
+	save_temporary_scope_as = barrow_province
+	change_variable = {
+		name = barrow_construction_stage
+		add = 1
+	}
+	remove_province_modifier = province_modifier_barrow_unfinished
+	add_province_modifier = {
+		modifier = province_modifier_barrow_unfinished
+		desc = province_modifier_barrow_unfinished_custom_desc
+	}
+	set_variable = {
+		name = barrow_construction_cooldown
+		years = 5
+	}
+}
+
+sjalvolki_decision.0101 = {
+	type = character_event
+	title = sjalvolki_decision.0101.t
+	left_portrait = {
+		character = root
+		animation = happiness
+	}
+	desc = sjalvolki_decision.0101.desc
+	theme = faith
+	override_background = {
+		event_background = fp1_runestone
+	}
+	
+	immediate = {
+		var:barrow_being_constructed = { 
+			save_scope_as = barrow_province
+			county = { save_scope_as = barrow_county }
+		}
+		hidden_effect = {	# Execute the effect to actually upgrade the place
+			scope:barrow_province = { upgrade_barrow_construction_level_effect = yes }
+		}
+	}
+	
+	# Actually, nevermind
+	option = {
+		name = sjalvolki_decision.0101.k
+		
+		ai_chance = {
+			base = 0
+		}
+	}
+}
+
+##################################################
+# A Barrow is finished!
+# by Hapchazzard
+# 0201 - 0210
+##################################################
+
+scripted_effect finish_barrow_construction = {
+	save_temporary_scope_as = barrow_province
+	remove_province_modifier = province_modifier_barrow_unfinished
+	if = {
+		limit = { var:barrow_construction_final_stage = 1 }
+		add_province_modifier = {
+			modifier = province_modifier_barrow_small
+			desc = province_modifier_barrow_custom_desc
+		}
+		dynasty = { add_dynasty_prestige = miniscule_dynasty_prestige_value }
+		add_prestige = minor_prestige_value
+	}
+	if = {
+		limit = { var:barrow_construction_final_stage = 2 }
+		add_province_modifier = {
+			modifier = province_modifier_barrow_medium
+			desc = province_modifier_barrow_unfinished_custom_desc
+		}
+		dynasty = { add_dynasty_prestige = minor_dynasty_prestige_value }
+		add_prestige = medium_prestige_value
+	}
+	if = {
+		limit = { var:barrow_construction_final_stage = 3 }
+		add_province_modifier = {
+			modifier = province_modifier_barrow_large
+			desc = province_modifier_barrow_unfinished_custom_desc
+		}
+		dynasty = { add_dynasty_prestige = medium_dynasty_prestige_value }
+		add_prestige = major_prestige_value
+	}
+	if = {
+		limit = { var:barrow_construction_final_stage = 5 }
+		add_province_modifier = {
+			modifier = province_modifier_barrow_huge
+			desc = province_modifier_barrow_unfinished_custom_desc
+		}
+		dynasty = { add_dynasty_prestige = major_dynasty_prestige_value }
+		add_prestige = massive_prestige_value
+	}
+	remove_variable = barrow_construction_stage
+	remove_variable = barrow_construction_final_stage
+	remove_variable = current_barrow_builder
+	remove_variable = original_barrow_builder
+}
+
+sjalvolki_decision.0201 = {
+	type = character_event
+	title = sjalvolki_decision.0201.t
+	left_portrait = {
+		character = root
+		animation = happiness
+	}
+	desc = {
+		desc = sjalvolki_decision.0201.desc.intro
+		triggered_desc = {
+			desc = sjalvolki_decision.0201.desc.small
+			trigger = { scope:barrow_province = { var:barrow_construction_final_stage = 1 } }
+		}
+		triggered_desc = {
+			desc = sjalvolki_decision.0201.desc.medium
+			trigger = { scope:barrow_province = { var:barrow_construction_final_stage = 2 } }
+		}
+		triggered_desc = {
+			desc = sjalvolki_decision.0201.desc.large
+			trigger = { scope:barrow_province = { var:barrow_construction_final_stage = 3 } }
+		}
+		triggered_desc = {
+			desc = sjalvolki_decision.0201.desc.huge
+			trigger = { scope:barrow_province = { var:barrow_construction_final_stage > 3 } }
+		}
+		desc = sjalvolki_decision.0201.desc.mid
+	}
+	theme = faith
+	override_background = {
+		event_background = fp1_runestone
+	}
+	
+	immediate = {
+		var:barrow_being_constructed = { 
+			save_scope_as = barrow_province
+			county = { save_scope_as = barrow_county }
+		}
+		hidden_effect = {
+			scope:barrow_province = { finish_barrow_construction = yes }
+		}
+	}
+	
+	option = {
+		name = sjalvolki_decision.0201.a
+		
+		add_prestige = medium_prestige_value
+		dynasty = { add_dynasty_prestige = miniscule_dynasty_prestige_value }
+		remove_short_term_gold = medium_gold_value
+	}
+	option = {
+		name = sjalvolki_decision.0201.b
+		
+		add_prestige = major_prestige_value
+		dynasty = { add_dynasty_prestige = minor_dynasty_prestige_value }
+		remove_short_term_gold = major_gold_value
+	}
+	option = {
+		name = sjalvolki_decision.0201.c
+		trait = ambitious
+		trait = arrogant
+		
+		trigger = {
+			OR = {
+				has_trait = ambitious
+				has_trait = arrogant
+			}
+		}
+		
+		add_prestige = massive_prestige_value
+		dynasty = { add_dynasty_prestige = medium_dynasty_prestige_value }
+		remove_short_term_gold = massive_gold_value
+	}
+	# Extremely greedy characters will want to take their entire treasury to the grave
+	option = {
+		name = sjalvolki_decision.0201.d
+		trait = greedy
+		
+		#trigger = {
+		#	has_trait = greedy
+		#}
+		
+		custom_tooltip = will_take_treasury_to_grave_tt
+	}
+}
+
+##################################################
+# Yearly Maintenance: a check of each barrow under construction
+# by Hapchazzard
+# 1001 - 1010
+##################################################
+
+sjalvolki_decision.1001 = {
+	type = empty
+	hidden = yes
+	
+	immediate = {
+		every_in_global_list = {	# Check if any barrows are ready to advance to the next construction stage
+			variable = provinces_with_active_barrow_construction
+			limit = { 
+				#NOT = { has_variable = barrow_construction_cooldown }
+				has_variable = current_barrow_builder	# Make sure there's actually someone actively building them.
+			}
+			if = {
+				limit = { var:barrow_construction_stage.compare_value >= var:barrow_construction_final_stage }
+				var:current_barrow_builder = {
+					set_variable = {	# Save this for convenience purposes
+						name = barrow_being_constructed
+						value = prev
+						days = 370
+					}
+					trigger_event = {
+						id = sjalvolki_decision.0201
+						days = { 1 2 }
+					}
+				}
+			}
+			else = {
+				var:current_barrow_builder = {
+					set_variable = {	# Save this for convenience purposes
+						name = barrow_being_constructed
+						value = prev
+						days = 370
+					}
+					trigger_event = {
+						id = sjalvolki_decision.0101
+						days = { 1 2 }
+					}
+				}
+			}
+		}
+	}
+}

@@ -1,6 +1,6 @@
 ﻿quwazaw_religion = {
 	family = gh_sarradonian
-	doctrine = standard_hostility_doctrine
+	doctrine = sarradonian_hostility_doctrine
 	doctrine = doctrine_polygamy
 	doctrine = doctrine_gender_equal
 	doctrine = doctrine_consanguinity_aunt_nephew_and_uncle_niece
@@ -10,7 +10,7 @@
 
 	doctrine = doctrine_adultery_men_shunned
 	doctrine = doctrine_adultery_women_shunned
-	doctrine = doctrine_kinslaying_shunned
+	doctrine = doctrine_kinslaying_any_dynasty_member_crime
 
 	doctrine = doctrine_deviancy_crime
 	
@@ -19,11 +19,10 @@
 	doctrine = doctrine_pluralism_righteous
 	doctrine = doctrine_theocracy_lay_clergy
 	
-	#Belief
 	doctrine = doctrine_sacred_scriptures
 	doctrine = doctrine_polytheistic
 	doctrine = doctrine_aeonic
-	doctrine = doctrine_cyclic
+	doctrine = doctrine_theistic_creation
 	doctrine = doctrine_spirits
 	doctrine = doctrine_prophets
 	doctrine = doctrine_judgement_day
@@ -186,18 +185,18 @@
 		ReligiousText = quwazaw_religious_text
 		ReligiousHeadName = quwazaw_religious_head_title
 		ReligiousHeadTitleName = quwazaw_religious_head_title_name
-		DevoteeMale = quwazaw_devotee
-		DevoteeMalePlural = quwazaw_devotee_plural
-		DevoteeFemale = quwazaw_devotee
-		DevoteeFemalePlural = quwazaw_devotee_plural
-		DevoteeNeuter = quwazaw_devotee
-		DevoteeNeuterPlural = quwazaw_devotee_plural
-		PriestMale = quwazaw_priest
-		PriestMalePlural = quwazaw_priest_plural
-		PriestFemale = quwazaw_priest
-		PriestFemalePlural = quwazaw_priest_plural
-		PriestNeuter = quwazaw_priest
-		PriestNeuterPlural = quwazaw_priest_plural
+		DevoteeMale = quwazaw_devotee_male
+		DevoteeMalePlural = quwazaw_devotee_male_plural
+		DevoteeFemale = quwazaw_devotee_female
+		DevoteeFemalePlural = quwazaw_devotee_female_plural
+		DevoteeNeuter = quwazaw_devotee_neuter
+		DevoteeNeuterPlural = quwazaw_devotee_neuter_plural
+		PriestMale = quwazaw_priest_male
+		PriestMalePlural = quwazaw_priest_male_plural
+		PriestFemale = quwazaw_priest_female
+		PriestFemalePlural = quwazaw_priest_female_plural
+		PriestNeuter = quwazaw_priest_alternate
+		PriestNeuterPlural = quwazaw_priest_alternate_plural
 		AltPriestTermPlural = quwazaw_priest_alternate_plural
 		BishopMale = quwazaw_bishop
 		BishopMalePlural = quwazaw_bishop_plural
@@ -212,7 +211,8 @@
 		DeathDeityNamePossessive = quwazaw_death_deity_name_possessive
 		DeathDeitySheHe = CHARACTER_SHEHE_HE
 		DeathDeityHerHis = CHARACTER_HERHIS_HIS
-		WitchGodName = christianity_witchgodname_iblis
+		WitchGodName = quwazaw_witchgodname
+		WitchGodNamePossessive = quwazaw_witchgodname_possessive
 		WitchGodHerHis = CHARACTER_HERHIS_HIS
 		WitchGodSheHe = CHARACTER_SHEHE_HE
 		WitchGodHerHim = CHARACTER_HERHIM_HIM
@@ -230,9 +230,7 @@
 		quwazaw = { #sarradonian religion
 			color = { 0.8 0.8 0.6 }
 			icon = quwazaw_icon
-			religious_head = d_quwazaw_rel
 
-			holy_site = sulamaniyah
 			holy_site = fendikyah
 			holy_site = ifralimane
 			holy_site = gharstir

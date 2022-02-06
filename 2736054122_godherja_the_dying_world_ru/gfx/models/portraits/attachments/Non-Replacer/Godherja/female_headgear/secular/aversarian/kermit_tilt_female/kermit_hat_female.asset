@@ -1,0 +1,19 @@
+pdxmesh = {
+	name = "kermit_hat_female_mesh"
+	file = "kermit_hat_female.mesh"
+
+	meshsettings = {
+		name = "kermit_t_femaleShape"
+		index = 0
+		texture_diffuse = "kermit_zcolor.dds"
+		texture_normal = "kermit_znormal.dds"
+		texture_specular = "kermit_zproperties.dds"
+		shader = "portrait_attachment"
+		shader_file = "gfx/FX/jomini/portrait.shader"
+	}
+}
+
+entity = {
+	name = "kermit_hat_female_entity"
+	pdxmesh = "kermit_hat_female_mesh"
+}

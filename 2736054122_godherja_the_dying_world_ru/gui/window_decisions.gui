@@ -4,8 +4,7 @@ window = {
 	layer = windows_layer
 	movable = no
 
-	datacontext = "[GetScriptedGui('artifacts_gui_toggle')]"
-	visible = "[And(IsGameViewOpen('decisions'), Not(ScriptedGui.IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)))]"
+	visible = "[IsGameViewOpen('decisions')]"
 
 	using = Window_Size_MainTab
 
@@ -28,12 +27,8 @@ window = {
 		margin = { 0 26 }
 		margin_right = 20
 
-		# using = Window_Background
-
 		widget = {
 			size = { 100% 100% }
-
-			# using = Window_Decoration_Thin
 
 			vbox = {
 				using = Window_Margins
@@ -51,15 +46,35 @@ window = {
 						onclick = "[DecisionsView.Close]"
 					}
 				}
+				
+				hbox = {
+					layoutpolicy_horizontal = expanding
 
+					button_tab = {
+						layoutpolicy_horizontal = expanding
+						text = "Decisions"
+						
+						onclick = "[GetVariableSystem.Set( 'decision_view_tabs', 'decisions' )]"
+						down = "[Not(GetVariableSystem.HasValue( 'decision_view_tabs', 'situations' ))]"
+					}
+
+					button_tab = {
+						layoutpolicy_horizontal = expanding
+						text = "Situations"
+						
+						onclick = "[GetVariableSystem.Set( 'decision_view_tabs', 'situations' )]"
+						down = "[GetVariableSystem.HasValue( 'decision_view_tabs', 'situations' )]"
+					}
+				}
 
 				scrollbox = {
 					name = "decision_scrollarea"
+					visible = "[Not(GetVariableSystem.HasValue( 'decision_view_tabs', 'situations' ))]"
 					layoutpolicy_horizontal = expanding
 					layoutpolicy_vertical = expanding
 
 					background = {
-						texture = "gfx/interface/illustrations/event_scenes/councilchamber.dds"
+						texture = "gfx/interface/skinned/illustrations/decisions.dds"
 						margin = { -5 0 }
 						fittype = end
 						alpha = 0.4
@@ -154,14 +169,992 @@ window = {
 						}
 					}
 				}
+				
+				## Situations
+				
+				scrollbox = {
+					name = "situations_scrollarea"
+					visible = "[GetVariableSystem.HasValue( 'decision_view_tabs', 'situations' )]"
+					layoutpolicy_horizontal = expanding
+					layoutpolicy_vertical = expanding
+
+					background = {
+						texture = "gfx/interface/skinned/illustrations/decisions.dds"
+						margin = { -5 0 }
+						fittype = end
+						alpha = 0.4
+						framesize = { 1200 848 }
+
+						modify_texture = {
+							texture = "gfx/interface/component_masks/mask_fade_vertical_up.dds"
+							blend_mode = alphamultiply
+						}
+					}
+
+					blockoverride "scrollbox_content"
+					{
+						name = "decisions_main_container"
+						spacing = 20
+
+						vbox = {
+							layoutpolicy_horizontal = expanding
+							spacing = 10
+
+							text_label_center = {
+								text = "Global Situations"
+							}
+
+							text_single = {
+								visible = "[IsDataModelEmpty(GetGlobalList('global_story_cycle_list'))]"
+								text = "No Global Situations"
+								default_format = "#low;italic"
+							}
+							
+							vbox = {
+								name = "global_situations"
+								datamodel = "[GetGlobalList('global_story_cycle_list')]"
+								layoutpolicy_horizontal = expanding
+								spacing = 5
+
+								item = {
+									vbox = {
+										datacontext = "[Scope.Story]"
+										
+										layoutpolicy_horizontal = expanding
+										icon = {
+											name = "tile_frame_top"
+											texture = "gfx/interface/skinned/component_decoration/decoration_frame_top.dds"
+											spriteType = Corneredtiled
+											spriteborder = { 100 0 }
+											texture_density = 2
+											size = { 540 15 }
+										}
+										hbox = {
+											layoutpolicy_horizontal = expanding
+											margin_left = 30
+											
+											hbox = {
+												layoutpolicy_horizontal = expanding
+												margin_right = 25
+												margin_left = 40
+												
+												widget = {
+													vbox = {
+														layoutpolicy_vertical = expanding
+														
+														margin_bottom = 10
+														
+														text_single = {
+															text = "[Localize(Concatenate(Scope.Var('story_name').GetFlagName,'_story_name'))]"
+															default_format = "#high"
+															using = Font_Size_Big
+															fontsize = 26
+														}
+														
+														expand = {}
+														
+														text_single = {
+															visible = "[Scope.Var('story_start_year').IsSet]"
+															layoutpolicy_horizontal = expanding
+															margin_left = 10
+														
+															text = "#weak Began [Scope.Var('story_start_year').GetValue|0]#!"
+															default_format = "#low"
+															using = Font_Size_Small
+														}
+													}
+												}
+												
+												expand = {}
+												
+												highlight_icon = {
+													size = { 250 70 }
+													
+													mirror = horizontal
+													texture = "[GetDecisionWithKey(Concatenate(Scope.Var('story_decision_illustration').GetFlagName,'_decision')).GetPicture]"
+													alpha = 0.9
+										
+													tintcolor = { 0.6 0.6 0.6 0.7 }
+										
+													using = Mask_Rough_Edges
+										
+													modify_texture = {
+														texture = "gfx/interface/component_masks/mask_fade_horizontal_extended.dds"
+														blend_mode = alphamultiply
+													}
+												}
+											}
+											background = {
+												using = Background_Area_Solid
+												margin_left = -25
+												margin_right = -25
+											}
+										}
+										
+										# Progressbars
+										
+										hbox = {
+											name = "situation_progress_bar"
+											
+											visible = "[Scope.Var('primary_progressbar_variable').IsSet]"
+											
+											layoutpolicy_horizontal = expanding
+											margin_top = -50
+								
+											hbox = {
+												size = { 100% 104 }
+								
+												tooltip = "#T [Localize(Concatenate(Scope.Var('primary_progressbar_variable').GetFlagName,'_name'))]: [Select_CFixedPoint(Scope.Var(Scope.Var('primary_progressbar_variable').GetFlagName).IsSet, Scope.Var(Scope.Var('primary_progressbar_variable').GetFlagName).GetValue, Scope.ScriptValue(Scope.Var('primary_progressbar_variable').GetFlagName))|0]/[Select_CFixedPoint(Scope.Var(Scope.Var('primary_progressbar_variable').GetFlagName).IsSet, Scope.Var(Concatenate(Scope.Var('primary_progressbar_variable').GetFlagName,'_maximum')).GetValue, Scope.ScriptValue(Concatenate(Scope.Var('primary_progressbar_variable').GetFlagName,'_maximum')))|0]#!"
+												using = tooltip_ne
+								
+												widget = {
+													size = { 100% 100% }
+								
+													hbox = {
+														margin_left = 45
+														margin_top = 47
+														widget = {
+															layoutpolicy_horizontal = expanding
+															layoutpolicy_vertical = expanding
+															layoutstretchfactor_horizontal = "[GetProgressBarValueMaxScaled( FixedPointToFloat(Select_CFixedPoint(Scope.Var(Scope.Var('primary_progressbar_variable').GetFlagName).IsSet, Scope.Var(Scope.Var('primary_progressbar_variable').GetFlagName).GetValue, Scope.ScriptValue(Scope.Var('primary_progressbar_variable').GetFlagName))), FixedPointToFloat(Select_CFixedPoint(Scope.Var(Scope.Var('primary_progressbar_variable').GetFlagName).IsSet, Scope.Var(Concatenate(Scope.Var('primary_progressbar_variable').GetFlagName,'_maximum')).GetValue, Scope.ScriptValue(Concatenate(Scope.Var('primary_progressbar_variable').GetFlagName,'_maximum')))), '(int32)79' )]"
+															
+															progressbar_situation = {
+																size = { 100% 12 }
+																visible = "[Not(Scope.Var(Concatenate(Scope.Var('primary_progressbar_variable').GetFlagName,'_tracker_color')).IsSet)]"
+								
+																using = Animation_ShowHide_Standard
+								
+																blockoverride "bar_color"
+																{
+																	texture = "gfx/interface/colors/orange.dds"
+																}
+								
+																blockoverride "bar_color_flow"
+																{
+																	texture = "gfx/interface/colors/white.dds"
+																	alpha = 0.3
+																}
+															}
+															
+															progressbar_situation = {
+																size = { 100% 12 }
+																visible = "[And(Scope.Var(Concatenate(Scope.Var('primary_progressbar_variable').GetFlagName,'_tracker_color')).IsSet, EqualTo_String(Scope.Var(Concatenate(Scope.Var('primary_progressbar_variable').GetFlagName,'_tracker_color')).GetFlagName, 'orange'))]"
+								
+																using = Animation_ShowHide_Standard
+								
+																blockoverride "bar_color"
+																{
+																	texture = "gfx/interface/colors/gold.dds"
+																}
+								
+																blockoverride "bar_color_flow"
+																{
+																	texture = "gfx/interface/colors/white.dds"
+																	alpha = 0.3
+																}
+															}
+															
+															progressbar_situation = {
+																size = { 100% 12 }
+																visible = "[And(Scope.Var(Concatenate(Scope.Var('primary_progressbar_variable').GetFlagName,'_tracker_color')).IsSet, EqualTo_String(Scope.Var(Concatenate(Scope.Var('primary_progressbar_variable').GetFlagName,'_tracker_color')).GetFlagName, 'gold'))]"
+								
+																using = Animation_ShowHide_Standard
+								
+																blockoverride "bar_color"
+																{
+																	texture = "gfx/interface/colors/gold.dds"
+																}
+								
+																blockoverride "bar_color_flow"
+																{
+																	texture = "gfx/interface/colors/white.dds"
+																	alpha = 0.3
+																}
+															}
+														}
+								
+														widget = {
+															layoutpolicy_horizontal = expanding
+															layoutpolicy_vertical = expanding
+															layoutstretchfactor_horizontal = "[GetProgressBarValueMaxOtherScaled( FixedPointToFloat(Select_CFixedPoint(Scope.Var(Scope.Var('primary_progressbar_variable').GetFlagName).IsSet, Scope.Var(Scope.Var('primary_progressbar_variable').GetFlagName).GetValue, Scope.ScriptValue(Scope.Var('primary_progressbar_variable').GetFlagName))), FixedPointToFloat(Select_CFixedPoint(Scope.Var(Scope.Var('primary_progressbar_variable').GetFlagName).IsSet, Scope.Var(Concatenate(Scope.Var('primary_progressbar_variable').GetFlagName,'_maximum')).GetValue, Scope.ScriptValue(Concatenate(Scope.Var('primary_progressbar_variable').GetFlagName,'_maximum')))), '(int32)79' )]"
+														}
+													}
+								
+													icon = {
+														size = { 98% 100% }
+														texture = "gfx/interface/window_decisions/situation_progressbar.dds"
+														
+														text_single = {
+															margin_top = 37
+															margin_left = 17
+															text = "[Concatenate('@',Concatenate(Scope.Var(Concatenate(Scope.Var('primary_progressbar_variable').GetFlagName,'_tracker_icon')).GetFlagName,'!'))]"
+														}
+													}
+												}
+											}
+										}
+										
+										vbox = {
+											margin_left = 25
+											margin_right = 25
+											
+											datacontext = "[Scope.Story]"
+											
+											text_multi = {
+												text = "[Localize(Concatenate(Scope.Var('story_name').GetFlagName,'_story_desc'))]"
+												layoutpolicy_horizontal = expanding
+												autoresize = yes
+												max_width = 450
+												margin_top = -30
+												margin_bottom = 10
+											}
+											
+											vbox = {
+												visible = "[DataModelHasItems(Scope.GetList('person_of_interest_type_list'))]"
+											
+												layoutpolicy_horizontal = expanding
+												
+												divider_light = {
+													layoutpolicy_horizontal = expanding
+												}
+												
+												text_single = {
+													text = "#weak #underline People of Interest#!#!"
+													align = center
+												}
+												
+												hbox = {
+													datamodel = "[Scope.GetList('person_of_interest_type_list_row_1')]"
+													visible = "[DataModelHasItems(Scope.GetList('person_of_interest_type_list_row_1'))]"
+													item = {
+														vbox = {
+															datamodel = "[Story.MakeScope.GetList(Scope.GetFlagName)]"
+															layoutpolicy_horizontal = expanding
+															margin_right = 10
+															item = {
+																vbox = {
+																	portrait_head = {
+																		name = "person_of_interest_portrait"
+																		datacontext = "[Scope.Char]"
+												
+																		blockoverride "coa" {}
+																		blockoverride "opinion_box"{}
+																	}
+																	text_multi = {
+																		text = "[Scope.Char.GetName]"
+																		layoutpolicy_horizontal = expanding
+																		align = center
+																	}
+																}
+															}
+															text_multi = {
+																text = "[Localize(Concatenate(Scope.GetFlagName, '_name'))]"
+																layoutpolicy_horizontal = expanding
+																align = center
+																default_format = "#high"
+															}
+														}
+													}
+												}
+												
+												hbox = {
+													datamodel = "[Scope.GetList('person_of_interest_type_list_row_2')]"
+													visible = "[DataModelHasItems(Scope.GetList('person_of_interest_type_list_row_2'))]"
+													item = {
+														vbox = {
+															datamodel = "[Story.MakeScope.GetList(Scope.GetFlagName)]"
+															layoutpolicy_horizontal = expanding
+															margin_right = 10
+															item = {
+																vbox = {
+																	portrait_head = {
+																		name = "person_of_interest_portrait"
+																		datacontext = "[Scope.Char]"
+												
+																		blockoverride "coa" {}
+																		blockoverride "opinion_box"{}
+																	}
+																	text_multi = {
+																		text = "[Scope.Char.GetName]"
+																		layoutpolicy_horizontal = expanding
+																		align = center
+																	}
+																}
+															}
+															text_multi = {
+																text = "[Localize(Concatenate(Scope.GetFlagName, '_name'))]"
+																layoutpolicy_horizontal = expanding
+																align = center
+																default_format = "#high"
+															}
+														}
+													}
+												}
+												
+												hbox = {
+													datamodel = "[Scope.GetList('person_of_interest_type_list_row_3')]"
+													visible = "[DataModelHasItems(Scope.GetList('person_of_interest_type_list_row_3'))]"
+													item = {
+														vbox = {
+															datamodel = "[Story.MakeScope.GetList(Scope.GetFlagName)]"
+															layoutpolicy_horizontal = expanding
+															margin_right = 10
+															item = {
+																vbox = {
+																	portrait_head = {
+																		name = "person_of_interest_portrait"
+																		datacontext = "[Scope.Char]"
+												
+																		blockoverride "coa" {}
+																		blockoverride "opinion_box"{}
+																	}
+																	text_multi = {
+																		text = "[Scope.Char.GetName]"
+																		layoutpolicy_horizontal = expanding
+																		align = center
+																	}
+																}
+															}
+															text_multi = {
+																text = "[Localize(Concatenate(Scope.GetFlagName, '_name'))]"
+																layoutpolicy_horizontal = expanding
+																align = center
+																default_format = "#high"
+															}
+														}
+													}
+												}
+											}
+											
+											vbox = {
+												visible = "[DataModelHasItems(Scope.GetList('tracked_powerbalance_faiths_list'))]"
+											
+												layoutpolicy_horizontal = expanding
+												
+												divider_light = {
+													layoutpolicy_horizontal = expanding
+												}
+												
+												text_single = {
+													text = "#weak #underline Powerbalance#!#!"
+													align = center
+												}
+												
+												spacer = {
+													size = { 10 10 }
+												}
+												
+												hbox = {
+													datamodel = "[Scope.GetList('tracked_powerbalance_faiths_list_row_1')]"
+													visible = "[DataModelHasItems(Scope.GetList('tracked_powerbalance_faiths_list_row_1'))]"
+													layoutpolicy_horizontal = expanding
+													margin_right = 10
+													
+													item = {
+														vbox = {
+															icon = {
+																name = "faith_icon"
+																texture = "[Scope.Faith.GetIcon]"
+																size = { 60 60 }
+															}
+															
+															text_multi = {
+																text = "[Scope.Faith.GetName]"
+																layoutpolicy_horizontal = expanding
+																align = center
+															}
+															
+															hbox = {
+																layoutpolicy_horizontal = expanding
+																
+																icon = {
+																	name = "faith_powerbalance_domain_icon"
+																	texture = "gfx/interface/icons/icon_domain.dds"
+																	size = { 25 25 }
+																}
+																
+																expand = {}
+																
+																text_single = {
+																	text = "[Scope.Faith.GetNumberOfCountiesOfFaith] ([Scope.ScriptValue('faith_county_number_percentage_value')|0]%)"
+																	layoutpolicy_horizontal = expanding
+																	align = right
+																}
+															}
+															
+															hbox = {
+																layoutpolicy_horizontal = expanding
+																
+																icon = {
+																	name = "faith_powerbalance_empire_icon"
+																	texture = "gfx/interface/coat_of_arms/crown_strip_115_gameconcept.dds"
+																	framesize = { 104 104 }
+
+																	frame = 5
+																	size = { 25 25 }
+																}
+																
+																expand = {}
+																
+																text_single = {
+																	text = "[Scope.ScriptValue('faith_emperors_number_value')|0] ([Scope.ScriptValue('faith_emperors_percentage_value')|0]%)"
+																	layoutpolicy_horizontal = expanding
+																	align = right
+																}
+															}
+															
+															hbox = {
+																layoutpolicy_horizontal = expanding
+																
+																icon = {
+																	name = "faith_powerbalance_kingdom_icon"
+																	texture = "gfx/interface/coat_of_arms/crown_strip_115_gameconcept.dds"
+																	framesize = { 104 104 }
+
+																	frame = 4
+																	size = { 25 25 }
+																}
+																
+																expand = {}
+																
+																text_single = {
+																	text = "[Scope.ScriptValue('faith_kings_number_value')|0] ([Scope.ScriptValue('faith_kings_percentage_value')|0]%)"
+																	layoutpolicy_horizontal = expanding
+																	align = right
+																}
+															}
+															
+															hbox = {
+																layoutpolicy_horizontal = expanding
+																
+																icon = {
+																	name = "faith_powerbalance_duchy_icon"
+																	texture = "gfx/interface/coat_of_arms/crown_strip_115_gameconcept.dds"
+																	framesize = { 104 104 }
+
+																	frame = 3
+																	size = { 25 25 }
+																}
+																
+																expand = {}
+																
+																text_single = {
+																	text = "[Scope.ScriptValue('faith_dukes_number_value')|0] ([Scope.ScriptValue('faith_dukes_percentage_value')|0]%)"
+																	layoutpolicy_horizontal = expanding
+																	align = right
+																}
+															}
+															
+															hbox = {
+																layoutpolicy_horizontal = expanding
+																
+																icon = {
+																	name = "faith_powerbalance_county_icon"
+																	texture = "gfx/interface/coat_of_arms/crown_strip_115_gameconcept.dds"
+																	framesize = { 104 104 }
+
+																	frame = 2
+																	size = { 25 25 }
+																}
+																
+																expand = {}
+																
+																text_single = {
+																	text = "[Scope.ScriptValue('faith_counts_number_value')|0] ([Scope.ScriptValue('faith_counts_percentage_value')|0]%)"
+																	layoutpolicy_horizontal = expanding
+																	align = right
+																}
+															}
+														}
+													}
+												}
+												
+												hbox = {
+													datamodel = "[Scope.GetList('tracked_powerbalance_faiths_list_row_2')]"
+													visible = "[DataModelHasItems(Scope.GetList('tracked_powerbalance_faiths_list_row_2'))]"
+													layoutpolicy_horizontal = expanding
+													margin_right = 10
+													margin_top = 10
+													
+													item = {
+														vbox = {
+															icon = {
+																name = "faith_icon"
+																texture = "[Scope.Faith.GetIcon]"
+																size = { 60 60 }
+															}
+															
+															text_multi = {
+																text = "[Scope.Faith.GetName]"
+																layoutpolicy_horizontal = expanding
+																align = center
+															}
+															
+															hbox = {
+																layoutpolicy_horizontal = expanding
+																
+																icon = {
+																	name = "faith_powerbalance_domain_icon"
+																	texture = "gfx/interface/icons/icon_domain.dds"
+																	size = { 25 25 }
+																}
+																
+																expand = {}
+																
+																text_single = {
+																	text = "[Scope.Faith.GetNumberOfCountiesOfFaith] ([Scope.ScriptValue('faith_county_number_percentage_value')|0]%)"
+																	layoutpolicy_horizontal = expanding
+																	align = right
+																}
+															}
+															
+															hbox = {
+																layoutpolicy_horizontal = expanding
+																
+																icon = {
+																	name = "faith_powerbalance_empire_icon"
+																	texture = "gfx/interface/coat_of_arms/crown_strip_115_gameconcept.dds"
+																	framesize = { 104 104 }
+
+																	frame = 5
+																	size = { 25 25 }
+																}
+																
+																expand = {}
+																
+																text_single = {
+																	text = "[Scope.ScriptValue('faith_emperors_number_value')|0] ([Scope.ScriptValue('faith_emperors_percentage_value')|0]%)"
+																	layoutpolicy_horizontal = expanding
+																	align = right
+																}
+															}
+															
+															hbox = {
+																layoutpolicy_horizontal = expanding
+																
+																icon = {
+																	name = "faith_powerbalance_kingdom_icon"
+																	texture = "gfx/interface/coat_of_arms/crown_strip_115_gameconcept.dds"
+																	framesize = { 104 104 }
+
+																	frame = 4
+																	size = { 25 25 }
+																}
+																
+																expand = {}
+																
+																text_single = {
+																	text = "[Scope.ScriptValue('faith_kings_number_value')|0] ([Scope.ScriptValue('faith_kings_percentage_value')|0]%)"
+																	layoutpolicy_horizontal = expanding
+																	align = right
+																}
+															}
+															
+															hbox = {
+																layoutpolicy_horizontal = expanding
+																
+																icon = {
+																	name = "faith_powerbalance_duchy_icon"
+																	texture = "gfx/interface/coat_of_arms/crown_strip_115_gameconcept.dds"
+																	framesize = { 104 104 }
+
+																	frame = 3
+																	size = { 25 25 }
+																}
+																
+																expand = {}
+																
+																text_single = {
+																	text = "[Scope.ScriptValue('faith_dukes_number_value')|0] ([Scope.ScriptValue('faith_dukes_percentage_value')|0]%)"
+																	layoutpolicy_horizontal = expanding
+																	align = right
+																}
+															}
+															
+															hbox = {
+																layoutpolicy_horizontal = expanding
+																
+																icon = {
+																	name = "faith_powerbalance_county_icon"
+																	texture = "gfx/interface/coat_of_arms/crown_strip_115_gameconcept.dds"
+																	framesize = { 104 104 }
+
+																	frame = 2
+																	size = { 25 25 }
+																}
+																
+																expand = {}
+																
+																text_single = {
+																	text = "[Scope.ScriptValue('faith_counts_number_value')|0] ([Scope.ScriptValue('faith_counts_percentage_value')|0]%)"
+																	layoutpolicy_horizontal = expanding
+																	align = right
+																}
+															}
+														}
+													}
+												}
+												
+												hbox = {
+													datamodel = "[Scope.GetList('tracked_powerbalance_faiths_list_row_3')]"
+													visible = "[DataModelHasItems(Scope.GetList('tracked_powerbalance_faiths_list_row_3'))]"
+													layoutpolicy_horizontal = expanding
+													margin_right = 10
+													margin_top = 10
+													
+													item = {
+														vbox = {
+															icon = {
+																name = "faith_icon"
+																texture = "[Scope.Faith.GetIcon]"
+																size = { 60 60 }
+															}
+															
+															text_multi = {
+																text = "[Scope.Faith.GetName]"
+																layoutpolicy_horizontal = expanding
+																align = center
+															}
+															
+															hbox = {
+																layoutpolicy_horizontal = expanding
+																
+																icon = {
+																	name = "faith_powerbalance_domain_icon"
+																	texture = "gfx/interface/icons/icon_domain.dds"
+																	size = { 25 25 }
+																}
+																
+																expand = {}
+																
+																text_single = {
+																	text = "[Scope.Faith.GetNumberOfCountiesOfFaith] ([Scope.ScriptValue('faith_county_number_percentage_value')|0]%)"
+																	layoutpolicy_horizontal = expanding
+																	align = right
+																}
+															}
+															
+															hbox = {
+																layoutpolicy_horizontal = expanding
+																
+																icon = {
+																	name = "faith_powerbalance_empire_icon"
+																	texture = "gfx/interface/coat_of_arms/crown_strip_115_gameconcept.dds"
+																	framesize = { 104 104 }
+
+																	frame = 5
+																	size = { 25 25 }
+																}
+																
+																expand = {}
+																
+																text_single = {
+																	text = "[Scope.ScriptValue('faith_emperors_number_value')|0] ([Scope.ScriptValue('faith_emperors_percentage_value')|0]%)"
+																	layoutpolicy_horizontal = expanding
+																	align = right
+																}
+															}
+															
+															hbox = {
+																layoutpolicy_horizontal = expanding
+																
+																icon = {
+																	name = "faith_powerbalance_kingdom_icon"
+																	texture = "gfx/interface/coat_of_arms/crown_strip_115_gameconcept.dds"
+																	framesize = { 104 104 }
+
+																	frame = 4
+																	size = { 25 25 }
+																}
+																
+																expand = {}
+																
+																text_single = {
+																	text = "[Scope.ScriptValue('faith_kings_number_value')|0] ([Scope.ScriptValue('faith_kings_percentage_value')|0]%)"
+																	layoutpolicy_horizontal = expanding
+																	align = right
+																}
+															}
+															
+															hbox = {
+																layoutpolicy_horizontal = expanding
+																
+																icon = {
+																	name = "faith_powerbalance_duchy_icon"
+																	texture = "gfx/interface/coat_of_arms/crown_strip_115_gameconcept.dds"
+																	framesize = { 104 104 }
+
+																	frame = 3
+																	size = { 25 25 }
+																}
+																
+																expand = {}
+																
+																text_single = {
+																	text = "[Scope.ScriptValue('faith_dukes_number_value')|0] ([Scope.ScriptValue('faith_dukes_percentage_value')|0]%)"
+																	layoutpolicy_horizontal = expanding
+																	align = right
+																}
+															}
+															
+															hbox = {
+																layoutpolicy_horizontal = expanding
+																
+																icon = {
+																	name = "faith_powerbalance_county_icon"
+																	texture = "gfx/interface/coat_of_arms/crown_strip_115_gameconcept.dds"
+																	framesize = { 104 104 }
+
+																	frame = 2
+																	size = { 25 25 }
+																}
+																
+																expand = {}
+																
+																text_single = {
+																	text = "[Scope.ScriptValue('faith_counts_number_value')|0] ([Scope.ScriptValue('faith_counts_percentage_value')|0]%)"
+																	layoutpolicy_horizontal = expanding
+																	align = right
+																}
+															}
+														}
+													}
+												}
+											}
+											
+											vbox = {
+												datamodel = "[Scope.GetList('tracked_story_variables')]"
+												visible = "[DataModelHasItems(Scope.GetList('tracked_story_variables'))]"
+											
+												layoutpolicy_horizontal = expanding
+												
+												divider_light = {
+													layoutpolicy_horizontal = expanding
+												}
+												
+												text_single = {
+													text = "#weak Statistics#!"
+													align = center
+												}
+												
+												item = {
+													hbox = {
+														layoutpolicy_horizontal = expanding
+														margin_right = 10
+														text_single = {
+															text = "[Localize(Concatenate(Scope.GetFlagName,'_name'))]:"
+															layoutpolicy_horizontal = expanding
+															align = left
+														}
+														
+														expand = {}
+														
+														text_single = {
+															text = "[Story.MakeScope.GetVariable(Scope.GetFlagName).GetValue|0]"
+															layoutpolicy_horizontal = expanding
+															align = right
+														}
+													}
+												}
+											}
+											
+											background = {
+												using = Background_Area_Solid
+												margin_top = 45
+												margin_bottom = 10
+												alpha = 0.6
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
 			}
 		}
 	}
 }
 
-types Decisions
+ types Decisions
+ {
+ 	type button_decision_entry = button_standard {
+ 		size = { 300 45 }
+ 		tooltip = SHOW_DECISION_TOOLTIP
+
+ 		highlight_icon = {
+ 			name = "icon"
+ 			position = { 5 5 }
+ 			size = { 40 40 }
+ 			texture = "[Decision.GetIcon]"
+ 			visible = no
+ 		}
+
+		widget = {
+ 			scissor = yes
+ 			parentanchor = right|top
+
+ 			block "size_illustration" {
+ 				size = { 250 43 }
+ 			}
+
+ 			icon = {
+ 				name = "illustration"
+ 				parentanchor = right|top
+ 				size = { 250 100 }
+
+ 				mirror = horizontal
+ 				texture = "[Decision.GetPicture]"
+ 				alpha = 0.7
+
+ 				visible = "[Decision.IsPossibleForPlayer]"
+
+ 				using = Mask_Rough_Edges
+
+ 				modify_texture = {
+ 					texture = "gfx/interface/component_masks/mask_fade_horizontal_extended.dds"
+ 					blend_mode = alphamultiply
+ 				}
+ 			}
+
+ 			highlight_icon = {
+ 				parentanchor = right|top
+ 				size = { 250 100 }
+
+ 				mirror = horizontal
+ 				texture = "[Decision.GetPicture]"
+ 				alpha = 0.7
+
+ 				visible = "[Not(Decision.IsPossibleForPlayer)]"
+
+ 				effectname = "GreyedOut"
+
+ 				tintcolor = { 0.6 0.6 0.6 0.7 }
+
+ 				using = Mask_Rough_Edges
+
+ 				modify_texture = {
+ 					texture = "gfx/interface/component_masks/mask_fade_horizontal_extended.dds"
+ 					blend_mode = alphamultiply
+ 				}
+ 			}
+ 		}
+
+ 		hbox = {
+ 			margin = { 20 0 }
+ 			margin_right = 10
+
+ 			text_single = {
+ 				layoutpolicy_horizontal = growing
+ 				name = "title"
+ 				text = "[Decision.GetTitleForPlayer]"
+ 				visible = "[Decision.IsPossibleForPlayer]"
+ 				default_format = "#clickable"
+ 				align = nobaseline
+ 			}
+
+ 			text_single = {
+ 				layoutpolicy_horizontal = growing
+ 				name = "title2"
+ 				text = "[Decision.GetTitleForPlayer]"
+ 				visible = "[Not(Decision.IsPossibleForPlayer)]"
+ 				block "default_format" {
+ 					default_format = "#low"
+ 				}
+ 				align = nobaseline
+ 			}
+
+ 			highlight_icon = {
+ 				size = { 30 30 }
+ 				name = "not_possible"
+ 				texture = "gfx/interface/icons/symbols/icon_cross.dds"
+ 				visible = "[Not(Decision.IsPossibleForPlayer)]"
+ 			}
+ 		}
+ 	}
+	
+	type progressbar_situation = icon {
+		shaderfile = "gfx/FX/repeat_texture.shader"
+		alpha = 0.8
+
+		block "bar_color"
+		{
+			# texture = "gfx/interface/colors/red.dds"
+		}
+
+		modify_texture = {
+			texture = "gfx/interface/component_masks/mask_rough_edges.dds"
+			spriteType = Corneredtiled
+			spriteborder = { 20 20 }
+			blend_mode = alphamultiply
+			texture_density = 5
+		}
+
+		modify_texture = {
+			texture = "gfx/interface/component_masks/mask_fade_horizontal.dds"
+			blend_mode = alphamultiply
+			alpha = 0.3
+		}
+
+		modify_texture = {
+			texture = "gfx/interface/component_masks/mask_scratches.dds"
+			blend_mode = alphamultiply
+			spriteType = corneredtiled
+			alpha = 0.3
+			texture_density = 3
+		}
+
+		modify_texture = {
+			name = "flash"
+			texture = "gfx/interface/colors/white.dds"
+			blend_mode = colordodge
+			alpha = 0
+		}
+
+		modify_texture = {
+			name = "clouds"
+			texture = "gfx/interface/component_masks/mask_clouds_solid.dds"
+			blend_mode = mask
+			spriteType = corneredtiled
+			texture_density = 1
+		}
+
+		modify_texture = {
+			block "bar_color_flow"
+			{
+				# texture = "gfx/interface/colors/yellow.dds"
+				alpha = 0.3
+			}
+			blend_mode = colordodge
+		}
+
+		state = {
+			name = a
+			next = b
+			trigger_on_create = yes
+
+			modify_texture = {
+				name = "clouds"
+				translate_uv = { 1 0 }
+			}
+		}
+
+		state = {
+			name = b
+			next = a
+			duration = 15
+
+			modify_texture = {
+				name = "clouds"
+				translate_uv = { -1 0 }
+			}
+		}
+	}
+ }
+ 
+types Court
 {
-	type button_decision_entry = button_standard {
+	type button_court = button_standard {
 		size = { 300 45 }
 		tooltip = SHOW_DECISION_TOOLTIP
 
@@ -194,9 +1187,21 @@ types Decisions
 
 				using = Mask_Rough_Edges
 
+				# modify_texture = {
+				# 	texture = "gfx/interface/component_masks/mask_fade_horizontal_extended.dds"
+				# 	blend_mode = alphamultiply
+				# }
 				modify_texture = {
-					texture = "gfx/interface/component_masks/mask_fade_horizontal_extended.dds"
+					texture = "gfx/interface/component_masks/mask_fade_horizontal_right.dds"
 					blend_mode = alphamultiply
+					alpha = 1
+
+				}
+				modify_texture = {
+					texture = "gfx/interface/component_masks/mask_fade_horizontal_right.dds"
+					blend_mode = alphamultiply
+					alpha = 0.5
+
 				}
 			}
 

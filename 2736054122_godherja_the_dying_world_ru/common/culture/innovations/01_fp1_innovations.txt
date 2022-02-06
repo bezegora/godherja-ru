@@ -15,8 +15,6 @@
 @weapons_and_armor_01 = "gfx/interface/icons/culture_innovations/innovation_weapons_and_armor_01.dds"
 @weapons_and_armor_02 = "gfx/interface/icons/culture_innovations/innovation_weapons_and_armor_02.dds"
 @knight = "gfx/interface/icons/culture_innovations/innovation_knight.dds"
-@hird = "gfx/interface/icons/culture_innovations/innovation_hird.dds"
-@longboats = "gfx/interface/icons/culture_innovations/innovation_longboats.dds"
 @majesty_01 = "gfx/interface/icons/culture_innovations/innovation_majesty_01.dds"
 @majesty_02 = "gfx/interface/icons/culture_innovations/innovation_majesty_02.dds"
 @majesty_03 = "gfx/interface/icons/culture_innovations/innovation_majesty_03.dds"
@@ -31,37 +29,20 @@
 @special_maa_01 = "gfx/interface/icons/culture_innovations/innovation_special_maa_01.dds"
 @special_maa_02 = "gfx/interface/icons/culture_innovations/innovation_special_maa_02.dds"
 
+innovation_marcher_adventurers = {
+	group = culture_group_regional
+	culture_era = culture_era_early_medieval
+	icon = @maa_01
 
-# Culture-Specific Innovations
-#innovation_varangian_adventurers = {
-	#group = culture_group_regional
-	#culture_era = culture_era_tribal
-	#icon = @hird
-	
-	#potential = {
-		#has_fp1_dlc_trigger = yes
-		#always = no
-		#NOT = { has_cultural_era_or_later = culture_era_early_medieval }
+	potential = {
+		OR = {
+			# Marcher
+			this.culture_group = culture_group:gh_marcher_group
+		}
 	}
-	
-	#custom = unlock_varangian_adventurer_cb
-	
-	#flag = global_regional
-	#flag = tribal_era_regional
-}
 
-# Regional Innovations
-#innovation_all_things = {
-	#group = culture_group_regional
-	#culture_era = culture_era_tribal
-	#region = world_europe_north
-	#icon = @raised_banner
-
-	#potential = { has_fp1_dlc_trigger = yes }
-
-	#custom = unlocks_authority_cooldown_breaking
-	#modifier = { tribal_government_vassal_opinion = 5 }
-
-	#flag = global_regional
-	#flag = tribal_era_regional
+	modifier = {
+		levy_size = -0.2
+		monthly_income = 0.2
+	}
 }

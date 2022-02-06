@@ -1,0 +1,53 @@
+﻿create_alliance_with_title_or_synonym = {
+	if = {
+		limit = { 
+			# Make sure not to ally yourself
+			NOT = {
+				any_held_title = {
+					OR = {
+						this = $TITLE$
+						trigger_if = {
+							limit = { has_variable_list = title_synonyms }
+							any_in_list = {
+								variable = title_synonyms
+								this = $TITLE$
+							}
+						}
+						trigger_else = { always = no }
+					}
+				}
+			}
+		}
+		if = {
+			limit = { $TITLE$ = { is_title_created = yes } }
+			$TITLE$ = { holder = { save_scope_as = holder_to_ally } }
+		}
+		else_if = {
+			limit = {
+				trigger_if = {
+					limit = { $TITLE$ = { has_variable_list = title_synonyms } }
+					any_in_list = {
+						variable = title_synonyms
+						exists = holder
+					}
+				}
+				trigger_else = { always = no }
+			}
+			$TITLE$ = {
+				random_in_list = {
+					variable = title_synonyms
+					limit = { exists = holder }
+					save_scope_as = holder_to_ally
+				}
+			}
+		}
+	}
+	if = {
+		limit = { exists = scope:holder_to_ally }
+		create_alliance = {
+			target = scope:holder_to_ally
+			allied_through_owner = this
+			allied_through_target = scope:holder_to_ally
+		}
+	}
+}

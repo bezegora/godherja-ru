@@ -417,43 +417,6 @@ fogeater_invasion.2003 = {
 
 
 
-### Destroy the Mongol Empire title if appropriate
-#mongol_invasion.9999 = {
-#	type = character_event
-#	hidden = yes
-#
-#	trigger = {
-#		exists = global_var:mongol_empire_was_broken_up
-#	}
-#	
-#	immediate = {
-#		if = {
-#			limit = {
-#				any_held_title = {
-#					this = title:e_mongolia
-#				}
-#				any_held_title = {
-#					this = title:e_mongol_empire
-#				}
-#			}
-#		}
-#		title:e_mongol_empire = {
-#			every_in_de_jure_hierarchy = {
-#				continue = {
-#					tier > tier_kingdom
-#				}
-#				limit = {
-#					tier = tier_kingdom
-#				}
-#				set_de_jure_liege_title = title:e_mongolia
-#			}
-#		}
-#		destroy_title = title:e_mongol_empire
-#	}
-#} 
-
-
-
 ####maintenace event
 
 fogeater_invasion.9000 = { ###this event will launch invasion

@@ -197,7 +197,7 @@ type = character_event
 		name = sjalvolki_monthly.1005.c
 		stress_impact = {
 			generous = minor_stress_impact_gain
-			merciful = medium_stress_impact_gain
+			forgiving = medium_stress_impact_gain
 		}
 		trigger = {
 			scope:sjalvolki_hunters_find = {
@@ -223,7 +223,7 @@ type = character_event
 		}
 		stress_impact = {
 			generous = minor_stress_impact_gain
-			merciful = medium_stress_impact_gain
+			forgiving = medium_stress_impact_gain
 		}
 		add_piety = minor_piety_loss
 		scope:sjalvolki_hunters_find  = {
@@ -336,9 +336,11 @@ sjalvolki_monthly.1008 = { #Guardian-side triggered event where they decide how/
 	}
 	option = { #help child personally, success based on your skills
 		name = sjalvolki_monthly.1008.a
+		add_piety = minor_piety_gain
 		duel = {
 			skill = martial
-			add_piety = minor_piety_gain
+			value = 8
+
 			40 = { #success! The child gains hunter_1
 				compare_modifier = {
 					value = scope:duel_value
@@ -350,7 +352,7 @@ sjalvolki_monthly.1008 = { #Guardian-side triggered event where they decide how/
 					title = sjalvolki_monthly.1008.child_message_success
 					left_icon = scope:hunt_curious_child
 					change_trait_rank = {
-						trait = hunter
+						trait = lifestyle_hunter
 						rank = 1
 						max = 3
 					}
@@ -387,7 +389,11 @@ sjalvolki_monthly.1008 = { #Guardian-side triggered event where they decide how/
 					send_interface_toast = {
 						title = sjalvolki_monthly.1008.child_message_crit_fail
 						left_icon = scope:hunt_curious_child
-						add_trait = wounded
+						change_trait_rank = {
+						trait = wounded
+						rank = 1
+						max = 3
+						}
 					}
 				}
 				send_interface_toast = {
@@ -409,6 +415,10 @@ sjalvolki_monthly.1008 = { #Guardian-side triggered event where they decide how/
 		name = sjalvolki_monthly.1008.b
 		scope:hunt_curious_child = {
 			trigger_event = { id = sjalvolki_monthly.1009 days = 15 }
+			add_opinion = {
+			modifier = bad_hunt_help
+			target = root
+			}
 		}
 		ai_chance = {
             base = 100
@@ -424,6 +434,10 @@ sjalvolki_monthly.1008 = { #Guardian-side triggered event where they decide how/
 		name = sjalvolki_monthly.1008.c
 		scope:hunt_curious_child = {
 			trigger_event = { id = sjalvolki_monthly.1010 days = 15 }
+			add_opinion = {
+				modifier = refused_hunt_help
+				target = root
+			}
 		}
 		ai_chance = {
             base = 100
@@ -447,77 +461,80 @@ sjalvolki_monthly.1009 = { #Guardian-triggers kickback of event, sends you off i
 	option = { #Go off to learn to hunt on your own! Harder but a bigger reward
 		name = sjalvolki_monthly.1009.a
 		scope:hunt_curious_child = {
-		duel = {
-			skill = martial
-			value = 8
 			add_piety = minor_piety_gain
-			50 = { #success! The child gains hunter_1
-				compare_modifier = {
-					value = scope:duel_value
-					multiplier = 2
-				}
-				desc = sjalvolki_monthly.1009.a.success
-				send_interface_toast = {
-					title = sjalvolki_monthly.1009.child_message_success
-					left_icon = scope:hunt_curious_child
-					change_trait_rank = {
-						trait = hunter
-						rank = 1
-						max = 3
+			duel = {
+				skill = martial
+				value = 8
+				50 = { #success! The child gains hunter_1
+					compare_modifier = {
+						value = scope:duel_value
+						multiplier = 2
 					}
-					add_trait = hunter_1
+					desc = sjalvolki_monthly.1009.a.success
+					send_interface_toast = {
+						title = sjalvolki_monthly.1009.child_message_success
+						left_icon = scope:hunt_curious_child
+						change_trait_rank = {
+							trait = lifestyle_hunter
+							rank = 1
+							max = 3
+						}
+					}
+					scope:guardian = {
+					send_interface_toast = {
+						title = sjalvolki_monthly.1009.adult_message_success
+						left_icon = scope:hunt_curious_child
+					}
+					}
 				}
-				scope:guardian = {
-				send_interface_toast = {
-					title = sjalvolki_monthly.1009.adult_message_success
-					left_icon = scope:hunt_curious_child
+				35 = { #failure, child gains nothing
+					compare_modifier = {
+						value = scope:duel_value
+					}
+					desc = sjalvolki_monthly.1009.b.failure
+					send_interface_toast = {
+						title = sjalvolki_monthly.1009.child_message_failure
+						left_icon = scope:hunt_curious_child
+					}
+					scope:guardian = {
+					send_interface_toast = {
+						title = sjalvolki_monthly.1009.adult_message_failure
+						left_icon = scope:hunt_curious_child
+					}
+					}
 				}
-				}
-			}
-			35 = { #failure, child gains nothing
-				compare_modifier = {
-					value = scope:duel_value
-				}
-				desc = sjalvolki_monthly.1009.b.failure
-				send_interface_toast = {
-					title = sjalvolki_monthly.1009.child_message_failure
-					left_icon = scope:hunt_curious_child
-				}
-				scope:guardian = {
-				send_interface_toast = {
-					title = sjalvolki_monthly.1009.adult_message_failure
-					left_icon = scope:hunt_curious_child
-				}
-				}
-			}
-			15 = { #disaster, child is wounded! Your guardian is such a good parent!
-				compare_modifier = {
-					value = scope:duel_value
-				}
-				desc = sjalvolki_monthly.1009.c.failure
-				send_interface_toast = {
-					title = sjalvolki_monthly.1009.child_message_crit_fail
-					left_icon = scope:hunt_curious_child
+				15 = { #disaster, child is wounded! Your guardian is such a good parent!
+					compare_modifier = {
+						value = scope:duel_value
+					}
+					desc = sjalvolki_monthly.1009.c.failure
+					send_interface_toast = {
+						title = sjalvolki_monthly.1009.child_message_crit_fail
+						left_icon = scope:hunt_curious_child
 
-					add_trait = wounded_1
+						change_trait_rank = {
+							trait = wounded
+							rank = 1
+							max = 3
+						}
+					}
+					scope:guardian = {
+					send_interface_toast = {
+						title = sjalvolki_monthly.1009.adult_message_crit_fail
+						left_icon = scope:hunt_curious_child
+					}
+					}
 				}
-				scope:guardian = {
-				send_interface_toast = {
-					title = sjalvolki_monthly.1009.adult_message_crit_fail
-					left_icon = scope:hunt_curious_child
-				}
-				}
-			}
 			}
 			
+		}
+		ai_chance = {
+			base = 100
+			ai_value_modifier = {
+				ai_boldness = 0.5
+				ai_zeal = 0.5
 			}
-			ai_chance = {
-				base = 100
-				ai_value_modifier = {
-					ai_boldness = 0.5
-					ai_zeal = 0.5
-				}
-			}
+		}
 	}
 	option = { #Uh.... no. 
 		name = sjalvolki_monthly.1009.b
@@ -555,63 +572,74 @@ sjalvolki_monthly.1010 = { #Guardian-triggered kickback of event, forbids you to
 	option = { #Go off to learn to hunt on your own!
 		name = sjalvolki_monthly.1010.a
 		scope:hunt_curious_child = {
-		duel = {
-			skill = intrigue
-			value = 8
 			add_piety = minor_piety_gain
-			50 = { #success! You gain hunter_1 and some intrigue for sneakin' skills
-				compare_modifier = {
-					value = scope:duel_value
-					multiplier = 2
-				}
-				desc = sjalvolki_monthly.1010.a.success
-				send_interface_toast = {
-					title = sjalvolki_monthly.1010.child_message_success
-					left_icon = scope:hunt_curious_child
-					add_intrigue_skill = 1
-					change_trait_rank = {
-						trait = hunter
-						rank = 1
-						max = 3
+			duel = {
+				skill = intrigue
+				value = 8
+
+				50 = { #success! You gain hunter_1 and some intrigue for sneakin' skills
+					compare_modifier = {
+						value = scope:duel_value
+						multiplier = 2
+					}
+					desc = sjalvolki_monthly.1010.a.success
+					send_interface_toast = {
+						title = sjalvolki_monthly.1010.child_message_success
+						left_icon = scope:hunt_curious_child
+						add_intrigue_skill = 1
+						change_trait_rank = {
+							trait = lifestyle_hunter
+							rank = 1
+							max = 3
+						}
+					}
+					scope:guardian = {
+					send_interface_toast = {
+						title = sjalvolki_monthly.1010.adult_message_success
+						left_icon = scope:hunt_curious_child
+					}
 					}
 				}
-				scope:guardian = {
-				send_interface_toast = {
-					title = sjalvolki_monthly.1010.adult_message_success
-					left_icon = scope:hunt_curious_child
+				35 = { #failure, child gains nothing
+					compare_modifier = {
+						value = scope:duel_value
+					}
+					scope:guardian = {
+					send_interface_toast = {
+						title = sjalvolki_monthly.1010.adult_message_failure
+						left_icon = scope:hunt_curious_child
+					}
+					}
+					desc = sjalvolki_monthly.1010.b.failure
 				}
-				}
-			}
-			35 = { #failure, child gains nothing
-				compare_modifier = {
-					value = scope:duel_value
-				}
-				scope:guardian = {
-				send_interface_toast = {
-					title = sjalvolki_monthly.1010.adult_message_failure
-					left_icon = scope:hunt_curious_child
-				}
-				}
-				desc = sjalvolki_monthly.1010.b.failure
-			}
-			15 = { #disaster, child is wounded! You're such a good parent!
-				compare_modifier = {
-					value = scope:duel_value
-				}
-				desc = sjalvolki_monthly.1010.c.failure
-				send_interface_toast = {
-					title = sjalvolki_monthly.1010.child_message_crit_fail
-					left_icon = scope:hunt_curious_child
-					add_trait = wounded_1
-				}
-				scope:guardian = {
-				send_interface_toast = {
-					title = sjalvolki_monthly.1010.adult_message_crit_fail
-					left_icon = scope:hunt_curious_child
-				}
+				15 = { #disaster, child is wounded! You're such a good parent!
+					compare_modifier = {
+						value = scope:duel_value
+					}
+					desc = sjalvolki_monthly.1010.c.failure
+					send_interface_toast = {
+						title = sjalvolki_monthly.1010.child_message_crit_fail
+						left_icon = scope:hunt_curious_child
+						change_trait_rank = {
+							trait = wounded
+							rank = 1
+							max = 3
+						}
+					}
+					scope:guardian = {
+					send_interface_toast = {
+						title = sjalvolki_monthly.1010.adult_message_crit_fail
+						left_icon = scope:hunt_curious_child
+					}
+					}
 				}
 			}
 		}
+		scope:guardian = {
+			add_opinion = {
+				modifier = hunt_child_disobedience
+				target = root
+			}
 		}
 		ai_chance = {
 			base = 100

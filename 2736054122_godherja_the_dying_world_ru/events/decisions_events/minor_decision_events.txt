@@ -16,20 +16,37 @@ minor_decisions.0001 = {
 
 	immediate = {
 		save_temporary_scope_as = host
-
-		#Set up a list of provinces, one per duchy in the realm, find all relevant pool characters there
-		every_realm_province = {
-			if = {
-				limit = {
-					save_temporary_scope_as = potential_province
-					NOT = {
-						any_in_list = {
-							list = pool_provinces
-							county.duchy = scope:potential_province.county.duchy
+		
+		if = {
+			limit = { has_government = pirate_government }
+			# If doing this as a pirate, pick the capital and 2 random coastal provinces around the world for pool selection
+			capital_province = {
+				add_to_temporary_list = pool_provinces
+			}
+			random_province = {
+				limit = { is_coastal = yes }
+				add_to_temporary_list = pool_provinces
+			}
+			random_province = {
+				limit = { is_coastal = yes }
+				add_to_temporary_list = pool_provinces
+			}
+		}
+		else = {
+			#Set up a list of provinces, one per duchy in the realm, find all relevant pool characters there
+			every_realm_province = {
+				if = {
+					limit = {
+						save_temporary_scope_as = potential_province
+						NOT = {
+							any_in_list = {
+								list = pool_provinces
+								county.duchy = scope:potential_province.county.duchy
+							}
 						}
 					}
+					add_to_temporary_list = pool_provinces
 				}
-				add_to_temporary_list = pool_provinces
 			}
 		}
 
@@ -59,6 +76,46 @@ minor_decisions.0001 = {
 						subtract = 12
 						multiply = 5
 					}
+				}
+				modifier = {
+					factor = 2
+					root = { has_government = pirate_government }
+					has_trait = sadistic
+				}
+				modifier = {
+					factor = 2
+					root = { has_government = pirate_government }
+					has_trait = callous
+				}
+				modifier = {
+					factor = 2
+					root = { has_government = pirate_government }
+					has_trait = ambitious
+				}
+				modifier = {
+					factor = 1.5
+					root = { has_government = pirate_government }
+					has_trait = greedy
+				}
+				modifier = {
+					factor = 1.5
+					root = { has_government = pirate_government }
+					has_trait = brave
+				}
+				modifier = {
+					factor = 0.1
+					root = { has_government = pirate_government }
+					has_trait = compassionate
+				}
+				modifier = {
+					factor = 0.1
+					root = { has_government = pirate_government }
+					has_trait = content
+				}
+				modifier = {
+					factor = 0.1
+					root = { has_government = pirate_government }
+					has_trait = craven
 				}
 			}
 			save_scope_as = knight

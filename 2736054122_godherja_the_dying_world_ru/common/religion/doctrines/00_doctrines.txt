@@ -1,80 +1,4 @@
-﻿doctrine_magic = {
-	group = "crimes"
-	doctrine_magic_crime = {
-		piety_cost = {
-			value = faith_doctrine_cost_low
-			if = {
-				limit = { has_doctrine = doctrine_magic_crime }
-				multiply = faith_unchanged_doctrine_cost_mult
-			}
-			else_if = {
-				limit = { has_doctrine = doctrine_magic_accepted }
-				multiply = faith_changed_doctrine_cost_mult_two_step
-			}
-			else_if = {
-				limit = { has_doctrine = doctrine_magic_supremacy }
-				multiply = faith_changed_doctrine_cost_mult_three_step
-			}
-		}
-		parameters = {
-			magic_illegal = yes
-		}
-	}
-	doctrine_magic_shunned = {
-		piety_cost = {
-			value = faith_doctrine_cost_low
-			if = {
-				limit = { has_doctrine = doctrine_magic_shunned }
-				multiply = faith_unchanged_doctrine_cost_mult
-			}
-			else_if = {
-				limit = { has_doctrine = doctrine_magic_supremacy }
-				multiply = faith_changed_doctrine_cost_mult_two_step
-			}
-		}
-		parameters = {
-			magic_shunned = yes
-		}
-	}
-	doctrine_magic_accepted = {
-		piety_cost = {
-			value = faith_doctrine_cost_low
-			if = {
-				limit = { has_doctrine = doctrine_magic_accepted }
-				multiply = faith_unchanged_doctrine_cost_mult
-			}
-			else_if = {
-				limit = { has_doctrine = doctrine_magic_crime }
-				multiply = faith_changed_doctrine_cost_mult_two_step
-			}
-		}
-		parameters = {
-			magic_accepted = yes
-		}
-	}
-	doctrine_magic_supremacy = {
-		piety_cost = {
-			value = faith_doctrine_cost_low
-			if = {
-				limit = { has_doctrine = doctrine_magic_supremacy }
-				multiply = faith_unchanged_doctrine_cost_mult
-			}
-			else_if = {
-				limit = { has_doctrine = doctrine_magic_crime }
-				multiply = faith_changed_doctrine_cost_mult_three_step
-			}
-			else_if = {
-				limit = { has_doctrine = doctrine_magic_shunned }
-				multiply = faith_changed_doctrine_cost_mult_two_step
-			}
-			
-		}
-		parameters = {
-			magic_supreme = yes
-		}
-	}
-}
-#MAIN DOCTRINES
+﻿#MAIN DOCTRINES
 doctrine_gender = {
 	group = "main_group"
 
@@ -96,7 +20,7 @@ doctrine_gender = {
 		parameters = {
 			male_dominated_law = yes
 			female_claims_are_weak = yes
-			women_cannot_inherit_claims = yes
+			women_cannot_inherit_implicit_claims = yes
 			women_cannot_be_granted_titles = yes
 			combatant_must_be_male = yes
 			male_dominated_council = yes
@@ -137,7 +61,7 @@ doctrine_gender = {
 		parameters = {
 			female_dominated_law = yes
 			male_claims_are_weak = yes
-			men_cannot_inherit_claims = yes
+			men_cannot_inherit_implicit_claims = yes
 			men_cannot_be_granted_titles = yes
 			combatant_must_be_female = yes
 			female_dominated_council = yes
@@ -335,6 +259,8 @@ doctrine_religious_tradition = {
 	}
 	doctrine_autonomous_tradition = {
 	}
+	doctrine_fog_teaching = {
+	}
 }
 doctrine_gods = {
 	group = "belief"
@@ -362,6 +288,10 @@ doctrine_gods = {
 	}
 	doctrine_atheistic = {	#No Gods
 	}
+	doctrine_antitheistic = {	#there is a god and they must be destroyed
+	}
+	doctrine_fog = {	#fogeaters
+	}
 }
 doctrine_nature_of_godhood = {
 	group = "belief"
@@ -377,6 +307,10 @@ doctrine_nature_of_godhood = {
 	}
 	doctrine_personal = {
 	}
+	doctrine_magical_godhood = {
+	}
+	doctrine_fog_nature = {		#Fogeaters
+	}
 }
 doctrine_cosmology = {
 	group = "belief"
@@ -387,30 +321,10 @@ doctrine_cosmology = {
 	doctrine_cyclic = {
 	}
 	doctrine_dualistic = {
-		can_pick = {
-			custom_description = {
-				text = incompatible_doctrine_dualistic_ditheistic_trigger
-				OR = {
-					flag:doctrine_dihenotheistic = { is_in_list = selected_doctrines }
-					flag:doctrine_ditheistic = { is_in_list = selected_doctrines }
-					flag:doctrine_transtheistic = { is_in_list = selected_doctrines }
-				}
-			}
-		}
 	}
 	doctrine_chaos_into_world = {
-		can_pick = {
-			custom_description = {
-				text = incompatible_doctrine_chaos_into_world_polytheistic_trigger
-				NOR = {
-					flag:doctrine_monotheistic = { is_in_list = selected_doctrines }
-					flag:doctrine_henotheistic = { is_in_list = selected_doctrines }
-					flag:doctrine_transtheistic = { is_in_list = selected_doctrines }
-					flag:doctrine_agnostic = { is_in_list = selected_doctrines }
-					flag:doctrine_atheistic = { is_in_list = selected_doctrines }
-				}
-			}
-		}
+	}
+	doctrine_fog_cosmology = {
 	}
 }
 doctrine_deities = {
@@ -424,6 +338,8 @@ doctrine_deities = {
 	doctrine_spirits = {
 	}
 	doctrine_deities_none = {
+	}
+	doctrine_fog_dieties = {
 	}
 }
 doctrine_divine_guidance = {
@@ -440,6 +356,10 @@ doctrine_divine_guidance = {
 	}
 	doctrine_divine_guidance_none = {
 	}
+	doctrine_fog_guidance = {
+	}
+	doctrine_magic_guidance = {
+	}
 }
 doctrine_eschatology = {
 	group = "belief"
@@ -450,6 +370,8 @@ doctrine_eschatology = {
 	doctrine_promised_deliverer = {
 	}
 	doctrine_eschatology_none = {
+	}
+	doctrine_fog_end = {
 	}
 }
 doctrine_thanatology = {
@@ -463,6 +385,8 @@ doctrine_thanatology = {
 	doctrine_reincarnation = {
 	}
 	doctrine_eternal_feast = {
+	}
+	doctrine_fog_afterlife = {
 	}
 }
 
@@ -1595,20 +1519,10 @@ doctrine_clerical_monkhood = {
 		piety_cost = {
 			value = faith_doctrine_cost_mid
 		}
-		clergy_modifier = {
-			custom_description = {
-				text = allowed_clergy_appointed_to_monks
-			}
-		}
 	}
 	doctrine_monk_not_clergy_enforced = {
 		piety_cost = {
 			value = faith_doctrine_cost_mid
-		}
-		clergy_modifier = {
-			custom_description = {
-				text = disallowed_clergy_appointed_to_monks
-			}
 		}
 	}
 }

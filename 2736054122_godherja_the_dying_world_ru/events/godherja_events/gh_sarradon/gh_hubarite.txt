@@ -1,0 +1,96 @@
+﻿namespace = hubarite
+
+hubarite.0001 = { #Codex decision, by UltimateVictory
+	type = character_event
+	title = hubarite.0001.t
+	desc = hubarite.0001.desc
+	theme = learning
+	left_portrait = {
+		character = root
+		animation = worry
+	}
+	
+	immediate = {
+		add_character_flag = wrote_hubarite_codex
+	}
+	
+	option = { #level 0
+		name = hubarite.0001.a
+		faith:hubarism = {
+			set_judge_effect = { JUDGE = root DIFFICULTY = 0 }
+		}
+	}
+	
+	option = { #level 1
+		name = hubarite.0001.b
+		trigger = {
+			learning >= 10
+		}
+		faith:hubarism = {
+			set_judge_effect = { JUDGE = root DIFFICULTY = 1 }
+		}
+	}
+	
+	option = { #level 2
+		name = hubarite.0001.c
+		trigger = {
+			learning >= 20
+		}
+		faith:hubarism = {
+			set_judge_effect = { JUDGE = root DIFFICULTY = 2 }
+		}
+	}
+	
+	option = { #level 3
+		name = hubarite.0001.d
+		trigger = {
+			learning >= 30
+		}
+		faith:hubarism = {
+			set_judge_effect = { JUDGE = root DIFFICULTY = 3 }
+		}
+	}
+}
+
+hubarite.0002 = { #empire formable decision event, by UltimateVictory
+	title = hubarite.0002.t
+	desc = hubarite.0002.desc
+	type = character_event
+	theme = realm
+	left_portrait = {
+		character = scope:hubarite_empire_founder
+		animation = personality_bold
+	}
+
+	immediate = {
+		play_music_cue = "mx_cue_epic_sacral_moment"
+		hubarite_empire_decision_effects = yes	
+	}
+	
+	option = {
+		name = hubarite.0002.a
+		if = {
+			limit = {
+				prestige_level < 5
+			}
+			add_prestige_level = 1
+		}
+	}
+}
+
+hubarite.0003 = { #Event everyone else gets
+	title = hubarite.0003.t
+	desc = hubarite.0003.desc
+	type = character_event
+	theme = realm
+	right_portrait = {
+		character = scope:hubarite_empire_founder
+		animation = personality_bold
+	}	
+	immediate = {
+		play_music_cue = "mx_cue_epic_sacral_moment"	
+	}
+	option = {
+		name = hubarite.0003.a
+	}
+}

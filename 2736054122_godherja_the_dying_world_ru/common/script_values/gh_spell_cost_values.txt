@@ -5,16 +5,13 @@ strengthening_cost = {
 quicken_cost = {
 	value = tier_1_spell
 }
+magic_cannibalism_cost = {
+	value = tier_3_spell
+}
 fire_magick_cost = {
 	value = tier_1_spell
 }
-mending_cost = {
-	value = tier_2_spell
-}
 healing_water_cost = {
-	value = tier_1_spell
-}
-purification_cost = {
 	value = tier_1_spell
 }
 unveiling_cost = {
@@ -22,6 +19,12 @@ unveiling_cost = {
 }
 creation_cost = {
 	value = tier_1_spell
+}
+plant_growth_cost = {
+	value = tier_1_spell
+}
+kemsar_water_spell_cost = {
+	value = tier_2_spell
 }
 divination_cost = {
 	value = tier_3_spell
@@ -36,10 +39,10 @@ craft_greater_golem_cost = {
 	value = tier_3dead_spell	
 }
 boneshaping_cost = {
-	value = tier_5dead_spell	
+	value = tier_3dead_spell	
 }
 raise_undead_cost = {
-	value = tier_3dead_spell
+	value = tier_3_spell
 }
 raise_undead2_cost = {
 	value = tier_3dead_spell
@@ -49,20 +52,40 @@ moon_read_cost = {
 }
 # Problems if used on multiple targets.
 vampiric_drain_cost = {
-	value = tier_5_spell
+	value = 0
 	if = {
 		limit = {
-			has_trait = gh_extended_life
+			has_variable = vampiric_drain_casted_raw 
 		}
-		value = magi_potency
-		subtract = 21
-		multiply = num_vampiric_drain_casted
-		multiply = -10
-		# The value is equal to 10 * Inverse of Magi Potency * 10 / Casting
-		# Each casting increases the cost (As per Haps instructions.)
-		# First cast is expensive. (Tier 5)
+		if = {
+			limit = {
+			var:vampiric_drain_casted_raw > 30
+			}
+			add = var:vampiric_drain_casted_raw
+			subtract = 30
+			multiply = 2
+		}
+		if = {
+			limit = {
+				var:vampiric_drain_casted_raw > 20
+			}
+			add = var:vampiric_drain_casted_raw
+			subtract = 20
+			multiply = 2
+		}
+		add = var:vampiric_drain_casted_raw
+		if = {
+			limit = {
+				var:vampiric_drain_casted_raw > 10
+			}
+			add = var:vampiric_drain_casted_raw
+			subtract = 10
+		}
 	}
+	multiply = 5
+	add = 50
 }
+
 genocide_region_cost = {
 	value = tier_5_spell
 }
@@ -80,6 +103,9 @@ moon_pull_cost = {
 }
 necrotic_boon_cost = {
 	value = tier_2_spell
+}
+necrotic_vitality_cost = {
+	value = tier_4_spell
 }
 stone_serpent_cost = {
 	value = tier_1dead_spell
@@ -106,34 +132,13 @@ study_arcane_cost = {
 	value = tier_1_gen
 }
 sacrifice_population_cost = {
-	value = tier_2_gen
-	if = {
-		limit = {
-			faith = {
-				has_doctrine = tenet_aeschres_legacy
-			}
-		}
-		multiply = 1.2
-	}
-	if = {
-		limit = {
-			any_held_title = {
-				trigger_if = {
-					limit = { tier = tier_county }
-					any_county_province = {
-						OR = {
-							has_building = thebloodyard
-							has_building = thebloodyard_02
-						}
-					}
-				}
-				trigger_else = { always = no }
-			}
-		}
-		multiply = 2
-	}
+	value = 0
 }
+
 ritual_sacrifice_cost = 0
+
+ritual_consumption_cost = 0
+
 flagellate_cost = {
 	value = 0
 	if = {	# The closer you beat yourself to the brink of death, the more magic you get
@@ -167,7 +172,7 @@ flagellate_cost = {
 	}
 	if = {
 		limit = { 
-			has_perk = livingmagic_perk3_tree1
+			has_perk = livingmagic_perk8_tree1
 		}
 		multiply = 1.5
 	}
@@ -176,14 +181,119 @@ communed_with_the_way_cost = {
 	value = tier_2_gen
 }
 sacrifice_plants_cost = {
-	value = tier_1_gen
+	value = 0
 }
+
+sacrifice_plants_gen_province_value = {
+	value = 0
+	if = {
+			limit = {
+				OR = {
+				terrain = desert
+				terrain = desert_mountains
+				terrain = drylands
+				}
+			}
+		add = 1
+	}
+	if = {
+			limit = {
+				OR = {
+				terrain = mountains
+				terrain = marcher_mountains
+				terrain = wetlands
+				terrain = marcher_wetlands
+				terrain = steppe
+				terrain = hills
+				terrain = marcher_hills
+				}
+			}
+		add = 2
+	}
+	if = {
+			limit = {
+				OR = {
+				terrain = plains
+				terrain = marcher_plains
+				terrain = farmlands
+				terrain = marcher_farmlands
+				terrain = oasis
+				terrain = floodplains
+				terrain = marcher_floodplains
+				}
+			}
+		add = 3
+	}
+	if = {
+			limit = {
+				OR = {
+				terrain = taiga
+				terrain = forest
+				terrain = marcher_forest
+				terrain = farmlands
+				terrain = marcher_farmlands
+				terrain = jungle
+				}
+			}
+		add = 4
+	}
+}
+
+sacrifice_plants_gen_county_number = {
+	value = 0
+	every_county_province = {
+		add = 1
+	}
+	min = 1
+}
+
+sacrifice_plants_gen_county_quality = {
+	value = 0
+	every_county_province = {
+		add = sacrifice_plants_gen_province_value
+	}
+	divide = sacrifice_plants_gen_county_number
+}
+
+sacrifice_plants_gen_county = {
+	value = 0
+	every_county_province = {
+		add = sacrifice_plants_gen_province_value
+	}
+	divide = sacrifice_plants_gen_county_number
+	multiply = 16
+	if = { 
+		limit = { has_county_modifier = sacrifice_plants_mod_mid }
+		multiply = 1.5
+	}
+	if = { 
+		limit = { has_county_modifier = sacrifice_plants_mod_major }
+		multiply = 1.5
+	}
+	if = { 
+		limit = { has_county_modifier = sacrifice_plants_mod_huge }
+		multiply = 0
+	}
+}
+
 lead_to_gold_cost = {
 	value = tier_2dead_spell
 }
 
-dementation_cost = {
+channel_the_rift_cost = {
+	value = tier_1_gen
+}
+
+riftmark_cost = {
 	value = tier_2_spell
+}
+
+unraveling_cost = {
+	value = tier_2_spell
+}
+
+rift_walk_cost = {
+	value = tier_3_spell
 }
 
 summon_lesser_cost = {
@@ -192,10 +302,6 @@ summon_lesser_cost = {
 
 communed_with_eldritch_cost = {
 	value = tier_3_gen
-}
-
-seeped_into_madness_cost = {
-	value = tier_1_gen
 }
 
 fog_cast_cost = {
@@ -272,4 +378,8 @@ earthquake_cost = {
 
 improve_soil_cost = {
 	value = tier_2dead_spell
+}
+
+glimpse_reality_cost = {
+	value = tier_1_spell
 }

@@ -1,0 +1,2317 @@
+﻿namespace = sophocos_quest
+
+### Arrival Events
+
+sophocos_quest.4001 = { # Default On-Foot arrival, also the current placeholder
+	type = character_event
+	title = sophocos_quest.4001.t
+	desc = sophocos_quest.4001.desc
+	theme = pilgrimage_activity
+
+	left_portrait = root
+
+	immediate = {
+		root = {
+			save_scope_as = PILGRIM
+		}
+	}
+
+	option = { # Let's climb this bad-boy!
+		name = sophocos_quest.4001.a
+
+		set_up_next_climb_event = yes
+	}
+
+	option = { # You know what, I changed my mind
+		name = sophocos_quest.4001.b
+
+		abandon_climb = yes
+	}
+}
+
+## Climbing Events
+# Default Tier 0 Event (Base of Sophocos) - 
+sophocos_quest.5001 = {
+	type = character_event
+	title = sophocos_quest.5001.t
+	desc = sophocos_quest.5001.desc
+	theme = pilgrimage_activity
+
+	trigger = {
+		root = {
+			NOT = {
+				has_character_flag = had_sophocos_event_5001
+			}
+		}
+	}
+
+	left_portrait = root
+
+	immediate = {
+		root = {
+			add_character_flag = {
+				flag = had_sophocos_event_5001
+				days = 100
+			}
+		}
+	}
+
+	option = {
+		name = sophocos_quest.5001.a
+
+		set_up_next_climb_event = yes
+	}
+
+	option = {
+		name = sophocos_quest.5001.b
+
+		abandon_climb = yes
+	}
+}
+
+# Tier 3-4 Exclusive Events
+
+####################
+# Friendly/Hostile Ghost Chain
+# 5101 - 5105
+# By Zoneling
+####################
+sophocos_quest.5101 = { # Shadowy figures try to abduct root
+	type = character_event
+	title = sophocos_quest.5101.t
+	desc = sophocos_quest.5101.desc
+	theme = mental_health
+	override_background = {
+		event_background = wilderness_desert
+	}
+
+	trigger = {
+		root = {
+			var:sophocos_tier > 2
+		}
+		NOT = {has_character_flag = had_sophocos_event_5101}
+	}
+
+	left_portrait = root
+
+	immediate = {
+		root = {
+			add_character_flag = {
+				flag = had_sophocos_event_5101
+				days = 100
+			}
+		}
+	}
+
+	option = { # Sure let's follow them!
+		name = sophocos_quest.5101.a
+
+		custom_tooltip = sophocos_quest_ghost_follow.tt
+		hidden_effect = {
+			set_up_next_climb_event = yes
+			add_character_flag = {
+				flag = sophocos_ghostly_companion
+				days = 150
+			}
+		}
+	}
+
+	option = { # I don't think I wanna follow the spooky ghost things
+		name = sophocos_quest.5101.b
+
+		duel = {
+			skill = intrigue
+			value = high_skill_rating
+
+			50 = {
+				desc = sophocos_quest.5101.b.success
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = 3
+					min = -49
+				}
+
+				send_interface_toast = {
+					title = sophocos_quest.5101.b.success
+
+					root = {
+						add_piety = major_piety_gain
+						set_up_next_climb_event = yes
+					}
+				}
+			}
+			50 = {
+				desc = sophocos_quest.5101.b.failure
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = -3
+					min = -49
+				}
+
+				send_interface_toast = {
+					title = sophocos_quest.5101.b.failure
+
+					increase_wounds_effect = {
+						REASON = fight
+					}
+					set_up_next_climb_event = yes
+				}
+			}
+		}
+	}
+
+	option = { # Fuck this!
+		name = sophocos_quest.5101.c
+
+		abandon_climb = yes
+
+		stress_impact = {
+			brave = medium_stress_impact_gain
+			zealous = medium_stress_impact_gain
+		}
+	}
+
+	option = { # Bah, ghosts aren't real
+		name = sophocos_quest.5101.d
+
+		trait = cynical
+		trait = scholar
+		
+		trigger = {
+			OR = {
+				learning > 15
+				has_trait = scholar
+			}
+			has_trait = cynical
+		}
+		add_learning_lifestyle_xp = medium_lifestyle_experience
+		set_up_next_climb_event = yes
+	}
+
+	option = { # Brother, how did you break free of the physical realm?
+		name = sophocos_quest.5101.e
+
+		trait = scholar
+		trait = lunatic_1
+		trait = lunatic_genetic
+
+		trigger = {
+			OR = {
+				learning > 15
+				has_trait = scholar
+				has_trait = lunatic_1
+				has_trait = lunatic_genetic
+			}
+			root.faith = {
+				has_doctrine = tenet_gnosticism
+			}
+		}
+
+		hidden_effect = {
+			random_list = {
+				25 = { # The ghost enlightens you!
+					send_interface_toast = {
+						title = sophocos_quest.5101.e.encouraged
+						mystic_level_up_chance_effect = {
+							CHANCE = 100
+						}
+						add_piety = medium_piety_gain
+					}
+				}
+				25 = { # The ghost disappears on interrogation
+					send_interface_toast = {
+						title = sophocos_quest.5101.e.disappear
+						random_list = {
+							75 = {
+								add_stress = medium_stress_impact_gain
+							}
+							25 = {
+								add_trait = lunatic_1
+							}
+						}
+					}
+				}
+				10 = { # The ghost tells you he is not free
+					desc = sophocos_quest.5101.e.slave
+					add_character_modifier = {
+						modifier = sophocos_faith_shaken_modifier
+						days = 30
+					}
+					add_piety = major_piety_loss
+					remove_trait = zealous
+				}
+			}
+		}
+		custom_tooltip = sophocos_quest.5101.tt
+		set_up_next_climb_event = yes
+	}
+}
+
+sophocos_quest.5102 = { # Ghost isn't friendly and tries to attack you!
+	type = character_event
+	title = sophocos_quest.5102.t
+	desc = sophocos_quest.5102.desc
+	theme = mental_health
+	override_background = {
+		event_background = wilderness_desert
+	}
+
+	immediate = {
+		add_character_flag = {
+			flag = had_sophocos_event_5102
+			days = 150
+		}
+	}
+
+	trigger = {
+		has_character_flag = sophocos_ghostly_companion
+		NOT = { has_character_flag = had_sophocos_event_5102 }
+	}
+
+	option = { # Banish the demon by force of will!
+		name = sophocos_quest.5102.a
+
+		duel = {
+			skill = learning
+			value = very_high_skill_rating
+
+			50 = {
+				desc = sophocos_quest.5102.a.success
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = 3
+				}			
+
+				send_interface_toast = {
+					title = sophocos_quest.5102.a.success
+
+					add_trait = mystic_1
+					add_piety = major_piety_gain
+				}
+			}
+			50 = {
+				desc = sophocos_quest.5102.a.failure
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = -3
+				}
+
+				send_interface_toast = {
+					title = sophocos_quest.5102.a.failure
+					add_stress = major_stress_impact_gain
+					custom_tooltip = sophocos_quest_5102_extra.tt
+				}
+				hidden_effect = {
+					random_list = {
+						50 = {
+							add_trait = lunatic_1
+						}
+						40 = {
+							add_trait = possessed_1
+						}
+						9 = {
+							add_trait = gh_beset_by_visions
+						}
+						1 = {
+							death = natural
+						}
+					}
+				}
+			}
+		}
+		stress_impact = {
+			craven = major_stress_impact_gain
+			cynical = minor_stress_impact_gain
+		}
+		ai_chance = {
+			base = 100
+			compare_modifier = {
+				trigger = {
+					ai_rationality >= 10
+				}
+				value = learning
+				multiplier = 10
+			}
+		}
+	}
+
+	option = { # Use my mystical knowledge to banish the demon!
+		name = sophocos_quest.5102.b
+		trigger = {
+			has_trait = lifestyle_mystic
+		}
+		trait = mystic_1
+		trait = mystic_2
+		trait = mystic_3
+
+		add_piety = major_piety_value
+		add_character_modifier = {
+			modifier = sophocos_banished_demon_modifier
+			years = 10
+		}
+
+		set_up_next_climb_event = yes
+		ai_chance = {
+			base = 200
+		}
+	}
+
+	option = { # I welcome another friend to the collection
+		name = sophocos_quest.5102.c
+		trigger = {
+			OR = {
+				has_trait = possessed_1
+				has_trait = possessed_genetic
+				has_trait = lunatic_1
+				has_trait = lunatic_genetic
+			}
+		}
+		trait = possessed_1
+		trait = possessed_genetic
+		trait = lunatic_1
+		trait = lunatic_genetic
+
+		if = {
+			limit = {
+				OR = {
+					has_trait = possessed_1
+					has_trait = possessed_genetic
+				}
+			}
+			add_character_modifier = {
+				modifier = sophocos_demon_hotel_modifier
+			}
+		}
+		else_if = {
+			limit = {
+				OR = {
+					has_trait = lunatic_1
+					has_trait = lunatic_genetic
+				}
+			}
+			add_trait = possessed_1
+		}
+		ai_chance = {
+			base = 100
+		}
+	}
+}
+
+sophocos_quest.5103 = { # Ghost leads you to cache of treasure!
+	type = character_event
+	title = sophocos_quest.5103.t
+	desc = sophocos_quest.5103.desc
+	theme = mental_health
+	override_background = {
+		event_background = wilderness_desert
+	}
+
+	right_portrait = {
+		character = root
+		animation = disbelief
+	}
+
+	trigger = {
+		has_character_flag = sophocos_ghostly_companion
+		NOT = { has_character_flag = had_sophocos_event_5103 }
+	}
+
+	immediate = {
+		remove_character_flag = sophocos_ghostly_companion
+		add_character_flag = {
+			flag = had_sophocos_event_5103
+			years = 1
+		}
+		random_list = {
+			25 = {
+				add_character_flag = {
+					flag = sophocos_evil_spirit
+					days = 50
+				}
+			}
+			25 = {
+				add_character_flag = {
+					flag = sophocos_benign_spirit
+					days = 50
+				}
+			}
+			25 = {
+				add_character_flag = {
+					flag = sophocos_testing_spirit
+					days = 50
+				}
+			}
+			25 = {
+				trigger = {
+					NOT = {
+						has_trait = intellect_good
+					}
+				}
+				add_character_flag = {
+					flag = sophocos_hallucination_spirit
+					days = 50
+				}
+			}
+		}
+	}
+
+	option = { # Take the treasure
+		name = sophocos_quest.5103.a
+
+		if = {
+			limit = {
+				has_character_flag = sophocos_evil_spirit
+			}
+			if = {
+				limit = {
+					OR = {
+						has_trait = lifestyle_mystic
+						has_trait = magic_good
+					}
+				}
+				custom_tooltip = sophocos_quest_5103_mysticsense.tt
+			}
+			add_character_modifier = {
+				modifier = sophocos_haunted_crown_modifier
+			}
+		}
+		else_if = {
+			limit = {
+				has_character_flag = sophocos_benign_spirit
+			}
+			if = {
+				limit = {
+					OR = {
+						has_trait = lifestyle_mystic
+						has_trait = magic_good
+					}
+					has_trait = paranoid
+				}
+				custom_tooltip = sophocos_quest_5103_mysticsense.tt
+			}
+			add_character_modifier = {
+				modifier = sophocos_pilgrim_crown_modifier
+			}
+		}
+		else_if = {
+			limit = {
+				has_character_flag = sophocos_testing_spirit
+			}
+			if = {
+				limit = {
+					OR = {
+						has_trait = lifestyle_mystic
+						has_trait = magic_good
+					}
+				}
+				custom_tooltip = sophocos_quest_5103_mysticsense.tt
+			}
+			add_character_modifier = {
+				modifier = sophocos_cursed_crown_modifier
+			}
+		}
+		else_if = {
+			limit = {
+				has_character_flag = sophocos_hallucination_spirit
+			}
+			if = {
+				limit = {
+					OR = {
+						has_trait = lifestyle_mystic
+						has_trait = magic_good
+					}
+					has_trait = paranoid
+				}
+				custom_tooltip = sophocos_quest_5103_mysticsense.tt
+			}
+			show_as_tooltip = {
+				add_character_modifier = {
+					modifier = sophocos_pilgrim_crown_modifier
+				}
+			}
+			hidden_effect = {
+				send_interface_toast = {
+					title = sophocos_illusion_crown.t
+					add_trait = lunatic_1
+				}
+			}
+		}
+		set_up_next_climb_event = yes
+	}
+
+	option = { # Decline the treasure
+		name = sophocos_quest.5103.b
+
+		if = {
+			limit = {
+				has_character_flag = sophocos_evil_spirit
+			}
+			if = {
+				limit = {
+					has_trait = lifestyle_blademaster
+				}
+				custom_tooltip = sophocos_quest_5103_bmwarning.tt
+			}
+			else = {
+				custom_tooltip = sophocos_ghost_unknown.tt
+			}
+			hidden_effect = {
+				send_interface_toast = {
+					title = sophocos_5103_attack.t
+					custom_tooltip = sophocos_evil_ghost_attack.tt
+					increase_wounds_effect = {
+						REASON = fight
+					}
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				has_character_flag = sophocos_benign_spirit
+			}
+			custom_tooltip = sophocos_ghost_unknown.tt
+			hidden_effect = {
+				send_interface_toast = {
+					title = sophocos_5103_pass.t
+					add_piety = medium_piety_gain
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				has_character_flag = sophocos_testing_spirit
+			}
+			custom_tooltip = sophocos_ghost_unknown.tt
+			hidden_effect = {
+				send_interface_toast = {
+					title = sophocos_5103_approval.t
+					random_list = {
+						34 = {
+							if = {
+								limit = {
+									has_trait = beauty_bad
+								}
+								change_trait_rank = {
+									trait = beauty_bad
+									rank = -1
+								}
+							}
+							else_if = {
+								limit = {
+									has_trait = beauty_good
+								}
+								change_trait_rank = {
+									trait = beauty_good
+									rank = 1
+								}
+							}
+							else = {
+								add_trait = beauty_good_1
+							}
+						}
+						33 = {
+							if = {
+								limit = {
+									has_trait = intellect_bad
+								}
+								change_trait_rank = {
+									trait = intellect_bad
+									rank = -1
+								}
+							}
+							else_if = {
+								limit = {
+									has_trait = intellect_good
+								}
+								change_trait_rank = {
+									trait = intellect_good
+									rank = 1
+								}
+							}
+							else = {
+								add_trait = intellect_good_1
+							}
+						}
+						33 = {
+							if = {
+								limit = {
+									has_trait = physique_bad
+								}
+								change_trait_rank = {
+									trait = physique_bad
+									rank = -1
+								}
+							}
+							else_if = {
+								limit = {
+									has_trait = physique_good
+								}
+								change_trait_rank = {
+									trait = physique_good
+									rank = 1
+								}
+							}
+							else = {
+								add_trait = physique_good_1
+							}
+						}
+					}
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				has_character_flag = sophocos_hallucination_spirit
+			}
+			custom_tooltip = sophocos_ghost_unknown.tt
+			hidden_effect = {
+				send_interface_toast = {
+					title = sophocos_5103_hallucination.t
+					add_stress = medium_stress_impact_gain
+				}
+			}
+
+		}
+		set_up_next_climb_event = yes
+	}
+}
+
+####################
+# Out Of Food Variations
+# By Zoneling
+####################
+
+sophocos_quest.5106 = { # Hungry, Nothing Around
+	type = character_event
+	title = sophocos_quest.5106.t
+	desc = sophocos_quest.5106.desc
+	theme = pilgrimage_activity
+	
+	right_portrait = {
+		character = root
+		animation = sick
+	}
+
+	trigger = {
+		NOT = { has_character_flag = had_sophocos_event_5106 }
+	}
+
+	immediate = {
+		add_character_flag = {
+			flag = had_sophocos_event_5106
+			days = 30
+		}
+	}
+
+	option = { # Climb with an empty stomach
+		name = sophocos_quest.5106.a
+
+		target_weight_modifier_effect = { # Reduce Weight
+			VALUE = -30
+		}
+
+		if = { # If character is already malnourished, give weak
+			limit = {
+				has_character_modifier = malnourished_modifier
+			}
+			add_trait = weak
+		}
+		else_if = { # If they are already weak or physically weak already, give hefty health penalty.
+			limit = {
+				has_character_modifier = malnourished_modifier
+				OR = {
+					has_trait = weak
+					has_trait = physique_bad
+				}
+			}
+			add_character_modifier = {
+				modifier = sophocos_starving_modifier
+				months = 1
+			}
+		}
+
+		add_stress = minor_stress_impact_gain
+
+		stress_impact = {
+			gluttonous = major_stress_impact_gain
+			reveler_1 = minor_stress_impact_gain
+			reveler_2 = minor_stress_impact_gain
+			reveler_3 = minor_stress_impact_gain
+			inappetetic = medium_stress_impact_loss
+		}
+
+		set_up_next_climb_event = yes
+
+		ai_chance = {
+			base = 1
+		}
+	}
+
+	option = { # Hunger is an illusion.
+		name = sophocos_quest.5106.b
+
+		trait = whole_of_body
+		trait = mystic_1
+		trait = mystic_2
+		trait = mystic_3
+		trait = zealous
+
+		trigger = {
+			OR = {
+				has_trait = whole_of_body
+				has_trait = lifestyle_mystic
+				AND = {
+					has_trait = zealous
+					has_trait = temperate
+				}
+			}
+		}
+
+		add_piety = major_piety_gain
+		add_learning_lifestyle_xp = medium_lifestyle_experience
+
+		set_up_next_climb_event = yes
+		ai_chance = {
+			base = 100
+		}
+	}
+
+	option = { # Nothing a little magic can't fix
+		name = sophocos_quest.5106.c
+
+		custom_tooltip = sophocos_quest.5106.c.tooltip
+
+		trigger = {
+			OR = {
+				has_trait = education_living_magic
+			}
+		}
+
+		set_up_next_climb_event = yes
+
+		ai_chance = {
+			base = 100
+		}
+	}
+
+	option = { # Get out the extra rations!
+		name = sophocos_quest.5106.g
+
+		trigger = {
+			has_character_flag = sophocos_rations
+		}
+
+		ai_chance = {
+			base = 100
+		}
+
+		set_up_next_climb_event = yes
+	}
+
+	option = { # Rob and eat one of the other climbers
+		name = sophocos_quest.5106.h
+		trigger = {
+			OR = {
+				has_trait = cannibal
+				has_trait = lunatic_1
+				has_trait = lunatic_genetic
+			}
+		}
+		trait = cannibal
+		trait = lunatic_1
+		trait = lunatic_genetic
+		duel = {
+			skill = prowess
+			value = 10
+			30 = { # You kill, loot and consume the climber
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = low_positive_duel_skill_multiplier
+				}
+				desc = sophocos_quest.5106.h.valuables.tt
+				hidden_effect = {
+					send_interface_toast = {
+						title = sophocos_quest.5106.h.valuables
+						left_icon = root
+					}
+				}
+				add_gold = 50
+				give_cannibal_secret_or_trait_effect = yes
+				if = {
+					limit = {
+						has_trait = cannibal
+					}
+					stress_impact = {
+						cannibal = major_stress_impact_loss
+					}
+				}
+				set_up_next_climb_event = yes
+			}
+			20 = { # You get beaten by the climber
+				desc = sophocos_quest.5106.h.injure.tt
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = low_negative_duel_skill_multiplier
+				}
+				hidden_effect = {
+					send_interface_toast = {
+						title = sophocos_quest.5106.h.injure
+						left_icon = root
+					}
+				}
+				increase_wounds_effect = {
+					REASON = fight
+				}
+				target_weight_modifier_effect = { # Reduce Weight
+					VALUE = -30
+				}
+			
+				if = { # If character is already malnourished, give weak
+					limit = {
+						has_character_modifier = malnourished_modifier
+					}
+					add_trait = weak
+				}
+				else_if = { # If they are already weak or physically weak already, give hefty health penalty.
+					limit = {
+						has_character_modifier = malnourished_modifier
+						OR = {
+							has_trait = weak
+							has_trait = physique_bad
+						}
+					}
+					add_character_modifier = {
+						modifier = sophocos_starving_modifier
+						months = 1
+					}
+				}
+			
+				add_stress = minor_stress_impact_gain
+				set_up_next_climb_event = yes
+			}
+			30 = {
+				desc = sophocos_quest.5106.h.nodice.tt
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = low_negative_duel_skill_multiplier
+				}
+				hidden_effect = {
+					send_interface_toast = {
+						title = sophocos_quest.5106.h.nodice
+						left_icon = root
+					}
+				}
+				target_weight_modifier_effect = { # Reduce Weight
+					VALUE = -30
+				}
+			
+				if = { # If character is already malnourished, give weak
+					limit = {
+						has_character_modifier = malnourished_modifier
+					}
+					add_trait = weak
+				}
+				else_if = { # If they are already weak or physically weak already, give hefty health penalty.
+					limit = {
+						has_character_modifier = malnourished_modifier
+						OR = {
+							has_trait = weak
+							has_trait = physique_bad
+						}
+					}
+					add_character_modifier = {
+						modifier = sophocos_starving_modifier
+						months = 1
+					}
+				}
+			
+				add_stress = minor_stress_impact_gain
+				set_up_next_climb_event = yes
+			}
+		}
+		stress_impact = {
+			compassionate = major_stress_impact_gain
+			just = medium_stress_impact_gain
+		}
+		ai_chance = {
+			base = 200
+		}
+	}
+	option = { # I'm going back, I can't take this!
+		name = sophocos_quest.5106.f
+
+		abandon_climb = yes
+	}
+}
+
+####################
+# Uneventful Climbing
+# Note: This event is meant to be a non immersion-breaking placeholder event, and should be phased out if more event variety gets added to Sophocos.
+# By Zoneling
+####################
+
+sophocos_quest.5107 = {
+	type = character_event
+	title = sophocos_quest.5106.t
+	desc = sophocos_quest.5106.desc
+	theme = pilgrimage_activity
+
+	left_portrait = root
+
+	trigger = {
+		NOR = {
+			has_character_flag = sophocos_ghostly_companion
+		}
+	}
+
+	option = {
+		name = sophocos_quest.5106.a
+
+		set_up_next_climb_event = yes
+
+		ai_chance = {
+			base = 10
+			modifier = {
+				subtract = 10
+				has_trait = wounded
+			}
+		}
+	}
+
+	option = {
+		name = sophocos_quest.5106.b
+
+		abandon_climb = yes
+
+		ai_chance = {
+			base = 10
+		}
+	}
+}
+
+####################
+# Climbing partner to climbing spouse?
+# By Zoneling
+####################
+
+sophocos_quest.5111 = {
+	type = character_event
+	title = sophocos_quest.5111.t
+	desc = sophocos_quest.5111.desc
+	theme = pilgrimage_activity
+
+	left_portrait = root
+	right_portrait = scope:SOPHOCOS_FRIEND
+
+	trigger = {
+		root = {
+			NOT = {
+				has_character_flag = had_sophocos_event_5111
+				has_trait = paranoid # Event assumes the char would climb with company in the first place
+				has_trait = shy
+			}
+			var:sophocos_tier <= 2
+		}
+	}
+
+	immediate = {
+		root = {
+			add_character_flag = { # No Event Repeat
+				flag = had_sophocos_event_5111
+				years = 1
+			}
+		}
+		root.faith.religion = {
+			random_faith = {
+				save_scope_as = NRELIGION
+			}
+		}
+		create_character = { # Create prospective friend
+			location = scope:activity.activity_province
+			template = sophocos_climb_partner
+			save_scope_as = SOPHOCOS_FRIEND
+		}
+	}
+
+	option = { # Invite them to join you in your court when this is all over!
+		name = sophocos_quest.5111.a
+
+		add_courtier = scope:SOPHOCOS_FRIEND
+
+		set_up_next_climb_event = yes
+
+		stress_impact = {
+			gregarious = medium_stress_impact_loss
+		}
+
+		ai_chance = {
+			base = 100
+		}
+	}
+
+	option = { # I'm interested in something... more...
+		name = sophocos_quest.5111.b
+		trigger = {
+			scope:SOPHOCOS_FRIEND = {
+				is_attracted_to_gender_of = root
+			}
+			root = {
+				NOT = {
+					has_trait = celibate
+					has_trait = eunuch
+				}
+				is_attracted_to_gender_of = scope:SOPHOCOS_FRIEND
+			}
+		}
+
+		duel = {
+			desc = sophocos_quest.5111.b.tt
+			skill = intrigue
+			target = scope:SOPHOCOS_FRIEND
+			40 = { # You take them as your lover
+				desc = sophocos_quest.5111.b.lovers.tt
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = low_positive_duel_skill_multiplier
+				}
+				hidden_effect = {
+					send_interface_toast = {
+						title = sophocos_quest.5111.b.lovers
+						left_icon = root
+						right_icon = scope:SOPHOCOS_FRIEND
+					}
+					random_list = {
+						20 = {
+							give_nickname = nick_the_milehigh
+						}
+						80 = {}
+					}
+				}
+				give_deviant_secret_or_trait_effect = yes
+				had_sex_with_effect = {
+					CHARACTER = scope:SOPHOCOS_FRIEND
+					PREGNANCY_CHANCE = pregnancy_chance
+				}
+				set_relation_lover = scope:SOPHOCOS_FRIEND
+				add_courtier = scope:SOPHOCOS_FRIEND
+				}
+			60 = { # You enjoy a fun time on the steps
+				desc = sophocos_quest.5111.b.onetime.tt
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = low_positive_duel_skill_multiplier
+				}
+				hidden_effect = {
+					send_interface_toast = {
+						title = sophocos_quest.5111.b.onetime
+						left_icon = root
+						right_icon = scope:SOPHOCOS_FRIEND
+					}
+					random_list = {
+						20 = {
+							give_nickname = nick_the_milehigh
+						}
+						80 = {}
+					}
+				}
+				had_sex_with_effect = {
+					CHARACTER = scope:SOPHOCOS_FRIEND
+					PREGNANCY_CHANCE = pregnancy_chance
+				}
+				give_deviant_secret_or_trait_effect = yes
+			}
+			60 = { # They gracefully refuse your advances.
+				desc = sophocos_quest.5111.b.gracefail.tt
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = low_negative_duel_skill_multiplier
+				}
+				hidden_effect = {
+					send_interface_toast = {
+						title = sophocos_quest.5111.b.gracefail
+						left_icon = root
+						right_icon = scope:SOPHOCOS_FRIEND
+					}
+				}
+			}
+			40 = { # They accuse you of blasphemy!
+				desc = sophocos_quest.5111.b.blasphemy.tt
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = low_negative_duel_skill_multiplier
+				}
+				hidden_effect = {
+					send_interface_toast = {
+						title = sophocos_quest.5111.b.blasphemy
+						left_icon = root
+						right_icon = scope:SOPHOCOS_FRIEND
+					}
+				}
+				add_piety = major_piety_loss
+			}
+
+		}
+		set_up_next_climb_event = yes
+		stress_impact = {
+			zealous = major_stress_impact_gain
+			chaste = medium_stress_impact_gain
+			lustful = minor_stress_impact_loss
+			rakish = medium_stress_impact_loss
+		}
+		ai_chance = {
+			base = 100
+			ai_value_modifier = {
+				ai_zeal = -0.5
+				ai_boldness = 0.2
+			}
+			modifier = {
+				add = 50
+				OR = {
+					has_trait = deviant
+					has_trait = lustful
+					has_trait = rakish
+				}
+			}
+			modifier = {
+				add = -50
+				OR = {
+					has_trait = chaste
+					has_trait = zealous
+				}
+			}
+		}
+	}
+
+	option = { # Challenge their heretical beliefs
+		name = sophocos_quest.5111.c
+
+		trigger = {
+			NOT = {
+				scope:SOPHOCOS_FRIEND.faith = root.faith
+			}
+			OR = {
+				has_trait = zealous
+				has_trait = theologian
+				learning >= 15
+			}
+		}
+
+		trait = zealous
+		trait = theologian
+
+		duel = {
+			desc = sophocos_quest.5111.c.tt
+			skill = learning
+			target = scope:SOPHOCOS_FRIEND
+			40 = { # Convert him
+				desc = sophocos_quest.5111.c.conversion.tt
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = low_positive_duel_skill_multiplier
+				}
+				hidden_effect = {
+					send_interface_toast = {
+						title = sophocos_quest.5111.c.conversion
+						left_icon = root
+						right_icon = scope:SOPHOCOS_FRIEND
+					}
+				}
+				scope:SOPHOCOS_FRIEND = {
+					set_character_faith = root.faith
+				}
+				add_piety = major_piety_gain
+			}
+			60 = { # He is unconvinced
+				desc = sophocos_quest.5111.c.unconvinced.tt
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = low_positive_duel_skill_multiplier
+				}
+				hidden_effect = {
+					send_interface_toast = {
+						title = sophocos_quest.5111.c.unconvinced
+						left_icon = root
+						right_icon = scope:SOPHOCOS_FRIEND
+					}
+				}
+			}
+			40 = { # He shakes your faith in retaliation
+				desc = sophocos_quest.5111.c.shake.tt
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = low_negative_duel_skill_multiplier
+				}
+				hidden_effect = {
+					send_interface_toast = {
+						title = sophocos_quest.5111.c.shake
+						left_icon = root
+						right_icon = scope:SOPHOCOS_FRIEND
+					}
+				}
+				remove_trait = zealous
+				add_piety = medium_piety_loss
+			}
+		}
+
+		set_up_next_climb_event = yes
+
+		ai_chance = {
+			base = 200
+		}
+	}
+
+	option = { # Ask them for their supplies, then wish them well
+		name = sophocos_quest.5111.d
+
+		set_up_next_climb_event = yes
+
+		add_character_flag = {
+			flag = sophocos_rations
+			years = 1
+		}
+
+		ai_chance = {
+			base = 100
+		}
+	}
+
+	option = { # Sacrifice them to the Great Devourer!
+		name = sophocos_quest.5111.e
+
+		trigger = {
+			root.faith = {
+				has_doctrine = tenet_human_sacrifice
+			}
+		}
+
+		scope:SOPHOCOS_FRIEND = {
+			death = {
+				killer = root
+				death_reason = death_murder
+			}
+		}
+		root = {
+			add_secret = {
+				type = secret_murder
+				target = scope:SOPHOCOS_FRIEND
+			}
+		}
+		add_piety = major_piety_gain
+		set_up_next_climb_event = yes
+
+		stress_impact = {
+			compassionate = major_stress_impact_gain
+			just = medium_stress_gain
+			zealous = medium_stress_impact_loss
+			sadistic = minor_stress_impact_loss
+		}
+
+		ai_chance = {
+			base = 100
+			ai_value_modifier = {
+				ai_compassion = -0.5
+				ai_zeal = 0.25
+			}
+		}
+
+		hidden_effect = {
+			add_character_flag = {
+				flag = devourers_favour
+				days = 30
+			}
+		}
+	}
+}
+
+####################
+# Various Hallucination Events
+# 5116 - 5118
+# By Zoneling
+####################
+
+sophocos_quest.5116 = { # The Great Worm!
+	type = character_event
+	title = sophocos_quest.5116.t
+	desc = sophocos_quest.5116.desc
+	theme = pilgrimage_activity
+
+	trigger = {
+		root.var:sophocos_tier > 2
+		NOT = {
+			has_character_flag = had_sophocos_event_5116
+		}
+	}
+
+	immediate = {
+		add_character_flag = {
+			flag = had_sophocos_event_5116
+			days = 30
+		}
+	}
+
+	option = { # You are not found wanting (if you made an earlier sacrifice, or with certain kill count)
+		name = sophocos_quest.5116.a
+		trigger = {
+			root.faith = faith:eabuyad_ilah_al_atilaam
+			OR = {
+				has_character_flag = devourers_favour
+				num_of_relation_victim > 15
+			}
+		}
+		custom_tooltip = sophocos_quest.5116.a.tt
+		hidden_effect = {
+			random_list = {
+				10 = {
+					send_interface_toast = {
+						title = sophocos_quest.5116.a.verypleased
+						remove_trait = physique_bad_1
+						remove_trait = physique_bad_2
+						remove_trait = physique_bad_3
+						remove_trait = intellect_bad_1
+						remove_trait = intellect_bad_2
+						remove_trait = intellect_bad_3
+						remove_trait = beauty_bad_1
+						remove_trait = beauty_bad_2
+						remove_trait = beauty_bad_3
+						change_trait_rank = {
+							trait = physique_good
+							rank = 1
+						}
+						change_trait_rank = {
+							trait = intellect_good
+							rank = 1
+						}
+						change_trait_rank = {
+							trait = beauty_good
+							rank = 1
+						}
+						add_piety = major_piety_gain
+					}
+				}
+				90 = {
+					send_interface_toast = {
+						title = sophocos_quest.5116.a.pleased
+						random_list = {
+							33 = {
+								remove_trait = physique_bad_1
+								remove_trait = physique_bad_2
+								remove_trait = physique_bad_3
+								change_trait_rank = {
+									trait = physique_good
+									rank = 1
+								}
+							}
+							33 = {
+								remove_trait = intellect_bad_1
+								remove_trait = intellect_bad_2
+								remove_trait = intellect_bad_3
+								change_trait_rank = {
+									trait = intellect_good
+									rank = 1
+								}
+							}
+							33 = {
+								remove_trait = beauty_bad_1
+								remove_trait = beauty_bad_2
+								remove_trait = beauty_bad_3
+								change_trait_rank = {
+									trait = beauty_good
+									rank = 1
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		set_up_next_climb_event = yes
+		ai_chance = {
+			base = 500
+		}
+	}
+
+	option = { # Our battle shall be legendary!
+		name = sophocos_quest.5116.b
+		duel = {
+			skill = prowess
+			value = high_skill_rating
+			10 = { # You slay it, and the hallucination is revealed.
+				desc = sophocos_quest.5116.b.slayer.tt
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = low_positive_duel_skill_multiplier
+				}
+				remove_trait = craven
+				add_trait = brave
+				hidden_effect = {
+					send_interface_toast = {
+						title = sophocos_quest.5116.b.slayer
+						random_list = {
+							1 = {
+								add_trait = lunatic_1
+							}
+							1 = {
+								add_stress = medium_stress_impact_gain
+							}
+							1 = {}
+						}
+					}
+				}
+				set_up_next_climb_event = yes
+
+			}
+			25 = { # You escape with your life
+				desc = sophocos_quest.5116.b.escape.tt
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = low_positive_duel_skill_multiplier
+				}
+				add_stress = medium_stress_impact_gain
+				set_up_next_climb_event = yes
+			}
+			50 = { # The beast scars you for life
+				desc = sophocos_quest.5116.b.failure.tt
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = low_negative_duel_skill_multiplier
+				}
+				custom_tooltip = sophocos_quest.5116.b.failure.ctt
+				hidden_effect = {
+					send_interface_toast = {
+						title = sophocos_quest.5116.b.failure
+						increase_wounds_effect = { REASON = fight }
+						random_list = {
+							5 = {
+								trigger = {
+									NOT = {
+										has_trait = possessed_1
+										has_trait = possessed_genetic
+									}
+								}
+								add_trait = possessed_genetic
+							}
+							5 = {
+								trigger = {
+									NOT = {
+										has_trait = lunatic_1
+										has_trait = lunatic_genetic
+									}
+								}
+								add_trait = lunatic_genetic
+							}
+							90 = {}
+						}
+					}
+				}
+				abandon_climb = yes
+			}
+			10 = { # The beast slays you
+				desc = sophocos_quest.5116.b.death.tt
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = low_negative_duel_skill_multiplier
+				}
+				death = {
+					death_reason = death_vanished
+				}
+			}
+		}
+
+		stress_impact = {
+			craven = major_stress_impact_gain
+		}
+
+		ai_chance = {
+			base = 100
+			ai_value_modifier = {
+				ai_boldness = 0.5
+			}
+		}
+	}
+
+	option = { # A phantom! I shall ignore it.
+		name = sophocos_quest.5116.c
+		trigger = {
+			OR = {
+				has_trait = mystic_1
+				has_trait = mystic_2
+				has_trait = mystic_3
+				is_witch_trigger = yes
+				learning > 15
+			}
+		}
+		trait = mystic_1
+		trait = mystic_2
+		trait = mystic_3
+		set_up_next_climb_event = yes
+
+		ai_chance = {
+			base = 200
+		}
+	}
+
+	option = { # I kneel!
+		name = sophocos_quest.5116.d
+		custom_tooltip = sophocos_quest.5116.d.tt
+		
+		if = {
+			limit = {
+				root.faith = faith:eabuyad_ilah_al_atilaam
+			}
+			add_prestige_level = -1
+			add_piety = major_piety_gain
+			random_list = {
+				5 = {
+					add_trait = possessed_1
+				}
+				5 = {
+					add_trait = lunatic_1
+				}
+				90 = {}
+			}
+		}
+		else = {
+			set_character_faith = faith:eabuyad_ilah_al_atilaam
+			hidden_effect = {
+				add_character_flag = {
+					flag = converted_by_forced_conversion_interaction
+					years = 200
+				}
+			}
+			add_piety_level = -1
+			random_list = {
+				5 = {
+					add_trait = possessed_1
+				}
+				5 = {
+					add_trait = lunatic_1
+				}
+				90 = {}
+			}
+		}
+
+		set_up_next_climb_event = yes
+		stress_impact = {
+			arrogant = medium_stress_impact_gain
+			zealous = medium_stress_impact_gain
+		}
+		ai_chance = {
+			base = 100
+			ai_value_modifier = {
+				ai_zeal = -0.5
+				ai_boldness = -0.5
+			}
+		}
+	}
+}
+
+sophocos_quest.5117 = { # Ghost of Dead Relative
+	type = character_event
+	title = sophocos_quest.5117.t
+	desc = sophocos_quest.5117.desc
+	theme = pilgrimage_activity
+
+	trigger = {
+		NOT = {
+			has_character_flag = had_sophocos_event_5117
+		}
+		OR = {
+			any_close_family_member = {
+				even_if_dead = yes
+				is_alive = no
+			}
+			any_consort = {
+				even_if_dead = yes
+				is_alive = no
+			}
+		}
+	}
+
+	immediate = { # Pick family member to display
+		add_character_flag = {
+			flag = had_sophocos_event_5117
+			days = 30
+		}
+		if = {
+			limit = {
+				any_close_family_member = {
+					even_if_dead = yes
+					is_alive = no
+				}
+			}
+			random_close_family_member = {
+				even_if_dead = yes
+				limit = {
+					is_alive = no
+				} 
+				save_scope_as = dead_relative
+				add_character_flag = {
+					flag = non_spousal_relative
+					days = 30
+				}
+			}
+		}
+		else = {
+			random_consort = {
+				even_if_dead = yes
+				limit = {
+					is_alive = no
+				}
+				save_scope_as = dead_relative
+				add_character_flag = {
+					flag = spousal_relative
+					days = 30
+				}
+			}
+		}
+		scope:dead_relative = { # Count traits for later events
+			set_local_variable = {
+				name = trait_amount
+				value = 0
+			}
+			if = {
+				limit = {
+					has_trait = scholar
+				}
+				change_local_variable = {
+					name = trait_amount
+					add = 1
+				}
+			}
+			if = {
+				limit = {
+					OR = {
+						has_trait = mystic_1
+						has_trait = mystic_2
+						has_trait = mystic_3
+					}
+				}
+				change_local_variable = {
+					name = trait_amount
+					add = 1
+				}
+			}
+			if = {
+				limit = {
+					has_trait = theologian
+				}
+				change_local_variable = {
+					name = trait_amount
+					add = 1
+				}
+			}
+		}
+		root = {
+			set_local_variable = {
+				name = trait_amount
+				value = 0
+			}
+			if = {
+				limit = {
+					has_trait = scholar
+				}
+				change_local_variable = {
+					name = trait_amount
+					add = 1
+				}
+			}
+			if = {
+				limit = {
+					OR = {
+						has_trait = mystic_1
+						has_trait = mystic_2
+						has_trait = mystic_3
+					}
+				}
+				change_local_variable = {
+					name = trait_amount
+					add = 1
+				}
+			}
+			if = {
+				limit = {
+					has_trait = theologian
+				}
+				change_local_variable = {
+					name = trait_amount
+					add = 1
+				}
+			}
+		}
+	}
+
+	left_portrait = {
+		character = root
+		animation = shock
+	}
+	right_portrait = {
+		character = scope:dead_relative
+		animation = idle #
+	}
+
+	option = { # Try to seduce undead family member - Not former spouse
+		name = sophocos_quest.5117.a
+		trigger = {
+			scope:dead_relative = {
+				has_character_flag = non_spousal_relative
+			}
+			OR = {
+				AND = {
+					is_incestuous_trigger = yes
+					is_attracted_to_gender_of = scope:dead_relative
+				}
+				is_deviant_trigger = yes
+			}
+			NOR = {
+				has_trait = celibate
+				has_trait = eunuch
+			}
+		}
+		trait = deviant
+		trait = incestuous
+		duel = {
+			skill = intrigue
+			target = scope:dead_relative
+			20 = { # Have ghost-sex with your hallucination
+				compare_modifier = { # Usually low chance
+					value = scope:duel_value
+					multiplier = low_positive_duel_skill_multiplier
+				}
+				compare_modifier = { # Much easier if family member was a degenerate as well
+					trigger = {
+						scope:dead_relative = {
+							OR = {
+								has_trait = lustful
+								is_incestuous_trigger = yes
+								is_deviant_trigger = yes
+							}
+						}
+					}
+					value = scope:duel_value
+					multiplier = high_positive_duel_skill_multiplier
+				}
+				desc = sophocos_quest.5117.a.wincest.tt
+				give_deviant_secret_or_trait_effect = yes
+				if = { # If incestous relations are sacred, and deviancy accepted, give piety gain.
+					limit = {
+						root.faith = {
+							has_doctrine = tenet_divine_marriage
+							has_doctrine = doctrine_deviancy_accepted
+						}
+					}
+					if = {
+						limit = {
+							is_deviant_trigger = yes
+						}
+						add_stress = minor_stress_loss
+					}
+					add_piety = medium_piety_gain
+					custom_tooltip = sophocos_quest.5117.a.divinewincest.tt
+				}
+				else_if = { # If deviancy and incest is accepted, do nothing.
+					limit = {
+						root.faith = {
+							has_doctrine = doctrine_deviancy_accepted
+						}
+						NOT = {
+							relation_with_character_is_incestuous_in_my_faith_trigger = {
+								CHARACTER = scope:dead_relative
+							}
+						}
+					}
+					if = {
+						limit = {
+							is_deviant_trigger = yes
+						}
+						add_stress = minor_stress_loss
+					}
+				}
+				else = { # Otherwise give hit on piety
+					if = {
+						limit = {
+							is_deviant_trigger = yes
+						}
+						add_stress = minor_stress_loss
+					}
+					add_piety = medium_piety_loss
+				}
+				hidden_effect = { # Decide if ghost is real or not
+					random_list = {
+						10 = { # The ghost is real, you have a great time, but you're drained of life-force.
+							send_interface_toast = {
+								title = sophocos_quest.5117.a.wincestwin
+								add_stress = medium_stress_loss
+								physical_health_change = { VAL = -1 }
+								remove_trait = chaste
+								add_trait = lustful
+								give_incest_secret_or_nothing_with_target_effect = {
+									CHARACTER = scope:dead_relative
+								}
+								had_sex_with_effect = { # Chance for undead pregnancy
+									CHARACTER = scope:dead_relative
+									PREGNANCY_CHANCE = pregnancy_chance
+								}
+							}
+						}
+						10 = { # You're not seen, but the ghost isn't real.
+							send_interface_toast = {
+								title = sophocos_quest.5117.a.failcest
+								add_stress = major_stress_impact_gain
+								add_trait = lunatic_1
+							}
+						}
+						10 = { # You're seen, and the ghost is real
+							send_interface_toast = {
+								title = sophocos_quest.5117.a.wincestbusted
+								add_stress = medium_stress_loss
+								physical_health_change = { VAL = -1 }
+								remove_trait = chaste
+								add_trait = lustful
+								give_incest_secret_or_nothing_with_target_effect = {
+									CHARACTER = scope:dead_relative
+								}
+								random_secret = {
+									limit = {
+											secret_type = secret_incest
+									}
+									expose_secret = root
+								}
+								had_sex_with_effect = { # Chance for undead pregnancy
+									CHARACTER = scope:dead_relative
+									PREGNANCY_CHANCE = pregnancy_chance
+								}
+							}
+						}
+						10 = { # You're seen, but the ghost is a hallucination
+							send_interface_toast = {
+								title = sophocos_quest.5117.a.failcestbusted
+								add_stress = major_stress_impact_gain
+								add_trait = lunatic_1
+								add_piety_level = -1
+							}
+						}
+					}
+				}
+				set_up_next_climb_event = yes
+			}
+			60 = { # The ghost is repulsed by your advances, and leaves.
+				desc = sophocos_quest.5117.a.repulsed.tt
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = medium_positive_duel_skill_multiplier # This is actually a relatively positive outcome
+				}
+				show_as_tooltip = {
+					add_stress = minor_stress_impact_gain
+				}
+				hidden_effect = {
+					send_interface_toast = {
+						title = sophocos_quest.5117.a.repulsed
+						add_stress = minor_stress_impact_gain
+					}
+				}
+				set_up_next_climb_event = yes		
+			}
+			20 = { # The ghost is outraged, and attacks you
+				desc = sophocos_quest.5117.a.attack.tt
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = low_negative_duel_skill_multiplier
+				}
+				increase_wounds_effect = {
+					REASON = fight
+				}
+				physical_health_change = {
+					VAL = -1
+				}
+				abandon_climb = yes
+			}
+		}
+		stress_impact = {
+			chaste = medium_stress_impact_gain
+			zealous = major_stress_impact_gain
+			deviant = minor_stress_impact_loss
+		}
+		ai_chance = {
+			base = 10
+			modifier = {
+				add = 100
+				OR = {
+					has_trait = lustful
+					has_trait = deviant
+				}
+			}
+		}
+	}
+
+	option = { # Try to seduce undead family member - Former Spouse
+		name = sophocos_quest.5117.b
+		trigger = {
+			scope:dead_relative = {
+				has_character_flag = spousal_relative
+			}
+			is_deviant_trigger = yes
+			NOR = {
+				has_trait = celibate
+				has_trait = eunuch
+			}
+		}
+		trait = deviant
+		duel = {
+			skill = intrigue
+			target = scope:dead_relative
+			30 = { # Reunite with your long lost spouse
+				desc = sophocos_quest.5117.b.success.tt
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = medium_positive_duel_skill_multiplier
+				}
+				give_deviant_secret_or_trait_effect = yes
+				if = { # If deviancy (necrophilia) is accepted, and the living viewed as trapped, give piety
+					limit = {
+						root.faith = {
+							has_doctrine = tenet_gnosticism
+							has_doctrine = doctrine_deviancy_accepted
+						}
+					}
+					if = {
+						limit = {
+							is_deviant_trigger = yes
+						}
+						add_stress = minor_stress_loss
+					}
+					add_piety = medium_piety_gain
+					custom_tooltip = sophocos_quest.5117.b.good.tt
+				}
+				else_if = { # If deviancy is accepted, do nothing.
+					limit = {
+						root.faith = {
+							has_doctrine = doctrine_deviancy_accepted
+						}
+					}
+					if = {
+						limit = {
+							is_deviant_trigger = yes
+						}
+						add_stress = minor_stress_loss
+					}
+					custom_tooltip = sophocos_quest.5117.b.ok.tt
+				}
+				else = { # Otherwise give hit on piety
+					if = {
+						limit = {
+							is_deviant_trigger = yes
+						}
+						add_stress = minor_stress_loss
+					}
+					add_piety = medium_piety_loss
+					custom_tooltip = sophocos_quest.5117.b.bad.tt
+				}
+				hidden_effect = { # Decide if ghost is real or not
+					random_list = {
+						10 = { # The ghost is real, you have a great time, but you're drained of life-force.
+							send_interface_toast = {
+								title = sophocos_quest.5117.a.wincestwin
+								add_stress = medium_stress_loss
+								physical_health_change = { VAL = -1 }
+								remove_trait = chaste
+								add_trait = lustful
+								had_sex_with_effect = { # Chance for undead pregnancy
+									CHARACTER = scope:dead_relative
+									PREGNANCY_CHANCE = pregnancy_chance
+								}
+							}
+						}
+						10 = { # You're not seen, but the ghost isn't real.
+							send_interface_toast = {
+								title = sophocos_quest.5117.a.failcest
+								add_stress = major_stress_impact_gain
+								add_trait = lunatic_1
+							}
+						}
+						10 = { # You're seen, and the ghost is real
+							send_interface_toast = {
+								title = sophocos_quest.5117.a.wincestbusted
+								add_stress = medium_stress_loss
+								physical_health_change = { VAL = -1 }
+								remove_trait = chaste
+								add_trait = lustful
+								had_sex_with_effect = { # Chance for undead pregnancy
+									CHARACTER = scope:dead_relative
+									PREGNANCY_CHANCE = pregnancy_chance
+								}
+							}
+						}
+						10 = { # You're seen, but the ghost is a hallucination
+							send_interface_toast = {
+								title = sophocos_quest.5117.a.failcestbusted
+								add_stress = major_stress_impact_gain
+								add_trait = lunatic_1
+								add_piety_level = -1
+							}
+						}
+					}
+				}
+				set_up_next_climb_event = yes
+			}
+			60 = { # The ghost is repulsed by your advances, and leaves.
+				desc = sophocos_quest.5117.b.repulsed.tt
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = low_positive_duel_skill_multiplier
+				}
+				show_as_tooltip = {
+					add_stress = minor_stress_impact_gain
+				}
+				hidden_effect = {
+					send_interface_toast = {
+						title = sophocos_quest.5117.b.repulsed
+						add_stress = minor_stress_impact_gain
+					}
+				}
+				set_up_next_climb_event = yes		
+			}
+			10 = { # The ghost is outraged, and attacks you
+				desc = sophocos_quest.5117.b.attack.tt
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = low_negative_duel_skill_multiplier
+				}
+				increase_wounds_effect = {
+					REASON = fight
+				}
+				physical_health_change = {
+					VAL = -1
+				}
+				abandon_climb = yes
+			}
+		}
+		stress_impact = {
+			chaste = medium_stress_impact_gain
+			zealous = major_stress_impact_gain
+			deviant = minor_stress_impact_loss
+		}
+		ai_chance = {
+			base = 10
+			modifier = {
+				add = 100
+				OR = {
+					has_trait = lustful
+					has_trait = deviant
+				}
+			}
+		}
+	}
+
+	option = { # Gnostic option, ask about the afterlife
+		name = sophocos_quest.5117.c
+		trigger = {
+			faith = {
+				has_doctrine = tenet_gnosticism
+			}
+			OR = {
+				has_trait = scholar
+				learning > 7
+			}
+		}
+		trait = scholar
+
+		hidden_effect = {
+			if = { # If both characters have at least two learning/mystic traits, make a staggering revelation, piercing the mystery of the veil between life and death.
+				limit = {
+					scope:dead_relative.var:trait_amount = root.var:trait_amount
+					root.var:trait_amount >= 2
+				}
+				send_interface_toast = {
+					title = sophocos_quest.5117.c.revelation
+					if = { # Upgrade their mystic rank to max
+						limit = {
+							OR = {
+								has_trait = mystic_1
+								has_trait = mystic_2
+								has_trait = mystic_3
+							}
+						}
+						change_trait_rank = {
+							trait = lifestyle_mystic
+							rank = 3
+						}
+					}
+					else = {
+						add_trait = mystic_3
+					}
+					add_trait = lunatic_1 # The price of illumination
+					if = {
+						limit = {
+							has_magi_potency_trigger = yes
+							has_education_mixed_magic_trigger = yes
+						}
+						change_trait_rank = {
+							trait = magic_good
+							rank = 2
+							max = 4
+						}
+						change_trait_rank = {
+							trait = education_mixed_magic
+							rank = 2
+						}
+					}
+					else_if = {
+						limit = {
+							has_magi_potency_trigger = yes
+							has_education_mixed_magic_trigger = no
+						}
+						change_trait_rank = {
+							trait = magic_good
+							rank = 2
+							max = 4
+						}
+						add_trait = education_mixed_magic_2
+					}
+					else = {
+						add_trait = education_mixed_magic_2
+						add_trait = magic_good_2
+						add_to_magi_list = yes
+					}
+					trigger_event = sophocos_quest.5118
+				}
+			}
+			else_if = { # If both character have at least one learning/mystic traits, make a revelation, easing potential new faith creations
+				limit = {
+					scope:dead_relative.var:trait_amount = root.var:trait_amount
+					root.var:trait_amount >= 1
+				}
+				send_interface_toast = {
+					title = sophocos_quest.5117.c.minorrevelation
+					add_piety = massive_piety_gain
+					add_learning_lifestyle_xp = monumental_lifestyle_experience
+					add_character_modifier = {
+						modifier = sophocos_prophet_modifier
+						years = 10
+					}
+				}
+				trigger_event = sophocos_quest.5118
+			}
+			else_if = { # If ghost has more traits than the character, overwhelm them.
+				limit = {
+					scope:dead_relative.var:trait_amount = {
+						compare_value > root.var:trait_amount
+					}
+				}
+				send_interface_toast = {
+					title = sophocos_quest.5117.c.overwhelmed
+					add_trait = lunatic_1
+					add_stress = medium_stress_impact_gain
+				}
+				trigger_event = sophocos_quest.5118
+			}
+			else = { # If none of the above are met, the conversation is pleasant but not educational.
+				send_interface_toast = {
+					title = sophocos_quest.5117.c.normal
+					if = {
+						limit = {
+							has_trait = gregarious
+						}
+						add_stress = medium_stress_loss
+					}
+					else = {
+						add_stress = minor_stress_loss
+					}
+				}
+				trigger_event = sophocos_quest.5118
+			}
+		}
+		stress_impact = {
+			impatient = minor_stress_impact_gain
+			shy = minor_stress_impact_gain
+		}
+		ai_chance = {
+			base = 100
+			modifier = {
+				subtract = 50
+				learning < medium_skill_rating
+			}
+		}
+	}
+
+	option = { # Reminiscence about the good times, then climb on.
+		name = sophocos_quest.5117.d
+		
+		set_up_next_climb_event = yes
+
+		hidden_effect = {
+			random_list = {
+				1 = { 
+					send_interface_toast = {
+						title = sophocos_quest.5117.d.insane
+						random_list = {
+							1 = { add_trait = lunatic_1 }
+							1 = {}
+						}
+					}
+				}
+				1 = {}
+			}
+		}
+
+		stress_impact = {
+			shy = medium_stress_impact_gain
+			gregarious = medium_stress_impact_loss
+		}
+
+		ai_chance = { base = 100 }
+	}
+
+	option = { # Disregard the ghost and climb on
+		name = sophocos_quest.5117.e
+
+		set_up_next_climb_event = yes
+
+		stress_impact = {
+			shy = minor_stress_impact_loss
+			gregarious = minor_stress_impact_gain
+		}
+
+		ai_chance = { base = 100 }
+	}
+
+	option = { # This is too much. Climb back down.
+		name = sophocos_quest.5117.f
+
+		abandon_climb = yes
+
+		ai_chance = { base = 105 }
+	}
+}
+
+sophocos_quest.5118 = { # Keep climbing after revelation? DO NOT ADD TO SOPHOCOS_QUESTS
+	type = character_event
+	title = sophocos_quest.5118.t
+	desc = sophocos_quest.5118.desc
+	theme = pilgrimage_activity
+
+	option = {
+		name = sophocos_quest.5118.a
+
+		set_up_next_climb_event = yes
+	}
+
+	option = {
+		name = sophocos_quest.5118.b
+
+		abandon_climb = yes
+	}
+}
+
+## Climb Arrival Events
+# Example Arrival Event
+
+sophocos_quest.6001 = { # That's it?
+	type = character_event
+	title = sophocos_quest.6001.t
+	desc = sophocos_quest.6001.desc
+	theme = pilgrimage_activity
+
+	option = {
+		name = sophocos_quest.6001.a
+	}
+}

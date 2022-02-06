@@ -1,419 +1,340 @@
-﻿namespace = adventure
-
-
-adventure.1 = {
- type = character_event
- theme = learning
- desc = adventure.1.desc
- hidden = yes
-	option = {
-		name = adventure.1.a
-
-		if = {
-			limit = {
-				NOT = {
-					any_realm_province = {
-						OR = {
-							has_province_modifier = county_adventure_creepy_graveyard_modifier
-							has_province_modifier = county_adventure_ancient_ruin_modifier
-							has_province_modifier = county_adventure_Forboding_Temple_modifier
-							has_province_modifier = county_adventure_Abandoned_Dungeon_modifier
-							has_province_modifier = county_adventure_Mysterious_Cave_modifier
-						}
-					}
-				}
-			}
-
-			random = {
-				chance = 5
-				
-				random_realm_province = {
-					random_list = {
-						20 = {
-							add_province_modifier = {
-								modifier = county_adventure_creepy_graveyard_modifier
-								years = 5
-							}
-						}
-						20 = {
-							add_province_modifier = {
-								modifier = county_adventure_ancient_ruin_modifier
-								years = 5
-							}
-						}
-						20 = {
-							add_province_modifier = {
-								modifier = county_adventure_Forboding_Temple_modifier
-								years = 5
-							}
-						}
-						20 = {
-							add_province_modifier = {
-								modifier = county_adventure_Abandoned_Dungeon_modifier
-								years = 5
-							}
-						}
-						20 = {
-							add_province_modifier = {
-								modifier = county_adventure_Mysterious_Cave_modifier
-								years = 5
-							}
-						}
-					}
-				}
-			}
-		}
-	}
-}
-
-adventure.3 = {
- type = character_event
- theme = learning
- desc = adventure.1.desc
- hidden = yes
-	option = {
-		name = adventure.3.a
-
-		if = {
-			limit = {
-				NOT = {
-					any_realm_province = {
-						OR = {
-							has_province_modifier = county_adventure_creepy_graveyard_modifier
-							has_province_modifier = county_adventure_ancient_ruin_modifier
-							has_province_modifier = county_adventure_Forboding_Temple_modifier
-							has_province_modifier = county_adventure_Abandoned_Dungeon_modifier
-							has_province_modifier = county_adventure_Mysterious_Cave_modifier
-						}
-					}
-				}
-			}
-
-		random = {
-			chance = 30
-			
-			random_realm_province = {
-					random_list = {
-						20 = {
-							add_province_modifier = {
-								modifier = county_adventure_creepy_graveyard_modifier
-								years = 5
-							}
-						}
-						20 = {
-							add_province_modifier = {
-								modifier = county_adventure_ancient_ruin_modifier
-								years = 5
-							}
-						}
-						20 = {
-							add_province_modifier = {
-								modifier = county_adventure_Forboding_Temple_modifier
-								years = 5
-							}
-						}
-						20 = {
-							add_province_modifier = {
-								modifier = county_adventure_Abandoned_Dungeon_modifier
-								years = 5
-							}
-						}
-						20 = {
-							add_province_modifier = {
-								modifier = county_adventure_Mysterious_Cave_modifier
-								years = 5
-							}
-						}
-					}
-				}
-			}
-		}
-	}
-}
-
-adventure.100 = {
-	type = character_event
-	theme = learning
-	desc = adventure.100.desc
-
-	option = {
-		name = adventure.100.a
-
-		trigger = {
-			any_realm_province = {
-				has_province_modifier = county_adventure_creepy_graveyard_modifier
-			}
-		}
-		trigger_event = adventure.1000
-	}
-	option = {
-		name = adventure.100.b
-		
-		trigger = {
-			any_realm_province = {
-				has_province_modifier = county_adventure_ancient_ruin_modifier
-			}
-		}
-		trigger_event = adventure.2000
-	}
-	option = {
-		name = adventure.100.c
-		
-		trigger = {
-			any_realm_province = {
-				has_province_modifier = county_adventure_Forboding_Temple_modifier
-			}
-		}
-		trigger_event = adventure.3000
-	}
-	option = {
-		name = adventure.100.d
-		
-		trigger = {
-			any_realm_province = {
-				has_province_modifier = county_adventure_Abandoned_Dungeon_modifier
-			}
-		}
-		trigger_event = adventure.4000
-	}
-	option = {
-		name = adventure.100.e
-		
-		trigger = {
-			any_realm_province = {
-				has_province_modifier = county_adventure_Mysterious_Cave_modifier
-			}
-		}
-		trigger_event = adventure.5000
-	}
-}
-
-adventure.1000 = {
-	type = character_event
-	theme = learning
-	desc = adventure.1000.desc
-
-	option = {
-		name = adventure.1000.a
-
-		trigger_event = adventure.1001
-	}
-	option = {
-		name = adventure.1000.b
-	}
-}
-
-adventure.2000 = {
-	type = character_event
-	theme = learning
-	desc = adventure.2000.desc
-
-	option = {
-		name = adventure.2000.a
-
-		trigger_event = adventure.1001
-	}
-	option = {
-		name = adventure.2000.b
-	}
-}
-
-adventure.3000 = {
-	type = character_event
-	theme = learning
-	desc = adventure.3000.desc
-
-	option = {
-		name = adventure.3000.a
-
-		trigger_event = adventure.1001
-	}
-	option = {
-		name = adventure.3000.b
-	}
-}
-
-adventure.4000 = {
-	type = character_event
-	theme = learning
-	desc = adventure.4000.desc
-
-	option = {
-		name = adventure.4000.a
-
-		trigger_event = adventure.1001
-	}
-	option = {
-		name = adventure.4000.b
-	}
-}
-
-adventure.5000 = {
-	type = character_event
-	theme = learning
-	desc = adventure.5000.desc
-
-	option = {
-		name = adventure.5000.a
-
-		trigger_event = adventure.1001
-	}
-	option = {
-		name = adventure.5000.b
-	}
-}
-
-
-adventure.1001 = {
-	type = character_event
-	theme = learning
-	desc = adventure.1000.desc
-	hidden = yes
-
-	option = {
-		name = adventure.1000.a
-
-		random = {
-			chance = 120
-
-			random_list = {
-				20 = {
-					trigger_event = adventure.1002 #die
-				}
-				20 = {
-					trigger_event = adventure.1003 #gold
-
-				}
-				20 = {
-					trigger_event = adventure.1004 #prestige
-				}
-				20 = {
-					trigger_event = adventure.1005 #piety
-				}
-				20 = {
-					trigger_event = adventure.1006 #possessed
-				}
-				20 = {
-					trigger_event = adventure.1007 #artifact
-				}
-			}
-		}
-	}
-}
-
-adventure.1002 = { #die
-	type = character_event
-	theme = learning
-	desc = adventure.1002.desc
-
-	option = {
-		name = adventure.1002.a
-		death = {
-			death_reason = death_adventuring
-		}
-	}
-}
-
-adventure.1003 = { #gold
-	type = character_event
-	theme = learning
-	desc = adventure.1003.desc
-
-	option = {
-		name = adventure.1003.a
-		add_gold = major_gold_value
-		random_realm_province = {
-			limit = {
-				OR = {
-					has_province_modifier = county_adventure_creepy_graveyard_modifier
-					has_province_modifier = county_adventure_ancient_ruin_modifier
-					has_province_modifier = county_adventure_Forboding_Temple_modifier
-					has_province_modifier = county_adventure_Abandoned_Dungeon_modifier
-					has_province_modifier = county_adventure_Mysterious_Cave_modifier
-				}
-			}
-			remove_county_modifier = county_adventure_creepy_graveyard_modifier
-			remove_county_modifier = county_adventure_ancient_ruin_modifier
-			remove_county_modifier = county_adventure_Forboding_Temple_modifier
-			remove_county_modifier = county_adventure_Abandoned_Dungeon_modifier
-			remove_county_modifier = county_adventure_Mysterious_Cave_modifier
-		}
-	}
-}
-
-adventure.1004 = { #prestige
-	type = character_event
-	theme = learning
-	desc = adventure.1004.desc
-
-	option = {
-		name = adventure.1004.a
-		add_prestige = massive_prestige_gain
-		random_realm_province = {
-			limit = {
-				OR = {
-					has_province_modifier = county_adventure_creepy_graveyard_modifier
-					has_province_modifier = county_adventure_ancient_ruin_modifier
-					has_province_modifier = county_adventure_Forboding_Temple_modifier
-					has_province_modifier = county_adventure_Abandoned_Dungeon_modifier
-					has_province_modifier = county_adventure_Mysterious_Cave_modifier
-				}
-			}
-			remove_county_modifier = county_adventure_creepy_graveyard_modifier
-			remove_county_modifier = county_adventure_ancient_ruin_modifier
-			remove_county_modifier = county_adventure_Forboding_Temple_modifier
-			remove_county_modifier = county_adventure_Abandoned_Dungeon_modifier
-			remove_county_modifier = county_adventure_Mysterious_Cave_modifier
-		}
-	}
-}
-
-adventure.1005 = { #piety
-	type = character_event
-	theme = learning
-	desc = adventure.1005.desc
-
-	option = {
-		name = adventure.1005.a
-		add_piety = miniscule_piety_gain
-		random_realm_province = {
-			limit = {
-				OR = {
-					has_province_modifier = county_adventure_creepy_graveyard_modifier
-					has_province_modifier = county_adventure_ancient_ruin_modifier
-					has_province_modifier = county_adventure_Forboding_Temple_modifier
-					has_province_modifier = county_adventure_Abandoned_Dungeon_modifier
-					has_province_modifier = county_adventure_Mysterious_Cave_modifier
-				}
-			}
-			remove_county_modifier = county_adventure_creepy_graveyard_modifier
-			remove_county_modifier = county_adventure_ancient_ruin_modifier
-			remove_county_modifier = county_adventure_Forboding_Temple_modifier
-			remove_county_modifier = county_adventure_Abandoned_Dungeon_modifier
-			remove_county_modifier = county_adventure_Mysterious_Cave_modifier
-		}
-	}
-}
-
-adventure.1006 = { #possessed
-	type = character_event
-	theme = learning
-	desc = adventure.1006.desc
-
-	option = {
-		name = adventure.1006.a
-		add_trait = possessed
-	}
-}
-adventure.1007 = { #artifact
-	type = character_event
-	#name = adventure.1007.t
-	theme = learning
-	desc = adventure.1007.desc
-	
-	option = {
-		name = adventure.1007.a
-		trigger_event = artifact_hunt.0001
-		
-	}
-}
+﻿#namespace = adventure
+#
+#adventure.1 = {
+# type = character_event
+# theme = learning
+# desc = adventure.1.desc
+# hidden = yes
+#	option = {
+#		name = adventure.1.a
+#
+#		if = {
+#			limit = {
+#				NOT = {
+#					any_realm_province = {
+#						OR = {
+#							has_province_modifier = province_adventure_creepy_graveyard_modifier
+#							has_province_modifier = province_adventure_ancient_ruin_modifier
+#							has_province_modifier = province_adventure_Forboding_Temple_modifier
+#							has_province_modifier = province_adventure_Abandoned_Dungeon_modifier
+#							has_province_modifier = province_adventure_Mysterious_Cave_modifier
+#						}
+#					}
+#				}
+#			}
+#
+#			random = {
+#				chance = 5
+#				
+#				random_realm_province = {
+#					random_list = {
+#						20 = {
+#							add_province_modifier = {
+#								modifier = province_adventure_creepy_graveyard_modifier
+#								years = 5
+#							}
+#						}
+#						20 = {
+#							add_province_modifier = {
+#								modifier = province_adventure_ancient_ruin_modifier
+#								years = 5
+#							}
+#						}
+#						20 = {
+#							add_province_modifier = {
+#								modifier = province_adventure_Forboding_Temple_modifier
+#								years = 5
+#							}
+#						}
+#						20 = {
+#							add_province_modifier = {
+#								modifier = province_adventure_Abandoned_Dungeon_modifier
+#								years = 5
+#							}
+#						}
+#						20 = {
+#							add_province_modifier = {
+#								modifier = province_adventure_Mysterious_Cave_modifier
+#								years = 5
+#							}
+#						}
+#					}
+#				}
+#			}
+#		}
+#	}
+#}
+#
+#
+#
+#adventure.100 = {
+#	type = character_event
+#	theme = learning
+#	desc = adventure.100.desc
+#
+#	option = {
+#		name = adventure.100.a
+#
+#		trigger = {
+#			any_realm_province = {
+#				has_province_modifier = province_adventure_creepy_graveyard_modifier
+#			}
+#		}
+#		trigger_event = adventure.1000
+#	}
+#	option = {
+#		name = adventure.100.b
+#		
+#		trigger = {
+#			any_realm_province = {
+#				has_province_modifier = province_adventure_ancient_ruin_modifier
+#			}
+#		}
+#		trigger_event = adventure.2000
+#	}
+#	option = {
+#		name = adventure.100.c
+#		
+#		trigger = {
+#			any_realm_province = {
+#				has_province_modifier = province_adventure_Forboding_Temple_modifier
+#			}
+#		}
+#		trigger_event = adventure.3000
+#	}
+#	option = {
+#		name = adventure.100.d
+#		
+#		trigger = {
+#			any_realm_province = {
+#				has_province_modifier = province_adventure_Abandoned_Dungeon_modifier
+#			}
+#		}
+#		trigger_event = adventure.4000
+#	}
+#	option = {
+#		name = adventure.100.e
+#		
+#		trigger = {
+#			any_realm_province = {
+#				has_province_modifier = province_adventure_Mysterious_Cave_modifier
+#			}
+#		}
+#		trigger_event = adventure.5000
+#	}
+#}
+#
+#adventure.1000 = {
+#	type = character_event
+#	theme = learning
+#	desc = adventure.1000.desc
+#
+#	option = {
+#		name = adventure.1000.a
+#
+#		trigger_event = adventure.1001
+#	}
+#	option = {
+#		name = adventure.1000.b
+#	}
+#}
+#
+#adventure.2000 = {
+#	type = character_event
+#	theme = learning
+#	desc = adventure.2000.desc
+#
+#	option = {
+#		name = adventure.2000.a
+#
+#		trigger_event = adventure.1001
+#	}
+#	option = {
+#		name = adventure.2000.b
+#	}
+#}
+#
+#adventure.3000 = {
+#	type = character_event
+#	theme = learning
+#	desc = adventure.3000.desc
+#
+#	option = {
+#		name = adventure.3000.a
+#
+#		trigger_event = adventure.1001
+#	}
+#	option = {
+#		name = adventure.3000.b
+#	}
+#}
+#
+#adventure.4000 = {
+#	type = character_event
+#	theme = learning
+#	desc = adventure.4000.desc
+#
+#	option = {
+#		name = adventure.4000.a
+#
+#		trigger_event = adventure.1001
+#	}
+#	option = {
+#		name = adventure.4000.b
+#	}
+#}
+#
+#adventure.5000 = {
+#	type = character_event
+#	theme = learning
+#	desc = adventure.5000.desc
+#
+#	option = {
+#		name = adventure.5000.a
+#
+#		trigger_event = adventure.1001
+#	}
+#	option = {
+#		name = adventure.5000.b
+#	}
+#}
+#
+#
+#adventure.1001 = {
+#	type = character_event
+#	theme = learning
+#	desc = adventure.1000.desc
+#	hidden = yes
+#
+#	option = {
+#		name = adventure.1000.a
+#
+#		random = {
+#			chance = 120
+#
+#			random_list = {
+#				20 = {
+#					trigger_event = adventure.1002 #die
+#				}
+#				20 = {
+#					trigger_event = adventure.1003 #gold
+#
+#				}
+#				20 = {
+#					trigger_event = adventure.1004 #prestige
+#				}
+#				20 = {
+#					trigger_event = adventure.1005 #piety
+#				}
+#				20 = {
+#					trigger_event = adventure.1006 #possessed
+#				}
+#				20 = {
+#					trigger_event = adventure.1007 #artifact
+#				}
+#			}
+#		}
+#	}
+#}
+#
+#adventure.1002 = { #die
+#	type = character_event
+#	theme = learning
+#	desc = adventure.1002.desc
+#
+#	option = {
+#		name = adventure.1002.a
+#		death = {
+#			death_reason = death_adventuring
+#		}
+#	}
+#}
+#
+#adventure.1003 = { #gold
+#	type = character_event
+#	theme = learning
+#	desc = adventure.1003.desc
+#
+#	option = {
+#		name = adventure.1003.a
+#		add_gold = major_gold_value
+#		random_realm_province = {
+#			limit = {
+#				OR = {
+#					has_province_modifier = province_adventure_creepy_graveyard_modifier
+#					has_province_modifier = province_adventure_ancient_ruin_modifier
+#					has_province_modifier = province_adventure_Forboding_Temple_modifier
+#					has_province_modifier = province_adventure_Abandoned_Dungeon_modifier
+#					has_province_modifier = province_adventure_Mysterious_Cave_modifier
+#				}
+#			}
+#		}
+#	}
+#}
+#
+#adventure.1004 = { #prestige
+#	type = character_event
+#	theme = learning
+#	desc = adventure.1004.desc
+#
+#	option = {
+#		name = adventure.1004.a
+#		add_prestige = massive_prestige_gain
+#		random_realm_province = {
+#			limit = {
+#				OR = {
+#					has_province_modifier = province_adventure_creepy_graveyard_modifier
+#					has_province_modifier = province_adventure_ancient_ruin_modifier
+#					has_province_modifier = province_adventure_Forboding_Temple_modifier
+#					has_province_modifier = province_adventure_Abandoned_Dungeon_modifier
+#					has_province_modifier = province_adventure_Mysterious_Cave_modifier
+#				}
+#			}
+#		}
+#	}
+#}
+#
+#adventure.1005 = { #piety
+#	type = character_event
+#	theme = learning
+#	desc = adventure.1005.desc
+#
+#	option = {
+#		name = adventure.1005.a
+#		add_piety = miniscule_piety_gain
+#		random_realm_province = {
+#			limit = {
+#				OR = {
+#					has_province_modifier = province_adventure_creepy_graveyard_modifier
+#					has_province_modifier = province_adventure_ancient_ruin_modifier
+#					has_province_modifier = province_adventure_Forboding_Temple_modifier
+#					has_province_modifier = province_adventure_Abandoned_Dungeon_modifier
+#					has_province_modifier = province_adventure_Mysterious_Cave_modifier
+#				}
+#			}
+#		}
+#	}
+#}
+#
+#adventure.1006 = { #possessed
+#	type = character_event
+#	theme = learning
+#	desc = adventure.1006.desc
+#
+#	option = {
+#		name = adventure.1006.a
+#		add_trait = possessed
+#	}
+#}
+#adventure.1007 = { #artifact
+#	type = character_event
+#	#name = adventure.1007.t
+#	theme = learning
+#	desc = adventure.1007.desc
+#	
+#	option = {
+#		name = adventure.1007.a
+#		trigger_event = artifact_hunt.0001
+#		
+#	}
+#}

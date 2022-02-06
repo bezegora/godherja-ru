@@ -17,43 +17,63 @@
 				remove_county_modifier = bordering_fog_modifier
 			}
 			add_county_modifier = fogswept_modifier
-			scope:county = {	# Jomini throws a fit without this seemingly redundant scope switch. Remove at your own peril
-				set_county_culture = culture:fog_eaters
-				set_county_faith = faith:fogeater
-				holder = {
-					if = {
-						limit = {
-							domain_size = 1
-							NOT = { faith = faith:fogeater }
-						}
-						trigger_event = gh_fog_spread_events.11
+			if = {
+				limit = { 
+					holder = {
+						capital_county = prev
+						highest_held_title_tier >= tier_duchy
 					}
-					else_if = {
-						limit = {
-							NOT = { faith = faith:fogeater }
-						}
-						trigger_event = gh_fog_spread_events.12 # Will likely fire this several times in some cases
+				}
+				holder = {
+					save_temporary_scope_as = former_holder
+					every_held_title = {
+						limit = { tier >= tier_duchy }
+						scope:former_holder = { destroy_title = prev }
 					}
 				}
 			}
-			if = {
-				limit = {
-					NOT = { has_variable = already_fogswept }
-				}
-				every_county_province = {
-					limit = { 
-						OR = {
-							has_holding_type = castle_holding
-							has_holding_type = city_holding
-							has_holding_type = church_holding
+			random_list = {
+				90 = { spawn_ruin = { COUNTY = scope:county } }
+				10 = {
+					scope:county = {	# Jomini throws a fit without this seemingly redundant scope switch. Remove at your own peril
+						set_county_culture = culture:fog_eaters
+						set_county_faith = faith:fogeater
+						holder = {
+							if = {
+								limit = {
+									domain_size = 1
+									NOT = { faith = faith:fogeater }
+								}
+								trigger_event = gh_fog_spread_events.11
+							}
+							else_if = {
+								limit = {
+									NOT = { faith = faith:fogeater }
+								}
+								trigger_event = gh_fog_spread_events.12 # Will likely fire this several times in some cases
+							}
 						}
 					}
-					set_holding_type = tribal_holding
-				}
-				set_variable = already_fogswept
-				set_variable = {
-					name = recently_fogswept # For oversea expansion
-					days = 15
+					if = {
+						limit = {
+							NOT = { has_variable = already_fogswept }
+						}
+						every_county_province = {
+							limit = { 
+								OR = {
+									has_holding_type = castle_holding
+									has_holding_type = city_holding
+									has_holding_type = church_holding
+								}
+							}
+							set_holding_type = tribal_holding
+						}
+						set_variable = already_fogswept
+						set_variable = {
+							name = recently_fogswept # For oversea expansion
+							days = 15
+						}
+					}
 				}
 			}
 			every_neighboring_county = {
@@ -621,24 +641,24 @@ init_fog_parameters = {	# This initializes the Fog clock and provincial Fog resi
 			value = 0
 		}
 	}
-	title:c_prasinos = {
-		set_variable = {
-			name = fog_sea_crossing_progress
-			value = 0
-		}
-	}
-	title:c_rizydna = {
-		set_variable = {
-			name = fog_sea_crossing_progress
-			value = 0
-		}
-	}
-	title:c_elatocaea = {
-		set_variable = {
-			name = fog_sea_crossing_progress
-			value = 0
-		}
-	}
+###	title:c_prasinos = {
+###		set_variable = {
+###			name = fog_sea_crossing_progress
+###			value = 0
+###		}
+###	}
+###	title:c_rizydna = {
+###		set_variable = {
+###			name = fog_sea_crossing_progress
+###			value = 0
+###		}
+###	}
+###	title:c_elatocaea = {
+###		set_variable = {
+###			name = fog_sea_crossing_progress
+###			value = 0
+###		}
+###	}
 	title:c_syreidonia = {
 		set_variable = {
 			name = fog_sea_crossing_progress
@@ -657,10 +677,14 @@ init_fog_locations = {	# Sets up Fog-related stuff in counties that are already 
 	every_county = {
 		limit = {
 				OR = {
-					kingdom = title:k_creytos
-					kingdom = title:k_axanthos
-					kingdom = title:k_tethix
-					kingdom = title:k_nathon
+					empire = title:e_westkatraddia_1
+					empire = title:e_southkatraddia_1
+					empire = title:e_easternkatraddia
+					empire = title:e_northern_katraddia
+					empire = title:e_easternkatraddia90707
+					empire = title:e_northwatch
+					empire = title:e_northgrove
+					empire = title:e_reduvias
 				}
 				NOT = {
 					OR = {
@@ -674,7 +698,17 @@ init_fog_locations = {	# Sets up Fog-related stuff in counties that are already 
 	every_county = {
 		limit = {
 			OR = {
-				kingdom = title:k_thanatosia
+				duchy = title:d_bwlcheit
+				duchy = title:d_hestfjoror
+				duchy = title:d_adne
+				this = title:c_assoesnai
+				this = title:c_elephos
+				this = title:c_kesthos
+				this = title:c_byllens
+				this = title:c_tylissane
+				this = title:c_znython
+				this = title:c_aironoi_mountain_4
+				this = title:c_aironoi_mountain_5
 				this = title:c_lwydmyny_uchav
 			}
         }

@@ -1,0 +1,252 @@
+﻿namespace = lawless_succession
+
+##################################################
+
+### Lawless (AKA Might Makes Right) Succession Events
+
+# 0001 - Leadership Challenged
+# 0011 - Duel Outcome
+# 0021 - Liege Refused Duel
+# 0031 - Realm Breaks Apart Upon Death
+
+##################################################
+
+##################################################
+# Leadership Challenged
+# by Hapchazzard
+# 0001 - 0010
+##################################################
+
+lawless_succession.0001 = {
+	title = lawless_succession.0001.t
+	desc = lawless_succession.0001.desc
+	theme = battle
+	
+	left_portrait = {
+		character = scope:actor
+		animation = war_attacker
+	}
+	
+	right_portrait = {
+		character = scope:recipient
+		animation = war_defender
+	}
+	
+	override_background = { event_background = fp1_beached_longships }
+	
+	immediate = {
+		scope:recipient = {
+			every_held_title = {
+				limit = { tier = scope:recipient.primary_title.tier }
+				add_to_list = titles_at_stake
+			}
+			every_held_title = {
+				limit = { tier < scope:recipient.primary_title.tier }
+				add_to_list = titles_to_revassalize
+			}
+			every_vassal = {
+				limit = { NOT = { this = scope:actor } }
+				add_to_list = vassals_at_stake
+			}
+		}
+		scope:recipient.location = {
+			save_scope_as = background_terrain_scope
+			barony = { save_scope_as = duel_location }
+		}
+	}
+	
+	option = {
+		name = lawless_succession.0001.a
+		configure_start_single_combat_effect = {
+			SC_INITIATOR = scope:actor
+			SC_ATTACKER = scope:actor
+			SC_DEFENDER = scope:recipient
+			FATALITY = always
+			FIXED = no
+			LOCALE = terrain_scope
+			OUTPUT_EVENT = lawless_succession.0011
+			INVALIDATION_EVENT = fp1_tbc.0021
+		}
+	}
+}
+
+##################################################
+# Duel Outcome
+# by Hapchazzard
+# 0011 - 0020
+##################################################
+
+lawless_succession.0011 = {
+	hidden = yes
+	
+	immediate = {
+		if = {
+			limit = {
+				exists = scope:sc_victor
+			}
+			scope:sc_victor = { trigger_event = lawless_succession.0012 }
+		}
+	}
+}
+
+lawless_succession.0012 = {
+	title = lawless_succession.0001.t
+	desc = lawless_succession.0001.desc
+	theme = battle
+	
+	immediate = {
+		scope:recipient = {
+			primary_title = {
+				save_scope_as = targeted_title
+			}
+		}
+	}
+	
+	option = {
+		name = lawless_succession.0012.a
+		if = {
+			limit = { this = scope:actor }
+			
+			create_title_and_vassal_change = {
+				type = conquest_claim
+				save_scope_as = change
+				add_claim_on_loss = no
+			}
+			
+			setup_claim_cb = {
+				titles = titles_at_stake
+				attacker = scope:actor
+				defender = scope:targeted_title.holder
+				claimant = scope:actor
+				change = scope:change
+				civil_war = yes
+			}
+	
+			resolve_title_and_vassal_change = scope:change
+		}
+	}
+}
+
+##################################################
+# Liege Refused Duel
+# by Hapchazzard
+# 0021 - 0030
+##################################################
+
+lawless_succession.0021 = {
+	title = lawless_succession.0001.t
+	desc = lawless_succession.0001.desc
+	theme = battle
+	
+	option = {
+		name = lawless_succession.0021.a
+		create_title_and_vassal_change = {
+			type = independency
+			save_scope_as = change
+			add_claim_on_loss = no
+		}
+		change_liege_or_become_independent = {
+			CHANGE = scope:change
+			VASSAL = this
+		}
+		resolve_title_and_vassal_change = scope:change
+	}
+	
+	#option = {
+	#	name = lawless_succession.0021.b
+	#}
+}
+
+# Event for other vassals
+lawless_succession.0022 = {
+	title = lawless_succession.0022.t
+	desc = lawless_succession.0022.desc
+	theme = battle
+	
+	left_portrait = {
+		character = scope:actor
+		animation = war_attacker
+	}
+	
+	right_portrait = {
+		character = scope:recipient
+		animation = war_defender
+	}
+	
+	override_background = { event_background = fp1_beached_longships }
+	
+	option = {
+		name = lawless_succession.0022.a
+		create_title_and_vassal_change = {
+			type = independency
+			save_scope_as = change
+			add_claim_on_loss = no
+		}
+		change_liege_or_become_independent = {
+			CHANGE = scope:change
+			VASSAL = this
+		}
+		resolve_title_and_vassal_change = scope:change
+		
+		ai_chance = {
+			base = 10
+			ai_value_modifier = {	# Brave less likely to waste their time under a weak liege
+				ai_boldness = 0.2
+			}
+			ai_value_modifier = {	# Energetic less likely to waste their time under a weak liege
+				ai_energy = 0.2
+			}
+			modifier = {	# Ambitious will seize any chance that presents itself to break away
+				add = 10
+				has_trait = ambitious
+			}
+			modifier = {	# Arrogant doesn't want to be under a weak ruler
+				add = 10
+				has_trait = arrogant
+			}
+			modifier = {	# Deceitful will have no qualms about bailing
+				add = 10
+				has_trait = deceitful
+			}
+			modifier = {	# Honest is slightly against
+				add = -5
+				has_trait = honest
+			}
+			modifier = {	# Trusting will trust that their liege knows what they're doing
+				add = -10
+				has_trait = trusting
+			}
+			modifier = {	# Content won't really see a point with this
+				add = -10
+				has_trait = content
+			}
+			opinion_modifier = {	# Weight based on opinion
+				opinion_target = scope:recipient
+				multiplier = -0.2
+			}
+			modifier = {	# Vastly less likely to do if the heir of the liege
+				add = -30
+				trigger_if = {
+					limit = { scope:recipient = { exists = primary_heir } }
+					primary_heir = root
+				}
+				trigger_else = { always = no }
+			}
+			modifier = {	# Vastly less likely to do if the spouse of the liege
+				add = -30
+				trigger_if = {
+					limit = { scope:recipient = { exists = primary_heir } }
+					primary_heir = root
+				}
+				trigger_else = { always = no }
+			}
+		}
+	}
+	
+	option = {
+		ai_chance = {
+			base = 10
+		}
+		name = lawless_succession.0022.b
+	}
+}

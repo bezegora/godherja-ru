@@ -1,0 +1,449 @@
+﻿namespace = dikansynite
+
+##################################################
+# # Clique Interactions
+# 0001 - 0010	Work with Locals
+# 0011 - 0020	Lighten Sentences
+# 0021 - 0030	Order Killings
+# 0031 - 0040	Raise Forces
+# 0041 - 0050	Obtain Legal Backing
+# 0051 - 0060	Investigate Corruption
+##################################################
+
+
+
+##################################################
+# Find Local Magistrate
+# by Ignaerum
+# 0001 - 0010
+##################################################
+
+#Picks someone to send with the message
+
+dikansynite.0001 = {
+	type = character_event
+	title = dikansynite.0001.t
+	desc = dikansynite.0001.desc
+
+	left_portrait = {
+		character = root
+		animation = personality_compassionate
+	}
+	
+	theme = stewardship
+
+    weight_multiplier = {
+		base = 1
+
+		modifier = {
+			add = 1
+			has_faith = faith:dikanysnos
+		}
+
+		modifier = {
+			add = 1
+			has_trait = just
+		}
+
+		modifier = {
+			add = 1
+			has_trait = compassionate
+		}
+
+	}
+
+	option = {
+		name = dikansynite.0001.a
+		
+		save_scope_as = interaction_requester
+		
+		scope:interaction_requester = {
+			add_character_flag = {
+				flag = work_with_locals
+				years = 10
+			}
+		}
+
+		random_held_title = {
+			limit = { 
+				tier = tier_county 
+				OR = {
+					NOT = { faith = root.faith }
+					NOT = { culture = root.culture }
+				}
+			}
+			save_scope_as = promote_local_magistrate_county
+		}
+			
+		add_prestige = 100
+
+		if = {
+			limit = { is_member_of_clique_with_flag_trigger = { FLAG = watcher_defenders } }
+			trigger_event = dikansynite.0002
+		}
+		else = {
+			pick_or_generate_random_clique_member_effect = { CLIQUE = scope:interaction_clique_scope }
+			scope:clique_member_scope = {
+				trigger_event = {
+					id = dikansynite.0002
+					days = 1
+				}
+			}
+		}
+	}
+}
+
+#Cilque guy you sent for a jurist arrives with one
+dikansynite.0002 = {
+	type = character_event
+	title = dikansynite.0002.t
+	desc = dikansynite.0002.desc
+
+	theme = stewardship
+	override_background = {
+		event_background = throne_room
+	}
+
+	left_portrait = {
+		character = root
+		animation = personality_compassionate
+	}
+
+	right_portrait = {
+		character = scope:sarradonian_jurist
+		animation = personality_rational
+	}
+
+	immediate = {
+		create_character = {
+			employer = scope:interaction_requester
+			template = sarradonian_jurist_2_character_template
+			save_scope_as = sarradonian_jurist
+		}
+	}
+
+	option = { #Chooses jurist 
+		name = dikansynite.0002.a
+
+		scope:interaction_requester = {
+			trigger_event = {
+				id = dikansynite.0003
+				days = 1
+			}
+		}
+	}
+}
+
+dikansynite.0003 = {
+	type = character_event
+	theme = learning
+	title = dikansynite.0003.t
+	desc = dikansynite.0003.desc
+	
+	left_portrait = {
+		character = scope:sarradonian_jurist
+		animation = personality_rational
+	}
+
+	option = {
+		name = dikansynite.0003.a
+
+		scope:promote_local_magistrate_county = {
+			add_county_modifier = {
+				modifier = assign_local_jurist_modifier
+				years = 20
+			}
+		}
+	}
+}
+
+##################################################
+# Lighten Sentences
+# by UltimateVictory
+# 0011 - 0020
+##################################################
+
+#Picks who to send with the message
+
+dikansynite.0011 = {
+	type = character_event
+	title = dikansynite.0011.t
+	desc = dikansynite.0011.desc
+	
+	left_portrait = {
+		character = root
+		animation = personality_compassionate
+	}
+	
+	theme = stewardship
+	override_background = {
+		event_background = throne_room
+	}
+	
+#	trigger = {
+		
+#	}
+	
+	weight_multiplier = {
+		base = 1
+		
+		# Weight up for Dikansynites
+		modifier = {
+			add = 1
+			has_faith = faith:dikaynos
+		}
+		# Weight up for just rulers
+		modifier = {
+			add = 1
+			has_trait = just
+		}
+		# Weight up for compassionate rulers
+		modifier = {
+			add = 1
+			has_trait = compassionate
+		}
+	}
+	
+	option = {
+		name = dikansynite.0011.a
+		save_scope_as = interaction_requester
+		random_held_title = {
+			limit = { tier = tier_county }
+			save_scope_as = lighten_sentences_county
+		}
+		add_prestige = { 
+			value = -100
+		}
+		# If the character taking the interaction is a member of the clique, have them do the job in their own personal capacity
+		if = {
+			limit = { is_member_of_clique_with_flag_trigger = { FLAG = watcher_defenders } }
+			trigger_event = dikansynite.0012
+		}
+		else = { 
+			pick_or_generate_random_clique_member_effect = { CLIQUE = scope:interaction_clique_scope }
+			scope:clique_member_scope = {
+				trigger_event = {
+					id = dikansynite.0012
+					days = 1
+				}
+			}
+		}
+	}
+}
+
+#Received by the Defender, lets them choose just how lenient to be
+dikansynite.0012 = {
+	type = character_event
+	title = dikansynite.0012.t
+	desc = dikansynite.0012.desc
+	theme = diplomacy
+	override_background = {
+		event_background = dungeon
+	}
+	left_portrait = {
+		character = scope:clique_member_scope
+		animation = worry
+	}
+	
+	option = { #Release only the most blantantly wronged prisoners
+		name = dikansynite.0012.a
+		
+		scope:lighten_sentences_county = {
+			change_county_control = -5
+			add_county_modifier = {
+				modifier = few_releases_modifier
+				years = 10
+			}
+		}
+		
+		add_prestige = -50
+		
+		scope:interaction_requester = {
+			trigger_event = {
+				id = dikansynite.0013
+				days = 1
+			}
+		}
+		
+		stress_impact = {
+			sadistic = minor_stress_impact_gain
+			just = minor_stress_loss
+			compassionate = minor_stress_loss
+		}
+	}
+	
+	option = { #Release all prisoners without local witnesses
+		name = dikansynite.0012.b
+		
+		trigger = {
+			diplomacy >= 10
+		}
+		
+		scope:lighten_sentences_county = {
+			change_county_control = -10
+			add_county_modifier = {
+				modifier = several_releases_modifier
+				years = 10
+			}
+		}
+		
+		add_prestige = -100
+		
+		scope:interaction_requester = {
+			trigger_event = {
+				id = dikansynite.0014
+				days = 1
+			}
+		}
+		
+		stress_impact = {
+			sadistic = medium_stress_impact_gain
+			vengeful = minor_stress_impact_gain
+			just = medium_stress_loss
+			compassionate = minor_stress_loss
+		}
+	}
+	
+	option = { #Release all prisoners
+		name = dikansynite.0012.c
+		
+		trigger = {
+			diplomacy >= 20
+		}	
+		
+		scope:lighten_sentences_county = {
+			change_county_control = -20
+			add_county_modifier = {
+				modifier = all_releases_modifier
+				years = 10
+			}
+		}
+		
+		add_prestige = -150	
+		
+		scope:interaction_requester = {
+			trigger_event = {
+				id = dikansynite.0015
+				days = 1
+			}
+		}
+		
+		stress_impact = {
+			sadistic = medium_stress_impact_gain
+			vengeful = medium_stress_impact_gain
+			just = minor_stress_loss
+			compassionate = medium_stress_loss
+		}
+	}
+}
+
+dikansynite.0013 = { #Informs the interaction requester of the results, and applies the modifier
+	type = character_event
+	title = dikansynite.0013.t
+	desc = dikansynite.0013.desc
+	
+	left_portrait = {
+		character = scope:clique_member_scope
+		animation = personality_rational
+	}
+	
+	right_portrait = {
+		character = root
+		animation = worry
+	}
+	
+	theme = diplomacy
+	override_background = {
+		event_background = throne_room
+	}
+	
+	option = {
+		name = dikansynite.0013.a
+		
+		scope:clique_member_scope = {
+			add_character_modifier = {
+				modifier = lighten_sentences_modifier_1
+				years = 10
+			}
+		}
+		
+		add_character_modifier = {
+			modifier = lighten_sentences_modifier_1
+			years = 10
+		}
+	}
+}
+
+dikansynite.0014 = { #Informs the interaction requester of the results, and applies the modifier
+	type = character_event
+	title = dikansynite.0014.t
+	desc = dikansynite.0014.desc
+	
+	left_portrait = {
+		character = scope:clique_member_scope
+		animation = personality_rational
+	}
+	
+	right_portrait = {
+		character = root
+		animation = worry
+	}
+	
+	theme = diplomacy
+	override_background = {
+		event_background = throne_room
+	}
+	
+	option = {
+		name = dikansynite.0014.a
+		
+		scope:clique_member_scope = {
+			add_character_modifier = {
+				modifier = lighten_sentences_modifier_2
+				years = 10
+			}
+		}
+		
+		add_character_modifier = {
+			modifier = lighten_sentences_modifier_2
+			years = 10
+		}
+	}
+}
+
+dikansynite.0015 = { #Informs the interaction requester of the results, and applies the modifier
+	type = character_event
+	title = dikansynite.0015.t
+	desc = dikansynite.0015.desc
+	
+	left_portrait = {
+		character = scope:clique_member_scope
+		animation = personality_rational
+	}
+	
+	right_portrait = {
+		character = root
+		animation = worry
+	}
+	
+	theme = diplomacy
+	override_background = {
+		event_background = throne_room
+	}
+	
+	option = {
+		name = dikansynite.0015.a
+		
+		scope:clique_member_scope = {
+			add_character_modifier = {
+				modifier = lighten_sentences_modifier_3
+				years = 10
+			}
+		}
+		
+		add_character_modifier = {
+			modifier = lighten_sentences_modifier_3
+			years = 10
+		}
+	}
+}

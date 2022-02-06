@@ -1,10 +1,15 @@
 ﻿western_aversaria_18 = { #berserker lady
 	name = "Sigrun"
-        dna = sigrun
+	dna = sigrun
 	dynasty = dyn_sjalvolki_4
 	religion = "sjalvolki"
 	culture = "caemansi"
 	female = yes
+
+	martial = 10
+	diplomacy = 8
+	stewardship = 8
+
 	trait = education_martial_3
 	trait = blademaster_3
 	trait = berserker
@@ -12,24 +17,24 @@
 	trait = brave
 	trait = wrathful
 	trait = ambitious
-	martial = 10
-	diplomacy = 8
-	stewardship = 8
+
 	1228.6.18 = {
 		birth = yes
-	        effect = {
+		effect = {
 			add_character_flag = has_scripted_appearance
 		}
 	}
+
 	1247.8.12 = {
 		give_nickname = nick_axe_in_the_hand
 		set_variable = {
 			name = sjalvolki_conquest_contribution
 			value = 100
-		}
-		add_character_flag = sjalvolki_vanguard
+	}
+	add_character_flag = sjalvolki_vanguard
 	}
 }
+
 zacope_1 = {
 	name = "Iphitus"
 	religion = "aversarinas_aautokrata"
@@ -37,15 +42,18 @@ zacope_1 = {
 	dynasty = dyn_zacope
 	trait = magic_good_4
 	trait = education_living_magic_3
+
 	1160.6.18 = {
 		birth = yes		
 	}
+
 	1200.3.1 = {
 		death = {
 			death_reason = death_frodbrokna
 		}
 	}
 }
+
 zacope_2 = {
 	name = "Attaginos"
 	religion = "aversarinas_aautokrata"
@@ -53,9 +61,11 @@ zacope_2 = {
 	father = zacope_1
 	trait = magic_good_2
 	trait = education_living_magic_1
+
 	1180.6.18 = {
 		birth = yes		
 	}
+
 	1252.1.1 = {
 		death = {
 			death_reason = death_duel
@@ -63,6 +73,7 @@ zacope_2 = {
 		}
 	}
 }
+
 western_aversaria_20 = {
 	name = "Likourgos"
 	religion = "aversarinas_aautokrata"
@@ -71,10 +82,12 @@ western_aversaria_20 = {
 	father = doranais_1
 	trait = magic_good_3
 	trait = education_living_magic_2
+
 	1202.6.18 = {
-		birth = yes		
+		birth = yes	
 	}
 }
+
 doranais_1 = {
 	name = "Abronychus"
 	religion = "aversarinas_aautokrata"
@@ -82,9 +95,11 @@ doranais_1 = {
 	dynasty = dyn_doranais
 	trait = magic_good_3
 	trait = education_living_magic_2
+
 	1160.1.1 = {
 		birth = yes
 	}
+
 	1252.1.1 = {
 		death = {
 			death_reason = death_battle
@@ -92,14 +107,17 @@ doranais_1 = {
 		}
 	}
 }
+
 western_aversaria_21 = {
 	name = "Lazaros"
 	religion = "aversarinas_aautokrata"
 	culture = "westernimperial"
+
 	1231.6.18 = {
 		birth = yes
 	}
 }
+
 western_aversaria_23 = {
 	name = "Vissarion"
 	religion = "aversarinas_aautokrata"
@@ -107,23 +125,28 @@ western_aversaria_23 = {
 	father = epidila_5
 	mother = epidila_6
 	dynasty = dyn_epidila
+
 	1215.6.18 = {
 		birth = yes
 	}
+
 	1238.5.19 = {
 		add_spouse = epidila_1
-	}	
+	}
 }
+
 epidila_1 = {
 	name = "Ariadni"
 	female = yes
 	religion = "aversarinas_aautokrata"
 	culture = "westernimperial"
 	dynasty = dyn_epidila
+
 	1218.6.18 = {
 		birth = yes
-	}	
+	}
 }
+
 epidila_2 = {
 	name = "Phaedra"
 	mother = epidila_1
@@ -132,10 +155,12 @@ epidila_2 = {
 	female = yes
 	religion = "aversarinas_aautokrata"
 	culture = "westernimperial"
+
 	1242.6.18 = {
 		birth = yes
 	}
 }
+
 epidila_3 = {
 	name = "Carpus"
 	mother = epidila_1
@@ -143,43 +168,52 @@ epidila_3 = {
 	dynasty = dyn_epidila
 	religion = "aversarinas_aautokrata"
 	culture = "westernimperial"
+
 	1244.6.18 = {
 		birth = yes
 	}
 }
+
 epidila_4 = {
 	name = "Aeimnestos"
 	religion = "aversarinas_aautokrata"
 	culture = "westernimperial"
 	dynasty = dyn_epidila
+
 	1160.6.18 = {
 		birth = yes
 		add_spouse = epidila_5
 	}
+
 	1230.1.1 = {
 		death = yes
 	}
 }
+
 epidila_5 = {
 	name = "Iphis"
 	religion = "aversarinas_aautokrata"
 	culture = "westernimperial"
 	female = yes
 	dynasty = dyn_epidila
+
 	1160.6.18 = {
 		birth = yes
 	}
 }
+
 epidila_6 = {
 	name = "Nicopolis"
 	religion = "aversarinas_aautokrata"
 	culture = "westernimperial"
 	female = yes
 	dynasty = dyn_epidila
+
 	1220.6.18 = {
 		birth = yes
 		add_trait = education_martial_3
 	}
+
 	1252.1.1 = {
 		death = {
 			death_reason = death_elysian_pass
@@ -189,29 +223,33 @@ epidila_6 = {
 
 western_aversaria_24 = { ##court mage
 	name = "Symmachos"
-        dna = symmachos 
+	dna = symmachos 
 	religion = "aversarinas_aautokrata"
 	culture = "westernimperial"
 	father = hyelocaea_4
 	mother = hyelocaea_5
 	dynasty = dyn_hyelocaea
+
+	learning = 10
+	intrigue = 10
+	stewardship = 10
+
 	trait = magic_good_4
 	trait = education_living_magic_4
 	trait = scholar
 	trait = deceitful
 	trait = ambitious
 	trait = diligent
-	learning = 10
-	intrigue = 10
-	stewardship = 10
 	trait = education_intrigue_4
+
 	1209.6.18 = {
 		birth = yes
-	        effect = {
+		effect = {
 			add_character_flag = has_scripted_appearance
 		}
 	}
 }
+
 hyelocaea_1 = {
 	name = "Dione"
 	religion = "aversarinas_aautokrata"
@@ -220,10 +258,12 @@ hyelocaea_1 = {
 	father = hyelocaea_4
 	trait = magic_good_3
 	trait = bastard
+
 	1222.1.1 = {
 		birth = yes
 	}
 }
+
 hyelocaea_2 = {
 	name = "Ampinomene"
 	religion = "aversarinas_aautokrata"
@@ -233,15 +273,18 @@ hyelocaea_2 = {
 	mother = hyelocaea_5
 	dynasty = dyn_hyelocaea
 	trait = magic_good_3
+
 	1211.1.1 = {
 		birth = yes
 	}
+
 	1252.1.1 = {
 		death = {
 			death_reason = death_elysian_pass
 		}
 	}
 }
+
 hyelocaea_3 = {
 	name = "Colubra"
 	religion = "aversarinas_aautokrata"
@@ -251,31 +294,37 @@ hyelocaea_3 = {
 	mother = hyelocaea_5
 	dynasty = dyn_hyelocaea
 	trait = magic_good_2
+
 	1213.1.1 = {
 		birth = yes
 	}
+
 	1252.1.1 = {
 		death = {
 			death_reason = death_elysian_pass
 		}
 	}
 }
+
 hyelocaea_4 = {
 	name = "Polyphetes"
 	religion = "aversarinas_aautokrata"
 	culture = "westernimperial"
 	dynasty = dyn_hyelocaea
 	trait = magic_good_4
+
 	1142.1.1 = {
 		birth = yes
 		add_spouse = hyelocaea_5
 	}
+
 	1252.1.1 = {
 		death = {
 			death_reason = death_elysian_pass
 		}
 	}
 }
+
 hyelocaea_5 = {
 	name = "Ione"
 	religion = "aversarinas_aautokrata"
@@ -283,51 +332,78 @@ hyelocaea_5 = {
 	female = yes
 	dynasty = dyn_hyelocaea
 	trait = magic_good_4
+
 	1140.1.1 = {
 		birth = yes
 	}
+
 	1200.3.1 = {
 		death = {
 			death_reason = death_frodbrokna
 		}
 	}
 }
+
 western_aversaria_25 = {
-	name = "Jovan"
+	name = "Nabomil"
 	religion = "sjalvolki"
 	culture = "daukeni"
-	1215.6.18 = {
+
+	1213.9.19 = {
 		birth = yes
+		trait = magic_good_2
 	}
+	
+	1225.1.1 = {
+		trait = zealous
+		trait = sadistic
+		trait = vengeful
+	}
+	
+	1229.9.19 = {
+		trait = education_learning_2
+		trait = education_living_magic_3
+	}
+	
+	1235.1.1 = {
+		trait = gh_glowing_veins
+	}
+
 	1249.9.12 = {
 		set_variable = {
 			name = sjalvolki_conquest_contribution
 			value = 20
 		}
 		add_character_flag = sjalvolki_vanguard
+		give_nickname = nick_the_black_shaman
 	}
 }
+
 western_aversaria_26 = {
 	name = "Theodoulos"
 	religion = "aversarinas_aautokrata"
 	culture = "westernimperial"
 	father = pyrgos_1
 	dynasty = dyn_pyrgos
+
 	1232.6.18 = {
 		birth = yes
 	}
 }
+
 pyrgos_1 = {
 	name = "Selagus"
 	religion = "aversarinas_aautokrata"
 	culture = "westernimperial"
 	dynasty = dyn_pyrgos
+
 	1170.6.18 = {
 		birth = yes
 		add_trait = gluttonous
-		add_trait = sadist
+		add_trait = sadistic
 		add_trait = greedy
 	}
+
 	1252.1.1 = {
 		death = {
 			death_reason = death_beaten
@@ -335,41 +411,49 @@ pyrgos_1 = {
 		}
 	}
 }
+
 pyrgos_2 = {
 	name = "Laodice"
 	religion = "aversarinas_aautokrata"
 	culture = "westernimperial"
 	female = yes
+
 	1175.6.18 = {
 		birth = yes
 		add_spouse = pyrgos_1
 	}
+
 	1232.1.1 = {
 		death = {
 			death_reason = death_childbirth
 		}
 	}
 }
+
 pyrgos_3 = {
 	name = "Hyrcanus"
 	religion = "aversarinas_aautokrata"
 	culture = "westernimperial"
 	female = yes
+
 	1175.6.18 = {
 		birth = yes
 	}
+
 	1232.1.1 = {
 		add_spouse = pyrgos_1
 	}
+
 	1252.1.1 = {
 		death = {
 			death_reason = death_whipping
 		}
 	}
 }
+
 western_aversaria_27 = { #peasant/slave revolt?
 	name = "Raphail"
-        dna = raphail
+	dna = raphail
 	trait = peasant_leader
 	trait = brave
 	trait = ambitious
@@ -377,32 +461,38 @@ western_aversaria_27 = { #peasant/slave revolt?
 	trait = education_martial_2
 	religion = "aversarinas_aautokrata"
 	culture = "westernimperial"
+
 	1235.6.18 = {
 		birth = yes
-	        effect = {
+		effect = {
 			add_character_flag = has_scripted_appearance
 		}
 	}
 }
+
 western_aversaria_28 = {
 	name = "Euphemios"
 	religion = "aversarinas_aautokrata"
 	culture = "westernimperial"
 	father = phaserma_1
 	dynasty = dyn_phaserma
+
 	1237.6.18 = {
 		birth = yes
 	}
 }
+
 phaserma_1 = {
 	name = "Aristonymos"
 	religion = "aversarinas_aautokrata"
 	culture = "westernimperial"
 	father = phaserma_2
 	dynasty = dyn_phaserma
+
 	1202.1.1 = {
 		birth = yes
 	}
+
 	1252.1.1 = {
 		death = {
 			death_reason = death_battle
@@ -410,14 +500,17 @@ phaserma_1 = {
 		}
 	}
 }
+
 phaserma_2 = {
 	name = "Epeigeus"
 	religion = "aversarinas_aautokrata"
 	culture = "westernimperial"
 	dynasty = dyn_phaserma
+
 	1160.1.1 = {
 		birth = yes
 	}
+
 	1230.1.1 = {
 		death = {
 			death_reason = death_murder_known
@@ -425,96 +518,121 @@ phaserma_2 = {
 		}
 	}
 }
+
 western_aversaria_179 = {
 	name = "Eusebios"
 	religion = "aversarinas_aautokrata"
 	culture = "westernimperial"
+
 	1221.6.18 = {
 		birth = yes
 	}
 }
+
 western_aversaria_181 = {
 	name = "Heraklios"
 	religion = "aversarinas_aautokrata"
 	culture = "westernimperial"
 	father = western_aversaria_20
+
 	1232.6.18 = {
 		birth = yes
 	}
 }
+
 western_aversaria_182 = {
 	name = "Adrianos"
 	religion = "aversarinas_aautokrata"
 	culture = "westernimperial"
+
 	1231.6.18 = {
 		birth = yes
 	}
 }
+
 western_aversaria_183 = {
 	name = "Vuk"
 	religion = "sjalvolki"
 	culture = "daukeni"
+	
 	trait = reaver
+
 	1229.6.18 = {
 		birth = yes
 	}
 }
+
 western_aversaria_184 = {
 	name = "Eivor"
 	religion = "sjalvolki"
 	culture = "daukeni"
+	
 	trait = blademaster_3
+
 	1222.6.18 = {
 		birth = yes
 	}
 }
+
 western_aversaria_186 = {
 	name = "Zlatan"
 	religion = "sjalvolki"
 	culture = "daukeni"
+	
 	trait = reaver
 	trait = education_martial_2
+
 	1226.6.18 = {
 		birth = yes
 	}
 }
+
 western_aversaria_187 = {
 	name = "Aeolus"
 	religion = "aversarinas_aautokrata"
 	culture = "westernimperial"
+
 	1228.6.18 = {
 		birth = yes
 	}
 }
+
 western_aversaria_188 = {
 	name = "Sergios"
 	religion = "aversarinas_aautokrata"
 	culture = "westernimperial"
+
 	1230.6.18 = {
 		birth = yes
 	}
 }
+
 western_aversaria_192 = {
 	name = "Helene"
 	female = yes
 	religion = "aversarinas_aautokrata"
 	culture = "westernimperial"
+
 	1232.6.18 = {
 		birth = yes
 	}
 }
+
 western_aversaria_193 = {
 	name = "Loukas"
 	religion = "aversarinas_aautokrata"
 	culture = "westernimperial"
+
 	1220.6.18 = {
 		birth = yes
 	}
 }
+
 western_aversaria_196 = {
 	name = "Icarion"
 	religion = "aversarinas_aautokrata"
 	culture = "westernimperial"
+
 	1219.6.18 = {
 		birth = yes
 	}

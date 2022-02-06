@@ -1,0 +1,118 @@
+﻿namespace = agionist
+
+##################################################
+
+### Agionist Events
+
+# 0001 - Maintenance Event that turns minor Agionists evil
+
+##################################################
+
+##################################################
+# Maintenance Event that turns minor Agionists evil
+# by Hapchazzard
+# 0001 - 0010
+##################################################
+
+agionist.0001 = {
+	type = empty
+	hidden = yes
+	
+	immediate = {
+		title:k_saint_sansias_rose = {
+			holder = {
+				every_vassal_or_below = {
+					limit = {
+						OR = {
+							has_trait = compassionate
+							has_trait = forgiving
+							has_trait = humble
+						}
+						NOT = { has_variable = good_agionist }
+					}
+					if = {
+						limit = { has_trait = compassionate }
+						remove_trait = compassionate
+						add_trait = sadistic
+					}
+					if = {
+						limit = { has_trait = forgiving }
+						remove_trait = forgiving
+						add_trait = vengeful
+					}
+				}
+			}
+		}
+	}
+}
+
+agionist.0011 = {
+	type = character_event
+	theme = murder_scheme
+	
+	title = agionist.0011.title
+	desc = agionist.0011.desc
+	
+	override_background = {
+		event_background = throne_room_east
+	}
+	
+	left_portrait = {
+		character = root
+		animation = personality_rational
+	}
+	
+	right_portrait = {
+		character = title:k_forgotten_saint.holder
+		animation = personality_dishonorable
+	}
+	
+	option = {
+		name = agionist.0011.a
+		trigger_event = agionist.0012
+	}
+}
+
+agionist.0012 = {
+	type = character_event
+	theme = murder_scheme
+	
+	title = agionist.0012.title
+	desc = agionist.0012.desc
+	
+	override_background = {
+		event_background = throne_room_east
+	}
+	
+	left_portrait = {
+		character = root
+		animation = personality_rational
+	}
+	
+	right_portrait = {
+		character = title:k_forgotten_saint.holder
+		animation = personality_dishonorable
+	}
+	
+	immediate = {
+		primary_title = { save_scope_as = forlorn_guardian_title }
+	}
+	
+	option = {
+		name = agionist.0012.a
+		
+		custom_tooltip = leave_suntofroi_tt
+		custom_tooltip = join_xilidoratis_tt
+		custom_tooltip = forgotten_saint_private_conversation_tt
+		custom_tooltip = story_content_will_end_tt
+	}
+	
+	option = {
+		name = agionist.0012.b
+		add_internal_flag = dangerous
+		
+		custom_tooltip = xechasmendei_will_disband_tt
+		custom_tooltip = start_uncovering_forgotten_saint_secret_tt
+		custom_tooltip = cast_out_from_agionist_orders_tt
+	}
+}

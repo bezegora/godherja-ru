@@ -73,35 +73,59 @@ entity = {
 	}
 }
 
-entity = {
-	name = "female_eyes_blind_entity"
-	pdxmesh = "female_eyes_mesh"
-	
-	meshsettings = {
-		name = "female_eyesShape"
-		index = 0
-		texture_diffuse = "male_eyes_blind_diffuse.dds"
-	}
-}
-
-entity = {
-    name = "female_eyes_glowing_red_entity"
-	pdxmesh = "female_eyes_mesh"
+pdxmesh = {
+	name = "female_eyes_glowing_red_mesh"
+	file = "female_eyes.mesh"
 	
 	meshsettings = {
 	    name = "female_eyesShape"
 		index = 0
 		texture_diffuse = "gh_red_male_eyes_diffuse.dds"
+		texture_normal = "male_eyes_normal_emissive.dds"
+		texture_specular = "male_eyes_properties.dds"
+		shader = "portrait_eye"
+		shader_file = "gfx/FX/jomini/portrait.shader"
 	}
 }
-
 entity = {
-    name = "female_eyes_glowing_green_entity"
-	pdxmesh = "female_eyes_mesh"
+    name = "female_eyes_glowing_red_entity"
+	pdxmesh = "female_eyes_glowing_red_mesh"
+}
+
+pdxmesh = {
+	name = "female_eyes_glowing_green_mesh"
+	file = "female_eyes.mesh"
 	
 	meshsettings = {
 	    name = "female_eyesShape"
 		index = 0
 		texture_diffuse = "gh_green_male_eyes_diffuse.dds"
+		texture_normal = "male_eyes_normal_emissive.dds"
+		texture_specular = "male_eyes_properties.dds"
+		shader = "portrait_eye"
+		shader_file = "gfx/FX/jomini/portrait.shader"
 	}
+}
+entity = {
+    name = "female_eyes_glowing_green_entity"
+	pdxmesh = "female_eyes_glowing_green_mesh"
+}
+
+pdxmesh = {
+	name = "female_eyes_glowing_white_mesh"
+	file = "female_eyes.mesh"
+	
+	meshsettings = {
+	    name = "female_eyesShape"
+		index = 0
+		texture_diffuse = "gh_white_male_eyes_diffuse.dds"
+		texture_normal = "male_eyes_normal_emissive.dds"
+		texture_specular = "male_eyes_properties.dds"
+		shader = "portrait_eye"
+		shader_file = "gfx/FX/jomini/portrait.shader"
+	}
+}
+entity = {
+    name = "female_eyes_glowing_white_entity"
+	pdxmesh = "female_eyes_glowing_white_mesh"
 }

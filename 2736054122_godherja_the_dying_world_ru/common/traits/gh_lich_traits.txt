@@ -1,0 +1,662 @@
+﻿#LICH TRAITS
+#will be 600 and above
+#
+#
+#
+
+#gh_divine = {
+#	index = 601
+#	personality = yes
+#	opposites = {
+#		gh_godhater
+#	}
+##	learning = 6
+#	random_creation = 0
+#	
+#	shown_in_ruler_designer = no
+#	
+#	desc = {
+#		first_valid = {
+#			triggered_desc = {
+#				trigger = {
+#					NOT = { exists = this }
+#				}
+#				desc = trait_gh_divine_desc
+#			}
+#			desc = trait_gh_divine_character_desc
+#		}
+#	}
+#
+##	ai_energy = low_positive_ai_value
+##	ai_boldness = dominant_positive_ai_value
+##	ai_rationality = low_negative_ai_value
+##	ai_sociability = low_positive_ai_value
+#}
+#
+#gh_godhater = {
+#	index = 602
+#	personality = yes
+#	opposites = {
+#		gh_divine
+#	}
+##	learning = 6
+#	random_creation = 0
+#	
+#	shown_in_ruler_designer = no
+#	
+#	desc = {
+#		first_valid = {
+#			triggered_desc = {
+#				trigger = {
+#					NOT = { exists = this }
+#				}
+#				desc = trait_gh_godhater_desc
+#			}
+#			desc = trait_gh_godhater_character_desc
+#		}
+#	}
+#
+##	ai_energy = low_positive_ai_value
+##	ai_boldness = dominant_positive_ai_value
+##	ai_rationality = low_negative_ai_value
+##	ai_sociability = low_positive_ai_value
+#}
+#
+#gh_destroyer = {
+#	index = 603
+#	personality = yes
+#	opposites = {
+#		gh_controller
+#	}
+##	learning = 6
+#	random_creation = 0
+#	
+#	shown_in_ruler_designer = no
+#	
+#	desc = {
+#		first_valid = {
+#			triggered_desc = {
+#				trigger = {
+#					NOT = { exists = this }
+#				}
+#				desc = trait_gh_destroyer_desc
+#			}
+#			desc = trait_gh_destroyer_character_desc
+#		}
+#	}
+#
+##	ai_energy = low_positive_ai_value
+##	ai_boldness = dominant_positive_ai_value
+##	ai_rationality = low_negative_ai_value
+##	ai_sociability = low_positive_ai_value
+#}
+#
+#gh_controller = {
+#	index = 604
+#	personality = yes
+#	opposites = {
+#		gh_destroyer
+#	}
+##	learning = 6
+#	random_creation = 0
+#	
+#	shown_in_ruler_designer = no
+#	
+#	desc = {
+#		first_valid = {
+#			triggered_desc = {
+#				trigger = {
+#					NOT = { exists = this }
+#				}
+#				desc = trait_gh_controller_desc
+#			}
+#			desc = trait_gh_controller_character_desc
+#		}
+#	}
+#
+##	ai_energy = low_positive_ai_value
+##	ai_boldness = dominant_positive_ai_value
+##	ai_rationality = low_negative_ai_value
+##	ai_sociability = low_positive_ai_value
+#}
+#
+#gh_imperious = {
+#	index = 605
+#	personality = yes
+#	opposites = {
+#		gh_selfcentered
+#	}
+##	learning = 6
+#	random_creation = 0
+#	
+#	shown_in_ruler_designer = no
+#	
+#	desc = {
+#		first_valid = {
+#			triggered_desc = {
+#				trigger = {
+#					NOT = { exists = this }
+#				}
+#				desc = trait_gh_imperious_desc
+#			}
+#			desc = trait_gh_imperious_character_desc
+#		}
+#	}
+#
+##	ai_energy = low_positive_ai_value
+##	ai_boldness = dominant_positive_ai_value
+##	ai_rationality = low_negative_ai_value
+##	ai_sociability = low_positive_ai_value
+#}
+#
+#gh_selfcentered = {
+#	index = 606
+#	personality = yes
+#	opposites = {
+#		gh_imperious
+#	}
+##	learning = 6
+#	random_creation = 0
+#	
+#	shown_in_ruler_designer = no
+#	
+#	desc = {
+#		first_valid = {
+#			triggered_desc = {
+#				trigger = {
+#					NOT = { exists = this }
+#				}
+#				desc = trait_gh_selfcentered_desc
+#			}
+#			desc = trait_gh_selfcentered_character_desc
+#		}
+#	}
+#
+##	ai_energy = low_positive_ai_value
+##	ai_boldness = dominant_positive_ai_value
+##	ai_rationality = low_negative_ai_value
+##	ai_sociability = low_positive_ai_value
+#}
+#
+#gh_logical = {
+#	index = 607
+#	personality = yes
+#	opposites = {
+#		gh_impulsive
+#	}
+##	learning = 6
+#	random_creation = 0
+#	
+#	shown_in_ruler_designer = no
+#	
+#	desc = {
+#		first_valid = {
+#			triggered_desc = {
+#				trigger = {
+#					NOT = { exists = this }
+#				}
+#				desc = trait_gh_logical_desc
+#			}
+#			desc = trait_gh_logical_character_desc
+#		}
+#	}
+#
+##	ai_energy = low_positive_ai_value
+##	ai_boldness = dominant_positive_ai_value
+##	ai_rationality = low_negative_ai_value
+##	ai_sociability = low_positive_ai_value
+#}
+#
+#gh_impulsive = {
+#	index = 608
+#	personality = yes
+#	opposites = {
+#		gh_logical
+#	}
+##	learning = 6
+#	random_creation = 0
+#	
+#	shown_in_ruler_designer = no
+#	
+#	desc = {
+#		first_valid = {
+#			triggered_desc = {
+#				trigger = {
+#					NOT = { exists = this }
+#				}
+#				desc = trait_gh_impulsive_desc
+#			}
+#			desc = trait_gh_impulsive_character_desc
+#		}
+#	}
+#
+##	ai_energy = low_positive_ai_value
+##	ai_boldness = dominant_positive_ai_value
+##	ai_rationality = low_negative_ai_value
+##	ai_sociability = low_positive_ai_value
+#}
+#
+#gh_perfectionist = {
+#	index = 609
+#	personality = yes
+#	opposites = {
+#		gh_pragmatic
+#	}
+##	learning = 6
+#	random_creation = 0
+#	
+#	shown_in_ruler_designer = no
+#	
+#	desc = {
+#		first_valid = {
+#			triggered_desc = {
+#				trigger = {
+#					NOT = { exists = this }
+#				}
+#				desc = trait_gh_perfectionist_desc
+#			}
+#			desc = trait_gh_perfectionist_character_desc
+#		}
+#	}
+#
+##	ai_energy = low_positive_ai_value
+##	ai_boldness = dominant_positive_ai_value
+##	ai_rationality = low_negative_ai_value
+##	ai_sociability = low_positive_ai_value
+#}
+#
+#gh_pragmatic = {
+#	index = 610
+#	personality = yes
+#	opposites = {
+#		gh_perfectionist
+#	}
+##	learning = 6
+#	random_creation = 0
+#	
+#	shown_in_ruler_designer = no
+#	
+#	desc = {
+#		first_valid = {
+#			triggered_desc = {
+#				trigger = {
+#					NOT = { exists = this }
+#				}
+#				desc = trait_gh_pragmatic_desc
+#			}
+#			desc = trait_gh_pragmatic_character_desc
+#		}
+#	}
+#
+##	ai_energy = low_positive_ai_value
+##	ai_boldness = dominant_positive_ai_value
+##	ai_rationality = low_negative_ai_value
+##	ai_sociability = low_positive_ai_value
+#}
+#
+#gh_luxurious = {
+#	index = 611
+#	personality = yes
+#	opposites = {
+#		gh_dour
+#	}
+##	learning = 6
+#	random_creation = 0
+#	
+#	desc = {
+#		first_valid = {
+#			triggered_desc = {
+#				trigger = {
+#					NOT = { exists = this }
+#				}
+#				desc = trait_gh_luxurious_desc
+#			}
+#			desc = trait_gh_luxurious_character_desc
+#		}
+#	}
+#	
+#	shown_in_ruler_designer = no
+#	
+##	ai_energy = low_positive_ai_value
+##	ai_boldness = dominant_positive_ai_value
+##	ai_rationality = low_negative_ai_value
+##	ai_sociability = low_positive_ai_value
+#}
+#
+#gh_dour = {
+#	index = 612
+#	personality = yes
+#	opposites = {
+#		gh_luxurious
+#	}
+##	learning = 6
+#	random_creation = 0
+#	
+#	desc = {
+#		first_valid = {
+#			triggered_desc = {
+#				trigger = {
+#					NOT = { exists = this }
+#				}
+#				desc = trait_gh_dour_desc
+#			}
+#			desc = trait_gh_dour_character_desc
+#		}
+#	}
+#	
+#	shown_in_ruler_designer = no
+#	
+##	ai_energy = low_positive_ai_value
+##	ai_boldness = dominant_positive_ai_value
+##	ai_rationality = low_negative_ai_value
+##	ai_sociability = low_positive_ai_value
+#}
+#
+#gh_education_lich_1 = {
+#	index = 613
+#	minimum_age = 16
+#
+#
+##	general_opinion = -100
+#	
+#	flag = lich
+#
+#	random_creation = 0
+#	
+#	shown_in_ruler_designer = no
+#
+#	ruler_designer_cost = 50
+#	
+#	desc = {
+#		first_valid = {
+#			triggered_desc = {
+#				trigger = {
+#					NOT = { exists = this }
+#				}
+#				desc = trait_gh_education_lich_1_desc
+#			}
+#			desc = trait_gh_education_lich_1_character_desc
+#		}
+#	}
+#	
+#	group = education_lich
+#	level = 1
+#}
+#
+#gh_education_lich_2 = {
+#	index = 614
+#	minimum_age = 16
+#
+#
+##	general_opinion = -100
+#	
+#	flag = lich
+#
+#	random_creation = 0
+#	
+#	shown_in_ruler_designer = no
+#
+#	ruler_designer_cost = 100
+#	
+#	desc = {
+#		first_valid = {
+#			triggered_desc = {
+#				trigger = {
+#					NOT = { exists = this }
+#				}
+#				desc = trait_gh_education_lich_2_desc
+#			}
+#			desc = trait_gh_education_lich_2_character_desc
+#		}
+#	}
+#	
+#	group = education_lich
+#	level = 2
+#}
+#
+#gh_education_lich_3 = {
+#	index = 615
+#	minimum_age = 16
+#
+#
+##	general_opinion = -100
+#	
+#	flag = lich
+#
+#	random_creation = 0
+#	
+#	shown_in_ruler_designer = no
+#	
+#	ruler_designer_cost = 150
+#	
+#	desc = {
+#		first_valid = {
+#			triggered_desc = {
+#				trigger = {
+#					NOT = { exists = this }
+#				}
+#				desc = trait_gh_education_lich_3_desc
+#			}
+#			desc = trait_gh_education_lich_3_character_desc
+#		}
+#	}
+#	
+#	group = education_lich
+#	level = 3
+#}
+#
+#gh_education_lich_4 = {
+#	index = 616
+#	minimum_age = 16
+#
+#
+##	general_opinion = -100
+#	
+#	flag = lich
+#
+#	random_creation = 0
+#	
+#	shown_in_ruler_designer = no
+#
+#	ruler_designer_cost = 100
+#	
+#	desc = {
+#		first_valid = {
+#			triggered_desc = {
+#				trigger = {
+#					NOT = { exists = this }
+#				}
+#				desc = trait_gh_education_lich_4_desc
+#			}
+#			desc = trait_gh_education_lich_4_character_desc
+#		}
+#	}
+#	
+#	group = education_lich
+#	level = 4
+#}
+#
+#gh_education_lich_5 = {
+#	index = 617
+#	minimum_age = 16
+#
+#
+##	general_opinion = -100
+#	
+#	flag = lich
+#
+#	random_creation = 0
+#	
+#	shown_in_ruler_designer = no
+#
+#	ruler_designer_cost = 100
+#	
+#	desc = {
+#		first_valid = {
+#			triggered_desc = {
+#				trigger = {
+#					NOT = { exists = this }
+#				}
+#				desc = trait_gh_education_lich_5_desc
+#			}
+#			desc = trait_gh_education_lich_5_character_desc
+#		}
+#	}
+#	
+#	group = education_lich
+#	level = 5
+#}
+#
+#trait_gh_cult_everlasting = {
+#	index = 618
+#
+#	random_creation = 0
+#	
+#	shown_in_ruler_designer = no
+#
+#	ruler_designer_cost = 100
+#	
+#	desc = {
+#		first_valid = {
+#			triggered_desc = {
+#				trigger = {
+#					NOT = { exists = this }
+#				}
+#				desc = trait_gh_cult_everlasting_desc
+#			}
+#			desc = trait_gh_cult_everlasting_character_desc
+#		}
+#	}
+#}
+#
+#trait_gh_master_cult_everlasting = {
+#	index = 619
+#
+#	random_creation = 0
+#	
+#	shown_in_ruler_designer = no
+#	
+#	ruler_designer_cost = 100
+#	
+#	desc = {
+#		first_valid = {
+#			triggered_desc = {
+#				trigger = {
+#					NOT = { exists = this }
+#				}
+#				desc = trait_gh_master_cult_everlasting_desc
+#			}
+#			desc = trait_gh_master_cult_everlasting_character_desc
+#		}
+#	}
+#}
+#
+#gh_arch_lich_1 = {
+#	index = 620
+#
+#	random_creation = 0
+#	
+#	shown_in_ruler_designer = no
+#	
+#	ruler_designer_cost = 100
+#	
+#	desc = {
+#		first_valid = {
+#			triggered_desc = {
+#				trigger = {
+#					NOT = { exists = this }
+#				}
+#				desc = trait_gh_arch_lich_1_desc
+#			}
+#			desc = trait_gh_arch_lich_1_character_desc
+#		}
+#	}
+#}
+#
+#gh_disconnected = {
+#	index = 621
+#
+#	random_creation = 0
+#	
+#	shown_in_ruler_designer = no
+#	
+#	ruler_designer_cost = -100
+#	
+#	desc = {
+#		first_valid = {
+#			triggered_desc = {
+#				trigger = {
+#					NOT = { exists = this }
+#				}
+#				desc = trait_gh_disconnected_desc
+#			}
+#			desc = trait_gh_disconnected_character_desc
+#		}
+#	}
+#}
+#
+#gh_debodied = {
+#	index = 622
+#
+#	random_creation = 0
+#	
+#	shown_in_ruler_designer = no
+#	
+#	ruler_designer_cost = -100
+#	
+#	desc = {
+#		first_valid = {
+#			triggered_desc = {
+#				trigger = {
+#					NOT = { exists = this }
+#				}
+#				desc = trait_gh_debodied_desc
+#			}
+#			desc = trait_gh_debodied_character_desc
+#		}
+#	}
+#}
+#
+#gh_overvain = {
+#	index = 623
+#
+#	random_creation = 0
+#	
+#	shown_in_ruler_designer = no
+#	
+#	ruler_designer_cost = -100
+#	
+#	desc = {
+#		first_valid = {
+#			triggered_desc = {
+#				trigger = {
+#					NOT = { exists = this }
+#				}
+#				desc = trait_gh_overvain_desc
+#			}
+#			desc = trait_gh_overvain_character_desc
+#		}
+#	}
+#}
+#
+#gh_soulshadowed = {
+#	index = 624
+#
+#	random_creation = 0
+#	
+#	shown_in_ruler_designer = no
+#	
+#	ruler_designer_cost = -100
+#	
+#	desc = {
+#		first_valid = {
+#			triggered_desc = {
+#				trigger = {
+#					NOT = { exists = this }
+#				}
+#				desc = trait_gh_soulshadowed_desc
+#			}
+#			desc = trait_gh_soulshadowed_character_desc
+#		}
+#	}
+#}

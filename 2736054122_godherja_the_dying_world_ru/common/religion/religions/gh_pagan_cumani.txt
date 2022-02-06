@@ -4,7 +4,7 @@
 
 	pagan_roots = yes
 
-	doctrine = pagan_hostility_doctrine
+	doctrine = standard_hostility_doctrine
 	doctrine = standard_hostility_doctrine
 	#Main Group
 	doctrine = doctrine_no_head
@@ -225,9 +225,8 @@
 
 	faiths = {
 		cumani = {
-			color = { 250 120 90 }
+			color = { 0.25 0.12 0.09 }
 			icon = cumani_icon
-			religious_head = d_cumani_rel
 			reformed_icon = cumani_icon
 			doctrine = unreformed_faith_doctrine
 
@@ -240,6 +239,83 @@
 
 			doctrine = tenet_the_soul_inside
 			doctrine = tenet_astrology
+			doctrine = tenet_ancestor_worship
+		}
+		iek_otached = { #oltenics worshipping otached.
+
+			color = { 0.35 0.25 0.25 }
+			icon = cumani_custom_red_icon
+
+			reformed_icon = cumani_icon
+			doctrine = unreformed_faith_doctrine
+
+			holy_site = sexi
+			holy_site = olbos
+			holy_site = selous
+			holy_site = ambracia
+			holy_site = kosios
+			holy_site = tulsos
+
+			doctrine = tenet_the_soul_inside
+			doctrine = tenet_astrology
+			doctrine = tenet_ancestor_worship
+		}
+		arayymorog = { #oltenics believing the gods are reflected in literally all movement of the air.
+
+			color = { 0.25 0.45 0.35 }
+			icon = cumani_custom_blue_icon
+
+			reformed_icon = cumani_icon
+			doctrine = unreformed_faith_doctrine
+
+			holy_site = sexi
+			holy_site = olbos
+			holy_site = selous
+			holy_site = ambracia
+			holy_site = kosios
+			holy_site = tulsos
+
+			doctrine = tenet_the_soul_inside
+			doctrine = tenet_astrology
+			doctrine = tenet_ancestor_worship
+		}
+		chakkarai = { #oltenis that worship Otached as the king of the gods
+
+			color = { 0.35 0.55 0.45 }
+			icon = cumani_custom_blue_icon
+
+			reformed_icon = cumani_icon
+			doctrine = unreformed_faith_doctrine
+
+			holy_site = sexi
+			holy_site = olbos
+			holy_site = selous
+			holy_site = ambracia
+			holy_site = kosios
+			holy_site = tulsos
+
+			doctrine = tenet_the_soul_inside
+			doctrine = tenet_inner_journey
+			doctrine = tenet_ancestor_worship
+		}
+
+		ebohephai_olten = { #oltenis that worship Ebohephai-Ölgon
+
+			color = { 0.25 0.45 0.25 }
+			icon = cumani_custom_blue_icon
+
+			reformed_icon = cumani_icon
+			doctrine = unreformed_faith_doctrine
+
+			holy_site = sexi
+			holy_site = olbos
+			holy_site = selous
+			holy_site = ambracia
+			holy_site = kosios
+			holy_site = tulsos
+
+			doctrine = tenet_the_soul_inside
+			doctrine = tenet_adorcism
 			doctrine = tenet_ancestor_worship
 		}
 	}

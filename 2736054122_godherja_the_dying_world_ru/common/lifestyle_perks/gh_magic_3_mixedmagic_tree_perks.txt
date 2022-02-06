@@ -2,7 +2,7 @@
 	lifestyle = magic_lifestyle_mixed
 	tree = mixedmagic_tree1
 	position = { 2 0 }
-	icon = node_intrigue
+	icon = node_learning
 	
 	auto_selection_weight = {
 		value = 11
@@ -47,8 +47,8 @@
 mixedmagic_perk2_tree1 = {
 	lifestyle = magic_lifestyle_mixed
 	tree = mixedmagic_tree1
-	position = { 0 1 }
-	icon = node_intrigue
+	position = { 0 1.25 }
+	icon = node_learning
 
 	parent = mixedmagic_perk1_tree1
 
@@ -64,8 +64,8 @@ mixedmagic_perk2_tree1 = {
 mixedmagic_perk3_tree1 = {
 	lifestyle = magic_lifestyle_mixed
 	tree = mixedmagic_tree1
-	position = { 2 1 }
-	icon = node_intrigue
+	position = { 2 1.25 }
+	icon = node_learning
 
 	parent = mixedmagic_perk1_tree1
 
@@ -73,16 +73,16 @@ mixedmagic_perk3_tree1 = {
 		always = yes
 	}
 
-	effect = {
-		custom_tooltip = mm_perk3.tt
+	character_modifier = {
+		stress_gain_mult = -0.1
 	}
 }
 
 mixedmagic_perk4_tree1 = {
 	lifestyle = magic_lifestyle_mixed
 	tree = mixedmagic_tree1
-	position = { 4 1 }
-	icon = node_intrigue
+	position = { 4 1.25 }
+	icon = node_learning
 
 	parent = mixedmagic_perk1_tree1
 
@@ -98,12 +98,10 @@ mixedmagic_perk4_tree1 = {
 mixedmagic_perk5_tree1 = {
 	lifestyle = magic_lifestyle_mixed
 	tree = mixedmagic_tree1
-	position = { 2 2 }
-	icon = node_intrigue
+	position = { 0 2.5 }
+	icon = node_learning
 
 	parent = mixedmagic_perk2_tree1
-	parent = mixedmagic_perk3_tree1
-	parent = mixedmagic_perk4_tree1
 
 	can_be_picked = {
 		always = yes
@@ -117,10 +115,10 @@ mixedmagic_perk5_tree1 = {
 mixedmagic_perk6_tree1 = {
 	lifestyle = magic_lifestyle_mixed
 	tree = mixedmagic_tree1
-	position = { 2 3 }
-	icon = node_intrigue
+	position = { 2 2.5 }
+	icon = node_learning
 
-	parent = mixedmagic_perk5_tree1
+	parent = mixedmagic_perk3_tree1
 
 	can_be_picked = {
 		always = yes
@@ -128,17 +126,16 @@ mixedmagic_perk6_tree1 = {
 
 	effect = {
 		custom_tooltip = mm_perk6.tt
-		custom_tooltip = mm_perk06.tt
 	}
 }
 
 mixedmagic_perk7_tree1 = {
 	lifestyle = magic_lifestyle_mixed
 	tree = mixedmagic_tree1
-	position = { 1 4 }
-	icon = node_intrigue
+	position = { 4 2.5 }
+	icon = node_learning
 
-	parent = mixedmagic_perk6_tree1
+	parent = mixedmagic_perk4_tree1
 
 	can_be_picked = {
 		always = yes
@@ -146,17 +143,18 @@ mixedmagic_perk7_tree1 = {
 
 	effect = {
 		custom_tooltip = mm_perk7.tt
-		custom_tooltip = not_yet_implemented.tt
 	}
 }
 
 mixedmagic_perk8_tree1 = {
 	lifestyle = magic_lifestyle_mixed
 	tree = mixedmagic_tree1
-	position = { 3 4 }
-	icon = node_intrigue
+	position = { 2 3.75 }
+	icon = node_learning
 
+	parent = mixedmagic_perk5_tree1
 	parent = mixedmagic_perk6_tree1
+	parent = mixedmagic_perk7_tree1
 
 	can_be_picked = {
 		always = yes
@@ -164,7 +162,6 @@ mixedmagic_perk8_tree1 = {
 
 	effect = {
 		custom_tooltip = mm_perk8.tt
-		custom_tooltip = not_yet_implemented.tt
 	}
 }
 
@@ -174,7 +171,6 @@ mixedmagic_perk9_tree1 = {
 	position = { 2 5 }
 	icon = trait_overseer
 
-	parent = mixedmagic_perk7_tree1
 	parent = mixedmagic_perk8_tree1
 
 	can_be_picked = {
@@ -182,16 +178,16 @@ mixedmagic_perk9_tree1 = {
 	}
 
 	effect = {
-		custom_tooltip = mm_perk9.tt
-		custom_tooltip = not_yet_implemented.tt
+		add_trait_force_tooltip = gh_one_with_mist
 	}
+
 }
 
 mixedmagic_perk1_tree2 = {
 	lifestyle = magic_lifestyle_mixed
 	tree = mixedmagic_tree2
-	position = { 1 0 }
-	icon = node_intrigue
+	position = { 2 0 }
+	icon = node_learning
 	
 	auto_selection_weight = {
 		value = 11
@@ -236,8 +232,8 @@ mixedmagic_perk1_tree2 = {
 mixedmagic_perk2_tree2 = {
 	lifestyle = magic_lifestyle_mixed
 	tree = mixedmagic_tree2
-	position = { 0 1 }
-	icon = node_intrigue
+	position = { 1 1.25 }
+	icon = node_learning
 
 	parent = mixedmagic_perk1_tree2
 
@@ -245,17 +241,16 @@ mixedmagic_perk2_tree2 = {
 		always = yes
 	}
 
-	effect = {
-		custom_tooltip = mm2_perk2.tt
-		custom_tooltip = not_yet_implemented.tt
+	character_modifier = {
+		stress_gain_mult = -0.2
 	}
 }
 
 mixedmagic_perk3_tree2 = {
 	lifestyle = magic_lifestyle_mixed
 	tree = mixedmagic_tree2
-	position = { 2 1 }
-	icon = node_intrigue
+	position = { 3 1.25 }
+	icon = node_learning
 
 	parent = mixedmagic_perk1_tree2
 
@@ -271,8 +266,8 @@ mixedmagic_perk3_tree2 = {
 mixedmagic_perk4_tree2 = {
 	lifestyle = magic_lifestyle_mixed
 	tree = mixedmagic_tree2
-	position = { 0 2 }
-	icon = node_intrigue
+	position = { 0 2.5 }
+	icon = node_learning
 
 	parent = mixedmagic_perk2_tree2
 
@@ -288,8 +283,26 @@ mixedmagic_perk4_tree2 = {
 mixedmagic_perk5_tree2 = {
 	lifestyle = magic_lifestyle_mixed
 	tree = mixedmagic_tree2
-	position = { 2 2 }
-	icon = node_intrigue
+	position = { 2 2.5 }
+	icon = node_learning
+
+	parent = mixedmagic_perk2_tree2
+	parent = mixedmagic_perk3_tree2
+
+	can_be_picked = {
+		always = yes
+	}
+
+	character_modifier = {
+		learning_per_stress_level = 2
+	}
+}
+
+mixedmagic_perk6_tree2 = {
+	lifestyle = magic_lifestyle_mixed
+	tree = mixedmagic_tree2
+	position = { 4 2.5 }
+	icon = node_learning
 
 	parent = mixedmagic_perk3_tree2
 
@@ -298,33 +311,17 @@ mixedmagic_perk5_tree2 = {
 	}
 
 	effect = {
-		custom_tooltip = not_yet_implemented.tt
-	}
-}
-
-mixedmagic_perk6_tree2 = {
-	lifestyle = magic_lifestyle_mixed
-	tree = mixedmagic_tree2
-	position = { 0 3 }
-	icon = node_intrigue
-
-	parent = mixedmagic_perk4_tree2
-
-	can_be_picked = {
-		always = yes
-	}
-
-	effect = {
-		custom_tooltip = not_yet_implemented.tt
+		custom_tooltip = mm2_perk6.tt
 	}
 }
 
 mixedmagic_perk7_tree2 = {
 	lifestyle = magic_lifestyle_mixed
 	tree = mixedmagic_tree2
-	position = { 2 3 }
-	icon = node_intrigue
+	position = { 1 3.75 }
+	icon = node_learning
 
+	parent = mixedmagic_perk4_tree2
 	parent = mixedmagic_perk5_tree2
 
 	can_be_picked = {
@@ -339,27 +336,28 @@ mixedmagic_perk7_tree2 = {
 mixedmagic_perk8_tree2 = {
 	lifestyle = magic_lifestyle_mixed
 	tree = mixedmagic_tree2
-	position = { 1 4 }
-	icon = node_intrigue
+	position = { 3 3.75 }
+	icon = node_learning
 
+	parent = mixedmagic_perk5_tree2
 	parent = mixedmagic_perk6_tree2
-	parent = mixedmagic_perk7_tree2
 
 	can_be_picked = {
 		always = yes
 	}
 
 	effect = {
-		custom_tooltip = not_yet_implemented.tt
+		custom_tooltip = mm2_perk8.tt
 	}
 }
 
 mixedmagic_perk9_tree2 = {
 	lifestyle = magic_lifestyle_mixed
 	tree = mixedmagic_tree2
-	position = { 1 5 }
+	position = { 2 5 }
 	icon = trait_overseer
 
+	parent = mixedmagic_perk7_tree2
 	parent = mixedmagic_perk8_tree2
 
 	can_be_picked = {
@@ -367,15 +365,15 @@ mixedmagic_perk9_tree2 = {
 	}
 
 	effect = {
-		custom_tooltip = not_yet_implemented.tt
+		add_trait_force_tooltip = gh_pale_seer
 	}
 }
 
 mixedmagic_perk1_tree3 = {
 	lifestyle = magic_lifestyle_mixed
 	tree = mixedmagic_tree3
-	position = { 2 0 }
-	icon = node_intrigue
+	position = { 1 0 }
+	icon = node_learning
 	
 	auto_selection_weight = {
 		value = 11
@@ -420,8 +418,8 @@ mixedmagic_perk1_tree3 = {
 mixedmagic_perk2_tree3 = {
 	lifestyle = magic_lifestyle_mixed
 	tree = mixedmagic_tree3
-	position = { 1 1 }
-	icon = node_intrigue
+	position = { 0 1 }
+	icon = node_learning
 
 	parent = mixedmagic_perk1_tree3
 
@@ -438,8 +436,8 @@ mixedmagic_perk2_tree3 = {
 mixedmagic_perk3_tree3 = {
 	lifestyle = magic_lifestyle_mixed
 	tree = mixedmagic_tree3
-	position = { 3 1 }
-	icon = node_intrigue
+	position = { 2 1 }
+	icon = node_learning
 
 	parent = mixedmagic_perk1_tree3
 
@@ -455,11 +453,10 @@ mixedmagic_perk3_tree3 = {
 mixedmagic_perk4_tree3 = {
 	lifestyle = magic_lifestyle_mixed
 	tree = mixedmagic_tree3
-	position = { 2 2 }
-	icon = node_intrigue
+	position = { 0 2 }
+	icon = node_learning
 
 	parent = mixedmagic_perk2_tree3
-	parent = mixedmagic_perk3_tree3
 
 	can_be_picked = {
 		always = yes
@@ -474,10 +471,10 @@ mixedmagic_perk4_tree3 = {
 mixedmagic_perk5_tree3 = {
 	lifestyle = magic_lifestyle_mixed
 	tree = mixedmagic_tree3
-	position = { 2 3 }
-	icon = node_intrigue
+	position = { 2 2 }
+	icon = node_learning
 
-	parent = mixedmagic_perk4_tree3
+	parent = mixedmagic_perk3_tree3
 
 	can_be_picked = {
 		always = yes
@@ -494,10 +491,10 @@ mixedmagic_perk5_tree3 = {
 mixedmagic_perk6_tree3 = {
 	lifestyle = magic_lifestyle_mixed
 	tree = mixedmagic_tree3
-	position = { 0 4 }
-	icon = node_intrigue
+	position = { 0 3 }
+	icon = node_learning
 
-	parent = mixedmagic_perk5_tree3
+	parent = mixedmagic_perk4_tree3
 
 	can_be_picked = {
 		always = yes
@@ -512,8 +509,8 @@ mixedmagic_perk6_tree3 = {
 mixedmagic_perk7_tree3 = {
 	lifestyle = magic_lifestyle_mixed
 	tree = mixedmagic_tree3
-	position = { 2 4 }
-	icon = node_intrigue
+	position = { 2 3 }
+	icon = node_learning
 
 	parent = mixedmagic_perk5_tree3
 
@@ -530,10 +527,11 @@ mixedmagic_perk7_tree3 = {
 mixedmagic_perk8_tree3 = {
 	lifestyle = magic_lifestyle_mixed
 	tree = mixedmagic_tree3
-	position = { 4 4 }
-	icon = node_intrigue
+	position = { 1 4 }
+	icon = node_learning
 
-	parent = mixedmagic_perk5_tree3
+	parent = mixedmagic_perk6_tree3
+	parent = mixedmagic_perk7_tree3
 
 	can_be_picked = {
 		always = yes
@@ -547,11 +545,9 @@ mixedmagic_perk8_tree3 = {
 mixedmagic_perk9_tree3 = {
 	lifestyle = magic_lifestyle_mixed
 	tree = mixedmagic_tree3
-	position = { 2 5 }
+	position = { 1 5 }
 	icon = trait_overseer
 
-	parent = mixedmagic_perk6_tree3
-	parent = mixedmagic_perk7_tree3
 	parent = mixedmagic_perk8_tree3
 
 	can_be_picked = {
@@ -559,6 +555,6 @@ mixedmagic_perk9_tree3 = {
 	}
 
 	effect = {
-		custom_tooltip = mm3_perk9.tt
+		add_trait_force_tooltip = gh_reifier
 	}
 }

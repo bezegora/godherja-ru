@@ -1,0 +1,72 @@
+﻿namespace = quwazaw
+
+quwazaw.0001 = { #somebody insults muh statues
+	title = quwazaw.0001.t
+	desc = quwazaw.0001.desc
+	theme = realm
+	left_portrait = { 
+		character = root
+		animation = disapproval
+	}
+
+	trigger = {
+		has_religion = religion:quwazaw_religion
+	}	
+	
+	option = { #execute him
+		name = quwazaw.0001.a
+		add_prestige = 100
+	}
+
+	option = { #force to pay special tax
+		name = quwazaw.0001.b
+		add_gold = 25
+	}
+	
+	option = { #force him to clean statues as punishment
+		name = quwazaw.0001.c
+		add_piety = 50
+	}
+
+}
+
+quwazaw.0002 = { #someone is found selling statues to foreigners as trinkets
+	title = quwazaw.0002.t
+	desc = quwazaw.0002.desc
+	theme = corruption
+	left_portrait = {
+		character = root
+		animation = disbeleif
+	}
+	
+	trigger = {
+		has_religion = religion:quwazaw_religion
+	}
+	
+	option = { #To the Dungeons
+		name = quwazaw.0002.a
+		add_gold = 10
+		add_prestige = 50
+	}
+	
+	option = { #give him a year of polishing duty
+		name = quwazaw.0002.b
+		add_piety = 25
+	}
+	
+	option = { #where's MY cut?
+		name = quwazaw.0002.c
+		trigger = {
+			has_trait = greedy
+		}
+		add_gold = 100
+		add_piety = -25
+	}
+
+	option = { #LAW
+		name = quwazaw.0002.d
+		add_gold = 10
+		add_piety = -10
+	}
+	
+}

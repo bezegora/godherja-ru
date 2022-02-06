@@ -39,9 +39,12 @@ challenge_liege = {
 		# The recipient must be the direct liege of the sender, and must be independent (for now, to be changed in the future when the usurpation logic is made more complex)
 		scope:recipient = {
 			is_independent_ruler = yes
+			has_government = pirate_government
 		}
 		scope:actor = {
 			liege = scope:recipient
+			has_government = pirate_government
+			prestige_level >= scope:recipient.prestige_level
 		}
 	}
 

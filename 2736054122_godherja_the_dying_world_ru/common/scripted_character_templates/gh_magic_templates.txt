@@ -1,0 +1,144 @@
+﻿
+vampire_template = {
+	age = { 40 150 }
+	gender_female_chance = 50
+	dynasty = none
+	trait = gh_vampiric
+	trait = gh_extended_life
+	culture = scope:vampire_county.var:dominant_vampire_culture
+	faith = scope:vampire_county.var:dominant_vampire_faith
+	random_traits_list = {
+		count = 1
+		education_martial_2	= { weight = { base = 25 } }
+		education_martial_3	= { weight = { base = 50 } }
+		education_martial_4	= { weight = { base = 25 } }
+	}
+	random_traits_list = {
+		count = 1
+		education_living_magic_3	= { weight = { base = 50 } }
+		education_living_magic_4	= { weight = { base = 25 } }
+	}
+	random_traits_list = {
+		count = 1
+		magic_good_3	= { weight = { base = 50 } }
+		magic_good_4	= { weight = { base = 25 } }
+		magic_good_5	= { weight = { base = 10 } }
+		magic_good_5	= { weight = { base = 5 } }
+		magic_good_6	= { weight = { base = 2 } }
+		magic_good_7	= { weight = { base = 1 } }
+	}
+	random_traits_list = {
+		count = { 2 3 }
+		sadistic = { weight = { base = 50 } }
+		ambitious = { weight = { base = 25 } }
+		callous = { weight = { base = 25 } }
+		deceitful = { weight = { base = 25 } }
+		wrathful = { weight = { base = 20 } }
+		arrogant = { weight = { base = 20 } }
+		paranoid = { weight = { base = 20 } }
+		gregarious = { weight = { base = 10 } }
+		lustful = { weight = { base = 10 } }
+	}
+	random_traits_list = {
+		count = { 2 3 }
+		gh_glowingeyes_red = { weight = { base = 100 } }
+		gh_excessively_pale = { weight = { base = 25 } }
+		gh_glowing_veins = { weight = { base = 25 } }
+		gh_beset_by_visions = { weight = { base = 20 } }
+		gh_ritual_tattoos = { weight = { base = 20 } }
+		gh_racked_by_voices = { weight = { base = 20 } }
+		gh_exhausted = { weight = { base = 10 } }
+		gh_stimulated = { weight = { base = 10 } }
+	}
+	random_traits_list = {
+		count = { 0 1 }
+		gh_ritual_scars_1 = { weight = { base = 20 } }
+		gh_ritual_scars_2 = { weight = { base = 20 } }
+		gh_ritual_scars_3 = { weight = { base = 20 } }
+	}
+	random_traits_list = {
+		count = { 0 2 }
+		intellect_good_1 = { weight = { base = 20 } }
+		intellect_good_2 = { weight = { base = 10 } }
+		intellect_good_3 = { weight = { base = 5 } }
+		beauty_good_1 = { weight = { base = 20 } }
+		beauty_good_2 = { weight = { base = 10 } }
+		beauty_good_3 = { weight = { base = 5 } }
+	}
+	random_traits_list = {
+		count = 1
+		blademaster_1 = { weight = { base = 40 } }
+		blademaster_2 = { weight = { base = 20 } }
+		blademaster_3 = { weight = { base = 5 } }
+		gallant = { weight = { base = 20 } }
+		strategist = { weight = { base = 5 } }
+	}
+	random_traits = yes
+	martial = {
+		min_template_low_skill
+		max_template_low_skill
+	}
+	stewardship = {
+		min_template_low_skill
+		max_template_low_skill
+	}
+	diplomacy = {
+		min_template_decent_skill
+		max_template_decent_skill
+	}
+	intrigue = {
+		min_template_high_skill
+		max_template_high_skill
+	}
+	learning = {
+		min_template_decent_skill
+		max_template_decent_skill
+	}
+	
+	after_creation = {
+		if = {
+			limit = { NOT = { scope:vampire_county = { has_variable = dominant_vampire_faith } } }
+			set_character_faith = scope:vampire_county.faith
+		}
+		if = {
+			limit = { NOT = { scope:vampire_county = { has_variable = dominant_vampire_culture } } }
+			set_culture = scope:vampire_county.culture
+		}
+		calculate_monthly_magic = yes
+		calculate_magical_prowess = yes
+		combine_regular_and_magic_prowess = { DAYS = 31 }
+	}
+}
+
+assassin_template = {
+	age = { 18 40 }
+	gender_female_chance = 50
+	random_traits_list = {
+		count = 1
+		education_intrigue_2 = {}
+		education_intrigue_3 = {}
+		education_intrigue_4 = {}
+	}
+	random_traits_list = {
+		count = 3
+		vengeful = {}
+		fickle = {}
+		deceitful = {}
+		paranoid = {}
+		cynical = {}
+		callous = {}
+		sadistic = {}
+		craven = {}
+		patient = {}
+		brave = {}
+		lustful = {}
+		gregarious = {}
+	}
+	random_traits = no
+	faith = root.faith
+	culture = root.culture
+	intrigue = {
+		min_template_decent_skill
+		max_template_decent_skill
+	}
+}

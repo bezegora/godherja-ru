@@ -23,6 +23,15 @@
 			}
 			desc = task_religious_relations_effect_desc_legacy_bonus_piety
 		}
+		triggered_desc = {
+			trigger = {
+				scope:councillor_liege = {
+					exists = dynasty
+					dynasty = { has_dynasty_perk = wardenite_legacy_3 }
+				}
+			}
+			desc = task_religious_relations_effect_desc_wardenite_legacy_bonus_piety
+		}
 
 		first_valid = {
 			triggered_desc = { 
@@ -55,6 +64,15 @@
 				}
 			}
 			desc = task_religious_relations_effect_desc_legacy_bonus_opinion
+		}
+		triggered_desc = {
+			trigger = {
+				scope:councillor_liege = {
+					exists = dynasty
+					dynasty = { has_dynasty_perk = wardenite_legacy_3 }
+				}
+			}
+			desc = task_religious_relations_effect_desc_wardenite_legacy_bonus_opinion
 		}
 		desc = line_break
 
@@ -121,6 +139,12 @@
 		name = court_chaplain_religious_relations_erudition_legacy_5_bonus_modifier
 		monthly_piety = 1
 		scale = court_chaplain_religious_relations_erudition_legacy_5_bonus_modifier
+	}
+	
+	council_owner_modifier = {
+		name = court_chaplain_religious_relations_legalism_legacy_3_bonus_modifier
+		monthly_piety = 1
+		scale = court_chaplain_religious_relations_legalism_legacy_3_bonus_modifier
 	}
 
 	council_owner_modifier = {
@@ -189,6 +213,10 @@
 					days = { 1 30 }
 				}
 			}
+		}
+		if = {
+			limit = { faith = { has_doctrine_parameter = enables_practising_law } }
+			add_jurist_progress_effect = { VALUE = learning }
 		}
 	}
 
@@ -282,6 +310,24 @@ task_conversion = {
 				desc = COURT_CHAPLAIN_CONVERSION_FERVOR_IMPACT
 			}
 		}
+		# Inquisitor Headquarters bonus
+		if = {
+			limit = {
+				scope:councillor.liege = {
+					any_held_title = { 
+						tier = tier_county
+						any_county_province = {
+							has_holding_type = temple_district_holding
+							has_building_or_higher = inquisition_headquarters_01
+						}
+					}
+				}
+			}
+			add = {
+				value = scope:councillor.court_chaplain_conversion_inquisitor_monthly_increase
+				desc = INQUISITOR_CONVERSION_PERK_BONUS_VALUE
+			}
+		}
 		#Perk Bonus
 		if = {
 			limit = {
@@ -302,6 +348,19 @@ task_conversion = {
 			add = {
 				value = scope:councillor.court_chaplain_conversion_monthly_increase_dynasty_perk_bonus
 				desc = CONVERSION_DYNASTY_PERK_BONUS_VALUE
+			}
+		}
+		if = {
+			limit = {
+				scope:councillor_liege = {
+					exists = dynasty
+					dynasty = { has_dynasty_perk = wardenite_legacy_3 }
+				}
+				has_trait = lifestyle_jurist
+			}
+			add = {
+				value = scope:councillor.court_chaplain_conversion_monthly_increase_legalism_dynasty_perk_bonus
+				desc = CONVERSION_LEGALISM_DYNASTY_PERK_BONUS_VALUE
 			}
 		}
 		# Relation Bonuses/Penalties
@@ -404,18 +463,6 @@ task_conversion = {
 			limit = {
 				exists = scope:county
 				scope:county.faith = {
-					has_doctrine = tenet_dharmic_pacifism
-				}
-			}
-			add = {
-				value = scope:councillor.conversion_dharmic_pacifism_resistance
-				desc = COURT_CHAPLAIN_CONVERSION_DHARMIC_PACIFISM_MODIFIER
-			}
-		}
-		if = {
-			limit = {
-				exists = scope:county
-				scope:county.faith = {
 					has_doctrine_parameter = tenet_adaptive_conversion_resistance
 				}
 			}
@@ -447,7 +494,7 @@ task_conversion = {
 				desc = COURT_CHAPLAIN_CONVERSION_COMMUNAL_IDENTITY_PENALTY_MODIFIER
 			}
 		}
-
+		
 		#Conversion bonuses for Character Faith Tenets
 		if = {
 			limit = {
@@ -497,39 +544,6 @@ task_conversion = {
 				exists = scope:county
 				scope:councillor.faith = { has_doctrine_parameter = unreformed_syncretic_actor_opinion_active }
 				scope:county.faith = { has_doctrine = unreformed_faith_doctrine}
-			}
-			add = {
-				value = scope:councillor.conversion_syncretic_with_religion_malus
-				desc = COURT_CHAPLAIN_CONVERSION_SYNCRETIC_WITH_RELIGION_MODIFIER
-			}
-		}
-		if = {
-			limit = {
-				exists = scope:county
-				scope:councillor.faith = { has_doctrine_parameter = christian_syncretic_actor_opinion_active }
-				scope:county.faith = { religion_tag = christianity_religion }
-			}
-			add = {
-				value = scope:councillor.conversion_syncretic_with_religion_malus
-				desc = COURT_CHAPLAIN_CONVERSION_SYNCRETIC_WITH_RELIGION_MODIFIER
-			}
-		}
-		if = {
-			limit = {
-				exists = scope:county
-				scope:councillor.faith = { has_doctrine_parameter = islamic_syncretic_actor_opinion_active }
-				scope:county.faith = { religion_tag = islam_religion }
-			}
-			add = {
-				value = scope:councillor.conversion_syncretic_with_religion_malus
-				desc = COURT_CHAPLAIN_CONVERSION_SYNCRETIC_WITH_RELIGION_MODIFIER
-			}
-		}
-		if = {
-			limit = {
-				exists = scope:county
-				scope:councillor.faith = { has_doctrine_parameter = jewish_syncretic_actor_opinion_active }
-				scope:county.faith = { religion_tag = judaism_religion }
 			}
 			add = {
 				value = scope:councillor.conversion_syncretic_with_religion_malus
@@ -623,6 +637,18 @@ task_conversion = {
 			}
 		}
 		
+		if = { #Protects smaller faiths
+			limit = {
+				scope:county.faith = {
+					num_county_followers < 6
+				}
+			}
+			multiply = {
+				value = conversion_small_faith_penalty
+				desc = SMALL_FAITH_CONVERSION_PENALTY
+			}
+		}
+		
 		# Conversion speed game rules
 		if = {
 			limit = {
@@ -659,10 +685,6 @@ task_conversion = {
 				value = significantly_faster_game_rule_value
 				desc = GAME_RULE_SIGNIFICANTLY_FASTER_REASON
 			}
-		}
-		divide = {
-			value = scope:county.faith_hostility_level_conversion_malus
-			desc = FAITH_HOSTILITY_LEVEL_CONVERSION_MALUS_REASON
 		}
 	}
 
@@ -736,6 +758,12 @@ task_conversion = {
 					on_action = task_convert_side_effects
 					days = { 1 30 }
 				}
+			}
+		}
+		scope:councillor = {
+			if = {
+				limit = { faith = { has_doctrine_parameter = enables_practising_law } }
+				add_jurist_progress_effect = { VALUE = learning }
 			}
 		}
 	}
@@ -870,6 +898,16 @@ task_fabricate_claim = {
 				desc = FABRICATE_CLAIM_DYNASTY_PERK_BONUS_VALUE
 			}
 		}
+		if = {
+			limit = {
+				exists = scope:councillor_liege.dynasty
+				scope:councillor_liege.dynasty = { has_dynasty_perk = wardenite_legacy_3 }
+			}
+			add = {
+				value = scope:councillor.court_chaplain_fabricate_claim_dynasty_perk_bonus
+				desc = FABRICATE_CLAIM_LEGALISM_DYNASTY_PERK_BONUS_VALUE
+			}
+		}
 
 		# Innovation Bonuses
 		if = {
@@ -973,6 +1011,12 @@ task_fabricate_claim = {
 					on_action = task_fabricate_claim_side_effects
 					days = { 1 30 }
 				}
+			}
+		}
+		scope:councillor = {
+			if = {
+				limit = { faith = { has_doctrine_parameter = enables_practising_law } }
+				add_jurist_progress_effect = { VALUE = learning }
 			}
 		}
 	}

@@ -252,6 +252,8 @@ stewardship_domain.1041 = {
 			change_county_control = 20
 		}
 
+
+
 		ai_chance = {
 			base = 100
 
@@ -1156,6 +1158,7 @@ stewardship_domain.1073 = {
 
 		dedication_impact = {
 			AMOUNT = miniscule
+			NATURE = increase
 		}
 
 		ai_chance = {
@@ -1547,7 +1550,7 @@ stewardship_domain.6011 = {
 		}
 	}
 
-	option = { # Strike a deal with the chief mason
+	option = {
 		name = stewardship_domain.6011.a
 		duel = {
 			skill = stewardship
@@ -1638,7 +1641,7 @@ stewardship_domain.6011 = {
 		}
 	}
 
-	option = { # Steward, go take care of it
+	option = {
 		name = stewardship_domain.6011.b
 		trigger = {
 			exists = scope:steward
@@ -1729,7 +1732,6 @@ stewardship_domain.6011 = {
 				}
 			}
 		}
-
 		ai_chance = {
 			base = 100
 			modifier = {
@@ -2396,7 +2398,6 @@ stewardship_domain_special.1002 = {
 							}
 						}
 					}
-
 					root = {
 						trigger_event = {
 							id = stewardship_domain_special.1003
@@ -2427,7 +2428,6 @@ stewardship_domain_special.1002 = {
 							}
 						}
 					}
-
 					root = {
 						trigger_event = {
 							id = stewardship_domain_special.1004
@@ -2479,7 +2479,6 @@ stewardship_domain_special.1002 = {
 						}
 					}
 				}
-
 				trigger_event = {
 					id = stewardship_domain_special.1005
 					days = { 14 21 }
@@ -3598,6 +3597,14 @@ stewardship_domain_special.1301 = {
 		}
 		save_scope_value_as = {
 			name = road_progress
+			value = 0
+		}
+		set_variable = {
+			name = governance_road_progress
+			value = 0
+		}
+		set_variable = {
+			name = governance_road_quality
 			value = 0
 		}
 	}
@@ -4760,9 +4767,12 @@ stewardship_domain_special.1391 = {
 		if = {
 			limit = {
 				exists = cp:councillor_steward
+				cp:councillor_steward = {
+					is_alive = yes
+				}
 			}
 			cp:councillor_steward = {
-				save_scope_as = steward
+				save_scope_as = steward_alternative
 				save_scope_as = scope_for_portrait
 			}
 		}
@@ -4804,10 +4814,10 @@ stewardship_domain_special.1391 = {
 
 	option = { #Assign a councillor to oversee it
 		trigger = {
-			exists = scope:steward
+			exists = scope:steward_alternative
 		}
 		name = stewardship_domain_special.1391.b
-		scope:steward = {
+		scope:steward_alternative = {
 			save_scope_as = project_leader
 		}
 		stewardship_domain_special_1301_road_building_event_effect = yes
@@ -5151,6 +5161,8 @@ stewardship_domain_special.1399 = {
 
 	after = {
 		remove_character_flag = is_in_stewardship_domain_special_event
+		remove_variable = governance_road_progress
+		remove_variable = governance_road_quality
 	}
 }
 
@@ -5417,7 +5429,6 @@ stewardship_domain_special.1411 = {
 			forgiving = medium_stress_impact_gain
 			compassionate = medium_stress_impact_gain
 		}
-
 		ai_chance = {
 			base = 25
 			ai_value_modifier = {
@@ -5792,6 +5803,7 @@ stewardship_domain_special.1422 = {
 		}
 		dedication_impact = {
 			AMOUNT = miniscule
+			NATURE = increase
 		}
 		ai_chance = {
 			base = 100
@@ -6101,7 +6113,6 @@ stewardship_domain_special.1431 = {
 			generous = medium_stress_impact_gain
 			forgiving = minor_stress_impact_gain
 		}
-
 		hidden_effect = {
 			trigger_event = {
 				id = stewardship_domain_special.1432
@@ -6471,29 +6482,10 @@ stewardship_domain_special.1451 = {
 # by Stephen Arthur and Sean Hughes #
 #####################################
 
-#Trigger used to check if event title should be "The Domesday Book" (if true) or "The Great Survey" (if false).
-scripted_trigger stewardship_domain_special_1500_domesday_true_name = {
-	OR = {
-		has_culture = culture:anglo_saxon
-		has_culture = culture:norman
-		has_culture = culture:english
-	}
-}
-
 #Initial kickoff event.
 stewardship_domain_special.1500 = {
 	type = character_event
-	title = {
-		first_valid = {
-			triggered_desc = {
-				trigger = {
-					stewardship_domain_special_1500_domesday_true_name = yes
-				}
-				desc = stewardship_domain_special.1500.t.b
-			}
-			desc = stewardship_domain_special.1500.t.a
-		}
-	}	
+	title = stewardship_domain_special.1500.t.a
 
 	desc = stewardship_domain_special.1500.desc
 	
@@ -6789,17 +6781,7 @@ stewardship_domain_special.1500 = {
 # 2nd setup event. Determines how well your assessors are protected.
 stewardship_domain_special.1501 = {
 	type = character_event
-	title = {
-		first_valid = {
-			triggered_desc = {
-				trigger = {
-					stewardship_domain_special_1500_domesday_true_name = yes
-				}
-				desc = stewardship_domain_special.1500.t.b
-			}
-			desc = stewardship_domain_special.1500.t.a
-		}
-	}
+	title = stewardship_domain_special.1500.t.a
 	desc = stewardship_domain_special.1501.desc
 	
 	theme = stewardship_domain_focus
@@ -7243,7 +7225,6 @@ stewardship_domain_special.1510 = {
 			stubborn = minor_stress_impact_gain
 			greedy = minor_stress_impact_gain
 		}
-
 		ai_chance = {
 			base = 50
 			ai_value_modifier = {
@@ -7580,7 +7561,7 @@ stewardship_domain_special.1520 = {
 			}			
 		}
 		
-		crow_zealous_withtooltip = yes
+		crow_zealous_withtooltip = { STRESS_AMOUNT = minor }
 
 		stress_impact = {
 			trusting = minor_stress_impact_gain
@@ -7638,17 +7619,7 @@ scripted_trigger stewardship_domain_special_1530_unhappy_city = {
 #The guilds in one of your cities are upset at being assessed.
 stewardship_domain_special.1530 = {
 	type = character_event
-	title = {
-		first_valid = {
-			triggered_desc = {
-				trigger = {
-					stewardship_domain_special_1500_domesday_true_name = yes
-				}
-				desc = stewardship_domain_special.1500.t.b
-			}
-			desc = stewardship_domain_special.1500.t.a
-		}
-	}
+	title = stewardship_domain_special.1500.t.a
 	desc = stewardship_domain_special.1530.desc
 	
 	theme = stewardship_domain_focus
@@ -7844,17 +7815,7 @@ stewardship_domain_special.1530 = {
 #Bandits attack the assessors in one of your low-control counties.
 stewardship_domain_special.1540 = {
 	type = character_event
-	title = {
-		first_valid = {
-			triggered_desc = {
-				trigger = {
-					stewardship_domain_special_1500_domesday_true_name = yes
-				}
-				desc = stewardship_domain_special.1500.t.b
-			}
-			desc = stewardship_domain_special.1500.t.a
-		}
-	}
+	title = stewardship_domain_special.1500.t.a
 	desc = {
 		#Variant A: Assessors were unprotected, bandits succeeded.
 		triggered_desc = {
@@ -8054,17 +8015,7 @@ stewardship_domain_special.1540 = {
 #Steward who proposed the idea has been lining his pockets with bribes!
 stewardship_domain_special.1550 = {
 	type = character_event
-	title = {
-		first_valid = {
-			triggered_desc = {
-				trigger = {
-					stewardship_domain_special_1500_domesday_true_name = yes
-				}
-				desc = stewardship_domain_special.1500.t.b
-			}
-			desc = stewardship_domain_special.1500.t.a
-		}
-	}
+	title = stewardship_domain_special.1500.t.a
 	desc = stewardship_domain_special.1550.desc
 	
 	theme = stewardship_domain_focus
@@ -8279,17 +8230,7 @@ scripted_trigger stewardship_domain_special_1560_upset_merchants = {
 #Traveling merchants are upset at having their property assessed.
 stewardship_domain_special.1560 = {
 	type = character_event
-	title = {
-		first_valid = {
-			triggered_desc = {
-				trigger = {
-					stewardship_domain_special_1500_domesday_true_name = yes
-				}
-				desc = stewardship_domain_special.1500.t.b
-			}
-			desc = stewardship_domain_special.1500.t.a
-		}
-	}
+	title = stewardship_domain_special.1500.t.a
 	desc = stewardship_domain_special.1560.desc
 	
 	theme = stewardship_domain_focus
@@ -8486,17 +8427,7 @@ stewardship_domain_special.1560 = {
 #Receive the completed survey results. Results
 stewardship_domain_special.1590 = {
 	type = character_event
-	title = {
-		first_valid = {
-			triggered_desc = {
-				trigger = {
-					stewardship_domain_special_1500_domesday_true_name = yes
-				}
-				desc = stewardship_domain_special.1500.t.b
-			}
-			desc = stewardship_domain_special.1500.t.a
-		}
-	}
+	title = stewardship_domain_special.1500.t.a
 	desc = {
 		desc = stewardship_domain_special.1590.desc.start
 		first_valid = {

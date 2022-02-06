@@ -987,3 +987,38 @@ bloodline_salacad = {
 		}
 	}
 }
+
+bloodline_gatecrasher = {
+	index = 511
+
+	martial = 3
+	prowess = 3
+	monthly_prestige = 0.4
+	monthly_piety = 0.4
+
+	flag = no_message
+	flag = bloodline #marked as bloodline, for any_/every_bloodline_character
+	flag = bloodline_gatecrasher #for specific bloodline
+
+	# test for has_trait_with_flag = bloodline_$TRAIT$_matri/$TRAIT$_patri etc
+	flag = bloodline_gatecrasher_all #_matri/_patri/_all - inhertance
+	flag = bloodline_gatecrasher_matri_override #allow inheritance for opposite marriages - mother will pass patri in matri marriage & father will pass matri in normal marriae
+	#flag = bloodline_gatecrasher_allow_bastards #do bastards inherits
+
+	flag = bloodline_gatecrasher_special_inheritance
+
+	shown_in_ruler_designer = no
+	shown_in_encyclopedia = no
+
+	desc = { #The description is not shown. it is used to hide/show appropriately
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = bloodline_no
+			}
+			desc = bloodline_desc_blank
+		}
+	}
+}

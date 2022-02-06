@@ -8,10 +8,8 @@ window = {
 	datacontext = "[GetVariableSystem]"
 	datacontext = "[GetPlayer]"
 	parentanchor = top|right
-	
-	datacontext = "[GetScriptedGui('artifacts_gui_toggle')]"
-	visible = "[And(IsGameViewOpen('military'), Not(ScriptedGui.IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)))]"
-	
+
+	visible = "[IsGameViewOpen('military')]"
 	layer = windows_layer
 	movable = no
 
@@ -37,14 +35,9 @@ window = {
 		size = { 100% 100% }
 		margin = { 0 26 }
 		margin_right = 20
-		
-		# using = Window_Background
-
 
 		widget = {
 			size = { 100% 100% }
-
-		#	using = Window_Decoration_Thin
 
 			### WINDOW CONTENT
 			vbox = {
@@ -97,7 +90,7 @@ window = {
 							enabled = "[PlayerCanRaiseAnyRaiderRallyPoint]"
 
 							text = "RAISE_ALL_RAIDERS"
-							size = {210 32}
+							size = { 200 32 }
 
 							tooltip = "[GetPlayerRaiseAllRaidersTooltip]"
 							using = tooltip_se
@@ -106,11 +99,12 @@ window = {
 
 						button_standard = {
 							datacontext = "[GetPlayer]"
+
 							onclick = "[PlayerDisbandAll]"
 							enabled = "[PlayerCanDisbandAll]"
 
 							text = "DISBAND_ALL"
-							size = {135 32}
+							size = { 135 32 }
 
 							tooltip = "[GetDisbandAllTooltip]"
 							using = tooltip_se
@@ -200,10 +194,10 @@ window = {
 						}
 
 						background = {
-							texture = "gfx/interface/illustrations/event_scenes/battlefield.dds"
+							texture = "gfx/interface/skinned/illustrations/moving.dds"
 							margin = { -5 0 }
 							fittype = end
-							alpha = 0.5
+							alpha = 0.3
 
 							modify_texture = {
 								texture = "gfx/interface/component_masks/mask_fade_vertical_up.dds"
@@ -404,7 +398,7 @@ window = {
 										tooltip = "MV_KNIGHTS_TT"
 
 										background = {
-											texture = "gfx/interface/illustrations/men_at_arms_big/knights.dds"
+											texture = "gfx/interface/skinned/illustrations/men_at_arms/knights.dds"
 											alpha = 0.7
 										}
 
@@ -453,7 +447,7 @@ window = {
 
 												expand = {}
 
-												text_single = {
+												text_label_center = {
 													layoutpolicy_horizontal = expanding
 													text = "MV_MANAGE_KNIGHTS"
 												}
@@ -504,6 +498,7 @@ window = {
 											tooltip = "CREATE_MAA_TOOLTIP"
 											#enabled = "[MilitaryItem.MaACanBeCreated]"
 											down = "[MilitaryItem.IsOpen]"
+											
 											button_plus = {
 												name = "can_be_created"
 												visible = "[MilitaryItem.CanCreateAnyMAAType]"
@@ -658,8 +653,25 @@ window = {
 
 										expand = {}
 									}
-								}
 
+									vbox = {
+										layoutpolicy_horizontal = expanding
+										button_standard = {
+											name = "raise_all_men_at_arms"
+											layoutpolicy_horizontal = expanding
+											datacontext = "[GetPlayer]"
+											onclick = "[PlayerRaiseAllMenAtArmsRegiments]"							
+											enabled = "[PlayerCanRaiseAnyMenAtArmsRallyPoint]"
+				
+											text = "RAISE_ALL_MEN_AT_ARMS"
+											size = {210 36}
+				
+											tooltip = "[GetPlayerRaiseAllMenAtArmsTooltip]"
+											using = tooltip_se
+											clicksound = "event:/SFX/UI/Unit/Army/sfx_ui_raise_army"
+										}
+									}
+								}
 
 								vbox = {
 									visible = "[Not(IsDataModelEmpty(MilitaryView.GetEventTroops))]"
@@ -1009,7 +1021,7 @@ window = {
 						texture = "gfx/interface/illustrations/event_scenes/genericcamp.dds"
 						margin = { -5 0 }
 						fittype = end
-						alpha = 0.5
+						alpha = 0.3
 						framesize = { 1200 848 }
 
 						modify_texture = {
@@ -1080,10 +1092,10 @@ window = {
 					}
 
 					background = {
-						texture = "gfx/interface/illustrations/event_scenes/church.dds"
+						texture = "gfx/interface/skinned/illustrations/holy_order_bg.dds"
 						margin = { -5 0 }
 						fittype = centercrop
-						alpha = 0.5
+						alpha = 0.3
 
 						modify_texture = {
 							texture = "gfx/interface/component_masks/mask_fade_vertical_up.dds"
@@ -1133,31 +1145,31 @@ window = {
 							item = {
 								vbox = {
 									layoutpolicy_horizontal = expanding
-									
+
 									button_holyorder_list_item = {
 										visible = "[Not(And(HolyOrder.IsHired, HolyOrder.IsPledgedToGreatHolyWar))]"
-	
+
 										datacontext = "[HiredTroopItem.GetHolyOrder]"
 										layoutpolicy_horizontal = expanding
-	
+
 										blockoverride "HiredTroopMenAtArmsTypesDataModel"
 										{
 											datamodel = "[HiredTroopItem.GetRegiments]"
 										}
 									}
-	
+
 									button_holyorder_list_item = {
 										visible = "[And(HolyOrder.IsHired, HolyOrder.IsPledgedToGreatHolyWar)]"
 										size = { 430 120 }
 										datacontext = "[HiredTroopItem.GetHolyOrder]"
 										layoutpolicy_horizontal = expanding
-	
+
 										blockoverride "HiredTroopMenAtArmsTypesDataModel"
 										{
 											datamodel = "[HiredTroopItem.GetRegiments]"
 										}
 									}
-								}	
+								}
 							}
 						}
 					}
@@ -1208,6 +1220,12 @@ types MilitaryView
 
 				soldiers_and_quality_small = {
 					datacontext = "[MilitaryViewEventTroop.GetComposition]"
+					blockoverride "background" {
+						background = {
+							using = Background_Area
+							margin = { 3 0 }
+						}
+					}
 				}
 			}
 		}
@@ -1284,6 +1302,8 @@ types MilitaryView
 					text_single = {
 						visible = "[MilitaryViewEventTroop.IsInheritable]"
 						text = "MILITARY_VIEW_EVENT_TROOPS_ASSOCIATED_WAR"
+						max_width = 450
+						multiline = yes
 					}
 
 					expand = {}
@@ -1328,9 +1348,8 @@ types MilitaryView
 types HiredTroops
 {
 	type button_mercenary_list_item = button_standard_clean {
-		enabled = "[Or(Not(MercenaryCompany.IsHired), MercenaryCompany.IsHiredByLocalPlayer)]"
 		size = { 430 110 }
-		
+
 		background = {
 			using = Background_Area
 		}
@@ -1340,9 +1359,10 @@ types HiredTroops
 
 		down = "[IsMercenaryCompanyDetailViewShown(MercenaryCompany.Self)]"
 
-		button_normal = {
+		button_standard_clean = {
 			visible = "[Or( IsMercenaryCompanyDetailViewShown(MercenaryCompany.Self), Not(GetVariableSystem.Exists( 'hired_troop_detail_view_open' )))]"
 			size = { 100% 100% }
+			enabled = "[Or(Not(MercenaryCompany.IsHired), MercenaryCompany.IsHiredByLocalPlayer)]"
 			onclick = "[ToggleMercenaryCompanyDetailView(MercenaryCompany.Self)]"
 		}
 
@@ -1425,6 +1445,12 @@ types HiredTroops
 
 					soldiers_and_quality_small = {
 						datacontext = "[MercenaryCompany.GetComposition]"
+						blockoverride "background" {
+							background = {
+								using = Background_Area
+								margin = { 3 0 }
+							}
+						}
 					}
 				}
 
@@ -1498,9 +1524,8 @@ types HiredTroops
 	}
 
 	type button_holyorder_list_item = button_standard_clean {
-		enabled = "[Or(Not(HolyOrder.IsHired), HolyOrder.IsHiredByLocalPlayer)]"
 		size = { 430 110 }
-		
+
 		background = {
 			using = Background_Area
 		}
@@ -1509,9 +1534,10 @@ types HiredTroops
 
 		down = "[IsHolyOrderDetailViewShown(HolyOrder.Self)]"
 
-		button_normal = {
+		button_standard_clean = {
 			visible = "[Not(GetVariableSystem.Exists( 'hired_troop_detail_view_open' ))]"
 			size = { 100% 100% }
+			enabled = "[Or(Not(HolyOrder.IsHired), Or(HolyOrder.IsHiredByLocalPlayer, HolyOrder.IsPlayerPatron))]"
 			onclick = "[OpenHolyOrderDetailView(HolyOrder.Self)]"
 		}
 
@@ -1584,6 +1610,12 @@ types HiredTroops
 				vbox = {
 					soldiers_and_quality_small = {
 						datacontext = "[HolyOrder.GetComposition]"
+						blockoverride "background" {
+							background = {
+								using = Background_Area
+								margin = { 3 0 }
+							}
+						}
 					}
 
 					spacer = {

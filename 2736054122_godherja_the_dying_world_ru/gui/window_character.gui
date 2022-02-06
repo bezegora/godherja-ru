@@ -40,78 +40,78 @@ window = {
 		#movable = yes
 		position = { 600 90 }
 		alwaystransparent = no
-
+	
 		using = Window_Background
 		using = Window_Decoration
 		using = Window_Size_CharacterList
 		#size = { 580 88% }
-
+	
 		state = {
 			name = _show
 			using = Animation_FadeIn_Quick
 			position_x = 600
 		}
-
+	
 		state = {
 			name = _hide
 			using = Animation_FadeOut_Quick
 			position_x = 580
 		}
-
+	
 		vbox = {
 			using = Window_Margins
-
+	
 			header_pattern = {
 				layoutpolicy_horizontal = expanding
-
+	
 				blockoverride "header_text"
 				{
 					text = "BLOODLINE_LIST"
 				}
-
+	
 				blockoverride "button_close"
 				{
 					onclick = "[GetVariableSystem.Clear( 'bloodline_open' )]"
 				}
 			}
-
+	
 			scrollbox = {
 				layoutpolicy_horizontal = expanding
 				layoutpolicy_vertical = expanding
-
+	
 				blockoverride "scrollbox_empty"
 				{
 					text = "No Bloodlines"
 					visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).ScriptValue('trait_counter'), '(CFixedPoint)0.0' )]" #blocked at the button, shouldn't see this
 				}
-
+	
 				datacontext = "[Character.GetFaith]"
-
+	
 				blockoverride "scrollbox_content" {
 					vbox = {
 						layoutpolicy_horizontal = expanding
 						datamodel = "[CharacterWindow.GetTraits]"
 						margin = { 15 15 }
 						#spacing = 12
-
+	
 						item = {
 							vbox = {
 								visible = "[EqualTo_string( Trait.GetDescription( GetNullCharacter ), 'bloodline' )]"
 								layoutpolicy_horizontal = expanding
 								button_standard_list = {
 									name = "bloodline_button"
-									#visible = "[EqualTo_string( Trait.GetDescription( GetNullCharacter ), 'bloodline' )]"
+									visible = "[EqualTo_string( Trait.GetDescription( GetNullCharacter ), 'bloodline' )]"
 									layoutpolicy_horizontal = expanding
 									size = { 0 180 }
 									alwaystransparent = yes
-
+	
 									highlight_icon = {
 										name = "bg"
 										size = { 100% 100% }
 										texture = "gfx/interface/tooltips/tooltip_bg.dds"
-
+	
 										tintcolor = { 0.33 0.24 0.3 0.25 }
-
+	
 										modify_texture = {
 											name = "overlay"
 											texture = "gfx/interface/component_overlay/overlay_window.dds"
@@ -120,20 +120,20 @@ window = {
 											blend_mode = overlay
 										}
 									}
-
+	
 									hbox = {
 										margin = { 10 0 }
 										spacing = 10
-
+	
 										vbox = {
 											margin = { 0 10 }
 											spacing = 5
-
+	
 											icon = {
 												size = { 120 120 }
 												texture = "[Trait.GetIcon(Character.Self)]"
 											}
-
+	
 											hbox = {
 												name = "bloodline_properties"
 												#direction = horizontal
@@ -141,13 +141,13 @@ window = {
 												#spacing = 5
 												margin = { 5 0 }
 												layoutpolicy_horizontal = expanding
-
+	
 												background = {
 													using = Text_Label_Background
 													alpha = 1
 													margin = { 12 3 }
 												}
-
+	
 												widget = {
 													name = "inherit_type"
 													size = { 25 25 }
@@ -176,7 +176,7 @@ window = {
 														using = Master_Button_Modify_Texture
 													}
 												}
-
+	
 												widget = {
 													name = "matri_override"
 													size = { 25 25 }
@@ -221,7 +221,7 @@ window = {
 														}
 													}
 												}
-
+	
 												widget = {
 													name = "allow_bastards"
 													size = { 25 25 }
@@ -313,17 +313,17 @@ window = {
 												}
 											}
 										}
-
+	
 										divider_light = {
 											layoutpolicy_vertical = expanding
 										}
-
+	
 										vbox = {
 											margin = { 5 10 }
 											spacing = 10
 											layoutpolicy_vertical = expanding
 											layoutpolicy_horizontal = expanding
-
+	
 											vbox = {
 												layoutpolicy_horizontal = expanding
 												text_label_left = {
@@ -344,29 +344,29 @@ window = {
 													using = Font_Size_Small
 												}
 											}
-
+	
 											hbox = {
 												spacing = 5
 												layoutpolicy_vertical = expanding
 												layoutpolicy_horizontal = expanding
-
+	
 												scrollarea = {
 													name = "bloodline_modifier_scrollarea"
 													#layoutpolicy_horizontal = expanding
 													#layoutpolicy_vertical = expanding
 													minimumsize = { 180 -1 }
 													maximumsize = { 180 -1 }
-
+	
 													scrollbarpolicy_horizontal = always_off
-
+	
 													scrollbar_vertical = {
 														using = Scrollbar_Vertical
-
+	
 														blockoverride "alpha"{
 															alpha = 0.6
 														}
 													}
-
+	
 													scrollwidget = {
 														text_multi = {
 															name = "bloodline_modifiers"
@@ -379,7 +379,7 @@ window = {
 														}
 													}
 												}
-
+	
 												# text_multi = {
 												# 	name = "bloodline_modifiers"
 												# 	size = { 150 0 }
@@ -389,11 +389,11 @@ window = {
 												# 	default_format = "#high"
 												# 	using = Font_Size_Small
 												# }
-
+	
 												divider_light = {
 													layoutpolicy_vertical = expanding
 												}
-
+	
 												text_multi = {
 													name = "bloodline_desc"
 													layoutpolicy_vertical = expanding
@@ -567,12 +567,6 @@ window = {
 							align = nobaseline
 						}
 
-						text_label_center = {
-							visible = "[CharacterWindow.GetCharacter.IsBetrothed]"
-							text = "BETROTHED"
-							align = nobaseline
-						}
-
 						flowcontainer = {
 							visible = "[CharacterWindow.ShouldShowSpouseButtons]"
 							margin_top = 2
@@ -614,30 +608,12 @@ window = {
 			### Main Character
 			portrait_character_view_main = {
 				name = "tutorial_highlight_main_character_button"
+				datacontext = "[GetScriptedGui('wasteland_check')]"
+				visible = "[ScriptedGui.IsShown(GuiScope.SetRoot(Character.MakeScope).End)]"
 				parentanchor = bottom|left
 				position = { 0 0 }
 
 				using = Animation_Character_Window_Refresh_Short
-
-				# icon_button_small_round = {
-				# 	name = "interact_button"
-				# 	visible = "[Character.IsAlive]"
-				# 	parentanchor = bottom|right
-				# 	position = { -30 0 }
-				# 	size = { 35 35 }
-
-				# 	onclick = "[DefaultOnCharacterRightClick(Character.GetID)]"
-
-				# 	tooltip = "CV_TT_INTERACT"
-				# 	using = tooltip_ne
-
-				# 	icon = {
-				# 		name = "icon"
-				# 		texture = "gfx/interface/prototype/interact_temp.png"
-				# 		size = {18 18}
-				# 		parentanchor = center
-				# 	}
-				# }
 			}
 
 			### Jailor / Imprisoner / Imprisoned by
@@ -828,7 +804,7 @@ window = {
 			container = { # Player Heir for the local player
 				name = "heir_player"
 				datacontext = "[CharacterWindow.GetCharacter.GetPlayerHeir]"
-				visible = "[And( Character.IsValid, CharacterWindow.GetCharacter.IsLocalPlayer )]"
+				visible = "[And(And( Character.IsValid, CharacterWindow.GetCharacter.IsLocalPlayer ) , Not(CharacterWindow.GetCharacter.GetPrimaryTitle.MakeScope.Var('presumed_heir').IsSet))]"
 				parentanchor = bottom|right
 				position = { -20 -6 }
 
@@ -854,7 +830,61 @@ window = {
 			container = { # Primary Heir for everyone else
 				name = "heir_primary"
 				datacontext = "[CharacterWindow.GetCharacter.GetPrimaryTitle.GetHeir]"
-				visible = "[And( And( Character.IsValid, Not(CharacterWindow.GetCharacter.IsLocalPlayer) ), CharacterWindow.GetCharacter.IsAlive )]"
+				visible = "[And(And( And( Character.IsValid, Not(CharacterWindow.GetCharacter.IsLocalPlayer) ), CharacterWindow.GetCharacter.IsAlive ), Not(CharacterWindow.GetCharacter.GetPrimaryTitle.MakeScope.Var('presumed_heir').IsSet))]"
+				parentanchor = bottom|right
+				position = { -20 -6 }
+
+				using = Animation_Character_Window_Refresh
+
+				portrait_head_small = {
+					blockoverride "portrait_transformation"
+					{
+						portrait_scale = { -1 1 }
+						portrait_offset = { 1 0 }
+					}
+				}
+
+				text_label_center = {
+					parentanchor = top|hcenter
+					position = { 0 85 }
+					text = "[primary_heir|E]"
+				}
+			}
+			
+			#################
+			# PRESUMED HEIR #
+			#################
+			
+			container = { # Presumed Heir for the local player
+				name = "presumed_heir_player"
+				datacontext = "[CharacterWindow.GetCharacter.GetPrimaryTitle.MakeScope.Var('presumed_heir').GetCharacter]"
+				visible = "[And( And( Character.IsValid, CharacterWindow.GetCharacter.IsLocalPlayer ) , CharacterWindow.GetCharacter.GetPrimaryTitle.MakeScope.Var('presumed_heir').IsSet)]"
+				parentanchor = bottom|right
+				position = { -20 -6 }
+
+				using = Animation_Character_Window_Refresh
+
+				portrait_head_small = {
+					blockoverride "portrait_transformation"
+					{
+						portrait_scale = { -1 1 }
+						portrait_offset = { 1 0 }
+					}
+				}
+
+				text_label_center = {
+					parentanchor = top|hcenter
+					position = { 0 85 }
+					text = "[player_heir|E]"
+					multiline = yes
+					autoresize = yes
+					max_width = 100
+				}
+			}
+			container = { # Presumed Heir for everyone else
+				name = "heir_presumed"
+				datacontext = "[CharacterWindow.GetCharacter.GetPrimaryTitle.MakeScope.Var('presumed_heir').GetCharacter]"
+				visible = "[And( And( And( Character.IsValid, Not(CharacterWindow.GetCharacter.IsLocalPlayer) ), CharacterWindow.GetCharacter.IsAlive ) , CharacterWindow.GetCharacter.GetPrimaryTitle.MakeScope.Var('presumed_heir').IsSet)]"
 				parentanchor = bottom|right
 				position = { -20 -6 }
 
@@ -1051,30 +1081,30 @@ window = {
 				button_normal = { #BLOODLINE
 					name = "open_bloodline_list"
 					visible = "[GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).ScriptValue('trait_counter'), '(CFixedPoint)0.0' )]"
-
+				
 					size = { 35 35 }
-
+				
 					datacontext = "[Character]"
 					tooltip = "OPEN_BLOODLINE_LIST_TOOLTIP"
 					using = tooltip_es
-
+				
 					state = {
 						name = close_kill_list
 						on_start = "[ToggleGameViewData( 'kill_list', Character.GetID  )]"
 					}
-
+				
 					icon = {
 						texture = "gfx/interface/buttons/button_lifestyles_base.dds"
 						size = { 100% 100% }
 					}
-
+				
 					button_icon = {
 						texture = "gfx/interface/character_window/blooddrop_flat_small.dds"
 						onclick = "[VariableSystem.Toggle( 'bloodline_open' )]"
 						onclick = "[PdxGuiTriggerAllAnimations( Select_CString( IsGameViewOpen('kill_list'), 'close_kill_list', '' ) )]"
 						size = { 25 25 }
 						parentanchor = center
-
+				
 						modify_texture = {
 							texture = "gfx/interface/icons/focuses/hud_icon_mask.dds"
 							blend_mode = alphamultiply
@@ -1087,6 +1117,7 @@ window = {
 
 					size = { 35 35 }
 
+					visible = "[Or( Character.GetFocus.IsValid, Character.PlayerCanManageFocus )]"
 					tooltip = "PLAYER_LIFESTYLE_TOOLTIP"
 					using = tooltip_ne
 
@@ -1133,8 +1164,7 @@ window = {
 					layoutpolicy_horizontal = expanding
 
 					using = Animation_Character_Window_Refresh
-
-
+					
 					vbox = {
 						name = "name_etc"
 						layoutpolicy_horizontal = expanding
@@ -1147,13 +1177,13 @@ window = {
 
 							text_single = {
 								name = "character_name"
-								margin_left = 2
 								text = "[Character.GetUINameNotMeNoTooltip], "
-								default_format = "#medium"
+								margin_left = 2
+								max_width = 400
 								fontsize = 20
-								max_width = 388
-								align = nobaseline
 								fontsize_min = 14
+								align = nobaseline
+								default_format = "#medium"
 								tooltip = "[Character.GetUINameNotMeNoTooltip]"
 							}
 
@@ -1216,7 +1246,31 @@ window = {
 							}
 
 							expand = {}
-						}					}
+						}
+						
+						hbox = {
+							name = "modifiers_grid"
+							datamodel = "[CharacterWindow.GetTimedModifiers]"
+							layoutpolicy_horizontal = expanding
+							
+							hbox = {
+								datamodel = "[CharacterWindow.GetTimedModifiers]"
+								item = {
+									icon = {
+										visible = "[Not(Or(EqualTo_string(ModifierItem.GetName,'Legal Tradition'),EqualTo_string(ModifierItem.GetName,'Magic Prowess')))]"
+										
+										size = { 22 22 }
+										alwaystransparent = no
+										texture = "[ModifierItem.GetIcon]"
+										tooltip = "[ModifierItem.GetTooltip]"
+									}
+								}
+							}
+							
+							expand = {}
+						}
+						
+						}
 
 						## Traits
 						hbox = {
@@ -1591,6 +1645,8 @@ window = {
 					hbox = {
 						name = "skills_culture_religion"
 						layoutpolicy_horizontal = expanding
+						datacontext = "[GetScriptedGui('wasteland_check')]"
+						visible = "[ScriptedGui.IsShown(GuiScope.SetRoot(Character.MakeScope).End)]"
 
 						background = {
 							using = Background_Area
@@ -1598,7 +1654,7 @@ window = {
 
 						hbox = {
 							name = "tutorial_highlight_skills"
-
+							
 							hbox = {
 								name = "skills_grid"
 								datamodel = "[CharacterWindow.GetSkills]"
@@ -1650,8 +1706,16 @@ window = {
 
 								icon = {
 									name = "prowess_icon"
+									visible = "[Character.MakeScope.Var('magical_prowess').IsSet]"
 									size = { 32 32 }
 									texture = "gfx/interface/icons/currencies/icon_combined_prowess_00.dds"
+								}
+								
+								icon = {
+									name = "pure_prowess_icon"
+									visible = "[Not(Character.MakeScope.Var('magical_prowess').IsSet)]"
+									size = { 32 32 }
+									texture = "gfx/interface/icons/icon_prowess.dds"
 								}
 
 								text_single = {
@@ -1664,11 +1728,12 @@ window = {
 							
 							vbox = {
 								#datacontext = "[GetScriptedGui('magic_counter_display')]"
+								visible = "[Character.MakeScope.Var('magical_prowess').IsSet]"
 								spacing = -3
 							
 								icon = {
-									name = "magic_icon"
-									size = { 30 30 }
+									name = "pure_prowess_icon"
+									size = { 32 32 }
 									texture = "gfx/interface/icons/icon_prowess.dds"
 								}
 							
@@ -1682,18 +1747,43 @@ window = {
 							
 							vbox = {
 								datacontext = "[GetScriptedGui('magic_counter_display')]"
+								visible = "[Character.MakeScope.Var('magical_prowess').IsSet]"
 								spacing = -3
-
+							
 								icon = {
 									name = "magic_icon"
-									size = { 30 30 }
+									size = { 32 32 }
 									texture = "gfx/interface/icons/currencies/icon_magic_00.dds"
 								}
-
+							
 								text_single = {
 									name = "Magic Prowess"
 									text = "[Character.MakeScope.GetVariable('magical_prowess').GetValue|0]"
 									align = center|nobaseline
+								}
+							}
+							
+							vbox = {
+								visible = "[Character.HasTraitFromGroup(GetTraitGroup('lifestyle_jurist').Self)]"
+								spacing = -3
+
+								using = Animation_Character_Window_Refresh
+
+								icon = {
+									name = "judicial_power_icon"
+									size = { 32 32 }
+									texture = "gfx/interface/icons/icon_skills_judicial_power.dds"
+								}
+
+								text_single = {
+									name = "prowess_value"
+									text = "[GuiScope.SetRoot( Character.MakeScope ).AddScope('judicial_power_character',Character.MakeScope).ScriptValue('judicial_power_gui_value')|0]"
+									default_format = "#high"
+									align = nobaseline
+								}
+								
+								tooltipwidget = {
+									widget_judicial_power_tooltip = {}
 								}
 							}
 
@@ -1751,33 +1841,6 @@ window = {
 							}
 						}
 
-						vbox = {
-							layoutpolicy_vertical = expanding
-							margin = { 0 2 }
-
-							using = Animation_Character_Window_Refresh
-
-							fixedgridbox = {
-								name = "modifiers_grid"
-								datamodel = "[CharacterWindow.GetTimedModifiers]"
-								addcolumn = 25
-								addrow = 23
-								datamodel_wrap = 2
-								maxhorizontalslots = 5
-
-								item = {
-									icon = {
-										size = { 22 22 }
-										alwaystransparent = no
-										texture = "[ModifierItem.GetIcon]"
-										tooltip = "[ModifierItem.GetTooltip]"
-									}
-								}
-							}
-
-							expand = {}
-						}
-
 						expand = {}
 					}
 				}
@@ -1796,6 +1859,8 @@ window = {
 					using = Animation_Character_Window_Refresh
 
 					vbox = {
+						datacontext = "[GetScriptedGui('wasteland_check')]"
+						visible = "[ScriptedGui.IsShown(GuiScope.SetRoot(Character.MakeScope).End)]"
 						expand = {
 							maximumsize = { 0 5 }
 						}
@@ -2017,10 +2082,9 @@ window = {
 							vbox = {
 								visible = "[Character.HasLandedTitles]"
 								datacontext = "[Character.GetPrimaryTitle]"
-								spacing = -2
-								min_width = 40
+								layoutpolicy_horizontal = expanding
 
-								text_single = {
+								textbox = {
 									name = "character_title"
 									layoutpolicy_horizontal = expanding
 									text = "[Title.GetNameNoTooltip|U]"
@@ -2028,6 +2092,8 @@ window = {
 									#default_format = "#low"
 									using = Font_Size_Medium
 									align = nobaseline
+									multiline = yes
+									autoresize = yes
 									fontsize_min = 14
 								}
 
@@ -2035,9 +2101,11 @@ window = {
 									name = "faction"
 									visible = "[Title.HasFaction]"
 									layoutpolicy_horizontal = expanding
+									autoresize = no
 									text = "CV_CIVIL_WAR_FACTION"
 									default_format = "#low"
 									align = nobaseline
+									fontsize_min = 14
 								}
 
 								text_single = {
@@ -2053,12 +2121,59 @@ window = {
 							expand = {}
 
 							hbox = {
+								datacontext = "[GetScriptedGui('wasteland_check')]"
+								visible = "[And( ScriptedGui.IsShown(GuiScope.SetRoot(Character.MakeScope).End), Character.IsAlive )]"
 								name = "stats"
 								spacing = 8
 								margin_bottom = 6
 								margin_top = 3
-								visible = "[Character.IsAlive]"
 								
+								vbox = {
+									visible = "[Character.MakeScope.Var('character_clique').IsSet]"
+									spacing = -3
+	
+									icon = {
+										name = "influence_icon"
+										size = { 30 30 }
+										framesize = { 28 28 }
+										texture = "gfx/interface/icons/portraits/powerful_vassal_small.dds"
+										frame = 2
+									}
+	
+									text_single = {
+										name = "influence"
+										text = "#color_white [Character.MakeScope.ScriptValue('character_influence_total')|0]#!"
+										align = center|nobaseline
+									}
+									
+									tooltipwidget = {
+										widget_influence_tooltip = {}
+									}
+								}
+								
+								vbox = {
+									visible = "[Character.MakeScope.Var('character_clique').IsSet]"
+									spacing = -3
+	
+									icon = {
+										name = "powerbase_icon"
+										size = { 30 30 }
+										framesize = { 28 28 }
+										texture = "gfx/interface/icons/portraits/powerful_vassal_small.dds"
+										frame = 3
+									}
+	
+									text_single = {
+										name = "powerbase"
+										text = "#color_white [Character.MakeScope.ScriptValue('character_powerbase_total')|0]#!"
+										align = center|nobaseline
+									}
+									
+									tooltipwidget = {
+										widget_powerbase_tooltip = {}
+									}
+								}
+							
 								vbox = {
 									datacontext = "[GetScriptedGui('merit_display_without_siblings')]"
 									visible = "[ScriptedGui.IsShown(GuiScope.SetRoot(Character.MakeScope).End)]"
@@ -2094,7 +2209,7 @@ window = {
 	
 									text_single = {
 										name = "merit_with_siblings"
-										text = "[GuiScope.SetRoot( Character.MakeScope ).ScriptValue('character_merit_value')|0]/[GuiScope.SetRoot( Character.MakeScope ).ScriptValue('character_total_sibling_merit_value')|0]"
+										text = "[Character.MakeScope.ScriptValue('character_merit_value')|0]/[Character.MakeScope.ScriptValue('character_total_sibling_merit_value')|0]"
 										align = center|nobaseline
 									}
 									
@@ -2180,13 +2295,31 @@ window = {
 									}
 								}
 								
+								vbox = {
+									visible = "[And(Character.MakeScope.Var('corruption').IsSet, GreaterThan_CFixedPoint(Character.MakeScope.Var('corruption').GetValue, '(CFixedPoint)0'))]"
+									spacing = -2
+									min_width = 40
+	
+									icon = {
+										name = "corruption_icon"
+										size = { 30 30 }
+										texture = "gfx/interface/icons/message_feed/county_corruption.dds"
+									}
+	
+									text_single = {
+										name = "corruption"
+										text = "[Character.MakeScope.Var('corruption').GetValue|N0]"
+										align = center|nobaseline
+									}
+								}
+								
 								spacer = {
 									size = { 0 3 }
 								}
 								
 								vbox = {
 									datacontext = "[GetScriptedGui('magic_counter_display')]"
-									visible = "[ScriptedGui.IsShown(GuiScope.SetRoot(Character.MakeScope).End)]"
+									visible = "[Character.MakeScope.Var('magical_prowess').IsSet]"
 									spacing = -2
 									min_width = 40
 									tooltip = GetMagicBreakDown
@@ -2420,7 +2553,8 @@ window = {
 							}
 
 							vbox_diplomacy_box = {
-								visible = "[And(Not(IsDataModelEmpty(CharacterWindow.GetDiplomacyItems)), LessThanOrEqualTo_int32(GetDataModelSize(CharacterWindow.GetDiplomacyItems), '(int32)4'))]"
+								datacontext = "[GetScriptedGui('wasteland_check')]"
+								visible = "[And( ScriptedGui.IsShown(GuiScope.SetRoot(Character.MakeScope).End) , And(Not(IsDataModelEmpty(CharacterWindow.GetDiplomacyItems)), LessThanOrEqualTo_int32(GetDataModelSize(CharacterWindow.GetDiplomacyItems), '(int32)4')))]"
 								layoutpolicy_vertical = expanding
 
 								using = Animation_Character_Window_Refresh
@@ -2562,7 +2696,6 @@ window = {
 				button_tab = {
 					name = "court_button"
 					datacontext = "[CharacterWindow.GetCharacter]"
-					#	visible = "[Not(Character.IsPlayer)]"
 					layoutpolicy_horizontal = expanding
 
 					onclick = "[CharacterWindow.SetTab('court')]"
@@ -2594,7 +2727,6 @@ window = {
 					name = "vassals_button"
 					datacontext = "[CharacterWindow.GetCharacter]"
 					visible = "[Character.IsRuler]"
-					#	visible = "[And(Character.IsRuler, Not(Character.IsPlayer))]"
 					layoutpolicy_horizontal = expanding
 
 					onclick = "[CharacterWindow.SetTab('vassals')]"
@@ -2844,6 +2976,7 @@ window = {
 														blockoverride "portrait_button_template_onclick"
 														{
 															onclick = "[CharacterWindow.GetCharacter.OpenPlayerInteraction('find_concubine')]"
+															enabled = "[CharacterWindow.GetCharacter.IsPlayerInteractionValid('find_concubine')]"
 
 															button_plus = {
 																parentanchor = center
@@ -3315,6 +3448,12 @@ window = {
 									# blockoverride "description_relation_text" {
 									# 	text = "[Character.GetSpecialGuestRelationDescription]"
 									# }
+
+									blockoverride "gridbox_items"
+									{
+										datamodel_wrap = 7
+										maxverticalslots = 2
+									}
 
 									blockoverride "action_buttons" {}
 								}
@@ -3941,7 +4080,6 @@ window = {
 							item = {
 								coa_title_tiny_crown = {
 									datacontext = "[TitleItem.GetTitle]"
-									#	visible = "[GreaterThan_int32( Title.GetTierFrame, '(int32)3' )]"
 									using = tooltip_ne
 
 									icon = {
@@ -4088,6 +4226,7 @@ window = {
 					text_label_left = {
 						layoutpolicy_horizontal = expanding
 						text = "CV_DIPLOMACY"
+						autoresize = no
 						margin_right = 0
 					}
 				}

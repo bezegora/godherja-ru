@@ -1,0 +1,542 @@
+﻿namespace = clique
+
+clique.0001 = {
+	hidden = yes
+	
+	immediate = {
+		set_variable = forbidden_from_inheriting
+		transfer_titles_with_clique_successors_effect = yes
+		remove_from_any_clique_effect = yes
+		remove_from_any_secret_clique_effect = yes
+	}
+}
+
+clique.0002 = {
+	hidden = yes
+	
+	trigger = { 
+		any_held_title = { 
+			has_variable_list = title_cliques
+			prev = { prev.tier < highest_held_title_tier }
+		}
+		NOT = {
+			any_held_title = {
+				has_variable_list = title_cliques
+				prev = { prev.tier = highest_held_title_tier }
+			}
+		}
+	}
+	
+	immediate = {
+		random_held_title = {
+			limit = { has_variable_list = title_cliques }
+			save_scope_as = old_clique_bearing_title
+		}
+		if = {
+			limit = { root.primary_title.tier = tier_empire }
+			create_dynamic_title = {
+				tier = empire
+				name = UPGRADED_ORDER_NAME
+			}
+		}
+		if = {
+			limit = { root.primary_title.tier = tier_kingdom }
+			create_dynamic_title = {
+				tier = kingdom
+				name = UPGRADED_ORDER_NAME
+			}
+		}
+		if = {
+			limit = { root.primary_title.tier = tier_duchy }
+			create_dynamic_title = {
+				tier = duchy
+				name = UPGRADED_ORDER_NAME
+			}
+		}
+		get_title = scope:new_title
+		set_primary_title_to = scope:new_title
+		scope:new_title = {
+			set_coa = scope:old_clique_bearing_title
+			set_color_from_title = scope:old_clique_bearing_title
+			add_to_global_variable_list = {
+				name = titles_with_cliques
+				target = this
+			}
+		}
+		remove_list_global_variable = {
+			name = titles_with_cliques
+			target = scope:old_clique_bearing_title
+		}
+		copy_clique_information_effect = { SOURCE = scope:old_clique_bearing_title TARGET = scope:new_title }
+		root = { destroy_title = scope:old_clique_bearing_title }
+		update_global_clique_information = yes
+		scope:new_title = {
+			if = {
+				limit = { holder = { has_government = landed_order_government } }
+				add_title_law = landed_order_elective_title_succession_law
+			}
+			if = {
+				limit = { holder = { has_government = republic_playable_government } }
+				add_title_law = clique_republic_elective_title_succession_law
+			}
+			add_to_variable_list = {
+				name = title_synonyms
+				target = scope:old_clique_bearing_title
+			}
+		}
+		scope:old_clique_bearing_title = {
+			add_to_variable_list = {
+				name = title_synonyms
+				target = scope:new_title
+			}
+		}
+	}
+}
+
+# Kick the character out of any cliques if they are no longer eligible
+clique.0003 = {
+	hidden = yes
+	
+	trigger = {
+		has_variable = character_clique
+		can_access_cliques_trigger = no
+		trigger_if = {
+			limit = { 
+				has_variable = clique_title
+			}
+			OR = {
+				AND = {
+					var:clique_title = { tier >= tier_kingdom }
+					highest_held_title_tier <= tier_barony
+				}
+				is_ruler = no
+			}
+		}
+	}
+	
+	immediate = {
+		if = { 
+			limit = { 
+				has_variable = councillor_clique_claim
+				has_weak_claim_on = var:clique_title
+			}
+			remove_claim = var:clique_title
+		}
+		remove_variable = councillor_clique_claim
+		remove_from_any_clique_effect = yes
+	}
+}
+
+clique.0004 = {
+	hidden = yes
+	
+	trigger = {
+		should_have_liege_clique_appointment_succession = yes
+	}
+	
+	immediate = {
+		save_scope_as = previous_holder_character
+		if = {
+			limit = { has_variable = character_clique }
+			var:character_clique = {
+				save_scope_as = previous_holder_clique
+			}
+		}
+		if = {
+			limit = { 
+				has_variable = clique_appointed_heir
+				var:clique_appointed_heir = { is_alive = yes }
+			}
+			var:clique_appointed_heir = {
+				save_scope_as = clique_appointed_heir
+				set_employer = root.liege
+			}
+		}
+		every_held_title = {
+			add_to_list = target_titles
+		}
+		primary_title = { save_scope_as = new_holder_title }
+		
+		if = {
+			limit = { is_ai = no }
+			save_scope_value_as = { name = previous_holder_was_player value = yes }
+			random_ruler = {
+				limit = { is_ai = yes }
+				save_scope_as = temporary_character
+			}
+			set_player_character = scope:temporary_character
+		}
+		liege = { trigger_event = clique.0005 }
+	}
+}
+
+clique.0005 = { # Add in proper AI personality weights add some point
+	type = character_event
+	title = clique.0005.t
+	desc = clique.0005.desc
+	theme = death
+	
+	left_portrait = {
+		character = root
+	}
+	
+	immediate = {
+		if = {
+			limit = { has_variable = character_clique }
+			var:character_clique = {
+			save_scope_as = liege_clique
+			}
+		}
+		if = {
+			limit = { exists = scope:previous_holder_clique }
+			generate_clique_character_effect = { CLIQUE = scope:previous_holder_clique }
+			scope:generated_clique_character = { save_scope_as = previous_clique_character }
+		}
+		if = {
+			limit = { 
+			exists = scope:liege_clique
+			NOT = { var:character_clique = scope:previous_holder_clique }
+			}
+			generate_clique_character_effect = { CLIQUE = scope:liege_clique }
+			scope:generated_clique_character = { save_scope_as = liege_clique_character }
+		}
+	}
+	
+	option = { # Generate character of previous cliqueholders clique
+		name = clique.0005.a
+		trigger = {
+			exists = scope:previous_holder_clique
+		}
+		if = {
+			limit = { exists = scope:clique_appointed_heir }
+			add_prestige_level = -1
+			add_tyranny = 10	
+		}
+		create_title_and_vassal_change = {
+			type = conquest_claim
+			save_scope_as = change
+			add_claim_on_loss = no
+		}
+		setup_claim_cb = {
+			titles = target_titles
+			attacker = scope:previous_clique_character
+			defender = scope:new_holder_title.holder
+			claimant = scope:previous_clique_character
+			change = scope:change
+		}
+		resolve_title_and_vassal_change = scope:change
+		if = {
+			limit = {
+				root = { has_government = landed_order_government }
+			}
+			scope:previous_clique_character = { 
+				change_government = landed_order_government 
+			}
+		}
+		else_if = {
+			limit = {
+				root = { has_government = military_unit_government }
+			}
+			scope:previous_clique_character = { 
+				change_government = military_unit_government 
+			}
+		}
+		scope:previous_clique_character = { 
+			find_clique_title_effect = yes 
+			assign_character_to_clique_effect = { CLIQUE = scope:previous_holder_clique }
+			calculate_alignment_for_current_clique = yes
+		}
+		scope:previous_holder_clique = { update_leadership_effect = yes }
+		hidden_effect = { 
+			if = {
+				limit = { exists = scope:liege_clique_character }
+				scope:liege_clique_character = { death = { death_reason = death_vanished } } 
+			}
+		}
+		if = {
+			limit = { exists = scope:previous_holder_was_player }
+			scope:temporary_character = { set_player_character = scope:previous_clique_character }
+		}
+		scope:previous_clique_character = { add_opinion = { target = root modifier = made_me_landed_HO } }
+		
+		ai_chance = {
+			base = 100
+			modifier = {	# AI will never give the titles away to somebody else if it's promised a certain successor
+				factor = 0
+				exists = scope:clique_appointed_heir
+			}
+		}
+	}
+	option = { # Generate character of liege's clique
+		name = clique.0005.b
+		trigger = {
+			exists = scope:liege_clique
+			NOT = { var:character_clique = scope:previous_holder_clique }
+		}
+		
+		add_prestige = give_titles_to_different_clique_cost
+		
+		if = {
+			limit = { exists = scope:clique_appointed_heir }
+			add_prestige_level = -1
+			add_tyranny = 10	
+		}
+		
+		create_title_and_vassal_change = {
+			type = conquest_claim
+			save_scope_as = change
+			add_claim_on_loss = no
+		}
+		setup_claim_cb = {
+			titles = target_titles
+			attacker = scope:liege_clique_character
+			defender = scope:new_holder_title.holder
+			claimant = scope:liege_clique_character
+			change = scope:change
+		}
+		resolve_title_and_vassal_change = scope:change
+		if = {
+			limit = {
+				root = { has_government = landed_order_government }
+			}
+			scope:liege_clique_character = { 
+				change_government = landed_order_government 
+			}
+		}
+		else_if = {
+			limit = {
+				root = { has_government = military_unit_government }
+			}
+			scope:liege_clique_character = { 
+				change_government = military_unit_government 
+			}
+		}
+		scope:liege_clique_character = { 
+			find_clique_title_effect = yes 
+			assign_character_to_clique_effect = { CLIQUE = scope:liege_clique }
+			calculate_alignment_for_current_clique = yes
+		}
+		scope:previous_holder_clique = { update_leadership_effect = yes }
+		hidden_effect = { 
+			if = {
+				limit = { exists = scope:previous_clique_character }
+				scope:previous_clique_character = { death = { death_reason = death_vanished } } 
+			}
+		}
+		if = {
+			limit = { exists = scope:previous_holder_was_player }
+			scope:temporary_character = { set_player_character = scope:previous_clique_character }
+		}
+		
+		scope:liege_clique_character = { add_opinion = { target = root modifier = made_me_landed_HO } }
+		
+		scope:previous_holder_clique = {
+			every_in_list = {
+				variable = clique_members
+				add_opinion = { target = root modifier = took_land_from_clique }
+			}
+		}
+		 
+		ai_chance = {
+			base = 10
+			modifier = {	# AI will never give the titles away to somebody else if it's promised a certain successor - make exception for certain personalites at some point
+				factor = 0
+				exists = scope:clique_appointed_heir
+			}
+		}
+	}
+	option = { # Eh, just let whoever got the titles keep them
+		name = clique.0005.c
+		
+		trigger = {
+			NOT = { this = scope:new_holder_title.holder }
+		}
+		
+		scope:previous_holder_clique = { update_leadership_effect = yes }
+		
+		hidden_effect = { 
+			if = {
+				limit = { exists = scope:liege_clique_character }
+				scope:liege_clique_character = { death = { death_reason = death_vanished } } 
+			}
+			if = {
+				limit = { exists = scope:previous_clique_character }
+				scope:previous_clique_character = { death = { death_reason = death_vanished } } 
+			}
+		}
+		
+		if = {
+			limit = { 
+				exists = scope:clique_appointed_heir 
+				NOT = { scope:new_holder_title.holder = scope:clique_appointed_heir }
+			}
+			add_prestige_level = -1
+			add_tyranny = 10	
+		}
+		
+		if = { 
+			limit = { 
+				this = scope:new_holder_title.holder
+				NOT = { var:character_clique = scope:previous_holder_clique }
+			} 
+			add_prestige = give_titles_to_different_clique_cost
+		}
+		else_if = {
+			limit = { exists = scope:previous_holder_was_player }
+			scope:temporary_character = { set_player_character = scope:previous_clique_character }
+		}
+		
+		if = { 
+			limit = { scope:new_holder_title.holder.var:character_clique = { NOT = { this = scope:previous_holder_clique } } }
+			scope:previous_holder_clique = {
+				every_in_list = {
+					variable = clique_members
+					add_opinion = {
+						target = root
+						modifier = took_land_from_clique
+					}
+				}
+			}
+		}
+		
+		ai_chance = {
+			base = 10
+			modifier = {	# AI will never give the titles away to somebody else if it's promised a certain successor
+				factor = 0
+				exists = scope:clique_appointed_heir
+				NOT = { scope:clique_appointed_heir = scope:new_holder_title.holder }
+			}
+			modifier = {	# AI won't keep the titles if the previous holder was a player
+				factor = 0
+				exists = scope:previous_holder_was_player
+				this = scope:new_holder_title.holder
+			}
+		}
+	}
+	
+	option = { # Grab the titles yourself to hand them out manually, costs prestige + tyranny
+		name = clique.0005.d
+		
+		
+		add_prestige = give_titles_to_different_clique_cost
+		scope:previous_holder_clique = { update_leadership_effect = yes }
+		
+		if = {
+			limit = { exists = scope:clique_appointed_heir }
+			add_prestige_level = -1
+			add_tyranny = 10	
+		}
+		
+		create_title_and_vassal_change = {
+			type = conquest_claim
+			save_scope_as = change
+			add_claim_on_loss = no
+		}
+		setup_claim_cb = {
+			titles = target_titles
+			attacker = this
+			defender = scope:new_holder_title.holder
+			claimant =  this
+			change = scope:change
+		}
+		resolve_title_and_vassal_change = scope:change
+		if = { 
+			limit = { var:character_clique = { NOT = { this = scope:previous_holder_clique } } }
+			scope:previous_holder_clique = {
+				every_in_list = {
+					variable = clique_members
+					add_opinion = {
+						target = root
+						modifier = took_land_from_clique
+					}
+				}
+			}
+		}
+		
+		hidden_effect = { 
+			if = {
+				limit = { exists = scope:liege_clique_character }
+				scope:liege_clique_character = { death = { death_reason = death_vanished } } 
+			}
+			if = {
+				limit = { exists = scope:previous_clique_character }
+				scope:previous_clique_character = { death = { death_reason = death_vanished } } 
+			}
+		}
+		
+		ai_chance = {
+			base = 10
+			modifier = {	# AI will never give the titles away to somebody else if it's promised a certain successor
+				factor = 0
+				exists = scope:clique_appointed_heir
+			}
+			modifier = {	# AI won't keep the titles if the previous holder was a player
+				factor = 0
+				exists = scope:previous_holder_was_player
+			}
+		}
+	}
+	option = { # Appoint whoever character the previous holder made you promise to appoint
+		name = clique.0005.e
+		trigger = {
+			exists = scope:clique_appointed_heir
+			NOT = { scope:new_holder_title.holder = scope:clique_appointed_heir }
+		}
+		
+		create_title_and_vassal_change = {
+			type = conquest_claim
+			save_scope_as = change
+			add_claim_on_loss = no
+		}
+		setup_claim_cb = {
+			titles = target_titles
+			attacker = scope:clique_appointed_heir
+			defender = scope:new_holder_title.holder
+			claimant = scope:clique_appointed_heir
+			change = scope:change
+		}
+		resolve_title_and_vassal_change = scope:change
+		if = {
+			limit = {
+				root = { has_government = landed_order_government }
+			}
+			scope:clique_appointed_heir = { 
+				change_government = landed_order_government 
+			}
+		}
+		else_if = {
+			limit = {
+				root = { has_government = military_unit_government }
+			}
+			scope:clique_appointed_heir = { 
+				change_government = military_unit_government 
+			}
+		}
+		scope:clique_appointed_heir = { 
+			assign_ai_clique_wrapper_effect = yes
+			calculate_alignment_for_current_clique = yes
+		}
+		scope:previous_holder_clique = { update_leadership_effect = yes }
+		hidden_effect = { 
+			if = {
+				limit = { exists = scope:liege_clique_character }
+				scope:liege_clique_character = { death = { death_reason = death_vanished } } 
+			}
+			if = {
+				limit = { exists = scope:previous_clique_character }
+				scope:previous_clique_character = { death = { death_reason = death_vanished } } 
+			}
+		}
+		
+		if = {
+			limit = { exists = scope:previous_holder_was_player }
+			scope:temporary_character = { set_player_character = scope:clique_appointed_heir }
+		}
+		
+		scope:new_holder_title.holder = { add_opinion = { target = root modifier = made_me_landed_HO } }
+		 
+		ai_chance = {
+			base = 1000
+		}
+	}
+}

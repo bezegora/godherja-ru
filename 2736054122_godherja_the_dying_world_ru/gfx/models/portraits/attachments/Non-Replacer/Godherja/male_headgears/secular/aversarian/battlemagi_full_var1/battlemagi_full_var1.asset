@@ -1,0 +1,19 @@
+pdxmesh = {
+	name = "battlemagi_full_var1_mesh"
+	file = "battlemagi_full_var1.mesh"
+
+	meshsettings = {
+		name = "battlemagi_full_var1_test:bm_full_v1Shape"
+		index = 0
+		texture_diffuse = "bm_var1_color.dds"
+		texture_normal = "bm_var1_normal.dds"
+		texture_specular = "bm_var1_properties.dds"
+		shader = "portrait_attachment"
+		shader_file = "gfx/FX/jomini/portrait.shader"
+	}
+}
+
+entity = {
+	name = "battlemagi_full_var1_entity"
+	pdxmesh = "battlemagi_full_var1_mesh"
+}

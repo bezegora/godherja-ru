@@ -1238,21 +1238,21 @@ devastate_county = {
 		limit = { 
 			has_holding_type = castle_holding
 		}
-		set_holding_type = empty_holding	# To destroy buildings
+		set_holding_type = wasteland_empty_holding	# To destroy buildings
 		set_holding_type = castle_holding
 	}
 	every_county_province = {
 		limit = { 
 			has_holding_type = city_holding
 		}
-		set_holding_type = empty_holding	# To destroy buildings
+		set_holding_type = wasteland_empty_holding	# To destroy buildings
 		set_holding_type = church_holding
 	}
 	every_county_province = {
 		limit = { 
 			has_holding_type = church_holding
 		}
-		set_holding_type = empty_holding	# To destroy buildings
+		set_holding_type = wasteland_empty_holding	# To destroy buildings
 		set_holding_type = church_holding
 	}
 }
@@ -1762,19 +1762,19 @@ initialize_influx_cultures_kalathipsomi = {	# Determines which culture gets what
 			}
 		}
 	}
-	title:d_hattmannsdorf = {
-		every_in_de_jure_hierarchy = {
-			limit = { tier = tier_county }
-			set_variable = {
-				name = influx_culture
-				value = culture:irmionoth
-			}
-			set_variable = {
-				name = influx_faith
-				value = faith:sjalvolki
-			}
-		}
-	}
+#	title:d_hattmannsdorf = {
+#		every_in_de_jure_hierarchy = {
+#			limit = { tier = tier_county }
+#			set_variable = {
+#				name = influx_culture
+#				value = culture:irmionoth
+#			}
+#			set_variable = {
+#				name = influx_faith
+#				value = faith:sjalvolki
+#			}
+#		}
+#	}
 	title:d_tisvildeleje = {
 		every_in_de_jure_hierarchy = {
 			limit = { tier = tier_county }
@@ -1788,7 +1788,20 @@ initialize_influx_cultures_kalathipsomi = {	# Determines which culture gets what
 			}
 		}
 	}
-	title:k_sulzegg = {
+	title:d_oprostovice = {
+		every_in_de_jure_hierarchy = {
+			limit = { tier = tier_county }
+			set_variable = {
+				name = influx_culture
+				value = culture:curgerski
+			}
+			set_variable = {
+				name = influx_faith
+				value = faith:sjalvolki
+			}
+		}
+	}
+	title:d_autschowa = {
 		every_in_de_jure_hierarchy = {
 			limit = { tier = tier_county }
 			set_variable = {
@@ -1801,7 +1814,33 @@ initialize_influx_cultures_kalathipsomi = {	# Determines which culture gets what
 			}
 		}
 	}
-	title:k_okrouhlice = {
+	title:d_podkoren = { 
+			every_in_de_jure_hierarchy = {
+			limit = { tier = tier_county }
+			set_variable = {
+				name = influx_culture
+				value = culture:sarminians
+			}
+			set_variable = {
+				name = influx_faith
+				value = faith:salacad
+			}
+		}
+	}
+	title:d_puscava  = {
+		every_in_de_jure_hierarchy = {
+			limit = { tier = tier_county }
+			set_variable = {
+				name = influx_culture
+				value = culture:sarminians
+			}
+			set_variable = {
+				name = influx_faith
+				value = faith:salacad
+			}
+		}
+	}
+	title:d_bircna_vas = {
 		every_in_de_jure_hierarchy = {
 			limit = { tier = tier_county }
 			set_variable = {
@@ -1814,7 +1853,20 @@ initialize_influx_cultures_kalathipsomi = {	# Determines which culture gets what
 			}
 		}
 	}
-	title:k_gampern = {
+	title:d_otvovice = {
+		every_in_de_jure_hierarchy = {
+			limit = { tier = tier_county }
+			set_variable = {
+				name = influx_culture
+				value = culture:huegodocs
+			}
+			set_variable = {
+				name = influx_faith
+				value = faith:apti
+			}
+		}
+	}
+	title:d_bircna_vas = {
 		every_in_de_jure_hierarchy = {
 			limit = { tier = tier_county }
 			set_variable = {
@@ -1880,3 +1932,301 @@ initialize_influx_cultures_kalathipsomi = {	# Determines which culture gets what
 		}
 	}
 }
+
+#set_port = {
+#	$PROVINCE$ = { 
+#		if = { 
+#			limit = { NOT = { has_province_modifier = stapleport_modifier }}
+#			add_province_modifier = stapleport_modifier
+#		}
+#	}
+#}
+
+#set_staple_port = {
+#	set_port = { PROVINCE = title:c_baqerabad }
+#}
+
+dissolve_aversarian_titles = {
+	if = {
+		limit = {
+			NOT = {
+				title:e_etepezea = {
+					exists = holder
+				}
+			}
+		}
+		title:k_palitake = {
+			set_de_jure_liege_title = title:e_oraissos
+		}
+		title:k_zakros = {
+			set_de_jure_liege_title = title:e_oraissos
+		}
+		if = {
+			limit = {
+				title:k_kerkonia = {
+					de_jure_liege = title:e_etepezea
+				}
+			}
+			title:k_kerkonia = {
+				set_de_jure_liege_title = title:e_narixos
+			}
+		}
+		title:k_neokhrion = {
+			set_de_jure_liege_title = title:e_narixos
+		}
+		title:k_kollos = {
+			set_de_jure_liege_title = title:e_elarinea
+		}
+		title:k_tethix = {
+			set_de_jure_liege_title = title:e_elarinea
+		}
+		title:k_argyra = {
+			set_de_jure_liege_title = title:e_antyrigos
+		}
+		title:k_pergicos = {
+			set_de_jure_liege_title = title:e_antyrigos
+		}
+		title:k_assocaea = {
+			set_de_jure_liege_title = title:e_antyrigos
+		}
+		title:k_parcos = {
+			set_de_jure_liege_title = title:e_elysiara
+		}
+	}
+	if = {
+		limit = {
+			NOT = {
+				title:e_megos_kalathipsomi = {
+					exists = holder
+				}
+			}
+		}
+		title:k_schouweiler = {
+			set_de_jure_liege_title = title:e_elysiara
+		}
+		title:k_leskovec = {
+			set_de_jure_liege_title = title:e_kovgardr
+		}
+		title:k_volgardr = {
+			set_de_jure_liege_title = title:e_kovgardr
+		}
+		title:k_obkirchen = {
+			set_de_jure_liege_title = title:e_marsolm
+		}
+		title:k_sanos = {
+			set_de_jure_liege_title = title:e_thalsia
+		}
+	}
+	if = {	
+		limit = {
+			NOT = {
+				title:e_mikros_kalathipsomi = {
+					exists = holder
+				}
+			}
+		}
+		title:k_svyatich = {
+			set_de_jure_liege_title = title:e_marsolm
+		}
+		title:k_gampern = {
+			set_de_jure_liege_title = title:e_kranowa
+		}
+		title:k_nedweis = {
+			set_de_jure_liege_title = title:e_kranowa
+		}
+		title:k_lieben = {
+			set_de_jure_liege_title = title:e_mohejval
+		}
+		title:k_easternkatraddia8 = {
+			set_de_jure_liege_title = title:e_mohejval
+		}
+	}
+	if = {	
+		limit = {
+			NOT = {
+				title:e_gurdurbok = {
+					exists = holder
+				}
+			}
+		}
+		title:k_niidinia = {
+			set_de_jure_liege_title = title:e_dethixos
+		}
+		title:k_vyshtanka = {
+			set_de_jure_liege_title = title:e_dethixos
+		}
+		title:k_krassovce = {
+			set_de_jure_liege_title = title:e_kerelai
+		}
+		title:k_lyckholm = {
+			set_de_jure_liege_title = title:e_kerelai
+		}
+	}
+	if = {	
+		limit = {
+			NOT = {
+				title:e_malcois = {
+					exists = holder
+				}
+			}
+		}
+		title:k_kallios = {
+			set_de_jure_liege_title = title:e_thalsia
+		}
+		title:k_helenai = {
+			set_de_jure_liege_title = title:e_thalsia
+		}
+		title:k_delphilikos = {
+			set_de_jure_liege_title = title:e_pathaea
+		}
+		title:k_adgos = {
+			set_de_jure_liege_title = title:e_mytidon
+		}
+		title:k_mytidon = {
+			set_de_jure_liege_title = title:e_mytidon
+		}
+		title:k_cyrocaea = {
+			set_de_jure_liege_title = title:e_pathaea
+		}
+		title:k_kasmiene = {
+			set_de_jure_liege_title = title:e_partharia
+		}
+	}
+	if = {	
+		limit = {
+			NOT = {
+				title:e_opakhasia = {
+					exists = holder
+				}
+			}
+		}
+		title:k_arsidos = {
+			set_de_jure_liege_title = title:e_tinitidos
+		}
+		title:k_karthos = {
+			set_de_jure_liege_title = title:e_tinitidos
+		}
+		title:k_artesmos = {
+			set_de_jure_liege_title = title:e_diosemosae
+		}
+		title:k_ithiteia = {
+			set_de_jure_liege_title = title:e_diosemosae
+		}
+		title:k_opakoutercrescent = {
+			set_de_jure_liege_title = title:e_diosemosae
+		}
+		title:k_tanada = {
+			set_de_jure_liege_title = title:e_tomaria
+		}
+		title:k_decateia = {
+			set_de_jure_liege_title = title:e_tomaria
+		}
+		title:k_karros = {
+			set_de_jure_liege_title = title:e_red_waste
+		}
+	}
+	if = {	
+		limit = {
+			NOT = {
+				title:e_aironoi = {
+					exists = holder
+				}
+			}
+		}
+		title:k_hyrea = {
+			set_de_jure_liege_title = title:e_partharia
+		}
+		title:k_kalliados = {
+			set_de_jure_liege_title = title:e_asiupoliox
+		}
+		title:k_kteumaxa = {
+			set_de_jure_liege_title = title:e_asiupoliox
+		}
+		title:k_ephesos = {
+			set_de_jure_liege_title = title:e_asiupoliox
+		}
+		title:k_paradawn = {
+			set_de_jure_liege_title = title:e_asiupoliox
+		}
+		title:k_arderwan = {
+			set_de_jure_liege_title = title:e_olteneria
+		}
+		title:k_muthathk = {
+			set_de_jure_liege_title = title:e_olteneria
+		}
+		title:k_adraggan = {
+			set_de_jure_liege_title = title:e_olteneria
+		}
+		title:k_marganos = {
+			set_de_jure_liege_title = title:e_redlands
+		}
+		title:k_siktakknaka = {
+			set_de_jure_liege_title = title:e_redlands
+		}
+		title:k_arhartaraus = {
+			set_de_jure_liege_title = title:e_redlands
+		}
+		title:k_ijardigarrn = {
+			set_de_jure_liege_title = title:e_redlands
+		}
+		title:k_rotrdmar = {
+			set_de_jure_liege_title = title:e_redlands
+		}
+		title:k_arkhransikk = {
+			set_de_jure_liege_title = title:e_redlands
+		}
+		title:k_trym = {
+			set_de_jure_liege_title = title:e_redlands
+		}
+		title:k_dethskel = {
+			set_de_jure_liege_title = title:e_redlands
+		}
+		title:k_krehejad = {
+			set_de_jure_liege_title = title:e_krehejad
+		}
+		title:k_taykovi = {
+			set_de_jure_liege_title = title:e_anokryosae
+		}
+		title:k_arbaz = {
+			set_de_jure_liege_title = title:e_anokryosae
+		}
+		title:k_dartar = {
+			set_de_jure_liege_title = title:e_muwagahn
+		}
+		title:k_anthygal = {
+			set_de_jure_liege_title = title:e_kosiros
+		}
+		title:k_chvor = {
+			set_de_jure_liege_title = title:e_kosiros
+		}
+		title:k_murcord = {
+			set_de_jure_liege_title = title:e_muwagahn
+		}
+		title:k_gavset = {
+			set_de_jure_liege_title = title:e_muwagahn
+		}
+		title:k_kargavi = {
+			set_de_jure_liege_title = title:e_muwagahn
+		}
+		title:k_svatavego = {
+			set_de_jure_liege_title = title:e_amaghea
+		}
+		title:k_coluehis = {
+			set_de_jure_liege_title = title:e_amaghea
+		}
+		title:k_karskhe = {
+			set_de_jure_liege_title = title:e_amaghea
+		}
+		title:k_svanti = {
+			set_de_jure_liege_title = title:e_amaghea
+		}
+		title:k_abkarcha = {
+			set_de_jure_liege_title = title:e_amaghea
+		}
+		title:k_imrezstav = {
+			set_de_jure_liege_title = title:e_amaghea
+		}
+	}
+}
+	
+		

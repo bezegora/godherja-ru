@@ -1,0 +1,19 @@
+pdxmesh = {
+	name = "battlemagi_partial_var2_mesh"
+	file = "battlemagi_partial_var2.mesh"
+
+	meshsettings = {
+		name = "bm_partialvar2Shape222"
+		index = 0
+		texture_diffuse = "bm_var22_color.dds"
+		texture_normal = "bm_var22_normal.dds"
+		texture_specular = "bm_var22_properties.dds"
+		shader = "portrait_attachment"
+		shader_file = "gfx/FX/jomini/portrait.shader"
+	}
+}
+
+entity = {
+	name = "battlemagi_partial_var2_entity"
+	pdxmesh = "battlemagi_partial_var2_mesh"
+}

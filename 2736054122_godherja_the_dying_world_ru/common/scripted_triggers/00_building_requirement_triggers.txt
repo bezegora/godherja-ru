@@ -314,19 +314,6 @@ building_hill_forts_requirement_terrain = {
 }
 
 ######################################################################
-# Baronies that cannot have a holding (intended for Sahara)
-######################################################################
-
-barony_cannot_construct_holding = {
-	OR = {
-		barony = title:b_hamadat_tinghert
-		barony = title:b_tidikelt
-		barony = title:b_wadi_irawan
-		barony = title:b_erg_ghati
-	}
-}
-
-######################################################################
 # You shouldn't be able to hold everything and get by with MaA/Knights
 ######################################################################
 
@@ -341,5 +328,12 @@ building_disable_if_vastly_over_domain_limit_trigger = {
 				domain_size_excluding_grace_period < building_disable_inefficient_value
 			}
 		}
+	}
+}
+
+barony_cannot_construct_holding = { #just making sure this is set as NO for now
+	terrain = mountains
+	NOT = {
+		terrain = mountains
 	}
 }

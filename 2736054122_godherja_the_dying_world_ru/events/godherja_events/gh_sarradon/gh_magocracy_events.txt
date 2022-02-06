@@ -1,0 +1,26 @@
+﻿namespace = magocracy
+
+magocracy.0001 = {
+	hidden = yes
+	
+	immediate = {
+		exclude_non_magi_heirs = yes
+	}
+}
+
+
+magocracy.0002 = {
+	hidden = yes
+	
+	immediate = {
+		remove_trait = gh_temporarily_disinherited
+	}
+}
+
+magocracy.0003 = {
+	hidden = yes
+	
+	immediate = {
+		change_government = magocratic_government
+	}
+}

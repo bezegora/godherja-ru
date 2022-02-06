@@ -1474,31 +1474,6 @@ mystic_level_up_chance_effect = {
 					}
 				}
 			}
-
-			#Have a tiny chance to become witch
-			#hidden_effect = {	# REMOVED - Vanilla
-			#	if = {
-			#		limit = {
-			#			is_ai = yes
-			#			NOR = {
-			#				any_secret = { secret_type = secret_witch }
-			#				has_trait = witch
-			#			}
-			#		}
-			#		random = {
-			#			modifier = {
-			#				factor = 0
-			#				ai_zeal >= medium_positive_ai_value
-			#			}
-			#			modifier = {
-			#				factor = 2
-			#				ai_zeal <= high_negative_ai_value #high and not medium because mystic traits already remove some ai_zeal
-			#			}
-			#			chance = 5
-			#			give_witch_secret_or_trait_effect = yes
-			#		}
-			#	}
-			#}
 		}
 	}
 }
@@ -2645,15 +2620,6 @@ disease_treatment_results_effect = {
 		limit = { scope:treatment_result_treatment = flag:mystic }
 		random_list = {
 			100 = { #Occult
-				#modifier = { # REMOVED - Vanilla
-				#	scope:physician = {
-				#		OR = {
-				#			any_secret = { secret_type = secret_witch }
-				#			has_trait = witch
-				#		}
-				#	}
-				#	factor = 10
-				#}
 				random_list = {
 					10 = { #Regular occult
 						hidden_effect = {

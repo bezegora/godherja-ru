@@ -68,6 +68,10 @@ councillor_steward = {
 		scale = steward_learn_on_the_job_scale
 	}
 
+	valid_position = {
+		can_have_quartermaster_trigger = no
+	}
+
 	valid_character = {
 		exists = root.liege_or_court_owner
 		can_be_steward_trigger = { COURT_OWNER = root.liege_or_court_owner }
@@ -225,7 +229,67 @@ councillor_court_chaplain = {
 				trigger = {
 					scope:councillor_liege.faith = { has_doctrine = doctrine_theocracy_temporal }
 				}
-				desc = actual_bishop_title
+				desc = {
+					first_valid = {
+						triggered_desc = {
+							trigger = { scope:councillor_liege.religion = religion:fourteen_heavenly_methods_religion }
+							desc = fourteen_heavenly_methods_bishop
+						}
+						triggered_desc = {
+							trigger = { scope:councillor_liege.religion = religion:agionism_religion }
+							desc = agionism_bishop
+						}
+						triggered_desc = {
+							trigger = { scope:councillor_liege.religion = religion:aversarinas_aautokrata_religion }
+							desc = aversarinas_aautokrata_bishop
+						}
+						triggered_desc = {
+							trigger = { scope:councillor_liege.religion = religion:blackhand_religion }
+							desc = blackhand_bishop
+						}
+						triggered_desc = {
+							trigger = { scope:councillor_liege.religion = religion:redland_cults_religion }
+							desc = redland_cults_bishop
+						}
+						triggered_desc = {
+							trigger = { scope:councillor_liege.religion = religion:cumani_religion }
+							desc = cumani_bishop
+						}
+						triggered_desc = {
+							trigger = { scope:councillor_liege.religion = religion:partic_religion }
+							desc = partic_bishop
+						}
+						triggered_desc = {
+							trigger = { scope:councillor_liege.religion = religion:samojitian_religion }
+							desc = samojitian_bishop
+						}
+						triggered_desc = {
+							trigger = { scope:councillor_liege.religion = religion:uakaklo_religion }
+							desc = uakaklo_bishop
+						}
+						triggered_desc = {
+							trigger = { scope:councillor_liege.religion = religion:adabyssian_religion }
+							desc = adabyssian_bishop
+						}
+						triggered_desc = {
+							trigger = { scope:councillor_liege.religion = religion:anaanides_religion }
+							desc = anaanides_bishop
+						}
+						triggered_desc = {
+							trigger = { scope:councillor_liege.religion = religion:hubarism_religion }
+							desc = hubarism_bishop
+						}
+						triggered_desc = {
+							trigger = { scope:councillor_liege.religion = religion:manats_religion }
+							desc = manats_bishop
+						}
+						triggered_desc = {
+							trigger = { scope:councillor_liege.religion = religion:sheharddi_religion }
+							desc = sheharddi_bishop
+						}
+						desc = actual_bishop_title
+					}
+				}
 			}
 			triggered_desc = {
 				trigger = {
@@ -233,8 +297,177 @@ councillor_court_chaplain = {
 				}
 				desc = {
 					first_valid = {
+						triggered_desc = {
+							trigger = { scope:councillor_liege.religion = religion:marcher_religion }
+							desc = marcher_bishop
+						}
+						triggered_desc = {
+							trigger = { scope:councillor_liege.religion = religion:mogowai_religion }
+							desc = mogowai_bishop
+						}
+						triggered_desc = {
+							trigger = { scope:councillor_liege.religion = religion:alau_koev_religion }
+							desc = alau_koev_bishop
+						}
+						triggered_desc = {
+							trigger = { scope:councillor_liege.religion = religion:arnazni_religion }
+							desc = arnazni_bishop
+						}
+						triggered_desc = {
+							trigger = { scope:councillor_liege.religion = religion:aruvasue_religion }
+							desc = aruvasue_bishop
+						}
+						triggered_desc = {
+							trigger = { scope:councillor_liege.religion = religion:astiliak_religion }
+							desc = astiliak_bishop
+						}
+						triggered_desc = {
+							trigger = { scope:councillor_liege.religion = religion:cuthanagi_religion }
+							desc = cuthanagi_bishop
+						}
+						triggered_desc = {
+							trigger = { scope:councillor_liege.religion = religion:ehatm_religion }
+							desc = ehatm_bishop
+						}
+						triggered_desc = {
+							trigger = { scope:councillor_liege.religion = religion:izaerto_bosar_religion }
+							desc = izaerto_bosar_bishop
+						}
+						triggered_desc = {
+							trigger = { scope:councillor_liege.religion = religion:mahrator_religion }
+							desc = mahrator_bishop
+						}
+						triggered_desc = {
+							trigger = { scope:councillor_liege.religion = religion:shyatan_religion }
+							desc = shyatan_bishop
+						}
+						triggered_desc = {
+							trigger = { scope:councillor_liege.religion = religion:sunarwei_religion }
+							desc = sunarwei_bishop
+						}
+						triggered_desc = {
+							trigger = { scope:councillor_liege.religion = religion:xaxbaxakanax_religion }
+							desc = xaxbaxakanax_bishop
+						}
+						triggered_desc = {
+							trigger = { scope:councillor_liege.religion = religion:dravidian_religion }
+							desc = dravidian_bishop
+						}
+						triggered_desc = {
+							trigger = { scope:councillor_liege.religion = religion:viyagaric_religion }
+							desc = viyagaric_bishop
+						}
+						triggered_desc = {
+							trigger = { scope:councillor_liege.religion = religion:graveright_religion }
+							desc = graveright_bishop
+						}
+						triggered_desc = {
+							trigger = { scope:councillor_liege.religion = religion:rejection_religion }
+							desc = rejection_bishop
+						}
+						triggered_desc = {
+							trigger = { scope:councillor_liege.religion = religion:allemani_religion }
+							desc = allemani_bishop
+						}
+						triggered_desc = {
+							trigger = { scope:councillor_liege.religion = religion:apti_religion }
+							desc = apti_bishop
+						}
+						triggered_desc = {
+							trigger = { scope:councillor_liege.religion = religion:ethowos_religion }
+							desc = ethowos_bishop
+						}
+						triggered_desc = {
+							trigger = { scope:councillor_liege.religion = religion:fogeater_religion }
+							desc = fogeater_bishop
+						}
+						triggered_desc = {
+							trigger = { scope:councillor_liege.religion = religion:gallieni_religion }
+							desc = gallieni_bishop
+						}
+						triggered_desc = {
+							trigger = { scope:councillor_liege.religion = religion:gestanwoder_religion }
+							desc = gestanwoder_bishop
+						}
+						triggered_desc = {
+							trigger = { scope:councillor_liege.religion = religion:gethian_religion }
+							desc = gethian_bishop
+						}
+						triggered_desc = {
+							trigger = { scope:councillor_liege.religion = religion:islands_religion }
+							desc = islands_bishop
+						}
+						triggered_desc = {
+							trigger = { scope:councillor_liege.religion = religion:iyrossi_religion }
+							desc = iyrossi_bishop
+						}
+						triggered_desc = {
+							trigger = { scope:councillor_liege.religion = religion:kakarataki_religion }
+							desc = kakarataki_bishop
+						}
+						triggered_desc = {
+							trigger = { scope:councillor_liege.religion = religion:kardawai_religion }
+							desc = kardawai_bishop
+						}
+						triggered_desc = {
+							trigger = { scope:councillor_liege.religion = religion:orgarrd_religion }
+							desc = orgarrd_bishop
+						}
+						triggered_desc = {
+							trigger = { scope:councillor_liege.religion = religion:salacad_religion }
+							desc = salacad_bishop
+						}
+						triggered_desc = {
+							trigger = { scope:councillor_liege.religion = religion:sjalvolki_religion }
+							desc = sjalvolki_bishop
+						}
+						triggered_desc = {
+							trigger = { scope:councillor_liege.religion = religion:tulharsin_religion }
+							desc = tulharsin_bishop
+						}
+						triggered_desc = {
+							trigger = { scope:councillor_liege.religion = religion:ahridar_religion }
+							desc = ahridar_bishop
+						}
+						triggered_desc = {
+							trigger = { scope:councillor_liege.religion = religion:amsari_religion }
+							desc = amsari_bishop
+						}
+						triggered_desc = {
+							trigger = { scope:councillor_liege.religion = religion:hulawite_religion }
+							desc = hulawite_bishop
+						}
+						triggered_desc = {
+							trigger = { scope:councillor_liege.religion = religion:khmet_religion }
+							desc = khmet_bishop
+						}
+						triggered_desc = {
+							trigger = { scope:councillor_liege.religion = religion:masaagnite_religion }
+							desc = masaagnite_bishop
+						}
+						triggered_desc = {
+							trigger = { scope:councillor_liege.religion = religion:quwazaw_religion }
+							desc = quwazaw_bishop
+						}
+						triggered_desc = {
+							trigger = { scope:councillor_liege.religion = religion:ritualist_religion }
+							desc = ritualist_bishop
+						}
+						triggered_desc = {
+							trigger = { scope:councillor_liege.religion = religion:saratan_religion }
+							desc = saratan_bishop
+						}
+						triggered_desc = {
+							trigger = { scope:councillor_liege.religion = religion:sarradonian_religion }
+							desc = sarradonian_bishop
+						}
+						triggered_desc = {
+							trigger = { scope:councillor_liege.religion = religion:yuagaug_religion }
+							desc = yuagaug_bishop
+						}
 						desc = councillor_court_chaplain
 					}
+				   
 				}
 			}
 			desc = councillor_court_chaplain
@@ -388,35 +621,60 @@ councillor_spouse = {
 						triggered_desc = {
 							trigger = {
 								scope:councillor_liege.highest_held_title_tier = tier_empire
-								scope:councillor_liege = { has_government = republic_government	}
+								scope:councillor_liege = { 
+									OR = {
+										has_government = republic_government
+										has_government = republic_playable_government
+									}
+								}
 							}
 							desc = emperor_republic_male
 						}
 						triggered_desc = {
 							trigger = {
 								scope:councillor_liege.highest_held_title_tier = tier_kingdom
-								scope:councillor_liege = { has_government = republic_government	}
+								scope:councillor_liege = { 
+									OR = {
+										has_government = republic_government
+										has_government = republic_playable_government
+									}
+								}
 							}
 							desc = king_republic_male
 						}
 						triggered_desc = {
 							trigger = {
 								scope:councillor_liege.highest_held_title_tier = tier_duchy
-								scope:councillor_liege = { has_government = republic_government	}
+								scope:councillor_liege = { 
+									OR = {
+										has_government = republic_government
+										has_government = republic_playable_government
+									}
+								}
 							}
 							desc = duke_republic_male
 						}
 						triggered_desc = {
 							trigger = {
 								scope:councillor_liege.highest_held_title_tier = tier_county
-								scope:councillor_liege = { has_government = republic_government	}
+								scope:councillor_liege = { 
+									OR = {
+										has_government = republic_government
+										has_government = republic_playable_government
+									}
+								}
 							}
 							desc = count_republic_male
 						}
 						triggered_desc = {
 							trigger = {
 								scope:councillor_liege.highest_held_title_tier = tier_barony
-								scope:councillor_liege = { has_government = republic_government	}
+								scope:councillor_liege = { 
+									OR = {
+										has_government = republic_government
+										has_government = republic_playable_government
+									}
+								}
 							}
 							desc = baron_republic_male
 						}
@@ -578,35 +836,60 @@ councillor_spouse = {
 					triggered_desc = {
 						trigger = {
 							scope:councillor_liege.highest_held_title_tier = tier_empire
-							scope:councillor_liege = { has_government = republic_government	}
+							scope:councillor_liege = { 
+								OR = {
+									has_government = republic_government
+									has_government = republic_playable_government
+								}
+							}
 						}
 						desc = emperor_republic_female
 					}
 					triggered_desc = {
 						trigger = {
 							scope:councillor_liege.highest_held_title_tier = tier_kingdom
-							scope:councillor_liege = { has_government = republic_government	}
+							scope:councillor_liege = { 
+								OR = {
+									has_government = republic_government
+									has_government = republic_playable_government
+								}
+							}
 						}
 						desc = king_republic_female
 					}
 					triggered_desc = {
 						trigger = {
 							scope:councillor_liege.highest_held_title_tier = tier_duchy
-							scope:councillor_liege = { has_government = republic_government	}
+							scope:councillor_liege = { 
+								OR = {
+									has_government = republic_government
+									has_government = republic_playable_government
+								}
+							}
 						}
 						desc = duke_republic_female
 					}
 					triggered_desc = {
 						trigger = {
 							scope:councillor_liege.highest_held_title_tier = tier_county
-							scope:councillor_liege = { has_government = republic_government	}
+							scope:councillor_liege = { 
+								OR = {
+									has_government = republic_government
+									has_government = republic_playable_government
+								}
+							}
 						}
 						desc = count_republic_female
 					}
 					triggered_desc = {
 						trigger = {
 							scope:councillor_liege.highest_held_title_tier = tier_barony
-							scope:councillor_liege = { has_government = republic_government	}
+							scope:councillor_liege = { 
+								OR = {
+									has_government = republic_government
+									has_government = republic_playable_government
+								}
+							}
 						}
 						desc = baron_republic_female
 					}
@@ -746,6 +1029,10 @@ councillor_court_mage = {
 		can_access_magic = yes
 	}
 
+	valid_position = {
+		can_have_court_magi_trigger = yes
+	}
+
 	valid_character = {
 		trigger_if = {
 			limit = { exists = liege }
@@ -784,4 +1071,50 @@ councillor_court_mage = {
 	}	
 	
 	portrait_animation = court_mage
+}
+
+councillor_quartermaster = {
+	skill = stewardship
+	
+	name = councillor_quartermaster
+	tooltip = game_concept_quartermaster_desc
+
+	modifier = {
+		name = councillor_quartermaster_modifier
+		monthly_income = 1
+		scale = council_scaled_monthly_income
+	}
+
+	modifier = {
+		name = councillor_quartermaster_modifier
+		build_gold_cost = -0.05
+		monthly_stewardship_lifestyle_xp_gain_mult = 0.05
+		domain_tax_mult = 0.05
+		scale = council_scaled_by_liege_tier
+	}
+
+	council_owner_modifier = {
+		name = learn_on_the_job_modifier
+		stewardship = 1
+		scale = steward_learn_on_the_job_scale
+	}
+
+	valid_position = {
+		can_have_quartermaster_trigger = yes
+	}
+
+	valid_character = {
+		exists = root.liege_or_court_owner
+		can_be_quartermaster_trigger = { COURT_OWNER = root.liege_or_court_owner }
+	}
+
+	on_get_position = {
+		got_council_position_effect = yes
+	}
+
+	on_fired_from_position = {
+		fired_from_council_position_effect = yes
+	}
+
+	portrait_animation = steward
 }

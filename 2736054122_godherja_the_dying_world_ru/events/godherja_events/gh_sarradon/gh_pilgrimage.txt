@@ -1,0 +1,1819 @@
+﻿namespace = gh_pilgrimage
+
+##################################################
+
+### Pilgrimage Events for the Godherja Universe
+
+# 0001 - Oraispol
+
+##################################################
+
+scripted_trigger pilgrimage_is_to = {
+	exists = scope:activity
+	exists = scope:activity.activity_province
+	scope:activity.activity_province.county = title:$DESTINATION$
+}
+
+# Oraispol
+gh_pilgrimage.0001 = {
+	type = character_event
+	title = gh_pilgrimage.0001.t
+	desc = gh_pilgrimage.0001.desc.aversarian
+	theme = pilgrimage_activity
+	override_background = {
+		event_background = alley_day
+	}
+	left_portrait = {
+		character = root
+		animation = ecstasy
+	}
+
+	trigger = {
+		pilgrimage_is_to = { DESTINATION = c_halium }
+	}
+
+	immediate = {
+		save_holy_site_for_loc_effect = yes
+	}
+	
+	option = {
+		name = gh_pilgrimage.0001.a
+		trigger = { NOT = { has_trait = cynical } }
+		give_pilgrimage_reward_effect = yes
+	}
+	
+	option = {
+		name = gh_pilgrimage.0001.b
+		trigger = { has_trait = cynical }
+		give_pilgrimage_reward_effect = yes
+	}
+
+	after = {
+		trigger_event = {
+			on_action = pilgrimage_return_events
+			days = 30
+		}
+	}
+}
+
+# Vounill
+gh_pilgrimage.0002 = {
+	type = character_event
+	title = gh_pilgrimage.0002.t
+	desc = gh_pilgrimage.0002.desc.aversarian
+	theme = pilgrimage_activity
+	override_background = {
+		event_background = terrain_activity
+	}
+	left_portrait = {
+		character = root
+		animation = ecstasy
+	}
+
+	trigger = {
+		pilgrimage_is_to = { DESTINATION = c_rhamnythrae }
+	}
+
+	immediate = {
+		save_holy_site_for_loc_effect = yes
+	}
+	
+	option = {
+		name = gh_pilgrimage.0002.a
+		trigger = { NOT = { has_trait = cynical } }
+		give_pilgrimage_reward_effect = yes
+	}
+	
+	option = {
+		name = gh_pilgrimage.0002.b
+		trigger = { has_trait = cynical }
+		give_pilgrimage_reward_effect = yes
+	}
+
+	after = {
+		trigger_event = {
+			on_action = pilgrimage_return_events
+			days = 30
+		}
+	}
+}
+
+# Mayikprolollan
+gh_pilgrimage.0003 = {
+	type = character_event
+	title = gh_pilgrimage.0003.t
+	desc = gh_pilgrimage.0003.desc.aversarian
+	theme = pilgrimage_activity
+	override_background = {
+		event_background = terrain_activity
+	}
+	left_portrait = {
+		character = root
+		animation = ecstasy
+	}
+
+	trigger = {
+		pilgrimage_is_to = { DESTINATION = c_atce }
+	}
+
+	immediate = {
+		save_holy_site_for_loc_effect = yes
+	}
+	
+	option = {
+		name = gh_pilgrimage.0003.a
+		trigger = { NOT = { has_trait = cynical } }
+		give_pilgrimage_reward_effect = yes
+	}
+
+	option = {
+		name = gh_pilgrimage.0003.b
+		trigger = {has_trait=cynical}
+		give_pilgrimage_reward_effect =yes
+	}
+	
+	after = {
+		trigger_event = {
+			on_action = pilgrimage_return_events
+			days = 30
+		}
+	}
+}
+
+# Drakavil
+gh_pilgrimage.0004 = {
+	type = character_event
+	title = gh_pilgrimage.0004.t
+	desc = gh_pilgrimage.0004.desc.aversarian
+	theme = pilgrimage_activity
+	override_background = {
+		event_background = terrain_activity
+	}
+	left_portrait = {
+		character = root
+		animation = ecstasy
+	}
+
+	trigger = {
+		pilgrimage_is_to = { DESTINATION = c_palinia }
+	}
+
+	immediate = {
+		save_holy_site_for_loc_effect = yes
+	}
+	
+	option = {
+		name = gh_pilgrimage.0004.a
+		trigger = { NOT = { has_trait = cynical } }
+		give_pilgrimage_reward_effect = yes
+	}
+	
+	option = {
+		name = gh_pilgrimage.0004.b
+		trigger = { has_trait = cynical }
+		give_pilgrimage_reward_effect = yes
+	}
+
+	after = {
+		trigger_event = {
+			on_action = pilgrimage_return_events
+			days = 30
+		}
+	}
+}
+
+# Thebastro
+gh_pilgrimage.0005 = {
+	type = character_event
+	title = gh_pilgrimage.0005.t
+	desc = gh_pilgrimage.0005.desc.aversarian
+	theme = pilgrimage_activity
+	override_background = {
+		event_background = terrain_activity
+	}
+	left_portrait = {
+		character = root
+		animation = ecstasy
+	}
+
+	trigger = {
+		pilgrimage_is_to = { DESTINATION = c_thebastro }
+	}
+
+	immediate = {
+		save_holy_site_for_loc_effect = yes
+	}
+	
+	option = {
+		name = gh_pilgrimage.0005.a
+		trigger = { NOT = { has_trait = cynical } }
+		give_pilgrimage_reward_effect = yes
+	}
+	
+	option = {
+		name = gh_pilgrimage.0005.b
+		trigger = { has_trait = cynical }
+		give_pilgrimage_reward_effect = yes
+	}
+
+	after = {
+		trigger_event = {
+			on_action = pilgrimage_return_events
+			days = 30
+		}
+	}
+}
+
+#Abirut
+gh_pilgrimage.0009 = {
+	type = character_event
+	title = gh_pilgrimage.0009.t
+	desc = gh_pilgrimage.0009.desc.mogowai
+	theme = pilgrimage_activity
+	override_background = {
+		event_background = terrain_activity
+	}
+	left_portrait = {
+		character = root
+		animation = ecstasy
+	}
+
+	trigger = {
+		pilgrimage_is_to = { DESTINATION = c_abirut }
+	}
+
+	immediate = {
+		save_holy_site_for_loc_effect = yes
+	}
+	
+	option = {
+		name = gh_pilgrimage.0009.a
+		trigger = { NOT = { has_trait = cynical } }
+		give_pilgrimage_reward_effect = yes
+	}
+	
+	option = {
+		name = gh_pilgrimage.0009.b
+		trigger = { has_trait = cynical }
+		give_pilgrimage_reward_effect = yes
+	}
+
+	after = {
+		trigger_event = {
+			on_action = pilgrimage_return_events
+			days = 30
+		}
+	}
+}
+
+#Zahali
+gh_pilgrimage.0010 = {
+	type = character_event
+	title = gh_pilgrimage.0010.t
+	desc = gh_pilgrimage.0010.desc.mogowai
+	theme = pilgrimage_activity
+	override_background = {
+		event_background = alley_day
+	}
+	left_portrait = {
+		character = root
+		animation = ecstasy
+	}
+
+	trigger = {
+		pilgrimage_is_to = { DESTINATION = c_zahali }
+		religion = religion:mogowai_religion
+	}
+
+	immediate = {
+		save_holy_site_for_loc_effect = yes
+	}
+	
+	option = {
+		name = gh_pilgrimage.0010.a
+		trigger = { NOT = { has_trait = cynical } }
+		give_pilgrimage_reward_effect = yes
+	}
+	
+	option = {
+		name = gh_pilgrimage.0010.b
+		trigger = { has_trait = cynical }
+		give_pilgrimage_reward_effect = yes
+	}
+
+	after = {
+		trigger_event = {
+			on_action = pilgrimage_return_events
+			days = 30
+		}
+	}
+}
+
+#Kilahijan
+gh_pilgrimage.0011 = {
+	type = character_event
+	title = gh_pilgrimage.0011.t
+	desc = gh_pilgrimage.0011.desc.mogowai
+	theme = pilgrimage_activity
+	override_background = {
+		event_background = terrain_activity
+	}
+	left_portrait = {
+		character = root
+		animation = ecstasy
+	}
+
+	trigger = {
+		pilgrimage_is_to = { DESTINATION = c_kilahijan }
+	}
+
+	immediate = {
+		save_holy_site_for_loc_effect = yes
+	}
+	
+	option = {
+		name = gh_pilgrimage.0011.a
+		trigger = { NOT = { has_trait = cynical } }
+		give_pilgrimage_reward_effect = yes
+	}
+	
+	option = {
+		name = gh_pilgrimage.0011.b
+		trigger = { has_trait = cynical }
+		give_pilgrimage_reward_effect = yes
+	}
+
+	after = {
+		trigger_event = {
+			on_action = pilgrimage_return_events
+			days = 30
+		}
+	}
+}
+
+#Adabyssfort
+gh_pilgrimage.0012 = {
+	type = character_event
+	title = gh_pilgrimage.0012.t
+	desc = gh_pilgrimage.0012.desc.mogowai
+	theme = pilgrimage_activity
+	override_background = {
+		event_background = terrain_activity
+	}
+	left_portrait = {
+		character = root
+		animation = ecstasy
+	}
+
+	trigger = {
+		pilgrimage_is_to = { DESTINATION = c_adabyssfort }
+	}
+
+	immediate = {
+		save_holy_site_for_loc_effect = yes
+	}
+	
+	option = {
+		name = gh_pilgrimage.0012.a
+		trigger = { NOT = { has_trait = cynical } }
+		give_pilgrimage_reward_effect = yes
+	}
+	
+	option = {
+		name = gh_pilgrimage.0012.b
+		trigger = { has_trait = cynical }
+		give_pilgrimage_reward_effect = yes
+	}
+
+	after = {
+		trigger_event = {
+			on_action = pilgrimage_return_events
+			days = 30
+		}
+	}
+}
+
+# Jomnei
+gh_pilgrimage.0021 = {
+	type = character_event
+	title = gh_pilgrimage.0021.t
+	desc = gh_pilgrimage.0021.desc.mahndayanism
+	theme = pilgrimage_activity
+	override_background = {
+		event_background = alley_day
+	}
+	left_portrait = {
+		character = root
+		animation = ecstasy
+	}
+
+	trigger = {
+		pilgrimage_is_to = { DESTINATION = c_jomnei }
+	}
+
+	immediate = {
+		save_holy_site_for_loc_effect = yes
+	}
+	
+	option = {
+		name = gh_pilgrimage.0021.a
+		trigger = { NOT = { has_trait = cynical } }
+		give_pilgrimage_reward_effect = yes
+	}
+	
+	after = {
+		trigger_event = {
+			on_action = pilgrimage_return_events
+			days = 30
+		}
+	}
+}
+
+# Tchouran
+gh_pilgrimage.0022 = {
+	type = character_event
+	title = gh_pilgrimage.0022.t
+	desc = gh_pilgrimage.0022.desc.mahndayanism
+	theme = pilgrimage_activity
+	override_background = {
+		event_background = alley_day
+	}
+	left_portrait = {
+		character = root
+		animation = ecstasy
+	}
+
+	trigger = {
+		pilgrimage_is_to = { DESTINATION = c_tchouran }
+	}
+
+	immediate = {
+		save_holy_site_for_loc_effect = yes
+	}
+	
+	option = {
+		name = gh_pilgrimage.0022.a
+		trigger = { NOT = { has_trait = cynical } }
+		give_pilgrimage_reward_effect = yes
+	}
+	
+	after = {
+		trigger_event = {
+			on_action = pilgrimage_return_events
+			days = 30
+		}
+	}
+}
+
+# Crucible
+gh_pilgrimage.0025 = {
+	type = character_event
+	title = gh_pilgrimage.0025.t
+	desc = gh_pilgrimage.0025.desc
+	theme = pilgrimage_activity
+	override_background = {
+		event_background = armory
+	}
+	left_portrait = {
+		character = root
+		animation = ecstasy
+	}
+
+	trigger = {
+		pilgrimage_is_to = { DESTINATION = c_tillyes }
+	}
+
+	immediate = {
+		save_holy_site_for_loc_effect = yes
+	}
+	
+	option = {
+		name = gh_pilgrimage.0025.a
+		trigger = { NOT = { has_trait = cynical } }
+		give_pilgrimage_reward_effect = yes
+		if = {
+			limit = { has_trait = way_of_nullification_follower }
+			add_prowess_skill = 4
+			add_martial_skill = 2
+		}
+	}
+	
+	after = {
+		trigger_event = {
+			on_action = pilgrimage_return_events
+			days = 30
+		}
+	}
+}
+#Kozen's Feast
+gh_pilgrimage.0026 = {
+	type = character_event
+	title = gh_pilgrimage.0026.t
+	desc = gh_pilgrimage.0026.desc
+	theme = pilgrimage_activity
+	override_background = {
+		event_background = wilderness_forest
+	}
+	left_portrait = {
+		character = root
+		animation = ecstasy
+	}
+
+	trigger = {
+		pilgrimage_is_to = { DESTINATION = c_chomutowitz }
+	}
+
+	immediate = {
+		save_holy_site_for_loc_effect = yes
+	}
+	
+	option = {
+		name = gh_pilgrimage.0026.a
+		trigger = { NOT = { has_trait = cynical } }
+		give_pilgrimage_reward_effect = yes
+	}
+	
+	after = {
+		trigger_event = {
+			on_action = pilgrimage_return_events
+			days = 30
+		}
+	}
+}
+
+# Kanitarn
+gh_pilgrimage.0027 = {
+	type = character_event
+	title = gh_pilgrimage.0027.t
+	desc = gh_pilgrimage.0027.desc.mahndayanism
+	theme = pilgrimage_activity
+	override_background = {
+		event_background = alley_day
+	}
+	left_portrait = {
+		character = root
+		animation = ecstasy
+	}
+
+	trigger = {
+		pilgrimage_is_to = { DESTINATION = c_kanitarn } #check destination name
+	}
+
+	immediate = {
+		save_holy_site_for_loc_effect = yes
+	}
+	
+	option = {
+		name = gh_pilgrimage.0027.a
+		trigger = { NOT = { has_trait = cynical } }
+		give_pilgrimage_reward_effect = yes
+	}
+	
+	after = {
+		trigger_event = {
+			on_action = pilgrimage_return_events
+			days = 30
+		}
+	}
+}
+
+#Jowband
+gh_pilgrimage.0028 = {
+	type = character_event
+	title = gh_pilgrimage.0028.t
+	desc = gh_pilgrimage.0028.desc.mahndayanism
+	theme = pilgrimage_activity
+	override_background = {
+		event_background = alley_day
+	}
+	left_portrait = {
+		character = root
+		animation = ecstasy
+	}
+
+	trigger = {
+		pilgrimage_is_to = { DESTINATION = c_jowband } 
+	}
+
+	immediate = {
+		save_holy_site_for_loc_effect = yes
+	}
+	
+	option = {
+		name = gh_pilgrimage.0028.a
+		trigger = { NOT = { has_trait = cynical } }
+		give_pilgrimage_reward_effect = yes
+	}
+	
+	after = {
+		trigger_event = {
+			on_action = pilgrimage_return_events
+			days = 30
+		}
+	}
+}
+
+#The Southern Mamuramat Seat - Zahali
+gh_pilgrimage.0040 = {
+	type = character_event
+	title = gh_pilgrimage.0040.t
+	desc = gh_pilgrimage.0040.desc.wardenite
+	theme = pilgrimage_activity
+	override_background = {
+		event_background = alley_day
+	}
+	left_portrait = {
+		character = root
+		animation = ecstasy
+	}
+
+	trigger = {
+		pilgrimage_is_to = { DESTINATION = c_zahali }
+		religion = religion:sarradonian_religion
+	}
+
+	immediate = {
+		save_holy_site_for_loc_effect = yes
+	}
+	
+	option = {
+		name = gh_pilgrimage.0040.a
+		trigger = { NOT = { has_trait = cynical } }
+		give_pilgrimage_reward_effect = yes
+	}
+	
+	after = {
+		trigger_event = {
+			on_action = pilgrimage_return_events
+			days = 30
+		}
+	}
+}
+
+#Kithos - temple of the wrath wielder
+gh_pilgrimage.0041 = {
+	type = character_event
+	title = gh_pilgrimage.0041.t
+	desc = gh_pilgrimage.0041.desc.uakaklo
+	theme = pilgrimage_activity
+	override_background = {
+		event_background = alley_day
+	}
+	left_portrait = {
+		character = root
+		animation = ecstasy
+	}
+
+	trigger = {
+		pilgrimage_is_to = { DESTINATION = c_kithos } 
+	}
+
+	immediate = {
+		save_holy_site_for_loc_effect = yes
+	}
+	
+	option = {
+		name = gh_pilgrimage.0041.a
+		trigger = { NOT = { has_trait = cynical } }
+		give_pilgrimage_reward_effect = yes
+	}
+	
+	after = {
+		trigger_event = {
+			on_action = pilgrimage_return_events
+			days = 30
+		}
+	}
+}
+
+# Fendikyah - The Fallen One
+gh_pilgrimage.0083 = {
+	type = character_event
+	title = gh_pilgrimage.0083.t
+	desc = gh_pilgrimage.0083.desc.quwazaw
+	theme = pilgrimage_activity
+	override_background = {
+		event_background = alley_day
+	}
+	left_portrait = {
+		character = root
+		animation = ecstasy
+	}
+
+	trigger = {
+		pilgrimage_is_to = { DESTINATION = c_felakese }
+	}
+
+	immediate = {
+		save_holy_site_for_loc_effect = yes
+	}
+	
+	option = {
+		name = gh_pilgrimage.0083.a
+		trigger = { NOT = { has_trait = cynical } }
+		give_pilgrimage_reward_effect = yes
+	}
+	
+	option = {
+		name = gh_pilgrimage.0083.b
+		trigger = { has_trait = cynical }
+		give_pilgrimage_reward_effect = yes
+	}
+
+	after = {
+		trigger_event = {
+			on_action = pilgrimage_return_events
+			days = 30
+		}
+	}
+}
+
+# Ifralimane - The Strength of Soul
+gh_pilgrimage.0084 = {
+	type = character_event
+	title = gh_pilgrimage.0084.t
+	desc = gh_pilgrimage.0084.desc.quwazaw
+	theme = pilgrimage_activity
+	override_background = {
+		event_background = alley_day
+	}
+	left_portrait = {
+		character = root
+		animation = ecstasy
+	}
+
+	trigger = {
+		pilgrimage_is_to = { DESTINATION = c_ifralimane }
+	}
+
+	immediate = {
+		save_holy_site_for_loc_effect = yes
+	}
+	
+	option = {
+		name = gh_pilgrimage.0084.a
+		trigger = { NOT = { has_trait = cynical } }
+		give_pilgrimage_reward_effect = yes
+	}
+	
+	option = {
+		name = gh_pilgrimage.0084.b
+		trigger = { has_trait = cynical }
+		give_pilgrimage_reward_effect = yes
+	}
+
+	after = {
+		trigger_event = {
+			on_action = pilgrimage_return_events
+			days = 30
+		}
+	}
+}
+
+# Gharstir - the Look of the Living
+gh_pilgrimage.0085 = {
+	type = character_event
+	title = gh_pilgrimage.0085.t
+	desc = gh_pilgrimage.0085.desc.quwazaw
+	theme = pilgrimage_activity
+	override_background = {
+		event_background = alley_day
+	}
+	left_portrait = {
+		character = root
+		animation = ecstasy
+	}
+
+	trigger = {
+		pilgrimage_is_to = { DESTINATION = c_kudahhar }
+	}
+
+	immediate = {
+		save_holy_site_for_loc_effect = yes
+	}
+	
+	option = {
+		name = gh_pilgrimage.0085.a
+		trigger = { NOT = { has_trait = cynical } }
+		give_pilgrimage_reward_effect = yes
+	}
+	
+	option = {
+		name = gh_pilgrimage.0085.b
+		trigger = { has_trait = cynical }
+		give_pilgrimage_reward_effect = yes
+	}
+
+	after = {
+		trigger_event = {
+			on_action = pilgrimage_return_events
+			days = 30
+		}
+	}
+}
+
+# Saidal - the Breath of Life
+gh_pilgrimage.0086 = {
+	type = character_event
+	title = gh_pilgrimage.0086.t
+	desc = gh_pilgrimage.0086.desc.quwazaw
+	theme = pilgrimage_activity
+	override_background = {
+		event_background = alley_day
+	}
+	left_portrait = {
+		character = root
+		animation = ecstasy
+	}
+
+	trigger = {
+		pilgrimage_is_to = { DESTINATION = c_east_sarradon1 }
+	}
+
+	immediate = {
+		save_holy_site_for_loc_effect = yes
+	}
+	
+	option = {
+		name = gh_pilgrimage.0085.a
+		trigger = { NOT = { has_trait = cynical } }
+		give_pilgrimage_reward_effect = yes
+	}
+	
+	option = {
+		name = gh_pilgrimage.0085.b
+		trigger = { has_trait = cynical }
+		give_pilgrimage_reward_effect = yes
+	}
+
+	after = {
+		trigger_event = {
+			on_action = pilgrimage_return_events
+			days = 30
+		}
+	}
+}
+
+# Sacreinux - The Sacred Past - GR
+gh_pilgrimage.0315 = {
+	type = character_event
+	title = gh_pilgrimage.0315.t
+	desc = gh_pilgrimage.0315.desc.graveright
+	theme = pilgrimage_activity
+	override_background = {
+		event_background = alley_day
+	}
+	left_portrait = {
+		character = root
+		animation = ecstasy
+	}
+
+	trigger = {
+		pilgrimage_is_to = { DESTINATION = c_bytozy }
+	}
+
+	immediate = {
+		save_holy_site_for_loc_effect = yes
+	}
+	
+	option = {
+		name = gh_pilgrimage.0315.a
+		trigger = { NOT = { has_trait = cynical } }
+		give_pilgrimage_reward_effect = yes
+	}
+	
+	option = {
+		name = gh_pilgrimage.0315.b
+		trigger = { has_trait = cynical }
+		give_pilgrimage_reward_effect = yes
+	}
+
+	after = {
+		trigger_event = {
+			on_action = pilgrimage_return_events
+			days = 30
+		}
+	}
+}
+
+# Tillyes - The Unnatural Orchard - GR
+gh_pilgrimage.0316 = {
+	type = character_event
+	title = gh_pilgrimage.0316.t
+	desc = gh_pilgrimage.0316.desc.graveright
+	theme = pilgrimage_activity
+	override_background = {
+		event_background = alley_day
+	}
+	left_portrait = {
+		character = root
+		animation = ecstasy
+	}
+
+	trigger = {
+		pilgrimage_is_to = { DESTINATION = c_tillyes }
+	}
+
+	immediate = {
+		save_holy_site_for_loc_effect = yes
+	}
+	
+	option = {
+		name = gh_pilgrimage.0316.a
+		trigger = { NOT = { has_trait = cynical } }
+		give_pilgrimage_reward_effect = yes
+	}
+	
+	option = {
+		name = gh_pilgrimage.0316.b
+		trigger = { has_trait = cynical }
+		give_pilgrimage_reward_effect = yes
+	}
+
+	after = {
+		trigger_event = {
+			on_action = pilgrimage_return_events
+			days = 30
+		}
+	}
+}
+
+# Prefallias - Defending History - GR
+gh_pilgrimage.0317 = {
+	type = character_event
+	title = gh_pilgrimage.0317.t
+	desc = gh_pilgrimage.0317.desc.graveright
+	theme = pilgrimage_activity
+	override_background = {
+		event_background = alley_day
+	}
+	left_portrait = {
+		character = root
+		animation = ecstasy
+	}
+
+	trigger = {
+		pilgrimage_is_to = { DESTINATION = c_prefallias }
+	}
+
+	immediate = {
+		save_holy_site_for_loc_effect = yes
+	}
+	
+	option = {
+		name = gh_pilgrimage.0317.a
+		trigger = { NOT = { has_trait = cynical } }
+		give_pilgrimage_reward_effect = yes
+	}
+	
+	option = {
+		name = gh_pilgrimage.0317.b
+		trigger = { has_trait = cynical }
+		give_pilgrimage_reward_effect = yes
+	}
+
+	after = {
+		trigger_event = {
+			on_action = pilgrimage_return_events
+			days = 30
+		}
+	}
+}
+
+# Sacreinux - Grieving The Past - GW
+gh_pilgrimage.0318 = {
+	type = character_event
+	title = gh_pilgrimage.0318.t
+	desc = gh_pilgrimage.0318.desc.graveward
+	theme = pilgrimage_activity
+	override_background = {
+		event_background = alley_day
+	}
+	left_portrait = {
+		character = root
+		animation = ecstasy
+	}
+
+	trigger = {
+		pilgrimage_is_to = { DESTINATION = c_bytozy }
+	}
+
+	immediate = {
+		save_holy_site_for_loc_effect = yes
+	}
+	
+	option = {
+		name = gh_pilgrimage.0318.a
+		trigger = { NOT = { has_trait = cynical } }
+		give_pilgrimage_reward_effect = yes
+	}
+	
+	option = {
+		name = gh_pilgrimage.0318.b
+		trigger = { has_trait = cynical }
+		give_pilgrimage_reward_effect = yes
+	}
+
+	after = {
+		trigger_event = {
+			on_action = pilgrimage_return_events
+			days = 30
+		}
+	}
+}
+
+# Tillyes - The Blood Market - GW
+gh_pilgrimage.0319 = {
+	type = character_event
+	title = gh_pilgrimage.0319.t
+	desc = gh_pilgrimage.0319.desc.graveward
+	theme = pilgrimage_activity
+	override_background = {
+		event_background = alley_day
+	}
+	left_portrait = {
+		character = root
+		animation = ecstasy
+	}
+
+	trigger = {
+		pilgrimage_is_to = { DESTINATION = c_tillyes }
+	}
+
+	immediate = {
+		save_holy_site_for_loc_effect = yes
+	}
+	
+	option = {
+		name = gh_pilgrimage.0319.a
+		trigger = { NOT = { has_trait = cynical } }
+		give_pilgrimage_reward_effect = yes
+	}
+	
+	option = {
+		name = gh_pilgrimage.0319.b
+		trigger = { has_trait = cynical }
+		give_pilgrimage_reward_effect = yes
+	}
+
+	after = {
+		trigger_event = {
+			on_action = pilgrimage_return_events
+			days = 30
+		}
+	}
+}
+
+# Prefallias - Defending History - GW
+gh_pilgrimage.0320 = {
+	type = character_event
+	title = gh_pilgrimage.0320.t
+	desc = gh_pilgrimage.0320.desc.graveward
+	theme = pilgrimage_activity
+	override_background = {
+		event_background = alley_day
+	}
+	left_portrait = {
+		character = root
+		animation = ecstasy
+	}
+
+	trigger = {
+		pilgrimage_is_to = { DESTINATION = c_prefallias }
+	}
+
+	immediate = {
+		save_holy_site_for_loc_effect = yes
+	}
+	
+	option = {
+		name = gh_pilgrimage.0320.a
+		trigger = { NOT = { has_trait = cynical } }
+		give_pilgrimage_reward_effect = yes
+	}
+	
+	option = {
+		name = gh_pilgrimage.0320.b
+		trigger = { has_trait = cynical }
+		give_pilgrimage_reward_effect = yes
+	}
+
+	after = {
+		trigger_event = {
+			on_action = pilgrimage_return_events
+			days = 30
+		}
+	}
+}
+
+#The Neck - games for the gods, discus
+gh_pilgrimage.0401 = {
+	type = character_event
+	title = gh_pilgrimage.0401.t
+	desc = gh_pilgrimage.0401.desc.gftg
+	theme = pilgrimage_activity
+	override_background = {
+		event_background = terrain_scope
+	}
+	left_portrait = {
+		character = root
+		animation = ecstasy
+	}
+
+	trigger = {
+		pilgrimage_is_to = { DESTINATION = c_ullabahd }
+		root.faith = {
+			has_doctrine = tenet_games_for_gods
+		}
+	}
+
+	immediate = {
+		save_holy_site_for_loc_effect = yes
+	}
+	
+	option = {
+		#participate!
+		name = gh_pilgrimage.0401.a
+		duel = {
+			skill = prowess
+			value = decent_skill_rating
+			10 = {
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = 3.5
+					min = -49
+				}
+				add_prowess_skill = 1
+				add_prestige = medium_prestige_gain
+				add_piety = minor_piety_gain
+				send_interface_toast = {
+					type = send_interface_toast
+					title = gh_pilgrimage.0401.toast
+					desc = gh_pilgrimage.0401.a.excellent
+					left_icon = root
+				}
+				desc = gh_pilgrimage.0401.a.excellent
+			}
+			50 = {
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = 3.5
+					min = -49
+				}
+				add_prestige = minor_prestige_gain
+				add_piety = minor_piety_gain
+				send_interface_toast = {
+				type = send_interface_toast
+					title = gh_pilgrimage.0401.toast
+				desc = gh_pilgrimage.0401.a.good
+				left_icon = root
+				}
+				desc = gh_pilgrimage.0401.a.good
+			}
+			15 = {
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = -3.5
+					min = -49
+				}
+				add_prestige = minor_prestige_loss
+				send_interface_toast = {
+				type = send_interface_toast
+					title = gh_pilgrimage.0401.toast
+				desc = gh_pilgrimage.0401.a.failure
+				left_icon = root
+				}
+				desc = gh_pilgrimage.0401.a.failure
+			}
+		}
+	}
+	
+	option = {
+		#watch the games from the stands
+		name = gh_pilgrimage.0401.b
+		
+		add_stress = medium_stress_loss
+	}
+
+	after = {
+		trigger_event = {
+			on_action = pilgrimage_return_events
+			days = 30
+		}
+		give_pilgrimage_reward_effect = yes
+	}
+}
+
+#The Farthest Bank - games for the gods, chariots
+gh_pilgrimage.0402 = {
+	type = character_event
+	title = gh_pilgrimage.0402.t
+	desc = gh_pilgrimage.0402.desc
+	theme = pilgrimage_activity
+	override_background = {
+		event_background = terrain_scope
+	}
+	left_portrait = {
+		character = root
+		animation = ecstasy
+	}
+
+	trigger = {
+		pilgrimage_is_to = { DESTINATION = c_sestaclea }
+		root.faith = {
+			has_doctrine = tenet_games_for_gods
+		}
+	}
+
+	immediate = {
+		save_holy_site_for_loc_effect = yes
+	}
+	
+	option = {
+		#participate! it's dangerous though!
+		name = gh_pilgrimage.0402.a
+		duel = {
+			skill = martial
+			value = decent_skill_rating
+			10 = {
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = 3.5
+					min = -49
+				}
+				desc = gh_pilgrimage.0402.a.excellent
+				send_interface_toast = {
+					title = gh_pilgrimage.0401.toast
+					desc = gh_pilgrimage.0402.a.excellent
+					left_icon = root
+					add_martial_skill = 1
+				add_prestige = medium_prestige_gain
+				add_piety = minor_piety_gain
+				}
+				desc = gh_pilgrimage.0402.a.excellent
+			}
+			25 = {
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = 3.5
+					min = -49
+				}
+				desc = gh_pilgrimage.0402.a.good
+				send_interface_toast = {
+					title = gh_pilgrimage.0401.toast
+					desc = gh_pilgrimage.0402.a.good
+					left_icon = root
+					add_prestige = minor_prestige_gain
+					add_piety = minor_piety_gain
+				}
+				desc = gh_pilgrimage.0402.a.good
+			}
+			25 = {
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = -3.5
+					min = -49
+				}
+				desc = gh_pilgrimage.0402.a.failure
+				send_interface_toast = {
+					title = gh_pilgrimage.0401.toast
+					desc = gh_pilgrimage.0402.a.failure
+					left_icon = root
+					add_prestige = minor_prestige_loss
+					add_trait = wounded_1
+					add_piety = minor_piety_gain
+				}
+				desc = gh_pilgrimage.0402.a.failure
+			}
+			10 = {
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = -3.5
+					min = -49
+				}
+				add_prestige = minor_prestige_loss
+				send_interface_toast = {
+					title = gh_pilgrimage.0401.toast
+					desc = gh_pilgrimage.0402.a.badfailure
+					left_icon = root
+					add_trait = wounded_2
+					add_piety = minor_piety_gain
+				}
+				desc = gh_pilgrimage.0402.a.badfailure
+			}
+			5 = {
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = -3.5
+					min = -49
+				}
+				desc = gh_pilgrimage.0402.a.death
+				send_interface_toast = {
+					title = gh_pilgrimage.0401.toast
+					desc = gh_pilgrimage.0402.a.death
+					left_icon = root
+					death = {
+						death_reason = chariot_accident
+					}
+				}
+				desc = gh_pilgrimage.0402.a.death
+				
+			}
+		}
+	}
+	
+	option = {
+		#watch the games from the stands
+		name = gh_pilgrimage.0402.b	
+		add_stress = medium_stress_loss
+	}
+
+	after = {
+		trigger_event = {
+			on_action = pilgrimage_return_events
+			days = 30
+		}
+		give_pilgrimage_reward_effect = yes
+	}
+}
+#The Branching - games for the gods, running
+gh_pilgrimage.0403 = {
+	type = character_event
+	title = gh_pilgrimage.0403.t
+	desc = gh_pilgrimage.0403.desc
+	theme = pilgrimage_activity
+	override_background = {
+		event_background = terrain_scope
+	}
+	left_portrait = {
+		character = root
+		animation = ecstasy
+	}
+
+	trigger = {
+		pilgrimage_is_to = { DESTINATION = c_dzuga }
+		root.faith = {
+			has_doctrine = tenet_games_for_gods
+		}
+	}
+
+	immediate = {
+		save_holy_site_for_loc_effect = yes
+	}
+	
+	option = {
+		#participate!
+		name = gh_pilgrimage.0403.a
+		duel = {
+			skill = prowess
+			value = decent_skill_rating
+			25 = {
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = 3.5
+					min = -49
+				}
+				add_prowess_skill = 1
+				add_prestige = medium_prestige_gain
+				add_piety = minor_piety_gain
+				send_interface_toast = {
+				type = send_interface_toast
+					title = gh_pilgrimage.0401.toast
+				desc = gh_pilgrimage.0403.a.excellent
+				left_icon = root
+				}
+				desc = gh_pilgrimage.0403.a.excellent
+			}
+			40 = {
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = 3.5
+					min = -49
+				}
+				add_prestige = minor_prestige_gain
+				add_piety = minor_piety_gain
+				send_interface_toast = {
+				type = send_interface_toast
+					title = gh_pilgrimage.0401.toast
+				desc = gh_pilgrimage.0403.a.good
+				left_icon = root
+				}
+				desc = gh_pilgrimage.0403.a.good
+			}
+			10 = {
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = -3.5
+					min = -49
+				}
+				add_prestige = minor_prestige_loss
+				send_interface_toast = {
+				type = send_interface_toast
+					title = gh_pilgrimage.0401.toast
+				desc = gh_pilgrimage.0403.a.failure
+				left_icon = root
+				}
+				desc = gh_pilgrimage.0403.a.failure
+			}
+			5 = {
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = -3.5
+					min = -49
+				}
+				add_prestige = medium_prestige_loss
+				add_trait = wounded_1
+				send_interface_toast = {
+				type = send_interface_toast
+					title = gh_pilgrimage.0401.toast
+				desc = gh_pilgrimage.0403.a.badfailure
+				left_icon = root
+				}
+				desc = gh_pilgrimage.0403.a.badfailure
+			}
+		}
+	}
+	
+	option = {
+		#watch the games from the stands
+		name = gh_pilgrimage.0403.b
+		add_stress = medium_stress_loss
+		
+	}
+
+	after = {
+		trigger_event = {
+			on_action = pilgrimage_return_events
+			days = 30
+		}
+		give_pilgrimage_reward_effect = yes
+	}
+}
+
+#The Holy Precincts - games for the gods, javelins
+gh_pilgrimage.0404 = {
+	type = character_event
+	title = gh_pilgrimage.0404.t
+	desc = gh_pilgrimage.0404.desc
+	theme = pilgrimage_activity
+	override_background = {
+		event_background = terrain_scope
+	}
+	left_portrait = {
+		character = root
+		animation = ecstasy
+	}
+
+	trigger = {
+		pilgrimage_is_to = { DESTINATION = c_choirgai }
+		root.faith = {
+			has_doctrine = tenet_games_for_gods
+		}
+	}
+
+	immediate = {
+		save_holy_site_for_loc_effect = yes
+	}
+	
+	option = {
+		#participate!
+		name = gh_pilgrimage.0404.a
+		duel = {
+			skill = prowess
+			value = decent_skill_rating
+			15 = {
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = 3.5
+					min = -49
+				}
+				add_prowess_skill = 1
+				add_prestige = medium_prestige_gain
+				add_piety = minor_piety_gain
+				send_interface_toast = {
+				type = send_interface_toast
+					title = gh_pilgrimage.0401.toast
+				desc = gh_pilgrimage.0405.a.excellent
+				left_icon = root
+				}
+				desc = gh_pilgrimage.0405.a.excellent
+			}
+			50 = {
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = 3.5
+					min = -49
+				}
+				add_prestige = minor_prestige_gain
+				add_piety = minor_piety_gain
+				send_interface_toast = {
+				type = send_interface_toast
+					title = gh_pilgrimage.0401.toast
+				desc = gh_pilgrimage.0405.a.good
+				left_icon = root
+				}
+				desc = gh_pilgrimage.0405.a.good
+			}
+			25 = {
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = -3.5
+					min = -49
+				}
+				add_prestige = minor_prestige_loss
+				send_interface_toast = {
+				type = send_interface_toast
+					title = gh_pilgrimage.0401.toast
+				desc = gh_pilgrimage.0405.a.failure
+				left_icon = root
+				}
+				desc = gh_pilgrimage.0405.a.failure
+			}
+			5 = {
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = -3.5
+					min = -49
+				}
+				add_trait = wounded_1
+				add_prestige = medium_prestige_loss
+				send_interface_toast = {
+				type = send_interface_toast
+					title = gh_pilgrimage.0401.toast
+				desc = gh_pilgrimage.0405.a.failure
+				left_icon = root
+				}
+				desc = gh_pilgrimage.0405.a.failure
+			}
+		}
+	}
+	
+	option = {
+		#watch the games from the stands
+		name = gh_pilgrimage.0404.b
+		if = {
+			not = {
+				OR = {
+					has_trait = wounded
+					has_trait = infirm
+					has_trait = maimed
+					has_trait = incapable
+					has_trait = infirm
+					has_trait = maimed
+					has_trait = blind
+					has_trait = inbred
+					has_trait = ill
+				}
+			}
+			add_prestige = medium_prestige_loss
+			add_piety = medium_piety_loss
+		}
+		add_stress = medium_stress_loss
+	}
+
+	after = {
+		trigger_event = {
+			on_action = pilgrimage_return_events
+			days = 30
+		}
+		give_pilgrimage_reward_effect = yes
+	}
+}
+
+#The Emptying - games for the gods, theater
+gh_pilgrimage.0405 = {
+	type = character_event
+	title = gh_pilgrimage.0405.t
+	desc = gh_pilgrimage.0405.desc
+	theme = pilgrimage_activity
+	override_background = {
+		event_background = terrain_scope
+	}
+	left_portrait = {
+		character = root
+		animation = ecstasy
+	}
+
+	trigger = {
+		pilgrimage_is_to = { DESTINATION = c_sainhad }
+		root.faith = {
+			has_doctrine = tenet_games_for_gods
+		}
+	}
+
+	immediate = {
+		save_holy_site_for_loc_effect = yes
+	}
+	
+	option = {
+		#participate!
+		name = gh_pilgrimage.0405.a
+		duel = {
+			skill = diplomacy
+			value = decent_skill_rating
+			20 = {
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = 3.5
+					min = -49
+				}
+				add_diplomacy_skill = 1
+				add_prestige = medium_prestige_gain
+				add_piety = minor_piety_gain
+				send_interface_toast = {
+				type = send_interface_toast
+					title = gh_pilgrimage.0401.toast
+				desc = gh_pilgrimage.0405.a.excellent
+				left_icon = root
+				}
+				desc = gh_pilgrimage.0405.a.excellent
+			}
+			50 = {
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = 6.0
+					min = -49
+				}
+				add_prestige = minor_prestige_gain
+				add_piety = minor_piety_gain
+				send_interface_toast = {
+				type = send_interface_toast
+					title = gh_pilgrimage.0401.toast
+				desc = gh_pilgrimage.0405.a.good
+				left_icon = root
+				}
+				desc = gh_pilgrimage.0405.a.good
+			}
+			20 = {
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = -3.5
+					min = -49
+				}
+				send_interface_toast = {
+				type = send_interface_toast
+					title = gh_pilgrimage.0401.toast
+				desc = gh_pilgrimage.0405.a.failure
+				left_icon = root
+				}
+				desc = gh_pilgrimage.0405.a.failure
+			}
+			10 = {
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = -3.5
+					min = -49
+				}
+				add_prestige = minor_prestige_loss
+				send_interface_toast = {
+				type = send_interface_toast
+					title = gh_pilgrimage.0401.toast
+					left_icon = root
+				desc = gh_pilgrimage.0405.a.badfailure
+				}
+				desc = gh_pilgrimage.0405.a.badfailure
+			}
+		}
+	}
+	
+	option = {
+		#watch the games from the stands
+		name = gh_pilgrimage.0405.b
+		add_stress = medium_stress_loss
+	}
+
+	after = {
+		trigger_event = {
+			on_action = pilgrimage_return_events
+			days = 30
+		}
+		give_pilgrimage_reward_effect = yes
+	}
+}
+
+#The Bowl - games for the gods, wrasslin'
+gh_pilgrimage.0406 = {
+	type = character_event
+	title = gh_pilgrimage.0406.t
+	desc = gh_pilgrimage.0406.desc
+	theme = pilgrimage_activity
+	override_background = {
+		event_background = terrain_scope
+	}
+	left_portrait = {
+		character = root
+		animation = ecstasy
+	}
+
+	trigger = {
+		pilgrimage_is_to = { DESTINATION = c_tseteretii }
+		root.faith = {
+			has_doctrine = tenet_games_for_gods
+		}
+	}
+
+	immediate = {
+		save_holy_site_for_loc_effect = yes
+	}
+	
+	option = {
+		#participate!
+		name = gh_pilgrimage.0406.a
+		duel = {
+			skill = prowess
+			value = decent_skill_rating
+			20 = {
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = 3.5
+					min = -49
+				}
+				add_prowess_skill = 1
+				add_prestige = medium_prestige_gain
+				add_piety = minor_piety_gain
+				send_interface_toast = {
+				type = send_interface_toast
+					title = gh_pilgrimage.0401.toast
+				desc = gh_pilgrimage.0406.a.excellent
+				left_icon = root
+				}
+				desc = gh_pilgrimage.0406.a.excellent
+			}
+			25 = {
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = 3.5
+					min = -49
+				}
+				add_prestige = minor_prestige_gain
+				add_piety = minor_piety_gain
+				send_interface_toast = {
+				type = send_interface_toast
+					title = gh_pilgrimage.0401.toast
+				desc = gh_pilgrimage.0406.a.good
+				left_icon = root
+				}
+				desc = gh_pilgrimage.0406.a.good
+			}
+			50 = {
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = -1.5
+					min = -49
+				}
+				send_interface_toast = {
+				type = send_interface_toast
+					title = gh_pilgrimage.0401.toast
+				desc = gh_pilgrimage.0406.a.neutral
+				left_icon = root
+				}
+				desc = gh_pilgrimage.0406.a.neutral
+			}
+			20 = {
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = -3.5
+					min = -49
+				}
+				add_prestige = minor_prestige_loss
+				send_interface_toast = {
+				type = send_interface_toast
+					title = gh_pilgrimage.0401.toast
+				desc = gh_pilgrimage.0406.a.failure
+				left_icon = root
+				}
+				desc = gh_pilgrimage.0406.a.failure
+			}
+			5 = {
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = -3.5
+					min = -49
+				}
+				add_trait = wounded_1
+				add_prestige = minor_prestige_loss
+				send_interface_toast = {
+				type = send_interface_toast
+					title = gh_pilgrimage.0401.toast
+				desc = gh_pilgrimage.0406.a.badfailure
+				left_icon = root
+				}
+				desc = gh_pilgrimage.0406.a.badfailure
+			}
+		}
+	}
+	
+	option = {
+		#watch the games from the stands
+		name = gh_pilgrimage.0406.b
+		add_stress = medium_stress_loss
+	}
+
+	after = {
+		trigger_event = {
+			on_action = pilgrimage_return_events
+			days = 30
+		}
+		give_pilgrimage_reward_effect = yes
+	}
+}

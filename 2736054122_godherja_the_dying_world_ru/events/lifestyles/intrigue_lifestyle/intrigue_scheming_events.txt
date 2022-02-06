@@ -285,7 +285,14 @@ intrigue_scheming.1012 = {
 						value = scope:duel_value
 						multiplier = 1
 					}
-				show_as_tooltip = { add_intrigue_lifestyle_xp = medium_lifestyle_xp }
+				show_as_tooltip = { 
+					add_intrigue_lifestyle_xp = medium_lifestyle_xp 
+					lifepath_impact = {
+						WAY = crows
+						NATURE = positive
+						AMOUNT = medium
+					}
+				}
 				trigger_event = {
 					id = intrigue_scheming.1013
 					days = { 10 20 }
@@ -297,6 +304,11 @@ intrigue_scheming.1012 = {
 					add_character_modifier = {
 						modifier = invented_code_resistance_modifier
 						days = 1095
+					}
+					lifepath_impact = {
+						WAY = crows
+						NATURE = negative
+						AMOUNT = minor
 					}
 				}
 				trigger_event = {
@@ -338,6 +350,11 @@ intrigue_scheming.1012 = {
 			diligent = medium_stress_impact_gain
 			ambitious = medium_stress_impact_gain
 			lazy = major_stress_impact_loss
+		}
+		lifepath_impact = {
+			WAY = crows
+			NATURE = negative
+			AMOUNT = medium
 		}
 		ai_chance = {
 			base = 10
@@ -526,6 +543,11 @@ intrigue_scheming.1013 = {
 			modifier = invented_code_resistance_modifier
 			days = 1095
 		}
+		lifepath_impact = {
+			WAY = crows
+			NATURE = positive
+			AMOUNT = medium
+		}
 	}
 
 	after = {
@@ -583,6 +605,11 @@ intrigue_scheming.1014 = {
 				modifier = invented_code_resistance_modifier
 				days = 1095
 			}
+		}
+		lifepath_impact = {
+			WAY = crows
+			NATURE = negative
+			AMOUNT = minor
 		}
 	}
 
@@ -906,6 +933,16 @@ intrigue_scheming.1401 = {
 							modifier = more_vigilant_recistance_modifier
 							days = 1095
 						}
+						lifepath_impact = {
+							WAY = crows
+							NATURE = positive
+							AMOUNT = minor
+						}
+						lifepath_impact = {
+							WAY = family
+							NATURE = positive
+							AMOUNT = minor
+						}
 					}
 				}
 				else_if = {
@@ -943,6 +980,16 @@ intrigue_scheming.1401 = {
 				send_interface_toast = {	
 					title = intrigue_scheming.1401.a.failure
 					add_prestige = minor_prestige_loss
+					lifepath_impact = {
+						WAY = crows
+						NATURE = negative
+						AMOUNT = minor
+					}
+					lifepath_impact = {
+						WAY = family
+						NATURE = negative
+						AMOUNT = minor
+					}
 				}
 			}
 		}
@@ -1188,6 +1235,11 @@ intrigue_scheming.1601 = {
 		stress_impact = {
 			generous = minor_stress_impact_gain
 		}
+		lifepath_impact = {
+			WAY = crows
+			NATURE = positive
+			AMOUNT = minor
+		}
 		ai_chance = {
 			base = 100
 			ai_value_modifier = {
@@ -1208,6 +1260,11 @@ intrigue_scheming.1601 = {
 				opinion = low_positive_opinion
 			}
 		}
+		lifepath_impact = {
+			WAY = crows
+			NATURE = positive
+			AMOUNT = minor
+		}
 		ai_chance = {
 			base = 100
 			ai_value_modifier = {
@@ -1223,6 +1280,11 @@ intrigue_scheming.1601 = {
 			stress_impact = {
 				base = medium_stress_gain
 			}
+		}
+		lifepath_impact = {
+			WAY = crows
+			NATURE = positive
+			AMOUNT = medium
 		}
 		ai_chance = {
 			base = 100
@@ -1244,6 +1306,7 @@ scripted_trigger intrigue_scheming_2001_future_mentor_trigger = {
 	is_ai = yes
 	is_landed = no
 	is_close_family_or_spouse_of_root_trigger = no
+	NOT = { has_relation_mentor = root }
 	opinion = {
 		target = root
 		value > neutral_opinion
@@ -1565,6 +1628,11 @@ intrigue_scheming.2102 = {
 				send_interface_toast = {
 					left_icon = scope:sneaky_person
 					title = intrigue_scheming.2102.a.tt
+					lifepath_impact = {
+						WAY = crows
+						NATURE = positive
+						AMOUNT = medium
+					}
 				}
 				add_character_flag = {
 					flag = not_noticed
@@ -1581,6 +1649,11 @@ intrigue_scheming.2102 = {
 				send_interface_toast = {
 					left_icon = scope:sneaky_person
 					title = intrigue_scheming.2102.b.tt
+					lifepath_impact = {
+						WAY = crows
+						NATURE = negative
+						AMOUNT = medium
+					}
 				}
 				add_character_flag = {
 					flag = noticed
@@ -1614,6 +1687,11 @@ intrigue_scheming.2102 = {
 		name = intrigue_scheming.2102.b
 		stress_impact = {
 			paranoid = medium_stress_impact_gain
+		}
+		lifepath_impact = {
+			WAY = crows
+			NATURE = negative
+			AMOUNT = minor
 		}
 		ai_chance = {
 			base = 0
@@ -2759,6 +2837,11 @@ intrigue_scheming.3041 = {
 						target = scope:liege_target
 						type = manipulation_hook
 					}
+					lifepath_impact = {
+						WAY = crows
+						NATURE = positive
+						AMOUNT = medium
+					}
 				}
 				hidden_effect = {
 					trigger_event = {
@@ -2790,6 +2873,11 @@ intrigue_scheming.3041 = {
 							modifier = angry_opinion
 							opinion = low_negative_opinion
 						}
+					}
+					lifepath_impact = {
+						WAY = crows
+						NATURE = positive
+						AMOUNT = medium
 					}
 				}
 				trigger_event = {
@@ -2915,6 +3003,11 @@ intrigue_scheming.3041 = {
 		stress_impact = {
 			compassionate = massive_stress_impact_gain
 		}
+		lifepath_impact = {
+			WAY = crows
+			NATURE = negative
+			AMOUNT = major
+		}
 		ai_chance = {
 			base = 25
 			ai_value_modifier = {
@@ -2979,6 +3072,11 @@ intrigue_scheming.3042 = {
 				opinion = -30
 			}
 		}
+		lifepath_impact = {
+			WAY = crows
+			NATURE = positive
+			AMOUNT = medium
+		}
 	}
 }
 
@@ -3019,6 +3117,11 @@ intrigue_scheming.3043 = {
 				modifier = angry_opinion
 				opinion = -20
 			}
+		}
+		lifepath_impact = {
+			WAY = crows
+			NATURE = negative
+			AMOUNT = medium
 		}
 	}
 }
@@ -3589,6 +3692,11 @@ intrigue_scheming.3061 = {
 					desc = intrigue_scheming.3061.success
 					custom_tooltip = intrigue_scheming.3061.c.success_tt
 					add_intrigue_lifestyle_xp = medium_lifestyle_xp
+					lifepath_impact = {
+						WAY = crows
+						NATURE = positive
+						AMOUNT = major
+					}
 					hidden_effect = {
 						trigger_event = {
 							id = intrigue_scheming.3066
@@ -3612,6 +3720,11 @@ intrigue_scheming.3061 = {
 								opinion = medium_negative_opinion
 							}
 						}
+						lifepath_impact = {
+							WAY = crows
+							NATURE = negative
+							AMOUNT = major
+						}
 					}
 					hidden_effect = {
 						trigger_event = {
@@ -3634,6 +3747,11 @@ intrigue_scheming.3061 = {
 					desc = intrigue_scheming.3061.success
 					custom_tooltip = intrigue_scheming.3061.c.success_tt
 					add_intrigue_lifestyle_xp = medium_lifestyle_xp
+					lifepath_impact = {
+						WAY = crows
+						NATURE = positive
+						AMOUNT = major
+					}
 					hidden_effect = {
 						trigger_event = {
 							id = intrigue_scheming.3066
@@ -3656,6 +3774,11 @@ intrigue_scheming.3061 = {
 								modifier = trust_opinion
 								opinion = medium_negative_opinion
 							}
+						}
+						lifepath_impact = {
+							WAY = crows
+							NATURE = negative
+							AMOUNT = major
 						}
 					}
 					hidden_effect = {
@@ -3714,6 +3837,11 @@ intrigue_scheming.3061 = {
 								opinion = -30
 							}
 						}
+						lifepath_impact = {
+							WAY = crows
+							NATURE = negative
+							AMOUNT = major
+						}
 					}
 					hidden_effect = {
 						trigger_event = {
@@ -3757,6 +3885,11 @@ intrigue_scheming.3061 = {
 								modifier = trust_opinion
 								opinion = -30
 							}
+						}
+						lifepath_impact = {
+							WAY = crows
+							NATURE = negative
+							AMOUNT = major
 						}
 					}
 					hidden_effect = {
@@ -3816,6 +3949,11 @@ intrigue_scheming.3061 = {
 								opinion = -30
 							}
 						}
+						lifepath_impact = {
+							WAY = crows
+							NATURE = negative
+							AMOUNT = major
+						}
 					}
 					hidden_effect = {
 						trigger_event = {
@@ -3859,6 +3997,11 @@ intrigue_scheming.3061 = {
 								modifier = trust_opinion
 								opinion = -30
 							}
+						}
+						lifepath_impact = {
+							WAY = crows
+							NATURE = negative
+							AMOUNT = major
 						}
 					}
 					hidden_effect = {
@@ -3954,6 +4097,11 @@ intrigue_scheming.3063 = {
 			modifier = insult_opinion
 			opinion = -20
 		}
+		lifepath_impact = {
+			WAY = crows
+			NATURE = negative
+			AMOUNT = major
+		}
 	}
 }
 
@@ -4021,6 +4169,11 @@ intrigue_scheming.3065 = {
 		name = intrigue_scheming.3063.a
 		add_prestige = medium_prestige_loss
 		add_prestige = medium_prestige_loss
+		lifepath_impact = {
+			WAY = crows
+			NATURE = negative
+			AMOUNT = major
+		}
 		reverse_add_opinion = {
 			target = scope:target
 			modifier = trust_opinion
@@ -4099,6 +4252,11 @@ intrigue_scheming.3067 = {
 	option = {
 		name = intrigue_scheming.3067.a
 		add_prestige = medium_prestige_loss
+		lifepath_impact = {
+			WAY = crows
+			NATURE = negative
+			AMOUNT = major
+		}
 		if = {
 			limit = { exists = dynasty }
 			dynasty = { add_dynasty_prestige = minor_dynasty_prestige_loss }
@@ -4300,6 +4458,18 @@ intrigue_scheming.4021 = {
 						
 					}
 				}
+				send_interface_toast = {
+					lifepath_impact = {
+						WAY = crows
+						NATURE = positive
+						AMOUNT = medium
+					}
+					lifepath_impact = {
+						WAY = family
+						NATURE = positive
+						AMOUNT = minor
+					}
+				}
 			}
 			40 = {
 				desc = intrigue_scheming.4021.a.failure
@@ -4335,6 +4505,16 @@ intrigue_scheming.4021 = {
 					title = intrigue_scheming.4021.a.failure
 					left_icon = scope:prisoner
 					custom_tooltip = intrigue_scheming.4021.failure
+					lifepath_impact = {
+						WAY = crows
+						NATURE = negative
+						AMOUNT = medium
+					}
+					lifepath_impact = {
+						WAY = family
+						NATURE = negative
+						AMOUNT = minor
+					}
 				}
 			}
 		}
@@ -4377,6 +4557,11 @@ intrigue_scheming.4021 = {
 				show_as_tooltip = {
 					custom_tooltip = intrigue_scheming.4021.success
 					add_intrigue_lifestyle_xp = medium_lifestyle_xp
+					lifepath_impact = {
+						WAY = crows
+						NATURE = positive
+						AMOUNT = medium
+					}
 				}
 				hidden_effect = {
 					send_interface_toast = {
@@ -4385,7 +4570,12 @@ intrigue_scheming.4021 = {
 						scope:target_secret = {
 							reveal_to = root
 						}
-						add_intrigue_lifestyle_xp = medium_lifestyle_xp					
+						add_intrigue_lifestyle_xp = medium_lifestyle_xp
+						lifepath_impact = {
+							WAY = crows
+							NATURE = positive
+							AMOUNT = medium
+						}					
 					}
 				}
 			}
@@ -4422,6 +4612,11 @@ intrigue_scheming.4021 = {
 					title = intrigue_scheming.4021.b.failure
 					left_icon = scope:prisoner
 					custom_tooltip = intrigue_scheming.4021.failure
+					lifepath_impact = {
+						WAY = crows
+						NATURE = negative
+						AMOUNT = medium
+					}
 				}
 			}
 		}
@@ -4443,6 +4638,12 @@ intrigue_scheming.4021 = {
 			compassionate = medium_stress_impact_gain
 			forgiving = minor_stress_impact_gain
 			generous = minor_stress_impact_gain
+		}
+
+		lifepath_impact = {
+			WAY = crows
+			NATURE = negative
+			AMOUNT = major
 		}
 
 		random_list = {
@@ -5344,10 +5545,19 @@ intrigue_scheming.4050 = {
 					value = major_gold_value_check
 				}
 			}
-			else = {
+			else_if = {
+				limit = {
+					short_term_gold > 0
+				}
 				save_scope_value_as = {
 					name = saved_gold_amount
 					value = short_term_gold
+				}
+			}
+			else = {
+				save_scope_value_as = {
+					name = saved_gold_amount
+					value = tiny_gold_value_check
 				}
 			}
 		}
@@ -5460,7 +5670,10 @@ intrigue_scheming.4050 = {
 		trigger = {
 			scope:buyer = {
 				any_known_secret = {
-					NOT = { is_known_by = root }
+					NOR = {
+						is_known_by = root
+						secret_owner = scope:buyer # The AI won't sell their own secret!
+					}
 				}
 			}
 		}

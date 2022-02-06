@@ -3,6 +3,7 @@
 k_khenemhat = {
 	1215.1.1 = {
 		holder = sarradon_1
+		government = feudal_government
 	}
 }
 k_ashkesk = {
@@ -15,16 +16,6 @@ k_aglabolu = {
 		holder = sarradon_1
 	}
 }
-k_lihyacca = {
-	1215.1.1 = {
-		holder = sarradon_1
-	}
-}
-c_gharstir = {
-	1215.1.1 = {
-		holder = sarradon_1
-	}
-}
 d_ghasab = {
 	1215.1.1 = {
 		holder = khenemhat_26
@@ -32,13 +23,18 @@ d_ghasab = {
 	}
 	1215.1.1 = { change_development_level = 3 }
 }
-
+c_kirkudariya = {
+	1215.1.1 = {
+		holder = khenemhat_26
+		liege = "k_khenemhat"
+	}
+}
 d_dedezkale = {
-1215.1.1 = { change_development_level = 3 }
+	1215.1.1 = { change_development_level = 3 }
 }
 
 d_taliwahin = {
-1215.1.1 = { change_development_level = 10 }
+	1215.1.1 = { change_development_level = 10 }
 }
 d_lawdarut = {
 	1215.1.1 = {
@@ -60,6 +56,36 @@ d_al_miwf = {
 	}
 	1215.1.1 = { change_development_level = 9 }
 }
+c_barinet = {
+	1215.1.1 = {
+		holder = khenemhat_20
+		liege = "k_mohrtag_al_badi"		
+	}
+}
+c_mishrat = {
+	1215.1.1 = {
+		holder = khenemhat_20
+		liege = "k_mohrtag_al_badi"		
+	}
+}
+c_tanar = {
+	1215.1.1 = {
+		holder = khenemhat_20
+		liege = "k_mohrtag_al_badi"		
+	}
+}
+c_ifralimane = {
+	1215.1.1 = {
+		holder = khenemhat_20
+		liege = "k_mohrtag_al_badi"		
+	}
+}
+c_sindgil = {
+	1215.1.1 = {
+		holder = khenemhat_20
+		liege = "k_mohrtag_al_badi"		
+	}
+}
 d_ain_el_kezouar = {
 	1215.1.1 = {
 		holder = khenemhat_15
@@ -67,34 +93,25 @@ d_ain_el_kezouar = {
 	}
 	1215.1.1 = { change_development_level = 9 }
 }
-d_madada = {
+c_maarableh = {
 	1215.1.1 = {
-		holder = khenemhat_10
-		liege = "k_mohrtag_al_badi"
+		holder = khenemhat_15
+		liege = "k_khenemhat"
 	}
-	1215.1.1 = { change_development_level = 6 }
 }
-d_melloutia = {
+c_teboubib = {
 	1215.1.1 = {
-		holder = khenemhat_5
-		liege = "k_mohrtag_al_badi"
+		holder = khenemhat_15
+		liege = "k_khenemhat"
 	}
-	1215.1.1 = { change_development_level = 6 }
 }
-d_chenitour = {
+c_ctesilad = {
 	1215.1.1 = {
-		holder = khenemhat_5
-		liege = "k_mohrtag_al_badi"
+		holder = khenemhat_15
+		liege = "k_khenemhat"
 	}
-	1215.1.1 = { change_development_level = 8 }
 }
-d_hamchar = {
-	1215.1.1 = {
-		holder = khenemhat_1
-		liege = "k_mohrtag_al_badi"
-	}
-	1215.1.1 = { change_development_level = 8 }
-}
+
 d_khekech = {
 	1215.1.1 = {
 		holder = khenemhat_1
@@ -102,37 +119,21 @@ d_khekech = {
 	}
 	1215.1.1 = { change_development_level = 8 }
 }
-c_oujtat = {
-	1215.1.1 = {
-		holder = khenemhat_61
-		liege = d_hamchar
-	}
-}
 c_sedgourt = {
 	1215.1.1 = {
 		holder = khenemhat_61
-		liege = d_hamchar
+		liege = d_khekech
 	}
 }
 c_taougane = {
 	1215.1.1 = {
 		holder = khenemhat_62
-		liege = d_hamchar
-	}
-}
-c_befra = {
-	1215.1.1 = {
-		holder = khenemhat_62
-		liege = d_hamchar
+		liege = d_khekech
 	}
 }
 
 d_almilada = {
 1215.1.1 = { change_development_level = 7 }
-}
-
-d_waziden = {
-1215.1.1 = { change_development_level = 8 }
 }
 
 d_kemayeri = {
@@ -142,6 +143,12 @@ d_kemayeri = {
 	}
 	1215.1.1 = { change_development_level = 4 }
 }
+c_kashalfa = {
+	1215.1.1 = {
+		holder = khenemhat_28
+		liege = "k_khenemhat"
+	}
+}
 d_almudir = {
 	1215.1.1 = {
 		holder = khenemhat_27
@@ -149,16 +156,16 @@ d_almudir = {
 	}
 	1215.1.1 = { change_development_level = 8 }
 }
-d_almilada = {
+c_east_sarradon12 = {
 	1215.1.1 = {
 		holder = khenemhat_27
 		liege = k_khenemhat
 	}
 }
-c_alibralqas = {
+d_almilada = {
 	1215.1.1 = {
-		holder = khenemhat_58
-		liege = d_almudir
+		holder = khenemhat_27
+		liege = k_khenemhat
 	}
 }
 c_hudabam = {
@@ -175,19 +182,7 @@ c_rezvanshahr = {
 }
 c_sasaqaq = {
 	1215.1.1 = {
-		holder = khenemhat_59
-		liege = d_almudir
-	}
-}
-c_bustakish = {
-	1215.1.1 = {
-		holder = khenemhat_29
-		liege = k_khenemhat
-	}
-}
-c_limattin = {
-	1215.1.1 = {
-		holder = khenemhat_29
+		holder = khenemhat_27
 		liege = k_khenemhat
 	}
 }
@@ -210,10 +205,6 @@ d_geyime = {
 	}
 	1215.1.1 = { change_development_level = 7 }
 }
-
-d_bijaker = {
-1215.1.1 = { change_development_level = 5 }
-}
 c_thuwacca = {
 	1215.1.1 = {
 		holder = khenemhat_31
@@ -229,10 +220,6 @@ d_tall_falludariyah = {
 }
 
 d_yasi = {
-1215.1.1 = { change_development_level = 4 }
-}
-
-d_fourveh = {
 1215.1.1 = { change_development_level = 4 }
 }
 
@@ -282,12 +269,6 @@ c_medihat = {
 		liege = k_khenemhat
 	}
 }
-c_harerran = {
-	1215.1.1 = {
-		holder = khenemhat_35
-		liege = k_khenemhat
-	}
-}
 d_sirghadani = {
 	1215.1.1 = {
 		holder = khenemhat_36
@@ -295,6 +276,25 @@ d_sirghadani = {
 	}
 	1215.1.1 = { change_development_level = 3 }
 }
+c_aralfa = {
+	1215.1.1 = {
+		holder = khenemhat_36
+		liege = k_khenemhat
+	}
+}
+c_tamisus = {
+	1215.1.1 = {
+		holder = khenemhat_36
+		liege = k_khenemhat
+	}
+}
+c_qadayea = {
+	1215.1.1 = {
+		holder = khenemhat_36
+		liege = k_khenemhat
+	}
+}
+
 d_yada = {
 	1215.1.1 = {
 		holder = khenemhat_36
@@ -326,56 +326,26 @@ c_mehmeslu = {
 		liege = d_sirghadani
 	}
 }
-
-d_almasab = {
-1215.1.1 = { change_development_level = 8 }
-}
-d_dorousan = {
-	1215.1.1 = {
-		holder = khenemhat_40
-		liege = k_khenemhat
-	}
-	1215.1.1 = { change_development_level = 6 }
-}
 c_disuwai = {
 	1215.1.1 = {
 		holder = sarradon_35
 	}
 }
-d_qazvijarm = {
-	1215.1.1 = {
-		holder = khenemhat_41
-		liege = k_khenemhat
-	}
-	1215.1.1 = { change_development_level = 10 }
-}
 c_jarane = {
 	1215.1.1 = {
 		holder = khenemhat_52
-		liege = d_qazvijarm
+		liege = d_ain_el_kezouar
 	}
 }
 c_alqurrani = {
 	1215.1.1 = {
 		holder = khenemhat_53
-		liege = d_qazvijarm
-	}
-}
-c_al_khubigh = {
-	1215.1.1 = {
-		holder = khenemhat_42
-		liege = k_khenemhat
+		liege = d_ain_el_kezouar
 	}
 }
 c_tall_iskaya = {
 	1215.1.1 = {
 		holder = khenemhat_42
-		liege = k_khenemhat
-	}
-}
-c_kemarasi = {
-	1215.1.1 = {
-		holder = khenemhat_43
 		liege = k_khenemhat
 	}
 }
@@ -392,6 +362,12 @@ d_safbleh = {
 	}
 	1215.1.1 = { change_development_level = 12 }
 }
+c_brounawat = {
+	1215.1.1 = {
+		holder = khenemhat_44
+		liege = k_khenemhat
+	}
+}
 d_al_kuhdad = {
 	1215.1.1 = {
 		holder = khenemhat_45
@@ -399,10 +375,15 @@ d_al_kuhdad = {
 	}
 	1215.1.1 = { change_development_level = 7 }
 }
-c_kudahhar = {
+c_sakamim = {
 	1215.1.1 = {
 		holder = khenemhat_45
 		liege = k_khenemhat
+	}
+}
+c_kudahhar = {
+	1215.1.1 = {
+		holder = sarradon_1
 	}
 	1215.1.1 = { change_development_level = 18 }
 }
@@ -412,13 +393,6 @@ c_mosufar = {
 		liege = k_khenemhat
 	}
 }
-d_al_miqdayah = {
-	1215.1.1 = {
-		holder = khenemhat_46
-		liege = k_khenemhat
-	}
-	1215.1.1 = { change_development_level = 6 }
-}
 d_thuwabha = {
 	1215.1.1 = {
 		holder = khenemhat_47
@@ -426,29 +400,28 @@ d_thuwabha = {
 	}
 	1215.1.1 = { change_development_level = 5 }
 }
-d_al_oyoodah = {
+c_qudsabk = {
 	1215.1.1 = {
 		holder = khenemhat_47
 		liege = k_khenemhat
 	}
-	1215.1.1 = { change_development_level = 5 }
 }
-d_alzarshut = {
+d_duwardir = {
 	1215.1.1 = {
-		holder = khenemhat_48
+		holder = khenemhat_63
 		liege = k_khenemhat
 	}
-	1215.1.1 = { change_development_level = 4 }
+	1215.1.1 = { change_development_level = 5 }
 }
-c_kagime = {
+c_kassabak = {
 	1215.1.1 = {
-		holder = khenemhat_49
+		holder = khenemhat_63
 		liege = k_khenemhat
 	}
 }
 c_sakalla = {
 	1215.1.1 = {
-		holder = khenemhat_49
+		holder = khenemhat_26
 		liege = k_khenemhat
 	}
 }
@@ -458,37 +431,13 @@ c_alghairbah = {
 		liege = k_khenemhat
 	}
 }
-c_bayisova = {
-	1215.1.1 = {
-		holder = khenemhat_50
-		liege = k_khenemhat
-	}
-}
-c_harmadiq = {
-	1215.1.1 = {
-		holder = khenemhat_51
-		liege = k_khenemhat
-	}
-}
 c_felakese = {
 	1215.1.1 = {
 		holder = khenemhat_51
 		liege = k_khenemhat
 	}
 }
-c_andasen = {
-	1215.1.1 = {
-		holder = khenemhat_60
-		liege = k_mohrtag_al_badi
-	}
-}
 c_gseiyada = {
-	1215.1.1 = {
-		holder = khenemhat_60
-		liege = k_mohrtag_al_badi
-	}
-}
-c_majaia = {
 	1215.1.1 = {
 		holder = khenemhat_60
 		liege = k_mohrtag_al_badi
@@ -511,14 +460,6 @@ k_dhami = {
 c_as_sulatoorah = {
 	1215.1.1 = {
 		holder = forgotten_1
-	}
-}
-
-c_doganbey = {
-	1215.1.1 = {
-		holder = forgotten_2
-		liege = k_almubid
-		government = landed_order_government
 	}
 }
 
@@ -546,13 +487,6 @@ c_asiona = {
 	}
 }
 
-c_sayyishli = {
-	1215.1.1 = {
-		holder = forgotten_5
-		liege = k_almubid		
-	}
-}
-
 d_aljabish = {
 	1215.1.1 = {
 		holder = forgotten_6
@@ -564,7 +498,7 @@ d_aljabish = {
 
 c_zakhodiyah = {
 	1215.1.1 = {
-		holder = forgotten_7
+		holder = forgotten_6
 		liege = d_aljabish		
 		government = landed_order_government
 	}
@@ -586,9 +520,19 @@ d_qudsashniyah = {
 	}
 	1215.1.1 = { change_development_level = 11 }
 }
-
-d_albaybischa = {
-1215.1.1 = { change_development_level = 5 }
+c_boyakhan = {
+	1215.1.1 = {
+		government = landed_order_government 
+		holder = forgotten_9
+		liege = k_almubid		
+	}
+}
+c_zarrichan = {
+	1215.1.1 = {
+		government = landed_order_government 
+		holder = forgotten_9
+		liege = k_almubid		
+	}
 }
 d_al_ruheiniyas = {
 	1215.1.1 = {
@@ -598,7 +542,20 @@ d_al_ruheiniyas = {
 	}
 	1215.1.1 = { change_development_level = 10 }
 }
-
+c_assidari = {
+	1215.1.1 = {
+		holder = forgotten_10
+		liege = k_almubid		
+		government = landed_order_government
+	}
+}
+c_habaden = {
+	1215.1.1 = {
+		holder = forgotten_10
+		liege = k_almubid		
+		government = landed_order_government
+	}
+}
 c_jabada = {
 	1215.1.1 = {
 		holder = forgotten_11
@@ -624,8 +581,12 @@ d_hajjarut = {
 	1215.1.1 = { change_development_level = 10 }
 }
 
-d_amadaya = {
-1215.1.1 = { change_development_level = 8 }
+c_alkibish = {
+	1215.1.1 = {
+		holder = forgotten_13
+		liege = k_almubid		
+		government = landed_order_government
+	}
 }
 
 d_mahasrakh = {
@@ -636,30 +597,10 @@ d_mahasrakh = {
 	1215.1.1 = { change_development_level = 12 }
 }
 
-d_kafabulus = {
-1215.1.1 = { change_development_level = 11 }
-}
-
-c_domamiyya = {
-	1215.1.1 = {
-		holder = forgotten_14
-		liege = k_almubid		
-		government = landed_order_government
-	}
-}
-
 c_zabashli = {
 	1215.1.1 = {	
 		holder = forgotten_14
 		liege = k_almubid		
-	}
-}
-
-c_shirasht = {
-	1215.1.1 = {	
-		holder = forgotten_15
-		liege = k_almubid		
-		government = landed_order_government
 	}
 }
 
@@ -670,45 +611,53 @@ c_fahalla = {
 	}
 }
 
-#Colonia
-
-
-d_kamyaneh = {
+d_the_eye = {
 	1215.1.1 = {
-		holder = colonia_1
+		holder = forgotten_1
 	}
 	1215.1.1 = { change_development_level = 4 }
 }
 
-d_at_tash = {
-1215.1.1 = { change_development_level = 3 }
+d_fahndadd = {
+	1215.1.1 = { change_development_level = 3 }
 }
 
-d_hararwad = {
-1215.1.1 = { change_development_level = 4 }
+#Colonia
+
+
+d_kamyaneh = {
+	1250.1.1 = {
+		holder = colonia_1
+	}
+	1250.1.1 = { change_development_level = 4 }
+}
+c_khotoorah = {
+	1250.1.1 = {
+		holder = colonia_1
+	}
+	1250.1.1 = { change_development_level = 4 }
+}
+c_addahilif = {
+	1250.1.1 = {
+		holder = colonia_1
+	}
+	1250.1.1 = { change_development_level = 4 }
+}
+c_ninebjah = {
+	1250.1.1 = {
+		holder = colonia_1
+	}
+	1250.1.1 = { change_development_level = 4 }
 }
 c_tallqush = {
-	1215.1.1 = {
-		government = republic_government
-		holder = coloniavassal_1
-		liege = d_kamyaneh
-	}
-}
-c_dubamas = {
-	1215.1.1 = {
-		government = republic_government
+	1250.1.1 = {
+		government = republic_playable_government
 		holder = coloniavassal_1
 		liege = d_kamyaneh
 	}
 }
 c_nasitba = {
-	1215.1.1 = {
-		holder = coloniavassal_2
-		liege = d_kamyaneh
-	}
-}
-c_quneibous = {
-	1215.1.1 = {
+	1250.1.1 = {
 		holder = coloniavassal_2
 		liege = d_kamyaneh
 	}
@@ -722,11 +671,41 @@ d_hadirah = {
 	}
 	1215.1.1 = { change_development_level = 2 }
 }
+c_nabammam = {
+	1215.1.1 = {
+		holder = marmaladid_1
+	}
+}
 d_babojarm = {
 	1215.1.1 = {
 		holder = marmaladid_2
+		liege = k_khenemhat
 	}
 	1215.1.1 = { change_development_level = 2 }
+}
+c_banawa = {
+	1215.1.1 = {
+		holder = marmaladid_2
+		liege = k_khenemhat
+	}
+}
+c_beni_sulqas = {
+	1215.1.1 = {
+		holder = marmaladid_2
+		liege = k_khenemhat
+	}
+}
+c_lahibid = {
+	1215.1.1 = {
+		holder = marmaladid_2
+		liege = k_khenemhat
+	}
+}
+c_qamijar = {
+	1215.1.1 = {
+		holder = marmaladid_2
+		liege = k_khenemhat
+	}
 }
 d_miavaz = {
 	1215.1.1 = {
@@ -740,7 +719,17 @@ d_baimar = {
 	}
 	1215.1.1 = { change_development_level = 3 }
 }
-
+c_ridaqbanah = {
+	1215.1.1 = {
+		holder = marmaladid_4
+	}
+}
+c_provinceprovince9266 = {
+	1248.2.5 = {
+		holder = easternimperial_aversarinas_aautokrata_8
+		change_development_level = 7
+	}
+}
 
 
 

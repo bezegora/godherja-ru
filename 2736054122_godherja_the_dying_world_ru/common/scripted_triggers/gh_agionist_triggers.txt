@@ -1,0 +1,20 @@
+﻿is_agionist_holy_order_trigger = {
+	OR = {
+		this = title:k_saint_sansias_rose
+		this = title:k_forlorn_guardian
+		this = title:k_golden_hand
+		this = title:k_saint_calystos_key
+		this = title:k_bleeding_martyr
+		this = title:k_pure_heart
+		this = title:k_blind_watcher
+		this = title:k_forgotten_saint
+	}
+}
+
+ai_uses_agionist_interactions_trigger = {
+	has_religion = religion:agionism_religion
+	top_liege = {
+		has_religion = religion:agionism_religion
+		has_government = landed_order_government
+	}
+}

@@ -1,0 +1,146 @@
+﻿colonize_wasteland_interaction = {
+	category = interaction_category_uncategorized
+	hidden = yes
+
+	desc = colonize_wasteland_interaction_desc
+
+	target_type = title
+	target_filter = recipient_domain_titles
+	
+	auto_accept = yes
+	
+	is_shown = {
+		scope:actor = {
+			NOR = {
+				has_government = wasteland_government
+				has_government = tribal_government 
+			}
+		}
+	}
+	
+	can_be_picked_title = {
+		scope:target = {
+			trigger_if = {
+				limit = { tier = tier_county }
+				title_province = {
+					barony_controller = { has_trait = gh_wasteland }
+				}
+				OR = {
+					any_neighboring_county = {
+						holder = {
+							OR = {
+								this = scope:actor
+								any_liege_or_above = {
+									this = scope:actor
+								}
+							}
+						}
+					}
+					trigger_if = {
+						limit = { is_coastal_county = yes }
+						scope:actor = {
+							realm_to_title_distance_squared = {
+								title = scope:target
+								value <= squared_distance_small
+							}
+						}
+					}
+					trigger_else = {
+						always = no
+					}
+				}
+			}
+			trigger_else = {
+				custom_description = {
+					text = "colonize_holding_interaction_title_not_county_or_below"
+					always = no
+				}
+			}
+		}
+	}
+
+	has_valid_target_showing_failures_only = {
+		always = yes
+	}
+	
+	cost = {
+		gold = {
+			value = 500
+		}
+	}
+
+	on_accept = {
+		scope:actor = {
+			send_interface_toast = {
+				title = gh_colonize_wasteland_title
+
+				right_icon = scope:actor					
+
+				get_title = scope:target
+			}
+			set_variable = {
+				name = county_being_colonized_tmp_var
+				value = scope:target
+				days = 1
+			}
+			create_story = story_cycle_colonization
+		}
+	}
+
+	ai_will_do = {
+		base = 100
+	}
+}
+
+
+
+abandon_colony_interaction = {
+	category = interaction_category_uncategorized
+	hidden = yes
+
+	desc = abandon_colony_interaction_desc
+
+	target_type = title
+	target_filter = actor_domain_titles
+	
+	auto_accept = yes
+	
+	is_shown = {
+		scope:actor = {
+			NOR = {
+				has_government = wasteland_government
+				has_trait = gh_wasteland
+			}
+			this = scope:recipient
+		}
+	}
+	
+	can_be_picked_title = {
+		scope:target = {
+			trigger_if = {
+				limit = { tier = tier_county }
+				title_province = {
+					has_holding_type = wasteland_empty_holding
+				}
+			}
+			trigger_else = {
+				custom_description = {
+					text = "colonize_holding_interaction_title_not_county_or_below"
+					always = no
+				}
+			}
+		}
+	}
+	
+	has_valid_target_showing_failures_only = {
+		always = yes
+	}
+
+	on_accept = {
+		spawn_ruin = { COUNTY = scope:target }
+	}
+
+	ai_will_do = {
+		base = 0
+	}
+}

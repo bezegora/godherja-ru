@@ -192,7 +192,7 @@ start_hunt_decision = {
 		}
 	}
 
-	cooldown = { days = standard_hunting_cooldown_time }
+	cooldown = { months = hunt_cooldown_value }
 
 	is_shown = {
 		is_landed = yes
@@ -213,6 +213,12 @@ start_hunt_decision = {
 				has_trait = lazy
 			}
 			custom_tooltip = start_hunt_decision_stress_lazy
+		}
+		else_if = {
+			limit = {
+				has_character_modifier = empathy_to_animals
+			}
+			custom_tooltip = start_hunt_decision_stress_empathy
 		}
 		else = {
 			stress_impact = {

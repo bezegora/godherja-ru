@@ -641,17 +641,6 @@ scripted_effect select_special_tier_move_effect = {
 			trigger = {
 				NOT = { exists = local_var:combat_move_stoic_veteran_flag }
 				has_trait = varangian
-				# Can't use the Varangian trait against the Eastern Roman Emperor, as that's just not cricket.
-				NOR = {
-					AND = {
-						this = scope:sc_defender
-						scope:sc_attacker = { has_title = title:e_byzantium }
-					}
-					AND = {
-						this = scope:sc_attacker
-						scope:sc_defender = { has_title = title:e_byzantium }
-					}
-				}
 				# Block special moves twice in a row.
 				NOR = {
 					AND = {
@@ -1428,7 +1417,7 @@ scripted_effect select_combat_options_from_pool_effect = {
 	## For the sake of easy tweakability, all tiers include all variables, so each one can be adjusted as needed for balance.
 	## low_scsk or below
 	if = {
-		limit = { prowess <= low_scsk }
+		limit = { actual_current_pure_prowess <= low_scsk }
 		#low_scsk *always* draws x3 tier 1 moves.
 		set_variable = {
 			name = tier_1_counter
@@ -1445,7 +1434,7 @@ scripted_effect select_combat_options_from_pool_effect = {
 	}
 	## mediocre_scsk or below
 	else_if = {
-		limit = { prowess <= mediocre_scsk }
+		limit = { actual_current_pure_prowess <= mediocre_scsk }
 		random_list = {
 			#Bad roll, -1 to tier set.
 			50 = {
@@ -1481,7 +1470,7 @@ scripted_effect select_combat_options_from_pool_effect = {
 	}
 	## medium_scsk or below
 	else_if = {
-		limit = { prowess <= medium_scsk }
+		limit = { actual_current_pure_prowess <= medium_scsk }
 		random_list = {
 			#Bad roll, -1 to tier set.
 			33 = {
@@ -1532,7 +1521,7 @@ scripted_effect select_combat_options_from_pool_effect = {
 	}
 	## decent_scsk or below
 	else_if = {
-		limit = { prowess <= decent_scsk }
+		limit = { actual_current_pure_prowess <= decent_scsk }
 		random_list = {
 			#Bad roll, -1 to tier set.
 			33 = {
@@ -1583,7 +1572,7 @@ scripted_effect select_combat_options_from_pool_effect = {
 	}
 	## high_scsk or below
 	else_if = {
-		limit = { prowess <= high_scsk }
+		limit = { actual_current_pure_prowess <= high_scsk }
 		random_list = {
 			#Bad roll, -1 to tier set.
 			33 = {
@@ -1634,7 +1623,7 @@ scripted_effect select_combat_options_from_pool_effect = {
 	}
 	## very_high_scsk or below
 	else_if = {
-		limit = { prowess <= very_high_scsk }
+		limit = { actual_current_pure_prowess <= very_high_scsk }
 		random_list = {
 			#Bad roll, -1 to tier set.
 			33 = {
@@ -1685,7 +1674,7 @@ scripted_effect select_combat_options_from_pool_effect = {
 	}
 	## extremely_high_scsk or below
 	else_if = {
-		limit = { prowess <= extremely_high_scsk }
+		limit = { actual_current_pure_prowess <= extremely_high_scsk }
 		random_list = {
 			#Bad roll, -1 to tier set.
 			50 = {
@@ -2689,7 +2678,7 @@ scripted_effect increment_combat_buffs_effect = {
 	}
 	# Remove any existing duel edge buffs.
 	hidden_effect = { remove_temporary_duel_edge_buff_modifiers_effect = yes }
-	# Finally, add the buff corresponding to our new level of edge.
+	# Add the buff corresponding to our new level of edge.
 	if = {
 		limit = { local_var:current_duel_edge_buff = 1 }
 		add_character_modifier = duel_edge_buff_01_modifier
@@ -2812,6 +2801,8 @@ scripted_effect increment_combat_buffs_effect = {
 		#Show a tooltip in case the character is overflowing at max buff.
 		custom_tooltip = single_combat.0001.tt.maximum_buff_reached
 	}
+	# Finally, note that the character needs a stats recalc.
+	add_character_flag = sce_needs_forced_recalc_flag
 }
 
 # Add negative prowess character modifiers from the current move.
@@ -3079,7 +3070,7 @@ scripted_effect increment_combat_debuffs_effect = {
 	}
 	# Remove any existing duel edge buffs.
 	hidden_effect = { remove_temporary_duel_edge_debuff_modifiers_effect = yes }
-	# Finally, add the buff corresponding to our new level of edge.
+	# Add the buff corresponding to our new level of edge.
 	if = {
 		limit = { local_var:current_duel_edge_debuff = 1 }
 		add_character_modifier = duel_edge_debuff_01_modifier
@@ -3202,6 +3193,8 @@ scripted_effect increment_combat_debuffs_effect = {
 		#Show a tooltip in case the character is overflowing at max buff.
 		custom_tooltip = single_combat.0001.tt.maximum_debuff_reached
 	}
+	# Finally, note that the character needs a stats recalc.
+	add_character_flag = sce_needs_forced_recalc_flag
 }
 
 # Tier One move effects
@@ -4774,6 +4767,39 @@ single_combat.0001 = {
 									trigger = { scope:sc_defender_last_move = flag:something_to_hide }
 									desc = single_combat.0001.desc.my_feedback.something_to_hide
 								}
+								triggered_desc = {
+									trigger = { scope:sc_defender_last_move = flag:tier_0_generic_blast }
+									desc = single_combat_magic.0001.desc.my_feedback.tier_0_generic_blast
+								}
+								triggered_desc = {
+									trigger = { scope:sc_defender_last_move = flag:tier_1_generic_blast }
+									desc = single_combat_magic.0001.desc.my_feedback.tier_1_generic_blast
+								}
+								triggered_desc = {
+									trigger = { scope:sc_defender_last_move = flag:tier_2_generic_blast }
+									desc = single_combat_magic.0001.desc.my_feedback.tier_2_generic_blast
+								}
+								triggered_desc = {
+									trigger = { scope:sc_defender_last_move = flag:tier_3_generic_blast }
+									desc = single_combat_magic.0001.desc.my_feedback.tier_3_generic_blast
+								}
+								triggered_desc = {
+									trigger = { scope:sc_defender_last_move = flag:tier_0_ward }
+									desc = single_combat_magic.0001.desc.my_feedback.tier_0_ward
+								}
+								triggered_desc = {
+									trigger = { scope:sc_defender_last_move = flag:tier_1_ward }
+									desc = single_combat_magic.0001.desc.my_feedback.tier_1_ward
+								}
+								triggered_desc = {
+									trigger = { scope:sc_defender_last_move = flag:tier_2_ward }
+									desc = single_combat_magic.0001.desc.my_feedback.tier_2_ward
+								}
+								triggered_desc = {
+									trigger = { scope:sc_defender_last_move = flag:tier_3_ward }
+									desc = single_combat_magic.0001.desc.my_feedback.tier_3_ward
+								}
+								
 							}
 						}
 					}
@@ -4969,6 +4995,38 @@ single_combat.0001 = {
 								triggered_desc = {
 									trigger = { scope:sc_attacker_last_move = flag:something_to_hide }
 									desc = single_combat.0001.desc.opponent_response.something_to_hide
+								}
+								triggered_desc = {
+									trigger = { scope:sc_attacker_last_move = flag:tier_0_generic_blast }
+									desc = single_combat_magic.0001.desc.opponent_response.tier_0_generic_blast
+								}
+								triggered_desc = {
+									trigger = { scope:sc_attacker_last_move = flag:tier_1_generic_blast }
+									desc = single_combat_magic.0001.desc.opponent_response.tier_1_generic_blast
+								}
+								triggered_desc = {
+									trigger = { scope:sc_attacker_last_move = flag:tier_2_generic_blast }
+									desc = single_combat_magic.0001.desc.opponent_response.tier_2_generic_blast
+								}
+								triggered_desc = {
+									trigger = { scope:sc_attacker_last_move = flag:tier_3_generic_blast }
+									desc = single_combat_magic.0001.desc.opponent_response.tier_3_generic_blast
+								}
+								triggered_desc = {
+									trigger = { scope:sc_attacker_last_move = flag:tier_0_ward }
+									desc = single_combat_magic.0001.desc.opponent_response.tier_0_ward
+								}
+								triggered_desc = {
+									trigger = { scope:sc_attacker_last_move = flag:tier_1_ward }
+									desc = single_combat_magic.0001.desc.opponent_response.tier_1_ward
+								}
+								triggered_desc = {
+									trigger = { scope:sc_attacker_last_move = flag:tier_2_ward }
+									desc = single_combat_magic.0001.desc.opponent_response.tier_2_ward
+								}
+								triggered_desc = {
+									trigger = { scope:sc_attacker_last_move = flag:tier_3_ward }
+									desc = single_combat_magic.0001.desc.opponent_response.tier_3_ward
 								}
 							}
 						}
@@ -5286,6 +5344,38 @@ single_combat.0001 = {
 									trigger = { scope:sc_attacker_last_move = flag:something_to_hide }
 									desc = single_combat.0001.desc.my_feedback.something_to_hide
 								}
+								triggered_desc = {
+									trigger = { scope:sc_attacker_last_move = flag:tier_0_generic_blast }
+									desc = single_combat_magic.0001.desc.my_feedback.tier_0_generic_blast
+								}
+								triggered_desc = {
+									trigger = { scope:sc_attacker_last_move = flag:tier_1_generic_blast }
+									desc = single_combat_magic.0001.desc.my_feedback.tier_1_generic_blast
+								}
+								triggered_desc = {
+									trigger = { scope:sc_attacker_last_move = flag:tier_2_generic_blast }
+									desc = single_combat_magic.0001.desc.my_feedback.tier_2_generic_blast
+								}
+								triggered_desc = {
+									trigger = { scope:sc_attacker_last_move = flag:tier_3_generic_blast }
+									desc = single_combat_magic.0001.desc.my_feedback.tier_3_generic_blast
+								}
+								triggered_desc = {
+									trigger = { scope:sc_attacker_last_move = flag:tier_0_ward }
+									desc = single_combat_magic.0001.desc.my_feedback.tier_0_ward
+								}
+								triggered_desc = {
+									trigger = { scope:sc_attacker_last_move = flag:tier_1_ward }
+									desc = single_combat_magic.0001.desc.my_feedback.tier_1_ward
+								}
+								triggered_desc = {
+									trigger = { scope:sc_attacker_last_move = flag:tier_2_ward }
+									desc = single_combat_magic.0001.desc.my_feedback.tier_2_ward
+								}
+								triggered_desc = {
+									trigger = { scope:sc_attacker_last_move = flag:tier_3_ward }
+									desc = single_combat_magic.0001.desc.my_feedback.tier_3_ward
+								}
 							}
 						}
 					}
@@ -5482,6 +5572,38 @@ single_combat.0001 = {
 									trigger = { scope:sc_defender_last_move = flag:something_to_hide }
 									desc = single_combat.0001.desc.opponent_response.something_to_hide
 								}
+								triggered_desc = {
+									trigger = { scope:sc_defender_last_move = flag:tier_0_generic_blast }
+									desc = single_combat_magic.0001.desc.opponent_response.tier_0_generic_blast
+								}
+								triggered_desc = {
+									trigger = { scope:sc_defender_last_move = flag:tier_1_generic_blast }
+									desc = single_combat_magic.0001.desc.opponent_response.tier_1_generic_blast
+								}
+								triggered_desc = {
+									trigger = { scope:sc_defender_last_move = flag:tier_2_generic_blast }
+									desc = single_combat_magic.0001.desc.opponent_response.tier_2_generic_blast
+								}
+								triggered_desc = {
+									trigger = { scope:sc_defender_last_move = flag:tier_3_generic_blast }
+									desc = single_combat_magic.0001.desc.opponent_response.tier_3_generic_blast
+								}
+								triggered_desc = {
+									trigger = { scope:sc_defender_last_move = flag:tier_0_ward }
+									desc = single_combat_magic.0001.desc.opponent_response.tier_0_ward
+								}
+								triggered_desc = {
+									trigger = { scope:sc_defender_last_move = flag:tier_1_ward }
+									desc = single_combat_magic.0001.desc.opponent_response.tier_1_ward
+								}
+								triggered_desc = {
+									trigger = { scope:sc_defender_last_move = flag:tier_2_ward }
+									desc = single_combat_magic.0001.desc.opponent_response.tier_2_ward
+								}
+								triggered_desc = {
+									trigger = { scope:sc_defender_last_move = flag:tier_3_ward }
+									desc = single_combat_magic.0001.desc.opponent_response.tier_3_ward
+								}
 							}
 						}
 					}
@@ -5656,6 +5778,14 @@ single_combat.0001 = {
 		play_music_cue = "mx_cue_combat_stinger"
 		# Generate combat options.
 		select_combat_options_from_pool_effect = yes
+		remove_single_combat_magic_character_local_variables_effect = yes
+		if = {
+			limit = { 
+				can_access_magic = yes
+				has_variable = magical_prowess
+			}
+			select_magic_combat_options_from_pool_effect = yes
+		}
 		# Set up portraits for this event, putting the current actor always on the left.
 		if = {
 			limit = { this = scope:sc_defender }
@@ -6353,6 +6483,142 @@ single_combat.0001 = {
 				}
 				scope:my_foe = {
 					show_as_tooltip = { combat_move_something_to_hide_effect = yes }
+				}
+			}
+			if = {
+				limit = {
+					OR = {
+						AND = {
+							this = scope:sc_defender
+							scope:sc_attacker_last_move = flag:tier_0_generic_blast
+						}
+						AND = {
+							this = scope:sc_attacker
+							scope:sc_defender_last_move = flag:tier_0_generic_blast
+						}
+					}
+				}
+				scope:my_foe = {
+					show_as_tooltip = { magic_combat_move_tier_0_generic_blast_effect = yes }
+				}
+			}
+			if = {
+				limit = {
+					OR = {
+						AND = {
+							this = scope:sc_defender
+							scope:sc_attacker_last_move = flag:tier_0_ward
+						}
+						AND = {
+							this = scope:sc_attacker
+							scope:sc_defender_last_move = flag:tier_0_ward
+						}
+					}
+				}
+				scope:my_foe = {
+					show_as_tooltip = { magic_combat_move_tier_0_ward_effect = yes }
+				}
+			}
+			if = {
+				limit = {
+					OR = {
+						AND = {
+							this = scope:sc_defender
+							scope:sc_attacker_last_move = flag:tier_1_generic_blast
+						}
+						AND = {
+							this = scope:sc_attacker
+							scope:sc_defender_last_move = flag:tier_1_generic_blast
+						}
+					}
+				}
+				scope:my_foe = {
+					show_as_tooltip = { magic_combat_move_tier_1_generic_blast_effect = yes }
+				}
+			}
+			if = {
+				limit = {
+					OR = {
+						AND = {
+							this = scope:sc_defender
+							scope:sc_attacker_last_move = flag:tier_1_ward
+						}
+						AND = {
+							this = scope:sc_attacker
+							scope:sc_defender_last_move = flag:tier_1_ward
+						}
+					}
+				}
+				scope:my_foe = {
+					show_as_tooltip = { magic_combat_move_tier_1_ward_effect = yes }
+				}
+			}
+			if = {
+				limit = {
+					OR = {
+						AND = {
+							this = scope:sc_defender
+							scope:sc_attacker_last_move = flag:tier_2_generic_blast
+						}
+						AND = {
+							this = scope:sc_attacker
+							scope:sc_defender_last_move = flag:tier_2_generic_blast
+						}
+					}
+				}
+				scope:my_foe = {
+					show_as_tooltip = { magic_combat_move_tier_2_generic_blast_effect = yes }
+				}
+			}
+			if = {
+				limit = {
+					OR = {
+						AND = {
+							this = scope:sc_defender
+							scope:sc_attacker_last_move = flag:tier_2_ward
+						}
+						AND = {
+							this = scope:sc_attacker
+							scope:sc_defender_last_move = flag:tier_2_ward
+						}
+					}
+				}
+				scope:my_foe = {
+					show_as_tooltip = { magic_combat_move_tier_2_ward_effect = yes }
+				}
+			}
+			if = {
+				limit = {
+					OR = {
+						AND = {
+							this = scope:sc_defender
+							scope:sc_attacker_last_move = flag:tier_3_generic_blast
+						}
+						AND = {
+							this = scope:sc_attacker
+							scope:sc_defender_last_move = flag:tier_3_generic_blast
+						}
+					}
+				}
+				scope:my_foe = {
+					show_as_tooltip = { magic_combat_move_tier_3_generic_blast_effect = yes }
+				}
+			}
+			if = {
+				limit = {
+					OR = {
+						AND = {
+							this = scope:sc_defender
+							scope:sc_attacker_last_move = flag:tier_3_ward
+						}
+						AND = {
+							this = scope:sc_attacker
+							scope:sc_defender_last_move = flag:tier_3_ward
+						}
+					}
+				}
+				scope:my_foe = {
+					show_as_tooltip = { magic_combat_move_tier_3_ward_effect = yes }
 				}
 			}
 		}
@@ -7673,6 +7939,191 @@ single_combat.0001 = {
 			}
 		}
 	}
+	
+	# Placeholder_tier_0_magic_blast
+	option = {
+		name = single_combat_magic.0001.tier_0_magic_blast
+		trigger = { exists = local_var:magic_combat_move_tier_0_generic_blast_flag }
+
+		#Move clarification
+		custom_tooltip = single_combat_magic.0001.tier_0_magic_blast.tt
+
+		#Move effects
+		## First, we show the move's effects with no guff.
+		show_as_tooltip = { magic_combat_move_tier_0_generic_blast_effect = yes }
+		## Then, we check to make sure if scope:my_foe is still around to suffer the effects. This prevents errors if they die mid-combat.
+		if = {
+			limit = {
+				scope:my_foe = { is_alive = yes }
+			}
+			hidden_effect = { magic_combat_move_tier_0_generic_blast_effect = yes }
+		}
+
+		ai_chance = {
+			base = 100
+		}
+	}
+	# Tier 0 ward
+	option = {
+		name = single_combat_magic.0001.tier_0_ward
+		trigger = { exists = local_var:magic_combat_move_tier_0_ward_flag }
+
+		#Move clarification
+		custom_tooltip = single_combat_magic.0001.tier_0_ward.tt
+
+		#Move effects
+		## First, we show the move's effects with no guff.
+		show_as_tooltip = { magic_combat_move_tier_0_ward_effect = yes }
+		## Then, we check to make sure if scope:my_foe is still around to suffer the effects. This prevents errors if they die mid-combat.
+		if = {
+			limit = {
+				scope:my_foe = { is_alive = yes }
+			}
+			hidden_effect = { magic_combat_move_tier_0_ward_effect = yes }
+		}
+
+		ai_chance = {
+			base = 100
+		}
+	}
+	# Placeholder_tier_1_magic_blast
+	option = {
+		name = single_combat_magic.0001.tier_1_magic_blast
+		trigger = { exists = local_var:magic_combat_move_tier_1_generic_blast_flag }
+
+		#Move clarification
+		custom_tooltip = single_combat_magic.0001.tier_1_magic_blast.tt
+
+		#Move effects
+		## First, we show the move's effects with no guff.
+		show_as_tooltip = { magic_combat_move_tier_1_generic_blast_effect = yes }
+		## Then, we check to make sure if scope:my_foe is still around to suffer the effects. This prevents errors if they die mid-combat.
+		if = {
+			limit = {
+				scope:my_foe = { is_alive = yes }
+			}
+			hidden_effect = { magic_combat_move_tier_1_generic_blast_effect = yes }
+		}
+
+		ai_chance = {
+			base = 100
+		}
+	}
+	# Tier 1 ward
+	option = {
+		name = single_combat_magic.0001.tier_1_ward
+		trigger = { exists = local_var:magic_combat_move_tier_1_ward_flag }
+
+		#Move clarification
+		custom_tooltip = single_combat_magic.0001.tier_1_ward.tt
+
+		#Move effects
+		## First, we show the move's effects with no guff.
+		show_as_tooltip = { magic_combat_move_tier_1_ward_effect = yes }
+		## Then, we check to make sure if scope:my_foe is still around to suffer the effects. This prevents errors if they die mid-combat.
+		if = {
+			limit = {
+				scope:my_foe = { is_alive = yes }
+			}
+			hidden_effect = { magic_combat_move_tier_1_ward_effect = yes }
+		}
+
+		ai_chance = {
+			base = 100
+		}
+	}
+	# Placeholder_tier_2_magic_blast
+	option = {
+		name = single_combat_magic.0001.tier_2_magic_blast
+		trigger = { exists = local_var:magic_combat_move_tier_2_generic_blast_flag }
+
+		#Move clarification
+		custom_tooltip = single_combat_magic.0001.tier_2_magic_blast.tt
+
+		#Move effects
+		## First, we show the move's effects with no guff.
+		show_as_tooltip = { magic_combat_move_tier_2_generic_blast_effect = yes }
+		## Then, we check to make sure if scope:my_foe is still around to suffer the effects. This prevents errors if they die mid-combat.
+		if = {
+			limit = {
+				scope:my_foe = { is_alive = yes }
+			}
+			hidden_effect = { magic_combat_move_tier_2_generic_blast_effect = yes }
+		}
+
+		ai_chance = {
+			base = 100
+		}
+	}
+	# Tier 2 ward
+	option = {
+		name = single_combat_magic.0001.tier_2_ward
+		trigger = { exists = local_var:magic_combat_move_tier_2_ward_flag }
+
+		#Move clarification
+		custom_tooltip = single_combat_magic.0001.tier_2_ward.tt
+
+		#Move effects
+		## First, we show the move's effects with no guff.
+		show_as_tooltip = { magic_combat_move_tier_2_ward_effect = yes }
+		## Then, we check to make sure if scope:my_foe is still around to suffer the effects. This prevents errors if they die mid-combat.
+		if = {
+			limit = {
+				scope:my_foe = { is_alive = yes }
+			}
+			hidden_effect = { magic_combat_move_tier_2_ward_effect = yes }
+		}
+
+		ai_chance = {
+			base = 100
+		}
+	}
+	# Placeholder_tier_3_magic_blast
+	option = {
+		name = single_combat_magic.0001.tier_3_magic_blast
+		trigger = { exists = local_var:magic_combat_move_tier_3_generic_blast_flag }
+
+		#Move clarification
+		custom_tooltip = single_combat_magic.0001.tier_3_magic_blast.tt
+
+		#Move effects
+		## First, we show the move's effects with no guff.
+		show_as_tooltip = { magic_combat_move_tier_3_generic_blast_effect = yes }
+		## Then, we check to make sure if scope:my_foe is still around to suffer the effects. This prevents errors if they die mid-combat.
+		if = {
+			limit = {
+				scope:my_foe = { is_alive = yes }
+			}
+			hidden_effect = { magic_combat_move_tier_3_generic_blast_effect = yes }
+		}
+
+		ai_chance = {
+			base = 100
+		}
+	}
+	# Tier 3 ward
+	option = {
+		name = single_combat_magic.0001.tier_3_ward
+		trigger = { exists = local_var:magic_combat_move_tier_3_ward_flag }
+
+		#Move clarification
+		custom_tooltip = single_combat_magic.0001.tier_3_ward.tt
+
+		#Move effects
+		## First, we show the move's effects with no guff.
+		show_as_tooltip = { magic_combat_move_tier_3_ward_effect = yes }
+		## Then, we check to make sure if scope:my_foe is still around to suffer the effects. This prevents errors if they die mid-combat.
+		if = {
+			limit = {
+				scope:my_foe = { is_alive = yes }
+			}
+			hidden_effect = { magic_combat_move_tier_3_ward_effect = yes }
+		}
+
+		ai_chance = {
+			base = 100
+		}
+	}
 
 	#Work out the post-event effects.
 	after = {
@@ -7708,17 +8159,19 @@ single_combat.0001 = {
 		}
 		# Otherwise, we can go through the usual flow.
 		else = {
-			#If a player is involved, update character skills to account for duel edge stuff.
-			if = {
-				limit = {
-					OR = {
-						scope:sc_attacker = { is_ai = no }
-						scope:sc_defender = { is_ai = no }
-					}
+			#If either character has had an edge modifier added, update character skills to account for duel edge stuff.
+			scope:sc_attacker = {
+				if = {
+					limit = { has_character_flag = sce_needs_forced_recalc_flag }
+					force_character_skill_recalculation = yes
+					remove_character_flag = sce_needs_forced_recalc_flag
 				}
-				hidden_effect = {
-					scope:sc_attacker = { force_character_skill_recalculation = yes }
-					scope:sc_defender = { force_character_skill_recalculation = yes }
+			}
+			scope:sc_defender = {
+				if = {
+					limit = { has_character_flag = sce_needs_forced_recalc_flag }
+					force_character_skill_recalculation = yes
+					remove_character_flag = sce_needs_forced_recalc_flag
 				}
 			}
 			#Calculate injury risks for descs.
@@ -7749,15 +8202,18 @@ single_combat.0021 = {
 	immediate = {
 		# Check what round we're at, and reduce the threshold variables as appropriate if we're in a late enough round.
 		## Reduce injury thresholds for both characters.
+
 		if = {
 			limit = { scope:sc_defender.var:current_round = round_injury_bonus_lower }
 			change_variable = {
 				name = sc_attacker_injury_bonus
 				add = round_injury_adjustment_lower
 			}
-			change_variable = {
-				name = sc_defender_injury_bonus
-				add = round_injury_adjustment_lower
+			scope:sc_defender = {
+				change_variable = {
+					name = sc_defender_injury_bonus
+					add = round_injury_adjustment_lower
+				}
 			}
 		}
 		if = {
@@ -7766,24 +8222,30 @@ single_combat.0021 = {
 				name = sc_attacker_injury_bonus
 				add = round_injury_adjustment_lowest
 			}
-			change_variable = {
-				name = sc_defender_injury_bonus
-				add = round_injury_adjustment_lowest
+			scope:sc_defender = {
+				change_variable = {
+					name = sc_defender_injury_bonus
+					add = round_injury_adjustment_lowest
+				}
 			}
 		}
 		## Reduce success threshold.
 		if = {
 			limit = { scope:sc_defender.var:current_round = round_success_threshold_lower }
-			change_variable = {
-				name = success_threshold
-				add = round_success_adjustment_lower
+			scope:sc_defender = {
+				change_variable = {
+					name = success_threshold
+					add = round_success_adjustment_lower
+				}
 			}
 		}
 		if = {
 			limit = { scope:sc_defender.var:current_round = round_success_threshold_lowest }
-			change_variable = {
-				name = success_threshold
-				add = round_success_adjustment_lowest
+			scope:sc_defender = {
+				change_variable = {
+					name = success_threshold
+					add = round_success_adjustment_lowest
+				}
 			}
 		}
 		# Check to see if either character has achieved a suitable success score.
@@ -8177,6 +8639,38 @@ single_combat.0031 = {
 									trigger = { scope:sc_defender_last_move = flag:something_to_hide }
 									desc = single_combat.0031.desc.sc_defender.something_to_hide
 								}
+								triggered_desc = {
+									trigger = { scope:sc_defender_last_move = flag:tier_0_generic_blast }
+									desc = single_combat_magic.0031.desc.sc_defender.tier_0_generic_blast
+								}
+								triggered_desc = {
+									trigger = { scope:sc_defender_last_move = flag:tier_1_generic_blast }
+									desc = single_combat_magic.0031.desc.sc_defender.tier_1_generic_blast
+								}
+								triggered_desc = {
+									trigger = { scope:sc_defender_last_move = flag:tier_2_generic_blast }
+									desc = single_combat_magic.0031.desc.sc_defender.tier_2_generic_blast
+								}
+								triggered_desc = {
+									trigger = { scope:sc_defender_last_move = flag:tier_3_generic_blast }
+									desc = single_combat_magic.0031.desc.sc_defender.tier_3_generic_blast
+								}
+								triggered_desc = {
+									trigger = { scope:sc_defender_last_move = flag:tier_0_ward }
+									desc = single_combat_magic.0031.desc.sc_defender.tier_0_ward
+								}
+								triggered_desc = {
+									trigger = { scope:sc_defender_last_move = flag:tier_1_ward }
+									desc = single_combat_magic.0031.desc.sc_defender.tier_1_ward
+								}
+								triggered_desc = {
+									trigger = { scope:sc_defender_last_move = flag:tier_2_ward }
+									desc = single_combat_magic.0031.desc.sc_defender.tier_2_ward
+								}
+								triggered_desc = {
+									trigger = { scope:sc_defender_last_move = flag:tier_3_ward }
+									desc = single_combat_magic.0031.desc.sc_defender.tier_3_ward
+								}
 							}
 						}
 					}
@@ -8341,6 +8835,38 @@ single_combat.0031 = {
 								triggered_desc = {
 									trigger = { scope:sc_attacker_last_move = flag:something_to_hide }
 									desc = single_combat.0031.desc.opponent_response.something_to_hide
+								}
+								triggered_desc = {
+									trigger = { scope:sc_attacker_last_move = flag:tier_0_generic_blast }
+									desc = single_combat_magic.0031.desc.opponent_response.tier_0_generic_blast
+								}
+								triggered_desc = {
+									trigger = { scope:sc_attacker_last_move = flag:tier_1_generic_blast }
+									desc = single_combat_magic.0031.desc.opponent_response.tier_1_generic_blast
+								}
+								triggered_desc = {
+									trigger = { scope:sc_attacker_last_move = flag:tier_2_generic_blast }
+									desc = single_combat_magic.0031.desc.opponent_response.tier_2_generic_blast
+								}
+								triggered_desc = {
+									trigger = { scope:sc_attacker_last_move = flag:tier_3_generic_blast }
+									desc = single_combat_magic.0031.desc.opponent_response.tier_3_generic_blast
+								}
+								triggered_desc = {
+									trigger = { scope:sc_attacker_last_move = flag:tier_0_ward }
+									desc = single_combat_magic.0031.desc.opponent_response.tier_0_ward
+								}
+								triggered_desc = {
+									trigger = { scope:sc_attacker_last_move = flag:tier_1_ward }
+									desc = single_combat_magic.0031.desc.opponent_response.tier_1_ward
+								}
+								triggered_desc = {
+									trigger = { scope:sc_attacker_last_move = flag:tier_2_ward }
+									desc = single_combat_magic.0031.desc.opponent_response.tier_2_ward
+								}
+								triggered_desc = {
+									trigger = { scope:sc_attacker_last_move = flag:tier_3_ward }
+									desc = single_combat_magic.0031.desc.opponent_response.tier_3_ward
 								}
 							}
 						}
@@ -8513,6 +9039,38 @@ single_combat.0031 = {
 									trigger = { scope:sc_attacker_last_move = flag:something_to_hide }
 									desc = single_combat.0031.desc.opponent_response.something_to_hide.injury
 								}
+								triggered_desc = {
+									trigger = { scope:sc_attacker_last_move = flag:tier_0_generic_blast }
+									desc = single_combat_magic.0031.desc.opponent_response.tier_0_generic_blast.injury
+								}
+								triggered_desc = {
+									trigger = { scope:sc_attacker_last_move = flag:tier_1_generic_blast }
+									desc = single_combat_magic.0031.desc.opponent_response.tier_1_generic_blast.injury
+								}
+								triggered_desc = {
+									trigger = { scope:sc_attacker_last_move = flag:tier_2_generic_blast }
+									desc = single_combat_magic.0031.desc.opponent_response.tier_2_generic_blast.injury
+								}
+								triggered_desc = {
+									trigger = { scope:sc_attacker_last_move = flag:tier_3_generic_blast }
+									desc = single_combat_magic.0031.desc.opponent_response.tier_3_generic_blast.injury
+								}
+								triggered_desc = {
+									trigger = { scope:sc_attacker_last_move = flag:tier_0_ward }
+									desc = single_combat_magic.0031.desc.opponent_response.tier_0_ward.injury
+								}
+								triggered_desc = {
+									trigger = { scope:sc_attacker_last_move = flag:tier_1_ward }
+									desc = single_combat_magic.0031.desc.opponent_response.tier_1_ward.injury
+								}
+								triggered_desc = {
+									trigger = { scope:sc_attacker_last_move = flag:tier_2_ward }
+									desc = single_combat_magic.0031.desc.opponent_response.tier_2_ward.injury
+								}
+								triggered_desc = {
+									trigger = { scope:sc_attacker_last_move = flag:tier_3_ward }
+									desc = single_combat_magic.0031.desc.opponent_response.tier_3_ward.injury
+								}
 							}
 						}
 					}
@@ -8682,6 +9240,38 @@ single_combat.0031 = {
 								triggered_desc = {
 									trigger = { scope:sc_attacker_last_move = flag:special_fallback }
 									desc = single_combat.0031.desc.opponent_response.special_fallback.fatality
+								}
+								triggered_desc = {
+									trigger = { scope:sc_attacker_last_move = flag:tier_0_generic_blast }
+									desc = single_combat_magic.0031.desc.opponent_response.tier_0_generic_blast.fatality
+								}
+								triggered_desc = {
+									trigger = { scope:sc_attacker_last_move = flag:tier_1_generic_blast }
+									desc = single_combat_magic.0031.desc.opponent_response.tier_1_generic_blast.fatality
+								}
+								triggered_desc = {
+									trigger = { scope:sc_attacker_last_move = flag:tier_2_generic_blast }
+									desc = single_combat_magic.0031.desc.opponent_response.tier_2_generic_blast.fatality
+								}
+								triggered_desc = {
+									trigger = { scope:sc_attacker_last_move = flag:tier_3_generic_blast }
+									desc = single_combat_magic.0031.desc.opponent_response.tier_3_generic_blast.fatality
+								}
+								triggered_desc = {
+									trigger = { scope:sc_attacker_last_move = flag:tier_0_ward }
+									desc = single_combat_magic.0031.desc.opponent_response.tier_0_ward.fatality
+								}
+								triggered_desc = {
+									trigger = { scope:sc_attacker_last_move = flag:tier_1_ward }
+									desc = single_combat_magic.0031.desc.opponent_response.tier_1_ward.fatality
+								}
+								triggered_desc = {
+									trigger = { scope:sc_attacker_last_move = flag:tier_2_ward }
+									desc = single_combat_magic.0031.desc.opponent_response.tier_2_ward.fatality
+								}
+								triggered_desc = {
+									trigger = { scope:sc_attacker_last_move = flag:tier_3_ward }
+									desc = single_combat_magic.0031.desc.opponent_response.tier_3_ward.fatality
 								}
 								# No need for a something_to_hide, as it's never fatal.
 							}
@@ -8872,6 +9462,38 @@ single_combat.0031 = {
 									trigger = { scope:sc_attacker_last_move = flag:something_to_hide }
 									desc = single_combat.0031.desc.sc_attacker.something_to_hide
 								}
+								triggered_desc = {
+									trigger = { scope:sc_attacker_last_move = flag:tier_0_generic_blast }
+									desc = single_combat_magic.0031.desc.sc_attacker.tier_0_generic_blast
+								}
+								triggered_desc = {
+									trigger = { scope:sc_attacker_last_move = flag:tier_1_generic_blast }
+									desc = single_combat_magic.0031.desc.sc_attacker.tier_1_generic_blast
+								}
+								triggered_desc = {
+									trigger = { scope:sc_attacker_last_move = flag:tier_2_generic_blast }
+									desc = single_combat_magic.0031.desc.sc_attacker.tier_2_generic_blast
+								}
+								triggered_desc = {
+									trigger = { scope:sc_attacker_last_move = flag:tier_3_generic_blast }
+									desc = single_combat_magic.0031.desc.sc_attacker.tier_3_generic_blast
+								}
+								triggered_desc = {
+									trigger = { scope:sc_attacker_last_move = flag:tier_0_ward }
+									desc = single_combat_magic.0031.desc.sc_attacker.tier_0_ward
+								}
+								triggered_desc = {
+									trigger = { scope:sc_attacker_last_move = flag:tier_1_ward }
+									desc = single_combat_magic.0031.desc.sc_attacker.tier_1_ward
+								}
+								triggered_desc = {
+									trigger = { scope:sc_attacker_last_move = flag:tier_2_ward }
+									desc = single_combat_magic.0031.desc.sc_attacker.tier_2_ward
+								}
+								triggered_desc = {
+									trigger = { scope:sc_attacker_last_move = flag:tier_3_ward }
+									desc = single_combat_magic.0031.desc.sc_attacker.tier_3_ward
+								}
 							}
 						}
 					}
@@ -9043,6 +9665,38 @@ single_combat.0031 = {
 									trigger = { scope:sc_attacker_last_move = flag:something_to_hide }
 									desc = single_combat.0031.desc.sc_attacker.something_to_hide.injury
 								}
+								triggered_desc = {
+									trigger = { scope:sc_attacker_last_move = flag:tier_0_generic_blast }
+									desc = single_combat_magic.0031.desc.sc_attacker.tier_0_generic_blast.injury
+								}
+								triggered_desc = {
+									trigger = { scope:sc_attacker_last_move = flag:tier_1_generic_blast }
+									desc = single_combat_magic.0031.desc.sc_attacker.tier_1_generic_blast.injury
+								}
+								triggered_desc = {
+									trigger = { scope:sc_attacker_last_move = flag:tier_2_generic_blast }
+									desc = single_combat_magic.0031.desc.sc_attacker.tier_2_generic_blast.injury
+								}
+								triggered_desc = {
+									trigger = { scope:sc_attacker_last_move = flag:tier_3_generic_blast }
+									desc = single_combat_magic.0031.desc.sc_attacker.tier_3_generic_blast.injury
+								}
+								triggered_desc = {
+									trigger = { scope:sc_attacker_last_move = flag:tier_0_ward }
+									desc = single_combat_magic.0031.desc.sc_attacker.tier_0_ward.injury
+								}
+								triggered_desc = {
+									trigger = { scope:sc_attacker_last_move = flag:tier_1_ward }
+									desc = single_combat_magic.0031.desc.sc_attacker.tier_1_ward.injury
+								}
+								triggered_desc = {
+									trigger = { scope:sc_attacker_last_move = flag:tier_2_ward }
+									desc = single_combat_magic.0031.desc.sc_attacker.tier_2_ward.injury
+								}
+								triggered_desc = {
+									trigger = { scope:sc_attacker_last_move = flag:tier_3_ward }
+									desc = single_combat_magic.0031.desc.sc_attacker.tier_3_ward.injury
+								}
 							}
 						}
 					}
@@ -9213,6 +9867,43 @@ single_combat.0031 = {
 									trigger = { scope:sc_attacker_last_move = flag:special_fallback }
 									desc = single_combat.0031.desc.sc_attacker.special_fallback.fatality
 								}
+								#triggered_desc = {
+								#	trigger = { scope:sc_attacker_last_move = flag:something_to_hide }
+								#	desc = single_combat.0031.desc.sc_attacker.something_to_hide.fatality
+								#}
+								triggered_desc = {
+									trigger = { scope:sc_attacker_last_move = flag:tier_0_generic_blast }
+									desc = single_combat_magic.0031.desc.sc_attacker.tier_0_generic_blast.fatality
+								}
+								triggered_desc = {
+									trigger = { scope:sc_attacker_last_move = flag:tier_1_generic_blast }
+									desc = single_combat_magic.0031.desc.sc_attacker.tier_1_generic_blast.fatality
+								}
+								triggered_desc = {
+									trigger = { scope:sc_attacker_last_move = flag:tier_2_generic_blast }
+									desc = single_combat_magic.0031.desc.sc_attacker.tier_2_generic_blast.fatality
+								}
+								triggered_desc = {
+									trigger = { scope:sc_attacker_last_move = flag:tier_3_generic_blast }
+									desc = single_combat_magic.0031.desc.sc_attacker.tier_3_generic_blast.fatality
+								}
+								triggered_desc = {
+									trigger = { scope:sc_attacker_last_move = flag:tier_0_ward }
+									desc = single_combat_magic.0031.desc.sc_attacker.tier_0_ward.fatality
+								}
+								triggered_desc = {
+									trigger = { scope:sc_attacker_last_move = flag:tier_1_ward }
+									desc = single_combat_magic.0031.desc.sc_attacker.tier_1_ward.fatality
+								}
+								triggered_desc = {
+									trigger = { scope:sc_attacker_last_move = flag:tier_2_ward }
+									desc = single_combat_magic.0031.desc.sc_attacker.tier_2_ward.fatality
+								}
+								triggered_desc = {
+									trigger = { scope:sc_attacker_last_move = flag:tier_3_ward }
+									desc = single_combat_magic.0031.desc.sc_attacker.tier_3_ward.fatality
+								}
+								
 								# No need for a something_to_hide, as it's never fatal.
 							}
 						}
@@ -9680,6 +10371,38 @@ single_combat.0041 = {
 									trigger = { scope:sc_defender_last_move = flag:something_to_hide }
 									desc = single_combat.0041.desc.sc_defender.something_to_hide
 								}
+								triggered_desc = {
+									trigger = { scope:sc_defender_last_move = flag:tier_0_generic_blast }
+									desc = single_combat_magic.0041.desc.sc_defender.tier_0_generic_blast
+								}
+								triggered_desc = {
+									trigger = { scope:sc_defender_last_move = flag:tier_1_generic_blast }
+									desc = single_combat_magic.0041.desc.sc_defender.tier_1_generic_blast
+								}
+								triggered_desc = {
+									trigger = { scope:sc_defender_last_move = flag:tier_2_generic_blast }
+									desc = single_combat_magic.0041.desc.sc_defender.tier_2_generic_blast
+								}
+								triggered_desc = {
+									trigger = { scope:sc_defender_last_move = flag:tier_3_generic_blast }
+									desc = single_combat_magic.0041.desc.sc_defender.tier_3_generic_blast
+								}
+								triggered_desc = {
+									trigger = { scope:sc_defender_last_move = flag:tier_0_ward }
+									desc = single_combat_magic.0041.desc.sc_defender.tier_0_ward
+								}
+								triggered_desc = {
+									trigger = { scope:sc_defender_last_move = flag:tier_1_ward }
+									desc = single_combat_magic.0041.desc.sc_defender.tier_1_ward
+								}
+								triggered_desc = {
+									trigger = { scope:sc_defender_last_move = flag:tier_2_ward }
+									desc = single_combat_magic.0041.desc.sc_defender.tier_2_ward
+								}
+								triggered_desc = {
+									trigger = { scope:sc_defender_last_move = flag:tier_3_ward }
+									desc = single_combat_magic.0041.desc.sc_defender.tier_3_ward
+								}
 							}
 						}
 					}
@@ -9862,6 +10585,42 @@ single_combat.0041 = {
 									trigger = { scope:sc_attacker_last_move = flag:something_to_hide }
 									desc = single_combat.0041.desc.opponent_response.something_to_hide
 								}
+								triggered_desc = {
+									trigger = { scope:sc_attacker_last_move = flag:something_to_hide }
+									desc = single_combat.0041.desc.opponent_response.something_to_hide
+								}
+								triggered_desc = {
+									trigger = { scope:sc_attacker_last_move = flag:tier_0_generic_blast }
+									desc = single_combat_magic.0041.desc.opponent_response.tier_0_generic_blast
+								}
+								triggered_desc = {
+									trigger = { scope:sc_attacker_last_move = flag:tier_1_generic_blast }
+									desc = single_combat_magic.0041.desc.opponent_response.tier_1_generic_blast
+								}
+								triggered_desc = {
+									trigger = { scope:sc_attacker_last_move = flag:tier_2_generic_blast }
+									desc = single_combat_magic.0041.desc.opponent_response.tier_2_generic_blast
+								}
+								triggered_desc = {
+									trigger = { scope:sc_attacker_last_move = flag:tier_3_generic_blast }
+									desc = single_combat_magic.0041.desc.opponent_response.tier_3_generic_blast
+								}
+								triggered_desc = {
+									trigger = { scope:sc_attacker_last_move = flag:tier_0_ward }
+									desc = single_combat_magic.0041.desc.opponent_response.tier_0_ward
+								}
+								triggered_desc = {
+									trigger = { scope:sc_attacker_last_move = flag:tier_1_ward }
+									desc = single_combat_magic.0041.desc.opponent_response.tier_1_ward
+								}
+								triggered_desc = {
+									trigger = { scope:sc_attacker_last_move = flag:tier_2_ward }
+									desc = single_combat_magic.0041.desc.opponent_response.tier_2_ward
+								}
+								triggered_desc = {
+									trigger = { scope:sc_attacker_last_move = flag:tier_3_ward }
+									desc = single_combat_magic.0041.desc.opponent_response.tier_3_ward
+								}
 							}
 						}
 					}
@@ -10033,6 +10792,42 @@ single_combat.0041 = {
 									trigger = { scope:sc_attacker_last_move = flag:something_to_hide }
 									desc = single_combat.0041.desc.opponent_response.something_to_hide.injury
 								}
+								triggered_desc = {
+									trigger = { scope:sc_attacker_last_move = flag:something_to_hide }
+									desc = single_combat.0031.desc.opponent_response.something_to_hide
+								}
+								triggered_desc = {
+									trigger = { scope:sc_attacker_last_move = flag:tier_0_generic_blast }
+									desc = single_combat_magic.0041.desc.opponent_response.tier_0_generic_blast.injury
+								}
+								triggered_desc = {
+									trigger = { scope:sc_attacker_last_move = flag:tier_1_generic_blast }
+									desc = single_combat_magic.0041.desc.opponent_response.tier_1_generic_blast.injury
+								}
+								triggered_desc = {
+									trigger = { scope:sc_attacker_last_move = flag:tier_2_generic_blast }
+									desc = single_combat_magic.0041.desc.opponent_response.tier_2_generic_blast.injury
+								}
+								triggered_desc = {
+									trigger = { scope:sc_attacker_last_move = flag:tier_3_generic_blast }
+									desc = single_combat_magic.0041.desc.opponent_response.tier_3_generic_blast.injury
+								}
+								triggered_desc = {
+									trigger = { scope:sc_attacker_last_move = flag:tier_0_ward }
+									desc = single_combat_magic.0041.desc.opponent_response.tier_0_ward.injury
+								}
+								triggered_desc = {
+									trigger = { scope:sc_attacker_last_move = flag:tier_1_ward }
+									desc = single_combat_magic.0041.desc.opponent_response.tier_1_ward.injury
+								}
+								triggered_desc = {
+									trigger = { scope:sc_attacker_last_move = flag:tier_2_ward }
+									desc = single_combat_magic.0041.desc.opponent_response.tier_2_ward.injury
+								}
+								triggered_desc = {
+									trigger = { scope:sc_attacker_last_move = flag:tier_3_ward }
+									desc = single_combat_magic.0041.desc.opponent_response.tier_3_ward.injury
+								}
 							}
 						}
 					}
@@ -10202,6 +10997,38 @@ single_combat.0041 = {
 								triggered_desc = {
 									trigger = { scope:sc_attacker_last_move = flag:special_fallback }
 									desc = single_combat.0041.desc.opponent_response.special_fallback.fatality
+								}
+								triggered_desc = {
+									trigger = { scope:sc_attacker_last_move = flag:tier_0_generic_blast }
+									desc = single_combat_magic.0041.desc.opponent_response.tier_0_generic_blast.fatality
+								}
+								triggered_desc = {
+									trigger = { scope:sc_attacker_last_move = flag:tier_1_generic_blast }
+									desc = single_combat_magic.0041.desc.opponent_response.tier_1_generic_blast.fatality
+								}
+								triggered_desc = {
+									trigger = { scope:sc_attacker_last_move = flag:tier_2_generic_blast }
+									desc = single_combat_magic.0041.desc.opponent_response.tier_2_generic_blast.fatality
+								}
+								triggered_desc = {
+									trigger = { scope:sc_attacker_last_move = flag:tier_3_generic_blast }
+									desc = single_combat_magic.0041.desc.opponent_response.tier_3_generic_blast.fatality
+								}
+								triggered_desc = {
+									trigger = { scope:sc_attacker_last_move = flag:tier_0_ward }
+									desc = single_combat_magic.0041.desc.opponent_response.tier_0_ward.fatality
+								}
+								triggered_desc = {
+									trigger = { scope:sc_attacker_last_move = flag:tier_1_ward }
+									desc = single_combat_magic.0041.desc.opponent_response.tier_1_ward.fatality
+								}
+								triggered_desc = {
+									trigger = { scope:sc_attacker_last_move = flag:tier_2_ward }
+									desc = single_combat_magic.0041.desc.opponent_response.tier_2_ward.fatality
+								}
+								triggered_desc = {
+									trigger = { scope:sc_attacker_last_move = flag:tier_3_ward }
+									desc = single_combat_magic.0041.desc.opponent_response.tier_3_ward.fatality
 								}
 								# No need for a something_to_hide, as it's never fatal.
 							}
@@ -10392,6 +11219,38 @@ single_combat.0041 = {
 									trigger = { scope:sc_attacker_last_move = flag:something_to_hide }
 									desc = single_combat.0041.desc.sc_attacker.something_to_hide
 								}
+								triggered_desc = {
+									trigger = { scope:sc_attacker_last_move = flag:tier_0_generic_blast }
+									desc = single_combat_magic.0041.desc.sc_attacker.tier_0_generic_blast
+								}
+								triggered_desc = {
+									trigger = { scope:sc_attacker_last_move = flag:tier_1_generic_blast }
+									desc = single_combat_magic.0041.desc.sc_attacker.tier_1_generic_blast
+								}
+								triggered_desc = {
+									trigger = { scope:sc_attacker_last_move = flag:tier_2_generic_blast }
+									desc = single_combat_magic.0041.desc.sc_attacker.tier_2_generic_blast
+								}
+								triggered_desc = {
+									trigger = { scope:sc_attacker_last_move = flag:tier_3_generic_blast }
+									desc = single_combat_magic.0041.desc.sc_attacker.tier_3_generic_blast
+								}
+								triggered_desc = {
+									trigger = { scope:sc_attacker_last_move = flag:tier_0_ward }
+									desc = single_combat_magic.0041.desc.sc_attacker.tier_0_ward
+								}
+								triggered_desc = {
+									trigger = { scope:sc_attacker_last_move = flag:tier_1_ward }
+									desc = single_combat_magic.0041.desc.sc_attacker.tier_1_ward
+								}
+								triggered_desc = {
+									trigger = { scope:sc_attacker_last_move = flag:tier_2_ward }
+									desc = single_combat_magic.0041.desc.sc_attacker.tier_2_ward
+								}
+								triggered_desc = {
+									trigger = { scope:sc_attacker_last_move = flag:tier_3_ward }
+									desc = single_combat_magic.0041.desc.sc_attacker.tier_3_ward
+								}
 							}
 						}
 					}
@@ -10563,6 +11422,38 @@ single_combat.0041 = {
 									trigger = { scope:sc_attacker_last_move = flag:something_to_hide }
 									desc = single_combat.0041.desc.sc_attacker.something_to_hide.injury
 								}
+								triggered_desc = {
+									trigger = { scope:sc_attacker_last_move = flag:tier_0_generic_blast }
+									desc = single_combat_magic.0041.desc.sc_attacker.tier_0_generic_blast.injury
+								}
+								triggered_desc = {
+									trigger = { scope:sc_attacker_last_move = flag:tier_1_generic_blast }
+									desc = single_combat_magic.0041.desc.sc_attacker.tier_1_generic_blast.injury
+								}
+								triggered_desc = {
+									trigger = { scope:sc_attacker_last_move = flag:tier_2_generic_blast }
+									desc = single_combat_magic.0041.desc.sc_attacker.tier_2_generic_blast.injury
+								}
+								triggered_desc = {
+									trigger = { scope:sc_attacker_last_move = flag:tier_3_generic_blast }
+									desc = single_combat_magic.0041.desc.sc_attacker.tier_3_generic_blast.injury
+								}
+								triggered_desc = {
+									trigger = { scope:sc_attacker_last_move = flag:tier_0_ward }
+									desc = single_combat_magic.0041.desc.sc_attacker.tier_0_ward.injury
+								}
+								triggered_desc = {
+									trigger = { scope:sc_attacker_last_move = flag:tier_1_ward }
+									desc = single_combat_magic.0041.desc.sc_attacker.tier_1_ward.injury
+								}
+								triggered_desc = {
+									trigger = { scope:sc_attacker_last_move = flag:tier_2_ward }
+									desc = single_combat_magic.0041.desc.sc_attacker.tier_2_ward.injury
+								}
+								triggered_desc = {
+									trigger = { scope:sc_attacker_last_move = flag:tier_3_ward }
+									desc = single_combat_magic.0041.desc.sc_attacker.tier_3_ward.injury
+								}
 							}
 						}
 					}
@@ -10733,7 +11624,38 @@ single_combat.0041 = {
 									trigger = { scope:sc_attacker_last_move = flag:special_fallback }
 									desc = single_combat.0041.desc.sc_attacker.special_fallback.fatality
 								}
-								# No need for a something_to_hide, as it's never fatal.
+								triggered_desc = {
+									trigger = { scope:sc_attacker_last_move = flag:tier_0_generic_blast }
+									desc = single_combat_magic.0041.desc.sc_attacker.tier_0_generic_blast.fatality
+								}
+								triggered_desc = {
+									trigger = { scope:sc_attacker_last_move = flag:tier_1_generic_blast }
+									desc = single_combat_magic.0041.desc.sc_attacker.tier_1_generic_blast.fatality
+								}
+								triggered_desc = {
+									trigger = { scope:sc_attacker_last_move = flag:tier_2_generic_blast }
+									desc = single_combat_magic.0041.desc.sc_attacker.tier_2_generic_blast.fatality
+								}
+								triggered_desc = {
+									trigger = { scope:sc_attacker_last_move = flag:tier_3_generic_blast }
+									desc = single_combat_magic.0041.desc.sc_attacker.tier_3_generic_blast.fatality
+								}
+								triggered_desc = {
+									trigger = { scope:sc_attacker_last_move = flag:tier_0_ward }
+									desc = single_combat_magic.0041.desc.sc_attacker.tier_0_ward.fatality
+								}
+								triggered_desc = {
+									trigger = { scope:sc_attacker_last_move = flag:tier_1_ward }
+									desc = single_combat_magic.0041.desc.sc_attacker.tier_1_ward.fatality
+								}
+								triggered_desc = {
+									trigger = { scope:sc_attacker_last_move = flag:tier_2_ward }
+									desc = single_combat_magic.0041.desc.sc_attacker.tier_2_ward.fatality
+								}
+								triggered_desc = {
+									trigger = { scope:sc_attacker_last_move = flag:tier_3_ward }
+									desc = single_combat_magic.0041.desc.sc_attacker.tier_3_ward.fatality
+								}
 							}
 						}
 					}

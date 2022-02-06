@@ -1,0 +1,51 @@
+﻿duel_success_magic_massive = 125
+
+duel_success_magic_immense = 150
+
+excess_magical_prowess = {
+	value = 0
+	if = {
+		limit = { has_variable = pure_prowess }
+		add = var:pure_prowess
+	}
+	if = {
+		limit = { has_variable = magical_prowess }
+		add = var:magical_prowess
+	}
+	subtract = 100
+	min = 0
+}
+
+non_excess_magical_prowess = {
+	value = 0
+	if = {
+		limit = { has_variable = magical_prowess }
+		add = var:magical_prowess
+	}
+	subtract = excess_magical_prowess
+	min = 0
+}
+
+actual_current_pure_prowess = {
+	value = prowess
+	subtract = non_excess_magical_prowess
+}
+
+current_duel_physical_prowess = {
+	value = prowess
+	if = {
+		limit = { can_access_magic = yes}
+	max = actual_current_pure_prowess
+	}
+}
+
+magical_prowess_with_duel_modifiers = {
+	value = prowess
+	if = {
+		limit = { has_variable = pure_prowess }
+		subtract = var:pure_prowess
+	}
+	
+	min = 0
+	
+}

@@ -1,0 +1,155 @@
+﻿
+##make custom regions so these dont overlap, wait for map rework maybe?
+
+
+intial_adventure_spawn = {
+
+	every_county_in_region = {
+		region = world_greater_aversaria 
+
+		random = {
+			chance = 20
+			random_county_province = {
+				random_list = {
+					20 = {
+						add_province_modifier = {
+							modifier = province_adventure_creepy_graveyard_modifier
+							years = 5
+						}
+					}
+					20 = {
+						add_province_modifier = {
+							modifier = province_adventure_ancient_ruin_modifier
+							years = 5
+						}
+					}
+					20 = {
+						add_province_modifier = {
+							modifier = province_adventure_Forboding_Temple_modifier
+							years = 5
+						}
+					}
+					20 = {
+						add_province_modifier = {
+							modifier = province_adventure_Abandoned_Dungeon_modifier
+							years = 5
+						}
+					}
+					20 = {
+						add_province_modifier = {
+							modifier = province_adventure_Mysterious_Cave_modifier
+							years = 5
+						}
+					}
+				}
+			}
+		}
+	}
+
+
+}
+
+
+mayikprolollan_adventure_spawn = {
+
+	every_county_in_region = {
+		region = world_ga_mayikprolollan
+		random = {
+			chance = 50
+			random_county_province = {
+				add_province_modifier = {
+					modifier = province_adventure_forgotten_passage_modifier
+					years = 5
+				}				
+			}
+		}
+	}	
+}
+kamsaria_adventure_spawn = {
+
+	every_county_in_region = {
+		region = world_ws_kamsaria
+
+		random = {
+			chance = 20
+			random_county_province = {
+				random_list = {
+					50 = {
+						add_province_modifier = {
+							modifier = province_adventure_ancient_pyramid_modifier
+							years = 5
+						}
+					}
+					50 = {
+						add_province_modifier = {
+							modifier = province_adventure_lost_necropolis_modifier
+							years = 5
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+oejeynica_adventure_spawn = {
+
+	every_county_in_region = {
+		region = world_ga_marcher_kingdoms
+		random = {
+			chance = 20
+			random_county_province = {
+				add_province_modifier = {
+					modifier = province_adventure_desolate_cemetery_modifier
+					years = 5
+				}				
+			}
+		}
+	}	
+}
+
+sarradon_adventure_spawn = {
+
+	every_county_in_region = {
+		region = world_sarradon 
+
+		random = {
+			chance = 20
+			random_county_province = {
+				random_list = {
+					20 = {
+						add_province_modifier = {
+							modifier = province_adventure_crumbling_citadel_modifier
+							years = 5
+						}
+					}
+					20 = {
+						add_province_modifier = {
+							modifier = province_adventure_esoteric_shrine_modifier
+							years = 5
+						}
+					}
+					20 = {
+						add_province_modifier = {
+							modifier = province_adventure_remote_wadi_modifier
+							years = 5
+						}
+					}
+					20 = {
+						add_province_modifier = {
+							modifier = province_adventure_unremembered_crypt_modifier
+							years = 5
+						}
+					}
+					20 = {
+						add_province_modifier = {
+							modifier = province_adventure_Mysterious_Cave_modifier
+							years = 5
+						}
+					}
+				}
+			}
+		}
+	}
+
+}

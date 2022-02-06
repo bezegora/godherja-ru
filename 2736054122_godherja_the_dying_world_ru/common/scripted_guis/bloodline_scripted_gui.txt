@@ -264,3 +264,13 @@ bloodline_cois_victorious_founder = {
 		}
 	}
 }
+bloodline_gatecrasher_founder = {
+	scope = character
+	is_valid = { bloodline_gatecrasher_extra_inherit = yes }
+	effect = {
+		custom_description_no_bullet = {
+			text = bloodline_founder
+			subject = global_var:bloodline_gatecrasher_founder
+		}
+	}
+}

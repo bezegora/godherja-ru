@@ -54,6 +54,25 @@ vampiric_drain_mod = {
 	icon = magic_positive
 	life_expectancy = 20
 }
+vampirism_mod = {
+	icon = magic_positive
+	health = 0.25
+	general_opinion = -0.5
+	county_opinion_add = -0.5
+	fertility = -0.02
+	stacking = yes
+}
+
+vampirism_death_near = {
+	icon = magic_negative
+}
+
+ritual_cannibalism_mod = {
+	icon = food_positive
+	health = 0.10
+	stacking = yes
+}
+
 thinning_mod_minor = {
 	icon = magic_negative
 	prowess = -5
@@ -101,14 +120,14 @@ creation_mod_mid = {
 creation_mod_major = {
 	icon = fertility_positive
 	fertility = 0.5
-	positive_inactive_inheritance_chance = 0.2
-	positive_random_genetic_chance = 2
+	negative_inactive_inheritance_chance = 0.2
+	negative_random_genetic_chance = 2
 }
 creation_mod_huge = {
 	icon = fertility_positive
 	fertility = 1.0
-	positive_inactive_inheritance_chance = 0.4
-	positive_random_genetic_chance = 4
+	negative_inactive_inheritance_chance = 0.4
+	negative_random_genetic_chance = 4
 }
 blight_mod_minor = {
 	icon = fertility_negative
@@ -129,6 +148,189 @@ blight_mod_huge = {
 	fertility = -1.0
 	negative_inactive_inheritance_chance = 0.4
 	negative_random_genetic_chance = 4
+}
+kemsar_water_spell_desert_mod_minor = {
+	icon = magic_positive
+	development_growth = 0.6
+	development_growth_factor = 0.4
+	tax_mult = 0.075
+	supply_limit_mult = 0.15
+	levy_reinforcement_rate = 0.10
+}
+kemsar_water_spell_desert_mod_mid = {
+	icon = magic_positive
+	development_growth = 1.2
+	development_growth_factor = 0.8
+	tax_mult = 0.15
+	supply_limit_mult = 0.3
+	levy_reinforcement_rate = 0.2
+}
+kemsar_water_spell_desert_mod_major = {
+	icon = magic_positive
+	development_growth = 2.4
+	development_growth_factor = 1.2
+	tax_mult = 0.30
+	supply_limit_mult = 0.6
+	levy_reinforcement_rate = 0.4
+}
+kemsar_water_spell_desert_mod_huge = {
+	icon = magic_positive
+	development_growth = 4.8
+	development_growth_factor = 1.6
+	tax_mult = 0.60
+	supply_limit_mult = 1.2
+	levy_reinforcement_rate = 0.8
+}
+kemsar_water_spell_normal_mod_minor = {
+	icon = magic_positive
+	development_growth = 0.2
+	development_growth_factor = 0.1
+	tax_mult = 0.02
+	supply_limit_mult = 0.05
+	levy_reinforcement_rate = 0.05
+}
+kemsar_water_spell_normal_mod_mid = {
+	icon = magic_positive
+	development_growth = 0.4
+	development_growth_factor = 0.2
+	tax_mult = 0.04
+	supply_limit_mult = 0.1
+	levy_reinforcement_rate = 0.10
+}
+kemsar_water_spell_normal_mod_major = {
+	icon = magic_positive
+	development_growth = 0.8
+	development_growth_factor = 0.3
+	tax_mult = 0.08
+	supply_limit_mult = 0.2
+	levy_reinforcement_rate = 0.15
+}
+kemsar_water_spell_normal_mod_huge = {
+	icon = magic_positive
+	development_growth = 1.6
+	development_growth_factor = 0.4
+	tax_mult = 0.16
+	supply_limit_mult = 0.4
+	levy_reinforcement_rate = 0.2
+}
+kemsar_water_spell_malus_mod_minor = {
+	icon = magic_positive
+	development_growth = -0.075
+	development_growth_factor = -0.075
+	levy_reinforcement_rate = -0.075
+	supply_limit_mult = -0.075
+}
+kemsar_water_spell_malus_mod_mid = {
+	icon = magic_positive
+	development_growth = -0.15
+	development_growth_factor = -0.15
+	levy_reinforcement_rate = -0.15
+	supply_limit_mult = -0.15
+}
+kemsar_water_spell_malus_mod_major = {
+	icon = magic_positive
+	development_growth = -0.3
+	development_growth_factor = -0.3
+	levy_reinforcement_rate = -0.3
+	supply_limit_mult = -0.3
+}
+kemsar_water_spell_malus_mod_huge = {
+	icon = magic_positive
+	development_growth = -0.6
+	development_growth_factor = -0.6
+	levy_reinforcement_rate = -0.6
+	supply_limit_mult = -0.6
+}
+plant_growth_mod_minor = {
+	icon = magic_positive
+	development_growth = 0.4
+	development_growth_factor = 0.25
+	tax_mult = 0.05
+	supply_limit_mult = 0.1
+	defender_advantage = 1
+}
+plant_growth_mod_mid = {
+	icon = magic_positive
+	development_growth = 0.8
+	development_growth_factor = 0.5
+	tax_mult = 0.1
+	supply_limit_mult = 0.2
+	defender_advantage = 2
+}
+plant_growth_mod_major = {
+	icon = magic_positive
+	development_growth = 1.6
+	development_growth_factor = 0.75
+	tax_mult = 0.20
+	supply_limit_mult = 0.4
+	defender_advantage = 4
+}
+plant_growth_mod_huge = {
+	icon = magic_positive
+	development_growth = 3.2
+	development_growth_factor = 1
+	tax_mult = 0.4
+	supply_limit_mult = 0.8
+	defender_advantage = 8
+}
+plant_growth_malus_mod_minor = {
+	icon = magic_negative
+	development_growth = -0.1
+	development_growth_factor = -0.1
+	levy_reinforcement_rate = -0.1
+	supply_limit_mult = -0.1
+}
+plant_growth_malus_mod_mid = {
+	icon = magic_negative
+	development_growth = -0.2
+	development_growth_factor = -0.2
+	levy_reinforcement_rate = -0.2
+	supply_limit_mult = -0.2
+}
+plant_growth_malus_mod_major = {
+	icon = magic_negative
+	development_growth = -0.4
+	development_growth_factor = -0.4
+	levy_reinforcement_rate = -0.4
+	supply_limit_mult = -0.3
+}
+plant_growth_malus_mod_huge = {
+	icon = magic_negative
+	development_growth = -0.8
+	development_growth_factor = -0.8
+	levy_reinforcement_rate = -0.8
+	supply_limit_mult = -0.4
+}
+sacrifice_plants_mod_minor = {
+	icon = fertility_negative
+	tax_mult = -0.05
+	development_growth_factor = -0.05
+	supply_limit_mult = -0.05
+}
+sacrifice_plants_mod_mid = {
+	icon = fertility_negative
+	tax_mult = -0.15
+	development_growth_factor = -0.15
+	supply_limit_mult = -0.15
+	county_opinion_add = -5
+}
+sacrifice_plants_mod_major = {
+	icon = fertility_negative
+	tax_mult = -0.40
+	development_growth_factor = -0.40
+	supply_limit_mult = -0.40
+	levy_reinforcement_rate = -0.30
+	county_opinion_add = -10
+	development_growth = -4
+}
+sacrifice_plants_mod_huge = {
+	icon = fertility_negative
+	tax_mult = -0.80
+	development_growth_factor = -0.80
+	supply_limit_mult = -0.80
+	levy_reinforcement_rate = -0.60
+	county_opinion_add = -30
+	development_growth = -10
 }
 boneshaping_mod = {
 	icon = magic_positive
@@ -236,10 +438,6 @@ unveiling_mod_backfire_huge = {
 	stress_gain_mult = 1.0
 	stress_loss_mult = -1.0
 }
-quicken_mod = {
-	icon = magic_positive
-	movement_speed = 0.25
-}
 quicken_mod_minor = {
 	icon = magic_positive
 	movement_speed = 0.25
@@ -261,6 +459,13 @@ sacrificed_population_mod = {
 	county_opinion_add = -50
 	monthly_county_control_change_add = -0.5
 }
+sacrificed_population_stack_mod = {
+	icon = county_modifier_opinion_negative
+	county_opinion_add = -10
+	monthly_county_control_change_add = -0.1
+	levy_size = -0.02
+	stacking = yes
+}
 natural_power_prowess_modifier = {
 	icon = magic_positive
 	prowess = 1
@@ -269,10 +474,25 @@ natural_power_intrigue_modifier = {
 	icon = magic_positive
 	intrigue = 1
 }
-annihilation_mod = {
+annihilation_mod_minor = {
 	icon = county_modifier_development_negative
 	development_growth = -0.35
+	garrison_size = -0.3
+}
+annihilation_mod_mid = {
+	icon = county_modifier_development_negative
+	development_growth = -1.0
 	garrison_size = -0.5
+}
+annihilation_mod_major = {
+	icon = county_modifier_development_negative
+	development_growth = -3.5
+	garrison_size = -0.7
+}
+annihilation_mod_huge = {
+	icon = county_modifier_development_negative
+	development_growth = -10.0
+	garrison_size = -0.9
 }
 battle_rage_mod = {
 	icon = prowess_positive
@@ -301,6 +521,62 @@ crushed_armor_mod = {
 	advantage = -5
 	health = -0.5
 }
+crush_metal_mod_minor = {
+	icon = prowess_negative
+	prowess = -5
+	advantage = -5
+	health = -0.25
+	knight_effectiveness_mult = -0.15
+}
+crush_metal_mod_mid = {
+	icon = prowess_negative
+	prowess = -10
+	advantage = -10
+	health = -0.5
+	knight_effectiveness_mult = -0.3
+}
+crush_metal_mod_major = {
+	icon = prowess_negative
+	prowess = -15
+	advantage = -15
+	health = -0.75
+	knight_effectiveness_mult = -0.45
+}
+crush_metal_mod_huge = {
+	icon = prowess_negative
+	prowess = -20
+	advantage = -20
+	health = -1
+	knight_effectiveness_mult = -0.6
+}
+stone_serpent_mod_minor = {
+	icon = magic_positive
+	dread_baseline_add = 1
+	enemy_hostile_scheme_success_chance_add = -5
+	scheme_discovery_chance_mult = 0.05
+	prowess = 1
+}
+stone_serpent_mod_mid = {
+	icon = magic_positive
+	dread_baseline_add = 2
+	enemy_hostile_scheme_success_chance_add = -10
+	scheme_discovery_chance_mult = 0.10
+	prowess = 2
+}
+stone_serpent_mod_major = {
+	icon = magic_positive
+	dread_baseline_add = 3
+	enemy_hostile_scheme_success_chance_add = -20
+	scheme_discovery_chance_mult = 0.15
+	prowess = 3
+}
+stone_serpent_mod_huge = {
+	icon = magic_positive
+	dread_baseline_add = 5
+	enemy_hostile_scheme_success_chance_add = -40
+	scheme_discovery_chance_mult = 0.20
+	prowess = 5
+}
 stone_serpent_1_mod = {
 	icon = magic_positive
 	dread_baseline_add = 20
@@ -327,6 +603,305 @@ meteored = {
 	supply_limit = -1500
 	fort_level = -1
 }
+meteor_mod_minor = {
+	icon = magic_negative
+	development_growth_factor = -0.15
+	supply_limit_mult = -0.1
+	garrison_size = -0.15
+	levy_size = -0.1
+	levy_reinforcement_rate = -0.05
+	fort_level = -5
+	tax_mult = -0.1
+}
+meteor_mod_mid = {
+	icon = magic_negative
+	development_growth_factor = -0.30
+	supply_limit_mult = -0.2
+	garrison_size = -0.30
+	levy_size = -0.2
+	levy_reinforcement_rate = -0.1
+	fort_level = -10
+	tax_mult = -0.2
+}
+meteor_mod_major = {
+	icon = magic_negative
+	development_growth_factor = -0.45
+	supply_limit_mult = -0.3
+	garrison_size = -0.45
+	levy_size = -0.3
+	levy_reinforcement_rate = -0.15
+	fort_level = -20
+	tax_mult = -0.3
+}
+meteor_mod_huge = {
+	icon = magic_negative
+	development_growth_factor = -0.60
+	supply_limit_mult = -0.4
+	garrison_size = -0.60
+	levy_size = -0.4
+	levy_reinforcement_rate = -0.20
+	fort_level = -40
+	tax_mult = -0.4
+}
+stoneskin_mod_minor = {
+	icon = prowess_positive
+	prowess = 3
+	negate_health_penalty_add = 0.5
+}
+stoneskin_mod_mid = {
+	icon = prowess_positive
+	prowess = 6
+	negate_health_penalty_add = 1
+}
+stoneskin_mod_major = {
+	icon = prowess_positive
+	prowess = 9
+	negate_health_penalty_add = 1.5
+}
+stoneskin_mod_huge = {
+	icon = prowess_positive
+	prowess = 12
+	negate_health_penalty_add = 2
+}
+earth_fort_mod_minor = {
+	icon = magic_positive
+	fort_level = 5
+	defender_advantage = 2
+	garrison_size = 0.25
+}
+earth_fort_mod_mid = {
+	icon = magic_positive
+	fort_level = 10
+	defender_advantage = 5
+	garrison_size = 0.5
+}
+earth_fort_mod_major = {
+	icon = magic_positive
+	fort_level = 15
+	defender_advantage = 10
+	garrison_size = 0.75
+}
+earth_fort_mod_huge = {
+	icon = magic_positive
+	fort_level = 30
+	defender_advantage = 20
+	garrison_size = 1
+}
+raise_earth_mod_minor = {
+	icon = martial_positive
+	defender_advantage = 1
+	hills_advantage = 2
+	mountains_advantage = 2
+	desert_mountains_advantage = 2
+	advantage = 2
+	enemy_terrain_advantage = -0.10
+	enemy_hard_casualty_modifier = 0.20
+	hard_casualty_modifier = -0.2
+	retreat_losses = -0.2
+	siege_phase_time = -0.2
+}
+raise_earth_mod_mid = {
+	icon = martial_positive
+	defender_advantage = 2
+	hills_advantage = 4
+	mountains_advantage = 4
+	desert_mountains_advantage = 4
+	advantage = 4
+	enemy_terrain_advantage = -0.20
+	enemy_hard_casualty_modifier = 0.40
+	hard_casualty_modifier = -0.4
+	retreat_losses = -0.4
+	siege_phase_time = -0.4
+}
+raise_earth_mod_major = {
+	icon = martial_positive
+	defender_advantage = 4
+	hills_advantage = 8
+	mountains_advantage = 8
+	desert_mountains_advantage = 8
+	advantage = 8
+	enemy_terrain_advantage = -0.30
+	enemy_hard_casualty_modifier = 0.60
+	hard_casualty_modifier = -0.6
+	retreat_losses = -0.6
+	siege_phase_time = -0.6
+}
+raise_earth_mod_huge = {
+	icon = martial_positive
+	defender_advantage = 8
+	hills_advantage = 16
+	mountains_advantage = 16
+	desert_mountains_advantage = 16
+	advantage = 16
+	enemy_terrain_advantage = -0.4
+	enemy_hard_casualty_modifier = 0.8
+	hard_casualty_modifier = -0.8
+	retreat_losses = -0.8
+	siege_phase_time = -0.8
+}
+earthquake_mod_minor = {
+	icon = magic_negative
+	development_growth_factor = -0.1
+	supply_limit_mult = -0.05
+	garrison_size = -0.075
+	levy_size = -0.075
+	levy_reinforcement_rate = -0.05
+	fort_level = -3
+	tax_mult = -0.1
+	build_speed	= 0.1
+	build_gold_cost = 0.1
+}
+earthquake_mod_mid = {
+	icon = magic_negative
+	development_growth_factor = -0.2
+	supply_limit_mult = -0.1
+	garrison_size = -0.15
+	levy_size = -0.15
+	levy_reinforcement_rate = -0.1
+	fort_level = -6
+	tax_mult = -0.2
+	build_speed	= 0.2
+	build_gold_cost = 0.2
+}
+earthquake_mod_major = {
+	icon = magic_negative
+	development_growth_factor = -0.3
+	supply_limit_mult = -0.15
+	garrison_size = -0.225
+	levy_size = -0.225
+	levy_reinforcement_rate = -0.15
+	fort_level = -12
+	tax_mult = -0.3
+	build_speed	= 0.3
+	build_gold_cost = 0.3
+}
+earthquake_mod_huge = {
+	icon = magic_negative
+	development_growth_factor = -0.4
+	supply_limit_mult = -0.2
+	garrison_size = -0.3
+	levy_size = -0.3
+	levy_reinforcement_rate = -0.20
+	fort_level = -24
+	tax_mult = -0.4
+	build_speed	= 0.4
+	build_gold_cost = 0.4
+}
+petrify_mod_minor = {
+	icon = magic_negative
+	health = -0.5
+	prowess = -3
+	movement_speed = -0.20
+	retreat_losses = 0.25
+}
+petrify_mod_mid = {
+	icon = magic_negative
+	prowess = -2
+	health = -1
+	movement_speed = -0.40
+	retreat_losses = 0.5
+}
+petrify_mod_major = {
+	icon = magic_negative
+	prowess = -10
+	health = -1.5
+	movement_speed = -0.60
+	retreat_losses = 0.75
+}
+petrify_mod_huge = {
+	icon = magic_negative
+	prowess = -10
+	health = -2
+	movement_speed = -0.80
+	retreat_losses = 1
+}
+necrotic_vitality_negative_stack = {
+	icon = magic_negative
+	health = -0.25
+	fertility = -0.025
+	general_opinion = -2
+	attraction_opinion = -2
+	stacking = yes
+}
+necrotic_vitality_mod_minor = {
+	icon = magic_positive
+	health = 1
+}
+
+necrotic_vitality_mod_mid = {
+	icon = magic_positive
+	health = 2
+}
+necrotic_vitality_mod_major = {
+	icon = magic_positive
+	health = 4
+	no_prowess_loss_from_age = yes
+}
+necrotic_vitality_mod_huge = {
+	icon = magic_positive
+	health = 7.5
+	no_prowess_loss_from_age = yes
+}
+
+find_minerals_mod_minor = {
+	icon = magic_positive
+	build_speed	= -0.075
+	holding_build_speed	= -0.075
+	build_gold_cost = -0.075
+	holding_build_gold_cost = -0.075
+	tax_mult = 0.10
+}
+find_minerals_mod_mid = {
+	icon = magic_positive
+	build_speed	= -0.15
+	holding_build_speed	= -0.15
+	build_gold_cost = -0.15
+	holding_build_gold_cost = -0.15
+	tax_mult = 0.20
+}
+find_minerals_mod_major = {
+	icon = magic_positive
+	build_speed	= -0.225
+	holding_build_speed	= -0.225
+	build_gold_cost = -0.225
+	holding_build_gold_cost = -0.225
+	tax_mult = 0.4
+}
+find_minerals_mod_huge = {
+	icon = magic_positive
+	build_speed	= -0.3
+	holding_build_speed	= -0.3
+	build_gold_cost = -0.3
+	holding_build_gold_cost = -0.3
+	tax_mult = 0.6
+}
+improve_soil_mod_minor = {
+	icon = magic_positive
+	development_growth = 0.1
+	development_growth_factor = 0.1
+	tax_mult = 0.03
+}
+improve_soil_mod_mid = {
+	icon = magic_positive
+	development_growth = 0.2
+	development_growth_factor = 0.2
+	tax_mult = 0.06
+}
+improve_soil_mod_major = {
+	icon = magic_positive
+	development_growth = 0.4
+	development_growth_factor = 0.3
+	tax_mult = 0.1
+}
+improve_soil_mod_huge = {
+	icon = magic_positive
+	development_growth = 0.8
+	development_growth_factor = 0.4
+	tax_mult = 0.15
+}
+pulling_moon_mod = {
+	icon = magic_positive
+}
 healing_water_mod_minor = {
 	icon = magic_positive
 	health = 0.5
@@ -342,6 +917,678 @@ healing_water_mod_major = {
 healing_water_mod_huge = {
 	icon = magic_positive
 	health = 2
+}
+lunar_power_good = {
+	icon = magic_positive
+	martial = 3
+	stewardship = 3
+	intrigue = 3
+	learning = 3
+	diplomacy = 3
+}
+lunar_power_full = {
+	icon = magic_positive
+	martial = 6
+	stewardship = 6
+	intrigue = 6
+	learning = 6
+	diplomacy = 6
+}
+enchant_armory_mod_minor = {
+	icon = martial_positive
+	knight_effectiveness_mult = 0.2
+}
+enchant_armory_mod_mid = {
+	icon = martial_positive
+	knight_effectiveness_mult = 0.4
+}
+enchant_armory_mod_major = {
+	icon = martial_positive
+	knight_effectiveness_mult = 0.6
+}
+enchant_armory_mod_huge = {
+	icon = martial_positive
+	knight_effectiveness_mult = 0.8
+}
+enhanced_arms_mod_minor = {
+	icon = prowess_positive
+	prowess = 5
+}
+enhanced_arms_mod_mid = {
+	icon = prowess_positive
+	prowess = 10
+}
+enhanced_arms_mod_major = {
+	icon = prowess_positive
+	prowess = 15
+}
+enhanced_arms_mod_huge = {
+	icon = prowess_positive
+	prowess = 20
+}
+moon_read_battle_mod_minor = {
+	icon = martial_positive
+	advantage = 3
+	prowess = 1
+}
+moon_read_battle_mod_mid = {
+	icon = martial_positive
+	advantage = 6
+	prowess = 2
+}
+moon_read_battle_mod_major = {
+	icon = martial_positive
+	advantage = 9
+	prowess = 3
+}
+moon_read_battle_mod_huge = {
+	icon = martial_positive
+	advantage = 15
+	prowess = 5
+}
+moon_read_wealth_mod_minor = {
+	icon = stewardship_positive
+	monthly_income_mult = 0.10
+}
+moon_read_wealth_mod_mid = {
+	icon = stewardship_positive
+	monthly_income_mult = 0.20
+}
+moon_read_wealth_mod_major = {
+	icon = stewardship_positive
+	monthly_income_mult = 0.30
+}
+moon_read_wealth_mod_huge = {
+	icon = stewardship_positive
+	monthly_income_mult = 0.40
+}
+moon_read_friendship_mod_minor = {
+	icon = diplomacy_positive
+	sway_scheme_power_mult = 0.10
+	befriend_scheme_power_mult = 0.10
+	owned_personal_scheme_success_chance_add = 5
+	general_opinion = 3
+}
+moon_read_friendship_mod_mid = {
+	icon = diplomacy_positive
+	sway_scheme_power_mult = 0.20
+	befriend_scheme_power_mult = 0.20
+	owned_personal_scheme_success_chance_add = 10
+	general_opinion = 6
+}
+moon_read_friendship_mod_major = {
+	icon = diplomacy_positive
+	sway_scheme_power_mult = 0.30
+	befriend_scheme_power_mult = 0.30
+	owned_personal_scheme_success_chance_add = 15
+	general_opinion = 9
+}
+moon_read_friendship_mod_huge = {
+	icon = diplomacy_positive
+	sway_scheme_power_mult = 0.40
+	befriend_scheme_power_mult = 0.40
+	owned_personal_scheme_success_chance_add = 20
+	general_opinion = 12
+}
+moon_read_love_mod_minor = {
+	icon = diplomacy_positive
+	seduce_scheme_power_mult = 0.10
+	courting_scheme_power_mult = 0.10
+	elope_scheme_power_mult = 0.10
+	owned_personal_scheme_success_chance_add = 5
+	attraction_opinion = 6
+}
+moon_read_love_mod_mid = {
+	icon = diplomacy_positive
+	seduce_scheme_power_mult = 0.20
+	courting_scheme_power_mult = 0.20
+	elope_scheme_power_mult = 0.20
+	owned_personal_scheme_success_chance_add = 10
+	attraction_opinion = 12
+}
+moon_read_love_mod_major = {
+	icon = diplomacy_positive
+	seduce_scheme_power_mult = 0.30
+	courting_scheme_power_mult = 0.30
+	elope_scheme_power_mult = 0.30
+	owned_personal_scheme_success_chance_add = 15
+	attraction_opinion = 18
+}
+moon_read_love_mod_huge = {
+	icon = diplomacy_positive
+	seduce_scheme_power_mult = 0.40
+	courting_scheme_power_mult = 0.40
+	elope_scheme_power_mult = 0.40
+	owned_personal_scheme_success_chance_add = 20
+	attraction_opinion = 24
+}
+moon_read_safety_mod_minor = {
+	icon = health_positive
+	negate_health_penalty_add = 0.25
+	hostile_scheme_resistance_mult = 0.10
+	enemy_hostile_scheme_success_chance_add = -10
+}
+moon_read_safety_mod_mid = {
+	icon = health_positive
+	negate_health_penalty_add = 0.5
+	hostile_scheme_resistance_mult = 0.20
+	enemy_hostile_scheme_success_chance_add = -20
+}
+moon_read_safety_mod_major = {
+	icon = health_positive
+	negate_health_penalty_add = 0.75
+	hostile_scheme_resistance_mult = 0.30
+	enemy_hostile_scheme_success_chance_add = -30
+}
+moon_read_safety_mod_huge = {
+	icon = health_positive
+	negate_health_penalty_add = 1
+	hostile_scheme_resistance_mult = 0.40
+	enemy_hostile_scheme_success_chance_add = -40
+}
+moon_read_kill_mod_minor = {
+	icon = intrigue_positive
+	advantage = 1
+	prowess = 1
+	hostile_scheme_power_mult = 0.075
+	owned_hostile_scheme_success_chance_add = 8
+}
+moon_read_kill_mod_mid = {
+	icon = intrigue_positive
+	advantage = 2
+	prowess = 2
+	hostile_scheme_power_mult = 0.15
+	owned_hostile_scheme_success_chance_add = 16
+}
+moon_read_kill_mod_major = {
+	icon = intrigue_positive
+	advantage = 3
+	prowess = 3
+	hostile_scheme_power_mult = 0.225
+	owned_hostile_scheme_success_chance_add = 24
+}
+moon_read_kill_mod_huge = {
+	icon = intrigue_positive
+	advantage = 4
+	prowess = 4
+	hostile_scheme_power_mult = 0.3
+	owned_hostile_scheme_success_chance_add = 32
+}
+moon_read_learn_mod_minor = {
+	icon = learning_positive
+	monthly_lifestyle_xp_gain_mult = 0.10
+}
+moon_read_learn_mod_mid = {
+	icon = learning_positive
+	monthly_lifestyle_xp_gain_mult = 0.20
+}
+moon_read_learn_mod_major = {
+	icon = learning_positive
+	monthly_lifestyle_xp_gain_mult = 0.30
+}
+moon_read_learn_mod_huge = {
+	icon = learning_positive
+	monthly_lifestyle_xp_gain_mult = 0.40
+}
+moon_read_rulership_mod_minor = {
+	icon = stewardship_positive
+	direct_vassal_opinion = 5
+	county_opinion_add = 5
+	character_capital_county_monthly_development_growth_add = 0.1
+}
+moon_read_rulership_mod_mid = {
+	icon = stewardship_positive
+	direct_vassal_opinion = 10
+	county_opinion_add = 10
+	character_capital_county_monthly_development_growth_add = 0.2
+}
+moon_read_rulership_mod_major = {
+	icon = stewardship_positive
+	direct_vassal_opinion = 15
+	county_opinion_add = 15
+	character_capital_county_monthly_development_growth_add = 0.3
+}
+moon_read_rulership_mod_huge = {
+	icon = stewardship_positive
+	direct_vassal_opinion = 20
+	county_opinion_add = 20
+	character_capital_county_monthly_development_growth_add = 0.4
+}
+moon_read_battle_false_mod_minor = {
+	icon = martial_negative
+	advantage = -2
+	prowess = -1
+}
+moon_read_battle_false_mod_mid = {
+	icon = martial_negative
+	advantage = -4
+	prowess = -2
+}
+moon_read_battle_false_mod_major = {
+	icon = martial_negative
+	advantage = -6
+	prowess = -3
+}
+moon_read_battle_false_mod_huge = {
+	icon = martial_negative
+	advantage = -8
+	prowess = -5
+}
+moon_read_wealth_false_mod_minor = {
+	icon = stewardship_negative
+	monthly_income_mult = -0.10
+}
+moon_read_wealth_false_mod_mid = {
+	icon = stewardship_negative
+	monthly_income_mult = -0.20
+}
+moon_read_wealth_false_mod_major = {
+	icon = stewardship_negative
+	monthly_income_mult = -0.30
+}
+moon_read_wealth_false_mod_huge = {
+	icon = stewardship_negative
+	monthly_income_mult = -0.40
+}
+moon_read_friendship_false_mod_minor = {
+	icon = diplomacy_negative
+	sway_scheme_power_mult = -0.10
+	befriend_scheme_power_mult = -0.10
+	owned_personal_scheme_success_chance_add = -5
+	general_opinion = -3
+}
+moon_read_friendship_false_mod_mid = {
+	icon = diplomacy_negative
+	sway_scheme_power_mult = -0.20
+	befriend_scheme_power_mult = -0.20
+	owned_personal_scheme_success_chance_add = -10
+	general_opinion = -6
+}
+moon_read_friendship_false_mod_major = {
+	icon = diplomacy_negative
+	sway_scheme_power_mult = -0.30
+	befriend_scheme_power_mult = -0.30
+	owned_personal_scheme_success_chance_add = -15
+	general_opinion = -9
+}
+moon_read_friendship_false_mod_huge = {
+	icon = diplomacy_negative
+	sway_scheme_power_mult = -0.40
+	befriend_scheme_power_mult = -0.40
+	owned_personal_scheme_success_chance_add = -20
+	general_opinion = -12
+}
+moon_read_love_false_mod_minor = {
+	icon = diplomacy_negative
+	seduce_scheme_power_mult = -0.10
+	courting_scheme_power_mult = -0.10
+	elope_scheme_power_mult = -0.10
+	owned_personal_scheme_success_chance_add = -5
+	attraction_opinion = -6
+}
+moon_read_love_false_mod_mid = {
+	icon = diplomacy_negative
+	seduce_scheme_power_mult = -0.20
+	courting_scheme_power_mult = -0.20
+	elope_scheme_power_mult = -0.20
+	owned_personal_scheme_success_chance_add = -10
+	attraction_opinion = -12
+}
+moon_read_love_false_mod_major = {
+	icon = diplomacy_negative
+	seduce_scheme_power_mult = -0.30
+	courting_scheme_power_mult = -0.30
+	elope_scheme_power_mult = -0.30
+	owned_personal_scheme_success_chance_add = -15
+	attraction_opinion = -18
+}
+moon_read_love_false_mod_huge = {
+	icon = diplomacy_negative
+	seduce_scheme_power_mult = -0.40
+	courting_scheme_power_mult = -0.40
+	elope_scheme_power_mult = -0.40
+	owned_personal_scheme_success_chance_add = -20
+	attraction_opinion = -24
+}
+moon_read_safety_false_mod_minor = {
+	icon = health_negative
+	negate_health_penalty_add = -0.25
+	hostile_scheme_resistance_mult = -0.10
+	enemy_hostile_scheme_success_chance_add = 10
+}
+moon_read_safety_false_mod_mid = {
+	icon = health_negative
+	negate_health_penalty_add = -0.5
+	hostile_scheme_resistance_mult = -0.20
+	enemy_hostile_scheme_success_chance_add = 20
+}
+moon_read_safety_false_mod_major = {
+	icon = health_negative
+	negate_health_penalty_add = -0.75
+	hostile_scheme_resistance_mult = -0.30
+	enemy_hostile_scheme_success_chance_add = 30
+}
+moon_read_safety_false_mod_huge = {
+	icon = health_negative
+	negate_health_penalty_add = -1
+	hostile_scheme_resistance_mult = -0.40
+	enemy_hostile_scheme_success_chance_add = 40
+}
+moon_read_kill_false_mod_minor = {
+	icon = intrigue_negative
+	advantage = -1
+	prowess = -1
+	hostile_scheme_power_mult = -0.075
+	owned_hostile_scheme_success_chance_add = -8
+}
+moon_read_kill_false_mod_mid = {
+	icon = intrigue_negative
+	advantage = -2
+	prowess = -2
+	hostile_scheme_power_mult = -0.15
+	owned_hostile_scheme_success_chance_add = -16
+}
+moon_read_kill_false_mod_major = {
+	icon = intrigue_negative
+	advantage = -3
+	prowess = -3
+	hostile_scheme_power_mult = -0.225
+	owned_hostile_scheme_success_chance_add = -24
+}
+moon_read_kill_false_mod_huge = {
+	icon = intrigue_negative
+	advantage = -4
+	prowess = -4
+	hostile_scheme_power_mult = -0.3
+	owned_hostile_scheme_success_chance_add = -32
+}
+moon_read_learn_false_mod_minor = {
+	icon = learning_negative
+	monthly_lifestyle_xp_gain_mult = -0.10
+}
+moon_read_learn_false_mod_mid = {
+	icon = learning_negative
+	monthly_lifestyle_xp_gain_mult = -0.20
+}
+moon_read_learn_false_mod_major = {
+	icon = learning_negative
+	monthly_lifestyle_xp_gain_mult = -0.30
+}
+moon_read_learn_false_mod_huge = {
+	icon = learning_negative
+	monthly_lifestyle_xp_gain_mult = -0.40
+}
+moon_read_rulership_false_mod_minor = {
+	icon = stewardship_negative
+	direct_vassal_opinion = -5
+	county_opinion_add = -5
+}
+moon_read_rulership_false_mod_mid = {
+	icon = stewardship_negative
+	direct_vassal_opinion = -10
+	county_opinion_add = -10
+}
+moon_read_rulership_false_mod_major = {
+	icon = stewardship_negative
+	direct_vassal_opinion = 15
+	county_opinion_add = 15
+}
+moon_read_rulership_false_mod_huge = {
+	icon = stewardship_negative
+	direct_vassal_opinion = -20
+	county_opinion_add = -20
+}
+moon_guidance_war_mod_minor = {
+	icon = martial_positive
+	advantage = 10
+	martial = 5
+	prowess = 5
+	enemy_hard_casualty_modifier = 0.20
+	hard_casualty_modifier = -0.20
+	retreat_losses = -0.20
+	siege_phase_time = -0.20
+	movement_speed = 0.10
+	enemy_terrain_advantage = -0.05
+}
+moon_guidance_war_mod_mid = {
+	icon = martial_positive
+	advantage = 20
+	martial = 10
+	prowess = 10
+	enemy_hard_casualty_modifier = 0.40
+	hard_casualty_modifier = -0.40
+	retreat_losses = -0.40
+	siege_phase_time = -0.40
+	movement_speed = 0.20
+	enemy_terrain_advantage = -0.10
+}
+moon_guidance_war_mod_major = {
+	icon = martial_positive
+	advantage = 30
+	martial = 15
+	prowess = 15
+	enemy_hard_casualty_modifier = 0.6
+	hard_casualty_modifier = -0.6
+	retreat_losses = -0.6
+	siege_phase_time = -0.6
+	movement_speed = 0.30
+	enemy_terrain_advantage = -0.15
+}
+moon_guidance_war_mod_huge = {
+	icon = martial_positive
+	advantage = 40
+	martial = 20
+	prowess = 20
+	enemy_hard_casualty_modifier = 0.8
+	hard_casualty_modifier = -0.8
+	retreat_losses = -0.8
+	siege_phase_time = -0.8
+	movement_speed = 0.40
+	enemy_terrain_advantage = -0.20
+}
+moon_guidance_wealth_mod_minor = {
+	icon = stewardship_positive
+	monthly_income_mult = 0.50
+	character_capital_county_monthly_development_growth_add = 0.3
+}
+moon_guidance_wealth_mod_mid = {
+	icon = stewardship_positive
+	monthly_income_mult = 1
+	character_capital_county_monthly_development_growth_add = 0.6
+}
+moon_guidance_wealth_mod_major = {
+	icon = stewardship_positive
+	monthly_income_mult = 1.5
+	character_capital_county_monthly_development_growth_add = 0.9
+}
+moon_guidance_wealth_mod_huge = {
+	icon = stewardship_positive
+	monthly_income_mult = 2
+	character_capital_county_monthly_development_growth_add = 1.2
+}
+moon_guidance_scheme_mod_minor = {
+	icon = intrigue_positive
+	hostile_scheme_power_mult = 0.25
+	owned_hostile_scheme_success_chance_add = 25
+	scheme_secrecy = 10
+}
+moon_guidance_scheme_mod_mid = {
+	icon = intrigue_positive
+	hostile_scheme_power_mult = 0.50
+	owned_hostile_scheme_success_chance_add = 50
+	scheme_secrecy = 20
+}
+moon_guidance_scheme_mod_major = {
+	icon = intrigue_positive
+	hostile_scheme_power_mult = 0.75
+	owned_hostile_scheme_success_chance_add = 75
+	scheme_secrecy = 30
+}
+moon_guidance_scheme_mod_huge = {
+	icon = intrigue_positive
+	hostile_scheme_power_mult = 1
+	owned_hostile_scheme_success_chance_add = 100
+	scheme_secrecy = 40
+}
+moon_guidance_scheme_discovery_mod_minor = {
+	icon = intrigue_positive
+	enemy_hostile_scheme_success_chance_add = -50
+	scheme_discovery_chance_mult = 0.5
+}
+moon_guidance_scheme_discovery_mod_mid = {
+	icon = intrigue_positive
+	enemy_hostile_scheme_success_chance_add = -100
+	scheme_discovery_chance_mult = 1
+}
+moon_guidance_scheme_discovery_mod_major = {
+	icon = intrigue_positive
+	enemy_hostile_scheme_success_chance_add = -150
+	scheme_discovery_chance_mult = 1.5
+}
+moon_guidance_scheme_discovery_mod_huge = {
+	icon = intrigue_positive
+	enemy_hostile_scheme_success_chance_add = -200
+	scheme_discovery_chance_mult = 2
+}
+moon_guidance_learn_mod_minor = {
+	icon = learning_positive
+	monthly_lifestyle_xp_gain_mult = 0.75
+	learning = 5
+	cultural_head_fascination_add = 5
+}
+moon_guidance_learn_mod_mid = {
+	icon = learning_positive
+	monthly_lifestyle_xp_gain_mult = 1.5
+	learning = 10
+	cultural_head_fascination_add = 10
+}
+moon_guidance_learn_mod_major = {
+	icon = learning_positive
+	monthly_lifestyle_xp_gain_mult = 2.25
+	learning = 15
+	cultural_head_fascination_add = 15
+}
+moon_guidance_learn_mod_huge = {
+	icon = learning_positive
+	monthly_lifestyle_xp_gain_mult = 3
+	learning = 20
+	cultural_head_fascination_add = 20
+}
+moon_guidance_war_false_mod_minor = {
+	icon = martial_negative
+	advantage = -10
+	prowess = -5
+	enemy_hard_casualty_modifier = -0.10
+	hard_casualty_modifier = 0.10
+	retreat_losses = 0.10
+	siege_phase_time = 0.10
+	movement_speed = -0.10
+	enemy_terrain_advantage = 0.05
+}
+moon_guidance_war_false_mod_mid = {
+	icon = martial_negative
+	advantage = -20
+	prowess = -10
+	enemy_hard_casualty_modifier = -0.20
+	hard_casualty_modifier = 0.20
+	retreat_losses = 0.20
+	siege_phase_time = 0.20
+	movement_speed = -0.20
+	enemy_terrain_advantage = 0.10
+}
+moon_guidance_war_false_mod_major = {
+	icon = martial_negative
+	advantage = -30
+	prowess = -15
+	enemy_hard_casualty_modifier = -0.3
+	hard_casualty_modifier = 0.3
+	retreat_losses = 0.3
+	siege_phase_time = 0.3
+	movement_speed = -0.30
+	enemy_terrain_advantage = 0.15
+}
+moon_guidance_war_false_mod_huge = {
+	icon = martial_negative
+	advantage = -40
+	prowess = -20
+	enemy_hard_casualty_modifier = -0.4
+	hard_casualty_modifier = 0.4
+	retreat_losses = 0.4
+	siege_phase_time = 0.4
+	movement_speed = -0.40
+	enemy_terrain_advantage = 0.20
+}
+moon_guidance_wealth_false_mod_minor = {
+	icon = stewardship_negative
+	monthly_income_mult = -0.25
+}
+moon_guidance_wealth_false_mod_mid = {
+	icon = stewardship_negative
+	monthly_income_mult = -0.5
+}
+moon_guidance_wealth_false_mod_major = {
+	icon = stewardship_negative
+	monthly_income_mult = -0.75
+}
+moon_guidance_wealth_false_mod_huge = {
+	icon = stewardship_negative
+	monthly_income_mult = -1
+}
+moon_guidance_scheme_false_mod_minor = {
+	icon = intrigue_negative
+	hostile_scheme_power_mult = -0.25
+	owned_hostile_scheme_success_chance_add = -25
+}
+moon_guidance_scheme_false_mod_mid = {
+	icon = intrigue_negative
+	hostile_scheme_power_mult = -0.50
+	owned_hostile_scheme_success_chance_add = -50
+}
+moon_guidance_scheme_false_mod_major = {
+	icon = intrigue_negative
+	hostile_scheme_power_mult = -0.75
+	owned_hostile_scheme_success_chance_add = -75
+}
+moon_guidance_scheme_false_mod_huge = {
+	icon = intrigue_negative
+	hostile_scheme_power_mult = -1
+	owned_hostile_scheme_success_chance_add = -100
+}
+moon_guidance_scheme_discovery_false_mod_minor = {
+	icon = intrigue_negative
+	enemy_hostile_scheme_success_chance_add = 25
+	scheme_discovery_chance_mult = -0.25
+}
+moon_guidance_scheme_discovery_false_mod_mid = {
+	icon = intrigue_negative
+	enemy_hostile_scheme_success_chance_add = 50
+	scheme_discovery_chance_mult = -0.5
+}
+moon_guidance_scheme_discovery_false_mod_major = {
+	icon = intrigue_negative
+	enemy_hostile_scheme_success_chance_add = 75
+	scheme_discovery_chance_mult = -0.75
+}
+moon_guidance_scheme_discovery_false_mod_huge = {
+	icon = intrigue_negative
+	enemy_hostile_scheme_success_chance_add = 100
+	scheme_discovery_chance_mult = -1
+}
+moon_guidance_learn_false_mod_minor = {
+	icon = learning_negative
+	monthly_lifestyle_xp_gain_mult = -0.25
+}
+moon_guidance_learn_false_mod_mid = {
+	icon = learning_negative
+	monthly_lifestyle_xp_gain_mult = -0.5
+}
+moon_guidance_learn_false_mod_major = {
+	icon = learning_negative
+	monthly_lifestyle_xp_gain_mult = -0.75
+}
+moon_guidance_learn_false_mod_huge = {
+	icon = learning_negative
+	monthly_lifestyle_xp_gain_mult = -1
 }
 divination_diplomacy_mod_minor = {
 	icon = diplomacy_positive
@@ -451,6 +1698,30 @@ divination_learning_mod_huge = {
 	learning = 20
 	monthly_lifestyle_xp_gain_mult = 1.0
 }
+
+channel_the_rift_overtaxed_mod = {
+	icon = magic_negative
+	prowess = -1
+	health = -0.5
+}
+channel_the_rift_frayed_mod = {
+	icon = magic_negative
+	stress_gain_mult = 0.2
+	stress_loss_mult = -0.2
+}
+
+lead_to_gold_inflation_min = {
+	icon = stewardship_negative
+	tax_mult = -0.01
+	development_growth_factor = -0.01
+	stacking = yes
+}
+lead_to_gold_inflation = {
+	icon = stewardship_negative
+	tax_mult = -0.03
+	development_growth_factor = -0.03
+	stacking = yes
+}
 temporary_magic_prowess_to_combined_cast_modifier = {
 	icon = magic_positive
 	prowess = 1
@@ -460,6 +1731,10 @@ temporary_combined_prowess_to_pure_magic_cast_modifier = {
 	icon = magic_negative
 	prowess = -1
 	stacking = yes
+}
+magic_no_prowess_loss_from_age = {
+	icon = magic_positive
+	no_prowess_loss_from_age = yes
 }
 standard_potion_strength = {
 	icon = magic_positive

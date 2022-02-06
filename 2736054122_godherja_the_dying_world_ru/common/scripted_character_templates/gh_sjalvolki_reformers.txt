@@ -1,0 +1,96 @@
+﻿##################################################
+# #Templates for the Sjalvolki religious reformation
+
+#Founder of Orispolj Rite
+sjalvolki_rite_founder_character = {
+	age = { 25 50 }
+	dynasty = none
+	gender_female_chance = 0
+	faith = orispolj_rite
+	culture = culture:daukeni
+	trait = intellect_good_3
+	trait = education_learning_4
+	trait = hunter_3
+	trait = theologian
+	trait = zealous
+	random_traits_list = {
+		count = 2
+		temperate = { weight = { base = 10 } }
+		ambitious = { weight = { base = 10 } }
+		generous = { weight = { base = 10 } }
+		humble = { weight = { base = 10 } }
+		diligent = { weight = { base = 10 } }
+		gregarious = { weight = { base = 10 } }
+		stubborn = { weight = { base = 10 } }
+		arrogant = { weight = { base = 10 } }
+	}
+	random_traits_list = {
+		count = 1
+		calm = { weight = { base = 10 } }
+		brave = { weight = { base = 10 } }
+		just = { weight = { base = 10 } }
+	}
+	martial = {
+		min_template_low_skill
+		max_template_high_skill
+	}
+	stewardship = {
+		min_template_low_skill
+		max_template_high_skill
+	}
+	diplomacy = {
+		min_template_high_skill
+		max_template_high_skill
+	}
+	intrigue = {
+		min_template_low_skill
+		max_template_high_skill
+	}
+	learning = {
+		min_template_high_skill
+		max_template_high_skill
+	}
+}
+
+piety_rite_founder_character = {
+	age = { 35 50 }
+	dynasty = none
+	gender_female_chance = 0
+	faith = piety_rite
+	culture = culture:daukeni
+	trait = education_learning_4
+	trait = hunter_2
+	trait = theologian
+	trait = zealous
+	random_traits_list = {
+		count = 2
+		temperate = { weight = { base = 10 } }
+		ambitious = { weight = { base = 10 } }
+		generous = { weight = { base = 10 } }
+		humble = { weight = { base = 10 } }
+		diligent = { weight = { base = 10 } }
+		gregarious = { weight = { base = 10 } }
+		stubborn = { weight = { base = 10 } }
+		arrogant = { weight = { base = 10 } }
+	}
+	martial = {
+		min_template_low_skill
+		max_template_high_skill
+	}
+	stewardship = {
+		min_template_low_skill
+		max_template_high_skill
+	}
+	diplomacy = {
+		min_template_high_skill
+		max_template_high_skill
+	}
+	intrigue = {
+		min_template_low_skill
+		max_template_high_skill
+	}
+	learning = {
+		min_template_high_skill
+		max_template_high_skill
+	}
+}

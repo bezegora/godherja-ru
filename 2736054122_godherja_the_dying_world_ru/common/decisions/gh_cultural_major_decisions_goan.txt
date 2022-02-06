@@ -5,99 +5,48 @@
 #A New Mountain Home
 #by UltimateVictory
 new_mountain_home_decision = {
-picture = "gfx/interface/illustrations/decisions/decision_ruins.dds"
-major = yes
-ai_check_interval = 120
-desc = new_mountain_home_decision_desc
+	picture = "gfx/interface/illustrations/decisions/decision_ruins.dds"
+	major = yes
+	ai_check_interval = 120
+	desc = new_mountain_home_decision_desc
 
-is_shown = {
-has_culture_group = culture_group:gh_goans_group
+	is_shown = {
+		has_culture_group = culture_group:gh_goans_group
+		NOT = {
+			is_target_in_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:new_mountain_home_decision
+			}
+		}
+	}
 
-NOR = {
-is_target_in_global_variable_list = {
-name = unavailable_unique_decisions
-target = flag:new_mountain_home_decision
-}
-}
-}
+	is_valid = {
+		has_culture_group = culture_group:gh_goans_group
+		OR = {
+			has_title = title:d_cregoeis
+			has_title = title:d_eene
+			has_title = title:d_olynthagoria
+			has_title = title:d_monaros
+			has_title = title:d_cyrydon
+			has_title = title:d_vathopus
+		}
+	}
 
-is_valid = {
-has_culture_group = culture_group:gh_goans_group
-custom_description = {
-text = new_mountain_home_decision_tt 
+	effect = {
+		capital_county = {
+			change_development_level = 15
+			set_county_culture = culture:goans
+			set_county_faith = root.faith
+		}
+		add_prestige = 750
+		give_nickname = nick_homefinder
+		get_title = title:k_nayam_pahagara
+		hidden_effect = {
+			set_primary_title_to = title:k_nayam_pahagara
+		}
+		add_to_global_variable_list = {
+			name = unavailable_unique_decisions
+			target = flag:new_mountain_home_decision
+		}
+	}
 }
-AND = {
-OR = {
-has_title = title:d_zhabirhon
-has_title = title:d_emiodi
-has_title = title:d_oseinia
-has_title = title:d_cukirhaeus
-has_title = title:d_vredynai
-has_title = title:d_peonopnes
-has_title = title:d_thothous
-has_title = title:d_clamae
-has_title = title:d_morthex
-has_title = title:d_cantedru
-has_title = title:d_kezly
-has_title = title:d_banaia
-has_title = title:d_olynthagoria
-has_title = title:d_aarpazdea
-has_title = title:d_cregoeis
-has_title = title:d_cyrydon
-has_title = title:d_ithina
-has_title = title:d_vathopus
-has_title = title:d_bwlcheit
-has_title = title:d_emkichaae
-has_title = title:d_adaitiron
-has_title = title:d_zaryns
-has_title = title:d_cordae
-}
-
-OR = {
-capital_county = title:c_dethiclos
-capital_county = title:c_ariacas
-capital_county = title:c_annpia
-capital_county = title:c_aplleboni
-capital_county = title:c_vredynaia
-capital_county = title:c_vresos
-capital_county = title:c_dryae
-capital_county = title:c_coria
-capital_county = title:c_parny
-capital_county = title:c_gorlowa
-capital_county = title:c_zhokiv
-capital_county = title:c_otodauti
-capital_county = title:c_hellurii
-capital_county = title:c_aireinon
-capital_county = title:c_sario
-capital_county = title:c_potale
-capital_county = title:c_histrynthos
-capital_county = title:c_rhamnythrae
-capital_county = title:c_lwydmyny
-capital_county = title:c_codolos
-capital_county = title:c_kargagos
-capital_county = title:c_ephnus
-capital_county = title:c_apcera
-}
-}
-}
-effect = {
-capital_county = {
-change_development_level = 15
-set_county_culture = culture:goans
-set_county_faith = faith:gethian
-}
-add_prestige = 750
-give_nickname = nick_homefinder
-get_title = title:k_nayam_pahagara
-hidden_effect = {
-set_primary_title_to = title:k_nayam_pahagara
-}
-add_to_global_variable_list = {
-name = unavailable_unique_decisions
-target = flag:new_mountain_home_decision
-}
-}
-}
-
-
-

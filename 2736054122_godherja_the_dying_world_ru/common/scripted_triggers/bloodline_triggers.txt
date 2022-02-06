@@ -14,7 +14,16 @@
 bloodline_cenware_extra_inherit = {
 	OR = {
 		has_religion = religion:sjalvolki_religion
-		has_culture_group = culture_group:gh_sjalvoki_group
+		has_culture_group = culture_group:gh_sjalvolki_group
+	}
+}
+
+bloodline_gatecrasher_extra_inherit = { #being adabyssian precludes people from being impressed that you fucked adabyss
+	NOT = {
+		OR = {
+			has_religion = religion:adabyssian_religion
+			has_culture_group = culture_group:gh_hadiyan_group
+		}
 	}
 }
 
@@ -95,7 +104,10 @@ bloodline_the_prophet_extra_inherit = {
 
 bloodline_the_black_sun_extra_inherit = {
 	has_culture_group = culture_group:gh_imperial_group
-	has_faith = faith:aversarinas_aautokrata
+	OR = {
+		has_faith = faith:aversarinas_aautokrata
+		has_faith = faith:aversarinas_suncult
+	}
 }
 
 bloodline_kathanouxa_extra_inherit = {
@@ -145,6 +157,13 @@ bloodline_cois_defeated_extra_inherit = {
 	}
 }
 
+bloodline_gatecrasher_extra_inheirit = {
+	NOT = {
+		has_culture_group = culture_group:gh_hadiyan_group
+		has_religion = religion:adabyssian_religion
+	}
+}
+		
 # here to stop the error log complaining
 bloodline_diplomacy_skill_extra_inherit = { always = yes }
 bloodline_martial_skill_extra_inherit = { always = yes }

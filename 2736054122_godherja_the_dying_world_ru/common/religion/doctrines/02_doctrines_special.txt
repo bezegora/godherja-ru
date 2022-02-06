@@ -43,13 +43,13 @@ agionist_faith = {
 	}
 }
 
-sjalvoki_faith = {
+sjalvolki_faith = {
 	group = "not_creatable"
 	is_available_on_create = {
 		always = no # Goes away on reformation
 	}
 
-	sjalvoki_faith_doctrine = {
+	sjalvolki_faith_doctrine = {
 		visible = no
 	}
 }
@@ -96,7 +96,7 @@ unreformed_faith = {
 	
 			# Multiplier for keeping same tenet
 			if = {
-				limit = { has_doctrine = tenets }
+				limit = { has_doctrine = tenet_dummy_tenet }
 				multiply = faith_unchanged_doctrine_cost_mult
 			}
 		}
@@ -139,21 +139,22 @@ is_aversarian_faith = {
 	}
 }
 
-	is_sjalvolki_faith = {
-		group = "special"
+is_sjalvolki_faith = {
+	group = "special"
 		
-		is_available_on_create = {
-			has_doctrine = special_doctrine_is_sjalvolki_faith
-		}
+	is_available_on_create = {
+		has_doctrine = special_doctrine_is_sjalvolki_faith
+	}
 	
-		special_doctrine_is_sjalvolki_faith = {
-			parameters = {
-				# Since doctrines cannot modify other faith's views of us, only our view of others, all Christian faiths are given this special doctrine which makes them friendlier to Faiths with the Christian Syncretism tenet.
-				hostility_override_tenet_sjalvolki_syncretism = 2
-				sjalvolki_religion_syncretic_recipient_opinion_active = yes
-				opinion_of_sjalvolki_religion_syncretic_actor_opinion_active = 30
-			}
+	special_doctrine_is_sjalvolki_faith = {
+		parameters = {
+			# Since doctrines cannot modify other faith's views of us, only our view of others, all Christian faiths are given this special doctrine which makes them friendlier to Faiths with the Christian Syncretism tenet.
+			hostility_override_tenet_sjalvolki_syncretism = 2
+			sjalvolki_religion_syncretic_recipient_opinion_active = yes
+			opinion_of_sjalvolki_religion_syncretic_actor_opinion_active = 30
+			hostility_same_religion = 2
 		}
+	}
 }
 
 is_marcher_faith = {
@@ -182,7 +183,6 @@ is_partic_faith = {
 
 	special_doctrine_is_partic_faith = {
 		parameters = {
-			# Since doctrines cannot modify other faith's views of us, only our view of others, all Christian faiths are given this special doctrine which makes them friendlier to Faiths with the Christian Syncretism tenet.
 			hostility_override_tenet_partic_syncretism = 2
 			partic_religion_syncretic_recipient_opinion_active = yes
 			opinion_of_partic_religion_syncretic_actor_opinion_active = 30
@@ -199,7 +199,6 @@ is_sarradonian_faith = {
 
 	special_doctrine_is_wardenite_faith = {
 		parameters = {
-			# Since doctrines cannot modify other faith's views of us, only our view of others, all Christian faiths are given this special doctrine which makes them friendlier to Faiths with the Christian Syncretism tenet.
 			hostility_override_tenet_wardenite_syncretism = 2
 			wardenite_religion_syncretic_recipient_opinion_active = yes
 			opinion_of_wardenite_religion_syncretic_actor_opinion_active = 30
@@ -275,19 +274,19 @@ is_amsari_faith = {
 	}
 }
 
-is_sherharddi_faith = {
+is_sheharddi_faith = {
 	group = "special"
 	
 	is_available_on_create = {
-		has_doctrine = special_doctrine_is_sherhaddi_faith
+		has_doctrine = special_doctrine_is_sheharddi_faith
 	}
 
-	special_doctrine_is_sherhaddi_faith = {
+	special_doctrine_is_sheharddi_faith = {
 		parameters = {
 			# Since doctrines cannot modify other faith's views of us, only our view of others, all Christian faiths are given this special doctrine which makes them friendlier to Faiths with the Christian Syncretism tenet.
-			hostility_override_tenet_sherhaddi_syncretism = 2
-			sherhaddi_religion_syncretic_recipient_opinion_active = yes
-			opinion_of_sherhaddi_religion_syncretic_actor_opinion_active = 30
+			hostility_override_tenet_sheharddi_syncretism = 2
+			sheharddi_religion_syncretic_recipient_opinion_active = yes
+			opinion_of_sheharddi_religion_syncretic_actor_opinion_active = 30
 		}
 	}
 }
@@ -309,8 +308,171 @@ is_khmet_faith = {
 	}
 }
 
+mogowai_hostility = {
+	group = "special"
+	
+	is_available_on_create = {
+		has_doctrine = special_doctrine_mogowai_hostility
+	}
+	
+	special_doctrine_mogowai_hostility = {
+		visible = no
+		parameters = {
+			hostility_same_religion = 2
+			hostility_same_family = 2
+			hostility_others = 2
+		}
+	}
+}
 
+bekashai_hostility = {
+	group = "special"
+	
+	is_available_on_create = {
+		has_doctrine = special_doctrine_bekashai_hostility
+	}
+	
+	special_doctrine_bekashai_hostility = {
+		visible = no
+		parameters = {
+			hostility_same_religion = 2
+			hostility_same_family = 3
+			hostility_others = 3
+		}
+	}
+}
 
+nitsafai_hostility = {
+	group = "special"
+	
+	is_available_on_create = {
+		has_doctrine = special_doctrine_nitsafai_hostility
+	}
+	
+	special_doctrine_nitsafai_hostility = {
+		visible = no
+		parameters = {
+			hostility_same_religion = 3
+			hostility_same_family = 3
+			hostility_others = 3
+		}
+	}
+}
+
+marefai_hostility = {
+	group = "special"
+	
+	is_available_on_create = {
+		has_doctrine = special_doctrine_marefai_hostility
+	}
+	
+	special_doctrine_marefai_hostility = {
+		visible = no
+		parameters = {
+			hostility_same_religion = 0
+			hostility_same_family = 1
+			hostility_others = 1
+		}
+	}
+}
+
+waharai_hostility = {
+	group = "special"
+	
+	is_available_on_create = {
+		has_doctrine = special_doctrine_waharai_hostility
+	}
+	
+	special_doctrine_waharai_hostility = {
+		visible = no
+		parameters = {
+			hostility_same_religion = 2
+			hostility_same_family = 2
+			hostility_others = 2
+		}
+	}
+}
+
+arnazni_hostility = {
+	group = "special"
+	
+	is_available_on_create = {
+		has_doctrine = special_doctrine_arnazni_hostility
+	}
+	
+	special_doctrine_arnazni_hostility = {
+		visible = no
+		parameters = {
+			hostility_same_religion = 0
+			hostility_same_family = 2
+			hostility_others = 3
+		}
+	}
+}
+
+alau_koev_hostility = {
+	group = "special"
+	
+	is_available_on_create = {
+		has_doctrine = special_doctrine_alau_koev_hostility
+	}
+	
+	special_doctrine_alau_koev_hostility = {
+		visible = no
+		parameters = {
+			hostility_same_religion = 1
+			hostility_same_family = 2
+			hostility_others = 3
+		}
+	}
+}
+
+mokmanur_hostility = {
+	group = "special"
+	
+	is_available_on_create = {
+		has_doctrine = special_doctrine_mokmanur_hostility
+	}
+	
+	special_doctrine_mokmanur_hostility = {
+		visible = no
+		parameters = {
+			hostility_same_religion = 2
+			hostility_same_family = 3
+			hostility_others = 3
+		}
+	}
+}
+
+singular_mamur_hostility = {
+	group = "special"
+	
+	is_available_on_create = {
+		always = yes
+	}
+	
+	special_doctrine_singular_mamur_hostility = {
+		parameters = {
+			hostility_override_special_doctrine_singular_mamur_hostility = 2
+		}
+	}
+}
+
+agionist_order_cooperation_corrupt = {
+	group = "special"
+	
+	is_available_on_create = {
+		has_doctrine = special_doctrine_agionist_order_cooperation_corrupt
+	}
+	
+	special_doctrine_agionist_order_cooperation_corrupt = {
+		parameters = {
+			hostility_override_special_doctrine_agionist_order_cooperation_corrupt = 0
+			# for loc
+			#agionist_order_cooperation_corrupt_bilateral_loc_override = 0
+		}
+	}
+}
 
 #Game rule only 
 full_tolerance = {
@@ -321,6 +483,7 @@ full_tolerance = {
 	
 	special_doctrine_full_tolerance = {
 		parameters = {
+			visible = no
 			hostility_override_special_doctrine_full_tolerance = 0
 		}
 	}

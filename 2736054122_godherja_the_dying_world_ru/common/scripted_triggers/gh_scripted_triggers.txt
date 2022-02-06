@@ -1,42 +1,39 @@
-﻿has_education_magic_trigger = {
+﻿# TODO: these should use magic_education script values + custom descriptions if possible
+has_education_magic_trigger = {
 	OR = {
-		has_trait = education_living_magic_1
-		has_trait = education_living_magic_2
-		has_trait = education_living_magic_3
-		has_trait = education_living_magic_4
-		has_trait = education_dead_magic_1
-		has_trait = education_dead_magic_2
-		has_trait = education_dead_magic_3
-		has_trait = education_dead_magic_4
-		has_trait = education_mixed_magic_1
-		has_trait = education_mixed_magic_2
-		has_trait = education_mixed_magic_3
-		has_trait = education_mixed_magic_4
+		has_trait = education_living_magic
+		has_trait = education_dead_magic
+		has_trait = education_mixed_magic
 	}
 }
 has_education_living_magic_trigger = {
-	OR = {
-		has_trait = education_living_magic_1
-		has_trait = education_living_magic_2
-		has_trait = education_living_magic_3
-		has_trait = education_living_magic_4
+	custom_description = {
+	  text = "education_living_magic_gte_1_tt"
+	  1 <= living_magic_education
 	}
 }
 has_education_dead_magic_trigger = {
-	OR = {
-		has_trait = education_dead_magic_1
-		has_trait = education_dead_magic_2
-		has_trait = education_dead_magic_3
-		has_trait = education_dead_magic_4
+	custom_description = {
+	  text = "education_dead_magic_gte_1_tt"
+	  1 <= dead_magic_education
 	}
 }
 has_education_mixed_magic_trigger = {
-	OR = {
-		has_trait = education_mixed_magic_1
-		has_trait = education_mixed_magic_2
-		has_trait = education_mixed_magic_3
-		has_trait = education_mixed_magic_4
+	custom_description = {
+	  text = "education_mixed_magic_gte_1_tt"
+	  1 <= mixed_magic_education
 	}
+}
+
+has_at_least_magi_potency_rank_trigger = {
+	custom_description = {
+	  text = magi_potency_gte_$RANK$_tt
+	  $RANK$ <= magi_potency
+	}
+}
+
+has_magi_potency_trigger = {
+	has_at_least_magi_potency_rank_trigger = { RANK = 1}
 }
 
 has_magic_education_rank_trigger = {
@@ -256,32 +253,6 @@ reunite_the_empire_complete_control_trigger = { # this only works because the be
 		completely_controls = title:e_opakhasia
 	}
 }
-
-has_ruins_trigger = {
-	OR = {
-		has_building = palace_ruins_01
-		has_building = house_ruins_01
-		has_building = fountain_ruins_01
-		has_building = garden_ruins_01
-		has_building = plaza_ruins_01
-		has_building = crater_ruins_01
-		has_building = waterway_ruins_01
-		has_building = nexus_ruins_01
-		has_building = monument_ruins_01
-
-	}
-}
-is_any_metropolis_district = {
-    OR = {
-        has_holding_type = military_district_holding
-        has_holding_type = palatial_district_holding
-        has_holding_type = maritime_district_holding
-        has_holding_type = temple_district_holding
-        has_holding_type = trade_district_holding
-		has_holding_type = urban_district_holding
-		has_holding_type = workshop_district_holding
-    }
-}
 has_aelvalr_shard = {
 	OR = {
 		title_province = {
@@ -343,6 +314,30 @@ chevalie_will_shatter = {
 					character_merit_value >= merit_threshold_value
 				}
 			}
+		}
+	}
+}
+is_ruin = {
+	OR = {
+		has_trait = gh_wasteland
+		has_culture = culture:wasteland
+		has_faith = faith:wasteland_faith
+	}
+}
+bilateral_ruin_diplomatic_block = {
+	NOR = {
+		trigger_if = {
+			limit = { exists = scope:actor }
+			scope:actor = { is_ruin = yes }
+		}
+		trigger_else = { always = no }
+		trigger_if = {
+			limit = { exists = scope:recipient }
+			scope:recipient = { is_ruin = yes }
+		}
+		trigger_if = {
+			limit = { exists = scope:secondary_recipient }
+			scope:secondary_recipient = { is_ruin = yes }
 		}
 	}
 }

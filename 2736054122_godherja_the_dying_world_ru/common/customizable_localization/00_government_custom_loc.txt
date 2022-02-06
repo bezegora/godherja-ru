@@ -4,14 +4,14 @@ GetTribalReformGovernment = {
 
 	text = {
 		trigger = {
-			religion = { is_in_family = gh_sarradonian }
+			has_culture_group = culture_group:gh_zarasadari_group
 		}
 		localization_key = tribal_reform_clan
 	}
 	text = {
 		trigger = {
 			NOT = {
-				religion = { is_in_family = gh_sarradonian }
+				has_culture_group = culture_group:gh_zarasadari_group
 			}
 		}
 		localization_key = tribal_reform_feudal

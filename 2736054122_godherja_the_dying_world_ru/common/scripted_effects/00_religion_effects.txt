@@ -23,34 +23,13 @@ check_for_equal_doctrine_effect = {
 }
 
 # Used to set a Hindu's personal god.
-# TRIMMED BY HAPCHAZZARD
 set_bhakti_effect = {
 	add_character_modifier = $BHAKTI$
 }
 
 
 create_head_of_faith_title_effect = {
-	# Pay costs
 	if = {
-		limit = {
-			faith = {
-				has_doctrine_parameter = temporal_head_of_faith
-				OR = {
-					has_doctrine = muhammad_succession_sunni_doctrine
-					has_doctrine = muhammad_succession_shia_doctrine
-				}
-			}	
-		}
-		if = {
-			limit = {
-				NOT = { has_trait = sayyid }
-			}
-			# Very expensive for non-sayyid to become a Caliph.
-			add_piety = massive_piety_loss
-		}
-		# Free otherwise
-	}
-	else_if = {
 		limit = {
 			faith = {
 				has_doctrine_parameter = temporal_head_of_faith

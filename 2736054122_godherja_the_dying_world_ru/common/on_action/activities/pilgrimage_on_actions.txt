@@ -1,0 +1,199 @@
+﻿# On actions for the Pilgrimage activity
+
+#To send an appropriate start event
+pilgrimage_setup = {
+	events = {
+		pilgrimage.1001 # Start of generic pilgrimage NOTE: Apparently not needed, will cause double pilgrimages if left in
+	}
+}
+
+# On-action managing possible journey events
+pilgrimage_journey_events = {
+	random_events = {
+		# Generic Pilgrimage Events
+		100 = pilgrimage.2001 # Bandits attack your camp!
+		100 = pilgrimage.2002 # Heathen-hating adherent challenges you
+		100 = pilgrimage.2003 # Companions are running low
+		100 = pilgrimage.2004 # Run into a potential friend
+		100 = pilgrimage.2005 # Peasant insults you
+		100 = pilgrimage.2006 # Lost!
+		100 = pilgrimage.2007 # Personal reflections
+		50 = pilgrimage.2008  # Become Ill
+		100 = pilgrimage.2009 # Travelling while Ill is bad for you
+		25 = pilgrimage.2010 # Meet a Mystic (chain)
+
+		# 'Temptation' Events
+		100 = pilgrimage.2501 # Persistent Beggar
+		100 = pilgrimage.2511 # Cocky Lordling
+	}
+	fallback = pilgrimage_journey_event_fallback
+}
+
+# Fallback for the sake of stability
+pilgrimage_journey_event_fallback = {
+	events = {
+		pilgrimage.9999
+	}
+}
+
+# On-action managing possible destination events
+pilgrimage_destination_events = {
+	first_valid_on_action = {
+		aversarian_destination_events
+		damota_destination_events
+		games_for_the_gods_tenet_destination_events
+		pilgrimage_generic_destination_events
+	}
+}
+
+aversarian_destination_events = {
+	trigger = {
+		religion = religion:aversarinas_aautokrata_religion 
+		exists = scope:activity.activity_province
+		scope:activity.activity_province = {
+			OR = {
+				county = title:c_halium			# Oraispol
+				county = title:c_rhamnythrae	# Vounill
+				county = title:c_atce			# Mayikprolollan
+				county = title:c_palinia	# Drakavil
+				county = title:c_thebastro		# Thebastro
+			}
+		}
+	}
+
+	random_events = {
+		100 = gh_pilgrimage.0001 # Oraispol
+		100 = gh_pilgrimage.0002 # Vounill
+		100 = gh_pilgrimage.0003 # Mayikprolollan
+		100 = gh_pilgrimage.0004 # Drakavil
+		100 = gh_pilgrimage.0005 # Thebastro
+	}
+}
+
+damota_destination_events = {
+	trigger = {
+		religion = religion:mogowai_religion
+		exists = scope:activity.activity_province
+		scope:activity.activity_province = {
+			OR = {
+				county = title:c_zahali			
+				county = title:c_abirut	
+				county = title:c_kilahijan		
+				county = title:c_adabyssfort	
+			}
+		}
+	}
+
+	random_events = {
+		100 = gh_pilgrimage.0009 # Abirut
+		100 = gh_pilgrimage.0010 # Zahali
+		100 = gh_pilgrimage.0011 # Kilahijan
+		100 = gh_pilgrimage.0012 # Adabyssfort
+		100 = gh_pilgrimage.0040 # Wardenite Zahali
+	}
+}
+
+pilgrimage_generic_destination_events = {
+	random_events = {
+		100 = pilgrimage.4001
+		100 = pilgrimage.4002
+	}
+}
+
+pilgrimage_return_events = {
+	random_events = {
+		100 = pilgrimage.9001
+	}
+}
+
+quwazaw_religion = {
+	trigger = {
+		religion = religion:quwazaw_religion 
+		exists = scope:activity.activity_province
+		scope:activity.activity_province = {
+			OR = {
+				county = title:c_felakese
+				county = title:c_ifralimane
+				county = title:c_kudahhar
+				county = title:c_east_sarradon1
+			}
+		}
+	}
+
+	random_events = {
+		100 = gh_pilgrimage.0083 # Fendkiyah
+		100 = gh_pilgrimage.0084 # Ifralimane
+		100 = gh_pilgrimage.0085 # Gharstir
+		100 = gh_pilgrimage.0086 # Saidal
+	}
+}
+
+graveright_religion = {
+	trigger = {
+		faith = faith:graveright
+		exists = scope:activity.activity_province
+		scope:activity.activity_province = {
+			OR = {
+				county = title:c_bytozy
+				county = title:c_tillyes
+				county = title:c_prefallias
+			}
+		}
+	}
+
+	random_events = {
+		100 = gh_pilgrimage.0315 # Sacreinux
+		100 = gh_pilgrimage.0316 # Tillyes
+		100 = gh_pilgrimage.0317 # Prefallias
+	}
+}
+
+# The faith is called gravewatch in-code but graveward in-game
+graveward_religion = {
+	trigger = {
+		faith = faith:gravewatch 
+		exists = scope:activity.activity_province
+		scope:activity.activity_province = {
+			OR = {
+				county = title:c_bytozy
+				county = title:c_tillyes
+				county = title:c_prefallias
+			}
+		}
+	}
+
+	random_events = {
+		100 = gh_pilgrimage.0318 # Sacreinux
+		100 = gh_pilgrimage.0319 # Tillyes
+		100 = gh_pilgrimage.0320 # Prefallias
+	}
+}
+
+games_for_the_gods_tenet_destination_events = {
+	trigger = {
+		root.faith = {
+			has_doctrine = tenet_games_for_gods
+		}
+		exists = scope:activity.activity_province
+		
+		scope:activity.activity_province = {
+			OR = {
+				county = title:c_ullabahd
+				county = title:c_sestaclea
+				county = title:c_dzuga
+				county = title:c_choirgai
+				county = title:c_sainhad
+				county = title:c_tseteretii
+			}
+		}
+	}
+
+	random_events = {
+		100 = gh_pilgrimage.0401 # The Mouth
+		100 = gh_pilgrimage.0402 # The far Shore
+		100 = gh_pilgrimage.0403 # The Branches
+		100 = gh_pilgrimage.0404 # Holy Precincts
+		100 = gh_pilgrimage.0405 # The Emptying
+		100 = gh_pilgrimage.0406 # The Bowl
+	}
+}

@@ -36,5 +36,26 @@ black_sun.0002 = {
 	option = {
 		name = black_sun.0002.a
 		set_character_faith_with_conversion = faith:aversarinas_suncult
+		hidden_effect = {
+			title:e_gurdurbok = {
+				holder = {
+					every_vassal_or_below = {
+						if = {
+							limit = {
+								has_religion = religion:aversarinas_aautokrata_religion
+							}
+							set_character_faith_with_conversion = faith:aversarinas_suncult
+						}
+					}
+					every_county_in_region = {
+						region = world_ga_mountainheights
+						limit = {
+							this.faith = faith:aversarinas_aautokrata
+						}
+						set_county_faith = faith:aversarinas_suncult
+					}
+				}
+			}
+		}
 	}
 }

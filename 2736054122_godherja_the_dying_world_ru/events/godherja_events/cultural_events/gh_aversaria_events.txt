@@ -14,15 +14,263 @@ aversaria.0001 = { ###event for reuniting aversaria
 		play_music_cue = "mx_cue_epic_sacral_moment"
 		reunite_the_empire_decision_effects = yes	
 	}
-	option = {
+	option = { # Gain Restorer of the World nickname
 		name = aversaria.0001.a
+		remove_nickname = yes
+		give_nickname = nick_o_apokatastasis_ton_aversaria
 		if = {
 			limit = {
 				prestige_level < 5
 			}
 			add_prestige_level = 1
-		}		
+		}	
+	}
+	option = { # Gain Manifest God nickname
+		name = aversaria.0001.b
+		remove_nickname = yes
+		give_nickname = nick_epephanis
+		if = {
+			limit = {
+				prestige_level < 5
+			}
+			add_prestige_level = 1
+		}	
 	}	
+	option = { # Gain God and Master nickname
+		name = aversaria.0001.c
+		remove_nickname = yes
+		give_nickname = nick_theios_kai_daskalon
+		if = {
+			limit = {
+				prestige_level < 5
+			}
+			add_prestige_level = 1
+		}	
+	}
+	option = { # Gain the Purest nickname
+		name = aversaria.0001.d
+		remove_nickname = yes
+		give_nickname = nick_o_agnokratir
+		trigger = {
+		        has_faith = faith:aversarinas_aautokrata
+		}
+		if = {
+			limit = {
+				prestige_level < 5
+			}
+			add_prestige_level = 1
+		}	
+	}
+	option = { # Gain the Avenger nickname
+		name = aversaria.0001.e
+		remove_nickname = yes
+		give_nickname = nick_o_ekdikitos
+		trigger = {
+		        has_faith = faith:aversarian_axiaotheaism
+		}
+		if = {
+			limit = {
+				prestige_level < 5
+			}
+			add_prestige_level = 1
+		}	
+	}
+	option = { # Gain the God of the Ashes nickname
+		name = aversaria.0001.f
+		remove_nickname = yes
+		give_nickname = nick_o_theios_ton_stachyon
+		trigger = {
+		        has_faith = faith:aversarian_aeschraes
+		}
+		if = {
+			limit = {
+				prestige_level < 5
+			}
+			add_prestige_level = 1
+		}	
+	}
+	option = { # Gain Beloved of the Purest nickname
+		name = aversaria.0001.g
+		remove_nickname = yes
+		give_nickname = nick_polyagapomanos_ton_agnokratiron
+		trigger = {
+		        has_faith = faith:aversarian_pope
+		}
+		if = {
+			limit = {
+				prestige_level < 5
+			}
+			add_prestige_level = 1
+		}	
+	}
+	option = { # Gain the Invincible Sun nickname
+		name = aversaria.0001.h
+		remove_nickname = yes
+		give_nickname = nick_o_aittitos_hilios
+		trigger = {
+		        has_faith = faith:aversarinas_suncult
+		}
+		if = {
+			limit = {
+				prestige_level < 5
+			}
+			add_prestige_level = 1
+		}	
+	}
+	option = { # Gain the God of Blood nickname
+		name = aversaria.0001.i
+		remove_nickname = yes
+		give_nickname = nick_o_theios_ton_aihaemos
+		trigger = {
+		        has_faith = faith:aversarian_gorassos
+		}
+		if = {
+			limit = {
+				prestige_level < 5
+			}
+			add_prestige_level = 1
+		}	
+	}
+	option = { # Gain the Trismegistos nickname
+		name = aversaria.0001.j
+		remove_nickname = yes
+		give_nickname = nick_trismegistos
+		trigger = {
+		        has_faith = faith:aversarian_megistos
+		}
+		if = {
+			limit = {
+				prestige_level < 5
+			}
+			add_prestige_level = 1
+		}	
+	}
+	option = { # Gain the Liberator nickname
+		name = aversaria.0001.k
+		remove_nickname = yes
+		give_nickname = nick_o_apelatherotos
+		trigger = {
+		        has_faith = faith:aversarinas_aautokrata_reformed
+		}
+		if = {
+			limit = {
+				prestige_level < 5
+			}
+			add_prestige_level = 1
+		}	
+	}
+	option = { # Gain the Herald of the Deep nickname
+		name = aversaria.0001.l
+		remove_nickname = yes
+		give_nickname = nick_o_kirex_ton_vathion
+		trigger = {
+		        has_faith = faith:aversarian_island
+		}
+		if = {
+			limit = {
+				prestige_level < 5
+			}
+			add_prestige_level = 1
+		}	
+	}
+	option = { # Gain the Saint nickname
+		name = aversaria.0001.m
+		remove_nickname = yes
+		give_nickname = nick_o_agios
+		trigger = {
+		        has_faith = faith:saintly_order
+		}
+		if = {
+			limit = {
+				prestige_level < 5
+			}
+			add_prestige_level = 1
+		}	
+	}
+	option = { # Gain the Restorer of the Mandate nickname
+		name = aversaria.0001.n
+		remove_nickname = yes
+		give_nickname = nick_o_apokostastasis_ton_entolon	
+		trigger = {
+		        has_faith = faith:aversarian_cumani
+		}
+		if = {
+			limit = {
+				prestige_level < 5
+			}
+			add_prestige_level = 1
+		}	
+	}
+	option = { # Gain the Tamer of Barbarians nickname
+		name = aversaria.0001.o
+		remove_nickname = yes
+		give_nickname = nick_epeisodos_ton_barbaron
+		trigger = {
+		        has_faith = faith:aversarian_sjalvolki
+		}
+		if = {
+			limit = {
+				prestige_level < 5
+			}
+			add_prestige_level = 1
+		}	
+	}
+	option = { # Gain the Liberator of the Iyrossi nickname
+		name = aversaria.0001.p
+		remove_nickname = yes
+		give_nickname = nick_o_apelatherotos_ton_iyrossion
+		trigger = {
+		        has_faith = faith:aversarian_iyrossi
+		}
+		if = {
+			limit = {
+				prestige_level < 5
+			}
+			add_prestige_level = 1
+		}	
+	}
+	option = { # Gain the Slayer of the Gods nickname
+		name = aversaria.0001.q
+		remove_nickname = yes
+		give_nickname = nick_dolofonis_ton_theion
+		trigger = {
+		        has_faith = faith:blackhand
+		}
+		if = {
+			limit = {
+				prestige_level < 5
+			}
+			add_prestige_level = 1
+		}	
+	}
+	option = { # Gain the Steward of Aersodiax nickname
+		name = aversaria.0001.r
+		remove_nickname = yes
+		give_nickname = nick_dexeirix_tes_aersodiax
+		trigger = {
+		        has_faith = faith:aerasodiax
+		}
+		if = {
+			limit = {
+				prestige_level < 5
+			}
+			add_prestige_level = 1
+		}	
+	}
+	option = { # Gain the Chosen of the Gods nickname
+		name = aversaria.0001.s
+		remove_nickname = yes
+		give_nickname = nick_epilexmenoi_apos_ton_theioi
+		trigger = {
+		        has_faith = faith:mountain_sun_temple
+		}
+		if = {
+			limit = {
+				prestige_level < 5
+			}
+			add_prestige_level = 1
+		}	
+	}
 }
 
 aversaria.0002 = { ###event everyone else gets

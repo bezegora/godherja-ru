@@ -19,7 +19,10 @@ check_bloodyard_modifier = {
 		if = {
 			limit = {
 				any_county_province = {
-					has_building = thebloodyard
+					OR = {
+					has_building = thebloodyard			
+					has_building = thebloodyard_02		
+					}
 				}
 			}
 			holder = {

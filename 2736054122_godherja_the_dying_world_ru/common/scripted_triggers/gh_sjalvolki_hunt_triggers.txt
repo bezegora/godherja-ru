@@ -1,0 +1,294 @@
+﻿should_use_advanced_hunting_traits = {
+	faith = { has_doctrine = tenet_sjalvolki_hunt }
+}
+
+is_a_hunt_option = {
+	OR = {
+		scope:first_game_option = flag:$NAME$
+		trigger_if = {
+			limit = { exists = scope:second_game_option }
+			scope:second_game_option = flag:$NAME$
+		}
+		trigger_if = {
+			limit = { exists = scope:third_game_option }
+			scope:third_game_option = flag:$NAME$
+		}
+	}
+}
+
+is_not_home_biozone = {
+	trigger_if = {
+		limit = { exists = scope:home_biozone }
+		NOT = { scope:home_biozone = flag:$NAME$ }
+	}
+	trigger_else = { always = yes }
+}
+
+not_fogswept_biozone_trigger = {
+	trigger_if = {
+		limit = {
+			save_temporary_scope_value_as = {
+				name = biozone_name
+				value = flag:$NAME$
+			}
+			NOT = { scope:biozone_name = flag:foglands }
+		}
+		any_county_in_region = {
+			region = $REGION$
+			NOR = { 
+				has_county_modifier = fogswept_modifier
+				has_county_modifier = bordering_fog_modifier
+			}
+		}
+	}
+	trigger_else = { always = yes }
+}
+
+can_access_game_level_trigger = {
+	save_temporary_scope_value_as = {
+		name = game_tier
+		value = flag:$TIER$
+	}
+	OR = {
+		faith = { has_doctrine_parameter = sjalvolki_hunt_enabled }	# Sjalvolki are allowed to do it at any level
+		trigger_if = {
+			limit = { scope:game_tier = flag:mundane }
+			always = yes 
+		}
+		trigger_if = {
+			limit = { scope:game_tier = flag:low }
+			OR = {
+				has_trait = beasthunter_1
+				has_perk = beasthunter_perk
+			}
+		}
+		trigger_if = {
+			limit = { scope:game_tier = flag:medium }
+			has_trait = beasthunter_2 
+		}
+		trigger_if = {
+			limit = { scope:game_tier = flag:high }
+			has_trait = beasthunter_3
+		}
+		trigger_if = {
+			limit = { scope:game_tier = flag:legendary }
+			has_trait = beasthunter_3
+		}
+	}
+}
+
+has_proficiency_against = {
+	trigger_if = {
+		limit = { root = { has_variable_list = $PROFICIENCY$_proficiency_game } }
+		root = {
+			is_target_in_variable_list = {
+				name = $PROFICIENCY$_proficiency_game
+				target = $NAME$
+			}
+			has_perk = proficiency_perk
+		}
+	}
+	trigger_else = { always = no }
+}
+
+has_proficiency_against_ignore_perk = {
+	trigger_if = {
+		limit = { root = { has_variable_list = $PROFICIENCY$_proficiency_game } }
+		root = {
+			is_target_in_variable_list = {
+				name = $PROFICIENCY$_proficiency_game
+				target = $NAME$
+			}
+		}
+	}
+	trigger_else = { always = no }
+}
+
+has_proficiency_against_flag = {
+	trigger_if = {
+		limit = { root = { has_variable_list = $PROFICIENCY$_proficiency_game } }
+		root = {
+			trigger_if = {
+				limit = { has_variable = fogbeast_of_mutation_original_animal }
+				is_target_in_variable_list = {
+					name = $PROFICIENCY$_proficiency_game
+					target = flag:fogbeast
+				}
+			}
+			trigger_else = {
+				is_target_in_variable_list = {
+					name = $PROFICIENCY$_proficiency_game
+					target = flag:$NAME$
+				}
+			}
+			has_perk = proficiency_perk
+		}
+	}
+	trigger_else = { always = no }
+}
+
+has_proficiency_against_flag_ignore_perk = {
+	trigger_if = {
+		limit = { root = { has_variable_list = $PROFICIENCY$_proficiency_game } }
+		root = {
+			is_target_in_variable_list = {
+				name = $PROFICIENCY$_proficiency_game
+				target = flag:$NAME$
+			}
+		}
+	}
+	trigger_else = { always = no }
+}
+
+has_expert_proficiency_against_flag = {
+	trigger_if = {
+		limit = { root = { has_variable = expert_proficiency_game } }
+		root = {
+			var:expert_proficiency_game = flag:$NAME$
+		}
+	}
+	trigger_else = { always = no }
+}
+
+should_level_up_hunting_skill_trigger = {
+	trigger_if = {
+		limit = {
+			NOR = {  
+				has_trait = lifestyle_hunter
+				has_trait = lifestyle_beasthunter
+			}
+		}
+		always = yes
+	}
+	trigger_else_if = {
+		limit = {
+			should_use_advanced_hunting_traits = yes
+		}
+		OR = {
+			AND = {
+				has_trait = hunter_1
+				NOT = { scope:hunt_tier = flag:mundane }
+			}
+			AND = {
+				has_trait_rank = {
+					trait = lifestyle_hunter
+					rank = 2
+				}
+				OR = {
+					trigger_if = {
+						limit = { has_variable_list = successfully_hunted_low_game }
+						variable_list_size = {
+							name = successfully_hunted_low_game
+							value >= 5
+						}
+					}
+					trigger_else = { always = no }
+					scope:hunt_tier = flag:medium
+					scope:hunt_tier = flag:high
+					scope:hunt_tier = flag:legendary
+				}
+			}
+			AND = {
+				has_trait_rank = {
+					trait = lifestyle_hunter
+					rank = 3
+				}
+				OR = {
+					trigger_if = {
+						limit = { has_variable_list = successfully_hunted_medium_game }
+						variable_list_size = {
+							name = successfully_hunted_medium_game
+							value >= 5
+						}
+					}
+					trigger_else = { always = no }
+					scope:hunt_tier = flag:high
+					scope:hunt_tier = flag:legendary
+				}
+			}
+			AND = {
+				has_trait_rank = {
+					trait = lifestyle_hunter
+					rank = 4
+				}
+				OR = {
+					trigger_if = {
+						limit = { has_variable_list = successfully_hunted_high_game }
+						variable_list_size = {
+							name = successfully_hunted_high_game
+							value >= 5
+						}
+					}
+					trigger_else = { always = no }
+					scope:hunt_tier = flag:legendary
+				}
+			}
+		}
+	}
+	trigger_else_if = {
+		limit = { has_perk = beasthunter_perk }
+		OR = {
+			AND = {
+				has_trait = hunter_1
+				NOT = { scope:hunt_tier = flag:mundane }
+			}
+			AND = {
+				has_trait_rank = {
+					trait = lifestyle_beasthunter
+					rank = 2
+				}
+				OR = {
+					trigger_if = {
+						limit = { has_variable_list = successfully_hunted_low_game }
+						variable_list_size = {
+							name = successfully_hunted_low_game
+							value >= 5
+						}
+					}
+					trigger_else = { always = no }
+					scope:hunt_tier = flag:medium
+					scope:hunt_tier = flag:high
+					scope:hunt_tier = flag:legendary
+				}
+			}
+			AND = {
+				has_trait_rank = {
+					trait = lifestyle_beasthunter
+					rank = 3
+				}
+				OR = {
+					trigger_if = {
+						limit = { has_variable_list = successfully_hunted_medium_game }
+						variable_list_size = {
+							name = successfully_hunted_medium_game
+							value >= 5
+						}
+					}
+					trigger_else = { always = no }
+					scope:hunt_tier = flag:high
+					scope:hunt_tier = flag:legendary
+				}
+			}
+			AND = {
+				has_trait_rank = {
+					trait = lifestyle_beasthunter
+					rank = 3
+				}
+				OR = {
+					trigger_if = {
+						limit = { has_variable_list = successfully_hunted_high_game }
+						variable_list_size = {
+							name = successfully_hunted_high_game
+							value >= 5
+						}
+					}
+					trigger_else = { always = no }
+					scope:hunt_tier = flag:legendary
+				}
+			}
+		}
+	}
+	trigger_else = {
+		always = no
+	}
+}

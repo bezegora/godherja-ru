@@ -507,8 +507,8 @@ scripted_trigger intrigue_temptation_3110_potential_deviants = {	#Grab someone i
 	NOR = {
 		has_relation_rival = root
 		any_secret = { secret_type = secret_deviant }
-		AND = {	#Zealous Muslims would never get to this point.
-			has_religion = religion:adabyssian_religion
+		AND = {	# Zealous followers of faiths that value chastity are excluded
+			faith = { trait_is_virtue = chaste }
 			has_trait = zealous
 		}
 		has_trait = celibate
@@ -582,8 +582,8 @@ intrigue_temptation.3110 = {
 		is_at_war = no
 		NOT = { has_character_flag = had_event_intrigue_temptation_3110 }
 		NOR = {
-			AND = {	#Zealous Muslims would never get to this point.
-				has_religion = religion:adabyssian_religion
+			AND = {	# Zealous followers of faiths that value chastity are excluded
+				faith = { trait_is_virtue = chaste }
 				has_trait = zealous
 			}
 			has_trait = chaste
@@ -759,6 +759,11 @@ intrigue_temptation.3110 = {
 							reveal_to = root
 						}
 					}
+					lifepath_impact = {
+						WAY = crows
+						NATURE = positive
+						AMOUNT = minor
+					}
 					if = {
 						limit = {
 							NOT = {
@@ -796,6 +801,11 @@ intrigue_temptation.3110 = {
 							target = root
 						}
 					}
+					lifepath_impact = {
+						WAY = crows
+						NATURE = negative
+						AMOUNT = minor
+					}
 				}
 			}
 		}
@@ -824,6 +834,11 @@ intrigue_temptation.3110 = {
 		stress_impact = {
 			shy = minor_stress_impact_gain
 			deceitful = minor_stress_impact_gain
+		}
+		lifepath_impact = {
+			WAY = family
+			NATURE = positive
+			AMOUNT = miniscule
 		}
 		ai_chance = {
 			base = 40
@@ -1027,6 +1042,11 @@ intrigue_temptation.3120 = {
 						OPINION = 15
 					}
 					add_courtier = scope:tempted_guest
+					lifepath_impact = {
+						WAY = crows
+						NATURE = positive
+						AMOUNT = minor
+					}
 				}
 			}
 			40 = {	#Your strange and uncomfortable come-on confuses and alarms them.
@@ -1045,6 +1065,11 @@ intrigue_temptation.3120 = {
 							opinion = -25
 							target = root
 						}
+					}
+					lifepath_impact = {
+						WAY = crows
+						NATURE = negative
+						AMOUNT = minor
 					}
 				}
 			}
@@ -1078,6 +1103,11 @@ intrigue_temptation.3120 = {
 			deceitful = minor_stress_impact_gain
 			callous = minor_stress_impact_gain
 			paranoid = minor_stress_impact_gain
+		}
+		lifepath_impact = {
+			WAY = crows
+			NATURE = negative
+			AMOUNT = medium
 		}
 		ai_chance = {
 			base = 50
@@ -1113,6 +1143,11 @@ intrigue_temptation.3120 = {
 			shy = minor_stress_impact_gain
 			gregarious = minor_stress_impact_loss
 			drunkard = minor_stress_impact_loss
+		}
+		lifepath_impact = {
+			WAY = family
+			NATURE = positive
+			AMOUNT = miniscule
 		}
 		ai_chance = {
 			base = 50
@@ -1401,6 +1436,11 @@ intrigue_temptation.3130 = {
 					if = {
 						limit = { scope:rival_scale <= 9 }
 						add_prestige = miniscule_prestige_gain
+						lifepath_impact = {
+							WAY = crows
+							NATURE = positive
+							AMOUNT = miniscule
+						}
 					}
 					if = {
 						limit = {
@@ -1411,6 +1451,11 @@ intrigue_temptation.3130 = {
 						add_character_modifier = {
 							modifier = saucy_reputation_01_modifier
 							days = 1825
+						}
+						lifepath_impact = {
+							WAY = crows
+							NATURE = positive
+							AMOUNT = minor
 						}
 					}
 					if = {
@@ -1423,6 +1468,11 @@ intrigue_temptation.3130 = {
 							modifier = saucy_reputation_02_modifier
 							days = 1825
 						}
+						lifepath_impact = {
+							WAY = crows
+							NATURE = positive
+							AMOUNT = medium
+						}
 					}
 					if = {
 						limit = { scope:rival_scale >= 50 }
@@ -1430,6 +1480,11 @@ intrigue_temptation.3130 = {
 						add_character_modifier = {
 							modifier = saucy_reputation_03_modifier
 							days = 1825
+						}
+						lifepath_impact = {
+							WAY = crows
+							NATURE = positive
+							AMOUNT = major
 						}
 					}
 				}
@@ -1457,6 +1512,11 @@ intrigue_temptation.3130 = {
 							opinion = -25
 							target = root
 						}
+					}
+					lifepath_impact = {
+						WAY = crows
+						NATURE = negative
+						AMOUNT = medium
 					}
 				}
 			}
@@ -1947,6 +2007,11 @@ intrigue_temptation.3150 = {
 			lustful = minor_stress_impact_gain
 			honest = medium_stress_impact_gain
 		}
+		lifepath_impact = {
+			WAY = crows
+			NATURE = negative
+			AMOUNT = medium
+		}
 		ai_chance = {
 			base = 50
 			ai_value_modifier = { ai_boldness = -0.25 }
@@ -1982,6 +2047,11 @@ intrigue_temptation.3150 = {
 						CHARACTER = scope:primary_seducee
 						OPINION = no
 					}
+					lifepath_impact = {
+						WAY = crows
+						NATURE = positive
+						AMOUNT = minor
+					}
 				}
 				modifier = {
 					add = 10
@@ -2011,6 +2081,11 @@ intrigue_temptation.3150 = {
 							opinion = -20
 							target = root
 						}
+					}
+					lifepath_impact = {
+						WAY = crows
+						NATURE = negative
+						AMOUNT = minor
 					}
 				}
 				modifier = {
@@ -2129,6 +2204,11 @@ intrigue_temptation.3150 = {
 						modifier = silver_tongued_modifier
 						days = 1825
 					}
+					lifepath_impact = {
+						WAY = crows
+						NATURE = positive
+						AMOUNT = major
+					}
 				}
 			}
 			60 = {	#Unsurprisingly, neither party is interested in you now.
@@ -2163,6 +2243,11 @@ intrigue_temptation.3150 = {
 							opinion = -15
 							target = root
 						}
+					}
+					lifepath_impact = {
+						WAY = crows
+						NATURE = negative
+						AMOUNT = major
 					}
 				}
 			}
@@ -2348,6 +2433,13 @@ intrigue_temptation.3160 = {
 				}
 				custom_tooltip = intrigue_temptation.3160.a.tt_success.tt
 				trigger_event = { id = intrigue_temptation.3161 }
+				send_interface_toast = {
+					lifepath_impact = {
+						WAY = crows
+						NATURE = positive
+						AMOUNT = medium
+					}
+				}
 			}
 			50 = {
 				compare_modifier = {
@@ -2366,6 +2458,11 @@ intrigue_temptation.3160 = {
 							opinion = -40
 							target = root
 						}
+					}
+					lifepath_impact = {
+						WAY = crows
+						NATURE = negative
+						AMOUNT = medium
 					}
 				}
 			}

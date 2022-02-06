@@ -3,7 +3,7 @@
 # The stress threshold event will add character flags from this list, based on a character's personality and relevance to the event, until two have been selected.
 has_two_stress_threshold_options = {
 	calc_true_if = {
-		amount = 2
+		amount >= 2
 
 		has_character_flag = stress_threshold_option_drunkard
 		has_character_flag = stress_threshold_option_hashishiyah
@@ -225,6 +225,7 @@ can_be_athletic = { # Must be willing and interested in getting out and exercisi
 		has_trait = diligent
 	}
 }
+
 
 can_do_lustful_stress_conversion = {
 	is_ai = no # AI picks this way too often and makes the map predominantly Paulician/Orthodox/Karite

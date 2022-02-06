@@ -1,0 +1,38 @@
+pdxmesh = {
+	name = "sar_newneck_male_mesh"
+	file = "sar_newneck_male.mesh"
+
+	blend_shape = { id = "n_muscular"			type = "n_muscular.mesh" }
+	blend_shape = { id = "n_fat"				type = "n_fat.mesh" }
+	blend_shape = { id = "n_old"				type = "n_old.mesh" }
+	blend_shape = { id = "n_dwarf"				type = "n_dwarf.mesh" }
+
+	meshsettings = {
+		name = "necklace_newShape"
+		index = 0
+		texture_diffuse = "newneck_color.dds"
+		texture_normal = "newneck_normal.dds"
+		texture_specular = "newneck_properties.dds"
+		shader = "portrait_attachment_pattern"
+		shader_file = "gfx/FX/jomini/portrait.shader"
+	}
+}
+
+entity = {
+	name = "sar_newneck_male_entity"
+	pdxmesh = "sar_newneck_male_mesh"
+
+	attribute = { name = "bs_body_muscular_1"							blend_shape = "n_muscular" }
+	attribute = { name = "bs_body_fat_1"								blend_shape = "n_fat" }
+	attribute = { name = "bs_body_old_1"								blend_shape = "n_old" }
+	attribute = { name = "bs_body_dwarf_1"								blend_shape = "n_dwarf" }
+	
+	
+	
+	game_data = {
+		portrait_accessory = {
+			pattern_mask = "gfx/models/portraits/attachments/Non-Replacer/Godherja/male_misc/sarradonian/sar_newneck_male/newneck_mask.dds"	#Any 4-channel texture. Each channel will be used to mask a pattern from the variation object
+			variation = "newneck"	#A "variation" object in gfx/portraits/accessory_variations/
+		}
+	}
+}

@@ -1780,6 +1780,10 @@ scripted_trigger yearly_4031_basic_check_trigger = {
 	is_physically_able_adult = yes
 }
 
+scripted_trigger yearly_4031_courtier_trigger = {
+	always = no
+}
+
 scripted_trigger yearly_4031_murderous_trigger = {
 	OR = {
 		has_trait = sadistic
@@ -2097,6 +2101,7 @@ yearly.4051 = {
 		}
 		random_neighboring_realm_same_rank_owner = {
 			limit = {
+				primary_title.tier >= tier_county
 				is_ai = yes
 				NOR = {
 					has_important_relationship_with_root_trigger = yes
@@ -2181,7 +2186,6 @@ yearly.4061 = {
 	}
 	
 	trigger = {
-		faith.religion = religion:adabyssian_religion
 		NOT = { has_character_flag = had_event_yearly_4061 }
 		NOT = { has_character_modifier = useful_insights_modifier }
 	}
@@ -2346,7 +2350,6 @@ yearly.4071 = {
 	}
 	
 	trigger = {
-		faith.religion = religion:adabyssian_religion
 		exists = cp:councillor_court_chaplain
 		NOT = { has_character_flag = had_event_yearly_4071 }
 		learning >= medium_skill_rating
@@ -2436,11 +2439,7 @@ yearly.4081 = {
 	left_portrait = scope:councillor
 	
 	trigger = {
-		faith.religion = religion:adabyssian_religion
-		exists = cp:councillor_court_chaplain
-		NOT = { has_character_flag = had_event_yearly_4081 }
-		learning >= medium_skill_rating
-		short_term_gold >= medium_gold_value
+		always = no
 	}
 
 	weight_multiplier = {
@@ -2572,7 +2571,7 @@ yearly.4091 = {
 	left_portrait = scope:ward
 	
 	trigger = {
-		faith.religion = religion:adabyssian_religion
+		faith.religion = religion:sarradonian_religion
 		NOT = { has_character_flag = had_event_yearly_4091 }
 		any_relation = {
 			type = ward

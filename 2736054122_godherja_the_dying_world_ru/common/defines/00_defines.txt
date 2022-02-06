@@ -64,16 +64,17 @@ NSetup = {
 		2
 		2
 		1
+		1
 	}
 	DESIRED_NEIGHBOR_POOLS = 4		# How many pools should we try to consider bordering? Pools bordering the sea will consider pools further removed by sea neighboring until this number is hit, or MAX_POOL_NEIGHBOR_DISTANCE is hit
 	MAX_POOL_NEIGHBOR_DISTANCE = 3	# How many sea zones away can we search at most?
 }
 
 NJominiMap = {
-    WORLD_EXTENTS_X = 4096
-    WORLD_EXTENTS_Y = 51
-    WORLD_EXTENTS_Z = 4096
-    WATERLEVEL = 3.8
+	WORLD_EXTENTS_X = 8192
+	WORLD_EXTENTS_Y = 51
+	WORLD_EXTENTS_Z = 4096
+	WATERLEVEL = 3.8
 }
 
 NCharacter = {
@@ -214,8 +215,8 @@ NCharacter = {
 	MAA_STARTING_PRESTIGE_EXPENSE_MIN = 0.4 # Rulers at game start will start out spending this much prestige (or a bit more, as it'll overshoot) on men at arms
 	MAA_STARTING_PRESTIGE_EXPENSE_MAX = 0.55 # Rulers will never start out spending more than this much prestige on men at arms. For prestige-poor rulers this can mean they end up under MAA_STARTING_PRESTIGE_EXPENSE_MIN if one more MaA would put them above the max
 	
-	MAXIMUM_DIPLOMATIC_RANGE = 600	# MANUALLY LOWERED FOR GODHERJA
-	MAXIMUM_DIPLOMATIC_RANGE_RESTRICTED = 500	# MANUALLY LOWERED FOR GODHERJA Used if a game rule with the restricted_diplomatic_range flag is used
+	MAXIMUM_DIPLOMATIC_RANGE = 700	# MANUALLY LOWERED FOR GODHERJA
+	MAXIMUM_DIPLOMATIC_RANGE_RESTRICTED = 600	# MANUALLY LOWERED FOR GODHERJA Used if a game rule with the restricted_diplomatic_range flag is used
 	HOOK_COOLDOWN_DURATION_YEARS = 5	# How many years do strong hooks go on cooldown when used?
 	MAX_COUNTIES_IN_REALM_AS_DUKE = 30						# As a duke or below, the player (but not the AI) will suffer penalties when they go beyond this # of counties in their realm. They can form a kingdom to get the penalties to go away
 	INCOME_PENALTY_PER_COUNTY_ABOVE_LIMIT = 0.05			# For each county above MAX_COUNTIES_IN_REALM_AS_DUKE, you get 10% less income

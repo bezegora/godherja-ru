@@ -1,0 +1,2104 @@
+﻿namespace = sjalvolki_hunt
+
+##################################################
+
+### Sjalvolki Hunt Events
+
+# 0001 - Setup
+
+##################################################
+
+##################################################
+# Setup
+# by Mayor
+# 0001 - 0010
+##################################################
+
+##################################################
+# TODO
+##################################################
+#	Begin work on implementing legendary hunts
+#	Allow filtering for tracks if you have medium proficiency against the game
+#	Weather (?)
+#	Nearby landmarks (?)
+#	Morale (?)
+#	Companion system
+#	Implement unconventional game
+	# Mutants
+	# Rogue Necromancers (?)
+	# Bone Abominations (low priority)
+#	Realm neglect mechanics
+#	Implement random tracking phase events
+#	Ambushes
+#	Improved location picking with regards to Fog - make it not pick fogswept areas for non-Foglands, and try to avoid going insanely deep into the Foglands when there
+#	Attributes
+	# Shapeshifter - implement
+	# Exposure Sickness - make magi have an easier time tracking
+#	Fogbeast generation
+	# Shapeshifters
+#	Integrate magic
+	# Living
+	# Dead 
+	# Mixed
+#	Making the Sjalvolki Hunt tenet actually do as advertised
+#	Make it so Sjalvolki can purchase pelt
+#	Figure out how to handle Sjalvolki Syncretism
+#	Make pilgrimages count as journeys
+#	Make the AI understand all of this....
+
+sjalvolki_hunt.0001 = {
+	type = character_event
+	title = sjalvolki_hunt.0001.t
+	desc = sjalvolki_hunt.0001.desc
+	theme = hunt_activity
+	left_portrait = {
+		character = root
+		animation = personality_rational
+	}
+	override_background = {
+		trigger = { has_government = tribal_government }
+		event_background = fp1_throneroom_tribal
+	}
+	override_background = {
+		trigger = { NOT = { has_government = tribal_government } }
+		event_background = fp1_throneroom_nontribal
+	}
+	
+	immediate = {
+		add_character_flag = sjalvolki_hunt_ongoing
+	}
+	
+	option = {	# Standard hunt
+		name = sjalvolki_hunt.0001.a
+		custom_tooltip = normal_hunt_tooltip
+		trigger_event = sjalvolki_hunt.0021
+	}
+	
+	option = {
+		name = sjalvolki_hunt.0001.b
+		trigger = {
+			always = no
+		}
+		show_as_unavailable = {
+			always = yes # Until we implement it
+		}
+	}
+	
+	option = {	# Actually, nah
+		name = sjalvolki_hunt.0001.c
+	}
+}
+
+##################################################
+# Pick a Biozone
+# by Hapchazzard
+# 0021 - 0030
+##################################################
+
+sjalvolki_hunt.0021 = {
+	type = character_event
+	title = sjalvolki_hunt.0021.t
+	desc = sjalvolki_hunt.0021.desc
+	theme = learning
+	left_portrait = {
+		character = root
+		animation = personality_rational
+	}
+	
+	override_icon = {
+		reference = "gfx/interface/icons/event_types/type_hunt.dds"
+	}
+	
+	widget = {
+		gui = "event_window_widget_biozone"
+		container = "custom_widgets_container_large"
+	}
+	
+	immediate = {
+		save_scope_as = biozone_picker_character
+		set_variable = {
+			name = displaying_large_event_widget
+			days = 1
+		}
+		biozone_effect = { MODE = home }
+		capital_barony = {
+			save_scope_as = start_barony
+		}
+	}
+	
+	option = {
+		name = sjalvolki_hunt.0021.home_region
+		trigger = { exists = scope:home_biozone }
+		scope:home_biozone = { save_scope_as = hunt_biozone }
+		biozone_effect = { MODE = display_home_info }
+		hidden_effect = {
+			capital_barony.title_province = {
+				spawn_activity = {
+					type = activity_sjalvolki_hunt
+					owner = root
+				}
+			}
+			set_variable = {
+				name = hunting_in_home_biozone_var
+				days = 10
+			}
+		}
+	}
+	
+	option = {
+		name = sjalvolki_hunt.0021.accept
+		
+		trigger = {
+			custom_description = {
+				OR = {
+					faith = { has_doctrine_parameter = hunt_travel_enabled }
+					has_perk = beasthunter_perk
+				}
+				text = must_have_hunt_travel_enabled
+			}
+		}
+		show_as_unavailable = { always = yes }
+		if = {
+			limit = { exists = var:selected_biozone_var }
+			var:selected_biozone_var.var:biozone_name = { save_scope_as = hunt_biozone }
+			var:selected_biozone_var.var:biozone_activity_province = { save_scope_as = hunting_target }
+			calculate_hunt_distance_effect = { HUNTING_TARGET = root.var:selected_biozone_var.var:biozone_activity_province }
+			biozone_effect = { MODE = display_selected_biozone_info }
+		}
+	}
+	
+	option = {
+		name = sjalvolki_hunt.0021.exit
+	}
+	
+	after = {
+		remove_variable = displaying_large_event_widget
+		remove_variable = selected_biozone_var
+		if = {
+			limit = { exists = scope:hunt_biozone }
+			scope:hunt_biozone = {
+				root = {
+					set_variable = {
+						name = temporary_hunt_biozone_variable	# In order to transfer the flag to the activity
+						value = prev
+					}
+				}
+			}
+		}
+	}
+}
+
+##################################################
+# Assemble a Hunting Party
+# by Mayor
+# 0031 - 0040
+##################################################
+
+sjalvolki_hunt.0031 = {
+	type = character_event
+	title = sjalvolki_hunt.0031.t
+	desc = sjalvolki_hunt.0031.desc
+	theme = hunt_activity
+	left_portrait = root
+	lower_center_portrait = scope:sjalvolki_hunting_courtier_2
+	right_portrait = scope:sjalvolki_hunting_courtier_1
+	override_background = {
+		trigger = { has_government = tribal_government }
+		event_background = fp1_throneroom_tribal
+	}
+	override_background = {
+		trigger = { NOT = { has_government = tribal_government } }
+		event_background = fp1_throneroom_nontribal
+	}
+	immediate = {
+		if = {
+			limit = { has_variable = temporary_hunt_biozone_variable }
+			var:temporary_hunt_biozone_variable = { save_scope_as = hunt_biozone }
+		}
+		if = {
+			limit = { has_variable = hunting_in_home_biozone_var }
+			save_scope_value_as = {
+				name = hunting_in_home_biozone
+				value = yes
+			}
+		}
+		biozone_effect = { MODE = select }
+		scope:activity = {
+			random_in_list = {
+				variable = potential_hunt_participants
+				limit = {
+					is_alive = yes
+				}
+				alternative_limit = {
+					is_powerful_vassal = yes
+				}
+				save_scope_as = sjalvolki_hunting_courtier_1
+				add_to_list = hunting_party
+			}
+			random_in_list = {
+				variable = potential_hunt_participants
+				limit = {
+					is_alive = yes
+				}
+				alternative_limit = {
+					is_powerful_vassal = yes
+				}
+				save_scope_as = sjalvolki_hunting_courtier_2
+				add_to_list = hunting_party
+			}
+		}
+		create_character = {
+			age = { 20 35 }
+			random_traits = yes
+			random_traits_list = {
+				count = 1
+				hunter_2 = {}
+				hunter_3 = {}
+			}
+			gender_female_chance = 50
+			dynasty = none
+			faith = root.faith
+			culture = root.culture
+			location = scope:activity.activity_province
+			save_scope_as = sjalvolki_hunting_courtier_3
+		}
+	}
+
+	option = {
+		name = sjalvolki_hunt.0031.a #party as is
+	}
+
+	#option = { #invest in tools and provisions
+	#	name = sjalvolki_hunt.0031.b
+	#	remove_short_term_gold = minor_gold_value
+	#	add_character_flag = {
+	#		flag = well_provisioned
+	#		days = 400
+	#	}
+	#}
+	#option = { #hire a very skilled hunter
+	#	name = sjalvolki_hunt.0031.c
+	#	send_interface_toast = {
+	#		title = sjalvolki_hunt.0031.c.toast
+	#		left_icon = root
+	#		right_icon = scope:sjalvolki_hunting_courtier_3
+	#	}
+	#}
+	after = {
+		trigger_event = {
+			id = sjalvolki_hunt.0051
+			days = 5
+		}
+	}
+}
+
+##################################################
+# Intro & Check What Tracks are Available
+# by Hapchazzard
+# 0051 - 0060
+##################################################
+
+sjalvolki_hunt.0051 = {	# Intro, short description of the biozone
+	type = character_event
+	title = sjalvolki_hunt.0051.t
+	desc = sjalvolki_hunt.0051.desc
+	theme = hunt_activity
+	left_portrait = {
+		character = root
+		triggered_animation = {
+			trigger = {
+				exists = scope:idyllic
+			}
+			animation = happiness	# If the environment is nice, be happy
+		}
+		triggered_animation = {
+			trigger = {
+				NOT = { exists = scope:idyllic }
+			}
+			animation = personality_rational
+		}
+	}
+	override_background = {
+		event_background = hunting_wilderness_scope
+	}
+	
+	option = { # Let's get started
+		name = sjalvolki_hunt.0051.a
+		hidden_effect = {
+			if = {
+				limit = { has_perk = professional_monster_slayer_perk }
+				generate_biozone_hunting_quests_effect = { COUNT = 3 }
+			}
+		}
+	}
+
+	after = {
+		trigger_event = sjalvolki_hunt.0052
+	}
+}
+
+sjalvolki_hunt.0052 = {
+	type = character_event
+	title = sjalvolki_hunt.0052.t
+	desc = sjalvolki_hunt.0052.desc
+	theme = hunt_activity
+	left_portrait = {
+		character = root
+		animation = personality_rational
+	}
+	override_background = {
+		event_background = hunting_wilderness_scope
+	}
+	
+	immediate = {
+		hunting_game_effect = { MODE = get_allowed }
+		biozone_effect = { MODE = pick_all_game }
+		finalize_game_options_effect = yes
+	}
+	
+	option = { # First Option
+		name = sjalvolki_hunt.0052.a
+		trigger = {
+			exists = scope:first_game_option
+			has_variable = first_game_option_var
+			custom_description = {
+				scope:first_game_option = { is_in_list = allowed_game }
+				text = must_have_hunt_travel_enabled
+			}
+		}
+		show_as_unavailable = {
+			exists = scope:first_game_option
+			has_variable = first_game_option_var
+		}
+		scope:first_game_option = { save_scope_as = hunt_target_game }
+		display_proficiency_info = { NAME = scope:first_game_option }
+		hunting_game_effect = { MODE = get_tags }
+		set_variable = {
+			name = chosen_hunt_game_var
+			value = scope:first_game_option
+		}
+		display_hunting_quests_effect = yes
+	}
+	
+	option = { # Second Option
+		name = sjalvolki_hunt.0052.b
+		trigger = {
+			exists = scope:second_game_option
+			has_variable = second_game_option_var
+			custom_description = {
+				scope:second_game_option = { is_in_list = allowed_game }
+				text = must_have_hunt_travel_enabled
+			}
+		}
+		show_as_unavailable = {  
+			exists = scope:second_game_option
+			has_variable = second_game_option_var
+		}
+		scope:second_game_option = { save_scope_as = hunt_target_game }
+		display_proficiency_info = { NAME = scope:second_game_option }
+		hunting_game_effect = { MODE = get_tags }
+		set_variable = {
+			name = chosen_hunt_game_var
+			value = scope:second_game_option
+		}
+		display_hunting_quests_effect = yes
+	}
+
+	option = { # Third Option
+		name = sjalvolki_hunt.0052.c
+		trigger = {
+			exists = scope:third_game_option
+			has_variable = third_game_option_var
+			custom_description = {
+				scope:third_game_option = { is_in_list = allowed_game }
+				text = must_have_hunt_travel_enabled
+			}
+		}
+		show_as_unavailable = {  
+			exists = scope:third_game_option
+			has_variable = third_game_option_var
+		}
+		scope:third_game_option = { save_scope_as = hunt_target_game }
+		display_proficiency_info = { NAME = scope:third_game_option }
+		hunting_game_effect = { MODE = get_tags }
+		set_variable = {
+			name = chosen_hunt_game_var
+			value = scope:third_game_option
+		}
+		display_hunting_quests_effect = yes
+	}
+	
+	option = { # Special Option
+		name = sjalvolki_hunt.0052.f
+		trigger = {
+			has_variable = special_game_option_var
+		}
+		add_internal_flag = special
+		scope:special_game_option = { save_scope_as = hunt_target_game }
+		display_proficiency_info = { NAME = scope:special_game_option }
+		hunting_game_effect = { MODE = get_tags }
+		set_variable = {
+			name = chosen_hunt_game_var
+			value = scope:special_game_option
+		}
+		display_hunting_quests_effect = yes
+	}
+	
+	option = { # Keep Trying
+		name = sjalvolki_hunt.0052.d
+		stress_impact = {
+			lazy = minor_stress_gain
+		}
+		apply_environmental_effects = yes
+		if = {
+			limit = { exists = scope:first_game_option }
+			clear_saved_scope = first_game_option
+			remove_variable = first_game_option_var
+		}
+		if = {
+			limit = { exists = scope:second_game_option }
+			clear_saved_scope = second_game_option
+			remove_variable = second_game_option_var
+		}
+		if = {
+			limit = { exists = scope:third_game_option }
+			clear_saved_scope = third_game_option
+			remove_variable = third_game_option_var
+		}
+		trigger_event = {
+			id = sjalvolki_hunt.0052
+			days = 1
+		}
+	}
+	
+	option = { # Ask around for rumours
+		name = sjalvolki_hunt.0052.e
+		trigger = { 
+			has_perk = unconventional_game_perk
+			NOT = { exists = scope:already_asked_around_for_rumours }
+		}
+		skill = intrigue
+		custom_tooltip = will_ask_around_for_rumours_tooltip
+		remove_short_term_gold = minor_gold_value
+		save_scope_value_as = {
+			name = already_asked_around_for_rumours
+			value = yes
+		}
+		duel = {
+			skill = intrigue
+			value = 10
+			10 = {
+				compare_modifier = {
+					value = scope:duel_value
+				}
+				custom_tooltip = special_game_option_revealed_tooltip
+				hidden_effect = {
+					save_scope_value_as = {
+						name = choosing_special_game_option
+						value = yes
+					}
+					special_game_effect = { MODE = pick }
+					finalize_special_game_option_effect = yes
+				}
+			}
+			25 = {
+				custom_tooltip = no_special_game_option_tooltip
+			}
+		}
+		trigger_event = {
+			id = sjalvolki_hunt.0052
+			days = 1
+		}
+	}
+	
+	option = { # Give Up
+		name = sjalvolki_hunt.0052.g
+		if = {
+			limit = {
+				exists = scope:activity
+			}
+			scope:activity = {
+				complete_activity = yes
+			}
+		}
+	}
+
+	after = {
+		if = {
+			limit = { exists = scope:hunt_target_game }
+			hunting_game_effect = { MODE = get_tier }
+			trigger_event = {
+				id = sjalvolki_hunt.0061
+				days = { 5 7 }
+			}
+			set_variable = {
+				name = tracking_progress
+				value = 0
+			}
+		}
+	}
+}
+
+##################################################
+# Pick Who Takes Point
+# by Mayor
+# 0061 - 0070
+##################################################
+
+sjalvolki_hunt.0061 = {
+	type = character_event
+	title = sjalvolki_hunt.0061.t
+	desc = sjalvolki_hunt.0061.desc
+	theme = hunt_activity
+	left_portrait = root
+	lower_center_portrait = scope:sjalvolki_hunting_courtier_2
+	right_portrait = scope:sjalvolki_hunting_courtier_1
+	override_background = {
+		event_background = hunting_wilderness_scope
+	}
+
+	option = {	# Lead yourself
+		name = sjalvolki_hunt.0061.a
+		set_tracker_noscope = yes
+	}
+
+	option = { # Have person 1 lead
+		name = sjalvolki_hunt.0061.b
+		trigger = {
+			trigger_if = {
+				limit = { exists = scope:sjalvolki_hunting_courtier_1 }
+				scope:sjalvolki_hunting_courtier_1 = { is_alive = yes }
+			}
+			trigger_else = { always = no }
+		}
+		set_tracker = { TRACKER = scope:sjalvolki_hunting_courtier_1 }
+	}
+	
+	option = { # Have person 2 lead
+		name = sjalvolki_hunt.0061.c
+		trigger = {
+			trigger_if = {
+				limit = { exists = scope:sjalvolki_hunting_courtier_2 }
+				scope:sjalvolki_hunting_courtier_2 = { is_alive = yes }
+			}
+			trigger_else = { always = no }
+		}
+		set_tracker = { TRACKER = scope:sjalvolki_hunting_courtier_2 }
+	}
+	
+	option = { # Have person 3 lead
+		name = sjalvolki_hunt.0061.d
+		trigger = {
+			trigger_if = {
+				limit = { exists = scope:sjalvolki_hunting_courtier_3 }
+				scope:sjalvolki_hunting_courtier_3 = { is_alive = yes }
+			}
+			trigger_else = { always = no }
+		}
+		set_tracker = { TRACKER = scope:sjalvolki_hunting_courtier_3 }
+	}
+	
+	after = {
+		trigger_event = {
+			id = sjalvolki_hunt.0101
+			days = 5
+		}
+	}
+}
+
+##################################################
+# Tracking Phase
+# by Hapchazzard
+# 0101 - 0110
+##################################################
+
+sjalvolki_hunt.0101 = {
+	type = character_event
+	title = sjalvolki_hunt.0101.t
+	theme = hunt_activity
+	left_portrait = {
+		character = root
+		triggered_animation = {	# Be anxious in the Foglands unless you have some serious guts
+			trigger = {
+				exists = scope:fogswept
+				NOT = { ai_boldness >= 100 }
+			}
+			animation = worry
+		}
+		triggered_animation = {
+			trigger = {
+				OR = {
+					NOT = { exists = scope:fogswept }
+					ai_boldness >= 100
+				}
+			}
+			animation = war_attacker
+		}
+	}
+	override_background = {
+		event_background = hunting_wilderness_scope
+	}
+	
+	desc = {
+		triggered_desc = {
+			trigger = {
+				exists = scope:mediterranean
+				exists = scope:idyllic
+			}
+			desc = sjalvolki_hunt.0101.desc.intro.idyllic_mediterranean
+		}
+		triggered_desc = {
+			trigger = {
+				exists = scope:fogswept
+			}
+			desc = sjalvolki_hunt.0101.desc.intro.foglands
+		}
+		triggered_desc = {
+			trigger = {
+				exists = scope:woodland
+			}
+			desc = sjalvolki_hunt.0101.desc.intro.woodland
+		}
+		desc = sjalvolki_hunt.0101.desc.mid
+	}
+	
+	immediate = {
+		if = {
+			limit = { scope:tracker = { is_alive = no } }
+			save_scope_as = tracker
+		}
+		if = {
+			limit = { NOT = { has_variable = tracking_progress } }
+			set_variable = {
+				name = tracking_progress
+				value = 0
+			}
+		}
+	}
+	
+	option = { # Keep on Tracking
+		name = sjalvolki_hunt.0101.a
+		apply_environmental_effects = yes
+		if = {
+			limit = { 
+				trigger_if = {
+					limit = { has_variable = lost_level }
+					var:lost_level <= 0
+				} 
+				trigger_else = { always = yes }
+			}
+			apply_tracking_effects = yes
+		}
+	}
+	
+	option = { # Set an Ambush
+		name = sjalvolki_hunt.0101.b
+		trigger = { NOT = { exists = scope:sixth_sense } }
+		apply_environmental_effects = yes
+		if = {
+			limit = { 
+				trigger_if = {
+					limit = { has_variable = lost_level }
+					var:lost_level <= 0
+				} 
+				trigger_else = { always = yes }
+			}
+			apply_ambush_effects = yes
+		}
+	}
+	
+	option = { # Forage
+		name = sjalvolki_hunt.0101.c
+		trait = hunter_1
+		trait = hunter_2
+		trait = hunter_3
+		trait = hunter_4
+		trait = hunter_5
+		trigger = {
+			has_trait = lifestyle_hunter
+			has_character_modifier = hunger_modifier
+			trigger_if = {
+				limit = { has_perk = skilled_forager_perk }
+				NOT = { exists = scope:barren }
+			}
+			trigger_else = {
+				OR = {
+					exists = scope:verdant
+					exists = scope:idyllic
+				}
+			}
+		}
+		apply_environmental_effects = yes
+		apply_forage_effects = yes
+	}
+	
+	option = { # Give Up
+		name = sjalvolki_hunt.0101.d
+		if = {
+			limit = {
+				exists = scope:activity
+			}
+			scope:activity = {
+				complete_activity = yes
+			}
+		}
+	}
+}
+
+# You get lost
+sjalvolki_hunt.0111 = {
+	type = character_event
+	title = sjalvolki_hunt.0111.t
+	theme = hunt_activity
+	left_portrait = {
+		character = root
+		animation = worry
+	}
+	override_background = {
+		event_background = hunting_wilderness_scope
+	}
+	
+	desc = sjalvolki_hunt.0111.desc
+	
+	option = {
+		name = sjalvolki_hunt.0111.a
+		apply_environmental_effects = yes
+	}
+}
+
+##################################################
+# Combat Phase
+# by Hapchazzard
+# 0201 - 0210
+##################################################
+
+sjalvolki_hunt.0201 = {	# Event that notifies you that combat is about to commence
+	type = character_event
+	title = sjalvolki_hunt.0201.t
+	desc = sjalvolki_hunt.0201.desc
+	theme = hunt_activity
+	left_portrait = {
+		character = root
+		triggered_animation = {	# Be anxious in the Foglands unless you have some serious guts
+			trigger = {
+				exists = scope:fogswept
+				NOT = { ai_boldness >= 100 }
+			}
+			animation = worry
+		}
+		triggered_animation = {
+			trigger = {
+				OR = {
+					NOT = { exists = scope:fogswept }
+					ai_boldness >= 100
+				}
+			}
+			animation = war_attacker
+		}
+	}
+	right_portrait = {
+		character = scope:right_portrait_character
+		triggered_animation = {	# Be anxious in the Foglands unless you have some serious guts
+			trigger = {
+				exists = scope:fogswept
+				NOT = { ai_boldness >= 100 }
+			}
+			animation = worry
+		}
+		triggered_animation = {
+			trigger = {
+				OR = {
+					NOT = { exists = scope:fogswept }
+					ai_boldness >= 100
+				}
+			}
+			animation = war_attacker
+		}
+	}
+	override_background = {
+		event_background = hunting_wilderness_scope
+	}
+	
+	immediate = {
+		scope:sjalvolki_hunting_courtier_1 = { save_scope_as = right_portrait_character }
+		if = {
+			limit = { NOT = { has_variable = long_range_weapon } }
+			set_variable = {
+				name = long_range_weapon
+				value = flag:bow
+			}
+		}
+		if = {
+			limit = { NOT = { has_variable = medium_range_weapon } }
+			set_variable = {
+				name = medium_range_weapon
+				value = flag:huntingsword
+			}
+		}
+		if = {
+			limit = { NOT = { has_variable = short_range_weapon } }
+			set_variable = {
+				name = short_range_weapon
+				value = flag:dagger
+			}
+		}
+		if = {	# Play a spooky cue once you encounter a fogbeast
+			limit = { 
+				exists = scope:fogswept
+				NOT = { exists = scope:fogbeast_already_generated }
+			}
+			hidden_effect = {
+				save_scope_value_as = {
+					name = fogbeast_already_generated
+					value = yes
+				}
+				random_list = {
+					60 = { generate_fogbeast_of_mutation_effect = yes }
+					40 = { generate_fogbeast_of_thought_effect = yes }
+				}
+				game_tag_table_effect = { MODE = copy }
+			}
+			play_music_cue = "mx_cue_murder"
+		}
+		else_if = {	# Generate a Vampire
+			limit = { 
+				scope:hunt_target_game = flag:vampire
+			}
+			hidden_effect = {
+				generate_vampire_effect = yes
+			}
+		}
+	}
+	
+	option = { # Engage!
+		name = sjalvolki_hunt.0201.a
+		display_all_possible_tags_effect = yes
+		if = {
+			limit = { exists = scope:successful_ambush }
+			custom_tooltip = successful_ambush_tooltip
+		}
+		if = {
+			limit = { has_character_modifier = artifact_manswelbestiarium_modifier }
+			custom_tooltip = bestiarium_bonus_tooltip
+		}
+		hunting_game_effect = { MODE = combat }
+	}
+	
+	option = {
+		name = sjalvolki_hunt.0201.smokebombs
+		add_internal_flag = special
+		trigger = { has_character_modifier = artifact_sackofsmokebombs_modifier }
+		remove_artifact = { ARTIFACT = artifact_sackofsmokebombs }
+		remove_character_modifier = artifact_sackofsmokebombs_modifier
+		save_scope_value_as = {
+			name = smokebombs_used
+			value = yes
+		}
+		custom_tooltip = smokebomb_hunting_tooltip
+		custom_tooltip = other_effects_apply_tooltip
+		show_as_tooltip = {
+			hunting_game_effect = { MODE = combat }
+		}
+		trigger_event = sjalvolki_hunt.0201
+	}
+	
+	option = {
+		name = sjalvolki_hunt.0201.firearbalest
+		add_internal_flag = special
+		trigger = { 
+			has_character_modifier = artifact_adabyssianfirearbalest_modifier
+			NOT = { exists = scope:firearbalest_used }
+		}
+		custom_tooltip = firearbalest_hunting_tooltip
+		custom_tooltip = firearbalest_scary_hunting_tooltip
+		custom_tooltip = firearbalest_negative_prestige_hunting_tooltip
+		custom_tooltip = other_effects_apply_tooltip
+		set_variable = {
+			name = long_range_weapon
+			value = flag:firearbalest
+		}
+		set_variable = {
+			name = medium_range_weapon
+			value = flag:firearbalest
+		}
+		save_scope_value_as = {
+			name = firearbalest_used
+			value = yes
+		}
+		show_as_tooltip = {
+			hunting_game_effect = { MODE = combat }
+		}
+		trigger_event = sjalvolki_hunt.0201
+	}
+	
+	option = { # I don't like these odds...
+		name = sjalvolki_hunt.0201.b
+		trigger = {
+			custom_description = {
+				trigger_if = {
+					limit = { exists = scope:sixth_sense }
+					exists = scope:sedentary
+				}
+				trigger_else = {
+					always = yes
+				}
+				text = sixth_sense_trigger
+			}
+		}
+		show_as_unavailable = { exists = scope:sixth_sense }
+		if = {
+			limit = {
+				exists = scope:activity
+			}
+			scope:activity = {
+				complete_activity = yes
+			}
+		}
+	}
+}
+
+sjalvolki_hunt.0202 = {	# You win!
+	type = character_event
+	title = sjalvolki_hunt.0202.t
+	desc = sjalvolki_hunt.0202.desc
+	theme = hunt_activity
+	left_portrait = {
+		character = root
+		animation = war_over_win
+	}
+	override_background = {
+		event_background = hunting_wilderness_scope
+	}
+	
+	immediate = {
+		save_scope_value_as = {
+			name = killed_quarry
+			value = yes
+		}
+		if = {
+			limit = { exists = scope:vampire }
+			scope:vampire = {
+				death = {
+					killer = root
+					death_reason = death_duel
+				}
+			}
+		}
+		hunting_game_effect = { MODE = add_to_hunted_list }
+		hunting_game_effect = { MODE = increase_proficiency }
+		hunting_game_effect = { MODE = get_reward }
+	}
+	
+	option = {
+		name = sjalvolki_hunt.0202.a
+		trigger = {  # So you can have the fancier option displayed instead with the appropriate focus
+			NOR = {
+				has_focus = adventure_glory_focus
+				exists = scope:prowess_upgraded
+			}
+		}
+		hunting_game_effect = { MODE = hunt_end }
+	}
+	
+	option = {
+		name = sjalvolki_hunt.0202.glory
+		add_internal_flag = special
+		trigger = {  # Fancy glory focus option
+			has_focus = adventure_glory_focus
+		}
+		hunting_game_effect = { MODE = hunt_end }
+	}
+	
+	option = {
+		name = sjalvolki_hunt.0202.prowess
+		skill = prowess
+		trigger = {  # Fancy enlightenment focus option
+			exists = scope:prowess_upgraded
+		}
+		hunting_game_effect = { MODE = hunt_end }
+	}
+	
+	after = {
+		if = {
+			limit = { should_level_up_hunting_skill_trigger = yes }
+			game_level_up_hunting_skill_reward_effect = yes
+		}
+		if = {
+			limit = { exists = scope:activity }
+			scope:activity = {
+				complete_activity = yes
+			}
+		}
+	}
+}
+
+sjalvolki_hunt.0204 = {	# You lose, but keep your head
+	type = character_event
+	title = sjalvolki_hunt.0204.t
+	desc = sjalvolki_hunt.0204.desc
+	theme = hunt_activity
+	left_portrait = root
+	override_background = {
+		event_background = hunting_wilderness_scope
+	}
+	
+	immediate = {
+		change_trait_rank = {
+			trait = wounded
+			rank = 1
+			max = 3
+		}
+	}
+	
+	option = {
+		name = sjalvolki_hunt.0204.a
+		hunting_game_effect = { MODE = hunt_end }
+	}
+	
+	after = {
+		if = {
+			limit = { exists = scope:vampire }
+			death = {
+				death_reason = death_vanished
+			}
+		}
+		if = {
+			limit = { exists = scope:activity }
+			scope:activity = {
+				complete_activity = yes
+			}
+		}
+	}
+}
+
+sjalvolki_hunt.0205 = {	# You bite the bullet
+	type = character_event
+	title = sjalvolki_hunt.0205.t
+	desc = sjalvolki_hunt.0205.desc
+	theme = hunt_activity
+	left_portrait = {
+		character = root
+		animation = fear
+	}
+	override_background = {
+		event_background = hunting_wilderness_scope
+	}
+	
+	option = {
+		name = sjalvolki_hunt.0205.a
+		if = {
+			limit = {
+				exists = scope:activity
+			}
+			scope:activity = {
+				complete_activity = yes
+			}
+		}
+		death = { death_reason = death_accident }
+	}
+	
+	after = {
+		if = {
+			limit = { exists = scope:vampire }
+			death = {
+				death_reason = death_vanished
+			}
+		}
+	}
+}
+
+sjalvolki_hunt.0206 = {	# Your prey gets away
+	type = character_event
+	title = sjalvolki_hunt.0206.t
+	desc = sjalvolki_hunt.0206.desc
+	theme = hunt_activity
+	left_portrait = {
+		character = root
+		triggered_animation = {
+			trigger = {
+				has_trait = calm
+			}
+			animation = personality_rational	# Calm characters will stay largely nonplussed
+		}
+		triggered_animation = {
+			trigger = {
+				NOT = { has_trait = calm }
+			}
+			animation = rage
+		}
+	}
+	override_background = {
+		event_background = hunting_wilderness_scope
+	}
+	
+	option = {
+		name = sjalvolki_hunt.0206.a
+		trigger = { NOT = { has_trait = calm } }
+		stress_impact = {
+			ambitious = minor_stress_gain
+			wrathful = minor_stress_gain
+			arrogant = minor_stress_gain
+		}
+	}
+	
+	option = {	# Calm characters shrug off all stress impacts
+		name = sjalvolki_hunt.0206.b
+		trigger = { has_trait = calm }
+	}
+	
+	after = {
+		if = {
+			limit = {
+				exists = scope:activity
+			}
+			scope:activity = {
+				complete_activity = yes
+			}
+		}
+	}
+}
+
+sjalvolki_hunt.0207 = {	# You get chased down by social game (Hidden for now)
+	hidden = yes
+	
+	immediate = {
+		death = { death_reason = death_accident }
+	}
+}
+
+##################################################
+# Get a Nickname
+# by Hapchazzard
+# 0211 - 0220
+##################################################
+
+sjalvolki_hunt.0211 = {
+	type = character_event
+	title = sjalvolki_hunt.0211.t
+	desc = sjalvolki_hunt.0211.desc
+	theme = hunt_activity
+	left_portrait = {
+		character = root
+		animation = war_over_win
+	}
+	right_portrait = {
+		character = scope:sjalvolki_hunting_courtier_1
+		animation = war_over_win
+	}
+	override_background = {
+		event_background = hunting_wilderness_scope
+	}
+	
+	option = {
+		name = sjalvolki_hunt.0211.a
+		hunting_game_effect = { MODE = get_reward }
+	}
+	
+	option = {	# No thanks
+		name = sjalvolki_hunt.0211.b
+	}
+}
+
+##################################################
+# Gain an Expert Proficiency
+# by Hapchazzard
+# 0221 - 0230
+##################################################
+
+sjalvolki_hunt.0221 = {
+	type = character_event
+	title = sjalvolki_hunt.0221.t
+	desc = sjalvolki_hunt.0221.desc
+	theme = hunt_activity
+	left_portrait = {
+		character = root
+		animation = war_over_win
+	}
+	right_portrait = {
+		character = scope:sjalvolki_hunting_courtier_1
+		animation = war_over_win
+	}
+	override_background = {
+		event_background = hunting_wilderness_scope
+	}
+	
+	option = {
+		name = sjalvolki_hunt.0221.a
+		hunting_game_effect = { MODE = set_expert_proficiency }
+	}
+	
+	option = {	# No thanks
+		name = sjalvolki_hunt.0221.b
+	}
+}
+
+##################################################
+# Level up Hunting Skill
+# by Hapchazzard
+# 0231 - 0240
+##################################################
+
+sjalvolki_hunt.0231 = {
+	type = character_event
+	title = sjalvolki_hunt.0231.t
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOR = {
+						has_trait = lifestyle_hunter
+						has_trait = lifestyle_beasthunter
+					}
+				}
+				desc = sjalvolki_hunt.0231.desc.beginner
+			}
+			desc = sjalvolki_hunt.0231.desc
+		}
+	}
+	theme = hunt_activity
+	left_portrait = {
+		character = root
+		animation = war_over_win
+	}
+	right_portrait = {
+		character = scope:sjalvolki_hunting_courtier_1
+		animation = war_over_win
+	}
+	override_background = {
+		event_background = hunting_wilderness_scope
+	}
+	
+	option = {
+		name = sjalvolki_hunt.0231.a
+		add_internal_flag = special
+		trigger = {
+			should_use_advanced_hunting_traits = yes
+		}
+		game_level_up_hunting_skill_reward_effect = yes
+	}
+	
+	option = {
+		name = sjalvolki_hunt.0231.b
+		add_internal_flag = special
+		trigger = {
+			should_use_advanced_hunting_traits = no
+			has_perk = beasthunter_perk
+		}
+		game_level_up_hunting_skill_reward_effect = yes
+	}
+	
+	option = {
+		name = sjalvolki_hunt.0231.b
+		trigger = {
+			should_use_advanced_hunting_traits = no
+			NOT = { has_perk = beasthunter_perk }
+		}
+		game_level_up_hunting_skill_reward_effect = yes
+	}
+}
+
+##################################################
+# Generate Fogbeast (DEBUG)
+# by Hapchazzard
+# 1000
+##################################################
+
+sjalvolki_hunt.1000 = {
+	type = character_event
+	title = sjalvolki_hunt.1000.t
+	desc = sjalvolki_hunt.1000.desc
+	theme = hunt_activity
+	left_portrait = {
+		character = root
+		triggered_animation = {	# Be anxious in the Foglands unless you have some serious guts
+			trigger = {
+				exists = scope:fogswept
+				NOT = { ai_boldness >= 100 }
+			}
+			animation = worry
+		}
+		triggered_animation = {
+			trigger = {
+				OR = {
+					NOT = { exists = scope:fogswept }
+					ai_boldness >= 100
+				}
+			}
+			animation = war_attacker
+		}
+	}
+	
+	override_background = {
+		event_background = hunting_wilderness_scope
+	}
+	
+	immediate = {
+		play_music_cue = mx_cue_murder
+		save_scope_value_as = {
+			name = fogswept
+			value = yes
+		}
+		save_scope_value_as = {
+			name = sixth_sense
+			value = yes
+		}
+		save_scope_value_as = {
+			name = unyielding
+			value = yes
+		}
+		generate_fogbeast_of_thought_effect = yes
+		game_tag_table_effect = { MODE = copy }
+		save_scope_value_as = {
+			name = hunt_target_game
+			value = flag:fogbeast
+		}
+		set_variable = {
+			name = chosen_hunt_game_var
+			value = flag:fogbeast
+			days = 5
+		}
+	}
+	
+	option = {
+		name = sjalvolki_hunt.1000.a
+		display_all_possible_tags_effect = yes
+		if = {
+			limit = { exists = scope:successful_ambush }
+			custom_tooltip = successful_ambush_tooltip
+		}
+		if = {
+			limit = { has_character_modifier = artifact_manswelbestiarium_modifier }
+			custom_tooltip = bestiarium_bonus_tooltip
+		}
+		hunting_game_effect = { MODE = combat }
+	}
+	
+	option = {
+		name = sjalvolki_hunt.1000.b
+		trigger = {
+			custom_description = {
+				NOT = { exists = scope:sixth_sense }
+				text = sixth_sense_trigger
+			}
+		}
+		show_as_unavailable = { exists = scope:sixth_sense }
+	}
+}
+
+sjalvolki_hunt.1001 = {
+	type = character_event
+	title = sjalvolki_hunt.1001.t
+	desc = sjalvolki_hunt.1001.desc
+	theme = hunt_activity
+	right_portrait = {
+		character = scope:vampire
+	}
+	
+	immediate = {
+		capital_county = { save_scope_as = vampire_county }
+		create_character = {
+			location = scope:vampire_county.title_province
+			template = vampire_template
+			dynasty = none
+			save_scope_as = vampire
+		}
+	}
+	
+	option = {
+		name = sjalvolki_hunt.1000.a
+	}
+}
+
+sjalvolki_hunt.7001 = {
+	type = character_event
+	desc = sjalvolki_hunt.7001.desc
+	theme = hunt_activity
+	left_portrait = scope:root
+	trigger = {
+		has_character_flag = sjalvolki_hunt_ongoing
+		not = {
+			has_character_flag = hunt_7001
+		}
+	}
+	option = {
+		name = sjalvolki_hunt.7001.a
+		duel = {
+			skill = diplomacy
+			value = 4
+			20 = { #success! The men are in high spirits
+			compare_modifier = {
+					value = scope:duel_value
+					multiplier = 1
+				}
+				desc = sjalvolki_hunt.7001.a.exceptionalsuccess
+				change_variable = {
+					name = sjalvolki_hunt_outcome
+					add = 3
+				}
+			}
+			8 = { #Well they like the drinks at least
+			compare_modifier = {
+					value = scope:duel_value
+				}
+				change_variable = {
+						name = sjalvolki_hunt_outcome
+						add = 1
+				}
+				desc = sjalvolki_hunt.7001.a.success
+			}
+			5 = { #You ruin the evening
+			compare_modifier = {
+					value = scope:duel_value
+				}
+				change_variable = {
+						name = sjalvolki_hunt_outcome
+						add = -1
+				}
+				desc = sjalvolki_hunt.7001.a.failure
+			}
+		}
+	}
+	option = {
+		name = sjalvolki_hunt.7001.b
+		change_variable = {
+						name = sjalvolki_hunt_outcome
+						add = 1
+			}
+	}
+	after = {
+		add_character_flag = {
+			flag = hunt_7001
+			days = 100
+		}
+		if = {
+			limit = {
+				root = {
+				has_character_flag = sjalvolki_hunt_ongoing
+				}
+			}
+			trigger_event = {
+				on_action = sjalvolki_hunt_random_pulse
+				days = 25 
+			}
+		}
+	}
+}
+
+sjalvolki_hunt.7002 = {
+	type = character_event
+	desc = sjalvolki_hunt.7002.desc
+	theme = hunt_activity
+	left_portrait = root
+	trigger = {
+		has_character_flag = sjalvolki_hunt_ongoing
+		not = {
+			has_character_flag = hunt_7002
+		}
+	}
+	option = {
+		name = sjalvolki_hunt.7002.a
+		change_variable = {
+				name = sjalvolki_hunt_outcome
+				add = 1
+			}
+		remove_short_term_gold = minor_gold_value
+	}
+	option = {
+		name = sjalvolki_hunt.7002.b
+		duel = {
+			skill = prowess
+			value = 12
+			40 = { #success! You ford the swollen river
+				compare_modifier = {
+					value = scope:duel_value
+				}
+				desc = sjalvolki_hunt.7002.a.success
+				change_variable = {
+						name = sjalvolki_hunt_outcome
+						add = 2
+				}
+			}
+			15 = { #Success! You ford the river but less well
+				compare_modifier = {
+					value = scope:duel_value
+				}
+				change_variable = {
+						name = sjalvolki_hunt_outcome
+						add = 1
+				}
+				desc = sjalvolki_hunt.7002.a.success
+			}
+			10 = { #You are wounded in the process.
+				compare_modifier = {
+					value = scope:duel_value
+				}
+				change_variable = {
+						name = sjalvolki_hunt_outcome
+						add = -1
+				}
+				change_trait_rank = {
+					trait = wounded
+					rank = 1
+					max = 3
+				}
+				desc = sjalvolki_hunt.7002.a.failure
+			}
+		}
+	}
+	option = {
+		name = sjalvolki_hunt.7002.c
+		change_variable = {
+			name = sjalvolki_hunt_outcome
+			add = -1
+		}
+	}
+	after = {
+		add_character_flag = {
+			flag = hunt_7002
+			days = 100
+		}
+		if = {
+			limit = {
+			root = {
+			has_character_flag = sjalvolki_hunt_ongoing
+			}
+			}
+		trigger_event = {
+				on_action = sjalvolki_hunt_random_pulse
+				days = 25 
+			}
+		}
+	}
+}
+
+sjalvolki_hunt.7003 = { #diversion for cash/treasure?
+	type = character_event
+	desc = sjalvolki_hunt.7003.desc
+	theme = hunt_activity
+	left_portrait = root
+	trigger = {
+		has_character_flag = sjalvolki_hunt_ongoing
+		not = {
+			has_character_flag = hunt_7003
+		}
+	}
+	option = {
+		name = sjalvolki_hunt.7003.a
+		random_list = {
+			1 = { add_gold = medium_gold_value }
+			1 = { add_gold = minor_gold_value }
+			1 = { add_gold = minor_gold_value }
+			1 = {add_artifact = {ARTIFACT = artifact_brokenavianautomata} }
+			1 = {add_artifact = {ARTIFACT = artifact_17} }
+			1 = {add_artifact = {ARTIFACT = artifact_18} }
+			1 = {add_artifact = {ARTIFACT = artifact_19} }
+			1 = {add_artifact = {ARTIFACT = artifact_4} }
+			1 = {add_artifact = {ARTIFACT = artifact_5} }
+			1 = {add_artifact = {ARTIFACT = artifact_6} }
+			1 = {add_artifact = {ARTIFACT = artifact_28} }
+			1 = {add_artifact = {ARTIFACT = artifact_29} }
+			1 = {add_artifact = {ARTIFACT = artifact_30} }
+		}
+		change_variable = {
+			name = sjalvolki_hunt_outcome
+			add = -2
+		}
+	}
+	option = {
+		name = sjalvolki_hunt.7003.b
+		change_variable = {
+			name = sjalvolki_hunt_outcome
+			add = 2
+		}
+	}
+	after = {
+		add_character_flag = {
+			flag = hunt_7003
+			days = 100
+		}
+		if = {
+			limit = {
+				root = {
+				has_character_flag = sjalvolki_hunt_ongoing
+				}
+			}
+			trigger_event = {
+				on_action = sjalvolki_hunt_random_pulse
+				days = 25 
+			}
+		}
+	}
+}
+
+sjalvolki_hunt.7004 = { #low on supplies, what/whom do you eat????
+	type = character_event
+	desc = sjalvolki_hunt.7004.desc
+	theme = hunt_activity
+	left_portrait = root
+	right_portrait = scope:sjalvolki_hunting_courtier_1
+	lower_right_portrait = scope:sjalvolki_hunting_courtier_2
+	trigger = {
+		has_character_flag = sjalvolki_hunt_ongoing
+		not = {
+			has_character_flag = hunt_7004
+		}
+	}
+	option = {
+		name = sjalvolki_hunt.7004.a
+		trigger = {
+		not = {
+			has_character_flag = well_provisioned
+		}
+		}
+		change_variable = {
+			name = sjalvolki_hunt_outcome
+			add = 2
+		}
+		add_character_modifier = {
+			modifier = low_food
+			years = 5
+		}
+	}
+	option = {
+		name = sjalvolki_hunt.7004.b
+		change_variable = {
+			name = sjalvolki_hunt_outcome
+		}
+		change_variable = {
+			name = sjalvolki_hunt_outcome
+			add = -1
+		}
+	}
+	option = {
+		name = sjalvolki_hunt.7004.c
+		trigger = {
+			has_character_flag = well_provisioned
+		}
+		change_variable = {
+			name = sjalvolki_hunt_outcome
+			add = 2
+		}
+	}
+	option = {
+		name = sjalvolki_hunt.7004.d
+		trigger ={
+			has_trait = cannibal
+			exists = scope:sjalvolki_hunting_courtier_1
+			scope:sjalvolki_hunting_courtier_1 = {
+				is_alive = yes
+			}
+		}
+		scope:sjalvolki_hunting_courtier_1 = {
+			death = {
+				killer = root
+				death_reason = death_eaten
+			}
+		}
+		change_variable = {
+			name = sjalvolki_hunt_outcome
+			add = 2
+		}
+	}
+	option = {
+		name = sjalvolki_hunt.7004.e
+		trigger ={
+			has_trait = cannibal
+			exists = scope:sjalvolki_hunting_courtier_2
+			scope:sjalvolki_hunting_courtier_2 = {
+				is_alive = yes
+			}
+		}
+		scope:sjalvolki_hunting_courtier_2 = {
+			death = {
+				killer = root
+				death_reason = death_eaten
+			}
+		}
+		change_variable = {
+			name = sjalvolki_hunt_outcome
+			add = 2
+		}
+	}
+	option = {
+		name = sjalvolki_hunt.7004.f
+		trigger ={
+			has_trait = cannibal
+			exists = scope:sjalvolki_hunting_courtier_3
+			scope:sjalvolki_hunting_courtier_3 = {
+				is_alive = yes
+			}
+		}
+		scope:sjalvolki_hunting_courtier_3 = {
+			death = {
+				killer = root
+				death_reason = death_eaten
+			}
+		}
+		change_variable = {
+			name = sjalvolki_hunt_outcome
+			add = 2
+		}
+	}
+	after = {
+		add_character_flag = {
+			flag = hunt_7004
+			days = 100
+		}
+		if = {
+			limit = {
+				root = {
+				has_character_flag = sjalvolki_hunt_ongoing
+				}
+			}
+			trigger_event = {
+				on_action = sjalvolki_hunt_random_pulse
+				days = 25 
+			}
+		}
+	}
+}
+
+sjalvolki_hunt.7005 = { #Betrayed by the hired hunter! Bandits!
+	type = character_event
+	desc = sjalvolki_hunt.7005.desc
+	theme = hunt_activity
+	left_portrait = root
+	right_portrait = scope:sjalvolki_hunting_courtier_3
+	trigger = {
+		has_character_flag = sjalvolki_hunt_ongoing
+		not = {
+			has_character_flag = hunt_7005
+		}
+		scope:sjalvolki_hunting_courtier_3 = {
+			exists = yes
+			is_alive = yes
+			or = {
+				has_trait = deceitful
+				has_trait = greedy
+			}
+		}
+	}
+	option = {
+		name = sjalvolki_hunt.7005.a
+		duel = {
+			skill = prowess
+			target = scope:sjalvolki_hunting_courtier_3
+			20 = { #You slay the cur and rout the bandits
+				compare_modifier = {
+					value = scope:duel_value
+				}
+				desc = sjalvolki_hunt.7005.a.success
+				scope:sjalvolki_hunting_courtier_3 = {
+					death = {
+						killer = root
+						death_reason = death_duel
+					}
+				}
+				change_variable = {
+						name = sjalvolki_hunt_outcome
+						add = 2
+				}
+			}
+			10 = { #You rout the bandits, but are wounded in the process
+				compare_modifier = {
+					value = scope:duel_value
+				}
+				change_variable = {
+						name = sjalvolki_hunt_outcome
+						add = 1
+				}
+				desc = sjalvolki_hunt.7005.a.success
+				scope:sjalvolki_hunting_courtier_3 = {
+					death = {
+						death_reason = death_vanished
+					}
+				}
+			}
+			5 = { #You are robbed and left for dead. Hunt severely penalized. 
+				compare_modifier = {
+					value = scope:duel_value
+				}
+				change_variable = {
+						name = sjalvolki_hunt_outcome
+						add = -6
+				}
+				change_trait_rank = {
+					trait = wounded
+					rank = 1
+					max = 3
+				}
+				scope:sjalvolki_hunting_courtier_3 = {
+					death = {
+						death_reason = death_vanished
+					}
+				}
+				desc = sjalvolki_hunt.7005.a.failure
+			}
+		}
+	}
+	option = {
+		name = sjalvolki_hunt.7005.b
+		remove_short_term_gold = medium_gold_value
+		change_variable = {
+			name = sjalvolki_hunt_outcome
+			add = -1
+		}
+		hidden_effect = {
+			scope:sjalvolki_hunting_courtier_3 = {
+				death = {
+					death_reason = death_vanished
+				}
+			}
+		}
+	}
+	after = {
+		add_character_flag = {
+			flag = hunt_7005
+			days = 100
+		}
+		if = {
+			limit = {
+				root = {
+				has_character_flag = sjalvolki_hunt_ongoing
+				}
+			}
+			trigger_event = {
+				on_action = sjalvolki_hunt_random_pulse
+				days = 25 
+			}
+		}
+	}
+}
+sjalvolki_hunt.7006 = {
+	type = character_event
+	desc = sjalvolki_hunt.7006.desc
+	theme = hunt_activity
+	left_portrait = root
+	right_portrait = scope:hunting_paramour
+	trigger = {
+		or = {
+			and = {
+				is_attracted_to_gender_of = scope:sjalvolki_hunting_courtier_1
+				scope:sjalvolki_hunting_courtier_1 = {
+					is_alive = yes
+					}
+				scope:sjalvolki_hunting_courtier_1 = {
+					is_attracted_to_gender_of = root
+				}
+			}
+			and = {
+				is_attracted_to_gender_of = scope:sjalvolki_hunting_courtier_2
+				scope:sjalvolki_hunting_courtier_2 = {
+					is_alive = yes
+					}
+				scope:sjalvolki_hunting_courtier_2 = {
+					is_attracted_to_gender_of = root
+				}
+			}
+			and = {
+				is_attracted_to_gender_of = scope:sjalvolki_hunting_courtier_3
+				scope:sjalvolki_hunting_courtier_3 = {
+					is_alive = yes
+					}
+				scope:sjalvolki_hunting_courtier_3 = {
+					is_attracted_to_gender_of = root
+				}
+			}
+		}
+		not = {
+			has_character_flag = hunt_7006
+		}
+	}
+	immediate = {
+		if = {
+			limit = {
+				is_attracted_to_gender_of = scope:sjalvolki_hunting_courtier_1
+				scope:sjalvolki_hunting_courtier_1 = {
+					is_alive = yes
+				}
+			}
+			save_scope_as = hunting_paramour
+		}
+		else_if = {
+			limit = {
+				is_attracted_to_gender_of = scope:sjalvolki_hunting_courtier_2
+				scope:sjalvolki_hunting_courtier_2 = {
+					is_alive = yes
+				}
+			}
+			save_scope_as = hunting_paramour
+		}
+		else_if = {
+			limit = {
+				is_attracted_to_gender_of = scope:sjalvolki_hunting_courtier_3
+				scope:sjalvolki_hunting_courtier_3 = {
+					is_alive = yes
+				}
+			}
+			save_scope_as = hunting_paramour
+		}
+	}
+	option = {
+		name = sjalvolki_hunt.7006.a
+		random_list = {
+			50  ={
+				set_relation_lover = scope:hunting_paramour
+				had_sex_with_effect = {
+					CHARACTER = scope:hunting_paramour
+					PREGNANCY_CHANCE = seduce_pregnancy_chance
+				}
+			}
+			50 = {
+				had_sex_with_effect = {
+					CHARACTER = scope:hunting_paramour
+					PREGNANCY_CHANCE = seduce_pregnancy_chance
+				}
+			}
+		}
+	}
+	option = {
+		name = sjalvolki_hunt.7006.b
+	}
+	after = {
+		add_character_flag = {
+			flag = hunt_7006
+			days = 400
+		}
+		if = {
+			limit = {
+				root = {
+				has_character_flag = sjalvolki_hunt_ongoing
+				}
+			}
+			trigger_event = {
+				on_action = sjalvolki_hunt_random_pulse
+				days = 25 
+			}
+		}
+	}
+}
+
+sjalvolki_hunt.7007 = { # Finding a Child after defeating the Simurgh
+	type = character_event
+	title = sjalvolki_hunt.7007.t
+	desc = sjalvolki_hunt.7007.desc
+	
+	theme = hunt_activity
+	left_portrait = scope:foundling
+
+	immediate = {
+		create_character = {
+			location = scope:county.title_province
+			template = peasant_villager_foundling_character
+			gender = male 
+			save_scope_as = foundling
+		}
+	}
+	option = { #Bring the child to court
+		name = sjalvolki_hunt.7007.a
+		add_courtier = scope:foundling
+		scope:foundling = {
+			add_opinion = {
+				modifier = grateful_opinion
+				target = root
+				opinion = 50
+			}
+		}
+		
+		stress_impact = {
+			callous = minor_stress_impact_gain
+			sadistic = minor_stress_impact_gain
+		}
+		ai_chance = {
+			base = 100
+			ai_value_modifier = {
+				ai_honor = 0.5
+			}
+		}
+	}
+
+	option = { #Leave the child with some villagers
+		name = sjalvolki_hunt.7007.b
+		ai_chance = {
+			base = 100
+			ai_value_modifier = {
+				ai_rationality = 1
+			}
+		}
+	}
+	option = { #Leave the child on the mountain
+		name = sjalvolki_hunt.7007.c
+		ai_chance = {
+			base = 100
+			ai_value_modifier = {
+				ai_rationality = 1
+			}
+		}
+		scope:foundling = {
+			death = {
+				death_reason = death_disappearance
+				killer = root
+			}
+		}
+		stress_impact = {
+			compassionate = medium_stress_impact_gain
+		}	
+	}
+}
+
+sjalvolki_hunt.7008 = { #You've gone insane from encountering a mindrender
+	type = character_event
+	title = sjalvolki_hunt.7008.t
+	desc = sjalvolki_hunt.7008.desc
+
+	theme = hunt_activity
+	left_portrait = {
+		character = root
+		animation = fear
+	}
+
+	option = { # If not already insane, gives the lunatic trait
+		name = sjalvolki_hunt.7008.a
+		trigger = { 
+			NOT = { has_trait = lunatic }
+		}
+
+		add_trait = lunatic_1
+		ai_chance = {
+			base = 100
+		}
+	}
+	option = {	#If already insane, gives major stress impact instead
+		name = sjalvolki_hunt.7008.b
+		trigger = { 
+			has_trait = lunatic
+		}
+		stress_impact = {
+			base = major_stress_impact_gain
+		}
+		ai_chance = {
+			base = 10
+			modifier = {	# Weight up for stress.
+				add = 20
+				has_trait = cynical
+			}
+		}
+	}
+}
+
+sjalvolki_hunt.9999 = {
+	type = character_event
+	hidden = yes
+	immediate = {
+		#End the activity
+		if = {
+			limit = {
+				exists = scope:activity
+			}
+			scope:activity = {
+				complete_activity = yes
+			}
+		}
+		remove_variable = sjalvolki_hunt_outcome
+	}
+}

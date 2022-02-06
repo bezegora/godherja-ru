@@ -1,0 +1,123 @@
+﻿##################################################
+
+#	Rite Wars Decisions List
+
+#	Convert to the Orispolj Rite - Convert to the Orispolj Rite without the prompting of the preacher or their acolytes
+
+##################################################
+
+#################################
+# Convert to the Orispolj Rite	#
+# by Hapchazzard				#
+#################################
+
+convert_to_orispolj_rite_decision = {
+	picture = "gfx/interface/illustrations/decisions/decision_personal_religious.dds"
+	major = yes
+
+	ai_check_interval = 12
+
+	desc = convert_to_orispolj_rite_decision_desc
+	selection_tooltip = convert_to_orispolj_rite_decision_tooltip
+
+	is_shown = {
+		#Standard filter checks.
+		is_landed = yes
+		exists = dynasty
+		#Must follow an unreformed Sjalvolki religion, or Sjalvolki Aagiokratia.
+		OR = {
+			AND = {
+				has_religion = religion:sjalvolki_religion
+				faith = { has_doctrine = unreformed_faith_doctrine }
+			}
+			has_faith = faith:aversarian_sjalvolki
+		}
+		# The reformation must be active
+		exists = global_var:sjalvolki_reformist_story
+		# The reformation must have either reached a certain level of fervor, or the character had previously interacted with the preacher or their acolytes
+		OR = {
+			global_var:sjalvolki_reformist_story.var:reform_fervor >= 20
+			has_variable = sjalvolki_reformation_policy
+		}
+		# Not repeatable for the character.
+		NOT = {
+			has_variable = converted_to_orispolj_rite
+		}
+	}
+
+	is_valid = {
+		
+	}
+
+	is_valid_showing_failures_only = {
+		is_alive = yes
+		is_in_an_activity = no
+		# Must not be imprisoned.
+		is_imprisoned = no
+	}
+
+	effect = {
+		set_character_faith_with_conversion = faith:orispolj_rite
+		# If you had previously told the reformers to take a hike, incur a prestige loss
+		if = {
+			limit = {
+				has_variable = sjalvolki_reformation_policy
+				var:sjalvolki_reformation_policy = flag:hostile
+			}
+			add_prestige = medium_prestige_loss
+			stress_impact = {
+				stubborn = major_stress_impact_gain
+				zealous = medium_stress_impact_gain
+				arrogant = medium_stress_impact_gain
+			}
+		}
+		else = {
+			stress_impact = {
+				stubborn = medium_stress_impact_gain
+				zealous = minor_stress_impact_gain
+			}
+		}
+		# Early converts get a piety bonus
+		if = {
+			limit = { global_var:sjalvolki_reformist_story.var:reform_fervor < 40 }
+			add_piety = {
+				value = major_piety_gain
+				divide = {
+					value = 1
+					add = {
+						value = global_var:sjalvolki_reformist_story.var:reform_fervor
+						divide = 10
+					}
+				}
+			}
+		}
+		set_variable = converted_to_orispolj_rite
+	}
+
+	ai_potential = {
+		# If you're stubborn and previously rejected the reformists, never do this
+		NOT = {
+			limit = {
+				has_variable = sjalvolki_reformation_policy
+				var:sjalvolki_reformation_policy = flag:hostile
+				}
+			has_trait = stubborn
+		}
+	}
+
+	ai_will_do = {
+		base = 20
+		modifier = {
+			add = global_var:sjalvolki_reformist_story.var:reform_fervor
+		}
+		modifier = {
+			add = 50
+			exists = capital_county
+			capital_county.faith = faith:orispolj_rite
+		}
+		modifier = {
+			factor = 0.2
+			has_trait = stubborn
+		}
+	}
+}

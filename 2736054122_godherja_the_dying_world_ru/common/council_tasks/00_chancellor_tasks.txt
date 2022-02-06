@@ -16,8 +16,18 @@
 		triggered_desc = {
 			trigger = {
 				exists = liege.dynasty
-				liege.dynasty = { has_dynasty_perk = erudition_legacy_5 } }
+				liege.dynasty = { has_dynasty_perk = erudition_legacy_5 } 
+			}
 			desc = task_foreign_affairs_effect_desc_bureaucrats_bonus_prestige
+		}
+		# Judicial Council tooltip
+		triggered_desc = {
+			trigger = {
+				exists = liege.dynasty
+				liege.dynasty = { has_dynasty_perk = wardenite_legacy_3 }
+				has_trait = lifestyle_jurist
+			}
+			desc = task_foreign_affairs_effect_desc_judicial_council_bonus_prestige
 		}
 		# Opinion tooltip
 		first_valid = {
@@ -41,6 +51,15 @@
 				exists = liege.dynasty
 				liege.dynasty = { has_dynasty_perk = erudition_legacy_5 } }
 			desc = task_foreign_affairs_effect_desc_bureaucrats_bonus_opinion
+		}
+		# Judicial Council tooltip
+		triggered_desc = {
+			trigger = {
+				exists = liege.dynasty
+				liege.dynasty = { has_dynasty_perk = wardenite_legacy_3 }
+				has_trait = lifestyle_jurist
+			}
+			desc = task_foreign_affairs_effect_desc_judicial_council_bonus_opinion
 		}
 
 		desc = {
@@ -105,6 +124,12 @@
 		name = task_foreign_affairs_prestige_dynasty_perk_bonus_modifier
 		monthly_prestige = 1
 		scale = chancellor_foreign_affairs_prestige_gain_erudition_modifier
+	}
+	
+	council_owner_modifier = {
+		name = task_foreign_affairs_prestige_legalism_dynasty_perk_bonus_modifier
+		monthly_prestige = 1
+		scale = chancellor_foreign_affairs_prestige_gain_judicial_council_modifier
 	}
 
 	council_owner_modifier = {
@@ -175,6 +200,7 @@
 				}
 			}
 		}
+		wardenite_legacy_3_jurist_progress_effect = yes
 	}
 
 	ai_will_do = {
@@ -202,6 +228,13 @@ task_domestic_affairs = {
 				liege.dynasty = { has_dynasty_perk = erudition_legacy_5 }	
 			}
 			desc = task_domestic_affairs_bureaucrats_bonus_desc
+		}
+		triggered_desc = {
+			trigger = {
+				exists = liege.dynasty
+				liege.dynasty = { has_dynasty_perk = wardenite_legacy_3 }	
+			}
+			desc = task_domestic_affairs_judicial_council_bonus_desc
 		}
 		desc = {
 			desc = council_task_possible_side_effects
@@ -348,6 +381,7 @@ task_domestic_affairs = {
 				}
 			}
 		}
+		wardenite_legacy_3_jurist_progress_effect = yes
 	}
 
 	ai_will_do = {
@@ -505,6 +539,16 @@ task_integrate_title = {
 				desc = INTEGRATE_TITLE_DYNASTY_PERK_BONUS_VALUE
 			}
 		}
+		if = {
+			limit = {
+				exists = scope:councillor.liege.dynasty
+				scope:councillor.liege.dynasty = { has_dynasty_perk = wardenite_legacy_3 }
+			}
+			add = {
+				value = scope:councillor.chancellor_integrate_title_judicial_council_bonus
+				desc = INTEGRATE_TITLE_JUDICIAL_COUNCIL_DYNASTY_PERK_BONUS_VALUE
+			}
+		}
 	}
 
 	on_monthly_county = {
@@ -537,6 +581,7 @@ task_integrate_title = {
 				}
 			}
 		}
+		wardenite_legacy_3_jurist_progress_effect = yes
 	}
 
 	ai_will_do = {

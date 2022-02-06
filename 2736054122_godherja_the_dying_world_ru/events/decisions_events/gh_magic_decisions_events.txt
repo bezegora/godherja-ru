@@ -10,91 +10,383 @@ magic_decisions.1001 = {
 		character = root
 	}
 
-	option = { #YES
-		show_as_unavailable = {
-			always = yes
+	immediate = {
+		# Set some variables for trait localization...
+		set_variable = {
+			name = vampiric_drain_years_desc
+			value = vampiric_drain_years
 		}
-		name = magic_decisions.1001.a
-		add_character_modifier = vampiric_drain_mod
-		add_trait = gh_extended_life
+		set_variable = {
+			name = vampiric_drain_life_expectancy_desc
+			value = vampiric_drain_life_expectancy
+		}
+		set_variable = {
+			name = vampiric_drain_years_left_desc
+			value = vampiric_drain_years_left
+		}
+	}
+	
+	option = {
+		name = magic_decisions.1001.a # This is wrong...
+		trigger = {
+			OR = {
+				has_trait = just
+				has_trait = temperate
+				has_trait = compassionate
+				has_trait = humble
+			}
+		}
+		random_list = {
+			100 = {
+				trigger = { has_trait = just }
+				remove_trait = just
+			}
+			100 = {
+				trigger = { has_trait = temperate }
+				remove_trait = temperate
+			}
+			100 = {
+				trigger = { has_trait = compassionate }
+				remove_trait = compassionate
+			}
+			100 = {
+				trigger = { has_trait = humble }
+				remove_trait = humble
+			}
+			100 = {
+				# My, what nice coping mechanisms you have.
+			}
+		}
 	}
 
-	option = { #NO!
-		name = magic_decisions.1001.b
+	option = {
+		name = magic_decisions.1001.b # Better them than me.
+		trigger = {
+			OR = {
+				has_trait = calm
+				has_trait = craven
+				has_trait = vengeful
+				has_trait = paranoid
+				has_treatable_disease_trigger = yes
+			}
+		}
+		if = {
+			limit = {
+				NOR = {
+					has_trait = calm
+					has_trait = craven
+					has_trait = vengeful
+					has_trait = paranoid
+				}
+			}
+			random_list = {
+				100 = {
+					trigger = { NOT = { has_trait = calm } }
+					add_trait = calm
+				}
+				100 = {
+					trigger = { NOT = { has_trait = craven } }
+					add_trait = craven
+				}
+				100 = {
+					trigger = { NOT = { has_trait = vengeful } }
+					add_trait = vengeful
+				}
+				100 = {
+					trigger = { NOT = { has_trait = paranoid } }
+					add_trait = paranoid
+				}
+				100 = {
+					# My, what nice coping mechanisms you have.
+				}
+			}
+		}
+	}
+
+	option = {
+		name = magic_decisions.1001.c # Sacrifices must be made.
+		trigger = {
+			OR = {
+				has_trait = arbitrary
+				has_trait = zealous
+				has_trait = arrogant
+				has_trait = callous
+			}
+		}
+		if = {
+			limit = {
+				NOR = {
+					has_trait = arbitrary
+					has_trait = zealous
+					has_trait = arrogant
+					has_trait = callous
+				}
+			}
+			random_list = {
+				100 = {
+					trigger = { NOT = { has_trait = arbitrary } }
+					add_trait = arbitrary
+				}
+				100 = {
+					trigger = { NOT = { has_trait = zealous } }
+					add_trait = zealous
+				}
+				100 = {
+					trigger = { NOT = { has_trait = arrogant } }
+					add_trait = arrogant
+				}
+				100 = {
+					trigger = { NOT = { has_trait = callous } }
+					add_trait = callous
+				}
+				100 = {
+					# My, what nice coping mechanisms you have.
+				}
+			}
+		}
+	}
+
+	option = {
+		name = magic_decisions.1001.dx # What voice? That was fun.
+		trigger = {
+			OR = {
+				has_trait = sadistic
+				has_trait = lunatic_1
+				has_trait = lunatic_genetic
+				has_trait = possessed_1
+				has_trait = possessed_genetic
+			}
+		}
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						NOT = { has_trait = lunatic_1 }
+						NOT = { has_trait = lunatic_genetic }
+					}
+					AND = {
+						NOT = { has_trait = possessed_1 }
+						NOT = { has_trait = possessed_genetic }
+					}
+					NOT = { has_trait = sadistic }
+				}
+			}
+			random_list = {
+				100 = {
+					trigger = { NOT = { has_trait = lunatic_1 } }
+					add_trait = lunatic_1
+				}
+				100 = {
+					trigger = { NOT = { has_trait = possessed_1 } }
+					add_trait = possessed_1
+				}
+				100 = {
+					trigger = { NOT = { has_trait = sadistic } }
+					add_trait = sadistic
+				}
+				100 = {
+					# My, what nice coping mechanisms you have.
+				}
+			}
+		}
+	}
+	
+	option = {
+		name = magic_decisions.1001.e # C'est la vie.
+		trigger = {
+			NOR = {
+				has_trait = just
+				has_trait = temperate
+				has_trait = compassionate
+				has_trait = humble
+				has_trait = calm
+				has_trait = craven
+				has_trait = vengeful
+				has_trait = paranoid
+				has_trait = arbitrary
+				has_trait = zealous
+				has_trait = arrogant
+				has_trait = callous
+				has_trait = sadistic
+				has_trait = lunatic_1
+				has_trait = lunatic_genetic
+				has_trait = possessed_1
+				has_trait = possessed_genetic
+				has_treatable_disease_trigger = yes
+			}
+		}
+		random_list = {
+			100 = {
+				add_trait = callous
+			}
+			100 = {
+				add_trait = sadistic
+			}
+			100 = {
+				# And yet, still unremarkable...
+			}
+		}
 	}
 }
 
 magic_decisions.1002 = {
 	title = magic_decisions.1002.t
-	desc = magic_decisions.1002.d
 	type = character_event
+	desc = magic_decisions.1002.d
 	theme = skull
 
 	left_portrait = {
 		character = root
 	}
-
-	trigger = {
-		AND = {
-			age = 100
-			has_trait = gh_extended_life
-			has_character_flag = casted_vampiric_drain
-		}
-	}
-
+	
 	option = {
 		name = magic_decisions.1002.a
-		remove_trait = gh_extended_life
-		remove_character_flag = casted_vampiric_drain
+		death = { death_reason = death_vampiric_drain }
 	}
 }
 
 magic_decisions.1003 = {
 	title = magic_decisions.1003.t
-	desc = magic_decisions.1003.d
 	type = character_event
+	desc = {
+		triggered_desc = {
+			trigger = {
+				vampiric_drain_years_left = 1
+			}
+			desc = magic_decisions.1003.d.a
+		}
+		triggered_desc = {
+			trigger = {
+				vampiric_drain_years_left <= 0
+			}
+			desc = magic_decisions.1003.d.b
+		}
+	}
 	theme = skull
 
 	left_portrait = {
 		character = root
 	}
 
-	trigger = {
-		AND = {
-			age = 125
-			has_trait = gh_extended_life
-			has_character_flag = casted_vampiric_drain
+	# Warn the player that they need to drain someone...
+	option = {
+		name = magic_decisions.1003.a
+
+		trigger = {
+			vampiric_drain_years_left = 1
 		}
 	}
 
+	# Well, we warned you...
 	option = {
-		name = magic_decisions.1003.a
-		remove_trait = gh_extended_life
-		remove_character_flag = casted_vampiric_drain
+		name = magic_decisions.1003.b
+
+		trigger = {
+			vampiric_drain_years_left <= 0
+		}
+
+		random_list = {
+			100 = {
+				remove_trait = gh_extended_life
+				death = natural
+			}
+			
+			0 = {
+				modifier = {
+					add = magi_potency
+					#if = {
+					#	limit = {
+					#		OR = {
+					#			has_trait = physique_good_1
+					#			has_trait = physique_good_2
+					#			has_trait = physique_good_3
+					#		}
+					#	}
+					#	add = 10
+					#}
+					#if = {
+					#	limit = {
+					#		has_trait = pure_blooded
+					#	}
+					#	add = 10
+					#}
+					#if = {
+					#	limit = {
+					#		has_trait = strong
+					#	}
+					#	add = 10
+					#}
+					#if = {
+					#	limit = {
+					#		4 <= living_magic_education
+					#	}
+					#	add = 10
+					#}
+					#if = {
+					#	limit = {
+					#		has_trait = lifestyle_herbalist
+					#	}
+					#	add = 10
+					#}
+					#if = {
+					#	limit = {
+					#		has_trait = whole_of_body
+					#	}
+					#	add = 10
+					#}
+				}
+				custom_tooltip = magic_decisions.1003.b.tta
+			}
+		}
 	}
 }
 
+# Just update the visuals once a year.
 magic_decisions.1004 = {
-	title = magic_decisions.1004.t
-	desc = magic_decisions.1004.d
+	hidden = yes
+	immediate = {
+		set_variable = {
+			name = vampiric_drain_years_left_desc
+			value = vampiric_drain_years_left
+		}
+		set_variable = {
+			name = vampiric_drain_life_expectancy_desc
+			value = vampiric_drain_life_expectancy
+		}
+	}
+}
+
+magic_decisions.1005 = {
+	title = magic_decisions.1005.t
 	type = character_event
+	desc = magic_decisions.1005.desc
 	theme = skull
 
-	trigger = {
-		AND = {
-			age = 150
-			has_trait = gh_extended_life
-			has_character_flag = casted_vampiric_drain
-		}
+	left_portrait = {
+		character = root
 	}
 
 	option = {
-		name = magic_decisions.1004.a
-		remove_trait = gh_extended_life
-		remove_character_flag = casted_vampiric_drain
-		death = {
-			killer = root
-		}
+		name = magic_decisions.1005.a
+		
+		custom_tooltip = vampirism_health_pool_transfer_tt
+	}
+}
+magic_decisions.1006 = {
+	title = magic_decisions.1006.t
+	type = character_event
+	desc = magic_decisions.1006.desc
+	theme = skull
+
+	left_portrait = {
+		character = root
+	}
+
+	option = {
+		name = magic_decisions.1006.a
+		
+		custom_tooltip = vampirism_health_pool_transfer_dying_tt
+		add_character_modifier = vampirism_death_near
 	}
 }
 
@@ -103,48 +395,132 @@ magic_decisions.1004 = {
 magic_decisions.2000 = {
 	title = magic_decisions.2000.t
 	type = character_event
-	desc = magic_decisions.2000.d
+	desc = magic_decisions.2000.desc
 	theme = skull
+	
+	immediate = {
+		scope:affected_character = {
+			if = {
+				limit = { NOT = { has_variable = boneshaping_counter }}
+			set_variable = { name = boneshaping_counter value = 0}
+			}
+			change_variable = {
+				name = boneshaping_counter
+				add = 1
+			}
+		}
+	}
 
 	left_portrait = {
 		character = root
 	}
-	
-	immediate = {
-		hidden_effect = { 
-			remove_trait = beauty_bad_3
-			remove_trait = beauty_bad_2
-			remove_trait = beauty_bad_1
-			remove_trait = physique_bad_1
-			remove_trait = physique_bad_2
-			remove_trait = physique_bad_3
-			remove_trait = clubfooted
-			remove_trait = hunchbacked
-			remove_trait = dwarf
-			remove_trait = spindly
-			remove_trait = scaly
-		}
-	}
 		
 	option = { #beauty
 		name = magic_decisions.2000.a
-		add_character_modifier = boneshaping_mod
-		add_trait = beauty_good_3
+		trigger = {
+		scope:affected_character = {
+				NOR = {
+					has_trait = gh_boneshaped_beauty_2
+					has_trait = beauty_bad
+				}
+			}
+		}
+		scope:affected_character = {
+			change_trait_rank = {
+				trait = gh_boneshaped_beauty
+				rank = 1
+			}
+		}
 	}
 
 	option = { #physique
 		name = magic_decisions.2000.b
-		add_character_modifier = boneshaping_mod
-		add_trait = physique_good_3	
+		trigger = {
+			scope:affected_character = {
+				NOR = {
+					has_trait = gh_boneshaped_strong_2
+					has_trait = physique_bad
+				}
+			}
+		}
+		scope:affected_character = {
+			change_trait_rank = {
+				trait = gh_boneshaped_strong
+				rank = 1
+			}
+		}
 	}
 	
 	option = { #giant
 		name = magic_decisions.2000.c
-		add_character_modifier = boneshaping_mod
-		add_trait = giant		
+		trigger = {
+		scope:affected_character = {
+				NOR = {
+					has_trait = gh_boneshaped_giant
+					has_trait = dwarf
+				}
+			}
+		}
+		scope:affected_character = {
+			add_trait = gh_boneshaped_giant	
+		}
+	}
+	option = { #fix ugliness
+		name = magic_decisions.2000.d
+		trigger = {
+			scope:affected_character = {
+				OR = {
+					has_trait = beauty_bad
+					has_trait = spindly
+					has_trait = clubfooted
+					has_trait = disfigured
+					
+				}
+			}
+		}
+		scope:affected_character = {
+			change_trait_rank = {
+				trait = beauty_bad
+				rank = -3
+				}
+			remove_trait = spindly
+			remove_trait = clubfooted
+			remove_trait = disfigured
+		}
 	}	
+	option = { #fix weakness
+		name = magic_decisions.2000.e
+		trigger = {
+		scope:affected_character = {
+			OR = {
+				has_trait = physique_bad
+				has_trait = weak
+				}
+			}
+		}
+		scope:affected_character = {
+			change_trait_rank = {
+				trait = physique_bad
+				rank = -3
+				}
+			remove_trait = weak
+		}
+	}
+	option = { # straighten body
+		name = magic_decisions.2000.f
+		trigger = {
+			scope:affected_character = {
+				OR = {
+					has_trait = dwarf
+					has_trait = hunchbacked
+				}
+			}
+		}
+		scope:affected_character = {
+			remove_trait = dwarf
+			remove_trait = hunchbacked
+		}
+	}
 }
-
-
 
 

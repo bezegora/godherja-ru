@@ -1,0 +1,23 @@
+﻿increase_caste_power_trigger = {
+	custom_description = {
+		text = caste_must_not_be_on_cooldown_trigger
+		NOT = { has_variable = caste_change_cooldown }
+	}
+	trigger_if = {
+		limit = { has_variable = combined_faction_powershare }
+		var:combined_faction_powershare < 4
+	}
+}
+
+decrease_caste_power_trigger = {
+	custom_description = {
+		text = caste_must_not_be_on_cooldown_trigger
+		NOT = { has_variable = caste_change_cooldown }
+	}
+	OR = {
+		has_variable = $NAME$_power_1
+		has_variable = $NAME$_power_2
+		has_variable = $NAME$_power_3
+		has_variable = $NAME$_power_4
+	}
+}

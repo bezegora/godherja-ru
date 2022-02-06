@@ -1,0 +1,20 @@
+####Western Spymaster
+
+entity = {
+	name = "female_cloak_western_spy_master_01_entity"
+	pdxmesh = "female_cloak_early_iranian_nobility_mesh"
+	
+	attribute = { name = "bs_body_fat_1"					blend_shape = "female_cloak_early_iranian_nobility_bs_fat" }
+	attribute = { name = "bs_body_pregnant_1"				blend_shape = "female_cloak_early_iranian_nobility_bs_pregnant" }
+	attribute = { name = "bs_body_dwarf_1"					blend_shape = "female_cloak_early_iranian_nobility_bs_dwarf" }
+	attribute = { name = "bs_body_infant_1"					blend_shape = "female_cloak_early_iranian_nobility_bs_infant" }
+	attribute = { name = "bs_body_muscular_1"				blend_shape = "female_cloak_early_iranian_nobility_bs_muscular" }	
+	attribute = { name = "bs_body_old_1"					blend_shape = "female_cloak_early_iranian_nobility_bs_old" }
+	
+	game_data = {
+		portrait_accessory = {
+			pattern_mask = "gfx/models/portraits/attachments/Non-Replacer/Contributed/EPE/male_cloaks/secular/iranian/male_cloak_early_iranian_nobility/male_cloak_early_iranian_nobility_mask.dds"	#Any 4-channel texture. Each channel will be used to mask a pattern from the variation object
+			variation = "western_spy_master_color"	#A "variation" object in gfx/portraits/accessory_variations/
+		}
+	}
+}

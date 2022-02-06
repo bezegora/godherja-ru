@@ -36,7 +36,6 @@ should_be_topless_portrait_trigger = {
 	should_show_nudity = yes
 }
 
-
 portrait_wear_armor_trigger = {
 	OR = {
 		AND = {
@@ -44,8 +43,10 @@ portrait_wear_armor_trigger = {
 			has_government = mercenary_government
 		}
 		is_commanding_army = yes
+		exists = knight_army
 		AND = {
 			is_knight = yes
+			is_councillor = no
 			OR = {
 				is_landed = no
 				liege = {
@@ -125,20 +126,7 @@ portrait_wear_helmet_trigger = { # Different from Armor, as Counts+ should show 
 			this = character:southern_imperial_15
 		}
 		NOT = {
-			OR = {
-				has_trait = education_living_magic_1
-				has_trait = education_living_magic_2
-				has_trait = education_living_magic_3
-				has_trait = education_living_magic_4
-				has_trait = education_dead_magic_1
-				has_trait = education_dead_magic_2
-				has_trait = education_dead_magic_3
-				has_trait = education_dead_magic_4
-				has_trait = education_mixed_magic_1
-				has_trait = education_mixed_magic_2
-				has_trait = education_mixed_magic_3
-				has_trait = education_mixed_magic_4
-			}
+			has_education_magic_trigger = yes
 		}
 	}
 }
@@ -146,49 +134,158 @@ portrait_wear_helmet_trigger = { # Different from Armor, as Counts+ should show 
 
 
 portrait_byzantine_clothing_trigger = {
-	culture = { has_graphical_culture = byzantine_clothing_gfx }
+    scope:culture = {
+        portrait_byzantine_clothing_contents_trigger = yes
+    }
+}
+
+portrait_byzantine_clothing_spouse_trigger = {
+    culture = {
+        portrait_byzantine_clothing_contents_trigger = yes
+    }
+}
+
+portrait_byzantine_clothing_contents_trigger = {
+    has_graphical_culture = byzantine_clothing_gfx 
 }
 
 portrait_indian_clothing_trigger = {
-	culture = { has_graphical_culture = indian_clothing_gfx }
+    scope:culture = {
+        portrait_indian_clothing_contents_trigger = yes
+    }
+}
+
+portrait_indian_clothing_spouse_trigger = {
+    culture = {
+        portrait_indian_clothing_contents_trigger = yes
+    }
+}
+
+portrait_indian_clothing_contents_trigger = {
+	has_graphical_culture = indian_clothing_gfx
 }
 
 portrait_mena_clothing_trigger = {
-	culture = { has_graphical_culture = mena_clothing_gfx }
+    scope:culture = {
+        portrait_mena_clothing_contents_trigger = yes
+    }
 }
+
+portrait_mena_clothing_spouse_trigger = {
+    culture = {
+        portrait_mena_clothing_contents_trigger = yes
+    }
+}
+
+portrait_mena_clothing_contents_trigger = {
+	has_graphical_culture = mena_clothing_gfx
+}
+
 portrait_african_clothing_trigger = {
-	culture = { has_graphical_culture = african_clothing_gfx }
+	scope:culture = { portrait_african_clothing_contents_trigger = yes }
+}
+
+portrait_african_clothing_spouse_trigger = {
+	culture = {
+		portrait_african_clothing_contents_trigger = yes
+	}
+}
+
+portrait_african_clothing_contents_trigger = {
+	has_graphical_culture = african_clothing_gfx
 }
 
 portrait_northern_clothing_trigger = {
-	culture = { has_graphical_culture = northern_clothing_gfx }
+	scope:culture = { portrait_northern_clothing_contents_trigger = yes }
+}
+
+portrait_northern_clothing_spouse_trigger = {
+	culture = {
+		portrait_northern_clothing_contents_trigger = yes
+	}
+}
+
+portrait_northern_clothing_contents_trigger = {
+	has_graphical_culture = northern_clothing_gfx
 }
 
 portrait_fp1_norse_clothing_trigger = {
 	has_fp1_dlc_trigger = yes
-	scope:culture = { has_graphical_culture = fp1_norse_clothing_gfx }
+	scope:culture = { portrait_fp1_norse_clothing_contents_trigger = yes }
+}
+
+portrait_fp1_norse_clothing_spouse_trigger = {
+	culture = {
+		portrait_fp1_norse_clothing_contents_trigger = yes
+	}
+}
+
+portrait_fp1_norse_clothing_contents_trigger = {
+	has_graphical_culture = fp1_norse_clothing_gfx
 }
 
 portrait_steppe_clothing_trigger = {
-	culture = { has_graphical_culture = mongol_clothing_gfx }
+	scope:culture = { portrait_steppe_clothing_contents_trigger = yes }
+}
+
+portrait_steppe_clothing_spouse_trigger = {
+	culture = {
+		portrait_steppe_clothing_contents_trigger = yes
+	}
+}
+
+portrait_steppe_clothing_contents_trigger = {
+	has_graphical_culture = mongol_clothing_gfx
 }
 
 portrait_western_clothing_trigger = {
+	scope:culture = {
+		portrait_western_clothing_contents_trigger = yes
+	}
+}
+
+portrait_western_clothing_spouse_trigger = {
 	culture = {
-		has_graphical_culture = western_clothing_gfx
-		NOR = {
-			has_graphical_culture = byzantine_clothing_gfx
-			has_graphical_culture = northern_clothing_gfx
-		}
+		portrait_western_clothing_contents_trigger = yes
+	}
+}
+
+portrait_western_clothing_contents_trigger = {
+	has_graphical_culture = western_clothing_gfx
+	NOR = {
+		has_graphical_culture = byzantine_clothing_gfx
+		has_graphical_culture = northern_clothing_gfx
 	}
 }
 
 portrait_dde_hre_clothing_trigger = {
-	culture = { has_graphical_culture = dde_hre_clothing_gfx }
+	scope:culture = { portrait_dde_hre_clothing_contents_trigger = yes }
 	has_dlc = "Garments of the Holy Roman Empire"
 }
 
+portrait_dde_hre_clothing_spouse_trigger = {
+	culture = {
+		portrait_dde_hre_clothing_contents_trigger = yes
+	}
+	has_dlc = "Garments of the Holy Roman Empire"
+}
+
+portrait_dde_hre_clothing_contents_trigger = {
+	has_graphical_culture = dde_hre_clothing_gfx
+}
+
 portrait_dde_abbasid_clothing_trigger = {
-	culture = { has_graphical_culture = dde_abbasid_clothing_gfx }
+	scope:culture = { portrait_dde_abbasid_clothing_contents_trigger = yes }
 	has_dlc = "Fashion of the Abbasid Court"
+}
+
+portrait_dde_abbasid_clothing_spouse_trigger = {
+	culture = {
+		portrait_dde_abbasid_clothing_contents_trigger = yes
+	}
+	has_dlc = "Fashion of the Abbasid Court"
+}
+
+portrait_dde_abbasid_clothing_contents_trigger = {
+	has_graphical_culture = dde_abbasid_clothing_gfx
 }

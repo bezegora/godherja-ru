@@ -46,6 +46,17 @@ standard_spell_difficulty_chance_ratio = {
 	min = 0
 }
 
+nonhostile_standard_spell_difficulty_chance_ratio = {
+	value = standard_spell_difficulty_success_chance
+	divide = {
+		value = 1	# So we don't divide by zero
+		add = standard_spell_difficulty_success_chance_nonhostile
+		add = standard_spell_difficulty_failure_chance_nonhostile
+	}
+	multiply = 100
+	min = 0
+}
+
 difficult_spell_difficulty_success_chance = {
 	value = 0
 	add = base_difficult_spell_difficulty_success_chance_value
@@ -88,6 +99,17 @@ difficult_spell_difficulty_chance_ratio = {
 		value = 1	# So we don't divide by zero
 		add = difficult_spell_difficulty_success_chance
 		add = difficult_spell_difficulty_failure_chance
+	}
+	multiply = 100
+	min = 0
+}
+
+nonhostile_difficult_spell_difficulty_chance_ratio = {
+	value = difficult_spell_difficulty_success_chance
+	divide = {
+		value = 1	# So we don't divide by zero
+		add = difficult_spell_difficulty_success_chance_nonhostile
+		add = difficult_spell_difficulty_failure_chance_nonhostile
 	}
 	multiply = 100
 	min = 0
@@ -138,6 +160,28 @@ moon_standard_spell_difficulty_failure_chance_nonhostile = {
 	min = 5
 }
 
+moon_standard_spell_difficulty_chance_ratio = {
+	value = standard_spell_difficulty_success_chance
+	divide = {
+		value = 1	# So we don't divide by zero
+		add = moon_standard_spell_difficulty_success_chance
+		add = moon_standard_spell_difficulty_failure_chance
+	}
+	multiply = 100
+	min = 0
+}
+
+nonhostile_moon_standard_spell_difficulty_chance_ratio = {
+	value = standard_spell_difficulty_success_chance
+	divide = {
+		value = 1	# So we don't divide by zero
+		add = moon_standard_spell_difficulty_success_chance_nonhostile
+		add = moon_standard_spell_difficulty_failure_chance_nonhostile
+	}
+	multiply = 100
+	min = 0
+}
+
 moon_difficult_spell_difficulty_success_chance = {
 	value = 0
 	add = base_difficult_spell_difficulty_success_chance_value
@@ -180,4 +224,26 @@ moon_difficult_spell_difficulty_failure_chance_nonhostile = {
 	subtract = good_moon_spell_chance_value
 	add = bad_moon_spell_chance_value
 	min = 5
+}
+
+moon_difficult_spell_difficulty_chance_ratio = {
+	value = difficult_spell_difficulty_success_chance
+	divide = {
+		value = 1	# So we don't divide by zero
+		add = moon_difficult_spell_difficulty_success_chance
+		add = moon_difficult_spell_difficulty_failure_chance
+	}
+	multiply = 100
+	min = 0
+}
+
+nonhostile_moon_difficult_spell_difficulty_chance_ratio = {
+	value = difficult_spell_difficulty_success_chance
+	divide = {
+		value = 1	# So we don't divide by zero
+		add = moon_difficult_spell_difficulty_success_chance_nonhostile
+		add = moon_difficult_spell_difficulty_failure_chance_nonhostile
+	}
+	multiply = 100
+	min = 0
 }

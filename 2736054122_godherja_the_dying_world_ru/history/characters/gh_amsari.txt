@@ -1,7 +1,7 @@
 ﻿#Kind Old Ass Emperor with many shitty kids
 canian_1 = { #e_amsari_hiklahn
 	name = "Pejman"
-        dna = emperor_pejman 
+	dna = emperor_pejman 
 	religion = "mahndayana"
 	culture = "amsari"
 	martial = 4
@@ -9,23 +9,26 @@ canian_1 = { #e_amsari_hiklahn
 	intrigue = 2
 	stewardship = 12
 	learning = 10
+	father = canian_140
+	mother = canian_141
 	
 	dynasty = dyn_amsari_3
 	trait = education_diplomacy_3
 	trait = trusting
 	trait = content
 	trait = just
-        trait = fecund
+	trait = fecund
 	trait = gh_blood_of_prophet
 	disallow_random_traits = yes
-	
+
 	1162.3.7 = {
 		birth = yes
-	        effect = {
+		effect = {
 			add_character_flag = has_scripted_appearance
 		}
 	}
-	#first wife
+ #first wife
+
 	1232.5.18 = {
 		add_spouse = canian_47
 	}
@@ -36,7 +39,7 @@ canian_1 = { #e_amsari_hiklahn
 #Oldest son is like his dad, but worse at his job
 canian_20 = { #d_shorshajan
 	name = "Parviz"
-        dna = prince_parviz
+	dna = prince_parviz
 	religion = "mahndayana"
 	culture = "amsari"
 	martial = 2
@@ -53,17 +56,15 @@ canian_20 = { #d_shorshajan
 	trait = magic_good_2
 	trait = gh_blood_of_prophet
 	dynasty = dyn_amsari_3
-
-	
 	disallow_random_traits = yes
 	father = "canian_1"
-	
+
 	1179.5.4 = {
 		birth = yes
-                effect = {
+		effect = {
 			add_character_flag = has_scripted_appearance
 			add_pressed_claim = d_firuziad
-                }		
+		}
 	}
 }
 
@@ -71,7 +72,7 @@ canian_20 = { #d_shorshajan
 
 canian_21 = { #d_sanura
 	name = "Behfar"
-        dna = prince_behfar
+	dna = prince_behfar
 	religion = "mahndayana"
 	culture = "amsari"
 	martial = 18
@@ -81,23 +82,24 @@ canian_21 = { #d_sanura
 	
 	trait = education_martial_1
 	trait = wrathful
-        trait = brave
+	trait = brave
 	trait = stubborn
 	trait = magic_good_1
 	trait = gh_blood_of_prophet
 	disallow_random_traits = yes
 	father = "canian_1"
 	dynasty = dyn_amsari_3
-	
+
 	1185.5.8 = {
 		birth = yes
-                effect = {
+		effect = {
 			add_character_flag = has_scripted_appearance
-                        add_pressed_claim = d_sharjegat
-		        add_pressed_claim = d_jessiah
-		        add_pressed_claim = d_qez
+			add_pressed_claim = d_sharjegat
+			add_pressed_claim = d_jessiah
+			add_pressed_claim = d_qez
 		}
-	}		
+	}
+
 	1210.6.29 = {
 		add_spouse = canian_44
 	}
@@ -108,7 +110,7 @@ canian_21 = { #d_sanura
 canian_22 = { #d_sharjegat
 	
 	name = "Babak"
-        dna = prince_babak
+	dna = prince_babak
 	religion = "mahndayana"
 	culture = "amsari"
 	martial = 3
@@ -125,14 +127,15 @@ canian_22 = { #d_sharjegat
 	father = "canian_1"
 	dynasty = dyn_amsari_3
 	trait = gh_blood_of_prophet
+
 	1190.7.4 = {
 		birth = yes
-                effect = {
+		effect = {
 			add_character_flag = has_scripted_appearance
-		        add_pressed_claim = d_sanura
-		        add_pressed_claim = d_jessiah
-		        add_pressed_claim = d_qez
-               }		
+			add_pressed_claim = d_sanura
+			add_pressed_claim = d_jessiah
+			add_pressed_claim = d_qez
+		}
 	}
 }
 
@@ -140,7 +143,7 @@ canian_22 = { #d_sharjegat
 canian_23 = { #d_jessiah
 	
 	name = "Misrak"
-        dna = prince_misrak
+	dna = prince_misrak
 	religion = "mahndayana"
 	culture = "amsari"
 	martial = 3
@@ -158,15 +161,15 @@ canian_23 = { #d_jessiah
 	dynasty = dyn_amsari_3
 	trait = gh_blood_of_prophet
 	father = "canian_1"
-	
+
 	1197.8.8 = {
 		birth = yes
-                effect = {
+		effect = {
 			add_character_flag = has_scripted_appearance
-		        add_pressed_claim = d_sanura
-		        add_pressed_claim = d_sharjegat
-		        add_pressed_claim = d_qez
-               }		
+			add_pressed_claim = d_sanura
+			add_pressed_claim = d_sharjegat
+			add_pressed_claim = d_qez
+			}
 	}
 }
 
@@ -174,7 +177,7 @@ canian_23 = { #d_jessiah
 
 canian_24 = { #d_firuziad
 	name = "Adarburza"
-        dna = prince_adarbuza
+	dna = prince_adarbuza
 	religion = "mahndayana"
 	culture = "amsari"
 	martial = 10
@@ -187,20 +190,20 @@ canian_24 = { #d_firuziad
 	trait = education_mixed_magic_3
 	trait = humble
 	trait = just
-        trait = content
+	trait = content
 	trait = beauty_bad_2
 	trait = magic_good_3
 	trait = gh_blood_of_prophet
 	disallow_random_traits = yes
 	father = "canian_1"
 	dynasty = dyn_amsari_3
-	
+
 	1208.7.4 = {
 		birth = yes
-                effect = {
+		effect = {
 			add_character_flag = has_scripted_appearance
-		        add_pressed_claim = d_shorshajan
-	        }		
+			add_pressed_claim = d_shorshajan
+		}
 	}
 }
 
@@ -209,7 +212,7 @@ canian_24 = { #d_firuziad
 canian_25 = { #d_qez
 	
 	name = "Bazyar"
-        dna = prince_bazyar
+	dna = prince_bazyar
 	religion = "mahndayana"
 	culture = "amsari"
 	martial = 20
@@ -228,15 +231,15 @@ canian_25 = { #d_qez
 	disallow_random_traits = yes
 	father = "canian_1"
 	dynasty = dyn_amsari_3
-	
+
 	1212.12.22 = {
 		birth = yes
-                effect = {
+		effect = {
 			add_character_flag = has_scripted_appearance
-		        add_pressed_claim = d_sanura
-		        add_pressed_claim = d_sharjegat
-		        add_pressed_claim = d_jessiah
-	        }		
+			add_pressed_claim = d_sanura
+			add_pressed_claim = d_sharjegat
+			add_pressed_claim = d_jessiah
+		}
 	}
 }
 
@@ -244,7 +247,7 @@ canian_25 = { #d_qez
 #weak
 canian_26 = { #c_rusteb
 	name = "Bozorgmehr"
-        dna = prince_bozorgmehr
+	dna = prince_bozorgmehr
 	religion = "mahndayana"
 	culture = "amsari"
 	martial = 5
@@ -256,20 +259,21 @@ canian_26 = { #c_rusteb
 	trait = education_diplomacy_1
 	trait = intellect_bad_1
 	trait = content
-        trait = just
-        trait = compassionate
+	trait = just
+	trait = compassionate
 	trait = magic_good_1
 	trait = gh_blood_of_prophet
 	disallow_random_traits = yes
 	father = "canian_1"
 	dynasty = dyn_amsari_3
+
 	1213.5.2 = {
 		birth = yes
-                effect = {
+		effect = {
 			add_character_flag = has_scripted_appearance
-		        add_pressed_claim = d_khorila
-		        add_pressed_claim = d_faujewah
-	        }		
+			add_pressed_claim = d_khorila
+			add_pressed_claim = d_faujewah
+		}
 	}
 }
 
@@ -277,7 +281,7 @@ canian_26 = { #c_rusteb
 
 canian_27 = { #d_khorila #d_kizihar
 	name = "Aoshnar"
-        dna = prince_aoshnar
+	dna = prince_aoshnar
 	religion = "mahndayana"
 	culture = "amsari"
 	martial = 10
@@ -295,20 +299,21 @@ canian_27 = { #d_khorila #d_kizihar
 	disallow_random_traits = yes
 	father = "canian_1"
 	dynasty = dyn_amsari_3
+
 	1222.11.4 = {
 		birth = yes
-                effect = {
+		effect = {
 			add_character_flag = has_scripted_appearance
-		        add_pressed_claim = c_rusteb
-		        add_pressed_claim = d_faujewah
-                }		
+			add_pressed_claim = c_rusteb
+			add_pressed_claim = d_faujewah
+		}
 	}
 }
 
 #Ninth Kid, twin
 canian_28 = { #d_faujewah #d_rezvashtar
 	name = "Adro"
-        dna = prince_adro
+	dna = prince_adro
 	religion = "mahndayana"
 	culture = "amsari"
 	martial = 10
@@ -328,14 +333,14 @@ canian_28 = { #d_faujewah #d_rezvashtar
 	disallow_random_traits = yes
 	father = "canian_1"
 	dynasty = dyn_amsari_3
-	
+
 	1222.11.4 = {
 		birth = yes
-                effect = {
+		effect = {
 			add_character_flag = has_scripted_appearance
-		        add_pressed_claim = c_rusteb
-		        add_pressed_claim = d_khorila
-	        }		
+			add_pressed_claim = c_rusteb
+			add_pressed_claim = d_khorila
+		}
 	}
 }
 
@@ -343,7 +348,7 @@ canian_28 = { #d_faujewah #d_rezvashtar
 #weak
 canian_29 = { #c_sehlar
 	name = "Orvadasp"
-        dna = prince_ovardasp
+	dna = prince_ovardasp
 	religion = "mahndayana"
 	culture = "amsari"
 	martial = 10
@@ -355,7 +360,7 @@ canian_29 = { #c_sehlar
 	trait = education_intrigue_1
 	trait = beauty_good_3
 	trait = lustful
-        trait = arrogant 
+	trait = arrogant 
 	trait = lovers_pox
 	trait = seducer
 	trait = lazy
@@ -363,18 +368,18 @@ canian_29 = { #c_sehlar
 	dynasty = dyn_amsari_3
 	trait = gh_blood_of_prophet
 	disallow_random_traits = yes
-
 	father = "canian_1"
-	
+
 	1225.1.7 = {
 		birth = yes
-                effect = {
+		effect = {
 			add_character_flag = has_scripted_appearance
-		        add_pressed_claim = c_huwilah
-		        add_pressed_claim = c_suwan
-	        }		
+			add_pressed_claim = c_huwilah
+			add_pressed_claim = c_suwan
+			}
 	}
-        1245.2.10 = {
+	
+	1245.2.10 = {
 		add_spouse = canian_36
 	}
 }
@@ -383,7 +388,7 @@ canian_29 = { #c_sehlar
 #weak
 canian_30 = { #c_suwan
 	name = "Javaanshir"
-        dna = prince_javaanshir
+	dna = prince_javaanshir
 	religion = "mahndayana"
 	culture = "amsari"
 	martial = 10
@@ -394,31 +399,31 @@ canian_30 = { #c_suwan
 	disallow_random_traits = yes
 	trait = education_intrigue_1
 	trait = gregarious
-        trait = fickle
-        trait = forgiving 
+	trait = fickle
+	trait = forgiving 
 	trait = leper
 	trait = gh_blood_of_prophet
 	dynasty = dyn_amsari_3
-
 	father = "canian_1"
-	
+
 	1227.8.7 = {
 		birth = yes
-                effect = {
+		effect = {
 			add_character_flag = has_scripted_appearance
-		        add_pressed_claim = c_huwilah
-		        add_pressed_claim = c_sehlar
-	        }		
+			add_pressed_claim = c_huwilah
+			add_pressed_claim = c_sehlar
+			}
 	}
+
 	1253.8.11 = {
-	 add_spouse = canian_37
+	add_spouse = canian_37
 	}
 }
 
 #Another schemer, but a nicer one I guess
 canian_31 = { #d_tashmeer
 	name = "Dalal"
-        dna = prince_dalal
+	dna = prince_dalal
 	religion = "mahndayana"
 	culture = "amsari"
 	martial = 5
@@ -433,11 +438,11 @@ canian_31 = { #d_tashmeer
 	trait = just
 	trait = gh_blood_of_prophet
 	dynasty = dyn_amsari_3
-
 	father = "canian_1"
+
 	1229.8.22 = {
 		birth = yes
-	        effect = {
+		effect = {
 			add_character_flag = has_scripted_appearance
 		}
 	}
@@ -446,7 +451,7 @@ canian_31 = { #d_tashmeer
 #Another warrior, but a prick warrior
 canian_32 = { #d_wukat
 	name = "Majra"
-        dna = prince_majra
+	dna = prince_majra
 	religion = "mahndayana"
 	culture = "amsari"
 	martial = 26
@@ -461,16 +466,15 @@ canian_32 = { #d_wukat
 	dynasty = dyn_amsari_3
 	trait = education_martial_1
 	trait = gh_blood_of_prophet
-
 	father = "canian_1"
 	mother = "canian_47"
-	
+
 	1231.3.24 = {
 		birth = yes
-                effect = {
+		effect = {
 			add_character_flag = has_scripted_appearance
-                        add_pressed_claim = d_dashrukun
-		        add_pressed_claim = d_prathatha
+			add_pressed_claim = d_dashrukun
+			add_pressed_claim = d_prathatha
 		}
 	}
 }
@@ -479,7 +483,7 @@ canian_32 = { #d_wukat
 #weak
 canian_33 = { #c_huwilah
 	name = "Mahyar"
-        dna = princess_mahyar
+	dna = princess_mahyar
 	religion = "mahndayana"
 	culture = "amsari"
 	martial = 5
@@ -487,21 +491,20 @@ canian_33 = { #c_huwilah
 	intrigue = 5
 	stewardship = 5
 	learning = 5
-
 	trait = disputed_heritage
 	father = "canian_1"
 	mother = "canian_47"
 	female = yes 
 	dynasty = dyn_amsari_3
 	trait = gh_blood_of_prophet
-	
+
 	1244.7.24 = {
 		birth = yes
-                effect = {
+		effect = {
 			add_character_flag = has_scripted_appearance
-		        add_pressed_claim = d_karracdid
-		        add_pressed_claim = d_prathatha
-                }
+			add_pressed_claim = d_karracdid
+			add_pressed_claim = d_prathatha
+		}
 	}
 }
 
@@ -509,7 +512,7 @@ canian_33 = { #c_huwilah
 #weak
 canian_34 = { #c_kermahash
 	name = "Mansour"
-        dna = princess_mansour
+	dna = princess_mansour
 	religion = "mahndayana"
 	culture = "amsari"
 	martial = 5
@@ -525,36 +528,34 @@ canian_34 = { #c_kermahash
 	
 	trait = disputed_heritage
 	
-	
 	1250.2.11 = {
 		birth = yes
-                effect = {
+		effect = {
 			add_character_flag = has_scripted_appearance
-		        add_pressed_claim = d_dashrukun
-		        add_pressed_claim = d_karracdid
-               }
+			add_pressed_claim = d_dashrukun
+			add_pressed_claim = d_karracdid
+		}
 	}
 }
 
-#Grandfather was Purged by Pejman's father, seeks revenge
+#Grandfather was Purged by Pejman's	father, seeks revenge
 canian_35 = {#d_zilair #d_inhitin
 	name = "Azartash"
-        dna = azartash
+	dna = azartash
 	religion = "mahndayana"
 	culture = "amsari"
 	dynasty = dyn_amsari_1
 	
 	trait = brave
 	trait = ambitious
-        trait = vengeful
+	trait = vengeful
 	trait = intellect_good_2
 	trait = education_intrigue_4
 	disallow_random_traits = yes
-
+	
 	1204.5.11 = {
 		birth = yes
-	        birth = yes
-	        effect = {
+		effect = {
 			add_character_flag = has_scripted_appearance
 		}
 	}
@@ -570,10 +571,10 @@ canian_36 = {#d_dibba_asaj
 	trait = paranoid
 	trait = education_learning_1
 	trait = craven
-        trait = lazy
+	trait = lazy
 	disallow_random_traits = yes
 	female = yes
-
+	
 	1234.5.11 = {
 		birth = yes
 	}
@@ -587,14 +588,13 @@ canian_37 = {#d_daayarah #k_sanura
 	dynasty = dyn_amsari_4
 	
 	female = yes
-        trait = cynical
-        trait = gregarious
+	trait = cynical
+	trait = gregarious
 	trait = lustful
 	trait = lovers_pox
 	trait = intellect_good_1
 	trait = education_diplomacy_2
 	disallow_random_traits = yes
-	
 
 	1232.7.27 = {
 		birth = yes
@@ -603,13 +603,11 @@ canian_37 = {#d_daayarah #k_sanura
 
 #Angry xenophobic man at the edge of the world.
 canian_38 = {
-
 	name = "Khosrow"
-        dna = khosrow
+	dna = khosrow
 	religion = "mahndayana"
 	culture = "amsari"
 	dynasty = dyn_amsari_8
-	
 	
 	trait = intellect_good_1
 	trait = education_intrigue_2
@@ -617,11 +615,10 @@ canian_38 = {
 	trait = zealous
 	trait = stubborn
 	disallow_random_traits = yes
-	
 
 	1212.7.27 = {
-	        birth = yes
-	        effect = {
+		birth = yes
+		effect = {
 			add_character_flag = has_scripted_appearance
 		}
 	}
@@ -629,51 +626,46 @@ canian_38 = {
 
 #greedy little shit who don't do shit
 canian_39 = {
-
 	name = "Arang"
-        dna = arang
+	dna = arang
 	religion = "mahndayana"
 	culture = "amsari"
 	dynasty = dyn_amsari_6
-	
 	
 	trait = education_stewardship_2
 	trait = wrathful
 	trait = greedy
 	trait = lazy
 	disallow_random_traits = yes
-	
 
 	1222.7.27 = {
 		birth = yes
-	        effect = {
+		effect = {
 			add_character_flag = has_scripted_appearance
 		}
 	}
 }
 
 canian_40 = { #yarrr pirate
-
 	name = "Baraz"
-        dna = baraz
+	dna = baraz
 	religion = "mahndayana"
 	culture = "amsari"
 	dynasty = dyn_amsari_9
-	
 	
 	trait = education_martial_2
 	trait = brave
 	trait = cynical
 	trait = greedy
-        trait = beauty_good_3
+	trait = beauty_good_3
 	
 	trait = reaver
 	
 	disallow_random_traits = yes
-	
+
 	1232.7.27 = {
-	        birth = yes
-	        effect = {
+		birth = yes
+		effect = {
 			add_character_flag = has_scripted_appearance
 		}
 	}
@@ -682,52 +674,47 @@ canian_40 = { #yarrr pirate
 #Characters Generated at 2020/10/04 16:24:14 by mpjama
 #d_khvoshinane_sofla
 canian_41 = {
-        name = "Bita"
-        dna = bita
-        religion = "mahndayana"
-        culture = "hamaxindi"
-        dynasty = dyn_amsari_13
-        female = yes
-
-        trait = ambitious
-        trait = deceitful
-        trait = stubborn
-        trait = education_intrigue_3
-        trait = intellect_good_3
-        trait = beauty_good_1
-        disallow_random_traits = yes
-
-
-        1222.1.1 = {
-	        birth = yes
-	        effect = {
+	name = "Bita"
+	dna = bita
+	religion = "mahndayana"
+	culture = "hamaxindi"
+	dynasty = dyn_amsari_13
+	female = yes
+	trait = ambitious
+	trait = deceitful
+	trait = stubborn
+	trait = education_intrigue_3
+	trait = intellect_good_3
+	trait = beauty_good_1
+	disallow_random_traits = yes	1222.1.1 = {
+		birth = yes
+		effect = {
 			add_character_flag = has_scripted_appearance
-                        add_pressed_claim = d_almaraviyeh
-	                add_pressed_claim = d_dejkuh
+			add_pressed_claim = d_almaraviyeh
+				add_pressed_claim = d_dejkuh
 		}
 	}
 }
 
 #d_almaraviyeh
 canian_42 = {
-        name = "Atena"
-        dna = atena
-        religion = "mahndayana"
-        culture = "sarthian"
-        dynasty = dyn_amsari_1
-        female = yes
+	name = "Atena"
+	dna = atena
+	religion = "mahndayana"
+	culture = "sarthian"
+	dynasty = dyn_amsari_1
+	female = yes
+	trait = trusting
+	trait = content
+	trait = chaste
+	trait = education_diplomacy_2
+	trait = magic_good_2
+	trait = education_mixed_magic_1
+	disallow_random_traits = yes
 
-        trait = trusting
-        trait = content
-        trait = chaste
-        trait = education_diplomacy_2
-        trait = magic_good_2
-        trait = education_mixed_magic_1
-        disallow_random_traits = yes
-	
-        1234.1.1 = {
-	        birth = yes
-	        effect = {
+	1234.1.1 = {
+		birth = yes
+		effect = {
 			add_character_flag = has_scripted_appearance 
 		}
 	}
@@ -735,1071 +722,2343 @@ canian_42 = {
 
 #d_dejkuh
 canian_43 = {
-        name = "Farrokh"
-        dna = farrokh
-        religion = "mahndayana"
-        culture = "sarthian"
-        dynasty = dyn_amsari_2
-        female = no
+	name = "Farrokh"
+	dna = farrokh
+	religion = "mahndayana"
+	culture = "sarthian"
+	dynasty = dyn_amsari_2
+	female = no
+	trait = diligent
+	trait = lustful
+	trait = temperate
+	trait = education_stewardship_2
+	disallow_random_traits = yes
 
-        trait = diligent
-        trait = diligent
-        trait = lustful
-        trait = temperate
-
-        trait = education_stewardship_2
-        disallow_random_traits = yes
-	
-        1230.1.7 = {
+	1230.1.7 = {
 		birth = yes
-	        effect = {
+		effect = {
 			add_character_flag = has_scripted_appearance
 		}
 	}
-        1250.1.1 = {
+	
+	1250.1.1 = {
 		add_spouse = canian_42
-        }
+	}
 }
 
 #d_owrya_chuq
 canian_44 = {
-        name = "Sohrab"
-        dna = sohrab
-        religion = "mahndayana"
-        culture = "sarthian"
-        dynasty = dyn_amsari_11
-        female = no
+	name = "Sohrab"
+	dna = sohrab
+	religion = "mahndayana"
+	culture = "sarthian"
+	dynasty = dyn_amsari_11
+	female = no
+	trait = ambitious
+	trait = wrathful
+	trait = cynical
+	trait = education_martial_4
+	disallow_random_traits = yes
 
-        trait = ambitious
-        trait = wrathful
-        trait = cynical
-
-        trait = education_martial_4
-        disallow_random_traits = yes
-	
-        1219.1.1 = {
-	        birth = yes
-                effect = {
+	1219.1.1 = {
+		birth = yes
+		effect = {
 			add_character_flag = has_scripted_appearance
-	                add_pressed_claim = k_pucionaz
-                }
+				add_pressed_claim = k_pucionaz
+		}
 	}
 }
 
 #d_darundel
 canian_45 = {
-        name = "Falamak"
-        dna = falamak
-        religion = "mahndayana"
-        culture = "thyssae"
-        dynasty = dyn_amsari_5
-        female = yes
+	name = "Falamak"
+	dna = falamak
+	religion = "mahndayana"
+	culture = "thyssae"
+	dynasty = dyn_amsari_5
+	female = yes
+	trait = ambitious
+	trait = arbitrary
+	trait = wrathful
+	trait = magic_good_3
+	trait = education_mixed_magic_3
+	trait = education_learning_2
+	disallow_random_traits = yes
 
-        trait = ambitious
-        trait = arbitrary
-        trait = wrathful
-
-        trait = magic_good_3
-        trait = education_mixed_magic_3
-        trait = education_learning_2
-        disallow_random_traits = yes
-      
-        1225.1.1 = {
-	        birth = yes
-                effect = {
-			add_character_flag = has_scripted_appearance            
-	                add_pressed_claim = d_dehfiruzvand
-	                add_pressed_claim = d_kulisarak
-	                add_pressed_claim = d_sar_dasht
-	                add_pressed_claim = d_varastu
-                }
+	1225.1.1 = {
+		birth = yes
+		effect = {
+			add_character_flag = has_scripted_appearance			
+				add_pressed_claim = d_dehfiruzvand
+				add_pressed_claim = d_kulisarak
+				add_pressed_claim = d_sar_dasht
+				add_pressed_claim = d_varastu
+		}
 	}
 }
 
-
 #d_dehfiruzvand
 canian_46 = {
-        name = "Golsa"
-        dna = golsa
-        religion = "mahndayana"
-        culture = "thyssae"
-        dynasty = dyn_amsari_10
-        female = yes
-
-        trait = diligent
-        trait = patient
-        trait = stubborn
-
-        trait = education_stewardship_3
-        disallow_random_traits = yes
-
-        1222.1.1 = {
-	        birth = yes
-                effect = {
+	name = "Golsa"
+	dna = golsa
+	religion = "mahndayana"
+	culture = "thyssae"
+	dynasty = dyn_amsari_10
+	female = yes
+	trait = diligent
+	trait = patient
+	trait = stubborn
+	trait = education_stewardship_3
+	disallow_random_traits = yes
+	
+	1222.1.1 = {
+		birth = yes
+		effect = {
 			add_character_flag = has_scripted_appearance   
-                }
+		}
 	}
 }
 
 #d_kulisarak
 canian_47 = {
-        name = "Atousa"
-        dna = atousa
-        religion = "mahndayana"
-        culture = "thyssae"
-        dynasty = dyn_amsari_7
-        female = yes
-
-        trait = patient
-        trait = trusting
-        trait = content
-        trait = beauty_good_1
-
-        trait = education_diplomacy_2
-        disallow_random_traits = yes
-
-        1215.1.1 = {
-	        birth = yes
-                effect = {
+	name = "Atousa"
+	dna = atousa
+	religion = "mahndayana"
+	culture = "thyssae"
+	dynasty = dyn_amsari_7
+	female = yes
+	trait = patient
+	trait = trusting
+	trait = content
+	trait = beauty_good_1
+	trait = education_diplomacy_2
+	disallow_random_traits = yes
+	
+	1215.1.1 = {
+		birth = yes
+		effect = {
 			add_character_flag = has_scripted_appearance   
-                }
+		}
 	}
 }
 
 #d_sar_dasht
 canian_48 = {
-        name = "Shirin"
-        dna = shirin
-        religion = "mahndayana"
-        culture = "thyssae"
-        dynasty = dyn_amsari_12
-        female = yes
-
-        trait = beauty_good_3
-        trait = ambitious
-        trait = zealous
-        trait = stubborn
-        trait = education_martial_3
-        disallow_random_traits = yes
-
-        1233.1.1 = {
-	        birth = yes
-                effect = {
+	name = "Shirin"
+	dna = shirin
+	religion = "mahndayana"
+	culture = "thyssae"
+	dynasty = dyn_amsari_12
+	female = yes
+	trait = beauty_good_3
+	trait = ambitious
+	trait = zealous
+	trait = stubborn
+	trait = education_martial_3
+	disallow_random_traits = yes
+	
+	1233.1.1 = {
+		birth = yes
+		effect = {
 			add_character_flag = has_scripted_appearance   
-                }
+		}
 	}
 }
 
 #d_varastu
 canian_49 = {
-        name = "Dinbanu"
-        dna = dinbanu
-        religion = "mahndayana"
-        culture = "thyssae"
-        dynasty = dyn_amsari_4
-        female = yes
-
-        trait = zealous
-        trait = chaste
-        trait = patient
-        trait = magic_good_2
-
-        trait = education_learning_4
-        trait = education_mixed_magic_2
-        disallow_random_traits = yes
-
-        1218.1.1 = {
-	        birth = yes
-                effect = {
+	name = "Dinbanu"
+	dna = dinbanu
+	religion = "mahndayana"
+	culture = "thyssae"
+	dynasty = dyn_amsari_4
+	female = yes
+	trait = zealous
+	trait = chaste
+	trait = patient
+	trait = magic_good_2
+	trait = education_learning_4
+	trait = education_mixed_magic_2
+	disallow_random_traits = yes
+	
+	1218.1.1 = {
+		birth = yes
+		effect = {
 			add_character_flag = has_scripted_appearance   
-                        add_pressed_claim = d_sar_dasht
-	                add_pressed_claim = d_kulisarak
-	                add_pressed_claim = d_dehfiruzvand
-	                add_pressed_claim = d_darundel
-	                add_pressed_claim = d_owrya_chuq
-	                add_pressed_claim = d_dejkuh
-	                add_pressed_claim = d_almaraviyeh
-	                add_pressed_claim = d_khvoshinane_sofla
-	                add_pressed_claim = k_chupanlar
-                }
+			add_pressed_claim = d_sar_dasht
+				add_pressed_claim = d_kulisarak
+				add_pressed_claim = d_dehfiruzvand
+				add_pressed_claim = d_darundel
+				add_pressed_claim = d_owrya_chuq
+				add_pressed_claim = d_dejkuh
+				add_pressed_claim = d_almaraviyeh
+				add_pressed_claim = d_khvoshinane_sofla
+				add_pressed_claim = k_chupanlar
+		}
 	}
 }
 
-
 #Characters Generated at 2020/10/05 14:14:16 by mpjama
 #d_takyeh
-canian_50 = 
-{
- name = "Davoud"
- dna = davoud
- religion = "mahndayana"
- culture = "amsari"
-dynasty = dyn_amsari_3
-female = no
-father = canian_24
-trait = gh_blood_of_prophet
-
-1234.1.1 =
-{
-	birth = yes
+canian_50 = {
+	name = "Davoud"
+	dna = davoud	religion = "mahndayana"
+	culture = "amsari"
+	dynasty = dyn_amsari_3
+	female = no
+	father = canian_24
+	trait = gh_blood_of_prophet
+	
+	1234.1.1 = {
+		birth = yes
+	}
 }
 
-}
 #Characters Generated at 2020/10/05 14:16:09 by mpjama
 #d_bala_shahraj
-canian_51 = 
-{
- name = "Hannaneh"
- religion = "mahndayana"
- culture = "amsari"
-dynasty = dyn_amsari_9
-female = yes
-father = canian_40
-trait = beauty_good_1
-
-1253.1.1 =
-{
-	birth = yes
+canian_51 = {
+	name = "Hannaneh"
+	religion = "mahndayana"
+	culture = "amsari"
+	dynasty = dyn_amsari_9
+	female = yes
+	father = canian_40
+	trait = beauty_good_1
+	
+	1253.1.1 = {
+		birth = yes
+	}
 }
 
-}
 #Characters Generated at 2020/10/05 14:20:01 by mpjama
 #d_burjaki
-canian_52 = 
-{
- name = "Omid"
- religion = "mahndayana"
- culture = "hixartii"
-dynasty = dyn_amsari_8
-female = no
-father = canian_38
-
-1238.1.1 =
-{
-	birth = yes
+canian_52 = {
+	name = "Omid"
+	religion = "mahndayana"
+	culture = "hixartii"
+	dynasty = dyn_amsari_8
+	female = no
+	father = canian_38
+	
+	1238.1.1 = {
+		birth = yes
+	}
 }
 
-}
 #d_kord_kandi
-canian_53 = 
-{
- name = "Mani"
- religion = "mahndayana"
- culture = "hixartii"
-dynasty = dyn_amsari_8
-female = no
-father = canian_38
-
-1239.1.1 =
-{
-	birth = yes
+canian_53 = {
+	name = "Mani"
+	religion = "mahndayana"
+	culture = "hixartii"
+	dynasty = dyn_amsari_8
+	female = no
+	father = canian_38
+	
+	1239.1.1 = {
+		birth = yes
+	}
 }
 
-}
 #d_gaud
-canian_54 = 
-{
- name = "Sohrab"
- religion = "mahndayana"
- culture = "hixartii"
-dynasty = dyn_amsari_8
-female = no
-father = canian_38
-
-1242.1.1 =
-{
-	birth = yes
+canian_54 = {
+	name = "Sohrab"
+	religion = "mahndayana"
+	culture = "hixartii"
+	dynasty = dyn_amsari_8
+	female = no
+	father = canian_38
+	
+	1242.1.1 = {
+		birth = yes
+	}
 }
 
-}
 #d_paye_godar
-canian_55 = 
-{
- name = "Amir"
- religion = "mahndayana"
- culture = "hixartii"
-dynasty = dyn_amsari_8
-female = no
-father = canian_38
-
-1239.1.1 =
-{
-	birth = yes
+canian_55 = {
+	name = "Amir"
+	religion = "mahndayana"
+	culture = "hixartii"
+	dynasty = dyn_amsari_8
+	female = no
+	father = canian_38
+	
+	1239.1.1 = {
+		birth = yes
+	}
 }
 
-}
 #Characters Generated at 2020/10/05 14:22:16 by mpjama
 #d_payi_baz
-canian_56 = 
-{
- name = "Atena"
- religion = "mahndayana"
- culture = "siralagi"
-dynasty = dyn_amsari_6
-female = yes
-father = canian_39
-
-1249.1.1 =
-{
-	birth = yes
+canian_56 = {
+	name = "Atena"
+	religion = "mahndayana"
+	culture = "siralagi"
+	dynasty = dyn_amsari_6
+	female = yes
+	father = canian_39
+	
+	1249.1.1 = {
+		birth = yes
+	}
 }
 
-}
 #d_shastakan
-canian_57 = 
-{
- name = "Anusheh"
- religion = "mahndayana"
- culture = "siralagi"
-dynasty = dyn_amsari_6
-female = yes
-father = canian_39
-
-1248.1.1 =
-{
-	birth = yes
+canian_57 = {
+	name = "Anusheh"
+	religion = "mahndayana"
+	culture = "siralagi"
+	dynasty = dyn_amsari_6
+	female = yes
+	father = canian_39
+	
+	1248.1.1 = {
+		birth = yes
+	}
 }
 
-}
 #d_kondeh_gordak
-canian_58 = 
-{
- name = "Pouria"
- religion = "mahndayana"
- culture = "siralagi"
-dynasty = dyn_amsari_6
-female = no
-father = canian_39
-
-1246.1.1 =
-{
-	birth = yes
+canian_58 = {
+	name = "Pouria"
+	religion = "mahndayana"
+	culture = "siralagi"
+	dynasty = dyn_amsari_6
+	female = no
+	father = canian_39
+	
+	1246.1.1 = {
+		birth = yes
+	}
 }
 
-}
 #d_makalvan
-canian_59 = 
-{
- name = "Shirin"
- religion = "mahndayana"
- culture = "siralagi"
-dynasty = dyn_amsari_6
-female = yes
-father = canian_39
-
-1246.1.1 =
-{
-	birth = yes
-}
-
+canian_59 = {
+	name = "Shirin"
+	religion = "mahndayana"
+	culture = "siralagi"
+	dynasty = dyn_amsari_6
+	female = yes
+	father = canian_39
+	
+	1246.1.1 = {
+		birth = yes
+	}
 }
 
 #Characters Generated at 2020/10/05 14:26:47 by mpjama
 #c_bagh_shaleh
-canian_60 = 
-{
- name = "Firooz"
- religion = "mahndayana"
- culture = "amsari"
-dynasty = dyn_amsari_3
-female = no
-father = canian_20
-trait = gh_blood_of_prophet
-
-1217.1.1 =
-{
-	birth = yes
+canian_60 = {
+	name = "Firooz"
+	religion = "mahndayana"
+	culture = "amsari"
+	dynasty = dyn_amsari_3
+	female = no
+	father = canian_20
+	trait = gh_blood_of_prophet
+	
+	1217.1.1 = {
+		birth = yes
+	}
 }
 
-}
 #Characters Generated at 2020/10/05 14:28:03 by mpjama
 #c_jilqava
-canian_61 = 
-{
- name = "Abbas"
- religion = "mahndayana"
- culture = "amsari"
-dynasty = dyn_amsari_3
-female = no
-father = canian_23
-trait = gh_blood_of_prophet
-
-1231.1.1 =
-{
-	birth = yes
+canian_61 = {
+	name = "Abbas"
+	religion = "mahndayana"
+	culture = "amsari"
+	dynasty = dyn_amsari_3
+	female = no
+	father = canian_23
+	trait = gh_blood_of_prophet
+	
+	1231.1.1 = {
+		birth = yes
+	}
 }
 
-}
 #c_jomnei
-canian_62 = 
-{
- name = "Qobad"
- religion = "mahndayana"
- culture = "amsari"
-dynasty = dyn_amsari_3
-female = no
-father = canian_23
-trait = gh_blood_of_prophet
-
-1223.1.1 =
-{
-	birth = yes
+canian_62 = {
+	name = "Qobad"
+	religion = "mahndayana"
+	culture = "amsari"
+	dynasty = dyn_amsari_3
+	female = no
+	father = canian_23
+	trait = gh_blood_of_prophet
+	
+	1223.1.1 = {
+		birth = yes
+	}
 }
 
-}
 #c_gharghan
-canian_63 = 
-{
- name = "Keyhan"
- religion = "mahndayana"
- culture = "amsari"
-dynasty = dyn_amsari_3
-female = no
-father = canian_23
-trait = gh_blood_of_prophet
-
-1231.1.1 =
-{
-	birth = yes
-}
-
+canian_63 = {
+	name = "Keyhan"
+	religion = "mahndayana"
+	culture = "amsari"
+	dynasty = dyn_amsari_3
+	female = no
+	father = canian_23
+	trait = gh_blood_of_prophet
+	
+	1231.1.1 = {
+		birth = yes
+	}
 }
 
 #Characters Generated at 2020/10/05 14:30:42 by mpjama
 #c_shahrake_shahid_madani
-canian_64 = 
-{
- name = "Mahchehr"
- religion = "mahndayana"
- culture = "amsari"
-dynasty = dyn_amsari_3
-female = yes
-father = canian_21
-trait = gh_blood_of_prophet
-
-1231.1.1 =
-{
-	birth = yes
+canian_64 = {
+	name = "Mahchehr"
+	religion = "mahndayana"
+	culture = "amsari"
+	dynasty = dyn_amsari_3
+	female = yes
+	father = canian_21
+	trait = gh_blood_of_prophet
+	
+	1231.1.1 = {
+		birth = yes
+	}
 }
 
-}
 #c_sheykhabad
-canian_65 = 
-{
- name = "Behdokht"
- religion = "mahndayana"
- culture = "amsari"
-dynasty = dyn_amsari_3
-female = yes
-father = canian_21
-trait = gh_blood_of_prophet
-
-1224.1.1 =
-{
-	birth = yes
+canian_65 = {
+	name = "Behdokht"
+	religion = "mahndayana"
+	culture = "amsari"
+	dynasty = dyn_amsari_3
+	female = yes
+	father = canian_21
+	trait = gh_blood_of_prophet
+	
+	1224.1.1 = {
+		birth = yes
+	}
 }
 
-}
 #c_jajn
-canian_66 = 
-{
- name = "Golsa"
- religion = "mahndayana"
- culture = "amsari"
-dynasty = dyn_amsari_3
-female = yes
-father = canian_21
-trait = gh_blood_of_prophet
-
-1215.1.1 =
-{
-	birth = yes
+canian_66 = {
+	name = "Golsa"
+	religion = "mahndayana"
+	culture = "amsari"
+	dynasty = dyn_amsari_3
+	female = yes
+	father = canian_21
+	trait = gh_blood_of_prophet
+	
+	1215.1.1 = {
+		birth = yes
+	}
 }
 
-}
 #c_safareh
-canian_67 = 
-{
- name = "Behdokht"
- religion = "mahndayana"
- culture = "amsari"
-dynasty = dyn_amsari_3
-female = yes
-father = canian_21
-trait = gh_blood_of_prophet
-
-1209.1.1 =
-{
-	birth = yes
+canian_67 = {
+	name = "Behdokht"
+	religion = "mahndayana"
+	culture = "amsari"
+	dynasty = dyn_amsari_3
+	female = yes
+	father = canian_21
+	trait = gh_blood_of_prophet
+	
+	1209.1.1 = {
+		birth = yes
+	}
 }
 
-}
 #Characters Generated at 2020/10/05 14:31:44 by mpjama
 #c_khazrabad
-canian_68 = 
-{
- name = "Pouria"
- religion = "mahndayana"
- culture = "amsari"
-dynasty = dyn_amsari_3
-female = no
-father = canian_22
-trait = gh_blood_of_prophet
-
-1234.1.1 =
-{
-	birth = yes
+canian_68 = {
+	name = "Pouria"
+	religion = "mahndayana"
+	culture = "amsari"
+	dynasty = dyn_amsari_3
+	female = no
+	father = canian_22
+	trait = gh_blood_of_prophet
+	
+	1234.1.1 = {
+		birth = yes
+	}
 }
 
-}
 #Characters Generated at 2020/10/05 14:33:08 by mpjama
 #c_bandar_ozbak
-canian_69 = 
-{
- name = "Nyousha"
- religion = "mahndayana"
- culture = "amsari"
-dynasty = dyn_amsari_3
-female = yes
-father = canian_25
-trait = gh_blood_of_prophet
-
-1236.1.1 =
-{
-	birth = yes
+canian_69 = {
+	name = "Nyousha"
+	religion = "mahndayana"
+	culture = "amsari"
+	dynasty = dyn_amsari_3
+	female = yes
+	father = canian_25
+	trait = gh_blood_of_prophet
+	
+	1236.1.1 = {
+		birth = yes
+	}
 }
 
-}
 #Characters Generated at 2020/10/05 14:34:42 by mpjama
 #c_bagh_qereh
-canian_70 = 
-{
- name = "Mitra"
- religion = "mahndayana"
- culture = "amsari"
-dynasty = dyn_amsari_3
-female = yes
-father = canian_26
-trait = gh_blood_of_prophet
-
-1238.1.1 =
-{
-	birth = yes
+canian_70 = {
+	name = "Mitra"
+	religion = "mahndayana"
+	culture = "amsari"
+	dynasty = dyn_amsari_3
+	female = yes
+	father = canian_26
+	trait = gh_blood_of_prophet
+	
+	1238.1.1 = {
+		birth = yes
+	}
 }
 
-}
 #Characters Generated at 2020/10/05 14:36:18 by mpjama
 #c_sardar_jangale_pain
-canian_71 = 
-{
- name = "Anusheh"
- religion = "mahndayana"
- culture = "amsari"
-dynasty = dyn_amsari_3
-female = yes
-father = canian_27
-trait = gh_blood_of_prophet
-
-1241.1.1 =
-{
-	birth = yes
+canian_71 = {
+	name = "Anusheh"
+	religion = "mahndayana"
+	culture = "amsari"
+	dynasty = dyn_amsari_3
+	female = yes
+	father = canian_27
+	trait = gh_blood_of_prophet
+	
+	1241.1.1 = {
+		birth = yes
+	}
 }
 
-}
 #Characters Generated at 2020/10/05 14:37:41 by mpjama
 #c_chahi_aliabad
-canian_72 = 
-{
- name = "Farrokh"
- religion = "mahndayana"
- culture = "amsari"
-dynasty = dyn_amsari_3
-female = no
-father = canian_28
-trait = gh_blood_of_prophet
-
-1243.1.1 =
-{
-	birth = yes
+canian_72 = {
+	name = "Farrokh"
+	religion = "mahndayana"
+	culture = "amsari"
+	dynasty = dyn_amsari_3
+	female = no
+	father = canian_28
+	trait = gh_blood_of_prophet
+	
+	1243.1.1 = {
+		birth = yes
+	}
 }
 
-}
 #Characters Generated at 2020/10/05 14:38:57 by mpjama
 #c_ziaratgahe_hazrate_abbas
-canian_73 = 
-{
- name = "Davoud"
- religion = "mahndayana"
- culture = "amsari"
-dynasty = dyn_amsari_3
-female = no
-father = canian_29
-trait = gh_blood_of_prophet
-
-1247.1.1 =
-{
-	birth = yes
+canian_73 = {
+	name = "Davoud"
+	religion = "mahndayana"
+	culture = "amsari"
+	dynasty = dyn_amsari_3
+	female = no
+	father = canian_29
+	trait = gh_blood_of_prophet
+	
+	1247.1.1 = {
+		birth = yes
+	}
 }
 
-}
 #Characters Generated at 2020/10/05 14:40:11 by mpjama
 #c_darvid
-canian_74 = 
-{
- name = "Golsa"
- religion = "mahndayana"
- culture = "amsari"
-dynasty = dyn_amsari_3
-female = yes
-father = canian_30
-trait = gh_blood_of_prophet
-
-1248.1.1 =
-{
-	birth = yes
+canian_74 = {
+	name = "Golsa"
+	religion = "mahndayana"
+	culture = "amsari"
+	dynasty = dyn_amsari_3
+	female = yes
+	father = canian_30
+	trait = gh_blood_of_prophet
+	
+	1248.1.1 = {
+		birth = yes
+	}
 }
 
-}
 #Characters Generated at 2020/10/05 14:41:16 by mpjama
 #c_kirathu
-canian_75 = 
-{
- name = "Atousa"
- religion = "mahndayana"
- culture = "amsari"
-dynasty = dyn_amsari_3
-female = yes
-father = canian_31
-trait = gh_blood_of_prophet
-
-1251.1.1 =
-{
-	birth = yes
+canian_75 = {
+	name = "Atousa"
+	religion = "mahndayana"
+	culture = "amsari"
+	dynasty = dyn_amsari_3
+	female = yes
+	father = canian_31
+	trait = gh_blood_of_prophet
+	
+	1251.1.1 = {
+		birth = yes
+	}
 }
 
-}
 #Characters Generated at 2020/10/05 14:42:21 by mpjama
 #c_tarathfur
-canian_76 = 
-{
- name = "Gulandam"
- religion = "mahndayana"
- culture = "amsari"
-dynasty = dyn_amsari_3
-female = yes
-father = canian_32
-trait = gh_blood_of_prophet
-
-1252.1.1 =
-{
-	birth = yes
+canian_76 = {
+	name = "Gulandam"
+	religion = "mahndayana"
+	culture = "amsari"
+	dynasty = dyn_amsari_3
+	female = yes
+	father = canian_32
+	trait = gh_blood_of_prophet
+	
+	1252.1.1 = {
+		birth = yes
+	}
 }
 
-}
 #Characters Generated at 2020/10/05 14:43:54 by mpjama
 #c_kani_tarn
-canian_77 = 
-{
- name = "Bita"
- religion = "mahndayana"
- culture = "amsari"
-dynasty = dyn_amsari_4
-female = yes
+canian_77 = {
+	name = "Bita"
+	religion = "mahndayana"
+	culture = "amsari"
+	dynasty = dyn_amsari_4
+	female = yes
 mother = canian_49
-
-1242.1.1 =
-{
-	birth = yes
+	
+	1242.1.1 = {
+		birth = yes
+	}
 }
 
-}
 #Characters Generated at 2020/10/05 14:45:17 by mpjama
 #c_jowband
-canian_78 = 
-{
- name = "Kooroush"
- religion = "mahndayana"
- culture = "amsari"
-dynasty = dyn_amsari_12
-female = no
-mother = canian_48
-
-1251.1.1 =
-{
-	birth = yes
+canian_78 = {
+	name = "Kooroush"
+	religion = "mahndayana"
+	culture = "amsari"
+	dynasty = dyn_amsari_12
+	female = no
+	mother = canian_48
+	
+	1251.1.1 = {
+		birth = yes
+	}
 }
 
-}
 #Characters Generated at 2020/10/05 14:47:49 by mpjama
 #c_sefid_ture_sharqi
-canian_79 = 
-{
- name = "Atena"
- religion = "mahndayana"
- culture = "amsari"
-dynasty = dyn_amsari_5
-female = yes
-mother = canian_45
-
-1246.1.1 =
-{
-	birth = yes
+canian_79 = {
+	name = "Atena"
+	religion = "mahndayana"
+	culture = "amsari"
+	dynasty = dyn_amsari_5
+	female = yes
+	mother = canian_45
+	
+	1246.1.1 = {
+		birth = yes
+	}
 }
 
-}
 #Characters Generated at 2020/10/05 15:02:42 by mpjama
 #c_baba_pashman
-canian_80 = 
-{
- name = "Parviz"
- religion = "mahndayana"
- culture = "amsari"
-female = no
-mother = canian_46
-
-1247.1.1 =
-{
-	birth = yes
+canian_80 = {
+	name = "Parviz"
+	religion = "mahndayana"
+	culture = "amsari"
+	female = no
+	mother = canian_46
+	
+	1247.1.1 = {
+		birth = yes
+	}
 }
 
-}
 #c_mishab
-canian_81 = 
-{
- name = "Jahangir"
- religion = "mahndayana"
- culture = "amsari"
-female = no
-mother = canian_46
-
-1248.1.1 =
-{
-	birth = yes
+canian_81 = {
+	name = "Jahangir"
+	religion = "mahndayana"
+	culture = "amsari"
+	female = no
+	mother = canian_46
+	
+	1248.1.1 = {
+		birth = yes
+	}
 }
 
-}
 #c_zargar
-canian_82 = 
-{
- name = "Mahboobeh"
- religion = "mahndayana"
- culture = "amsari"
-female = yes
-mother = canian_46
-
-1244.1.1 =
-{
-	birth = yes
+canian_82 = {
+	name = "Mahboobeh"
+	religion = "mahndayana"
+	culture = "amsari"
+	female = yes
+	mother = canian_46
+	
+	1244.1.1 = {
+		birth = yes
+	}
 }
 
-}
 #Characters Generated at 2020/10/05 15:05:45 by mpjama
 #c_naeyn
-canian_83 = 
-{
- name = "Mahchehr"
- religion = "mahndayana"
- culture = "amsari"
-female = yes
-father = canian_44
-
-1247.1.1 =
-{
-	birth = yes
+canian_83 = {
+	name = "Mahchehr"
+	religion = "mahndayana"
+	culture = "amsari"
+	female = yes
+	father = canian_44
+	
+	1247.1.1 = {
+		birth = yes
+	}
 }
 
-}
 #c_parum
-canian_84 = 
-{
- name = "Omid"
- religion = "mahndayana"
- culture = "amsari"
-female = no
-father = canian_44
-
-1243.1.1 =
-{
-	birth = yes
+canian_84 = {
+	name = "Omid"
+	religion = "mahndayana"
+	culture = "amsari"
+	female = no
+	father = canian_44
+	
+	1243.1.1 = {
+		birth = yes
+	}
 }
 
-}
 #Characters Generated at 2020/10/05 15:07:02 by mpjama
 #c_qermez_gol
-canian_85 = 
-{
- name = "Amir"
- religion = "mahndayana"
- culture = "amsari"
-female = no
-father = canian_44
+canian_85 = {
+	name = "Amir"
+	religion = "mahndayana"
+	culture = "amsari"
+	female = no
+	father = canian_44
 
-mother = canian_42
-
-1252.1.1 =
-{
-	birth = yes
+	mother = canian_42
+	
+	1252.1.1 = {
+		birth = yes
+	}
 }
 
-}
 #Characters Generated at 2020/10/05 15:08:08 by mpjama
 #c_dumbika
-canian_86 = 
-{
- name = "Atousa"
- religion = "mahndayana"
- culture = "amsari"
-female = yes
-mother = canian_41
-
-1243.1.1 =
-{
-	birth = yes
+canian_86 = {
+	name = "Atousa"
+	religion = "mahndayana"
+	culture = "amsari"
+	female = yes
+	mother = canian_41
+	
+	1243.1.1 = {
+		birth = yes
+	}
 }
 
-}
 #c_qaleh_lar
-canian_87 = 
-{
- name = "Davoud"
- religion = "mahndayana"
- culture = "amsari"
-female = no
-mother = canian_41
-
-1241.1.1 =
-{
-	birth = yes
+canian_87 = {
+	name = "Davoud"
+	religion = "mahndayana"
+	culture = "amsari"
+	female = no
+	mother = canian_41
+	
+	1241.1.1 = {
+		birth = yes
+	}
 }
 
-}
 #Characters Generated at 2020/10/05 15:11:05 by mpjama
 #c_amjaz
-canian_88 = 
-{
- name = "Pouri"
- religion = "mahndayana"
- culture = "amsari"
-female = yes
-1235.1.1 =
-{
-	birth = yes
+canian_88 = {
+	name = "Pouri"
+	religion = "mahndayana"
+	culture = "amsari"
+	female = yes
+
+	1235.1.1 = {
+		birth = yes
+	}
 }
 
-}
 #c_ziyarat
-canian_89 = 
-{
- name = "Gulandam"
- religion = "mahndayana"
- culture = "amsari"
-female = yes
-1218.1.1 =
-{
-	birth = yes
+canian_89 = {
+	name = "Gulandam"
+	religion = "mahndayana"
+	culture = "amsari"
+	female = yes
+
+	1218.1.1 = {
+		birth = yes
+	}
 }
 
-}
 #c_sorkheh_cheshmeh
-canian_90 = 
-{
- name = "Atousa"
- religion = "mahndayana"
- culture = "amsari"
-female = yes
-1229.1.1 =
-{
-	birth = yes
+canian_90 = {
+	name = "Atousa"
+	religion = "mahndayana"
+	culture = "amsari"
+	female = yes
+
+	1229.1.1 = {
+		birth = yes
+	}
 }
 
-}
 #Characters Generated at 2020/10/05 15:12:09 by mpjama
 #c_siah_val
-canian_91 = 
-{
- name = "Esfandiyar"
- religion = "mahndayana"
- culture = "amsari"
-female = no
-1227.1.1 =
-{
-	birth = yes
+canian_91 = {
+	name = "Esfandiyar"
+	religion = "mahndayana"
+	culture = "amsari"
+	female = no
+
+	1227.1.1 = {
+		birth = yes
+	}
 }
 
-}
 #c_varcha
-canian_92 = 
-{
- name = "Farishtah"
- religion = "mahndayana"
- culture = "amsari"
-female = yes
-1218.1.1 =
-{
-	birth = yes
+canian_92 = {
+	name = "Farishtah"
+	religion = "mahndayana"
+	culture = "amsari"
+	female = yes
+
+	1218.1.1 = {
+		birth = yes
+	}
 }
 
-}
 #Characters Generated at 2020/10/05 15:12:35 by mpjama
 #c_kall_ab_chenar
-canian_93 = 
-{
- name = "Pouria"
- religion = "mahndayana"
- culture = "amsari"
-female = no
-1223.1.1 =
-{
-	birth = yes
+canian_93 = {
+	name = "Pouria"
+	religion = "mahndayana"
+	culture = "amsari"
+	female = no
+
+	1223.1.1 = {
+		birth = yes
+	}
 }
 
-}
 #c_deh_hendi
-canian_94 = 
-{
- name = "Mahboobeh"
- religion = "mahndayana"
- culture = "amsari"
-female = yes
-1216.1.1 =
-{
-	birth = yes
+canian_94 = {
+	name = "Mahboobeh"
+	religion = "mahndayana"
+	culture = "amsari"
+	female = yes
+
+	1216.1.1 = {
+		birth = yes
+	}
 }
 
-}
 #Characters Generated at 2020/10/05 15:13:31 by mpjama
 #c_khvoy_nareh
-canian_95 = 
-{
- name = "Anusheh"
- religion = "mahndayana"
- culture = "amsari"
-female = yes
-1223.1.1 =
-{
-	birth = yes
+canian_95 = {
+	name = "Anusheh"
+	religion = "mahndayana"
+	culture = "amsari"
+	female = yes
+
+	1223.1.1 = {
+		birth = yes
+	}
 }
 
-}
 #c_valayat
-canian_96 = 
-{
- name = "Keyhan"
- religion = "mahndayana"
- culture = "amsari"
-female = no
-1220.1.1 =
-{
-	birth = yes
+canian_96 = {
+	name = "Keyhan"
+	religion = "mahndayana"
+	culture = "amsari"
+	female = no
+
+	1220.1.1 = {
+		birth = yes
+	}
 }
 
-}
 #Characters Generated at 2020/10/05 15:14:10 by mpjama
 #c_pirakuh
-canian_97 = 
-{
- name = "Mani"
- religion = "mahndayana"
- culture = "amsari"
-female = no
-1222.1.1 =
-{
-	birth = yes
+canian_97 = {
+	name = "Mani"
+	religion = "mahndayana"
+	culture = "amsari"
+	female = no
+
+	1222.1.1 = {
+		birth = yes
+	}
 }
 
-}
 #Characters Generated at 2020/10/05 15:14:51 by mpjama
 #c_tazehabade_badr_gerd
-canian_98 = 
-{
- name = "Kooroush"
- religion = "mahndayana"
- culture = "amsari"
-female = no
-1235.1.1 =
-{
-	birth = yes
+canian_98 = {
+	name = "Kooroush"
+	religion = "mahndayana"
+	culture = "amsari"
+	female = no
+
+	1235.1.1 = {
+		birth = yes
+	}
 }
 
-}
 #c_chahe_ali
-canian_99 = 
-{
- name = "Shirin"
- religion = "mahndayana"
- culture = "amsari"
-female = yes
-1221.1.1 =
-{
-	birth = yes
+canian_99 = {
+	name = "Shirin"
+	religion = "mahndayana"
+	culture = "amsari"
+	female = yes
+
+	1221.1.1 = {
+		birth = yes
+	}
 }
 
-}
 #c_garm_ab
-canian_100 = 
-{
- name = "Hannaneh"
- religion = "mahndayana"
- culture = "amsari"
-female = yes
-1222.1.1 =
-{
-	birth = yes
+canian_100 = {
+	name = "Hannaneh"
+	religion = "mahndayana"
+	culture = "amsari"
+	female = yes
+
+	1222.1.1 = {
+		birth = yes
+	}
 }
 
-}
 #Characters Generated at 2020/10/05 15:15:28 by mpjama
 #c_palang_pareh
-canian_101 = 
-{
- name = "Keyhan"
- religion = "mahndayana"
- culture = "amsari"
-female = no
-1223.1.1 =
-{
-	birth = yes
+canian_101 = {
+	name = "Keyhan"
+	religion = "mahndayana"
+	culture = "amsari"
+	female = no
+
+	1223.1.1 = {
+		birth = yes
+	}
 }
 
-}
 #Characters Generated at 2020/10/05 15:16:08 by mpjama
 #c_dareh_senji
-canian_102 = 
-{
- name = "Golsa"
- religion = "mahndayana"
- culture = "amsari"
-female = yes
-1220.1.1 =
-{
-	birth = yes
+canian_102 = {
+	name = "Golsa"
+	religion = "mahndayana"
+	culture = "amsari"
+	female = yes
+
+	1220.1.1 = {
+		birth = yes
+	}
 }
 
-}
 #c_hormozabad
-canian_103 = 
-{
- name = "Kooroush"
- religion = "mahndayana"
- culture = "amsari"
-female = no
-1225.1.1 =
-{
-	birth = yes
+canian_103 = {
+	name = "Kooroush"
+	religion = "mahndayana"
+	culture = "amsari"
+	female = no
+
+	1225.1.1 = {
+		birth = yes
+	}
 }
 
-}
 #Characters Generated at 2020/10/05 15:17:01 by mpjama
 #c_gecherlu
-canian_104 = 
-{
- name = "Amir"
- religion = "mahndayana"
- culture = "amsari"
-female = no
-1222.1.1 =
-{
-	birth = yes
+canian_104 = {
+	name = "Amir"
+	religion = "mahndayana"
+	culture = "amsari"
+	female = no
+
+	1222.1.1 = {
+		birth = yes
+	}
 }
 
+canian_105 = {
+    name = "Mehrab" 
+
+    dynasty = dyn_amsari_3
+    religion = mahndayana
+    culture = amsari
+	father = amsari_history_1
+
+    sexuality = heterosexual
+
+    trait = trusting
+    trait = deceitful
+    trait = fickle
+
+    diplomacy = 3
+    martial = 1
+    stewardship = 8
+    intrigue = 1
+    learning = 5
+    prowess = 7
+
+    trait = education_stewardship_1
+
+    240.5.8 = {
+        birth = yes
+    }
+
+    280.4.7 = {
+        add_spouse = canian_106
+    }
+
+    290.1.8 = {
+        death = { death_reason = death_wounds }
+    }
 }
+
+canian_106 = {
+    name = "Ahu" 
+    female = yes
+
+    religion = mahndayana
+    culture = amsari
+
+    sexuality = heterosexual
+
+    trait = deceitful
+    trait = just
+    trait = brave
+
+    diplomacy = 2
+    martial = 4
+    stewardship = 10
+    intrigue = 8
+    learning = 6
+    prowess = 6
+
+    trait = education_stewardship_3
+
+    263.12.26 = {
+        birth = yes
+    }
+
+    309.2.12 = {
+        death = { death_reason = death_smallpox }
+    }
+}
+
+canian_107 = {
+    name = "Pashang" 
+
+    dynasty = dyn_amsari_3
+    religion = mahndayana
+    culture = amsari
+
+    father = canian_105
+    mother = canian_106
+
+    sexuality = heterosexual
+
+    trait = forgiving
+    trait = callous
+    trait = brave
+
+    diplomacy = 8
+    martial = 7
+    stewardship = 4
+    intrigue = 8
+    learning = 6
+    prowess = 8
+
+    trait = education_diplomacy_3
+
+    289.4.4 = {
+        birth = yes
+    }
+
+    340.4.7 = {
+        add_spouse = canian_108
+    }
+
+    352.5.3 = {
+        death = { death_reason = death_natural_causes }
+    }
+}
+
+canian_108 = {
+    name = "Farah" 
+    female = yes
+
+    religion = mahndayana
+    culture = amsari
+
+    sexuality = bisexual
+
+    trait = calm
+    trait = sadistic
+    trait = deceitful
+
+    diplomacy = 5
+    martial = 3
+    stewardship = 6
+    intrigue = 8
+    learning = 6
+    prowess = 8
+
+    trait = education_intrigue_4
+
+    323.1.18 = {
+        birth = yes
+    }
+
+    416.3.7 = {
+        death = { death_reason = death_natural_causes }
+    }
+}
+
+canian_109 = {
+    name = "Vahhab" 
+
+    dynasty = dyn_amsari_3
+    religion = mahndayana
+    culture = amsari
+
+    father = canian_107
+    mother = canian_108
+
+    sexuality = heterosexual
+
+    trait = honest
+    trait = arrogant
+    trait = compassionate
+
+    diplomacy = 7
+    martial = 7
+    stewardship = 6
+    intrigue = 11
+    learning = 5
+    prowess = 6
+
+    trait = education_intrigue_4
+
+    349.3.25 = {
+        birth = yes
+    }
+
+    411.3.21 = {
+        add_spouse = canian_110
+    }
+
+    437.10.8 = {
+        death = { death_reason = death_training_accident  }
+    }
+}
+
+canian_110 = {
+    name = "Burandokht" 
+    female = yes
+
+    religion = mahndayana
+    culture = amsari
+
+    sexuality = heterosexual
+
+    trait = arbitrary
+    trait = generous
+    trait = brave
+
+    diplomacy = 8
+    martial = 7
+    stewardship = 5
+    intrigue = 10
+    learning = 1
+    prowess = 4
+
+    trait = education_intrigue_1
+
+    394.5.2 = {
+        birth = yes
+    }
+
+    492.8.4 = {
+        death = { death_reason = death_natural_causes }
+    }
+}
+
+canian_111 = {
+    name = "Bakhtiar" 
+
+    dynasty = dyn_amsari_3
+    religion = mahndayana
+    culture = amsari
+
+    father = canian_109
+    mother = canian_110
+
+    sexuality = heterosexual
+
+    trait = humble
+    trait = lustful
+    trait = honest
+
+    diplomacy = 4
+    martial = 6
+    stewardship = 3
+    intrigue = 10
+    learning = 5
+    prowess = 7
+
+    trait = education_intrigue_3
+
+    418.8.21 = {
+        birth = yes
+    }
+
+    477.1.2 = {
+        add_spouse = canian_112
+    }
+
+    501.11.9 = {
+        death = { death_reason = death_natural_causes }
+    }
+}
+
+canian_112 = {
+    name = "Touran" 
+    female = yes
+
+    religion = mahndayana
+    culture = amsari
+
+    sexuality = heterosexual
+
+    trait = forgiving
+    trait = impatient
+    trait = greedy
+
+    diplomacy = 10
+    martial = 5
+    stewardship = 5
+    intrigue = 7
+    learning = 6
+    prowess = 5
+
+    trait = education_diplomacy_3
+
+    460.7.8 = {
+        birth = yes
+    }
+
+    543.6.28 = {
+        death = { death_reason = death_natural_causes }
+    }
+}
+
+canian_113 = {
+    name = "Jamshid" 
+
+    dynasty = dyn_amsari_3
+    religion = mahndayana
+    culture = amsari
+
+    father = canian_111
+    mother = canian_112
+
+    sexuality = heterosexual
+
+    trait = arrogant
+    trait = callous
+    trait = zealous
+
+    diplomacy = 5
+    martial = 6
+    stewardship = 6
+    intrigue = 10
+    learning = 5
+    prowess = 7
+
+    trait = education_intrigue_2
+
+    484.11.23 = {
+        birth = yes
+    }
+
+    519.7.20 = {
+        add_spouse = canian_114
+    }
+
+    529.7.26 = {
+        death = { death_reason = death_great_pox }
+    }
+}
+
+canian_114 = {
+    name = "Dinah" 
+    female = yes
+
+    religion = mahndayana
+    culture = amsari
+
+    sexuality = heterosexual
+
+    trait = arrogant
+    trait = gluttonous
+    trait = compassionate
+
+    diplomacy = 5
+    martial = 7
+    stewardship = 10
+    intrigue = 5
+    learning = 8
+    prowess = 7
+
+    trait = education_stewardship_2
+
+    502.1.16 = {
+        birth = yes
+    }
+
+    541.11.6 = {
+        death = { death_reason = death_typhus }
+    }
+}
+
+canian_115 = {
+    name = "Ardahan" 
+
+    dynasty = dyn_amsari_3
+    religion = mahndayana
+    culture = amsari
+
+    father = canian_113
+    mother = canian_114
+
+    sexuality = heterosexual
+
+    trait = zealous
+    trait = vengeful
+    trait = stubborn
+
+    diplomacy = 5
+    martial = 3
+    stewardship = 6
+    intrigue = 5
+    learning = 6
+    prowess = 7
+
+    trait = education_stewardship_1
+
+    528.4.14 = {
+        birth = yes
+    }
+
+    556.6.21 = {
+        add_spouse = canian_116
+    }
+
+    618.12.6 = {
+        death = { death_reason = death_natural_causes }
+    }
+}
+
+canian_116 = {
+    name = "Arghavan" 
+    female = yes
+
+    religion = mahndayana
+    culture = amsari
+
+    sexuality = heterosexual
+
+    trait = honest
+    trait = paranoid
+    trait = zealous
+
+    diplomacy = 4
+    martial = 7
+    stewardship = 6
+    intrigue = 7
+    learning = 3
+    prowess = 5
+
+    trait = education_martial_3
+
+    539.4.5 = {
+        birth = yes
+    }
+
+    602.2.8 = {
+        death = { death_reason = death_natural_causes }
+    }
+}
+
+canian_117 = {
+    name = "Bahram" 
+
+    dynasty = dyn_amsari_3
+    religion = mahndayana
+    culture = amsari
+
+    father = canian_115
+    mother = canian_116
+
+    sexuality = homosexual
+
+    trait = diligent
+    trait = arbitrary
+    trait = forgiving
+
+    diplomacy = 7
+    martial = 8
+    stewardship = 6
+    intrigue = 8
+    learning = 6
+    prowess = 7
+
+    trait = education_martial_3
+
+    564.6.12 = {
+        birth = yes
+    }
+
+    629.7.19 = {
+        add_spouse = canian_118
+    }
+
+    639.12.26 = {
+        death = { death_reason = death_natural_causes }
+    }
+}
+
+canian_118 = {
+    name = "Dinah" 
+    female = yes
+
+    religion = mahndayana
+    culture = amsari
+
+    sexuality = heterosexual
+
+    trait = craven
+    trait = wrathful
+    trait = just
+
+    diplomacy = 7
+    martial = 6
+    stewardship = 6
+    intrigue = 9
+    learning = 8
+    prowess = 6
+
+    trait = education_intrigue_4
+
+    612.11.28 = {
+        birth = yes
+    }
+
+    713.12.25 = {
+        death = { death_reason = death_natural_causes }
+    }
+}
+
+canian_119 = {
+    name = "Hedayat" 
+
+    dynasty = dyn_amsari_3
+    religion = mahndayana
+    culture = amsari
+
+    father = canian_117
+    mother = canian_118
+
+    sexuality = heterosexual
+
+    trait = brave
+    trait = compassionate
+    trait = patient
+
+    diplomacy = 5
+    martial = 6
+    stewardship = 7
+    intrigue = 7
+    learning = 9
+    prowess = 4
+
+    trait = education_learning_1
+
+    636.1.3 = {
+        birth = yes
+    }
+
+    684.7.9 = {
+        add_spouse = canian_120
+    }
+
+    696.4.28 = {
+        death = { death_reason = death_natural_causes }
+    }
+}
+
+canian_120 = {
+    name = "Farnaz" 
+    female = yes
+
+    religion = mahndayana
+    culture = amsari
+
+    sexuality = heterosexual
+
+    trait = sadistic
+    trait = zealous
+    trait = arrogant
+
+    diplomacy = 7
+    martial = 7
+    stewardship = 6
+    intrigue = 7
+    learning = 6
+    prowess = 2
+
+    trait = education_diplomacy_3
+
+    667.8.15 = {
+        birth = yes
+    }
+
+    739.3.17 = {
+        death = { death_reason = death_natural_causes }
+    }
+}
+
+canian_121 = {
+    name = "Gholam" 
+
+    dynasty = dyn_amsari_3
+    religion = mahndayana
+    culture = amsari
+
+    father = canian_119
+    mother = canian_120
+
+    sexuality = heterosexual
+
+    trait = stubborn
+    trait = arbitrary
+    trait = content
+
+    diplomacy = 7
+    martial = 4
+    stewardship = 6
+    intrigue = 4
+    learning = 5
+    prowess = 8
+
+    trait = education_diplomacy_2
+
+    692.12.14 = {
+        birth = yes
+    }
+
+    755.3.27 = {
+        add_spouse = canian_122
+    }
+
+    765.10.24 = {
+        death = { death_reason = death_script_cruelty   }
+    }
+}
+
+canian_122 = {
+    name = "Salomeh" 
+    female = yes
+
+    religion = mahndayana
+    culture = amsari
+
+    sexuality = heterosexual
+
+    trait = vengeful
+    trait = compassionate
+    trait = just
+
+    diplomacy = 4
+    martial = 10
+    stewardship = 7
+    intrigue = 4
+    learning = 8
+    prowess = 7
+
+    trait = education_martial_4
+
+    738.12.9 = {
+        birth = yes
+    }
+
+    765.8.18 = {
+        death = { death_reason = death_consumption }
+    }
+}
+
+canian_123 = {
+    name = "Zartosht" 
+
+    dynasty = dyn_amsari_3
+    religion = mahndayana
+    culture = amsari
+
+    father = canian_121
+    mother = canian_122
+
+    sexuality = homosexual
+
+    trait = content
+    trait = lazy
+    trait = just
+
+    diplomacy = 7
+    martial = 3
+    stewardship = 5
+    intrigue = 4
+    learning = 8
+    prowess = 5
+
+    trait = education_learning_2
+
+    762.2.16 = {
+        birth = yes
+    }
+
+    763.5.4 = {
+        give_nickname = nick_the_proud
+        effect = {
+            add_character_flag = {
+                flag = had_nickname_event
+            }
+        }
+    }
+
+    802.5.10 = {
+        add_spouse = canian_124
+    }
+
+    828.1.22 = {
+        death = { death_reason = death_natural_causes }
+    }
+}
+
+canian_124 = {
+    name = "Roshanora" 
+    female = yes
+
+    religion = mahndayana
+    culture = amsari
+
+    sexuality = heterosexual
+
+    trait = impatient
+    trait = paranoid
+    trait = lustful
+
+    diplomacy = 6
+    martial = 6
+    stewardship = 6
+    intrigue = 6
+    learning = 4
+    prowess = 6
+
+    trait = education_diplomacy_2
+
+    785.4.7 = {
+        birth = yes
+    }
+
+    865.9.5 = {
+        death = { death_reason = death_natural_causes }
+    }
+}
+
+canian_125 = {
+    name = "Furuzan" 
+    female = yes
+
+    religion = mahndayana
+    culture = amsari
+
+    father = canian_123
+    mother = canian_124
+
+    sexuality = heterosexual
+
+    trait = paranoid
+    trait = craven
+    trait = wrathful
+
+    diplomacy = 6
+    martial = 4
+    stewardship = 5
+    intrigue = 8
+    learning = 4
+    prowess = 8
+
+    trait = education_intrigue_4
+
+    812.4.9 = {
+        birth = yes
+    }
+
+    826.6.22 = {
+        death = { death_reason = death_vanished  }
+    }
+}
+
+canian_126 = {
+    name = "Bahar" 
+    female = yes
+
+    religion = mahndayana
+    culture = amsari
+
+    father = canian_123
+    mother = canian_124
+
+    sexuality = heterosexual
+
+    trait = brave
+    trait = cynical
+    trait = shy
+
+    diplomacy = 7
+    martial = 4
+    stewardship = 7
+    intrigue = 8
+    learning = 6
+    prowess = 4
+
+    trait = education_intrigue_3
+
+    815.6.6 = {
+        birth = yes
+    }
+
+    879.3.20 = {
+        death = { death_reason = death_natural_causes }
+    }
+}
+
+canian_127 = {
+    name = "Mariam" 
+    female = yes
+
+    religion = mahndayana
+    culture = amsari
+
+    father = canian_123
+    mother = canian_124
+
+    sexuality = heterosexual
+
+    trait = brave
+    trait = zealous
+    trait = callous
+
+    diplomacy = 7
+    martial = 4
+    stewardship = 4
+    intrigue = 5
+    learning = 5
+    prowess = 9
+
+    trait = education_diplomacy_4
+
+    816.5.7 = {
+        birth = yes
+    }
+
+    869.8.2 = {
+        death = { death_reason = death_natural_causes }
+    }
+}
+
+canian_128 = {
+    name = "Zia" 
+
+    dynasty = dyn_amsari_3
+    religion = mahndayana
+    culture = amsari
+
+    father = canian_123
+    mother = canian_124
+
+    sexuality = heterosexual
+
+    trait = wrathful
+    trait = patient
+    trait = trusting
+
+    diplomacy = 6
+    martial = 7
+    stewardship = 7
+    intrigue = 2
+    learning = 7
+    prowess = 5
+
+    trait = education_martial_3
+
+    817.9.18 = {
+        birth = yes
+    }
+
+    875.2.12 = {
+        add_spouse = canian_129
+    }
+
+    885.3.23 = {
+        death = { death_reason = death_pneumonic }
+    }
+}
+
+canian_129 = {
+    name = "Elnaz" 
+    female = yes
+
+    religion = mahndayana
+    culture = amsari
+
+    sexuality = asexual
+
+    trait = paranoid
+    trait = ambitious
+    trait = craven
+
+    diplomacy = 6
+    martial = 9
+    stewardship = 4
+    intrigue = 6
+    learning = 8
+    prowess = 10
+
+    trait = education_martial_3
+
+    858.11.24 = {
+        birth = yes
+    }
+
+    927.4.2 = {
+        death = { death_reason = death_natural_causes }
+    }
+}
+
+canian_130 = {
+    name = "Javaneh" 
+    female = yes
+
+    religion = mahndayana
+    culture = amsari
+
+    father = canian_128
+    mother = canian_129
+
+    sexuality = heterosexual
+
+    trait = deceitful
+    trait = trusting
+    trait = patient
+
+    diplomacy = 5
+    martial = 2
+    stewardship = 8
+    intrigue = 5
+    learning = 4
+    prowess = 5
+
+    trait = education_stewardship_2
+
+    883.9.19 = {
+        birth = yes
+    }
+
+    961.6.26 = {
+        death = { death_reason = death_natural_causes }
+    }
+}
+
+canian_131 = {
+    name = "Mozaffar" 
+
+    dynasty = dyn_amsari_3
+    religion = mahndayana
+    culture = amsari
+
+    father = canian_128
+    mother = canian_129
+
+    sexuality = heterosexual
+
+    trait = forgiving
+    trait = paranoid
+    trait = just
+
+    diplomacy = 6
+    martial = 7
+    stewardship = 7
+    intrigue = 7
+    learning = 6
+    prowess = 6
+
+    trait = education_martial_3
+
+    884.10.10 = {
+        birth = yes
+    }
+
+    924.3.21 = {
+        add_spouse = canian_132
+    }
+
+    951.1.26 = {
+        death = { death_reason = death_smallpox }
+    }
+}
+
+canian_132 = {
+    name = "Roxana" 
+    female = yes
+
+    religion = mahndayana
+    culture = amsari
+
+    sexuality = heterosexual
+
+    trait = paranoid
+    trait = arrogant
+    trait = gregarious
+
+    diplomacy = 8
+    martial = 4
+    stewardship = 5
+    intrigue = 2
+    learning = 8
+    prowess = 6
+
+    trait = education_diplomacy_2
+
+    907.11.24 = {
+        birth = yes
+    }
+
+    964.11.11 = {
+        death = { death_reason = death_natural_causes }
+    }
+}
+
+canian_133 = {
+    name = "Ehsan" 
+
+    dynasty = dyn_amsari_3
+    religion = mahndayana
+    culture = amsari
+
+    father = canian_131
+    mother = canian_132
+
+    sexuality = heterosexual
+
+    trait = sadistic
+    trait = impatient
+    trait = greedy
+
+    diplomacy = 6
+    martial = 5
+    stewardship = 10
+    intrigue = 11
+    learning = 6
+    prowess = 6
+
+    trait = education_intrigue_1
+
+    944.10.25 = {
+        birth = yes
+    }
+
+    1008.7.24 = {
+        add_spouse = canian_134
+    }
+
+    1050.1.18 = {
+        death = { death_reason = death_natural_causes }
+    }
+}
+
+canian_134 = {
+    name = "Banafsheh" 
+    female = yes
+
+    religion = mahndayana
+    culture = amsari
+
+    sexuality = heterosexual
+
+    trait = paranoid
+    trait = content
+    trait = wrathful
+
+    diplomacy = 6
+    martial = 7
+    stewardship = 5
+    intrigue = 8
+    learning = 7
+    prowess = 6
+
+    trait = education_intrigue_2
+
+    991.7.13 = {
+        birth = yes
+    }
+
+    1088.1.15 = {
+        death = { death_reason = death_natural_causes }
+    }
+}
+
+canian_135 = {
+    name = "Farah" 
+    female = yes
+
+    religion = mahndayana
+    culture = amsari
+
+    father = canian_133
+    mother = canian_134
+
+    sexuality = heterosexual
+
+    trait = cynical
+    trait = gluttonous
+    trait = deceitful
+
+    diplomacy = 6
+    martial = 6
+    stewardship = 7
+    intrigue = 6
+    learning = 8
+    prowess = 1
+
+    trait = education_learning_4
+
+    1019.11.11 = {
+        birth = yes
+    }
+
+    1039.8.27 = {
+        death = { death_reason = death_smallpox }
+    }
+}
+
+canian_136 = {
+    name = "Shapur" 
+
+    dynasty = dyn_amsari_3
+    religion = mahndayana
+    culture = amsari
+
+    father = canian_133
+    mother = canian_134
+
+    sexuality = heterosexual
+
+    trait = patient
+    trait = fickle
+    trait = gregarious
+
+    diplomacy = 8
+    martial = 3
+    stewardship = 9
+    intrigue = 5
+    learning = 5
+    prowess = 8
+
+    trait = education_stewardship_4
+
+    1023.10.19 = {
+        birth = yes
+    }
+
+    1088.5.8 = {
+        add_spouse = canian_137
+    }
+
+    1116.7.16 = {
+        death = { death_reason = death_natural_causes }
+    }
+}
+
+canian_137 = {
+    name = "Golnaz" 
+    female = yes
+
+    religion = mahndayana
+    culture = amsari
+
+    sexuality = heterosexual
+
+    trait = humble
+    trait = gregarious
+    trait = diligent
+
+    diplomacy = 9
+    martial = 4
+    stewardship = 5
+    intrigue = 8
+    learning = 6
+    prowess = 5
+
+    trait = education_diplomacy_2
+
+    1071.11.23 = {
+        birth = yes
+    }
+
+    1132.6.17 = {
+        death = { death_reason = death_natural_causes }
+    }
+}
+
+canian_138 = {
+    name = "Roshanora" 
+    female = yes
+
+    religion = mahndayana
+    culture = amsari
+
+    father = canian_136
+    mother = canian_137
+
+    sexuality = heterosexual
+
+    trait = fickle
+    trait = arrogant
+    trait = content
+
+    diplomacy = 6
+    martial = 5
+    stewardship = 7
+    intrigue = 4
+    learning = 8
+    prowess = 6
+
+    trait = education_learning_4
+
+    1096.8.14 = {
+        birth = yes
+    }
+
+    1152.3.17 = {
+        death = { death_reason = death_natural_causes }
+    }
+}
+
+canian_139 = {
+    name = "Farah" 
+    female = yes
+
+    religion = mahndayana
+    culture = amsari
+
+    father = canian_136
+    mother = canian_137
+
+    sexuality = heterosexual
+
+    trait = diligent
+    trait = callous
+    trait = wrathful
+
+    diplomacy = 7
+    martial = 4
+    stewardship = 7
+    intrigue = 6
+    learning = 2
+    prowess = 5
+
+    trait = education_diplomacy_3
+
+    1099.4.7 = {
+        birth = yes
+    }
+
+    1173.12.7 = {
+        death = { death_reason = death_natural_causes }
+    }
+}
+
+canian_140 = {
+    name = "Keyghobad" 
+
+    dynasty = dyn_amsari_3
+    religion = mahndayana
+    culture = amsari
+
+    father = canian_136
+    mother = canian_137
+
+    sexuality = heterosexual
+
+    trait = brave
+    trait = impatient
+    trait = content
+
+    diplomacy = 7
+    martial = 8
+    stewardship = 6
+    intrigue = 6
+    learning = 4
+    prowess = 6
+
+    trait = education_martial_3
+
+    1102.11.3 = {
+        birth = yes
+    }
+
+    1160.6.22 = {
+        add_spouse = canian_141
+    }
+
+    1170.5.10 = {
+        death = { death_reason = death_natural_causes }
+    }
+}
+
+canian_141 = {
+    name = "Golshan" 
+    female = yes
+
+    religion = mahndayana
+    culture = amsari
+
+    sexuality = heterosexual
+
+    trait = wrathful
+    trait = gluttonous
+    trait = deceitful
+
+    diplomacy = 5
+    martial = 1
+    stewardship = 4
+    intrigue = 8
+    learning = 4
+    prowess = 6
+
+    trait = education_intrigue_2
+
+    1143.10.2 = {
+        birth = yes
+    }
+
+    1204.8.4 = {
+        death = { death_reason = death_natural_causes }
+    }
+}
+
+canian_142 = {
+    name = "Jahanshah" 
+
+    dynasty = dyn_amsari_3
+    religion = mahndayana
+    culture = amsari
+
+    father = canian_136
+    mother = canian_137
+
+    sexuality = heterosexual
+
+    trait = fickle
+    trait = content
+    trait = deceitful
+
+    diplomacy = 7
+    martial = 6
+    stewardship = 4
+    intrigue = 8
+    learning = 7
+    prowess = 8
+
+    trait = education_intrigue_4
+
+    1104.2.4 = {
+        birth = yes
+    }
+
+    1169.12.10 = {
+        add_spouse = canian_143
+    }
+
+    1198.9.18 = {
+        death = { death_reason = death_natural_causes }
+    }
+}
+
+canian_143 = {
+    name = "Ghamze" 
+    female = yes
+
+    religion = mahndayana
+    culture = amsari
+
+    sexuality = heterosexual
+
+    trait = trusting
+    trait = craven
+    trait = calm
+
+    diplomacy = 7
+    martial = 6
+    stewardship = 3
+    intrigue = 9
+    learning = 5
+    prowess = 3
+
+    trait = education_intrigue_2
+
+    1152.9.26 = {
+        birth = yes
+    }
+
+    1247.2.27 = {
+        death = { death_reason = death_natural_causes }
+    }
+}
+
+canian_144 = {
+    name = "Pourandokht" 
+    female = yes
+
+    religion = mahndayana
+    culture = amsari
+
+    father = canian_128
+    mother = canian_129
+
+    sexuality = heterosexual
+
+    trait = callous
+    trait = shy
+    trait = impatient
+
+    diplomacy = 5
+    martial = 7
+    stewardship = 4
+    intrigue = 6
+    learning = 8
+    prowess = 7
+
+    trait = education_learning_2
+
+    885.6.21 = {
+        birth = yes
+    }
+
+    975.10.15 = {
+        death = { death_reason = death_natural_causes }
+    }
+}
+

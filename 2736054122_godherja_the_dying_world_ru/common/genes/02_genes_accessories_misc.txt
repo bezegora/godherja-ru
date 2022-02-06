@@ -1,8 +1,4 @@
-﻿
-
-
-
-accessory_genes = {
+﻿accessory_genes = {
 
 
 #####################################
@@ -11,11 +7,7 @@ accessory_genes = {
 #									#
 #####################################
 
-		
-
 	eye_accessory = {
-
-		index = 101
 		inheritable = no
 		
 		normal_eyes = {
@@ -67,26 +59,31 @@ accessory_genes = {
 			boy = {}
 			girl = {}
 		}
-		
-		urukhai_eyes = {
-			index = 7
-			male = {	1 = "male_eyes_uruk"		}
-			female = {	1 = "female_eyes_uruk"	}
-			boy = male
-			girl = female
-		}	
 
 		glowing_eyes_red = {
-		    index = 8
+		    index = 7
 			male = { 1 = "male_glowing_eyes_red" }
 			female = { 1 = "female_glowing_eyes_red" }
 			boy = male
 			girl = female 
 		}		
+	    
+		glowing_eyes_green = {
+		    index = 8
+			male = { 1 = "male_glowing_eyes_green" }
+			female = { 1 = "female_glowing_eyes_green" }
+			boy = male
+			girl = female 
+		}		
+	
+		glowing_eyes_white = {
+		    index = 9
+			male = { 1 = "male_glowing_eyes_white" }
+			female = { 1 = "female_glowing_eyes_white" }
+			boy = male
+			girl = female 
+		}		
 	}
-
-
-
 
 #####################################
 #									#
@@ -94,11 +91,7 @@ accessory_genes = {
 #									#
 #####################################
 
-
-
 	teeth_accessory = {
-
-		index = 102
 		inheritable = no
 		
 		normal_teeth = {
@@ -149,8 +142,6 @@ accessory_genes = {
 
 
 	eyelashes_accessory = {
-
-		index = 103
 		inheritable = no
 		
 		# inheritable = no
@@ -196,81 +187,4 @@ accessory_genes = {
 			}
 		}
 	}
-	
-	race_head_accessory = {
-
-		index = 107
-		
-		# inheritable = no
-		normal = {
-			index = 0
-			male = {
-                1 = empty
-			}
-			female = {
-			    1 = empty
-			}
-			boy = {
-			    1 = empty
-			}
-			girl = {
-			    1 = empty
-			}
-		}
-
-		stavro = {
-			index = 1
-			male = {
-                1 = "male_head_stavro"
-			}
-			female = {
-			    1 = "female_head_stavro"
-			}
-			boy = {
-                1 = "male_head_stavro"
-			}
-			girl = {
-			    1 = "female_head_stavro"
-			}
-		}
-	}
-	
-	race_body_accessory = {
-
-		index = 108
-		
-		# inheritable = no
-		normal = {
-			index = 0
-			male = {
-                1 = empty
-			}
-			female = {
-			    1 = empty
-			}
-			boy = {
-                1 = empty
-			}
-			girl = {
-			    1 = empty
-			}
-		}
-
-		stavro = {
-			index = 1
-			male = {
-                1 = "male_body_stavro"
-			}
-			female = {
-			    1 = "female_body_stavro"
-			}
-			boy = {
-                1 = "boy_body_stavro"
-			}
-			girl = {
-			    1 = "girl_body_stavro"
-			}
-		}
-	}
-
 }

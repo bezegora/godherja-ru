@@ -1,0 +1,1992 @@
+﻿namespace = legal_tradition
+
+##################################################
+# # Legal Action Events
+# 0001 - 0010	Legal Manipulation
+# 0011 - 0020	Claim Justification
+#
+# # Legal Study Events
+# 0401 - 0410	Legal Studies Begin
+#
+# # Apolitical Legal Events
+# 0501 - 0510	Criminal Law - Determine whether a defendant is guilty of a crime or not.
+# 0511 - 0520	Sentencing Policy - Choose an overall sentencing policy for petty crimes
+# 0521 - 0530	Torts - Clear out a massive backlog of small-time civil suits
+# 0531 - 0540	Financial Law - Go through the drudgery of ruling on several cases relating to misc. financial matters
+# 0541 - 0550	Guild Law - A local guild is flaunting trade laws
+# 0551 - 0560	Religious Law - Determine whether the unorthodox teachings of a local magistrate dip into the realm of heresy
+# 0561 - 0570	Feudal Law - Rule on the specifics of an ancient clause in a byzantine feudal contract
+# 0571 - 0580	Property Law - Resolve a property dispute
+# 0581 - 0590	Inheritance Law - Figure out the intricacies of an inheritance with a lot at stake
+#
+# # High Court Events
+# 1001 - 1010	The Final Judgement - A judge has either died or been expelled from the High Court, pick a successor.
+# 1021 - 1030	A New School of Thought	 - A new conventional legal tradition appears
+# 1031 - 1040	The Death of a School - A legal tradition goes extinct
+##################################################
+
+
+
+
+
+
+
+
+
+
+##################################################
+# LEGAL ACTION EVENTS
+
+# Pick a random living character to act as a "template" for minor characters involved in litigation, so that we don't have to generate these
+scripted_effect pick_legal_case_minor_character_effect = {
+	random_living_character = {
+		save_scope_as = $SCOPE_NAME$
+	}
+}
+
+##################################################
+# Legal Manipulation
+# by Hapchazzard
+# 0001 - 0010
+##################################################
+
+scripted_effect legal_manipulation_effect = {
+	scope:actor = {
+		add_hook = {
+			type = favor_hook
+			target = scope:recipient
+		}
+	}
+}
+
+legal_tradition.0001 = {
+	type = character_event
+	title = legal_tradition.0001.t
+	desc = legal_tradition.0001.desc
+	theme = learning
+	
+	left_portrait = {
+		character = scope:actor
+		animation = war_attacker
+	}
+	
+	right_portrait = {
+		character = scope:recipient
+		animation = war_defender
+	}
+	
+	option = {
+		name = legal_tradition.0001.a
+		add_internal_flag = fancy_coloring
+		add_internal_flag = fancy_coloring_orange_stretch
+		add_internal_flag = judicial_option
+		execute_legal_duel_with_judge_effect = {
+			SUPPORTED_CHARACTER = scope:actor
+			JUDGE = root
+			OPPOSED_CHARACTER = scope:recipient
+			PIETY_REWARD = miniscule_piety_value
+			PIETY_LOSS = miniscule_piety_loss
+		}
+		scope:actor = {
+			add_hook = {
+				type = favor_hook
+				target = scope:recipient
+			}
+			add_opinion = {
+				target = root
+				modifier = ruled_in_favor_of_me_minor_legal_action
+			}
+		}
+		scope:recipient = {
+			add_opinion = {
+				target = root
+				modifier = ruled_against_me_minor_legal_action
+			}
+		}
+		apply_legal_case_stress_effect = { STRESS_GAIN = minor_stress_gain }
+		
+		ai_chance = {
+			base = 25	# By default, most rulers shouldn't particularly care about directly presiding over suits this minor
+			
+			render_judgement_for_plaintiff_ai_base_modifiers = yes
+		}
+	}
+	
+	option = {
+		name = legal_tradition.0001.b
+		add_internal_flag = fancy_coloring
+		add_internal_flag = fancy_coloring_orange_stretch
+		add_internal_flag = judicial_option
+		execute_legal_duel_with_judge_effect = {
+			SUPPORTED_CHARACTER = scope:recipient
+			JUDGE = root
+			OPPOSED_CHARACTER = scope:actor
+			PIETY_REWARD = miniscule_piety_value
+			PIETY_LOSS = miniscule_piety_loss
+		}
+		scope:actor = {
+			add_opinion = {
+				target = root
+				modifier = ruled_against_me_minor_legal_action
+			}
+		}
+		scope:recipient = {
+			add_opinion = {
+				target = root
+				modifier = ruled_in_favor_of_me_minor_legal_action
+			}
+		}
+		apply_legal_case_stress_effect = { STRESS_GAIN = minor_stress_gain }
+		
+		ai_chance = {
+			base = 25	# By default, most rulers shouldn't particularly care about directly presiding over suits this minor
+			
+			render_judgement_for_defendant_ai_base_modifiers = yes
+		}
+	}
+	
+	option = {
+		name = legal_tradition.0001.c
+		execute_legal_duel_without_judge_effect = {
+			ATTACKER = scope:actor
+			DEFENDER = scope:recipient
+			EFFECT = legal_manipulation_effect 
+		}
+		
+		ai_chance = {
+			base = 100	# By default, most rulers shouldn't particularly care about directly presiding over suits this minor
+			
+			defer_judgement_ai_base_modifiers = yes
+		}
+	}
+	
+	option = {
+		name = legal_tradition.0001.d
+		execute_legal_duel_without_judge_effect = {
+			ATTACKER = scope:actor
+			DEFENDER = scope:recipient
+			EFFECT = legal_manipulation_effect 
+		}
+		custom_tooltip = will_not_receive_this_type_of_case_cooldown_tooltip
+		set_variable = {
+			name = legal_manipulation_case_cooldown
+			years = 3
+		}
+		
+		ai_chance = {
+			base = 0	# This is just a QOL thing for players
+		}
+	}
+}
+
+##################################################
+# Claim Justification
+# by Hapchazzard
+# 0011 - 0020
+##################################################
+
+scripted_effect justify_claim_effect = {
+	scope:actor = {
+		add_unpressed_claim = scope:target
+	}
+}
+
+legal_tradition.0011 = {
+	type = character_event
+	title = legal_tradition.0011.t
+	desc = legal_tradition.0011.desc
+	theme = learning
+	
+	left_portrait = {
+		character = scope:actor
+		animation = war_attacker
+	}
+	
+	right_portrait = {
+		character = scope:recipient
+		animation = war_defender
+	}
+	
+	option = {
+		name = legal_tradition.0001.a
+		add_internal_flag = fancy_coloring
+		add_internal_flag = fancy_coloring_orange_stretch
+		add_internal_flag = judicial_option
+		execute_legal_duel_with_judge_effect = {
+			SUPPORTED_CHARACTER = scope:actor
+			JUDGE = root
+			OPPOSED_CHARACTER = scope:recipient
+			PIETY_REWARD = minor_piety_value
+			PIETY_LOSS = minor_piety_loss
+		}
+		scope:actor = {
+			add_unpressed_claim = scope:target
+			add_opinion = {
+				target = root
+				modifier = ruled_in_favor_of_me_minor_legal_action
+			}
+		}
+		scope:recipient = {
+			add_opinion = {
+				target = root
+				modifier = ruled_against_me_minor_legal_action
+			}
+		}
+		apply_legal_case_stress_effect = { STRESS_GAIN = medium_stress_gain }
+		
+		ai_chance = {
+			base = 50
+			
+			render_judgement_title_ai_base_modifiers = yes
+			render_judgement_for_plaintiff_ai_base_modifiers = yes
+		}
+	}
+	
+	option = {
+		name = legal_tradition.0001.b
+		add_internal_flag = fancy_coloring
+		add_internal_flag = fancy_coloring_orange_stretch
+		add_internal_flag = judicial_option
+		execute_legal_duel_with_judge_effect = {
+			SUPPORTED_CHARACTER = scope:recipient
+			JUDGE = root
+			OPPOSED_CHARACTER = scope:actor
+			PIETY_REWARD = minor_piety_value
+			PIETY_LOSS = minor_piety_loss
+		}
+		scope:actor = {
+			add_opinion = {
+				target = root
+				modifier = ruled_against_me_minor_legal_action
+			}
+		}
+		scope:recipient = {
+			add_opinion = {
+				target = root
+				modifier = ruled_in_favor_of_me_minor_legal_action
+			}
+		}
+		apply_legal_case_stress_effect = { STRESS_GAIN = medium_stress_gain }
+		
+		ai_chance = {
+			base = 50
+			
+			render_judgement_title_ai_base_modifiers = yes
+			render_judgement_for_defendant_ai_base_modifiers = yes
+		}
+	}
+	
+	option = {
+		name = legal_tradition.0001.c
+		execute_legal_duel_without_judge_effect = {
+			ATTACKER = scope:actor
+			DEFENDER = scope:recipient
+			EFFECT = justify_claim_effect 
+		}
+		
+		ai_chance = {
+			base = 100
+			
+			defer_judgement_ai_base_modifiers = yes
+		}
+	}
+	
+	option = {
+		name = legal_tradition.0001.d
+		execute_legal_duel_without_judge_effect = {
+			ATTACKER = scope:actor
+			DEFENDER = scope:recipient
+			EFFECT = justify_claim_effect 
+		}
+		custom_tooltip = will_not_receive_this_type_of_case_cooldown_tooltip
+		set_variable = {
+			name = justify_claim_case_cooldown
+			years = 3
+		}
+		
+		ai_chance = {
+			base = 0
+		}
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+##################################################
+# LEGAL STUDY EVENTS
+
+##################################################
+# Legal Studies Begin
+# by Hapchazzard
+# 0401 - 0410
+##################################################
+
+# You begin your legal studies.
+legal_tradition.0401 = {
+	type = character_event
+	title = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { exists = scope:picked_study_node }
+				desc = legal_tradition.0401.t
+			}
+			triggered_desc = {
+				desc = legal_tradition.0401.t.finished
+			}
+		}
+	}
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { exists = scope:picked_study_node }
+				desc = legal_tradition.0401.desc
+			}
+			triggered_desc = {
+				desc = legal_tradition.0401.desc.finished
+			}
+		}
+	}
+	theme = learning
+	
+	left_portrait = {
+		character = root
+		triggered_animation = {
+			trigger = {
+				exists = scope:picked_study_node
+			}
+			animation = personality_rational
+		}
+		triggered_animation = {
+			trigger = {
+				NOT = { exists = scope:picked_study_node }
+			}
+			animation = happiness
+		}
+	}
+	
+	immediate = {
+		get_study_chain_effect = { NAME = legal_study }
+		get_random_next_study_node_effect = { CHAIN_SCOPE = scope:legal_study }
+		if = {
+			limit = { NOT = { exists = scope:picked_study_node } }
+			play_music_cue = "mx_cue_epic_sacral_moment"
+		}
+	}
+	
+	option = {
+		name = legal_tradition.0401.a
+		skill = learning
+		trait = ambitious
+		trait = just
+		trait = zealous
+		trait = diligent
+		trait = stubborn
+		
+		trigger = {
+			exists = scope:picked_study_node
+			OR = {
+				has_trait = ambitious
+				has_trait = just
+				has_trait = zealous
+				has_trait = diligent
+				has_trait = stubborn
+			}
+		}
+		
+		save_scope_value_as = {
+			name = studying_intensively
+			value = yes
+		}
+		execute_study_node_learning_check_effect = {
+			NODE_SCOPE = scope:picked_study_node
+			SUCCESS_EFFECT = "add_jurist_progress_effect = { VALUE = scope:picked_study_node.var:study_node_reward_amount }"
+		}
+		
+		stress_impact = {
+			base = major_stress_impact_gain
+			lazy = major_stress_impact_gain
+			zealous = minor_stress_impact_loss
+			diligent = minor_stress_impact_loss
+			just = minor_stress_impact_loss
+		}
+		ai_chance = {
+			base = 10
+			modifier = {
+				factor = 0.1
+				stress_level >= 1
+			}
+			modifier = {
+				factor = 0
+				stress_level >= 2
+			}
+		}
+	}
+	
+	option = {
+		name = legal_tradition.0401.b
+		skill = learning
+		
+		trigger = {
+			exists = scope:picked_study_node
+		}
+		
+		execute_study_node_learning_check_effect = {
+			NODE_SCOPE = scope:picked_study_node
+			SUCCESS_EFFECT = "add_jurist_progress_effect = { VALUE = scope:picked_study_node.var:study_node_reward_amount }"
+		}
+		
+		stress_impact = {
+			base = medium_stress_impact_gain
+			lazy = medium_stress_impact_gain
+			zealous = minor_stress_impact_loss
+			diligent = minor_stress_impact_loss
+			just = minor_stress_impact_loss
+		}
+		ai_chance = {
+			base = 30
+			modifier = {
+				factor = 0.25
+				stress_level >= 1
+			}
+			modifier = {
+				factor = 0
+				stress_level >= 2
+			}
+		}
+	}
+	
+	option = {
+		name = legal_tradition.0401.c
+		
+		trigger = {
+			exists = scope:picked_study_node
+		}
+		ai_chance = {
+			base = 15
+			modifier = {
+				factor = 1.5
+				stress_level >= 1
+			}
+			modifier = {
+				factor = 10
+				stress_level >= 2
+			}
+		}
+	}
+	
+	option = {
+		name = legal_tradition.0401.d
+		add_internal_flag = special
+		
+		trigger = {
+			NOT = { exists = scope:picked_study_node }
+		}
+		
+		custom_tooltip = can_preside_over_trials_tt
+		if = {
+			limit = { NOT = { has_trait = lifestyle_jurist } }
+			add_trait_force_tooltip = jurist_1
+		}
+		else = {
+			show_as_tooltip = {
+				add_trait_force_tooltip = jurist_1
+			}
+		}
+		add_piety = medium_piety_value
+		add_prestige = medium_prestige_value
+		add_learning_skill = 1
+		
+		remove_variable = studying_law
+		if = {
+			limit = { exists = scope:story }
+			scope:story = { end_story = yes }
+		}
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+##################################################
+# APOLITICAL LEGAL EVENTS
+
+##################################################
+# Criminal Law
+# by Hapchazzard
+# 0501 - 0510
+##################################################
+
+# Sets whether the defendant is actually guilty, how much evidence exists against them and the player's intuitive guess on this
+scripted_effect determine_criminal_case_background_effect = {
+	# First, determine whether the defendant is actually guilty or not
+	random = {
+		chance = 75
+		save_scope_value_as = { 
+			name = defendant_is_guilty 
+			value = yes 
+		}
+	}
+	# Determine the background of the defendant, for flavor purposes
+	random_list = {
+		70 = {
+			set_variable = {
+				name = defendant_background
+				value = flag:peasant
+				days = 1
+			}
+		}
+		20 = {
+			set_variable = {
+				name = defendant_background
+				value = flag:well_off_citizen
+				days = 1
+			}
+		}
+		10 = {
+			set_variable = {
+				name = defendant_background
+				value = flag:petty_noble
+				days = 1
+			}
+		}
+	}
+	# Then, determine the amount of evidence that exists against them
+	random_list = {
+		1 = {	# Practically no evidence
+			set_variable = {
+				name = evidence_level 
+				value = 0 
+				days = 1
+			}
+		}
+		2 = {	# Little evidence
+			set_variable = { 
+				name = evidence_level 
+				value = 25
+				days = 1
+			}
+		}
+		3 = {	# A medium amount of evidence
+			set_variable = { 
+				name = evidence_level 
+				value = 50
+				days = 1
+			}
+		}
+		2 = {	# Significant evidence
+			set_variable = { 
+				name = evidence_level 
+				value = 75
+				days = 1
+			}
+		}
+		1 = {	# Almost ironclad evidence
+			set_variable = { 
+				name = evidence_level 
+				value = 100 
+				days = 1
+			}
+		}
+	}
+	# Finally, determine the character's intuitive guess on the defendant's guilt
+	set_variable = {
+		name = criminal_case_intuitive_guess
+		value = {
+			value = var:evidence_level
+			add = {
+				integer_range = {
+					min = -20
+					max = 20
+				}
+			}
+			if = {
+				limit = { exists = scope:defendant_is_guilty }
+				add = {
+					integer_range = {
+						min = root.intrigue
+						max = {
+							value = root.intrigue
+							multiply = 2
+						}
+					}
+				}
+			}
+			else = {
+				subtract = {
+					integer_range = {
+						min = root.intrigue
+						max = {
+							value = root.intrigue
+							multiply = 2
+						}
+					}
+				}
+			}
+			# Paranoid and trusting characters have inherent biases
+			if = {
+				limit = { root = { has_trait = paranoid } }
+				add = 10
+			}
+			else_if = {
+				limit = { root = { has_trait = trusting } }
+				subtract = 10
+			}
+			min = 0
+			max = 100
+		}
+		days = 1
+	}
+}
+
+scripted_effect execute_criminal_case_verdict_effect = {
+	
+	random_list = {
+		50 = {
+			modifier = {
+				add = {
+					value = var:evidence_level
+					subtract = 50
+					min = -49
+				}
+				NAND = {
+					exists = scope:convicting
+					var:criminal_case_intuitive_guess = { compare_value > root.var:evidence_level }
+				}
+			}
+			modifier = {
+				add = {
+					value = var:criminal_case_intuitive_guess
+					subtract = 50
+					min = -49
+				}
+				exists = scope:convicting
+				var:criminal_case_intuitive_guess = { compare_value > root.var:evidence_level }
+			}
+			modifier = {
+				add = root.judicial_power_value
+				exists = scope:convicting
+			}
+			modifier = {
+				add = root.intrigue
+				exists = scope:convicting
+			}
+			if = {
+				limit = { exists = scope:convicting }
+				add_piety = {
+					value = {
+						value = miniscule_piety_value
+						multiply = criminal_case_guilty_difficulty_factor_value
+					}
+				}
+				add_jurist_progress_effect = { VALUE = medium_jurist_progress_value }
+				custom_tooltip = criminal_case_only_correct_judgement_will_give_jurist_progress_tooltip
+			}
+			else = {
+				add_piety = miniscule_piety_loss
+			}
+			desc = criminal_case_conviction_seen_as_correct_tooltip
+		}
+		50 = {
+			modifier = {
+				add = {
+					value = 50
+					subtract = var:evidence_level
+					min = -49
+				}
+				NAND = {
+					exists = scope:acquitting
+					var:criminal_case_intuitive_guess = { compare_value < root.var:evidence_level }
+				}
+			}
+			modifier = {
+				add = {
+					value = 50
+					subtract = var:criminal_case_intuitive_guess
+					min = -49
+				}
+				exists = scope:acquitting
+				var:criminal_case_intuitive_guess = { compare_value < root.var:evidence_level }
+			}
+			modifier = {
+				add = root.judicial_power_value
+				exists = scope:acquitting
+			}
+			modifier = {
+				add = root.intrigue
+				exists = scope:acquitting
+			}
+			if = {
+				limit = { exists = scope:acquitting }
+				add_piety = {
+					value = {
+						value = miniscule_piety_value
+						multiply = criminal_case_acquittal_difficulty_factor_value
+					}
+				}
+				add_jurist_progress_effect = { VALUE = medium_jurist_progress_value }
+				custom_tooltip = criminal_case_only_correct_judgement_will_give_jurist_progress_tooltip
+			}
+			else = {
+				add_piety = miniscule_piety_loss
+			}
+			desc = criminal_case_acquittal_seen_as_correct_tooltip
+		}
+	}
+	if = {
+		limit = {
+			has_variable = judicial_approach
+			var:judicial_approach = flag:innovation_approach
+		}
+		random = {
+			chance = 25
+			add_radicalism_effect = { VALUE = 15 }
+		}
+	}
+}
+
+scripted_effect pick_legal_case_location_county_effect = {
+	random_held_title = {
+		limit = { tier = tier_county }
+		save_scope_as = legal_case_county
+	}
+}
+
+# Determine whether a defendant is guilty of a crime or not.
+legal_tradition.0501 = {
+	type = character_event
+	title = legal_tradition.0501.t
+	desc = legal_tradition.0501.desc
+	theme = learning
+	
+	left_portrait = {
+		character = root
+		animation = personality_rational
+	}
+	
+	trigger = {
+		is_ai = no	# Too complicated to make it worth getting the AI to understand
+		NOT = { has_variable = had_event_legal_tradition_0501 }
+	}
+	
+	immediate = {
+		set_variable = {
+			name = had_event_legal_tradition_0501
+			days = 365
+		}
+		save_scope_as = judge
+		determine_criminal_case_background_effect = yes
+		pick_legal_case_location_county_effect = yes
+	}
+	
+	option = {
+		name = legal_tradition.0501.a
+		skill = intrigue
+		add_internal_flag = fancy_coloring
+		add_internal_flag = fancy_coloring_orange_left
+		add_internal_flag = fancy_coloring_purple_right
+		add_internal_flag = judicial_option
+		custom_tooltip = evidence_strength_tooltip
+		custom_tooltip = criminal_case_personal_intuition_tooltip
+		save_scope_value_as = {
+			name = convicting
+			value = yes
+		}
+		execute_criminal_case_verdict_effect = yes
+		apply_legal_case_stress_effect = { STRESS_GAIN = medium_stress_gain }
+	}
+	
+	option = {
+		name = legal_tradition.0501.b
+		skill = intrigue
+		add_internal_flag = fancy_coloring
+		add_internal_flag = fancy_coloring_orange_left
+		add_internal_flag = fancy_coloring_purple_right
+		add_internal_flag = judicial_option
+		custom_tooltip = evidence_strength_inverted_tooltip
+		custom_tooltip = criminal_case_personal_intuition_inverted_tooltip
+		save_scope_value_as = {
+			name = acquitting
+			value = yes
+		}
+		execute_criminal_case_verdict_effect = yes
+		apply_legal_case_stress_effect = { STRESS_GAIN = medium_stress_gain }
+	}
+	
+	option = {
+		name = legal_tradition.0501.c
+	}
+}
+
+##################################################
+# Sentencing Policy
+# by Hapchazzard
+# 0511 - 0520
+##################################################
+
+# Choose an overall sentencing policy for petty crimes
+legal_tradition.0511 = {
+	type = character_event
+	title = legal_tradition.0511.t
+	desc = legal_tradition.0511.desc
+	theme = learning
+	
+	left_portrait = {
+		character = root
+		animation = personality_rational
+	}
+	
+	trigger = {
+		NOT = { has_variable = had_event_legal_tradition_0511 }
+	}
+	
+	immediate = {
+		set_variable = {
+			name = had_event_legal_tradition_0511
+			days = 365
+		}
+		save_scope_as = judge
+		pick_legal_case_location_county_effect = yes
+	}
+	
+	option = {
+		name = legal_tradition.0511.a
+		trait = diligent
+		skill = intrigue
+		add_internal_flag = fancy_coloring
+		add_internal_flag = fancy_coloring_orange_left
+		add_internal_flag = fancy_coloring_purple_right
+		add_internal_flag = judicial_option
+		
+		execute_legal_challenge_with_skill_effect = {
+			SKILL = intrigue
+			TARGET_VALUE = 10
+			PIETY_REWARD = minor_piety_value
+			PIETY_LOSS = minor_piety_loss
+			JURIST_PROGRESS_VALUE_FAILURE = miniscule_jurist_progress_value
+			JURIST_PROGRESS_VALUE_SUCCESS = minor_jurist_progress_value
+			JURIST_PROGRESS_VALUE_CRITICAL_SUCCESS = medium_jurist_progress_value
+		}
+		apply_legal_case_stress_effect = { STRESS_GAIN = major_stress_gain }
+	}
+	
+	option = {
+		name = legal_tradition.0511.b
+		skill = intrigue
+		add_internal_flag = fancy_coloring
+		add_internal_flag = fancy_coloring_orange_left
+		add_internal_flag = fancy_coloring_purple_right
+		add_internal_flag = judicial_option
+		execute_legal_challenge_with_skill_effect = {
+			SKILL = intrigue
+			TARGET_VALUE = 10
+			PIETY_REWARD = miniscule_piety_value
+			PIETY_LOSS = miniscule_piety_loss
+			JURIST_PROGRESS_VALUE_FAILURE = 0
+			JURIST_PROGRESS_VALUE_SUCCESS = miniscule_jurist_progress_value
+			JURIST_PROGRESS_VALUE_CRITICAL_SUCCESS = minor_jurist_progress_value
+		}
+		apply_legal_case_stress_effect = { STRESS_GAIN = medium_stress_gain }
+	}
+	
+	option = {
+		name = legal_tradition.0511.c
+		skill = intrigue
+		add_internal_flag = fancy_coloring
+		add_internal_flag = fancy_coloring_purple_stretch
+		
+		trigger = {
+			has_variable = judicial_approach
+			var:judicial_approach = flag:grifting_approach
+		}
+		
+		execute_corruption_duel_effect = {
+			SKILL = intrigue
+			TARGET_VALUE = 10
+			GOLD_REWARD = minor_gold_value
+			PIETY_LOSS = medium_piety_loss
+			CORRUPTION_GAIN = 15
+		}
+		
+		stress_impact = {
+			greedy = medium_stress_impact_loss
+		}
+	}
+	
+	option = {
+		name = legal_tradition.0511.d
+	}
+}
+
+##################################################
+# Torts
+# by Hapchazzard
+# 0521 - 0530
+##################################################
+
+# Clear out a massive backlog of small-time civil suits
+# Easy stewardship challenge
+legal_tradition.0521 = {
+	type = character_event
+	title = legal_tradition.0521.t
+	desc = legal_tradition.0521.desc
+	theme = learning
+	
+	left_portrait = {
+		character = root
+		animation = personality_rational
+	}
+	
+	trigger = {
+		NOT = { has_variable = had_event_legal_tradition_0521 }
+	}
+	
+	immediate = {
+		set_variable = {
+			name = had_event_legal_tradition_0521
+			days = 365
+		}
+		save_scope_as = judge
+		pick_legal_case_location_county_effect = yes
+	}
+	
+	option = {
+		name = legal_tradition.0521.a
+		trait = diligent
+		skill = stewardship
+		add_internal_flag = fancy_coloring
+		add_internal_flag = fancy_coloring_orange_left
+		add_internal_flag = fancy_coloring_purple_right
+		add_internal_flag = judicial_option
+		
+		execute_legal_challenge_with_skill_effect = {
+			SKILL = stewardship
+			TARGET_VALUE = 10
+			PIETY_REWARD = 0
+			PIETY_LOSS = 0
+			JURIST_PROGRESS_VALUE_FAILURE = 0
+			JURIST_PROGRESS_VALUE_SUCCESS = minor_jurist_progress_value
+			JURIST_PROGRESS_VALUE_CRITICAL_SUCCESS = medium_jurist_progress_value
+		}
+		apply_legal_case_stress_effect = { STRESS_GAIN = major_stress_gain }
+	}
+	
+	option = {
+		name = legal_tradition.0521.b
+		skill = stewardship
+		add_internal_flag = fancy_coloring
+		add_internal_flag = fancy_coloring_orange_left
+		add_internal_flag = fancy_coloring_purple_right
+		add_internal_flag = judicial_option
+		execute_legal_challenge_with_skill_effect = {
+			SKILL = stewardship
+			TARGET_VALUE = 10
+			PIETY_REWARD = 0
+			PIETY_LOSS = 0
+			JURIST_PROGRESS_VALUE_FAILURE = 0
+			JURIST_PROGRESS_VALUE_SUCCESS = miniscule_jurist_progress_value
+			JURIST_PROGRESS_VALUE_CRITICAL_SUCCESS = minor_jurist_progress_value
+		}
+		apply_legal_case_stress_effect = { STRESS_GAIN = medium_stress_gain }
+	}
+	
+	option = {
+		name = legal_tradition.0521.c
+		skill = intrigue
+		add_internal_flag = fancy_coloring
+		add_internal_flag = fancy_coloring_purple_stretch
+		
+		trigger = {
+			has_variable = judicial_approach
+			var:judicial_approach = flag:grifting_approach
+		}
+		
+		execute_corruption_duel_effect = {
+			SKILL = intrigue
+			TARGET_VALUE = 10
+			GOLD_REWARD = minor_gold_value
+			PIETY_LOSS = medium_piety_loss
+			CORRUPTION_GAIN = 15
+		}
+		
+		stress_impact = {
+			greedy = medium_stress_impact_loss
+		}
+	}
+	
+	option = {
+		name = legal_tradition.0521.d
+	}
+}
+
+##################################################
+# Financial Law
+# by Hapchazzard
+# 0531 - 0540
+##################################################
+
+# Go through the drudgery of ruling on several cases relating to misc. financial matters
+# Medium stewardship challenge
+legal_tradition.0531 = {
+	type = character_event
+	title = legal_tradition.0531.t
+	desc = legal_tradition.0531.desc
+	theme = learning
+	
+	left_portrait = {
+		character = root
+		animation = personality_rational
+	}
+	
+	trigger = {
+		NOT = { has_variable = had_event_legal_tradition_0531 }
+	}
+	
+	immediate = {
+		set_variable = {
+			name = had_event_legal_tradition_0531
+			days = 365
+		}
+		save_scope_as = judge
+	}
+	
+	option = {
+		name = legal_tradition.0531.a
+		trait = diligent
+		skill = stewardship
+		add_internal_flag = fancy_coloring
+		add_internal_flag = fancy_coloring_orange_left
+		add_internal_flag = fancy_coloring_green_right
+		add_internal_flag = judicial_option
+		
+		execute_legal_challenge_with_skill_effect = {
+			SKILL = stewardship
+			TARGET_VALUE = 12
+			PIETY_REWARD = medium_piety_value
+			PIETY_LOSS = minor_piety_loss
+			JURIST_PROGRESS_VALUE_FAILURE = minor_jurist_progress_value
+			JURIST_PROGRESS_VALUE_SUCCESS = medium_jurist_progress_value
+			JURIST_PROGRESS_VALUE_CRITICAL_SUCCESS = major_jurist_progress_value
+		}
+		apply_legal_case_stress_effect = { STRESS_GAIN = major_stress_gain }
+	}
+	
+	option = {
+		name = legal_tradition.0531.b
+		skill = intrigue
+		add_internal_flag = fancy_coloring
+		add_internal_flag = fancy_coloring_purple_stretch
+		
+		trigger = {
+			has_variable = judicial_approach
+			var:judicial_approach = flag:grifting_approach
+		}
+		
+		execute_corruption_duel_effect = {
+			SKILL = intrigue
+			TARGET_VALUE = 12
+			GOLD_REWARD = medium_gold_value
+			PIETY_LOSS = medium_piety_loss
+			CORRUPTION_GAIN = 20
+		}
+		
+		stress_impact = {
+			just = major_stress_impact_gain
+			greedy = medium_stress_impact_loss
+		}
+	}
+	
+	option = {
+		name = legal_tradition.0531.c
+	}
+}
+
+##################################################
+# Guild Law
+# by Hapchazzard
+# 0541 - 0550
+##################################################
+
+# A local guild is flaunting trade laws
+# Hard stewardship challenge
+legal_tradition.0541 = {
+	type = character_event
+	title = legal_tradition.0541.t
+	desc = legal_tradition.0541.desc
+	theme = learning
+	
+	left_portrait = {
+		character = root
+		animation = personality_rational
+	}
+	
+	trigger = {
+		NOT = { has_variable = had_event_legal_tradition_0541 }
+	}
+	
+	immediate = {
+		set_variable = {
+			name = had_event_legal_tradition_0541
+			days = 365
+		}
+		save_scope_as = judge
+		pick_legal_case_location_county_effect = yes
+	}
+	
+	option = {
+		name = legal_tradition.0541.a
+		trait = diligent
+		skill = stewardship
+		add_internal_flag = fancy_coloring
+		add_internal_flag = fancy_coloring_orange_left
+		add_internal_flag = fancy_coloring_green_right
+		add_internal_flag = judicial_option
+		
+		execute_legal_challenge_with_skill_effect = {
+			SKILL = stewardship
+			TARGET_VALUE = 20
+			PIETY_REWARD = massive_piety_value
+			PIETY_LOSS = major_piety_loss
+			JURIST_PROGRESS_VALUE_FAILURE = medium_jurist_progress_value
+			JURIST_PROGRESS_VALUE_SUCCESS = major_jurist_progress_value
+			JURIST_PROGRESS_VALUE_CRITICAL_SUCCESS = massive_jurist_progress_value
+		}
+		
+		scope:legal_case_county = {
+			add_county_modifier = local_guild_disbanded_modifier
+		}
+		
+		apply_legal_case_stress_effect = { STRESS_GAIN = massive_stress_gain }
+	}
+	
+	option = {
+		name = legal_tradition.0541.b
+		trait = diligent
+		skill = stewardship
+		add_internal_flag = fancy_coloring
+		add_internal_flag = fancy_coloring_orange_left
+		add_internal_flag = fancy_coloring_green_right
+		add_internal_flag = judicial_option
+		
+		execute_legal_challenge_with_skill_effect = {
+			SKILL = stewardship
+			TARGET_VALUE = 15
+			PIETY_REWARD = major_piety_value
+			PIETY_LOSS = medium_piety_loss
+			JURIST_PROGRESS_VALUE_FAILURE = minor_jurist_progress_value
+			JURIST_PROGRESS_VALUE_SUCCESS = medium_jurist_progress_value
+			JURIST_PROGRESS_VALUE_CRITICAL_SUCCESS = major_jurist_progress_value
+		}
+		
+		scope:legal_case_county = {
+			add_county_modifier = local_guild_weakened_modifier
+		}
+		
+		apply_legal_case_stress_effect = { STRESS_GAIN = major_stress_gain }
+	}
+	
+	option = {
+		name = legal_tradition.0541.c
+		trait = diligent
+		skill = stewardship
+		add_internal_flag = fancy_coloring
+		add_internal_flag = fancy_coloring_orange_left
+		add_internal_flag = fancy_coloring_green_right
+		add_internal_flag = judicial_option
+		
+		execute_legal_challenge_with_skill_effect = {
+			SKILL = stewardship
+			TARGET_VALUE = 15
+			PIETY_REWARD = major_piety_value
+			PIETY_LOSS = medium_piety_loss
+			JURIST_PROGRESS_VALUE_FAILURE = minor_jurist_progress_value
+			JURIST_PROGRESS_VALUE_SUCCESS = medium_jurist_progress_value
+			JURIST_PROGRESS_VALUE_CRITICAL_SUCCESS = major_jurist_progress_value
+		}
+		
+		scope:legal_case_county = {
+			add_county_modifier = local_guild_supported_modifier
+		}
+		
+		apply_legal_case_stress_effect = { STRESS_GAIN = major_stress_gain }
+	}
+	
+	option = {
+		name = legal_tradition.0541.d
+		skill = intrigue
+		add_internal_flag = fancy_coloring
+		add_internal_flag = fancy_coloring_purple_stretch
+		
+		trigger = {
+			has_variable = judicial_approach
+			var:judicial_approach = flag:grifting_approach
+		}
+		
+		execute_corruption_duel_effect = {
+			SKILL = intrigue
+			TARGET_VALUE = 15
+			GOLD_REWARD = major_gold_value
+			PIETY_LOSS = major_piety_loss
+			CORRUPTION_GAIN = 30
+		}
+		
+		scope:legal_case_county = {
+			add_county_modifier = local_guild_supported_modifier
+		}
+		
+		stress_impact = {
+			just = massive_stress_impact_gain
+			greedy = major_stress_impact_loss
+		}
+	}
+	
+	option = {
+		name = legal_tradition.0541.e
+	}
+}
+
+##################################################
+# Religious Law
+# by Hapchazzard
+# 0551 - 0560
+##################################################
+
+# Determine whether the unorthodox teachings of a local magistrate dip into the realm of heresy
+# Variable learning challenge
+legal_tradition.0551 = {
+	type = character_event
+	title = legal_tradition.0551.t
+	desc = legal_tradition.0551.desc
+	theme = learning
+	
+	left_portrait = {
+		character = root
+		animation = personality_rational
+	}
+	
+	right_portrait = {
+		character = scope:heterodox_judge
+		animation = personality_rational
+	}
+	
+	trigger = {
+		NOT = { has_variable = had_event_legal_tradition_0551 }
+	}
+	
+	immediate = {
+		set_variable = {
+			name = had_event_legal_tradition_0551
+			days = 365
+		}
+		save_scope_as = judge
+		create_character = {
+			template = heterodox_judge_character_template
+			location = root.capital_province
+			save_scope_as = heterodox_judge
+		}
+		scope:heterodox_judge = { save_scope_as = opponent }
+		pick_legal_case_location_county_effect = yes
+	}
+	
+	option = {
+		name = legal_tradition.0551.a
+		skill = learning
+		add_internal_flag = fancy_coloring
+		add_internal_flag = fancy_coloring_orange_stretch
+		add_internal_flag = judicial_option
+		execute_legal_challenge_with_skill_effect = {
+			SKILL = learning
+			TARGET_VALUE = scope:heterodox_judge.judicial_power_value
+			PIETY_REWARD = piety_from_minor_legal_debate_value
+			PIETY_LOSS = minor_piety_loss
+			JURIST_PROGRESS_VALUE_FAILURE = minor_jurist_progress_value
+			JURIST_PROGRESS_VALUE_SUCCESS = jurist_progress_from_minor_legal_debate_value
+			JURIST_PROGRESS_VALUE_CRITICAL_SUCCESS = jurist_progress_from_major_legal_debate_value
+		}
+		apply_legal_case_stress_effect = { STRESS_GAIN = minor_stress_gain }
+	}
+	
+	option = {
+		name = legal_tradition.0551.b
+		skill = learning
+		add_internal_flag = fancy_coloring
+		add_internal_flag = fancy_coloring_orange_stretch
+		add_internal_flag = judicial_option
+		execute_legal_challenge_with_skill_effect = {
+			SKILL = learning
+			TARGET_VALUE = scope:heterodox_judge.judicial_power_double_value
+			PIETY_REWARD = piety_from_major_legal_debate_value
+			PIETY_LOSS = medium_piety_loss
+			JURIST_PROGRESS_VALUE_FAILURE = medium_jurist_progress_value
+			JURIST_PROGRESS_VALUE_SUCCESS = jurist_progress_from_major_legal_debate_value
+			JURIST_PROGRESS_VALUE_CRITICAL_SUCCESS = jurist_progress_from_major_legal_debate_value
+		}
+		apply_legal_case_stress_effect = { STRESS_GAIN = medium_stress_gain }
+	}
+	
+	option = {
+		name = legal_tradition.0551.c
+	}
+	
+	after = {
+		scope:heterodox_judge = {
+			hidden_effect = {
+				death = {
+					death_reason = death_vanished 
+				}
+			}
+		}
+	}
+}
+
+##################################################
+# Feudal Law
+# by Hapchazzard
+# 0561 - 0570
+##################################################
+
+# Rule on the specifics of an ancient clause in a byzantine feudal contract
+# Hard diplo challenge
+legal_tradition.0561 = {
+	type = character_event
+	title = legal_tradition.0561.t
+	desc = legal_tradition.0561.desc
+	theme = learning
+	
+	left_portrait = {
+		character = root
+		animation = personality_rational
+	}
+	
+	trigger = {
+		NOT = { has_variable = had_event_legal_tradition_0561 }
+	}
+	
+	immediate = {
+		set_variable = {
+			name = had_event_legal_tradition_0561
+			days = 365
+		}
+		save_scope_as = judge
+		pick_legal_case_minor_character_effect = { SCOPE_NAME = messenger }
+		pick_legal_case_minor_character_effect = { SCOPE_NAME = plaintiff }
+		pick_legal_case_location_county_effect = yes
+	}
+	
+	option = {
+		name = legal_tradition.0561.a
+		skill = diplomacy
+		add_internal_flag = fancy_coloring
+		add_internal_flag = fancy_coloring_orange_left
+		add_internal_flag = fancy_coloring_light_blue_right
+		add_internal_flag = judicial_option
+		execute_legal_challenge_with_skill_effect = {
+			SKILL = diplomacy
+			TARGET_VALUE = 16
+			PIETY_REWARD = major_piety_value
+			PIETY_LOSS = major_piety_loss
+			JURIST_PROGRESS_VALUE_FAILURE = medium_jurist_progress_value
+			JURIST_PROGRESS_VALUE_SUCCESS = major_jurist_progress_value
+			JURIST_PROGRESS_VALUE_CRITICAL_SUCCESS = massive_jurist_progress_value
+		}
+		apply_legal_case_stress_effect = { STRESS_GAIN = major_stress_gain }
+	}
+	
+	option = {
+		name = legal_tradition.0561.b
+		skill = diplomacy
+		add_internal_flag = fancy_coloring
+		add_internal_flag = fancy_coloring_orange_left
+		add_internal_flag = fancy_coloring_light_blue_right
+		add_internal_flag = judicial_option
+		execute_legal_challenge_with_skill_effect = {
+			SKILL = diplomacy
+			TARGET_VALUE = 12
+			PIETY_REWARD = medium_piety_value
+			PIETY_LOSS = medium_piety_loss
+			JURIST_PROGRESS_VALUE_FAILURE = minor_jurist_progress_value
+			JURIST_PROGRESS_VALUE_SUCCESS = medium_jurist_progress_value
+			JURIST_PROGRESS_VALUE_CRITICAL_SUCCESS = major_jurist_progress_value
+		}
+		apply_legal_case_stress_effect = { STRESS_GAIN = medium_stress_gain }
+	}
+	
+	option = {
+		name = legal_tradition.0561.b
+		skill = intrigue
+		add_internal_flag = fancy_coloring
+		add_internal_flag = fancy_coloring_purple_stretch
+		
+		trigger = {
+			has_variable = judicial_approach
+			var:judicial_approach = flag:grifting_approach
+		}
+		
+		execute_corruption_duel_effect = {
+			SKILL = intrigue
+			TARGET_VALUE = 10
+			GOLD_REWARD = major_gold_value
+			PIETY_LOSS = major_piety_loss
+			CORRUPTION_GAIN = 15
+		}
+		
+		stress_impact = {
+			just = major_stress_impact_gain
+			greedy = medium_stress_impact_loss
+		}
+	}
+	
+	option = {
+		name = legal_tradition.0561.d
+	}
+}
+
+##################################################
+# Inheritance Law
+# by Hapchazzard
+# 0581 - 0590
+##################################################
+
+legal_tradition.0581 = {
+	type = character_event
+	title = legal_tradition.0581.t
+	desc = legal_tradition.0581.desc
+	theme = learning
+	
+	left_portrait = {
+		character = root
+		animation = personality_rational
+	}
+	
+	trigger = {
+		NOT = { has_variable = had_event_legal_tradition_0581 }
+	}
+	
+	immediate = {
+		set_variable = {
+			name = had_event_legal_tradition_0581
+			days = 365
+		}
+		save_scope_as = judge
+		pick_legal_case_location_county_effect = yes
+	}
+	
+	option = {
+		name = legal_tradition.0581.a
+		trait = diligent
+		skill = diplomacy
+		execute_legal_challenge_with_skill_effect = {
+			SKILL = diplomacy
+			TARGET_VALUE = 10
+			PIETY_REWARD = minor_piety_value
+			PIETY_LOSS = minor_piety_loss
+			JURIST_PROGRESS_VALUE_FAILURE = miniscule_jurist_progress_value
+			JURIST_PROGRESS_VALUE_SUCCESS = minor_jurist_progress_value
+			JURIST_PROGRESS_VALUE_CRITICAL_SUCCESS = medium_jurist_progress_value
+		}
+		apply_legal_case_stress_effect = { STRESS_GAIN = medium_stress_gain }
+	}
+	
+	option = {
+		name = legal_tradition.0581.b
+		skill = stewardship
+		execute_legal_challenge_with_skill_effect = {
+			SKILL = stewardship
+			TARGET_VALUE = 10
+			PIETY_REWARD = miniscule_piety_value
+			PIETY_LOSS = miniscule_piety_loss
+			JURIST_PROGRESS_VALUE_FAILURE = 0
+			JURIST_PROGRESS_VALUE_SUCCESS = miniscule_jurist_progress_value
+			JURIST_PROGRESS_VALUE_CRITICAL_SUCCESS = minor_jurist_progress_value
+		}
+		apply_legal_case_stress_effect = { STRESS_GAIN = minor_stress_gain }
+	}
+	
+	option = {
+		name = legal_tradition.0581.c
+		skill = intrigue
+		trait = greedy
+		trait = arbitrary
+		add_internal_flag = fancy_coloring
+		add_internal_flag = fancy_coloring_purple_stretch
+		
+		trigger = {
+			OR = {
+				AND = {
+					has_variable = judicial_approach
+					var:judicial_approach = flag:grifting_approach
+				}
+				has_trait = greedy
+				has_trait = arbitrary
+			}
+		}
+		
+		execute_corruption_duel_effect = {
+			SKILL = intrigue
+			TARGET_VALUE = 10
+			GOLD_REWARD = minor_gold_value
+			PIETY_LOSS = medium_piety_loss
+			CORRUPTION_GAIN = 15
+		}
+		
+		stress_impact = {
+			greedy = medium_stress_impact_loss
+		}
+	}
+	
+	option = {
+		name = legal_tradition.0581.d
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+##################################################
+# HIGH COURT EVENTS
+
+##################################################
+# The Final Judgement
+# by Hapchazzard
+# 1001 - 1010
+##################################################
+
+# Generates a judge of varying skill based on the character's judicial power roll
+scripted_effect generate_judge_option_effect = {
+	random_list = {
+		50 = {
+			modifier = {
+				add = {
+					value = root.judicial_power_value
+					multiply = -0.25
+				}
+			}
+			create_character = {
+				template = mediocre_high_court_judge_character_template
+				location = root.capital_province
+				save_scope_as = $SCOPE$
+			}
+		}
+		50 = {
+			create_character = {
+				template = standard_high_court_judge_character_template
+				location = root.capital_province
+				save_scope_as = $SCOPE$
+			}
+		}
+		0 = {
+			modifier = {
+				add = {
+					value = root.judicial_power_value
+					multiply = 0.25
+				}
+			}
+			create_character = {
+				template = exceptional_high_court_judge_character_template
+				location = root.capital_province
+				save_scope_as = $SCOPE$
+			}
+		}
+	}
+}
+
+scripted_effect pick_random_corruption_perk_effect = {
+	random_list = {
+		75 = {
+			set_local_variable = {
+				name = corruption_perk
+				value = flag:money
+			}
+			random_list = {
+				50 = {
+					set_local_variable = {
+						name = money_reward
+						value = medium_gold_value
+					}
+				}
+				30 = {
+					set_local_variable = {
+						name = money_reward
+						value = major_gold_value
+					}
+				}
+				20 = {
+					set_local_variable = {
+						name = money_reward
+						value = massive_gold_value
+					}
+				}
+			}
+		}
+		25 = {
+			set_local_variable = {
+				name = corruption_perk
+				value = flag:blackmail
+			}
+			random_vassal = {
+				limit = { is_ai = yes }
+				save_scope_as = vassal_to_blackmail
+			}
+		}
+	}
+}
+
+# A judge has either died or been expelled from the High Court, pick a successor.
+legal_tradition.1001 = {
+	type = character_event
+	title = legal_tradition.1001.t
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { exists = scope:dead_high_judge }
+				desc = legal_tradition.1001.desc.deceased_judge
+			}
+			triggered_desc = {
+				desc = legal_tradition.1001.desc.no_deceased_judge
+			}
+		}
+	}
+	theme = faith
+	override_background = {
+		event_background = temple_scope
+	}
+	
+	left_portrait = {
+		character = root
+		animation = personality_rational
+	}
+	
+	immediate = {
+		save_scope_as = background_temple_scope
+		save_scope_as = judge_template_character
+	}
+	
+	option = {
+		name = legal_tradition.1001.a
+		add_internal_flag = fancy_coloring
+		add_internal_flag = fancy_coloring_orange_stretch
+		add_internal_flag = judicial_option
+		trigger_event = legal_tradition.1002
+		
+		ai_chance = {
+			base = 100	# Most mamurs should be inclined towards appointing decent candidates
+			ai_value_modifier = {
+				ai_greed = -0.25
+				ai_honor = 0.25
+				ai_zeal = 0.1
+			}
+		}
+	}
+	
+	option = {
+		name = legal_tradition.1001.b
+		add_internal_flag = fancy_coloring
+		add_internal_flag = fancy_coloring_purple_stretch
+		skill = intrigue
+		trigger_event = legal_tradition.1003
+		
+		ai_chance = {
+			base = 25	# Most mamurs should be inclined towards appointing decent candidates
+			modifier = {
+				factor = 4	# Much more likely to consider this if in dire financial straits
+				gold < 0
+			}
+			ai_value_modifier = {
+				ai_greed = 0.25
+				ai_honor = -0.25
+				ai_zeal = -0.1
+			}
+		}
+	}
+	
+	option = {
+		name = legal_tradition.1001.c
+		
+		trigger = { is_ai = no }
+	}
+}
+
+# You search for a judge using judicial power
+legal_tradition.1002 = {
+	type = character_event
+	title = legal_tradition.1002.t
+	desc = legal_tradition.1002.desc
+	theme = faith
+	override_background = {
+		event_background = temple_scope
+	}
+	
+	left_portrait = {
+		character = root
+		animation = personality_rational
+	}
+	
+	immediate = {
+		generate_judge_option_effect = { SCOPE = judge_1 }
+		generate_judge_option_effect = { SCOPE = judge_2 }
+		generate_judge_option_effect = { SCOPE = judge_3 }
+	}
+	
+	option = {
+		name = legal_tradition.1002.a
+		scope:judge_1 = { set_employer = root }
+		if = {
+			limit = { exists = scope:high_court_scope }
+			scope:high_court_scope = {
+				fill_high_court_seat_with_character_effect = { JUDGE = scope:judge_1 }
+			}
+		}
+	}
+	
+	option = {
+		name = legal_tradition.1002.b
+		scope:judge_2 = { set_employer = root }
+		if = {
+			limit = { exists = scope:high_court_scope }
+			scope:high_court_scope = {
+				fill_high_court_seat_with_character_effect = { JUDGE = scope:judge_2 }
+			}
+		}
+	}
+	
+	option = {
+		name = legal_tradition.1002.c
+		scope:judge_3 = { set_employer = root }
+		if = {
+			limit = { exists = scope:high_court_scope }
+			scope:high_court_scope = {
+				fill_high_court_seat_with_character_effect = { JUDGE = scope:judge_3 }
+			}
+		}
+	}
+	
+	option = {
+		name = legal_tradition.1002.d
+		add_piety = major_piety_loss
+		
+		trigger = { is_ai = no }
+	}
+}
+
+# You search for a corrupt judge
+legal_tradition.1003 = {
+	type = character_event
+	title = legal_tradition.1003.t
+	desc = legal_tradition.1003.desc
+	theme = faith
+	override_background = {
+		event_background = temple_scope
+	}
+	
+	left_portrait = {
+		character = root
+		animation = personality_rational
+	}
+	
+	right_portrait = {
+		character = scope:corrupt_judge
+		animation = personality_dishonorable
+	}
+	
+	immediate = {
+		pick_random_corruption_perk_effect = yes
+		create_character = {
+			template = corrupt_high_court_judge_character_template
+			location = root.capital_province
+			save_scope_as = corrupt_judge
+		}
+	}
+	
+	option = {
+		name = legal_tradition.1003.a
+		add_internal_flag = fancy_coloring
+		add_internal_flag = fancy_coloring_purple_stretch
+		skill = intrigue
+		scope:corrupt_judge = { set_employer = root }
+		if = {
+			limit = { exists = scope:high_court_scope }
+			scope:high_court_scope = {
+				fill_high_court_seat_with_character_effect = { JUDGE = scope:corrupt_judge }
+			}
+		}
+		if = {
+			limit = { exists = local_var:corruption_perk }
+			if = {
+				limit = { local_var:corruption_perk = flag:money }
+				add_gold = local_var:money_reward
+			}
+			if = {
+				limit = { local_var:corruption_perk = flag:blackmail }
+				random_list = {
+					80 = {
+						add_hook = {
+							type = favor_hook
+							target = scope:vassal_to_blackmail
+						}
+					}
+					20 = {
+						add_hook = {
+							type = fabrication_hook
+							target = scope:vassal_to_blackmail
+						}
+					}
+				}
+			}
+		}
+		duel = {
+			skill = intrigue
+			value = decent_skill_rating
+			50 = {
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = 3.5
+					min = -49
+				}
+			}
+			50 = {
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = -3.5
+					min = -49
+				}
+				add_corruption_effect = { VALUE = scope:corrupt_judge.corruption_value }
+			}
+		}
+	}
+	
+	option = {
+		name = legal_tradition.1003.b
+		add_prestige = major_prestige_loss
+		
+		trigger = { is_ai = no }
+	}
+}
+
+##################################################
+# A New Judge
+# by Hapchazzard
+# 1011 - 1020
+##################################################
+
+# You appoint a judge to a seat
+legal_tradition.1011 = {
+	type = character_event
+	title = legal_tradition.1011.t
+	desc = legal_tradition.1011.desc
+	theme = faith
+	override_background = {
+		event_background = temple_scope
+	}
+	
+	left_portrait = {
+		character = root
+		animation = personality_rational
+	}
+	
+	right_portrait = {
+		character = scope:appointed_judge
+		animation = happiness
+	}
+	
+	immediate = {
+		save_scope_as = background_temple_scope
+		create_character = {
+			template = legal_tradition_specific_high_court_judge
+			employer = root
+			save_scope_as = appointed_judge
+		}
+		if = {
+			limit = { exists = scope:high_court_scope }
+			scope:high_court_scope = {
+				fill_high_court_seat_with_character_effect = { JUDGE = scope:appointed_judge }
+			}
+		}
+	}
+	
+	option = {
+		name = legal_tradition.1011.a
+	}
+}
+
+##################################################
+# A New School of Thought
+# by Hapchazzard
+# 1021 - 1030
+##################################################
+
+# A new conventional legal tradition appears
+legal_tradition.1021 = {
+	type = character_event
+	title = legal_tradition.1021.t
+	desc = legal_tradition.1021.desc
+	theme = faith
+	override_background = {
+		event_background = temple_scope
+	}
+	
+	left_portrait = {
+		character = root
+		animation = personality_rational
+	}
+	
+	immediate = {
+		save_scope_as = background_temple_scope
+	}
+	
+	option = {
+		name = legal_tradition.1021.a
+	}
+}
+
+##################################################
+# The Death of a School
+# by Hapchazzard
+# 1031 - 1040
+##################################################
+
+# A new conventional legal tradition appears
+legal_tradition.1031 = {
+	type = character_event
+	title = legal_tradition.1031.t
+	desc = legal_tradition.1031.desc
+	theme = faith
+	override_background = {
+		event_background = temple_scope
+	}
+	
+	left_portrait = {
+		character = root
+		animation = personality_rational
+	}
+	
+	immediate = {
+		save_scope_as = background_temple_scope
+	}
+	
+	option = {
+		name = legal_tradition.1031.a
+	}
+}

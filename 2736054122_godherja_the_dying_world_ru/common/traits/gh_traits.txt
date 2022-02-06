@@ -16,6 +16,11 @@
 # MISC MAGIC TRAITS - ( 373 - 377 )
 # HISTORICAL TRAITS - ( 378 - 379 )
 # MAGIC EFFECT TRAITS ( 380 - 402 )
+# MORE HISTORICAL TRAITS ( 426 - 429 )
+# WASTELAND ( 433 )
+# MORE HUNTER TRAITS ( 434 - 439 )
+# MAGIC PERK TREE CAPSTONE TRAITS ( 470 - 472 )
+# MORE MAGIC EFFECT TRAITS ( 500 - )
 
 ############################
 #####  MAGIC   TRAITS  #####
@@ -2390,7 +2395,6 @@ necromancy_undead_lich = {
 gh_extended_life = {
 	index = 376
 
-	immortal = yes
 	shown_in_ruler_designer = no
 
 	desc = {
@@ -2488,11 +2492,45 @@ gh_the_last_nikaryin = {
 ###  MAGIC EFFECT TRAITS ###
 ############################
 
-gh_boneshaped_strong = {
+gh_boneshaped_strong_1 = {
 	index = 380
 	
+	group = gh_boneshaped_strong
+	level = 1
+	
+	physical = yes
+	
 	prowess = 4
-	health = -0.25
+	health = -0.15
+	
+	attraction_opinion = 10
+	
+	shown_in_ruler_designer = no
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_gh_boneshaped_strong_1_desc
+			}
+			desc = trait_gh_boneshaped_strong_1_character_desc
+		}
+	}
+}
+
+gh_boneshaped_beauty_1 = {
+	index = 381
+	
+	group = gh_boneshaped_beauty
+	level = 1
+	
+	physical = yes
+	
+	diplomacy = 2
+	fertility = 0.15
+	health = -0.15
 	
 	attraction_opinion = 15
 	
@@ -2504,33 +2542,9 @@ gh_boneshaped_strong = {
 				trigger = {
 					NOT = { exists = this }
 				}
-				desc = trait_gh_boneshaped_strong_desc
+				desc = trait_gh_boneshaped_beauty_1_desc
 			}
-			desc = trait_gh_boneshaped_strong_character_desc
-		}
-	}
-}
-
-gh_boneshaped_beauty = {
-	index = 381
-	
-	diplomacy = 2
-	fertility = 0.2
-	health = -0.25
-	
-	attraction_opinion = 20
-	
-	shown_in_ruler_designer = no
-
-	desc = {
-		first_valid = {
-			triggered_desc = {
-				trigger = {
-					NOT = { exists = this }
-				}
-				desc = trait_gh_boneshaped_beauty_desc
-			}
-			desc = trait_gh_boneshaped_beauty_character_desc
+			desc = trait_gh_boneshaped_beauty_1_character_desc
 		}
 	}
 }
@@ -3142,9 +3156,9 @@ gh_shortsighted = {
 				trigger = {
 					NOT = { exists = this }
 				}
-				desc = trait_shortsighted_desc
+				desc = trait_gh_shortsighted_desc
 			}
-			desc = trait_shortsighted_desc
+			desc = trait_gh_shortsighted_desc
 		}
 	}
 	
@@ -3332,6 +3346,10 @@ gh_riftsight_4 = {
 	level = 4
 }
 
+##############################
+### MORE HISTORICAL TRAITS ###
+##############################
+
 gh_chosen_man = {
 	index = 426
 
@@ -3355,6 +3373,7 @@ gh_chosen_man = {
 		}
 	}
 }
+
 gh_veteran_of_elysia_sjalvolki = {
 	index = 427
 	
@@ -3380,6 +3399,7 @@ gh_veteran_of_elysia_sjalvolki = {
 		}
 	}
 }
+
 gh_veteran_of_elysia_aversarian = {
 	index = 428
 	
@@ -3404,6 +3424,7 @@ gh_veteran_of_elysia_aversarian = {
 		}
 	}
 }
+
 gh_veteran_of_elysia_marcher = {
 	index = 429
 	
@@ -3428,26 +3449,58 @@ gh_veteran_of_elysia_marcher = {
 		}
 	}
 }
+
+#################
+### WIDOWS    ###
+#################
+
+gh_widow = {
+	index = 507
+
+	flag = can_not_marry
+	fertility = -0.5
+	same_opinion = 10
+	
+	shown_in_ruler_designer = no
+
+    desc = trait_gh_widow_desc
+
+	ai_energy = -20
+	ai_sociability = -20
+}
+
+#################
+### WASTELAND ###
+#################
+
 gh_wasteland = {
 	index = 433
 	
 	immortal = yes
+	can_inherit = no
 	blocks_from_claim_inheritance = yes
+	can_have_children = no
 	incapacitating = yes
+	domain_limit = 500
 	birth = 0
 	random_creation = 0
-	fertility = -1000
-	health = 15
+	
 	county_opinion_add = 200
 	
 	shown_in_ruler_designer = no
 
 	desc = trait_gh_wasteland_desc
 }
+
+##########################
+### MORE HUNTER TRAITS ###
+##########################
+
 hunter_4 = {
 	index = 434
 	lifestyle = yes
-	prowess = 7
+	prowess = 9
+	learning = 1
 	
 	stress_loss_mult = 0.2
 	
@@ -3479,10 +3532,12 @@ hunter_4 = {
 		lazy = @neg_compat_low
 	}
 }
+
 hunter_5 = {
 	index = 435
 	lifestyle = yes
-	prowess = 7
+	prowess = 12
+	learning = 2
 	
 	stress_loss_mult = 0.2
 	
@@ -3514,6 +3569,7 @@ hunter_5 = {
 		lazy = @neg_compat_low
 	}
 }
+
 beasthunter_1 = {
 	index = 436
 	
@@ -3530,7 +3586,10 @@ beasthunter_1 = {
 		first_valid = {
 			triggered_desc = {
 				trigger = {
-					NOT = { has_variable = expert_proficiency_game }
+					OR = {
+						NOT = { exists = this }
+						NOT = { has_variable = expert_proficiency_game }
+					}
 				}
 				desc = trait_beasthunter_1
 			}
@@ -3551,12 +3610,6 @@ beasthunter_1 = {
 				}
 				desc = trait_beasthunter_1_desc
 			}
-			triggered_desc = {
-				trigger = {
-					has_variable = expert_proficiency_game
-				}
-				desc = trait_beasthunter_1_specialized_desc
-			}
 			desc = trait_beasthunter_1_character_desc
 		}
 	}
@@ -3567,14 +3620,15 @@ beasthunter_1 = {
 		hunter_3 = @pos_compat_medium
 		hunter_4 = @pos_compat_medium
 		hunter_5 = @pos_compat_medium
-		gh_lifestyle_beasthunter_1 = @pos_compat_medium
-		gh_lifestyle_beasthunter_2 = @pos_compat_medium
-		gh_lifestyle_beasthunter_3 = @pos_compat_medium
+		beasthunter_2 = @pos_compat_medium
+		beasthunter_3 = @pos_compat_medium
+		beasthunter_4 = @pos_compat_medium
 		brave = @pos_compat_low
 		craven = @neg_compat_low
 		lazy = @neg_compat_low
 	}
 }
+
 beasthunter_2 = {
 	index = 437
 	
@@ -3591,8 +3645,11 @@ beasthunter_2 = {
 	name = {
 		first_valid = {
 			triggered_desc = {
-				trigger = {
-					NOT = { has_variable = expert_proficiency_game }
+			trigger = {
+					OR = {
+						NOT = { exists = this }
+						NOT = { has_variable = expert_proficiency_game }
+					}
 				}
 				desc = trait_beasthunter_2
 			}
@@ -3613,12 +3670,6 @@ beasthunter_2 = {
 				}
 				desc = trait_beasthunter_2_desc
 			}
-			triggered_desc = {
-				trigger = {
-					has_variable = expert_proficiency_game
-				}
-				desc = trait_beasthunter_2_specialized_desc
-			}
 			desc = trait_beasthunter_2_character_desc
 		}
 	}
@@ -3629,9 +3680,9 @@ beasthunter_2 = {
 		hunter_3 = @pos_compat_medium
 		hunter_4 = @pos_compat_medium
 		hunter_5 = @pos_compat_medium
-		gh_lifestyle_beasthunter_1 = @pos_compat_medium
-		gh_lifestyle_beasthunter_2 = @pos_compat_medium
-		gh_lifestyle_beasthunter_3 = @pos_compat_medium
+		beasthunter_1 = @pos_compat_medium
+		beasthunter_3 = @pos_compat_medium
+		beasthunter_4 = @pos_compat_medium
 		brave = @pos_compat_low
 		craven = @neg_compat_low
 		lazy = @neg_compat_low
@@ -3655,15 +3706,12 @@ beasthunter_3 = {
 		first_valid = {
 			triggered_desc = {
 				trigger = {
-					NOT = { has_variable = expert_proficiency_game }
+					OR = {
+						NOT = { exists = this }
+						NOT = { has_variable = expert_proficiency_game }
+					}
 				}
 				desc = trait_beasthunter_3
-			}
-			triggered_desc = {
-				trigger = {
-					has_variable = expert_proficiency_game
-				}
-				desc = trait_beasthunter_3_specialized_desc
 			}
 			triggered_desc = {
 				trigger = {
@@ -3692,9 +3740,9 @@ beasthunter_3 = {
 		hunter_3 = @pos_compat_medium
 		hunter_4 = @pos_compat_medium
 		hunter_5 = @pos_compat_medium
-		gh_lifestyle_beasthunter_1 = @pos_compat_medium
-		gh_lifestyle_beasthunter_2 = @pos_compat_medium
-		gh_lifestyle_beasthunter_3 = @pos_compat_medium
+		beasthunter_1 = @pos_compat_medium
+		beasthunter_2 = @pos_compat_medium
+		beasthunter_4 = @pos_compat_medium
 		brave = @pos_compat_low
 		craven = @neg_compat_low
 		lazy = @neg_compat_low
@@ -3718,15 +3766,12 @@ beasthunter_4 = {
 		first_valid = {
 			triggered_desc = {
 				trigger = {
-					NOT = { has_variable = expert_proficiency_game }
+					OR = {
+						NOT = { exists = this }
+						NOT = { has_variable = expert_proficiency_game }
+					}
 				}
 				desc = trait_beasthunter_4
-			}
-			triggered_desc = {
-				trigger = {
-					has_variable = expert_proficiency_game
-				}
-				desc = trait_beasthunter_4_specialized_desc
 			}
 			triggered_desc = {
 				trigger = {
@@ -3755,11 +3800,675 @@ beasthunter_4 = {
 		hunter_3 = @pos_compat_medium
 		hunter_4 = @pos_compat_medium
 		hunter_5 = @pos_compat_medium
-		gh_lifestyle_beasthunter_1 = @pos_compat_medium
-		gh_lifestyle_beasthunter_2 = @pos_compat_medium
-		gh_lifestyle_beasthunter_3 = @pos_compat_medium
+		beasthunter_1 = @pos_compat_medium
+		beasthunter_2 = @pos_compat_medium
+		beasthunter_3 = @pos_compat_medium
 		brave = @pos_compat_low
 		craven = @neg_compat_low
 		lazy = @neg_compat_low
+	}
+}
+
+##################################
+### MAGIC PERK CAPSTONE TRAITS ###
+##################################
+
+gh_one_with_mist = {
+	index = 470
+
+	learning = 2
+	life_expectancy = 10
+	flag = gh_one_with_mist_spell_variance
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_gh_one_with_mist_desc
+			}
+			desc = trait_gh_one_with_mist_char_desc
+		}
+	}
+}
+
+gh_pale_seer = {
+	index = 471
+
+	learning = 5
+	flag = gh_pale_seer_spell_reroll
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_gh_pale_seer_desc
+			}
+			desc = trait_gh_pale_seer_char_desc
+		}
+	}
+}
+
+gh_reifier = {
+	index = 472
+
+	learning = 2
+	prowess = 4
+	flag = gh_reifier_decision
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_gh_reifier_desc
+			}
+			desc = trait_gh_reifier_char_desc
+		}
+	}
+}
+
+################################
+### MORE MAGIC EFFECT TRAITS ###
+################################
+
+gh_mind_fog_1 = {
+	index = 500
+
+	group = gh_mind_fog
+	level = 1
+
+	health_trait = yes
+
+	learning = -1
+	prowess = -1
+	monthly_lifestyle_xp_gain_mult = -0.1
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_gh_mind_fog_1_desc
+			}
+			desc = trait_gh_mind_fog_1_char_desc
+		}
+	}
+}
+
+gh_mind_fog_2 = {
+	index = 501
+
+	group = gh_mind_fog
+	level = 2
+
+	health_trait = yes
+
+	learning = -4
+	prowess = -4
+	fertility = -0.3
+
+	monthly_lifestyle_xp_gain_mult = -0.2
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_gh_mind_fog_2_desc
+			}
+			desc = trait_gh_mind_fog_2_char_desc
+		}
+	}
+}
+
+gh_mind_fog_3 = {
+	index = 502
+
+	group = gh_mind_fog
+	level = 3
+
+	health_trait = yes
+
+	learning = -8
+	prowess = -8
+	martial = -2
+	stewardship = -2
+	intrigue = -2
+	diplomacy = -2
+	fertility = -0.5
+
+	monthly_lifestyle_xp_gain_mult = -0.5
+
+	# you can't think clearly enough to feel stressed
+	stress_gain_mult = -0.2
+	stress_loss_mult = 0.2
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_gh_mind_fog_3_desc
+			}
+			desc = trait_gh_mind_fog_3_char_desc
+		}
+	}
+}
+
+gh_rift_insanity_1 = {
+	index = 504
+
+	group = gh_rift_insanity
+	level = 1
+
+	vassal_opinion = -5
+	attraction_opinion = -5
+	same_opinion = 10
+	hostile_scheme_resistance_mult = 0.05
+	health_trait = yes
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_gh_rift_insanity_1_desc
+			}
+			desc = trait_gh_rift_insanity_1_char_desc
+		}
+	}
+
+}
+
+gh_rift_insanity_2 = {
+	index = 505
+
+	group = gh_rift_insanity
+	level = 2
+
+	vassal_opinion = -10
+	attraction_opinion = -10
+	same_opinion = 10
+	hostile_scheme_resistance_mult = 0.1
+	health = -0.25
+
+	health_trait = yes
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_gh_rift_insanity_2_desc
+			}
+			desc = trait_gh_rift_insanity_2_char_desc
+		}
+	}
+
+	ai_honor = -10
+	ai_rationality = -200
+	ai_boldness = 50
+}
+
+gh_rift_insanity_3 = {
+	index = 506
+
+	group = gh_rift_insanity
+	level = 3
+
+	vassal_opinion = -10
+	attraction_opinion = -10
+	same_opinion = 10
+	hostile_scheme_resistance_mult = 0.1
+	health = -0.5
+	dread_gain_mult = 0.1
+	learning = -2
+	stewardship = -2
+
+	health_trait = yes
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_gh_rift_insanity_3_desc
+			}
+			desc = trait_gh_rift_insanity_3_char_desc
+		}
+	}
+
+	ai_honor = -10
+	ai_rationality = -200
+	ai_boldness = 50
+}
+
+gh_riftmark_1 = {
+	index = 508
+
+	group = gh_riftmark
+	level = 1
+
+	hostile_scheme_resistance_mult = -0.1
+	health = -0.1
+	stress_gain_mult = 0.30
+	flag = gh_riftmark_1_spell_vulnerability
+
+	health_trait = yes
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_gh_riftmark_1_desc
+			}
+			desc = trait_gh_riftmark_1_char_desc
+		}
+	}
+}
+
+gh_riftmark_2 = {
+	index = 509
+
+	group = gh_riftmark
+	level = 2
+
+	hostile_scheme_resistance_mult = -0.2
+	health = -0.25
+	stress_gain_mult = 0.60
+	flag = gh_riftmark_2_spell_vulnerability
+
+	health_trait = yes
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_gh_riftmark_1_desc
+			}
+			desc = trait_gh_riftmark_1_char_desc
+		}
+	}
+}
+
+gh_riftmark_3 = {
+	index = 510
+
+	group = gh_riftmark
+	level = 3
+
+	hostile_scheme_resistance_mult = -0.3
+	health = -0.5
+	stress_gain_mult = 1.0
+	flag = gh_riftmark_3_spell_vulnerability
+
+	health_trait = yes
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_gh_riftmark_1_desc
+			}
+			desc = trait_gh_riftmark_1_char_desc
+		}
+	}
+}
+
+gh_boneshaped_strong_2 = {
+	index = 511
+	
+	group = gh_boneshaped_strong
+	level = 2
+	
+	physical = yes
+	
+	prowess = 8
+	health = -0.3
+	
+	attraction_opinion = 15
+	
+	shown_in_ruler_designer = no
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_gh_boneshaped_strong_2_desc
+			}
+			desc = trait_gh_boneshaped_strong_2_character_desc
+		}
+	}
+}
+
+gh_boneshaped_beauty_2 = {
+	index = 512
+	
+	group = gh_boneshaped_beauty
+	level = 2
+	
+	physical = yes
+	
+	diplomacy = 4
+	fertility = 0.3
+	health = -0.3
+	
+	attraction_opinion = 25
+	
+	shown_in_ruler_designer = no
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_gh_boneshaped_beauty_2_desc
+			}
+			desc = trait_gh_boneshaped_beauty_2_character_desc
+		}
+	}
+}
+
+magikill_1 = {
+	index = 650
+	same_faith_opinion = 10
+	scheme_secrecy = 5
+	group = magikill
+	level = 1
+}
+
+magikill_2 = {
+	index = 651
+	same_faith_opinion = 15
+	scheme_success_chance = 5
+	scheme_secrecy = 5
+	group = magikill
+	level = 2
+}
+
+magikill_3 = {
+	index = 652
+	same_faith_opinion = 15
+	scheme_success_chance = 10
+	scheme_secrecy = 10
+	group = magikill
+	level = 3
+}
+
+magikill_4 = {
+	index = 653
+	same_faith_opinion = 15
+	scheme_success_chance = 10
+	scheme_secrecy = 10
+	intrigue = 1
+	group = magikill
+	level = 4
+}
+
+magikill_5 = {
+	index = 654
+	same_faith_opinion = 20
+	scheme_success_chance = 10
+	scheme_secrecy = 10
+	intrigue = 2
+	group = magikill
+	level = 5
+}
+
+magikill_6 = {
+	index = 655
+	same_faith_opinion = 20
+	scheme_success_chance = 10
+	scheme_secrecy = 10
+	intrigue = 3
+	group = magikill
+	level = 6
+}
+
+magikill_7 = {
+	index = 656
+	same_faith_opinion = 25
+	scheme_success_chance = 15
+	scheme_secrecy = 15
+	intrigue = 4
+	group = magikill
+	level = 7
+}
+
+gh_glowingeyes_white = {
+	index = 657
+
+	health_trait = yes
+	
+	attraction_opinion = -5
+	monthly_prestige = 1
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_gh_glowingeyes_white_desc
+			}
+			desc = trait_gh_glowingeyes_white_character_desc
+		}
+	}
+}
+
+#################
+# JURIST TRAITS #
+#################
+jurist_1 = {
+	index = 513
+	
+	group = lifestyle_jurist
+	level = 1
+	
+	flag = can_preside_over_legal_cases
+	flag = can_adopt_legal_tradition
+	flag = character_judicial_power_factor_10
+	learning = 1
+
+	ruler_designer_cost = 50
+	
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_jurist_1_desc
+			}
+			desc = trait_jurist_1_character_desc
+		}
+	}
+	
+	compatibility = {
+		jurist_1 = @pos_compat_medium
+		jurist_2 = @pos_compat_medium
+		jurist_3 = @pos_compat_medium
+		jurist_4 = @pos_compat_medium
+		jurist_5 = @pos_compat_medium
+		scholar = @pos_compat_low
+		just = @pos_compat_medium
+		arbitrary = @neg_compat_medium
+	}
+}
+
+jurist_2 = {
+	index = 514
+	
+	group = lifestyle_jurist
+	level = 2
+	
+	flag = can_preside_over_legal_cases
+	flag = can_adopt_legal_tradition
+	flag = character_judicial_power_factor_25
+	learning = 2
+
+	ruler_designer_cost = 100
+	
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_jurist_2_desc
+			}
+			desc = trait_jurist_2_character_desc
+		}
+	}
+	
+	compatibility = {
+		jurist_1 = @pos_compat_medium
+		jurist_2 = @pos_compat_medium
+		jurist_3 = @pos_compat_medium
+		jurist_4 = @pos_compat_medium
+		jurist_5 = @pos_compat_medium
+		scholar = @pos_compat_low
+		just = @pos_compat_medium
+		arbitrary = @neg_compat_medium
+	}
+}
+
+jurist_3 = {
+	index = 515
+	
+	group = lifestyle_jurist
+	level = 3
+	
+	flag = can_preside_over_legal_cases
+	flag = can_adopt_legal_tradition
+	flag = character_judicial_power_factor_50
+	learning = 3
+	stewardship = 1
+	diplomacy = 1
+	intrigue = 1
+
+	ruler_designer_cost = 150
+	
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_jurist_3_desc
+			}
+			desc = trait_jurist_3_character_desc
+		}
+	}
+	
+	compatibility = {
+		jurist_1 = @pos_compat_medium
+		jurist_2 = @pos_compat_medium
+		jurist_3 = @pos_compat_medium
+		jurist_4 = @pos_compat_medium
+		jurist_5 = @pos_compat_medium
+		scholar = @pos_compat_low
+		just = @pos_compat_medium
+		arbitrary = @neg_compat_medium
+	}
+}
+
+jurist_4 = {
+	index = 516
+	
+	group = lifestyle_jurist
+	level = 4
+	
+	flag = can_preside_over_legal_cases
+	flag = can_adopt_legal_tradition
+	flag = character_judicial_power_factor_100
+	learning = 5
+	stewardship = 2
+	diplomacy = 2
+	intrigue = 2
+
+	ruler_designer_cost = 200
+	
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_jurist_4_character_desc
+			}
+			desc = trait_jurist_4_desc
+		}
+	}
+	
+	compatibility = {
+		jurist_1 = @pos_compat_medium
+		jurist_2 = @pos_compat_medium
+		jurist_3 = @pos_compat_medium
+		jurist_4 = @pos_compat_medium
+		jurist_5 = @pos_compat_medium
+		scholar = @pos_compat_low
+		just = @pos_compat_medium
+		arbitrary = @neg_compat_medium
+	}
+}
+
+jurist_5 = {
+	index = 517
+	
+	group = lifestyle_jurist
+	level = 5
+	
+	flag = can_preside_over_legal_cases
+	flag = can_adopt_legal_tradition
+	flag = character_judicial_power_factor_200
+	learning = 10
+	stewardship = 5
+	diplomacy = 5
+	intrigue = 5
+
+	ruler_designer_cost = 400
+	
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_jurist_5_character_desc
+			}
+			desc = trait_jurist_5_desc
+		}
+	}
+	
+	compatibility = {
+		jurist_1 = @pos_compat_medium
+		jurist_2 = @pos_compat_medium
+		jurist_3 = @pos_compat_medium
+		jurist_4 = @pos_compat_medium
+		jurist_5 = @pos_compat_medium
+		scholar = @pos_compat_low
+		just = @pos_compat_medium
+		arbitrary = @neg_compat_medium
 	}
 }

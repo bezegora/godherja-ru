@@ -116,7 +116,20 @@ posteffect_values = {
 posteffect_values = {
 	name = tropical
 	lut = "gfx/map/post_effects/colorcorrection_tropical.dds"
-		colorbalance = { 0.95 1.0 0.95 }
+		colorbalance = { 0.95 1.0 1.0 }
+}
+posteffect_values = {
+	name = cyrat
+	lut = "gfx/map/post_effects/colorcorrection_tropical.dds"
+	colorbalance = { 0.95 0.95 0.85 }
+	saturation_scale = 0.9
+}
+posteffect_values = {
+	name = magichell
+	lut = "gfx/map/post_effects/colorcorrection_tropical.dds"
+	colorbalance = { 0.95 1.0 0.85 }
+	saturation_scale = 0.9
+	hue_offset = 0.9
 }
 posteffect_values = {
 	name = tundra
@@ -128,39 +141,78 @@ posteffect_values = {
 	tonemap_middlegrey = 0.4
 	colorbalance = { 0.85 0.90 1.30 }
 	saturation_scale = 0.75
-	exposure = 0.75
+	exposure = 0.9
 	bloom_width = 2.5
 	bloom_scale = 0.3
 	bright_threshold = 1
 	fog_color = rgb { 120 100 150 }
 	fog_begin = 0
 	fog_end = 180
-	fog_max = 1.5
+	fog_max = 0.5
+}
+posteffect_values = {
+	name = underground1
+	lut = "gfx/map/post_effects/colorcorrection_volcanic.tga"
+	colorbalance = { 0.7 0.8 1.0 }
+	saturation_scale = 0.9
+	exposure = 2.5
+	bright_threshold = 1
+	fog_color = rgb { 96 96 96 }
+}
+posteffect_values = {
+	name = underground2
+	lut = "gfx/map/post_effects/colorcorrection_volcanic.tga"
+	colorbalance = { 0.7 0.8 1.0 }
+	saturation_scale = 0.75
+	exposure = 2.25
+	bright_threshold = 1
+	fog_color = rgb { 96 96 96 }
+}
+posteffect_values = {
+	name = underground3
+	lut = "gfx/map/post_effects/colorcorrection_volcanic.tga"
+	colorbalance = { 0.7 0.8 1.0 }
+	saturation_scale = 0.6
+	exposure = 2.00
+	bright_threshold = 1
+	fog_color = rgb { 64 64 64 }
+}
+posteffect_values = {
+	name = underground4
+	lut = "gfx/map/post_effects/colorcorrection_volcanic.tga"
+	colorbalance = { 0.7 0.8 1.0 }
+	saturation_scale = 0.45
+	exposure = 1.75
+	bright_threshold = 1
+	fog_color = rgb { 64 64 64 }
+}
+posteffect_values = {
+	name = underground5
+	lut = "gfx/map/post_effects/colorcorrection_volcanic.tga"
+	colorbalance = { 0.7 0.8 1.0 }
+	saturation_scale = 0.3
+	exposure = 1.5
+	bright_threshold = 1
+	fog_color = rgb { 64 64 64 }
 }
 posteffect_values = {
 	name = fogland
 	lut = "gfx/map/post_effects/colorcorrection_tundra.dds"
-	tonemap_middlegrey = 0.4
-	colorbalance = { 0.85 0.85 0.95 }
-	saturation_scale = 0.5
-	exposure = 0.8
-	bloom_width = 1
-	bloom_scale = 0.2
-	bright_threshold = 1
-	fog_color = rgb { 180 180 220 }
+	colorbalance = { 0.95 0.95 0.95 }
+	exposure = 1.20
+	tonemap_middlegrey = 0.5
+	bloom_scale = 0.5
+	bright_threshold = 1.5
+	fog_color = rgb { 195 195 220 }
 	fog_begin = 0
-	fog_end = 220
-	fog_max = 2
+	fog_end = 350
+	fog_max = 1
 }
 posteffect_values = {
 	name = fogland_high
 	lut = "gfx/map/post_effects/colorcorrection_tundra.dds"
-	tonemap_middlegrey = 0.4
-	colorbalance = { 0.9 0.9 1.0 }
-	saturation_scale = 0.35
-	exposure = 0.7
-	bloom_width = 2
-	bloom_scale = 0.4
+	colorbalance = { 0.95 0.95 1.0 }
+	exposure = 1.0
 	bright_threshold = 1
 	fog_color = rgb { 180 180 220 }
 	fog_begin = 50
@@ -259,7 +311,7 @@ posteffect_volume = {
 	posteffect_values_day = undead
 	posteffect_values_night = undead
 	#position =	{ x-width		z			y-height }
-	position =	{ 2430.24		000.0		2128.9 }
+	position =	{ 2430.24		000.0		3164.02 }
 	size =		{ 1098.0			3172.0		488.0 }
 	fade_distance = 240.0
 }
@@ -268,7 +320,7 @@ posteffect_volume = {
 	posteffect_values_day = undead
 	posteffect_values_night = undead
 	#position =	{ x-width		z			y-height }
-	position =	{ 2186.24		000.0		2318.0 }
+	position =	{ 2186.24		000.0		3000.0 }
 	size =		{ 854.0			3172.0		854.0 }
 	fade_distance = 122.0
 }
@@ -277,8 +329,8 @@ posteffect_volume = {
 	posteffect_values_day = undead
 	posteffect_values_night = undead
 	#position =	{ x-width		z			y-height }
-	position =	{ 2430.24		000.0		2616.9 }
-	size =		{ 1464.0			3172.0		488.0 }
+	position =	{ 2430.24		000.0		3000.9 }
+	size =		{ 1464.0			3172.0		650.0 }
 	fade_distance = 183.0
 }
 posteffect_volume = {
@@ -286,7 +338,7 @@ posteffect_volume = {
 	posteffect_values_day = fogland
 	posteffect_values_night = fogland
 	#position =	{ x-width		z			y-height }
-	position =	{ 3660.0		000.0		2074.0 }
+	position =	{ 3660.0		000.0		2600.0 }
 	size =		{ 1464.0			1708.0		976.0 }
 	fade_distance = 244.0
 }
@@ -295,7 +347,7 @@ posteffect_volume = {
 	posteffect_values_day = fogland_high
 	posteffect_values_night = fogland_high
 	#position =	{ x-width		z			y-height }
-	position =	{ 3660.0		1220.0		2074.0 }
+	position =	{ 3660.0		1220.0		2600.0 }
 	size =		{ 1464.0			1708.0		976.0 }
 	fade_distance = 366.0
 }
@@ -304,7 +356,7 @@ posteffect_volume = {
 	posteffect_values_day = fogland
 	posteffect_values_night = fogland
 	#position =	{ x-width		z			y-height }
-	position =	{ 3904.0		000.0		1568.92 }
+	position =	{ 3904.0		000.0		2200.92 }
 	size =		{ 1464.0			1708.0		1220.0 }
 	fade_distance = 244.0
 }
@@ -313,7 +365,7 @@ posteffect_volume = {
 	posteffect_values_day = fogland_high
 	posteffect_values_night = fogland_high
 	#position =	{ x-width		z			y-height }
-	position =	{ 3904.0		1220.0		1568.92 }
+	position =	{ 3904.0		1220.0		2200.92 }
 	size =		{ 1464.0			1708.0		1220.0 }
 	fade_distance = 366.0
 }
@@ -322,7 +374,7 @@ posteffect_volume = {
 	posteffect_values_day = fogland
 	posteffect_values_night = fogland
 	#position =	{ x-width		z			y-height }
-	position =	{ 3294.0		0000.0		1453.02 }
+	position =	{ 3294.0		0000.0		1985.02 }
 	size =		{ 793.0			1708.0		732.0 }
 	fade_distance = 244.0
 }
@@ -331,7 +383,7 @@ posteffect_volume = {
 	posteffect_values_day = fogland_high
 	posteffect_values_night = fogland_high
 	#position =	{ x-width		z			y-height }
-	position =	{ 3294.0		1220.0		1453.02 }
+	position =	{ 3294.0		1220.0		1998.02 }
 	size =		{ 793.0			1708.0		732.0 }
 	fade_distance = 366.0
 }
@@ -340,8 +392,8 @@ posteffect_volume = {
 	posteffect_values_day = mageblight
 	posteffect_values_night = mageblight
 	#position =	{ x-width		z			y-height }
-	position =	{ 3355.0		000.0		561.2 }
-	size =		{ 170.8			488.0		146.4 }
+	position =	{ 3398.0		000.0		1180.2 }
+	size =		{ 300.8			488.0		180.4 }
 	fade_distance = 12.2
 }
 posteffect_volume = {
@@ -349,8 +401,8 @@ posteffect_volume = {
 	posteffect_values_day = desert
 	posteffect_values_night = desert
 	#position =	{ x-width		z			y-height }
-	position =	{ 2440.0		000.0		158.6 }
-	size =		{ 610.0			732.0		488.0 }
+	position =	{ 2440.0		000.0		670.6 }
+	size =		{ 800.0			732.0		488.0 }
 	fade_distance = 122.0
 }
 posteffect_volume = {
@@ -358,7 +410,124 @@ posteffect_volume = {
 	posteffect_values_day = tropical
 	posteffect_values_night = tropical
 	#position =	{ x-width		z			y-height }
-	position =	{ 1876.36		000.0		12.2 }
-	size =		{ 366.0			366.0		183.0 }
+	position =	{ 1873.36		000.0		490.0 }
+	size =		{ 770.0			500.0		380.0 }
 	fade_distance = 30.5
+}
+posteffect_volume = {
+	name = "Cyrat"
+	posteffect_values_day = cyrat
+	posteffect_values_night = cyrat
+	#position =	{ x-width		z			y-height }
+	position =	{ 3277.5		000.0		114.0 }
+	size =		{ 550.0			500.0		260.0 }
+	fade_distance = 50.5
+}
+posteffect_volume = {
+	name = "Underground First Level"
+	posteffect_values_day = underground1
+	posteffect_values_night = underground1
+	#position =	{ x-width		z			y-height }
+	position =	{ 400.5		000.0		3754.0 }
+	size =		{ 750.0			700.0		660.0 }
+	fade_distance = 51.5
+}
+posteffect_volume = {
+	name = "Underground Entrance"
+	posteffect_values_day = underground1
+	posteffect_values_night = underground1
+	#position =	{ x-width		z			y-height }
+	position =	{ 263.5		000.0		2567.0 }
+	size =		{ 450.0			700.0		550.0 }
+	fade_distance = 51.5
+}
+posteffect_volume = {
+	name = "Underground Catacombs"
+	posteffect_values_day = underground2
+	posteffect_values_night = underground2
+	#position =	{ x-width		z			y-height }
+	position =	{ 1480.5		000.0		3800.0 }
+	size =		{ 1490.0			900.0		690.0 }
+	fade_distance = 60.5
+}
+posteffect_volume = {
+	name = "Underground Catacombs"
+	posteffect_values_day = underground2
+	posteffect_values_night = underground2
+	#position =	{ x-width		z			y-height }
+	position =	{ 1488.5		000.0		3498.0 }
+	size =		{ 300.0			700.0		400.0 }
+	fade_distance = 60.5
+}
+posteffect_volume = {
+	name = "Underground Undercity"
+	posteffect_values_day = underground3
+	posteffect_values_night = underground3
+	#position =	{ x-width		z			y-height }
+	position =	{ 988.5		000.0		3323.0 }
+	size =		{ 1000.0	700.0		400.0 }
+	fade_distance = 60.5
+}
+posteffect_volume = {
+	name = "Underground Undercity"
+	posteffect_values_day = underground3
+	posteffect_values_night = underground3
+	#position =	{ x-width		z			y-height }
+	position =	{ 1308.5		000.0	3047.0 }
+	size =		{ 450.0		700.0		650.0 }
+	fade_distance = 60.5
+}
+posteffect_volume = {
+	name = "Underground Sunken Depths"
+	posteffect_values_day = underground4
+	posteffect_values_night = underground4
+	#position =	{ x-width		z			y-height }
+	position =	{ 249.5		000.0	3249.0 }
+	size =		{ 450.0		700.0		450.0 }
+	fade_distance = 60.5
+}
+posteffect_volume = {
+	name = "Underground Sunken Depths"
+	posteffect_values_day = underground4
+	posteffect_values_night = underground4
+	#position =	{ x-width		z			y-height }
+	position =	{ 319.5		000.0		2912.0 }
+	size =		{ 200.0		700.0		200.0 }
+	fade_distance = 60.5
+}
+posteffect_volume = {
+	name = "Underground Sunken Depths"
+	posteffect_values_day = underground4
+	posteffect_values_night = underground4
+	#position =	{ x-width		z			y-height }
+	position =	{ 110.5		000.0		2920.0 }
+	size =		{ 230.0		700.0		250.0 }
+	fade_distance = 60.5
+}
+posteffect_volume = {
+	name = "Underground Abyssal Pits"
+	posteffect_values_day = underground5
+	posteffect_values_night = underground5
+	#position =	{ x-width		z			y-height }
+	position =	{ 916.5		000.0		2833.0 }
+	size =		{ 300.0			700.0		250.0 }
+	fade_distance = 60.5
+}
+posteffect_volume = {
+	name = "Underground Abyssal Pits"
+	posteffect_values_day = underground5
+	posteffect_values_night = underground5
+	#position =	{ x-width		z			y-height }
+	position =	{ 622.5		000.0		2812.0 }
+	size =		{ 420.0			700.0		220.0 }
+	fade_distance = 60.5
+}
+posteffect_volume = {
+	name = "Magic Hell"
+	posteffect_values_day = magichell
+	posteffect_values_night = magichell
+	#position =	{ x-width		z			y-height }
+	position =	{ 875.0		    000.0		2954  }
+	size =		{ 150.0			500.0		50.0 }
+	fade_distance = 50.5
 }

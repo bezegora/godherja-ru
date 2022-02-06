@@ -14,9 +14,9 @@ world_story.0001 = { #The Fall of Oraispol
 			}
 			triggered_desc = {
 				trigger = {
-					culture_group = culture_group:gh_sjalvoki_group
+					culture_group = culture_group:gh_sjalvolki_group
 				}
-				desc = world_story.0001.desc.sjalvoki # Sjavolki
+				desc = world_story.0001.desc.sjalvolki # Sjavolki
 			}
 			triggered_desc = {
 				trigger = {
@@ -30,7 +30,7 @@ world_story.0001 = { #The Fall of Oraispol
 						OR = {
 							culture_group = culture_group:gh_imperial_group
 							culture_group = culture_group:gh_iyrossi_group
-							culture_group = culture_group:gh_sjalvoki_group
+							culture_group = culture_group:gh_sjalvolki_group
 						}
 					}
 				}
@@ -54,7 +54,7 @@ world_story.0001 = { #The Fall of Oraispol
 		trigger = {
 			OR = {
 				culture_group = culture_group:gh_iyrossi_group
-				culture_group = culture_group:gh_sjalvoki_group
+				culture_group = culture_group:gh_sjalvolki_group
 			}
 		}
 		name = world_story.0001.b
@@ -65,7 +65,7 @@ world_story.0001 = { #The Fall of Oraispol
 				OR = {
 					culture_group = culture_group:gh_imperial_group
 					culture_group = culture_group:gh_iyrossi_group
-					culture_group = culture_group:gh_sjalvoki_group
+					culture_group = culture_group:gh_sjalvolki_group
 				}
 			}
 		}
@@ -119,5 +119,90 @@ world_story.0101 = { # Niconaneus takes Bastonport
 	option = {
 		name = world_story.0101.b
 		add_piety = massive_piety_gain
+	}
+}
+
+world_story.0150 = {
+	title = world_story.0150.t
+	theme = battle
+	
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					culture_group = culture_group:gh_marcher_group
+				}
+				desc = world_story.0150.desc # Marchers
+			}
+			triggered_desc = {
+				trigger = {
+					culture_group = culture_group:gh_zarasadari_group
+				}
+				desc = world_story.0150.desc.amsari # Amsari
+			}
+			triggered_desc = {
+				trigger = {
+					NOT = {
+						OR = {
+							culture_group = culture_group:gh_marcher_group
+							culture_group = culture_group:gh_zarasadari_group
+						}
+					}
+				}
+				desc = world_story.0150.desc.generic # Neutral
+			}
+		}
+	}
+	
+	right_portrait = { 
+		character = scope:tchouran_conquerer
+		animation = marshal
+	}
+
+	option = {
+		trigger = {
+			culture_group = culture_group:gh_marcher_group
+		}
+		name = world_story.0150.a
+	}
+	option = {
+		trigger = {
+			OR = {
+				culture_group = culture_group:gh_zarasadari_group
+			}
+		}
+		name = world_story.0150.b
+	}
+	option = {
+		trigger = {
+			NOT = {
+				OR = {
+					culture_group = culture_group:gh_marcher_group
+					culture_group = culture_group:gh_zarasadari_group
+				}
+			}
+		}
+		name = world_story.0150.c
+	}
+}
+
+# TO BE REMOVED SARRADON WARNING
+world_story.1001 = {
+	title = world_story.1001.t
+	theme = dread
+	
+	desc = world_story.1001.desc
+	
+	left_portrait = { 
+		character = character:ee_2
+		animation = happiness
+	}
+	right_portrait = {
+		character = character:easternimperial_aversarinas_aautokrata_7
+		animation = happiness
+	}
+	
+	option = {
+		name = world_story.1001.a
 	}
 }

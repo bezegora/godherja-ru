@@ -10,13 +10,17 @@ adabyss_opening.1 = { #Opener for adabyss dude/ gives troops and claims
 	}
 
 	trigger = {
-		has_title = title:e_adabyss
+		has_title = title:e_limpegail
 	}
 	immediate = {
 		add_prestige = major_prestige_value
 		add_piety = major_piety_value
 		spawn_adabyss_starting_troops_effect = yes	
-		start_wars_for_damota_effect = yes		
+		start_wars_for_damota_effect = yes
+		set_global_variable = {
+			name = adabyss_invader
+			value = root
+		}
 	}
 	option = {
 		name = adabyss_opening.1.a
@@ -28,12 +32,33 @@ adabyss_opening.2 = { #buff for ai
 	hidden = yes
 
 	trigger = {
-		has_title = title:e_adabyss
+		has_title = title:e_limpegail
+		has_game_rule = default_adabyss_invasion
+		title:e_limpegail.holder = {
+			is_ai = yes
+		}
 	}
 	immediate = {
 		spawn_adabyss_starting_troops_effect = yes	
 		start_wars_for_damota_effect = yes
+		set_global_variable = {
+			name = adabyss_invader
+			value = root
+		}
 	}
+	option = {
+		name = adabyss_opening.1.a
+	}
+}
+
+adabyss_opening.3 = { #for the borderfort
+	type = character_event
+	hidden = yes
+	
+	immediate = {
+		spawn_borderfort_troops_effect = yes
+	}
+	
 	option = {
 		name = adabyss_opening.1.a
 	}

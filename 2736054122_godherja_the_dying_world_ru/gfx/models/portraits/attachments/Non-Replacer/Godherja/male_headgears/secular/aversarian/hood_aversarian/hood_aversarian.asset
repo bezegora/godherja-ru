@@ -1,0 +1,64 @@
+pdxmesh = {
+	name = "hood_aversarian_mesh"
+	file = "hood_aversarian.mesh"
+
+	blend_shape = { id = "hood_aversarian_fat"			type = "hood_aversarian_fat.mesh" }
+	blend_shape = { id = "hood_aversarian_old"			type = "hood_aversarian_old.mesh" }
+	blend_shape = { id = "hood_aversarian_muscular"		type = "hood_aversarian_muscular.mesh" }
+
+	meshsettings = {
+		name = "hood_aversarian"
+		index = 0
+		texture_diffuse = "hood_aversarian_color.dds"
+		texture_normal = "hood_aversarian_normal.dds"
+		texture_specular = "hood_aversarian_properties.dds"
+		shader = "portrait_attachment_pattern"
+		shader_file = "gfx/FX/jomini/portrait.shader"
+	}
+}
+
+entity = {
+	name = "hood_aversarian_entity"
+	pdxmesh = "hood_aversarian_mesh"
+
+	attribute = { name = "bs_fat_1"								blend_shape = "hood_aversarian_fat" }
+	attribute = { name = "bs_old_1"								blend_shape = "hood_aversarian_old" }
+	attribute = { name = "bs_muscular_1"						blend_shape = "hood_aversarian_muscular" }
+
+	game_data = {
+		portrait_accessory = {
+			pattern_mask = "gfx/models/portraits/attachments/Non-Replacer/Godherja/male_headgears/secular/aversarian/hood_aversarian/hood_aversarian_mask.dds"	#Any 4-channel texture. Each channel will be used to mask a pattern from the variation object
+			variation = "hood_aversarian"	#A "variation" object in gfx/portraits/accessory_variations/
+		}
+	}
+}
+entity = {
+	name = "hood_aversarian_black_entity"
+	pdxmesh = "hood_aversarian_mesh"
+
+	attribute = { name = "bs_fat_1"								blend_shape = "hood_aversarian_fat" }
+	attribute = { name = "bs_old_1"								blend_shape = "hood_aversarian_old" }
+	attribute = { name = "bs_muscular_1"						blend_shape = "hood_aversarian_muscular" }
+
+	game_data = {
+		portrait_accessory = {
+			pattern_mask = "gfx/models/portraits/attachments/Non-Replacer/Godherja/male_headgears/secular/aversarian/hood_aversarian/hood_aversarian_mask.dds"
+			variation = "hood_aversarian_black"
+		}
+	}
+}
+entity = {
+	name = "hood_generic_entity"
+	pdxmesh = "hood_aversarian_mesh"
+
+	attribute = { name = "bs_fat_1"								blend_shape = "hood_aversarian_fat" }
+	attribute = { name = "bs_old_1"								blend_shape = "hood_aversarian_old" }
+	attribute = { name = "bs_muscular_1"						blend_shape = "hood_aversarian_muscular" }
+
+	game_data = {
+		portrait_accessory = {
+			pattern_mask = "gfx/models/portraits/attachments/Non-Replacer/Godherja/male_headgears/secular/aversarian/hood_aversarian/hood_aversarian_mask.dds"
+			variation = "hood_generic"
+		}
+	}
+}

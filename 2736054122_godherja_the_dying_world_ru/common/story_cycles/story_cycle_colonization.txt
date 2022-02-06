@@ -1,0 +1,98 @@
+﻿#Story cycle for colonizing a county
+
+story_cycle_colonization = {
+
+	on_setup = {
+		set_variable = {
+			name = colonization_progress
+			value = 0
+		}
+		if = {
+			limit = { exists = story_owner.var:county_being_colonized_tmp_var }
+			set_variable = {
+				name = county_being_colonized
+				value = story_owner.var:county_being_colonized_tmp_var
+			}
+			story_owner.var:county_being_colonized_tmp_var = {
+				set_variable = {
+					name = colonization_story
+					value = root
+				}
+			}
+		}
+	}
+
+	on_end = {
+		if = {
+			limit = { exists = var:county_being_colonized }
+			var:county_being_colonized = {
+				remove_variable = colonization_story
+			}
+		}
+	}
+
+	on_owner_death = {
+		if = {
+			limit = { exists = var:county_being_colonized }
+			make_story_owner = var:county_being_colonized.holder
+		}
+	}
+
+	# Effect group 
+	effect_group = {
+		days = 30
+		chance = 100
+
+		trigger = {
+			always = yes
+		}
+
+		first_valid = {
+			triggered_effect = {
+				trigger = {
+					OR = {
+						NOT = { exists = var:county_being_colonized }
+						var:county_being_colonized = {
+							holder = {
+								has_trait = gh_wasteland
+							}
+						}
+					}
+				}
+				effect = {
+					end_story = yes
+				}
+			}
+			triggered_effect = {
+				trigger = {  
+					var:colonization_progress >= 100
+				}
+				effect = {
+					var:county_being_colonized = { save_scope_as = county_being_colonized }
+					scope:county_being_colonized = { settle_ruin_county_effect = { NEW_OWNER = scope:county_being_colonized.holder } }
+					end_story = yes
+				}
+			}
+			triggered_effect = {
+				trigger = { 
+					var:colonization_progress < 100
+				}
+				effect = {
+					if = {
+						limit = { has_variable = colonization_progress }
+						change_variable = {
+							name = colonization_progress
+							add = monthly_colonization_progress_value
+						}
+					}
+					else = {
+						set_variable = {
+							name = colonization_progress
+							value = 0
+						}
+					}
+				}
+			}
+		}
+	}
+}

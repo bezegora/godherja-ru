@@ -1,0 +1,36 @@
+﻿is_not_first_page = {
+	scope = character
+	is_shown = {
+		trigger_if = {
+			limit = { has_variable = current_page }
+			var:current_page > 1
+		}
+		trigger_else = { always = no }
+	}
+}
+
+set_first_page = {
+	effect = {
+		set_variable = {
+			name = current_page
+			value = 1
+		}
+		clear_variable_list = table_of_contents
+	}
+}
+
+previous_page_scripted_gui = {
+	is_shown = { }
+
+	effect = {
+		previous_page = yes
+	}
+}
+
+next_page_scripted_gui = {
+	is_shown = { }
+
+	effect = {
+		next_page = yes
+	}
+}

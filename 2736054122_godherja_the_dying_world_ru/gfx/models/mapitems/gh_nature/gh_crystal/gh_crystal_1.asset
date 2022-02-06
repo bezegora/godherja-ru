@@ -1,0 +1,20 @@
+pdxmesh = {
+	name = "gh_crystal_1_mesh"
+	file = "gh_crystal_1.mesh"
+	scale = 1.0
+
+	meshsettings = {
+		name = "gh_crystal_1"
+		index = 0
+		texture_diffuse = "gh_crystal_1_diffuse.dds"
+		texture_normal = "gh_crystal_1_normal.dds"
+		texture_specular = "gh_crystal_1_properties.dds"
+		shader = "standard"
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+}
+
+entity = {
+	name = "gh_crystal_1_entity"
+	pdxmesh = "gh_crystal_1_mesh"
+}

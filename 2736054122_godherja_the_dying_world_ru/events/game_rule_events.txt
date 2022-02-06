@@ -107,6 +107,10 @@ game_rule.1000 = {
 						NOT = { this = character:sarradon_1 } #Harthah was never able to get over his ex wife
 					}
 					trigger_if = {
+						limit = { exists = character:central_empire_120 }
+						NOT = { this = character:central_empire_120 } #Belisarios... beli
+					}
+					trigger_if = {
 						limit = { exists = character:clanlands_imperial_1 }
 						NOT = { this = character:clanlands_imperial_1 } #Nicanoneus has a scripted family
 					}
@@ -118,10 +122,12 @@ game_rule.1000 = {
 						limit = { exists = character:aversaria_isles_1 }
 						NOT = { this = character:aversaria_isles_1 } #Ulfirx is practically a fetus
 					}
+					is_ruin = no
 				}
 				trigger_event = game_rule.1001
 			}
 			every_vassal_or_below = {
+				limit = { is_ruin = no }
 				trigger_event = game_rule.1001
 			}
 		}
@@ -193,6 +199,8 @@ game_rule.1001 = { #by Mathilda Bjarnehed
 			}
 		}
 	}
+
+	
 
 	immediate = {
 		if = {

@@ -1,0 +1,24 @@
+﻿county_culture_uses_monastaries_system = {
+	scope = landed_title
+	is_shown = {
+		has_religion = religion:apti_religion 
+	}
+	is_valid = {
+		OR = {
+			holder = {
+				has_religion = religion:apti_religion 
+			}
+		}
+	}
+}
+
+get_monastaries_list = {
+	scope = landed_title
+	
+	is_shown = {}
+	
+	effect = {
+		clear_variable_list = monastaries_list
+		get_monastaries_list = { MODE = define }
+	}
+}

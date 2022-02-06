@@ -12,20 +12,25 @@ c_posinda = {
 		holder = southern_aversaria_frodbrokna_1
 	}
 	1229.9.12 = { # Kathryn is executed by Gorassos
-		holder = 0
+		holder = southern_imperial_15
 	}
 }
-
-d_akrigeneia = {
+c_prienoupoli = {
 	1251.4.14 = { change_development_level = 8 }
 	
 	1251.4.14 = {
 		holder = southern_imperial_1
-		government = republic_government
-		liege = 0
+		government = republic_playable_government
 	}
 }
-c_prienoupoli = {
+c_amphamis = {
+	1251.4.14 = { change_development_level = 8 }
+	
+	1251.4.14 = {
+		holder = southern_imperial_1
+	}
+}
+c_tylissonia = {
 	1251.4.14 = { change_development_level = 8 }
 	
 	1251.4.14 = {
@@ -49,12 +54,6 @@ k_kasmiene = {
 		succession_laws = { aversarian_succession_law }
 		holder = southern_imperial_2
 		liege = 0
-	}
-}
-d_philoli = {	
-	1251.4.14 = { change_development_level = 2 }
-	1251.4.14 = {
-		holder = southern_imperial_2
 	}
 }
 
@@ -95,14 +94,6 @@ d_dymetra = {
 		liege = 0
 	}
 }
-
-d_paphepios = { 
-1251.4.14 = { change_development_level = 3 }
-}
-
-d_crotapezus = { 
-1251.4.14 = { change_development_level = 3 }
-}
 c_amphelea = {	
 	1251.4.14 = {
 		holder = southern_imperial_2
@@ -114,49 +105,39 @@ c_phasephyrian = {
 		liege = "k_kasmiene"
 	}
 }
-c_pydnaki = {	
-	1251.4.14 = {
-		holder = kasmiene_1
-		liege = "k_kasmiene"
-	}
-}
-c_thurela = {	
-	1251.4.14 = {
-		holder = kasmiene_1
-		liege = "k_kasmiene"
-	}
-}
-
-c_lamopolis = {	
-	1251.4.14 = {
-		government = republic_government
-		holder = kasmiene_3
-		liege = "k_kasmiene"
-	}
-}
-c_bylletros = {	
-	1251.4.14 = {
-		government = republic_government
-		holder = kasmiene_3
-		liege = "k_kasmiene"
-	}
-}
 c_oenini = {	
 	1251.4.14 = {
 		holder = kasmiene_4
 		liege = "k_kasmiene"
 	}
 }
-c_amphous = {	
+c_knossodosia = {	
 	1251.4.14 = {
-		holder = kasmiene_5
+		holder = kasmiene_4
+	}
+}
+c_nicyla = {	
+	1215.1.1 = {
+		holder = centralimperial_30
+	}
+	1215.1.1 = { change_development_level = 5}
+	1227.3.14 = {
+		liege = "k_kasmiene"
+	}
+}
+
+c_neathon = {
+	1215.1.1 = {
+		holder = centralimperial_30
+	}
+	1227.3.14 = {
 		liege = "k_kasmiene"
 	}
 }
 
 #### blood drinkers, southern empire #1 in dev bible
 
-d_boramea = {
+d_crotapezus = {
 	1251.4.14 = { change_development_level = 4 }
 	1251.4.14 = {
 		holder = aversaria_sjalvolki_1
@@ -171,55 +152,41 @@ d_throneos = {
 		liege = 0
 	}
 }
+c_throneos_isles1 = {
+	1251.4.14 = {
+		holder = aversaria_sjalvolki_1
+		liege = 0
+	}
+}
 c_askliraki = {	
 	1251.4.14 = {
 		holder = blood_drinker_1
-		liege = "d_boramea"
-	}
-}
-c_dioscarnae = {	
-	1251.4.14 = {
-		holder = blood_drinker_1
-		liege = "d_boramea"
+		liege = "d_crotapezus"
 	}
 }
 c_epidetra = {	
 	1251.4.14 = {
 		holder = blood_drinker_2
-		liege = "d_boramea"
-	}
-}
-c_saloezen = {	
-	1251.4.14 = {
-		holder = blood_drinker_2
-		liege = "d_boramea"
+		liege = "d_crotapezus"
 	}
 }
 c_aiganos = {	
 	1251.4.14 = {
 		government = theocracy_government
 		holder = blood_drinker_3
-		liege = "d_boramea"
+		liege = "d_crotapezus"
 	}
 }
 
 ### Legio XXI Axiothea- #3 in dev bible
-
-d_petsitake = {
-	1251.4.14 = { change_development_level = 6 }
-	
-	1251.4.14 = {
-		holder = southern_imperial_3
-		government = military_unit_government
-		liege = 0
-	}
-}
 
 d_tegina = {
 	1251.4.14 = { change_development_level = 5 }
 	
 	1251.4.14 = {
 		holder = southern_imperial_3
+		government = military_unit_government
+		liege = 0
 	}
 }
 
@@ -230,151 +197,40 @@ d_pelossos = {
 		holder = southern_imperial_3
 	}
 }
-
-d_heraclon = {
-	1251.4.14 = { change_development_level = 4 }
-	
-	1251.4.14 = {
-		holder = southern_imperial_3
-	}
-}
-
-d_mochlocaea = {
-	1251.4.14 = { change_development_level = 8 }
-	
-	1251.4.14 = {
-		holder = southern_imperial_3
-	}
-}
-
-d_platiae = {
-1251.4.14 = { change_development_level = 4 }
-}
-
-c_knossoupoli = {
-	1251.4.14 = { change_development_level = 4 }
-	
-	1251.4.14 = {
-		holder = legio_axiothea_1
-		liege = "d_petsitake"
-	}
-}
-
-c_pareidonia = {	
-	1251.4.14 = {
-		holder = legio_axiothea_2
-		liege = "d_petsitake"
-	}
-}
 c_kallicapaeum = {	
 	1251.4.14 = {
-		holder = legio_axiothea_3
-		liege = "d_petsitake"
+		holder = southern_imperial_2
 	}
 }
 c_juktacuse = {	
 	1251.4.14 = {
 		holder = legio_axiothea_3
-		liege = "d_petsitake"
-	}
-}
-c_bourale = {	
-	1251.4.14 = {
-		government = republic_government
-		holder = legio_axiothea_4
-		liege = "d_petsitake"
-	}
-}
-c_antatrea = {	
-	1251.4.14 = {
-		holder = legio_axiothea_5
-		liege = "d_petsitake"
+		liege = "d_tegina"
 	}
 }
 c_purias = {	
 	1251.4.14 = {
 		holder = legio_axiothea_5
-		liege = "d_petsitake"
-	}
-}
-c_thronithos = {	
-	1251.4.14 = {
-		holder = legio_axiothea_6
-		liege = "d_petsitake"
-	}
-}
-c_gazinope = {	
-	1251.4.14 = {
-		holder = legio_axiothea_6
-		liege = "d_petsitake"
+		liege = "d_tegina"
 	}
 }
 c_thassopolis = {	
 	1251.4.14 = {
 		holder = legio_axiothea_7
-		liege = "d_petsitake"
+		liege = "d_tegina"
 	}
 }
 c_tylope = {	
 	1251.4.14 = {
 		holder = legio_axiothea_7
-		liege = "d_petsitake"
+		liege = "d_tegina"
 	}
 }
-c_zanclenai = {	
-	1251.4.14 = {
-		holder = legio_axiothea_7
-		liege = "d_petsitake"
-	}
-}
-
-##### 
-
-d_ankissos = {
-	1251.4.14 = { change_development_level = 6 }
-	
-	1251.4.14 = {
-		holder = southern_imperial_4
-		government = republic_government
-		liege = 0
-	}
-}
-
-
-
 ##### #7-declared himself emperor
 
-d_lapitholi = {
-	1251.4.14 = { change_development_level = 7 }
-	
-	1251.4.14 = {
-		holder = southern_imperial_7
-		liege = 0
-	}
-}
-
-d_petra = {
-	1251.4.14 = { change_development_level = 7 }
-	
-	1251.4.14 = {
-		holder = southern_imperial_7
-	}
-}
 c_dimioch = {	
 	1251.4.14 = {
-		holder = lapitholi_1
-		liege = "d_lapitholi"
-	}
-}
-c_delastro = {	
-	1251.4.14 = {
-		holder = lapitholi_2
-		liege = "d_lapitholi"
-	}
-}
-c_eubyros = {	
-	1251.4.14 = {
-		holder = lapitholi_3
+		holder = southern_imperial_7
 		liege = "d_lapitholi"
 	}
 }
@@ -389,23 +245,6 @@ d_pelelis = {
 		liege = 0
 	}
 }
-
-d_pavlasae = {
-	1251.4.14 = { change_development_level = 6 }
-	
-	1251.4.14 = {
-		holder = southern_imperial_8
-	}
-}
-
-d_myligeneia = {
-	1251.4.14 = { change_development_level = 6 }
-	
-	1251.4.14 = {
-		holder = southern_imperial_8
-	}
-}
-
 d_elatepios = {
 	1251.4.14 = { change_development_level = 6 }
 	
@@ -413,34 +252,64 @@ d_elatepios = {
 		holder = southern_imperial_8
 	}
 }
-c_kydamnus = {
+c_metethra = {
 	1251.4.14 = {
-		holder = pelelis_1
+		holder = southern_imperial_8
+		liege = 0
+	}
+}
+c_pelelis_isles1 = {
+	1251.4.14 = {
+		holder = southern_imperial_8
+		liege = 0
+	}
+}
+c_eretithos_isles2 = {
+	1251.4.14 = {
+		holder = southern_imperial_8
+		liege = 0
+	}
+}
+c_vasoskopeion = {
+	1251.4.14 = {
+		holder = pelelis_6
 		liege = "d_pelelis"
 	}
 }
-c_crotens = {
+c_provincenewtheantha = {
 	1251.4.14 = {
-		holder = pelelis_1
+		holder = pelelis_6
 		liege = "d_pelelis"
 	}
 }
+c_pelelis_isles2 = {
+	1251.4.14 = {
+		holder = pelelis_2
+		liege = "d_pelelis"
+	}
+}
+c_pelelis_isles3 = {
+	1251.4.14 = {
+		holder = pelelis_2
+		liege = "d_pelelis"
+	}
+}
+c_pelelis_isles4 = {
+	1251.4.14 = {
+		holder = pelelis_2
+		liege = "d_pelelis"
+	}
+}
+
 c_pixoezen = {
 	1251.4.14 = {
 		holder = pelelis_2
 		liege = "d_pelelis"
 	}
 }
-c_cnidarae = {
-	1251.4.14 = {
-		holder = pelelis_2
-		liege = "d_pelelis"
-		change_development_level = 18
-	}
-}
 c_astissos = {
 	1251.4.14 = {
-		government = republic_government
+		government = republic_playable_government
 		holder = pelelis_3
 		liege = "d_pelelis"
 	}
@@ -457,78 +326,27 @@ c_rhodaea = {
 		liege = "d_pelelis"
 	}
 }
-c_bynthos = {
-	1251.4.14 = {
-		holder = pelelis_5
-		liege = "d_pelelis"
-	}
-}
-c_aserma = {
-	1251.4.14 = {
-		holder = pelelis_5
-		liege = "d_pelelis"
-	}
-}
 c_mylicapaeum = {
 	1251.4.14 = {
 		holder = pelelis_6
 		liege = "d_pelelis"
 	}
 }
-c_orcheion = {
-	1251.4.14 = {
-		holder = pelelis_6
-		liege = "d_pelelis"
-	}
-}
-c_olynthicapaeum = {
-	1251.4.14 = {
-		holder = pelelis_6
-		liege = "d_pelelis"
-	}
-}
-c_rizonnos = {
-	1251.4.14 = {
-		holder = pelelis_7
-		liege = "d_pelelis"
-	}
-}
 
 ####
+c_doracuse = {
 
-d_rizesos = {
-	1251.4.14 = { change_development_level = 6 }
-	
-	1251.4.14 = {
-		government = republic_government
-		holder = southern_imperial_9
-		liege = 0
-	}
-}
-
-d_argatis = {
-	1251.4.14 = { change_development_level = 4 }
-	
 	1251.4.14 = {
 		holder = southern_imperial_10
 		liege = 0
 	}
 }
-c_doracuse = {
+c_phocorus = {
 
 	1251.4.14 = {
-		holder = argatis_1
-		liege = "d_argatis"
+		holder = southern_imperial_10
 	}
 }
-c_achena = {
-
-	1251.4.14 = {
-		holder = argatis_2
-		liege = "d_argatis"
-	}
-}
-
 
 ### agionists
 
@@ -541,11 +359,10 @@ d_phanaca = {
 	}
 }
 
-d_aphini = {
-	1251.4.14 = { change_development_level = 4 }
-	
+c_phanaca_isles1 = {
 	1251.4.14 = {
 		holder = southern_imperial_11
+		liege = 0
 	}
 }
 
@@ -565,41 +382,9 @@ d_pandena = {
 	}
 }
 
-d_trapopolis = {
-	1251.4.14 = { change_development_level = 3 }
-	
-	1251.4.14 = {
-		holder = southern_imperial_11
-	}
-}	
-
 c_dymysthenes = {
 	1251.4.14 = {
 		holder = phanaca_1
-		liege = "d_phanaca"
-	}
-}
-c_antarta = {
-	1251.4.14 = {
-		holder = phanaca_2
-		liege = "d_phanaca"
-	}
-}
-c_megaleion = {
-	1251.4.14 = {
-		holder = phanaca_3
-		liege = "d_phanaca"
-	}
-}
-c_crotyn = {
-	1251.4.14 = {
-		holder = phanaca_4
-		liege = "d_phanaca"
-	}
-}
-c_myrauros = {
-	1251.4.14 = {
-		holder = phamaca_4
 		liege = "d_phanaca"
 	}
 }
@@ -627,18 +412,6 @@ c_peiramos = {
 		liege = "d_phanaca"
 	}
 }
-c_thorynthos = {
-	1251.4.14 = {
-		holder = phanaca_8
-		liege = "d_phanaca"
-	}
-}
-c_kourarnae = {
-	1251.4.14 = {
-		holder = phanaca_8
-		liege = "d_phanaca"
-	}
-}
 c_gortelea = {
 	1251.4.14 = {
 		holder = phanaca_9
@@ -648,23 +421,6 @@ c_gortelea = {
 
 ##### magi island
 
-d_kamymna = {
-	1251.4.14 = { change_development_level = 3 }
-	
-	1251.4.14 = {
-		holder = southern_imperial_12
-		liege = 0
-	}
-}
-
-d_thuramos = {
-	1251.4.14 = { change_development_level = 3 }
-	
-	1251.4.14 = {
-		holder = southern_imperial_12
-	}
-}	
-
 d_psacus = {
 	1251.4.14 = { change_development_level = 3 }
 	
@@ -673,6 +429,26 @@ d_psacus = {
 	}
 }	
 
+c_byzenes = {
+	1251.4.14 = {
+		holder = southern_imperial_12
+	}
+}
+c_ultos = {
+	1251.4.14 = {
+		holder = southern_imperial_12
+	}
+}
+c_psacus_isles1a = {
+	1251.4.14 = {
+		holder = southern_imperial_12
+	}
+}
+c_psacus_isles1b = {
+	1251.4.14 = {
+		holder = southern_imperial_12
+	}
+}
 d_ayteos = {
 	1251.4.14 = { change_development_level = 3 }
 	
@@ -683,55 +459,19 @@ d_ayteos = {
 c_kameirigus = {
 	1251.4.14 = {
 		holder = magi_island_1
-		liege = "d_kamymna"
-	}
-}
-c_kerkaclea = {
-	1251.4.14 = {
-		holder = magi_island_2
-		liege = "d_kamymna"
+		liege = d_psacus
 	}
 }
 c_askorus = {
 	1251.4.14 = {
 		holder = magi_island_2
-		liege = "d_kamymna"
-	}
-}
-c_histraza = {
-	1251.4.14 = {
-		holder = magi_island_3
-		liege = "d_kamymna"
-	}
-}
-c_alalia = {
-	1251.4.14 = {
-		holder = magi_island_3
-		liege = "d_kamymna"
-	}
-}
-c_naucrissa = {
-	1251.4.14 = {
-		holder = magi_island_3
-		liege = "d_kamymna"
+		liege = d_psacus
 	}
 }
 c_aytine = {
 	1251.4.14 = {
 		holder = magi_island_4
-		liege = "d_kamymna"
-	}
-}
-c_rizydna = {
-	1251.4.14 = {
-		holder = magi_island_5
-		liege = "d_kamymna"
-	}
-}
-c_laodedon = {
-	1251.4.14 = {
-		holder = magi_island_6
-		liege = "d_kamymna"
+		liege = d_psacus
 	}
 }
 
@@ -751,21 +491,18 @@ k_artesmos = {
 		holder = aversaria_sjalvolki_2
 		liege = 0
 	}
+#	1251.2.12 = {
+#		holder = aversaria_sjalvolki_2
+#		liege = 0
+#	}
+}	
+c_dioscada = {
 	1251.2.12 = {
 		holder = aversaria_sjalvolki_2
-		liege = 0
-	}
-}	
-
-c_gazonion = {
-	
-	1251.4.14 = {
-		holder = aversaria_sjalvolki_3
-		liege = "k_artesmos"
 	}
 }
-
-c_salagoria = {
+	
+c_gazonion = {
 	
 	1251.4.14 = {
 		holder = aversaria_sjalvolki_3
@@ -793,45 +530,9 @@ c_sybame = {
 		liege = "k_artesmos"
 	}
 }
-c_pellythrae = {	
-	1251.4.14 = {
-		holder = aversaria_sjalvolki_5
-		liege = "d_astaseia"
-	}
-}
-c_parastiraki = {	
-	1251.4.14 = {
-		holder = aversaria_sjalvolki_5
-		liege = "d_astaseia"
-	}
-}
-c_asippia = {	
-	1251.4.14 = {
-		holder = aversaria_sjalvolki_6
-		liege = "d_astaseia"
-	}
-}
 c_smyrnoton = {	
 	1251.4.14 = {
 		holder = aversaria_sjalvolki_7
-		liege = "k_artesmos"
-	}
-}
-c_laodarnacia = {	
-	1251.4.14 = {
-		holder = aversaria_sjalvolki_7
-		liege = "k_artesmos"
-	}
-}
-c_pherollo = {	
-	1251.4.14 = {
-		holder = aversaria_sjalvolki_8
-		liege = "k_artesmos"
-	}
-}
-c_paraieus = {	
-	1251.4.14 = {
-		holder = aversaria_sjalvolki_8
 		liege = "k_artesmos"
 	}
 }
@@ -844,12 +545,6 @@ c_sicerma = {
 c_manteira = {	
 	1251.4.14 = {
 		holder = aversaria_sjalvolki_10
-		liege = "k_artesmos"
-	}
-}
-c_patryras = {	
-	1251.4.14 = {
-		holder = aversaria_sjalvolki_11
 		liege = "k_artesmos"
 	}
 }
@@ -870,59 +565,25 @@ d_agrinyreum = {
 		holder = southern_imperial_13
 		liege = 0
 	}
-}	
-
-d_taureum = {
-	1251.4.14 = { change_development_level = 2 }
-	
+}
+c_agrinyreum_isles1 = {
 	1251.4.14 = {
 		holder = southern_imperial_13
-	}
-}	
-
-d_demymna = {
-	1251.4.14 = { change_development_level = 2 }
-	
-	1251.4.14 = {
-		holder = southern_imperial_13
+		liege = 0
 	}
 }
-c_mortos = {
-	1251.4.14 = {
-		holder = agrinyreum_1
-		liege = d_agrinyreum
-	}
-}
-c_kasmeniki = {
-	1251.4.14 = {
-		holder = agrinyreum_1
-		liege = d_agrinyreum
-	}
-}	
 c_alae = {
 	1251.4.14 = {
 		holder = agrinyreum_1
 		liege = d_agrinyreum
 	}
-}	
-c_retri = {
-	1251.4.14 = {
-		holder = agrinyreum_2
-		liege = d_agrinyreum
-	}
 }
 c_tarigeneia = {
 	1251.4.14 = {
-		holder = agrinyreum_2
-		liege = d_agrinyreum
+		holder = southern_imperial_13
+		liege = 0
 	}
-}	
-c_sozamahos = {
-	1251.4.14 = {
-		holder = agrinyreum_3
-		liege = d_agrinyreum
-	}
-}	
+}
 c_dioscada = {
 	1251.4.14 = {
 		holder = agrinyreum_3
@@ -941,6 +602,12 @@ d_kamaramum = {
 	}
 }	
 
+c_ialissos = {
+	1251.4.14 = {
+		holder = southern_imperial_14
+		liege = 0
+	}
+}
 ##### Tanada- #19 in dev bible
 
 k_tanada = {
@@ -977,19 +644,12 @@ d_eryras = {
 		liege = "k_tanada"
 	}
 }
-
-c_pisus = {
+c_amaroe = {
 	
-	1251.4.14 = {
-		holder = tanada_2
-		liege = "k_tanada"
+	1230.2.14 = {
+		holder = tanada_1
 	}
-}
-
-c_sidila = {
-	
 	1251.4.14 = {
-		holder = tanada_2
 		liege = "k_tanada"
 	}
 }
@@ -1006,19 +666,7 @@ c_lefkofa = {
 	
 	1211.2.12 = {
 		holder = western_imperial_15027
-		liege = "d_epacuse"
-	}
-	1251.4.14 = {
-		holder = tanada_3
-		liege = "k_tanada"
-	}
-}
-
-c_acio = {
-	
-	1211.2.12 = {
-		holder = western_imperial_15027
-		liege = "d_epacuse"
+		liege = "d_hellane"
 	}
 	1251.4.14 = {
 		holder = tanada_3
@@ -1039,7 +687,7 @@ c_stymphasae = {
 	
 	1211.2.12 = {
 		holder = western_imperial_15027
-		liege = "d_epacuse"
+		liege = "d_hellane"
 	}
 	1251.4.14 = {
 		holder = tanada_5
@@ -1047,16 +695,8 @@ c_stymphasae = {
 	}
 }
 
-d_byllyrian = {
+d_hellane = {
 	1251.4.14 = { change_development_level = 4 }
-	1251.4.14 = {
-		holder = tanada_6
-		liege = "k_tanada"
-	}
-}
-
-c_kamenae = {
-	
 	1251.4.14 = {
 		holder = tanada_6
 		liege = "k_tanada"
@@ -1075,15 +715,7 @@ c_lindela = {
 	
 	1251.4.14 = {
 		holder = tanada_7
-		liege = "d_byllyrian"
-	}
-}
-
-c_pergioch = {
-	
-	1251.4.14 = {
-		holder = tanada_8
-		liege = "d_byllyrian"
+		liege = "d_hellane"
 	}
 }
 
@@ -1091,7 +723,7 @@ c_lamathon = {
 	
 	1251.4.14 = {
 		holder = tanada_8
-		liege = "d_byllyrian"
+		liege = "d_hellane"
 	}
 }
 
@@ -1099,19 +731,7 @@ c_golgembria = {
 	
 	1251.4.14 = {
 		holder = tanada_9
-		liege = "d_byllyrian"
-	}
-}
-
-c_cnidares = {
-
-	1216.11.12 = {
-		holder = western_imperial_15020
-		liege = "0"
-	}
-	1251.4.14 = {
-		holder = tanada_10
-		liege = "k_tanada"
+		liege = "d_hellane"
 	}
 }
 
@@ -1129,42 +749,11 @@ c_orarnacia = {
 c_laodasa = {
 	1232.4.14 = {
 		holder = western_imperial_15021
-		liege = "0"
+		liege = 0
 	}
 	1251.4.14 = {
 		holder = tanada_10
 		liege = "k_tanada"
-	}
-}
-
-d_binth = {
-	1251.4.14 = { change_development_level = 4 }
-	1251.4.14 = {
-		holder = tanada_11
-		liege = "k_tanada"
-	}
-}
-
-d_erythralamis = {
-
-	1230.1.14 = {
-		holder = western_imperial_15025
-		liege = "0"
-	}
-	1251.4.14 = {
-		holder = tanada_12
-		liege = "k_tanada"
-	}
-}
-
-c_garriant = {
-	1220.2.11 = {
-		holder = western_imperial_15024
-		liege = "d_erythralamis"
-	}
-	1251.4.14 = {
-		holder = tanada_13
-		liege = "d_erythralamis"
 	}
 }
 
@@ -1174,7 +763,17 @@ c_histrynthos = {
 	}
 	1251.4.14 = {
 		holder = tanada_13
-		liege = "d_erythralamis"
+		liege = "d_ithina"
+	}
+}
+
+c_histrynthos = {
+	1220.2.11 = {
+		holder = western_imperial_15024
+	}
+	1251.4.14 = {
+		holder = tanada_12
+		liege = "d_ithina"
 	}
 }
 
@@ -1182,11 +781,11 @@ c_laractus = {
 	
 	1186.2.12 = {
 		holder = western_imperial_15022
-		liege = "0"
+		liege = 0
 	}
 	1251.4.14 = {
 		holder = tanada_14
-		liege = "d_erythralamis"
+		liege = "d_ithina"
 	}
 }
 
@@ -1194,11 +793,11 @@ c_tos = {
 	
 	1249.4.15 = {
 		holder = western_imperial_15023
-		liege = "0"
+		liege = 0
 	}
 	1251.4.14 = {
 		holder = tanada_15
-		liege = "d_erythralamis"
+		liege = "d_ithina"
 	}
 }
 
@@ -1213,14 +812,6 @@ d_cyrydon = {
 	}
 }	
 
-d_chalcela = {
-	1251.4.14 = { change_development_level = 3 }
-	
-	1251.4.14 = {
-		holder = cyrydon_1
-	}
-}	
-
 d_halaca = {
 	1251.4.14 = { change_development_level = 3 }
 	
@@ -1229,54 +820,40 @@ d_halaca = {
 	}
 }
 
-c_abdissa = {
+c_salikon = {
+	1251.4.14 = { change_development_level = 3 }
 	
 	1251.4.14 = {
-		holder = cyrydon_2
-		government = military_unit_government
-		liege = "d_cyrydon"
+		holder = cyrydon_1
 	}
 }
-
-c_myros = {
+c_decateia_isles3 = {
+	1251.4.14 = { change_development_level = 3 }
 	
 	1251.4.14 = {
-		holder = cyrydon_2
-		liege = "d_cyrydon"
+		holder = cyrydon_1
 	}
 }
-
-c_braurinion = {
+c_arkima = {
+	1251.4.14 = { change_development_level = 3 }
 	
 	1251.4.14 = {
-		holder = cyrydon_2
-		liege = "d_cyrydon"
+		holder = cyrydon_1
 	}
 }
-
-c_petsopetri = {
+c_decateia_isles2 = {
+	1251.4.14 = { change_development_level = 3 }
 	
 	1251.4.14 = {
-		holder = cyrydon_3
-		government = military_unit_government
-		liege = "d_cyrydon"
+		holder = cyrydon_1
 	}
 }
-
 c_potale = {
 	
 	1251.4.14 = {
 		holder = cyrydon_3
 		liege = "d_cyrydon"
-	}
-}
-
-c_gazaseia = {
-	
-	1251.4.14 = {
-		holder = cyrydon_4
 		government = military_unit_government
-		liege = "d_cyrydon"
 	}
 }
 
@@ -1285,11 +862,20 @@ c_gythaza = {
 	1251.4.14 = {
 		holder = cyrydon_4
 		liege = "d_cyrydon"
+		government = military_unit_government
 	}
 }
 
 c_tomacuse = {
 	
+	1251.4.14 = {
+		holder = cyrydon_5
+		government = military_unit_government
+		liege = "d_cyrydon"
+	}
+}
+
+c_decateia_isles1 = {
 	1251.4.14 = {
 		holder = cyrydon_5
 		government = military_unit_government
@@ -1308,6 +894,12 @@ d_vathopus = {
 	}
 }
 
+c_rhamnythrae = {
+	1251.4.14 = {
+		holder = southern_imperial_17
+		government = theocracy_government
+	}
+}
 c_morgoton = {
 	1251.4.14 = { change_development_level = 2 }
 	
@@ -1331,50 +923,12 @@ c_thassomenion = {
 
 # k_fenvir Fenvir Clanrech
 
-d_thyrodosia = {
-	1220.1.1 = { change_development_level = 4 }
-	
-	1220.1.1 = {
-		holder = clanlands_sjalvolki_79
-		liege = k_fenvir
-		government = tribal_government
-	}
-}
-
-c_phliene = {
-	1220.1.1 = { change_development_level = 4 }
-	
-	1220.1.1 = {
-		holder = clanlands_sjalvolki_80
-		liege = d_thyrodosia
-		government = tribal_government
-	}
-}
-
 c_craxos = {
 	1220.1.1 = { change_development_level = 4 }
 	
 	1220.1.1 = {
-		holder = clanlands_sjalvolki_80
-	}
-}
-
-c_morgae = {
-	1220.1.1 = { change_development_level = 4 }
-	
-	1220.1.1 = {
-		holder = clanlands_sjalvolki_81
-		liege = d_thyrodosia
-		government = tribal_government
-	}
-}
-
-c_antonion = {
-	1220.1.1 = { change_development_level = 4 }
-	
-	1220.1.1 = {
-		holder = clanlands_sjalvolki_81
-		government = tribal_government
+		holder = clanlands_sjalvolki_2
+		liege = k_fenvir
 	}
 }
 
@@ -1382,7 +936,7 @@ c_kosine = {
 	1220.1.1 = { change_development_level = 4 }
 	
 	1220.1.1 = {
-		holder = clanlands_sjalvolki_82
+		holder = clanlands_sjalvolki_2
 		liege = k_fenvir
 		government = tribal_government
 	}
@@ -1391,18 +945,17 @@ c_kosine = {
 d_olendos = {
 	1220.1.1 = { change_development_level = 5 }
 	
-	1220.1.1 = {
+	1250.1.1 = {
 		holder = clanlands_sjalvolki_83
 		liege = k_fenvir
 		government = tribal_government
 	}
 }
 
-c_epassa = {
-	1220.1.1 = { change_development_level = 5 }
-	
-	1220.1.1 = {
+c_posiae = {
+	1250.1.1 = {
 		holder = clanlands_sjalvolki_83
+		liege = k_fenvir
 		government = tribal_government
 	}
 }
@@ -1411,28 +964,8 @@ c_diosippi = {
 	1220.1.1 = { change_development_level = 5 }
 	
 	1220.1.1 = {
-		holder = clanlands_sjalvolki_84
+		holder = clanlands_sjalvolki_2
 		liege = d_olendos
-		government = tribal_government
-	}
-}
-
-c_kasmeze = {
-	1220.1.1 = { change_development_level = 5 }
-	
-	1220.1.1 = {
-		holder = clanlands_sjalvolki_85
-		liege = k_fenvir
-		government = tribal_government
-	}
-}
-
-c_bouthrae = {
-	1220.1.1 = { change_development_level = 5 }
-	
-	1220.1.1 = {
-		holder = clanlands_sjalvolki_86
-		liege = k_fenvir
 		government = tribal_government
 	}
 }
@@ -1442,45 +975,7 @@ c_demiunt = {
 	
 	1220.1.1 = {
 		holder = clanlands_sjalvolki_86
-		government = tribal_government
-	}
-}
-
-c_erysthenes = {
-	1220.1.1 = { change_development_level = 5 }
-	
-	1220.1.1 = {
-		holder = clanlands_sjalvolki_87
 		liege = k_fenvir
-		government = tribal_government
-	}
-}
-
-c_pheraca = {
-	1220.1.1 = { change_development_level = 5 }
-	
-	1220.1.1 = {
-		holder = clanlands_sjalvolki_88
-		liege = d_thyrodosia
-		government = tribal_government
-	}
-}
-
-d_sozegion = {
-	1220.1.1 = { change_development_level = 3 }
-	
-	1220.1.1 = {
-		holder = clanlands_sjalvolki_89
-        liege = k_fenvir
-        government = tribal_government
-	}
-}
-
-c_bhrytona = {
-	1220.1.1 = { change_development_level = 2 }
-	
-	1220.1.1 = {
-		holder = clanlands_sjalvolki_89
 		government = tribal_government
 	}
 }
@@ -1490,36 +985,7 @@ c_halacus = {
 	
 	1220.1.1 = {
 		holder = clanlands_sjalvolki_90
-		liege = d_sozegion
-		government = tribal_government
-	}
-}
-
-c_thermysthenes = {
-	1220.1.1 = { change_development_level = 2 }
-	
-	1220.1.1 = {
-		holder = clanlands_sjalvolki_90
-		government = tribal_government
-	}
-}
-
-c_thermysthenes = {
-	1220.1.1 = { change_development_level = 2 }
-	
-	1220.1.1 = {
-		holder = clanlands_sjalvolki_91
-		liege = d_sozegion
-		government = tribal_government
-	}
-}
-
-c_rhamnasa = {
-	1220.1.1 = { change_development_level = 2 }
-	
-	1220.1.1 = {
-		holder = clanlands_sjalvolki_92
-		liege = d_sozegion
+		liege = k_fenvir
 		government = tribal_government
 	}
 }
@@ -1562,71 +1028,21 @@ c_phliarnae = {
 	}
 }
 
-c_assomenus = {
-	1220.1.1 = { change_development_level = 2 }
-	
-	1220.1.1 = {
-		holder = clanlands_sjalvolki_95
-		liege = k_fenvir
-		government = tribal_government
-	}
-}
-
-c_pergine = {
-	1220.1.1 = { change_development_level = 2 }
-	
-	1220.1.1 = {
-		holder = clanlands_sjalvolki_96
-		liege = d_sozegion
-		government = tribal_government
-	}
-}
-
 c_elatox = {
 	1220.1.1 = { change_development_level = 2 }
 	
 	1220.1.1 = {
 		holder = clanlands_sjalvolki_97
 		liege = k_fenvir
-		government = tribal_government
-	}
-}
-
-c_elatox = {
-	1220.1.1 = { change_development_level = 2 }
-	
-	1220.1.1 = {
-		holder = clanlands_sjalvolki_97
-	}
-}
-
-d_lampsantina = {
-	1220.1.1 = { change_development_level = 3 }
-	
-	1220.1.1 = {
-		holder = clanlands_sjalvolki_98
-		liege = k_fenvir
-		government = tribal_government
-	}
-}
-
-c_stenauros = {
-	1220.1.1 = { change_development_level = 3 }
-	
-	1220.1.1 = {
-		holder = clanlands_sjalvolki_99
-		liege = d_lampsantina
 		government = tribal_government
 	}
 }
 
 c_lassidos = {
-	1220.1.1 = { change_development_level = 3 }
+	1220.1.1 = { change_development_level = 2 }
 	
 	1220.1.1 = {
-		holder = clanlands_sjalvolki_100
-		liege = d_lampsantina
-		government = tribal_government
+		holder = clanlands_sjalvolki_97
 	}
 }
 
@@ -1634,18 +1050,8 @@ d_cythioch = {
 	1220.1.1 = { change_development_level = 2 }
 	
 	1220.1.1 = {
-		holder = clanlands_sjalvolki_101
+		holder = clanlands_sjalvolki_104
 		liege = k_fenvir
-		government = tribal_government
-	}
-}
-
-c_naxinitida = {
-	1220.1.1 = { change_development_level = 2 }
-	
-	1220.1.1 = {
-		holder = clanlands_sjalvolki_102
-		liege = d_cythioch
 		government = tribal_government
 	}
 }
@@ -1653,56 +1059,78 @@ c_naxinitida = {
 c_assesos = {
 	1220.1.1 = { change_development_level = 2 }
 	
-	1220.1.1 = {
-		holder = clanlands_sjalvolki_102
-	}
-}
-
-c_pandenimahos = {
-	1220.1.1 = { change_development_level = 2 }
-	
-	1220.1.1 = {
-		holder = clanlands_sjalvolki_103
-		liege = d_cythioch
+	1250.1.1 = {
+		holder = clanlands_sjalvolki_98
+		liege = k_fenvir
 		government = tribal_government
 	}
 }
-
-c_dioscamahos = {
+c_golgassa = {
 	1220.1.1 = { change_development_level = 2 }
 	
-	1220.1.1 = {
-		holder = clanlands_sjalvolki_97
-		government = tribal_government
+	1250.1.1 = {
+		holder = clanlands_sjalvolki_104
+		liege = k_fenvir
 	}
 }
 
-c_gazagra = {
+c_edinion_isles2 = {
 	1220.1.1 = { change_development_level = 2 }
 	
-	1220.1.1 = {
-		holder = clanlands_sjalvolki_101
-		government = tribal_government
+	1250.1.1 = {
+		holder = clanlands_sjalvolki_104
+		liege = k_fenvir
 	}
 }
-
+c_edinion_isles3 = {
+	1220.1.1 = { change_development_level = 2 }
+	
+	1250.1.1 = {
+		holder = clanlands_sjalvolki_104
+		liege = k_fenvir
+	}
+}
+c_edinion_isles1 = {
+	1220.1.1 = { change_development_level = 2 }
+	
+	1250.1.1 = {
+		holder = clanlands_sjalvolki_104
+		liege = k_fenvir
+	}
+}
+c_decateia_isles1bb = {
+	1220.1.1 = { change_development_level = 2 }
+	
+	1250.1.1 = {
+		holder = clanlands_sjalvolki_24
+		liege = k_fenvir
+	}
+}
+c_decateia_isles1a = {
+	1220.1.1 = { change_development_level = 2 }
+	
+	1250.1.1 = {
+		holder = clanlands_sjalvolki_24
+		liege = k_fenvir
+	}
+}
+c_decateia_isles1c = {
+	1220.1.1 = { change_development_level = 2 }
+	
+	1250.1.1 = {
+		holder = clanlands_sjalvolki_24
+		liege = k_fenvir
+	}
+}
 #####
 ##### good guy governor #6
 
-d_aigemita = {
+d_lapitholi = {
 	1251.4.14 = { change_development_level = 5 }
 	
 	1251.4.14 = {
 		holder = southern_imperial_6
 		liege = 0
-	}
-}
-
-d_larespontos = {
-	1251.4.14 = { change_development_level = 5 }
-	
-	1251.4.14 = {
-		holder = southern_imperial_6
 	}
 }
 
@@ -1721,29 +1149,16 @@ d_megalarina = {
 		holder = southern_imperial_6
 	}
 }
-
-c_rhegeidonia = {
-	1251.4.14 = {
-		holder = aigemita_1
-		liege = "d_aigemita"
-	}
-}
 c_laporion = {
 	1251.4.14 = {
 		holder = aigemita_1
-		liege = "d_aigemita"
+		liege = "d_lapitholi"
 	}
 }
 c_kimmollo = {
 	1251.4.14 = {
-		holder = aigemita_2
-		liege = "d_aigemita"
-	}
-}
-c_himeion = {
-	1251.4.14 = {
-		holder = aigemita_2
-		liege = "d_aigemita"
+		holder = southern_imperial_9
+		government = republic_playable_government
 	}
 }
 c_palidaea = {
@@ -1757,42 +1172,38 @@ c_metagra = {
 		liege = "d_aigemita"
 	}
 }
+
 c_abacia = {
 	1251.4.14 = {
 		holder = aigemita_5
 		liege = "d_aigemita"
 	}
 }
+
 c_sklavoricus = {
 	1251.4.14 = {
-		holder = aigemita_6
-		liege = "d_aigemita"
+		holder = southern_imperial_7
 	}
 }
-c_decacus = {
-	1251.4.14 = {
-		holder = aigemita_6
-		liege = "d_aigemita"
-	}
-}
-c_gangraion = {
-	1251.4.14 = {
-		holder = aigemita_7
-		liege = "d_aigemita"
-	}
-}
+
 c_tinitida = {
 	1251.4.14 = {
 		holder = southern_imperial_6
 		change_development_level = 15
 	}
 }
-c_naxeiros = {
-	1251.4.14 = {
-		holder = aigemita_8
-		liege = "d_aigemita"
-		change_development_level = 15
+
+
+d_karthos_isles1aa = {
+	1253.4.4 = {
+		holder = aversaria_sjalvolki_12
+		change_development_level = 7
 	}
 }
 
-
+c_chersila = {
+	1222.1.3 = { 
+		holder = southern_imperial_3
+		government = military_unit_government
+	}
+}

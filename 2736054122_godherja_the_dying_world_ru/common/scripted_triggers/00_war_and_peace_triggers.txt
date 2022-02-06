@@ -232,6 +232,9 @@ can_use_conquest_cbs_trigger = {
 		has_government = clan_government
 		faith = { has_doctrine_parameter = conquest_cb_enabled }
 	}
+	NOT = {
+		has_primary_title = title:k_adabyss_borderfort
+	}
 }
 
 can_be_warrior_trigger = {
@@ -262,6 +265,10 @@ can_be_knight_trigger = {
 					has_doctrine_parameter = clergy_can_fight
 				}
 			}
+			OR = {
+				is_ruler = yes
+				has_council_position = councillor_court_chaplain
+			}
 		}
 		has_trait = blind
 	}
@@ -288,6 +295,10 @@ can_be_commander_basic_trigger = {
 				NOT = {
 					has_doctrine_parameter = clergy_can_fight
 				}
+			}
+			OR = {
+				is_ruler = yes
+				has_council_position = councillor_court_chaplain
 			}
 		}
 	}
@@ -384,8 +395,6 @@ using_de_jure_cb_trigger = {
 		using_cb = de_jure_cb
 		using_cb = individual_county_de_jure_cb
 		using_cb = individual_duchy_de_jure_cb
-		# using_cb = imperial_reconquest_cb
-		# using_cb = dismantle_holy_pretender_cb
 	}
 }
 
@@ -585,19 +594,18 @@ desirable_for_capture_trigger = {
 }
 
 can_use_viking_invasion_cbs_trigger = {
-	faith = {
-		has_doctrine = tenet_warmonger
-	}
-	culture = {
-		has_innovation = innovation_longboats
-	}
-	any_sub_realm_county = {
-		is_coastal_county = yes
-	}
-	trigger_if = {
-		limit = {
-			is_ai = yes
+	can_use_viking_invasion_cbs_dlc_trigger = yes
+			}
 		}
+	}
+}
+
+can_use_viking_invasion_cbs_dlc_trigger = {
+	faith = { has_doctrine = tenet_warmonger }
+	culture = { has_innovation = innovation_longboats }
+	any_sub_realm_county = { is_coastal_county = yes }
+	trigger_if = {
+		limit = { is_ai = yes }
 		prestige >= 75
 		OR = {
 			is_independent_ruler = yes
@@ -606,9 +614,7 @@ can_use_viking_invasion_cbs_trigger = {
 		NOT = {
 			any_liege_or_above = {
 				NOT = {
-					faith = {
-						has_doctrine = tenet_warmonger
-					}
+					faith = { has_doctrine = tenet_warmonger }
 				}
 			}
 		}
@@ -656,11 +662,15 @@ neighboring_county_or_viking_conquest_trigger = {
 		trigger_else = {
 			$CHARACTER$ = { is_ai = no }
 		}
-		any_neighboring_county = {
-			holder = {
-				target_is_same_character_or_above = $CHARACTER$
+		trigger_if = {
+			limit = { tier = tier_county }
+			any_neighboring_county = {
+				holder = {
+					target_is_same_character_or_above = $CHARACTER$
+				}
 			}
 		}
+		trigger_else = { always = no }
 	}
 }
 
@@ -695,3 +705,57 @@ prisoners_of_war_trigger = {
 		}
 	}
 }
+
+
+religious_war_vassals_constraints = {
+	trigger_if = {
+		limit = {
+			scope:attacker = { is_independent_ruler = no }
+		}
+		scope:attacker = {
+		    NOT = { character_is_land_realm_neighbor = scope:defender }
+		}
+		scope:defender = { is_independent_ruler = yes }
+	}
+	trigger_else = {
+		always = no
+	}
+}
+
+feudal_clan_tribal_conquest_constraints = {		
+	OR = {
+		trigger_if = {
+			limit = {
+				tier = tier_county
+			}
+			NOT = {
+				any_county_province = {
+					has_holding_type = tribal_holding
+				}
+			}
+		}
+		trigger_if = {
+			limit = {
+				tier > tier_county
+			}
+			NOT = {
+				any_in_de_jure_hierarchy = {
+					tier = tier_county
+					any_county_province = {
+						has_holding_type = tribal_holding
+					}
+				}
+			}
+		}
+		scope:attacker = {
+			NOT = { has_government = tribal_government } 
+			gold < 200
+			any_sub_realm_county = {
+				any_county_province = {
+					has_holding_type = tribal_holding
+				}
+			}
+		}
+	}
+}
+

@@ -3,14 +3,15 @@
 #Triggered by code
 
 on_death = {
+	on_actions = {
+        on_artifact_inheritance
+	}
+	
 	effect = {
 		play_music_cue = "mx_cue_death"
 
 		add_character_flag = { flag = about_to_die_but_not_dead_yet_flag } # Used in perk calc
-		
-		trigger_event = {
-			on_action = on_artifact_inheritance
-		}
+
 		if = {
 			limit = {
 				has_character_flag = holdover_in_old_lands
@@ -43,7 +44,12 @@ on_death = {
 				this = character:clanlands_sjalvolki_1
 			}
 			force_end_the_conquest = yes
-			
+			title:c_northern_katraddia_43.holder = {
+				trigger_event = {
+					id = sjalvolki_reformation.0001
+					years = { 7 12 }
+				}
+			}
 			if = {
 				limit = {
 					has_character_flag = lost_to_cois_once
@@ -126,6 +132,17 @@ on_death = {
 				}
 			}
 		}
+		else_if = {
+			limit = {
+				has_character_flag = adabyss_invader
+				NOT = {
+					has_character_flag = lost_to_sentinelese
+				}
+			}
+			destroy_title = title:e_limpegail
+			trigger_event = adabyss_event.0004
+		}		
+			
 		if = {
 			limit = { 
 				this = character:western_imperial_1
@@ -147,18 +164,52 @@ on_death = {
 				}
 			}
 		}
-		if = {
-			limit = { is_sole_aautokratir = yes }
-			trigger_event = {
-				id = background_historian.0010 
-				days = 10
+		if = { 
+			limit = { this = character:canian_1 }
+			every_vassal = {
+				limit = { 
+					any_held_title = {
+						tier > tier_barony
+					}
+					NOT = {
+						is_child_of = character:canian_1 
+					} 
+				}
+				trigger_event = {
+					id = amsari.0005
+					days = 2
+				}	
+			}			
+			every_child = { 
+				limit = {
+					OR = {
+						is_player_selected = yes
+						is_landed = yes
+					}
+				}
+				trigger_event = {
+					id = amsari.0002
+					days = 2
+				}
 			}
-		}
+			every_player = { 
+				limit = { 
+					NOT = { 
+						top_liege = character:canian_1
+					}
+				}
+				trigger_event = {
+					id = amsari.0011
+					days = 2
+				}
+			}
+	  	}
 		if = {
-			limit = { is_ai = no }
-			trigger_event = background_historian.0001
+			limit = {
+				has_variable = amsari_war1
+			}
+			remove_list_global_variable = { name = amsari_war target = this }
 		}
-
 		if = {
 			limit = {
 				is_ai = no
@@ -170,7 +221,6 @@ on_death = {
 				}
 			}
 		}
-		
 		if = {
 			limit = {
 				trigger_if = {
@@ -186,10 +236,72 @@ on_death = {
 			primary_title = { save_scope_as = primary_scope }
 			setup_succession_titles = yes
 		}
-
+		if = {
+			limit = {
+				has_government = pirate_government
+				exists = primary_heir
+			}
+			shadow_port_succession = yes
+		}
+		else_if = {#This is here to prevent floating shadow ports
+			limit = {
+				has_government = pirate_government
+			}
+			remove_all_shadow_ports = yes
+		}
+		if = {
+			limit = {
+				should_have_liege_clique_appointment_succession = yes
+			}
+			trigger_event = clique.0004	
+		}
+		if = {
+			limit = {
+				has_government = magocratic_government
+				highest_held_title_tier > tier_barony
+			}
+			trigger_event = magocracy.0001	
+		}
+		
+		if = {
+			limit = {
+				has_variable = character_legal_tradition
+				has_variable = character_legal_tradition_patronage_level
+				var:character_legal_tradition_patronage_level > 0
+			}
+			save_temporary_scope_as = character_to_remove_from_list
+			var:character_legal_tradition = {
+				remove_list_variable = { name = legal_tradition_patrons target = scope:character_to_remove_from_list }
+			}
+		}
+		
+		if = {
+			limit = {
+				has_variable = high_court_seat
+			}
+			var:high_court_seat = {
+				remove_variable = seat_occupant
+			}
+			var:high_court_seat.var:high_court = { save_scope_as = high_court_scope }
+			save_scope_as = dead_high_judge
+			if = {
+				limit = {  
+					exists = var:high_court_seat.var:high_court.var:high_court_mamuramat
+					exists = var:high_court_seat.var:high_court.var:high_court_mamuramat.holder
+				}
+				var:high_court_seat.var:high_court.var:high_court_mamuramat.holder = { trigger_event = legal_tradition.1001 }
+			}
+			else = {
+				var:high_court_seat.var:high_court = { fill_high_court_seat_effect = yes }
+			}
+		}
 		invalidate_claimant_factions_on_death_effect = yes
 	}
 	events = {
+		clique.0001				# Does clique related maintenance
+		amsari.0001
+		gh_widow.1 #Survivng spouse potentially gets widowed
+		gh_widow.199 #Lover potentially gets widowed
 		death_management.0096	# Updates marriage opinions of other spouses if relevant.
 		death_management.0097	# Sets a flag if the dead one was someone you loved (to make suicide available)
 		death_management.0098 	# Removes rejected_from_marriage_bed_modifier if spouse dies
@@ -220,15 +332,26 @@ on_death = {
 # the has_natural_death_second_chance scripted rule
 on_natural_death_second_chance = {
 	effect = {
-		add_character_flag = {
-			flag = know_thyself_perk_delay_period
-			days = 390
+		if = {
+			limit = {
+				has_trait = gh_extended_life
+				has_variable = vampiric_drain_health_pool
+				var:vampiric_drain_health_pool > 0
+				NOT = { has_character_modifier = vampirism_death_near }
+			}
+			vampiric_drain_keep_alive_effect = yes
 		}
-		add_character_flag = know_thyself_has_triggered_delay
-		trigger_event = death_management.9998
-		trigger_event = {
-			id = death_management.9999
-			days = { 340 380 }
+		else = {
+			add_character_flag = {
+				flag = know_thyself_perk_delay_period
+				days = 390
+			}
+			add_character_flag = know_thyself_has_triggered_delay
+			trigger_event = death_management.9998
+			trigger_event = {
+				id = death_management.9999
+				days = { 340 380 }
+			}
 		}
 	}
 }

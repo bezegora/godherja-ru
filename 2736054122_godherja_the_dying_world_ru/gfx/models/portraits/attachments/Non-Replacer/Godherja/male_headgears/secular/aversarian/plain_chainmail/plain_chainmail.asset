@@ -1,0 +1,25 @@
+pdxmesh = {
+	name = "plain_chainmail_mesh"
+	file = "plain_chainmail.mesh"
+
+		blend_shape = { id = "pc_old"					type = "pc_old.mesh" }
+		blend_shape = { id = "pc_fat"					type = "pc_fat.mesh" }
+
+	meshsettings = {
+		name = "coif_5Shape"
+		index = 0
+		texture_diffuse = "pc_color.dds"
+		texture_normal = "pc_normal.dds"
+		texture_specular = "pc_properties.dds"
+		shader = "portrait_attachment"
+		shader_file = "gfx/FX/jomini/portrait.shader"
+	}
+}
+
+entity = {
+	name = "plain_chainmail_entity"
+	pdxmesh = "plain_chainmail_mesh"
+
+			attribute = { name = "bs_old_1"										blend_shape = "pc_old" }
+			attribute = { name = "bs_fat_1"										blend_shape = "pc_fat" }
+}

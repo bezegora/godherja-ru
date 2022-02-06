@@ -1,0 +1,44 @@
+﻿has_ruins_trigger = {
+	OR = {
+		has_building = palace_ruins_01
+		has_building = house_ruins_01
+		has_building = fountain_ruins_01
+		has_building = garden_ruins_01
+		has_building = plaza_ruins_01
+		has_building = crater_ruins_01
+		has_building = waterway_ruins_01
+		has_building = nexus_ruins_01
+		has_building = monument_ruins_01
+
+	}
+}
+is_any_metropolis_district = {
+    OR = {
+        has_holding_type = military_district_holding
+        has_holding_type = palatial_district_holding
+        has_holding_type = maritime_district_holding
+        has_holding_type = temple_district_holding
+        has_holding_type = trade_district_holding
+		has_holding_type = urban_district_holding
+		has_holding_type = workshop_district_holding
+    }
+}
+is_any_metropolis_or_ruined_district_trigger = {
+    OR = {
+		has_holding_type = ruined_district_holding
+        has_holding_type = military_district_holding
+        has_holding_type = palatial_district_holding
+        has_holding_type = maritime_district_holding
+        has_holding_type = temple_district_holding
+        has_holding_type = trade_district_holding
+		has_holding_type = urban_district_holding
+		has_holding_type = workshop_district_holding
+    }
+}
+holding_is_type_from_flag_trigger = {
+	trigger_if = {
+		limit = { exists = $FLAG_SCOPE$ }
+		$FLAG_SCOPE$ = flag:$FLAG$
+	}
+	trigger_else = { always = no }
+}

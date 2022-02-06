@@ -1,0 +1,2896 @@
+﻿#####################################################################
+# EFFECT LIST
+#####################################################################
+
+### Table List
+
+# hunting_game_effect - unifies universal information about game (name, tier, prowess) into a single spreadsheet.
+## Valid MODE:
+### get_tags - If hunt_target_game is set, stores all of the creatures tags as boolean values
+### combat - if hunt_target_game is set, executes a simple duel based on the creature's prowess
+
+# (game_name)_game_tags_effect - sets a creature's tags.
+## Valid MODE:
+### set - If hunt_target_game is set, stores all of the creatures tags as boolean values. Only used internally
+### get_reward - Applies the rewards for killing the animal to root
+### get_allowed - Copies all game that a hunter can pursue into a temporary allowed_game list
+### increase_proficiency - Increases a hunter's proficiency against the current game
+### set_expert - Sets a hunter's proficiency to expert against the current game
+### downgrade_proficiencies - Downgrades all major proficiencies to medium
+
+## Valid tags (at the time of writing):
+### skittish, cautious, aggressive, unyielding, cunning, stupid, fast, slow, large, elusive
+
+# biozone_effect - unifies universal information about biozones (name, ambient danger, geographic region) into a single spreadsheet
+
+# TBD
+
+### Biozone effects
+
+#####################################################################
+# GAME TABLES
+#####################################################################
+
+########################
+# Universal Game Table #
+########################
+
+hunting_game_effect = {
+	# Ruminants
+	$MODE$_game_effect = { NAME = stag 				TIER = mundane 		PROWESS = 4 }
+	$MODE$_game_effect = { NAME = ibex 				TIER = mundane 		PROWESS = 4 }
+	$MODE$_game_effect = { NAME = zebra				TIER = mundane 		PROWESS = 4	}
+	$MODE$_game_effect = { NAME = antelope			TIER = mundane 		PROWESS = 4 }
+	$MODE$_game_effect = { NAME = blackbuck 		TIER = mundane  	PROWESS = 4 }
+	$MODE$_game_effect = { NAME = dire_stag 		TIER = low 			PROWESS = 9 }
+	
+	# Boars
+	$MODE$_game_effect = { NAME = boar 				TIER = mundane 		PROWESS = 2 }
+	$MODE$_game_effect = { NAME = warthog			TIER = mundane		PROWESS = 2	}
+	$MODE$_game_effect = { NAME = dire_boar	 		TIER = low 			PROWESS = 12 }
+	
+	# Other Ungulates
+	$MODE$_game_effect = { NAME = camel				TIER = mundane		PROWESS = 3 }
+	$MODE$_game_effect = { NAME = tahr 				TIER = mundane		PROWESS = 4 }
+	$MODE$_game_effect = { NAME = markhor 			TIER = low 			PROWESS = 6 }
+	$MODE$_game_effect = { NAME = bison				TIER = low			PROWESS = 8 }
+	$MODE$_game_effect = { NAME = bubalus 			TIER = low 			PROWESS = 8 }
+	$MODE$_game_effect = { NAME = gaur 				TIER = low 			PROWESS= 10 }
+	$MODE$_game_effect = { NAME = hippopotamus 		TIER = low 			PROWESS = 14 }
+	$MODE$_game_effect = { NAME = rhinoceros		TIER = low 			PROWESS = 14 }
+	$MODE$_game_effect = { NAME = pegasus			TIER = medium		PROWESS = 16 }
+	$MODE$_game_effect = { NAME = karkadann			TIER = medium 		PROWESS = 20 }
+	
+	# Canines
+	$MODE$_game_effect = { NAME = wolf 				TIER = low	 		PROWESS = 5 }
+	$MODE$_game_effect = { NAME = jackal 			TIER = low 			PROWESS = 5 }
+	$MODE$_game_effect = { NAME = hyena				TIER = low			PROWESS = 6 }
+	$MODE$_game_effect = { NAME = kursha			TIER = medium		PROWESS = 12 }
+	$MODE$_game_effect = { NAME = crocotta 			TIER = medium 		PROWESS = 17 }
+	$MODE$_game_effect = { NAME = werewolf			TIER = high 		PROWESS = 30 }
+	$MODE$_game_effect = { NAME = apep_ibizan		TIER = high			PROWESS = 40 }
+	
+	# Felines
+	$MODE$_game_effect = { NAME = cheetah			TIER = mundane		PROWESS = 5 }
+	$MODE$_game_effect = { NAME = lynx				TIER = mundane		PROWESS = 5 }
+	$MODE$_game_effect = { NAME = leopard			TIER = low			PROWESS = 6 }
+	$MODE$_game_effect = { NAME = snow_leopard		TIER = low			PROWESS = 7 }
+	$MODE$_game_effect = { NAME = panther			TIER = low			PROWESS = 7 }
+	$MODE$_game_effect = { NAME = lion				TIER = low			PROWESS = 9 }
+	$MODE$_game_effect = { NAME = tiger				TIER = low			PROWESS = 9 }
+	$MODE$_game_effect = { NAME = tinessian_lion	TIER = medium		PROWESS = 16 }
+	$MODE$_game_effect = { NAME = manticore			TIER = medium		PROWESS = 22 }
+	$MODE$_game_effect = { NAME = dire_lion			TIER = medium 		PROWESS = 25 }
+	$MODE$_game_effect = { NAME = urmahlullu 		TIER = high  		PROWESS = 30 }
+	$MODE$_game_effect = { NAME = chimera			TIER = high			PROWESS = 40 }
+	$MODE$_game_effect = { NAME = simurgh			TIER = high 		PROWESS = 50 }
+	
+	# Ursulines
+	$MODE$_game_effect = { NAME = bear 				TIER = low 			PROWESS = 8 }
+	$MODE$_game_effect = { NAME = sloth_bear 		TIER = low 			PROWESS = 8 }
+	
+	# Rodents
+	$MODE$_game_effect = { NAME = porcupine			TIER = mundane		PROWESS = 2 }
+	$MODE$_game_effect = { NAME = mongoose 			TIER = mundane 		PROWESS = 4 }
+	
+	# Elephantids
+	$MODE$_game_effect = { NAME = damotan_elephant	TIER = low			PROWESS = 13 }
+	$MODE$_game_effect = { NAME = sarradon_elephant TIER = low 			PROWESS = 13 }
+	$MODE$_game_effect = { NAME = kashiryan_elephant TIER = low			PROWESS = 13 }
+	$MODE$_game_effect = { NAME = mammoth			TIER = medium		PROWESS = 25 }
+	$MODE$_game_effect = { NAME = gajara			TIER = medium 		PROWESS = 30 }
+	$MODE$_game_effect = { NAME = daggertusk		TIER = high			PROWESS = 35 }
+	
+	# Primates
+	$MODE$_game_effect = { NAME = monkey			TIER = mundane		PROWESS = 3 }
+	$MODE$_game_effect = { NAME = gorilla			TIER = medium		PROWESS = 14 }
+	
+	# Misc. Mammals
+	$MODE$_game_effect = { NAME = seal				TIER = mundane		PROWESS = 5  }
+	$MODE$_game_effect = { NAME = doyarchu	        TIER = low		    PROWESS = 10 }
+	$MODE$_game_effect = { NAME = giant_sloth		TIER = low 			PROWESS = 14 }
+	$MODE$_game_effect = { NAME = peluda 			TIER = high 		PROWESS = 25 }
+	
+	# Birds
+	$MODE$_game_effect = { NAME = peacock		 	TIER = mundane 		PROWESS = 3 }
+	$MODE$_game_effect = { NAME = sunbird 			TIER = mundane 		PROWESS = 3 }
+	$MODE$_game_effect = { NAME = ostrich			TIER = low			PROWESS = 5 }
+	$MODE$_game_effect = { NAME = crown_bird 		TIER = low  		PROWESS = 8 }
+	$MODE$_game_effect = { NAME = emperor_peacock	TIER = low 			PROWESS = 9 }
+	$MODE$_game_effect = { NAME = griffon			TIER = medium		PROWESS = 17 }
+	$MODE$_game_effect = { NAME = royal_falcon		TIER = medium		PROWESS = 17 }
+	$MODE$_game_effect = { NAME = gargoyle			TIER = medium		PROWESS = 24 }
+	$MODE$_game_effect = { NAME = roc		        TIER = medium		PROWESS = 28 }
+	$MODE$_game_effect = { NAME = dire_griffon		TIER = high			PROWESS = 30 }
+	$MODE$_game_effect = { NAME = zilant			TIER = high			PROWESS = 33 }
+	$MODE$_game_effect = { NAME = hieracosphinx		TIER = high			PROWESS = 35 }
+	
+	# Reptiles
+	$MODE$_game_effect = { NAME = king_cobra 		TIER = low			PROWESS = 5 }
+	$MODE$_game_effect = { NAME = rovarskan_dragon 	TIER = low			PROWESS = 10 }
+	$MODE$_game_effect = { NAME = emperorcobra 		TIER = medium		PROWESS = 12 }
+	$MODE$_game_effect = { NAME = crocodile			TIER = medium		PROWESS = 14 }
+	$MODE$_game_effect = { NAME = great_rahksasa 	TIER = medium 		PROWESS = 20 }
+	$MODE$_game_effect = { NAME = naga 				TIER = high			PROWESS = 25 }
+	$MODE$_game_effect = { NAME = coatl				TIER = high			PROWESS = 30 }
+	$MODE$_game_effect = { NAME = hydra				TIER = high			PROWESS = 40 }
+	$MODE$_game_effect = { NAME = running_raptor	TIER = high			PROWESS = 40 }
+	$MODE$_game_effect = { NAME = twin_serpent		TIER = high			PROWESS = 40 }
+	$MODE$_game_effect = { NAME = tarasque 			TIER = high 		PROWESS = 50 }
+	$MODE$_game_effect = { NAME = akapura			TIER = high			PROWESS = 50 }
+	$MODE$_game_effect = { NAME = roaring_lizard	TIER = high			PROWESS = 50 }
+	
+	# Arthropods
+	$MODE$_game_effect = { NAME = giant_spider	 	TIER = low 			PROWESS = 10 }
+	$MODE$_game_effect = { NAME = dire_mosquito 	TIER = medium		PROWESS = 15 }
+	$MODE$_game_effect = { NAME = ukhinbooum		TIER = medium 		PROWESS = 16 }
+	$MODE$_game_effect = { NAME = adze 				TIER = medium 		PROWESS = 20 }
+	$MODE$_game_effect = { NAME = bhramar			TIER = medium		PROWESS = 23 }	
+	$MODE$_game_effect = { NAME = myrmeke			TIER = high			PROWESS = 30  }
+	$MODE$_game_effect = { NAME = pyralis			TIER = high			PROWESS = 43  }
+	$MODE$_game_effect = { NAME = false_hydra		TIER = high			PROWESS = 45  }
+	
+	# Crustaceans
+	$MODE$_game_effect = { NAME = dire_crab	 		TIER = low 			PROWESS = 10 }
+	$MODE$_game_effect = { NAME = sea_scorpion	 	TIER = medium 		PROWESS = 17 }
+
+	# Annelids
+	$MODE$_game_effect = { NAME = ugkilrrrmag 		TIER = medium  		PROWESS = 18 }
+	$MODE$_game_effect = { NAME = dreadleech		TIER = medium		PROWESS = 18 }
+	$MODE$_game_effect = { NAME = devouring_worm	TIER = medium		PROWESS = 23 }
+	
+	# Draconic
+	$MODE$_game_effect = { NAME = cockatrice		TIER = medium 		PROWESS = 19 }
+	$MODE$_game_effect = { NAME = wyrm				TIER = high 		PROWESS = 35 }
+	
+	# Trolls
+	$MODE$_game_effect = { NAME = forest_troll		TIER = high 		PROWESS = 30 }
+	
+	# Misc. Humanoids
+	$MODE$_game_effect = { NAME = merbeast 			TIER = high 		PROWESS = 20 }
+	$MODE$_game_effect = { NAME = karankoncolos 	TIER = high 		PROWESS = 25 }
+	$MODE$_game_effect = { NAME = nagual 			TIER = high 		PROWESS = 26 }
+	$MODE$_game_effect = { NAME = ochokochi 		TIER = high  		PROWESS = 30 }
+	$MODE$_game_effect = { NAME = ubir 				TIER = high 		PROWESS = 30 }
+	$MODE$_game_effect = { NAME = gaunt 			TIER = high			PROWESS = 30 }
+	$MODE$_game_effect = { NAME = vampire			TIER = high 		PROWESS = 30 }
+	$MODE$_game_effect = { NAME = giant				TIER = high 		PROWESS = 40 }
+	$MODE$_game_effect = { NAME = almas 			TIER = high 		PROWESS = 40 }
+	$MODE$_game_effect = { NAME = devi 				TIER = high 		PROWESS = 45 }
+	$MODE$_game_effect = { NAME = shahmaran			TIER = legendary	PROWESS = 65 }
+	
+	# Shapeshifters
+	$MODE$_game_effect = { NAME = pooka	            TIER = medium		PROWESS = 15 }
+	$MODE$_game_effect = { NAME = shetani			TIER = high			PROWESS = 50  }
+	
+	# Spirits
+	$MODE$_game_effect = { NAME = spirit			TIER = low			PROWESS = 10 }
+	$MODE$_game_effect = { NAME = shade				TIER = medium		PROWESS = 20 }
+	$MODE$_game_effect = { NAME = wildhunt			TIER = high			PROWESS = 30 }
+	$MODE$_game_effect = { NAME = djinn				TIER = high			PROWESS = 34 }
+	$MODE$_game_effect = { NAME = cor 				TIER = high 		PROWESS = 37 }
+	$MODE$_game_effect = { NAME = banshee			TIER = high			PROWESS = 40 }
+	$MODE$_game_effect = { NAME = fortune_eater		TIER = high			PROWESS = 45 }
+	
+	# Elementals
+	$MODE$_game_effect = { NAME = leshen			TIER = high			PROWESS = 45 }
+	$MODE$_game_effect = { NAME = rock_giant		TIER = high			PROWESS = 45 }
+	$MODE$_game_effect = { NAME = manzasiri 		TIER = high			PROWESS = 45 }
+	$MODE$_game_effect = { NAME = living_blizzard 	TIER = high 		PROWESS= 45 }
+	$MODE$_game_effect = { NAME = whisperwind 		TIER = high 		PROWESS = 45 }
+	
+	# Aberrations
+	$MODE$_game_effect = { NAME = aboleth 			TIER = high 		PROWESS = 45 }
+	$MODE$_game_effect = { NAME = fogbeast			TIER = high 		PROWESS = 50 }
+	$MODE$_game_effect = { NAME = wendigo			TIER = high			PROWESS = 65 }
+	#$MODE$_game_effect = { NAME = fogbeast_leviathan TIER = legendary 	PROWESS = 100 }
+}
+
+##################################################
+# Special Game, Available Everywhere via Rumours #
+##################################################
+
+special_game_effect = {
+	$MODE$_biozone_game_effect = { NAME = vampire CHANCE = 30 }
+	$MODE$_biozone_game_effect = { NAME = werewolf CHANCE = 100 }
+
+	
+	# Spirits
+	$MODE$_game_effect = { NAME = spirit			TIER = low 			PROWESS = 10 }
+	$MODE$_game_effect = { NAME = shade				TIER = medium 		PROWESS = 25 }
+	$MODE$_game_effect = { NAME = fortune_eater		TIER = high 		PROWESS = 50 }
+}
+###################
+# Game Tag Tables #
+###################
+
+# Ruminants
+stag_game_tags_effect = {
+	$MODE$_game_tag_with_category = { CATEGORY = type NAME = beast }
+	$MODE$_game_tag_with_category = { CATEGORY = size NAME = medium }
+	$MODE$_game_tag = { NAME = skittish }
+	$MODE$_game_tag = { NAME = fast }
+}
+
+stag_game_rewards_effect = {
+	game_prestige_reward_effect = { AMOUNT = minor_prestige_gain  }
+	add_stress = medium_stress_loss
+}
+
+ibex_game_tags_effect = {
+	$MODE$_game_tag_with_category = { CATEGORY = type NAME = beast }
+	$MODE$_game_tag_with_category = { CATEGORY = size NAME = medium }
+	$MODE$_game_tag = { NAME = cautious }
+}
+
+ibex_game_rewards_effect = {
+	game_prestige_reward_effect = { AMOUNT = medium_prestige_gain  }
+	add_stress = medium_stress_loss
+}
+
+zebra_game_tags_effect = {
+	$MODE$_game_tag_with_category = { CATEGORY = type NAME = beast }
+	$MODE$_game_tag_with_category = { CATEGORY = size NAME = medium }
+	$MODE$_game_tag = { NAME = social }
+	$MODE$_game_tag = { NAME = skittish }
+	$MODE$_game_tag = { NAME = fast }
+}
+
+zebra_game_rewards_effect = {
+	game_prestige_reward_effect = { AMOUNT = minor_prestige_gain }
+	add_stress = medium_stress_loss
+}
+
+antelope_game_tags_effect = {
+	$MODE$_game_tag_with_category = { CATEGORY = type NAME = beast }
+	$MODE$_game_tag_with_category = { CATEGORY = size NAME = medium }
+	$MODE$_game_tag = { NAME = fast }
+	$MODE$_game_tag = { NAME = skittish }
+}
+
+antelope_game_rewards_effect = {
+	game_prestige_reward_effect = { AMOUNT = minor_prestige_value }
+	add_stress = minor_stress_loss
+}
+
+blackbuck_game_tags_effect = {
+	$MODE$_game_tag_with_category = { CATEGORY = type NAME = beast }
+	$MODE$_game_tag_with_category = { CATEGORY = size NAME = medium }
+	$MODE$_game_tag = { NAME = fast }
+	$MODE$_game_tag = { NAME = skittish }
+}
+
+blackbuck_game_rewards_effect = {
+	game_prestige_reward_effect = { AMOUNT = minor_prestige_value }
+	add_stress = minor_stress_loss
+}
+
+dire_stag_game_tags_effect = {
+	$MODE$_game_tag_with_category = { CATEGORY = type NAME = beast }
+	$MODE$_game_tag_with_category = { CATEGORY = size NAME = huge }
+	$MODE$_game_tag = { NAME = cautious }
+	$MODE$_game_tag = { NAME = fast }
+}
+
+dire_stag_game_rewards_effect = {
+	game_prestige_reward_effect = { AMOUNT = medium_prestige_value   }
+	game_fortune_reward_effect = { AMOUNT = minor_gold_value }
+	game_stress_loss_home_turf_effect = { AMOUNT = minor_stress_loss  }
+	game_skill_reward_effect = { SKILL = prowess AMOUNT = 1 CAP = 15 }
+	add_character_modifier = { modifier = dire_stag_trophy_modifier years = 5 }
+}
+
+# Boars
+boar_game_tags_effect = {
+	$MODE$_game_tag_with_category = { CATEGORY = type NAME = beast }
+	$MODE$_game_tag_with_category = { CATEGORY = size NAME = medium }
+	$MODE$_game_tag = { NAME = cautious }
+	$MODE$_game_tag = { NAME = stupid }
+}
+
+boar_game_rewards_effect = {
+	game_prestige_reward_effect = { AMOUNT = medium_prestige_gain  }
+	add_stress = minor_stress_loss
+}
+
+warthog_game_tags_effect = {
+	$MODE$_game_tag_with_category = { CATEGORY = type NAME = beast }
+	$MODE$_game_tag_with_category = { CATEGORY = size NAME = medium }
+	$MODE$_game_tag = { NAME = stupid }
+	$MODE$_game_tag = { NAME = cautious }
+}
+
+warthog_game_rewards_effect = {
+	game_prestige_reward_effect = { AMOUNT = medium_prestige_gain  }
+	add_stress = minor_stress_loss
+}
+
+dire_boar_game_tags_effect = {
+	$MODE$_game_tag_with_category = { CATEGORY = type NAME = beast }
+	$MODE$_game_tag_with_category = { CATEGORY = size NAME = large }
+	$MODE$_game_tag = { NAME = fast }
+	$MODE$_game_tag = { NAME = aggressive }
+	$MODE$_game_tag = { NAME = stupid }
+}
+
+dire_boar_game_rewards_effect = {
+	game_prestige_reward_effect = { AMOUNT = medium_prestige_value   }
+	game_fortune_reward_effect = { AMOUNT = minor_gold_value }
+	game_stress_loss_home_turf_effect = { AMOUNT = minor_stress_loss  }
+	game_skill_reward_effect = { SKILL = prowess AMOUNT = 1 CAP = 15 }
+	add_character_modifier = { modifier = dire_boar_trophy_modifier years = 5 }
+}
+
+# Other Ungulates
+camel_game_tags_effect = {
+	$MODE$_game_tag_with_category = { CATEGORY = type NAME = beast }
+	$MODE$_game_tag_with_category = { CATEGORY = size NAME = medium }
+	$MODE$_game_tag = { NAME = skittish }
+}
+
+camel_game_rewards_effect = {
+	game_prestige_reward_effect = { AMOUNT = minor_prestige_gain }
+	add_stress = medium_stress_loss
+}
+
+markhor_game_tags_effect = {
+	$MODE$_game_tag_with_category = { CATEGORY = type NAME = beast }
+	$MODE$_game_tag_with_category = { CATEGORY = size NAME = medium }
+	$MODE$_game_tag = { NAME = unyielding }
+}
+
+markhor_game_rewards_effect = {
+	game_prestige_reward_effect = { AMOUNT = medium_prestige_value   }
+	game_fortune_reward_effect = { AMOUNT = minor_gold_value }
+	game_stress_loss_home_turf_effect = { AMOUNT = minor_stress_loss  }
+	game_skill_reward_effect = { SKILL = prowess AMOUNT = 1 CAP = 10 }
+}
+
+tahr_game_tags_effect = {
+	$MODE$_game_tag_with_category = { CATEGORY = type NAME = beast }
+	$MODE$_game_tag_with_category = { CATEGORY = size NAME = medium }
+	$MODE$_game_tag = { NAME = cautious }
+}
+
+tahr_game_rewards_effect = {
+	game_prestige_reward_effect = { AMOUNT = medium_prestige_value   }
+	game_fortune_reward_effect = { AMOUNT = minor_gold_value }
+	game_stress_loss_home_turf_effect = { AMOUNT = minor_stress_loss  }
+	game_skill_reward_effect = { SKILL = prowess AMOUNT = 1 CAP = 10 }
+}
+
+
+
+bison_game_tags_effect = {
+	$MODE$_game_tag_with_category = { CATEGORY = type NAME = beast }
+	$MODE$_game_tag_with_category = { CATEGORY = size NAME = large }
+	$MODE$_game_tag = { NAME = unyielding }
+}
+
+bison_game_rewards_effect = {
+	game_prestige_reward_effect = { AMOUNT = medium_prestige_value   }
+	game_fortune_reward_effect = { AMOUNT = minor_gold_value }
+	game_stress_loss_home_turf_effect = { AMOUNT = minor_stress_loss  }
+	game_skill_reward_effect = { SKILL = prowess AMOUNT = 1 CAP = 10 }
+}
+
+bubalus_game_tags_effect = {
+	$MODE$_game_tag_with_category = { CATEGORY = type NAME = beast }
+	$MODE$_game_tag_with_category = { CATEGORY = size NAME = large }
+	$MODE$_game_tag = { NAME = unyielding }
+	$MODE$_game_tag = { NAME = social }
+}
+
+bubalus_game_rewards_effect = {
+	game_prestige_reward_effect = { AMOUNT = medium_prestige_value   }
+	game_fortune_reward_effect = { AMOUNT = minor_gold_value }
+	game_stress_loss_home_turf_effect = { AMOUNT = minor_stress_loss  }
+	game_skill_reward_effect = { SKILL = prowess AMOUNT = 1 CAP = 10 }
+}
+
+gaur_game_tags_effect = {
+	$MODE$_game_tag_with_category = { CATEGORY = type NAME = beast }
+	$MODE$_game_tag_with_category = { CATEGORY = size NAME = large }
+	$MODE$_game_tag = { NAME = unyielding }
+}
+
+gaur_game_rewards_effect = {
+	game_prestige_reward_effect = { AMOUNT = medium_prestige_value   }
+	game_fortune_reward_effect = { AMOUNT = minor_gold_value }
+	game_stress_loss_home_turf_effect = { AMOUNT = minor_stress_loss  }
+	game_skill_reward_effect = { SKILL = prowess AMOUNT = 1 CAP = 10 }
+}
+
+pegasus_game_tags_effect = {
+	$MODE$_game_tag_with_category = { CATEGORY = type NAME = beast }
+	$MODE$_game_tag_with_category = { CATEGORY = size NAME = large }
+	$MODE$_game_tag = { NAME = cautious }
+	$MODE$_game_tag = { NAME = elusive }
+	$MODE$_game_tag = { NAME = intelligent }
+}
+
+pegasus_game_rewards_effect = {
+	game_prestige_reward_effect = { AMOUNT = medium_prestige_value   }
+	game_fortune_reward_effect = { AMOUNT = minor_gold_value }
+	game_stress_loss_home_turf_effect = { AMOUNT = minor_stress_loss  }
+	game_skill_reward_effect = { SKILL = prowess AMOUNT = 1 CAP = 10 }
+}
+
+hippopotamus_game_tags_effect = {
+	$MODE$_game_tag_with_category = { CATEGORY = type NAME = beast }
+	$MODE$_game_tag_with_category = { CATEGORY = size NAME = large }
+	$MODE$_game_tag = { NAME = unyielding }
+	$MODE$_game_tag = { NAME = stupid }
+}
+
+hippopotamus_game_rewards_effect = {
+	game_prestige_reward_effect = { AMOUNT = medium_prestige_gain }
+	game_fortune_reward_effect = { AMOUNT = minor_gold_value }
+	game_stress_loss_home_turf_effect = { AMOUNT = minor_stress_loss  }
+	game_skill_reward_effect = { SKILL = prowess AMOUNT = 1 CAP = 15 }
+}
+
+rhinoceros_game_tags_effect = {
+	$MODE$_game_tag_with_category = { CATEGORY = type NAME = beast }
+	$MODE$_game_tag_with_category = { CATEGORY = size NAME = large }
+	$MODE$_game_tag = { NAME = unyielding }
+	$MODE$_game_tag = { NAME = stupid }
+}
+
+rhinoceros_game_rewards_effect = {
+	game_prestige_reward_effect = { AMOUNT = medium_prestige_gain }
+	game_fortune_reward_effect = { AMOUNT = minor_gold_value }
+	game_stress_loss_home_turf_effect = { AMOUNT = minor_stress_loss  }
+	game_skill_reward_effect = { SKILL = prowess AMOUNT = 1 CAP = 15 }
+	add_character_modifier = { modifier = rhinoceros_trophy_modifier years = 5 }
+}
+
+karkadann_game_tags_effect = {
+		$MODE$_game_tag_with_category = { CATEGORY = type NAME = beast }
+		$MODE$_game_tag_with_category = { CATEGORY = size NAME = large }
+		$MODE$_game_tag = { NAME = unyielding }
+		$MODE$_game_tag = { NAME = aggressive }
+}
+
+karkadann_game_rewards_effect = {
+	game_prestige_reward_effect = { AMOUNT = medium_prestige_gain }
+	game_fortune_reward_effect = { AMOUNT = minor_gold_value }
+	game_stress_loss_home_turf_effect = { AMOUNT = minor_stress_loss  }
+	game_skill_reward_effect = { SKILL = prowess AMOUNT = 1 CAP = 15 }
+	add_character_modifier = { modifier = karkadann_trophy_modifier years = 5 }
+}	
+
+# Canines
+wolf_game_tags_effect = {
+	$MODE$_game_tag_with_category = { CATEGORY = type NAME = beast }
+	$MODE$_game_tag_with_category = { CATEGORY = size NAME = medium }
+	$MODE$_game_tag = { NAME = aggressive }
+	$MODE$_game_tag = { NAME = cunning }
+	$MODE$_game_tag = { NAME = social }
+}
+
+wolf_game_rewards_effect = {
+	game_prestige_reward_effect = { AMOUNT = medium_prestige_value   }
+	game_fortune_reward_effect = { AMOUNT = minor_gold_value }
+	game_stress_loss_home_turf_effect = { AMOUNT = minor_stress_loss  }
+	game_skill_reward_effect = { SKILL = prowess AMOUNT = 1 CAP = 15 }
+	add_character_modifier = { modifier = wolf_trophy_modifier years = 5 }
+}
+
+jackal_game_tags_effect = {
+	$MODE$_game_tag_with_category = { CATEGORY = type NAME = beast }
+	$MODE$_game_tag_with_category = { CATEGORY = size NAME = medium }
+	$MODE$_game_tag = { NAME = aggressive }
+	$MODE$_game_tag = { NAME = cunning }
+	$MODE$_game_tag = { NAME = social }
+}
+
+jackal_game_rewards_effect = {
+	game_prestige_reward_effect = { AMOUNT = medium_prestige_value   }
+	game_fortune_reward_effect = { AMOUNT = minor_gold_value }
+	game_stress_loss_home_turf_effect = { AMOUNT = minor_stress_loss  }
+	game_skill_reward_effect = { SKILL = prowess AMOUNT = 1 CAP = 15 }
+}
+
+hyena_game_tags_effect = {
+	$MODE$_game_tag_with_category = { CATEGORY = type NAME = beast }
+	$MODE$_game_tag_with_category = { CATEGORY = size NAME = medium }
+	$MODE$_game_tag = { NAME = social }
+	$MODE$_game_tag = { NAME = aggressive }
+	$MODE$_game_tag = { NAME = cunning }
+}
+
+hyena_game_rewards_effect = { 
+	game_prestige_reward_effect = { AMOUNT = medium_prestige_gain }
+	game_fortune_reward_effect = { AMOUNT = minor_gold_value }
+	game_stress_loss_home_turf_effect = { AMOUNT = minor_stress_loss  }
+	game_skill_reward_effect = { SKILL = prowess AMOUNT = 1 CAP = 15 }
+}
+
+werewolf_game_tags_effect = {
+	$MODE$_game_tag_with_category = { CATEGORY = type NAME = beast }
+	$MODE$_game_tag_with_category = { CATEGORY = size NAME = large }
+	$MODE$_game_tag = { NAME = intelligent }
+	$MODE$_game_tag = { NAME = unyielding }
+	$MODE$_game_tag = { NAME = moonbound }
+}
+
+werewolf_game_rewards_effect = {
+	game_prestige_reward_effect = { AMOUNT = werewolf_prestige_value   }
+	game_fortune_reward_effect = { AMOUNT = major_gold_value }
+	game_stress_loss_home_turf_effect = { AMOUNT = major_stress_loss  }
+	game_skill_reward_effect = { SKILL = prowess AMOUNT = 3 CAP = 50 }
+}
+
+kursha_game_tags_effect = {
+	$MODE$_game_tag_with_category = { CATEGORY = type NAME = beast }
+	$MODE$_game_tag_with_category = { CATEGORY = size NAME = medium }
+	$MODE$_game_tag = { NAME = social }
+	$MODE$_game_tag = { NAME = aggressive }
+	$MODE$_game_tag = { NAME = cunning }
+}
+
+kursha_game_rewards_effect = { 
+	game_prestige_reward_effect = { AMOUNT = medium_prestige_gain }
+	game_fortune_reward_effect = { AMOUNT = minor_gold_value }
+	game_stress_loss_home_turf_effect = { AMOUNT = minor_stress_loss  }
+	game_skill_reward_effect = { SKILL = prowess AMOUNT = 1 CAP = 15 }
+}
+
+crocotta_game_tags_effect = {
+	$MODE$_game_tag_with_category = { CATEGORY = type NAME = beast }
+	$MODE$_game_tag_with_category = { CATEGORY = size NAME = medium }
+	$MODE$_game_tag = { NAME = social }
+	$MODE$_game_tag = { NAME = aggressive }
+	$MODE$_game_tag = { NAME = cunning }
+}
+
+crocotta_game_rewards_effect = { 
+	game_prestige_reward_effect = { AMOUNT = medium_prestige_gain }
+	game_fortune_reward_effect = { AMOUNT = minor_gold_value }
+	game_stress_loss_home_turf_effect = { AMOUNT = minor_stress_loss  }
+	game_skill_reward_effect = { SKILL = prowess AMOUNT = 1 CAP = 20 }
+}
+
+apep_ibizan_game_tags_effect = {
+	$MODE$_game_tag_with_category = { CATEGORY = type NAME = beast }
+	$MODE$_game_tag_with_category = { CATEGORY = size NAME = medium }
+	$MODE$_game_tag = { NAME = aggressive }
+	$MODE$_game_tag = { NAME = intelligent }
+	$MODE$_game_tag = { NAME = sixth_sense }
+	$MODE$_game_tag = { NAME = cunning }
+	$MODE$_game_tag = { NAME = fast }
+	$MODE$_game_tag = { NAME = elusive }
+}
+
+apep_ibizan_game_rewards_effect = {
+	game_prestige_reward_effect = { AMOUNT = major_prestige_gain }
+	game_fortune_reward_effect = { AMOUNT = major_gold_value }
+	game_stress_loss_home_turf_effect = { AMOUNT = medium_stress_loss }
+	game_skill_reward_effect = { SKILL = prowess AMOUNT = 2 CAP = 20 }
+	add_character_modifier = { modifier = apep_ibizan_trophy_modifier years = 10 }
+}
+
+# Felines
+cheetah_game_tags_effect = {
+	$MODE$_game_tag_with_category = { CATEGORY = type NAME = beast }
+	$MODE$_game_tag_with_category = { CATEGORY = size NAME = small }
+	$MODE$_game_tag = { NAME = skittish }
+	$MODE$_game_tag = { NAME = fast }
+}
+
+cheetah_game_rewards_effect = {
+	game_prestige_reward_effect = { AMOUNT = minor_prestige_gain  }
+	add_stress = medium_stress_loss
+}
+
+lynx_game_tags_effect = {
+	$MODE$_game_tag_with_category = { CATEGORY = type NAME = beast }
+	$MODE$_game_tag_with_category = { CATEGORY = size NAME = small }
+	$MODE$_game_tag = { NAME = cautious }
+	$MODE$_game_tag = { NAME = elusive }
+}
+
+lynx_game_rewards_effect = {
+	game_prestige_reward_effect = { AMOUNT = minor_prestige_gain }
+	add_stress = medium_stress_loss
+}
+
+leopard_game_tags_effect = {
+	$MODE$_game_tag_with_category = { CATEGORY = type NAME = beast }
+	$MODE$_game_tag_with_category = { CATEGORY = size NAME = medium }
+	$MODE$_game_tag = { NAME = cunning }
+	$MODE$_game_tag = { NAME = elusive }
+}
+
+leopard_game_rewards_effect = {
+	game_prestige_reward_effect = { AMOUNT = medium_prestige_value }
+	game_fortune_reward_effect = { AMOUNT = minor_gold_value }
+	game_stress_loss_home_turf_effect = { AMOUNT = minor_stress_loss }
+	game_skill_reward_effect = { SKILL = prowess AMOUNT = 1 CAP = 15 }
+}
+
+snow_leopard_game_tags_effect = {
+	$MODE$_game_tag_with_category = { CATEGORY = type NAME = beast }
+	$MODE$_game_tag_with_category = { CATEGORY = size NAME = medium }
+	$MODE$_game_tag = { NAME = cunning }
+	$MODE$_game_tag = { NAME = elusive }
+}
+
+snow_leopard_game_rewards_effect = {
+	game_prestige_reward_effect = { AMOUNT = medium_prestige_value }
+	game_fortune_reward_effect = { AMOUNT = minor_gold_value }
+	game_stress_loss_home_turf_effect = { AMOUNT = minor_stress_loss }
+	game_skill_reward_effect = { SKILL = prowess AMOUNT = 1 CAP = 15 }
+}
+
+panther_game_tags_effect = {
+	$MODE$_game_tag_with_category = { CATEGORY = type NAME = beast }
+	$MODE$_game_tag_with_category = { CATEGORY = size NAME = medium }
+	$MODE$_game_tag = { NAME = cunning }
+	$MODE$_game_tag = { NAME = aggressive }
+}
+
+panther_game_rewards_effect = {
+	game_prestige_reward_effect = { AMOUNT = medium_prestige_value }
+	game_fortune_reward_effect = { AMOUNT = minor_gold_value }
+	game_stress_loss_home_turf_effect = { AMOUNT = minor_stress_loss }
+	add_character_modifier = { modifier = panther_trophy_modifier years = 5 }
+}
+
+lion_game_tags_effect = {
+	$MODE$_game_tag_with_category = { CATEGORY = type NAME = beast }
+	$MODE$_game_tag_with_category = { CATEGORY = size NAME = large }
+	$MODE$_game_tag = { NAME = aggressive }
+}
+
+lion_game_rewards_effect = {
+	game_prestige_reward_effect = { AMOUNT = medium_prestige_gain }
+	game_fortune_reward_effect = { AMOUNT = minor_gold_value }
+	game_stress_loss_home_turf_effect = { AMOUNT = minor_stress_loss  }
+	game_skill_reward_effect = { SKILL = prowess AMOUNT = 1 CAP = 15 }
+}
+
+tiger_game_tags_effect = {
+	$MODE$_game_tag_with_category = { CATEGORY = type NAME = beast }
+	$MODE$_game_tag_with_category = { CATEGORY = size NAME = large }
+	$MODE$_game_tag = { NAME = aggressive }
+	$MODE$_game_tag = { NAME = elusive }
+}
+
+tiger_game_rewards_effect = {
+	game_prestige_reward_effect = { AMOUNT = medium_prestige_value   }
+	game_fortune_reward_effect = { AMOUNT = minor_gold_value }
+	game_stress_loss_home_turf_effect = { AMOUNT = minor_stress_loss  }
+	game_skill_reward_effect = { SKILL = prowess AMOUNT = 1 CAP = 15 }
+}
+
+tinessian_lion_game_tags_effect = {
+	$MODE$_game_tag_with_category = { CATEGORY = type NAME = beast }
+	$MODE$_game_tag_with_category = { CATEGORY = size NAME = large }
+	$MODE$_game_tag = { NAME = aggressive }
+}
+
+tinessian_lion_game_rewards_effect = {
+	game_prestige_reward_effect = { AMOUNT = medium_prestige_value   }
+	game_fortune_reward_effect = { AMOUNT = minor_gold_value }
+	game_stress_loss_home_turf_effect = { AMOUNT = minor_stress_loss  }
+	game_skill_reward_effect = { SKILL = prowess AMOUNT = 1 CAP = 20 }
+}
+
+manticore_game_tags_effect = {
+	$MODE$_game_tag_with_category = { CATEGORY = type NAME = beast }
+	$MODE$_game_tag_with_category = { CATEGORY = size NAME = large }
+	$MODE$_game_tag = { NAME = aggressive }
+	$MODE$_game_tag = { NAME = intelligent }
+}
+
+manticore_game_rewards_effect = {
+	game_prestige_reward_effect = { AMOUNT = medium_prestige_value   }
+	game_fortune_reward_effect = { AMOUNT = minor_gold_value }
+	game_stress_loss_home_turf_effect = { AMOUNT = minor_stress_loss  }
+	game_skill_reward_effect = { SKILL = prowess AMOUNT = 1 CAP = 15 }
+	add_character_modifier = { modifier = manticore_trophy_modifier years = 5 }
+}
+
+dire_lion_game_tags_effect = {
+	$MODE$_game_tag_with_category = { CATEGORY = type NAME = beast }
+	$MODE$_game_tag_with_category = { CATEGORY = size NAME = huge }
+	$MODE$_game_tag = { NAME = aggressive }
+}
+
+dire_lion_game_rewards_effect = {
+	game_prestige_reward_effect = { AMOUNT = medium_prestige_value   }
+	game_fortune_reward_effect = { AMOUNT = minor_gold_value }
+	game_stress_loss_home_turf_effect = { AMOUNT = minor_stress_loss  }
+	game_skill_reward_effect = { SKILL = prowess AMOUNT = 1 CAP = 15 }
+	add_character_modifier = { modifier = dire_lion_trophy_modifier years = 5 }
+}
+
+urmahlullu_game_tags_effect = {
+	$MODE$_game_tag_with_category = { CATEGORY = type NAME = beast }
+	$MODE$_game_tag_with_category = { CATEGORY = size NAME = medium }
+	$MODE$_game_tag = { NAME = aggressive }
+	$MODE$_game_tag = { NAME = intelligent }
+}
+
+urmahlullu_game_rewards_effect = {
+	game_prestige_reward_effect = { AMOUNT = medium_prestige_value   }
+	game_fortune_reward_effect = { AMOUNT = minor_gold_value }
+	game_stress_loss_home_turf_effect = { AMOUNT = minor_stress_loss  }
+	game_skill_reward_effect = { SKILL = prowess AMOUNT = 1 CAP = 15 }
+}
+
+chimera_game_tags_effect = {
+	$MODE$_game_tag_with_category = { CATEGORY = type NAME = beast }
+	$MODE$_game_tag_with_category = { CATEGORY = size NAME = large }
+	$MODE$_game_tag = { NAME = elusive }
+	$MODE$_game_tag = { NAME = intelligent }
+	$MODE$_game_tag = { NAME = poisonous }
+	$MODE$_game_tag = { NAME = mindrender }
+}
+
+chimera_game_rewards_effect = {
+	game_prestige_reward_effect = { AMOUNT = medium_prestige_value   }
+	game_fortune_reward_effect = { AMOUNT = minor_gold_value }
+	game_stress_loss_home_turf_effect = { AMOUNT = minor_stress_loss  }
+	game_skill_reward_effect = { SKILL = prowess AMOUNT = 1 CAP = 15 }
+	add_character_modifier = { modifier = chimera_trophy_modifier years = 5 }
+}
+
+simurgh_game_tags_effect = {
+	$MODE$_game_tag_with_category = { CATEGORY = type NAME = beast }
+	$MODE$_game_tag_with_category = { CATEGORY = size NAME = huge }
+	$MODE$_game_tag = { NAME = intelligent }
+	$MODE$_game_tag = { NAME = sixth_sense }
+}
+
+simurgh_game_rewards_effect = {
+		game_prestige_reward_effect = { AMOUNT = massive_prestige_value }
+		game_fortune_reward_effect = { AMOUNT = major_gold_value }
+		game_skill_reward_effect = { SKILL = prowess AMOUNT = 3 CAP = 50}
+		add_character_modifier = { modifier = simurgh_trophy_modifier years = 5}
+		hidden_effect = {
+			random_list = {
+				15 = { #Child is found
+					trigger_event = {
+						id = sjalvolki_hunt.7007 }
+					 }
+				85 = { }
+		}
+	}
+}
+
+# Ursulines
+bear_game_tags_effect = {
+	$MODE$_game_tag_with_category = { CATEGORY = type NAME = beast }
+	$MODE$_game_tag_with_category = { CATEGORY = size NAME = large }
+	$MODE$_game_tag = { NAME = aggressive }
+}
+
+bear_game_rewards_effect = {
+	game_prestige_reward_effect = { AMOUNT = medium_prestige_value   }
+	game_fortune_reward_effect = { AMOUNT = minor_gold_value }
+	game_stress_loss_home_turf_effect = { AMOUNT = minor_stress_loss  }
+	game_skill_reward_effect = { SKILL = prowess AMOUNT = 1 CAP = 15 }
+	add_character_modifier = { modifier = bear_trophy_modifier years = 5 }
+}
+
+sloth_bear_game_tags_effect = {
+	$MODE$_game_tag_with_category = { CATEGORY = type NAME = beast }
+	$MODE$_game_tag_with_category = { CATEGORY = size NAME = large }
+	$MODE$_game_tag = { NAME = cautious }
+}
+
+sloth_bear_game_rewards_effect = {
+	game_prestige_reward_effect = { AMOUNT = medium_prestige_value   }
+	game_fortune_reward_effect = { AMOUNT = minor_gold_value }
+	game_stress_loss_home_turf_effect = { AMOUNT = minor_stress_loss  }
+	game_skill_reward_effect = { SKILL = prowess AMOUNT = 1 CAP = 15 }
+}
+
+# Rodents
+porcupine_game_tags_effect = {
+	$MODE$_game_tag_with_category = { CATEGORY = type NAME = beast }
+	$MODE$_game_tag_with_category = { CATEGORY = size NAME = tiny }
+	$MODE$_game_tag = { NAME = skittish }
+}
+
+porcupine_game_rewards_effect = {
+	game_prestige_reward_effect = { AMOUNT = minor_prestige_value }
+	game_stress_loss_home_turf_effect = { AMOUNT = minor_stress_loss }
+}
+
+mongoose_game_tags_effect = {
+	$MODE$_game_tag_with_category = { CATEGORY = type NAME = beast }
+	$MODE$_game_tag_with_category = { CATEGORY = size NAME = small }
+	$MODE$_game_tag = { NAME = skittish }
+	$MODE$_game_tag = { NAME = social }
+}
+
+mongoose_game_rewards_effect = {
+	game_prestige_reward_effect = { AMOUNT = minor_prestige_value }
+	game_stress_loss_home_turf_effect = { AMOUNT = minor_stress_loss }
+}
+
+# Elephantids
+damotan_elephant_game_tags_effect = {
+	$MODE$_game_tag_with_category = { CATEGORY = type NAME = beast }
+	$MODE$_game_tag_with_category = { CATEGORY = size NAME = huge }
+}
+
+damotan_elephant_game_rewards_effect = {
+	game_prestige_reward_effect = { AMOUNT = medium_prestige_value }
+	game_fortune_reward_effect = { AMOUNT = minor_gold_value }
+	game_stress_loss_home_turf_effect = { AMOUNT = minor_stress_loss }
+	add_character_modifier = { modifier = damotan_elephant_trophy_modifier years = 5 }
+}
+
+sarradon_elephant_game_tags_effect = {
+	$MODE$_game_tag_with_category = { CATEGORY = type NAME = beast }
+	$MODE$_game_tag_with_category = { CATEGORY = size NAME = huge }
+}
+
+sarradon_elephant_game_rewards_effect = {
+	game_prestige_reward_effect = { AMOUNT = medium_prestige_value }
+	game_fortune_reward_effect = { AMOUNT = minor_gold_value }
+	game_stress_loss_home_turf_effect = { AMOUNT = minor_stress_loss }
+	add_character_modifier = { modifier = sarradon_elephant_trophy_modifier years = 5 }
+}
+
+kashiryan_elephant_game_tags_effect = {
+	$MODE$_game_tag_with_category = { CATEGORY = type NAME = beast }
+	$MODE$_game_tag_with_category = { CATEGORY = size NAME = huge }
+}
+
+kashiryan_elephant_game_rewards_effect = {
+	game_prestige_reward_effect = { AMOUNT = medium_prestige_value }
+	game_fortune_reward_effect = { AMOUNT = minor_gold_value }
+	game_stress_loss_home_turf_effect = { AMOUNT = minor_stress_loss }
+	add_character_modifier = { modifier = kashiryan_elephant_trophy_modifier years = 5 }
+}
+
+mammoth_game_tags_effect = {
+	$MODE$_game_tag_with_category = { CATEGORY = type NAME = beast }
+	$MODE$_game_tag_with_category = { CATEGORY = size NAME = huge }
+	$MODE$_game_tag = { NAME = cunning }
+	$MODE$_game_tag = { NAME = cautious }
+}
+
+mammoth_game_rewards_effect = {
+	game_prestige_reward_effect = { AMOUNT = medium_prestige_value   }
+	game_fortune_reward_effect = { AMOUNT = medium_gold_value }
+	game_stress_loss_home_turf_effect = { AMOUNT = major_stress_loss  }
+}
+
+daggertusk_game_tags_effect = {
+	$MODE$_game_tag_with_category = { CATEGORY = type NAME = beast }
+	$MODE$_game_tag_with_category = { CATEGORY = size NAME = huge }
+	$MODE$_game_tag = { NAME = social }
+	$MODE$_game_tag = { NAME = intelligent }
+}
+
+daggertusk_game_rewards_effect = {
+	game_prestige_reward_effect = { AMOUNT = major_prestige_value   }
+	game_fortune_reward_effect = { AMOUNT = medium_gold_value }
+	game_stress_loss_home_turf_effect = { AMOUNT = medium_stress_loss  }
+	game_skill_reward_effect = { SKILL = prowess AMOUNT = 1 CAP = 30 }
+}
+
+gajara_game_tags_effect = {
+	$MODE$_game_tag_with_category = { CATEGORY = type NAME = beast }
+	$MODE$_game_tag_with_category = { CATEGORY = size NAME = huge }
+	$MODE$_game_tag = { NAME = aggressive }
+	$MODE$_game_tag = { NAME = intelligent }
+}
+
+gajara_game_rewards_effect = {
+	game_prestige_reward_effect = { AMOUNT = major_prestige_value   }
+	game_fortune_reward_effect = { AMOUNT = medium_gold_value }
+	game_stress_loss_home_turf_effect = { AMOUNT = medium_stress_loss  }
+	game_skill_reward_effect = { SKILL = prowess AMOUNT = 1 CAP = 30 }
+}
+
+# Primates
+monkey_game_tags_effect = {
+	$MODE$_game_tag_with_category = { CATEGORY = type NAME = beast }
+	$MODE$_game_tag_with_category = { CATEGORY = size NAME = small }
+	$MODE$_game_tag = { NAME = intelligent }
+	$MODE$_game_tag = { NAME = skittish }
+}
+
+monkey_game_rewards_effect = {
+	game_prestige_reward_effect = { AMOUNT = minor_prestige_value }
+	game_stress_loss_home_turf_effect = { AMOUNT = minor_stress_loss }
+}
+
+gorilla_game_tags_effect = {
+	$MODE$_game_tag_with_category = { CATEGORY = type NAME = beast }
+	$MODE$_game_tag_with_category = { CATEGORY = size NAME = large }
+	$MODE$_game_tag = { NAME = unyielding }
+	$MODE$_game_tag = { NAME = intelligent }
+}
+
+gorilla_game_rewards_effect = {
+	game_prestige_reward_effect = { AMOUNT = medium_prestige_value }
+	game_fortune_reward_effect = { AMOUNT = minor_gold_value }
+	game_stress_loss_home_turf_effect = { AMOUNT = minor_stress_loss }
+	game_skill_reward_effect = { SKILL = prowess AMOUNT = 1 CAP = 20 }
+}
+
+# Misc. Mammals
+
+seal_game_tags_effect = {
+	$MODE$_game_tag_with_category = { CATEGORY = type NAME = beast }
+	$MODE$_game_tag_with_category = { CATEGORY = size NAME = large }
+	$MODE$_game_tag = { NAME = cautious }
+}
+
+seal_game_rewards_effect = {
+	game_prestige_reward_effect = { AMOUNT = medium_prestige_gain  }
+	add_stress = minor_stress_loss
+}
+
+doyarchu_game_tags_effect = {
+	$MODE$_game_tag_with_category = { CATEGORY = type NAME = beast }
+	$MODE$_game_tag_with_category = { CATEGORY = size NAME = large }
+	$MODE$_game_tag = { NAME = social }
+	$MODE$_game_tag = { NAME = aggressive }
+}
+
+doyarchu_game_rewards_effect = {
+	game_prestige_reward_effect = { AMOUNT = medium_prestige_value   }
+	game_fortune_reward_effect = { AMOUNT = minor_gold_value }
+	game_stress_loss_home_turf_effect = { AMOUNT = minor_stress_loss  }
+	game_skill_reward_effect = { SKILL = prowess AMOUNT = 1 CAP = 15 }
+	add_character_modifier = { modifier = doyarchu_trophy_modifier years = 5 }
+}
+
+giant_sloth_game_tags_effect = {
+	$MODE$_game_tag_with_category = { CATEGORY = type NAME = beast }
+	$MODE$_game_tag_with_category = { CATEGORY = size NAME = huge }
+	$MODE$_game_tag = { NAME = cautious }
+}
+
+giant_sloth_game_rewards_effect = {
+	game_prestige_reward_effect = { AMOUNT = medium_prestige_value   }
+	game_fortune_reward_effect = { AMOUNT = minor_gold_value }
+	game_stress_loss_home_turf_effect = { AMOUNT = minor_stress_loss  }
+	game_skill_reward_effect = { SKILL = prowess AMOUNT = 1 CAP = 15 }
+	add_character_modifier = { modifier = giant_sloth_trophy_modifier years = 5 }
+}
+
+peluda_game_tags_effect = {
+	$MODE$_game_tag_with_category = { CATEGORY = type NAME = beast }
+	$MODE$_game_tag_with_category = { CATEGORY = size NAME = large }
+	$MODE$_game_tag = { NAME = aggressive }
+	$MODE$_game_tag = { NAME = unyielding }
+}
+
+peluda_game_rewards_effect = {
+	game_prestige_reward_effect = { AMOUNT = medium_prestige_value   }
+	game_fortune_reward_effect = { AMOUNT = minor_gold_value }
+	game_stress_loss_home_turf_effect = { AMOUNT = minor_stress_loss  }
+	game_skill_reward_effect = { SKILL = prowess AMOUNT = 1 CAP = 15 }
+}
+
+# Birds
+
+sunbird_game_tags_effect = {
+	$MODE$_game_tag_with_category = { CATEGORY = type NAME = bird }
+	$MODE$_game_tag_with_category = { CATEGORY = size NAME = small }
+	$MODE$_game_tag = { NAME = skittish }
+}
+
+sunbird_game_rewards_effect = {
+	game_prestige_reward_effect = { AMOUNT = minor_prestige_value   }
+	add_stress = medium_stress_loss
+}
+
+crown_bird_game_tags_effect = {
+	$MODE$_game_tag_with_category = { CATEGORY = type NAME = bird }
+	$MODE$_game_tag_with_category = { CATEGORY = size NAME = large }
+	$MODE$_game_tag = { NAME = fast }
+	$MODE$_game_tag = { NAME = aggressive }
+}
+
+crown_bird_game_rewards_effect = {
+	game_prestige_reward_effect = { AMOUNT = minor_prestige_value   }
+	add_stress = medium_stress_loss
+}
+
+peacock_game_tags_effect = {
+	$MODE$_game_tag_with_category = { CATEGORY = type NAME = bird }
+	$MODE$_game_tag_with_category = { CATEGORY = size NAME = small }
+	$MODE$_game_tag = { NAME = skittish }
+}
+
+peacock_game_rewards_effect = {
+	game_prestige_reward_effect = { AMOUNT = minor_prestige_value   }
+	add_stress = medium_stress_loss
+}
+
+ostrich_game_tags_effect = {
+	$MODE$_game_tag_with_category = { CATEGORY = type NAME = bird }
+	$MODE$_game_tag_with_category = { CATEGORY = size NAME = large }
+	$MODE$_game_tag = { NAME = fast }
+	$MODE$_game_tag = { NAME = cautious }
+}
+
+ostrich_game_rewards_effect = {
+	game_prestige_reward_effect = { AMOUNT = minor_prestige_value   }
+	add_stress = medium_stress_loss
+}
+
+emperor_peacock_game_tags_effect = {
+	$MODE$_game_tag_with_category = { CATEGORY = type NAME = bird }
+	$MODE$_game_tag_with_category = { CATEGORY = size NAME = large }
+	$MODE$_game_tag = { NAME = cautious }
+	$MODE$_game_tag = { NAME = elusive }
+}
+
+emperor_peacock_game_rewards_effect = {
+	game_prestige_reward_effect = { AMOUNT = medium_prestige_value   }
+	game_fortune_reward_effect = { AMOUNT = medium_gold_value }	# Intentionally gives more gold
+	game_stress_loss_home_turf_effect = { AMOUNT = minor_stress_loss  }
+	game_skill_reward_effect = { SKILL = prowess AMOUNT = 1 CAP = 15 }
+	add_character_modifier = { modifier = emperor_peacock_trophy_modifier years = 5 }
+}
+
+griffon_game_tags_effect = {
+	$MODE$_game_tag_with_category = { CATEGORY = type NAME = bird }
+	$MODE$_game_tag_with_category = { CATEGORY = size NAME = large }
+	$MODE$_game_tag = { NAME = intelligent }
+	$MODE$_game_tag = { NAME = fast }
+}
+
+griffon_game_rewards_effect = {
+	game_prestige_reward_effect = { AMOUNT = medium_prestige_value   }
+	game_fortune_reward_effect = { AMOUNT = minor_gold_value }
+	game_stress_loss_home_turf_effect = { AMOUNT = minor_stress_loss  }
+	game_skill_reward_effect = { SKILL = prowess AMOUNT = 1 CAP = 15 }
+	add_character_modifier = { modifier = griffon_trophy_modifier years = 5 }
+}
+
+royal_falcon_game_tags_effect = {
+	$MODE$_game_tag_with_category = { CATEGORY = type NAME = bird }
+	$MODE$_game_tag_with_category = { CATEGORY = size NAME = large }
+	$MODE$_game_tag = { NAME = cautious }
+	$MODE$_game_tag = { NAME = fast }
+	$MODE$_game_tag = { NAME = social }
+}
+
+royal_falcon_game_rewards_effect = {
+	game_prestige_reward_effect = { AMOUNT = medium_prestige_value   }
+	game_fortune_reward_effect = { AMOUNT = minor_gold_value }
+	game_stress_loss_home_turf_effect = { AMOUNT = minor_stress_loss  }
+	game_skill_reward_effect = { SKILL = prowess AMOUNT = 1 CAP = 15 }
+	add_character_modifier = { modifier = royal_falcon_trophy_modifier years = 5 }
+}
+
+gargoyle_game_tags_effect = {
+	$MODE$_game_tag_with_category = { CATEGORY = type NAME = bird }
+	$MODE$_game_tag_with_category = { CATEGORY = size NAME = medium }
+	$MODE$_game_tag = { NAME = aggressive }
+	$MODE$_game_tag = { NAME = cunning }
+	$MODE$_game_tag = { NAME = social }
+	$MODE$_game_tag = { NAME = fast }
+}
+
+gargoyle_game_rewards_effect = {
+	game_prestige_reward_effect = { AMOUNT = medium_prestige_value   }
+	game_fortune_reward_effect = { AMOUNT = minor_gold_value }
+	game_stress_loss_home_turf_effect = { AMOUNT = minor_stress_loss  }
+	game_skill_reward_effect = { SKILL = prowess AMOUNT = 1 CAP = 15 }
+}
+
+roc_game_tags_effect = {
+	$MODE$_game_tag_with_category = { CATEGORY = type NAME = bird }
+	$MODE$_game_tag_with_category = { CATEGORY = size NAME = huge }
+	$MODE$_game_tag = { NAME = cautious }
+}
+
+roc_game_rewards_effect = {
+	game_prestige_reward_effect = { AMOUNT = medium_prestige_value   }
+	game_fortune_reward_effect = { AMOUNT = minor_gold_value }
+	game_stress_loss_home_turf_effect = { AMOUNT = minor_stress_loss  }
+	game_skill_reward_effect = { SKILL = prowess AMOUNT = 1 CAP = 15 }
+	add_character_modifier = { modifier = roc_trophy_modifier years = 5 }
+}
+
+dire_griffon_game_tags_effect = {
+	$MODE$_game_tag_with_category = { CATEGORY = type NAME = bird }
+	$MODE$_game_tag_with_category = { CATEGORY = size NAME = huge }
+	$MODE$_game_tag = { NAME = intelligent }
+	$MODE$_game_tag = { NAME = fast }
+}
+
+dire_griffon_game_rewards_effect = {
+	game_prestige_reward_effect = { AMOUNT = medium_prestige_value   }
+	game_fortune_reward_effect = { AMOUNT = minor_gold_value }
+	game_stress_loss_home_turf_effect = { AMOUNT = minor_stress_loss  }
+	game_skill_reward_effect = { SKILL = prowess AMOUNT = 1 CAP = 15 }
+	add_character_modifier = { modifier = dire_griffon_trophy_modifier years = 5 }
+}
+
+zilant_game_tags_effect = {
+	$MODE$_game_tag_with_category = { CATEGORY = type NAME = bird }
+	$MODE$_game_tag_with_category = { CATEGORY = size NAME = huge }
+	$MODE$_game_tag = { NAME = aggressive }
+}
+
+zilant_game_rewards_effect = {
+	game_prestige_reward_effect = { AMOUNT = medium_prestige_value }
+	game_fortune_reward_effect = { AMOUNT = minor_gold_value }
+	game_stress_loss_home_turf_effect = { AMOUNT = minor_stress_loss }
+	game_skill_reward_effect = { SKILL = prowess AMOUNT = 1 CAP = 30 }
+	add_character_modifier = { modifier = zilant_trophy_modifier years = 5 }
+}
+
+hieracosphinx_game_tags_effect = {
+	$MODE$_game_tag_with_category = { CATEGORY = type NAME = bird }
+	$MODE$_game_tag_with_category = { CATEGORY = size NAME = huge }
+	$MODE$_game_tag = { NAME = aggressive }
+	$MODE$_game_tag = { NAME = cunning }
+}
+
+hieracosphinx_game_rewards_effect = {
+	game_prestige_reward_effect = { AMOUNT = medium_prestige_value }
+	game_fortune_reward_effect = { AMOUNT = minor_gold_value }
+	game_stress_loss_home_turf_effect = { AMOUNT = minor_stress_loss }
+	game_skill_reward_effect = { SKILL = prowess AMOUNT = 1 CAP = 30 }
+	add_character_modifier = { modifier = hieracosphinx_trophy_modifier years = 5 }
+}
+
+# Reptiles
+
+king_cobra_game_tags_effect = {
+	$MODE$_game_tag_with_category = { CATEGORY = type NAME = reptile }
+	$MODE$_game_tag_with_category = { CATEGORY = size NAME = small }
+	$MODE$_game_tag = { NAME = aggressive }
+	$MODE$_game_tag = { NAME = venomous }
+}
+
+king_cobra_game_rewards_effect = {
+	game_prestige_reward_effect = { AMOUNT = medium_prestige_value }
+	game_fortune_reward_effect = { AMOUNT = minor_gold_value }
+	game_skill_reward_effect = { SKILL = prowess AMOUNT = 1 CAP = 10 }
+	add_stress = medium_stress_loss
+}
+
+emperorcobra_game_tags_effect = {
+	$MODE$_game_tag_with_category = { CATEGORY = type NAME = reptile }
+	$MODE$_game_tag_with_category = { CATEGORY = size NAME = large }
+	$MODE$_game_tag = { NAME = aggressive }
+	$MODE$_game_tag = { NAME = venomous }
+}
+
+emperorcobra_game_rewards_effect = {
+	game_prestige_reward_effect = { AMOUNT = medium_prestige_value }
+	game_fortune_reward_effect = { AMOUNT = minor_gold_value }
+	game_skill_reward_effect = { SKILL = prowess AMOUNT = 1 CAP = 10 }
+	add_stress = medium_stress_loss
+}
+
+rovarskan_dragon_game_tags_effect = {
+	$MODE$_game_tag_with_category = { CATEGORY = type NAME = reptile }
+	$MODE$_game_tag_with_category = { CATEGORY = size NAME = large }
+	$MODE$_game_tag = { NAME = aggressive }
+	$MODE$_game_tag = { NAME = unyielding }
+	$MODE$_game_tag = { NAME = venomous }
+}
+
+rovarskan_dragon_game_rewards_effect = {
+	game_prestige_reward_effect = { AMOUNT = medium_prestige_value }
+	game_fortune_reward_effect = { AMOUNT = minor_gold_value }
+	game_skill_reward_effect = { SKILL = prowess AMOUNT = 1 CAP = 15 }
+	add_stress = medium_stress_loss
+}
+
+great_rahksasa_game_tags_effect = {
+	$MODE$_game_tag_with_category = { CATEGORY = type NAME = reptile }
+	$MODE$_game_tag_with_category = { CATEGORY = size NAME = huge }
+	$MODE$_game_tag = { NAME = aggressive }
+	$MODE$_game_tag = { NAME = unyielding }
+	$MODE$_game_tag = { NAME = venomous }
+}
+
+great_rahksasa_game_rewards_effect = {
+	game_prestige_reward_effect = { AMOUNT = medium_prestige_value }
+	game_fortune_reward_effect = { AMOUNT = medium_gold_value }
+	game_skill_reward_effect = { SKILL = prowess AMOUNT = 1 CAP = 15 }
+	add_stress = medium_stress_loss
+}
+
+
+crocodile_game_tags_effect = {
+	$MODE$_game_tag_with_category = { CATEGORY = type NAME = reptile }
+	$MODE$_game_tag_with_category = { CATEGORY = size NAME = large }
+	$MODE$_game_tag = { NAME = aggressive }
+	$MODE$_game_tag = { NAME = unyielding }
+}
+
+crocodile_game_rewards_effect = {
+	game_prestige_reward_effect = { AMOUNT = medium_prestige_value }
+	game_fortune_reward_effect = { AMOUNT = minor_gold_value }
+	game_skill_reward_effect = { SKILL = prowess AMOUNT = 1 CAP = 15 }
+	add_stress = medium_stress_loss
+	add_character_modifier = { modifier = crocodile_trophy_modifier years = 5 }
+}
+
+coatl_game_tags_effect = {
+	$MODE$_game_tag_with_category = { CATEGORY = type NAME = reptile }
+	$MODE$_game_tag_with_category = { CATEGORY = size NAME = large }
+	$MODE$_game_tag = { NAME = fast }
+	$MODE$_game_tag = { NAME = cunning }
+}
+
+coatl_game_rewards_effect = {
+	game_prestige_reward_effect = { AMOUNT = medium_prestige_value }
+	game_fortune_reward_effect = { AMOUNT = medium_gold_value }
+	game_stress_loss_home_turf_effect = { AMOUNT = minor_stress_loss }
+	game_skill_reward_effect = { SKILL = prowess AMOUNT = 1 CAP = 30}
+}
+
+hydra_game_tags_effect = {
+	$MODE$_game_tag_with_category = { CATEGORY = type NAME = reptile }
+	$MODE$_game_tag_with_category = { CATEGORY = size NAME = huge }
+	$MODE$_game_tag = { NAME = elusive }
+	$MODE$_game_tag = { NAME = aggressive }
+	$MODE$_game_tag = { NAME = unyielding }
+}
+
+hydra_game_rewards_effect = {
+	game_prestige_reward_effect = { AMOUNT = medium_prestige_value   }
+	game_fortune_reward_effect = { AMOUNT = medium_gold_value }
+	game_stress_loss_home_turf_effect = { AMOUNT = minor_stress_loss  }
+	game_skill_reward_effect = { SKILL = prowess AMOUNT = 1 CAP = 40 }
+}
+
+tarasque_game_tags_effect = {
+	$MODE$_game_tag_with_category = { CATEGORY = type NAME = reptile }
+	$MODE$_game_tag_with_category = { CATEGORY = size NAME = huge }
+	$MODE$_game_tag = { NAME = unyielding }
+	$MODE$_game_tag = { NAME = poisonous }
+}
+
+tarasque_game_rewards_effect = {
+	game_prestige_reward_effect = { AMOUNT = major_prestige_value   }
+	game_fortune_reward_effect = { AMOUNT = medium_gold_value }
+	game_stress_loss_home_turf_effect = { AMOUNT = minor_stress_loss  }
+	game_skill_reward_effect = { SKILL = prowess AMOUNT = 1 CAP = 40 }
+}
+
+akapura_game_tags_effect = {
+	$MODE$_game_tag_with_category = { CATEGORY = type NAME = reptile }
+	$MODE$_game_tag_with_category = { CATEGORY = size NAME = huge }
+	$MODE$_game_tag = { NAME = unyielding }
+	$MODE$_game_tag = { NAME = intelligent }
+}
+
+akapura_game_rewards_effect = {
+	game_prestige_reward_effect = { AMOUNT = major_prestige_value   }
+	game_fortune_reward_effect = { AMOUNT = medium_gold_value }
+	game_stress_loss_home_turf_effect = { AMOUNT = minor_stress_loss  }
+	game_skill_reward_effect = { SKILL = prowess AMOUNT = 1 CAP = 40 }
+}
+
+naga_game_tags_effect = {
+	$MODE$_game_tag_with_category = { CATEGORY = type NAME = reptile }
+	$MODE$_game_tag_with_category = { CATEGORY = size NAME = medium }
+	$MODE$_game_tag = { NAME = intelligent }
+	$MODE$_game_tag = { NAME = aggressive }
+}
+
+naga_game_rewards_effect = {
+	game_prestige_reward_effect = { AMOUNT = major_prestige_value   }
+	game_fortune_reward_effect = { AMOUNT = medium_gold_value }
+	game_stress_loss_home_turf_effect = { AMOUNT = medium_stress_loss  }
+	game_skill_reward_effect = { SKILL = prowess AMOUNT = 1 CAP = 30 }
+}
+
+running_raptor_game_tags_effect = {
+	$MODE$_game_tag_with_category = { CATEGORY = type NAME = reptile }
+	$MODE$_game_tag_with_category = { CATEGORY = size NAME = medium }
+	$MODE$_game_tag = { NAME = intelligent }
+	$MODE$_game_tag = { NAME = fast }
+}
+
+running_raptor_game_rewards_effect = {
+	game_prestige_reward_effect = { AMOUNT = major_prestige_value   }
+	game_fortune_reward_effect = { AMOUNT = medium_gold_value }
+	game_stress_loss_home_turf_effect = { AMOUNT = medium_stress_loss  }
+	game_skill_reward_effect = { SKILL = prowess AMOUNT = 1 CAP = 30 }
+}
+
+twin_serpent_game_tags_effect = {
+	$MODE$_game_tag_with_category = { CATEGORY = type NAME = reptile }
+	$MODE$_game_tag_with_category = { CATEGORY = size NAME = large }
+	$MODE$_game_tag = { NAME = fast }
+	$MODE$_game_tag = { NAME = aggressive }
+}
+
+twin_serpent_game_rewards_effect = {
+	game_prestige_reward_effect = { AMOUNT = major_prestige_value   }
+	game_fortune_reward_effect = { AMOUNT = medium_gold_value }
+	game_stress_loss_home_turf_effect = { AMOUNT = medium_stress_loss  }
+	game_skill_reward_effect = { SKILL = prowess AMOUNT = 1 CAP = 30 }
+}
+
+roaring_lizard_game_tags_effect = {
+	$MODE$_game_tag_with_category = { CATEGORY = type NAME = reptile }
+	$MODE$_game_tag_with_category = { CATEGORY = size NAME = huge }
+	$MODE$_game_tag = { NAME = unyielding }
+	$MODE$_game_tag = { NAME = social }
+}
+
+roaring_lizard_game_rewards_effect = {
+	game_prestige_reward_effect = { AMOUNT = major_prestige_value   }
+	game_fortune_reward_effect = { AMOUNT = medium_gold_value }
+	game_stress_loss_home_turf_effect = { AMOUNT = medium_stress_loss  }
+	game_skill_reward_effect = { SKILL = prowess AMOUNT = 1 CAP = 30 }
+}
+
+# Arthropods
+giant_spider_game_tags_effect = {
+	$MODE$_game_tag_with_category = { CATEGORY = type NAME = arthropod }
+	$MODE$_game_tag_with_category = { CATEGORY = size NAME = large }
+	$MODE$_game_tag = { NAME = aggressive }
+	$MODE$_game_tag = { NAME = poisonous }
+}
+
+giant_spider_game_rewards_effect = {
+	game_prestige_reward_effect = { AMOUNT = medium_prestige_value   }
+	game_fortune_reward_effect = { AMOUNT = minor_gold_value }
+	game_stress_loss_home_turf_effect = { AMOUNT = minor_stress_loss  }
+	game_skill_reward_effect = { SKILL = prowess AMOUNT = 1 CAP = 15 }
+	#add_character_modifier = { modifier = giant_spider_trophy_modifier years = 5 }	# ADD THIS LATER
+}
+
+dire_mosquito_game_tags_effect = {
+	$MODE$_game_tag_with_category = { CATEGORY = type NAME = arthropod }
+	$MODE$_game_tag_with_category = { CATEGORY = size NAME = large }
+	$MODE$_game_tag = { NAME = fast }
+	$MODE$_game_tag = { NAME = aggressive }
+}
+
+dire_mosquito_game_rewards_effect = {
+	game_prestige_reward_effect = { AMOUNT = medium_prestige_value }
+	game_fortune_reward_effect = { AMOUNT = medium_gold_value }
+	game_stress_loss_home_turf_effect = { AMOUNT = minor_stress_loss }
+}
+
+pyralis_game_tags_effect = {
+	$MODE$_game_tag_with_category = { CATEGORY = type NAME = arthropod }
+	$MODE$_game_tag_with_category = { CATEGORY = size NAME = huge }
+	$MODE$_game_tag = { NAME = magic_user }
+	$MODE$_game_tag = { NAME = fast }
+}
+
+pyralis_game_rewards_effect = {
+	game_prestige_reward_effect = { AMOUNT = medium_prestige_value   }
+	game_fortune_reward_effect = { AMOUNT = medium_gold_value }
+	game_stress_loss_home_turf_effect = { AMOUNT = minor_stress_loss  }
+	game_skill_reward_effect = { SKILL = prowess AMOUNT = 1 CAP = 40 }
+}
+
+dire_crab_game_tags_effect = {
+	$MODE$_game_tag_with_category = { CATEGORY = type NAME = arthropod }
+	$MODE$_game_tag_with_category = { CATEGORY = size NAME = large }
+	$MODE$_game_tag = { NAME = cautious }
+	$MODE$_game_tag = { NAME = stupid }
+}
+
+dire_crab_game_rewards_effect = {
+	game_prestige_reward_effect = { AMOUNT = medium_prestige_value   }
+	game_fortune_reward_effect = { AMOUNT = minor_gold_value }
+	game_stress_loss_home_turf_effect = { AMOUNT = minor_stress_loss  }
+	game_skill_reward_effect = { SKILL = prowess AMOUNT = 1 CAP = 15 }
+}
+
+sea_scorpion_game_tags_effect = {
+	$MODE$_game_tag_with_category = { CATEGORY = type NAME = arthropod }
+	$MODE$_game_tag_with_category = { CATEGORY = size NAME = large }
+	$MODE$_game_tag = { NAME = aggressive }
+	$MODE$_game_tag = { NAME = fast }
+}
+
+sea_scorpion_game_rewards_effect = {
+	game_prestige_reward_effect = { AMOUNT = major_prestige_value   }
+	game_fortune_reward_effect = { AMOUNT = medium_gold_value }
+	game_stress_loss_home_turf_effect = { AMOUNT = medium_stress_loss  }
+	game_skill_reward_effect = { SKILL = prowess AMOUNT = 1 CAP = 30 }
+}
+
+ukhinbooum_game_tags_effect = {
+	$MODE$_game_tag_with_category = { CATEGORY = type NAME = arthropod}
+	$MODE$_game_tag_with_category = { CATEGORY = size NAME = small }
+	$MODE$_game_tag = { NAME = poisonous }
+	$MODE$_game_tag = { NAME = fast }
+}
+
+ukhinbooum_game_rewards_effect = {
+	game_prestige_reward_effect = { AMOUNT = medium_prestige_value }
+	game_fortune_reward_effect = { AMOUNT = medium_gold_value }
+	game_stress_loss_home_turf_effect = { AMOUNT = minor_stress_loss  }
+	game_skill_reward_effect = { SKILL = prowess AMOUNT = 1 CAP = 20 }
+}
+
+adze_game_tags_effect = {
+	$MODE$_game_tag_with_category = { CATEGORY = type NAME = arthropod}
+	$MODE$_game_tag_with_category = { CATEGORY = size NAME = variable_size }
+	$MODE$_game_tag = { NAME = poisonous }
+	$MODE$_game_tag = { NAME = fast }
+}
+
+adze_game_rewards_effect = {
+	game_prestige_reward_effect = { AMOUNT = medium_prestige_value }
+	game_fortune_reward_effect = { AMOUNT = medium_gold_value }
+	game_stress_loss_home_turf_effect = { AMOUNT = minor_stress_loss  }
+	game_skill_reward_effect = { SKILL = prowess AMOUNT = 1 CAP = 20 }
+}
+
+bhramar_game_tags_effect = {
+	$MODE$_game_tag_with_category = { CATEGORY = type NAME = arthropod}
+	$MODE$_game_tag_with_category = { CATEGORY = size NAME = variable_size }
+	$MODE$_game_tag = { NAME = poisonous }
+	$MODE$_game_tag = { NAME = fast }
+}
+
+bhramar_game_rewards_effect = {
+	game_prestige_reward_effect = { AMOUNT = medium_prestige_value }
+	game_fortune_reward_effect = { AMOUNT = medium_gold_value }
+	game_stress_loss_home_turf_effect = { AMOUNT = minor_stress_loss  }
+	game_skill_reward_effect = { SKILL = prowess AMOUNT = 1 CAP = 20 }
+}
+
+myrmeke_game_tags_effect = {
+	$MODE$_game_tag_with_category = { CATEGORY = type NAME = arthropod}
+	$MODE$_game_tag_with_category = { CATEGORY = size NAME = variable_size }
+	$MODE$_game_tag = { NAME = aggressive }
+	$MODE$_game_tag = { NAME = fast }
+}
+
+myrmeke_game_rewards_effect = {
+	game_prestige_reward_effect = { AMOUNT = medium_prestige_value }
+	game_fortune_reward_effect = { AMOUNT = medium_gold_value }
+	game_stress_loss_home_turf_effect = { AMOUNT = minor_stress_loss  }
+	game_skill_reward_effect = { SKILL = prowess AMOUNT = 1 CAP = 20 }
+}
+
+false_hydra_game_tags_effect = {
+	$MODE$_game_tag_with_category = { CATEGORY = type NAME = arthropod }
+	$MODE$_game_tag_with_category = { CATEGORY = size NAME = large }
+	$MODE$_game_tag = { NAME = intelligent }
+	$MODE$_game_tag = { NAME = sedentary }
+	$MODE$_game_tag = { NAME = mindrender }
+}
+
+false_hydra_game_rewards_effect = {
+	game_prestige_reward_effect = { AMOUNT = medium_prestige_value   }
+	game_fortune_reward_effect = { AMOUNT = minor_gold_value }
+	game_stress_loss_home_turf_effect = { AMOUNT = minor_stress_loss  }
+	game_skill_reward_effect = { SKILL = prowess AMOUNT = 1 CAP = 15 }
+}
+
+# Annelids
+
+ugkilrrrmag_game_tags_effect = {
+	$MODE$_game_tag_with_category = { CATEGORY = type NAME = worm }
+	$MODE$_game_tag_with_category = { CATEGORY = size NAME = huge }
+	$MODE$_game_tag = { NAME = aggressive }
+	$MODE$_game_tag = { NAME = poisonous }
+}
+
+ugkilrrrmag_game_rewards_effect = {
+	game_prestige_reward_effect = { AMOUNT = medium_prestige_value }
+	game_fortune_reward_effect = { AMOUNT = minor_gold_value }
+	game_stress_loss_home_turf_effect = { AMOUNT = minor_stress_loss }
+}
+
+devouring_worm_game_tags_effect = {
+	$MODE$_game_tag_with_category = { CATEGORY = type NAME = worm }
+	$MODE$_game_tag_with_category = { CATEGORY = size NAME = huge }
+	$MODE$_game_tag = { NAME = fast }
+	$MODE$_game_tag = { NAME = aggressive }
+}
+
+devouring_worm_game_rewards_effect = {
+	game_prestige_reward_effect = { AMOUNT = medium_prestige_value }
+	game_fortune_reward_effect = { AMOUNT = minor_gold_value }
+	game_stress_loss_home_turf_effect = { AMOUNT = minor_stress_loss }
+}
+
+dreadleech_game_tags_effect = {
+	$MODE$_game_tag_with_category = { CATEGORY = type NAME = worm }
+	$MODE$_game_tag_with_category = { CATEGORY = size NAME = huge }
+	$MODE$_game_tag = { NAME = aggressive }
+}
+
+dreadleech_game_rewards_effect = {
+	game_prestige_reward_effect = { AMOUNT = medium_prestige_value }
+	game_fortune_reward_effect = { AMOUNT = medium_gold_value }
+	game_stress_loss_home_turf_effect = { AMOUNT = minor_stress_loss }
+}
+
+# Draconic
+cockatrice_game_tags_effect = {
+	$MODE$_game_tag_with_category = { CATEGORY = type NAME = draconic }
+	$MODE$_game_tag_with_category = { CATEGORY = size NAME = medium }
+	$MODE$_game_tag = { NAME = aggressive }
+	$MODE$_game_tag = { NAME = cunning }
+	$MODE$_game_tag = { NAME = poisonous }
+}
+
+cockatrice_game_rewards_effect = {
+	game_prestige_reward_effect = { AMOUNT = major_prestige_value   }
+	game_fortune_reward_effect = { AMOUNT = medium_gold_value }
+	game_stress_loss_home_turf_effect = { AMOUNT = medium_stress_loss  }
+	game_skill_reward_effect = { SKILL = prowess AMOUNT = 1 CAP = 30 }
+	#add_character_modifier = { modifier = cockatrice_trophy_modifier years = 5 }
+}
+
+wyrm_game_tags_effect = {
+	$MODE$_game_tag_with_category = { CATEGORY = type NAME = draconic }
+	$MODE$_game_tag_with_category = { CATEGORY = size NAME = huge }
+	$MODE$_game_tag = { NAME = intelligent }
+	$MODE$_game_tag = { NAME = aggressive }
+	$MODE$_game_tag = { NAME = elusive }
+}
+
+wyrm_game_rewards_effect = {
+	game_prestige_reward_effect = { AMOUNT = massive_prestige_value   }
+	game_fortune_reward_effect = { AMOUNT = major_gold_value }
+	game_stress_loss_home_turf_effect = { AMOUNT = major_stress_loss  }
+	game_skill_reward_effect = { SKILL = prowess AMOUNT = 2 CAP = 40 }
+}
+
+# Trolls
+forest_troll_game_tags_effect = {
+	$MODE$_game_tag_with_category = { CATEGORY = type NAME = humanoid }
+	$MODE$_game_tag_with_category = { CATEGORY = size NAME = large }
+	$MODE$_game_tag = { NAME = cunning }
+	$MODE$_game_tag = { NAME = elusive }
+}
+
+forest_troll_game_rewards_effect = {
+	game_prestige_reward_effect = { AMOUNT = major_prestige_value   }
+	game_fortune_reward_effect = { AMOUNT = medium_gold_value }
+	game_stress_loss_home_turf_effect = { AMOUNT = medium_stress_loss  }
+	game_skill_reward_effect = { SKILL = prowess AMOUNT = 1 CAP = 30 }
+}
+
+# Misc. Humanoids
+
+nagual_game_tags_effect = {
+	$MODE$_game_tag_with_category = { CATEGORY = type NAME = humanoid }
+	$MODE$_game_tag_with_category = { CATEGORY = type NAME = medium }
+	$MODE$_game_tag = { NAME = aggressive }
+	$MODE$_game_tag = { NAME = fast }
+}
+
+nagual_game_rewards_effect = {
+	game_prestige_reward_effect = { AMOUNT = medium_prestige_value }
+	game_fortune_reward_effect = { AMOUNT = medium_gold_value }
+	game_stress_loss_home_turf_effect = { AMOUNT = major_stress_loss  }
+}
+
+merbeast_game_tags_effect = {
+	$MODE$_game_tag_with_category = { CATEGORY = type NAME = humanoid }
+	$MODE$_game_tag_with_category = { CATEGORY = type NAME = medium }
+	$MODE$_game_tag = { NAME = aggressive }
+	$MODE$_game_tag = { NAME = cunning }
+}
+
+merbeast_game_rewards_effect = {
+	game_prestige_reward_effect = { AMOUNT = medium_prestige_value }
+	game_fortune_reward_effect = { AMOUNT = medium_gold_value }
+	game_stress_loss_home_turf_effect = { AMOUNT = major_stress_loss  }
+}
+
+ochokochi_game_tags_effect = {
+	$MODE$_game_tag_with_category = { CATEGORY = type NAME = humanoid }
+	$MODE$_game_tag_with_category = { CATEGORY = type NAME = medium }
+	$MODE$_game_tag = { NAME = aggressive }
+	$MODE$_game_tag = { NAME = cunning }
+}
+
+ochokochi_game_rewards_effect = {
+	game_prestige_reward_effect = { AMOUNT = medium_prestige_value }
+	game_fortune_reward_effect = { AMOUNT = medium_gold_value }
+	game_stress_loss_home_turf_effect = { AMOUNT = major_stress_loss  }
+}
+
+ubir_game_tags_effect = {
+	$MODE$_game_tag_with_category = { CATEGORY = type NAME = humanoid }
+	$MODE$_game_tag_with_category = { CATEGORY = type NAME = medium }
+	$MODE$_game_tag = { NAME = aggressive }
+}
+
+ubir_game_rewards_effect = {
+	game_prestige_reward_effect = { AMOUNT = medium_prestige_value }
+	game_fortune_reward_effect = { AMOUNT = medium_gold_value }
+	game_stress_loss_home_turf_effect = { AMOUNT = major_stress_loss  }
+}
+
+gaunt_game_tags_effect = {
+	$MODE$_game_tag_with_category = { CATEGORY = type NAME = humanoid }
+	$MODE$_game_tag_with_category = { CATEGORY = type NAME = medium }
+	$MODE$_game_tag = { NAME = aggressive }
+	$MODE$_game_tag = { NAME = fast }
+	$MODE$_game_tag = { NAME = cunning }
+}	
+
+
+gaunt_game_rewards_effect = {
+	game_prestige_reward_effect = { AMOUNT = medium_prestige_value }
+	game_fortune_reward_effect = { AMOUNT = medium_gold_value }
+	game_stress_loss_home_turf_effect = { AMOUNT = major_stress_loss  }
+	game_skill_reward_effect = { SKILL = prowess AMOUNT = 2 CAP = 50 }
+}
+
+karankoncolos_game_tags_effect = {
+	$MODE$_game_tag_with_category = { CATEGORY = type NAME = humanoid }
+	$MODE$_game_tag_with_category = { CATEGORY = type NAME = medium }
+	$MODE$_game_tag = { NAME = skittish }
+	$MODE$_game_tag = { NAME = social }
+}
+
+karankoncolos_game_rewards_effect = {
+	game_prestige_reward_effect = { AMOUNT = medium_prestige_value }
+	game_fortune_reward_effect = { AMOUNT = medium_gold_value }
+	game_stress_loss_home_turf_effect = { AMOUNT = major_stress_loss  }
+}
+
+vampire_game_tags_effect = {
+	$MODE$_game_tag_with_category = { CATEGORY = type NAME = humanoid }
+	$MODE$_game_tag_with_category = { CATEGORY = size NAME = medium }
+	$MODE$_game_tag = { NAME = intelligent }
+	$MODE$_game_tag = { NAME = aggressive }
+	$MODE$_game_tag = { NAME = soothing }
+	$MODE$_game_tag = { NAME = magic_user }
+}
+
+vampire_game_rewards_effect = {
+	game_prestige_reward_effect = { AMOUNT = vampire_prestige_value   }
+	game_fortune_reward_effect = { AMOUNT = major_gold_value }
+	game_stress_loss_home_turf_effect = { AMOUNT = major_stress_loss  }
+	game_skill_reward_effect = { SKILL = prowess AMOUNT = 3 CAP = 50 }
+}
+
+giant_game_tags_effect = {
+	$MODE$_game_tag_with_category = { CATEGORY = type NAME = humanoid }
+	$MODE$_game_tag_with_category = { CATEGORY = size NAME = huge }
+	$MODE$_game_tag = { NAME = intelligent }
+	$MODE$_game_tag = { NAME = cautious }
+	$MODE$_game_tag = { NAME = social }
+}
+
+giant_game_rewards_effect = {
+	if = {
+		limit = { NOT = { has_variable = nickname_selection_mode } } 
+		game_prestige_reward_effect = { AMOUNT = massive_prestige_value   }
+		game_fortune_reward_effect = { AMOUNT = major_gold_value }
+		game_stress_loss_home_turf_effect = { AMOUNT = major_stress_loss  }
+		game_skill_reward_effect = { SKILL = prowess AMOUNT = 3 CAP = 50 }
+		add_character_modifier = { modifier = giant_trophy_modifier years = 5 }
+	}
+	set_game_reward_nickname_effect = { NICKNAME = nick_the_giant_slayer }
+}
+
+almas_game_tags_effect = {
+	$MODE$_game_tag_with_category = { CATEGORY = type NAME = humanoid }
+	$MODE$_game_tag_with_category = { CATEGORY = size NAME = huge }	
+	$MODE$_game_tag = { NAME = intelligent }
+	$MODE$_game_tag = { NAME = aggressive }
+	$MODE$_game_tag = { NAME = elusive }
+}
+
+almas_game_rewards_effect = {
+		game_prestige_reward_effect = { AMOUNT = massive_prestige_value   }
+		game_fortune_reward_effect = { AMOUNT = major_gold_value }
+		game_stress_loss_home_turf_effect = { AMOUNT = major_stress_loss  }
+		game_skill_reward_effect = { SKILL = prowess AMOUNT = 3 CAP = 50 }	
+}
+
+devi_game_tags_effect = {
+	$MODE$_game_tag_with_category = { CATEGORY = type NAME = humanoid }
+	$MODE$_game_tag_with_category = { CATEGORY = size NAME = huge }	
+	$MODE$_game_tag = { NAME = intelligent }
+	$MODE$_game_tag = { NAME = aggressive }
+	$MODE$_game_tag = { NAME = elusive }
+}
+
+devi_game_rewards_effect = {
+		game_prestige_reward_effect = { AMOUNT = massive_prestige_value   }
+		game_fortune_reward_effect = { AMOUNT = major_gold_value }
+		game_stress_loss_home_turf_effect = { AMOUNT = major_stress_loss  }
+		game_skill_reward_effect = { SKILL = prowess AMOUNT = 3 CAP = 50 }	
+}
+
+shahmaran_game_tags_effect = {
+	$MODE$_game_tag_with_category = { CATEGORY = type NAME = humanoid }
+	$MODE$_game_tag_with_category = { CATEGORY = size NAME = huge }
+	$MODE$_game_tag = { NAME = magic_user }
+	$MODE$_game_tag = { NAME = elusive }
+	$MODE$_game_tag = { NAME = intelligent }
+}
+
+shahmaran_game_rewards_effect = {
+	game_prestige_reward_effect = { AMOUNT = massive_prestige_value   }
+	game_fortune_reward_effect = { AMOUNT = major_gold_value }
+	game_stress_loss_home_turf_effect = { AMOUNT = major_stress_loss  }
+	game_skill_reward_effect = { SKILL = prowess AMOUNT = 3 CAP = 50 }
+}
+
+# Shapeshifters
+pooka_game_tags_effect = {
+	$MODE$_game_tag_with_category = { CATEGORY = type NAME = shapeshifter }
+	$MODE$_game_tag_with_category = { CATEGORY = size NAME = small }
+	$MODE$_game_tag = { NAME = intelligent }
+	$MODE$_game_tag = { NAME = cunning }
+}
+
+pooka_game_rewards_effect = {
+	game_prestige_reward_effect = { AMOUNT = medium_prestige_value   }
+	game_fortune_reward_effect = { AMOUNT = minor_gold_value }
+	game_stress_loss_home_turf_effect = { AMOUNT = minor_stress_loss  }
+	game_skill_reward_effect = { SKILL = prowess AMOUNT = 1 CAP = 15 }
+	add_character_modifier = { modifier = pooka_trophy_modifier years = 5 }
+}
+
+shetani_game_tags_effect = {
+	$MODE$_game_tag_with_category = { CATEGORY = type NAME = shapeshifter }
+	$MODE$_game_tag_with_category = { CATEGORY = size NAME = medium }
+	$MODE$_game_tag = { NAME = intelligent }
+	$MODE$_game_tag = { NAME = cunning }
+	$MODE$_game_tag = { NAME = elusive }
+}
+
+shetani_game_rewards_effect = {
+	game_prestige_reward_effect = { AMOUNT = major_prestige_value }
+	game_fortune_reward_effect = { AMOUNT = medium_gold_value }
+	game_skill_reward_effect = { SKILL = learning AMOUNT = 2 CAP = 50 }
+	add_character_modifier = { modifier = shetani_trophy_modifier years = 5 }
+}
+
+# Spirits
+spirit_game_tags_effect = {
+	$MODE$_game_tag_with_category = { CATEGORY = type NAME = spirit }
+	$MODE$_game_tag_with_category = { CATEGORY = size NAME = medium }
+	$MODE$_game_tag = { NAME = intelligent }
+	$MODE$_game_tag = { NAME = cautious }
+}
+
+spirit_game_rewards_effect = {
+	game_prestige_reward_effect = { AMOUNT = medium_prestige_value   }
+	game_fortune_reward_effect = { AMOUNT = minor_gold_value }
+	game_stress_loss_home_turf_effect = { AMOUNT = minor_stress_loss  }
+	game_skill_reward_effect = { SKILL = prowess AMOUNT = 1 CAP = 10 }
+}
+
+shade_game_tags_effect = {
+	$MODE$_game_tag_with_category = { CATEGORY = type NAME = spirit }
+	$MODE$_game_tag_with_category = { CATEGORY = size NAME = medium }
+	$MODE$_game_tag = { NAME = intelligent }
+	$MODE$_game_tag = { NAME = social }
+	$MODE$_game_tag = { NAME = aggressive }
+}
+
+shade_game_rewards_effect = {
+	game_prestige_reward_effect = { AMOUNT = major_prestige_value   }
+	game_fortune_reward_effect = { AMOUNT = medium_gold_value }
+	game_stress_loss_home_turf_effect = { AMOUNT = medium_stress_loss  }
+	game_skill_reward_effect = { SKILL = prowess AMOUNT = 1 CAP = 30 }
+}
+
+djinn_game_tags_effect = {
+	$MODE$_game_tag_with_category = { CATEGORY = type NAME = spirit }
+	$MODE$_game_tag_with_category = { CATEGORY = size NAME = medium }
+	$MODE$_game_tag = { NAME = intelligent }
+	$MODE$_game_tag = { NAME = elusive }
+	$MODE$_game_tag = { NAME = cautious }
+	$MODE$_game_tag = { NAME = magic_user }
+}
+
+djinn_game_rewards_effect = {
+	game_prestige_reward_effect = { AMOUNT = massive_prestige_value }
+	game_fortune_reward_effect = { AMOUNT = major_gold_value }
+	game_stress_loss_home_turf_effect = { AMOUNT = medium_stress_loss  }
+	game_skill_reward_effect = { SKILL = prowess AMOUNT = 1 CAP = 40 }
+}
+
+banshee_game_tags_effect = {
+	$MODE$_game_tag_with_category = { CATEGORY = type NAME = spirit }
+	$MODE$_game_tag_with_category = { CATEGORY = size NAME = large }
+	$MODE$_game_tag = { NAME = intelligent }
+	$MODE$_game_tag = { NAME = aggressive }
+	$MODE$_game_tag = { NAME = magic_user }
+}
+
+banshee_game_rewards_effect = {
+	game_prestige_reward_effect = { AMOUNT = massive_prestige_value }
+	game_fortune_reward_effect = { AMOUNT = major_gold_value }
+	game_stress_loss_home_turf_effect = { AMOUNT = medium_stress_loss  }
+	game_skill_reward_effect = { SKILL = prowess AMOUNT = 1 CAP = 40 }
+}
+
+fortune_eater_game_tags_effect = {
+	$MODE$_game_tag_with_category = { CATEGORY = type NAME = spirit }
+	$MODE$_game_tag_with_category = { CATEGORY = size NAME = huge }
+	$MODE$_game_tag = { NAME = intelligent }
+	$MODE$_game_tag = { NAME = sixth_sense }
+	$MODE$_game_tag = { NAME = sedentary }
+}
+
+fortune_eater_game_rewards_effect = {
+	game_prestige_reward_effect = { AMOUNT = massive_prestige_value }
+	random_list = {
+		60 = { add_gold = medium_gold_value }
+		30 = { add_gold = major_gold_value }
+		10 = { add_gold = massive_gold_value }
+	}
+	duel = {
+		skill = learning
+		value = medium_skill_rating
+		1 = { # Disarmed the Duszkam
+			compare_modifier = {
+				value = scope:duel_value
+				multiplier = 0.5
+				min = 0
+			}
+			save_scope_value_as = {
+				name = disabled_duszkam
+				value = yes
+			}
+			add_gold = medium_gold_value
+			add_prestige = minor_prestige_gain
+			desc = disarmed_duszkam_tt
+		}
+		15 = { # Destroyed the Duszkam
+			compare_modifier = {
+				value = scope:duel_value
+				multiplier = -0.25
+				min = -14
+			}
+			min = 1
+			desc = destroy_duszkam_tt
+		}
+	}
+	game_stress_loss_home_turf_effect = { AMOUNT = medium_stress_loss  }
+	game_skill_reward_effect = { SKILL = prowess AMOUNT = 1 CAP = 50 }
+}
+
+cor_game_tags_effect = {
+	$MODE$_game_tag_with_category = { CATEGORY = type NAME = spirit }
+	$MODE$_game_tag_with_category = { CATEGORY = size NAME = variable_size}
+	$MODE$_game_tag = { NAME = mindrender }
+	$MODE$_game_tag = { NAME = sixth_sense }
+}
+
+cor_game_rewards_effect = {
+	game_prestige_reward_effect = { AMOUNT = major_prestige_value }
+	game_fortune_reward_effect = { AMOUNT = minor_gold_value }
+	game_stress_loss_home_turf_effect = { AMOUNT = minor_stress_loss }
+	game_skill_reward_effect = { SKILL = prowess AMOUNT = 1 CAP = 30}
+	add_character_modifier = { modifier = cor_trophy_modifier years = 5}
+}
+
+wildhunt_game_tags_effect = {
+	$MODE$_game_tag_with_category = { CATEGORY = type NAME = spirit }
+	$MODE$_game_tag_with_category = { CATEGORY = size NAME = medium }
+	$MODE$_game_tag = { NAME = aggressive }
+	$MODE$_game_tag = { NAME = fast }
+}
+
+wildhunt_game_rewards_effect = {
+	game_prestige_reward_effect = { AMOUNT = major_prestige_value }
+	game_fortune_reward_effect = { AMOUNT = medium_gold_value }
+	game_stress_loss_home_turf_effect = { AMOUNT = minor_stress_loss }
+	game_skill_reward_effect = { SKILL = prowess AMOUNT = 1 CAP = 25 }
+	add_character_modifier = { modifier = wildhunt_trophy_modifier years = 5 }
+}
+
+# Elementals
+leshen_game_tags_effect = {
+	$MODE$_game_tag_with_category = { CATEGORY = type NAME = elemental }
+	$MODE$_game_tag_with_category = { CATEGORY = elemental_type NAME = nature_elemental }
+	$MODE$_game_tag_with_category = { CATEGORY = size NAME = huge }
+	$MODE$_game_tag = { NAME = intelligent }
+	$MODE$_game_tag = { NAME = aggressive }
+}
+
+leshen_game_rewards_effect = {
+	game_prestige_reward_effect = { AMOUNT = massive_prestige_value   }
+	game_fortune_reward_effect = { AMOUNT = major_gold_value }
+	game_stress_loss_home_turf_effect = { AMOUNT = major_stress_loss  }
+	game_skill_reward_effect = { SKILL = prowess AMOUNT = 2 CAP = 40 }
+}
+
+rock_giant_game_tags_effect = {
+	$MODE$_game_tag_with_category = { CATEGORY = type NAME = elemental }
+	$MODE$_game_tag_with_category = { CATEGORY = elemental_type NAME = earth_elemental }
+	$MODE$_game_tag_with_category = { CATEGORY = size NAME = huge }
+	$MODE$_game_tag = { NAME = aggressive }
+	$MODE$_game_tag = { NAME = unyielding }
+}
+
+rock_giant_game_rewards_effect = {
+	game_prestige_reward_effect = { AMOUNT = major_prestige_value }
+	game_fortune_reward_effect = { AMOUNT = major_gold_value }
+	game_stress_loss_home_turf_effect = { AMOUNT = medium_stress_loss  }
+	game_skill_reward_effect = { SKILL = prowess AMOUNT = 1 CAP = 50 }
+}
+
+manzasiri_game_tags_effect = {
+	$MODE$_game_tag_with_category = { CATEGORY = type NAME = elemental }
+	$MODE$_game_tag_with_category = { CATEGORY = elemental_type NAME = volcanic_elemental }
+	$MODE$_game_tag_with_category = { CATEGORY = type NAME = huge }
+	$MODE$_game_tag = { NAME = aggressive }
+	$MODE$_game_tag = { NAME = unyielding }
+}
+
+manzasiri_game_rewards_effect = {
+	game_prestige_reward_effect = { AMOUNT = massive_prestige_value   }
+	game_fortune_reward_effect = { AMOUNT = major_gold_value }
+	game_stress_loss_home_turf_effect = { AMOUNT = major_stress_loss  }
+	game_skill_reward_effect = { SKILL = prowess AMOUNT = 2 CAP = 40 }
+	add_character_modifier = { modifier = manzasiri_trophy_modifier years = 5 }
+}
+
+living_blizzard_game_tags_effect = {
+	$MODE$_game_tag_with_category = { CATEGORY = type NAME = elemental }
+	$MODE$_game_tag_with_category = { CATEGORY = elemental_type NAME = ice_elemental }
+	$MODE$_game_tag_with_category = { CATEGORY = size NAME = huge }
+	$MODE$_game_tag = { NAME = aggressive }
+	$MODE$_game_tag = { NAME = intelligent }
+}
+
+living_blizzard_game_rewards_effect = {
+	game_prestige_reward_effect = { AMOUNT = massive_prestige_value   }
+	game_fortune_reward_effect = { AMOUNT = major_gold_value }
+	game_stress_loss_home_turf_effect = { AMOUNT = major_stress_loss  }
+	game_skill_reward_effect = { SKILL = prowess AMOUNT = 2 CAP = 40 }
+}
+
+whisperwind_game_tags_effect = {
+	$MODE$_game_tag_with_category = { CATEGORY = type NAME = elemental }
+	$MODE$_game_tag_with_category = { CATEGORY = elemental_type NAME = air_elemental }
+	$MODE$_game_tag_with_category = { CATEGORY = size NAME = variable_size }
+	$MODE$_game_tag = { NAME = aggressive }
+	$MODE$_game_tag = { NAME = magical_sickness }
+}
+
+whisperwind_game_rewards_effect = {
+	game_prestige_reward_effect = { AMOUNT = massive_prestige_value   }
+	game_fortune_reward_effect = { AMOUNT = major_gold_value }
+	game_stress_loss_home_turf_effect = { AMOUNT = major_stress_loss  }
+	game_skill_reward_effect = { SKILL = prowess AMOUNT = 2 CAP = 40 }
+}
+
+# Aberrations
+
+aboleth_game_tags_effect = {
+	$MODE$_game_tag_with_category = { CATEGORY = type NAME = aberration }
+	$MODE$_game_tag_with_category = { CATEGORY = size NAME = huge }
+	$MODE$_game_tag = { NAME = sixth_sense }
+	$MODE$_game_tag = { NAME = intelligent }
+	$MODE$_game_tag = { NAME = mindrender }
+}
+
+aboleth_game_rewards_effect = {
+	game_prestige_reward_effect = { AMOUNT = massive_prestige_value   }
+	game_fortune_reward_effect = { AMOUNT = major_gold_value }
+	game_stress_loss_home_turf_effect = { AMOUNT = major_stress_loss  }
+	game_skill_reward_effect = { SKILL = prowess AMOUNT = 3 CAP = 50 }
+}
+
+fogbeast_game_tags_effect = {
+	$MODE$_game_tag_with_category = { CATEGORY = type NAME = aberration }
+	$MODE$_game_tag_with_category = { CATEGORY = size NAME = variable_size }
+	$MODE$_game_tag = { NAME = sixth_sense }
+	$MODE$_game_tag = { NAME = unyielding }
+}
+
+fogbeast_game_rewards_effect = {
+	game_prestige_reward_effect = { AMOUNT = massive_prestige_value   }
+	game_fortune_reward_effect = { AMOUNT = major_gold_value }
+	game_stress_loss_home_turf_effect = { AMOUNT = major_stress_loss  }
+	game_skill_reward_effect = { SKILL = prowess AMOUNT = 3 CAP = 50 }
+}
+
+wendigo_game_tags_effect = {
+	$MODE$_game_tag_with_category = { CATEGORY = type NAME = aberration }
+	$MODE$_game_tag_with_category = { CATEGORY = size NAME = large }
+	$MODE$_game_tag = { NAME = sixth_sense }
+	$MODE$_game_tag = { NAME = intelligent }
+	$MODE$_game_tag = { NAME = aggressive }
+	$MODE$_game_tag = { NAME = elusive }
+}
+
+wendigo_game_rewards_effect = {
+	game_prestige_reward_effect = { AMOUNT = massive_prestige_value }
+	game_fortune_reward_effect = { AMOUNT = major_gold_value }
+	game_skill_reward_effect = { SKILL = prowess AMOUNT = 3 CAP = 50}	
+}
+
+#####################################################################
+# BIOZONE TABLES
+#####################################################################
+
+###########################
+# Universal Biozone Table #
+###########################
+
+biozone_effect = {
+	# Shattered Coast Biozones
+	$MODE$_biozone_effect = { NAME = kalathipsomi 		REGION = kalathipsomi_biozone 	DANGER = low }
+	$MODE$_biozone_effect = { NAME = mayikprolollan		REGION = mayikprolollan_biozone	DANGER = high }
+	$MODE$_biozone_effect = { NAME = etepezea	  		REGION = etepezea_biozone 		DANGER = medium }
+	$MODE$_biozone_effect = { NAME = imperial_isle		REGION = imperial_isle_biozone 	DANGER = none }
+	$MODE$_biozone_effect = { NAME = the_isles 			REGION = the_isles_biozone 		DANGER = low }
+	$MODE$_biozone_effect = { NAME = chevalie	  		REGION = chevalie_biozone 		DANGER = low }
+	$MODE$_biozone_effect = { NAME = black_mountains 	REGION = black_mountains_biozone DANGER = high }
+	$MODE$_biozone_effect = { NAME = vyshtanka 			REGION = vyshtanka_biozone 		DANGER = high }	
+	$MODE$_biozone_effect = { NAME = foglands 			REGION = foglands_biozone 		DANGER = extreme }
+	$MODE$_biozone_effect = { NAME = opakhasia 			REGION = opakhasia_biozone 	DANGER = low }
+	$MODE$_biozone_effect = { NAME = malcois			REGION = malcois_biozone	DANGER = medium }
+	$MODE$_biozone_effect = { NAME = continental_interior 	REGION = continental_interior_biozone 	DANGER = medium }	# Foglands in 1254, RIP
+
+	# Aironoi
+	$MODE$_biozone_effect = { NAME = western_aironoi 	REGION = western_aironoi_biozone 	DANGER = medium } 
+	$MODE$_biozone_effect = { NAME = great_steppe 		REGION = great_steppe_biozone 	DANGER = medium }
+	$MODE$_biozone_effect = { NAME = aironoian_southeast REGION = aironoian_southeast_biozone 	DANGER = medium }
+	$MODE$_biozone_effect = { NAME = brass_sea_coasts 	REGION = brass_sea_coasts_biozone 	DANGER = low }
+	$MODE$_biozone_effect = { NAME = amaghea_mountains 	REGION = amaghea_mountains_biozone DANGER = high }
+	$MODE$_biozone_effect = { NAME = redlands 			REGION = redlands_biozone	DANGER = extreme }
+	$MODE$_biozone_effect = { NAME = kashiryat 			REGION = kashiryat_biozone	DANGER = low }
+	$MODE$_biozone_effect = { NAME = krehejad 			REGION = krehejad_biozone	DANGER = medium }
+	
+	# Kashirya & Pirate Coast
+	$MODE$_biozone_effect = { NAME = north_kharadan REGION = north_kharadan_biozone	DANGER = high }
+	$MODE$_biozone_effect = { NAME = hyratan	REGION = hyratan_biozone	DANGER = medium }
+	$MODE$_biozone_effect = { NAME = darmirat_plain REGION = darmirat_plain_biozone	DANGER = medium }
+	$MODE$_biozone_effect = { NAME = kashti_flats REGION = kashti_flats_biozone	DANGER = high }
+	$MODE$_biozone_effect = { NAME = magiyor 	REGION = magiyor_biozone	DANGER = low }
+	$MODE$_biozone_effect = { NAME = kafasali 	REGION = kafasali_biozone	DANGER = medium }
+	$MODE$_biozone_effect = { NAME = vichacil 	REGION = vichacil_biozone	DANGER = low }
+	$MODE$_biozone_effect = { NAME = katuppilan REGION = katuppilan_biozone	DANGER = extreme }
+	$MODE$_biozone_effect = { NAME = rovarska	REGION = rovarska_biozone	DANGER = medium }
+	$MODE$_biozone_effect = { NAME = nightcoast REGION = nightcoast_biozone DANGER = medium }
+	
+	# Sarradonian Biozones - North and Northeast
+	# Geographic zones are temporary until map rework is complete
+	$MODE$_biozone_effect = { NAME = kharadamat				REGION = kharadamat_biozone 		DANGER = low }
+	$MODE$_biozone_effect = { NAME = sinhamiyah				REGION = sinhamiyah_biozone 		DANGER = low }
+	$MODE$_biozone_effect = { NAME = sirwali_coast			REGION = sirwali_biozone 				DANGER = medium }
+	$MODE$_biozone_effect = { NAME = al_ghazir				REGION = alghazir_biozone 		DANGER = medium }	# AKA the Forgotten/Eastern Isle
+	$MODE$_biozone_effect = { NAME = khenemhat				REGION = khenemhat_biozone 				DANGER = medium }
+	#$MODE$_biozone_effect = { NAME = aglabolu				REGION = world_es_eastern_coast 		DANGER = medium }
+	
+	# Sarradonian Biozones - West
+	$MODE$_biozone_effect = { NAME = ayyar_coast 			REGION = ayyar_coast_biozone 				DANGER = medium }
+	$MODE$_biozone_effect = { NAME = amsar 					REGION = amsar_biozone 				DANGER = low }
+	$MODE$_biozone_effect = { NAME = kemsar 				REGION = kemsar_biozone 				DANGER = high }
+	
+	# Sarradonian Biozones - Interior
+	$MODE$_biozone_effect = { NAME = sarradonian_mountains 	REGION = sarradonian_mountains_biozone 		DANGER = high }
+	$MODE$_biozone_effect = { NAME = sarradonian_desert 	REGION = sarradonian_desert_biozone 				DANGER = high }
+	
+	# Sarradonian Biozones - Tropics
+	$MODE$_biozone_effect = { NAME = damota				REGION = damota_biozone				DANGER = high }
+	$MODE$_biozone_effect = { NAME = cyrat 				REGION = cyrat_biozone			DANGER = high }		#Placeholder Region
+	$MODE$_biozone_effect = { NAME = crater 			REGION = crater_biozone			DANGER = medium }	#Placeholder Region
+}
+
+###############################
+# Biozone Tags & Fauna Tables #
+###############################
+
+kalathipsomi_biozone_info = {
+	$MODE$_biozone_game_effect = { NAME = stag CHANCE = 30 }
+	$MODE$_biozone_game_effect = { NAME = boar CHANCE = 30 }
+	$MODE$_biozone_game_effect = { NAME = porcupine CHANCE = 30 }
+	$MODE$_biozone_game_effect = { NAME = seal CHANCE = 10 }
+	$MODE$_biozone_game_effect = { NAME = ibex CHANCE = 10 }
+	$MODE$_biozone_game_effect = { NAME = wolf CHANCE = 30 }
+	$MODE$_biozone_game_effect = { NAME = lynx CHANCE = 15 }
+	$MODE$_biozone_game_effect = { NAME = bear CHANCE = 15 }
+	$MODE$_biozone_game_effect = { NAME = dire_stag CHANCE = 15 }
+	$MODE$_biozone_game_effect = { NAME = dire_boar CHANCE = 15 }
+	$MODE$_biozone_game_effect = { NAME = giant_spider CHANCE = 10 }
+	$MODE$_biozone_game_effect = { NAME = forest_troll CHANCE = 5 }
+	$MODE$_biozone_game_effect = { NAME = mammoth CHANCE = 2 }
+	$MODE$_biozone_game_effect = { NAME = giant CHANCE = 5 }
+	$MODE$_biozone_game_effect = { NAME = leshen CHANCE = 5 }
+}
+
+kalathipsomi_environment_info = {
+	$MODE$_environment_effect = { NAME = woodland }
+	$MODE$_environment_effect = { NAME = verdant }
+	$MODE$_environment_effect = { NAME = labyrinthine }
+}
+
+mayikprolollan_biozone_info = {
+	$MODE$_biozone_game_effect = { NAME = ibex CHANCE = 30 }
+	$MODE$_biozone_game_effect = { NAME = wolf CHANCE = 20 }
+	$MODE$_biozone_game_effect = { NAME = bear CHANCE = 10 }
+	$MODE$_biozone_game_effect = { NAME = giant_spider CHANCE = 10 }
+	$MODE$_biozone_game_effect = { NAME = gargoyle CHANCE = 10 }
+	$MODE$_biozone_game_effect = { NAME = royal_falcon CHANCE = 10 }
+	$MODE$_biozone_game_effect = { NAME = fortune_eater CHANCE = 5 }
+	$MODE$_biozone_game_effect = { NAME = whisperwind CHANCE = 5 }
+}
+
+mayikprolollan_environment_info = {
+	$MODE$_environment_effect = { NAME = mountainous }
+	$MODE$_environment_effect = { NAME = barren }
+	$MODE$_environment_effect = { NAME = challenging_terrain }
+}
+
+etepezea_biozone_info = {
+	$MODE$_biozone_game_effect = { NAME = ibex 		 CHANCE = 30 }
+	$MODE$_biozone_game_effect = { NAME = porcupine  CHANCE = 30 }
+	$MODE$_biozone_game_effect = { NAME = boar 		 CHANCE = 30 }
+	$MODE$_biozone_game_effect = { NAME = wolf 		 CHANCE = 15 }
+	$MODE$_biozone_game_effect = { NAME = giant_spider CHANCE = 10 }
+	$MODE$_biozone_game_effect = { NAME = bear 		 CHANCE = 5  }
+	$MODE$_biozone_game_effect = { NAME = cockatrice CHANCE = 5  }
+	$MODE$_biozone_game_effect = { NAME = wyrm 		 CHANCE = 2  }
+}
+
+etepezea_environment_info = {
+	$MODE$_environment_effect = { NAME = chaparral }
+	$MODE$_environment_effect = { NAME = challenging_terrain }
+	$MODE$_environment_effect = { NAME = poisonous_wildlife }
+}
+
+imperial_isle_biozone_info = {
+	$MODE$_biozone_game_effect = { NAME = stag 				CHANCE = 90  }
+	$MODE$_biozone_game_effect = { NAME = peacock 			CHANCE = 30 }
+	$MODE$_biozone_game_effect = { NAME = boar				CHANCE = 30 }
+	$MODE$_biozone_game_effect = { NAME = emperor_peacock	CHANCE = 5 }
+	$MODE$_biozone_game_effect = { NAME = cockatrice 		CHANCE = 1  }
+	$MODE$_biozone_game_effect = { NAME = banshee 			CHANCE = 1  }
+}
+
+imperial_isle_environment_info = {
+	$MODE$_environment_effect = { NAME = chaparral }
+	$MODE$_environment_effect = { NAME = idyllic }
+}
+
+the_isles_biozone_info = {
+	$MODE$_biozone_game_effect = { NAME = wolf 		CHANCE = 45 }
+	$MODE$_biozone_game_effect = { NAME = seal 		CHANCE = 40 }
+	$MODE$_biozone_game_effect = { NAME = porcupine 	CHANCE = 35 }
+	$MODE$_biozone_game_effect = { NAME = dire_crab 	CHANCE = 25 }
+	$MODE$_biozone_game_effect = { NAME = royal_falcon CHANCE = 20 }
+	$MODE$_biozone_game_effect = { NAME = sea_scorpion CHANCE = 20 }
+	$MODE$_biozone_game_effect = { NAME = merbeast 	CHANCE = 15 }
+	$MODE$_biozone_game_effect = { NAME = spirit 	CHANCE = 10 }
+
+}
+
+the_isles_environment_info = {
+	$MODE$_environment_effect = { NAME = challenging_terrain }
+	$MODE$_environment_effect = { NAME = labyrinthine }
+}
+
+chevalie_biozone_info = {
+	$MODE$_biozone_game_effect = { NAME = stag CHANCE = 50 }
+	$MODE$_biozone_game_effect = { NAME = boar CHANCE = 50 }
+	$MODE$_biozone_game_effect = { NAME = wolf CHANCE = 50 }
+	$MODE$_biozone_game_effect = { NAME = porcupine CHANCE = 50 }
+	$MODE$_biozone_game_effect = { NAME = lynx CHANCE = 25 }
+	$MODE$_biozone_game_effect = { NAME = griffon CHANCE = 20 }
+	$MODE$_biozone_game_effect = { NAME = seal CHANCE = 15 }	
+	$MODE$_biozone_game_effect = { NAME = giant_spider CHANCE = 15 }
+	$MODE$_biozone_game_effect = { NAME = peluda CHANCE = 10}
+	$MODE$_biozone_game_effect = { NAME = dire_griffon CHANCE = 5 }	
+	$MODE$_biozone_game_effect = { NAME = royal_falcon CHANCE = 5 }
+	$MODE$_biozone_game_effect = { NAME = forest_troll CHANCE = 5 }
+	$MODE$_biozone_game_effect = { NAME = tarasque CHANCE = 4 }
+	$MODE$_biozone_game_effect = { NAME = aboleth CHANCE = 2 }
+
+}
+
+chevalie_environment_info = {
+	$MODE$_environment_effect = { NAME = woodland }
+}
+
+black_mountains_biozone_info = {
+	$MODE$_biozone_game_effect = { NAME = ibex CHANCE = 10  }
+	$MODE$_biozone_game_effect = { NAME = giant_spider CHANCE = 30 }
+	$MODE$_biozone_game_effect = { NAME = griffon CHANCE = 10 }
+	$MODE$_biozone_game_effect = { NAME = dire_griffon CHANCE = 5 }
+	$MODE$_biozone_game_effect = { NAME = royal_falcon CHANCE = 2 }
+}
+
+black_mountains_environment_info = {
+	$MODE$_environment_effect = { NAME = woodland }
+	$MODE$_environment_effect = { NAME = challenging_terrain }
+	$MODE$_environment_effect = { NAME = cold }
+}
+
+vyshtanka_biozone_info = {
+	$MODE$_biozone_game_effect = { NAME = ibex CHANCE = 10 }
+	$MODE$_biozone_game_effect = { NAME = bison CHANCE = 20 }
+	$MODE$_biozone_game_effect = { NAME = wolf CHANCE = 20 }
+	$MODE$_biozone_game_effect = { NAME = giant_spider CHANCE = 10 }
+	$MODE$_biozone_game_effect = { NAME = mammoth CHANCE = 20 }
+	$MODE$_biozone_game_effect = { NAME = daggertusk CHANCE = 10 }
+	$MODE$_biozone_game_effect = { NAME = forest_troll CHANCE = 10 }
+	$MODE$_biozone_game_effect = { NAME = shade CHANCE = 10 }
+	$MODE$_biozone_game_effect = { NAME = leshen CHANCE = 5 }
+	$MODE$_biozone_game_effect = { NAME = wendigo CHANCE = 5 }
+	$MODE$_biozone_game_effect = { NAME = false_hydra CHANCE = 5 }
+}
+
+vyshtanka_environment_info = {
+	$MODE$_environment_effect = { NAME = mountainous }
+	$MODE$_environment_effect = { NAME = barren }
+	$MODE$_environment_effect = { NAME = challenging_terrain }
+	$MODE$_environment_effect = { NAME = cold }
+}
+
+foglands_biozone_info = {
+	$MODE$_biozone_game_effect = { NAME = fogbeast CHANCE = 100  }
+}
+
+foglands_environment_info = {
+	$MODE$_environment_effect = { NAME = wastelands }
+	$MODE$_environment_effect = { NAME = fogswept }
+	$MODE$_environment_effect = { NAME = barren }
+	$MODE$_environment_effect = { NAME = labyrinthine }
+	$MODE$_environment_effect = { NAME = hostile_natives }
+	$MODE$_environment_effect = { NAME = cold }
+}
+
+continental_interior_environment_info = {
+	$MODE$_environment_effect = { NAME = woodland }
+	$MODE$_environment_effect = { NAME = labyrinthine }
+	$MODE$_environment_effect = { NAME = cold }
+}
+
+continental_interior_biozone_info = {
+	$MODE$_biozone_game_effect = { NAME = stag CHANCE = 50 }
+	$MODE$_biozone_game_effect = { NAME = boar CHANCE = 50 }
+	$MODE$_biozone_game_effect = { NAME = wolf CHANCE = 50 }
+	$MODE$_biozone_game_effect = { NAME = bison CHANCE = 30 }
+	$MODE$_biozone_game_effect = { NAME = lynx CHANCE = 30 }
+	$MODE$_biozone_game_effect = { NAME = daggertusk CHANCE = 10 }
+}
+
+opakhasia_biozone_info = {
+	$MODE$_biozone_game_effect = { NAME = stag CHANCE = 50 }
+	$MODE$_biozone_game_effect = { NAME = porcupine CHANCE = 50 }
+	$MODE$_biozone_game_effect = { NAME = boar CHANCE = 30 }
+	$MODE$_biozone_game_effect = { NAME = giant_sloth CHANCE = 15 }
+	$MODE$_biozone_game_effect = { NAME = ibex CHANCE = 10 }
+	$MODE$_biozone_game_effect = { NAME = wolf CHANCE = 10 }
+	$MODE$_biozone_game_effect = { NAME = bear CHANCE = 5 }
+	$MODE$_biozone_game_effect = { NAME = crocotta CHANCE = 5 }
+	$MODE$_biozone_game_effect = { NAME = giant_spider CHANCE = 5 }
+}
+
+opakhasia_environment_info = {
+	$MODE$_environment_effect = { NAME = woodland }
+	$MODE$_environment_effect = { NAME = idyllic }
+	$MODE$_environment_effect = { NAME = mountainous }
+}
+
+malcois_environment_info = {
+	$MODE$_environment_effect = { NAME = mountainous }
+	$MODE$_environment_effect = { NAME = challenging_terrain }
+}
+
+malcois_biozone_info = {
+	$MODE$_biozone_game_effect = { NAME = stag CHANCE = 50 }
+	$MODE$_biozone_game_effect = { NAME = boar CHANCE = 40 }
+	$MODE$_biozone_game_effect = { NAME = wolf CHANCE = 20 }
+	$MODE$_biozone_game_effect = { NAME = dire_crab CHANCE = 10 }
+	$MODE$_biozone_game_effect = { NAME = bear CHANCE = 10 }
+	$MODE$_biozone_game_effect = { NAME = giant_spider CHANCE = 10 }
+	$MODE$_biozone_game_effect = { NAME = pooka CHANCE = 10 }
+	$MODE$_biozone_game_effect = { NAME = tinessian_lion CHANCE = 5 }
+	$MODE$_biozone_game_effect = { NAME = doyarchu CHANCE = 10 }
+	$MODE$_biozone_game_effect = { NAME = manticore CHANCE = 10 }
+	$MODE$_biozone_game_effect = { NAME = chimera CHANCE = 3 }
+}
+
+western_aironoi_biozone_info = {
+	$MODE$_biozone_game_effect = { NAME = ibex 		 CHANCE = 30 }
+	$MODE$_biozone_game_effect = { NAME = boar 		 CHANCE = 30 }
+	$MODE$_biozone_game_effect = { NAME = wolf 		 CHANCE = 15 }
+	$MODE$_biozone_game_effect = { NAME = bear 		 CHANCE = 10  }
+	$MODE$_biozone_game_effect = { NAME = royal_falcon CHANCE = 10 }
+	$MODE$_biozone_game_effect = { NAME = karankoncolos CHANCE = 10 }
+	$MODE$_biozone_game_effect = { NAME = kursha 	CHANCE  = 10 }
+	$MODE$_biozone_game_effect = { NAME = ubir 		CHANCE = 4 }	
+	$MODE$_biozone_game_effect = { NAME = cor 		 CHANCE = 1 }
+
+}
+
+western_aironoi_environment_info = {
+	$MODE$_environment_effect = { NAME = challenging_terrain }
+	$MODE$_environment_effect = { NAME = cold }
+}
+
+great_steppe_biozone_info = {
+	$MODE$_biozone_game_effect = { NAME = camel 	CHANCE = 15 }
+	$MODE$_biozone_game_effect = { NAME = bison 	CHANCE = 15 }	
+	$MODE$_biozone_game_effect = { NAME = karankoncolos CHANCE = 10 }
+	$MODE$_biozone_game_effect = { NAME = ubir 		CHANCE = 4 }
+	$MODE$_biozone_game_effect = { NAME = zilant 	CHANCE = 1 } 		
+}
+
+great_steppe_environment_info = {
+	$MODE$_environment_effect = { NAME = flat_terrain }
+	$MODE$_environment_effect = { NAME = cold }	
+}
+
+aironoian_southeast_biozone_info = {
+	$MODE$_biozone_game_effect = { NAME = antelope 	CHANCE = 35 }
+	$MODE$_biozone_game_effect = { NAME = ibex		CHANCE = 30 }
+	$MODE$_biozone_game_effect = { NAME = porcupine CHANCE = 25 }	
+	$MODE$_biozone_game_effect = { NAME = boar 		CHANCE = 20 }	
+	$MODE$_biozone_game_effect = { NAME = wolf 		CHANCE = 15 }
+	$MODE$_biozone_game_effect = { NAME = bison 	CHANCE = 10 }	
+	$MODE$_biozone_game_effect = { NAME = bear 		CHANCE = 10  }
+	$MODE$_biozone_game_effect = { NAME = manzasiri CHANCE = 2 }	
+}
+
+aironoian_southeast_environment_info = {
+	$MODE$_environment_effect = { NAME = challenging_terrain }
+	$MODE$_environment_effect = { NAME = hot }
+}
+
+brass_sea_coasts_biozone_info = {
+	$MODE$_biozone_game_effect = { NAME = boar 		CHANCE = 30 }
+	$MODE$_biozone_game_effect = { NAME = antelope 	CHANCE = 30 }
+	$MODE$_biozone_game_effect = { NAME = porcupine CHANCE = 25 }	
+	$MODE$_biozone_game_effect = { NAME = bison 	CHANCE = 25 }
+	$MODE$_biozone_game_effect = { NAME = hyena 	CHANCE = 15 }	
+	$MODE$_biozone_game_effect = { NAME = ubir 		CHANCE = 4 }	
+	$MODE$_biozone_game_effect = { NAME = ukhinbooum CHANCE = 4 }
+}
+
+brass_sea_coasts_environment_info = {
+	$MODE$_environment_effect = { NAME = verdant }
+	$MODE$_environment_effect = { NAME = idyllic }
+}
+
+amaghea_mountains_biozone_info = {
+	$MODE$_biozone_game_effect = { NAME = ibex		CHANCE = 30 }
+	$MODE$_biozone_game_effect = { NAME = porcupine CHANCE = 20 }	
+	$MODE$_biozone_game_effect = { NAME = wolf 		CHANCE = 15 }
+	$MODE$_biozone_game_effect = { NAME = hyena 	CHANCE = 15 }
+	$MODE$_biozone_game_effect = { NAME = bear 		CHANCE = 15 }	
+	$MODE$_biozone_game_effect = { NAME = pegasus 	CHANCE = 10 }
+	$MODE$_biozone_game_effect = { NAME = giant_spider CHANCE = 10 }
+	$MODE$_biozone_game_effect = { NAME = ochokochi CHANCE = 10 }
+	$MODE$_biozone_game_effect = { NAME = almas     CHANCE = 5 }
+	$MODE$_biozone_game_effect = { NAME = devi 		CHANCE = 5 }	
+	$MODE$_biozone_game_effect = { NAME = cor 		CHANCE = 1 }	
+}
+
+amaghea_mountains_environment_info = {
+	$MODE$_environment_effect = { NAME = challenging_terrain }
+	$MODE$_environment_effect = { NAME = mountainous }
+	$MODE$_environment_effect = { NAME = cold }
+}
+
+redlands_biozone_info = {
+	$MODE$_biozone_game_effect = { NAME = ugkilrrrmag CHANCE = 10 }
+	$MODE$_biozone_game_effect = { NAME = gaunt 	CHANCE = 5 }
+}
+
+redlands_environment_info = {
+	$MODE$_environment_effect = { NAME = challenging_terrain }
+	$MODE$_environment_effect = { NAME = labyrinthine }
+	$MODE$_environment_effect = { NAME = barren }
+}
+
+
+krehejad_environment_info = {
+	$MODE$_environment_effect = { NAME = challenging_terrain }
+	$MODE$_environment_effect = { NAME = mountainous }
+	$MODE$_environment_effect = { NAME = chaparral }
+}
+
+krehejad_biozone_info = {
+	$MODE$_biozone_game_effect = { NAME  = stag CHANCE = 30 }
+	$MODE$_biozone_game_effect = { NAME = leopard CHANCE = 25 }
+	$MODE$_biozone_game_effect = { NAME = mongoose CHANCE = 25 }
+	$MODE$_biozone_game_effect = { NAME = gorilla CHANCE = 20 }
+	$MODE$_biozone_game_effect = { NAME = coatl CHANCE = 3 }
+}
+
+damota_environment_info = {
+	$MODE$_environment_effect = { NAME = labyrinthine }
+	$MODE$_environment_effect = { NAME = challenging_terrain }
+	$MODE$_environment_effect = { NAME = jungle }
+}
+
+damota_biozone_info = {
+	$MODE$_biozone_game_effect = { NAME = warthog CHANCE = 50 }
+	$MODE$_biozone_game_effect = { NAME = monkey CHANCE = 50 }
+	$MODE$_biozone_game_effect = { NAME = cheetah CHANCE = 25 }
+	$MODE$_biozone_game_effect = { NAME = lion CHANCE = 20 }
+	$MODE$_biozone_game_effect = { NAME = giant_spider CHANCE = 15 }
+	$MODE$_biozone_game_effect = { NAME = hyena CHANCE = 30 }
+	$MODE$_biozone_game_effect = { NAME = crocodile CHANCE = 40 }
+	$MODE$_biozone_game_effect = { NAME = hippopotamus CHANCE = 15 }
+	$MODE$_biozone_game_effect = { NAME = gorilla CHANCE = 10 }
+	$MODE$_biozone_game_effect = { NAME = shetani CHANCE = 15 }
+	$MODE$_biozone_game_effect = { NAME = damotan_elephant CHANCE = 25 }
+	$MODE$_biozone_game_effect = { NAME = panther CHANCE = 30 }
+}
+
+cyrat_environment_info = {
+	$MODE$_environment_effect = { NAME = labyrinthine }
+	$MODE$_environment_effect = { NAME = jungle }
+	$MODE$_environment_effect = { NAME = challenging_terrain }
+}
+
+cyrat_biozone_info = {
+	$MODE$_biozone_game_effect = { NAME = monkey CHANCE = 50 }
+	$MODE$_biozone_game_effect = { NAME = giant_spider CHANCE = 50 }
+	$MODE$_biozone_game_effect = { NAME = leopard CHANCE = 30 }
+	$MODE$_biozone_game_effect = { NAME = rhinoceros CHANCE = 25 }
+	$MODE$_biozone_game_effect = { NAME = crocodile CHANCE = 25 }
+	$MODE$_biozone_game_effect = { NAME = gorilla CHANCE = 10 }
+	$MODE$_biozone_game_effect = { NAME = dreadleech CHANCE = 20 }
+	$MODE$_biozone_game_effect = { NAME = dire_mosquito CHANCE = 15 }
+	$MODE$_biozone_game_effect = { NAME = adze CHANCE = 15 }
+	$MODE$_biozone_game_effect = { NAME = nagual CHANCE = 10 }
+	$MODE$_biozone_game_effect = { NAME = coatl CHANCE = 3 }	
+	$MODE$_biozone_game_effect = { NAME = myrmeke CHANCE = 10 }
+	$MODE$_biozone_game_effect = { NAME = running_raptor CHANCE = 20 }
+	$MODE$_biozone_game_effect = { NAME = twin_serpent CHANCE = 15 }
+	$MODE$_biozone_game_effect = { NAME = roaring_lizard CHANCE = 3 }
+}
+
+crater_environment_info = {
+	$MODE$_environment_effect = { NAME = mountainous }
+	$MODE$_environment_effect = { NAME = verdant }
+	$MODE$_environment_effect = { NAME = jungle }
+}
+
+crater_biozone_info = {
+	$MODE$_biozone_game_effect = { NAME = monkey CHANCE = 50 }
+	$MODE$_biozone_game_effect = { NAME = leopard CHANCE = 30 }
+	$MODE$_biozone_game_effect = { NAME = tiger CHANCE = 20 }
+	$MODE$_biozone_game_effect = { NAME = crocodile CHANCE = 20 }
+	$MODE$_biozone_game_effect = { NAME = giant_spider CHANCE = 15 }
+	$MODE$_biozone_game_effect = { NAME = hippopotamus CHANCE = 15 }
+	$MODE$_biozone_game_effect = { NAME = urmahlullu CHANCE = 10 }
+}
+
+kharadamat_environment_info = {
+	$MODE$_environment_effect = { NAME = woodland }
+	$MODE$_environment_effect = { NAME = verdant }
+	$MODE$_environment_effect = { NAME = labyrinthine }
+}
+
+kharadamat_biozone_info = {
+	$MODE$_biozone_game_effect = { NAME = stag CHANCE = 20 }
+	$MODE$_biozone_game_effect = { NAME = porcupine CHANCE = 10 }
+	$MODE$_biozone_game_effect = { NAME = warthog CHANCE = 20 }
+	$MODE$_biozone_game_effect = { NAME = ibex CHANCE = 10 }
+	$MODE$_biozone_game_effect = { NAME = wolf CHANCE = 10 }
+	$MODE$_biozone_game_effect = { NAME = lynx CHANCE = 10 }
+	$MODE$_biozone_game_effect = { NAME = bear CHANCE = 5 }
+	$MODE$_biozone_game_effect = { NAME = giant_spider CHANCE = 5 }
+	$MODE$_biozone_game_effect = { NAME = crocodile CHANCE = 5 }
+	$MODE$_biozone_game_effect = { NAME = cockatrice CHANCE = 5 }
+	$MODE$_biozone_game_effect = { NAME = roc CHANCE = 5 }
+	$MODE$_biozone_game_effect = { NAME = shahmaran CHANCE = 1 }
+	$MODE$_biozone_game_effect = { NAME = leshen CHANCE = 2 }
+	$MODE$_biozone_game_effect = { NAME = simurgh CHANCE = 1 }
+}
+
+sinhamiyah_environment_info = {
+	$MODE$_environment_effect = { NAME = chaparral }
+	$MODE$_environment_effect = { NAME = verdant }
+}
+
+sinhamiyah_biozone_info = {
+	$MODE$_biozone_game_effect = { NAME = boar 				CHANCE = 10 }
+	$MODE$_biozone_game_effect = { NAME = ibex 				CHANCE = 10 }
+	$MODE$_biozone_game_effect = { NAME = wolf 				CHANCE = 5 }
+	$MODE$_biozone_game_effect = { NAME = lion 				CHANCE = 10 }
+	$MODE$_biozone_game_effect = { NAME = giant_spider 		CHANCE = 2 }
+	$MODE$_biozone_game_effect = { NAME = crocodile 		CHANCE = 20 }
+	$MODE$_biozone_game_effect = { NAME = sarradon_elephant CHANCE = 10 }
+	$MODE$_biozone_game_effect = { NAME = rhinoceros 		CHANCE = 10 }
+	$MODE$_biozone_game_effect = { NAME = roc 				CHANCE = 5 }
+	$MODE$_biozone_game_effect = { NAME = shahmaran 		CHANCE = 1 }
+	$MODE$_biozone_game_effect = { NAME = simurgh 			CHANCE = 1 }
+}
+
+sirwali_coast_environment_info = {
+	$MODE$_environment_effect = { NAME = chaparral }
+	$MODE$_environment_effect = { NAME = hot }
+}
+
+sirwali_coast_biozone_info = {
+	$MODE$_biozone_game_effect = { NAME = dire_crab 	CHANCE = 50 }
+	$MODE$_biozone_game_effect = { NAME = sea_scorpion 	CHANCE = 25 }
+	$MODE$_biozone_game_effect = { NAME = ostrich CHANCE = 15 }
+	$MODE$_biozone_game_effect = { NAME = camel CHANCE = 10 }
+	$MODE$_biozone_game_effect = { NAME = devouring_worm CHANCE = 10 }
+	$MODE$_biozone_game_effect = { NAME = shahmaran CHANCE = 1 }
+	$MODE$_biozone_game_effect = { NAME = simurgh CHANCE = 1 }
+}
+
+al_ghazir_environment_info = {
+	$MODE$_environment_effect = { NAME = chaparral }
+	$MODE$_environment_effect = { NAME = challenging_terrain }
+}
+
+al_ghazir_biozone_info = {
+	$MODE$_biozone_game_effect = { NAME = ibex CHANCE = 10 }
+	$MODE$_biozone_game_effect = { NAME = hyena 	CHANCE = 10}
+	$MODE$_biozone_game_effect = { NAME = spirit CHANCE = 20 }
+	$MODE$_biozone_game_effect = { NAME = giant_spider CHANCE = 2 }
+	$MODE$_biozone_game_effect = { NAME = shade CHANCE = 10 }
+	$MODE$_biozone_game_effect = { NAME = roc CHANCE = 5 }
+	$MODE$_biozone_game_effect = { NAME = shahmaran CHANCE = 1 }
+	$MODE$_biozone_game_effect = { NAME = banshee 	CHANCE = 5  }
+}
+
+khenemhat_environment_info = {
+	$MODE$_environment_effect = { NAME = savannah }
+	$MODE$_environment_effect = { NAME = hot }
+}
+
+khenemhat_biozone_info = {
+	$MODE$_biozone_game_effect = { NAME = antelope CHANCE = 20 }
+	$MODE$_biozone_game_effect = { NAME = camel CHANCE = 10 }
+	$MODE$_biozone_game_effect = { NAME = zebra CHANCE = 20 }
+	$MODE$_biozone_game_effect = { NAME = hyena CHANCE = 20 }
+	$MODE$_biozone_game_effect = { NAME = ostrich CHANCE = 15 }
+	$MODE$_biozone_game_effect = { NAME = ibex CHANCE = 10 }
+	$MODE$_biozone_game_effect = { NAME = cheetah CHANCE = 10 }
+	$MODE$_biozone_game_effect = { NAME = giant_spider CHANCE = 2 }
+	$MODE$_biozone_game_effect = { NAME = crocodile CHANCE = 20 }
+	$MODE$_biozone_game_effect = { NAME = hippopotamus CHANCE = 10 }
+	$MODE$_biozone_game_effect = { NAME = sarradon_elephant CHANCE = 10 }
+	$MODE$_biozone_game_effect = { NAME = roc CHANCE = 5 }
+	$MODE$_biozone_game_effect = { NAME = shahmaran CHANCE = 1 }
+	$MODE$_biozone_game_effect = { NAME = djinn CHANCE = 2 }
+}
+
+#aglabolu_environment_info = {
+#	$MODE$_environment_effect = { NAME = arid }
+#	$MODE$_environment_effect = { NAME = hot }
+#}
+#
+#aglabolu_biozone_info = {
+#
+#}
+
+ayyar_coast_environment_info = {
+	$MODE$_environment_effect = { NAME = chaparral }
+	$MODE$_environment_effect = { NAME = hot }
+}
+
+ayyar_coast_biozone_info = {
+	$MODE$_biozone_game_effect = { NAME = ostrich CHANCE = 25 }
+	$MODE$_biozone_game_effect = { NAME = hyena CHANCE = 20 }
+	$MODE$_biozone_game_effect = { NAME = ibex CHANCE = 20 }
+	$MODE$_biozone_game_effect = { NAME = giant_spider CHANCE = 10 }
+	$MODE$_biozone_game_effect = { NAME = merbeast CHANCE = 10 }
+	$MODE$_biozone_game_effect = { NAME = roc CHANCE = 5 }
+	$MODE$_biozone_game_effect = { NAME = shahmaran CHANCE = 1 }
+	$MODE$_biozone_game_effect = { NAME = simurgh CHANCE = 1 }
+}
+
+amsar_environment_info = {
+	$MODE$_environment_effect = { NAME = chaparral }
+	$MODE$_environment_effect = { NAME = hot }
+}
+
+amsar_biozone_info = {
+	$MODE$_biozone_game_effect = { NAME = ibex 				CHANCE = 10 }
+	$MODE$_biozone_game_effect = { NAME = hyena 			CHANCE = 10 }
+	$MODE$_biozone_game_effect = { NAME = zebra 			CHANCE = 15 }
+	$MODE$_biozone_game_effect = { NAME = giant_spider 		CHANCE = 5 }
+	$MODE$_biozone_game_effect = { NAME = crocodile 		CHANCE = 10 }
+	$MODE$_biozone_game_effect = { NAME = rhinoceros 		CHANCE = 10 }
+	$MODE$_biozone_game_effect = { NAME = sarradon_elephant CHANCE = 10}
+	$MODE$_biozone_game_effect = { NAME = lion 		 		CHANCE = 10 }
+	$MODE$_biozone_game_effect = { NAME = hippopotamus 		CHANCE = 8 }
+	$MODE$_biozone_game_effect = { NAME = karkadann 		CHANCE = 5 }
+	$MODE$_biozone_game_effect = { NAME = roc 				CHANCE = 5 }
+	$MODE$_biozone_game_effect = { NAME = simurgh 			CHANCE = 1 }
+}
+
+kemsar_environment_info = {
+	$MODE$_environment_effect = { NAME = arid }
+	$MODE$_environment_effect = { NAME = hot }
+	$MODE$_environment_effect = { NAME = barren }
+	$MODE$_environment_effect = { NAME = labyrinthine }
+}
+
+kemsar_biozone_info = {
+	$MODE$_biozone_game_effect = { NAME = camel CHANCE = 10 }
+	$MODE$_biozone_game_effect = { NAME = devouring_worm CHANCE = 10 }
+	$MODE$_biozone_game_effect = { NAME = apep_ibizan CHANCE = 1 }
+	$MODE$_biozone_game_effect = { NAME = hieracosphinx CHANCE = 3 }
+}
+
+sarradonian_mountains_environment_info = {
+	$MODE$_environment_effect = { NAME = mountainous }
+	$MODE$_environment_effect = { NAME = hot }
+	$MODE$_environment_effect = { NAME = barren }
+}
+
+sarradonian_mountains_biozone_info = {
+	$MODE$_biozone_game_effect = { NAME = giant_spider CHANCE = 20 }
+	$MODE$_biozone_game_effect = { NAME = rock_giant CHANCE = 10 }
+	$MODE$_biozone_game_effect = { NAME = simurgh CHANCE = 10 }
+	$MODE$_biozone_game_effect = { NAME = shahmaran CHANCE = 5 }
+}
+
+sarradonian_desert_environment_info = {
+	$MODE$_environment_effect = { NAME = arid }
+	$MODE$_environment_effect = { NAME = hot }
+	$MODE$_environment_effect = { NAME = barren }
+	$MODE$_environment_effect = { NAME = labyrinthine }
+}
+
+sarradonian_desert_biozone_info = {
+	$MODE$_biozone_game_effect = { NAME = camel CHANCE = 10 }
+	$MODE$_biozone_game_effect = { NAME = devouring_worm CHANCE = 10 }
+	$MODE$_biozone_game_effect = { NAME = shahmaran CHANCE = 1 }
+	$MODE$_biozone_game_effect = { NAME = djinn CHANCE = 5 }
+	$MODE$_biozone_game_effect = { NAME = simurgh CHANCE = 1 }
+}
+
+kashiryat_environment_info = {
+	$MODE$_environment_effect = { NAME = verdant }
+	$MODE$_environment_effect = { NAME  = idyllic }
+}
+
+kashiryat_biozone_info = {
+	$MODE$_biozone_game_effect = { NAME = antelope CHANCE = 30 }
+	$MODE$_biozone_game_effect = { NAME = camel CHANCE = 25 }
+	$MODE$_biozone_game_effect = { NAME = bison 	CHANCE = 25 }
+	$MODE$_biozone_game_effect = { NAME = mongoose CHANCE = 25 }
+	$MODE$_biozone_game_effect = { NAME = gaur CHANCE = 20 }
+}
+north_kharadan_environment_info = {
+	$MODE$_environment_effect = { NAME = cold }
+	$MODE$_environment_effect = { NAME = mountainous }
+	$MODE$_environment_effect = { NAME = labyrinthine }
+}
+
+north_kharadan_biozone_info = {
+	$MODE$_biozone_game_effect = { NAME = tahr 	CHANCE = 20 }
+	$MODE$_biozone_game_effect = { NAME = markhor CHANCE = 20 }
+	$MODE$_biozone_game_effect = { NAME = snow_leopard CHANCE = 15 }
+	$MODE$_biozone_game_effect = { NAME = living_blizzard CHANCE = 5 }
+}
+
+hyratan_environment_info = {
+	$MODE$_environment_effect = { NAME = mountainous }
+	$MODE$_environment_effect = { NAME = cold }
+	$MODE$_environment_effect = { NAME = challenging_terrain }
+}
+
+hyratan_biozone_info = {
+	$MODE$_biozone_game_effect = { NAME = mongoose CHANCE = 23 }
+	$MODE$_biozone_game_effect = { NAME = tahr 	CHANCE = 20 }
+	$MODE$_biozone_game_effect = { NAME = markhor CHANCE = 20 }
+	$MODE$_biozone_game_effect = { NAME = sloth_bear CHANCE = 18 }
+	$MODE$_biozone_game_effect = { NAME = snow_leopard CHANCE = 15 }
+	$MODE$_biozone_game_effect = { NAME = lynx CHANCE = 10 }
+}
+
+darmirat_plain_environment_info = {
+	$MODE$_environment_effect = { NAME = verdant }
+	$MODE$_environment_effect = { NAME = monsoon }
+}
+
+darmirat_plain_biozone_info = {
+	$MODE$_biozone_game_effect = { NAME = gaur CHANCE = 30 }
+	$MODE$_biozone_game_effect = { NAME = mongoose CHANCE = 25 }
+	$MODE$_biozone_game_effect = { NAME = blackbuck CHANCE = 25 }
+	$MODE$_biozone_game_effect = { NAME = kashiryan_elephant CHANCE = 20 }
+	$MODE$_biozone_game_effect = { NAME = tiger CHANCE = 15 }
+	$MODE$_biozone_game_effect = { NAME = bhramar CHANCE = 10 }
+}
+
+kashti_flats_environment_info = {
+	$MODE$_environment_effect = { NAME = hot }
+	$MODE$_environment_effect = { NAME = poisonous_wildlife }
+	$MODE$_environment_effect = { NAME = monsoon }
+}
+
+kashti_flats_biozone_info = {
+	$MODE$_biozone_game_effect = { NAME = jackal CHANCE = 25 }
+	$MODE$_biozone_game_effect = { NAME = bubalus CHANCE = 20 }
+	$MODE$_biozone_game_effect = { NAME = king_cobra CHANCE = 20 }
+	$MODE$_biozone_game_effect = { NAME = emperorcobra CHANCE = 15 }
+	$MODE$_biozone_game_effect = { NAME = crocodile CHANCE = 10 }
+	$MODE$_biozone_game_effect = { NAME = gajara CHANCE = 5 }
+}
+
+magiyor_environment_info = {
+	$MODE$_environment_effect = { NAME = flat_terrain }
+	$MODE$_environment_effect = { NAME = idyllic }
+}
+
+magiyor_biozone_info = {
+	$MODE$_biozone_game_effect = { NAME = peacock CHANCE = 25 }
+	$MODE$_biozone_game_effect = { NAME = sunbird CHANCE = 25 }
+	$MODE$_biozone_game_effect = { NAME = crown_bird CHANCE = 20 }
+	$MODE$_biozone_game_effect = { NAME = blackbuck CHANCE = 20 }
+	$MODE$_biozone_game_effect = { NAME = jackal CHANCE = 20 }
+	$MODE$_biozone_game_effect = { NAME = mongoose CHANCE = 15 }
+}
+
+kafasali_environment_info = {
+	$MODE$_environment_effect = { NAME = arid }
+	$MODE$_environment_effect = { NAME = woodland }
+	$MODE$_environment_effect = { NAME = challenging_terrain }
+}
+
+kafasali_biozone_info = {
+	$MODE$_biozone_game_effect = { NAME = blackbuck CHANCE = 30 }
+	$MODE$_biozone_game_effect = { NAME = jackal CHANCE = 25 }
+	$MODE$_biozone_game_effect = { NAME = gaur CHANCE = 25 }
+	$MODE$_biozone_game_effect = { NAME = king_cobra CHANCE = 22 }
+	$MODE$_biozone_game_effect = { NAME = sunbird CHANCE = 20 }
+	$MODE$_biozone_game_effect = { NAME = crown_bird CHANCE = 20 }
+	$MODE$_biozone_game_effect = { NAME = mongoose CHANCE = 20 }
+	$MODE$_biozone_game_effect = { NAME = tiger CHANCE = 15 }
+	$MODE$_biozone_game_effect = { NAME = kashiryan_elephant CHANCE = 15 }
+	$MODE$_biozone_game_effect = { NAME = bhramar CHANCE = 10 }
+
+}
+
+vichacil_environment_info = {
+	$MODE$_environment_effect = { NAME = jungle }
+	$MODE$_environment_effect = { NAME = verdant }
+	$MODE$_environment_effect = { NAME = monsoon }
+}
+
+vichacil_biozone_info = {
+	$MODE$_biozone_game_effect = { NAME = monkey  CHANCE = 35 }
+	$MODE$_biozone_game_effect = { NAME = blackbuck CHANCE = 35 }
+	$MODE$_biozone_game_effect = { NAME = bubalus CHANCE = 30 }
+	$MODE$_biozone_game_effect = { NAME = gaur CHANCE = 25 }
+	$MODE$_biozone_game_effect = { NAME = tiger CHANCE = 20 }
+	$MODE$_biozone_game_effect = { NAME = sloth_bear CHANCE = 20 }
+	$MODE$_biozone_game_effect = { NAME = leopard CHANCE = 20 }
+	$MODE$_biozone_game_effect = { NAME = kashiryan_elephant CHANCE = 20 }
+	$MODE$_biozone_game_effect = { NAME = bhramar CHANCE = 10 }
+	$MODE$_biozone_game_effect = { NAME = gajara CHANCE = 5 }
+}
+
+katuppilan_environment_info = {
+	$MODE$_environment_effect = { NAME = jungle }	
+	$MODE$_environment_effect = { NAME = monsoon }
+	$MODE$_environment_effect = { NAME = labyrinthine }
+	$MODE$_environment_effect = { NAME = poisonous_wildlife }
+}
+
+katuppilan_biozone_info = {
+	$MODE$_biozone_game_effect = { NAME = dire_crab CHANCE = 25 }
+	$MODE$_biozone_game_effect = { NAME = tiger CHANCE = 20 }
+	$MODE$_biozone_game_effect = { NAME = crocodile CHANCE = 20 }
+	$MODE$_biozone_game_effect = { NAME = king_cobra CHANCE = 15 }
+	$MODE$_biozone_game_effect = { NAME = bubalus CHANCE = 15 }
+	$MODE$_biozone_game_effect = { NAME = emperorcobra CHANCE = 10 }
+	$MODE$_biozone_game_effect = { NAME = gajara CHANCE = 10 }
+	$MODE$_biozone_game_effect = { NAME = bhramar CHANCE = 10 }
+	$MODE$_biozone_game_effect = { NAME = naga CHANCE = 8 }
+	$MODE$_biozone_game_effect = { NAME = akapura  CHANCE = 5 }
+}
+
+rovarska_environment_info = {
+	$MODE$_environment_effect = { NAME = jungle }	
+	$MODE$_environment_effect = { NAME = challenging_terrain }
+	$MODE$_environment_effect = { NAME = verdant }
+	$MODE$_environment_effect = { NAME = poisonous_wildlife }
+	$MODE$_environment_effect = { NAME = monsoon }
+}
+
+rovarska_biozone_info = {
+	$MODE$_biozone_game_effect = { NAME = monkey  CHANCE = 55 }
+	$MODE$_biozone_game_effect = { NAME = leopard CHANCE = 30 }
+	$MODE$_biozone_game_effect = { NAME = tiger   CHANCE = 25 }
+	$MODE$_biozone_game_effect = { NAME = sunbird CHANCE = 25 }
+	$MODE$_biozone_game_effect = { NAME = mongoose CHANCE = 20 }
+	$MODE$_biozone_game_effect = { NAME = king_cobra CHANCE = 20 }
+	$MODE$_biozone_game_effect = { NAME = rovarskan_dragon CHANCE = 20 }
+	$MODE$_biozone_game_effect = { NAME = crocodile CHANCE = 20 }
+	$MODE$_biozone_game_effect = { NAME = great_rahksasa CHANCE = 10 }
+	$MODE$_biozone_game_effect = { NAME = akapura  CHANCE = 5 }
+	$MODE$_biozone_game_effect = { NAME = coatl   CHANCE = 2 }
+}
+
+nightcoast_environment_info = {
+	$MODE$_environment_effect = { NAME = jungle }
+	$MODE$_environment_effect = { NAME = verdant }
+	$MODE$_environment_effect = { NAME = monsoon }
+	$MODE$_environment_effect = { NAME = challenging_terrain }
+	$MODE$_environment_effect = { NAME = labyrinthine }	
+}
+
+nightcoast_biozone_info = {
+	$MODE$_biozone_game_effect = { NAME = dire_crab  CHANCE = 35 }
+	$MODE$_biozone_game_effect = { NAME = sea_scorpion CHANCE = 30 }
+	$MODE$_biozone_game_effect = { NAME = leopard CHANCE = 30 }
+	$MODE$_biozone_game_effect = { NAME = tiger   CHANCE = 25 }
+	$MODE$_biozone_game_effect = { NAME = mongoose CHANCE = 20 }
+	$MODE$_biozone_game_effect = { NAME = king_cobra CHANCE = 20 }
+	$MODE$_biozone_game_effect = { NAME = rovarskan_dragon CHANCE = 20 }
+	$MODE$_biozone_game_effect = { NAME = crocodile CHANCE = 20 }
+	$MODE$_biozone_game_effect = { NAME = great_rahksasa CHANCE = 10 }
+	$MODE$_biozone_game_effect = { NAME = coatl   CHANCE = 2 }
+}
+
+
+
+##################################################
+# Special Game, Available Everywhere via Rumours #
+##################################################
+
+special_game_effect = {
+	$MODE$_biozone_game_effect = { NAME = vampire CHANCE = 30 }
+	$MODE$_biozone_game_effect = { NAME = werewolf CHANCE = 30 }
+	$MODE$_biozone_game_effect = { NAME = spirit CHANCE = 30 }
+	$MODE$_biozone_game_effect = { NAME = shade CHANCE = 20 }
+	$MODE$_biozone_game_effect = { NAME = banshee CHANCE = 5 }
+	$MODE$_biozone_game_effect = { NAME = fortune_eater CHANCE = 5 }
+}
+
+####################
+# Global Tag Table #
+####################
+
+game_tag_table_effect = {
+	$MODE$_tag_effect = { NAME = sixth_sense }
+	$MODE$_tag_effect = { NAME = skittish }
+	$MODE$_tag_effect = { NAME = cautious }
+	$MODE$_tag_effect = { NAME = aggressive }
+	$MODE$_tag_effect = { NAME = unyielding }
+	$MODE$_tag_effect = { NAME = poisonous }
+	$MODE$_tag_effect = { NAME = venomous }
+	$MODE$_tag_effect = { NAME = sedentary }
+	$MODE$_tag_effect = { NAME = fast }
+	$MODE$_tag_effect = { NAME = cunning }
+	$MODE$_tag_effect = { NAME = intelligent }
+	$MODE$_tag_effect = { NAME = large }
+	$MODE$_tag_effect = { NAME = huge }
+	$MODE$_tag_effect = { NAME = soothing }
+	$MODE$_tag_effect = { NAME = magical_sickness }
+	$MODE$_tag_effect = { NAME = magic_user }
+	$MODE$_tag_effect = { NAME = moonbound }
+	$MODE$_tag_effect = { NAME = elusive }
+	$MODE$_tag_effect = { NAME = mindrender }
+}

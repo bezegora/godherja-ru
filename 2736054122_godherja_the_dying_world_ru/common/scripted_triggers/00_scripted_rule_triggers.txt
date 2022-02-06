@@ -1,0 +1,31 @@
+﻿#Controls the can_raid rule.
+can_raid_trigger = {
+	OR = {
+		government_has_flag = government_can_raid_rule
+		government_has_flag = government_can_raid_over_water_rule
+		faith = { has_doctrine = unreformed_faith_doctrine }
+		faith = { has_doctrine_parameter = parameter_overseas_raiding_allowed }
+		AND = {
+			exists = dynasty
+			dynasty = { has_dynasty_modifier = fp1_legacy_of_piracy_modifier }
+		}
+		AND = {
+			has_variable = character_clique
+			var:character_clique = {  
+				trigger_if = {
+					limit = { has_variable_list = clique_guiding_principle_aspects }
+					any_in_list = {
+						variable = clique_guiding_principle_aspects
+						this = flag:enables_raiding
+					}
+				}
+				trigger_else = { always = no }
+			}
+		}
+	}
+	NOT = {
+		faith = {
+			has_doctrine_parameter = holy_wars_forbidden
+		}
+	}
+}

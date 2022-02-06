@@ -1,0 +1,18 @@
+pdxmesh = {
+	name = "battlemagi_full_var2_female_mesh"
+	file = "battlemagi_full_var2_female.mesh"
+
+	meshsettings = {
+		name = "battlemagi_full_var2222_femaleShape"
+		index = 0
+		texture_diffuse = "bm_var2_color.dds"
+		texture_normal = "bm_var2_normal.dds"
+		texture_specular = "bm_var2_properties.dds"
+		shader = "portrait_attachment"
+		shader_file = "gfx/FX/jomini/portrait.shader"
+	}
+}
+entity = {
+	name = "battlemagi_full_var2_female_entity"
+	pdxmesh = "battlemagi_full_var2_female_mesh"
+}

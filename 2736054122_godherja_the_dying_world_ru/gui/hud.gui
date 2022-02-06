@@ -78,7 +78,7 @@ widget = {
 	notifications_alerts = {
 		visible = "[Not( IsPauseMenuShown )]"
 		parentanchor = top|right
-		position = { -820 0 }
+		position = { -900 0 }
 		spacing = 10
 
 		using = Animation_ShowHide_Quick
@@ -102,7 +102,7 @@ widget = {
 
 		background = {
 			texture = "gfx/interface/skinned/hud_top_right_bg.dds"
-			margin_left = 30
+			margin_left = 10
 			margin_bottom = 28
 		}
 
@@ -113,7 +113,7 @@ widget = {
 			size = { 30 30 }
 			mirror = vertical
 		}
-
+		
 		## Resources
 		hbox = {
 			name = "resources"
@@ -130,7 +130,7 @@ widget = {
 					layoutpolicy_vertical = expanding
 					margin_right = 5
 					margin_left = 20
-					
+
 					hbox = {
 						name = "magic"
 						minimumsize = { 90 0 }
@@ -246,26 +246,28 @@ widget = {
 										using = Font_Size_Medium
 									}
 
-									text_single = {
-										name = "balance_positive"
-										visible = "[GreaterThanOrEqualTo_CFixedPoint(GetPlayerBalance, '(CFixedPoint)0')]"
+									container = {
+										text_single = {
+											name = "balance_positive"
+											visible = "[GreaterThanOrEqualTo_CFixedPoint(GetPlayerBalance, '(CFixedPoint)0')]"
 
-										layoutpolicy_horizontal = expanding
-										text = "CURRENT_BALANCE"
+											layoutpolicy_horizontal = expanding
+											text = "CURRENT_BALANCE"
 
-										max_width = 50
-										default_format = "#low"
-									}
+											max_width = 50
+											default_format = "#low"
+										}
 
-									text_single = {
-										name = "balance_negative"
-										visible = "[LessThan_CFixedPoint(GetPlayerBalance, '(CFixedPoint)0')]"
+										text_single = {
+											name = "balance_negative"
+											visible = "[LessThan_CFixedPoint(GetPlayerBalance, '(CFixedPoint)0')]"
 
-										layoutpolicy_horizontal = expanding
-										text = "CURRENT_BALANCE"
+											layoutpolicy_horizontal = expanding
+											text = "CURRENT_BALANCE"
 
-										max_width = 50
-										default_format = "#N"
+											max_width = 50
+											default_format = "#N"
+										}
 									}
 								}
 							}
@@ -576,6 +578,135 @@ widget = {
 				margin_bottom = 28
 			}
 		}
+		
+		container = {
+			position = { 24 3 }
+			size = { 40 40 }
+			
+			tooltipwidget = {
+				widget_moon_phase_tooltip = {}
+			}
+			
+			background = {
+				using = tooltip_ne
+				
+				texture = "gfx/interface/icons/moon_phases/Frame/MoonPhase_BG.dds"
+				
+				modify_texture = {
+					blend_mode = overlay
+					texture = "gfx/interface/icons/moon_phases/phases/broken/newmoon_broken.dds"
+					visible = "[EqualTo_string(GetGlobalVariable('current_moon_phase').Var('base_moon_phase_name').GetFlagName,'new_moon')]"
+				}
+				
+				modify_texture = {
+					blend_mode = overlay
+					texture = "gfx/interface/icons/moon_phases/phases/broken/waxingcrescent_broken.dds"
+					visible = "[EqualTo_string(GetGlobalVariable('current_moon_phase').Var('base_moon_phase_name').GetFlagName,'waxing_crescent_moon')]"
+				}
+				
+				modify_texture = {
+					blend_mode = overlay
+					texture = "gfx/interface/icons/moon_phases/phases/broken/firstquarter_broken.dds"
+					visible = "[EqualTo_string(GetGlobalVariable('current_moon_phase').Var('base_moon_phase_name').GetFlagName,'first_quarter_moon')]"
+				}
+				
+				modify_texture = {
+					blend_mode = overlay
+					texture = "gfx/interface/icons/moon_phases/phases/broken/waxinggibbous_broken.dds"
+					visible = "[EqualTo_string(GetGlobalVariable('current_moon_phase').Var('base_moon_phase_name').GetFlagName,'waxing_gibbous_moon')]"
+				}
+				
+				modify_texture = {
+					blend_mode = overlay
+					texture = "gfx/interface/icons/moon_phases/phases/broken/fullmoon_broken.dds"
+					visible = "[EqualTo_string(GetGlobalVariable('current_moon_phase').Var('base_moon_phase_name').GetFlagName,'full_moon')]"
+				}
+				
+				modify_texture = {
+					blend_mode = overlay
+					texture = "gfx/interface/icons/moon_phases/phases/broken/waningcrescent_broken.dds"
+					visible = "[EqualTo_string(GetGlobalVariable('current_moon_phase').Var('base_moon_phase_name').GetFlagName,'waning_crescent_moon')]"
+				}
+				
+				modify_texture = {
+					blend_mode = overlay
+					texture = "gfx/interface/icons/moon_phases/phases/broken/lastquarter_broken.dds"
+					visible = "[EqualTo_string(GetGlobalVariable('current_moon_phase').Var('base_moon_phase_name').GetFlagName,'last_quarter_moon')]"
+				}
+				
+				modify_texture = {
+					blend_mode = overlay
+					texture = "gfx/interface/icons/moon_phases/phases/broken/waninggibbous_broken.dds"
+					visible = "[EqualTo_string(GetGlobalVariable('current_moon_phase').Var('base_moon_phase_name').GetFlagName,'waning_gibbous_moon')]"
+				}
+				
+				modify_texture = {
+					blend_mode = overlay
+					texture = "gfx/interface/icons/moon_phases/overlays/overlay_green.dds"
+					visible = "[Or(Not(GetGlobalVariable('current_moon_phase').Var('moon_color').IsSet),EqualTo_string(GetGlobalVariable('current_moon_phase').Var('moon_color').GetFlagName,'default'))]"
+				}
+				
+				modify_texture = {
+					blend_mode = overlay
+					texture = "gfx/interface/icons/moon_phases/overlays/overlay_red.dds"
+					visible = "[EqualTo_string(GetGlobalVariable('current_moon_phase').Var('moon_color').GetFlagName,'red')]"
+				}
+			}
+			container = {
+				visible = "[Or(Not(GetGlobalVariable('current_moon_phase').Var('moon_color').IsSet),EqualTo_string(GetGlobalVariable('current_moon_phase').Var('moon_color').GetFlagName,'default'))]"
+				icon = {
+					position = { -15 -7 }
+					size = { 65 65 }
+					
+					texture = "gfx/interface/icons/moon_phases/glow/constant/GlowConstant_Green.dds"
+					using = Animation_Glow_Pulse
+					
+					state = {
+						trigger_on_create = yes
+				
+						name = max_glow
+						next = min_glow
+						duration = 2
+						using = Animation_FadeIn_Standard
+					}
+				
+					state = {
+						name = min_glow
+						next = max_glow
+						duration = 2
+						using = Animation_Curve_Default
+						alpha = 0.7
+					}
+				}
+			}
+			container = {
+				visible = "[EqualTo_string(GetGlobalVariable('current_moon_phase').Var('moon_color').GetFlagName,'red')]"
+				icon = {
+					position = { -15 -7 }
+					size = { 65 65 }
+					
+					texture = "gfx/interface/icons/moon_phases/glow/constant/GlowConstant_Red.dds"
+					using = Animation_Glow_Pulse
+					
+					state = {
+						trigger_on_create = yes
+				
+						name = max_glow
+						next = min_glow
+						duration = 2
+						using = Animation_FadeIn_Standard
+					}
+				
+					state = {
+						name = min_glow
+						next = max_glow
+						duration = 2
+						using = Animation_Curve_Default
+						alpha = 0.7
+					}
+				}
+			}
+		}
 	}
 
 	### Outliner Button
@@ -622,7 +753,7 @@ widget = {
 		visible = "[And( Not( IsPauseMenuShown ), And(Or(Not(IsObserver), GetPlayer.IsValid), IsDefaultGUIMode))]"
 		parentanchor = top|right
 		position = { 5 105 }
-		size = { 50 465 }
+		size = { 50 515 }
 
 		using = Animation_ShowHide_Quick
 
@@ -1107,7 +1238,7 @@ widget = {
 					blockoverride "maintab_button"
 					{
 						texture = "gfx/interface/icons/spell_menu/open_spells.dds"
-						onclick = "[ExecuteConsoleCommand('effect reset_spells')]"
+						onclick = "[GetScriptedGui('reset_spells').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
 						onclick = "[GetVariableSystem.Toggle( 'show_spells')]"
 						onclick = "[GetVariableSystem.Toggle( 'show_r_char' )]"
 						onclick = "[GetVariableSystem.Clear( 'current_spell' )]"
@@ -1118,6 +1249,31 @@ widget = {
 						onclick = "[GetScriptedGui('realm_lands').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
 						onclick = "[GetScriptedGui('enemy_realm_lands').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
 						onclick = "[GetScriptedGui('clear_target_lists').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+					}
+				}
+				
+				button_hud_main_tab = {
+					name = "tab_cliques"
+					tooltip = "CLIQUES_BUTTON"
+					visible = "[GetScriptedGui('get_clique_title_scripted_gui').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+					blockoverride "maintab_button"
+					{
+						texture = "gfx/artifacts/maintab_artifacts.dds"
+						onclick = "[GetVariableSystem.Clear('artifact_window_open')]"
+						onclick = "[GetVariableSystem.Toggle('cliques_window_open')]"
+						onclick = "[GetScriptedGui('get_clique_title_scripted_gui').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+					}
+					state = {
+						name = _initialize
+						trigger_on_create = yes
+					}
+					state = {
+						name = _mouse_hierarchy_enter
+						on_start = "[PdxGuiInterruptThenTriggerAllAnimations('hud_tab_glow_cliques_leave','hud_tab_glow_artifacts_enter')]"
+					}
+					state = {
+						name = _mouse_hierarchy_leave
+						on_start = "[PdxGuiInterruptThenTriggerAllAnimations('hud_tab_glow_cliques_enter','hud_tab_glow_artifacts_leave')]"
 					}
 				}
 			}
@@ -1312,6 +1468,38 @@ icon = {
 					onclick = "[ToggleEncyclopedia]"
 					shortcut = "encyclopedia"
 					using = tooltip_ne
+				}
+				
+				button_normal = {
+					name = "bestiary_button"
+					size = { 35 35 }
+					alpha = 0.7
+					
+					button_icon = {
+						parentanchor = center
+						alwaystransparent = yes
+						texture = "gfx/interface/icons/flat_icons/bestiary_icon.dds"
+					}
+					
+					tooltip = "OPEN_BESTIARY"
+					
+					onclick = "[GetVariableSystem.Toggle( 'show_hunting')]"
+					onclick = "[GetVariableSystem.Set( 'hunting_tab' , 'monsters' )]"
+					onclick = "[GetVariableSystem.Clear( 'artifact_window_open' )]"
+					
+					state = {
+						name = _mouse_enter
+						alpha = 1
+						duration = 0.7
+						using = Animation_Curve_Default
+					}
+		
+					state = {
+						name = _mouse_leave
+						alpha = 0.7
+						duration = 0.2
+						using = Animation_Curve_Default
+					}
 				}
 			}
 
@@ -1790,1206 +1978,2184 @@ widget = {
 	visible = "[And( Not( IsPauseMenuShown ), IsDefaultGUIMode )]"
 	size = { 100% 100% }
 	layer = bottom
+	datacontext = "[GetPlayer]"
 
 	using = Animation_ShowHide_Quick
 	
-	############################
-	# START SPELL MENU BY CASTOX
-	#Collapse#################################################################################
-		window = {
+	#############################
+	# HUNTING UI BY HAPCHAZZARD #
+	#############################
+	
+	window = {
+		name = "hunting_encyclopedia"
+		size = { 100% 100% }
+		movable = no
+		layer = top
+		
+		visible = "[GetVariableSystem.Exists( 'show_hunting')]"
+	
+		using = Window_Size_MainTab
+	
+		state = {
+			name = _show
+			using = Animation_FadeIn_Standard
+			using = Sound_WindowShow_Standard
+			using =	Sound_Window_AmbienceMute_Snapshot
+		}
+	
+		state = {
+			name = _hide
+			using = Animation_FadeOut_Standard
+			using = Sound_WindowHide_Standard
+		}
+		
+		button_normal = {
+			size = { 100% 100% }
+			onclick = "[Encyclopedia.Hide]"
+	
+			using = Background_Full_Dim
+		}
 
-			visible = "[GetVariableSystem.Exists( 'show_spells')]"
-			parentanchor = vcenter|hcenter
-			#position = { 0 0 }
-			
-			icon = {
-					position = { 40 20 }
-					#920
-					size = { 920 100 }
-					buttons_window_control = {
-							parentanchor = top|right
-							blockoverride "button_close"
-							{
-								onclick = "[GetVariableSystem.Clear( 'show_spells')]"
-								onclick = "[GetVariableSystem.Clear( 'show_r_char' )]"
-								onclick = "[GetVariableSystem.Clear( 'show_r_land' )]"
-								onclick = "[GetVariableSystem.Clear( 'show_r_enemyrealm' )]"
-								onclick = "[GetVariableSystem.Clear( 'show_r_prisoners' )]"
-								onclick = "[GetVariableSystem.Clear( 'show_r_enemies' )]"
-							}
+		widget = {
+			parentanchor = center
+			size = { 880 850 }
+			alwaystransparent = no
+	
+			using = Window_Background
+			using = Window_Decoration_Frontend_Spike
+	
+			vbox = {
+				using = Window_Margins
+				
+				header_pattern = {
+					layoutpolicy_horizontal = expanding
+	
+					blockoverride "header_text"
+					{
+						text = "HUNTING_WINDOW_TITLE"
 					}
+	
+					blockoverride "button_close"
+					{
+						onclick = "[GetVariableSystem.Clear( 'show_hunting')]"
+					}
+				}
+				
+				hbox = {
+					layoutpolicy_horizontal = expanding
+	
+					button_tab = {
+						layoutpolicy_horizontal = expanding
+						onclick = "[GetVariableSystem.Set('hunting_tab' , 'monsters')]"
+						down = "[GetVariableSystem.HasValue('hunting_tab' , 'monsters')]"
+						
+						text_single = {
+							text = "HUNTING_WINDOW_MONSTERS"
+							parentanchor = center
+	
+							maximumsize = { 400 -1 }
+							default_format = "#low"
+						}
+					}
+	
+					button_tab = {
+						layoutpolicy_horizontal = expanding
+						onclick = "[GetVariableSystem.Set('hunting_tab' , 'biozones')]"
+						down = "[GetVariableSystem.HasValue('hunting_tab' , 'biozones')]"
+	
+						text_single = {
+							text = "HUNTING_WINDOW_BIOZONES"
+							parentanchor = center
+							
+							maximumsize = { 400 -1 }
+							default_format = "#low"
+						}
+					}
+				}
+				
+				scrollbox = {
+					name = "tab_monsters"
+					visible = "[GetVariableSystem.HasValue( 'hunting_tab', 'monsters' )]"
+					layoutpolicy_horizontal = expanding
+					layoutpolicy_vertical = expanding
+				
+					blockoverride "scrollbox_background" {}
+					blockoverride "scrollbox_background_fade" {}
+				
+					state = {
+						name = _show
+						using = Animation_FadeIn_Quick
+					}
+				
+					state = {
+						name = _hide
+						alpha = 0
+					}
+					
 					background = {
-						texture = "gfx/interface/component_tiles/tile_title_big_top_01.dds"
-						margin_bottom = 10
-						spriteType = Corneredtiled
-						spriteborder = { 0 18 }
-						texture_density = 2
-
+						texture = "gfx/interface/illustrations/event_scenes/forest_pine.dds"
+						fittype = end
+						alpha = 0.4
+	
 						modify_texture = {
-							name = "mask"
-							texture = "gfx/interface/component_masks/mask_title_big_top.dds"
-							spriteType = Corneredtiled
-							spriteborder = { 160 0 }
+							texture = "gfx/interface/component_masks/mask_fade_vertical_up.dds"
 							blend_mode = alphamultiply
-							alpha = 0.5
 						}
-
+	
 						modify_texture = {
-							name = "overlay"
-							texture = "gfx/interface/component_overlay/overlay_title_big_top.dds"
-							spriteType = Corneredstretched
-							spriteborder = { 0 0 }
-							blend_mode = overlay
+							texture = "gfx/interface/component_masks/mask_vignette.dds"
+							blend_mode = alphamultiply
+							alpha = 0.4
 						}
 					}
-					text_single = {
-						name = "title_magic"
-						text = "Magic"
-						parentanchor = top|hcenter #|hcenter
-						default_format = "#high" #;italic"
-						using = Font_Size_Big
-						fontsize_min = 24
-						using = Font_Type_Flavor
-
-					}
-						
-				}
-
-
-				progressbar_standard = {
-					size = { 770 45 }
-					position = { 115 125 }
-
-					min = 0
-					max = 200 # or "[GetPlayer.MakeScope.Var('magic_max_value').GetValue|0]"
-					value = "[FixedPointToFloat(GetPlayer.MakeScope.Var('magic_counter').GetValue)]"
-					text_single = {
-						parentanchor = top|right
-						position = { -35 -35 }
-						default_format = "#high"
-						text = "Power Limit: 200  | Current Power: " # "[Character.MakeScope.Var('hitpoints').GetValue|V1] / [Character.MakeScope.Var('maximum_hitpoints').GetValue|V0]"
-						using = Font_Type_Flavor
 				
-					}
-					text_single = {
-						parentanchor = top|right
-						position = { -2 -35 }
-						default_format = "#high"
-						text = "[FixedPointToFloat(GetPlayer.MakeScope.Var('magic_counter').GetValue)]"
-						
-							state = {
-								name = a
-								next = b
-								trigger_on_create = yes
-								duration = 0.2
-								alpha = 1
-							}
-
-							state = {
-								name = b
-								next = a
-								duration = 0.6
-								alpha = 0.5
-							}
-							using = Font_Type_Flavor
-					}
-
-
-					progresstexture = "gfx/interface/progressbars/magicblue.dds"
-					noprogresstexture = "gfx/interface/progressbars/magicred.dds"
-					
-				
-					tooltip = "Magic"
-					using = tooltip_below
-				}
-
-				icon = {
-					name = "overlay_frame"
-					texture = "gfx/interface/progressbars/magic_frame.dds"
-					size = { 798 59 }
-					position = { 100 118 }
-				}
-
-				size = { 1000 700 }
-			
-					using = Window_Background
-					using = Window_Decoration
-					movable = yes
-					
-				using = Animation_ShowHide_Quick
-
-				state = {
-					name = _show
-					using = Animation_Curve_Default
-					duration = 0.21
-
-					position = { 0 0 }
-					alpha = 1
-				}
-
-				state = {
-					name = _hide
-					using = Animation_Curve_Default
-					duration = 0.21
-
-					position = { -700 1200 }
-					alpha = 0
-				}
-				icon = {
-					size = { 375 60 }
-					position = { 525 180 }
-					texture = "gfx/interface/component_tiles/tile_header_background_01.dds"
-					spriteType = Corneredtiled
-					spriteborder_top = 3
-					spriteborder_bottom = 3
-					texture_density = 2
-
-					modify_texture = {
-						name = "mask"
-						texture = "gfx/interface/component_masks/mask_fade_horizontal_middle_thick.dds"
-						blend_mode = alphamultiply
-						alpha = 0.5
-					}
-					text_single = {
-							visible = "[GetVariableSystem.Exists( 'show_r_char')]"
-			
-							text = "Characters"
-							#position = { 0 0 }
-							parentanchor = vcenter|hcenter
-							default_format = "#high"
-							using = Font_Size_Big
-							fontsize_min = 14
-							using = Font_Type_Flavor
-					}
-					text_single = {
-							visible = "[GetVariableSystem.Exists( 'show_r_prisoners')]"
-			
-							text = "Prisoners"
-							#position = { 0 0 }
-							parentanchor = vcenter|hcenter
-							default_format = "#high"
-							using = Font_Size_Big
-							fontsize_min = 14
-							using = Font_Type_Flavor
-					}
-					text_single = {
-							visible = "[GetVariableSystem.Exists( 'show_r_enemyrealm')]"
-			
-							text = "Enemy Lands"
-							#position = { 0 0 }
-							parentanchor = vcenter|hcenter
-							default_format = "#high"
-							using = Font_Size_Big
-							fontsize_min = 14
-							using = Font_Type_Flavor
-					}
-					text_single = {
-							visible = "[GetVariableSystem.Exists( 'show_r_land')]"
-				
-							text = "Lands"
-							#position = { 0 0 }
-							parentanchor = vcenter|hcenter
-							default_format = "#high"
-							using = Font_Size_Big
-							fontsize_min = 14
-							using = Font_Type_Flavor
-					}
-					text_single = {
-							visible = "[GetVariableSystem.Exists( 'show_r_enemies')]"
-			
-							text = "Enemies"
-							#position = { 0 0 }
-							parentanchor = vcenter|hcenter
-							default_format = "#high"
-							using = Font_Size_Big
-							fontsize_min = 14
-							using = Font_Type_Flavor
-					}
-				}
-				icon = {
-					size = { 375 60 }
-					position = { 100 180 }
-					texture = "gfx/interface/component_tiles/tile_header_background_01.dds"
-					spriteType = Corneredtiled
-					spriteborder_top = 3
-					spriteborder_bottom = 3
-					texture_density = 2
-
-					modify_texture = {
-						name = "mask"
-						texture = "gfx/interface/component_masks/mask_fade_horizontal_middle_thick.dds"
-						blend_mode = alphamultiply
-						alpha = 0.5
-					}
-					text_single = {
-							visible = "[GetVariableSystem.Exists( 'show_living_magic')]"
-			
-							text = LIVING_MAGIC
-							parentanchor = vcenter|hcenter
-							default_format = "#high"
-							using = Font_Size_Big
-							fontsize_min = 14
-							using = Font_Type_Flavor
-					}
-					text_single = {
-							visible = "[GetVariableSystem.Exists( 'show_dead_magic')]"
-							text = DEAD_MAGIC
-							parentanchor = vcenter|hcenter
-							default_format = "#high"
-							using = Font_Size_Big
-							fontsize_min = 14
-							using = Font_Type_Flavor
-					}
-					text_single = {
-							visible = "[GetVariableSystem.Exists( 'show_mixed_magic')]"
-							text = MIXED_MAGIC
-							parentanchor = vcenter|hcenter
-							default_format = "#high"
-							using = Font_Size_Big
-							fontsize_min = 14
-							using = Font_Type_Flavor
-					}
-					text_single = {
-							visible = "[GetVariableSystem.Exists( 'show_other_magic')]"
-							text = OTHER_MAGIC
-							parentanchor = vcenter|hcenter
-							default_format = "#high"
-							using = Font_Size_Big
-							fontsize_min = 14
-							using = Font_Type_Flavor
-					}
-					text_single = {
-							visible = "[GetVariableSystem.Exists( 'magic_generate')]"
-							text = GENERATE_METHOD
-							parentanchor = vcenter|hcenter
-							default_format = "#high"
-							using = Font_Size_Big
-							fontsize_min = 14
-							using = Font_Type_Flavor
-					}
-				}
-				button = {
-					texture = "gfx/interface/hud/info_icon.dds"
-					onclick = "[GetVariableSystem.Toggle( 'show_r_char' )]"
-					onclick = "[GetVariableSystem.Clear( 'show_r_land' )]"
-					onclick = "[GetVariableSystem.Clear( 'show_r_enemyrealm' )]"
-					onclick = "[GetVariableSystem.Clear( 'show_r_prisoners' )]"
-					onclick = "[GetVariableSystem.Clear( 'show_r_enemies' )]"
-					size = { 45 50 }
-					position = { 480 190 }
-				}
-				button = {
-					texture = "gfx/interface/icons/title_status/icon_title_law.dds"
-					onclick = "[GetVariableSystem.Toggle( 'show_r_land' )]"
-					onclick = "[GetVariableSystem.Clear( 'show_r_char' )]"
-					onclick = "[GetVariableSystem.Clear( 'show_r_prisoners' )]"
-					onclick = "[GetVariableSystem.Clear( 'show_r_enemyrealm' )]"
-					onclick = "[GetVariableSystem.Clear( 'show_r_enemies' )]"
-					size = { 50 50 }
-					position = { 475 240 }
-				}
-				button = {
-					texture = "gfx/interface/icons/title_status/icon_title_law.dds"
-					onclick = "[GetVariableSystem.Toggle( 'show_r_enemyrealm' )]"
-					onclick = "[GetVariableSystem.Clear( 'show_r_char' )]"
-					onclick = "[GetVariableSystem.Clear( 'show_r_land' )]"
-					onclick = "[GetVariableSystem.Clear( 'show_r_prisoners' )]"
-					onclick = "[GetVariableSystem.Clear( 'show_r_enemies' )]"
-					size = { 50 50 }
-					position = { 475 390 }
-				}
-				button = {
-					texture = "gfx/interface/hud/info_icon.dds"
-					onclick = "[GetVariableSystem.Toggle( 'show_r_prisoners' )]"
-					onclick = "[GetVariableSystem.Clear( 'show_r_land' )]"
-					onclick = "[GetVariableSystem.Clear( 'show_r_char' )]"
-					onclick = "[GetVariableSystem.Clear( 'show_r_enemyrealm' )]"
-					onclick = "[GetVariableSystem.Clear( 'show_r_enemies' )]"
-					size = { 45 50 }
-					position = { 480 290 }
-				}
-				button = {
-					texture = "gfx/interface/hud/info_icon.dds"
-					onclick = "[GetVariableSystem.Toggle( 'show_r_enemies' )]"
-					onclick = "[GetVariableSystem.Clear( 'show_r_land' )]"
-					onclick = "[GetVariableSystem.Clear( 'show_r_char' )]"
-					onclick = "[GetVariableSystem.Clear( 'show_r_enemyrealm' )]"
-					onclick = "[GetVariableSystem.Clear( 'show_r_prisoners' )]"
-					size = { 45 50 }
-					position = { 480 340 }
-				}
-				button = {
-					visible = "[Not(GetVariableSystem.Exists( 'magic_generate'))]"
-					texture = "gfx/interface/hud/icon_up.dds"
-					onclick = "[ExecuteConsoleCommand('effect add_tier_magic')]"
-					#onclick = "[ExecuteConsoleCommand('effect reset_spells')]"
-					size = { 40 40 }
-					position = { 480 596 }
-				}
-				text_single = {
-					name = "title_level"
-					visible = "[Not(GetVariableSystem.Exists( 'magic_generate'))]"
-					text = "[GetPlayer.MakeScope.Var('magic_lvl').GetValue|0]"
-					position = { 494 615 }
-					default_format = "#high"
-					using = Font_Size_Big
-					fontsize_min = 16
-				}
-				button = {
-					visible = "[Not(GetVariableSystem.Exists( 'magic_generate'))]"
-					texture = "gfx/interface/hud/icon_down.dds"
-					onclick = "[ExecuteConsoleCommand('effect sub_tier_magic')]"
-					size = { 40 40 }
-					position = { 480 636 }
-				}
-				#Cast Spell
-				button_standard = {
-					visible = "[Not(GetVariableSystem.Exists( 'magic_generate'))]"
-					enabled = "[GetScriptedGui(Concatenate(GetVariableSystem.Get('current_spell'),'_check')).IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-					size = { 220 50 }
-					position = { 245 612 }
-					#LEGACY Execute
-					#onclick = "[ExecuteConsoleCommand(Concatenate('effect ',Localize(Concatenate(GetVariableSystem.Get( 'current_spell'),'_spell_effect'))))]"
-					onclick = "[GetScriptedGui(GetVariableSystem.Get( 'current_spell')).Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-					onclick = "[GetVariableSystem.Clear( 'current_spell')]"
-					onclick = "[GetVariableSystem.Clear( 'current_spell2' )]"
-					tooltip = "[GetScriptedGui(GetVariableSystem.Get( 'current_spell')).BuildTooltip(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"  #Cast /effect!
-					text = "Cast Spell"
-					default_format = "#high"
-					using = Font_Size_Big
-					fontsize_min = 16
-					using = Font_Type_Flavor
-					
-				}
-				#Spellbox - effects
-				scrollbox = { 
-					layoutpolicy_horizontal = expanding
-					layoutpolicy_vertical = expanding
-					visible = "[Not(GetVariableSystem.Exists( 'magic_generate'))]"
-					size = { 375 80 }
-					position = { 525 595 }
 					blockoverride "scrollbox_content"
 					{
 						vbox = {
-							name = "effects_text"
-							text_single = {
-								visible = "[GetVariableSystem.Exists( 'current_spell')]"
-								name = "spell_casting_title"
-								autoresize = yes
-								position = { 520 0 }
-								maximumsize = { 520 -1 }
-								minimumsize = { 520 -1 }
-								parentanchor = left
-								margin_top = -10
-								default_format = "#high"
-								text = "Currently Casting: [Localize(Concatenate(GetVariableSystem.Get( 'current_spell'),'_name'))]"
-								tooltip = "[GetScriptedGui(GetVariableSystem.Get( 'current_spell')).BuildTooltip(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-			
-							}
-							text_single = {
-								visible = "[GetVariableSystem.Exists( 'current_spell')]"
-								name = "spell_casting_effect"
-								autoresize = yes
-								position = { 520 0 }
-								maximumsize = { 520 -1 }
-								minimumsize = { 520 -1 }
-								parentanchor = left
-								margin_top = 0
-								default_format = "#low"
-								text = "[GetScriptedGui(GetVariableSystem.Get( 'current_spell')).BuildTooltip(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-								tooltip = "[GetScriptedGui(GetVariableSystem.Get( 'current_spell')).BuildTooltip(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-								multiline = yes
-							}
-						}
-					}
-				}
-
-				#TABS
-
-				#Generate Power Button
-				button_standard = {
-					size = { 200 30 }
-					position = { 110 80 }
-					tooltip = GENERATE_POWER
-					onclick = "[GetVariableSystem.Clear( 'current_spell')]"
-					onclick = "[GetVariableSystem.Clear( 'current_spell2')]"
-					onclick = "[ExecuteConsoleCommand('effect clear_prev_menu')]"
-					onclick = "[GetVariableSystem.Toggle( 'magic_generate')]"
-					onclick = "[GetVariableSystem.Clear( 'show_living_magic')]"
-					onclick = "[GetVariableSystem.Clear( 'show_dead_magic')]"
-					onclick = "[GetVariableSystem.Clear( 'show_mixed_magic')]"
-					onclick = "[GetVariableSystem.Clear( 'show_other_magic')]"
-					text = GENERATE_POWER_B
-					default_format = "#high"
-					using = Font_Size_Big
-					fontsize_min = 12
-					using = Font_Type_Flavor		
-				}
-				button = {
-					visible = "[Not(GetVariableSystem.Exists( 'magic_generate'))]"
-					texture = "gfx/interface/icons/spell_menu/living_magic.dds"
-					onclick = "[GetVariableSystem.Toggle( 'show_living_magic')]"
-					onclick = "[GetVariableSystem.Clear( 'show_dead_magic')]"
-					onclick = "[GetVariableSystem.Clear( 'show_mixed_magic')]"
-					onclick = "[GetVariableSystem.Clear( 'show_other_magic')]"
-					size = { 50 50 }
-					position = { 50 180 }
-					tooltip = LIVING_MAGIC
-				}
-				button = {
-					visible = "[Not(GetVariableSystem.Exists( 'magic_generate'))]"
-					texture = "gfx/interface/icons/spell_menu/dead_magic.dds"
-					onclick = "[GetVariableSystem.Toggle( 'show_dead_magic')]"
-					onclick = "[GetVariableSystem.Clear( 'show_living_magic')]"
-					onclick = "[GetVariableSystem.Clear( 'show_mixed_magic')]"
-					onclick = "[GetVariableSystem.Clear( 'show_other_magic')]"
-					size = { 50 50 }
-					position = { 50 220 }
-					tooltip = DEAD_MAGIC
-				}
-				button = {
-					visible = "[Not(GetVariableSystem.Exists( 'magic_generate'))]"
-					texture = "gfx/interface/icons/spell_menu/mixed_magic.dds"
-					onclick = "[GetVariableSystem.Clear( 'show_dead_magic')]"
-					onclick = "[GetVariableSystem.Clear( 'show_living_magic')]"
-					onclick = "[GetVariableSystem.Toggle( 'show_mixed_magic')]"
-					onclick = "[GetVariableSystem.Clear( 'show_other_magic')]"
-					size = { 50 50 }
-					position = { 50 260 }
-					tooltip = MIXED_MAGIC
-				}
-				button = {
-					visible = "[Not(GetVariableSystem.Exists( 'magic_generate'))]"
-					texture = "gfx/interface/icons/spell_menu/other_magic.dds"
-					onclick = "[GetVariableSystem.Clear( 'show_dead_magic')]"
-					onclick = "[GetVariableSystem.Clear( 'show_living_magic')]"
-					onclick = "[GetVariableSystem.Clear( 'show_mixed_magic')]"
-					onclick = "[GetVariableSystem.Toggle( 'show_other_magic')]"
-					size = { 50 50 }
-					position = { 50 300 }
-					tooltip = OTHER_MAGIC
-				}
-
-				button_standard = {
-					visible = "[GetVariableSystem.Exists( 'magic_generate')]"
-					size = { 220 50 }
-					position = { 525 612 }
-					onclick = "[GetScriptedGui(GetVariableSystem.Get( 'current_spell2')).Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-					onclick = "[GetVariableSystem.Clear( 'current_spell' )]"
-					onclick = "[GetVariableSystem.Clear( 'current_spell2')]"
-					tooltip = "[GetScriptedGui(GetVariableSystem.Get( 'current_spell2')).BuildTooltip(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"  #Cast /effect!
-					text = GENERATE_POWER
-					default_format = "#high"
-					using = Font_Size_Big
-					fontsize_min = 16
-					using = Font_Type_Flavor
-					animation_aggressive = {
-						size = { 100% 100% }
-					}
-				}
-				#Generate - effects
-				scrollbox = { 
-					layoutpolicy_horizontal = expanding
-					layoutpolicy_vertical = expanding
-					visible = "[GetVariableSystem.Exists( 'magic_generate')]"
-					size = { 375 80 }
-					position = { 100 595 }
-					blockoverride "scrollbox_content"
-					{
-						vbox = {
+							name = "monsters"
+							datamodel = "[GetGlobalList('hunting_game_info_provinces')]"
 							layoutpolicy_horizontal = expanding
 							layoutpolicy_vertical = expanding
-							#maximumsize = { 520 500 }
-							#minimumsize = { 520 500 }
-							text_single = {
-								visible = "[GetVariableSystem.Exists( 'current_spell2')]"
-								name = "spell_casting_title"
-								autoresize = yes
-								maximumsize = { 520 -1 }
-								minimumsize = { 520 -1 }
-								parentanchor = left|top
-								margin_top = -25
-								default_format = "#high"
-								text = "Generating Power by: [Localize(Concatenate(GetVariableSystem.Get( 'current_spell2'),'_name'))]"
-								tooltip = "[GetScriptedGui(GetVariableSystem.Get( 'current_spell2')).BuildTooltip(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-								multiline = yes
-							}
-							text_single = {
-								visible = "[GetVariableSystem.Exists( 'current_spell2')]"
-								name = "spell_casting_effect"
-								autoresize = yes
-								maximumsize = { 520 -1}
-								minimumsize = { 520 -1 }
-								parentanchor = left|top
-								#margin_top = 15
-								default_format = "#low"
-								text = "[GetScriptedGui(GetVariableSystem.Get( 'current_spell2')).BuildTooltip(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-								tooltip = "[GetScriptedGui(GetVariableSystem.Get( 'current_spell2')).BuildTooltip(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-								multiline = yes
-							}
-						}
-					}
-				}
-				#Generate Magic
-				scrollbox = {
-					visible = "[GetVariableSystem.Exists( 'magic_generate')]"
-					layoutpolicy_horizontal = expanding
-					layoutpolicy_vertical = expanding
-					size = { 375 350 }
-					position = { 100 240 }
-					
-					blockoverride "scrollbox_content" {
-						vbox_list_interaction_title_selection = {
-
-							datamodel = "[GetPlayer.MakeScope.GetList('generate_magic')]"
-							
-							layoutpolicy_horizontal = expanding
-							spacing = 3
-							#generate
+				
 							item = {
-								
-								button_standard = {
-									name = "gen_button"
-									layoutpolicy_horizontal = expanding
+								vbox = {
 									layoutpolicy_vertical = expanding
-									size = { 0 50 }
-									onclick = "[GetScriptedGui(Concatenate(Scope.GetFlagName,'_check')).Execute( GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
-									onclick = "[GetVariableSystem.Set('current_spell2',Scope.GetFlagName)]"
-									button_ignore = none
-									visible = "[GetScriptedGui(Concatenate(Scope.GetFlagName,'_check')).IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-									enabled = "[GetScriptedGui(Concatenate(Scope.GetFlagName,'_check')).IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-									tooltip = "[GetScriptedGui(Concatenate(Scope.GetFlagName,'_check')).BuildTooltip(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-									using = tooltip_es
-
-									text_single = {
-										name = "text"
-										parentanchor = vcenter
-										layoutpolicy_horizontal = expanding
-										text = SPELL_GET_NAME
-										position = { 70 0 }
-				
-									}
-									text_single = {
-										parentanchor = vcenter|right
-										layoutpolicy_horizontal = expanding
-										text = SPELL_GET_ADD
-										position = { -40 0 }
-			
-									}
-									text_single = { #icon
-										parentanchor = vcenter
-										text= SPELL_GET_ICON
-										default_format = "#SIZE:14"
-										position = { 5 0 }
-									}
-
-								}
-
-							}
-				
-						}
-					}
-				}
-				#Spells living
-				scrollbox = {
-					visible = "[GetVariableSystem.Exists( 'show_living_magic')]"
-					layoutpolicy_horizontal = expanding
-					layoutpolicy_vertical = expanding
-					size = { 375 350 }
-					position = { 100 240 }
-					
-					blockoverride "scrollbox_content" {
-						vbox_list_interaction_title_selection = {
-
-							datamodel = "[GetPlayer.MakeScope.GetList('list_living_magic')]"
-							
-							layoutpolicy_horizontal = expanding
-							spacing = 3
-							#spellbox
-							item = {
-								
-								button_standard = {
-									name = "spell_button"
 									layoutpolicy_horizontal = expanding
-									layoutpolicy_vertical = expanding
-									size = { 0 50 }
-									onclick = "[GetScriptedGui(Concatenate(Scope.GetFlagName,'_check')).Execute( GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
-									onclick = "[GetVariableSystem.Set( 'current_spell',Scope.GetFlagName)]"
-									button_ignore = none
-									visible = "[GetScriptedGui(Concatenate(Scope.GetFlagName,'_check')).IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-									enabled = "[GetScriptedGui(Concatenate(Scope.GetFlagName,'_check')).IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-									tooltip = "[GetScriptedGui(Concatenate(Scope.GetFlagName,'_check')).BuildTooltip(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-									using = tooltip_es
-
-									text_single = {
-										name = "text"
-										parentanchor = vcenter
+									spacing = 5
+									
+									vbox = {
+										name = "monster_list_item"
+										margin_right = 15
+										margin_left = 5
+										margin_bottom = 30
+										margin_top = 30
+										layoutpolicy_vertical = expanding
 										layoutpolicy_horizontal = expanding
-										text = SPELL_GET_NAME
-										position = { 70 0 }
-				
-									}
-									text_single = {
-										parentanchor = vcenter|right
-										layoutpolicy_horizontal = expanding
-										text = SPELL_GET_COST
-										position = { -40 0 }
-			
-									}
-				
-									text_single = { #icon
-										parentanchor = vcenter
-										text= SPELL_GET_ICON
-										default_format = "#SIZE:14"
-										position = { 5 0 }
-									}
-
-								}
-
-							}
-				
-						}
-					}
-				}
-				#Spells dead
-				scrollbox = {
-					visible = "[GetVariableSystem.Exists( 'show_dead_magic')]"
-					layoutpolicy_horizontal = expanding
-					layoutpolicy_vertical = expanding
-					size = { 375 350 }
-					position = { 100 240 }
-					
-					blockoverride "scrollbox_content" {
-						vbox_list_interaction_title_selection = {
-
-							datamodel = "[GetPlayer.MakeScope.GetList('list_dead_magic')]"
-							
-							layoutpolicy_horizontal = expanding
-							spacing = 3
-							#spellbox
-							item = {
-								
-								button_standard = {
-									name = "spell_button"
-									layoutpolicy_horizontal = expanding
-									layoutpolicy_vertical = expanding
-									size = { 0 50 }
-									onclick = "[GetScriptedGui(Concatenate(Scope.GetFlagName,'_check')).Execute( GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
-									onclick = "[GetVariableSystem.Set( 'current_spell',Scope.GetFlagName)]"
-									button_ignore = none
-									visible = "[GetScriptedGui(Concatenate(Scope.GetFlagName,'_check')).IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-									enabled = "[GetScriptedGui(Concatenate(Scope.GetFlagName,'_check')).IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-									tooltip = "[GetScriptedGui(Concatenate(Scope.GetFlagName,'_check')).BuildTooltip(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-									using = tooltip_es
-
-									text_single = {
-										name = "text"
-										parentanchor = vcenter
-										layoutpolicy_horizontal = expanding
-										text = SPELL_GET_NAME
-										position = { 70 0 }
-				
-									}
-									text_single = {
-										parentanchor = vcenter|right
-										layoutpolicy_horizontal = expanding
-										text = SPELL_GET_COST
-										position = { -40 0 }
-			
-									}
-				
-									text_single = { #icon
-										parentanchor = vcenter
-										text= SPELL_GET_ICON
-										default_format = "#SIZE:14"
-										position = { 5 0 }
-									}
-
-								}
-
-							}
-				
-						}
-					}
-				}
-				#Spells mixed
-				scrollbox = {
-					visible = "[GetVariableSystem.Exists( 'show_mixed_magic')]"
-					layoutpolicy_horizontal = expanding
-					layoutpolicy_vertical = expanding
-					size = { 375 350 }
-					position = { 100 240 }
-					
-					blockoverride "scrollbox_content" {
-						vbox_list_interaction_title_selection = {
-
-							datamodel = "[GetPlayer.MakeScope.GetList('list_mixed_magic')]"
-							
-							layoutpolicy_horizontal = expanding
-							spacing = 3
-							#spellbox
-							item = {
-								
-								button_standard = {
-									name = "spell_button"
-									layoutpolicy_horizontal = expanding
-									layoutpolicy_vertical = expanding
-									size = { 0 50 }
-									onclick = "[GetScriptedGui(Concatenate(Scope.GetFlagName,'_check')).Execute( GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
-									onclick = "[GetVariableSystem.Set( 'current_spell',Scope.GetFlagName)]"
-									button_ignore = none
-									visible = "[GetScriptedGui(Concatenate(Scope.GetFlagName,'_check')).IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-									enabled = "[GetScriptedGui(Concatenate(Scope.GetFlagName,'_check')).IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-									tooltip = "[GetScriptedGui(Concatenate(Scope.GetFlagName,'_check')).BuildTooltip(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-									using = tooltip_es
-
-									text_single = {
-										name = "text"
-										parentanchor = vcenter
-										layoutpolicy_horizontal = expanding
-										text = SPELL_GET_NAME
-										position = { 70 0 }
-				
-									}
-									text_single = {
-										parentanchor = vcenter|right
-										layoutpolicy_horizontal = expanding
-										text = SPELL_GET_COST
-										position = { -40 0 }
-			
-									}
-				
-									text_single = { #icon
-										parentanchor = vcenter
-										text= SPELL_GET_ICON
-										default_format = "#SIZE:14"
-										position = { 5 0 }
-									}
-
-								}
-
-
-							}
-				
-						}
-					}
-				}
-				#Spells other
-				scrollbox = {
-					visible = "[GetVariableSystem.Exists( 'show_other_magic')]"
-					layoutpolicy_horizontal = expanding
-					layoutpolicy_vertical = expanding
-					size = { 375 350 }
-					position = { 100 240 }
-					
-					blockoverride "scrollbox_content" {
-						vbox_list_interaction_title_selection = {
-
-							datamodel = "[GetPlayer.MakeScope.GetList('list_other_magic')]"
-							
-							layoutpolicy_horizontal = expanding
-							spacing = 3
-							#spellbox
-							item = {
-								
-								button_standard = {
-									name = "spell_button"
-									layoutpolicy_horizontal = expanding
-									layoutpolicy_vertical = expanding
-									size = { 0 50 }
-									onclick = "[GetScriptedGui(Concatenate(Scope.GetFlagName,'_check')).Execute( GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
-									onclick = "[GetVariableSystem.Set( 'current_spell',Scope.GetFlagName)]"
-									button_ignore = none
-									visible = "[GetScriptedGui(Concatenate(Scope.GetFlagName,'_check')).IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-									enabled = "[GetScriptedGui(Concatenate(Scope.GetFlagName,'_check')).IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-									tooltip = "[GetScriptedGui(Concatenate(Scope.GetFlagName,'_check')).BuildTooltip(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-									using = tooltip_es
-
-									text_single = {
-										name = "text"
-										parentanchor = vcenter
-										layoutpolicy_horizontal = expanding
-										text = SPELL_GET_NAME
-										position = { 70 0 }
-				
-									}
-									text_single = {
-										parentanchor = vcenter|right
-										layoutpolicy_horizontal = expanding
-										text = SPELL_GET_COST
-										position = { -40 0 }
-			
-									}
-				
-									text_single = { #icon
-										parentanchor = vcenter
-										text= SPELL_GET_ICON
-										default_format = "#SIZE:14"
-										position = { 5 0 }
-									}
-
-								}
-
-
-							}
-				
-						}
-					}
-				}
-				#characters
-				scrollbox = {
-					visible = "[GetVariableSystem.Exists( 'show_r_char')]"
-					layoutpolicy_horizontal = expanding
-					layoutpolicy_vertical = expanding
-					size = { 375 350 }
-					position = { 525 240 }
-					
-					blockoverride "scrollbox_content" {
-						vbox_list_interaction_title_selection = {
-
-							datamodel = "[GetPlayer.MakeScope.GetList('character_in_realm')]"
-							
-							layoutpolicy_horizontal = expanding
-							spacing = 3
-
-						item = {
-							
-							button_standard = {
-								layoutpolicy_horizontal = expanding
-								layoutpolicy_vertical = expanding
-								size = { 0 90 }
-								datacontext = "[Scope.GetCharacter]"
-								onclick = "[GetScriptedGui('char_select').Execute( GuiScope.SetRoot( Scope.GetCharacter.MakeScope ).End )]"
-								onclick = "[GetScriptedGui('char_selected').Execute( GuiScope.SetRoot( GetPlayer.MakeScope ).AddScope('target', Scope.GetCharacter.MakeScope ).End )]"
-								onclick = "[GetVariableSystem.Clear( 'current_spell2')]"
-								down = "[EqualTo_string(Scope.GetCharacter.MakeScope.Var('is_selected').GetFlagName, 'selected')]"
-								button_ignore = none
-								tooltip = "[Scope.GetCharacter.GetTooltip]"
-								using = tooltip_es
-
-								text_single = {
-									name = "text"
-									layoutpolicy_horizontal = expanding
-									text = "[Character.GetNameNoTooltip]"
-									position = { 90 0 }
-									#parentanchor = vcenter
-								}
-
-
-								portrait_head_small = {
-									parentanchor = vcenter
-									#parentanchor = hleft
-									size = { 50 50 }
-									position = {15 15 }
-								}
-
-							}
-
-
-						}
-				
-						}
-					}
-				}
-				#enemy lords
-				scrollbox = {
-					visible = "[GetVariableSystem.Exists( 'show_r_enemies')]"
-					layoutpolicy_horizontal = expanding
-					layoutpolicy_vertical = expanding
-					size = { 375 350 }
-					position = { 525 240 }
-					
-					blockoverride "scrollbox_content" {
-						vbox_list_interaction_title_selection = {
-
-							datamodel = "[GetPlayer.MakeScope.GetList('enemy_in_realm')]"
-							
-							layoutpolicy_horizontal = expanding
-							spacing = 3
-
-						item = {
-							
-							button_standard = {
-								layoutpolicy_horizontal = expanding
-								layoutpolicy_vertical = expanding
-								size = { 0 90 }
-								datacontext = "[Scope.GetCharacter]"
-								onclick = "[GetScriptedGui('char_select').Execute( GuiScope.SetRoot( Scope.GetCharacter.MakeScope ).End )]"
-								onclick = "[GetScriptedGui('char_selected').Execute( GuiScope.SetRoot( GetPlayer.MakeScope ).AddScope('target', Scope.GetCharacter.MakeScope ).End )]"
-								onclick = "[GetVariableSystem.Clear( 'current_spell2')]"
-								down = "[EqualTo_string(Scope.GetCharacter.MakeScope.Var('is_selected').GetFlagName, 'selected')]"
-								button_ignore = none
-								tooltip = "[Scope.GetCharacter.GetTooltip]"
-								using = tooltip_es
-
-								text_single = {
-									name = "text"
-									layoutpolicy_horizontal = expanding
-									text = "[Character.GetNameNoTooltip]"
-									position = { 90 0 }
-									#parentanchor = vcenter
-								}
-
-
-								portrait_head_small = {
-									parentanchor = vcenter
-									#parentanchor = hleft
-									size = { 50 50 }
-									position = {15 15 }
-								}
-
-							}
-
-
-						}
-				
-						}
-					}
-				}
-
-				#prisoners
-				scrollbox = {
-					visible = "[GetVariableSystem.Exists( 'show_r_prisoners')]"
-					layoutpolicy_horizontal = expanding
-					layoutpolicy_vertical = expanding
-					size = { 375 350 }
-					position = { 525 240 }
-					
-					blockoverride "scrollbox_content" {
-						vbox_list_interaction_title_selection = {
-
-							datamodel = "[GetPlayer.MakeScope.GetList('prisoner_in_realm')]"
-							
-							layoutpolicy_horizontal = expanding
-							spacing = 3
-
-						item = {
-							
-							button_standard = {
-								layoutpolicy_horizontal = expanding
-								layoutpolicy_vertical = expanding
-								size = { 0 90 }
-								datacontext = "[Scope.GetCharacter]"
-								onclick = "[GetScriptedGui('char_select').Execute( GuiScope.SetRoot( Scope.GetCharacter.MakeScope ).End )]"
-								onclick = "[GetScriptedGui('char_selected').Execute( GuiScope.SetRoot( GetPlayer.MakeScope ).AddScope('target', Scope.GetCharacter.MakeScope ).End )]"
-								onclick = "[GetVariableSystem.Clear( 'current_spell2')]"
-								down = "[EqualTo_string(Scope.GetCharacter.MakeScope.Var('is_selected').GetFlagName, 'selected')]"
-								button_ignore = none
-								tooltip = "[Scope.GetCharacter.GetTooltip]"
-								using = tooltip_es
-
-								text_single = {
-									name = "text"
-									layoutpolicy_horizontal = expanding
-									text = "[Character.GetNameNoTooltip]"
-									position = { 90 0 }
-									#parentanchor = vcenter
-								}
-
-
-								portrait_head_small = {
-									parentanchor = vcenter
-									#parentanchor = hleft
-									size = { 50 50 }
-									position = {15 15 }
-								}
-
-							}
-
-
-						}
-				
-						}
-					}
-				}
-
-				#titles
-				scrollbox = {
-					visible = "[GetVariableSystem.Exists( 'show_r_land')]"
-					layoutpolicy_horizontal = expanding
-					layoutpolicy_vertical = expanding
-					size = { 375 350 }
-					position = { 525 240 }
-					blockoverride "scrollbox_content" {
-						vbox_list_interaction_title_selection = {
-
-							datamodel = "[GetPlayer.MakeScope.GetList('lands_realm')]"
-							
-							layoutpolicy_horizontal = expanding
-							spacing = 3
-
-							item = {
-								
-								button_standard = {
-									name = "vassal_button"
-									layoutpolicy_horizontal = expanding
-									layoutpolicy_vertical = expanding
-									size = { 0 60 }
-									datacontext = "[Scope.GetLandedTitle]"
-									onclick = "[GetScriptedGui('title_selected').Execute( GuiScope.SetRoot( GetPlayer.MakeScope ).AddScope('target', Scope.GetLandedTitle.MakeScope ).End )]"
-									onclick = "[GetScriptedGui('title_select').Execute( GuiScope.SetRoot( Scope.GetLandedTitle.MakeScope ).End )]"
-									onclick = "[GetVariableSystem.Clear( 'current_spell2')]"
-									down = "[EqualTo_string(Scope.GetLandedTitle.MakeScope.Var('is_selected').GetFlagName, 'selected')]"
-									button_ignore = none
-									tooltip = "[Scope.GetLandedTitle.GetTooltip]"
-									using = tooltip_es
-
-									coa_title_tiny_crown = {
-										datacontext = "[Scope.GetLandedTitle]"
-										parentanchor = vcenter
-										position = {5 -1 }
-									}
-
-									icon = {
-										name = "pressed_claim"
-										visible = "[GetPlayer.HasPressedClaimOnTitle( Scope.GetLandedTitle.Self )]"
-										#visible = "[EqualTo_string(Scope.GetLandedTitle.GetFlagName, GetPlayer.MakeScope.Var(Scope.GetLandedTitle).Scope.GetLandedTitle.GetFlagName)]"
-										size = { 24 24 }
-										texture = "gfx/interface/icons/title_status/icon_claim_pressed.dds"
-										tooltip = "REVOKE_TITLE_PRESSED_CLAIM"
-									}
-
-									hbox = {
-										margin_left = 55
-										margin_right = 5
-										#visible = "[Scope.GetLandedTitle.IsSelected]"
-										text_single = {
-											name = "text"
-											
+										
+										background = {
+											using = Background_Area
+											alpha = 0.2
+										}
+										
+										hbox = {
 											layoutpolicy_horizontal = expanding
-											text = "[Scope.GetLandedTitle.GetNameNoTooltip]"
+											vbox = {
+												text_single = {
+													text = "[Localize(Concatenate(Scope.Var('game_tier').GetFlagName,'_tier_color_prefix'))] [Localize(Concatenate(Scope.Var('game_name').GetFlagName,'_name'))]"
+													align = left|top
+													layoutpolicy_vertical = expanding
+													layoutpolicy_horizontal = expanding
+													
+													default_format = "#high"
+													using = Font_Type_Standard
+													fontsize = 24
+													
+													margin_top = 5
+													margin_left = 20
+												}
+												text_single = {
+													text = "[SelectLocalization(Scope.Var('game_size').IsSet,Concatenate(Scope.Var('game_size').GetFlagName,'_game_tag_normal_text'),'')] [Localize(Concatenate(Scope.Var('game_type').GetFlagName,'_game_tag_normal_text'))] [SelectLocalization(Scope.Var('game_elemental_type').IsSet,Concatenate('(',Concatenate(Localize(Concatenate(Scope.Var('game_elemental_type').GetFlagName,'_game_tag_normal_text')),')')),'')]"
+													visible = "[Scope.Var('game_type').IsSet]"
+													align = left|top
+													layoutpolicy_vertical = expanding
+													layoutpolicy_horizontal = expanding
+													
+													default_format = "#EMP Test#!"
+													using = Font_Type_Standard
+													fontsize = 14
+													
+													margin_bottom = 5
+													margin_left = 20
+												}
+											}
+											expand = {}
+											text_single = {
+												text = "@hunt_kills_icon! [SelectLocalization(GetPlayer.MakeScope.Var(Concatenate(Scope.Var('game_name').GetFlagName , '_kills')).IsSet,'#color_white','#color_gray')] [GetPlayer.MakeScope.Var(Concatenate(Scope.Var('game_name').GetFlagName , '_kills')).GetValue|0]#! @hunt_kills_dynasty_icon! [SelectLocalization(GetPlayer.GetDynasty.MakeScope.Var(Concatenate(Scope.Var('game_name').GetFlagName , '_kills')).IsSet,'#color_white','#color_gray')] [GetPlayer.GetDynasty.MakeScope.Var(Concatenate(Scope.Var('game_name').GetFlagName , '_kills')).GetValue|0]#!"
+												align = right|top
+												layoutpolicy_vertical = expanding
+												layoutpolicy_horizontal = expanding
+												
+												default_format = "#high"
+												using = Font_Type_Standard
+												fontsize = 24
+												
+												margin_top = 5
+												margin_bottom = 5
+												margin_left = 20
+												margin_right = 20
+											}
+											background = {
+												using = Background_Area_ExtraDark
+												alpha = 0.6
+												visible = "[GetPlayer.MakeScope.Var(Concatenate(Scope.Var('game_name').GetFlagName , '_kills')).IsSet]"
+											}
+											background = {
+												using = Background_Area_Dark
+												alpha = 0.4
+												visible = "[Not(GetPlayer.MakeScope.Var(Concatenate(Scope.Var('game_name').GetFlagName , '_kills')).IsSet)]"
+											}
 										}
+										
+										hbox = {
+											layoutpolicy_horizontal = expanding
+											layoutpolicy_vertical = expanding
+											
+											margin_left = 10
+											margin_top = 5
 
-										icon = {
-											name = "pressed_claim"
-											visible = "[GetPlayer.HasPressedClaimOnTitle( Scope.GetLandedTitle.Self )]"
-											size = { 24 24 }
-											texture = "gfx/interface/icons/title_status/icon_claim_pressed.dds"
-											tooltip = "REVOKE_TITLE_PRESSED_CLAIM"
+											textbox = {
+												text = "[SelectLocalization('(bool)no','',Concatenate(Scope.Var('game_name').GetFlagName,'_encyclopedia_desc'))]"
+												minimumsize = { 300 100 }
+												maximumsize = { 300 500 }
+												multiline = yes
+												autoresize = yes
+											}
+											divider_light = {
+												layoutpolicy_vertical = expanding
+												parentanchor = left
+											}
+											vbox = {
+												margin_left = 10
+												flowcontainer = {
+													datamodel = "[Scope.GetList('game_tag_list')]"
+													minimumsize = { 150 100 }
+													maximumsize = { 150 500 }
+													direction = vertical
+													
+													item = {
+														text_single = {
+															text = "[SelectLocalization('(bool)no','',Concatenate(Scope.GetFlagName,'_game_tag_tooltip'))]"
+															align = hcenter|top
+														}
+													}
+												}
+												
+												expand = {}
+											}
+											divider_light = {
+												layoutpolicy_vertical = expanding
+												parentanchor = left
+											}
+											vbox = {
+												margin_left = 10
+												flowcontainer = {
+													datamodel = "[Scope.GetList('game_contained_in_biozone_list')]"
+													minimumsize = { 150 100 }
+													maximumsize = { 150 500 }
+													direction = vertical
+													
+													item = {
+														text_single = {
+															text = "[SelectLocalization('(bool)no','',Concatenate(Scope.GetProvince.MakeScope.Var('biozone_name').GetFlagName,'_name'))]"
+															align = hcenter|top
+														}
+													}
+												}
+												
+												expand = {}
+											}
 										}
-
-										icon = {
-											name = "unpressed_claim"
-											visible = "[GetPlayer.HasUnpressedClaimOnTitle( Scope.GetLandedTitle.Self )]"
-											size = { 24 24 }
-											texture = "gfx/interface/icons/title_status/icon_claim_unpressed.dds"
-											tooltip = "REVOKE_TITLE_UNPRESSED_CLAIM"
-										}
-
-										icon = {
-											name = "leased_out"
-											visible = "[Scope.GetLandedTitle.HasLeasedOutVassal]"
-											size = { 36 39 }
-											texture = "gfx/interface/icons/icon_holding_church.dds"
-											tooltip = "GRANT_TITLE_LEASED_OUT_VASSAL"
-										}
-
-										block "extra_title_items" {}
 									}
-
-
 								}
-					
 							}
 						}
 					}
-
 				}
-
-				#enemy titles
+				
+				################
+				# Biozones Tab #
+				################
 				scrollbox = {
-					visible = "[GetVariableSystem.Exists( 'show_r_enemyrealm')]"
+					name = "tab_biozones"
+					visible = "[GetVariableSystem.HasValue( 'hunting_tab', 'biozones' )]"
 					layoutpolicy_horizontal = expanding
 					layoutpolicy_vertical = expanding
-					size = { 375 350 }
-					position = { 525 240 }
-					blockoverride "scrollbox_content" {
-						vbox_list_interaction_title_selection = {
-
-							datamodel = "[GetPlayer.MakeScope.GetList('enemy_lands')]"
-							
-							layoutpolicy_horizontal = expanding
-							spacing = 3
-
-							item = {
-								
-								button_standard = {
-									name = "vassal_button"
-									layoutpolicy_horizontal = expanding
-									layoutpolicy_vertical = expanding
-									size = { 0 60 }
-									datacontext = "[Scope.GetLandedTitle]"
-									onclick = "[GetScriptedGui('title_selected').Execute( GuiScope.SetRoot( GetPlayer.MakeScope ).AddScope('target', Scope.GetLandedTitle.MakeScope ).End )]"
-									onclick = "[GetScriptedGui('title_select').Execute( GuiScope.SetRoot( Scope.GetLandedTitle.MakeScope ).End )]"
-									onclick = "[GetVariableSystem.Clear( 'current_spell2')]"
-									down = "[EqualTo_string(Scope.GetLandedTitle.MakeScope.Var('is_selected').GetFlagName, 'selected')]"
-									button_ignore = none
-									tooltip = "[Scope.GetLandedTitle.GetTooltip]"
-									using = tooltip_es
-
-									coa_title_tiny_crown = {
-										datacontext = "[Scope.GetLandedTitle]"
-										parentanchor = vcenter
-										position = {5 -1 }
-									}
-
-									icon = {
-										name = "pressed_claim"
-										visible = "[GetPlayer.HasPressedClaimOnTitle( Scope.GetLandedTitle.Self )]"
-										#visible = "[EqualTo_string(Scope.GetLandedTitle.GetFlagName, GetPlayer.MakeScope.Var(Scope.GetLandedTitle).Scope.GetLandedTitle.GetFlagName)]"
-										size = { 24 24 }
-										texture = "gfx/interface/icons/title_status/icon_claim_pressed.dds"
-										tooltip = "REVOKE_TITLE_PRESSED_CLAIM"
-									}
-
-									hbox = {
-										margin_left = 55
-										margin_right = 5
-										#visible = "[Scope.GetLandedTitle.IsSelected]"
-										text_single = {
-											name = "text"
-											
-											layoutpolicy_horizontal = expanding
-											text = "[Scope.GetLandedTitle.GetNameNoTooltip]"
-										}
-
-										icon = {
-											name = "pressed_claim"
-											visible = "[GetPlayer.HasPressedClaimOnTitle( Scope.GetLandedTitle.Self )]"
-											size = { 24 24 }
-											texture = "gfx/interface/icons/title_status/icon_claim_pressed.dds"
-											tooltip = "REVOKE_TITLE_PRESSED_CLAIM"
-										}
-
-										icon = {
-											name = "unpressed_claim"
-											visible = "[GetPlayer.HasUnpressedClaimOnTitle( Scope.GetLandedTitle.Self )]"
-											size = { 24 24 }
-											texture = "gfx/interface/icons/title_status/icon_claim_unpressed.dds"
-											tooltip = "REVOKE_TITLE_UNPRESSED_CLAIM"
-										}
-
-										icon = {
-											name = "leased_out"
-											visible = "[Scope.GetLandedTitle.HasLeasedOutVassal]"
-											size = { 36 39 }
-											texture = "gfx/interface/icons/icon_holding_church.dds"
-											tooltip = "GRANT_TITLE_LEASED_OUT_VASSAL"
-										}
-
-										block "extra_title_items" {}
-									}
-
-
-								}
+				
+					blockoverride "scrollbox_background" {}
+					blockoverride "scrollbox_background_fade" {}
+				
+					state = {
+						name = _show
+						using = Animation_FadeIn_Quick
+					}
+				
+					state = {
+						name = _hide
+						alpha = 0
+					}
 					
+					background = {
+						texture = "gfx/interface/illustrations/event_scenes/forest_pine.dds"
+						fittype = end
+						alpha = 0.4
+	
+						modify_texture = {
+							texture = "gfx/interface/component_masks/mask_fade_vertical_up.dds"
+							blend_mode = alphamultiply
+						}
+	
+						modify_texture = {
+							texture = "gfx/interface/component_masks/mask_vignette.dds"
+							blend_mode = alphamultiply
+							alpha = 0.4
+						}
+					}
+				
+					blockoverride "scrollbox_content"
+					{
+						vbox = {
+							name = "biozones"
+							datamodel = "[GetGlobalList('hunting_biozone_info_provinces')]"
+							layoutpolicy_horizontal = expanding
+							layoutpolicy_vertical = expanding
+				
+							item = {
+								vbox = {
+									layoutpolicy_vertical = expanding
+									layoutpolicy_horizontal = expanding
+									spacing = 5
+									
+									vbox = {
+										name = "biozone_list_item"
+										margin_right = 15
+										margin_left = 5
+										margin_bottom = 30
+										margin_top = 30
+										layoutpolicy_vertical = expanding
+										layoutpolicy_horizontal = expanding
+										
+										background = {
+											using = Background_Area
+											alpha = 0.2
+										}
+										
+										hbox = {
+											layoutpolicy_horizontal = expanding
+											text_single = {
+												text = "[Localize(Concatenate(Scope.Var('biozone_tier').GetFlagName,'_danger_tier_color_prefix'))] [SelectLocalization('(bool)no','',Concatenate(Scope.GetProvince.MakeScope.Var('biozone_name').GetFlagName,'_name'))]"
+												align = left|top
+												layoutpolicy_vertical = expanding
+												layoutpolicy_horizontal = expanding
+												
+												default_format = "#high"
+												using = Font_Type_Standard
+												fontsize = 24
+												
+												margin_top = 5
+												margin_bottom = 5
+												margin_left = 20
+											}
+											expand = {}
+											background = {
+												using = Background_Area_Dark
+												alpha = 0.4
+											}
+										}
+										
+										hbox = {
+											layoutpolicy_horizontal = expanding
+											layoutpolicy_vertical = expanding
+											parentanchor = hcenter|top
+											
+											margin_left = 10
+											margin_top = 5
+
+											textbox = {
+												text = "[SelectLocalization('(bool)no','',Concatenate(Scope.Var('biozone_name').GetFlagName,'_encyclopedia_desc'))]"
+												minimumsize = { 300 100 }
+												maximumsize = { 300 500 }
+												multiline = yes
+												autoresize = yes
+											}
+											divider_light = {
+												layoutpolicy_vertical = expanding
+												parentanchor = left
+											}
+											vbox = {
+												margin_left = 10
+												flowcontainer = {
+													datamodel = "[Scope.GetList('biozone_tag_list')]"
+													minimumsize = { 150 100 }
+													maximumsize = { 150 500 }
+													direction = vertical
+													
+													item = {
+														text_single = {
+															text = "[SelectLocalization('(bool)no','',Concatenate(Scope.GetFlagName,'_tooltip'))]"
+															align = hcenter|top
+														}
+													}
+												}
+												
+												expand = {}
+											}
+											divider_light = {
+												layoutpolicy_vertical = expanding
+												parentanchor = left
+											}
+											vbox = {
+												margin_left = 10
+												flowcontainer = {
+													datamodel = "[Scope.GetList('biozone_contains_game_list')]"
+													minimumsize = { 150 100 }
+													maximumsize = { 150 500 }
+													direction = vertical
+													
+													item = {
+														text_single = {
+															text = "[SelectLocalization('(bool)no','',Concatenate(Scope.GetProvince.MakeScope.Var('game_name').GetFlagName,'_name'))]"
+															align = hcenter|top
+														}
+													}
+												}
+												
+												expand = {}
+											}
+										}
+									}
+								}
 							}
 						}
 					}
-
 				}
-			
+			}
 		}
+	}
+	
+	##############################
+	# CLIQUE MENU BY HAPCHAZZARD #
+	##############################
+	
+	window = {
+		name = "cliques_view"
+		parentanchor = top|right
+		layer = windows_layer
+		movable = no
+		using = Window_Size_MainTab
+		visible = "[And(GetVariableSystem.Exists('cliques_window_open'),IsInGame)]"	
+		state = {
+			name = _hide
+			trigger_when = "[Not(GetVariableSystem.Exists('cliques_window_open'))]"
+			using = Animation_FadeOut_Quick
+			using = Sound_WindowHide_Standard
+			using = Window_Position_MainTab_Hide
+			trigger_on_create = yes
+			trigger_when = "[IsGameViewOpen('my_realm')]"
+			trigger_when = "[IsGameViewOpen('military')]"
+			trigger_when = "[IsGameViewOpen('council_window')]"
+			trigger_when = "[IsGameViewOpen('court_window')]"
+			trigger_when = "[IsGameViewOpen('intrigue_window')]"
+			trigger_when = "[IsGameViewOpen('factions_window')]"
+			trigger_when = "[IsGameViewOpen('decisions')]"
+			trigger_when = "[GetVariableSystem.Exists('artifact_window_open')]"
+	
+			on_start = "[GetVariableSystem.Clear('cliques_window_open')]"
+			on_start = "[GetVariableSystem.Clear('show_allied_cliques')]"
+		}
+		state = {
+			name = _show
+			trigger_when = "[GetVariableSystem.Exists('artifact_window_open')]"
+			using = Animation_FadeIn_Quick
+			using = Sound_WindowShow_Standard
+			using = Window_Position_MainTab
+			on_start = "[PdxGuiTriggerAllAnimations( Select_CString( IsGameViewOpen('my_realm'), 'if_my_realm_open', 'else_do_nothing' ) )]"
+			on_start = "[PdxGuiTriggerAllAnimations( Select_CString( IsGameViewOpen('military'), 'if_military_open', 'else_do_nothing' ) )]"
+			on_start = "[PdxGuiTriggerAllAnimations( Select_CString( IsGameViewOpen('council_window'), 'if_council_open', 'else_do_nothing' ) )]"
+			on_start = "[PdxGuiTriggerAllAnimations( Select_CString( IsGameViewOpen('court_window'), 'if_court_open', 'else_do_nothing' ) )]"
+			on_start = "[PdxGuiTriggerAllAnimations( Select_CString( IsGameViewOpen('intrigue_window'), 'if_intrigue_open', 'else_do_nothing' ) )]"
+			on_start = "[PdxGuiTriggerAllAnimations( Select_CString( IsGameViewOpen('factions_window'), 'if_factions_open', 'else_do_nothing' ) )]"
+			on_start = "[PdxGuiTriggerAllAnimations( Select_CString( IsGameViewOpen('decisions'), 'if_decisions_open', 'else_do_nothing' ) )]"
+			on_start = "[GetScriptedGui('get_character_cliques_scripted_gui').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+		}
+		state = {
+			name = if_my_realm_open
+			on_start = "[ToggleGameView('my_realm')]"
+		}
+		state = {
+			name = if_military_open
+			on_start = "[ToggleGameViewData('military', GetPlayer.GetID)]"
+		}
+		state = {
+			name = if_council_open
+			on_start = "[ToggleGameViewData('council_window', GetPlayer.GetID)]"
+		}
+		state = {
+			name = if_court_open
+			on_start = "[ToggleGameViewData( 'court_window', GetPlayer.GetID )]"
+		}
+		state = {
+			name = if_intrigue_open
+			on_start = "[ToggleGameViewData('intrigue_window', GetPlayer.GetID)]"
+		}
+		state = {
+			name = if_factions_open
+			on_start = "[ToggleGameView('factions_window')]"
+		}
+		state = {
+			name = if_decisions_open
+			on_start = "[ToggleGameView('decisions')]"
+		}
+	
+		state = {
+			name = else_do_nothing
+		}
+	
+		background = {
+			texture = "gfx/interface/component_tiles/solid_black_label.dds"
+			margin_left = -40
+			fittype = centercrop
+		}
+		
+		margin_widget = {
+			size = { 100% 100% }
+			margin = { 0 26 }
+			margin_right = 20
+			widget = {
+				size = { 100% 100% }
+				using = Window_Background
+				
+				vbox = {
+					using = Window_Margins
+					
+					header_pattern = {
+						layoutpolicy_horizontal = expanding
+						
+						blockoverride "header_text"
+						{
+							text = "CLIQUES_VIEW_TITLE"
+						}
+						
+						blockoverride "button_close"
+						{
+							onclick = "[GetVariableSystem.Clear('cliques_window_open')]"
+						}
+					}
+					
+					button_checkbox_label = {
+						visible = "[GetScriptedGui('allied_cliques_scripted_gui').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+						onclick = "[GetVariableSystem.Toggle( 'show_allied_cliques')]"
+						onclick = "[GetScriptedGui('allied_cliques_scripted_gui').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+
+						blockoverride "checkbox"
+						{
+							checked = "[GetVariableSystem.Exists( 'show_allied_cliques')]"
+						}
+
+						blockoverride "text"
+						{
+							text = "Show Allied Cliques"
+							min_width = 100
+						}
+					}
+					
+					scrollbox = {
+						layoutpolicy_horizontal = expanding
+						layoutpolicy_vertical = expanding
+						
+						blockoverride "scrollbox_content"
+						{	
+							vbox = {
+								name = "clique_list"
+								datamodel = "[GetPlayer.MakeScope.GetList('displayed_character_cliques')]"
+								layoutpolicy_horizontal = expanding
+								layoutpolicy_vertical = expanding
+								
+								parentanchor = hcenter|top
+								
+								item = {
+									visible = "[GetScriptedGui('clique_visibility_scripted_gui').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('relevant_clique',Scope.Province.MakeScope).End)]"
+									vbox = {
+										layoutpolicy_horizontal = expanding
+										spacing = 5
+										
+										divider_light = {
+											layoutpolicy_horizontal = expanding
+										}
+										
+										background = {
+											using = Background_Area
+											alpha = 0.2
+										}
+										
+										hbox = {
+											layoutpolicy_horizontal = expanding
+											
+											coa_title_tiny_crown = {
+												visible = "[GetScriptedGui('clique_is_external_scripted_gui').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('relevant_clique',Scope.Province.MakeScope).End)]"
+												datacontext = "[Scope.Var('latched_to_title').GetLandedTitle]"
+											}
+											
+											text_single = {
+												name = "name_clique"
+												layoutpolicy_horizontal = expanding
+												text = "[Localize(Concatenate(Scope.Var('clique_name').GetFlagName,'_name'))]"
+												align = nobaseline
+												default_format = "#high"
+												using = Font_Type_Flavor
+												fontsize = 26
+												autoresize = yes
+												margin_left = 10
+											}
+											
+											background = {
+												using = Background_Area_Solid
+												margin_bottom = 10
+												margin_top = 10
+												margin_left = 5
+												margin_right = 5
+											}
+											
+											text_single = {
+												name = "clique_power"
+												visible = "[Not(GetScriptedGui('clique_is_external_or_secret_society_scripted_gui').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('relevant_clique',Scope.GetProvince.MakeScope).End))]"
+												layoutpolicy_horizontal = expanding
+												text = "[GuiScope.SetRoot( Scope.GetProvince.MakeScope ).ScriptValue('clique_power_percentage')|1] %"
+												align = right
+												default_format = "#medium"
+												using = Font_Type_Standard
+												fontsize = 20
+												autoresize = yes
+												margin_right = 30
+											}
+											
+											expand = {}
+											
+											hbox = {
+												visible = "[GetScriptedGui('clique_is_external_or_secret_society_scripted_gui').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('relevant_clique',Scope.GetProvince.MakeScope).End)]"
+												icon = {
+													name = "powerbase_icon"
+													size = { 30 30 }
+													framesize = { 28 28 }
+													texture = "gfx/interface/icons/portraits/powerful_vassal_small.dds"
+													frame = 3
+												}
+												
+												text_single = {
+													name = "clique_power"
+													layoutpolicy_horizontal = expanding
+													text = "[GuiScope.SetRoot( Scope.GetProvince.MakeScope ).ScriptValue('clique_total_power')|1]"
+													align = right
+													default_format = "#medium"
+													using = Font_Type_Standard
+													fontsize = 20
+													autoresize = yes
+													margin_right = 30
+												}
+											}
+										}
+										
+										hbox = {
+											layoutpolicy_horizontal = expanding
+											layoutpolicy_vertical = expanding
+											
+											margin_top = 10
+											margin_left = 10
+											margin_right = 10
+											
+											textbox = {
+												name = "clique_desc"
+												layoutpolicy_horizontal = expanding
+												layoutpolicy_vertical = expanding
+												text = "[SelectLocalization('(bool)no','',Concatenate(Scope.Var('clique_name').GetFlagName,'_desc'))]"
+												align = nobaseline
+												default_format = "#high"
+												using = Font_Type_Standard
+												autoresize = yes
+												multiline = yes
+												
+												max_width = 500
+											}
+										}
+										
+										divider_light = {
+											layoutpolicy_horizontal = expanding
+											alpha = 0.8
+										}
+										
+										hbox = {
+											layoutpolicy_vertical = expanding
+											layoutpolicy_horizontal = expanding
+											vbox = {
+												layoutpolicy_vertical = expanding
+												
+												text_single = {
+													text = "GUIDING_VALUES_TITLE"
+													layoutpolicy_horizontal = expanding
+													layoutpolicy_vertical = expanding
+													default_format = "#weak"
+													align = center
+													
+													tooltip = "GUIDING_VALUES_TOOLTIP"
+												}
+												
+												dynamicgridbox = {
+													name = "guiding_virtues_grid"
+													datamodel = "[Scope.GetList('clique_guiding_principle_traits')]"
+													flipdirection = yes
+													datamodel_wrap = 3
+		
+													item = {
+														icon = {
+															datacontext = "[GetTrait(Scope.GetFlagName)]"
+															size = { 40 40 }
+															alwaystransparent = yes
+															texture = "[Trait.GetIcon( GetPlayer )]"
+		
+															#tooltipwidget = {
+															#	using = clique_window_trait_tooltip
+															#}
+		
+															block "tooltip_placement"
+															{
+																using = tooltip_ne
+																tooltip_offset = { 0 20 }
+															}
+														}
+													}
+												}
+												
+												text_single = {
+													text = "OPPOSED_VALUES_TITLE"
+													visible = "[GetScriptedGui('clique_has_opposed_values_scripted_gui').IsShown(GuiScope.SetRoot(Scope.GetProvince.MakeScope).End)]"
+													layoutpolicy_horizontal = expanding
+													layoutpolicy_vertical = expanding
+													default_format = "#weak"
+													align = center
+													
+													tooltip = "OPPOSED_VALUES_TOOLTIP"
+												}
+												
+												dynamicgridbox = {
+													name = "opposed_traits_grid"
+													datamodel = "[Scope.GetList('clique_guiding_principle_opposed_traits')]"
+													flipdirection = yes
+													datamodel_wrap = 3
+		
+													item = {
+														icon = {
+															datacontext = "[GetTrait(Scope.GetFlagName)]"
+															size = { 40 40 }
+															alwaystransparent = yes
+															texture = "[Trait.GetIcon( GetPlayer )]"
+		
+															block "tooltip_placement"
+															{
+																using = tooltip_ne
+																tooltip_offset = { 0 20 }
+															}
+														}
+													}
+												}
+												
+												text_single = {
+													text = "FAVORED_SKILLS_TITLE"
+													layoutpolicy_horizontal = expanding
+													layoutpolicy_vertical = expanding
+													default_format = "#weak"
+													align = center
+												}
+												
+												dynamicgridbox = {
+													datamodel = "[Scope.GetList('clique_guiding_principle_skills')]"
+													flipdirection = yes
+													datamodel_wrap = 3
+													item = {
+														flowcontainer = {
+															margin_left = 10
+															margin_right = 15
+															spacing = 4
+														
+															background = {
+																name = "skill_icon_bg"
+																texture = "gfx/interface/window_character/character_view_skills_bg.dds"
+																framesize = { 70 26 }
+														
+																block "bg"
+																{
+																	frame = "[Select_int32( EqualTo_string(Scope.GetFlagName,'Diplomacy') , '(int32)1', Select_int32(EqualTo_string(Scope.GetFlagName,'Martial'),'(int32)2', Select_int32(EqualTo_string(Scope.GetFlagName,'Stewardship'),'(int32)3', Select_int32(EqualTo_string(Scope.GetFlagName, 'Intrigue'), '(int32)4' , Select_int32(EqualTo_string(Scope.GetFlagName, 'Learning'), '(int32)5', '(int32)6')) ) ) )]"
+																}
+															}
+														
+															block "tooltip"
+															{
+																tooltip = "SKILL_ITEM_TOOLTIP"
+															}
+														
+															icon = {
+																name = "skill_icon"
+																texture = "gfx/interface/icons/icon_skills.dds"
+																framesize = { 60 60 }
+														
+																block "icon"
+																{
+																	frame = "[Select_int32( EqualTo_string(Scope.GetFlagName,'Diplomacy') , '(int32)1', Select_int32(EqualTo_string(Scope.GetFlagName,'Martial'),'(int32)2', Select_int32(EqualTo_string(Scope.GetFlagName,'Stewardship'),'(int32)3', Select_int32(EqualTo_string(Scope.GetFlagName, 'Intrigue'), '(int32)4' , Select_int32(EqualTo_string(Scope.GetFlagName, 'Learning'), '(int32)5', '(int32)6')) ) ) )]"
+																}
+														
+																block "icon_size"
+																{
+																	size = { 30 30 }
+																}
+														
+															}
+														}
+													}
+												}
+												
+												text_single = {
+													text = "CLIQUE_ASPECTS_TITLE"
+													layoutpolicy_horizontal = expanding
+													layoutpolicy_vertical = expanding
+													default_format = "#weak"
+													align = center
+												}
+												
+												vbox = {
+													datamodel = "[Scope.GetList('clique_guiding_principle_aspects')]"
+													
+													item = {
+														text_single = {
+															text = "[SelectLocalization('(bool)no','',Concatenate(Scope.GetFlagName,'_name'))]"
+															layoutpolicy_horizontal = expanding
+															layoutpolicy_vertical = expanding
+															align = center
+															margin_bottom = 10
+															tooltip = "[SelectLocalization('(bool)no','',Concatenate(Scope.GetFlagName,'_tooltip'))]"
+														}
+													}
+												}
+												
+												text_single = {
+													visible = "[GetScriptedGui('clique_has_geographic_constraint_scripted_gui').IsShown(GuiScope.SetRoot(Scope.GetProvince.MakeScope).End)]"
+													text = "Constrained to [Scope.Var('clique_geographic_constraint').Title.GetNameNoTier]"
+													layoutpolicy_horizontal = expanding
+													layoutpolicy_vertical = expanding
+													align = center
+													margin_bottom = 10
+												}
+											}
+											 
+											vbox = {
+												layoutpolicy_vertical = expanding
+												
+												vbox = {
+													text_single = {
+														text = "CLIQUE_LEADER"
+														layoutpolicy_horizontal = expanding
+														layoutpolicy_vertical = expanding
+														default_format = "#weak"
+														align = center
+														margin_bottom = 5
+													}
+													text_single = {
+														text = "[Scope.Var('clique_leader').GetCharacter.GetName]"
+														layoutpolicy_horizontal = expanding
+														layoutpolicy_vertical = expanding
+														align = center
+														margin_bottom = 10
+													}
+													container = {
+														datacontext = "[Scope.Var('clique_leader').GetCharacter]"
+														visible = "[Scope.Var('clique_leader').IsSet]"
+			
+														portrait_head_cached = {
+														
+														}
+													}
+												}
+												vbox = {
+													datamodel = "[Scope.GetList('valid_clique_interactions')]"
+													text_single = {
+														text = "CLIQUE_INTERACTIONS_TITLE"
+														layoutpolicy_horizontal = expanding
+														layoutpolicy_vertical = expanding
+														default_format = "#weak"
+														align = center
+														margin_bottom = 10
+													}
+													
+													button_standard = {
+														name = "join_clique_button"
+										
+														onclick = "[GetScriptedGui('join_clique_scripted_gui').Execute(GuiScope.SetRoot(Scope.GetProvince.MakeScope).AddScope('player_viewing_cliques',GetPlayer.MakeScope).End)]"
+														visible = "[GetScriptedGui('join_clique_scripted_gui').IsShown(GuiScope.SetRoot(Scope.GetProvince.MakeScope).AddScope('player_viewing_cliques',GetPlayer.MakeScope).End)]"
+														enabled = "[GetScriptedGui('join_clique_scripted_gui').IsValid(GuiScope.SetRoot(Scope.GetProvince.MakeScope).AddScope('player_viewing_cliques',GetPlayer.MakeScope).End)]"
+														tooltip = "[GetScriptedGui('join_clique_scripted_gui').BuildTooltip(GuiScope.SetRoot(Scope.GetProvince.MakeScope).AddScope('player_viewing_cliques',GetPlayer.MakeScope).End)]" 
+										
+														text = "JOIN_CLIQUE"
+														parentanchor = top
+													}
+													
+													button_standard = {
+														name = "leave_clique_button"
+										
+														onclick = "[GetScriptedGui('leave_clique_scripted_gui').Execute(GuiScope.SetRoot(Scope.GetProvince.MakeScope).AddScope('player_viewing_cliques',GetPlayer.MakeScope).End)]"
+														visible = "[GetScriptedGui('leave_clique_scripted_gui').IsShown(GuiScope.SetRoot(Scope.GetProvince.MakeScope).AddScope('player_viewing_cliques',GetPlayer.MakeScope).End)]"
+														enabled = "[GetScriptedGui('leave_clique_scripted_gui').IsValid(GuiScope.SetRoot(Scope.GetProvince.MakeScope).AddScope('player_viewing_cliques',GetPlayer.MakeScope).End)]"
+														tooltip = "[GetScriptedGui('leave_clique_scripted_gui').BuildTooltip(GuiScope.SetRoot(Scope.GetProvince.MakeScope).AddScope('player_viewing_cliques',GetPlayer.MakeScope).End)]" 
+														
+														text = "LEAVE_CLIQUE"
+														parentanchor = top
+													}
+													
+													item = {
+														button_standard = {
+															name = "clique_interaction_button"
+											
+															onclick = "[GetScriptedGui('clique_interaction_scripted_gui').Execute(GuiScope.SetRoot(Scope.GetProvince.MakeScope).AddScope('player_viewing_cliques',GetPlayer.MakeScope).End)]"
+															enabled = "[GetScriptedGui('clique_interaction_scripted_gui').IsValid(GuiScope.SetRoot(Scope.GetProvince.MakeScope).AddScope('player_viewing_cliques',GetPlayer.MakeScope).End)]"
+															tooltip = "[GetScriptedGui('clique_interaction_scripted_gui').BuildTooltip(GuiScope.SetRoot(Scope.GetProvince.MakeScope).AddScope('player_viewing_cliques',GetPlayer.MakeScope).End)]" 
+											
+															text = "[SelectLocalization('(bool)no','',Concatenate(Scope.Var('clique_interaction_name').GetFlagName,'_name'))]"
+															parentanchor = top
+														}
+													}
+												}
+												expand = {}
+											}
+										}
+										
+										hbox = {
+											layoutpolicy_horizontal = expanding
+											button_group  = {
+												onclick = "[GetVariableSystem.Toggle(Concatenate(Scope.Var('clique_name').GetFlagName,'_displayed'))]"
+												
+												parentanchor = left
+								
+												button_normal = {
+													name = "show_members"
+													size = { 20 20 }
+													alwaystransparent = no
+								
+													texture = "gfx/interface/buttons/button_tree_expand.dds"
+													framesize = { 36 36 }
+													frame = "[Select_int32( Not(GetVariableSystem.Exists(Concatenate(Scope.Var('clique_name').GetFlagName,'_displayed'))), '(int32)1', '(int32)2' )]"
+								
+													using = tooltip_ws
+												}
+								
+												text_single = {
+													text = "Show Members"
+													align = nobaseline
+													position = { 25 0 }
+												}
+											}
+											expand = {}
+										}
+										
+										dynamicgridbox = {
+											name = "clique_members_grid"
+											datamodel = "[Scope.GetProvince.MakeScope.GetList('clique_members')]"
+											visible = "[GetVariableSystem.Exists(Concatenate(Scope.Var('clique_name').GetFlagName,'_displayed'))]"
+											datamodel_wrap = 4
+											ignoreinvisible = yes
+											flipdirection = yes
+											
+											item = {
+												container = {
+													datacontext = "[Scope.GetCharacter]"
+		
+													portrait_head_cached = {
+														
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	
+	########################
+	# SPELL MENU BY CASTOX #
+	########################
+	
+	window = {
+		visible = "[GetVariableSystem.Exists( 'show_spells')]"
+		parentanchor = vcenter|hcenter
+		
+		icon = {
+				position = { 40 20 }
+				#920
+				size = { 920 100 }
+				buttons_window_control = {
+						parentanchor = top|right
+						blockoverride "button_close"
+						{
+							onclick = "[GetVariableSystem.Clear( 'show_spells')]"
+							onclick = "[GetVariableSystem.Clear( 'show_r_char' )]"
+							onclick = "[GetVariableSystem.Clear( 'show_r_land' )]"
+							onclick = "[GetVariableSystem.Clear( 'show_r_enemyrealm' )]"
+							onclick = "[GetVariableSystem.Clear( 'show_r_prisoners' )]"
+							onclick = "[GetVariableSystem.Clear( 'show_r_enemies' )]"
+						}
+				}
+				background = {
+					texture = "gfx/interface/component_tiles/tile_title_big_top_01.dds"
+					margin_bottom = 10
+					spriteType = Corneredtiled
+					spriteborder = { 0 18 }
+					texture_density = 2
+
+					modify_texture = {
+						name = "mask"
+						texture = "gfx/interface/component_masks/mask_title_big_top.dds"
+						spriteType = Corneredtiled
+						spriteborder = { 160 0 }
+						blend_mode = alphamultiply
+						alpha = 0.5
+					}
+
+					modify_texture = {
+						name = "overlay"
+						texture = "gfx/interface/component_overlay/overlay_title_big_top.dds"
+						spriteType = Corneredstretched
+						spriteborder = { 0 0 }
+						blend_mode = overlay
+					}
+				}
+				text_single = {
+					name = "title_magic"
+					text = "Magic"
+					parentanchor = top|hcenter
+					default_format = "#high"
+					using = Font_Size_Big
+					using = Font_Type_Flavor
+
+				}
+					
+			}
+
+
+			progressbar_standard = {
+				size = { 770 45 }
+				position = { 115 125 }
+
+				min = 0
+				max = 200 # or "[GetPlayer.MakeScope.Var('magic_max_value').GetValue|0]"
+				value = "[FixedPointToFloat(GetPlayer.MakeScope.Var('magic_counter').GetValue)]"
+				text_single = {
+					parentanchor = top|right
+					position = { -35 -35 }
+					default_format = "#high"
+					text = "Power Limit: 200  | Current Power: " # "[Character.MakeScope.Var('hitpoints').GetValue|V1] / [Character.MakeScope.Var('maximum_hitpoints').GetValue|V0]"
+					using = Font_Type_Flavor
+			
+				}
+				text_single = {
+					parentanchor = top|right
+					position = { -2 -35 }
+					default_format = "#high"
+					text = "[FixedPointToFloat(GetPlayer.MakeScope.Var('magic_counter').GetValue)]"
+					
+						state = {
+							name = a
+							next = b
+							trigger_on_create = yes
+							duration = 0.2
+							alpha = 1
+						}
+
+						state = {
+							name = b
+							next = a
+							duration = 0.6
+							alpha = 0.5
+						}
+						using = Font_Type_Flavor
+				}
+
+
+				progresstexture = "gfx/interface/progressbars/magicblue.dds"
+				noprogresstexture = "gfx/interface/progressbars/magicred.dds"
+				
+			
+				tooltip = "Magic"
+				using = tooltip_below
+			}
+
+			icon = {
+				name = "overlay_frame"
+				texture = "gfx/interface/progressbars/magic_frame.dds"
+				size = { 798 59 }
+				position = { 100 118 }
+			}
+
+			size = { 1000 700 }
+		
+				using = Window_Background
+				using = Window_Decoration
+				movable = yes
+				
+			using = Animation_ShowHide_Quick
+
+			state = {
+				name = _show
+				using = Animation_Curve_Default
+				duration = 0.21
+
+				position = { 0 0 }
+				alpha = 1
+			}
+
+			state = {
+				name = _hide
+				using = Animation_Curve_Default
+				duration = 0.21
+
+				position = { -700 1200 }
+				alpha = 0
+			}
+			icon = {
+				size = { 375 60 }
+				position = { 525 180 }
+				texture = "gfx/interface/component_tiles/tile_header_background_01.dds"
+				spriteType = Corneredtiled
+				spriteborder_top = 3
+				spriteborder_bottom = 3
+				texture_density = 2
+
+				modify_texture = {
+					name = "mask"
+					texture = "gfx/interface/component_masks/mask_fade_horizontal_middle_thick.dds"
+					blend_mode = alphamultiply
+					alpha = 0.5
+				}
+				text_single = {
+						visible = "[GetVariableSystem.Exists( 'show_r_char')]"
+		
+						text = "Characters"
+						#position = { 0 0 }
+						parentanchor = vcenter|hcenter
+						default_format = "#high"
+						using = Font_Size_Big
+						fontsize_min = 14
+						using = Font_Type_Flavor
+				}
+				text_single = {
+						visible = "[GetVariableSystem.Exists( 'show_r_prisoners')]"
+		
+						text = "Prisoners"
+						#position = { 0 0 }
+						parentanchor = vcenter|hcenter
+						default_format = "#high"
+						using = Font_Size_Big
+						fontsize_min = 14
+						using = Font_Type_Flavor
+				}
+				text_single = {
+						visible = "[GetVariableSystem.Exists( 'show_r_enemyrealm')]"
+		
+						text = "Enemy Lands"
+						#position = { 0 0 }
+						parentanchor = vcenter|hcenter
+						default_format = "#high"
+						using = Font_Size_Big
+						fontsize_min = 14
+						using = Font_Type_Flavor
+				}
+				text_single = {
+						visible = "[GetVariableSystem.Exists( 'show_r_land')]"
+			
+						text = "Lands"
+						#position = { 0 0 }
+						parentanchor = vcenter|hcenter
+						default_format = "#high"
+						using = Font_Size_Big
+						fontsize_min = 14
+						using = Font_Type_Flavor
+				}
+				text_single = {
+						visible = "[GetVariableSystem.Exists( 'show_r_enemies')]"
+		
+						text = "Enemies"
+						#position = { 0 0 }
+						parentanchor = vcenter|hcenter
+						default_format = "#high"
+						using = Font_Size_Big
+						fontsize_min = 14
+						using = Font_Type_Flavor
+				}
+			}
+			icon = {
+				size = { 375 60 }
+				position = { 100 180 }
+				texture = "gfx/interface/component_tiles/tile_header_background_01.dds"
+				spriteType = Corneredtiled
+				spriteborder_top = 3
+				spriteborder_bottom = 3
+				texture_density = 2
+
+				modify_texture = {
+					name = "mask"
+					texture = "gfx/interface/component_masks/mask_fade_horizontal_middle_thick.dds"
+					blend_mode = alphamultiply
+					alpha = 0.5
+				}
+				text_single = {
+						visible = "[GetVariableSystem.Exists( 'show_living_magic')]"
+		
+						text = LIVING_MAGIC
+						parentanchor = vcenter|hcenter
+						default_format = "#high"
+						using = Font_Size_Big
+						fontsize_min = 14
+						using = Font_Type_Flavor
+				}
+				text_single = {
+						visible = "[GetVariableSystem.Exists( 'show_dead_magic')]"
+						text = DEAD_MAGIC
+						parentanchor = vcenter|hcenter
+						default_format = "#high"
+						using = Font_Size_Big
+						fontsize_min = 14
+						using = Font_Type_Flavor
+				}
+				text_single = {
+						visible = "[GetVariableSystem.Exists( 'show_mixed_magic')]"
+						text = MIXED_MAGIC
+						parentanchor = vcenter|hcenter
+						default_format = "#high"
+						using = Font_Size_Big
+						fontsize_min = 14
+						using = Font_Type_Flavor
+				}
+				text_single = {
+						visible = "[GetVariableSystem.Exists( 'show_other_magic')]"
+						text = OTHER_MAGIC
+						parentanchor = vcenter|hcenter
+						default_format = "#high"
+						using = Font_Size_Big
+						fontsize_min = 14
+						using = Font_Type_Flavor
+				}
+				text_single = {
+						visible = "[GetVariableSystem.Exists( 'magic_generate')]"
+						text = GENERATE_METHOD
+						parentanchor = vcenter|hcenter
+						default_format = "#high"
+						using = Font_Size_Big
+						fontsize_min = 14
+						using = Font_Type_Flavor
+				}
+			}
+			button = {
+				texture = "gfx/interface/hud/info_icon.dds"
+				onclick = "[GetVariableSystem.Toggle( 'show_r_char' )]"
+				onclick = "[GetVariableSystem.Clear( 'show_r_land' )]"
+				onclick = "[GetVariableSystem.Clear( 'show_r_enemyrealm' )]"
+				onclick = "[GetVariableSystem.Clear( 'show_r_prisoners' )]"
+				onclick = "[GetVariableSystem.Clear( 'show_r_enemies' )]"
+				size = { 45 50 }
+				position = { 480 190 }
+			}
+			button = {
+				texture = "gfx/interface/icons/title_status/icon_title_law.dds"
+				onclick = "[GetVariableSystem.Toggle( 'show_r_land' )]"
+				onclick = "[GetVariableSystem.Clear( 'show_r_char' )]"
+				onclick = "[GetVariableSystem.Clear( 'show_r_prisoners' )]"
+				onclick = "[GetVariableSystem.Clear( 'show_r_enemyrealm' )]"
+				onclick = "[GetVariableSystem.Clear( 'show_r_enemies' )]"
+				size = { 50 50 }
+				position = { 475 240 }
+			}
+			button = {
+				texture = "gfx/interface/icons/title_status/icon_title_law.dds"
+				onclick = "[GetVariableSystem.Toggle( 'show_r_enemyrealm' )]"
+				onclick = "[GetVariableSystem.Clear( 'show_r_char' )]"
+				onclick = "[GetVariableSystem.Clear( 'show_r_land' )]"
+				onclick = "[GetVariableSystem.Clear( 'show_r_prisoners' )]"
+				onclick = "[GetVariableSystem.Clear( 'show_r_enemies' )]"
+				size = { 50 50 }
+				position = { 475 390 }
+			}
+			button = {
+				texture = "gfx/interface/hud/info_icon.dds"
+				onclick = "[GetVariableSystem.Toggle( 'show_r_prisoners' )]"
+				onclick = "[GetVariableSystem.Clear( 'show_r_land' )]"
+				onclick = "[GetVariableSystem.Clear( 'show_r_char' )]"
+				onclick = "[GetVariableSystem.Clear( 'show_r_enemyrealm' )]"
+				onclick = "[GetVariableSystem.Clear( 'show_r_enemies' )]"
+				size = { 45 50 }
+				position = { 480 290 }
+			}
+			button = {
+				texture = "gfx/interface/hud/info_icon.dds"
+				onclick = "[GetVariableSystem.Toggle( 'show_r_enemies' )]"
+				onclick = "[GetVariableSystem.Clear( 'show_r_land' )]"
+				onclick = "[GetVariableSystem.Clear( 'show_r_char' )]"
+				onclick = "[GetVariableSystem.Clear( 'show_r_enemyrealm' )]"
+				onclick = "[GetVariableSystem.Clear( 'show_r_prisoners' )]"
+				size = { 45 50 }
+				position = { 480 340 }
+			}
+			button = {
+				visible = "[Not(GetVariableSystem.Exists( 'magic_generate'))]"
+				texture = "gfx/interface/hud/icon_up.dds"
+				onclick = "[GetScriptedGui('add_tier_magic_scripted_gui').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+				size = { 40 40 }
+				position = { 480 596 }
+			}
+			text_single = {
+				name = "title_level"
+				visible = "[Not(GetVariableSystem.Exists( 'magic_generate'))]"
+				text = "[GetPlayer.MakeScope.Var('magic_lvl').GetValue|0]"
+				position = { 494 615 }
+				default_format = "#high"
+				using = Font_Size_Big
+				fontsize_min = 16
+			}
+			button = {
+				visible = "[Not(GetVariableSystem.Exists( 'magic_generate'))]"
+				texture = "gfx/interface/hud/icon_down.dds"
+				onclick = "[GetScriptedGui('sub_tier_magic_scripted_gui').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+				size = { 40 40 }
+				position = { 480 636 }
+			}
+			#Cast Spell
+			button_standard = {
+				visible = "[Not(GetVariableSystem.Exists( 'magic_generate'))]"
+				enabled = "[GetScriptedGui(Concatenate(GetVariableSystem.Get('current_spell'),'_check')).IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+				size = { 220 50 }
+				position = { 245 612 }
+				onclick = "[GetScriptedGui(GetVariableSystem.Get( 'current_spell')).Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+				onclick = "[GetVariableSystem.Clear( 'current_spell')]"
+				onclick = "[GetVariableSystem.Clear( 'current_spell2' )]"
+				tooltip = "[GetScriptedGui(GetVariableSystem.Get( 'current_spell')).BuildTooltip(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"  #Cast /effect!
+				text = "Cast Spell"
+				default_format = "#high"
+				using = Font_Size_Big
+				fontsize_min = 16
+				using = Font_Type_Flavor
+				
+			}
+			#Spellbox - effects
+			scrollbox = { 
+				layoutpolicy_horizontal = expanding
+				layoutpolicy_vertical = expanding
+				visible = "[Not(GetVariableSystem.Exists( 'magic_generate'))]"
+				size = { 375 80 }
+				position = { 525 595 }
+				blockoverride "scrollbox_content"
+				{
+					vbox = {
+						name = "effects_text"
+						text_single = {
+							visible = "[GetVariableSystem.Exists( 'current_spell')]"
+							name = "spell_casting_title"
+							autoresize = yes
+							position = { 520 0 }
+							maximumsize = { 520 -1 }
+							minimumsize = { 520 -1 }
+							parentanchor = left
+							margin_top = -10
+							default_format = "#high"
+							text = "Currently Casting: [Localize(Concatenate(GetVariableSystem.Get( 'current_spell'),'_name'))]"
+							tooltip = "[GetScriptedGui(GetVariableSystem.Get( 'current_spell')).BuildTooltip(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+		
+						}
+						text_single = {
+							visible = "[GetVariableSystem.Exists( 'current_spell')]"
+							name = "spell_casting_effect"
+							autoresize = yes
+							position = { 520 0 }
+							maximumsize = { 520 -1 }
+							minimumsize = { 520 -1 }
+							parentanchor = left
+							margin_top = 0
+							default_format = "#low"
+							text = "[GetScriptedGui(GetVariableSystem.Get( 'current_spell')).BuildTooltip(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+							tooltip = "[GetScriptedGui(GetVariableSystem.Get( 'current_spell')).BuildTooltip(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+							multiline = yes
+						}
+					}
+				}
+			}
+
+			#TABS
+
+			#Generate Power Button
+			button_standard = {
+				size = { 200 30 }
+				position = { 110 80 }
+				tooltip = GENERATE_POWER
+				onclick = "[GetVariableSystem.Clear( 'current_spell')]"
+				onclick = "[GetVariableSystem.Clear( 'current_spell2')]"
+				onclick = "[GetScriptedGui('clear_prev_menu').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+				onclick = "[GetVariableSystem.Toggle( 'magic_generate')]"
+				onclick = "[GetVariableSystem.Clear( 'show_living_magic')]"
+				onclick = "[GetVariableSystem.Clear( 'show_dead_magic')]"
+				onclick = "[GetVariableSystem.Clear( 'show_mixed_magic')]"
+				onclick = "[GetVariableSystem.Clear( 'show_other_magic')]"
+				text = GENERATE_POWER_B
+				default_format = "#high"
+				using = Font_Size_Big
+				fontsize_min = 12
+				using = Font_Type_Flavor		
+			}
+			button = {
+				visible = "[Not(GetVariableSystem.Exists( 'magic_generate'))]"
+				texture = "gfx/interface/icons/spell_menu/living_magic.dds"
+				onclick = "[GetVariableSystem.Toggle( 'show_living_magic')]"
+				onclick = "[GetVariableSystem.Clear( 'show_dead_magic')]"
+				onclick = "[GetVariableSystem.Clear( 'show_mixed_magic')]"
+				onclick = "[GetVariableSystem.Clear( 'show_other_magic')]"
+				size = { 50 50 }
+				position = { 50 180 }
+				tooltip = LIVING_MAGIC
+			}
+			button = {
+				visible = "[Not(GetVariableSystem.Exists( 'magic_generate'))]"
+				texture = "gfx/interface/icons/spell_menu/dead_magic.dds"
+				onclick = "[GetVariableSystem.Toggle( 'show_dead_magic')]"
+				onclick = "[GetVariableSystem.Clear( 'show_living_magic')]"
+				onclick = "[GetVariableSystem.Clear( 'show_mixed_magic')]"
+				onclick = "[GetVariableSystem.Clear( 'show_other_magic')]"
+				size = { 50 50 }
+				position = { 50 220 }
+				tooltip = DEAD_MAGIC
+			}
+			button = {
+				visible = "[Not(GetVariableSystem.Exists( 'magic_generate'))]"
+				texture = "gfx/interface/icons/spell_menu/mixed_magic.dds"
+				onclick = "[GetVariableSystem.Clear( 'show_dead_magic')]"
+				onclick = "[GetVariableSystem.Clear( 'show_living_magic')]"
+				onclick = "[GetVariableSystem.Toggle( 'show_mixed_magic')]"
+				onclick = "[GetVariableSystem.Clear( 'show_other_magic')]"
+				size = { 50 50 }
+				position = { 50 260 }
+				tooltip = MIXED_MAGIC
+			}
+			button = {
+				visible = "[Not(GetVariableSystem.Exists( 'magic_generate'))]"
+				texture = "gfx/interface/icons/spell_menu/other_magic.dds"
+				onclick = "[GetVariableSystem.Clear( 'show_dead_magic')]"
+				onclick = "[GetVariableSystem.Clear( 'show_living_magic')]"
+				onclick = "[GetVariableSystem.Clear( 'show_mixed_magic')]"
+				onclick = "[GetVariableSystem.Toggle( 'show_other_magic')]"
+				size = { 50 50 }
+				position = { 50 300 }
+				tooltip = OTHER_MAGIC
+			}
+
+			button_standard = {
+				visible = "[GetVariableSystem.Exists( 'magic_generate')]"
+				size = { 220 50 }
+				position = { 525 612 }
+				onclick = "[GetScriptedGui(GetVariableSystem.Get( 'current_spell2')).Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+				onclick = "[GetVariableSystem.Clear( 'current_spell' )]"
+				onclick = "[GetVariableSystem.Clear( 'current_spell2')]"
+				tooltip = "[GetScriptedGui(GetVariableSystem.Get( 'current_spell2')).BuildTooltip(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"  #Cast /effect!
+				text = GENERATE_POWER
+				default_format = "#high"
+				using = Font_Size_Big
+				fontsize_min = 16
+				using = Font_Type_Flavor
+				animation_aggressive = {
+					size = { 100% 100% }
+				}
+			}
+			#Generate - effects
+			scrollbox = { 
+				layoutpolicy_horizontal = expanding
+				layoutpolicy_vertical = expanding
+				visible = "[GetVariableSystem.Exists( 'magic_generate')]"
+				size = { 375 80 }
+				position = { 100 595 }
+				blockoverride "scrollbox_content"
+				{
+					vbox = {
+						layoutpolicy_horizontal = expanding
+						layoutpolicy_vertical = expanding
+						#maximumsize = { 520 500 }
+						#minimumsize = { 520 500 }
+						text_single = {
+							visible = "[GetVariableSystem.Exists( 'current_spell2')]"
+							name = "spell_casting_title"
+							autoresize = yes
+							maximumsize = { 520 -1 }
+							minimumsize = { 520 -1 }
+							parentanchor = left|top
+							margin_top = -25
+							default_format = "#high"
+							text = "Generating Power by: [Localize(Concatenate(GetVariableSystem.Get( 'current_spell2'),'_name'))]"
+							tooltip = "[GetScriptedGui(GetVariableSystem.Get( 'current_spell2')).BuildTooltip(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+							multiline = yes
+						}
+						text_single = {
+							visible = "[GetVariableSystem.Exists( 'current_spell2')]"
+							name = "spell_casting_effect"
+							autoresize = yes
+							maximumsize = { 520 -1}
+							minimumsize = { 520 -1 }
+							parentanchor = left|top
+							#margin_top = 15
+							default_format = "#low"
+							text = "[GetScriptedGui(GetVariableSystem.Get( 'current_spell2')).BuildTooltip(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+							tooltip = "[GetScriptedGui(GetVariableSystem.Get( 'current_spell2')).BuildTooltip(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+							multiline = yes
+						}
+					}
+				}
+			}
+			#Generate Magic
+			scrollbox = {
+				visible = "[GetVariableSystem.Exists( 'magic_generate')]"
+				layoutpolicy_horizontal = expanding
+				layoutpolicy_vertical = expanding
+				size = { 375 350 }
+				position = { 100 240 }
+				
+				blockoverride "scrollbox_content" {
+					vbox_list_interaction_title_selection = {
+
+						datamodel = "[GetPlayer.MakeScope.GetList('generate_magic')]"
+						
+						layoutpolicy_horizontal = expanding
+						spacing = 3
+						#generate
+						item = {
+							
+							button_standard = {
+								name = "gen_button"
+								layoutpolicy_horizontal = expanding
+								layoutpolicy_vertical = expanding
+								size = { 0 50 }
+								onclick = "[GetScriptedGui(Concatenate(Scope.GetFlagName,'_check')).Execute( GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
+								onclick = "[GetVariableSystem.Set('current_spell2',Scope.GetFlagName)]"
+								button_ignore = none
+								visible = "[GetScriptedGui(Concatenate(Scope.GetFlagName,'_check')).IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+								enabled = "[GetScriptedGui(Concatenate(Scope.GetFlagName,'_check')).IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+								tooltip = "[GetScriptedGui(Concatenate(Scope.GetFlagName,'_check')).BuildTooltip(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+								using = tooltip_es
+
+								text_single = {
+									name = "text"
+									parentanchor = vcenter
+									layoutpolicy_horizontal = expanding
+									text = SPELL_GET_NAME
+									position = { 70 0 }
+			
+								}
+								text_single = {
+									parentanchor = vcenter|right
+									layoutpolicy_horizontal = expanding
+									text = SPELL_GET_ADD
+									position = { -40 0 }
+		
+								}
+								text_single = { #icon
+									parentanchor = vcenter
+									text= SPELL_GET_ICON
+									default_format = "#SIZE:14"
+									position = { 5 0 }
+								}
+
+							}
+
+						}
+			
+					}
+				}
+			}
+			#Spells living
+			scrollbox = {
+				visible = "[GetVariableSystem.Exists( 'show_living_magic')]"
+				layoutpolicy_horizontal = expanding
+				layoutpolicy_vertical = expanding
+				size = { 375 350 }
+				position = { 100 240 }
+				
+				blockoverride "scrollbox_content" {
+					vbox_list_interaction_title_selection = {
+
+						datamodel = "[GetPlayer.MakeScope.GetList('list_living_magic')]"
+						
+						layoutpolicy_horizontal = expanding
+						spacing = 3
+						#spellbox
+						item = {
+							
+							button_standard = {
+								name = "spell_button"
+								layoutpolicy_horizontal = expanding
+								layoutpolicy_vertical = expanding
+								size = { 0 50 }
+								onclick = "[GetScriptedGui(Concatenate(Scope.GetFlagName,'_check')).Execute( GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
+								onclick = "[GetVariableSystem.Set( 'current_spell',Scope.GetFlagName)]"
+								button_ignore = none
+								visible = "[GetScriptedGui(Concatenate(Scope.GetFlagName,'_check')).IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+								enabled = "[GetScriptedGui(Concatenate(Scope.GetFlagName,'_check')).IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+								tooltip = "[GetScriptedGui(Concatenate(Scope.GetFlagName,'_check')).BuildTooltip(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+								using = tooltip_es
+
+								text_single = {
+									name = "text"
+									parentanchor = vcenter
+									layoutpolicy_horizontal = expanding
+									text = SPELL_GET_NAME
+									position = { 70 0 }
+			
+								}
+								text_single = {
+									parentanchor = vcenter|right
+									layoutpolicy_horizontal = expanding
+									text = SPELL_GET_COST
+									position = { -40 0 }
+		
+								}
+			
+								text_single = { #icon
+									parentanchor = vcenter
+									text= SPELL_GET_ICON
+									default_format = "#SIZE:14"
+									position = { 5 0 }
+								}
+
+							}
+
+						}
+			
+					}
+				}
+			}
+			#Spells dead
+			scrollbox = {
+				visible = "[GetVariableSystem.Exists( 'show_dead_magic')]"
+				layoutpolicy_horizontal = expanding
+				layoutpolicy_vertical = expanding
+				size = { 375 350 }
+				position = { 100 240 }
+				
+				blockoverride "scrollbox_content" {
+					vbox_list_interaction_title_selection = {
+
+						datamodel = "[GetPlayer.MakeScope.GetList('list_dead_magic')]"
+						
+						layoutpolicy_horizontal = expanding
+						spacing = 3
+						#spellbox
+						item = {
+							
+							button_standard = {
+								name = "spell_button"
+								layoutpolicy_horizontal = expanding
+								layoutpolicy_vertical = expanding
+								size = { 0 50 }
+								onclick = "[GetScriptedGui(Concatenate(Scope.GetFlagName,'_check')).Execute( GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
+								onclick = "[GetVariableSystem.Set( 'current_spell',Scope.GetFlagName)]"
+								button_ignore = none
+								visible = "[GetScriptedGui(Concatenate(Scope.GetFlagName,'_check')).IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+								enabled = "[GetScriptedGui(Concatenate(Scope.GetFlagName,'_check')).IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+								tooltip = "[GetScriptedGui(Concatenate(Scope.GetFlagName,'_check')).BuildTooltip(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+								using = tooltip_es
+
+								text_single = {
+									name = "text"
+									parentanchor = vcenter
+									layoutpolicy_horizontal = expanding
+									text = SPELL_GET_NAME
+									position = { 70 0 }
+			
+								}
+								text_single = {
+									parentanchor = vcenter|right
+									layoutpolicy_horizontal = expanding
+									text = SPELL_GET_COST
+									position = { -40 0 }
+		
+								}
+			
+								text_single = { #icon
+									parentanchor = vcenter
+									text= SPELL_GET_ICON
+									default_format = "#SIZE:14"
+									position = { 5 0 }
+								}
+
+							}
+
+						}
+			
+					}
+				}
+			}
+			#Spells mixed
+			scrollbox = {
+				visible = "[GetVariableSystem.Exists( 'show_mixed_magic')]"
+				layoutpolicy_horizontal = expanding
+				layoutpolicy_vertical = expanding
+				size = { 375 350 }
+				position = { 100 240 }
+				
+				blockoverride "scrollbox_content" {
+					vbox_list_interaction_title_selection = {
+
+						datamodel = "[GetPlayer.MakeScope.GetList('list_mixed_magic')]"
+						
+						layoutpolicy_horizontal = expanding
+						spacing = 3
+						#spellbox
+						item = {
+							
+							button_standard = {
+								name = "spell_button"
+								layoutpolicy_horizontal = expanding
+								layoutpolicy_vertical = expanding
+								size = { 0 50 }
+								onclick = "[GetScriptedGui(Concatenate(Scope.GetFlagName,'_check')).Execute( GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
+								onclick = "[GetVariableSystem.Set( 'current_spell',Scope.GetFlagName)]"
+								button_ignore = none
+								visible = "[GetScriptedGui(Concatenate(Scope.GetFlagName,'_check')).IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+								enabled = "[GetScriptedGui(Concatenate(Scope.GetFlagName,'_check')).IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+								tooltip = "[GetScriptedGui(Concatenate(Scope.GetFlagName,'_check')).BuildTooltip(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+								using = tooltip_es
+
+								text_single = {
+									name = "text"
+									parentanchor = vcenter
+									layoutpolicy_horizontal = expanding
+									text = SPELL_GET_NAME
+									position = { 70 0 }
+			
+								}
+								text_single = {
+									parentanchor = vcenter|right
+									layoutpolicy_horizontal = expanding
+									text = SPELL_GET_COST
+									position = { -40 0 }
+		
+								}
+			
+								text_single = { #icon
+									parentanchor = vcenter
+									text= SPELL_GET_ICON
+									default_format = "#SIZE:14"
+									position = { 5 0 }
+								}
+
+							}
+
+
+						}
+			
+					}
+				}
+			}
+			#Spells other
+			scrollbox = {
+				visible = "[GetVariableSystem.Exists( 'show_other_magic')]"
+				layoutpolicy_horizontal = expanding
+				layoutpolicy_vertical = expanding
+				size = { 375 350 }
+				position = { 100 240 }
+				
+				blockoverride "scrollbox_content" {
+					vbox_list_interaction_title_selection = {
+
+						datamodel = "[GetPlayer.MakeScope.GetList('list_other_magic')]"
+						
+						layoutpolicy_horizontal = expanding
+						spacing = 3
+						#spellbox
+						item = {
+							
+							button_standard = {
+								name = "spell_button"
+								layoutpolicy_horizontal = expanding
+								layoutpolicy_vertical = expanding
+								size = { 0 50 }
+								onclick = "[GetScriptedGui(Concatenate(Scope.GetFlagName,'_check')).Execute( GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
+								onclick = "[GetVariableSystem.Set( 'current_spell',Scope.GetFlagName)]"
+								button_ignore = none
+								visible = "[GetScriptedGui(Concatenate(Scope.GetFlagName,'_check')).IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+								enabled = "[GetScriptedGui(Concatenate(Scope.GetFlagName,'_check')).IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+								tooltip = "[GetScriptedGui(Concatenate(Scope.GetFlagName,'_check')).BuildTooltip(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+								using = tooltip_es
+
+								text_single = {
+									name = "text"
+									parentanchor = vcenter
+									layoutpolicy_horizontal = expanding
+									text = SPELL_GET_NAME
+									position = { 70 0 }
+			
+								}
+								text_single = {
+									parentanchor = vcenter|right
+									layoutpolicy_horizontal = expanding
+									text = SPELL_GET_COST
+									position = { -40 0 }
+		
+								}
+			
+								text_single = { #icon
+									parentanchor = vcenter
+									text= SPELL_GET_ICON
+									default_format = "#SIZE:14"
+									position = { 5 0 }
+								}
+
+							}
+
+
+						}
+			
+					}
+				}
+			}
+			#characters
+			scrollbox = {
+				visible = "[GetVariableSystem.Exists( 'show_r_char')]"
+				layoutpolicy_horizontal = expanding
+				layoutpolicy_vertical = expanding
+				size = { 375 350 }
+				position = { 525 240 }
+				
+				blockoverride "scrollbox_content" {
+					vbox_list_interaction_title_selection = {
+
+						datamodel = "[GetPlayer.MakeScope.GetList('character_in_realm')]"
+						
+						layoutpolicy_horizontal = expanding
+						spacing = 3
+
+					item = {
+						button_standard = {
+							layoutpolicy_horizontal = expanding
+							layoutpolicy_vertical = expanding
+							size = { 0 90 }
+							datacontext = "[Scope.GetCharacter]"
+							onclick = "[GetScriptedGui('char_select').Execute( GuiScope.SetRoot( Scope.GetCharacter.MakeScope ).End )]"
+							onclick = "[GetScriptedGui('char_selected').Execute( GuiScope.SetRoot( GetPlayer.MakeScope ).AddScope('target', Scope.GetCharacter.MakeScope ).End )]"
+							onclick = "[GetVariableSystem.Clear( 'current_spell2')]"
+							down = "[EqualTo_string(Scope.GetCharacter.MakeScope.Var('is_selected').GetFlagName, 'selected')]"
+							button_ignore = none
+							using = tooltip_es
+
+							text_single = {
+								name = "text"
+								layoutpolicy_horizontal = expanding
+								text = "[Character.GetNameNoTooltip]"
+								position = { 90 0 }
+								#parentanchor = vcenter
+							}
+
+
+							portrait_head_small = {
+								parentanchor = vcenter
+								#parentanchor = hleft
+								size = { 50 50 }
+								position = {15 15 }
+							}
+
+						}
+
+
+					}
+			
+					}
+				}
+			}
+			#enemy lords
+			scrollbox = {
+				visible = "[GetVariableSystem.Exists( 'show_r_enemies')]"
+				layoutpolicy_horizontal = expanding
+				layoutpolicy_vertical = expanding
+				size = { 375 350 }
+				position = { 525 240 }
+				
+				blockoverride "scrollbox_content" {
+					vbox_list_interaction_title_selection = {
+
+						datamodel = "[GetPlayer.MakeScope.GetList('enemy_in_realm')]"
+						
+						layoutpolicy_horizontal = expanding
+						spacing = 3
+
+					item = {
+						
+						button_standard = {
+							layoutpolicy_horizontal = expanding
+							layoutpolicy_vertical = expanding
+							size = { 0 90 }
+							datacontext = "[Scope.GetCharacter]"
+							onclick = "[GetScriptedGui('char_select').Execute( GuiScope.SetRoot( Scope.GetCharacter.MakeScope ).End )]"
+							onclick = "[GetScriptedGui('char_selected').Execute( GuiScope.SetRoot( GetPlayer.MakeScope ).AddScope('target', Scope.GetCharacter.MakeScope ).End )]"
+							onclick = "[GetVariableSystem.Clear( 'current_spell2')]"
+							down = "[EqualTo_string(Scope.GetCharacter.MakeScope.Var('is_selected').GetFlagName, 'selected')]"
+							button_ignore = none
+							using = tooltip_es
+
+							text_single = {
+								name = "text"
+								layoutpolicy_horizontal = expanding
+								text = "[Character.GetNameNoTooltip]"
+								position = { 90 0 }
+								#parentanchor = vcenter
+							}
+
+
+							portrait_head_small = {
+								parentanchor = vcenter
+								#parentanchor = hleft
+								size = { 50 50 }
+								position = {15 15 }
+							}
+
+						}
+
+
+					}
+			
+					}
+				}
+			}
+
+			#prisoners
+			scrollbox = {
+				visible = "[GetVariableSystem.Exists( 'show_r_prisoners')]"
+				layoutpolicy_horizontal = expanding
+				layoutpolicy_vertical = expanding
+				size = { 375 350 }
+				position = { 525 240 }
+				
+				blockoverride "scrollbox_content" {
+					vbox_list_interaction_title_selection = {
+
+						datamodel = "[GetPlayer.MakeScope.GetList('prisoner_in_realm')]"
+						
+						layoutpolicy_horizontal = expanding
+						spacing = 3
+
+					item = {
+						
+						button_standard = {
+							layoutpolicy_horizontal = expanding
+							layoutpolicy_vertical = expanding
+							size = { 0 90 }
+							datacontext = "[Scope.GetCharacter]"
+							onclick = "[GetScriptedGui('char_select').Execute( GuiScope.SetRoot( Scope.GetCharacter.MakeScope ).End )]"
+							onclick = "[GetScriptedGui('char_selected').Execute( GuiScope.SetRoot( GetPlayer.MakeScope ).AddScope('target', Scope.GetCharacter.MakeScope ).End )]"
+							onclick = "[GetVariableSystem.Clear( 'current_spell2')]"
+							down = "[EqualTo_string(Scope.GetCharacter.MakeScope.Var('is_selected').GetFlagName, 'selected')]"
+							button_ignore = none
+							using = tooltip_es
+
+							text_single = {
+								name = "text"
+								layoutpolicy_horizontal = expanding
+								text = "[Character.GetNameNoTooltip]"
+								position = { 90 0 }
+								#parentanchor = vcenter
+							}
+
+
+							portrait_head_small = {
+								parentanchor = vcenter
+								#parentanchor = hleft
+								size = { 50 50 }
+								position = {15 15 }
+							}
+
+						}
+
+
+					}
+			
+					}
+				}
+			}
+
+			#titles
+			scrollbox = {
+				visible = "[GetVariableSystem.Exists( 'show_r_land')]"
+				layoutpolicy_horizontal = expanding
+				layoutpolicy_vertical = expanding
+				size = { 375 350 }
+				position = { 525 240 }
+				blockoverride "scrollbox_content" {
+					vbox_list_interaction_title_selection = {
+
+						datamodel = "[GetPlayer.MakeScope.GetList('lands_realm')]"
+						
+						layoutpolicy_horizontal = expanding
+						spacing = 3
+
+						item = {
+							
+							button_standard = {
+								name = "vassal_button"
+								layoutpolicy_horizontal = expanding
+								layoutpolicy_vertical = expanding
+								size = { 0 60 }
+								datacontext = "[Scope.GetLandedTitle]"
+								onclick = "[GetScriptedGui('title_selected').Execute( GuiScope.SetRoot( GetPlayer.MakeScope ).AddScope('target', Scope.GetLandedTitle.MakeScope ).End )]"
+								onclick = "[GetScriptedGui('title_select').Execute( GuiScope.SetRoot( Scope.GetLandedTitle.MakeScope ).End )]"
+								onclick = "[GetVariableSystem.Clear( 'current_spell2')]"
+								down = "[EqualTo_string(Scope.GetLandedTitle.MakeScope.Var('is_selected').GetFlagName, 'selected')]"
+								button_ignore = none
+								using = tooltip_es
+
+								coa_title_tiny_crown = {
+									datacontext = "[Scope.GetLandedTitle]"
+									parentanchor = vcenter
+									position = {5 -1 }
+								}
+
+								icon = {
+									name = "pressed_claim"
+									visible = "[GetPlayer.HasPressedClaimOnTitle( Scope.GetLandedTitle.Self )]"
+									#visible = "[EqualTo_string(Scope.GetLandedTitle.GetFlagName, GetPlayer.MakeScope.Var(Scope.GetLandedTitle).Scope.GetLandedTitle.GetFlagName)]"
+									size = { 24 24 }
+									texture = "gfx/interface/icons/title_status/icon_claim_pressed.dds"
+									tooltip = "REVOKE_TITLE_PRESSED_CLAIM"
+								}
+
+								hbox = {
+									margin_left = 55
+									margin_right = 5
+									#visible = "[Scope.GetLandedTitle.IsSelected]"
+									text_single = {
+										name = "text"
+										
+										layoutpolicy_horizontal = expanding
+										text = "[Scope.GetLandedTitle.GetNameNoTooltip]"
+									}
+
+									icon = {
+										name = "pressed_claim"
+										visible = "[GetPlayer.HasPressedClaimOnTitle( Scope.GetLandedTitle.Self )]"
+										size = { 24 24 }
+										texture = "gfx/interface/icons/title_status/icon_claim_pressed.dds"
+										tooltip = "REVOKE_TITLE_PRESSED_CLAIM"
+									}
+
+									icon = {
+										name = "unpressed_claim"
+										visible = "[GetPlayer.HasUnpressedClaimOnTitle( Scope.GetLandedTitle.Self )]"
+										size = { 24 24 }
+										texture = "gfx/interface/icons/title_status/icon_claim_unpressed.dds"
+										tooltip = "REVOKE_TITLE_UNPRESSED_CLAIM"
+									}
+
+									icon = {
+										name = "leased_out"
+										visible = "[Scope.GetLandedTitle.HasLeasedOutVassal]"
+										size = { 36 39 }
+										texture = "gfx/interface/icons/icon_holding_church.dds"
+										tooltip = "GRANT_TITLE_LEASED_OUT_VASSAL"
+									}
+
+									block "extra_title_items" {}
+								}
+
+
+							}
+				
+						}
+					}
+				}
+
+			}
+
+			#enemy titles
+			scrollbox = {
+				visible = "[GetVariableSystem.Exists( 'show_r_enemyrealm')]"
+				layoutpolicy_horizontal = expanding
+				layoutpolicy_vertical = expanding
+				size = { 375 350 }
+				position = { 525 240 }
+				blockoverride "scrollbox_content" {
+					vbox_list_interaction_title_selection = {
+
+						datamodel = "[GetPlayer.MakeScope.GetList('enemy_lands')]"
+						
+						layoutpolicy_horizontal = expanding
+						spacing = 3
+
+						item = {
+							
+							button_standard = {
+								name = "vassal_button"
+								layoutpolicy_horizontal = expanding
+								layoutpolicy_vertical = expanding
+								size = { 0 60 }
+								datacontext = "[Scope.GetLandedTitle]"
+								onclick = "[GetScriptedGui('title_selected').Execute( GuiScope.SetRoot( GetPlayer.MakeScope ).AddScope('target', Scope.GetLandedTitle.MakeScope ).End )]"
+								onclick = "[GetScriptedGui('title_select').Execute( GuiScope.SetRoot( Scope.GetLandedTitle.MakeScope ).End )]"
+								onclick = "[GetVariableSystem.Clear( 'current_spell2')]"
+								down = "[EqualTo_string(Scope.GetLandedTitle.MakeScope.Var('is_selected').GetFlagName, 'selected')]"
+								button_ignore = none
+								using = tooltip_es
+
+								coa_title_tiny_crown = {
+									datacontext = "[Scope.GetLandedTitle]"
+									parentanchor = vcenter
+									position = {5 -1 }
+								}
+
+								icon = {
+									name = "pressed_claim"
+									visible = "[GetPlayer.HasPressedClaimOnTitle( Scope.GetLandedTitle.Self )]"
+									#visible = "[EqualTo_string(Scope.GetLandedTitle.GetFlagName, GetPlayer.MakeScope.Var(Scope.GetLandedTitle).Scope.GetLandedTitle.GetFlagName)]"
+									size = { 24 24 }
+									texture = "gfx/interface/icons/title_status/icon_claim_pressed.dds"
+									tooltip = "REVOKE_TITLE_PRESSED_CLAIM"
+								}
+
+								hbox = {
+									margin_left = 55
+									margin_right = 5
+									#visible = "[Scope.GetLandedTitle.IsSelected]"
+									text_single = {
+										name = "text"
+										
+										layoutpolicy_horizontal = expanding
+										text = "[Scope.GetLandedTitle.GetNameNoTooltip]"
+									}
+
+									icon = {
+										name = "pressed_claim"
+										visible = "[GetPlayer.HasPressedClaimOnTitle( Scope.GetLandedTitle.Self )]"
+										size = { 24 24 }
+										texture = "gfx/interface/icons/title_status/icon_claim_pressed.dds"
+										tooltip = "REVOKE_TITLE_PRESSED_CLAIM"
+									}
+
+									icon = {
+										name = "unpressed_claim"
+										visible = "[GetPlayer.HasUnpressedClaimOnTitle( Scope.GetLandedTitle.Self )]"
+										size = { 24 24 }
+										texture = "gfx/interface/icons/title_status/icon_claim_unpressed.dds"
+										tooltip = "REVOKE_TITLE_UNPRESSED_CLAIM"
+									}
+
+									icon = {
+										name = "leased_out"
+										visible = "[Scope.GetLandedTitle.HasLeasedOutVassal]"
+										size = { 36 39 }
+										texture = "gfx/interface/icons/icon_holding_church.dds"
+										tooltip = "GRANT_TITLE_LEASED_OUT_VASSAL"
+									}
+
+									block "extra_title_items" {}
+								}
+
+
+							}
+				
+						}
+					}
+				}
+
+			}
+		
+	}
 
 	icon = {
 		visible = "[And(GetPlayer.IsValid, Not(GetVariableSystem.Exists( 'hide_bottom_left_HUD')))]"
@@ -3065,7 +4231,6 @@ widget = {
 
 	## Bottom left CoA
 	coa_realm_medium_crown = {
-		datacontext = "[GetPlayer]"
 		visible = "[And(And(IsDefaultGUIMode, GetPlayer.IsRuler), Not(GetVariableSystem.Exists( 'hide_bottom_left_HUD'))))]"
 		parentanchor = bottom|left
 
@@ -4885,4 +6050,6 @@ types HUD
 			}
 		}
 	}
+
+
 }

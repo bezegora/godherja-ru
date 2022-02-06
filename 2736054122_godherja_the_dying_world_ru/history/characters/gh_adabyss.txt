@@ -1,227 +1,51 @@
-﻿adabyss_1 = { ###head dude
-	name = "Kabayo-Konsa"
-        dna = kabayo
+﻿adabyss_1 = { ###fort captain
+	name = "Abubakar"
+	dna = kabayo
 	dynasty = dyn_adabyss_1
 	religion = "adabyssian"
 	culture = "adabyann"
 	
 	trait = stubborn
-	trait = ambitious
-	trait = zealous
+	trait = content
+	trait = brave
 	trait = strong
 	
 	trait = education_martial_4
-	1230.2.21 = {
-                birth = yes
-	        effect = {
-			add_character_flag = has_scripted_appearance
-                        add_pressed_claim = e_damota
-		}
-	}		
-}
 
-adabyss_2 = { 
-	name = "Yaaseen"
-        dna = yaaseen
-	dynasty = dyn_adabyss_2
-	religion = "mogowai"
-	culture = "kutma"
-	
-	trait = cynical
-	trait = lustful
-	trait = gluttonous
-	
-	trait = education_learning_3
-	1220.2.21 = {
-		birth = yes
-                effect = {
-			add_character_flag = has_scripted_appearance
-		}
-	}
-}
-
-adabyss_3 = { 
-	name = "Teklu"
-	religion = "mogowai"
-	culture = "kutma"
-	1224.2.21 = {
-		birth = yes
-	}
-}
-
-adabyss_4 = { 
-	name = "Abal"
-	religion = "mogowai"
-	culture = "kutma"
 	1226.2.21 = {
 		birth = yes
-	}
-}
-
-adabyss_5 = { 
-	name = "Dejen"
-	religion = "mogowai"
-	culture = "fedagesh"
-	1214.2.21 = {
-		birth = yes
-	}
-}
-
-adabyss_6 = { 
-	name = "Asnake"
-        dna = asnake 
-	dynasty = dyn_adabyss_3
-	religion = "mogowai"
-	culture = "fedagesh"
-	
-	trait = zealous
-	trait = temperate
-	trait = stubborn
-	trait = celibate
-	
-	trait = scholar
-	trait = theologian
-	
-	trait = education_martial_3
-	
-	1229.2.21 = {
-		birth = yes
-                effect = {
+		effect = {
 			add_character_flag = has_scripted_appearance
-                        add_pressed_claim = e_damota
 		}
 	}
-}
 
-adabyss_7 = { 
-	name = "Dibuba"
-        dna = dibuba
-	female = yes
-	religion = "adabyssian"
-	culture = "adabyann"
-	
-	trait = magic_good_3
-	trait = education_mixed_magic_3
-	
-	trait = intellect_good_2
-	trait = deceitful
-	trait = ambitious
-	trait = cynical
-	
-	trait = education_learning_4
-	1232.2.21 = {
-		birth = yes
-                effect = {
-			add_character_flag = has_scripted_appearance
-		        give_nickname = nick_the_betrayer
-                }
+	1246.1.1 = {
+		spawn_army = {
+		uses_supply = no
+		inheritable = yes
+		
+		name = adabyss_event_troops
+		
+		men_at_arms = {
+			type = golden_spears
+			stacks = 40
+		}
+		men_at_arms = {
+				type = golem_infantry
+				stacks = 20
+		}
+		men_at_arms = {
+				type = autocrossbowmen
+				stacks = 30
+		}
+		men_at_arms = {
+				type = arcane_auxiliaries
+				stacks = 20
+		}
+		men_at_arms = {
+				type = armored_horsemen
+				stacks = 20
+		}
+	location = 2691
+		}
 	}
-	1250.1.1 = {
-		add_spouse = adabyss_1
-	}
-}
-
-adabyss_8 = { 
-	name = "Galawdeyos"
-	religion = "mogowai"
-	culture = "fedagesh"
-	1215.2.21 = {
-		birth = yes
-	}
-}
-
-adabyss_9 = { 
-	name = "Kiros"
-	religion = "mogowai"
-	culture = "fedagesh"
-	1221.2.21 = {
-		birth = yes
-	}
-}
-
-adabyss_10 = { 
-	name = "Mekonnen"
-	religion = "mogowai"
-	culture = "doffore"
-	1209.2.21 = {
-		birth = yes
-	}
-}
-
-adabyss_11 = { 
-	name = "Gulema"
-	female = yes
-	religion = "mogowai"
-	culture = "doffore"
-	1227.2.21 = {
-		birth = yes
-	}
-}
-
-adabyss_12 = { 
-	name = "Teklile"
-	female = yes
-	religion = "mogowai"
-	culture = "doffore"
-	1218.2.21 = {
-		birth = yes
-	}
-}
-
-adabyss_13 = { 
-	name = "Iyasu"
-	religion = "mogowai"
-	culture = "amharian"
-	1222.2.21 = {
-		birth = yes
-	}
-}
-
-adabyss_14 = { 
-	name = "Mekuria"
-	female = yes
-	religion = "mogowai"
-	culture = "amharian"
-	1225.2.21 = {
-		birth = yes
-	}
-}
-
-adabyss_15 = { 
-	name = "Mbaya"
-	female = yes
-	religion = "adabyssian"
-	culture = "adabyann"
-        trait = intellect_good_1
-	
-	father = adabyss_1
-	mother = adabyss_7
-	1250.2.21 = {
-		birth = yes
-	}
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

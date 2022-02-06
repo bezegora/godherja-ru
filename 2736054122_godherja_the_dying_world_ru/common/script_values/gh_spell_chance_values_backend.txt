@@ -1,4 +1,4 @@
-base_standard_spell_difficulty_success_chance_value = {
+﻿base_standard_spell_difficulty_success_chance_value = {
 	value = 0
 	if = {
 		limit = { root.var:magic_lvl = { compare_value = 0 } }
@@ -128,22 +128,23 @@ hostile_magic_defense_value = {
 	}
 	min = 0
 }
+
 hostile_magic_defense_county_value = {
 	value = 0
 	every_in_list = {
 		variable = spell_l_targets
 		if = {
 			limit = { 
-			exists = holder
-			holder = { 
-				has_variable = magical_prowess
-				NOT = { this = root}
+				exists = holder
+				holder = { 
+					has_variable = magical_prowess
+					NOT = { this = root	}
 				}
 			}
 			add = holder.var:magical_prowess
 		}
 		else_if = {
-			limit = {  
+			limit = {
 				trigger_if = {
 					limit = { 
 					exists = holder
@@ -211,33 +212,27 @@ good_moon_spell_chance_value = {
 	if = {
 		limit = {
 			is_any_good_moon_trigger = yes
-			NOT = {
-				has_character_modifier = pulling_moon_mod
-				}
-			}
+		}
 		add = 10
 	}
 	if = {
 		limit = {
 			is_any_good_moon_trigger = yes
 			has_perk = deadmagic_perk9_tree3
-			}
+		}
 		add = 5
 	}
 	if = {
 		limit = {
 			is_full_moon_trigger = yes
-			NOT = {
-				has_character_modifier = pulling_moon_mod
-				}
-			}
+		}
 		add = 10
 	}
 	if = {
 		limit = {
 			is_full_moon_trigger = yes
 			has_perk = deadmagic_perk9_tree3
-			}
+		}
 		add = 5
 	}
 	min = 0
@@ -248,13 +243,13 @@ bad_moon_spell_chance_value = {
 	if = {
 		limit = {
 			is_any_bad_moon_trigger = yes
-			}
+		}
 		add = 10
 	}
 	if = {
 		limit = {
 			is_new_moon_trigger = yes
-				}
+		}
 		add = 10
 	}
 	min = 0

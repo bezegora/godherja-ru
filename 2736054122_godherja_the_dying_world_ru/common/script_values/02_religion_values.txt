@@ -336,6 +336,7 @@ religious_legal_pronouncement_learning_requirement = {
 	subtract = religious_legal_pronouncement_sinful_value
 	add = religious_legal_pronouncement_virtuous_value
 	subtract = religious_legal_pronouncement_target_value
+	min = 1
 }
 
 claim_piety_value = {
@@ -418,6 +419,7 @@ ghw_target_stretch = 10
 ghw_target_has_holy_site = 50
 #Targets that should always be priorities if not controlled:
 ghw_target_key_religious_holding = 100
+ghw_target_religious_vengeance = 75
 #Distance modifiers stack:
 ghw_target_distance_01_reduction = 0.8
 ghw_target_distance_02_reduction = 0.8
@@ -484,13 +486,13 @@ great_holy_war_target_kingdom_weight = {
 		#world_ga_foglands							#frontier
 		#world_ga_western_aversaria					#frontier
 		#world_ga_northern_aversaria				#fringe
-		#world_ga_eastern_aversaria					#fringe
+		#world_ga_aironoi					#fringe
 		#world_ga_central_aversaria					#fringe
 
 		#Agionism
 		#world_eastern_sarradon						#heartlands
 		#world_central_sarradon						#frontier
-		#world_ga_eastern_aversaria					#frontier
+		#world_ga_aironoi					#frontier
 		#world_ga_central_aversaria					#fringe
 		#world_western_sarradon						#stretch
 
@@ -595,7 +597,7 @@ great_holy_war_target_kingdom_weight = {
 			}
 			OR = {
 				AND = {
-					title_capital_county.title_province = { geographical_region = world_ga_eastern_aversaria }
+					title_capital_county.title_province = { geographical_region = world_ga_aironoi }
 					scope:the_faith.religion = religion:sjalvolki_religion
 				}
 			}
@@ -627,7 +629,7 @@ great_holy_war_target_kingdom_weight = {
 			}
 			OR = {
 				AND = {
-					title_capital_county.title_province = { geographical_region = world_ga_eastern_aversaria }
+					title_capital_county.title_province = { geographical_region = world_ga_aironoi }
 					scope:the_faith.religion = religion:agionism_religion
 				}
 			}
@@ -729,7 +731,7 @@ great_holy_war_target_kingdom_weight = {
 				limit = {
 					title_capital_county = {
 						squared_distance >= {
-							target = title:c_lwydmynyd
+							target = title:c_lwydmyny
 							value = ghw_target_distance_01_threshold
 						}
 					}
@@ -808,7 +810,7 @@ great_holy_war_target_kingdom_weight = {
 				limit = {
 					title_capital_county = {
 						squared_distance >= {
-							target = title:c_lwydmynyd
+							target = title:c_lwydmyny
 							value = ghw_target_distance_02_threshold
 						}
 					}
@@ -885,7 +887,7 @@ great_holy_war_target_kingdom_weight = {
 				limit = {
 					title_capital_county = {
 						squared_distance >= {
-							target = title:c_lwydmynyd
+							target = title:c_lwydmyny
 							value = ghw_target_distance_03_threshold
 						}
 					}

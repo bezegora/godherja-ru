@@ -1,0 +1,993 @@
+﻿# We can use these modifiers for adding specific beards and beards to historical and vanity characters
+
+beards_scripted_characters = {
+
+	usage = game
+	selection_behavior = weighted_random
+
+	male_beard_western_01 = { # Standard full beard
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = beards
+				template = scripted_character_beards_01
+				value = 0.04 # For the randomness to work correctly
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 1000
+				exists = character:marcher_3 #Benouet
+				this = character:marcher_3 #Benouet
+			}
+			modifier = {
+				add = 1000
+				exists = character:canian_26 #Bozorgmehr
+				this = character:canian_26 #Bozorgmehr
+			}	
+		}
+	}
+
+    male_beard_western_02 = { # Standard goatee
+        dna_modifiers = {
+            accessory = {
+                mode = add
+                gene = beards
+                template = scripted_character_beards_01
+                value = 0.07 # For the randomness to work correctly
+            }
+        }   
+        weight = {
+            base = 0
+            modifier = {
+                add = 1000
+                exists = character:marcher_506 #Hannequin
+                this = character:marcher_506 #Hannequin
+            }
+            modifier = {
+                add = 1000
+                exists = character:southern_imperial_6 #Iordanes
+                this = character:southern_imperial_6 #Iordanes
+            }
+            modifier = {
+                add = 1000
+                exists = character:canian_21 #Behfar
+                this = character:canian_21 #Behfar
+            }  
+        } 
+    }
+
+	male_beard_western_03 = { # Short beard
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = beards
+				template = scripted_character_beards_01
+				value = 0.11 # For the randomness to work correctly
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 1000
+				exists = character:marcher_15 #Ogier
+				this = character:marcher_15 #Ogier
+			}
+			modifier = {
+				add = 1000
+				exists = character:marcher_505 #Sauvaige
+				this = character:marcher_505 #Sauvaige
+			}
+			modifier = {
+				add = 1000
+				exists = character:western_aversaria_8  #Narses
+				this = character:western_aversaria_8 #Narses
+			}
+			modifier = {
+				add = 1000
+				exists = character:canian_22 #Babak
+				this = character:canian_22 #Babak
+			}
+			modifier = {
+                add = 1000
+                exists = character:charchac_alau_koev_2 #dull ertomax king
+                this = character:charchac_alau_koev_2 #dull ertomax king
+            }
+		}
+	}
+
+	male_beard_western_04 = { # Short goatee
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = beards
+				template = scripted_character_beards_01
+				value = 0.14 # For the randomness to work correctly
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 1000
+				exists = character:marcher_501 #Gaultier
+				this = character:marcher_501 #Gaultier
+			}
+			 modifier = {
+				add = 200
+				exists = character:aversaria_isles_4
+				this = character:aversaria_isles_4		
+			}
+			modifier = {
+				add = 1000
+				exists = character:canian_32 #Majra
+				this = character:canian_32 #Majra
+			}
+		}
+	}
+
+	male_beard_western_05 = { # Mustache
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = beards
+				template = scripted_character_beards_01
+				value = 0.17 # For the randomness to work correctly
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 1000
+				exists = character:clanlands_sjalvolki_2 #Cormag
+				this = character:clanlands_sjalvolki_2 #Cormag
+			}
+			modifier = {
+				add = 1000
+				exists = character:marcher_6 #Englemar
+				this = character:marcher_6 #Englemar
+			}
+			modifier = {
+				add = 1000
+				exists = character:marcher_503 #Evrard
+				this = character:marcher_503 #Evrard
+			}
+			modifier = {
+				add = 1000
+				exists = character:konijkmener_2 #Ard
+				this = character:konijkmener_2 # Ard
+			}
+			modifier = {
+				add = 1000
+				exists = character:marcher_amsari_1 #Hycanlin
+				this = character:marcher_amsari_1 #Hycanlin
+			}
+			modifier = {
+				add = 200
+				exists = character:cois_1 #Cois
+				this = character:cois_1 #Cois	
+			}
+			modifier = {
+				add = 200
+				exists = character:ee_14  #Eggman
+				this = character:ee_14 #Eggman
+			}
+			modifier = {
+				add = 200
+				exists = character:bleeding_martyr_1 #Pelagios 
+				this = character:bleeding_martyr_1  #Pelagios
+			}
+			modifier = {
+				add = 1000
+				exists = character:canian_24 #Adarburza
+				this = character:canian_24 #Adarburza
+			}  
+			modifier = {
+				add = 1000
+				exists = character:canian_39 #Arang
+				this =  character:canian_39 #Arang
+			}
+		}
+	}
+
+	male_beard_western_06 = { # Big bushy beard
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = beards
+				template = scripted_character_beards_01
+				value = 0.2 # For the randomness to work correctly
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 1000
+				exists = character:marcher_1000 #Gardfrei
+				this = character:marcher_1000 #Gardfrei
+			}
+			modifier = {
+				add = 1000
+				exists = character:canian_35 #Azartash
+				this = character:canian_35 #Azartash
+			}
+			modifier = {
+				add = 1000
+				exists = character:amaghean_aversarian_amaghean_11 #White Lion
+				this = character:amaghean_aversarian_amaghean_11 #White Lion
+			}
+		}
+	}
+
+	male_beard_western_07 = { # Chin strap
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = beards
+				template = scripted_character_beards_01
+				value = 0.23 # For the randomness to work correctly
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 200
+				exists = character:marcher_7 #Ansfrei
+				this = character:marcher_7 #Ansfrei
+			}
+			modifier = {
+				add = 1000
+				exists = character:marcher_502 #Aubert
+				this = character:marcher_502 #Aubert
+			}
+			modifier = {
+				add = 1000
+				exists = character:ee_13 #super770
+				this = character:ee_13 #super770
+			}
+		}
+	}
+
+	male_beard_western_08 = { # Big with fancy mustache
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = beards
+				template = scripted_character_beards_01
+				value = 0.27 # For the randomness to work correctly
+			}
+		} 
+		weight = {
+			base = 0
+			modifier = {
+				add = 1000
+				exists = character:marcher_20000 #Bastione
+				this = character:marcher_20000 #Bastione
+			}
+		modifier = {
+				add = 1000
+				exists = character:western_imperial_1 #Aeschraes
+				this = character:western_imperial_1 #Aeschraes
+			}
+		modifier = {
+				add = 200
+				exists = character:calysto_1 #Lamius
+				this = character:calysto_1 #Lamius
+			}
+		modifier = {
+				add = 1000
+				exists = character:canian_28 #Adro
+				this = character:canian_28 #Adro
+			}  
+		}
+	}
+
+	male_beard_western_09 = { # Pointy beard
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = beards
+				template = scripted_character_beards_01
+				value = 0.30 # For the randomness to work correctly
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 1000
+				exists = character:marcher_500 #Harloman
+				this = character:marcher_500 #Harloman
+			}
+			modifier = {
+				add = 200
+				exists = character:clanlands_sjalvolki_7 # Serapion
+				this = character:clanlands_sjalvolki_7 # Serapion
+			}	
+			modifier = {
+				add = 200
+				exists = character:partic_1 #Eoghar
+				this = character:partic_1 # Eoghar
+			}
+			modifier = {
+				add = 1000
+				exists = character:canian_23 #Misrak
+				this = character:canian_23 #Misrak
+			}  
+		}
+	}
+
+	male_beard_western_10 = { # Chin goatee
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = beards
+				template = scripted_character_beards_01
+				value = 0.33 # For the randomness to work correctly
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 1000
+				exists = character:marcher_20 #Hammart
+				this = character:marcher_20 #Hammart
+			}
+		modifier = {
+				add = 200
+				exists = character:centralimperial_41 #Archimanos
+				this = character:centralimperial_41 #Archimanos
+			}
+		 modifier = {
+				add = 200
+				exists = character:lissox_1  #Zenon
+				this = character:lissox_1  #Zenon
+			}  
+			modifier = {
+				add = 200
+				exists = character:crusader_2  # Andreas
+				this = character:crusader_2  # Andreas
+			}		
+			modifier = {
+				add = 200
+				exists = character:clanlands_sjalvolki_103 # Eofwine
+				this = character:clanlands_sjalvolki_103 # Eofwine
+			} 
+			modifier = {
+				add = 200
+				exists = character:clanlands_megos_1 #Herberd
+				this = character:clanlands_megos_1 #Herberd
+			}
+			modifier = {
+				add = 200
+				exists = character:clanlands_megos_40 #leuderic
+				this = character:clanlands_megos_40 #leuderic
+			}
+                                                                  modifier = {
+                                                                                        add = 1000
+                                                                                        exists = character:adnanari_asdraqi_1 #Rashali
+                                                                                        this = character:adnanari_asdraqi_1 #Rashali
+                                                                  } 
+                                                                  modifier = {
+                                                                                        add = 1000
+                                                                                        exists = character:kawoch_mogowai_9 #Adeli
+                                                                                        this = character:kawoch_mogowai_9
+                                                                  } 		
+			modifier = {
+				add = 1000
+				exists = character:canian_27 #Aoshnar
+				this = character:canian_27 #Aoshnar
+			}  
+		}
+	}
+
+	male_beard_mena_01 = { # Very curly medium length full beard
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = beards
+				template = scripted_character_beards_01
+				value = 0.35 # For the randomness to work correctly
+			}
+		}
+		weight = {
+			base = 0
+		}
+	}
+
+	male_beard_mena_02 = { # Big with small mustache
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = beards
+				template = scripted_character_beards_01
+				value = 0.39 # For the randomness to work correctly
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 1000
+				exists = character:sarradon_12 # Mamur Adabyn
+				this =  character:sarradon_12 # Mamur Adabyn
+			}
+			modifier = {
+				add = 1000
+				exists = character:clanlands_megos_72 #Witikind
+				this =  character:clanlands_megos_72 #Witikind
+			}
+		}
+	}
+
+    male_beard_northern_01 = { # Big wide
+        dna_modifiers = {
+            accessory = {
+                mode = add
+                gene = beards
+                template = scripted_character_beards_01
+                value = 0.48 # For the randomness to work correctly
+            }
+        }   
+        weight = {
+            base = 0
+            modifier = {
+                add = 200
+                exists = character:102531 #harald_hardrade
+                this = character:102531 #harald_hardrade
+            }
+        }
+    }
+	male_beard_mena_03 = { # Big chin strap
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = beards
+				template = scripted_character_beards_01
+				value = 0.42 # For the randomness to work correctly
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 200
+				exists = character:marcher_509 #Jourdain
+				this = character:marcher_509 #Jourdain
+			}
+			modifier = {
+				add = 1000
+				exists = character:sarradon_161 #Nazir
+				this = character:sarradon_161 #Nazir
+			}
+			modifier = {
+				add = 1000
+				exists = character:canian_25 #Bazyar
+				this = character:canian_25 #Bazyar
+			}  
+		}
+	}
+
+	male_beard_mena_04 = { # Short stylish
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = beards
+				template = scripted_character_beards_01
+				value = 0.45 # For the randomness to work correctly
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 1000
+				exists = character:marcher_8 #Drogue
+				this = character:marcher_8 #Drogue
+			}
+			modifier = {
+				add = 1000
+				exists = character:marcher_4 # Rene
+				this = character:marcher_4 # Rene
+			}
+		 modifier = {
+				add = 1000
+				exists = character:marcher_508 #Senesien
+				this = character:marcher_508 #Senesien
+			}  
+			modifier = {
+				add = 1000
+				exists = character:sarradon_163 #Ezriel
+				this = character:sarradon_163 #Ezriel
+			}
+			modifier = {
+				add = 200
+				exists = character:ee_3 #Manezão
+				this = character:ee_3 #Manezão
+			}
+			modifier = {
+				add = 1000
+				exists = character:doffore_mogowai_1 #Farwah
+				this = character:doffore_mogowai_1
+			} 			
+			modifier = {
+				add = 1000
+				exists = character:canian_29 #Orvadasp
+				this = character:canian_29 #Orvadasp
+			} 
+		}
+	}
+
+	male_beard_northern_01 = { # Big wide
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = beards
+				template = scripted_character_beards_01
+				value = 0.48 # For the randomness to work correctly
+			}
+		}
+		weight = {
+			base = 0
+		}
+	}
+
+	male_beard_northern_02 = { # Single braid
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = beards
+				template = scripted_character_beards_01
+				value = 0.52 # For the randomness to work correctly
+			}
+		}
+		weight = {
+			base = 0
+		}
+	}
+
+    male_beard_steppe_02 = { # low rough 
+        dna_modifiers = {
+            accessory = {
+                mode = add
+                gene = beards
+                template = scripted_character_beards_01
+                value = 0.61 # For the randomness to work correctly
+            }
+        }   
+        weight = {
+            base = 0
+			modifier = {
+                add = 1000
+                this = character:marcher_2  #Gawel
+            }
+			modifier = {
+				add = 1000
+				exists = character:canian_30 #Javaanshir
+				this = character:canian_30 #Javaanshir
+			} 
+        }
+    }
+	male_beard_northern_03 = { # Beaded beard
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = beards
+				template = scripted_character_beards_01
+				value = 0.54 # For the randomness to work correctly
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 1000
+				exists = character:clanlands_sjalvolki_1 #Cenware
+				this = character:clanlands_sjalvolki_1 #Cenware
+			}
+			modifier = {
+				add = 200
+				exists = character:clanlands_megos_38 #laurentz
+				this = character:clanlands_megos_38 #laurentz 
+			}
+		}
+	}
+
+	male_beard_steppe_01 = { # long at chin with mustache
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = beards
+				template = scripted_character_beards_01
+				value = 0.58 # For the randomness to work correctly
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 200
+				exists = character:kathunian_1
+				this = character:kathunian_1
+			}
+		}
+	}
+
+    male_beard_sub_saharan_02 = { # Stylish african goatee
+        dna_modifiers = {
+            accessory = {
+                mode = add
+                gene = beards
+                template = scripted_character_beards_01
+                value = 0.67 # For the randomness to work correctly
+            }
+        }   
+        weight = {
+            base = 0           
+            modifier = {
+                add = 1000
+                exists = character:adabyss_6 #Asnake
+                this = character:adabyss_6 #Asnake
+            }       
+            modifier = {
+                add = 200
+                exists = character:clanlands_imperial_13 #Cylon
+                this = character:clanlands_imperial_13 # Cylon
+            }  
+             modifier = {
+                add = 200
+                exists = character:marcher_merc_1 #Martin
+                this = character:marcher_merc_1 #Martin
+            }    
+             modifier = {
+                add = 1000
+                exists = character:ee_9 #Amazing_Goob
+                this = character:ee_9 #Amazing_Goob
+             } 
+        }
+    }
+	male_beard_steppe_02 = { # low rough 
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = beards
+				template = scripted_character_beards_01
+				value = 0.61 # For the randomness to work correctly
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 1000
+				this = character:marcher_2  #Gawel
+			}
+			modifier = {
+				add = 1000
+				exists = character:canian_30 #Javaanshir
+				this = character:canian_30 #Javaanshir
+			} 
+		}
+	}
+
+	male_beard_sub_saharan_01 = { # Full african beard medium
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = beards
+				template = scripted_character_beards_01
+				value = 0.64 # For the randomness to work correctly
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 1000
+				exists = character:adabyss_1 #Kobayo
+				this = character:adabyss_1 #Kobayo
+			}
+                                                                 modifier = {
+				add = 1000
+				exists = character:doffore_mogowai_10 #Azhela
+				this = character:doffore_mogowai_10 #Azhela
+                                                                  }
+		}
+	}
+
+	male_beard_sub_saharan_02 = { # Stylish african goatee
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = beards
+				template = scripted_character_beards_01
+				value = 0.67 # For the randomness to work correctly
+			}
+		}
+		weight = {
+			base = 0		  
+			modifier = {
+				add = 1000
+				exists = character:adabyss_6 #Asnake
+				this = character:adabyss_6 #Asnake
+			}	  
+			modifier = {
+				add = 200
+				exists = character:clanlands_imperial_13 #Cylon
+				this = character:clanlands_imperial_13 # Cylon
+			}  
+			modifier = {
+				add = 200
+				exists = character:marcher_merc_1 #Martin
+				this = character:marcher_merc_1 #Martin
+			}	
+			modifier = {
+				add = 1000
+				exists = character:ee_9 #Amazing_Goob
+				this = character:ee_9 #Amazing_Goob
+			} 
+		}
+	}
+
+	male_beard_sub_saharan_03 = { # Full african beard long
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = beards
+				template = scripted_character_beards_01
+				value = 0.70 # For the randomness to work correctly
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 1000
+				exists = character:adabyss_2 #Yaaseen
+				this = character:adabyss_2#Yaaseen
+			}
+			modifier = {
+				add = 1000
+				exists = character:canian_43 #Farrokh
+				this =  character:canian_43 #Farrokh
+			}
+                                                                  modifier = {
+				add = 200
+				exists = character:kawoch_nitsafai_1 #Herizeb
+				this = character:kawoch_nitsafai_1
+			}
+		}
+	}
+
+	male_beard_indian_01 = { # Handlebar mustache
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = beards
+				template = scripted_character_beards_01
+				value = 0.74 # For the randomness to work correctly
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 200
+				exists = character:centralimperial_16 #Baudouin
+				this = character:centralimperial_16 #Baudouin
+			}
+			modifier = {
+				add = 1000
+				exists = character:sarradon_3 #MuhktarEyyan
+				this = character:sarradon_3 #MuhktarEyyan
+			}
+			modifier = {
+				add = 1000
+				exists = character:canian_20 #Parviz
+				this = character:canian_20 #Parviz
+			}  
+		}
+	}
+
+	male_beard_indian_02 = { # Indian pointy
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = beards
+				template = scripted_character_beards_01
+				value = 0.77 # For the randomness to work correctly
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 200
+				exists = character:rhesus_1 #Resus
+				this = character:rhesus_1 #Resus
+			}
+			modifier = {
+				add = 1000
+				exists = character:sarradon_1 #Harthan
+				this = character:sarradon_1 #Harthan
+			}
+			modifier = {
+				add = 200
+				exists = character:clanlands_malcois_56 #angbo
+				this = character:clanlands_malcois_56 #angbo
+			}
+			modifier = {
+				add = 1000
+				exists = character:canian_38 #Khosrow
+				this =  character:canian_38 #Khosrow
+			}
+		}
+	}
+
+	male_beard_indian_03 = { # Very curly medium length full beard
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = beards
+				template = scripted_character_beards_01
+				value = 0.80 # For the randomness to work correctly
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 1000
+				exists = character:canian_1 #Pejman
+				this = character:canian_1 #Pejman
+			}  
+		}
+	}
+
+	male_beard_rtt_01 = { # Wizard beard
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = beards
+				template = scripted_character_beards_01
+				value = 0.0 # For the randomness to work correctly
+			}
+		}
+		weight = {
+			base = 0	
+		}
+	}
+
+	male_beard_fp1_01 = { # Twin braids with metal rings
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = beards
+				template = scripted_character_beards_01
+				value = 0.84 # For the randomness to work correctly
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 200
+				exists = character:pure_heart_1 #Narses
+				this = character:pure_heart_1 #Narses
+			}
+			modifier = {
+				add = 200
+				exists = character:wolfsfeld_1 #Mihovil
+				this = character:wolfsfeld_1 #Mihovil
+			}  
+			modifier = {
+				add = 200
+				exists = character:clanlands_megos_128 #giselmar
+				this = character:clanlands_megos_128 #giselmar
+			}
+		}
+	}
+
+	male_beard_fp1_02 = { # Short low beard
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = beards
+				template = scripted_character_beards_01
+				value = 0.88 # For the randomness to work correctly
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 200
+				exists = character:ee_8 #Claystead
+				this = character:ee_8 #Claystead
+			}
+			modifier = {
+				add = 200
+				exists = character:clanlands_imperial_12 #Hinrik
+				this = character:clanlands_imperial_12 #Hinrik
+			}
+			modifier = {
+				add = 1000
+				exists = character:sjalvolki_mikros_5 #wishiwashi
+				this = character:sjalvolki_mikros_5 #wishiwashi
+			}
+			modifier = {
+				add = 200
+				exists = character:clanlands_sjalvolki_110 #Lukar
+				this = character:clanlands_sjalvolki_110 #Lukar 
+			}
+			modifier = {
+				add = 200
+				exists = character:canian_40 #Baraz
+				this = character:canian_40  #Baraz
+			}
+		}
+	}
+
+	male_beard_fp1_03 = { # Wavy pointy beard
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = beards
+				template = scripted_character_beards_01
+				value = 0.90 # For the randomness to work correctly
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 200
+				exists = character:clanlands_imperial_7 #Juries
+				this = character:clanlands_imperial_7 # Juries
+			}  
+		}
+	}
+
+	male_beard_fp1_04 = { # Huge braid
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = beards
+				template = scripted_character_beards_01
+				value = 0.94 # For the randomness to work correctly
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 1000
+				exists = character:colonia_3 #Heraklios
+				this = character:colonia_3 #Heraklios
+			}
+			modifier = {
+				add = 1000
+				exists = character:sjalvolki_mikros_9 #Kresmir
+				this = character:sjalvolki_mikros_9 #Kresmir
+			}
+		}
+	}
+
+	male_beard_fp1_05 = { # Long narrow wavy
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = beards
+				template = scripted_character_beards_01
+				value = 0.97 # For the randomness to work correctly
+			}
+		}
+		weight = {
+			base = 0 
+			modifier = {
+				add = 200
+				exists = character:thebastro_1 #Pantoleon
+				this = character:thebastro_1 #Pantoleon
+			} 
+			modifier = {
+				add = 200
+				exists = character:clanlands_sjalvolki_5 # Serapion
+				this = character:clanlands_sjalvolki_5 # Serapion
+			}	
+			modifier = {
+				add = 200
+				exists = character:crusader_3 #Philatar
+				this = character:crusader_3 #Philatar
+			} 
+			modifier = {
+				add = 200
+				exists = character:clanlands_malcois_48 #khoya
+				this = character:clanlands_malcois_48 #khoya
+			} 
+		}
+	}
+}

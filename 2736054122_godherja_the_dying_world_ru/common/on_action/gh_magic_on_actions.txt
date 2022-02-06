@@ -1,0 +1,52 @@
+﻿
+fog_magic_on_stress_increase_1 = {
+	trigger = { has_perk = mixedmagic_perk6_tree1 }
+
+	effect = {
+		if = {
+			random_list = {
+				90 = { }
+				10 = { trigger_event = magic.2420 }
+			}
+		}
+	}
+}
+
+fog_magic_on_stress_increase_2 = {
+	trigger = { has_perk = mixedmagic_perk6_tree1 }
+
+	effect = {
+		if = {
+			random_list = {
+				70 = { }
+				30 = { trigger_event = magic.2420 }
+			}
+		}
+	}
+}
+
+fog_magic_on_stress_increase_3 = {
+	trigger = { has_perk = mixedmagic_perk6_tree1 }
+
+	effect = {
+		if = {
+			random_list = {
+				50 = { }
+				50 = { trigger_event = magic.2420 }
+			}
+		}
+	}
+}
+
+on_stress_level_1 = {
+	on_actions = { fog_magic_on_stress_increase_1 }
+}
+on_stress_level_2 = {
+	on_actions = { fog_magic_on_stress_increase_2 }
+}
+on_stress_level_3 = {
+	on_actions = { fog_magic_on_stress_increase_3 }
+}
+on_stress_level_4 = {
+	on_actions = { fog_magic_on_stress_increase_3 }
+}

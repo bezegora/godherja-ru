@@ -77,6 +77,30 @@ minor_disease_frequency = {
 	}
 }
 
+matrilineal_marriages = {
+	default = default_matrilineal_marriages
+
+	default_matrilineal_marriages = {
+	
+	}
+	
+	matrilineal_marriages_no_player_exception = {
+		
+	}
+
+	matrilineal_marriages_always = {
+
+	}
+
+	matrilineal_marriages_female_and_equal = {
+
+	}
+
+	matrilineal_marriages_never = {
+
+	}
+}
+
 gender_equality = {
 	default = default_gender_equality
 
@@ -324,4 +348,14 @@ nudity = {
 	never_nudity = {
 
 	}
+}
+
+dlc_fp1_scandinavian_adventurers = {
+	default = fp1_scandi_adventurers_frequent
+	#dlc = "The Northern Lords"
+	fp1_scandi_adventurers_rare = { flag = blocks_achievements }
+	fp1_scandi_adventurers_occasional = {}
+	fp1_scandi_adventurers_frequent = {}
+	fp1_scandi_adventurers_apocalyptic = {}
+	fp1_scandi_adventurers_off = { flag = blocks_achievements }
 }

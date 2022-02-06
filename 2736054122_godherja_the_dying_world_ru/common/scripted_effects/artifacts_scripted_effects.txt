@@ -46,14 +46,21 @@ remove_artifact = {# ARTIFACT = X
 	}
 }
 select_artifact = {# ARTIFACT = X
-	clear_all_artifacts = yes
-	set_variable = {
-		name = $ARTIFACT$_selected
-		value = flag:$ARTIFACT$
-	}
-	set_variable = {
-		name = artifact_selection
-		value = flag:$ARTIFACT$
+	if = {
+		limit = {
+			exists = scope:selected_artifact_scope
+			scope:selected_artifact_scope = flag:$ARTIFACT$
+		}
+		clear_all_artifacts = yes
+		debug_log = "GOT INTO SELECTION"
+		set_variable = {
+			name = $ARTIFACT$_selected
+			value = flag:$ARTIFACT$
+		}
+		set_variable = {
+			name = artifact_selection
+			value = flag:$ARTIFACT$
+		}
 	}
 }
 remove_artifact_selection = {# ARTIFACT = X
@@ -427,4 +434,25 @@ gift_artifact = {# Usage: transfer_artifact = {A = From B = To ARTIFACT = X}
 		}
 	}
 }
-
+artifact_name_effect = {
+	if = {
+		limit = { has_variable = $ARTIFACT$_selected }
+		custom_tooltip = $ARTIFACT$_name
+		# Filler nonsense so the parser doesn't complain
+		show_as_tooltip = {
+			set_variable = $A$temporary_variable$B$
+			remove_variable = $A$temporary_variable$B$
+		}
+	}
+}
+artifact_desc_effect = {
+	if = {
+		limit = { has_variable = $ARTIFACT$_selected }
+		custom_tooltip = $ARTIFACT$_desc
+		# Filler nonsense so the parser doesn't complain
+		show_as_tooltip = {
+			set_variable = $A$temporary_variable$B$
+			remove_variable = $A$temporary_variable$B$
+		}
+	}
+}

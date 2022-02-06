@@ -3,93 +3,83 @@
 	
 	sjalvolki_succession_law = {
 		can_keep = {
-			OR = {
-				has_government = feudal_government
-				has_government = tribal_government
-			}
-			OR = {
-				has_culture_group = culture_group:gh_sjalvoki_group
-				faith = {
-					has_doctrine = tenet_sjavolki_syncretism
-				}
-			}
+			can_keep_sjalvolki_succession_law_trigger = yes
 		}
 		can_pass = {
-			OR = {
-				has_government = feudal_government
-				has_government = tribal_government
-			}
-			OR = {
-				has_culture_group = culture_group:gh_sjalvoki_group
-				faith = {
-					has_doctrine = tenet_sjavolki_syncretism
+			custom_description = {
+				text = "no_powerful_vassal_with_negative_opinion"
+				NOT = {
+					any_vassal = {
+						is_powerful_vassal = yes
+						opposes_succession_law_change_trigger = yes
+					}
 				}
 			}
 		}
 		can_have = {
-			OR = {
-				has_government = feudal_government
-				has_government = tribal_government
-			}
-			OR = {
-				has_culture_group = culture_group:gh_sjalvoki_group
-				faith = {
-					has_doctrine = tenet_sjavolki_syncretism
-				}
-			}
+			can_have_sjalvolki_succession_law_trigger = yes
 		}
 		should_start_with = {
-			OR = {
-				has_government = feudal_government
-				has_government = tribal_government
-			}
-			OR = {
-				has_culture_group = culture_group:gh_sjalvoki_group
-				faith = {
-					has_doctrine = tenet_sjavolki_syncretism
-				}
-			}
+			can_have_sjalvolki_succession_law_trigger = yes
 		}
 		pass_cost = {
-			prestige = change_title_succession_law_prestige_cost
+			prestige = change_succession_law_prestige_cost
+		}
+		revoke_cost = {
+			prestige = change_succession_law_prestige_cost
 		}
 		succession = {
 			order_of_succession = inheritance
 			traversal_order = children
 			rank = oldest
 			title_division = single_heir
+		}
+		modifier = {
+			direct_vassal_opinion = 10
+			dynasty_house_opinion = 5
+			eligible_child_opinion = -15
 		}
 		flag = can_designate_heirs
 	}
 	
-	aversarian_succession_law = {
+	lawless_succession_law = {
 		can_keep = {
-			OR = {
-				faith = { has_doctrine = tenet_aversarian_syncretism }
-				has_culture_group = culture_group:gh_imperial_group
-				has_religion = religion:aversarinas_aautokrata_religion
-			}
+			has_government = pirate_government
 		}
 		can_pass = {
-			OR= {
-				faith = { has_doctrine = tenet_aversarian_syncretism }
-				has_culture_group = culture_group:gh_imperial_group
-				has_religion = religion:aversarinas_aautokrata_religion
-			}
+			has_government = pirate_government
 		}
 		can_have = {
-			OR= {
-				faith = { has_doctrine = tenet_aversarian_syncretism }
-				has_culture_group = culture_group:gh_imperial_group
-				has_religion = religion:aversarinas_aautokrata_religion
-			}
+			has_government = pirate_government
 		}
 		should_start_with = {
-			has_culture_group = culture_group:gh_imperial_group
-			has_religion = religion:aversarinas_aautokrata_religion
+			has_government = pirate_government
 		}
 		pass_cost = {
 			prestige = change_title_succession_law_prestige_cost
+		}
+		succession = {
+			order_of_succession = inheritance
+			traversal_order = dynasty_house
+			rank = oldest
+			title_division = single_heir
+		}
+		modifier = {
+			monthly_prestige_gain_mult = 0.1
+		}
+		flag = can_designate_heirs
+		flag = children_cannot_inherit
+	}
+
+	amsari_succession_law = {
+		can_keep = {
+			can_have_amsari_succession_law_trigger = yes
+		}
+		can_have = {
+			can_have_amsari_succession_law_trigger = yes
+		}
+		should_start_with = {
+			can_have_amsari_succession_law_trigger = yes
 		}
 		succession = {
 			order_of_succession = inheritance
@@ -97,8 +87,19 @@
 			rank = oldest
 			title_division = single_heir
 		}
+		flag = advanced_succession_law
+		modifier = {
+			player_heir_opinion = 20
+			eligible_child_except_player_heir_opinion = -15
+		}
+		pass_cost = {
+			prestige = change_succession_law_prestige_cost
+		}
+		revoke_cost = {
+			prestige = change_succession_law_prestige_cost
+		}
 		flag = can_designate_heirs
-	}	
+	}
 	
 	confederate_partition_succession_law = {
 		can_keep = {
@@ -424,10 +425,7 @@
 			can_have_holy_order_succession_law_trigger = yes
 		}
 		should_start_with = {
-			OR = {
-				has_government = holy_order_government
-				has_government = landed_order_government
-			}
+			has_government = holy_order_government
 		}
 		succession = {
 			order_of_succession = theocratic
@@ -464,7 +462,10 @@
 		}
 		should_start_with = {
 			OR = {
-				has_government = republic_government
+				AND = {
+					has_government = republic_government
+					highest_held_title_tier = tier_barony
+				}
 				has_government = magocratic_republic
 				has_government = peasant_republic
 			}

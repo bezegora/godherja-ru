@@ -738,6 +738,11 @@ learning_theology.3002 = {
 			}
 		}
 		cynical_progression_effect = yes
+		lifepath_impact = {
+			WAY = knowledge
+			NATURE = positive
+			AMOUNT = major
+		}
 	}
 
 	option = { #The church knows best
@@ -758,6 +763,11 @@ learning_theology.3002 = {
 	option = {
 		name = learning_theology.3002.c
 		add_learning_lifestyle_xp = medium_lifestyle_xp
+		lifepath_impact = {
+			WAY = knowledge
+			NATURE = positive
+			AMOUNT = minor
+		}
 	}
 }
 
@@ -809,6 +819,11 @@ learning_theology.3003 = {
 				opinion = -10
 			}
 		}
+		lifepath_impact = {
+			WAY = knowledge
+			NATURE = positive
+			AMOUNT = medium
+		}
 		cynical_progression_effect = yes
 	}
 
@@ -826,6 +841,11 @@ learning_theology.3003 = {
 				modifier = pious_opinion
 				opinion = 15
 			}
+		}
+		lifepath_impact = {
+			WAY = knowledge
+			NATURE = positive
+			AMOUNT = minor
 		}
 		zealous_progression_effect = yes
 	}
@@ -979,6 +999,21 @@ learning_theology.3011 = {
 						title = learning_theology.3011.a.success
 						left_icon = scope:believer
 						theology_3011_a_success_effect = yes
+						lifepath_impact = {
+							WAY = knowledge
+							NATURE = positive
+							AMOUNT = minor
+						}
+						lifepath_impact = {
+							WAY = family
+							NATURE = positive
+							AMOUNT = medium
+						}
+						lifepath_impact = {
+							WAY = crows
+							NATURE = positive
+							AMOUNT = medium
+						}
 					}
 				}
 				10 = {
@@ -999,6 +1034,21 @@ learning_theology.3011 = {
 						title = learning_theology.3011.a.failure
 						left_icon = scope:believer
 						theology_3011_a_failure_effect = yes
+						lifepath_impact = {
+							WAY = knowledge
+							NATURE = negative
+							AMOUNT = minor
+						}
+						lifepath_impact = {
+							WAY = family
+							NATURE = negative
+							AMOUNT = medium
+						}
+						lifepath_impact = {
+							WAY = crows
+							NATURE = negative
+							AMOUNT = medium
+						}
 					}
 				}
 			}
@@ -1011,6 +1061,11 @@ learning_theology.3011 = {
 	option = { #nah
 		name = learning_theology.3011.b
 		add_gold = minor_gold_value
+		lifepath_impact = {
+			WAY = knowledge
+			NATURE = negative
+			AMOUNT = medium
+		}
 		ai_chance = {
 			base = 25
 			ai_value_modifier = {
@@ -1458,6 +1513,11 @@ learning_theology.3022 = {
 
 	option = {
 		name = learning_theology.3022.a
+		lifepath_impact = {
+			WAY = family
+			NATURE = positive
+			AMOUNT = medium
+		}
 	}
 }
 
@@ -1500,6 +1560,11 @@ learning_theology.3024 = {
 
 	option = {
 		name = learning_theology.3024.a
+		lifepath_impact = {
+			WAY = family
+			NATURE = negative
+			AMOUNT = medium
+		}
 	}
 }
 
@@ -1721,6 +1786,11 @@ learning_theology.3042 = {
 	option = { # This is what I have been looking for
 		name = learning_theology.3042.a
 		custom_tooltip = learning_theology.3042.a.tt
+		lifepath_impact = {
+			WAY = knowledge
+			NATURE = positive
+			AMOUNT = minor
+		}
 		hidden_effect = {
 			random_list = {
 				80 = {
@@ -1748,6 +1818,11 @@ learning_theology.3042 = {
 		ai_chance = {
 			base = 0
 		}
+		lifepath_impact = {
+			WAY = knowledge
+			NATURE = negative
+			AMOUNT = minor
+		}
 	}
 }
 
@@ -1762,6 +1837,11 @@ learning_theology.3043 = {
 	option = { # This is what I have been looking for
 		name = learning_theology.3043.a
 		add_trait = mystic_1
+		lifepath_impact = {
+			WAY = knowledge
+			NATURE = positive
+			AMOUNT = medium
+		}
 		stress_impact = {
 			lazy = minor_stress_impact_gain
 		}
@@ -1773,6 +1853,11 @@ learning_theology.3043 = {
 	option = { # I feel nothing, but it's very relaxing
 		name = learning_theology.3043.b
 		add_stress = major_stress_loss
+		lifepath_impact = {
+			WAY = knowledge
+			NATURE = negative
+			AMOUNT = minor
+		}
 		add_character_modifier = {
 			modifier = introspective_rest_modifier
 			years = 5
@@ -1807,6 +1892,11 @@ learning_theology.3044 = {
 		add_learning_lifestyle_perk_points = 1
 		ai_chance = {
 			base = 80
+		}
+		lifepath_impact = {
+			WAY = knowledge
+			NATURE = positive
+			AMOUNT = medium
 		}
 	}
 
@@ -1893,6 +1983,11 @@ learning_theology.3046 = {
 	
 	option = { # Let's see where it leads
 		name = learning_theology.3046.a
+		lifepath_impact = {
+			WAY = knowledge
+			AMOUNT = medium
+			NATURE = positive
+		}
 		random_list = {
 			70 = {
 				desc = learning_theology.3046.a.success
@@ -1929,6 +2024,11 @@ learning_theology.3046 = {
 	option = { # It is time to give up
 		name = learning_theology.3046.b
 		add_stress = medium_stress_loss
+		lifepath_impact = {
+			WAY = knowledge
+			AMOUNT = medium
+			NATURE = negative
+		}
 		ai_chance = {
 			base = 100
 			modifier = {
@@ -2226,6 +2326,11 @@ learning_theology_special.1001 = {
 				send_interface_toast = {
 					title = learning_theology_special.1001.a.success.toast
 					add_learning_lifestyle_perk_points = 1
+					lifepath_impact = {
+						WAY = knowledge
+						AMOUNT = minor
+						NATURE = positive
+					}
 				}
 			}
 			100 = {
@@ -2246,6 +2351,11 @@ learning_theology_special.1001 = {
 					left_icon = scope:bishop
 					add_learning_lifestyle_xp = miniscule_lifestyle_xp
 					add_piety = minor_piety_gain
+					lifepath_impact = {
+						WAY = knowledge
+						NATURE = negative
+						AMOUNT = medium
+					}
 				}
 			}
 		}
@@ -2267,6 +2377,11 @@ learning_theology_special.1001 = {
 			zealous = medium_stress_impact_gain
 			cynical = medium_stress_impact_loss
 		}
+		lifepath_impact = {
+			WAY = knowledge
+			NATURE = positive
+			AMOUNT = miniscule
+		}
 		ai_chance = {
 			base = 100
 			ai_value_modifier = {
@@ -2282,6 +2397,11 @@ learning_theology_special.1001 = {
 		stress_impact = {
 			zealous = medium_stress_impact_loss
 			cynical = medium_stress_impact_gain
+		}
+		lifepath_impact = {
+			WAY = knowledge
+			AMOUNT = medium
+			NATURE = negative
 		}
 		ai_chance = {
 			base = 100
@@ -2331,6 +2451,11 @@ learning_theology_special.1002 = {
 				faith = root.faith
 			}
 			trigger_event = learning_theology_special.1003
+		}
+		lifepath_impact = {
+			WAY = knowledge
+			NATURE = positive
+			AMOUNT = massive
 		}
 	}
 }
@@ -2415,7 +2540,6 @@ learning_theology_special.1101 = {
 			OR = {
 				religion_tag = sjalvolki_religion
 				religion_tag = aversarinas_aautokrata_religion
-				religion_tag = dualism_religion
 				religion_tag = adabyssian_religion
 			}
 		}
@@ -2428,39 +2552,6 @@ learning_theology_special.1101 = {
 		}
 		add_character_flag = had_learning_theology_special_1101_this_lifetime
 
-#		if = { #If Rashi could have been alive we create him (for players!)
-#			limit = {
-#				game_start_date >= 1040.1.1
-#				game_start_date <= 1105.1.1
-#				is_ai = no
-#				NOT = { #Only spawns once.
-#					is_target_in_global_variable_list = {
-#						name = special_character_list
-#						target = flag:flag_theology_1101_shlomo_yitzchaki
-#					}
-#				}
-#			}
-#			create_character = {
-#				location = root.capital_province
-#				template = scholar_character
-#				faith = faith:rabbinism
-#				culture = culture:french
-#				trait = scholar
-#				trait = diligent
-#				name = "Shlomo Yitzchaki"
-#				gender = male
-#				save_scope_as = scholar
-#			}
-#			save_scope_value_as = {
-#				name = rashi
-#				value = yes
-#			}
-#			add_to_global_variable_list = {
-#				name = special_character_list
-#				target = flag:flag_theology_1101_shlomo_yitzchaki
-#			}
-#			add_character_flag = flag_learning_theology_2020_historical
-#		}
 		if = {
 			limit = {
 				exists = root.capital_province

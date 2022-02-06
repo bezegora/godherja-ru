@@ -142,8 +142,8 @@ innovation_saraddonian_elephantry = {
 	
 	potential = {
 		OR = {
-			# Amharian
-			this = culture:amharian
+			# Damotan
+			this = culture:kawoch
 			this = culture:doffore
 			this = culture:fedagesh
 			this = culture:kutma			
@@ -158,6 +158,40 @@ innovation_saraddonian_elephantry = {
 			this = culture:mirzana_jahar
 			this = culture:babura
 			this = culture:jangkar
+		}
+	}
+
+	unlock_maa = war_elephant
+
+	flag = global_maa
+}
+
+innovation_kashiryan_elephantry = {
+	group = culture_group_regional
+	culture_era = culture_era_tribal
+	region = world_kashiyra
+	icon = @elephant
+	
+	potential = {
+		OR = {
+			this.culture_group = culture_group:gh_aafarzay_group
+			this.culture_group = culture_group:gh_aevakori_group
+			this.culture_group = culture_group:gh_aembarisa_group
+			this.culture_group = culture_group:gh_asariyna_group
+			this.culture_group = culture_group:gh_kevaali_group
+			this.culture_group = culture_group:gh_khalai_group
+			this.culture_group = culture_group:gh_veparstva_group
+			this.culture_group = culture_group:gh_adhata_group
+			this.culture_group = culture_group:gh_agnala_group
+			this.culture_group = culture_group:gh_athacaya_group
+			this.culture_group = culture_group:gh_chordhan_group
+			this.culture_group = culture_group:gh_dayatemi_group
+			this.culture_group = culture_group:gh_emanhi_group
+			this.culture_group = culture_group:gh_haraja_group
+			this.culture_group = culture_group:gh_likarkho_group
+			this.culture_group = culture_group:gh_margur_group
+			this.culture_group = culture_group:gh_rekhala_group
+			this.culture_group = culture_group:gh_zonthawa_group
 		}
 	}
 
@@ -182,10 +216,10 @@ innovation_saraddonian_camels = {
 			this = culture:hamaxindi
 			this = culture:thyssae
 			# Khemet
-			this = culture:Ran_Kemsarian
-			this = culture:Alewui_Kemsarian
-			this = culture:Almajun_Kemsarian
-			this = culture:Aljibal_Kemsarian
+			this = culture:ran_kemsarian
+			this = culture:alewui_kemsarian
+			this = culture:almajun_kemsarian
+			this = culture:aljibal_kemsarian
 			# Canian
 			this = culture:leviden
 			this = culture:ashital
@@ -212,7 +246,7 @@ innovation_berserkers = {
 
 	potential = {
 		OR = {
-			# Sjalvoki
+			# sjalvolki
 			this = culture:adrakamp
 			this = culture:barki
 			this = culture:caemansi
@@ -226,8 +260,6 @@ innovation_berserkers = {
 			this = culture:vrodkin
 			this = culture:warisnik
 			this = culture:sarridians
-			# Goans
-			this = culture:goans
 			# Allemani
 			this = culture:kardwens
 			# Gallieni
@@ -235,7 +267,7 @@ innovation_berserkers = {
 		}
 	}
 
-	unlock_maa = sjalvoki_berserkers
+	unlock_maa = sjalvolki_berserkers
 
 	flag = global_maa
 }
@@ -438,7 +470,7 @@ innovation_brother_riders = {
 
 	potential = {
 		OR = {
-			# Sjalvoki
+			# sjalvolki
 			this = culture:adrakamp
 			this = culture:barki
 			this = culture:caemansi
@@ -589,24 +621,6 @@ innovation_imperial_religious_reformation = {
 
 	modifier = {
 		faith_creation_piety_cost_mult = -0.2
-	}
-}
-
-innovation_marcher_adventurers = {
-	group = culture_group_regional
-	culture_era = culture_era_early_medieval
-	icon = @maa_01
-
-	potential = {
-		OR = {
-			# Marcher
-			this.culture_group = culture_group:gh_marcher_group
-		}
-	}
-
-	modifier = {
-		levy_size = -0.2
-		monthly_income = 0.2
 	}
 }
 
@@ -831,8 +845,6 @@ innovation_duneriders = {
 			# Imperial
 			this = culture:erimatos
 			this = culture:makryenis
-			#this = culture:
-			#this = culture:
 
 		}
 	}
@@ -842,23 +854,148 @@ innovation_duneriders = {
 	flag = global_maa
 }
 
-innovation_stepwalkers = {
-	group = culture_group_regional
-	culture_era = culture_era_tribal
-	icon = @maa_01
+#innovation_stepwalkers = {
+	#group = culture_group_regional
+	#culture_era = culture_era_tribal
+	#icon = @maa_01
 
-	potential = {
-		OR = {
+	#potential = {
+	#	OR = {
 			# Imperial
 			#this = culture:
 			#this = culture:
 			#this = culture:
 			#this = culture:
 
+	#	}
+	#}
+
+	#unlock_maa = stepwalkers
+
+	#flag = global_maa
+#}
+
+innovation_mountainstrikers = {
+	group = culture_group_regional
+	culture_era = culture_era_tribal
+	icon = @maa_01
+
+	potential = {
+		OR = {
+			# Goan
+			this = culture:goans
 		}
 	}
 
-	unlock_maa = stepwalkers
+	unlock_maa = mountainstrikers
+
+	flag = global_maa
+}
+
+innovation_wasteland_health_malus = {
+	group = culture_group_regional
+	culture_era = culture_era_tribal
+	icon = @maa_01
+
+	potential = {
+		this = culture:wasteland
+	}
+	
+	#modifier = {
+	#	health = -10
+	#}
+}
+
+innovation_thrill_of_the_hunt = {
+	group = culture_group_regional
+	culture_era = culture_era_tribal
+	icon = @maa_01
+
+	potential = {
+		this = culture:kardwens
+	}
+
+	unlock_maa = huntsmen
+	
+	flag = global_maa
+}
+
+innovation_stoneforged = {
+	group = culture_group_regional
+	culture_era = culture_era_high_medieval
+	icon = @weapons_and_armor_01
+
+	potential = {
+		this = culture:goans
+	}
+	unlock_maa = stoneforged
+
+	flag = global_maa
+}
+
+innovation_skydaughters = {
+	group = culture_group_regional
+	culture_era = culture_era_tribal
+	icon = @leadership_2
+
+	potential = {
+		this = culture:sarminians
+	}
+	unlock_maa = cloud_riders
+
+	flag = global_maa
+}
+
+innovation_sunstriders = {
+	group = culture_group_regional
+	culture_era = culture_era_early_medieval
+	icon = @maa_02
+
+	potential = {
+		this = culture:sarminians
+	}
+	unlock_maa = sunstriders
+
+	flag = global_maa
+}
+
+innovation_observant = {
+	group = culture_group_regional
+	culture_era = culture_era_tribal
+	icon = @raised_banner
+	
+	potential = {
+		this = culture:huegodocs
+	}
+	
+	unlock_maa = observant
+
+	flag = global_maa
+}
+
+innovation_huegodoc_legion = {
+	group = culture_group_regional
+	culture_era = culture_era_high_medieval
+	icon = @knight
+	
+	potential = {
+		this = culture:huegodocs
+	}
+	unlock_maa = huegodoc_legion
+
+	flag = global_maa
+}
+
+innovation_warisnik_mammoths = {
+	group = culture_group_regional
+	culture_era = culture_era_early_medieval
+	icon = @elephant
+	
+	potential = {
+		this = culture:warisnik
+	}
+
+	unlock_maa = war_mammoth
 
 	flag = global_maa
 }

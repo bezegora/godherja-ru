@@ -13,7 +13,7 @@ types Breakdowns
 		vbox = {
 			datamodel = "[ValueBreakdown.GetSubValues]"
 			alwaystransparent = no
-			restrictparent_min = yes
+			set_parent_size_to_minimum = yes
 			margin = { 17 10 }
 			spacing = 3
 
@@ -71,27 +71,27 @@ types Breakdowns
 
 		vbox = {
 			layoutpolicy_horizontal = expanding
-		
-			restrictparent_min = yes
+
+			set_parent_size_to_minimum = yes
 			minimumsize = { 280 0 }
-			
+
 			margin = { 15 10 }
 			spacing = 20
-			
+
 			block "my_gold" {}
-		
+
 			vbox_gold_breakdown = {
 				name = "income"
 				layoutpolicy_horizontal = expanding
 				block "income" {}
 			}
-			
+
 			vbox_gold_breakdown = {
 				name = "expenses"
 				layoutpolicy_horizontal = expanding
 				block "expenses" {}
 			}
-			
+
 			block "gold_income" {}
 		}
 	}
@@ -203,7 +203,7 @@ types Breakdowns
 
 		vbox = {
 			name = "tooltip_container"
-			restrictparent_min = yes
+			set_parent_size_to_minimum = yes
 			filter_mouse = all
 			margin = { 15 15 }
 
@@ -252,7 +252,7 @@ types Breakdowns
 							}
 
 							vbox = {
-								restrictparent_min = yes
+								set_parent_size_to_minimum = yes
 								margin = { 5 5 }
 								vbox = {
 									datacontext = "[PlayerValueItem.GetBalanceGained]"
@@ -367,7 +367,7 @@ types Breakdowns
 
 		vbox = {
 			name = "tooltip_container"
-			restrictparent_min = yes
+			set_parent_size_to_minimum = yes
 			minimumsize = { 280 0 }
 			filter_mouse = all
 			margin = { 15 15 }
@@ -423,7 +423,7 @@ types Breakdowns
 				text_single = {
 					name = "trait_magic_add"
 					layoutpolicy_horizontal = expanding
-					text = "#L #V +[FixedPointToFloat(GetPlayer.MakeScope.Var('trait_magic_add').GetValue)|1]#!#!/month"
+					text = "#L #V +[FixedPointToFloat(GetPlayer.MakeScope.Var('trait_total_magic_add').GetValue)|1]#!#!/month"
 					align = right
 					
 					using = tooltip_ws
@@ -742,7 +742,7 @@ types Breakdowns
 		using = DefaultTooltipBackground
 
 		vbox = {
-			restrictparent_min = yes
+			set_parent_size_to_minimum = yes
 			minimumsize = { 280 0 }
 
 			margin = { 10 10 }
@@ -799,7 +799,7 @@ types Breakdowns
 
 		vbox = {
 			name = "tooltip_container"
-			restrictparent_min = yes
+			set_parent_size_to_minimum = yes
 			minimumsize = { 280 0 }
 			filter_mouse = all
 			margin = { 15 10 }
@@ -1106,6 +1106,205 @@ types Breakdowns
 				#	using = Font_Size_Small
 				#	fonttintcolor = "[TooltipInfo.GetTintColor]"
 				#}
+			}
+		}
+	}
+	
+	##Judicial Power Tooltip
+	type widget_judicial_power_tooltip = widget {
+		alwaystransparent = no
+		size = { 50 50 }
+
+		using = DefaultTooltipBackground
+
+		vbox = {
+			name = "tooltip_container"
+			restrictparent_min = yes
+			minimumsize = { 280 0 }
+			filter_mouse = all
+			margin = { 15 10 }
+
+			vbox = {
+				layoutpolicy_horizontal = expanding
+				margin_bottom = 5
+				spacing = 5
+
+				block "header" {}
+
+				text_single = {
+					layoutpolicy_horizontal = expanding
+					text = "#E Judicial Power#!: [GuiScope.SetRoot( Character.MakeScope ).ScriptValue('judicial_power_value')|0]"
+					default_format = "#high;bold"
+					using = Font_Size_Medium
+					fonttintcolor = "[TooltipInfo.GetTintColor]"
+				}
+			}
+		}
+	}
+	
+	## Legal Tradition Progress Breakdown Tooltip
+	type widget_legal_tradition_progress_tooltip = widget {
+		alwaystransparent = no
+		size = { 50 50 }
+
+		using = DefaultTooltipBackground
+
+		vbox = {
+			name = "tooltip_container"
+			set_parent_size_to_minimum = yes
+			minimumsize = { 280 0 }
+			filter_mouse = all
+			margin = { 15 15 }
+
+			vbox = {
+				layoutpolicy_horizontal = expanding
+				margin_bottom = 5
+				spacing = 5
+
+				block "header" {}
+				
+				hbox = {
+					layoutpolicy_horizontal = expanding
+					text_single = {
+						layoutpolicy_horizontal = expanding
+						text = "#E Tradition Progress#!"
+						default_format = "#high;bold"
+						using = Font_Size_Medium
+						fonttintcolor = "[TooltipInfo.GetTintColor]"
+						align = left
+					}
+					
+					text_single = {
+						layoutpolicy_horizontal = expanding
+						text = "[Scope.Var('legal_tradition_level_progress').GetValue|V0]/[Scope.ScriptValue('legal_tradition_next_level_progress_requirement_value')|V0]"
+						using = tooltip_ws
+						align = right
+					}
+					
+					background = {
+						using = Background_Area
+						margin = { 10 0 }
+						margin_bottom = 5
+					}
+				}
+			}
+			
+			hbox = {
+				layoutpolicy_horizontal = expanding
+				spacing = 15
+				margin_bottom = 10
+				text_single = {
+					name = "patron_header_label"
+					layoutpolicy_horizontal = expanding
+					text = "#T Patrons #!"
+					align = left
+					
+					using = tooltip_ws
+				}
+			}
+			
+			vbox = {
+				layoutpolicy_horizontal = expanding
+				datamodel = "[Scope.GetList('legal_tradition_patrons')]"
+				item = {
+					hbox = {
+						layoutpolicy_horizontal = expanding
+						spacing = 15
+						text_single = {
+							name = "patron_label"
+							layoutpolicy_horizontal = expanding
+							text = "[Scope.Char.GetTitledFirstName]"
+							align = left
+							
+							using = tooltip_ws
+						}
+						
+						text_single = {
+							name = "trait_magic_add"
+							layoutpolicy_horizontal = expanding
+							text = "#L #V +[Scope.ScriptValue('legal_tradition_patronage_investment_character_total_value')|V1]#!#!/month"
+							align = right
+							
+							using = tooltip_ws
+						}
+					}
+				}
+			}
+			
+			divider_light = {
+				layoutpolicy_horizontal = expanding
+			}
+			
+			hbox = {
+				layoutpolicy_horizontal = expanding
+				spacing = 15
+				
+				text_single = {
+					name = "total_label"
+					layoutpolicy_horizontal = expanding
+					text = "Total: "
+					align = left
+					
+					using = tooltip_ws
+				}
+				
+				text_single = {
+					name = "total_text"
+					layoutpolicy_horizontal = expanding
+					text = "#underline +[Scope.ScriptValue('legal_tradition_monthly_progress_value')|V1]/month#!"
+					align = right
+					
+					using = tooltip_ws
+				}
+			}
+		}
+	}
+	
+	## Jurist Trait Progress Breakdown Tooltip
+	type widget_jurist_progress_tooltip = widget {
+		alwaystransparent = no
+		size = { 50 50 }
+
+		using = DefaultTooltipBackground
+
+		vbox = {
+			name = "tooltip_container"
+			set_parent_size_to_minimum = yes
+			minimumsize = { 280 0 }
+			filter_mouse = all
+			margin = { 15 15 }
+
+			vbox = {
+				layoutpolicy_horizontal = expanding
+				margin_bottom = 5
+				spacing = 5
+
+				block "header" {}
+				
+				hbox = {
+					layoutpolicy_horizontal = expanding
+					text_single = {
+						layoutpolicy_horizontal = expanding
+						text = "#E Jurist Trait Progress#!"
+						default_format = "#high;bold"
+						using = Font_Size_Medium
+						fonttintcolor = "[TooltipInfo.GetTintColor]"
+						align = left
+					}
+					
+					text_single = {
+						layoutpolicy_horizontal = expanding
+						text = "[GetPlayer.MakeScope.Var('jurist_level_progress').GetValue|V0]/[GuiScope.SetRoot( GetPlayer.MakeScope ).AddScope('jurist_progress_character',GetPlayer.MakeScope).ScriptValue('jurist_next_level_progress_requirement_gui_value')|0]"
+						using = tooltip_ws
+						align = right
+					}
+					
+					background = {
+						using = Background_Area
+						margin = { 10 0 }
+						margin_bottom = 5
+					}
+				}
 			}
 		}
 	}

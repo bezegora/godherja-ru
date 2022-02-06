@@ -2,12 +2,12 @@
 	family = gh_sarradonian
 	
 	doctrine_background_icon = core_tenet_banner_christian.dds
-	doctrine = standard_hostility_doctrine
+	doctrine = sarradonian_hostility_doctrine
 	#Main Group
-	doctrine = doctrine_spiritual_head
+	doctrine = doctrine_temporal_head
 	doctrine = doctrine_gender_male_dominated
 	doctrine = doctrine_pluralism_righteous
-	doctrine = doctrine_theocracy_temporal
+	doctrine = doctrine_theocracy_lay_clergy
 	
 	#Belief
 	doctrine = doctrine_sacred_scriptures
@@ -15,19 +15,19 @@
 	doctrine = doctrine_ethereal
 	doctrine = doctrine_eternal
 	doctrine = doctrine_spirits
-	doctrine = doctrine_prophets
+	doctrine = doctrine_divine_guidance_none
 	doctrine = doctrine_promised_deliverer
-	doctrine = doctrine_reincarnation
+	doctrine = doctrine_paradise_and_underworld
 
 	#Practices
-	doctrine = doctrine_heroes
+	doctrine = doctrine_holy_mortals_none
 	doctrine = doctrine_autonomous
 	doctrine = doctrine_no_restrictions
 	doctrine = doctrine_monk_not_clergy_enforced
 	doctrine = doctrine_atonement_none
 	doctrine = doctrine_encouraged_alms
 	
-	doctrine = doctrine_slavery_neutral
+	doctrine = doctrine_slavery_discouraged
 	
 	#Marriage
 	doctrine = doctrine_monogamy
@@ -50,12 +50,12 @@
 	doctrine = doctrine_clerical_function_taxation
 	doctrine = doctrine_clerical_gender_male_only
 	doctrine = doctrine_clerical_marriage_disallowed
-	doctrine = doctrine_clerical_succession_spiritual_fixed_appointment
+	doctrine = doctrine_clerical_succession_temporal_fixed_appointment
 	doctrine = doctrine_formal_coronation
 
 	traits = {
-		virtues = { forgiving compassionate chaste }
-		sins = { vengeful sadistic lustful }
+		virtues = { diligent honest patient }
+		sins = { lazy deceitful impatient }
 	}
 
 	reserved_male_names = {
@@ -64,7 +64,7 @@
 	}
 
 	custom_faith_icons = {
-		mogowai_custom_green_icon mogowai_custom_pink_icon mogowai_custom_red_icon mogowai_custom_yellow_icon mogowai_icon
+		mogowai_custom_green_icon mogowai_custom_pink_icon mogowai_custom_red_icon mogowai_custom_yellow_icon mogowai_custom_blue_icon mogowai_custom_purple_icon mogowai_custom_orange_icon mogowai_icon mogowai_bekashai_icon_custom1 mogowai_bekashai_icon_custom2 mogowai_bekashai_icon_custom3 mogowai_bekashai_icon_custom4 mogowai_bekashai_icon_custom5 mogowai_bekashai_icon_custom6 mogowai_bekashai_icon_custom7 mogowai_bekashai_icon_custom8 mogowai_bekashai_icon_custom9 mogowai_marefai_icon_custom1 mogowai_marefai_icon_custom2 mogowai_marefai_icon_custom3 mogowai_marefai_icon_custom4 mogowai_marefai_icon_custom5 mogowai_marefai_icon_custom6 mogowai_marefai_icon_custom7 mogowai_marefai_icon_custom8 mogowai_nitsafai_icon_custom1 mogowai_nitsafai_icon_custom2 mogowai_nitsafai_icon_custom3 mogowai_nitsafai_icon_custom4 mogowai_nitsafai_icon_custom5 mogowai_nitsafai_icon_custom6 mogowai_nitsafai_icon_custom7 mogowai_nitsafai_icon_custom8 mogowai_waharai_icon_custom1 mogowai_waharai_icon_custom2 mogowai_waharai_icon_custom3 mogowai_waharai_icon_custom4 mogowai_waharai_icon_custom5 mogowai_waharai_icon_custom6 mogowai_waharai_icon_custom7 mogowai_waharai_icon_custom8 mogowai_aversarian_custom_icon mogowai_aversarian_custom_icon_green
 	}
 
 	holy_order_names = {
@@ -171,7 +171,6 @@
 			mogowai_fertility_god_name
 			mogowai_household_god_name
 			mogowai_knowledge_god_name
-			mogowai_night_god_name
 		}
 		DevilName = mogowai_devil_name
 		DevilNamePossessive = mogowai_devil_name_possessive
@@ -180,7 +179,6 @@
 		DevilHerselfHimself = CHARACTER_HIMSELF
 		EvilGodNames = {
 			mogowai_devil_name
-			mogowai_wealth_god_name
 			mogowai_trickster_god_name
 			mogowai_witchgodname
 		}
@@ -202,6 +200,7 @@
 		PriestFemalePlural = mogowai_priest_plural
 		PriestNeuter = mogowai_priest
 		PriestNeuterPlural = mogowai_priest_plural
+		AltPriestTerm = mogowai_priest
 		AltPriestTermPlural = mogowai_priest_alternate_plural
 		BishopMale = mogowai_bishop
 		BishopMalePlural = mogowai_bishop_plural
@@ -216,7 +215,8 @@
 		DeathDeityNamePossessive = mogowai_death_deity_name_possessive
 		DeathDeitySheHe = CHARACTER_SHEHE_HE
 		DeathDeityHerHis = CHARACTER_HERHIS_HIS
-		WitchGodName = christianity_witchgodname_iblis
+		WitchGodName =  mogowai_witchgodname
+		WitchGodNamePossessive = mogowai_witchgodname_possessive
 		WitchGodHerHis = CHARACTER_HERHIS_HIS
 		WitchGodSheHe = CHARACTER_SHEHE_HE
 		WitchGodHerHim = CHARACTER_HERHIM_HIM
@@ -228,24 +228,122 @@
 		GHWNamePlural = ghw_jihads
 	}
 	faiths = {
-	mogowai = { #Southern Religion
+	mogowai = { #Main Religion
 			color = { 0 0.5 0 }
 			icon = mogowai_icon
 			religious_head = d_mogowai_rel
 
 			#Tenet:
-			doctrine = tenet_gnosticism
-			doctrine = tenet_monasticism
+			doctrine = tenet_mogowai_search
+			doctrine = tenet_ritual_hospitality
 			doctrine = tenet_armed_pilgrimages
+			doctrine = special_doctrine_mogowai_hostility
 
-			holy_site = gomolej
-			holy_site = mezbir
-			holy_site = gonan
+			holy_site = zahali
+			holy_site = abirut
+			holy_site = kilahijan
+			holy_site = adabyssfort
 
+		}
+	bekashai = {
+			color = { 13 64 4 }
+			icon = mogowai_bekashai_icon
+			religious_head = d_bekashi_rel
+			
+			#Tenet:
+			doctrine = tenet_pursuit_of_power
+			doctrine = tenet_bekashai
+			doctrine = tenet_struggle_submission
+			
+			holy_site = zahali
+			holy_site = abirut
+			holy_site = kilahijan
+			holy_site = adabyssfort
+			
 			#DOCTRINES:
 
-			#Leadership
-			doctrine = doctrine_temporal_head
+			doctrine = special_doctrine_bekashai_hostility
+			doctrine = doctrine_clerical_succession_temporal_appointment
+			
 		}
+	nitsafai = {
+			color = { 78 191 8 }
+			icon = mogowai_nitsafai_icon
+			religious_head = e_nitsafai
+			
+			holy_site = zahali
+			holy_site = abirut
+			holy_site = kilahijan
+			holy_site = adabyssfort
+			
+			#Tenet:
+			doctrine = tenet_religious_legal_pronouncements
+			doctrine = tenet_tax_nonbelievers
+			doctrine = tenet_nitsafai
+			
+			#leadership
+			doctrine = doctrine_spiritual_head
+			doctrine = doctrine_theocracy_temporal
+			doctrine = doctrine_clerical_succession_spiritual_fixed_appointment
+			doctrine = special_doctrine_nitsafai_hostility
+			
+			#main
+			doctrine = doctrine_pluralism_fundamentalist
+			
+		}
+	marefai = {
+			color = { 0.1 1.6 0.9 }
+			icon = mogowai_marefai_icon
+			
+			holy_site = zahali
+			holy_site = abirut
+			holy_site = kilahijan
+			holy_site = adabyssfort
+			
+			#DOCTRINES:
+			
+			doctrine = doctrine_no_head
+			doctrine = doctrine_pluralism_pluralistic
+			doctrine = doctrine_clerical_succession_temporal_appointment
+			doctrine = doctrine_theocracy_lay_clergy
+			doctrine = special_doctrine_marefai_hostility
+			
+			#Tenet:
+			doctrine = tenet_communal_identity
+			doctrine = tenet_adaptive
+			doctrine = tenet_marefai
+			
+		}
+	waharai = {
+			color = { 0.3 0.9 0.4 }
+			icon = mogowai_waharai_icon
+			
+			holy_site = zahali
+			holy_site = abirut
+			holy_site = kilahijan
+			holy_site = adabyssfort
+			
+			#DOCTRINES:
+			
+			doctrine = doctrine_no_head
+			doctrine = doctrine_paradise
+			doctrine = doctrine_almsgiving_none
+			doctrine = doctrine_adultery_men_accepted
+			doctrine = doctrine_adultery_women_accepted
+			doctrine = doctrine_homosexuality_accepted
+			doctrine = doctrine_clerical_function_recruitment
+			doctrine = doctrine_deviancy_shunned
+			doctrine = doctrine_clerical_marriage_allowed
+			doctrine = special_doctrine_waharai_hostility
+			
+			#Tenet:
+			
+			doctrine = tenet_waharai
+			doctrine = tenet_hedonistic
+			doctrine = tenet_ritual_celebrations
+		}
+	
 	}
 }
+
+	

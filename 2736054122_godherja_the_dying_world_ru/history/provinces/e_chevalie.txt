@@ -1,6 +1,6 @@
 #k_gisredde
 ##d_peti_gisredde
-2264 = {
+2264 = { # The Gisreddeport
 	culture = voyagen
 	religion = lifepath
 	holding = maritime_district_holding
@@ -13,13 +13,10 @@
 			fishmarket_02
 			walls_03
 		}
-		special_building = gisreddeport_01
+		special_building = gisreddeport_03
 	}
 }
-2265 = {
-	holding = none
-}
-5554 = {
+5554 = { # Preacher's Hill
 	culture = voyagen
 	religion = lifepath
 	holding = temple_district_holding
@@ -30,9 +27,10 @@
 			
 			plaza_03
 		}
+		special_building = preachers_hill_01
 	}
 }
-5555 = {
+5555 = { # Jan's Market
 	culture = voyagen
 	religion = lifepath
 	holding = trade_district_holding
@@ -41,9 +39,10 @@
 		buildings = {
 			trade_district_03
 		}
+		special_building = jans_market_02
 	}
 }
-3247 = {
+3247 = { # Bastard's Run
 	culture = voyagen
 	religion = lifepath
 	holding = military_district_holding
@@ -53,6 +52,11 @@
 			citadel_01
 		}
 	}
+	special_building = bastards_run_02
+}
+
+2265 = {
+	holding = none
 }
 3268 = {
 	culture = voyagen
@@ -61,16 +65,56 @@
 }
 
 ##d_grande_gisredde
-2266 = {
+2276 = { # Calmenson's Crest
 	culture = voyagen
 	religion = lifepath
-	holding = castle_holding
+	holding = palatial_district_holding
+
+	1200.1.1 = {
+		buildings = {
+			palace_03
+			
+			plaza_02
+		}
+	}
+	special_building = calmensons_crest_04
 }
-2267 = {
-	holding = city_holding
+2267 = { #Seychund's Square
+	holding = temple_district_holding
+
+	1200.1.1 = {
+		buildings = {
+			temple_district_02
+			plaza_02
+		}
+	}
+	special_building = seychunds_square_02
 }
-2268 = {
-	holding = castle_holding
+1976 = { # Last Stander's Street
+	holding = military_district_holding
+
+	1200.1.1 = {
+		buildings = {
+			citadel_01
+		}
+	}
+	special_building = last_standers_street_03
+}
+2268 = { # The Minteries
+	holding = trade_district_holding
+
+	1200.1.1 = {
+		buildings = {
+			trade_district_02
+			plaza_02
+		}
+	}
+	special_building = the_minteries_03
+}
+
+4648 = {
+	culture = voyagen
+	religion = lifepath
 }
 
 #k_porte_den_la_bastione
@@ -83,6 +127,7 @@
 2272 = {
 	holding = none
 }
+
 2273 = {
 	holding = none
 }
@@ -106,11 +151,6 @@
 }
 
 ##d_fill_271
-2288 = {
-	culture = trustians
-	religion = lifepath
-	holding = castle_holding
-}
 2289 = {
 	holding = church_holding
 }
@@ -138,10 +178,6 @@
 2295 = {
 	holding = none
 }
-2296 = {
-	holding = none
-}
-
 2297 = {
 	culture = gallicads
 	religion = gallicader
@@ -156,6 +192,15 @@
 	culture = trustians
 	religion = lifepath
 	holding = castle_holding
+}
+
+6651 = {
+	culture = trustians
+	religion = lifepath
+}
+5943 = {
+	culture = trustians
+	religion = lifepath
 }
 2312 = {
 	holding = none
@@ -192,13 +237,6 @@
 		special_building = fortenorn_01
 	}
 }
-2319 = {
-	holding = castle_holding
-
-	1200.1.1 = {
-		special_building = fortenorn_01
-	}
-}
 2320 = {
 	holding = castle_holding
 
@@ -217,24 +255,34 @@
 	holding = none
 }
 
-2332 = {
+2333 = {
 	culture = gallicads
 	religion = lifepath
-	holding = castle_holding
-}
-2333 = {
 	holding = none
 }
 2334 = {
 	holding = none
 }
 
+6505 = {
+	culture = trustians
+	religion = lifepath
+	holding = castle_holding
+}
+
+6533 = {
+	culture = trustians
+	religion = lifepath
+	holding = castle_holding
+}
 2337 = {
 	culture = trustians
 	religion = lifepath
 	holding = castle_holding
 }
 2338 = {
+	culture = gallicads
+	religion = lifepath
 	holding = none
 }
 2339 = {
@@ -242,13 +290,11 @@
 }
 
 ##d_fill_270
-2276 = {
+
+2277 = {
 	culture = voyagen
 	religion = lifepath
 	holding = castle_holding
-}
-2277 = {
-	holding = none
 }
 2278 = {
 	holding = none
@@ -280,9 +326,6 @@
 	religion = lifepath
 	holding = castle_holding
 }
-2285 = {
-	holding = none
-}
 2286 = {
 	holding = none
 }
@@ -311,13 +354,9 @@
 2303 = {
 	holding = castle_holding
 }
-
-2304 = {
+2305 = {
 	culture = voyagen
 	religion = lifepath
-	holding = castle_holding
-}
-2305 = {
 	holding = city_holding
 }
 2306 = {
@@ -326,17 +365,8 @@
 2307 = {
 	holding = none
 }
-
-2308 = {
-	culture = trustians
-	religion = lifepath
-	holding = castle_holding
-}
 2309 = {
 	holding = church_holding
-}
-2310 = {
-	holding = none
 }
 
 #d_fill_275
@@ -366,9 +396,6 @@
 	religion = lifepath
 	holding = castle_holding
 }
-2327 = {
-	holding = church_holding
-}
 2328 = {
 	holding = none
 }
@@ -379,6 +406,8 @@
 	holding = castle_holding
 }
 2330 = {
+	culture = voyagen
+	religion = lifepath
 	holding = none
 }
 2331 = {
@@ -386,11 +415,6 @@
 }
 
 #d_fill_277
-2344 = {
-	culture = voyagen
-	religion = lifepath
-	holding = castle_holding
-}
 2345 = {
 	holding = city_holding
 }
@@ -402,9 +426,6 @@
 	culture = voyagen
 	religion = lifepath
 	holding = castle_holding
-}
-2341 = {
-	holding = church_holding
 }
 2342 = {
 	holding = none
@@ -424,7 +445,7 @@
 
 #k_perignan
 ##d_bassons
-2436 = {
+2440 = {
 	culture = voyagen
 	religion = lifepath
 	holding = castle_holding
@@ -441,9 +462,6 @@
 	religion = lifepath
 	holding = castle_holding
 }
-2440 = {
-	holding = none
-}
 
 2441 = {
 	culture = voyagen
@@ -455,9 +473,6 @@
 }
 2443 = {
 	holding = church_holding
-}
-2444 = {
-	holding = none
 }
 
 ##d_lalande
@@ -479,6 +494,8 @@
 	holding = castle_holding
 }
 2449 = {
+	culture = voyagen
+	religion = lifepath
 	holding = city_holding
 }
 2450 = {
@@ -508,8 +525,9 @@
 2456 = {
 	holding = church_holding
 }
-2457 = {
-	holding = none
+2477 = {
+	culture = trustians
+	religion = lifepath
 }
 
 ##d_tournezat
@@ -551,37 +569,44 @@
 	religion = lifepath
 }
 
-#d_hangancourt
-2474 = {
-	culture = voyagen
+2472 = {
+	culture = carsavisians
 	religion = lifepath
 }
+
+3068 = { #Aastauxporte
+	culture = voyagen
+	religion = lifepath
+	holding = palatial_district_holding
+}
+8002 = { #Aastauxporte
+	culture = voyagen
+	religion = lifepath
+	holding = trade_district_holding
+}
+7988 = { #Aastauxporte
+	culture = voyagen
+	religion = lifepath
+	holding = military_district_holding
+}
+8003 = { #Aastauxporte
+	culture = voyagen
+	religion = lifepath
+	holding = urban_district_holding
+}
+
+#d_hangancourt
 
 2478 = {
 	culture = voyagen
 	religion = lifepath
 }
-
-2481 = {
-	culture = carsavisians
-	religion = lifepath
-}
-
-2483 = {
-	culture = carsavisians
-	religion = lifepath
-}
-
 2476 = {
 	culture = carsavisians
 	religion = lifepath
 }
 
 #d_poutours
-2490 = {
-	culture = carsavisians
-	religion = lifepath
-}
 
 2493 = {
 	culture = carsavisians
@@ -705,6 +730,26 @@
 2371 = {
 	culture = trustians
 	religion = lifepath
+
+	holding = castle_holding
+	
+	1200.1.1 = {
+		special_building = fortenorn_01
+	}
+}
+2372 = {
+	culture = trustians
+	religion = lifepath
+
+	holding = castle_holding
+	
+	1200.1.1 = {
+		special_building = fortenorn_01
+	}
+}
+2375 = {
+	culture = trustians
+	religion = lifepath
 }
 2374 = {
 	culture = trustians
@@ -713,8 +758,38 @@
 2377 = {
 	culture = trustians
 	religion = lifepath
+
+	holding = castle_holding
+	
+	1200.1.1 = {
+		special_building = fortenorn_01
+	}
+}
+2379 = {
+	culture = trustians
+	religion = lifepath
+
+	holding = castle_holding
+	
+	1200.1.1 = {
+		special_building = fortenorn_01
+	}
+}
+2380 = {
+	culture = trustians
+	religion = lifepath
+
+	holding = castle_holding
+	
+	1200.1.1 = {
+		special_building = fortenorn_01
+	}
 }
 2381 = {
+	culture = trustians
+	religion = lifepath
+}
+2383 = {
 	culture = trustians
 	religion = lifepath
 }
@@ -723,6 +798,11 @@
 2359 = {
 	culture = trustians
 	religion = lifepath
+}
+2360 = {
+	culture = voyagen
+	religion = lifepath
+	holding = city_holding
 }
 2363 = {
 	culture = trustians
@@ -745,6 +825,16 @@
 2390 = {
 	culture = trustians
 	religion = lifepath
+}
+2397 = {
+	culture = trustians
+	religion = lifepath
+
+	holding = castle_holding
+	
+	1200.1.1 = {
+		special_building = fortenorn_01
+	}
 }
 2388 = {
 	culture = trustians
@@ -776,9 +866,37 @@
 	culture = trustians
 	religion = lifepath
 }
+2401 = {
+	culture = trustians
+	religion = lifepath
+}
 2403 = {
 	culture = trustians
 	religion = lifepath
+}
+2404 = {
+	culture = trustians
+	religion = lifepath
+}
+2405 = {
+	culture = trustians
+	religion = lifepath
+
+	holding = castle_holding
+	
+	1200.1.1 = {
+		special_building = fortenorn_01
+	}
+}
+2411 = {
+	culture = trustians
+	religion = lifepath
+
+	holding = castle_holding
+	
+	1200.1.1 = {
+		special_building = fortenorn_01
+	}
 }
 
 #d_fill_283
@@ -794,10 +912,39 @@
 	culture = trustians
 	religion = lifepath
 }
+2416 = {
+	culture = trustians
+	religion = lifepath
+}
+2419 = {
+	culture = trustians
+	religion = lifepath
+
+	holding = castle_holding
+	
+	1200.1.1 = {
+		special_building = fortenorn_01
+	}
+}
 2414 = {
 	culture = carsavisians
 	religion = lifepath
 }
+2421 = {
+	culture = trustians
+	religion = lifepath
+
+	holding = castle_holding
+	
+	1200.1.1 = {
+		special_building = fortenorn_01
+	}
+}
+2423 = {
+	culture = trustians
+	religion = lifepath
+}
+
 
 #d_fill_284
 2418 = {
@@ -808,10 +955,18 @@
 	culture = trustians
 	religion = lifepath
 }
+2603 = {
+	culture = urdermantern
+	religion = lifepath
+}
 
 ##k_rohr
 #d_fill_303
 2606 = {
+	culture = carsavisians
+	religion = lifepath
+}
+2607 = {
 	culture = carsavisians
 	religion = lifepath
 }
@@ -820,6 +975,10 @@
 	religion = lifepath
 }
 2612 = {
+	culture = carsavisians
+	religion = lifepath
+}
+2613 = {
 	culture = carsavisians
 	religion = lifepath
 }
@@ -837,12 +996,16 @@
 	culture = ojyczaynz
 	religion = graveright
 }
+2625 = {
+	culture = oejeynica
+	religion = graveright
+}
 
 #d_ziemojycz
-2429 = {
+2430 = {
 	culture = oejeynica
 	religion = gravewatch
-
+	holding = castle_holding
 	771.11.4 = {
 		special_building = tomb_of_the_lost_01
 	}
@@ -850,6 +1013,19 @@
 2426 = {
 	culture = oejeynica
 	religion = graveright
+
+	holding = castle_holding
+	
+	1200.1.1 = {
+		special_building = fortenorn_01
+	}
+}
+2427 = {
+	holding = castle_holding
+	
+	1200.1.1 = {
+		special_building = fortenorn_01
+	}
 }
 2432 = {
 	culture = oejeynica
@@ -861,10 +1037,7 @@
 		special_building = fortenorn_01
 	}
 }
-2435 = {
-	culture = oejeynica
-	religion = gravewatch
-
+2434 = {
 	holding = castle_holding
 	
 	1200.1.1 = {
@@ -876,6 +1049,12 @@
 2624 = {
 	culture = oejeynica
 	religion = graveright
+	
+	holding = castle_holding
+	
+	1200.1.1 = {
+		special_building = fortenorn_01
+	}
 }
 2628 = {
 	culture = oejeynica
@@ -931,9 +1110,13 @@
 		special_building = fortenorn_01
 	}
 }
+2636 = {
+	culture = carsavisians
+	religion = lifepath
+}
 
 #k_vascanein
-2814 = {
+2815 = {
 	culture = voyagen
 	religion = lifepath
 
@@ -943,7 +1126,7 @@
 		special_building = fort_ranos_01
 	}
 }
-2815 = {
+2814 = {
 	culture = voyagen
 	religion = lifepath
 }
@@ -956,18 +1139,13 @@
 	culture = carsavisians
 	religion = lifepath
 	holding = castle_holding
-}
-2653 = {
-	culture = carsavisians
-	religion = lifepath
-
-	holding = castle_holding
 
 	1200.1.1 = {
-		special_building = fortenorn_01
+		special_building = blood_market_00
 	}
+
 }
-2655 = {
+2653 = {
 	culture = carsavisians
 	religion = lifepath
 
@@ -1010,10 +1188,6 @@
 	culture = gallicads
 	religion = lifepath
 }
-2644 = {
-	culture = carsavisians
-	religion = lifepath
-}
 2646 = {
 	culture = carsavisians
 	religion = lifepath
@@ -1034,7 +1208,7 @@
 	culture = carsavisians
 	religion = lifepath
 }
-2666 = {
+2667 = {
 	culture = carsavisians
 	religion = lifepath
 }
@@ -1071,18 +1245,14 @@
 2679 = {
 	culture = carsavisians
 	religion = lifepath
-}
-2681 = {
-	culture = carsavisians
-	religion = lifepath
-
+	
 	holding = castle_holding
-
+	
 	1200.1.1 = {
 		special_building = fortenorn_01
 	}
 }
-2682 = {
+2681 = {
 	culture = carsavisians
 	religion = lifepath
 
@@ -1108,35 +1278,11 @@
 	culture = carsavisians
 	religion = lifepath
 }
-2691 = {
-	culture = sarridians
-	religion = lifepath
-}
 2687 = {
 	culture = carsavisians
 	religion = lifepath
 }
 2695 = {
-	culture = carsavisians
-	religion = partic
-
-	holding = castle_holding
-
-	1200.1.1 = {
-		special_building = fortenorn_01
-	}
-}
-2696 = {
-	culture = carsavisians
-	religion = partic
-
-	holding = castle_holding
-
-	1200.1.1 = {
-		special_building = fortenorn_01
-	}
-}
-2697 = {
 	culture = carsavisians
 	religion = partic
 
@@ -1156,35 +1302,27 @@
 	culture = salisians
 	religion = lifepath
 }
+4817 = {
+	culture = voluntic
+	religion = partic
+}
+2700 = {
+	culture = voluntic
+	religion = partic
+}
 2702 = {
 	culture = oejeynica
 	religion = graveright
-}
-2703 = {
-	culture = oejeynica
-	religion = graveright
-
-	holding = castle_holding
-
-	1200.1.1 = {
-		special_building = fortenorn_01
-	}
 }
 2704 = {
 	culture = salisians
 	religion = lifepath
 }
-2706 = {
+2705 = {
 	culture = voluntic
 	religion = partic
-
-	holding = castle_holding
-
-	1200.1.1 = {
-		special_building = fortenorn_01
-	}
 }
-2708 = {
+2706 = {
 	culture = voluntic
 	religion = partic
 
@@ -1215,22 +1353,26 @@
 	culture = carsavisians
 	religion = lifepath
 }
+4590 = {
+	culture = carsavisians
+	religion = lifepath
+}
 2757 = {
 	culture = carsavisians
 	religion = lifepath
 }
-2763 = {
+2766 = {
 	culture = leegenders
 	religion = lifepath
 }
 
 #d_fill_319
-2765 = {
-	culture = leegenders
-	religion = lifepath
-}
 2772 = {
 	culture = voyagen
+	religion = lifepath
+}
+2773 = {
+	culture = salisians
 	religion = lifepath
 }
 2768 = {
@@ -1248,6 +1390,10 @@
 	religion = lifepath
 }
 2794 = {
+	culture = leegenders
+	religion = lifepath
+}
+2798 = {
 	culture = leegenders
 	religion = lifepath
 }
@@ -1327,11 +1473,11 @@
 }
 
 #d_fill_313
-2712 = {
+2709 = {
 	culture = carsavisians
 	religion = lifepath
 }
-2709 = {
+2713 = {
 	culture = carsavisians
 	religion = lifepath
 }
@@ -1343,28 +1489,40 @@
 	culture = salisians
 	religion = lifepath
 }
+7966 = {
+	culture = carsavisians
+	religion = lifepath
+}
 
 #d_fill_314
 2727 = {
 	culture = carsavisians
 	religion = lifepath
 }
-2730 = {
-	culture = carsavisians
+2728 = {
+	culture = salisians
 	religion = lifepath
 }
 2723 = {
 	culture = rivarisians
 	religion = lifepath
 }
+2731 = {
+	culture = salisians
+	religion = lifepath
+}
 
 ##k_konijkmener
 #d_fill_298
+2569 = {
+	culture = urdermantern
+	religion = lifepath
+}
 2562 = {
 	culture = rivarisians
 	religion = lifepath
 }
-2560 = {
+2560 = { 
 	culture = rivarisians
 	religion = lifepath
 }
@@ -1372,11 +1530,16 @@
 	culture = rivarisians
 	religion = lifepath
 }
-2559 = {
+2551 = {
 	culture = konijkmener
 	religion = lifepath
 }
 2558 = {
+	culture = konijkmener
+	religion = lifepath
+}
+
+4159 = {
 	culture = konijkmener
 	religion = lifepath
 }
@@ -1409,6 +1572,10 @@
 	religion = lifepath
 }
 2572 = {
+	culture = konijkmener
+	religion = lifepath
+}
+2573 = {
 	culture = konijkmener
 	religion = lifepath
 }
@@ -1455,7 +1622,7 @@
 3048 = {
 	culture = konijkmener
 	religion = lifepath
-	holding = castle_holding
+	holding = workshop_district_holding
 }
 3043 = {
 	culture = konijkmener
@@ -1500,6 +1667,10 @@
 	culture = urdermantern
 	religion = lifepath
 }
+2599 = {
+	culture = urdermantern
+	religion = lifepath
+}
 2586 = {
 	culture = urdermantern
 	religion = lifepath
@@ -1510,20 +1681,8 @@
 }
 
 #d_fill_302
-2595 = {
-	culture = konijkmener
-	religion = lifepath
-}
 2598 = {
 	culture = konijkmener
-	religion = lifepath
-}
-2595 = {
-	culture = konijkmener
-	religion = lifepath
-}
-2602 = {
-	culture = urdermantern
 	religion = lifepath
 }
 
@@ -1558,10 +1717,42 @@
 	culture = northernimperial
 	religion = aversarinas_aautokrata
 }
-3313 = {
-	holding = city_holding
+2545 = { #Dielecport
+	culture = northernimperial
+	religion = aversarinas_aautokrata
+	holding = palatial_district_holding
+}
+3481 = { #Dielecport
+	culture = northernimperial
+	religion = aversarinas_aautokrata
+	holding = trade_district_holding
+}
+3483 = { #Dielecport
+	culture = northernimperial
+	religion = aversarinas_aautokrata
+	holding = temple_district_holding
+}
+3313 = { #Dielecport
+	culture = northernimperial
+	religion = aversarinas_aautokrata
+	holding = maritime_district_holding
 
 	1099.1.12 = {
 		special_building = dielecport_01
 	}
+}
+
+10103 = {
+	culture = leegenders
+	religion = lifepath
+}
+
+2608 = {
+	culture = carsavisians
+	religion = lifepath
+}
+
+13026 = {
+	culture = apokiakas
+	religion = aversarinas_aautokrata
 }

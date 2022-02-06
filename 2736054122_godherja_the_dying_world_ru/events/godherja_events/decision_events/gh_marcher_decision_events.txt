@@ -155,16 +155,17 @@ marcher_decision.0001 = {
 # Players informed
 marcher_decision.0002 = {
 	title = marcher_decision.0002.t
-	desc = marcher_decision.0002.desc
-	first_valid = {  # Marchers.
-		triggered_desc = {
-			trigger = {
-				has_culture_group = culture_group:gh_marcher_group
+	desc = {
+		first_valid = { 
+			triggered_desc = {  # Marchers.
+				trigger = {
+					has_culture_group = culture_group:gh_marcher_group
+				}
+				desc = marcher_decision.0002.desc.marchers
 			}
-			desc = marcher_decision.0002.desc.marchers
+			# Regular.
+			desc = marcher_decision.0002.desc.regular
 		}
-		# Regular.
-		desc = marcher_decision.0002.desc.regular
 	}
 	type = character_event
 	theme = realm
@@ -672,6 +673,43 @@ marcher_decision.0501 = {
 		}
 	}
 }
+#For converting the Konjik people back to their old religion ways
+#By Netgearghost
+marcher_decision.0200 = {
+	desc = marcher_decision.0200.desc
+	title = marcher_decision.0200.t
+	theme = dread
+	left_portrait = {
+		character = this
+		animation = personality_bold
+	}
+
+	option = {
+		name = marcher_decision.0200.a
+		set_character_faith_with_conversion = faith:gestanwoder
+		hidden_effect = {
+			title:k_de_kanzelerij = {
+				holder = {
+					every_vassal_or_below = {
+						if = {
+							limit = {
+								has_religion = religion:marcher_religion
+							}
+							set_character_faith_with_conversion = faith:gestanwoder
+						}
+					}
+					every_county_province = {
+						limit = {
+							this.religion = religion:marcher_religion
+						}
+						set_county_faith = faith:gestanwoder
+					}
+				}
+			}
+		}
+	}
+}
+
 
 # Informs you of the people that accepted without stipulations
 marcher_decision.0510 = {
@@ -1115,3 +1153,199 @@ marcher_decision.0550 = {
 		partition_demesne_among_other_vassals_effect = { TARGET = scope:defender }
 	}
 }
+
+##recruiting a wayfather
+marcher_decision.0560 = {
+	title = marcher_decision.0560.t
+	desc = marcher_decision.0560.desc
+	type = character_event
+	theme = faith
+	
+	left_portrait = {
+		character = root
+		animation = personality_zealous
+	}	
+	
+	option = { #spawn random wayfather
+		name = marcher_decision.0560.a
+		create_character = {
+			faith = this.faith
+			culture = this.culture
+			save_scope_as = wayfather
+			location = root.capital_province
+			template = wayfather_template
+		}
+		hidden_effect = { recruit_courtier = scope:wayfather }
+		custom_tooltip = wayfather_recruit_tt
+	}
+	
+	option = { #chose specific wayfather
+		name = marcher_decision.0560.b
+		trigger_event = marcher_decision.0561
+		add_piety = -50
+	}
+	
+	option = { #nevermind
+		name = marcher_decision.0560.c
+	}	
+}	
+marcher_decision.0561 = {
+	title = marcher_decision.0561.t
+	desc = marcher_decision.0561.desc
+	type = character_event
+	theme = faith	
+	
+	left_portrait = scope:swords
+	lower_left_portrait = scope:family
+	right_portrait = scope:crowns
+	lower_right_portrait = scope:coins
+	
+	
+	immediate = {
+		create_character = {
+			faith = this.faith
+			culture = this.culture
+			save_scope_as = swords
+			location = root.capital_province
+			template = way_of_swords_father_template
+		}
+		create_character = {
+			faith = this.faith
+			culture = this.culture		
+			save_scope_as = family
+			location = root.capital_province
+			template = way_of_family_father_template
+		}
+		create_character = {
+			faith = this.faith
+			culture = this.culture		
+			save_scope_as = crowns
+			location = root.capital_province
+			template = way_of_crowns_father_template
+		}
+		create_character = {
+			faith = this.faith
+			culture = this.culture		
+			save_scope_as = coins
+			location = root.capital_province
+			template = way_of_coins_father_template
+		}
+	}
+	
+	option = { #way of swords
+		name = marcher_decision.0561.a
+		recruit_courtier = scope:swords
+	}
+	
+	option = { #way of family
+		name = marcher_decision.0561.b
+		recruit_courtier = scope:family
+	}	
+	
+	option = { #way of coins
+		name = marcher_decision.0561.c
+		recruit_courtier = scope:coins
+	}	
+	
+	
+	option = { #way of crowns
+		name = marcher_decision.0561.d
+		recruit_courtier = scope:crowns
+	}	
+	
+	option = { #more options
+		name = marcher_decision.0561.e
+		trigger_event = marcher_decision.0562
+	}	
+	option = { #nevermind
+		name = marcher_decision.0561.f
+	}	
+	
+}
+marcher_decision.0562 = {
+	title = marcher_decision.0562.t
+	desc = marcher_decision.0562.desc
+	type = character_event
+	theme = faith	
+	
+	left_portrait = scope:harvests
+	lower_left_portrait = scope:justice
+	right_portrait = scope:knowledge
+	lower_right_portrait = scope:crows		
+	
+	immediate = {
+		create_character = {
+			faith = this.faith
+			culture = this.culture		
+			save_scope_as = harvests
+			location = root.capital_province
+			template = way_of_harvests_father_template
+		}
+		create_character = {
+			faith = this.faith
+			culture = this.culture		
+			save_scope_as = justice
+			location = root.capital_province
+			template = way_of_justice_father_template
+		}
+		create_character = {
+			faith = this.faith
+			culture = this.culture		
+			save_scope_as = knowledge
+			location = root.capital_province
+			template = way_of_knowledge_father_template
+		}
+		create_character = {
+			faith = this.faith
+			culture = this.culture		
+			save_scope_as = crows
+			location = root.capital_province
+			template = way_of_crows_father_template
+		}
+		create_character = {
+			faith = this.faith
+			culture = this.culture		
+			save_scope_as = nullification
+			location = root.capital_province
+			template = way_of_nullification_father_template
+		}		
+	}	
+	
+	
+	option = { #way of harvests
+		name = marcher_decision.0562.a
+		recruit_courtier = scope:harvests
+	}                              
+								   
+	option = { #way of justice
+		name = marcher_decision.0562.b
+		recruit_courtier = scope:justice
+	}	                           
+								   
+	option = { #way of knowledge  
+		name = marcher_decision.0562.c
+		recruit_courtier = scope:knowledge
+	}	                           
+								   
+								   
+	option = { #way of crows  
+		name = marcher_decision.0562.d
+		recruit_courtier = scope:crows
+	}	                           
+								   
+	option = { #more nullification  
+		name = marcher_decision.0562.e
+		recruit_courtier = scope:nullification
+	}
+
+	option = { #go back
+		name = marcher_decision.0562.f
+		trigger_event = marcher_decision.0561
+	}		
+	
+}
+
+	
+	
+	
+	

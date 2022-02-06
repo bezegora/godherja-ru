@@ -1,4 +1,4 @@
-cenware_ai_effect = {	# A scripted effect to help AI Cenware do his conquest in a reasonably organic, non-cringeworthy way
+﻿cenware_ai_effect = {	# A scripted effect to help AI Cenware do his conquest in a reasonably organic, non-cringeworthy way
 	character:clanlands_sjalvolki_1 = {
 		if = {
 			limit = { 
@@ -38,7 +38,7 @@ cenware_ai_effect = {	# A scripted effect to help AI Cenware do his conquest in 
 				end_the_conquest_with_preparation = yes
 			}
 			
-			cenware_conquer_kingdom = { KINGDOM_NAME = k_cycladecia }	# With mainland Etepezea finished for, take out Tower Isle
+#			cenware_conquer_kingdom = { KINGDOM_NAME = k_cycladecia }	# With mainland Etepezea finished for, take out Tower Isle
 			cenware_conquer_kingdom = { KINGDOM_NAME = k_kerkonia }		# With mainland Etepezea finished for, take out Tower Isle
 			
 			if = {
@@ -49,25 +49,25 @@ cenware_ai_effect = {	# A scripted effect to help AI Cenware do his conquest in 
 			cenware_conquer_kingdom = { KINGDOM_NAME = k_kollos }		# The Kollos archipelago is the obvious next target
 			
 			cenware_conquer_kingdom = { KINGDOM_NAME = k_karthos }		# Make landfall at Karthos
-			cenware_conquer_kingdom = { KINGDOM_NAME = k_kasmiene }
 			cenware_conquer_kingdom = { KINGDOM_NAME = k_arsidos }
-			cenware_conquer_kingdom = { KINGDOM_NAME = k_arsidos }
+			#cenware_conquer_kingdom = { KINGDOM_NAME = k_arsidos }
 			cenware_conquer_kingdom = { KINGDOM_NAME = k_artesmos }
 			cenware_conquer_kingdom = { KINGDOM_NAME = k_ithiteia }
+			cenware_conquer_kingdom = { KINGDOM_NAME = k_opakoutercrescent } 
 			cenware_conquer_kingdom = { KINGDOM_NAME = k_tanada }
-			cenware_conquer_kingdom_with_end_conquest_chance = { KINGDOM_NAME = k_agadendon END_CONQUEST_CHANCE = 0 }
+			### cenware_conquer_kingdom_with_end_conquest_chance = { KINGDOM_NAME = k_agadendon END_CONQUEST_CHANCE = 0 }
 			cenware_conquer_kingdom_with_end_conquest_chance = { KINGDOM_NAME = k_decateia 	END_CONQUEST_CHANCE = 0 }
 			
 			if = {
 				limit = { has_game_rule = cenware_conquest_opakhasia }
 				end_the_conquest_with_preparation = yes
 			}
-			
+			cenware_conquer_kingdom_with_end_conquest_chance = { KINGDOM_NAME = k_kasmiene END_CONQUEST_CHANCE = 0 }
 			cenware_conquer_kingdom_with_end_conquest_chance = { KINGDOM_NAME = k_kalliados END_CONQUEST_CHANCE = 0 }
 			cenware_conquer_kingdom_with_end_conquest_chance = { KINGDOM_NAME = k_hyrea 	END_CONQUEST_CHANCE = 0 }
-			cenware_conquer_kingdom_with_end_conquest_chance = { KINGDOM_NAME = k_bourillai END_CONQUEST_CHANCE = 0 }
+			### cenware_conquer_kingdom_with_end_conquest_chance = { KINGDOM_NAME = k_bourillai END_CONQUEST_CHANCE = 0 }
 			cenware_conquer_kingdom_with_end_conquest_chance = { KINGDOM_NAME = k_ephesos 	END_CONQUEST_CHANCE = 0 }
-			cenware_conquer_kingdom_with_end_conquest_chance = { KINGDOM_NAME = k_kteumaxia END_CONQUEST_CHANCE = 0 }
+			cenware_conquer_kingdom_with_end_conquest_chance = { KINGDOM_NAME = k_kteumaxa END_CONQUEST_CHANCE = 0 }
 			
 			end_the_conquest_with_preparation = yes
 		}

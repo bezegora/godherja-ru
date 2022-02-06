@@ -164,15 +164,15 @@ gh_misc_decision_events.002 = {
 			learning >= 20
 		}
 		trigger_event = gh_misc_decision_events.007
+
+		ai_chance = {
+			base = 100
+			ai_value_modifier = {
+				ai_zeal = 1
+				ai_greed = -0.2
+			}
+		}
 	}
-    
-    ai_chance = {
-        base = 100
-        ai_value_modifier = {
-         	ai_zeal = 1
-		 	ai_greed = -0.2
-        }
-    }
 }
 #martial
 gh_misc_decision_events.003 = {

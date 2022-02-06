@@ -1,0 +1,75 @@
+﻿clique_republic_elective = {
+	elector_vote_strength = {
+		base = 0
+		modifier = { # Political power
+			desc = tooltip_clique_political_power_elector_strength
+			add = character_influence_total
+		}
+		
+	}
+	
+	electors = {
+		add = holder
+		add = holder_direct_vassals
+		add = title_claimants
+	}
+
+	candidate_score = {
+		base = 0
+		######################	Elector self-voting pattern	##########################
+		elector_self_voting_pattern_clique_elective_modifier = yes
+		# some stuff about children of the ruler voting for themselves needed to be changed from the feudal one
+
+		##########################	Elector voting patterns (circumstances)	##########################
+		elector_voting_pattern_circumstances_feudal_elective_modifier = yes
+		# doesn't need to be changed from the feudal one
+
+		##########################	Elector voting patterns (prestige/piety)	##########################
+		elector_voting_pattern_circumstances_feudal_elective_modifier = yes
+		# doesn't need to be changed from the feudal one for republics
+
+		##########################	Elector voting patterns (traits)	##########################
+		elector_voting_pattern_traits_feudal_elective_modifier = yes
+		# doesn't seem necessary to change this from the feudal one
+
+		##########################	Elector voting patterns (opinion)	##########################
+		elector_voting_pattern_opinion_feudal_elective_modifier = yes
+		# doesn't seem necessary to change this from the feudal one either
+		
+		##########################	Elector voting patterns (cliques)	##########################
+		elector_voting_pattern_circumstances_clique_mechanics_modifier = yes
+	}
+	
+	#scope:candidate = Candidate, scope:title = Title, scope:holder_candidate = Candidate currently selected by ruler.
+	candidates = {
+		add = {
+			type = holder_direct_vassals
+			limit = {
+				OR = {
+					has_government = republic_government
+					has_government = republic_playable_government
+				}
+				age > 15
+			}
+		}
+		add = {
+			type = title_claimants
+			limit = {
+				OR = {
+					has_government = republic_government
+					has_government = republic_playable_government
+					is_landed = no
+				}
+				age > 15
+			}
+		}
+		add = {
+			type = holder_close_family
+			limit = {
+				is_landed = no
+				age > 15
+				culture_group = scope:holder.culture_group
+			}
+		}
+	}
+}

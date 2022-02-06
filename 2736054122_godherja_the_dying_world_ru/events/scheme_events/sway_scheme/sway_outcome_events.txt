@@ -41,6 +41,9 @@ sway_outcome.0002 = {
 			type = sway_bad_message
 			title = sway_sway_failed_message
 			left_icon = scope:target
+			stress_impact = {
+				gregarious = minor_stress_impact_gain
+			}
 			sway_end_effect = yes
 		}
 	}
@@ -442,13 +445,6 @@ sway_outcome.2001 = {
 				desc = sway_outcome.2001.not_interested_horses
 				desc = sway_outcome.2001.not_interested_toll_exemptions
 				desc = sway_outcome.2001.not_interested_friend
-				triggered_desc = {
-					trigger = {
-						religion = religion:aversarinas_aautokrata_religion
-						scope:target.religion = religion:aversarinas_aautokrata_religion
-					}
-					desc = sway_outcome.2001.not_interested_relics
-				}
 			}
 		}
 		desc = sway_outcome.2001.end

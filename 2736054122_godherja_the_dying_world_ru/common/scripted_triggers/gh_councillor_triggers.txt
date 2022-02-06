@@ -9,3 +9,24 @@
 		has_council_position = councillor_court_chaplain
 	}
 }
+
+can_have_quartermaster_trigger = {
+	has_government = pirate_government
+}
+
+can_be_quartermaster_trigger = {
+	can_be_councillor_basics_trigger = yes
+	NOT = { has_council_position = councillor_spouse }
+	$COURT_OWNER$ = { has_government =  pirate_government }
+	OR = {
+		is_ruler = yes
+		AND = {
+			is_female = yes
+			$COURT_OWNER$.faith = { NOT = { has_doctrine_parameter = male_dominated_council } }
+		}
+		AND = {
+			is_male = yes
+			$COURT_OWNER$.faith = { NOT = { has_doctrine_parameter = female_dominated_council } }
+		}
+	}
+}

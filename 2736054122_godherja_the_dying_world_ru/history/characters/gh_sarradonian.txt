@@ -9,34 +9,175 @@
 	learning = 12
 	religion = "harthahi"
 	culture = "tasurmad"
-        sexuality = heterosexual
+	sexuality = heterosexual
 	trait = vengeful
 	trait = zealous
 	trait = just
 	trait = theologian
 	trait = scarred
 	trait = confider
+	trait = gh_widow
 	trait = intellect_good_2
 	trait = education_learning_4
 	trait = desert_warrior
 	trait = holy_warrior
+
 	1201.2.21 = {
 		birth = yes
-	        effect = {
-			add_character_flag = has_scripted_appearance			
+		effect = {
+			add_character_flag = has_scripted_appearance		
 		}
 	}
-	1222.1.31 = {
-			add_spouse = sarradonfam_1
-	}
+
 	1215.1.1 = {
 		add_character_modifier = father_of_sarradon
+		give_nickname = nick_the_father_of_sarradon
+	}
+
+	1222.1.31 = {
+		add_spouse = sarradonfam_1
+	}
+
+	1240.1.1 = {
+		effect = {
+			set_relation_nemesis = character:calysto_1 #Lamius 'Ironheart' of St Calysto's Key after executing his wife
+			add_piety = 2000
+		}
+	}
+	
+	1250.1.1 = {
+		spawn_army = {
+			name = sarradon_reconquest_troops
+			uses_supply = yes
+			inheritable = no
+			location = 5182
+			levies = {
+				value = 3950
+			}
+			men_at_arms = {
+				type = camel_rider
+				stacks = 5
+			}
+			men_at_arms = {
+				type = mangonel
+				stacks = 5
+			}
+			men_at_arms = {
+				type = light_footmen
+				stacks = 5
+			}
+		}
+		spawn_army = {
+			name = sarradon_reconquest_troops
+			uses_supply = yes
+			inheritable = no
+			location = 5182
+			levies = {
+				value = 3950
+			}
+			men_at_arms = {
+				type = camel_rider
+				stacks = 5
+			}
+			men_at_arms = {
+				type = mangonel
+				stacks = 5
+			}
+			men_at_arms = {
+				type = light_footmen
+				stacks = 5
+			}
+		}
+		spawn_army = {
+			name = sarradon_reconquest_troops
+			uses_supply = yes
+			inheritable = no
+			location = 5182
+			levies = {
+				value = 3950
+			}
+			men_at_arms = {
+				type = camel_rider
+				stacks = 5
+			}
+			men_at_arms = {
+				type = mangonel
+				stacks = 5
+			}
+			men_at_arms = {
+				type = light_footmen
+				stacks = 5
+			}
+		}
+		spawn_army = {
+			name = sarradon_reconquest_troops
+			uses_supply = yes
+			inheritable = no
+			location = 5182
+			levies = {
+				value = 3950
+			}
+			men_at_arms = {
+				type = camel_rider
+				stacks = 5
+			}
+			men_at_arms = {
+				type = mangonel
+				stacks = 5
+			}
+			men_at_arms = {
+				type = light_footmen
+				stacks = 5
+			}
+		}
+		spawn_army = {
+			name = sarradon_reconquest_troops
+			uses_supply = yes
+			inheritable = no
+			location = 5182
+			levies = {
+				value = 3950
+			}
+			men_at_arms = {
+				type = camel_rider
+				stacks = 5
+			}
+			men_at_arms = {
+				type = mangonel
+				stacks = 5
+			}
+			men_at_arms = {
+				type = light_footmen
+				stacks = 5
+			}
+		}
+		spawn_army = {
+			name = sarradon_reconquest_troops
+			uses_supply = yes
+			inheritable = no
+			location = 5182
+			levies = {
+				value = 3950
+			}
+			men_at_arms = {
+				type = camel_rider
+				stacks = 5
+			}
+			men_at_arms = {
+				type = mangonel
+				stacks = 5
+			}
+			men_at_arms = {
+				type = light_footmen
+				stacks = 5
+			}
+		}
 	}
 }
 
 sarradonfam_1 = { #harthah dead wife
 	name = "Isha"
-        dna = isha
+	dna = isha
 	religion = "sarradonian"
 	culture = "tasurmad"
 	female = yes
@@ -45,20 +186,21 @@ sarradonfam_1 = { #harthah dead wife
 	trait = patient
 	trait = compassionate
 	trait = beauty_good_2
+
 	1203.6.18 = {
 		birth = yes
-	        effect = {
+		effect = {
 			add_character_flag = has_scripted_appearance
 		}
 	}
+
 	1240.1.1 = {
 		death = {
 			death_reason = death_execution
 			killer = calysto_1
 		}
-	}		
+	}
 }
-
 
 ###forgotten
 
@@ -66,43 +208,60 @@ forgotten_1 = {
 	name = "Ariston"
 	religion = "forgotten"
 	culture = "makryenis"
-	trait = education_learning_4
-	trait = magic_good_3
-	trait = ambitious
-	trait = sadistic
-	trait = arrogant
-	trait = education_mixed_magic_4
 	martial = 10
 	diplomacy = 10
 	intrigue = 10
 	stewardship = 10
-	1210.1.1 = {
+
+	1213.8.24 = {
 		birth = yes
+	trait = intellect_good_3
+	trait = magic_good_4
+	}
+
+	1225.1.1 = {
+		trait = ambitious
+	trait = callous
+	trait = deceitful
+	trait = shrewd
+	}
+
+	1229.8.24 = {
+		trait = education_intrigue_4
+		trait = schemer
+		trait = education_mixed_magic_4
+		trait = blind
+		trait = gh_riftsight_3
 	}
 }
 
 forgotten_2 = {
-	name = "Sardephon"
+	name = "Klaytos"
 	religion = "forgotten"
 	culture = "makryenis"
+
 	1222.6.18 = {
 		birth = yes
 	}
 }
 
 forgotten_3 = {
-	name = "Klaytos"
+	name = "Sibylla"
 	religion = "forgotten"
 	culture = "makryenis"
+	female = yes
+
 	1221.6.18 = {
 		birth = yes
 	}
 }
 
 forgotten_4 = {
-	name = "Nezarchus"
+	name = "Phyllis"
 	religion = "forgotten"
 	culture = "makryenis"
+	female = yes
+
 	1221.6.18 = {
 		birth = yes
 	}
@@ -112,15 +271,18 @@ forgotten_5 = {
 	name = "Egorus"
 	religion = "forgotten"
 	culture = "makryenis"
+
 	1221.6.18 = {
 		birth = yes
 	}
 }
 
 forgotten_6 = {
-	name = "Pantor"
+	name = "Pavlina"
 	religion = "forgotten"
 	culture = "makryenis"
+	female = yes
+
 	1221.6.18 = {
 		birth = yes
 	}
@@ -130,15 +292,18 @@ forgotten_7 = {
 	name = "Clararches"
 	religion = "forgotten"
 	culture = "makryenis"
+
 	1221.6.18 = {
 		birth = yes
 	}
 }
 
 forgotten_8 = {
-	name = "Leitus"
+	name = "Valeria"
 	religion = "forgotten"
 	culture = "makryenis"
+	female = yes
+
 	1221.6.18 = {
 		birth = yes
 	}
@@ -148,6 +313,7 @@ forgotten_9 = {
 	name = "Oenion"
 	religion = "forgotten"
 	culture = "makryenis"
+
 	1221.6.18 = {
 		birth = yes
 	}
@@ -157,6 +323,7 @@ forgotten_10 = {
 	name = "Sibyrtius"
 	religion = "forgotten"
 	culture = "makryenis"
+
 	1221.6.18 = {
 		birth = yes
 	}
@@ -166,6 +333,7 @@ forgotten_11 = {
 	name = "Charander"
 	religion = "forgotten"
 	culture = "makryenis"
+
 	1221.6.18 = {
 		birth = yes
 	}
@@ -175,6 +343,7 @@ forgotten_12 = {
 	name = "Menedemus"
 	religion = "forgotten"
 	culture = "makryenis"
+
 	1221.6.18 = {
 		birth = yes
 	}
@@ -184,6 +353,7 @@ forgotten_13 = {
 	name = "Lemerus"
 	religion = "forgotten"
 	culture = "makryenis"
+
 	1221.6.18 = {
 		birth = yes
 	}
@@ -193,15 +363,18 @@ forgotten_14 = {
 	name = "Asander"
 	religion = "forgotten"
 	culture = "makryenis"
+
 	1221.6.18 = {
 		birth = yes
 	}
 }
 
 forgotten_15 = {
-	name = "Attalon"
+	name = "Athanasia"
 	religion = "forgotten"
 	culture = "makryenis"
+	female = yes
+
 	1221.6.18 = {
 		birth = yes
 	}
@@ -209,22 +382,35 @@ forgotten_15 = {
 
 ###colonia
 
-colonia_1 = { #maurice from tno
+colonia_1 = {
 	name = "Mavrikios"
 	dynasty = dyn_colonia_1
 	religion = "aversarinas_aautokrata"
 	culture = "erimatos"
-	1220.6.18 = {
+
+	1232.7.29 = {
 		birth = yes
+	}
+
+	1245.1.1 = {
+		trait = greedy
+	trait = ambitious
+	trait = impatient
+	}
+
+	1249.7.29 = {
+		trait = education_stewardship_2
+	trait = avaricious
 	}
 }
 
 colonia_2 = { #girl indiana jones
 	name = "Adriane"
-        dna = adriane_of_sitrabis
+	dna = adriane_of_sitrabis
 	religion = "aversarinas_aautokrata"
 	culture = "erimatos"
 	female = yes
+
 	1228.6.18 = {
 		birth = yes
 	}
@@ -234,6 +420,7 @@ coloniavassal_1 = {
 	name = "Ignatios"
 	religion = "aversarinas_aautokrata"
 	culture = "erimatos"
+
 	1212.6.18 = {
 		birth = yes
 	}
@@ -244,6 +431,7 @@ coloniavassal_2 = {
 	dynasty = dyn_colonia_2
 	religion = "aversarinas_aautokrata"
 	culture = "erimatos"
+
 	1215.6.18 = {
 		birth = yes
 	}
@@ -262,18 +450,21 @@ colonia_3 = {
 	learning = 1
 	religion = "aversarinas_aautokrata"
 	culture = "erimatos"
+	
 	trait = greedy
 	trait = ambitious
 	trait = deceitful
 	trait = magic_good_2
 	trait = education_living_magic_1
 	trait = education_intrigue_2
+
 	1214.2.27 = {
 		birth = yes
-	        effect = {
+		effect = {
 			add_character_flag = has_scripted_appearance
 		}
 	}
+
 	1249.4.14 = {
 		give_nickname = nick_seaking
 	}
@@ -283,6 +474,7 @@ colonia_4 = {
 	name = "Yoosuf"
 	religion = "sarradonian"
 	culture = "tasurmad"
+
 	1220.6.18 = {
 		birth = yes
 	}
@@ -292,6 +484,7 @@ colonia_5 = {
 	name = "Yahya"
 	religion = "sarradonian"
 	culture = "tasurmad"
+
 	1229.6.18 = {
 		birth = yes
 	}
@@ -301,6 +494,7 @@ colonia_6 = {
 	name = "Bakr"
 	religion = "sarradonian"
 	culture = "tasurmad"
+
 	1224.6.18 = {
 		birth = yes
 	}
@@ -310,6 +504,7 @@ colonia_7 = {
 	name = "Abdal"
 	religion = "sarradonian"
 	culture = "tasurmad"
+
 	1222.6.18 = {
 		birth = yes
 	}
@@ -319,6 +514,7 @@ colonia_8 = {
 	name = "Saabir"
 	religion = "sarradonian"
 	culture = "tasurmad"
+
 	1212.6.18 = {
 		birth = yes
 	}
@@ -328,6 +524,7 @@ colonia_9 = {
 	name = "Serapion"
 	religion = "aversarinas_aautokrata"
 	culture = "erimatos"
+
 	1226.6.18 = {
 		birth = yes
 	}
@@ -337,6 +534,7 @@ colonia_10 = {
 	name = "Haarith"
 	religion = "sarradonian"
 	culture = "tasurmad"
+
 	1230.6.18 = {
 		birth = yes
 	}
@@ -346,6 +544,7 @@ colonia_11 = {
 	name = "Makarios"
 	religion = "aversarinas_aautokrata"
 	culture = "erimatos"
+
 	1232.6.18 = {
 		birth = yes
 	}
@@ -362,6 +561,7 @@ marmaladid_1 = {
 	diplomacy = 10
 	intrigue = 10
 	stewardship = 10
+
 	1220.1.1 = {
 		birth = yes
 	}
@@ -376,6 +576,7 @@ marmaladid_2 = {
 	diplomacy = 10
 	intrigue = 10
 	stewardship = 10
+
 	1215.1.1 = {
 		birth = yes
 	}
@@ -390,6 +591,7 @@ marmaladid_3 = {
 	diplomacy = 10
 	intrigue = 10
 	stewardship = 10
+
 	1218.1.1 = {
 		birth = yes
 	}
@@ -404,6 +606,7 @@ marmaladid_4 = {
 	diplomacy = 10
 	intrigue = 10
 	stewardship = 10
+
 	1229.1.1 = {
 		birth = yes
 	}
@@ -412,86 +615,153 @@ marmaladid_4 = {
 ###blind watcher
 
 blind_watcher_1 = {	
-	name = Tryphon
-        dna = tryphon_order_master
-	religion = "dikansynos"
+	name = Eudokia
+    #dna = tryphon_order_master
+	religion = "dikaynos"
 	culture = "makryenis"
-	trait = blind
-	1212.6.18 = {
+	female = yes
+
+	1193.2.16 = {
 		birth = yes
-	        effect = {
+		effect = {
 			add_character_flag = has_scripted_appearance
 		}
+	}
+
+	1205.1.1 = {
+		trait = diligent
+	trait = arbitrary
+	trait = vengeful
+	}
+
+	1209.2.16 = {
+		trait = education_learning_4
+	trait = scholar
+	}
+
+	1237.9.4 = {
+		trait = blind
 	}
 }
 
 blind_watcher_2 = {	
 	name = Alcon
-	religion = "dikansynos"
+	religion = "dikaynos"
 	culture = "makryenis"
-	1225.7.18 = {
+	
+	1230.8.21 = {
 		birth = yes
+		trait = beauty_good_1
+	}
+	
+	1242.1.1 = {
+		trait = just
+		trait = honest
+		trait = brave
+	}
+
+	1246.8.21 = {
+		trait = education_diplomacy_4
 	}
 }
 
 blind_watcher_3 = {	
 	name = Iatragoras
-	religion = "dikansynos"
+	religion = "dikaynos"
 	culture = "makryenis"
-	1230.7.18 = {
+
+	1225.7.18 = {
 		birth = yes
 	}
 }
 
 blind_watcher_4 = {	
 	name = Koinos
-	religion = "dikansynos"
+	religion = "dikaynos"
 	culture = "makryenis"
+
 	1215.7.18 = {
 		birth = yes
 	}
 }
 
 blind_watcher_5 = {	
-	name = Milanion
-	religion = "dikansynos"
+	name = Melissa
+	religion = "dikaynos"
 	culture = "makryenis"
+	female = yes
+
 	1222.7.18 = {
 		birth = yes
 	}
 }
 
 blind_watcher_6 = {	
-	name = Nicomachos
-	religion = "dikansynos"
+	name = Nikarete
+	religion = "dikaynos"
 	culture = "makryenis"
+	female = yes
+
 	1227.7.18 = {
 		birth = yes
+	}
+	
+	1239.1.1 = {
+		trait = paranoid
+		trait = arbitrary
+		trait = vengeful
+	}
+
+	1242.7.18 = {
+		trait = education_learning_3
 	}
 }
 
 blind_watcher_7 = {	
 	name = Kannadis
-	religion = "dikansynos"
+	religion = "dikaynos"
 	culture = "makryenis"
+
 	1219.7.18 = {
 		birth = yes
+	}
+	
+	1231.1.1 = {
+		trait = deceitful
+		trait = greedy
+		trait = callous
+	}
+
+	1235.9.13 = {
+		trait = education_stewardship_3
 	}
 }
 
 blind_watcher_8 = {	
 	name = Boethios
-	religion = "dikansynos"
+	religion = "dikaynos"
 	culture = "makryenis"
-	1218.7.18 = {
+
+	1218.9.13 = {
 		birth = yes
+	}
+	
+	1230.1.1 = {
+		trait = sadistic
+		trait = wrathful
+		trait = zealous
+	}
+
+	1234.9.13 = {
+		trait = education_martial_2
 	}
 }
 
 blind_watcher_9 = {	
 	name = Kriakos
-	religion = "dikansynos"
+	religion = "dikaynos"
 	culture = "makryenis"
+
 	1220.7.18 = {
 		birth = yes
 	}
@@ -499,35 +769,59 @@ blind_watcher_9 = {
 
 blind_watcher_10 = {	
 	name = Nestor
-	religion = "dikansynos"
+	religion = "dikaynos"
 	culture = "makryenis"
+
 	1220.7.18 = {
 		birth = yes
 	}
 }
 
 blind_watcher_11 = {	
-	name = Symmachos
-	religion = "dikansynos"
+	name = Pulcheria
+	religion = "dikaynos"
 	culture = "makryenis"
-	1230.7.18 = {
+	female = yes
+
+	1230.10.11 = {
 		birth = yes
 	}
-}
+	
+	1242.1.1 = {
+		trait = wrathful
+		trait = arbitrary
+		trait = gluttonous
+	}
 
+	1246.10.11 = {
+		trait = education_intrigue_3
+	}
+}
 
 ###pure heart
 
 pure_heart_1 = {
 	name = Narses
-        dna = narses_order_guardian
+	dna = narses_order_guardian
 	religion = "katharitos"
 	culture = "makryenis"
-	1205.6.18 = {
+
+	1205.1.23 = {
 		birth = yes
-	        effect = {
+		effect = {
 			add_character_flag = has_scripted_appearance
 		}
+	}
+
+	1217.1.1 = {
+		trait = vengeful
+		trait = wrathful
+		trait = arrogant
+	}
+
+	1221.1.23 = {
+		trait = diplomat
+		trait = education_intrigue_3
 	}
 }
 
@@ -535,8 +829,20 @@ pure_heart_2 = {
 	name = Callimorphus
 	religion = "katharitos"
 	culture = "makryenis"
-	1210.6.18 = {
+
+	1210.9.5 = {
 		birth = yes
+		trait = intellect_good_1
+	}
+	
+	1222.9.5 = {
+		trait = arrogant
+		trait = callous
+		trait = zealous
+	}
+	
+	1226.9.5 = {
+		trait = education_learning_4
 	}
 }
 
@@ -544,6 +850,7 @@ pure_heart_3 = {
 	name = Teuthranes
 	religion = "katharitos"
 	culture = "makryenis"
+
 	1220.6.18 = {
 		birth = yes
 	}
@@ -553,16 +860,19 @@ pure_heart_4 = {
 	name = Phalinos
 	religion = "katharitos"
 	culture = "makryenis"
-	1215.6.18 = {
+
+	1222.6.18 = {
 		birth = yes
 	}
 }
 
 pure_heart_5 = {
-	name = Alcon
+	name = Aikaterine
 	religion = "katharitos"
 	culture = "makryenis"
-	1215.6.18 = {
+	female = yes
+
+	1214.6.18 = {
 		birth = yes
 	}
 }
@@ -571,7 +881,8 @@ pure_heart_6 = {
 	name = Cilix
 	religion = "katharitos"
 	culture = "makryenis"
-	1215.6.18 = {
+
+	1227.6.18 = {
 		birth = yes
 	}
 }
@@ -580,15 +891,31 @@ pure_heart_7 = {
 	name = Chryses
 	religion = "katharitos"
 	culture = "makryenis"
-	1215.6.18 = {
+
+	1225.6.23 = {
 		birth = yes
+		trait = physique_good_2
+		trait = beauty_good_1
+	}
+	
+	1237.1.1 = {
+		trait = brave
+		trait = sadistic
+		trait = arrogant
+	}
+
+	1241.6.23 = {
+		trait = education_martial_2
+		trait = blademaster_2
 	}
 }
 
 pure_heart_8 = {
-	name = Antigonos
+	name = Antipatra
 	religion = "katharitos"
 	culture = "makryenis"
+	female = yes
+
 	1215.6.18 = {
 		birth = yes
 	}
@@ -598,7 +925,8 @@ pure_heart_9 = {
 	name = Coes
 	religion = "katharitos"
 	culture = "makryenis"
-	1215.6.18 = {
+
+	1228.6.18 = {
 		birth = yes
 	}
 }
@@ -607,17 +935,30 @@ pure_heart_10 = {
 	name = Lycoris
 	religion = "katharitos"
 	culture = "makryenis"
-	1215.6.18 = {
+
+	1219.6.18 = {
 		birth = yes
 	}
 }
 
 pure_heart_11 = {
-	name = Faenus
+	name = Hypatia
 	religion = "katharitos"
 	culture = "makryenis"
-	1221.6.18 = {
+	female = yes
+
+	1221.5.18 = {
 		birth = yes
+	}
+	
+	1233.1.1 = {
+		trait = arbitrary
+		trait = deceitful
+		trait = greedy
+	}
+
+	1237.5.18 = {
+		trait = education_intrigue_3
 	}
 }
 
@@ -625,6 +966,7 @@ pure_heart_12 = {
 	name = Iambulus
 	religion = "katharitos"
 	culture = "makryenis"
+
 	1224.6.18 = {
 		birth = yes
 	}
@@ -634,6 +976,8 @@ pure_heart_13 = {
 	name = Thyrsis
 	religion = "katharitos"
 	culture = "makryenis"
+	female = yes
+
 	1220.6.18 = {
 		birth = yes
 	}
@@ -643,8 +987,19 @@ pure_heart_14 = {
 	name = Sinis
 	religion = "katharitos"
 	culture = "makryenis"
-	1215.6.18 = {
+
+	1211.6.18 = {
 		birth = yes
+	}
+	
+	1223.1.1 = {
+		trait = callous
+		trait = patient
+		trait = diligent
+	}
+
+	1227.5.18 = {
+		trait = education_stewardship_3
 	}
 }
 
@@ -652,6 +1007,7 @@ pure_heart_15 = {
 	name = Pleistarchos
 	religion = "katharitos"
 	culture = "makryenis"
+
 	1228.6.18 = {
 		birth = yes
 	}
@@ -661,8 +1017,19 @@ pure_heart_16 = {
 	name = Protogenes
 	religion = "katharitos"
 	culture = "makryenis"
+
 	1229.6.18 = {
 		birth = yes
+	}
+	
+	1241.1.1 = {
+		trait = arbitrary
+		trait = cynical
+		trait = ambitious
+	}
+
+	1245.6.18 = {
+		trait = education_intrigue_4
 	}
 }
 
@@ -670,6 +1037,7 @@ pure_heart_17 = {
 	name = Kallinos
 	religion = "katharitos"
 	culture = "makryenis"
+
 	1210.6.18 = {
 		birth = yes
 	}
@@ -679,17 +1047,30 @@ pure_heart_18 = {
 name = Iambulus
 	religion = "katharitos"
 	culture = "makryenis"
+
 	1216.6.18 = {
 		birth = yes
 	}
 }
 
 pure_heart_19 = {
-	name = Eucarpus
+	name = Eudokia
 	religion = "katharitos"
 	culture = "makryenis"
+	female = yes
+
 	1226.6.18 = {
 		birth = yes
+	}
+	
+	1238.1.1 = {
+		trait = arrogant
+		trait = vengeful
+		trait = stubborn
+	}
+
+	1242.5.18 = {
+		trait = education_diplomacy_1
 	}
 }
 
@@ -697,7 +1078,8 @@ pure_heart_20 = {
 	name = Kaletor
 	religion = "katharitos"
 	culture = "makryenis"
-	1232.6.18 = {
+
+	1222.6.18 = {
 		birth = yes
 	}
 }
@@ -706,8 +1088,19 @@ pure_heart_21 = {
 	name = Hippokratides
 	religion = "katharitos"
 	culture = "makryenis"
-	1211.6.18 = {
+
+	1211.2.16 = {
 		birth = yes
+	}
+	
+	1223.1.1 = {
+		trait = humble
+		trait = compassionate
+		trait = temperate
+	}
+
+	1227.2.16 = {
+		trait = education_learning_3
 	}
 }
 
@@ -715,17 +1108,40 @@ pure_heart_22 = {
 	name = Ilus
 	religion = "katharitos"
 	culture = "makryenis"
+
 	1227.6.18 = {
 		birth = yes
+	}
+	
+	1229.1.1 = {
+		trait = callous
+		trait = greedy
+		trait = temperate
+	}
+
+	1227.2.16 = {
+		trait = education_intrigue_2
 	}
 }
 
 pure_heart_23 = {
-	name = Glaukias
+	name = Haedras
 	religion = "katharitos"
 	culture = "makryenis"
-	1222.6.18 = {
+	female = yes
+	
+	1232.5.18 = {
 		birth = yes
+	}
+	
+	1244.1.1 = {
+		trait = gregarious
+		trait = compassionate
+		trait = ambitious
+	}
+
+	1248.5.18 = {
+		trait = education_diplomacy_4
 	}
 }
 
@@ -733,6 +1149,7 @@ pure_heart_24 = {
 	name = Galenus
 	religion = "katharitos"
 	culture = "makryenis"
+
 	1219.6.18 = {
 		birth = yes
 	}
@@ -742,6 +1159,7 @@ pure_heart_25 = {
 	name = Garus
 	religion = "katharitos"
 	culture = "makryenis"
+
 	1217.6.18 = {
 		birth = yes
 	}
@@ -751,14 +1169,30 @@ pure_heart_25 = {
 
 bleeding_martyr_1 = {	
 	name = Pelagios
-        dna = pelagios_order_guardian
+	dna = pelagios_order_guardian
 	religion = "thysia"
 	culture = "makryenis"
-	1231.6.18 = {
+
+	1202.11.12 = {
 		birth = yes
-	        effect = {
+		effect = {
 			add_character_flag = has_scripted_appearance
-		}
+	}
+	trait = intellect_good_1
+	}
+
+	1214.1.1 = {
+		trait = sadistic
+		trait = patient
+		trait = shy
+	}
+
+	1218.11.12 = {
+		trait = torturer
+		trait = physician_3
+		trait = scholar
+		trait = education_learning_4
+		trait = reclusive
 	}
 }
 
@@ -766,17 +1200,43 @@ bleeding_martyr_2 = {
 	name = Sabarus
 	religion = "thysia"
 	culture = "makryenis"
-	1222.6.18 = {
+
+	1222.6.12 = {
 		birth = yes
+	}
+	
+	1234.1.1 = {
+		trait = greedy
+		trait = callous
+		trait = patient
+	}
+
+	1238.6.12 = {
+		trait = education_stewardship_4
+		trait = physician_1
 	}
 }
 
 bleeding_martyr_3 = {	
-	name = Trophnus
+	name = Adrastea
 	religion = "thysia"
 	culture = "makryenis"
-	1225.6.18 = {
+	female = yes
+
+	1229.3.29 = {
 		birth = yes
+		trait = magic_good_2
+	}
+	
+	1241.1.1 = {
+		trait = callous
+		trait = arrogant
+		trait = zealous
+	}
+	
+	1245.3.29 = {
+		trait = education_learning_3
+		trait = education_dead_magic_3
 	}
 }
 
@@ -784,35 +1244,72 @@ bleeding_martyr_4 = {
 	name = Aniketos
 	religion = "thysia"
 	culture = "makryenis"
-	1201.6.18 = {
+
+	1201.3.17 = {
 		birth = yes
+		trait = magic_good_1
+	}
+	
+	1213.1.1 = {
+		trait = sadistic
+		trait = lustful
+		trait = arbitrary
+	}
+	
+	1217.3.17 = {
+		trait = education_learning_2
+		trait = education_living_magic_1
+	}
+	
+	1224.1.1 = {
+		trait = torturer
+		trait = deviant
 	}
 }
 
 bleeding_martyr_5 = {	
-	name = Deipylus
+	name = Delphike
 	religion = "thysia"
 	culture = "makryenis"
+	female = yes
+
 	1237.6.18 = {
 		birth = yes
 	}
 }
 
 bleeding_martyr_6 = {
-	name = Antinous
+	name = Anthousa
 	religion = "thysia"
 	culture = "makryenis"
+	female = yes
+
 	1231.6.18 = {
 		birth = yes
 	}
 }
 
 bleeding_martyr_7 = {	
-	name = Epeius
+	name = Hypatia
 	religion = "thysia"
 	culture = "makryenis"
-	1231.6.18 = {
+	female = yes
+
+	1231.6.6 = {
 		birth = yes
+		trait = magic_good_4
+	}
+	
+	1243.1.1 = {
+		trait = craven
+		trait = ambitious
+		trait = temperate
+	}
+
+	1247.6.6 = {
+		trait = education_learning_3
+		trait = education_dead_magic_4
+		trait = physician_2
 	}
 }
 
@@ -820,6 +1317,7 @@ bleeding_martyr_8 = {
 	name = Telemachos
 	religion = "thysia"
 	culture = "makryenis"
+
 	1231.6.18 = {
 		birth = yes
 	}
@@ -829,6 +1327,7 @@ bleeding_martyr_9 = {
 	name = Thymoetes	
 	religion = "thysia"
 	culture = "makryenis"
+
 	1232.6.18 = {
 		birth = yes
 	}
@@ -838,8 +1337,21 @@ bleeding_martyr_10 = {
 	name = Bisaltes
 	religion = "thysia"
 	culture = "makryenis"
+
 	1236.6.18 = {
 		birth = yes
+		trait = intellect_good_2
+	}
+	
+	1248.1.1 = {
+		trait = zealous
+		trait = diligent
+		trait = compassionate
+	}
+
+	1252.6.18 = {
+		trait = education_learning_3
+		trait = physician_3
 	}
 }
 
@@ -847,8 +1359,22 @@ bleeding_martyr_11 = {
 	name = Apollophanes
 	religion = "thysia"
 	culture = "makryenis"
+
 	1227.6.18 = {
 		birth = yes
+		trait = magic_good_2
+	}
+	
+	1239.1.1 = {
+		trait = zealous
+		trait = diligent
+		trait = callous
+	}
+
+	1242.6.18 = {
+		trait = education_learning_2
+		trait = education_living_magic_3
+		trait = physician_1
 	}
 }
 
@@ -856,17 +1382,46 @@ bleeding_martyr_12 = {
 	name = Callimorphus
 	religion = "thysia"
 	culture = "makryenis"
+
 	1219.6.18 = {
 		birth = yes
+		trait = magic_good_2
+	}
+	
+	1231.1.1 = {
+		trait = cynical
+		trait = temperate
+		trait = patient
+	}
+
+	1235.6.18 = {
+		trait = education_intrigue_3
+		trait = education_dead_magic_2
+		trait = physician_1
 	}
 }
 
 bleeding_martyr_13 = {	
-	name = Mecistios
+	name = Markia
 	religion = "thysia"
 	culture = "makryenis"
-	1221.6.18 = {
+	female = yes
+	
+	1231.6.18 = {
 		birth = yes
+		trait = magic_good_2
+	}
+	
+	1243.1.1 = {
+		trait = honest
+		trait = generous
+		trait = patient
+	}
+
+	1246.6.18 = {
+		trait = education_diplomacy_4
+		trait = physician_1
+		trait = education_living_magic_2
 	}
 }
 
@@ -874,26 +1429,57 @@ bleeding_martyr_14 = {
 	name = Aithra
 	religion = "thysia"
 	culture = "makryenis"
+
 	1209.6.18 = {
 		birth = yes
 	}
 }
 
 bleeding_martyr_15 = {	
-	name = Atreus
+	name = Zenobia
 	religion = "thysia"
 	culture = "makryenis"
+	female = yes
+	
 	1211.6.18 = {
 		birth = yes
+		trait = magic_good_2
+	}
+	
+	1223.1.1 = {
+		trait = sadistic
+		trait = calm
+		trait = diligent
+	}
+
+	1227.6.18 = {
+		trait = education_learning_2
+		trait = education_dead_magic_2
+		trait = physician_2
 	}
 }
 
 bleeding_martyr_16 = {	
-	name = Tecton
+	name = Theoktiste
 	religion = "thysia"
 	culture = "makryenis"
-	1216.6.18 = {
+	female = yes
+	
+	1223.6.18 = {
 		birth = yes
+		trait = magic_good_1
+	}
+	
+	1235.1.1 = {
+		trait = arbitrary
+		trait = sadistic
+		trait = vengeful
+	}
+
+	1249.6.18 = {
+		trait = education_martial_2
+		trait = education_living_magic_1
+		trait = physician_1
 	}
 }
 
@@ -901,33 +1487,87 @@ bleeding_martyr_17 = {
 	name = Ascanius
 	religion = "thysia"
 	culture = "makryenis"
-	1225.6.18 = {
+	
+	1216.6.18 = {
 		birth = yes
 	}
 }
 
 bleeding_martyr_18 = {	
-	name = Leontis
+	name = Leontia
 	religion = "thysia"
 	culture = "makryenis"
-	1223.6.18 = {
+	female = yes
+
+	1225.6.18 = {
 		birth = yes
 	}
 }
 
-bleeding_martyr_19 = {	
-	name = Corydon
+bleeding_martyr_19 = {
+	name = Ilysi
 	religion = "thysia"
 	culture = "makryenis"
-	1235.6.18 = {
+	female = yes
+
+	1229.1.1 = {
 		birth = yes
 	}
 }
 
 bleeding_martyr_20 = {	
-	name = Callimachus
+	name = Chrysogone
 	religion = "thysia"
 	culture = "makryenis"
+	female = yes
+	
+	1235.6.18 = {
+		birth = yes
+		trait = magic_good_2
+	}
+	
+	1247.1.1 = {
+		trait = arrogant
+		trait = callous
+		trait = stubborn
+	}
+
+	1251.6.18 = {
+		trait = education_learning_2
+		trait = education_living_magic_3
+		trait = physician_2
+	}
+}
+
+bleeding_martyr_21 = {
+	name = Gronkos
+	religion = "thysia"
+	culture = "makryenis"
+
+	1227.5.6 = {
+		birth = yes
+		trait = magic_good_3
+	}
+	
+	1239.1.1 = {
+		trait = zealous
+		trait = sadistic
+		trait = arbitrary
+	}
+
+	1243.5.6 = {
+		trait = education_martial_4
+		trait = education_living_magic_2
+		trait = physician_1
+		trait = blademaster_1
+	}
+}
+
+bleeding_martyr_22 = {
+	name = Corydon
+	religion = "thysia"
+	culture = "makryenis"
+
 	1230.6.18 = {
 		birth = yes
 	}
@@ -935,16 +1575,41 @@ bleeding_martyr_20 = {
 
 #####
 
-calysto_1 = {	
-	name = Lamius
-        dna = lamius_order_guardian
+calysto_10 = {	
+	name = Callimachus
+	dna = lamius_order_guardian
 	religion = "calysto"
 	culture = "makryenis"
-	1220.6.18 = {
+	martial = 10
+	intrigue = 10
+
+	1218.3.14 = {
 		birth = yes
-	        effect = {
+		effect = {
 			add_character_flag = has_scripted_appearance
-		}
+	}
+	trait = physique_good_1
+	trait = intellect_good_2
+	}
+
+	1230.1.1 = {
+		trait = callous
+	trait = arbitrary
+	trait = brave
+	}
+
+	1234.3.14 = {
+		trait = reaver
+	trait = overseer
+	trait = blademaster_3
+	trait = education_martial_4
+	trait = shrewd
+	}
+
+	1241.1.1 = {
+		trait = scarred
+	trait = one_eyed
+		give_nickname = nick_ironheart
 	}
 }
 
@@ -952,8 +1617,19 @@ calysto_2 = {
 	name = Daetor
 	religion = "calysto"
 	culture = "makryenis"
-	1223.6.18 = {
+
+	1223.7.24 = {
 		birth = yes
+	}
+	
+	1235.1.1 = {
+		trait = greedy
+		trait = calm
+		trait = diligent
+	}
+	
+	1234.7.24 = {
+		trait = education_stewardship_3
 	}
 }
 
@@ -961,17 +1637,41 @@ calysto_3 = {
 	name = Automedon
 	religion = "calysto"
 	culture = "makryenis"
+
 	1222.6.18 = {
 		birth = yes
+	}
+	
+	1234.1.1 = {
+		trait = humble
+		trait = compassionate
+		trait = shy
+	}
+	
+	1238.3.14 = {
+		trait = education_learning_3
 	}
 }
 
 calysto_4 = {	
-	name = Theron
+	name = Thekla
 	religion = "calysto"
 	culture = "makryenis"
-	1230.6.18 = {
+	female = yes
+
+	1230.9.3 = {
 		birth = yes
+	}
+	
+	1242.1.1 = {
+		trait = sadistic
+		trait = wrathful
+		trait = impatient
+	}
+	
+	1246.9.3 = {
+		trait = education_martial_1
+		trait = blademaster_1
 	}
 }
 
@@ -979,122 +1679,210 @@ crusader_1 = { ##marcher crusaders
 	name = Valent
 	religion = "lifepath"
 	culture = "voyagen"
+
 	1228.6.18 = {
 		birth = yes
 	}
 }
 
-crusader_2 = {	###forlorn guardian
-	name = Andreas
-        dna = andreas_order_guardian
-	religion = "eosos"
+#################################
+# ORDER OF THE FORLORN GUARDIAN #
+#################################
+
+forlorn_guardian_1 = {
+	name = Andronike
+	religion = "eos"
 	culture = "makryenis"
-	trait = honest
-	trait = trusting
-	trait = education_martial_4
+	female = yes
+
+	1166.11.2 = {
+		birth = yes
+	trait = physique_good_3
+	trait = intellect_good_2
+	}
+
+	1178.1.1 = {
+		trait = brave
+	trait = stubborn
+	trait = paranoid
+	}
+
+	1182.11.2 = {
+		trait = education_martial_4
+	trait = blademaster_3
+	trait = strong
+	}
+
+	1253.12.27 = {
+		death = yes
+	}
+}
+
+forlorn_guardian_2 = {
+ # Ordermaster in 1254, only recently promoted with the death of their insane long-lived predecessor
+	name = Andreas
+    dna = andreas_order_guardian
+	religion = "eos"
+	culture = "makryenis"
+
 	1226.6.18 = {
 		birth = yes
-	        effect = {
+		effect = {
 			add_character_flag = has_scripted_appearance
-		}
+	}
+	trait = physique_good_2
+		trait = intellect_good_1
+	}
+
+	1238.1.1 = {
+		trait = brave
+		trait = compassionate
+		trait = just
+	}
+
+	1242.6.18 = {
+		trait = education_martial_4
+		trait = scarred
 	}
 }
 
-#####
+############################
+# ORDER OF THE GOLDEN HAND #
+############################
 
-crusader_3 = {	##golden hand
+crusader_3 = { ##golden hand
 	name = Philatar
-        dna = philatar_order_master
+	dna = philatar_order_master
 	religion = "philanthrios"
 	culture = "makryenis"
-	1218.6.18 = {
+
+	1213.8.9 = {
 		birth = yes
-	        effect = {
+		effect = {
 			add_character_flag = has_scripted_appearance
+		}
+	}
+
+	1225.1.1 = {
+		trait = lustful
+		trait = gluttonous
+		trait = gregarious
+	}
+
+	1229.8.9 = {
+		trait = education_stewardship_1
+		trait = reveler_3
+		trait = drunkard
+		trait = rakish
+	}
+
+	1241.1.1 = {
+		effect = {
+			add_gold = 1000
 		}
 	}
 }
 
-crusader_10 = {	##golden hand
+crusader_10 = { ##golden hand
 	name = Eurystheus
 	religion = "philanthrios"
 	culture = "makryenis"
+
 	1231.6.18 = {
 		birth = yes
 	}
 }
 
-crusader_11 = {	##golden hand
-	name = Iphicrates
+crusader_11 = { ##golden hand
+	name = Agamede
 	religion = "philanthrios"
 	culture = "makryenis"
-	1216.6.18 = {
+	female = yes
+
+	1216.2.25 = {
 		birth = yes
+	}
+	
+	1232.2.25 = {
+		trait = education_martial_3
+		trait = greedy
+		trait = sadistic
+		trait = wrathful
 	}
 }
 
-crusader_12 = {	##golden hand
+crusader_12 = { ##golden hand
 	name = Plutarn
 	religion = "philanthrios"
 	culture = "makryenis"
+
 	1211.6.18 = {
 		birth = yes
 	}
 }
 
-crusader_13 = {	##golden hand
+crusader_13 = { ##golden hand
 	name = Adrastos
 	religion = "philanthrios"
 	culture = "makryenis"
-	1221.6.18 = {
+
+	1221.3.11 = {
 		birth = yes
+	}
+	
+	1237.3.11 = {
+		trait = education_diplomacy_2
+		trait = greedy
+		trait = gregarious
+		trait = callous
 	}
 }
 
-crusader_14 = {	##golden hand
-	name = Strachys
+crusader_14 = { ##golden hand
+	name = Lasthena
 	religion = "philanthrios"
 	culture = "makryenis"
-	1220.6.18 = {
-		birth = yes
-	}
-}
-
-######
-
-crusader_4 = {	
-	name = Lasthena
-	religion = "sansia"
-	culture = "makryenis"
 	female = yes
-	1231.6.18 = {
+
+	1220.11.27 = {
 		birth = yes
+	}
+	
+	1236.11.27 = {
+		trait = education_stewardship_3
+		trait = generous
+		trait = temperate
+		trait = diligent
 	}
 }
 
-crusader_5 = {	
+######crusader_5 = {	
 	name = Xene
 	religion = "sansia"
 	culture = "makryenis"
 	female = yes
+
 	1222.6.18 = {
 		birth = yes
 	}
 }
 
-crusader_6 = {	
+crusader_6 = {
 	name = Philomela
 	religion = "sansia"
 	culture = "makryenis"
 	female = yes
+
 	1227.6.18 = {
 		birth = yes
 	}
 }
 
-crusader_7 = {	
+crusader_7 = {
+	name = Darude
 	religion = "adabyssian"
 	culture = "leviden"
+
 	1231.6.18 = {
 		birth = yes
 	}
@@ -1102,23 +1890,24 @@ crusader_7 = {
 
 marcher_merc_1 = {
 	name = "Martin"
-                      dna = martin
+	dna = martin
 	religion = "lifepath"
 	culture = "voyagen"
-                      sexuality = heterosexual
-                      trait =way_of_swords_follower
+	sexuality = heterosexual
+	trait = way_of_swords_follower
 	trait = just
 	trait = diligent
-                      trait = stubborn
+	trait = stubborn
 	trait = cynical
 	trait = comfort_eater
 	trait = intellect_good_2
 	trait = education_martial_3
 	trait = logistician
 	trait = organizer
+
 	1215.11.23 = {
 		birth = yes
-	                      effect = {
+		effect = {
 			add_character_flag = has_scripted_appearance
 		}
 	}
@@ -1128,6 +1917,7 @@ marcher_merc_2 = {
 	name = "Faroin"
 	religion = "lifepath"
 	culture = "voyagen"
+
 	1219.11.23 = {
 		birth = yes
 	}
@@ -1137,6 +1927,7 @@ marcher_merc_3 = {
 	name = "Adalgrim"
 	religion = "lifepath"
 	culture = "voyagen"
+
 	1220.11.23 = {
 		birth = yes
 	}
@@ -1146,6 +1937,7 @@ marcher_merc_4 = {
 	name = "Aegidius"
 	religion = "lifepath"
 	culture = "voyagen"
+
 	1211.11.23 = {
 		birth = yes
 	}
@@ -1155,6 +1947,7 @@ marcher_merc_5 = {
 	name = "Chararic"
 	religion = "lifepath"
 	culture = "voyagen"
+
 	1205.11.23 = {
 		birth = yes
 	}
@@ -1164,6 +1957,7 @@ marcher_trade_1 = {
 	name = "Childeric"
 	religion = "lifepath"
 	culture = "voyagen"
+
 	1225.11.23 = {
 		birth = yes
 	}
@@ -1173,6 +1967,7 @@ marcher_trade_2 = {
 	name = "Gaudulf"
 	religion = "lifepath"
 	culture = "voyagen"
+
 	1230.11.23 = {
 		birth = yes
 	}
@@ -1182,6 +1977,7 @@ marcher_trade_3 = {
 	name = "Theutbald"
 	religion = "lifepath"
 	culture = "voyagen"
+
 	1222.11.23 = {
 		birth = yes
 	}
@@ -1191,89 +1987,261 @@ marcher_trade_4 = {
 	name = "Seguin"
 	religion = "lifepath"
 	culture = "voyagen"
+
 	1215.11.23 = {
 		birth = yes
 	}
 }
 
-sarradon_2 = {	####The Ghelyymads
+sarradon_2 = { ####The Ghelyymads
 	name = Mishaari
 	dynasty = dyn_ghelyymads_1
 	religion = "sarradonian"
 	culture = "jaduyada"
+
 	1202.6.18 = {
 		birth = yes
 	}
 }
 
-ghelyymads_1 = {	####The Ghelyymads
+ghelyymads_1 = { ####The Ghelyymads
 	name = Saahir 
 	dynasty = dyn_ghelyymads_1
 	religion = "sarradonian"
 	culture = "jaduyada"
 	father = sarradon_2
+
 	1223.6.18 = {
 		birth = yes
 	}
 }
 
-ghelyymads_2 = {	####The Ghelyymads
+ghelyymads_2 = { ####The Ghelyymads
 	name = Ghaazi 
 	dynasty = dyn_ghelyymads_1
 	religion = "sarradonian"
 	culture = "jaduyada"
 	father = sarradon_2
+
 	1219.6.18 = {
 		birth = yes
 	}
 }
 
-ghelyymads_3 = {	####The Ghelyymads
+ghelyymads_3 = { ####The Ghelyymads
 	name = Bandar 
 	dynasty = dyn_ghelyymads_1
 	religion = "sarradonian"
 	culture = "jaduyada"
 	father = sarradon_2
+
 	1227.6.18 = {
 		birth = yes
 	}
 }
 
-sarradon_3 = {	####Ieaya Mujiayja
+sarradon_3 = { ####Ieaya Mujiayja
 	name = "MuhktarEyyan"
-        dna = muhktar
+	dna = muhktar
 	religion = "haradar"
 	culture = "jaduyada"
 	martial = 10
 	diplomacy = 10
 	intrigue = 10
 	stewardship = 10
+
 	1204.6.18 = {
 		birth = yes
-	        effect = {
+		effect = {
 			add_character_flag = has_scripted_appearance
 		}
 	}
 }
 
-##crusader vassals
-	
-sarradon_4 = {	
-	name = "Astyoche"
+#####################
+# ST. SANSIA'S ROSE #
+#####################
+
+sarradon_9 = {
+	name = "Phaedre"
+	dna = phaedre_order_master
 	religion = "sansia"
 	culture = "makryenis"
 	female = yes
 	martial = 10
-	diplomacy = 10
 	intrigue = 10
-	stewardship = 10
-	1234.1.1 = {
+
+	1204.4.17 = {
 		birth = yes
+		effect = {
+			add_character_flag = has_scripted_appearance
+	}
+	trait = lunatic_1
+	}
+
+	1216.1.1 = {
+		trait = sadistic
+	trait = deceitful
+	trait = brave
+	}
+
+	1220.4.17 = {
+		trait = blademaster_2
+	trait = aggressive_attacker
+	trait = torturer
+	trait = education_martial_3
+	}
+
+	1227.9.12 = {
+		trait = murderer
+		give_nickname = nick_butcher_of_kahdavraka
 	}
 }
 
+sansias_rose_2 = {	
+	name = "Themis"
+	religion = "sansia"
+	culture = "makryenis"
+	female = yes
 
-sarradon_5 = {	
+	1229.3.12 = {
+		birth = yes
+	trait = physique_good_3
+	trait = beauty_bad_1
+	}
+
+	1241.1.1 = {
+		trait = sadistic
+	trait = wrathful
+	trait = vengeful
+	}
+
+	1245.3.12 = {
+		trait = education_martial_1
+	trait = blademaster_1
+	trait = scarred
+	}
+}
+
+sansias_rose_3 = {	
+	name = "Otonia"
+	religion = "sansia"
+	culture = "makryenis"
+	female = yes
+
+	1231.4.7 = {
+		birth = yes
+	}
+
+	1243.1.1 = {
+		trait = deceitful
+	trait = callous
+	trait = ambitious
+	}
+
+	1247.4.7 = {
+		trait = education_intrigue_2
+	}
+}
+
+sansias_rose_4 = {	
+	name = "Astyoche"
+	religion = "sansia"
+	culture = "makryenis"
+	female = yes
+
+	1222.11.7 = {
+		birth = yes
+		trait = beauty_good_2
+		trait = magic_good_2
+	}
+
+	1241.1.1 = {
+		trait = sadistic
+		trait = lustful
+		trait = arrogant
+	}
+
+	1245.11.7 = {
+		trait = education_martial_2
+		trait = education_living_magic_4
+	}
+}
+
+sansias_rose_5 = {	
+	name = "Briseis"
+	religion = "sansia"
+	culture = "makryenis"
+	female = yes
+	1232.8.12 = {
+		birth = yes
+		trait = magic_good_3
+	}
+
+	1244.1.1 = {
+		trait = sadistic
+		trait = diligent
+		trait = patient
+	}
+
+	1248.8.12 = {
+		trait = education_intrigue_1
+		trait = education_living_magic_4
+	}
+}
+
+sansias_rose_6 = {	
+	name = Lasthena
+	religion = "sansia"
+	culture = "makryenis"
+	female = yes
+
+	1224.1.13 = {
+		birth = yes
+		trait = intellect_bad_1
+		trait = physique_good_1
+	}
+
+	1236.1.1 = {
+		trait = sadistic
+		trait = trusting
+		trait = zealous
+	}
+
+	1240.1.13 = {
+		trait = education_martial_1
+		trait = blademaster_1
+	}
+}
+
+sansias_rose_7 = {	
+	name = "Elcmene"
+	religion = "sansia"
+	culture = "makryenis"
+	female = yes
+	martial = 5
+
+	1233.12.3 = {
+		birth = yes
+		trait = beauty_good_1
+		trait = intellect_good_2
+	}
+
+	1245.1.1 = {
+		trait = compassionate
+		trait = brave
+		trait = cynical
+	}
+
+	1249.12.3 = {
+		trait = education_martial_4
+		effect = {
+			set_variable = good_agionist
+		}
+	}
+}
+
+sansias_rose_8 = {	
 	name = "Elpir"
 	religion = "sansia"
 	culture = "makryenis"
@@ -1282,14 +2250,24 @@ sarradon_5 = {
 	diplomacy = 10
 	intrigue = 10
 	stewardship = 10
-	1230.1.1 = {
+
+	1178.4.28 = {
 		birth = yes
+	}
+
+	1190.1.1 = {
+		trait = callous
+		trait = calm
+		trait = vengeful
+	}
+
+	1194.4.28 = {
+		trait = education_intrigue_3
 	}
 }
 
-
-sarradon_7 = {	
-	name = "Themis"
+sansias_rose_9 = {	
+	name = "Eriphyle"
 	religion = "sansia"
 	culture = "makryenis"
 	female = yes
@@ -1297,13 +2275,24 @@ sarradon_7 = {
 	diplomacy = 10
 	intrigue = 10
 	stewardship = 10
-	1222.1.1 = {
+
+	1224.3.18 = {
 		birth = yes
+	}
+
+	1236.1.1 = {
+		trait = sadistic
+		trait = craven
+		trait = paranoid
+	}
+
+	1240.3.18 = {
+		trait = education_intrigue_2
 	}
 }
 
-sarradon_8 = {	
-	name = "Otonia"
+sansias_rose_10 = {	
+	name = "Agamede"
 	religion = "sansia"
 	culture = "makryenis"
 	female = yes
@@ -1311,26 +2300,21 @@ sarradon_8 = {
 	diplomacy = 10
 	intrigue = 10
 	stewardship = 10
-	1221.1.1 = {
-		birth = yes
-	}
-}
 
-sarradon_9 = {	###st. sansia
-	name = "Phaedre"
-        dna = phaedre_order_master
-	religion = "sansia"
-	culture = "makryenis"
-	female = yes
-	martial = 10
-	diplomacy = 10
-	intrigue = 10
-	stewardship = 10
-	1209.1.1 = {
+	1231.11.6 = {
 		birth = yes
-	        effect = {
-			add_character_flag = has_scripted_appearance
-		}
+		trait = magic_good_2
+	}
+	
+	1243.1.1 = {
+		trait = callous
+		trait = content
+		trait = brave
+	}
+	
+	1247.11.6 = {
+		trait = education_martial_1
+		trait = education_living_magic_3
 	}
 }
 
@@ -1343,6 +2327,7 @@ sarradon_10 = {
 	diplomacy = 10
 	intrigue = 10
 	stewardship = 10
+
 	1225.1.1 = {
 		birth = yes
 	}
@@ -1357,31 +2342,9 @@ sarradon_11 = {
 	diplomacy = 10
 	intrigue = 10
 	stewardship = 10
+
 	1228.1.1 = {
 		birth = yes
-	}
-}
-
-sarradon_12 = {	#Placeholder for Caliph guy
-	name = "Mamur"
-        dna = mamur
-	religion = "sarradonian"
-	culture = "tasurmad"
-	martial = 3
-	diplomacy = 12
-	intrigue = 8
-	stewardship = 3
-	trait = patient
-	trait = humble
-	trait = calm
-	trait = cautious_leader
-	trait = education_learning_4
-	dynasty = dyn_warden_1
-	1199.4.11 = {
-		birth = yes
-	        effect = {
-			add_character_flag = has_scripted_appearance
-		}
 	}
 }
 
@@ -1389,401 +2352,892 @@ sarradon_13 = {
 	name = "Aarif"
 	religion = "kathsiti"
 	culture = "amuaad"
+
 	1234.1.1 = {
 		birth = yes
 	}
 }
 
+#####################################
+# CENTRAL MAMURAMAT POST DECIMATION #
+#####################################
+
+mamuramat_1 = {
+	name = "Yusar"
+	religion = "sarradonian"
+	culture = "tasurmad"
+	dynasty = dyn_warden_1
+	
+	763.7.1 = {
+		birth = yes
+		trait = magic_good_5
+		trait = intellect_good_2
+	}
+	775.1.1 = {
+		trait = wrathful
+		trait = sadistic
+		trait = paranoid
+	}
+	779.7.1 = {
+		trait = education_martial_3
+		trait = education_living_magic_4
+	}
+	795.1.1 = {
+		trait = gh_glowing_veins
+		trait = gh_glowingeyes_red
+	}
+
+	802.9.13 = { # Went insane from Halakdun
+		trait = lunatic_1
+		trait = gh_beset_by_visions
+	}
+
+	809.3.17 = {
+		death = {
+			death_reason = death_duel
+			killer = mamuramat_2
+		}
+	}
+}
+
+mamuramat_2 = {
+	name = "Tathtali"
+	religion = "sarradonian"
+	culture = "tasurmad"
+	dynasty = dyn_warden_1
+	
+	father = mamuramat_1
+	
+	785.8.18 = {
+		birth = yes
+		trait = physique_good_2
+		trait = intellect_good_2
+		trait = magic_good_3
+	}
+	797.1.1 = {
+		trait = brave
+		trait = just
+		trait = ambitious
+	}
+
+	801.8.18 = {
+		trait = education_learning_4
+	}
+
+	809.3.17 = {
+		trait = kinslayer_3
+	}
+
+	865.12.3 = {
+		death = yes
+	}
+}
+
+mamuramat_3 = {
+	name = "Sanad"
+	religion = "sarradonian"
+	culture = "tasurmad"
+	dynasty =  dyn_warden_3
+	female = yes
+	
+	787.5.2 = {
+		birth = yes
+		trait = physique_good_1
+		trait = intellect_good_3
+	}
+	799.1.1 = {
+		trait = brave
+		trait = zealous
+		trait = ambitious
+	}
+
+	803.5.2 = {
+		trait = education_martial_4
+		trait = adventurer
+		trait = poet
+		trait = blademaster_3
+	}
+
+	810.5.28 = {
+		add_spouse = mamuramat_2
+	}
+
+	832.3.17 = {
+		death = yes
+	}
+}
+
+mamuramat_4 = {
+	name = "Uthman"
+	religion = "sarradonian"
+	culture = "tasurmad"
+	dynasty = dyn_warden_1
+	father = mamuramat_2
+	mother = mamuramat_3
+	trait = magic_good_3
+	trait = trusting
+	trait = impatient
+	trait = shy
+
+	812.7.12 = {
+		birth = yes
+	}
+
+	874.12.12 = {
+		death = yes
+	}
+}
+
+mamuramat_5 = {
+	name = "Nasir"
+	religion = "sarradonian"
+	culture = "tasurmad"
+	dynasty = dyn_warden_1
+	father = mamuramat_4
+	trait = magic_good_2
+	trait = scholar
+	trait = patient
+	trait = honest
+	trait = gluttonous
+
+	852.7.12 = {
+		birth = yes
+	}
+
+	899.10.11 = {
+		death = yes
+	}
+}
+
+mamuramat_6 = {
+	name = "Yusuf"
+	religion = "sarradonian"
+	culture = "tasurmad"
+	dynasty = dyn_warden_1
+	father = mamuramat_5
+	trait = magic_good_2
+	trait = ambitious
+	trait = just
+	trait = vengeful
+
+	890.7.12 = {
+		birth = yes
+	}
+	
+	956.10.11 = {
+		death = yes
+	}
+}
+
+mamuramat_7 = {
+	name = "Essaid"
+	religion = "sarradonian"
+	culture = "tasurmad"
+	dynasty = dyn_warden_1
+	father = mamuramat_6
+	trait = magic_good_2
+	trait = lustful
+	trait = gregarious
+	trait = callous
+
+	26.10.1 = {
+		birth = yes
+	}
+	
+	66.10.11 = {
+		death = {
+			death_reason = death_execution
+			killer = mamuramat_8
+		}
+	}
+}
+
+mamuramat_8 = {
+	name = "Muktafi"
+	religion = "sarradonian"
+	culture = "tasurmad"
+	dynasty = dyn_warden_1
+	father = mamuramat_6
+	trait = magic_good_3
+	trait = sadistic
+	trait = arbitrary
+	trait = vengeful
+
+	31.10.1 = {
+		birth = yes
+	}
+	
+	79.10.11 = {
+		death = yes
+	}
+}
+
+mamuramat_9 = {
+	name = "Qa_im"
+	religion = "sarradonian"
+	culture = "tasurmad"
+	dynasty = dyn_warden_1
+	father = mamuramat_6
+	trait = magic_good_4
+	sexuality = homosexual
+	trait = compassionate
+	trait = patient
+	trait = just
+	
+	939.10.1 = {
+		birth = yes
+	}
+
+	1002.10.11 = {
+		death = yes
+	}
+}
+
+mamuramat_10 = {
+	name = "Mutarshid"
+	religion = "sarradonian"
+	culture = "tasurmad"
+	dynasty = dyn_warden_1
+	father = mamuramat_8
+	trait = magic_good_4
+	trait = arbitrary
+	trait = trusting
+	trait = humble
+
+	976.10.1 = {
+		birth = yes
+	}
+
+	1049.10.11 = {
+		death = yes
+	}
+}
+
+mamuramat_11 = {
+	name = "Musta_sim"
+	religion = "sarradonian"
+	culture = "tasurmad"
+	dynasty = dyn_warden_1
+	father = mamuramat_10
+	mother = mamuramat_16
+	trait = shy
+	trait = arrogant
+	trait = magic_good_5
+	trait = patient
+
+	1015.10.1 = {
+		birth = yes
+	}
+	1063.11.12 = {
+		add_spouse = mamuramat_15
+	}
+	1099.10.11 = {
+		death = yes
+	}
+}
+
+mamuramat_12 = {
+	name = "Radi"
+	religion = "sarradonian"
+	culture = "tasurmad"
+	dynasty = dyn_warden_1
+	father = mamuramat_11
+	mother = mamuramat_15
+	trait = magic_good_8
+	trait = intellect_good_2
+
+	1067.10.1 = {
+		birth = yes
+	}
+
+	1083.10.1 = {
+		trait = ambitious
+	trait = callous
+	trait = paranoid
+	trait = education_learning_4
+	trait = education_living_magic_4
+	}
+
+	1121.2.2 = {
+		trait = gh_vampiric
+	}
+
+	1179.10.11 = {
+		death = yes
+	}
+}
+
+mamuramat_13 = {
+	name = "Radi"
+	religion = "sarradonian"
+	culture = "tasurmad"
+	dynasty = dyn_warden_1
+	father = mamuramat_12
+	mother = mamuramat_18
+	trait = magic_good_1
+	trait = honest
+	trait = callous
+	trait = stubborn
+
+	1141.10.1 = {
+		birth = yes
+	}
+
+	1162.1.1 = { #permanently disabled after a life threatening riding accident. 
+		trait = infirm
+		trait = intellect_bad_1
+		trait = dull
+	}
+
+	1183.10.11 = {
+		death = yes
+	}
+}
+
+mamuramat_14 = {
+	name = "Qahir"
+	religion = "sarradonian"
+	culture = "tasurmad"
+	dynasty = dyn_warden_1
+	father = mamuramat_13
+	mother = mamuramat_17
+	trait = magic_good_2
+	trait = ambitious
+	trait = cynical
+	trait = impatient
+
+	1161.10.1 = {
+		birth = yes
+	}
+
+	1215.1.1 = {
+		death = yes
+	}
+}
+mamuramat_15 = {
+	name = "Arthenix"
+	religion = "aversarinas_aautokrata"
+	culture = "northernimperial"
+	trait = magic_good_4
+	trait = craven
+	trait = beauty_bad_1
+	trait = intellect_good_1
+	trait = compassionate
+	trait = fecund
+	female = yes
+	1037.12.1 = {
+		birth = yes
+	}
+	1063.11.12 = {
+		add_spouse = mamuramat_11
+	}
+	1096.6.11 = {
+		death = yes
+	}
+}
+mamuramat_16 = {
+	name = "Timandaria"
+	religion = "aversarinas_aautokrata"
+	culture = "easternimperial"
+	trait = magic_good_3
+	trait = generous
+	trait = beauty_good_1
+	trait = callous
+	trait = brave
+	female = yes
+	997.5.1 = {
+		birth = yes
+	}
+	1013.8.12 = {
+		add_spouse = mamuramat_10
+	}
+	1075.9.11 = {
+		death = yes
+	}
+}
+mamuramat_17 = {
+	name = "Thessia"
+	religion = "aversarinas_aautokrata"
+	culture = "easternimperial"
+	trait = magic_good_5
+	trait = gregarious
+	trait = humble
+	trait = craven
+	female = yes
+	1140.5.1 = {
+		birth = yes
+	}
+	1160.11.5 = {
+		add_spouse = mamuramat_13
+	}
+	1192.9.11 = {
+		death = yes
+	}
+}
+mamuramat_18 = {
+	name = "Caresonnia"
+	religion = "lifepath"
+	culture = "easternimperial"
+	trait = magic_good_4
+	trait = ambitious
+	trait = forgiving
+	trait = arrogant
+	female = yes
+	1111.11.11 = {
+		birth = yes
+	}
+	1138.1.5 = {
+		add_spouse = mamuramat_12
+	}
+	1149.10.11 = {
+		death = yes
+	}
+}
+mamuramat_19 = {
+	name = "Aisha"
+	religion = "sarradonian"
+	culture = "tasurmad"
+	trait = magic_good_1
+	female = yes
+	1176.8.12 = {
+		birth = yes
+	}
+	1196.11.5 = {
+		add_spouse = mamuramat_14
+	}
+	1252.1.11 = {
+		death = yes
+	}
+}
+mamuramat_20 = {
+	name = "Sajah"
+	religion = "sarradonian"
+	culture = "tasurmad"
+	trait = magic_good_4
+	female = yes
+	1199.1.15 = {
+		birth = yes
+	}
+	1212.1.15 = {
+		trait = chaste
+		trait = temperate
+		trait = callous
+		trait = education_diplomacy_2
+	}
+	1216.7.25 = {
+		add_spouse = sarradon_12
+	}
+	1260.11.1 = {
+		death = yes
+	}
+}
+sarradon_12 = {
+	name = "Adabyn"
+	dna = mamur
+	religion = "sarradonian"
+	culture = "tasurmad"
+	martial = 3
+	diplomacy = 12
+	intrigue = 8
+	stewardship = 3
+	father = mamuramat_14
+	mother = mamuramat_19
+	trait = patient
+	trait = humble
+	trait = calm
+	trait = cautious_leader
+	trait = education_learning_4
+	trait = magic_good_1
+	trait = jurist_3
+	dynasty = dyn_warden_1
+
+	1199.4.11 = {
+		birth = yes
+		effect = {
+			add_character_flag = has_scripted_appearance
+		}
+	}
+}
+
 #Characters Generated at 2020/11/28 22:59:48 by 
-sarradon_14 = 
-{
- name = "Sami"
- religion = "kathsiti"
- culture = "amuaad"
-female = no
-1229.1.1 =
-{
-	birth = yes
+sarradon_14 = {
+	name = "Sami"
+	religion = "kathsiti"
+	culture = "amuaad"
+	female = no
+
+	1229.1.1 = {
+		birth = yes
+	}
 }
 
-}
-sarradon_15 = 
-{
- name = "Mahdi"
- religion = "kathsiti"
- culture = "amuaad"
-female = no
-1222.1.1 =
-{
-	birth = yes
+sarradon_15 = {
+	name = "Mahdi"
+	religion = "kathsiti"
+	culture = "amuaad"
+	female = no
+
+	1222.1.1 = {
+		birth = yes
+	}
 }
 
-}
-sarradon_16 = 
-{
- name = "Nizam"
- religion = "kathsiti"
- culture = "amuaad"
-female = no
-1217.1.1 =
-{
-	birth = yes
+sarradon_16 = {
+	name = "Nizam"
+	religion = "kathsiti"
+	culture = "amuaad"
+	female = no
+
+	1217.1.1 = {
+		birth = yes
+	}
 }
 
-}
-sarradon_17 = 
-{
- name = "Ghalib"
- religion = "kathsiti"
- culture = "amuaad"
-female = no
-1229.1.1 =
-{
-	birth = yes
+sarradon_17 = {
+	name = "Ghalib"
+	religion = "kathsiti"
+	culture = "amuaad"
+	female = no
+
+	1229.1.1 = {
+		birth = yes
+	}
 }
 
-}
-sarradon_18 = 
-{
- name = "Sulayman"
- religion = "kathsiti"
- culture = "amuaad"
-female = no
-1232.1.1 =
-{
-	birth = yes
+sarradon_18 = {
+	name = "Sulayman"
+	religion = "kathsiti"
+	culture = "amuaad"
+	female = no
+
+	1232.1.1 = {
+		birth = yes
+	}
 }
 
-}
-sarradon_19 = 
-{
- name = "Zeyd"
- religion = "kathsiti"
- culture = "amuaad"
-female = no
-1234.1.1 =
-{
-	birth = yes
+sarradon_19 = {
+	name = "Zeyd"
+	religion = "kathsiti"
+	culture = "amuaad"
+	female = no
+
+	1234.1.1 = {
+		birth = yes
+	}
 }
 
-}
-sarradon_20 = 
-{
- name = "Yahya"
- religion = "kathsiti"
- culture = "amuaad"
-female = no
-1234.1.1 =
-{
-	birth = yes
+sarradon_20 = {
+	name = "Yahya"
+	religion = "kathsiti"
+	culture = "amuaad"
+	female = no
+
+	1234.1.1 = {
+		birth = yes
+	}
 }
 
-}
-sarradon_21 = 
-{
- name = "Muhammad"
- religion = "kathsiti"
- culture = "amuaad"
-female = no
-1218.1.1 =
-{
-	birth = yes
+sarradon_21 = {
+	name = "Muhammad"
+	religion = "kathsiti"
+	culture = "amuaad"
+	female = no
+
+	1218.1.1 = {
+		birth = yes
+	}
 }
 
-}
-sarradon_22 = 
-{
- name = "Mahdi"
- religion = "kathsiti"
- culture = "amuaad"
-female = no
-1215.1.1 =
-{
-	birth = yes
+sarradon_22 = {
+	name = "Mahdi"
+	religion = "kathsiti"
+	culture = "amuaad"
+	female = no
+
+	1215.1.1 = {
+		birth = yes
+	}
 }
 
-}
-sarradon_23 = 
-{
- name = "Bahir"
- religion = "kathsiti"
- culture = "amuaad"
-female = no
-1230.1.1 =
-{
-	birth = yes
+sarradon_23 = {
+	name = "Bahir"
+	religion = "kathsiti"
+	culture = "amuaad"
+	female = no
+
+	1230.1.1 = {
+		birth = yes
+	}
 }
 
-}
-sarradon_24 = 
-{
- name = "Khalil"
- religion = "kathsiti"
- culture = "amuaad"
-female = no
-1224.1.1 =
-{
-	birth = yes
+sarradon_24 = {
+	name = "Ikrima"
+	religion = "sarradonian"
+	culture = "barzawa"
+	female = no
+
+	1224.1.1 = {
+		birth = yes
+	}
 }
 
-}
-sarradon_25 = 
-{
- name = "Abdullah"
- religion = "kathsiti"
- culture = "amuaad"
-female = no
-1220.1.1 =
-{
-	birth = yes
+sarradon_25 = {
+	name = "Abdullah"
+	religion = "kathsiti"
+	culture = "amuaad"
+	female = no
+
+	1220.1.1 = {
+		birth = yes
+	}
 }
 
-}
-sarradon_26 = 
-{
- name = "Ghalib"
- religion = "kathsiti"
- culture = "amuaad"
-female = no
-1228.1.1 =
-{
-	birth = yes
+sarradon_26 = {
+	name = "Ghalib"
+	religion = "kathsiti"
+	culture = "amuaad"
+	female = no
+
+	1228.1.1 = {
+		birth = yes
+	}
 }
 
-}
-sarradon_27 = 
-{
- name = "Akin"
- religion = "kathsiti"
- culture = "amuaad"
-female = no
-1220.1.1 =
-{
-	birth = yes
+sarradon_27 = {
+	name = "Akin"
+	religion = "kathsiti"
+	culture = "amuaad"
+	female = no
+
+	1220.1.1 = {
+		birth = yes
+	}
 }
 
-}
-sarradon_28 = 
-{
- name = "Khalil"
- religion = "kathsiti"
- culture = "amuaad"
-female = no
-1227.1.1 =
-{
-	birth = yes
+sarradon_28 = {
+	name = "Khalil"
+	religion = "kathsiti"
+	culture = "amuaad"
+	female = no
+
+	1227.1.1 = {
+		birth = yes
+	}
 }
 
-}
-sarradon_29 = 
-{
- name = "Murad"
- religion = "kathsiti"
- culture = "amuaad"
-female = no
-1233.1.1 =
-{
-	birth = yes
+sarradon_29 = {
+	name = "Murad"
+	religion = "kathsiti"
+	culture = "amuaad"
+	female = no
+
+	1233.1.1 = {
+		birth = yes
+	}
 }
 
-}
-sarradon_30 = 
-{
- name = "Mahmud"
- religion = "kathsiti"
- culture = "amuaad"
-female = no
-1230.1.1 =
-{
-	birth = yes
+sarradon_30 = {
+	name = "Mahmud"
+	religion = "kathsiti"
+	culture = "amuaad"
+	female = no
+
+	1230.1.1 = {
+		birth = yes
+	}
 }
 
-}
-sarradon_31 = 
-{
- name = "Bahir"
- religion = "kathsiti"
- culture = "amuaad"
-female = no
-1232.1.1 =
-{
-	birth = yes
+sarradon_31 = {
+	name = "Bahir"
+	religion = "kathsiti"
+	culture = "amuaad"
+	female = no
+
+	1232.1.1 = {
+		birth = yes
+	}
 }
 
-}
-sarradon_32 = 
-{
- name = "Muslihiddin"
- religion = "kathsiti"
- culture = "amuaad"
-female = no
-1227.1.1 =
-{
-	birth = yes
+sarradon_32 = {
+	name = "Muslihiddin"
+	religion = "kathsiti"
+	culture = "amuaad"
+	female = no
+
+	1227.1.1 = {
+		birth = yes
+	}
 }
 
-}
-sarradon_33 = 
-{
- name = "Malik"
- religion = "kathsiti"
- culture = "amuaad"
-female = no
-1232.1.1 =
-{
-	birth = yes
+sarradon_33 = {
+	name = "Malik"
+	religion = "kathsiti"
+	culture = "amuaad"
+	female = no
+
+	1232.1.1 = {
+		birth = yes
+	}
 }
 
-}
-sarradon_34 = 
-{
- name = "Yusuf"
- religion = "kathsiti"
- culture = "amuaad"
-female = no
-1230.1.1 =
-{
-	birth = yes
+sarradon_34 = {
+	name = "Yusuf"
+	religion = "kathsiti"
+	culture = "amuaad"
+	female = no
+
+	1230.1.1 = {
+		birth = yes
+	}
 }
 
-}
-sarradon_35 = 
-{
- name = "Aden"
- religion = "kathsiti"
- culture = "amuaad"
-female = no
-1231.1.1 =
-{
-	birth = yes
+sarradon_35 = {
+	name = "Aden"
+	religion = "kathsiti"
+	culture = "amuaad"
+	female = no
+
+	1231.1.1 = {
+		birth = yes
+	}
 }
 
-}
-sarradon_36 = 
-{
- name = "Hasan"
- religion = "kathsiti"
- culture = "amuaad"
-female = no
-1225.1.1 =
-{
-	birth = yes
+sarradon_36 = {
+	name = "Hasan"
+	religion = "kathsiti"
+	culture = "amuaad"
+	female = no
+
+	1225.1.1 = {
+		birth = yes
+	}
 }
 
-}
-sarradon_37 = 
-{
- name = "Yusuf"
- religion = "kathsiti"
- culture = "amuaad"
-female = no
-1219.1.1 =
-{
-	birth = yes
+sarradon_37 = {
+	name = "Yusuf"
+	religion = "kathsiti"
+	culture = "amuaad"
+	female = no
+
+	1219.1.1 = {
+		birth = yes
+	}
 }
 
-}
-sarradon_38 = 
-{
- name = "Shamir"
- religion = "kathsiti"
- culture = "amuaad"
-female = no
-1223.1.1 =
-{
-	birth = yes
+sarradon_38 = {
+	name = "Shamir"
+	religion = "kathsiti"
+	culture = "amuaad"
+	female = no
+
+	1223.1.1 = {
+		birth = yes
+	}
 }
 
-}
-sarradon_39 = 
-{
- name = "Aarif"
- religion = "sarradonian"
- culture = "tasurmad"
-female = no
-1220.1.1 =
-{
-	birth = yes
+sarradon_39 = {
+	name = "Aarif"
+	dna = aarif	religion = "sarradonian"
+	culture = "tasurmad"
+	sexuality = asexual
+	diplomacy = 14
+	father = sarradon_174
+	trait = aggressive_attacker
+	trait = ambitious
+	trait = brave
+	trait = impatient
+	trait = blademaster_2
+	trait = magic_good_4
+	trait = education_living_magic_1
+	trait = intellect_good_1
+	trait = education_diplomacy_3
+	dynasty = dyn_warden_2
+	female = no
+
+	1220.3.20 = {
+		birth = yes
+	effect = {
+		add_character_flag = has_scripted_appearance
+		}
+	}
+
+	1287.12.10 = {
+		death = yes
+	}
 }
 
-}
-sarradon_40 = 
-{
- name = "Akin"
- religion = "sarradonian"
- culture = "tasurmad"
-female = no
-1221.1.1 =
-{
-	birth = yes
+sarradon_40 = {
+	name = "Akin"
+	religion = "sarradonian"
+	culture = "tasurmad"
+	female = no
+
+	1221.1.1 = {
+		birth = yes
+	}
 }
 
-}
-sarradon_41 = 
-{
- name = "Khalil"
- religion = "sarradonian"
- culture = "tasurmad"
-female = no
-1230.1.1 =
-{
-	birth = yes
+sarradon_41 = {
+	name = "Khalil"
+	religion = "sarradonian"
+	culture = "tasurmad"
+	female = no
+
+	1230.1.1 = {
+		birth = yes
+	}
 }
 
-}
-sarradon_42 = 
-{
- name = "Musa"
- religion = "sarradonian"
- culture = "tasurmad"
-female = no
-1224.1.1 =
-{
-	birth = yes
+sarradon_42 = {
+	name = "Musa"
+	religion = "sarradonian"
+	culture = "tasurmad"
+	female = no
+
+	1224.1.1 = {
+		birth = yes
+	}
 }
 
-}
-sarradon_43 = 
-{
- name = "Mahdi"
- religion = "sarradonian"
- culture = "tasurmad"
-female = no
-1219.1.1 =
-{
-	birth = yes
+sarradon_43 = {
+	name = "Mahdi"
+	religion = "sarradonian"
+	culture = "tasurmad"
+	female = no
+
+	1219.1.1 = {
+		birth = yes
+	}
 }
 
-}
-sarradon_44 = 
-{
- name = "Muzaffaraddin"
- religion = "sarradonian"
- culture = "tasurmad"
-female = no
-1217.1.1 =
-{
-	birth = yes
+sarradon_44 = {
+	name = "Muzaffaraddin"
+	religion = "sarradonian"
+	culture = "tasurmad"
+	female = no
+
+	1217.1.1 = {
+		birth = yes
+	}
 }
 
-}
-sarradon_45 = 
-{
- name = "Faruk"
- religion = "sarradonian"
- culture = "tasurmad"
-female = no
-1234.1.1 =
-{
-	birth = yes
+sarradon_45 = {
+	name = "Faruk"
+	religion = "sarradonian"
+	culture = "tasurmad"
+	female = no
+
+	1234.1.1 = {
+		birth = yes
+	}
 }
 
-}
 sarradon_46 = {
 	name = "Isa"
-        dna = isa
+	dna = isa
 	religion = "ritualist"
 	culture = "tasurmad"
+	
 	trait = zealous
 	trait = education_diplomacy_3
 	trait = brave
@@ -1792,1144 +3246,1049 @@ sarradon_46 = {
 	trait = physique_bad_1
 	dynasty = dyn_ritualist_1
 	female = yes
+
 	1223.1.1 = {
 		birth = yes
-	        effect = {
+		effect = {
 			add_character_flag = has_scripted_appearance
 		}
 	}
 }
-sarradon_47 = 
-{
- name = "Shujah"
- religion = "sarradonian"
- culture = "tasurmad"
-female = no
-1234.1.1 =
-{
-	birth = yes
-}
-
-}
-sarradon_48 = 
-{
- name = "Mirza"
- religion = "sarradonian"
- culture = "tasurmad"
-female = no
-1215.1.1 =
-{
-	birth = yes
-}
-
-}
-sarradon_49 = 
-{
- name = "Faruk"
- religion = "sarradonian"
- culture = "tasurmad"
-female = no
-1229.1.1 =
-{
-	birth = yes
-}
-
-}
-sarradon_50 = 
-{
- name = "Sa_daddin"
- religion = "sarradonian"
- culture = "tasurmad"
-female = no
-1220.1.1 =
-{
-	birth = yes
-}
-
-}
-sarradon_51 = 
-{
- name = "Sa_daddin"
- religion = "sarradonian"
- culture = "tasurmad"
-female = no
-1222.1.1 =
-{
-	birth = yes
-}
-
-}
-sarradon_52 = 
-{
- name = "Mukhtar"
- religion = "sarradonian"
- culture = "tasurmad"
-female = no
-1219.1.1 =
-{
-	birth = yes
-}
-
-}
-sarradon_53 = 
-{
- name = "Ghalib"
- religion = "sarradonian"
- culture = "tasurmad"
-female = no
-1215.1.1 =
-{
-	birth = yes
-}
-
-}
-sarradon_54 = 
-{
- name = "Abu-Bakr"
- religion = "sarradonian"
- culture = "tasurmad"
-female = no
-1231.1.1 =
-{
-	birth = yes
-}
-
-}
-sarradon_55 = 
-{
- name = "Sami"
- religion = "sarradonian"
- culture = "tasurmad"
-female = no
-1215.1.1 =
-{
-	birth = yes
-}
 
-}
-sarradon_56 = 
-{
- name = "Youkhanna"
- religion = "sarradonian"
- culture = "tasurmad"
-female = no
-1230.1.1 =
-{
-	birth = yes
-}
+sarradon_47 = {
+	name = "Shujah"
+	religion = "sarradonian"
+	culture = "tasurmad"
+	female = no
 
+	1234.1.1 = {
+		birth = yes
+	}
 }
-sarradon_57 = 
-{
- name = "Alim"
- religion = "sarradonian"
- culture = "tasurmad"
-female = no
-1226.1.1 =
-{
-	birth = yes
-}
 
-}
-sarradon_58 = 
-{
- name = "Muhammad"
- religion = "sarradonian"
- culture = "tasurmad"
-female = no
-1216.1.1 =
-{
-	birth = yes
-}
+sarradon_48 = {
+	name = "Mirza"
+	religion = "sarradonian"
+	culture = "tasurmad"
+	female = no
 
+	1215.1.1 = {
+		birth = yes
+	}
 }
-sarradon_59 = 
-{
- name = "Idris"
- religion = "sarradonian"
- culture = "tasurmad"
-female = no
-1220.1.1 =
-{
-	birth = yes
-}
 
-}
-sarradon_60 = 
-{
- name = "Alim"
- religion = "sarradonian"
- culture = "tasurmad"
-female = no
-1233.1.1 =
-{
-	birth = yes
-}
+sarradon_49 = {
+	name = "Faruk"
+	religion = "sarradonian"
+	culture = "tasurmad"
+	female = no
 
+	1229.1.1 = {
+		birth = yes
+	}
 }
-sarradon_61 = 
-{
- name = "Abdul-Jaleel"
- religion = "sarradonian"
- culture = "tasurmad"
-female = no
-1220.1.1 =
-{
-	birth = yes
-}
 
-}
-sarradon_62 = 
-{
- name = "Isa"
- religion = "sarradonian"
- culture = "tasurmad"
-female = no
-1219.1.1 =
-{
-	birth = yes
-}
+sarradon_50 = {
+	name = "Sa_daddin"
+	religion = "sarradonian"
+	culture = "tasurmad"
+	female = no
 
-}
-sarradon_63 = 
-{
- name = "Idris"
- religion = "sarradonian"
- culture = "tasurmad"
-female = no
-1232.1.1 =
-{
-	birth = yes
+	1220.1.1 = {
+		birth = yes
+	}
 }
 
-}
-sarradon_64 = 
-{
- name = "Malik"
- religion = "sarradonian"
- culture = "tasurmad"
-female = no
-1234.1.1 =
-{
-	birth = yes
-}
+sarradon_51 = {
+	name = "Sa_daddin"
+	religion = "sarradonian"
+	culture = "tasurmad"
+	female = no
 
-}
-sarradon_65 = 
-{
- name = "Musa"
- religion = "sarradonian"
- culture = "tasurmad"
-female = no
-1225.1.1 =
-{
-	birth = yes
+	1222.1.1 = {
+		birth = yes
+	}
 }
 
-}
-sarradon_66 = 
-{
- name = "Hussayn"
- religion = "sarradonian"
- culture = "tasurmad"
-female = no
-1229.1.1 =
-{
-	birth = yes
-}
+sarradon_52 = {
+	name = "Mukhtar"
+	religion = "sarradonian"
+	culture = "tasurmad"
+	female = no
 
-}
-sarradon_67 = 
-{
- name = "Akin"
- religion = "sarradonian"
- culture = "tasurmad"
-female = no
-1217.1.1 =
-{
-	birth = yes
+	1219.1.1 = {
+		birth = yes
+	}
 }
 
-}
-sarradon_68 = 
-{
- name = "Youkhanna"
- religion = "sarradonian"
- culture = "tasurmad"
-female = no
-1228.1.1 =
-{
-	birth = yes
-}
+sarradon_53 = {
+	name = "Ghalib"
+	religion = "sarradonian"
+	culture = "tasurmad"
+	female = no
 
-}
-sarradon_69 = 
-{
- name = "Ali"
- religion = "sarradonian"
- culture = "tasurmad"
-female = no
-1215.1.1 =
-{
-	birth = yes
+	1215.1.1 = {
+		birth = yes
+	}
 }
 
-}
-sarradon_70 = 
-{
- name = "Husam"
- religion = "sarradonian"
- culture = "tasurmad"
-female = no
-1227.1.1 =
-{
-	birth = yes
-}
+sarradon_54 = {
+	name = "Abu-Bakr"
+	religion = "sarradonian"
+	culture = "tasurmad"
+	female = no
 
+	1231.1.1 = {
+		birth = yes
+	}
 }
-sarradon_71 = 
-{
- name = "Abu-Bakr"
- religion = "sarradonian"
- culture = "tasurmad"
-female = no
-1222.1.1 =
-{
-	birth = yes
-}
 
-}
-sarradon_72 = 
-{
- name = "Aghlab"
- religion = "sarradonian"
- culture = "tasurmad"
-female = no
-1233.1.1 =
-{
-	birth = yes
-}
+sarradon_55 = {
+	name = "Sami"
+	religion = "sarradonian"
+	culture = "tasurmad"
+	female = no
 
+	1215.1.1 = {
+		birth = yes
+	}
 }
-sarradon_73 = 
-{
- name = "Murad"
- religion = "sarradonian"
- culture = "tasurmad"
-female = no
-1221.1.1 =
-{
-	birth = yes
-}
 
-}
-sarradon_74 = 
-{
- name = "Sadiq"
- religion = "sarradonian"
- culture = "tasurmad"
-female = no
-1228.1.1 =
-{
-	birth = yes
-}
+sarradon_56 = {
+	name = "Youkhanna"
+	religion = "sarradonian"
+	culture = "tasurmad"
+	female = no
 
+	1230.1.1 = {
+		birth = yes
+	}
 }
-sarradon_75 = 
-{
- name = "Mansur"
- religion = "sarradonian"
- culture = "tasurmad"
-female = no
-1227.1.1 =
-{
-	birth = yes
-}
 
-}
-sarradon_76 = 
-{
- name = "Ali"
- religion = "sarradonian"
- culture = "tasurmad"
-female = no
-1217.1.1 =
-{
-	birth = yes
-}
+sarradon_57 = {
+	name = "Alim"
+	religion = "sarradonian"
+	culture = "tasurmad"
+	female = no
 
+	1226.1.1 = {
+		birth = yes
+	}
 }
-sarradon_77 = 
-{
- name = "Yusuf"
- religion = "sarradonian"
- culture = "tasurmad"
-female = no
-1230.1.1 =
-{
-	birth = yes
-}
 
-}
-sarradon_78 = 
-{
- name = "Hasan"
- religion = "sarradonian"
- culture = "tasurmad"
-female = no
-1226.1.1 =
-{
-	birth = yes
-}
+sarradon_58 = {
+	name = "Muhammad"
+	religion = "sarradonian"
+	culture = "tasurmad"
+	female = no
 
+	1216.1.1 = {
+		birth = yes
+	}
 }
-sarradon_79 = 
-{
- name = "Abu-Bakr"
- religion = "sarradonian"
- culture = "tasurmad"
-female = no
-1224.1.1 =
-{
-	birth = yes
-}
 
-}
-sarradon_80 = 
-{
- name = "Hafiz"
- religion = "sarradonian"
- culture = "tasurmad"
-female = no
-1229.1.1 =
-{
-	birth = yes
-}
+sarradon_59 = {
+	name = "Idris"
+	religion = "sarradonian"
+	culture = "tasurmad"
+	female = no
 
+	1220.1.1 = {
+		birth = yes
+	}
 }
-sarradon_81 = 
-{
- name = "Aghlab"
- religion = "sarradonian"
- culture = "tasurmad"
-female = no
-1234.1.1 =
-{
-	birth = yes
-}
 
-}
-sarradon_82 = 
-{
- name = "Samir"
- religion = "sarradonian"
- culture = "tasurmad"
-female = no
-1228.1.1 =
-{
-	birth = yes
-}
+sarradon_60 = {
+	name = "Alim"
+	religion = "sarradonian"
+	culture = "tasurmad"
+	female = no
 
+	1233.1.1 = {
+		birth = yes
+	}
 }
-sarradon_83 = 
-{
- name = "Mirza"
- religion = "sarradonian"
- culture = "tasurmad"
-female = no
-1230.1.1 =
-{
-	birth = yes
-}
 
-}
-sarradon_84 = 
-{
- name = "Qawurd"
- religion = "sarradonian"
- culture = "tasurmad"
-female = no
-1233.1.1 =
-{
-	birth = yes
-}
+sarradon_61 = {
+	name = "Abdul-Jaleel"
+	religion = "sarradonian"
+	culture = "tasurmad"
+	female = no
 
-}
-sarradon_85 = 
-{
- name = "Yusuf"
- religion = "sarradonian"
- culture = "tasurmad"
-female = no
-1218.1.1 =
-{
-	birth = yes
+	1220.1.1 = {
+		birth = yes
+	}
 }
 
-}
-sarradon_86 = 
-{
- name = "Fadl"
- religion = "sarradonian"
- culture = "tasurmad"
-female = no
-1223.1.1 =
-{
-	birth = yes
-}
+sarradon_62 = {
+	name = "Isa"
+	religion = "sarradonian"
+	culture = "tasurmad"
+	female = no
 
-}
-sarradon_87 = 
-{
- name = "Akin"
- religion = "sarradonian"
- culture = "tasurmad"
-female = no
-1217.1.1 =
-{
-	birth = yes
+	1219.1.1 = {
+		birth = yes
+	}
 }
 
-}
-sarradon_88 = 
-{
- name = "Mahdi"
- religion = "sarradonian"
- culture = "tasurmad"
-female = no
-1227.1.1 =
-{
-	birth = yes
-}
+sarradon_63 = {
+	name = "Idris"
+	religion = "sarradonian"
+	culture = "tasurmad"
+	female = no
 
-}
-sarradon_89 = 
-{
- name = "Shamir"
- religion = "sarradonian"
- culture = "tasurmad"
-female = no
-1219.1.1 =
-{
-	birth = yes
+	1232.1.1 = {
+		birth = yes
+	}
 }
 
-}
-sarradon_90 = 
-{
- name = "Ramadan"
- religion = "sarradonian"
- culture = "tasurmad"
-female = no
-1226.1.1 =
-{
-	birth = yes
-}
+sarradon_64 = {
+	name = "Malik"
+	religion = "sarradonian"
+	culture = "tasurmad"
+	female = no
 
-}
-sarradon_91 = 
-{
- name = "Aram"
- religion = "sarradonian"
- culture = "tasurmad"
-female = no
-1224.1.1 =
-{
-	birth = yes
+	1234.1.1 = {
+		birth = yes
+	}
 }
 
-}
-sarradon_92 = 
-{
- name = "Azam"
- religion = "sarradonian"
- culture = "tasurmad"
-female = no
-1225.1.1 =
-{
-	birth = yes
-}
+sarradon_65 = {
+	name = "Musa"
+	religion = "sarradonian"
+	culture = "tasurmad"
+	female = no
 
+	1225.1.1 = {
+		birth = yes
+	}
 }
-sarradon_93 = 
-{
- name = "Muslihiddin"
- religion = "sarradonian"
- culture = "tasurmad"
-female = no
-1220.1.1 =
-{
-	birth = yes
-}
 
-}
-sarradon_94 = 
-{
- name = "Abdul-Gafur"
- religion = "sarradonian"
- culture = "tasurmad"
-female = no
-1228.1.1 =
-{
-	birth = yes
-}
+sarradon_66 = {
+	name = "Hussayn"
+	religion = "sarradonian"
+	culture = "tasurmad"
+	female = no
 
+	1229.1.1 = {
+		birth = yes
+	}
 }
-sarradon_95 = 
-{
- name = "Hussayn"
- religion = "sarradonian"
- culture = "tasurmad"
-female = no
-1231.1.1 =
-{
-	birth = yes
-}
 
-}
-sarradon_96 = 
-{
- name = "Jalil"
- religion = "sarradonian"
- culture = "tasurmad"
-female = no
-1221.1.1 =
-{
-	birth = yes
-}
+sarradon_67 = {
+	name = "Akin"
+	religion = "sarradonian"
+	culture = "tasurmad"
+	female = no
 
+	1217.1.1 = {
+		birth = yes
+	}
 }
-sarradon_97 = 
-{
- name = "Zainuddin"
- religion = "sarradonian"
- culture = "tasurmad"
-female = no
-1223.1.1 =
-{
-	birth = yes
-}
 
-}
-sarradon_98 = 
-{
- name = "Husam"
- religion = "sarradonian"
- culture = "tasurmad"
-female = no
-1219.1.1 =
-{
-	birth = yes
-}
+sarradon_68 = {
+	name = "Youkhanna"
+	religion = "sarradonian"
+	culture = "tasurmad"
+	female = no
 
+	1228.1.1 = {
+		birth = yes
+	}
 }
-sarradon_99 = 
-{
- name = "Muhammad"
- religion = "sarradonian"
- culture = "tasurmad"
-female = no
-1228.1.1 =
-{
-	birth = yes
-}
 
-}
-sarradon_100 = 
-{
- name = "Muzaffaraddin"
- religion = "sarradonian"
- culture = "tasurmad"
-female = no
-1231.1.1 =
-{
-	birth = yes
-}
+sarradon_69 = {
+	name = "Ali"
+	religion = "sarradonian"
+	culture = "tasurmad"
+	female = no
 
+	1215.1.1 = {
+		birth = yes
+	}
 }
-sarradon_101 = 
-{
- name = "Abdullah"
- religion = "sarradonian"
- culture = "tasurmad"
-female = no
-1217.1.1 =
-{
-	birth = yes
-}
 
-}
-sarradon_102 = 
-{
- name = "Shujah"
- religion = "sarradonian"
- culture = "tasurmad"
-female = no
-1231.1.1 =
-{
-	birth = yes
-}
+sarradon_70 = {
+	name = "Husam"
+	religion = "sarradonian"
+	culture = "tasurmad"
+	female = no
 
+	1227.1.1 = {
+		birth = yes
+	}
 }
-sarradon_103 = 
-{
- name = "Jabir"
- religion = "sarradonian"
- culture = "tasurmad"
-female = no
-1218.1.1 =
-{
-	birth = yes
-}
 
-}
-sarradon_104 = 
-{
- name = "Talib"
- religion = "sarradonian"
- culture = "tasurmad"
-female = no
-1230.1.1 =
-{
-	birth = yes
-}
+sarradon_71 = {
+	name = "Abu-Bakr"
+	religion = "sarradonian"
+	culture = "tasurmad"
+	female = no
 
+	1222.1.1 = {
+		birth = yes
+	}
 }
-sarradon_105 = 
-{
- name = "Muhammad"
- religion = "sarradonian"
- culture = "tasurmad"
-female = no
-1216.1.1 =
-{
-	birth = yes
-}
 
-}
-sarradon_106 = 
-{
- name = "Malik"
- religion = "sarradonian"
- culture = "tasurmad"
-female = no
-1233.1.1 =
-{
-	birth = yes
+sarradon_72 = {
+	name = "Aghlab"
+	religion = "sarradonian"
+	culture = "tasurmad"
+	female = no
+
+	1233.1.1 = {
+		birth = yes
+	}
 }
 
+sarradon_73 = {
+	name = "Murad"
+	religion = "sarradonian"
+	culture = "tasurmad"
+	female = no
+
+	1221.1.1 = {
+		birth = yes
+	}
 }
-sarradon_107 = 
-{
- name = "Sulayman"
- religion = "sarradonian"
- culture = "tasurmad"
-female = no
-1232.1.1 =
-{
-	birth = yes
+
+sarradon_74 = {
+	name = "Sadiq"
+	religion = "sarradonian"
+	culture = "tasurmad"
+	female = no
+
+	1228.1.1 = {
+		birth = yes
+	}
 }
 
+sarradon_75 = {
+	name = "Mansur"
+	religion = "sarradonian"
+	culture = "tasurmad"
+	female = no
+
+	1227.1.1 = {
+		birth = yes
+	}
 }
-sarradon_108 = 
-{
- name = "Khaireddin"
- religion = "sarradonian"
- culture = "tasurmad"
-female = no
-1215.1.1 =
-{
-	birth = yes
+
+sarradon_76 = {
+	name = "Ali"
+	religion = "sarradonian"
+	culture = "tasurmad"
+	female = no
+
+	1217.1.1 = {
+		birth = yes
+	}
 }
 
+sarradon_77 = {
+	name = "Yusuf"
+	religion = "sarradonian"
+	culture = "tasurmad"
+	female = no
+
+	1230.1.1 = {
+		birth = yes
+	}
 }
-sarradon_109 = 
-{
- name = "Zainuddin"
- religion = "sarradonian"
- culture = "tasurmad"
-female = no
-1227.1.1 =
-{
-	birth = yes
+
+sarradon_78 = {
+	name = "Hasan"
+	religion = "sarradonian"
+	culture = "tasurmad"
+	female = no
+
+	1226.1.1 = {
+		birth = yes
+	}
 }
 
+sarradon_79 = {
+	name = "Abu-Bakr"
+	religion = "sarradonian"
+	culture = "tasurmad"
+	female = no
+
+	1224.1.1 = {
+		birth = yes
+	}
 }
-sarradon_110 = 
-{
- name = "Zeyd"
- religion = "sarradonian"
- culture = "tasurmad"
-female = no
-1219.1.1 =
-{
-	birth = yes
+
+sarradon_80 = {
+	name = "Hafiz"
+	religion = "sarradonian"
+	culture = "tasurmad"
+	female = no
+
+	1229.1.1 = {
+		birth = yes
+	}
 }
+
+sarradon_81 = {
+	name = "Aghlab"
+	religion = "sarradonian"
+	culture = "tasurmad"
+	female = no
 
+	1234.1.1 = {
+		birth = yes
+	}
 }
-sarradon_111 = 
-{
- name = "Hussayn"
- religion = "sarradonian"
- culture = "tasurmad"
-female = no
-1220.1.1 =
-{
-	birth = yes
+
+sarradon_82 = {
+	name = "Samir"
+	religion = "sarradonian"
+	culture = "tasurmad"
+	female = no
+
+	1228.1.1 = {
+		birth = yes
+	}
 }
+
+sarradon_83 = {
+	name = "Mirza"
+	religion = "sarradonian"
+	culture = "tasurmad"
+	female = no
 
+	1230.1.1 = {
+		birth = yes
+	}
 }
-sarradon_112 = 
-{
- name = "Bahir"
- religion = "sarradonian"
- culture = "tasurmad"
-female = no
-1230.1.1 =
-{
-	birth = yes
+
+sarradon_84 = {
+	name = "Qawurd"
+	religion = "sarradonian"
+	culture = "tasurmad"
+	female = no
+
+	1233.1.1 = {
+		birth = yes
+	}
 }
+
+sarradon_85 = {
+	name = "Yusuf"
+	religion = "sarradonian"
+	culture = "tasurmad"
+	female = no
 
+	1218.1.1 = {
+		birth = yes
+	}
 }
-sarradon_113 = 
-{
- name = "Abdul-Wahab"
- religion = "sarradonian"
- culture = "tasurmad"
-female = no
-1222.1.1 =
-{
-	birth = yes
+
+sarradon_86 = {
+	name = "Fadl"
+	religion = "sarradonian"
+	culture = "tasurmad"
+	female = no
+
+	1223.1.1 = {
+		birth = yes
+	}
 }
+
+sarradon_87 = {
+	name = "Akin"
+	religion = "sarradonian"
+	culture = "tasurmad"
+	female = no
 
+	1217.1.1 = {
+		birth = yes
+	}
 }
-sarradon_114 = 
-{
- name = "Zulfiqar"
- religion = "sarradonian"
- culture = "tasurmad"
-female = no
-1224.1.1 =
-{
-	birth = yes
+
+sarradon_88 = {
+	name = "Mahdi"
+	religion = "sarradonian"
+	culture = "tasurmad"
+	female = no
+
+	1227.1.1 = {
+		birth = yes
+	}
 }
 
+sarradon_89 = {
+	name = "Shamir"
+	religion = "sarradonian"
+	culture = "tasurmad"
+	female = no
+
+	1219.1.1 = {
+		birth = yes
+	}
 }
-sarradon_115 = 
-{
- name = "Abdul-Jaleel"
- religion = "sarradonian"
- culture = "tasurmad"
-female = no
-1227.1.1 =
-{
-	birth = yes
+
+sarradon_90 = {
+	name = "Ramadan"
+	religion = "sarradonian"
+	culture = "tasurmad"
+	female = no
+
+	1226.1.1 = {
+		birth = yes
+	}
 }
 
+sarradon_91 = {
+	name = "Aram"
+	religion = "sarradonian"
+	culture = "tasurmad"
+	female = no
+
+	1224.1.1 = {
+		birth = yes
+	}
 }
-sarradon_116 = 
-{
- name = "Sa_daddin"
- religion = "sarradonian"
- culture = "tasurmad"
-female = no
-1219.1.1 =
-{
-	birth = yes
+
+sarradon_92 = {
+	name = "Azam"
+	religion = "sarradonian"
+	culture = "tasurmad"
+	female = no
+
+	1225.1.1 = {
+		birth = yes
+	}
 }
 
+sarradon_93 = {
+	name = "Muslihiddin"
+	religion = "sarradonian"
+	culture = "tasurmad"
+	female = no
+
+	1220.1.1 = {
+		birth = yes
+	}
 }
-sarradon_117 = 
-{
- name = "Malik"
- religion = "sarradonian"
- culture = "tasurmad"
-female = no
-1217.1.1 =
-{
-	birth = yes
+
+sarradon_94 = {
+	name = "Abdul-Gafur"
+	religion = "sarradonian"
+	culture = "tasurmad"
+	female = no
+
+	1228.1.1 = {
+		birth = yes
+	}
 }
 
+sarradon_95 = {
+	name = "Hussayn"
+	religion = "sarradonian"
+	culture = "tasurmad"
+	female = no
+
+	1231.1.1 = {
+		birth = yes
+	}
 }
-sarradon_118 = 
-{
- name = "Isa"
- religion = "sarradonian"
- culture = "tasurmad"
-female = no
-1224.1.1 =
-{
-	birth = yes
+
+sarradon_96 = {
+	name = "Jalil"
+	religion = "sarradonian"
+	culture = "tasurmad"
+	female = no
+
+	1221.1.1 = {
+		birth = yes
+	}
 }
 
+sarradon_97 = {
+	name = "Zainuddin"
+	religion = "sarradonian"
+	culture = "tasurmad"
+	female = no
+
+	1223.1.1 = {
+		birth = yes
+	}
 }
-sarradon_119 = 
-{
- name = "Abdul-Qadir"
- religion = "sarradonian"
- culture = "tasurmad"
-female = no
-1225.1.1 =
-{
-	birth = yes
+
+sarradon_98 = {
+	name = "Husam"
+	religion = "sarradonian"
+	culture = "tasurmad"
+	female = no
+
+	1219.1.1 = {
+		birth = yes
+	}
 }
 
+sarradon_99 = {
+	name = "Muhammad"
+	religion = "sarradonian"
+	culture = "tasurmad"
+	female = no
+
+	1228.1.1 = {
+		birth = yes
+	}
 }
-sarradon_120 = 
-{
- name = "Sami"
- religion = "sarradonian"
- culture = "tasurmad"
-female = no
-1231.1.1 =
-{
-	birth = yes
+
+sarradon_100 = {
+	name = "Muzaffaraddin"
+	religion = "sarradonian"
+	culture = "tasurmad"
+	female = no
+
+	1231.1.1 = {
+		birth = yes
+	}
 }
 
+sarradon_101 = {
+	name = "Abdullah"
+	religion = "sarradonian"
+	culture = "tasurmad"
+	female = no
+
+	1217.1.1 = {
+		birth = yes
+	}
 }
-sarradon_121 = 
-{
- name = "Sulayman"
- religion = "sarradonian"
- culture = "tasurmad"
-female = no
-1221.1.1 =
-{
-	birth = yes
+
+sarradon_102 = {
+	name = "Shujah"
+	religion = "sarradonian"
+	culture = "tasurmad"
+	female = no
+
+	1231.1.1 = {
+		birth = yes
+	}
 }
 
+sarradon_103 = {
+	name = "Jabir"
+	religion = "sarradonian"
+	culture = "tasurmad"
+	female = no
+
+	1218.1.1 = {
+		birth = yes
+	}
 }
-sarradon_122 = 
-{
- name = "Muzaffaraddin"
- religion = "sarradonian"
- culture = "tasurmad"
-female = no
-1233.1.1 =
-{
-	birth = yes
+
+sarradon_104 = {
+	name = "Talib"
+	religion = "sarradonian"
+	culture = "tasurmad"
+	female = no
+
+	1230.1.1 = {
+		birth = yes
+	}
 }
 
+sarradon_105 = {
+	name = "Muhammad"
+	religion = "sarradonian"
+	culture = "tasurmad"
+	female = no
+
+	1216.1.1 = {
+		birth = yes
+	}
 }
-sarradon_123 = 
-{
- name = "Hasan"
- religion = "sarradonian"
- culture = "tasurmad"
-female = no
-1216.1.1 =
-{
-	birth = yes
+
+sarradon_106 = {
+	name = "Malik"
+	religion = "sarradonian"
+	culture = "tasurmad"
+	female = no
+
+	1233.1.1 = {
+		birth = yes
+	}
 }
 
+sarradon_107 = {
+	name = "Sulayman"
+	religion = "sarradonian"
+	culture = "tasurmad"
+	female = no
+
+	1232.1.1 = {
+		birth = yes
+	}
 }
-sarradon_124 = 
-{
- name = "Muhammad"
- religion = "sarradonian"
- culture = "tasurmad"
-female = no
-1226.1.1 =
-{
-	birth = yes
+
+sarradon_108 = {
+	name = "Khaireddin"
+	religion = "sarradonian"
+	culture = "tasurmad"
+	female = no
+
+	1215.1.1 = {
+		birth = yes
+	}
 }
 
+sarradon_109 = {
+	name = "Zainuddin"
+	religion = "sarradonian"
+	culture = "tasurmad"
+	female = no
+
+	1227.1.1 = {
+		birth = yes
+	}
 }
-sarradon_125 = 
-{
- name = "Abdul-Qadir"
- religion = "sarradonian"
- culture = "tasurmad"
-female = no
-1221.1.1 =
-{
-	birth = yes
+
+sarradon_110 = {
+	name = "Zeyd"
+	religion = "sarradonian"
+	culture = "tasurmad"
+	female = no
+
+	1219.1.1 = {
+		birth = yes
+	}
 }
+
+sarradon_111 = {
+	name = "Hussayn"
+	religion = "sarradonian"
+	culture = "tasurmad"
+	female = no
 
+	1220.1.1 = {
+		birth = yes
+	}
 }
-sarradon_126 = 
-{
- name = "Abu-Bakr"
- religion = "sarradonian"
- culture = "tasurmad"
-female = no
-1219.1.1 =
-{
-	birth = yes
+
+sarradon_112 = {
+	name = "Bahir"
+	religion = "sarradonian"
+	culture = "tasurmad"
+	female = no
+
+	1230.1.1 = {
+		birth = yes
+	}
 }
+
+sarradon_113 = {
+	name = "Abdul-Wahab"
+	religion = "sarradonian"
+	culture = "tasurmad"
+	female = no
 
+	1222.1.1 = {
+		birth = yes
+	}
 }
-sarradon_127 = 
-{
- name = "Youkhanna"
- religion = "sarradonian"
- culture = "tasurmad"
-female = no
-1228.1.1 =
-{
-	birth = yes
+
+sarradon_114 = {
+	name = "Zulfiqar"
+	religion = "sarradonian"
+	culture = "tasurmad"
+	female = no
+
+	1224.1.1 = {
+		birth = yes
+	}
 }
+
+sarradon_115 = {
+	name = "Abdul-Jaleel"
+	religion = "sarradonian"
+	culture = "tasurmad"
+	female = no
 
+	1227.1.1 = {
+		birth = yes
+	}
 }
-sarradon_128 = 
-{
- name = "Sami"
- religion = "sarradonian"
- culture = "tasurmad"
-female = no
-1224.1.1 =
-{
-	birth = yes
+
+sarradon_116 = {
+	name = "Sa_daddin"
+	religion = "sarradonian"
+	culture = "tasurmad"
+	female = no
+
+	1219.1.1 = {
+		birth = yes
+	}
 }
+
+sarradon_117 = {
+	name = "Malik"
+	religion = "sarradonian"
+	culture = "tasurmad"
+	female = no
 
+	1217.1.1 = {
+		birth = yes
+	}
 }
-sarradon_129 = 
-{
- name = "Shamir"
- religion = "sarradonian"
- culture = "tasurmad"
-female = no
-1215.1.1 =
-{
-	birth = yes
+
+sarradon_118 = {
+	name = "Isa"
+	religion = "sarradonian"
+	culture = "tasurmad"
+	female = no
+
+	1224.1.1 = {
+		birth = yes
+	}
 }
 
+sarradon_119 = {
+	name = "Abdul-Qadir"
+	religion = "sarradonian"
+	culture = "tasurmad"
+	female = no
+
+	1225.1.1 = {
+		birth = yes
+	}
 }
-sarradon_130 = 
-{
- name = "Aden"
- religion = "sarradonian"
- culture = "tasurmad"
-female = no
-1220.1.1 =
-{
-	birth = yes
+
+sarradon_120 = {
+	name = "Sami"
+	religion = "sarradonian"
+	culture = "tasurmad"
+	female = no
+
+	1231.1.1 = {
+		birth = yes
+	}
 }
 
+sarradon_121 = {
+	name = "Sulayman"
+	religion = "sarradonian"
+	culture = "tasurmad"
+	female = no
+
+	1221.1.1 = {
+		birth = yes
+	}
 }
-sarradon_131 = 
-{
- name = "Akin"
- religion = "sarradonian"
- culture = "tasurmad"
-female = no
-1232.1.1 =
-{
-	birth = yes
+
+sarradon_122 = {
+	name = "Muzaffaraddin"
+	religion = "sarradonian"
+	culture = "tasurmad"
+	female = no
+
+	1233.1.1 = {
+		birth = yes
+	}
 }
 
+sarradon_123 = {
+	name = "Hasan"
+	religion = "sarradonian"
+	culture = "tasurmad"
+	female = no
+
+	1216.1.1 = {
+		birth = yes
+	}
 }
-sarradon_132 = 
-{
- name = "Najib"
- religion = "sarradonian"
- culture = "tasurmad"
-female = no
-1231.1.1 =
-{
-	birth = yes
+
+sarradon_124 = {
+	name = "Muhammad"
+	religion = "sarradonian"
+	culture = "tasurmad"
+	female = no
+
+	1226.1.1 = {
+		birth = yes
+	}
 }
 
+sarradon_125 = {
+	name = "Abdul-Qadir"
+	religion = "sarradonian"
+	culture = "tasurmad"
+	female = no
+
+	1221.1.1 = {
+		birth = yes
+	}
 }
-sarradon_133 = 
-{
- name = "Ghalib"
- religion = "sarradonian"
- culture = "tasurmad"
-female = no
-1225.1.1 =
-{
-	birth = yes
+
+sarradon_126 = {
+	name = "Abu-Bakr"
+	religion = "sarradonian"
+	culture = "tasurmad"
+	female = no
+
+	1219.1.1 = {
+		birth = yes
+	}
 }
 
+sarradon_127 = {
+	name = "Youkhanna"
+	religion = "sarradonian"
+	culture = "tasurmad"
+	female = no
+
+	1228.1.1 = {
+		birth = yes
+	}
 }
-sarradon_134 = 
-{
- name = "Aram"
- religion = "sarradonian"
- culture = "tasurmad"
-female = no
-1220.1.1 =
-{
-	birth = yes
+
+sarradon_128 = {
+	name = "Sami"
+	religion = "sarradonian"
+	culture = "tasurmad"
+	female = no
+
+	1224.1.1 = {
+		birth = yes
+	}
 }
 
+sarradon_129 = {
+	name = "Shamir"
+	religion = "sarradonian"
+	culture = "tasurmad"
+	female = no
+
+	1215.1.1 = {
+		birth = yes
+	}
 }
-sarradon_135 = 
-{
- name = "Alim"
- religion = "sarradonian"
- culture = "tasurmad"
-female = no
-1229.1.1 =
-{
-	birth = yes
+
+sarradon_130 = {
+	name = "Aden"
+	religion = "sarradonian"
+	culture = "tasurmad"
+	female = no
+
+	1220.1.1 = {
+		birth = yes
+	}
 }
 
+sarradon_131 = {
+	name = "Akin"
+	religion = "sarradonian"
+	culture = "tasurmad"
+	female = no
+
+	1232.1.1 = {
+		birth = yes
+	}
 }
-sarradon_136 = 
-{
- name = "Abdul"
- religion = "sarradonian"
- culture = "tasurmad"
-female = no
-1218.1.1 =
-{
-	birth = yes
+
+sarradon_132 = {
+	name = "Najib"
+	religion = "sarradonian"
+	culture = "tasurmad"
+	female = no
+
+	1231.1.1 = {
+		birth = yes
+	}
 }
 
+sarradon_133 = {
+	name = "Ghalib"
+	religion = "sarradonian"
+	culture = "tasurmad"
+	female = no
+
+	1225.1.1 = {
+		birth = yes
+	}
 }
-sarradon_137 = 
-{
- name = "Sulayman"
- religion = "sarradonian"
- culture = "tasurmad"
-female = no
-1231.1.1 =
-{
-	birth = yes
+
+sarradon_134 = {
+	name = "Aram"
+	religion = "sarradonian"
+	culture = "tasurmad"
+	female = no
+
+	1220.1.1 = {
+		birth = yes
+	}
 }
 
+sarradon_135 = {
+	name = "Alim"
+	religion = "sarradonian"
+	culture = "tasurmad"
+	female = no
+
+	1229.1.1 = {
+		birth = yes
+	}
 }
-sarradon_138 = 
-{
- name = "Youkhanna"
- religion = "sarradonian"
- culture = "tasurmad"
-female = no
-1227.1.1 =
-{
-	birth = yes
+
+sarradon_136 = {
+	name = "Abdul"
+	religion = "sarradonian"
+	culture = "tasurmad"
+	female = no
+
+	1218.1.1 = {
+		birth = yes
+	}
 }
 
+sarradon_137 = {
+	name = "Sulayman"
+	religion = "sarradonian"
+	culture = "tasurmad"
+	female = no
+
+	1231.1.1 = {
+		birth = yes
+	}
 }
-sarradon_139 = 
-{
- name = "Isa"
- religion = "sarradonian"
- culture = "tasurmad"
-female = no
-1221.1.1 =
-{
-	birth = yes
+
+sarradon_138 = {
+	name = "Youkhanna"
+	religion = "sarradonian"
+	culture = "tasurmad"
+	female = no
+
+	1227.1.1 = {
+		birth = yes
+	}
 }
 
+sarradon_139 = {
+	name = "Isa"
+	religion = "sarradonian"
+	culture = "tasurmad"
+	female = no
+
+	1221.1.1 = {
+		birth = yes
+	}
 }
+
 #Characters Generated at 2020/11/28 23:03:27 by 
-sarradon_140 = 
-{
- name = "Uways"
- religion = "sarradonian"
- culture = "tasurmad"
-female = no
-1216.1.1 =
-{
-	birth = yes
+sarradon_140 = {
+	name = "Uways"
+	religion = "sarradonian"
+	culture = "tasurmad"
+	female = no
+
+	1216.1.1 = {
+		birth = yes
+	}
 }
-
-}
-
-
 
 sarradon_141 = {	
 	name = "Basiane"
@@ -2940,6 +4299,7 @@ sarradon_141 = {
 	diplomacy = 10
 	intrigue = 10
 	stewardship = 10
+
 	1221.1.1 = {
 		birth = yes
 	}
@@ -2954,6 +4314,7 @@ sarradon_142 = {
 	diplomacy = 10
 	intrigue = 10
 	stewardship = 10
+
 	1220.1.1 = {
 		birth = yes
 	}
@@ -2968,21 +4329,8 @@ sarradon_143 = {
 	diplomacy = 10
 	intrigue = 10
 	stewardship = 10
-	1229.1.1 = {
-		birth = yes
-	}
-}
 
-sarradon_144 = {	
-	name = "Agamede"
-	religion = "sansia"
-	culture = "makryenis"
-	female = yes
-	martial = 10
-	diplomacy = 10
-	intrigue = 10
-	stewardship = 10
-	1226.1.1 = {
+	1229.1.1 = {
 		birth = yes
 	}
 }
@@ -2996,6 +4344,7 @@ sarradon_145 = {
 	diplomacy = 10
 	intrigue = 10
 	stewardship = 10
+
 	1219.1.1 = {
 		birth = yes
 	}
@@ -3010,6 +4359,7 @@ sarradon_146 = {
 	diplomacy = 10
 	intrigue = 10
 	stewardship = 10
+
 	1228.1.1 = {
 		birth = yes
 	}
@@ -3024,21 +4374,8 @@ sarradon_147 = {
 	diplomacy = 10
 	intrigue = 10
 	stewardship = 10
-	1233.1.1 = {
-		birth = yes
-	}
-}
 
-sarradon_148 = {	
-	name = "Elcmene"
-	religion = "sansia"
-	culture = "makryenis"
-	female = yes
-	martial = 10
-	diplomacy = 10
-	intrigue = 10
-	stewardship = 10
-	1215.1.1 = {
+	1233.1.1 = {
 		birth = yes
 	}
 }
@@ -3052,21 +4389,8 @@ sarradon_149 = {
 	diplomacy = 10
 	intrigue = 10
 	stewardship = 10
-	1229.1.1 = {
-		birth = yes
-	}
-}
 
-sarradon_150 = {	
-	name = "Eriphyle"
-	religion = "sansia"
-	culture = "makryenis"
-	female = yes
-	martial = 10
-	diplomacy = 10
-	intrigue = 10
-	stewardship = 10
-	1225.1.1 = {
+	1229.1.1 = {
 		birth = yes
 	}
 }
@@ -3080,6 +4404,7 @@ sarradon_151 = {
 	diplomacy = 10
 	intrigue = 10
 	stewardship = 10
+
 	1224.1.1 = {
 		birth = yes
 	}
@@ -3094,6 +4419,7 @@ sarradon_152 = {
 	diplomacy = 10
 	intrigue = 10
 	stewardship = 10
+
 	1234.1.1 = {
 		birth = yes
 	}
@@ -3108,21 +4434,8 @@ sarradon_153 = {
 	diplomacy = 10
 	intrigue = 10
 	stewardship = 10
-	1229.1.1 = {
-		birth = yes
-	}
-}
 
-sarradon_154 = {	
-	name = "Briseis"
-	religion = "sansia"
-	culture = "makryenis"
-	female = yes
-	martial = 10
-	diplomacy = 10
-	intrigue = 10
-	stewardship = 10
-	1232.1.1 = {
+	1229.1.1 = {
 		birth = yes
 	}
 }
@@ -3136,87 +4449,78 @@ sarradon_155 = {
 	diplomacy = 10
 	intrigue = 10
 	stewardship = 10
+
 	1230.1.1 = {
 		birth = yes
 	}
 }
 
 #Characters Generated at 2020/11/28 23:03:42 by 
-sarradon_156 = 
-{
- name = "Abdul-Wahab"
- religion = "sarradonian"
- culture = "utyalid"
-female = no
-1231.1.1 =
-{
-	birth = yes
+sarradon_156 = {
+	name = "Abdul-Wahab"
+	religion = "sarradonian"
+	culture = "utyalid"
+	female = no
+
+	1231.1.1 = {
+		birth = yes
+	}
 }
 
-}
-sarradon_157 = 
-{
- name = "Muzaffaraddin"
- religion = "sarradonian"
- culture = "utyalid"
-female = no
-1222.1.1 =
-{
-	birth = yes
+sarradon_157 = {
+	name = "Muzaffaraddin"
+	religion = "sarradonian"
+	culture = "utyalid"
+	female = no
+
+	1222.1.1 = {
+		birth = yes
+	}
 }
 
-}
-sarradon_158 = 
-{
- name = "Azam"
- religion = "sarradonian"
- culture = "utyalid"
-female = no
-1225.1.1 =
-{
-	birth = yes
+sarradon_158 = {
+	name = "Azam"
+	religion = "sarradonian"
+	culture = "utyalid"
+	female = no
+
+	1225.1.1 = {
+		birth = yes
+	}
 }
 
-}
-sarradon_159 = 
-{
- name = "Shamir"
- religion = "sarradonian"
- culture = "utyalid"
-female = no
-1218.1.1 =
-{
-	birth = yes
+sarradon_159 = {
+	name = "Shamir"
+	religion = "sarradonian"
+	culture = "utyalid"
+	female = no
+
+	1218.1.1 = {
+		birth = yes
+	}
 }
 
-}
-sarradon_160 = 
-{
- name = "Ya_qub"
- religion = "sarradonian"
- culture = "utyalid"
-female = no
-1215.1.1 =
-{
-	birth = yes
-}
+sarradon_160 = {
+	name = "Ya_qub"
+	religion = "sarradonian"
+	culture = "utyalid"
+	female = no
 
+	1215.1.1 = {
+		birth = yes
+	}
 }
-
-
 
 test_69 = {	
 	religion = "adabyssian"
 	culture = "leviden"
+
 	1231.6.18 = {
 		birth = yes
 	}
 }
 
-## ibn sarradon vassals
-
-
-khenemhat_1 = { #d_avsu-credit to zilis, he made these dudes
+## ibn sarradon vassalskhenemhat_1 = { #d_avsu-credit to zilis, he made these dudes
 	name = "Ihaab"
 	dynasty = dyn_khenemhat_1
 	religion = "harthahi"
@@ -3225,9 +4529,11 @@ khenemhat_1 = { #d_avsu-credit to zilis, he made these dudes
 	diplomacy = 10
 	intrigue = 10
 	stewardship = 10
+
 	1212.1.1 = {
 		birth = yes
 	}
+
 	1240.1.1 = {
 		add_spouse = khenemhat_2
 	}
@@ -3238,6 +4544,7 @@ khenemhat_2 = { #d_avsu wife
 	religion = "harthahi"
 	culture = "tasurmad"
 	female = yes
+
 	1222.1.1 = {
 		birth = yes
 	}
@@ -3250,12 +4557,13 @@ khenemhat_3 = { #d_avsu son 1
 	culture = "tasurmad"
 	father = khenemhat_1
 	mother = khenemhat_2
+
 	1241.1.1 = {
 		birth = yes
 	}
 }
 
-khenemhat_4 { #d_avsu daughter 1
+khenemhat_4 = { #d_avsu daughter 1
 	name = "Ishaaba"
 	dynasty = dyn_khenemhat_1
 	religion = "harthahi"
@@ -3263,6 +4571,7 @@ khenemhat_4 { #d_avsu daughter 1
 	female = yes
 	father = khenemhat_1
 	mother = khenemhat_2
+
 	1248.1.1 = {
 		birth = yes
 	}
@@ -3277,9 +4586,11 @@ khenemhat_5 = { #d_shedjusma
 	diplomacy = 10
 	intrigue = 10
 	stewardship = 10
+
 	1225.1.1 = {
 		birth = yes
 	}
+
 	1245.1.1 = {
 		add_spouse = khenemhat_6
 	}
@@ -3290,6 +4601,7 @@ khenemhat_6 = { #d_shedjusma wife
 	religion = "harthahi"
 	culture = "tasurmad"
 	female = yes
+
 	1228.1.1 = {
 		birth = yes
 	}
@@ -3303,6 +4615,7 @@ khenemhat_7 = { #d_shedjusma daughter 1
 	female = yes
 	father = khenemhat_5
 	mother = khenemhat_6
+
 	1246.1.1 = {
 		birth = yes
 	}
@@ -3316,6 +4629,7 @@ khenemhat_8 = { #d_shedjusma daughter 2
 	female = yes
 	father = khenemhat_5
 	mother = khenemhat_6
+
 	1249.1.1 = {
 		birth = yes
 	}
@@ -3329,6 +4643,7 @@ khenemhat_9 = { #d_shedjusma daughter 3
 	female = yes
 	father = khenemhat_5
 	mother = khenemhat_6
+
 	1252.1.1 = {
 		birth = yes
 	}
@@ -3343,9 +4658,11 @@ khenemhat_10 = { #d_nekhneiyut
 	diplomacy = 10
 	intrigue = 10
 	stewardship = 10
+
 	1219.1.1 = {
 		birth = yes
 	}
+
 	1238.1.1 = {
 		add_spouse = khenemhat_11
 	}
@@ -3356,6 +4673,7 @@ khenemhat_11 = { #d_nekhneiyut wife
 	religion = "harthahi"
 	culture = "tasurmad"
 	female = yes
+
 	1221.1.1 = {
 		birth = yes
 	}
@@ -3368,6 +4686,7 @@ khenemhat_12 = { #d_nekhneiyut son 1
 	culture = "tasurmad"
 	father = khenemhat_10
 	mother = khenemhat_11
+
 	1239.1.1 = {
 		birth = yes
 	}
@@ -3380,6 +4699,7 @@ khenemhat_13 = { #d_nekhneiyut son 2
 	culture = "tasurmad"
 	father = khenemhat_10
 	mother = khenemhat_11
+
 	1243.1.1 = {
 		birth = yes
 	}
@@ -3393,6 +4713,7 @@ khenemhat_14 = { #d_nekhneiyut daughter 1
 	female = yes
 	father = khenemhat_10
 	mother = khenemhat_11
+
 	1248.1.1 = {
 		birth = yes
 	}
@@ -3407,9 +4728,11 @@ khenemhat_15 = { #d_amvalzum
 	diplomacy = 10
 	intrigue = 10
 	stewardship = 10
+
 	1235.1.1 = {
 		birth = yes
 	}
+
 	1251.1.1 = {
 		add_spouse = khenemhat_16
 	}
@@ -3420,6 +4743,7 @@ khenemhat_16 = { #d_amvalzum wife
 	religion = "harthahi"
 	culture = "tasurmad"
 	female = yes
+
 	1234.1.1 = {
 		birth = yes
 	}
@@ -3432,6 +4756,7 @@ khenemhat_17 = { #d_amvalzum son 1
 	culture = "tasurmad"
 	father = "khenemhat_15"
 	mother = "khenemhat_16"
+
 	1253.1.1 = {
 		birth = yes
 	}
@@ -3446,9 +4771,11 @@ khenemhat_18 = { #d_khastelzum
 	diplomacy = 10
 	intrigue = 10
 	stewardship = 10
+
 	1185.1.1 = {
 		birth = yes
 	}
+
 	1211.1.1 = {
 		add_spouse = khenemhat_19
 	}
@@ -3459,6 +4786,7 @@ khenemhat_19 = { #d_khastelzum wife
 	religion = "harthahi"
 	culture = "tasurmad"
 	female = yes
+
 	1195.1.1 = {
 		birth = yes
 	}
@@ -3471,6 +4799,7 @@ khenemhat_20 = { #d_khastelzum son 1
 	culture = "tasurmad"
 	father = khenemhat_18
 	mother = khenemhat_19
+
 	1212.1.1 = {
 		birth = yes
 	}
@@ -3483,6 +4812,7 @@ khenemhat_21 = { #d_khastelzum son 2
 	culture = "tasurmad"
 	father = khenemhat_18
 	mother = khenemhat_19
+
 	1215.1.1 = {
 		birth = yes
 	}
@@ -3495,6 +4825,7 @@ khenemhat_22 = { #d_khastelzum son 3
 	culture = "tasurmad"
 	father = khenemhat_18
 	mother = khenemhat_19
+
 	1217.1.1 = {
 		birth = yes
 	}
@@ -3508,6 +4839,7 @@ khenemhat_23 = { #d_khastelzum daughter 1
 	female = yes
 	father = khenemhat_18
 	mother = khenemhat_19
+
 	1220.1.1 = {
 		birth = yes
 	}
@@ -3521,6 +4853,7 @@ khenemhat_24 = { #d_khastelzum daughter 2
 	female = yes
 	father = khenemhat_18
 	mother = khenemhat_19
+
 	1223.1.1 = {
 		birth = yes
 	}
@@ -3533,6 +4866,7 @@ khenemhat_25 = { #d_khastelzum son 4
 	culture = "tasurmad"
 	father = khenemhat_18
 	mother = khenemhat_19
+
 	1227.1.1 = {
 		birth = yes
 	}
@@ -3547,10 +4881,12 @@ khenemhat_26 = {
 	diplomacy = 10
 	intrigue = 10
 	stewardship = 10
+
 	1233.1.1 = {
 		birth = yes
 	}
 }
+
 khenemhat_27 = { 
 	name = "Rajaa"
 	dynasty = dyn_khenemhat_7
@@ -3560,10 +4896,12 @@ khenemhat_27 = {
 	diplomacy = 8
 	intrigue = 10
 	stewardship = 7
+
 	1225.1.1 = {
 		birth = yes
 	}
 }
+
 khenemhat_28 = { 
 	name = "Haitham"
 	dynasty = dyn_khenemhat_8
@@ -3573,10 +4911,12 @@ khenemhat_28 = {
 	diplomacy = 9
 	intrigue = 10
 	stewardship = 10
+
 	1230.1.1 = {
 		birth = yes
 	}
 }
+
 khenemhat_29 = { 
 	name = "Sahl"
 	dynasty = dyn_khenemhat_9
@@ -3586,10 +4926,12 @@ khenemhat_29 = {
 	diplomacy = 10
 	intrigue = 10
 	stewardship = 10
+
 	1232.1.1 = {
 		birth = yes
 	}
 }
+
 khenemhat_30 = { 
 	name = "Adham"
 	dynasty = dyn_khenemhat_10
@@ -3599,10 +4941,12 @@ khenemhat_30 = {
 	diplomacy = 10
 	intrigue = 10
 	stewardship = 10
+
 	1223.1.1 = {
 		birth = yes
 	}
 }
+
 khenemhat_31 = { 
 	name = "Yoosuf"
 	dynasty = dyn_khenemhat_11
@@ -3612,10 +4956,12 @@ khenemhat_31 = {
 	diplomacy = 10
 	intrigue = 10
 	stewardship = 10
+
 	1220.1.1 = {
 		birth = yes
 	}
 }
+
 khenemhat_32 = { 
 	name = "Ilyaas"
 	dynasty = dyn_khenemhat_12
@@ -3625,10 +4971,12 @@ khenemhat_32 = {
 	diplomacy = 10
 	intrigue = 10
 	stewardship = 10
+
 	1227.1.1 = {
 		birth = yes
 	}
 }
+
 khenemhat_33 = { 
 	name = "Qaasim"
 	dynasty = dyn_khenemhat_13
@@ -3638,10 +4986,12 @@ khenemhat_33 = {
 	diplomacy = 10
 	intrigue = 10
 	stewardship = 10
+
 	1216.1.1 = {
 		birth = yes
 	}
 }
+
 khenemhat_34 = { 
 	name = "Muammar"
 	dynasty = dyn_khenemhat_14
@@ -3651,40 +5001,49 @@ khenemhat_34 = {
 	diplomacy = 10
 	intrigue = 10
 	stewardship = 10
+
 	1215.1.1 = {
 		birth = yes
 	}
 }
+
 khenemhat_35 = { 
 	name = "Hartha"
 	dynasty = dyn_khenemhat_15
 	religion = "harthahi"
 	culture = "dawasid"
+
 	1230.1.1 = {
 		birth = yes
 	}
 }
+
 khenemhat_36 = { 
 	name = "Yusef"
 	dynasty = dyn_khenemhat_16
 	religion = "harthahi"
 	culture = "adnanari"
+
 	1210.1.1 = {
 		birth = yes
 	}
-			1230.1.1 = {
+	
+	1230.1.1 = {
 		add_spouse = khenemhat_37
 	}
 }
+
 khenemhat_37 = { 
 	name = "Tahaani"
 	religion = "harthahi"
 	culture = "adnanari"
 	female = yes
+
 	1212.1.1 = {
 		birth = yes
 	}
 }
+
 khenemhat_38 = { #son 1
 	name = "Arkaan"
 	dynasty = dyn_khenemhat_16
@@ -3692,10 +5051,12 @@ khenemhat_38 = { #son 1
 	culture = "adnanari"
 	father = khenemhat_36
 	mother = khenemhat_37
+
 	1231.1.1 = {
 		birth = yes
 	}
 }
+
 khenemhat_39 = { #son 2
 	name = "Nazmi"
 	dynasty = dyn_khenemhat_16
@@ -3703,87 +5064,106 @@ khenemhat_39 = { #son 2
 	culture = "adnanari"
 	father = khenemhat_36
 	mother = khenemhat_37
+
 	1234.1.1 = {
 		birth = yes
 	}
 }
+
 khenemhat_40 = { 
 	name = "Taiseer"
 	dynasty = dyn_khenemhat_17
 	religion = "harthahi"
 	culture = "adnanari"
+
 	1219.1.1 = {
 		birth = yes
 	}
 }
+
 khenemhat_41 = { 
 	name = "Zubair"
 	dynasty = dyn_khenemhat_18
 	religion = "harthahi"
 	culture = "adnanari"
+
 	1230.1.1 = {
 		birth = yes
 	}
 }
+
 khenemhat_42 = { 
 	name = "Yusri"
 	dynasty = dyn_khenemhat_19
 	religion = "harthahi"
 	culture = "tasurmad"
+
 	1228.1.1 = {
 		birth = yes
 	}
 }
+
 khenemhat_43 = { 
 	name = "Haitham"
 	dynasty = dyn_khenemhat_20
 	religion = "harthahi"
 	culture = "tasurmad"
+
 	1224.1.1 = {
 		birth = yes
 	}
 }
+
 khenemhat_44 = { 
 	name = "Amma_Ghani"
 	dynasty = dyn_khenemhat_21
 	religion = "harthahi"
 	culture = "tasurmad"
+
 	1220.1.1 = {
 		birth = yes
 	}
 }
+
 khenemhat_45 = { 
 	name = "Aarif"
 	dynasty = dyn_khenemhat_22
 	religion = "harthahi"
 	culture = "tasurmad"
+
 	1218.1.1 = {
 		birth = yes
 	}
 }
+
 khenemhat_46 = { 
 	name = "Ghalib"
 	dynasty = dyn_khenemhat_23
 	religion = "harthahi"
 	culture = "tasurmad"
+
 	1222.1.1 = {
 		birth = yes
 	}
 }
+
 khenemhat_47 = { 
 	name = "Muslihiddin"
 	dynasty = dyn_khenemhat_24
 	religion = "harthahi"
 	culture = "tasurmad"
+
 	1225.1.1 = {
 		birth = yes
 	}
 }
+
 khenemhat_48 = { 
 	name = "Abdul-Qadir"
 	dynasty = dyn_khenemhat_25
 	religion = "harthahi"
 	culture = "tasurmad"
+
 	1221.1.1 = {
 		birth = yes
 	}
@@ -3795,121 +5175,158 @@ khenemhat_49 = {
 	name = "Yahya"
 	religion = "harthahi"
 	culture = "tasurmad"
+
 	1218.1.1 = {
 		birth = yes
 	}
 }
+
 khenemhat_50 = { 
 	name = "Zameel"
 	religion = "harthahi"
 	culture = "tasurmad"
+
 	1220.1.1 = {
 		birth = yes
 	}
 }
+
 khenemhat_51 = { 
 	name = "Shaamikh"
 	religion = "harthahi"
 	culture = "tasurmad"
+
 	1220.1.1 = {
 		birth = yes
 	}
 }
+
 khenemhat_52 = { 
 	name = "Haarith"
 	religion = "harthahi"
 	culture = "tasurmad"
+
 	1221.1.1 = {
 		birth = yes
 	}
 }
+
 khenemhat_53 = { 
 	name = "Thaamir"
 	religion = "harthahi"
 	culture = "tasurmad"
+
 	1229.1.1 = {
 		birth = yes
 	}
 }
+
 khenemhat_54 = { 
 	name = "Nabeel"
 	religion = "harthahi"
 	culture = "tasurmad"
+
 	1216.1.1 = {
 		birth = yes
 	}
 }
+
 khenemhat_55 = { 
 	name = "Saabir"
 	religion = "harthahi"
 	culture = "tasurmad"
+
 	1214.1.1 = {
 		birth = yes
 	}
 }
+
 khenemhat_56 = { 
 	name = "Ghaazi"
 	religion = "harthahi"
 	culture = "tasurmad"
+
 	1212.1.1 = {
 		birth = yes
 	}
 }
+
 khenemhat_57 = { 
 	name = "Mukarram"
 	religion = "harthahi"
 	culture = "tasurmad"
+
 	1223.1.1 = {
 		birth = yes
 	}
 }
+
 khenemhat_58 = { 
 	name = "Shaheed"
 	religion = "harthahi"
 	culture = "tasurmad"
+
 	1227.1.1 = {
 		birth = yes
 	}
 }
+
 khenemhat_59 = { 
 	name = "Haneef"
 	religion = "harthahi"
 	culture = "tasurmad"
+
 	1215.1.1 = {
 		birth = yes
 	}
 }
+
 khenemhat_60 = { 
 	name = "Waseef"
 	religion = "harthahi"
 	culture = "tasurmad"
+
 	1225.1.1 = {
 		birth = yes
 	}
 }
+
 khenemhat_61 = { 
 	name = "Saahir"
 	religion = "harthahi"
 	culture = "tasurmad"
+
 	1230.1.1 = {
 		birth = yes
 	}
 }
+
 khenemhat_62 = { 
 	name = "Saabir"
 	religion = "harthahi"
 	culture = "tasurmad"
+
 	1222.1.1 = {
+		birth = yes
+	}
+}
+
+khenemhat_63 = { 
+	name = "Mastanabal"
+	religion = "harthahi"
+	culture = "mutsartan"
+
+	1230.1.1 = {
 		birth = yes
 	}
 }
 
 sarradon_161 = {	
 	name = "Nazir"
-        dna = nazir
+	dna = nazir
 	religion = "haradar"
 	culture = "tasurmad"
-	#dynasty = dyn_assassin_1 not valid dynasty#
+ #dynasty = dyn_assassin_1 not valid dynasty#
 	martial = 10
 	diplomacy = 10
 	intrigue = 20
@@ -3923,10 +5340,10 @@ sarradon_161 = {
 	trait = blademaster_3
 	
 	disallow_random_traits = yes
-	
+
 	1184.2.3 = {
 		birth = yes
-	        effect = {
+		effect = {
 			add_character_flag = has_scripted_appearance
 		}
 	}
@@ -3934,7 +5351,7 @@ sarradon_161 = {
 
 sarradon_162 = {	
 	name = "Altair"
-        dna = altair
+	dna = altair
 	religion = "haradar"
 	culture = "tasurmad"
 	martial = 10
@@ -3944,26 +5361,26 @@ sarradon_162 = {
 	learning = 10
 	
 	trait = education_intrigue_4
-                      trait = brave
-                      trait = calm
-                      trait = patient
-                      trait = blademaster_3
-                      
-                      disallow_random_traits = yes
-
+	trait = brave
+	trait = calm
+	trait = patient
+	trait = blademaster_3
+	
+	disallow_random_traits = yes
+	
 	father = sarradon_161
+
 	1204.4.3 = {
 		birth = yes
-	        effect = {
+		effect = {
 			add_character_flag = has_scripted_appearance
 		}
 	}
 }
 
-
 sarradon_163 = {	
 	name = "Ezriel"
-        dna = ezriel
+	dna = ezriel
 	religion = "haradar"
 	culture = "tasurmad"
 	martial = 10
@@ -3973,12 +5390,13 @@ sarradon_163 = {
 	learning = 10
 	
 	trait = education_intrigue_4
-                      trait = blademaster_1
-
+				trait = blademaster_1
+	
 	father = sarradon_161
+
 	1214.4.7 = {
 		birth = yes
-	        effect = {
+		effect = {
 			add_character_flag = has_scripted_appearance
 		}
 	}
@@ -3986,7 +5404,7 @@ sarradon_163 = {
 
 sarradon_164 = {	
 	name = "Cahnorizm"
-        dna = cahnorizm
+	dna = cahnorizm
 	religion = "haradar"
 	culture = "tasurmad"
 	martial = 10
@@ -3996,113 +5414,513 @@ sarradon_164 = {
 	learning = 10
 	
 	trait = education_intrigue_2
-                      trait = blademaster_3
-
+	trait = blademaster_3
 	father = sarradon_161
-	1224.5.3= {
+
+	1224.5.3 = {
 		birth = yes
-	        effect = {
+		effect = {
 			add_character_flag = has_scripted_appearance
 		}
 	}
 }
 
-#Characters Generated at 2020/11/22 19:01:08 by mpjama
-sarradon_165 = 
-{
- name = "Farrokh"
- religion = "haradar"
- culture = "tasurmad"
-female = no
-father = sarradon_161
+sarradon_165 = {
+	name = "Farrokh"
+	religion = "haradar"
+	culture = "tasurmad"
+	female = no
+	father = sarradon_161
 
-1227.1.1 =
-{
-	birth = yes
+	1227.1.1 = {
+		birth = yes
+	}
 }
 
-}
-sarradon_166 = 
-{
- name = "Gulandam"
- religion = "haradar"
- culture = "tasurmad"
-female = yes
-father = sarradon_161
+sarradon_166 = {
+	name = "Gulandam"
+	religion = "haradar"
+	culture = "tasurmad"
+	female = yes
+	father = sarradon_161
 
-1234.1.1 =
-{
-	birth = yes
+	1234.1.1 = {
+		birth = yes
+	}
 }
 
-}
-sarradon_167 = 
-{
- name = "Mitra"
- religion = "haradar"
- culture = "tasurmad"
-female = yes
-father = sarradon_161
+sarradon_167 = {
+	name = "Mitra"
+	religion = "haradar"
+	culture = "tasurmad"
+	female = yes
+	father = sarradon_161
 
-1234.1.1 =
-{
-	birth = yes
+	1234.1.1 = {
+		birth = yes
+	}
 }
 
-}
-sarradon_168 = 
-{
- name = "Anahita"
- religion = "haradar"
- culture = "tasurmad"
-female = yes
-father = sarradon_161
+sarradon_168 = {
+	name = "Anahita"
+	religion = "haradar"
+	culture = "tasurmad"
+	female = yes
+	father = sarradon_161
 
-1244.1.1 =
-{
-	birth = yes
+	1244.1.1 = {
+		birth = yes
+	}
 }
 
-}
-sarradon_169 = 
-{
- name = "Kooroush"
- religion = "haradar"
- culture = "tasurmad"
-female = no
-father = sarradon_161
+sarradon_169 = {
+	name = "Kooroush"
+	religion = "haradar"
+	culture = "tasurmad"
+	female = no
+	father = sarradon_161
 
-1239.1.1 =
-{
-	birth = yes
+	1239.1.1 = {
+		birth = yes
+	}
 }
 
-}
-sarradon_170 = 
-{
- name = "Omid"
- religion = "haradar"
- culture = "tasurmad"
-female = no
-father = sarradon_161
+sarradon_170 = {
+	name = "Omid"
+	religion = "haradar"
+	culture = "tasurmad"
+	female = no
+	father = sarradon_161
 
-1247.1.1 =
-{
-	birth = yes
+	1247.1.1 = {
+		birth = yes
+	}
 }
 
-}
-sarradon_171 = 
-{
- name = "Davoud"
- religion = "haradar"
- culture = "tasurmad"
-female = no
-father = sarradon_161
+sarradon_171 = {
+	name = "Davoud"
+	religion = "haradar"
+	culture = "tasurmad"
+	female = no
+	father = sarradon_161
 
-1228.1.1 =
-{
-	birth = yes
+	1228.1.1 = {
+		birth = yes
+	}
 }
 
+sarradon_172 = {
+	name = "Pad_eyil"
+	religion = "hubarism"
+	culture = "jaduyada"
+	female = no
+	sexuality = heterosexual
+		
+	martial = 7
+	diplomacy = 6
+	intrigue = 8
+	stewardship = 7
+	learning = 8
+	trait = ambitious
+	trait = zealous
+	trait = diligent
+	trait = magic_good_6
+	trait = education_learning_2
+	trait = education_living_magic_3
+
+	1235.3.6 = {
+		birth = yes
+	}
+}
+
+sarradon_173 = {
+	name = "Badr"
+	religion = "haradar"
+	culture = "tasurmad"
+	dynasty = dyn_warden_2
+	female = no
+
+	1157.1.1 = {
+		birth = yes
+	trait = magic_good_4
+	}
+
+	1212.1.1 = {
+		death = yes
+	}
+}
+
+sarradon_174 = {
+	name = "yazid"
+	religion = "haradar"
+	culture = "tasurmad"
+	dynasty = dyn_warden_2
+	female = no
+	father = sarradon_173
+
+	1180.1.1 = {
+		birth = yes
+		trait = magic_good_4
+	}
+
+	1241.1.1 = {
+		death = yes
+	}
+}
+
+sarradon_177 = {
+	name = "Murad"
+	culture = "tasurmad"
+	religion = "haradar"
+	dynasty = dyn_warden_4
+	female = no
+	1228.5.12 = {
+		birth = yes
+		trait = magic_good_1
+	}
+	1278.12.1 = {
+		death = yes
+	}
+}
+
+sarradon_175 = {
+	name = "Harthah" #Harthah ibn Sarradon the Younger
+	father = sarradon_1
+	mother = sarradonfam_1
+	dynasty = dyn_sarradon_1
+	martial = 8
+	diplomacy = 8
+	intrigue = 6
+	stewardship = 9
+	learning = 10
+	religion = "harthahi"
+	culture = "tasurmad"
+	sexuality = heterosexual
+	trait = calm
+	trait = honest
+	trait = compassionate
+	trait = intellect_good_2
+	trait = beauty_good_2
+	trait = education_diplomacy_4
+
+	1222.8.22 = {
+		birth = yes
+		give_nickname = nick_the_younger
+	}
+
+	1240.1.1 = {
+		effect = {
+			set_relation_nemesis = character:calysto_1 #Lamius 'Ironheart' of St Calysto's Key after executing his mother
+		}
+	}
+}
+
+sarradon_176 = {
+	name = "Yusar" #Yusar ibn Sarradon
+	father = sarradon_1
+	mother = sarradonfam_1
+	dynasty = dyn_sarradon_1
+	martial = 13
+	diplomacy = 3
+	intrigue = 5
+	stewardship = 6
+	learning = 11
+	religion = "harthahi"
+	culture = "tasurmad"
+	sexuality = heterosexual
+	trait = vengeful
+	trait = cynical
+	trait = brave
+	trait = depressed_genetic
+	trait = beauty_good_3
+	trait = intellect_good_1
+	trait = education_martial_4
+
+	1228.6.27 = {
+		birth = yes
+		give_nickname = nick_the_grim
+	}
+
+	1240.1.1 = {
+		effect = {
+			set_relation_nemesis = character:calysto_1 #Lamius 'Ironheart' of St Calysto's Key after executing his mother
+		}
+	}
+}
+
+#Quwamzaw Characters by Wilyape 4/5/2021
+
+quwazaw_1 = {
+	name = "Quawurd"
+	religion = "quwazaw"
+	culture = "adnanari"
+	dynasty = dyn_quwazaw_1
+	trait = education_martial_2
+	trait = zealous
+	martial = 10
+	diplomacy = 10
+	stewardship = 8
+	intrigue = 5
+	learning = 12
+
+	1230.4.15 = {
+		birth = yes
+	}
+
+	1251.6.20 = {
+		add_spouse = quwazaw_2
+	}
+}
+
+quwazaw_2 = {
+	name = "Semeah"
+	religion = "quwazaw"
+	culture = "adnanari"
+	dynasty = dyn_quwazaw_1
+	female = yes
+
+	1228.9.14 = {
+		birth = yes
+	}
+
+	1251.6.20 = {
+		add_spouse = quwazaw_1
+	}
+}
+
+###################
+# HUBARITE JUDGES #
+###################
+
+hubarite_1 = {
+	name = Halasu
+	religion = "hubarism"
+	culture = "qushyed"
+	
+	11.1.30 = {
+		birth = yes
+		trait = magic_good_4
+	}
+	
+	23.1.30 = {
+		trait = shy
+		trait = humble
+		trait = paranoid
+	}
+	
+	27.1.30 = {
+		trait = education_living_magic_3
+		trait = education_learning_2
+	}
+	
+	83.8.1 = {
+		death = yes
+	}
+}
+
+hubarite_2 = {
+	name = Saadir
+	religion = "hubarism"
+	culture = "qushyed"
+	
+	63.11.14 = {
+		birth = yes
+		trait = magic_good_9
+	}
+	
+	75.11.14 = {
+		trait = zealous
+		trait = chaste
+		trait = trusting
+	}
+	
+	79.11.14 = {
+		trait = education_living_magic_4
+		trait = education_diplomacy_3
+	}
+
+	120.1.20 = {
+		death = yes
+	}
+}
+
+hubarite_3 = {
+	name = "Shihala"
+	religion = "hubarism"
+	culture = mazunic
+
+	133.6.23 = {
+		birth = yes
+		trait = magic_good_5
+	}
+
+	145.6.23 = {
+		trait = arrogant
+		trait = brave
+		trait = calm
+	}
+
+	149.6.23 = {
+		trait = education_martial_3
+		trait = education_living_magic_3
+	}
+	
+	233.8.11 = {
+		death = yes
+	}
+}
+
+hubarite_4 = {
+	name = "Ammuna"
+	religion = "hubarism"
+	culture = "qushyed"
+
+	124.7.1 = {
+		birth = yes
+		trait = magic_good_8
+		trait = intellect_good_3
+	}
+
+	136.1.1 = {
+		trait = just
+		trait = compassionate
+		trait = brave
+	}
+
+	140.7.1 = {
+		trait = education_learning_4
+		trait = education_living_magic_4
+	}
+
+	199.3.4 = {
+		death = yes
+	}
+}
+
+hubarite_5 = {
+	name = "Labarqan"
+	religion = "hubarism"
+	culture = "qushyed"
+	
+	281.2.13 = {
+		birth = yes
+		trait = magic_good_6
+		trait = physique_good_3
+		trait = intellect_good_1
+	}
+
+	293.1.1 = {
+		trait = sadistic
+		trait = calm
+		trait = diligent
+	}
+
+	297.2.13 = {
+		trait = education_martial_4
+		trait = education_living_magic_4
+	}
+	
+	341.6.17 = {
+		death = yes
+	}
+}
+
+hubarite_6 = {
+	name = "Hattassila"
+	religion = "hubarism"
+	culture = "qushyed"
+	female = yes
+	
+	341.11.9 = {
+		birth = yes
+		trait = magic_good_5
+		trait = intellect_good_3
+	}
+	
+	353.1.1 = {
+		trait = ambitious
+		trait = brave
+		trait = callous
+	}
+	
+	357.11.9 = {
+		trait = education_intrigue_4
+		trait = education_living_magic_4
+	}
+	
+	402.1.1 = {
+		trait = gh_vampiric
+		trait = gh_extended_life
+	}
+	
+	483.6.13 = {
+		death = yes
+	}
+}
+
+hubarite_7 = { #Last ruler of last major Hubarite kingdom
+	name = "Lasiyahul"
+	religion = "hubarism"
+	culture = "mazunic"
+	female = no
+	
+	diplomacy = 10
+	martial = 9
+	stewardship = 11
+	intrigue = 8
+	learning = 18
+	
+	504.4.27 = {
+		birth = yes
+		trait = magic_good_4
+		trait = intellect_good_2
+	}
+	
+	513.1.1 = {
+		trait = craven
+		trait = diligent
+		trait = patient
+	}
+	
+	520.4.27 = {
+		trait = education_learning_3
+		trait = education_living_magic_4
+	}
+	
+	584.1.1 = {
+		trait = gh_vampiric
+		trait = gh_extended_life
+	}
+	
+	598.1.1 = {
+		death = {
+			death_reason = death_execution
+		}
+	}
+}
+			
+### Historical Characters ###
+greatuprising_1 = {
+	name = "Usun"
+	religion = "sarradonian"
+	dynasty = dyn_greatuprising_1
+	dna = usun_bishabelik
+
+	368.11.1 = {
+		birth = yes
+		trait = intellect_good_2
+		effect = {
+			add_character_flag = has_scripted_appearance
+		}
+	}
+	
+	384.11.1 = {
+		trait = ambitious
+		trait = callous
+		trait = arbitrary
+	}
+	
+	462.12.8 = {
+		death = yes
+	}
 }

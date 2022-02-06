@@ -22,6 +22,11 @@ steward_collect_taxes_erudition_bonus_scale = {
 	}
 }
 
+steward_collect_taxes_judicial_council_bonus_scale = {
+	add = steward_collect_taxes_scale_base
+	multiply = wardenite_legacy_3_bonus_value
+}
+
 steward_collect_taxes_scale_tooltip_total = {
 	add = steward_collect_taxes_scale_base
 	if = {
@@ -36,6 +41,14 @@ steward_collect_taxes_scale_tooltip_total = {
 			scope:councillor_liege.dynasty = { has_dynasty_perk = erudition_legacy_5 }
 		}
 		add = steward_collect_taxes_erudition_bonus_scale
+	}
+	if = {
+		limit = {
+			exists = scope:councillor_liege.dynasty
+			scope:councillor_liege.dynasty = { has_dynasty_perk = wardenite_legacy_3 }
+			has_trait = lifestyle_jurist
+		}
+		add = steward_collect_taxes_judicial_council_bonus_scale
 	}
 }
 
@@ -167,6 +180,19 @@ steward_develop_county_erudition_bonus_monthly_increase = {
 	}
 }
 
+steward_develop_county_judicial_council_bonus_monthly_increase = {
+	value = 0
+	if = {
+		limit = {
+			exists = liege.dynasty
+			liege.dynasty = { has_dynasty_perk = wardenite_legacy_3 }
+			has_trait = lifestyle_jurist
+		}
+		add = steward_develop_county_base_total
+		multiply = wardenite_legacy_3_bonus_value
+	}
+}
+
 steward_develop_county_total = {
 	add = steward_develop_county_base
 	add = steward_develop_county_monthly_increase
@@ -202,11 +228,11 @@ steward_develop_county_perk_bonus_modifier_scale = {
 	}
 }
 
-steward_promote_culture_base = 0.1
+steward_promote_culture_base = 0.5
 
 steward_promote_culture_monthly_increase = {
 	add = stewardship
-	divide = 50
+	divide = 10
 }
 
 steward_promote_culture_monthly_increase_friend_bonus = {

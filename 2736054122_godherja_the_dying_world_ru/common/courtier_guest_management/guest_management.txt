@@ -376,20 +376,6 @@
 					}
 					add = 50
 				}
-				if = {
-					limit = {
-						has_trait = witch
-						NOT = { trait_is_criminal_in_faith_trigger = { TRAIT = witch FAITH = scope:host.faith GENDER_CHARACTER = scope:guest } }
-					}
-					add = 50
-				}
-				if = {
-					limit = {
-						is_witch_trigger = yes
-						scope:host = { is_witch_trigger = yes }
-					}
-					add = 200
-				}
 				#MISC TRAITS
 				if = {
 					limit = {
@@ -708,6 +694,72 @@
 						trigger = { has_trait = magic_good_4 }
 						desc = guest_description.magic_good_4.desc
 					}
+					triggered_desc = {
+						trigger = { has_trait = magic_good_5 }
+						desc = guest_description.magic_good_5.desc
+					}
+					triggered_desc = {
+						trigger = { has_trait = magic_good_6 }
+						desc = guest_description.magic_good_6.desc
+					}
+					triggered_desc = {
+						trigger = { has_trait = magic_good_7 }
+						desc = guest_description.magic_good_7.desc
+					}
+					triggered_desc = {
+						trigger = { has_trait = magic_good_8 }
+						desc = guest_description.magic_good_8.desc
+					}
+					triggered_desc = {
+						trigger = { has_trait = magic_good_9 }
+						desc = guest_description.magic_good_9.desc
+					}
+					triggered_desc = {
+						trigger = { has_trait = magic_good_10 }
+						desc = guest_description.magic_good_10.desc
+					}
+					triggered_desc = {
+						trigger = { has_trait = magic_good_11 }
+						desc = guest_description.magic_good_11.desc
+					}
+					triggered_desc = {
+						trigger = { has_trait = magic_good_12 }
+						desc = guest_description.magic_good_12.desc
+					}
+					triggered_desc = {
+						trigger = { has_trait = magic_good_13 }
+						desc = guest_description.magic_good_13.desc
+					}
+					triggered_desc = {
+						trigger = { has_trait = magic_good_14 }
+						desc = guest_description.magic_good_14.desc
+					}
+					triggered_desc = {
+						trigger = { has_trait = magic_good_15 }
+						desc = guest_description.magic_good_15.desc
+					}
+					triggered_desc = {
+						trigger = { has_trait = magic_good_16 }
+						desc = guest_description.magic_good_16.desc
+					}
+					triggered_desc = {
+						trigger = { has_trait = magic_good_17 }
+						desc = guest_description.magic_good_17.desc
+					}
+					triggered_desc = {
+						trigger = { has_trait = magic_good_18 }
+						desc = guest_description.magic_good_18.desc
+					}
+					triggered_desc = {
+						trigger = { has_trait = magic_good_19 }
+						desc = guest_description.magic_good_19.desc
+					}
+					triggered_desc = {
+						trigger = { has_trait = magic_good_20 }
+						desc = guest_description.magic_good_20.desc
+					}
+
+					
 				}
 				desc = guest_description.gentic_end.desc
 			}

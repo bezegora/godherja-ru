@@ -1,0 +1,59 @@
+﻿namespace = amsari_flavor
+
+amsari_flavor.1000 = { #Escaped Slaves enter your court, yearly check
+	title = amsari_flavor.1000.t
+	desc = amsari_flavor.1000.desc
+	type = character_event
+	theme = realm
+
+	right_portrait = {
+		character = ROOT
+		animation = boredom
+	}
+
+	trigger = {
+		capital_county = {
+			any_neighboring_county = {
+				faith = {
+					OR = {
+						has_doctrine_parameter = religion:doctrine_slavery_demanded
+						has_doctrine_parameter = religion:doctrine_slavery_encouraged
+						has_doctrine_parameter = religion:doctrine_slavery_neutral
+					}
+				}
+			}
+		}
+	}
+
+	option = { #Let them Free
+		name = amsari_flavor.1000.a
+		add_piety = miniscule_piety_gain
+	}
+
+	option = { #Send them off
+		name = amsari_flavor.1000.b
+		add_prestige = minor_prestige_gain
+	}
+
+	option = { #Contact their masters
+		name = amsari_flavor.1000.c
+		trigger = {
+			OR = {
+				has_trait = sadistic
+				has_trait = callous
+			}
+		}
+		add_gold = tiny_gold_value
+	}
+
+	option = { #Be generous with them and donate
+		name = amsari_flavor.1000.d
+		trigger = {
+			OR = {
+				has_trait = generous
+				has_trait = improvident
+			}
+		}
+		remove_short_term_gold = tiny_gold_value
+	}
+}

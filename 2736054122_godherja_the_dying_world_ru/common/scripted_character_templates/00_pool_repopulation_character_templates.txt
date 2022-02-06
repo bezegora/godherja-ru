@@ -61,6 +61,16 @@ pool_repopulate_prowess = {
 		athletic = {}
 	}
 	dynasty = none #POLISH_CD consider generating a dynasty when this works again because knights should be nobles
+	after_creation = {
+		if = {
+			limit = { has_faith = faith:wasteland_faith }
+			set_character_faith = faith:fogeater
+		}
+		if = {
+			limit = { has_culture = culture:wasteland }
+			set_culture = culture:fog_eaters
+		}
+	}
 }
 
 pool_repopulate_diplomacy = {
@@ -94,6 +104,42 @@ pool_repopulate_diplomacy = {
 		forgiving = {}
 	}
 	dynasty = none
+	after_creation = {
+		if = {
+			limit = { has_faith = faith:wasteland_faith }
+			set_character_faith = faith:fogeater
+		}
+		if = {
+			limit = { has_culture = culture:wasteland }
+			set_culture = culture:fog_eaters
+		}
+		if = {
+			limit = { 
+				faith = { 
+					has_doctrine_parameter = judges_act_as_clergy 
+				} 
+			}
+			random_list = {
+				80 = { }
+				20 = {
+					random_list = {
+						40 = {
+							add_trait = jurist_1
+						}
+						15 = {
+							add_trait = jurist_2
+						}
+						10 = {
+							add_trait = jurist_3
+						}
+						1 = {
+							add_trait = jurist_4
+						}
+					}
+				}
+			}
+		}
+	}
 }
 
 pool_repopulate_martial = {
@@ -120,6 +166,16 @@ pool_repopulate_martial = {
 		impatient = {}
 	}
 	dynasty = none
+	after_creation = {
+		if = {
+			limit = { has_faith = faith:wasteland_faith }
+			set_character_faith = faith:fogeater
+		}
+		if = {
+			limit = { has_culture = culture:wasteland }
+			set_culture = culture:fog_eaters
+		}
+	}
 }
 
 pool_repopulate_stewardship = {
@@ -149,6 +205,42 @@ pool_repopulate_stewardship = {
 		ambitious = {}
 	}
 	dynasty = none
+	after_creation = {
+		if = {
+			limit = { has_faith = faith:wasteland_faith }
+			set_character_faith = faith:fogeater
+		}
+		if = {
+			limit = { has_culture = culture:wasteland }
+			set_culture = culture:fog_eaters
+		}
+		if = {
+			limit = { 
+				faith = { 
+					has_doctrine_parameter = judges_act_as_clergy 
+				} 
+			}
+			random_list = {
+				80 = { }
+				20 = {
+					random_list = {
+						40 = {
+							add_trait = jurist_1
+						}
+						15 = {
+							add_trait = jurist_2
+						}
+						10 = {
+							add_trait = jurist_3
+						}
+						1 = {
+							add_trait = jurist_4
+						}
+					}
+				}
+			}
+		}
+	}
 }
 
 pool_repopulate_intrigue = {
@@ -182,6 +274,42 @@ pool_repopulate_intrigue = {
 		craven = {}
 	}
 	dynasty = none
+	after_creation = {
+		if = {
+			limit = { has_faith = faith:wasteland_faith }
+			set_character_faith = faith:fogeater
+		}
+		if = {
+			limit = { has_culture = culture:wasteland }
+			set_culture = culture:fog_eaters
+		}
+		if = {
+			limit = { 
+				faith = { 
+					has_doctrine_parameter = judges_act_as_clergy 
+				} 
+			}
+			random_list = {
+				95 = { }
+				9 = {
+					random_list = {
+						40 = {
+							add_trait = jurist_1
+						}
+						15 = {
+							add_trait = jurist_2
+						}
+						10 = {
+							add_trait = jurist_3
+						}
+						1 = {
+							add_trait = jurist_4
+						}
+					}
+				}
+			}
+		}
+	}
 }
 
 pool_repopulate_learning = {
@@ -222,6 +350,14 @@ pool_repopulate_learning = {
 	dynasty = none
 	after_creation = {
 		if = {
+			limit = { has_faith = faith:wasteland_faith }
+			set_character_faith = faith:fogeater
+		}
+		if = {
+			limit = { has_culture = culture:wasteland }
+			set_culture = culture:fog_eaters
+		}
+		if = {
 			limit = {
 				faith = {
 					has_doctrine = tenet_monasticism
@@ -231,6 +367,30 @@ pool_repopulate_learning = {
 				75 = {}
 				25 = {
 					add_trait = devoted
+				}
+			}
+		}
+		if = {
+			limit = { 
+				faith = { 
+					has_doctrine_parameter = judges_act_as_clergy 
+				} 
+			}
+			random_list = {
+				40 = {
+					add_trait = jurist_1
+				}
+				30 = {
+					add_trait = jurist_2
+				}
+				25 = {
+					add_trait = jurist_3
+				}
+				4 = {
+					add_trait = jurist_4
+				}
+				1 = {
+					add_trait = jurist_5
 				}
 			}
 		}
@@ -267,21 +427,22 @@ pool_repopulate_magi = {
 	}
 	dynasty = none
 	after_creation = {
-		#random_traits_list = {
-		#	count = { 1 }
-		#	education_living_magic_4 = { has_trait_rank = { trait = magic_good rank > 3 } }
-		#	education_living_magic_3 = { has_trait_rank = { trait = magic_good rank > 2 } }
-		#	education_living_magic_2 = { has_trait_rank = { trait = magic_good rank > 1 } }
-		#	education_living_magic_1 = { has_trait_rank = { trait = magic_good rank > 0 } }
-		#}
+		if = {
+			limit = { has_faith = faith:wasteland_faith }
+			set_character_faith = faith:fogeater
+		}
+		if = {
+			limit = { has_culture = culture:wasteland }
+			set_culture = culture:fog_eaters
+		}
 		if = {
 			limit = {
 				has_trait_rank = { trait = magic_good rank > 3 }
 			}
 			random_list = {
-				80 = { set_trait_rank = { trait = education_living_magic rank = { 2 5 } } }
-				15 = { set_trait_rank = { trait = education_dead_magic rank = { 2 5 } } }
-				5 = { set_trait_rank = { trait = education_mixed_magic rank = { 2 5 } } }
+				80 = { set_trait_rank = { trait = education_living_magic rank = { 1 4 } } }
+				15 = { set_trait_rank = { trait = education_dead_magic rank = { 1 4 } } }
+				5 = { set_trait_rank = { trait = education_mixed_magic rank = { 1 4 } } }
 			}
 		}
 		else_if = {
@@ -289,9 +450,9 @@ pool_repopulate_magi = {
 				has_trait_rank = { trait = magic_good rank > 2 }
 			}
 			random_list = {
-				80 = { set_trait_rank = { trait = education_living_magic rank = { 2 4 } } }
-				15 = { set_trait_rank = { trait = education_dead_magic rank = { 2 4 } } }
-				5 = { set_trait_rank = { trait = education_mixed_magic rank = { 2 4 } } }
+				80 = { set_trait_rank = { trait = education_living_magic rank = { 1 3 } } }
+				15 = { set_trait_rank = { trait = education_dead_magic rank = { 1 3 } } }
+				5 = { set_trait_rank = { trait = education_mixed_magic rank = { 1 3 } } }
 			}
 		}
 		else_if = {
@@ -299,9 +460,9 @@ pool_repopulate_magi = {
 				has_trait_rank = { trait = magic_good rank > 1 }
 			}
 			random_list = {
-				80 = { set_trait_rank = { trait = education_living_magic rank = { 2 3 } } }
-				15 = { set_trait_rank = { trait = education_dead_magic rank = { 2 3 } } }
-				5 = { set_trait_rank = { trait = education_mixed_magic rank = { 2 3 } } }
+				80 = { set_trait_rank = { trait = education_living_magic rank = { 1 2 } } }
+				15 = { set_trait_rank = { trait = education_dead_magic rank = { 1 2 } } }
+				5 = { set_trait_rank = { trait = education_mixed_magic rank = { 1 2 } } }
 			}
 		}
 		else_if = {
@@ -309,9 +470,9 @@ pool_repopulate_magi = {
 				has_trait_rank = { trait = magic_good rank > 0 }
 			}
 			random_list = {
-				80 = { set_trait_rank = { trait = education_living_magic rank = 2 } }
-				15 = { set_trait_rank = { trait = education_dead_magic rank = 2 } }
-				5 = { set_trait_rank = { trait = education_mixed_magic rank = 2 } }
+				80 = { set_trait_rank = { trait = education_living_magic rank = 1 } }
+				15 = { set_trait_rank = { trait = education_dead_magic rank = 1 } }
+				5 = { set_trait_rank = { trait = education_mixed_magic rank = 1 } }
 			}
 		}
 	}
@@ -416,6 +577,16 @@ pool_repopulate_spouse = {
 		beauty_good_1 = {}
 	}
 	dynasty = none
+	after_creation = {
+		if = {
+			limit = { has_faith = faith:wasteland_faith }
+			set_character_faith = faith:fogeater
+		}
+		if = {
+			limit = { has_culture = culture:wasteland }
+			set_culture = culture:fog_eaters
+		}
+	}
 }
 
 pool_repopulate_local_flavor = {
@@ -448,7 +619,7 @@ pool_repopulate_local_flavor = {
 				current_date <= 300.1.1	# After 50 years, safe to say that everyone of this culture is either dead, assimilated or irrelevant
 			}
 		}
-		culture:northernimperial = {	# Very much on the way to becoming deader than the Dodo at game start, but vestigial populations should stick around in Sjalvoki courts for some time
+		culture:northernimperial = {	# Very much on the way to becoming deader than the Dodo at game start, but vestigial populations should stick around in sjalvolki courts for some time
 			trigger = {
 				root = {
 					NOR = {
@@ -473,7 +644,7 @@ pool_repopulate_local_flavor = {
 					}
 				}
 				root.capital_province = {
-					geographical_region = world_ga_eastern_aversaria
+					geographical_region = world_ga_aironoi
 				}
 				current_date <= 350.1.1	# After 100 years, should fade away completely if the region has been conquered by barbarians
 			}
@@ -534,6 +705,14 @@ pool_repopulate_local_flavor = {
 	dynasty = none
 	
 	after_creation = {
+		if = {
+			limit = { has_faith = faith:wasteland_faith }
+			set_character_faith = faith:fogeater
+		}
+		if = {
+			limit = { has_culture = culture:wasteland }
+			set_culture = culture:fog_eaters
+		}
 		if = {
 			limit = {
 				OR = {

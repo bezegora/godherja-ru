@@ -234,8 +234,8 @@ type_four_biochromatic_entity_drawn_modifier = {
 	icon = prestige_positive
 	prowess = 80
 	scheme_resistance = 90
-	hostile_scheme_power = 90
-	hostile_scheme_secrecy = -100
+	hostile_scheme_power_add = 90
+	scheme_secrecy = -100
 	enemy_hard_casualty_modifier = 1.5
 	hard_casualty_modifier = 0.6
 	dread_baseline_add = 90
@@ -290,28 +290,39 @@ artifact_brokencrown1_modifier = {
 	salisians_opinion = 5
 	trustians_opinion = 5
 	chevalies_opinion = 5
-	marcher_opinion = 5
+	# this has been commented out for error log purposes, as marcher_opinion
+	# doesn't exist (marcher is a culture group, not a culture)
+	# marcher_opinion = 5
 }
 
 artifact_38_modifier = {   #broken crown#
 	monthly_prestige = 0.25
-	marcher_opinion = 5
+	# this has been commented out for error log purposes, as marcher_opinion
+	# doesn't exist (marcher is a culture group, not a culture)
+	# marcher_opinion = 5
 }
 
 artifact_39_modifier = {  #broken crown#
 	monthly_prestige = 0.25
-	marcher_opinion = 5
+	# this has been commented out for error log purposes, as marcher_opinion
+	# doesn't exist (marcher is a culture group, not a culture)
+	# marcher_opinion = 5
 }
 
 artifact_40_modifier = {   #broken crown#
 	monthly_prestige = 0.25
-	marcher_opinion = 5
+	# this has been commented out for error log purposes, as marcher_opinion
+	# doesn't exist (marcher is a culture group, not a culture)
+	# marcher_opinion = 5
 }
 
 artifact_41_modifier = {    #forged crown#
 	monthly_prestige = 3
-	marcher_anti_mage_damage_mult = 0.1
-	marcher_anti_mage_screen_mult = 0.1
+	# this has been commented out for error log purposes, as _damage_mult and
+	# _screen_mult modifiers are only defined on MAA types (e.g. skirmisher,
+	# light_cavalry, etc) rather than specific cultural MAAs
+	# marcher_anti_mage_damage_mult = 0.1
+	# marcher_anti_mage_screen_mult = 0.1
 }
 
 artifact_standardofanoterion_modifier = {
@@ -500,6 +511,86 @@ artifact_mountgreatergolem_modifier = {
 	siege_phase_time = -0.2
 }
 
+artifact_mountgreater_siege_golem_1_modifier = {
+	icon = prestige_positive
+	prowess = 6
+	dread_gain_mult = 0.10
+	siege_phase_time = -0.1
+}
+artifact_mountgreater_battle_golem_1_modifier = {
+	icon = prestige_positive
+	prowess = 8
+	dread_gain_mult = 0.10
+	advantage = 2
+}
+artifact_mountgreater_building_golem_1_modifier = {
+	icon = prestige_positive
+	prowess = 4
+	holding_build_gold_cost = -0.025
+	build_gold_cost = -0.025
+	build_speed = -0.025
+	holding_build_speed = -0.025
+}
+artifact_mountgreater_siege_golem_2_modifier = {
+	icon = prestige_positive
+	prowess = 8
+	dread_gain_mult = 0.20
+	siege_phase_time = -0.2
+}
+artifact_mountgreater_battle_golem_2_modifier = {
+	icon = prestige_positive
+	prowess = 10
+	dread_gain_mult = 0.20
+	advantage = 4
+}
+artifact_mountgreater_building_golem_2_modifier = {
+	icon = prestige_positive
+	prowess = 5
+	holding_build_gold_cost = -0.05
+	build_gold_cost = -0.05
+	build_speed = -0.05
+	holding_build_speed = -0.05
+}
+artifact_mountgreater_siege_golem_3_modifier = {
+	icon = prestige_positive
+	prowess = 10
+	dread_gain_mult = 0.25
+	siege_phase_time = -0.25
+}
+artifact_mountgreater_battle_golem_3_modifier = {
+	icon = prestige_positive
+	prowess = 12
+	dread_gain_mult = 0.25
+	advantage = 6
+}
+artifact_mountgreater_building_golem_3_modifier = {
+	icon = prestige_positive
+	prowess = 6
+	holding_build_gold_cost = -0.075
+	build_gold_cost = -0.075
+	build_speed = -0.075
+	holding_build_speed = -0.075
+}
+artifact_mountgreater_siege_golem_4_modifier = {
+	icon = prestige_positive
+	prowess = 12
+	dread_gain_mult = 0.30
+	siege_phase_time = -0.30
+}
+artifact_mountgreater_battle_golem_4_modifier = {
+	icon = prestige_positive
+	prowess = 14
+	dread_gain_mult = 0.30
+	advantage = 8
+}
+artifact_mountgreater_building_golem_4_modifier = {
+	icon = prestige_positive
+	prowess = 7
+	holding_build_gold_cost = -0.10
+	build_gold_cost = -0.10
+	build_speed = -0.10
+	holding_build_speed = -0.10
+}
 artifact_mountgreatbear_modifier = {
 	icon = prestige_positive
 	monthly_prestige = 0.1
@@ -525,7 +616,7 @@ artifact_adabyssianfirearbalest_modifier = {
 artifact_goldenstatueofadabyss_modifier = {
 	icon = prestige_positive
 	monthly_prestige = 0.2
-	amharian_opinion = 5
+	kawoch_opinion = 5
 	doffore_opinion = 5
 	fedagesh_opinion = 5
 	kutma_opinion = 5
@@ -544,7 +635,7 @@ artifact_maskofforgottensaint_modifier = {
 	martial_per_piety_level = 1
 }
 
-artifact_swordofeosos_modifier = {
+artifact_swordofeos_modifier = {
 	icon = prestige_positive
 	monthly_prestige = 0.1
 	monthly_prestige = 1.5
@@ -1207,7 +1298,9 @@ artifact_dethediaxnotes_modifier = {
 	icon = prestige_positive
 	stewardship = 1
 	monthly_prestige = 0.2
-	iyrossi_opinion = 5
+	# this has been commented out for error log purposes, as iyrossi_opinion
+	# doesn't exist (iyrossi is a culture group, not a culture)
+	#iyrossi_opinion = 5
 }
 
 artifact_womanknights_modifier = {
@@ -1215,4 +1308,471 @@ artifact_womanknights_modifier = {
 	learning = 2
 	opinion_of_female_rulers = 5
 }
-based = 100
+
+artifact_bookredlandsadventure_modifier = {
+	icon = prestige_positive
+	learning = 2
+	monthly_prestige = 0.1
+}
+
+artifact_thekardwenwhatweknow_modifier = {
+	icon = prestige_positive
+    learning = 1
+	martial = 1
+	monthly_prestige = 0.1
+}
+
+artifact_manswelbestiarium_modifier = {
+	icon = prestige_positive
+	learning = 1
+	martial = 2
+}
+
+artifact_genericbones0_modifier = {
+	icon = prestige_positive
+	monthly_prestige = 0.1
+}
+
+artifact_genericbones1_modifier = {
+	icon = prestige_positive
+	monthly_prestige = 0.2
+}
+
+artifact_genericbones2_modifier = {
+	icon = prestige_positive
+	monthly_prestige = 0.3
+}
+
+artifact_genericbones3_modifier = {
+	icon = prestige_positive
+	monthly_prestige = 0.4
+}
+
+artifact_bone_amulet_dread_1_modifier = {
+	icon = dread_positive
+	dread_baseline_add = 3
+	dread_gain_mult = 0.1
+	dread_decay_mult = -0.05
+	tyranny_gain_mult = 0.05
+	tyranny_loss_mult = -0.05
+	general_opinion = -2
+	personal_scheme_power_mult = -0.07
+}
+
+artifact_bone_amulet_dread_2_modifier = {
+	icon = dread_positive
+	dread_baseline_add = 6
+	dread_gain_mult = 0.2
+	dread_decay_mult = -0.1
+	tyranny_gain_mult = 0.1
+	tyranny_loss_mult = -0.1
+	general_opinion = -5
+	cowed_vassal_tax_contribution_mult = 0.05
+	cowed_vassal_levy_contribution_mult = 0.05
+	personal_scheme_power_mult = -0.15
+}
+
+artifact_bone_amulet_dread_3_modifier = {
+	icon = dread_positive
+	dread_baseline_add = 9
+	dread_gain_mult = 0.3
+	dread_decay_mult = -0.15
+	tyranny_gain_mult = 0.15
+	tyranny_loss_mult = -0.15
+	general_opinion = -7
+	cowed_vassal_tax_contribution_mult = 0.07
+	cowed_vassal_levy_contribution_mult = 0.07
+	intimidated_vassal_tax_contribution_mult = 0.03
+	intimidated_vassal_levy_contribution_mult = 0.03
+	personal_scheme_power_mult = -0.22
+}
+
+artifact_bone_amulet_dread_4_modifier = {
+	icon = dread_positive
+	dread_baseline_add = 12
+	dread_gain_mult = 0.4
+	dread_decay_mult = -0.2
+	tyranny_gain_mult = 0.2
+	tyranny_loss_mult = -0.2
+	general_opinion = -10
+	cowed_vassal_tax_contribution_mult = 0.10
+	cowed_vassal_levy_contribution_mult = 0.10
+	intimidated_vassal_tax_contribution_mult = 0.05
+	intimidated_vassal_levy_contribution_mult = 0.05
+	personal_scheme_power_mult = -0.30
+}
+
+artifact_bone_amulet_health_1_modifier = {
+	icon = health_positive
+	health = 0.125
+	negate_health_penalty_add = 0.125
+	murder_scheme_resistance_mult = 0.1
+	attraction_opinion = -5
+	fertility = -0.05
+}
+
+artifact_bone_amulet_health_2_modifier = {
+	icon = health_positive
+	health = 0.25
+	negate_health_penalty_add = 0.25
+	murder_scheme_resistance_mult = 0.2
+	attraction_opinion = -10
+	diplomacy = -1
+	fertility = -0.1
+}
+
+artifact_bone_amulet_health_3_modifier = {
+	icon = health_positive
+	health = 0.375
+	negate_health_penalty_add = 0.375
+	murder_scheme_resistance_mult = 0.3
+	attraction_opinion = -15
+	diplomacy = -1
+	fertility = -0.15
+}
+
+artifact_bone_amulet_health_4_modifier = {
+	icon = health_positive
+	health = 0.5
+	negate_health_penalty_add = 0.5
+	murder_scheme_resistance_mult = 0.4
+	attraction_opinion = -20
+	general_opinion = -5
+	diplomacy = -2
+	fertility = -0.20
+}
+
+artifact_bone_amulet_watchfulness_1_modifier = {
+	icon = intrigue_positive
+	scheme_discovery_chance_mult = 0.1
+	enemy_hostile_scheme_success_chance_add = -5
+	enemy_personal_scheme_success_chance_add = -5
+	owned_personal_scheme_success_chance_add = -5
+	stress_gain_mult = 0.05
+}
+
+artifact_bone_amulet_watchfulness_2_modifier = {
+	icon = intrigue_positive
+	scheme_discovery_chance_mult = 0.2
+	enemy_hostile_scheme_success_chance_add = -10
+	enemy_personal_scheme_success_chance_add = -10
+	owned_personal_scheme_success_chance_add = -10
+	stress_gain_mult = 0.10
+}
+
+artifact_bone_amulet_watchfulness_3_modifier = {
+	icon = intrigue_positive
+	scheme_discovery_chance_mult = 0.3
+	enemy_hostile_scheme_success_chance_add = -15
+	enemy_personal_scheme_success_chance_add = -15
+	owned_personal_scheme_success_chance_add = -15
+	stress_gain_mult = 0.15
+}
+
+artifact_bone_amulet_watchfulness_4_modifier = {
+	icon = intrigue_positive
+	scheme_discovery_chance_mult = 0.4
+	enemy_hostile_scheme_success_chance_add = -20
+	enemy_personal_scheme_success_chance_add = -20
+	owned_personal_scheme_success_chance_add = -20
+	stress_gain_mult = 0.20
+}
+
+artifact_bone_amulet_greed_1_modifier = {
+	icon = prestige_positive
+	monthly_income_mult = 0.03
+	county_opinion_add = -3
+	vassal_tax_contribution_mult = 0.02
+	vassal_opinion = -2
+}
+
+artifact_bone_amulet_greed_2_modifier = {
+	icon = prestige_positive1
+	monthly_income_mult = 0.06
+	county_opinion_add = -6
+	vassal_tax_contribution_mult = 0.04
+	vassal_opinion = -4
+}
+
+artifact_bone_amulet_greed_3_modifier = {
+	icon = prestige_positive
+	monthly_income_mult = 0.09
+	county_opinion_add = -9
+	vassal_tax_contribution_mult = 0.06
+	vassal_opinion = -6
+}
+
+artifact_bone_amulet_greed_4_modifier = {
+	icon = prestige_positive
+	monthly_income_mult = 0.12
+	county_opinion_add = -12
+	vassal_tax_contribution_mult = 0.08
+	vassal_opinion = -8
+}
+
+artifact_bone_amulet_magic_1_modifier = {
+	icon = magic_positive
+}
+
+artifact_bone_amulet_magic_2_modifier = {
+	icon = magic_positive
+}
+
+artifact_bone_amulet_magic_3_modifier = {
+	icon = magic_positive
+}
+
+artifact_bone_amulet_magic_4_modifier = {
+	icon = magic_positive
+}
+
+artifact_bone_dagger_1_modifier = {
+	icon = intrigue_positive
+	prowess = 1
+	owned_hostile_scheme_success_chance_add = 2
+	murder_scheme_power_mult = 0.1
+	personal_scheme_power_mult = -0.05
+}
+
+artifact_bone_dagger_2_modifier = {
+	icon = intrigue_positive
+	prowess = 1
+	owned_hostile_scheme_success_chance_add = 5
+	murder_scheme_power_mult = 0.2
+	personal_scheme_power_mult = -0.1
+	intrigue = 1
+	diplomacy = -1
+}
+
+artifact_bone_dagger_3_modifier = {
+	icon = intrigue_positive
+	prowess = 2
+	owned_hostile_scheme_success_chance_add = 7
+	murder_scheme_power_mult = 0.3
+	personal_scheme_power_mult = -0.15
+	intrigue = 2
+	diplomacy = -1
+}
+
+artifact_bone_dagger_4_modifier = {
+	icon = intrigue_positive
+	prowess = 2
+	owned_hostile_scheme_success_chance_add = 10
+	murder_scheme_power_mult = 0.4
+	personal_scheme_power_mult = -0.2
+	intrigue = 3
+	diplomacy = -2
+}
+
+artifact_bone_spear_1_modifier = {
+	icon = intrigue_positive
+	prowess = 1
+	dread_baseline_add = 2
+}
+
+artifact_bone_spear_2_modifier = {
+	icon = intrigue_positive
+	prowess = 2
+	dread_baseline_add = 5
+}
+
+artifact_bone_spear_3_modifier = {
+	icon = intrigue_positive
+	prowess = 4
+	dread_baseline_add = 8
+}
+
+artifact_bone_spear_4_modifier = {
+	icon = intrigue_positive
+	prowess = 5
+	dread_baseline_add = 10
+}
+
+artifact_bone_scepter_1_modifier = {
+	icon = dread_positive
+	monthly_prestige = 0.1
+	dread_baseline_add = 5
+	dread_gain_mult = 0.05
+}
+
+artifact_bone_scepter_2_modifier = {
+	icon = dread_positive
+	monthly_prestige = 0.2
+	dread_baseline_add = 10
+	dread_gain_mult = 0.10
+	dread_decay_mult = -0.05
+	cowed_vassal_tax_contribution_mult = 0.01
+	cowed_vassal_levy_contribution_mult = 0.01
+	intimidated_vassal_tax_contribution_mult = 0.01
+	intimidated_vassal_levy_contribution_mult = 0.01
+}
+
+artifact_bone_scepter_3_modifier = {
+	icon = dread_positive
+	monthly_prestige = 0.3
+	dread_baseline_add = 10
+	dread_gain_mult = 0.15
+	dread_decay_mult = -0.10
+	cowed_vassal_tax_contribution_mult = 0.02
+	cowed_vassal_levy_contribution_mult = 0.02
+	intimidated_vassal_tax_contribution_mult = 0.01
+	intimidated_vassal_levy_contribution_mult = 0.01
+}
+
+artifact_bone_scepter_4_modifier = {
+	icon = dread_positive
+	monthly_prestige = 0.4
+	dread_baseline_add = 15
+	dread_gain_mult = 0.20
+	dread_decay_mult = -0.15
+	cowed_vassal_tax_contribution_mult = 0.02
+	cowed_vassal_levy_contribution_mult = 0.02
+	intimidated_vassal_tax_contribution_mult = 0.02
+	intimidated_vassal_levy_contribution_mult = 0.02
+}
+
+artifact_bone_crown_1_modifier = {
+	icon = dread_positive
+	dread_baseline_add = 5
+	dread_gain_mult = 0.05
+	direct_vassal_opinion = -2
+	monthly_prestige_gain_per_dread_add = 0.01
+}
+
+artifact_bone_crown_2_modifier = {
+	icon = dread_positive
+	dread_baseline_add = 10
+	dread_gain_mult = 0.10
+	dread_decay_mult = -0.05
+	direct_vassal_opinion = -5
+	monthly_prestige_gain_per_dread_add = 0.02
+}
+
+artifact_bone_crown_3_modifier = {
+	icon = dread_positive
+	dread_baseline_add = 15
+	dread_gain_mult = 0.15
+	dread_decay_mult = -0.10
+	direct_vassal_opinion = -8
+	monthly_prestige_gain_per_dread_add = 0.03
+}
+
+artifact_bone_crown_4_modifier = {
+	icon = dread_positive
+	dread_baseline_add = 20
+	dread_gain_mult = 0.20
+	dread_decay_mult = -0.15
+	direct_vassal_opinion = -10
+	monthly_prestige_gain_per_dread_add = 0.04
+}
+
+artifact_bone_helmet_1_modifier = {
+	icon = dread_positive
+	monthly_prestige = 0.1
+	dread_baseline_add = 1
+	prowess = 1
+	martial = 1
+}
+
+artifact_bone_helmet_2_modifier = {
+	icon = dread_positive
+	monthly_prestige = 0.2
+	dread_baseline_add = 2
+	prowess = 1
+	martial = 2
+}
+
+artifact_bone_helmet_3_modifier = {
+	icon = dread_positive
+	monthly_prestige = 0.3
+	dread_baseline_add = 3
+	prowess = 2
+	martial = 3
+}
+
+artifact_bone_helmet_4_modifier = {
+	icon = dread_positive
+	monthly_prestige = 0.4
+	dread_baseline_add = 5
+	prowess = 3
+	martial = 2
+	martial_per_prestige_level = 1
+}
+
+artifact_bone_mask_1_modifier = {
+	icon = magic_positive
+	monthly_prestige = 0.1
+	dread_baseline_add = 1
+	dread_gain_mult = 0.01
+	monthly_magic_lifestyle_dead_xp_gain_mult = 0.05
+}
+
+artifact_bone_mask_2_modifier = {
+	icon = magic_positive
+	monthly_prestige = 0.2
+	dread_baseline_add = 2
+	dread_gain_mult = 0.02
+	monthly_magic_lifestyle_dead_xp_gain_mult = 0.10
+}
+
+artifact_bone_mask_3_modifier = {
+	icon = magic_positive
+	monthly_prestige = 0.3
+	dread_baseline_add = 3
+	dread_gain_mult = 0.03
+	monthly_magic_lifestyle_dead_xp_gain_mult = 0.15
+}
+
+artifact_bone_mask_4_modifier = {
+	icon = magic_positive
+	monthly_prestige = 0.4
+	dread_baseline_add = 4
+	dread_gain_mult = 0.04
+	monthly_magic_lifestyle_dead_xp_gain_mult = 0.20
+}
+
+artifact_bone_staff_1_modifier = {
+	icon = magic_positive
+}
+
+artifact_bone_staff_2_modifier = {
+	icon = magic_positive
+	dread_baseline_add = 1
+}
+
+artifact_bone_staff_3_modifier = {
+	icon = magic_positive
+	dread_baseline_add = 2
+}
+
+artifact_bone_staff_4_modifier = {
+	icon = magic_positive
+	dread_baseline_add = 3
+}
+
+artifact_bookfourlodges_modifier = {
+	icon = learning_positive
+	learning = 2
+	doffore_opinion = 10
+	fedagesh_opinion = 10
+	kutma_opinion = 10
+	kawoch_opinion = 10
+}
+
+artifact_boqqarofknives_modifier = {
+	icon = intrigue_positive
+	intrigue = 2
+}
+
+artifact_journalofseekers_modifier = {
+	icon = learning_positive
+	diplomacy = 1
+	learning = 1
+}
+
+artifact_bookgodslaverdictations_modifier = {
+	icon = learning_positive
+	learning = 2
+	intrigue = 1
+}
+	

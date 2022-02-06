@@ -1,0 +1,139 @@
+﻿artifact_book_has_content = {
+	scope = character
+	is_shown = {
+		OR = {
+			always = no
+			has_variable = artifact_bookseventysevencities_selected
+			has_variable = artifact_manswelbestiarium_selected
+			has_variable = artifact_bookgodslaverdictations_selected
+			has_variable = artifact_bookfourlodges_selected
+			has_variable = artifact_bookpocketguideaversaria_selected
+		}
+	}
+}
+
+artifact_bookseventysevencities_book_table_of_contents = {
+	is_shown = { always = yes }
+	effect = {
+		table_of_contents_entry = { ARTIFACT = artifact_bookseventysevencities ENTRY_NAME = oraispol PAGE = 1 }
+	}
+}
+
+artifact_bookseventysevencities_book_content = {
+	is_shown = { always = yes }
+	effect = {
+		artifact_book_page_effect = { ARTIFACT = artifact_bookseventysevencities PAGE = 1 }
+		artifact_book_page_effect = { ARTIFACT = artifact_bookseventysevencities PAGE = 2 }
+		artifact_book_page_effect = { ARTIFACT = artifact_bookseventysevencities PAGE = 3 }
+		artifact_book_set_final_page_effect = { ARTIFACT = artifact_bookseventysevencities PAGE = 3 }
+	}
+}
+
+artifact_manswelbestiarium_book_table_of_contents = {
+	is_shown = { always = yes }
+	effect = {
+		table_of_contents_entry = { ARTIFACT = artifact_manswelbestiarium ENTRY_NAME = ghouls PAGE = 2 }
+		table_of_contents_entry = { ARTIFACT = artifact_manswelbestiarium ENTRY_NAME = cockatrice PAGE = 3 }
+		table_of_contents_entry = { ARTIFACT = artifact_manswelbestiarium ENTRY_NAME = werewolf PAGE = 4 }
+	}
+}
+
+artifact_manswelbestiarium_book_content = {
+	is_shown = { always = yes }
+	effect = {
+		artifact_book_page_effect = { ARTIFACT = artifact_manswelbestiarium PAGE = 1 }
+		artifact_book_page_effect = { ARTIFACT = artifact_manswelbestiarium PAGE = 2 }
+		artifact_book_page_effect = { ARTIFACT = artifact_manswelbestiarium PAGE = 3 }
+		artifact_book_page_effect = { ARTIFACT = artifact_manswelbestiarium PAGE = 4 }
+		artifact_book_set_final_page_effect = { ARTIFACT = artifact_manswelbestiarium PAGE = 4 }
+	}
+}
+
+artifact_bookgodslaverdictations_book_table_of_contents = {
+	is_shown = { always = yes }
+	effect = {
+		table_of_contents_entry = { ARTIFACT = artifact_bookgodslaverdictations ENTRY_NAME = 983 PAGE = 1 }
+		table_of_contents_entry = { ARTIFACT = artifact_bookgodslaverdictations ENTRY_NAME = 984 PAGE = 2 }
+		table_of_contents_entry = { ARTIFACT = artifact_bookgodslaverdictations ENTRY_NAME = 985 PAGE = 3 }
+		table_of_contents_entry = { ARTIFACT = artifact_bookgodslaverdictations ENTRY_NAME = 986 PAGE = 4 }
+		table_of_contents_entry = { ARTIFACT = artifact_bookgodslaverdictations ENTRY_NAME = 1602 PAGE = 5 }
+		table_of_contents_entry = { ARTIFACT = artifact_bookgodslaverdictations ENTRY_NAME = 1603 PAGE = 6 }
+		table_of_contents_entry = { ARTIFACT = artifact_bookgodslaverdictations ENTRY_NAME = 1604 PAGE = 7 }
+		table_of_contents_entry = { ARTIFACT = artifact_bookgodslaverdictations ENTRY_NAME = 1605 PAGE = 8 }
+		table_of_contents_entry = { ARTIFACT = artifact_bookgodslaverdictations ENTRY_NAME = 1606 PAGE = 9 }
+		table_of_contents_entry = { ARTIFACT = artifact_bookgodslaverdictations ENTRY_NAME = 2144 PAGE = 10 }
+		table_of_contents_entry = { ARTIFACT = artifact_bookgodslaverdictations ENTRY_NAME = 2145 PAGE = 11 }
+		table_of_contents_entry = { ARTIFACT = artifact_bookgodslaverdictations ENTRY_NAME = 2146 PAGE = 12 }
+		table_of_contents_entry = { ARTIFACT = artifact_bookgodslaverdictations ENTRY_NAME = 2147 PAGE = 13 }
+		table_of_contents_entry = { ARTIFACT = artifact_bookgodslaverdictations ENTRY_NAME = 2148 PAGE = 14 }
+		table_of_contents_entry = { ARTIFACT = artifact_bookgodslaverdictations ENTRY_NAME = 2149 PAGE = 15 }
+		table_of_contents_entry = { ARTIFACT = artifact_bookgodslaverdictations ENTRY_NAME = 2150 PAGE = 16 }
+		table_of_contents_entry = { ARTIFACT = artifact_bookgodslaverdictations ENTRY_NAME = 2151 PAGE = 17 }
+	}
+}
+
+artifact_bookgodslaverdictations_book_content = {
+	is_shown = { always = yes }
+		effect = {
+			artifact_book_page_effect = { ARTIFACT = artifact_bookgodslaverdictations PAGE = 1 }
+			artifact_book_page_effect = { ARTIFACT = artifact_bookgodslaverdictations PAGE = 2 }
+			artifact_book_page_effect = { ARTIFACT = artifact_bookgodslaverdictations PAGE = 3 }
+			artifact_book_page_effect = { ARTIFACT = artifact_bookgodslaverdictations PAGE = 4 }
+			artifact_book_page_effect = { ARTIFACT = artifact_bookgodslaverdictations PAGE = 5 }
+			artifact_book_page_effect = { ARTIFACT = artifact_bookgodslaverdictations PAGE = 6 }
+			artifact_book_page_effect = { ARTIFACT = artifact_bookgodslaverdictations PAGE = 7 }
+			artifact_book_page_effect = { ARTIFACT = artifact_bookgodslaverdictations PAGE = 8 }
+			artifact_book_page_effect = { ARTIFACT = artifact_bookgodslaverdictations PAGE = 9 }
+			artifact_book_page_effect = { ARTIFACT = artifact_bookgodslaverdictations PAGE = 10 }
+			artifact_book_page_effect = { ARTIFACT = artifact_bookgodslaverdictations PAGE = 11 }
+			artifact_book_page_effect = { ARTIFACT = artifact_bookgodslaverdictations PAGE = 12 }
+			artifact_book_page_effect = { ARTIFACT = artifact_bookgodslaverdictations PAGE = 13 }
+			artifact_book_page_effect = { ARTIFACT = artifact_bookgodslaverdictations PAGE = 14 }
+			artifact_book_page_effect = { ARTIFACT = artifact_bookgodslaverdictations PAGE = 15 }
+			artifact_book_page_effect = { ARTIFACT = artifact_bookgodslaverdictations PAGE = 16 }
+			artifact_book_page_effect = { ARTIFACT = artifact_bookgodslaverdictations PAGE = 17 }
+			artifact_book_set_final_page_effect = { ARTIFACT = artifact_bookgodslaverdictations PAGE = 17 }
+		}
+	}
+}
+
+#artifact_bookfourlodges_book_table_of_contents = {
+#	is_shown = { always = yes }
+#	effect = {
+#		table_of_contents_entry = { ARTIFACT = artifact_bookfourlodges ENTRY_NAME = introduction PAGE = 1 }
+#	}
+#}
+#
+#artifact_bookfourlodges_book_content = {
+#	is_shown = { always = yes }
+#	effect = {
+#		artifact_book_page_effect = { ARTIFACT = artifact_bookfourlodges PAGE = 1 }
+#		artifact_book_page_effect = { ARTIFACT = artifact_bookfourlodges PAGE = 2 }
+#		artifact_book_page_effect = { ARTIFACT = artifact_bookfourlodges PAGE = 3 }
+#		artifact_book_page_effect = { ARTIFACT = artifact_bookfourlodges PAGE = 4 }
+#		artifact_book_page_effect = { ARTIFACT = artifact_bookfourlodges PAGE = 5 }
+#		artifact_book_set_final_page_effect = { ARTIFACT = artifact_bookfourlodges PAGE = 5 }
+#	}
+#}
+
+artifact_bookpocketguideaversaria_book_table_of_contents = {
+	is_shown = { always = yes }
+	effect = {
+		table_of_contents_entry = { ARTIFACT = artifact_bookpocketguideaversaria ENTRY_NAME = introduction PAGE = 1 }
+		table_of_contents_entry = { ARTIFACT = artifact_bookpocketguideaversaria ENTRY_NAME = etepezea PAGE = 2 }
+		table_of_contents_entry = { ARTIFACT = artifact_bookpocketguideaversaria ENTRY_NAME = opakhasia PAGE = 3 }
+		table_of_contents_entry = { ARTIFACT = artifact_bookpocketguideaversaria ENTRY_NAME = malcois PAGE = 4 }
+	}
+}
+
+artifact_bookpocketguideaversaria_book_content = {
+	is_shown = { always = yes }
+	effect = {
+		artifact_book_page_effect = { ARTIFACT = artifact_bookpocketguideaversaria PAGE = 1 }
+		artifact_book_page_effect = { ARTIFACT = artifact_bookpocketguideaversaria PAGE = 2 }
+		artifact_book_page_effect = { ARTIFACT = artifact_bookpocketguideaversaria PAGE = 3 }
+		artifact_book_page_effect = { ARTIFACT = artifact_bookpocketguideaversaria PAGE = 4 }
+		artifact_book_set_final_page_effect = { ARTIFACT = artifact_bookpocketguideaversaria PAGE = 4 }
+	}
+}
+

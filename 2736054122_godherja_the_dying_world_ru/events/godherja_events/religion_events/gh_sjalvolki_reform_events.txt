@@ -1,0 +1,2269 @@
+﻿namespace = sjalvolki_reformation
+
+
+##################################################
+# #	Rite Wars - Prelude
+# 0001 - 0010	A Preacher With Radical Ideas Appears
+# 0011 - 0020	The Reformation Spreads
+# 0021 - 0030	The Preacher is Imprisoned
+# 0031 - 0040	The Preacher is Assassinated!
+#
+# # Rite Wars - Schism
+# 0201 - 0210	The Veloscoup
+# 0211 - 0220	Spread of the Piety Rite
+# 0221 - 0230	Spread of the Crown Rite
+##################################################
+
+
+
+
+
+
+
+
+
+
+##################################################
+# RITE WARS - PRELUDE
+
+
+##################################################
+# A Preacher With Radical Ideas Appears
+# by Netgearghost
+# 0001 - 0010
+##################################################
+
+# Hidden event that creates the founder of the Oraispol Rite
+sjalvolki_reformation.0001 = {
+	type = character_event
+	hidden = yes
+	
+	immediate = {
+		# Check if Oraispol is controlled by the Sjalvolki
+		if = {
+			limit = {
+				title:c_halium.holder.top_liege.religion = religion:sjalvolki_religion
+			}
+			title:c_halium = { save_scope_as = oraispol_rite_origin_county }
+		}
+		else_if = {	# If it isn't, check if any non-ruined metro in Kalathipsomi is controlled by them. In practice, this means Bastonport or Pathosipol
+			limit = {
+				any_county_in_region = {
+					region = world_ga_clanlands
+					title_province = { is_any_metropolis_district = yes }
+					religion = religion:sjalvolki_religion
+					holder.top_liege.religion = religion:sjalvolki_religion
+				}
+			}
+			random_county_in_region = {
+				region = world_ga_clanlands
+				limit = { 
+					title_province = { is_any_metropolis_district = yes }
+					religion = religion:sjalvolki_religion
+					holder.top_liege.religion = religion:sjalvolki_religion
+				}
+				save_scope_as = oraispol_rite_origin_county
+			}
+		}
+		else = { # Otherwise, just pick any Sjalvolki county in Kalathipsomi
+			random_county_in_region = {
+				region = world_ga_clanlands
+				limit = {  
+					religion = religion:sjalvolki_religion
+					holder.top_liege.religion = religion:sjalvolki_religion
+				}
+				save_scope_as = oraispol_rite_origin_county
+			}
+		}
+		scope:oraispol_rite_origin_county = { save_scope_as = reformer_current_location }
+		create_character = {
+			location = root.capital_province
+			template = sjalvolki_rite_founder_character
+			save_scope_as = sjalvolki_reformer
+			location = scope:oraispol_rite_origin_county.title_province
+			
+		}
+		scope:sjalvolki_reformer = {
+			give_nickname = nick_the_preacher
+			make_unprunable = yes
+			get_title = title:d_rite_rel #HE NEEDS TO GET THIS TITLE TEMPORARILY SO THE GAME DOESNT PRUNE HIM
+			set_variable = {
+				name = notoriety
+				value = 0
+			}
+			set_global_variable = {
+				name = great_reformer
+				value = this
+			}
+			set_variable = blocked_from_being_councillor
+			setup_global_story_effect = { 
+				STORY_TYPE = story_sjalvolki_reformation 
+				STORY_NAME = story_sjalvolki_reformation 
+				STORY_ILLUSTRATION = create_holy_order
+			}
+			scope:story_sjalvolki_reformation = {
+				add_person_of_interest_effect = { 
+					PERSON_OF_INTEREST = scope:sjalvolki_reformer
+					PERSON_OF_INTEREST_TYPE = the_reformer
+				}
+				add_faith_powerbalance_tracker_effect = { 
+					FAITH = faith:sjalvolki
+				}
+				add_faith_powerbalance_tracker_effect = { 
+					FAITH = faith:orispolj_rite
+				}
+			}
+		}
+		faith:orispolj_rite = {
+			set_variable = {
+				name = great_reformer
+				value = scope:sjalvolki_reformer
+			}
+		}
+		debug_log = "Preacher Spawned!"
+		set_global_variable = {
+			name = sjalvolki_reformist_story
+			value = scope:sjalvolki_reformist_story
+		}
+		set_global_variable = { #CHECK TO SEE IF THEY CAN CONVERT OR NOT DONT REMOVE
+			name = rite_wars
+			value = this
+		}
+		# Inform the owner of the origin county about the preacher
+		scope:oraispol_rite_origin_county.holder = {
+			trigger_event = sjalvolki_reformation.0011
+		}
+	}
+}
+
+##################################################
+# The Reformation Spreads
+# by Hapchazzard
+# 0011 - 0020
+##################################################
+
+# The preacher arrives in a county and speaks his piece
+sjalvolki_reformation.0011 = {
+    title = sjalvolki_reformation.0011.t
+	theme = learning
+	desc = sjalvolki_reformation.0011.desc
+	left_portrait = {
+		character = root
+		animation = personality_rational
+	}
+	right_portrait = {
+		character = scope:sjalvolki_reformer
+		animation = personality_zealous
+	}
+
+	# Execute them!
+	option = {
+		name = sjalvolki_reformation.0011.a
+		skill = intrigue
+		set_variable = {
+			name = sjalvolki_reformation_policy
+			value = flag:hostile
+		}
+		duel = {
+			skill = intrigue
+			target = scope:sjalvolki_reformer
+			50 = { # The preacher is caught and killed
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = 3.5
+					min = -49
+				}
+				desc = sjalvolki_reformer_is_executed.tt
+				scope:sjalvolki_reformer = {
+					death = {
+						killer = root
+						death_reason = death_execution
+					}
+				}
+				add_piety = minor_piety_value
+				scope:sjalvolki_reformist_story = {
+					set_variable = reformer_executed
+				}
+				increase_fervor_effect = { VALUE = 20 }
+			}
+			50 = { # They escape
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = -3.5
+					min = -49
+				}
+				desc = sjalvolki_reformer_escapes.tt
+			}
+		}
+		stress_impact = {
+			forgiving = medium_stress_impact_gain
+			cynical = minor_stress_impact_gain
+			zealous = medium_stress_impact_loss
+		}
+		ai_chance  = {
+			base = 5
+			ai_value_modifier = {
+				ai_zeal = 0.5
+				ai_compassion = -0.25
+				ai_energy = 0.25
+			}
+		}
+	}
+	
+	option = { # Exile them
+		name = sjalvolki_reformation.0011.b
+		set_variable = {
+			name = sjalvolki_reformation_policy
+			value = flag:hostile
+		}
+		stress_impact = {
+			zealous = minor_stress_impact_loss
+		}
+		increase_reformer_notoriety_and_fervor_effect = { VALUE = 1 }
+		ai_chance  = {
+			base = 50
+			modifier = {
+				subtract = scope:sjalvolki_reformist_story.var:reform_fervor
+				exists = scope:sjalvolki_reformist_story.var:reform_fervor
+			}
+			ai_value_modifier = {
+				ai_zeal = -0.25
+				ai_energy = -0.5
+			}
+			
+		}
+	}
+	
+	option = { # Leave them be
+		name = sjalvolki_reformation.0011.c
+		set_variable = {
+			name = sjalvolki_reformation_policy
+			value = flag:neutral
+		}
+		stress_impact = {
+			zealous = medium_stress_impact_gain
+			lazy = minor_stress_impact_loss
+		}
+		scope:sjalvolki_reformer = {
+			reformer_convert_county_effect = { COUNTY = scope:reformer_current_location }
+		}
+		ai_chance  = {
+			base = 70
+			modifier = {
+				subtract = scope:sjalvolki_reformist_story.var:reform_fervor
+				exists = scope:sjalvolki_reformist_story.var:reform_fervor
+			}
+			modifier = {
+				subtract = scope:sjalvolki_reformer.var:notoriety
+				exists = scope:sjalvolki_reformer.var:notoriety
+			}
+			modifier = {
+				factor = -150
+				has_title = scope:oraispol_rite_origin_county
+			}
+			ai_value_modifier = {
+				ai_zeal = -0.25
+				ai_energy = 0.25
+			}
+		}
+	}
+	
+	option = { # Support them
+		name = sjalvolki_reformation.0011.d
+		set_variable = {
+			name = sjalvolki_reformation_policy
+			value = flag:supportive
+		}
+		set_character_faith_with_conversion = faith:orispolj_rite
+		increase_reformer_notoriety_and_fervor_effect = { VALUE = 4 }
+		ai_chance  = {
+			base = 40
+			ai_value_modifier = {
+				ai_zeal = -0.5
+			}
+			modifier = {
+				add = scope:sjalvolki_reformer.var:notoriety
+				exists = scope:sjalvolki_reformer.var:notoriety
+			}
+			modifier = {
+				factor = 3
+				has_trait = trusting
+			}
+			modifier = {
+				factor = 3
+				has_trait = arrogant
+			}
+			modifier = {
+				factor = 3
+				has_trait = ambitious
+			}
+			modifier = {
+				factor = 4
+				has_trait = cynical
+			}
+			modifier = {
+				factor = 1000
+				has_title = scope:oraispol_rite_origin_county
+			}
+		}
+	}
+}
+
+# Random acolytes arrive in a county and speak their piece
+sjalvolki_reformation.0012 = {
+    title = sjalvolki_reformation.0012.t
+	theme = learning
+	desc = sjalvolki_reformation.0012.desc
+	left_portrait = {
+		character = root
+		animation = personality_rational
+	}
+
+	immediate = {
+		root = {
+			save_scope_as = test
+		}
+		random_held_title = {
+			limit = {
+				tier = tier_county
+				faith = root.faith
+			}
+			save_scope_as = county_conversion 
+		}
+	}
+
+	# Execute them!
+	option = {
+		name = sjalvolki_reformation.0012.a
+		skill = intrigue
+		set_variable = {
+			name = sjalvolki_reformation_policy
+			value = flag:hostile
+		}
+		random_list = {
+			50 = { # The acolytes are caught and killed
+				desc = sjalvolki_reformer_is_executed.tt
+				scope:reformer_current_location = {
+					add_province_modifier = religious_turmoil
+				}
+				add_piety = minor_piety_value
+			}
+			50 = { # They escape
+				desc = sjalvolki_reformer_escapes.tt
+				random_neighboring_realm_same_rank_owner = {
+					limit = {
+						has_faith = faith:sjalvolki
+						has_faith = faith:praznarva
+					}
+					trigger_event = {
+						id = sjalvolki_reformation.0006
+						days = { 5 30 }
+					}
+				}
+			}
+		}
+		stress_impact = {
+			forgiving = medium_stress_impact_gain
+			cynical = minor_stress_impact_gain
+			zealous = medium_stress_impact_loss
+		}
+		ai_chance  = {
+			base = 5
+			ai_value_modifier = {
+				ai_zeal = 0.5
+				ai_compassion = -0.25
+				ai_energy = 0.25
+			}
+		}
+	}
+	
+	option = { # Exile them
+		name = sjalvolki_reformation.0011.b
+		set_variable = {
+			name = sjalvolki_reformation_policy
+			value = flag:hostile
+		}
+		stress_impact = {
+			zealous = minor_stress_impact_loss
+		}
+		ai_chance  = {
+			base = 50
+			modifier = {
+				subtract = scope:sjalvolki_reformist_story.var:reform_fervor
+				exists = scope:sjalvolki_reformist_story.var:reform_fervor
+			}
+			ai_value_modifier = {
+				ai_zeal = -0.25
+				ai_energy = -0.5
+			}
+		}
+	}
+	
+	option = { # Leave them be
+		name = sjalvolki_reformation.0011.c
+		set_variable = {
+			name = sjalvolki_reformation_policy
+			value = flag:neutral
+		}
+		stress_impact = {
+			zealous = medium_stress_impact_gain
+			lazy = minor_stress_impact_loss
+		}
+		scope:county_conversion = {
+			set_county_faith = faith:orispolj_rite
+		}
+		ai_chance  = {
+			base = 70
+			modifier = {
+				subtract = scope:sjalvolki_reformist_story.var:reform_fervor
+				exists = scope:sjalvolki_reformist_story.var:reform_fervor
+			}
+			modifier = {
+				subtract = scope:sjalvolki_reformer.var:notoriety
+				exists = scope:sjalvolki_reformer.var:notoriety
+			}
+			ai_value_modifier = {
+				ai_zeal = -0.25
+				ai_energy = 0.25
+			}
+		}
+	}
+	
+	option = { # Support them
+		name = sjalvolki_reformation.0011.d
+		set_variable = {
+			name = sjalvolki_reformation_policy
+			value = flag:supportive
+		}
+		set_character_faith_with_conversion = faith:orispolj_rite
+		scope:county_conversion = {
+			set_county_faith = faith:orispolj_rite
+		}
+		set_global_variable = {
+			name = reformer_supported
+			value = yes
+		}
+		ai_chance  = {
+			base = 40
+			ai_value_modifier = {
+				ai_zeal = -0.5
+			}
+			modifier = {
+				add = scope:sjalvolki_reformer.var:notoriety
+				exists = scope:sjalvolki_reformer.var:notoriety
+			}
+			modifier = {
+				add = scope:sjalvolki_reformist_story.var:reform_fervor
+				exists = scope:sjalvolki_reformist_story.var:reform_fervor
+			}
+			modifier = {
+				factor = 1.5
+				has_trait = trusting
+			}
+			modifier = {
+				factor = 1.5
+				has_trait = arrogant
+			}
+			modifier = {
+				factor = 1.5
+				has_trait = ambitious
+			}
+			modifier = {
+				factor = 2
+				has_trait = cynical
+			}
+		}
+	}
+}
+
+##################################################
+# The Preacher is Killed
+# by Hapchazzard
+# 0031 - 0040
+##################################################
+
+# Whether assassinated or executed, the preacher is dead
+sjalvolki_reformation.0031 = {
+    title = sjalvolki_reformation.0031.t
+	theme = learning
+	desc = sjalvolki_reformation.0031.desc
+	
+	left_portrait = {
+		character = root
+		animation = personality_rational
+	}
+	right_portrait = {
+		character = scope:sjalvolki_reformer
+		animation = personality_zealous
+	}
+	
+	option = {
+		name = sjalvolki_reformation.0031.a
+	}
+}
+
+
+
+
+
+##################################################
+# RITE WARS - SCHISM
+
+##################################################
+#The Veloscoup
+#0201-0210
+#By UltimateVictory
+##################################################
+
+
+#Group of priests get together and name one of them as the new head of faith in the Veloscoup
+sjalvolki_reformation.0201 = {
+	hidden = yes
+
+	immediate = {
+		# Check if Oraispol is controlled by the Orispolj Rite
+		if = {
+			limit = {
+				title:c_halium.holder.top_liege.faith = faith:orispolj_rite
+			}
+			title:c_halium = { save_scope_as = veloscoup_county }
+		}
+		else_if = {	# If it isn't, check if any non-ruined metro
+			limit = {
+				any_county = {
+					title_province = { is_any_metropolis_district = yes }
+					faith = faith:orispolj_rite
+					holder.top_liege.faith = faith:orispolj_rite
+					NOT = {
+						this = title:c_mallilene #Prevents it from spawning in Asiupoli
+					}
+				}
+			}
+			random_county = {
+				limit = { 
+					title_province = { is_any_metropolis_district = yes }
+					faith = faith:orispolj_rite
+					holder.top_liege.faith = faith:orispolj_rite
+					NOT = {
+						this = title:c_mallilene #Prevents it from spawning in Asiupoli
+					}
+				}
+				save_scope_as = veloscoup_county
+			}
+		}
+		else = { # Otherwise, just pick any orispolj county 
+			random_county = {
+				limit = {  
+					faith = faith:orispolj_rite
+					holder.top_liege.faith = faith:orispolj_rite
+					holder.top_liege.highest_held_title_tier = tier_empire
+				}
+				alternative_limit = {  
+					faith = faith:orispolj_rite
+					holder.top_liege.faith = faith:orispolj_rite
+					holder.top_liege.highest_held_title_tier = tier_kingdom
+				}
+				alternative_limit = {  
+					faith = faith:orispolj_rite
+					holder.top_liege.faith = faith:orispolj_rite
+					holder.top_liege.highest_held_title_tier = tier_duchy
+				}
+				alternative_limit = {  
+					faith = faith:orispolj_rite
+					holder.top_liege.faith = faith:orispolj_rite
+					holder.top_liege.highest_held_title_tier = tier_county
+				}
+				save_scope_as = veloscoup_county
+			}
+		}
+		create_character = {
+			location = root.capital_province
+			template = piety_rite_founder_character
+			save_scope_as = piety_founder
+			location = scope:veloscoup_county.title_province
+		}
+		set_global_variable = {
+			name = orispolj_rite_disintegrating
+			value = this
+		}
+		scope:story_sjalvolki_reformation = {
+			add_person_of_interest_effect = {
+				PERSON_OF_INTEREST = scope:piety_founder
+				PERSON_OF_INTEREST_TYPE = the_priest
+			}
+			add_faith_powerbalance_tracker_effect = { 
+				FAITH = faith:piety_rite
+			}
+			add_faith_powerbalance_tracker_effect = {
+				FAITH = faith:authority_rite
+			}
+		}
+		scope:veloscoup_county.holder.top_liege = {
+			trigger_event = sjalvolki_reformation.0202
+		}
+		debug_log = "Rite Schism spawned!"
+		debug_log_date = yes
+	}
+}
+
+#Holder of veloscoup county gets choice
+sjalvolki_reformation.0202 = {
+	title = sjalvolki_reformation.0202.t
+	type = character_event
+	desc = sjalvolki_reformation.0202.desc
+	theme = learning
+	left_portrait = {
+		character = root
+		animation = personality_rational
+	}
+	right_portrait = {
+		character = scope:piety_founder
+		animation = personality_zealous
+	}
+	
+	immediate = {
+		random_sub_realm_county = {
+			limit = {
+				NOT = {
+					holder = root
+				}
+			}
+			save_scope_as = piety_founder_county
+		}
+	}
+	
+	option = { #Accept the piety rite
+		name = sjalvolki_reformation.0202.a
+		
+		root = {
+			set_character_faith_with_conversion = faith:piety_rite
+			set_variable = rite_war_side_picked
+			save_scope_as = piety_embracer
+		}
+		scope:veloscoup_county = {
+			set_county_faith = faith:piety_rite
+		}
+		scope:piety_founder = {
+			get_title = scope:piety_founder_county
+			get_title = title:e_rite_piety_rel
+		}
+		random_independent_ruler = {
+			limit = {
+				highest_held_title_tier = tier_empire
+				faith = faith:orispolj_rite
+				NOT = { has_variable = rite_war_side_picked }
+				capital_county = {
+					title_province = { is_any_metropolis_district = yes }
+					faith = faith:orispolj_rite
+					holder.top_liege.faith = faith:orispolj_rite
+					NOT = {
+						this = title:c_mallilene #Prevents it from spawning in Asiupoli
+					}
+				}
+			}
+			alternative_limit = {
+				highest_held_title_tier = tier_kingdom
+				faith = faith:orispolj_rite
+				NOT = { has_variable = rite_war_side_picked }
+				capital_county = {
+					title_province = { is_any_metropolis_district = yes }
+					faith = faith:orispolj_rite
+					holder.top_liege.faith = faith:orispolj_rite
+					NOT = {
+						this = title:c_mallilene #Prevents it from spawning in Asiupoli
+					}
+				}
+			}
+			alternative_limit = {
+				highest_held_title_tier = tier_duchy
+				faith = faith:orispolj_rite
+				NOT = { has_variable = rite_war_side_picked }
+				capital_county = {
+					title_province = { is_any_metropolis_district = yes }
+					faith = faith:orispolj_rite
+					holder.top_liege.faith = faith:orispolj_rite
+					NOT = {
+						this = title:c_mallilene #Prevents it from spawning in Asiupoli
+					}
+				}
+			}
+			alternative_limit = {
+				highest_held_title_tier = tier_county
+				faith = faith:orispolj_rite
+				NOT = { has_variable = rite_war_side_picked }
+				capital_county = {
+					title_province = { is_any_metropolis_district = yes }
+					faith = faith:orispolj_rite
+					holder.top_liege.faith = faith:orispolj_rite
+					NOT = {
+						this = title:c_mallilene #Prevents it from spawning in Asiupoli
+					}
+				}
+			}
+			alternative_limit = {
+				highest_held_title_tier = tier_empire
+				faith = faith:orispolj_rite
+				NOT = { has_variable = rite_war_side_picked }
+			}
+			alternative_limit = {
+				highest_held_title_tier = tier_kingdom
+				faith = faith:orispolj_rite
+				NOT = { has_variable = rite_war_side_picked }
+			}
+			alternative_limit = {
+				highest_held_title_tier = tier_duchy
+				faith = faith:orispolj_rite
+				NOT = { has_variable = rite_war_side_picked }
+			}
+			alternative_limit = {
+				highest_held_title_tier = tier_county
+				faith = faith:orispolj_rite
+				NOT = { has_variable = rite_war_side_picked }
+			}
+			trigger_event = sjalvolki_reformation.0203
+		}
+		set_global_variable = {
+			name = piety_rite_spreading
+			value = this
+			years = 10
+		}
+		scope:story_sjalvolki_reformation = {
+			add_person_of_interest_effect = {
+				PERSON_OF_INTEREST = scope:piety_embracer
+				PERSON_OF_INTEREST_TYPE = the_patron
+			}
+		}
+		stress_impact = {
+			arrogant = medium_stress_impact_gain
+			cynical = minor_stress_impact_gain
+			humble = medium_stress_impact_loss
+		}
+		ai_chance = {
+			base = 5
+			ai_value_modifier = {
+				ai_zeal = 0.25
+				ai_honor = 0.25
+				ai_energy = -0.25
+				ai_greed = -0.10
+			}
+		}
+	}
+	option = { #Reject them and form Authority Rite
+		name = sjalvolki_reformation.0202.b
+		
+		root = {
+			set_character_faith_with_conversion = faith:authority_rite
+			get_title = title:e_rite_authority_rel
+			set_variable = rite_war_side_picked
+			save_scope_as = authority_founder
+		}
+		scope:veloscoup_county = {
+			set_county_faith = faith:authority_rite
+		}
+		random_independent_ruler = {
+			limit = {
+				highest_held_title_tier = tier_empire
+				faith = faith:orispolj_rite
+				NOT = { has_variable = rite_war_side_picked }
+				capital_county = {
+					title_province = { is_any_metropolis_district = yes }
+					faith = faith:orispolj_rite
+					holder.top_liege.faith = faith:orispolj_rite
+					NOT = {
+						this = title:c_mallilene #Prevents it from spawning in Asiupoli
+					}
+				}
+			}
+			alternative_limit = {
+				highest_held_title_tier = tier_kingdom
+				faith = faith:orispolj_rite
+				NOT = { has_variable = rite_war_side_picked }
+				capital_county = {
+					title_province = { is_any_metropolis_district = yes }
+					faith = faith:orispolj_rite
+					holder.top_liege.faith = faith:orispolj_rite
+					NOT = {
+						this = title:c_mallilene #Prevents it from spawning in Asiupoli
+					}
+				}
+			}
+			alternative_limit = {
+				highest_held_title_tier = tier_duchy
+				faith = faith:orispolj_rite
+				NOT = { has_variable = rite_war_side_picked }
+				capital_county = {
+					title_province = { is_any_metropolis_district = yes }
+					faith = faith:orispolj_rite
+					holder.top_liege.faith = faith:orispolj_rite
+					NOT = {
+						this = title:c_mallilene #Prevents it from spawning in Asiupoli
+					}
+				}
+			}
+			alternative_limit = {
+				highest_held_title_tier = tier_county
+				faith = faith:orispolj_rite
+				NOT = { has_variable = rite_war_side_picked }
+				capital_county = {
+					title_province = { is_any_metropolis_district = yes }
+					faith = faith:orispolj_rite
+					holder.top_liege.faith = faith:orispolj_rite
+					NOT = {
+						this = title:c_mallilene #Prevents it from spawning in Asiupoli
+					}
+				}
+			}
+			alternative_limit = {
+				highest_held_title_tier = tier_empire
+				faith = faith:orispolj_rite
+				NOT = { has_variable = rite_war_side_picked }
+			}
+			alternative_limit = {
+				highest_held_title_tier = tier_kingdom
+				faith = faith:orispolj_rite
+				NOT = { has_variable = rite_war_side_picked }
+			}
+			alternative_limit = {
+				highest_held_title_tier = tier_duchy
+				faith = faith:orispolj_rite
+				NOT = { has_variable = rite_war_side_picked }
+			}
+			alternative_limit = {
+				highest_held_title_tier = tier_county
+				faith = faith:orispolj_rite
+				NOT = { has_variable = rite_war_side_picked }
+			}
+			trigger_event = sjalvolki_reformation.0204
+		}
+		set_global_variable = {
+			name = authority_rite_spreading
+			value = this
+			years = 10
+		}
+		scope:story_sjalvolki_reformation = {
+			add_person_of_interest_effect = {
+				PERSON_OF_INTEREST = scope:authority_founder
+				PERSON_OF_INTEREST_TYPE = the_king
+			}
+		}
+		stress_impact = {
+			arrogant = medium_stress_impact_loss
+			cynical = minor_stress_impact_loss
+			humble = medium_stress_impact_gain
+		}
+		ai_chance = {
+			base = 5
+			ai_value_modifier = {
+				ai_zeal = -0.25
+				ai_honor = -0.25
+				ai_energy = 0.25
+				ai_greed = 0.10
+			}
+		}
+	}
+	
+	option = { #Stick with Oraispol Rite, PLAYER ONLY
+		name = sjalvolki_reformation.0202.c
+	
+		random_independent_ruler = {
+			limit = {
+				highest_held_title_tier = tier_empire
+				faith = faith:orispolj_rite
+				NOT = { has_variable = rite_war_side_picked }
+				capital_county = {
+					title_province = { is_any_metropolis_district = yes }
+					faith = faith:orispolj_rite
+					holder.top_liege.faith = faith:orispolj_rite
+					NOT = {
+						this = title:c_mallilene #Prevents it from spawning in Asiupoli
+					}
+				}
+			}
+			alternative_limit = {
+				highest_held_title_tier = tier_kingdom
+				faith = faith:orispolj_rite
+				NOT = { has_variable = rite_war_side_picked }
+				capital_county = {
+					title_province = { is_any_metropolis_district = yes }
+					faith = faith:orispolj_rite
+					holder.top_liege.faith = faith:orispolj_rite
+					NOT = {
+						this = title:c_mallilene #Prevents it from spawning in Asiupoli
+					}
+				}
+			}
+			alternative_limit = {
+				highest_held_title_tier = tier_duchy
+				faith = faith:orispolj_rite
+				NOT = { has_variable = rite_war_side_picked }
+				capital_county = {
+					title_province = { is_any_metropolis_district = yes }
+					faith = faith:orispolj_rite
+					holder.top_liege.faith = faith:orispolj_rite
+					NOT = {
+						this = title:c_mallilene #Prevents it from spawning in Asiupoli
+					}
+				}
+			}
+			alternative_limit = {
+				highest_held_title_tier = tier_county
+				faith = faith:orispolj_rite
+				NOT = { has_variable = rite_war_side_picked }
+				capital_county = {
+					title_province = { is_any_metropolis_district = yes }
+					faith = faith:orispolj_rite
+					holder.top_liege.faith = faith:orispolj_rite
+					NOT = {
+						this = title:c_mallilene #Prevents it from spawning in Asiupoli
+					}
+				}
+			}
+			alternative_limit = {
+				highest_held_title_tier = tier_empire
+				faith = faith:orispolj_rite
+				NOT = { has_variable = rite_war_side_picked }
+			}
+			alternative_limit = {
+				highest_held_title_tier = tier_kingdom
+				faith = faith:orispolj_rite
+				NOT = { has_variable = rite_war_side_picked }
+			}
+			alternative_limit = {
+				highest_held_title_tier = tier_duchy
+				faith = faith:orispolj_rite
+				NOT = { has_variable = rite_war_side_picked }
+			}
+			alternative_limit = {
+				highest_held_title_tier = tier_county
+				faith = faith:orispolj_rite
+				NOT = { has_variable = rite_war_side_picked }
+			}
+			trigger_event = sjalvolki_reformation.0205
+		}
+		stress_impact = {
+			arbitrary = minor_stress_impact_loss
+			lazy = minor_stress_impact_loss
+		}
+		ai_chance = {
+			base = 0
+		}
+	}
+}
+
+sjalvolki_reformation.0203 = { #Someone else has formed the piety rite, form authority in response or reject it
+	title = sjalvolki_reformation.0203.t
+	type = character_event
+	desc = sjalvolki_reformation.0203.desc
+	theme = learning
+	left_portrait = {
+		character = root
+		animation = personality_rational
+	}
+	right_portrait = {
+		character = scope:piety_embracer
+		animation = personality_zealous
+	}
+	
+	option = { #form the Authority Rite
+		name = sjalvolki_reformation.0203.a
+		
+		root = {
+			set_character_faith_with_conversion = faith:authority_rite
+			get_title = title:e_rite_authority_rel
+			add_to_list = rite_war_side_picked
+			save_scope_as = authority_founder
+		}
+		scope:root.capital_county = {
+			set_county_faith = faith:authority_rite
+		}
+		every_living_character = {
+			limit = {
+				is_independent_ruler = yes
+				faith = faith:orispolj_rite
+				NOT = {
+					has_variable = rite_war_side_picked
+				}
+			}
+			trigger_event = {
+				id = sjalvolki_reformation.0206
+				days = 2
+			}
+		}
+		scope:piety_embracer = { #initialization event for the heresies
+			trigger_event = {
+				id = sjalvolki_reformation.0207
+				days = 7
+			}
+		}
+		set_global_variable = {
+			name = authority_rite_spreading
+			value = this
+			years = 10
+		}
+		scope:story_sjalvolki_reformation = {
+			add_person_of_interest_effect = {
+				PERSON_OF_INTEREST = scope:authority_founder
+				PERSON_OF_INTEREST_TYPE = the_king
+			}
+		}
+		stress_impact = {
+			arrogant = medium_stress_impact_loss
+			cynical = minor_stress_impact_loss
+			humble = medium_stress_impact_gain
+		}
+		ai_chance = {
+			base = 100
+		}
+	}
+	
+	option = { #Do not form the Authority Rite, PLAYER ONLY
+		name = sjalvolki_reformation.0203.b
+		
+		root = {
+			set_variable = rite_war_side_picked
+		}
+		random_independent_ruler = {
+			limit = {
+				highest_held_title_tier = tier_empire
+				faith = faith:orispolj_rite
+				NOT = { has_variable = rite_war_side_picked }
+				capital_county = {
+					title_province = { is_any_metropolis_district = yes }
+					faith = faith:orispolj_rite
+					holder.top_liege.faith = faith:orispolj_rite
+					NOT = {
+						this = title:c_mallilene #Prevents it from spawning in Asiupoli
+					}
+				}
+			}
+			alternative_limit = {
+				highest_held_title_tier = tier_kingdom
+				faith = faith:orispolj_rite
+				NOT = { has_variable = rite_war_side_picked }
+				capital_county = {
+					title_province = { is_any_metropolis_district = yes }
+					faith = faith:orispolj_rite
+					holder.top_liege.faith = faith:orispolj_rite
+					NOT = {
+						this = title:c_mallilene #Prevents it from spawning in Asiupoli
+					}
+				}
+			}
+			alternative_limit = {
+				highest_held_title_tier = tier_duchy
+				faith = faith:orispolj_rite
+				NOT = { has_variable = rite_war_side_picked }
+				capital_county = {
+					title_province = { is_any_metropolis_district = yes }
+					faith = faith:orispolj_rite
+					holder.top_liege.faith = faith:orispolj_rite
+					NOT = {
+						this = title:c_mallilene #Prevents it from spawning in Asiupoli
+					}
+				}
+			}
+			alternative_limit = {
+				highest_held_title_tier = tier_county
+				faith = faith:orispolj_rite
+				NOT = { has_variable = rite_war_side_picked }
+				capital_county = {
+					title_province = { is_any_metropolis_district = yes }
+					faith = faith:orispolj_rite
+					holder.top_liege.faith = faith:orispolj_rite
+					NOT = {
+						this = title:c_mallilene #Prevents it from spawning in Asiupoli
+					}
+				}
+			}
+			alternative_limit = {
+				highest_held_title_tier = tier_empire
+				faith = faith:orispolj_rite
+				NOT = { has_variable = rite_war_side_picked }
+			}
+			alternative_limit = {
+				highest_held_title_tier = tier_kingdom
+				faith = faith:orispolj_rite
+				NOT = { has_variable = rite_war_side_picked }
+			}
+			alternative_limit = {
+				highest_held_title_tier = tier_duchy
+				faith = faith:orispolj_rite
+				NOT = { has_variable = rite_war_side_picked }
+			}
+			alternative_limit = {
+				highest_held_title_tier = tier_county
+				faith = faith:orispolj_rite
+				NOT = { has_variable = rite_war_side_picked }
+			}
+			trigger_event = sjalvolki_reformation.0203
+		}
+		stress_impact = {
+			arrogant = medium_stress_impact_gain
+			content = minor_stress_impact_loss
+		}
+		ai_chance = {
+			base = 0
+		}
+	}
+}
+
+sjalvolki_reformation.0204 = { #Form piety rite in response
+	title = sjalvolki_reformation.0204.t
+	type = character_event
+	desc = sjalvolki_reformation.0204.desc
+	theme = learning
+	left_portrait = {
+		character = root
+		animation = personality_rational
+	}
+	right_portrait = {
+		character = scope:authority_founder
+		animation = personality_zealous
+	}
+	
+	immediate = {
+		random_sub_realm_county = {
+			limit = {
+				NOT = {
+					holder = root
+				}
+			}
+			save_scope_as = piety_founder_county
+		}
+	}
+	
+	option = { #form the Piety Rite
+		name = sjalvolki_reformation.0204.a
+		
+		root = {
+			set_character_faith_with_conversion = faith:piety_rite
+			set_variable = rite_war_side_picked
+			save_scope_as = piety_embracer
+		}
+		scope:root.capital_county = {
+			set_county_faith = faith:piety_rite
+		}
+		scope:piety_founder = {
+			get_title = scope:piety_founder_county
+			get_title = title:e_rite_piety_rel
+		}
+		every_living_character = {
+			limit = {
+				is_independent_ruler = yes
+				faith = faith:orispolj_rite
+				NOT = {
+					has_variable = rite_war_side_picked
+				}
+			}
+			trigger_event = {
+				id = sjalvolki_reformation.0206
+				days = 2
+			}
+		}
+		scope:piety_embracer = { #initialization event for the heresies
+			trigger_event = {
+				id = sjalvolki_reformation.0207
+				days = 7
+			}
+		}
+		scope:story_sjalvolki_reformation = {
+			add_person_of_interest_effect = {
+				PERSON_OF_INTEREST = scope:piety_embracer
+				PERSON_OF_INTEREST_TYPE = the_patron
+			}
+		}
+		set_global_variable = {
+			name = piety_rite_spreading
+			value = this
+			years = 10
+		}
+		stress_impact = {
+			arrogant = minor_stress_impact_gain
+			humble = minor_stress_impact_loss
+		}
+		ai_chance = {
+			base = 100
+		}
+	}
+	
+	option = { #Do not form the Piety Rite, PLAYER ONLY
+		name = sjalvolki_reformation.0204.b
+		
+		root = {
+			set_variable = rite_war_side_picked
+		}
+		random_independent_ruler = {
+			limit = {
+				highest_held_title_tier = tier_empire
+				faith = faith:orispolj_rite
+				NOT = { has_variable = rite_war_side_picked }
+				capital_county = {
+					title_province = { is_any_metropolis_district = yes }
+					faith = faith:orispolj_rite
+					holder.top_liege.faith = faith:orispolj_rite
+					NOT = {
+						this = title:c_mallilene #Prevents it from spawning in Asiupoli
+					}
+				}
+			}
+			alternative_limit = {
+				highest_held_title_tier = tier_kingdom
+				faith = faith:orispolj_rite
+				NOT = { has_variable = rite_war_side_picked }
+				capital_county = {
+					title_province = { is_any_metropolis_district = yes }
+					faith = faith:orispolj_rite
+					holder.top_liege.faith = faith:orispolj_rite
+					NOT = {
+						this = title:c_mallilene #Prevents it from spawning in Asiupoli
+					}
+				}
+			}
+			alternative_limit = {
+				highest_held_title_tier = tier_duchy
+				faith = faith:orispolj_rite
+				NOT = { has_variable = rite_war_side_picked }
+				capital_county = {
+					title_province = { is_any_metropolis_district = yes }
+					faith = faith:orispolj_rite
+					holder.top_liege.faith = faith:orispolj_rite
+					NOT = {
+						this = title:c_mallilene #Prevents it from spawning in Asiupoli
+					}
+				}
+			}
+			alternative_limit = {
+				highest_held_title_tier = tier_county
+				faith = faith:orispolj_rite
+				NOT = { has_variable = rite_war_side_picked }
+				capital_county = {
+					title_province = { is_any_metropolis_district = yes }
+					faith = faith:orispolj_rite
+					holder.top_liege.faith = faith:orispolj_rite
+					NOT = {
+						this = title:c_mallilene #Prevents it from spawning in Asiupoli
+					}
+				}
+			}
+			alternative_limit = {
+				highest_held_title_tier = tier_empire
+				faith = faith:orispolj_rite
+				NOT = { has_variable = rite_war_side_picked }
+			}
+			alternative_limit = {
+				highest_held_title_tier = tier_kingdom
+				faith = faith:orispolj_rite
+				NOT = { has_variable = rite_war_side_picked }
+			}
+			alternative_limit = {
+				highest_held_title_tier = tier_duchy
+				faith = faith:orispolj_rite
+				NOT = { has_variable = rite_war_side_picked }
+			}
+			alternative_limit = {
+				highest_held_title_tier = tier_county
+				faith = faith:orispolj_rite
+				NOT = { has_variable = rite_war_side_picked }
+			}
+			trigger_event = sjalvolki_reformation.0204
+		}
+		stress_impact = {
+			arrogant = medium_stress_impact_loss
+			content = minor_stress_impact_loss
+		}
+		ai_chance = {
+			base = 0
+		}
+	}
+}
+
+sjalvolki_reformation.0205 = { #Fallback for if the player rejects both Rites, .0202 copy-pasted
+	title = sjalvolki_reformation.0205.t
+	type = character_event
+	desc = sjalvolki_reformation.0205.desc
+	theme = learning
+	left_portrait = {
+		character = root
+		animation = personality_rational
+	}
+	right_portrait = {
+		character = scope:piety_founder
+		animation = personality_zealous
+	}
+	
+	immediate = {
+		random_sub_realm_county = {
+			limit = {
+				NOT = {
+					holder = root
+				}
+			}
+			save_scope_as = piety_founder_county
+		}
+	}
+	
+	option = { #Accept the piety rite
+		name = sjalvolki_reformation.0205.a
+		
+		root = {
+			set_character_faith_with_conversion = faith:piety_rite
+			set_variable = rite_war_side_picked
+			save_scope_as = piety_embracer
+		}
+		scope:root.capital_county = {
+			set_county_faith = faith:piety_rite
+		}
+		scope:piety_founder = {
+			get_title = scope:piety_founder_county
+			get_title = title:e_rite_piety_rel
+		}
+		random_independent_ruler = {
+			limit = {
+				highest_held_title_tier = tier_empire
+				faith = faith:orispolj_rite
+				NOT = { has_variable = rite_war_side_picked }
+				capital_county = {
+					title_province = { is_any_metropolis_district = yes }
+					faith = faith:orispolj_rite
+					holder.top_liege.faith = faith:orispolj_rite
+					NOT = {
+						this = title:c_mallilene #Prevents it from spawning in Asiupoli
+					}
+				}
+			}
+			alternative_limit = {
+				highest_held_title_tier = tier_kingdom
+				faith = faith:orispolj_rite
+				NOT = { has_variable = rite_war_side_picked }
+				capital_county = {
+					title_province = { is_any_metropolis_district = yes }
+					faith = faith:orispolj_rite
+					holder.top_liege.faith = faith:orispolj_rite
+					NOT = {
+						this = title:c_mallilene #Prevents it from spawning in Asiupoli
+					}
+				}
+			}
+			alternative_limit = {
+				highest_held_title_tier = tier_duchy
+				faith = faith:orispolj_rite
+				NOT = { has_variable = rite_war_side_picked }
+				capital_county = {
+					title_province = { is_any_metropolis_district = yes }
+					faith = faith:orispolj_rite
+					holder.top_liege.faith = faith:orispolj_rite
+					NOT = {
+						this = title:c_mallilene #Prevents it from spawning in Asiupoli
+					}
+				}
+			}
+			alternative_limit = {
+				highest_held_title_tier = tier_county
+				faith = faith:orispolj_rite
+				NOT = { has_variable = rite_war_side_picked }
+				capital_county = {
+					title_province = { is_any_metropolis_district = yes }
+					faith = faith:orispolj_rite
+					holder.top_liege.faith = faith:orispolj_rite
+					NOT = {
+						this = title:c_mallilene #Prevents it from spawning in Asiupoli
+					}
+				}
+			}
+			alternative_limit = {
+				highest_held_title_tier = tier_empire
+				faith = faith:orispolj_rite
+				NOT = { has_variable = rite_war_side_picked }
+			}
+			alternative_limit = {
+				highest_held_title_tier = tier_kingdom
+				faith = faith:orispolj_rite
+				NOT = { has_variable = rite_war_side_picked }
+			}
+			alternative_limit = {
+				highest_held_title_tier = tier_duchy
+				faith = faith:orispolj_rite
+				NOT = { has_variable = rite_war_side_picked }
+			}
+			alternative_limit = {
+				highest_held_title_tier = tier_county
+				faith = faith:orispolj_rite
+				NOT = { has_variable = rite_war_side_picked }
+			}
+			trigger_event = sjalvolki_reformation.0203
+		}
+		set_global_variable = {
+			name = piety_rite_spreading
+			value = this
+			years = 10
+		}
+		scope:story_sjalvolki_reformation = {
+			add_person_of_interest_effect = {
+				PERSON_OF_INTEREST = scope:piety_embracer
+				PERSON_OF_INTEREST_TYPE = the_patron
+			}
+		}
+		stress_impact = {
+			arrogant = medium_stress_impact_gain
+			cynical = minor_stress_impact_gain
+			humble = medium_stress_impact_loss
+		}
+		ai_chance = {
+			base = 5
+			ai_value_modifier = {
+				ai_zeal = 0.25
+				ai_honor = 0.25
+				ai_energy = -0.25
+				ai_greed = -0.10
+			}
+		}
+	}
+	option = { #Reject them and form Authority Rite
+		name = sjalvolki_reformation.0205.b
+		
+		root = {
+			set_character_faith_with_conversion = faith:authority_rite
+			get_title = title:e_rite_authority_rel
+			set_variable = rite_war_side_picked
+			save_scope_as = authority_founder
+		}
+		scope:veloscoup_county = {
+			set_county_faith = faith:authority_rite
+		}
+		random_independent_ruler = {
+			limit = {
+				highest_held_title_tier = tier_empire
+				faith = faith:orispolj_rite
+				NOT = { has_variable = rite_war_side_picked }
+				capital_county = {
+					title_province = { is_any_metropolis_district = yes }
+					faith = faith:orispolj_rite
+					holder.top_liege.faith = faith:orispolj_rite
+					NOT = {
+						this = title:c_mallilene #Prevents it from spawning in Asiupoli
+					}
+				}
+			}
+			alternative_limit = {
+				highest_held_title_tier = tier_kingdom
+				faith = faith:orispolj_rite
+				NOT = { has_variable = rite_war_side_picked }
+				capital_county = {
+					title_province = { is_any_metropolis_district = yes }
+					faith = faith:orispolj_rite
+					holder.top_liege.faith = faith:orispolj_rite
+					NOT = {
+						this = title:c_mallilene #Prevents it from spawning in Asiupoli
+					}
+				}
+			}
+			alternative_limit = {
+				highest_held_title_tier = tier_duchy
+				faith = faith:orispolj_rite
+				NOT = { has_variable = rite_war_side_picked }
+				capital_county = {
+					title_province = { is_any_metropolis_district = yes }
+					faith = faith:orispolj_rite
+					holder.top_liege.faith = faith:orispolj_rite
+					NOT = {
+						this = title:c_mallilene #Prevents it from spawning in Asiupoli
+					}
+				}
+			}
+			alternative_limit = {
+				highest_held_title_tier = tier_county
+				faith = faith:orispolj_rite
+				NOT = { has_variable = rite_war_side_picked }
+				capital_county = {
+					title_province = { is_any_metropolis_district = yes }
+					faith = faith:orispolj_rite
+					holder.top_liege.faith = faith:orispolj_rite
+					NOT = {
+						this = title:c_mallilene #Prevents it from spawning in Asiupoli
+					}
+				}
+			}
+			alternative_limit = {
+				highest_held_title_tier = tier_empire
+				faith = faith:orispolj_rite
+				NOT = { has_variable = rite_war_side_picked }
+			}
+			alternative_limit = {
+				highest_held_title_tier = tier_kingdom
+				faith = faith:orispolj_rite
+				NOT = { has_variable = rite_war_side_picked }
+			}
+			alternative_limit = {
+				highest_held_title_tier = tier_duchy
+				faith = faith:orispolj_rite
+				NOT = { has_variable = rite_war_side_picked }
+			}
+			alternative_limit = {
+				highest_held_title_tier = tier_county
+				faith = faith:orispolj_rite
+				NOT = { has_variable = rite_war_side_picked }
+			}
+			trigger_event = sjalvolki_reformation.0204
+		}
+		set_global_variable = {
+			name = authority_rite_spreading
+			value = this
+			years = 10
+		}
+		scope:story_sjalvolki_reformation = {
+			add_person_of_interest_effect = {
+				PERSON_OF_INTEREST = scope:authority_founder
+				PERSON_OF_INTEREST_TYPE = the_king
+			}
+		}
+		stress_impact = {
+			arrogant = medium_stress_impact_loss
+			cynical = minor_stress_impact_loss
+			humble = medium_stress_impact_gain
+		}
+		ai_chance = {
+			base = 5
+			ai_value_modifier = {
+				ai_zeal = -0.25
+				ai_honor = -0.25
+				ai_energy = 0.25
+				ai_greed = 0.10
+			}
+		}
+	}
+	option = { #Stick with Oraispol Rite, PLAYER ONLY AND AT THIS POINT ONLY HERE FOR THE SAKE OF MULTIPLAYER
+		name = sjalvolki_reformation.0205.c
+		
+		random_independent_ruler = {
+			limit = {
+				highest_held_title_tier = tier_empire
+				faith = faith:orispolj_rite
+				NOT = { has_variable = rite_war_side_picked }
+				capital_county = {
+					title_province = { is_any_metropolis_district = yes }
+					faith = faith:orispolj_rite
+					holder.top_liege.faith = faith:orispolj_rite
+					NOT = {
+						this = title:c_mallilene #Prevents it from spawning in Asiupoli
+					}
+				}
+			}
+			alternative_limit = {
+				highest_held_title_tier = tier_kingdom
+				faith = faith:orispolj_rite
+				NOT = { has_variable = rite_war_side_picked }
+				capital_county = {
+					title_province = { is_any_metropolis_district = yes }
+					faith = faith:orispolj_rite
+					holder.top_liege.faith = faith:orispolj_rite
+					NOT = {
+						this = title:c_mallilene #Prevents it from spawning in Asiupoli
+					}
+				}
+			}
+			alternative_limit = {
+				highest_held_title_tier = tier_duchy
+				faith = faith:orispolj_rite
+				NOT = { has_variable = rite_war_side_picked }
+				capital_county = {
+					title_province = { is_any_metropolis_district = yes }
+					faith = faith:orispolj_rite
+					holder.top_liege.faith = faith:orispolj_rite
+					NOT = {
+						this = title:c_mallilene #Prevents it from spawning in Asiupoli
+					}
+				}
+			}
+			alternative_limit = {
+				highest_held_title_tier = tier_county
+				faith = faith:orispolj_rite
+				NOT = { has_variable = rite_war_side_picked }
+				capital_county = {
+					title_province = { is_any_metropolis_district = yes }
+					faith = faith:orispolj_rite
+					holder.top_liege.faith = faith:orispolj_rite
+					NOT = {
+						this = title:c_mallilene #Prevents it from spawning in Asiupoli
+					}
+				}
+			}
+			alternative_limit = {
+				highest_held_title_tier = tier_empire
+				faith = faith:orispolj_rite
+				NOT = { has_variable = rite_war_side_picked }
+			}
+			alternative_limit = {
+				highest_held_title_tier = tier_kingdom
+				faith = faith:orispolj_rite
+				NOT = { has_variable = rite_war_side_picked }
+			}
+			alternative_limit = {
+				highest_held_title_tier = tier_duchy
+				faith = faith:orispolj_rite
+				NOT = { has_variable = rite_war_side_picked }
+			}
+			alternative_limit = {
+				highest_held_title_tier = tier_county
+				faith = faith:orispolj_rite
+				NOT = { has_variable = rite_war_side_picked }
+			}
+			trigger_event = sjalvolki_reformation.0205
+		}
+		stress_impact = {
+			arbitrary = minor_stress_impact_loss
+			lazy = minor_stress_impact_loss
+		}
+		ai_chance = {
+			base = 0
+		}
+	}
+}
+
+sjalvolki_reformation.0206 = { #Event sent to all Orispolj rulers demanding conversion to either Piety or Authority
+	title = sjalvolki_reformation.0206.t
+	type = character_event
+	desc = sjalvolki_reformation.0206.desc
+	theme = learning
+	left_portrait = {
+		character = scope:piety_embracer
+		animation = personality_bold
+	}
+	right_portrait = {
+		character = scope:authority_founder
+		animation = personality_bold
+	}
+	
+	option = { #Accept the piety rite
+		name = sjalvolki_reformation.0206.a
+		
+		root = {
+			set_character_faith_with_conversion = faith:piety_rite
+			set_variable = rite_war_side_picked
+		}
+		root.capital_county = {
+			set_county_faith = faith:piety_rite
+		}
+		stress_impact = {
+			arrogant = medium_stress_impact_gain
+			cynical = minor_stress_impact_gain
+			humble = medium_stress_impact_loss
+		}
+		ai_chance = {
+			base = 5
+			ai_value_modifier = {
+				ai_zeal = 0.25
+				ai_honor = 0.25
+				ai_energy = -0.25
+				ai_greed = -0.10
+			}
+		}
+	}
+	option = { #Accept authority Rite
+		name = sjalvolki_reformation.0206.b
+		
+		root = {
+			set_character_faith_with_conversion = faith:authority_rite
+			set_variable = rite_war_side_picked
+		}
+		root.capital_county = {
+			set_county_faith = faith:authority_rite
+		}
+		stress_impact = {
+			arrogant = medium_stress_impact_loss
+			cynical = minor_stress_impact_loss
+			humble = medium_stress_impact_gain
+		}
+		ai_chance = {
+			base = 5
+			ai_value_modifier = {
+				ai_zeal = -0.25
+				ai_honor = -0.25
+				ai_energy = 0.25
+				ai_greed = 0.10
+			}
+		}
+	}
+	
+	option = { #Stick with Orispolj Rite, rare but now possible for AI
+		name = sjalvolki_reformation.0206.c
+	
+		stress_impact = {
+			arbitrary = minor_stress_impact_loss
+			lazy = minor_stress_impact_loss
+			zealous = minor_stress_impact_loss
+		}
+		ai_chance = {
+			base = 3
+			ai_value_modifier = {
+				ai_zeal = 0.25
+				ai_boldness = 0.20
+			}
+		}
+	}
+}
+
+sjalvolki_reformation.0207 = { #Hidden event to initialize heresies, and the Council
+	type = character_event
+	hidden = yes
+	
+	#HERESIES LIST:
+	#Conclave of Opakasija
+	#Eastern Rite
+	
+	immediate = {
+		if = { #OPAKASIJA CONCLAVE
+			limit = {
+				any_county_in_region = {
+					region = world_ga_northeast_opakhasia
+					OR = {
+						faith = faith:sjalvolki
+						faith = faith:orispolj_rite
+					}
+					holder.top_liege.faith = {
+						OR = {
+							this = faith:sjalvolki
+							this = faith:orispolj_rite
+						}
+					}
+				}
+			}
+			set_global_variable = {
+				name = opakasija_conclave_eligible
+			}
+			set_global_variable = {
+				name = opakasija_conclave_timer
+				years = 4
+			}
+		}
+		if = { #EASTERN RITE
+			limit = {
+				any_county_in_region = {
+					region = world_ga_east_shattered_coast
+					OR = {
+						faith = faith:sjalvolki
+						faith = faith:orispolj_rite
+						faith = faith:piety_rite
+						faith = faith:authority_rite
+					}
+					holder.top_liege.faith = {
+						OR = {
+							this = faith:sjalvolki
+							this = faith:orispolj_rite
+							this = faith:piety_rite
+							this = faith:authority_rite
+						}
+					}
+				}
+			}
+			set_global_variable = {
+				name = eastern_rite_eligible
+			}
+			set_global_variable = {
+				name = eastern_rite_timer
+				years = 5
+			}
+		}
+		if = { #Velosgrave Council spawn
+			limit = {
+				any_county = {
+					faith = faith:piety_rite
+					holder.top_liege = {
+						faith = faith:piety_rite
+					}
+				}
+			}
+			random_county = {
+				limit = {
+					faith = faith:piety_rite
+					title_province = { is_any_metropolis_district = yes }
+					holder.top_liege = {
+						faith = faith:piety_rite
+						is_ai = yes
+					}
+					NOT = {
+						title_province = {
+							geographical_region = world_ga_east_shattered_coast
+						}
+					}
+				}
+				alternative_limit = {
+					faith = faith:piety_rite
+					holder.top_liege = {
+						faith = faith:piety_rite
+						is_ai = yes
+					}
+					NOT = {
+						title_province = {
+							geographical_region = world_ga_east_shattered_coast
+						}
+					}
+				}
+				save_scope_as = velosgrave_council_county
+				debug_log = "VELOSGRAVE COUNCIL COUNTY:"
+				debug_log_scopes = yes
+			}
+			scope:velosgrave_council_county.holder.top_liege = {
+				trigger_event = {
+					id = sjalvolki_reformation.0209
+					days = 1
+				}
+			}
+		}
+		every_player = {
+			trigger_event = sjalvolki_reformation.0208
+		}
+	}
+}
+
+sjalvolki_reformation.0208 = { #Notifies world of the Veloscoup and Rite Wars
+	title = sjalvolki_reformation.0208.t
+	type = character_event
+	desc = sjalvolki_reformation.0208.desc
+	theme = war
+	left_portrait = {
+		character = scope:piety_embracer
+		animation = war_attacker
+	}
+	right_portrait = {
+		character = scope:authority_founder
+		animation = war_attacker
+	}
+	
+	option = {
+		name = sjalvolki_reformation.0208.a
+		custom_tooltip = sjalvolki_faith_splintering.tt
+	}
+}
+
+sjalvolki_reformation.0209 = { #Makes the Velosgrave not!papacy
+	type = character_event
+	hidden = yes
+	
+	immediate = {
+		debug_log = "creating velosgrave council"
+		root.primary_title = {
+			save_scope_as = usurped_by_veloschosen
+		}
+		create_title_and_vassal_change = {
+			type = created
+			save_scope_as = title_change
+			add_claim_on_loss = no
+		}
+		scope:velosgrave_council_county = {
+			change_title_holder = {
+				holder = scope:piety_founder
+				change = scope:title_change
+			}
+		}
+		scope:usurped_by_veloschosen = {
+			change_title_holder_include_vassals = {
+				holder = scope:piety_founder
+				change = scope:title_change
+			}
+		}
+		scope:piety_founder_county = {
+			change_title_holder = {
+				holder = scope:piety_embracer
+				change = scope:title_change
+			}
+		}
+		resolve_title_and_vassal_change = scope:title_change
+		scope:piety_founder = {
+			change_government = theocracy_government
+		}
+	}
+}
+
+##################################################
+#Collaspe of Spiritual Unity
+#0211-0220
+#By UltimateVictory
+##################################################
+
+sjalvolki_reformation.0211 = { #Opakasija Conclave initializer
+	type = character_event
+	hidden = yes
+	
+	immediate = {
+		if = {
+			limit = {
+				any_county_in_region = {
+					region = world_ga_northeast_opakhasia
+					OR = {
+						faith = faith:sjalvolki
+						faith = faith:orispolj_rite
+					}
+					holder.top_liege.faith = {
+						OR = {
+							this = faith:sjalvolki
+							this = faith:orispolj_rite
+						}
+					}
+				}
+			}
+			random_county_in_region = {
+				region = world_ga_northeast_opakhasia
+				limit = {
+					OR = {
+						faith = faith:sjalvolki
+						faith = faith:orispolj_rite
+					}
+					OR = {
+						holder.top_liege.faith = faith:sjalvolki
+						holder.top_liege.faith = faith:orispolj_rite
+					}
+				}
+				save_scope_as = opakasija_conclave_spawn_county
+				scope:opakasija_conclave_spawn_county = {
+					set_county_faith = faith:conclave_of_opakhasia
+				}
+				scope:opakasija_conclave_spawn_county.holder.top_liege = {
+					trigger_event = sjalvolki_reformation.0212
+				}
+			}
+		}
+		debug_log = "sjalvolki_reformation.0211 fired"
+	}
+}
+
+sjalvolki_reformation.0212 = { #Holder of conclave spawn county gets an event to convert, AI will always accept
+	title = sjalvolki_reformation.0212.t
+	type = character_event
+	desc = sjalvolki_reformation.0212.desc
+	theme = learning
+	left_portrait = {
+		character = root
+		animation = personality_rational
+	}
+	
+	immediate = {
+		debug_log = "sjalvolki_reformation.0212 fired"
+	}
+	
+	option = { #Accept the Conclave
+		name = sjalvolki_reformation.0212.a
+		
+		root = {
+			set_character_faith_with_conversion = faith:conclave_of_opakhasia
+			save_scope_as = opakasija_conclave_embracer
+		}
+		set_global_variable = {
+			name = opakasija_conclave_spreading
+			years = 5
+		}
+		every_living_character = {
+			limit = {
+				is_independent_ruler = yes
+				OR = {
+					faith = faith:orispolj_rite
+					faith = faith:sjalvolki
+				}
+				capital_province = {
+					geographical_region = world_ga_northeast_opakhasia
+				}
+			}
+			trigger_event = {
+				id = sjalvolki_reformation.0213
+				days = 2
+			}
+		}
+		stress_impact = {
+			lazy = minor_stress_impact_gain
+			cynical = minor_stress_impact_gain
+			diligent = minor_stress_impact_loss
+		}
+		ai_chance = {
+			base = 100
+		}
+	}
+	
+	option = { #reject the Conclave
+		root = {
+			set_variable = rite_war_side_picked
+		}
+		random_county_in_region = {
+			region = world_ga_northeast_opakhasia
+			limit = {
+				OR = {
+					faith = faith:sjalvolki
+					faith = faith:orispolj_rite
+				}
+				holder.top_liege.faith = {
+					OR = {
+						this = faith:sjalvolki
+						this = faith:orispolj_rite
+					}
+				}
+			}
+			save_scope_as = opakasija_conclave_spawn_county
+			scope:opakasija_conclave_spawn_county = {
+				set_county_faith = faith:conclave_of_opakhasia
+			}
+			scope:opakasija_conclave_spawn_county.holder.top_liege = {
+				trigger_event = sjalvolki_reformation.0212
+			}
+		}
+		stress_impact = {
+		lazy = minor_stress_impact_loss
+		cynical = minor_stress_impact_gain
+		diligent = minor_stress_impact_gain
+	}
+		ai_chance = {
+			base = 0
+		}
+	}
+}
+
+sjalvolki_reformation.0213 = {
+	title = sjalvolki_reformation.0213.t
+	type = character_event
+	desc = sjalvolki_reformation.0213.desc
+	theme = learning
+	left_portrait = {
+		character = scope:opakasija_conclave_embracer
+		animation = personality_bold
+	}
+	right_portrait = {
+		character = root
+		animation = personality_rational
+	}
+	
+	option = { #Accept the Conclave
+		name = sjalvolki_reformation.0213.a
+		
+		root = {
+			set_character_faith_with_conversion = faith:conclave_of_opakhasia
+		}
+		stress_impact = {
+			lazy = minor_stress_impact_gain
+			cynical = minor_stress_impact_gain
+			diligent = minor_stress_impact_loss
+		}
+		ai_chance = {
+			base = 90
+			ai_value_modifier = {
+				ai_zeal = -0.2
+			}
+		}
+	}
+	
+	option = { #reject the Conclave
+		name = sjalvolki_reformation.0213.b
+		root = {
+			set_variable = rite_war_side_picked
+		}
+		stress_impact = {
+			lazy = minor_stress_impact_loss
+			cynical = minor_stress_impact_gain
+			diligent = minor_stress_impact_gain
+		}
+		ai_chance = {
+			base = 5
+		}
+	}
+}
+
+sjalvolki_reformation.0214 = { #Eastern Rite initializer
+	type = character_event
+	hidden = yes
+	
+	immediate = {
+		if = {
+			limit = {
+				any_county_in_region = {
+					region = world_ga_east_shattered_coast
+					OR = {
+						faith = faith:sjalvolki
+						faith = faith:orispolj_rite
+						faith = faith:piety_rite
+						faith = faith:authority_rite
+					}
+					holder.top_liege.faith = {
+						OR = {
+							this = faith:sjalvolki
+							this = faith:orispolj_rite
+							this = faith:piety_rite
+							this = faith:authority_rite
+						}
+					}
+				}
+			}
+			random_county_in_region = {
+				region = world_ga_east_shattered_coast
+				limit = {
+					OR = {
+						faith = faith:sjalvolki
+						faith = faith:orispolj_rite
+						faith = faith:piety_rite
+						faith = faith:authority_rite
+					}
+					OR = {
+						holder.top_liege.faith = faith:sjalvolki
+						holder.top_liege.faith = faith:orispolj_rite
+						holder.top_liege.faith = faith:piety_rite
+						holder.top_liege.faith = faith:authority_rite
+					}
+				}
+				save_scope_as = eastern_rite_spawn_county
+				scope:eastern_rite_spawn_county = {
+					set_county_faith = faith:eastern_rite
+				}
+				scope:eastern_rite_spawn_county.holder.top_liege = {
+					trigger_event = sjalvolki_reformation.0215
+				}
+			}
+		}
+		debug_log = "sjalvolki_reformation.0214 fired"
+	}
+}
+
+sjalvolki_reformation.0215 = { #Holder of eastern rite spawn county gets an event to convert, AI will always accept
+	title = sjalvolki_reformation.0215.t
+	type = character_event
+	desc = sjalvolki_reformation.0215.desc
+	theme = learning
+	left_portrait = {
+		character = root
+		animation = personality_rational
+	}
+	
+	immediate = {
+		debug_log = "sjalvolki_reformation.0215 fired"
+	}
+	
+	option = { #Accept the Eastern Rite
+		name = sjalvolki_reformation.0215.a
+		
+		root = {
+			set_character_faith_with_conversion = faith:eastern_rite
+			save_scope_as = eastern_rite_embracer
+		}
+		set_global_variable = {
+			name = eastern_rite_spreading
+			years = 5
+		}
+		every_living_character = {
+			limit = {
+				is_independent_ruler = yes
+				OR = {
+					faith = faith:sjalvolki
+					faith = faith:orispolj_rite
+					faith = faith:piety_rite
+					faith = faith:authority_rite
+				}
+				capital_province = {
+					geographical_region = world_ga_east_shattered_coast
+				}
+				NOT = {
+					faith = faith:eastern_rite
+				}
+			}
+			trigger_event = {
+				id = sjalvolki_reformation.0216
+				days = 2
+			}
+		}
+		stress_impact = {
+			lazy = minor_stress_impact_loss
+			cynical = minor_stress_impact_loss
+			humble = minor_stress_impact_loss
+			arrogant = minor_stress_impact_gain
+		}
+		ai_chance = {
+			base = 100
+		}
+	}
+	
+	option = { #reject the eastern rite
+		name = sjalvolki_reformation.0215.b
+		root = {
+			set_variable = rite_war_side_picked
+		}
+		random_county_in_region = {
+			region = world_ga_east_shattered_coast
+			limit = {
+				OR = {
+					faith = faith:sjalvolki
+					faith = faith:orispolj_rite
+					faith = faith:piety_rite
+					faith = faith:authority_rite
+				}
+				holder.top_liege.faith = {
+					OR = {
+						this = faith:sjalvolki
+						this = faith:orispolj_rite
+						this = faith:piety_rite
+						this = faith:authority_rite
+					}
+				}
+			}
+			save_scope_as = eastern_rite_spawn_county
+			scope:eastern_rite_spawn_county = {
+				set_county_faith = faith:eastern_rite
+			}
+			scope:eastern_rite_spawn_county.holder.top_liege = {
+				trigger_event = sjalvolki_reformation.0215
+			}
+		}
+		stress_impact = {
+		lazy = minor_stress_impact_gain
+		cynical = minor_stress_impact_gain
+		humble = minor_stress_impact_gain
+		arrogant = minor_stress_impact_loss
+		}
+		ai_chance = {
+			base = 0
+		}
+	}
+}
+
+sjalvolki_reformation.0216 = {
+	title = sjalvolki_reformation.0216.t
+	type = character_event
+	desc = sjalvolki_reformation.0216.desc
+	theme = learning
+	left_portrait = {
+		character = scope:eastern_rite_embracer
+		animation = personality_bold
+	}
+	right_portrait = {
+		character = root
+		animation = personality_rational
+	}
+	
+	option = { #Accept the Eastern Rite
+		name = sjalvolki_reformation.0216.a
+		
+		root = {
+			set_character_faith_with_conversion = faith:eastern_rite
+		}
+		stress_impact = {
+			lazy = minor_stress_impact_loss
+			cynical = minor_stress_impact_loss
+			humble = minor_stress_impact_loss
+			arrogant = minor_stress_impact_gain
+		}
+		ai_chance = {
+			base = 80
+			ai_value_modifier = {
+				ai_zeal = -0.2
+			}
+		}
+	}
+	
+	option = { #reject the Conclave
+		name = sjalvolki_reformation.0216.b
+		root = {
+			set_variable = rite_war_side_picked
+		}
+		stress_impact = {
+			lazy = minor_stress_impact_gain
+			cynical = minor_stress_impact_gain
+			humble = minor_stress_impact_gain
+			arrogant = minor_stress_impact_loss
+		}
+		ai_chance = {
+			base = 20
+		}
+	}
+}

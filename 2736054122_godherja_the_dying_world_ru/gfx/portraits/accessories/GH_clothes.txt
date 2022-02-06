@@ -1,63 +1,69 @@
 ﻿## these assets are then used in the genes (game/common/genes/..) at the bottom of the file. 
 
-## GODHERJA ##
+# GODHERJA #
 
-
-## Commoner Clothes ##
-
-## Low Nobility Clothes ##
-
-## High Nobility Clothes ##
-
-female_clothes_robes_aversarian = {
-	entity = { required_tags = ""		shared_pose_entity = torso		entity = f_val_robes_entity }
-}
+## Generic ##
 
 female_clothes_robes_generic = {
-	entity = { required_tags = ""		shared_pose_entity = torso		entity = f_gen_robes_entity }
+	entity = { required_tags = ""		shared_pose_entity = torso		entity = f_robes_generic_entity }
 }
-
-male_clothes_robes_aversarian = {
-	entity = { required_tags = ""		shared_pose_entity = torso		entity = val_robes_1_entity }
-}
-
 male_clothes_robes_generic = {
-	entity = { required_tags = ""		shared_pose_entity = torso		entity = robes_gen_entity }
+	entity = { required_tags = ""		shared_pose_entity = torso		entity = robes_generic_entity }
 }
 
-black_sun_armor = {
-	entity = { required_tags = ""		shared_pose_entity = torso		entity = armor_test_1_entity }
-}
-
-male_clothes_agionist_01 = {
-	entity = { required_tags = ""		shared_pose_entity = torso		entity = male_clothes_agionist_01_entity }
-}
+## Agionist ##
 
 female_clothes_agionist_01 = {
 	entity = { required_tags = ""		shared_pose_entity = torso		entity = female_clothes_agionist_01_entity }
 }
-
-male_clothes_agionist_02 = {
-	entity = { required_tags = ""		shared_pose_entity = torso		entity = male_clothes_agionist_02_entity }
-}
-
 female_clothes_agionist_02 = {
 	entity = { required_tags = ""		shared_pose_entity = torso		entity = female_clothes_agionist_02_entity }
 }
-
+female_clothes_agionist_03 = {
+	entity = { required_tags = ""		shared_pose_entity = torso		entity = female_clothes_agionist_03_entity }
+}
+male_clothes_agionist_01 = {
+	entity = { required_tags = ""		shared_pose_entity = torso		entity = male_clothes_agionist_01_entity }
+}
+male_clothes_agionist_02 = {
+	entity = { required_tags = ""		shared_pose_entity = torso		entity = male_clothes_agionist_02_entity }
+}
 male_clothes_agionist_03 = {
 	entity = { required_tags = ""		shared_pose_entity = torso		entity = male_clothes_agionist_03_entity }
 }
 
-female_clothes_agionist_03 = {
-	entity = { required_tags = ""		shared_pose_entity = torso		entity = female_clothes_agionist_03_entity }
+## Aversarian ##
+
+female_clothes_robes_aversarian = {
+	entity = { required_tags = ""		shared_pose_entity = torso		entity = f_robes_aversarian_entity }
+}
+female_clothes_robes_aversarian_black = {
+	entity = { required_tags = ""		shared_pose_entity = torso		entity = f_robes_aversarian_black_entity }
+}
+male_clothes_robes_aversarian = {
+	entity = { required_tags = ""		shared_pose_entity = torso		entity = robes_aversarian_entity }
+}
+male_clothes_robes_aversarian_black = {
+	entity = { required_tags = ""		shared_pose_entity = torso		entity = robes_aversarian_black_entity }
 }
 
-## War Nobility Clothes ##
+## Sarradon ##
 
+female_clothes_robes_sarradon_nobility = {
+	entity = { required_tags = ""		shared_pose_entity = torso		entity = sarradon_nobility_female_entity }
+}
+female_clothes_robes_sarradon_high_nobility = {
+	entity = { required_tags = ""		shared_pose_entity = torso		entity = sarradon_nobility_high_female_entity }
+}
+male_clothes_robes_sarradon_nobility = {
+	entity = { required_tags = ""		shared_pose_entity = torso		entity = robes_sarradon_nobility_entity }
+}
+male_clothes_robes_sarradon_high_nobility = {
+	entity = { required_tags = ""		shared_pose_entity = torso		entity = robes_sarradon_high_nobility_entity }
+}
 
-##########################################################################
+## Special ##
 
-
-
-
+male_clothes_special_black_sun = {
+	entity = { required_tags = ""		shared_pose_entity = torso		entity = armor_test_1_entity }
+}

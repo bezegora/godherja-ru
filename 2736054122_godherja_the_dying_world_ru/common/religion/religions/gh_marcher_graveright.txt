@@ -1,4 +1,4 @@
-﻿graveright_religion= {
+﻿graveright_religion = {
 	family = gh_marcher
 	
 	graphical_faith = "catholic_gfx"
@@ -57,8 +57,8 @@
 
 
 	traits = {
-		virtues = { just }
-		sins = { arbitrary }
+		virtues = { humble honest chaste }
+		sins = { arrogant deceitful lustful }
 	}
 
 	reserved_male_names = {
@@ -235,7 +235,6 @@
 		graveright = { #polish religion
 			color = { 0.2 0.1 0.1 }
 			icon = graveright_icon
-			religious_head = d_graveright_rel
 
 			holy_site = sacreinux
 			holy_site = tillyes
@@ -247,10 +246,10 @@
 			doctrine = tenet_communal_identity
 
 		}
-		gravewatch = {#replacement forced on by the marchers
+		# Gravewatch = graveward
+		gravewatch = { #replacement forced on by the marchers
 			color = {0.1 0.1 0.1}
 			icon = gravewatch_icon
-			religious_head = d_gravewatch_rel
 			
 			#Tenet
 			doctrine = tenet_ritual_celebrations

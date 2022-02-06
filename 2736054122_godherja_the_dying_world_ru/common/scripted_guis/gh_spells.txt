@@ -8,18 +8,9 @@ vampiric_drain = {
 	scope = character
 
 	effect = {
-		add_character_flag = {
-			flag = casted_vampiric_drain
-		}
-		send_interface_toast = {
-			title = vampiric_toast
-		}
-		trigger_event = magic_decisions.1001
-		change_variable = {
-			name = magic_counter
-			subtract = tier_5_spell
-		}
+		vampiric_drain_effect = yes
 		increase_progress_to_living_magi_trait = yes
+		send_interface_toast = { title = vampiric_toast }
 	}
 }
 
@@ -35,6 +26,7 @@ thinning = {
 			}
 			send_interface_toast = { title = thinning_toast }
 			increase_progress_to_living_magi_trait = yes
+			personal_harmful_spell_apply_personality_effects = yes
 			apply_spell_effect_with_backfire_chance_list = { TIER = 2 SUCCESS_CHANCE = standard_spell_difficulty_success_chance SPELL_EFFECT = thinning_effect FAILURE_CHANCE = standard_spell_difficulty_failure_chance }
 		}
 	}
@@ -52,7 +44,13 @@ poison = {
 			}
 			send_interface_toast = { title = poison_toast }
 			increase_progress_to_living_magi_trait = yes
-			apply_spell_effect_with_backfire_chance_list = { TIER = 2 SUCCESS_CHANCE = standard_spell_difficulty_success_chance SPELL_EFFECT = poison_effect FAILURE_CHANCE = standard_spell_difficulty_failure_chance }
+			personal_deadly_spell_apply_personality_effects = yes
+			apply_spell_effect_with_backfire_chance_list = {
+				TIER = 2
+				SUCCESS_CHANCE = standard_spell_difficulty_success_chance
+				SPELL_EFFECT = poison_effect
+				FAILURE_CHANCE = standard_spell_difficulty_failure_chance
+			}
 		}
 	}
 }
@@ -71,7 +69,13 @@ domination = {
 				title = domination_toast
 			}
 			increase_progress_to_living_magi_trait = yes
-			apply_spell_effect_with_custom_backfire_chance_list = { TIER = 3 SUCCESS_CHANCE = standard_spell_difficulty_success_chance SPELL_EFFECT = domination_effect FAILURE_CHANCE = standard_spell_difficulty_failure_chance BACKFIRE_EFFECT = domination_backfire_effect }
+			apply_spell_effect_with_custom_backfire_chance_list = {
+				TIER = 3
+				SUCCESS_CHANCE = standard_spell_difficulty_success_chance
+				SPELL_EFFECT = domination_effect
+				FAILURE_CHANCE = standard_spell_difficulty_failure_chance
+				BACKFIRE_EFFECT = domination_backfire_effect
+			}
 		}
 	}
 }
@@ -81,7 +85,14 @@ healing_water = {
 
 	effect = {
 		increase_progress_to_living_magi_trait = yes
-		apply_spell_effect_with_custom_backfire_chance_list = { TIER = 1 SUCCESS_CHANCE = difficult_spell_difficulty_success_chance SPELL_EFFECT = healing_water_effect FAILURE_CHANCE = difficult_spell_difficulty_failure_chance BACKFIRE_EFFECT = poison_effect }
+		personal_beneficial_spell_apply_personality_effects = yes
+		apply_spell_effect_with_custom_backfire_chance_list = {
+			TIER = 1
+			SPELL_EFFECT = healing_water_effect
+			SUCCESS_CHANCE = difficult_spell_difficulty_success_chance_nonhostile
+			FAILURE_CHANCE = difficult_spell_difficulty_failure_chance_nonhostile
+			BACKFIRE_EFFECT = poison_effect
+		}
 	}
 }
 
@@ -96,7 +107,13 @@ thralldom = {
 				}
 			}
 			increase_progress_to_living_magi_trait = yes
-			apply_spell_effect_with_custom_backfire_chance_list = { TIER = 3 SUCCESS_CHANCE = difficult_spell_difficulty_success_chance SPELL_EFFECT = thralldom_effect FAILURE_CHANCE = difficult_spell_difficulty_failure_chance BACKFIRE_EFFECT = domination_backfire_effect }
+			apply_spell_effect_with_custom_backfire_chance_list = {
+				TIER = 3
+				SPELL_EFFECT = thralldom_effect
+				SUCCESS_CHANCE = difficult_spell_difficulty_success_chance
+				FAILURE_CHANCE = difficult_spell_difficulty_failure_chance
+				BACKFIRE_EFFECT = domination_backfire_effect
+			}
 		}
 	}
 }
@@ -105,7 +122,8 @@ strengthening = {
 	scope = character
 	effect = {
 		increase_progress_to_living_magi_trait = yes
-		apply_spell_effect_with_custom_backfire_chance_list = { TIER = 2 SUCCESS_CHANCE = standard_spell_difficulty_success_chance SPELL_EFFECT = strengthening_effect FAILURE_CHANCE = standard_spell_difficulty_failure_chance BACKFIRE_EFFECT = thinning_effect }
+		personal_beneficial_spell_apply_personality_effects = yes
+		apply_spell_effect_with_custom_backfire_chance_list = { TIER = 2 SUCCESS_CHANCE = standard_spell_difficulty_success_chance_nonhostile SPELL_EFFECT = strengthening_effect FAILURE_CHANCE = standard_spell_difficulty_failure_chance_nonhostile BACKFIRE_EFFECT = thinning_effect }
 	}
 }
 
@@ -114,94 +132,7 @@ fire_magick = {
 
 	effect = {
 		increase_progress_to_living_magi_trait = yes
-		apply_spell_effect_with_custom_backfire_chance_list = { TIER = 1 SUCCESS_CHANCE = standard_spell_difficulty_success_chance SPELL_EFFECT = fire_magick_effect FAILURE_CHANCE = standard_spell_difficulty_failure_chance BACKFIRE_EFFECT = fire_magick_backfire_effect }
-	}
-}
-
-mending = {	# OBSOLETE, MERGED WITH HEALING WATER
-    scope = character
-
-    effect = {
-		if = {
-			limit = {
-				root = {
-					has_variable_list = spell_targets
-				}
-			}
-			root = {
-				deduct_spell_cost_by_tier = { TIER = 2 }
-				add_character_flag = {
-					flag = casted_mending
-					years = 10
-				}
-				send_interface_toast = {
-					title = mending_toast
-				}
-			}
-			every_in_list = {
-				variable = spell_targets
-				mending_spell_effect = yes
-			}
-		}
-		else = {
-			deduct_spell_cost_by_tier = { TIER = 2 }
-			add_character_flag = {
-				flag = casted_mending
-				years = 10
-			}
-			mending_spell_effect = yes
-				send_interface_toast = {
-					title = mending_toast
-				}
-		}
-    }
-}
-
-purification = { # OBSOLETE, MERGED WITH HEALING WATER
-	scope = character
-
-	effect = {
-		if = {
-			limit = {
-				root = {
-					has_variable_list = spell_targets
-				}
-			}
-			root = {
-				# i put root to ensure it charges the caster
-				deduct_spell_cost_by_tier = { TIER = 1 }
-				add_character_flag = {
-					flag = casted_purification
-					years = 5
-				}
-				send_interface_toast = {
-					title = purification_toast
-				}
-			}
-			every_in_list = {
-				variable = spell_targets
-				add_character_modifier = {
-					modifier = purification_mod
-					years = 10
-				}
-				
-			}
-		}
-		else = {
-			deduct_spell_cost_by_tier = { TIER = 1 }
-			add_character_flag = {
-				flag = casted_purification
-				years = 5
-			}
-			add_character_modifier = {
-				modifier = purification_mod
-				years = 10
-			}
-			send_interface_toast = {
-				title = purification_toast
-			}
-		}
-
+		apply_spell_effect_with_custom_backfire_chance_list = { TIER = 1 SUCCESS_CHANCE = standard_spell_difficulty_success_chance_nonhostile SPELL_EFFECT = fire_magick_effect FAILURE_CHANCE = standard_spell_difficulty_failure_chance_nonhostile BACKFIRE_EFFECT = fire_magick_backfire_effect }
 	}
 }
 
@@ -210,7 +141,7 @@ unveiling = {
 
     effect = {
 		increase_progress_to_living_magi_trait = yes
-		apply_spell_effect_with_custom_backfire_chance_list = { TIER = 2 SUCCESS_CHANCE = standard_spell_difficulty_success_chance SPELL_EFFECT = unveiling_effect FAILURE_CHANCE = standard_spell_difficulty_failure_chance BACKFIRE_EFFECT = unveiling_backfire_effect }
+		apply_spell_effect_with_custom_backfire_chance_list = { TIER = 2 SUCCESS_CHANCE = standard_spell_difficulty_success_chance_nonhostile SPELL_EFFECT = unveiling_effect FAILURE_CHANCE = standard_spell_difficulty_failure_chance_nonhostile BACKFIRE_EFFECT = unveiling_backfire_effect }
 	}
 }
 
@@ -219,7 +150,23 @@ creation = {
 
 	effect = {
 		increase_progress_to_living_magi_trait = yes
-		apply_spell_effect_with_custom_backfire_chance_list = { TIER = 1 SUCCESS_CHANCE = standard_spell_difficulty_success_chance SPELL_EFFECT = creation_effect FAILURE_CHANCE = standard_spell_difficulty_failure_chance BACKFIRE_EFFECT = creation_backfire_effect }
+		apply_spell_effect_with_custom_backfire_chance_list = { TIER = 1 SUCCESS_CHANCE = standard_spell_difficulty_success_chance_nonhostile SPELL_EFFECT = creation_effect FAILURE_CHANCE = standard_spell_difficulty_failure_chance_nonhostile BACKFIRE_EFFECT = creation_backfire_effect }
+	}
+}
+
+plant_growth = {
+	scope = character
+
+	effect = {
+		if = {
+			limit = {
+				root = {
+					has_variable_list = spell_l_targets
+				}
+			}
+			increase_progress_to_living_magi_trait = yes
+			apply_spell_effect_with_custom_backfire_chance_list_land = { TIER = 1 SUCCESS_CHANCE = standard_spell_difficulty_success_chance_nonhostile SPELL_EFFECT = plant_growth_effect FAILURE_CHANCE = standard_spell_difficulty_failure_chance_nonhostile BACKFIRE_EFFECT = plant_growth_backfire_effect }
+		}
 	}
 }
 
@@ -228,7 +175,7 @@ divination = {
 
 	effect = {
 		increase_progress_to_living_magi_trait = yes
-		apply_spell_effect_with_custom_backfire_chance_list = { TIER = 3 SUCCESS_CHANCE = difficult_spell_difficulty_success_chance SPELL_EFFECT = divination_effect FAILURE_CHANCE = difficult_spell_difficulty_failure_chance BACKFIRE_EFFECT = unveiling_backfire_effect }
+		apply_spell_effect_with_custom_backfire_chance_list = { TIER = 3 SUCCESS_CHANCE = difficult_spell_difficulty_success_chance_nonhostile SPELL_EFFECT = divination_effect FAILURE_CHANCE = difficult_spell_difficulty_failure_chance_nonhostile BACKFIRE_EFFECT = unveiling_backfire_effect }
 	}
 }
 
@@ -237,7 +184,7 @@ raise_undead = {
 
 	effect = {
 		increase_progress_to_living_magi_trait = yes
-		apply_spell_effect_with_custom_backfire_chance_list = { TIER = 3 SUCCESS_CHANCE = difficult_spell_difficulty_success_chance SPELL_EFFECT = raise_undead_effect FAILURE_CHANCE = difficult_spell_difficulty_failure_chance BACKFIRE_EFFECT = fire_magick_backfire_effect }
+		apply_spell_effect_with_custom_backfire_chance_list = { TIER = 3 SUCCESS_CHANCE = difficult_spell_difficulty_success_chance_nonhostile SPELL_EFFECT = raise_undead_effect FAILURE_CHANCE = difficult_spell_difficulty_failure_chance_nonhostile BACKFIRE_EFFECT = fire_magick_backfire_effect }
 	}
 }
 
@@ -259,13 +206,11 @@ genocide_region = {
 						modifier = genocide_region_mod
 						years = 5
 					}
+				set_county_culture = root.culture
+				set_county_faith = root.faith
 				}
 				root = {
 					deduct_spell_cost_by_tier = { TIER = 5 }
-					add_character_flag = {
-						flag = casted_genocide_region
-						years = 10
-					}
 				}
 			}
 		}
@@ -292,35 +237,12 @@ annihilation = {
 					has_variable_list = spell_l_targets
 				}
 			}
-			every_in_list = {
-				variable = spell_l_targets
-				save_scope_as = location
-				scope:location = {
-					add_county_modifier = {
-						modifier = annihilation_mod
-						years = 5
-					}
-				}
-				root = {
-					deduct_spell_cost_by_tier = { TIER = 4 }
-					add_character_flag = {
-						flag = casted_annihilation
-						years = 10
-					}
-				}
-			}
+			increase_progress_to_living_magi_trait = yes
+			county_harmful_spell_apply_personality_effects = yes
+			apply_spell_effect_with_custom_backfire_chance_list_land = { TIER = 5 SUCCESS_CHANCE = standard_spell_difficulty_success_chance SPELL_EFFECT = annihilation_effect FAILURE_CHANCE = difficult_spell_difficulty_failure_chance BACKFIRE_EFFECT = fire_magick_backfire_effect }
 		}
-		else = {
-			if = {
-				limit = { exists = capital_province }
-				capital_province = { save_scope_as = location }
-			}
-		}
+	}
 
-			send_interface_toast = {
-				title = annihilation_toast
-			}
-		}
 }
 
 quicken = {
@@ -328,7 +250,33 @@ quicken = {
 
 	effect = {
 		increase_progress_to_living_magi_trait = yes
-		apply_spell_effect_with_custom_backfire_chance_list = { TIER = 1 SUCCESS_CHANCE = standard_spell_difficulty_success_chance SPELL_EFFECT = quicken_effect FAILURE_CHANCE = standard_spell_difficulty_failure_chance BACKFIRE_EFFECT = poison_effect }
+		apply_spell_effect_with_custom_backfire_chance_list = { TIER = 1 SUCCESS_CHANCE = standard_spell_difficulty_success_chance_nonhostile SPELL_EFFECT = quicken_effect FAILURE_CHANCE = standard_spell_difficulty_failure_chance_nonhostile BACKFIRE_EFFECT = poison_effect }
+	}
+}
+
+magic_cannibalism = {
+	scope = character
+
+	effect = {
+		if = {
+			limit = {
+				root = {
+					has_variable_list = spell_targets
+					any_in_list = {
+						variable = spell_targets
+						is_imprisoned_by = root
+					}
+				}
+			}
+			increase_progress_to_living_magi_trait = yes
+			apply_spell_effect_with_custom_backfire_chance_list_self_only = {
+				TIER = 3
+				SPELL_EFFECT = magic_cannibalism_effect
+				SUCCESS_CHANCE = difficult_spell_difficulty_success_chance_nonhostile
+				FAILURE_CHANCE = difficult_spell_difficulty_failure_chance_nonhostile
+				BACKFIRE_EFFECT = unveiling_backfire_effect
+			}
+		}
 	}
 }
 
@@ -383,45 +331,9 @@ raise_undead2 = {
 	scope = character
 
 	effect = {
-
-		if = {
-			limit = {
-				root = {
-					has_variable_list = spell_l_targets
-				}
-			}
-			every_in_list = {
-				variable = spell_l_targets
-				save_scope_as = location
-			}
-		}
-		else = {
-			if = {
-				limit = { exists = capital_province }
-				capital_province = { save_scope_as = location }
-			}
-				spawn_army = {
-					name = "Skeleton Army"
-					location = scope:location
-					levies = 0
-					men_at_arms = {
-						type = spirit_regular
-						stacks = 1
-					}
-				inheritable = no
-				uses_supply = no
-			}
-			deduct_spell_cost_by_tier = { TIER = 3 }
-
-			add_character_flag = {
-				flag = casted_raise_dead
-				years = 10
-				}
-		}
-
-				send_interface_toast = {
-					title = undead_dead_toast
-				}
+		increase_overwhelmation_from_moon_pull = yes
+		increase_progress_to_dead_magi_trait = yes
+		apply_spell_effect_with_custom_backfire_chance_list = { TIER = 3dead SUCCESS_CHANCE = moon_difficult_spell_difficulty_success_chance_nonhostile SPELL_EFFECT = raise_undead2_effect FAILURE_CHANCE = moon_difficult_spell_difficulty_failure_chance_nonhostile BACKFIRE_EFFECT = fire_magick_backfire_effect }
 	}
 }
 
@@ -429,7 +341,9 @@ lead_to_gold = {
 	scope = character
 	
 	effect = {
-		apply_spell_effect_with_custom_backfire_chance_list = { TIER = 2 SUCCESS_CHANCE = difficult_spell_difficulty_success_chance SPELL_EFFECT = lead_to_gold_effect FAILURE_CHANCE = difficult_spell_difficulty_failure_chance BACKFIRE_EFFECT = poison_effect }
+		increase_overwhelmation_from_moon_pull = yes
+		increase_progress_to_dead_magi_trait = yes
+		apply_spell_effect_with_custom_backfire_chance_list_self_only = { TIER = 2dead SUCCESS_CHANCE = moon_difficult_spell_difficulty_success_chance_nonhostile SPELL_EFFECT = lead_to_gold_effect FAILURE_CHANCE = moon_difficult_spell_difficulty_failure_chance_nonhostile BACKFIRE_EFFECT = poison_effect }
 	}
 }
 
@@ -437,29 +351,9 @@ create_golems = {
 	scope = character
 
 	effect = {
-		root = {
-			spawn_army = {
-				name = "Golem Army"
-				location = capital_province
-				levies = 1
-				men_at_arms = {
-					type = golems
-					stacks = 1
-				}
-				inheritable = no
-				uses_supply = no
-			}
-			deduct_spell_cost_by_tier = { TIER = 2 }
-
-			add_character_flag = {
-				flag = casted_created_golems
-				years = 10
-				}
-
-			send_interface_toast = {
-				title = craft_golems_toast
-			}
-		}
+		increase_overwhelmation_from_moon_pull = yes
+		increase_progress_to_dead_magi_trait = yes
+		apply_spell_effect_with_custom_backfire_chance_list = { TIER = 4dead SUCCESS_CHANCE = moon_difficult_spell_difficulty_success_chance_nonhostile SPELL_EFFECT = create_golems_effect FAILURE_CHANCE = moon_difficult_spell_difficulty_failure_chance_nonhostile BACKFIRE_EFFECT = earth_magic_backfire_effect }
 	}
 }
 
@@ -467,82 +361,9 @@ stone_serpent = {
 	scope = character
 
 	effect = {
-		if = {
-			limit = {
-				root = {
-					has_variable_list = spell_targets
-				}
-			}
-			every_in_list = {
-				variable = spell_targets
-			}
-			if = {
-				limit ={
-					var:magic_lvl = { compare_value = 1 }
-				}
-				every_in_list = {
-					variable = spell_targets
-					add_character_modifier = stone_serpent_1_mod
-				}
-			}
-			if = {
-				limit = {
-					var:magic_lvl = { compare_value = 2 }
-				}
-					every_in_list = {
-						variable = spell_targets
-						add_character_modifier = stone_serpent_2_mod
-					}
-				}
-			if = {
-				limit = {
-					var:magic_lvl = { compare_value = 3 }
-					}
-					every_in_list = {
-						variable = spell_targets
-						add_character_modifier = stone_serpent_3_mod
-					}
-				}
-			}
-		else = {
-			if = {
-				limit = {
-					var:magic_lvl = { compare_value = 0 }
-				}
-				custom_tooltip = level_0_warning.tt
-			}
-			if = {
-				limit = {
-					var:magic_lvl = { compare_value = 1 }
-				}
-				add_character_modifier = stone_serpent_1_mod
-				deduct_spell_cost_by_tier = { TIER = 1 }
-			}
-			if = {
-				limit = {
-						var:magic_lvl = { compare_value = 2 }
-					}
-					add_character_modifier = stone_serpent_2_mod
-					deduct_spell_cost_by_tier = { TIER = 1 }
-				}
-			if = {
-				limit = {
-					var:magic_lvl = { compare_value = 3 }
-				}
-				add_character_modifier = stone_serpent_3_mod
-				deduct_spell_cost_by_tier = { TIER = 1 }
-			}
-		}
-		root = {
-			add_character_flag = {
-				flag = casted_stone_serpent
-				years = 10
-			}
-
-			send_interface_toast = {
-				title = stone_serpent_toast
-			}
-		}
+		increase_overwhelmation_from_moon_pull = yes
+		increase_progress_to_dead_magi_trait = yes
+		apply_spell_effect_with_custom_backfire_chance_list = { TIER = 1dead SUCCESS_CHANCE = moon_standard_spell_difficulty_success_chance_nonhostile SPELL_EFFECT = stone_serpent_effect FAILURE_CHANCE = moon_standard_spell_difficulty_failure_chance_nonhostile BACKFIRE_EFFECT = earth_magic_backfire_effect }
 	}
 }
 
@@ -555,7 +376,7 @@ necrotic_boon = {
 				has_variable_list = spell_targets
 			}
 			every_in_list = {
-				has_variable = spell_targets
+				variable = spell_targets
 				random_list = {
 					50 = {
 						add_martial_skill = 1
@@ -599,6 +420,7 @@ necrotic_boon = {
 
 pull_meteor = {
 	scope = character
+	
 	effect = {
 		if = {
 			limit = {
@@ -606,33 +428,28 @@ pull_meteor = {
 					has_variable_list = spell_l_targets
 				}
 			}
-			every_in_list = {
-				variable = spell_l_targets
-				save_scope_as = location
-				scope:location = {
-					add_county_modifier = {
-						modifier = meteored
-						years = 10
-					}
-				}
-				root = {
-					deduct_spell_cost_by_tier = { TIER = 4 }
-					add_character_flag = {
-						flag = casted_pull_meteor
-						years = 10
-					}
-				}
-			}
+			increase_overwhelmation_from_moon_pull = yes
+			increase_progress_to_dead_magi_trait = yes
+			county_harmful_spell_apply_personality_effects = yes
+			apply_spell_effect_with_backfire_chance_list_land = { TIER = 4dead SUCCESS_CHANCE = moon_difficult_spell_difficulty_success_chance SPELL_EFFECT = pull_meteor_effect FAILURE_CHANCE = moon_difficult_spell_difficulty_failure_chance }
 		}
-		else = {
-			if = {
-				limit = { exists = capital_province }
-				capital_province = { save_scope_as = location }
-			}
-		}
+	}
+}
 
-		send_interface_toast = {
-			title = pull_meteor_toast
+earthquake = {
+	scope = character
+	
+	effect = {
+		if = {
+			limit = {
+				root = {
+					has_variable_list = spell_l_targets
+				}
+			}
+			increase_overwhelmation_from_moon_pull = yes
+			increase_progress_to_dead_magi_trait = yes
+			county_harmful_spell_apply_personality_effects = yes
+			apply_spell_effect_with_backfire_chance_list_land = { TIER = 5dead SUCCESS_CHANCE = moon_difficult_spell_difficulty_success_chance SPELL_EFFECT = earthquake_effect FAILURE_CHANCE = moon_difficult_spell_difficulty_failure_chance }
 		}
 	}
 }
@@ -647,73 +464,53 @@ crush_armor = {
 					has_variable_list = spell_targets
 				}
 			}
-			every_in_list = {
-				variable = spell_targets
-				add_character_modifier = {
-					modifier = crushed_armor_mod
-					months = 6
-				}
-				root = {
-					deduct_spell_cost_by_tier = { TIER = 1 }
-					add_character_flag = {
-						flag = casted_crush_armor
-						years = 2
-					}
-				}
-			}
-			send_interface_toast = {
-				title = crush_armor_toast
-			}
+			increase_overwhelmation_from_moon_pull = yes
+			increase_progress_to_dead_magi_trait = yes
+			send_interface_toast = { title = crush_armor_toast }
+			personal_harmful_spell_apply_personality_effects = yes
+			apply_spell_effect_with_backfire_chance_list = { TIER = 2dead SUCCESS_CHANCE = moon_standard_spell_difficulty_success_chance SPELL_EFFECT = crush_armor_effect FAILURE_CHANCE = moon_standard_spell_difficulty_failure_chance }
+
 		}
-		else = {
-			send_interface_toast = {
-				title = crush_armor_toast_rejection
-			}
-		}
+	}
+}
+
+enchant_arms = {
+	scope = character
+
+	effect = {
+		increase_overwhelmation_from_moon_pull = yes
+		increase_progress_to_dead_magi_trait = yes
+		apply_spell_effect_with_custom_backfire_chance_list = { TIER = 1dead SUCCESS_CHANCE = moon_standard_spell_difficulty_success_chance_nonhostile SPELL_EFFECT = enchant_arms_effect FAILURE_CHANCE = moon_standard_spell_difficulty_failure_chance_nonhostile BACKFIRE_EFFECT = crush_armor_effect }
+	}
+}
+
+moon_read = {
+    scope = character
+
+	effect = {
+		increase_overwhelmation_from_moon_pull = yes
+		increase_progress_to_dead_magi_trait = yes
+		apply_spell_effect_with_custom_backfire_chance_list = { TIER = 2dead SUCCESS_CHANCE = moon_standard_spell_difficulty_success_chance_nonhostile SPELL_EFFECT = moon_read_effect FAILURE_CHANCE = moon_standard_spell_difficulty_failure_chance_nonhostile BACKFIRE_EFFECT = moon_read_backfire_effect }
 	}
 }
 
 craft_greater_golem = {
 	scope = character
+
 	effect = {
-		if = {
-			limit = {
-				root = {
-					has_variable_list = spell_targets
-				}
-			}
-			every_in_list = {
-				variable = spell_targets
-				root = {
-					deduct_spell_cost_by_tier = { TIER = 4 }
-					add_character_flag = {
-						flag = casted_craft_greater_golem
-						years = 20
-					}
-				}
-				custom_tooltip = craft_greater_golem2.tt
-				hidden_effect = {
-					add_artifact = {ARTIFACT = artifact_mountgreatergolem}
-				}
-			}
-			send_interface_toast = {
-				title = greater_fogbeast_toast
-			}
-		}
-		else = {
-			deduct_spell_cost_by_tier = { TIER = 4 }
-			custom_tooltip = craft_greater_golem.tt
-			add_character_flag = {
-				flag = casted_craft_greater_golem
-				years = 10
-			}
-			send_interface_toast = {
-				title = craft_greater_golem_toast
-			}
-			hidden_effect = {
-				add_artifact = {ARTIFACT = artifact_mountgreatergolem}
-			}
-		}
+		increase_overwhelmation_from_moon_pull = yes
+		increase_progress_to_dead_magi_trait = yes
+		apply_spell_effect_with_custom_backfire_chance_list = { TIER = 3dead SUCCESS_CHANCE = moon_difficult_spell_difficulty_success_chance_nonhostile SPELL_EFFECT = craft_greater_golem_effect FAILURE_CHANCE = moon_difficult_spell_difficulty_failure_chance_nonhostile BACKFIRE_EFFECT = earth_magic_backfire_effect }
+	}
+}
+
+necrotic_vitality = {
+	scope = character
+
+	effect = {
+		increase_overwhelmation_from_moon_pull = yes
+		increase_progress_to_dead_magi_trait = yes
+		apply_spell_effect_with_custom_backfire_chance_list_self_only = { TIER = 4dead SUCCESS_CHANCE = moon_difficult_spell_difficulty_success_chance_nonhostile SPELL_EFFECT = necrotic_vitality_effect FAILURE_CHANCE = moon_difficult_spell_difficulty_failure_chance_nonhostile BACKFIRE_EFFECT = necrotic_vitality_backfire_effect }
 	}
 }
 
@@ -721,64 +518,173 @@ boneshaping = {
 	scope = character
 
 	effect = {
-		add_character_flag = {
-			flag = casted_boneshaping
-			years = 100
-		}
-		send_interface_toast = {
-			title = boneshaping_toast
-		}
-		trigger_event = magic_decisions.2000 ###tbd
-		change_variable = {
-			name = magic_counter
-			subtract = tier_5_spell
-		}
+		increase_overwhelmation_from_moon_pull = yes
+		increase_progress_to_dead_magi_trait = yes
+		apply_spell_effect_with_custom_backfire_chance_list = { TIER = 3dead SUCCESS_CHANCE = moon_difficult_spell_difficulty_success_chance_nonhostile SPELL_EFFECT = boneshaping_effect FAILURE_CHANCE = moon_difficult_spell_difficulty_failure_chance_nonhostile BACKFIRE_EFFECT = thinning_effect }
 	}
 }
 
-### MIXED MAGIC ###
-
-dementation = {
+petrify = {
 	scope = character
-	effect = {
 
+	effect = {
 		if = {
 			limit = {
 				root = {
 					has_variable_list = spell_targets
 				}
 			}
-			every_in_list = {
-				variable = spell_targets
-				root = {
-					deduct_spell_cost_by_tier = { TIER = 2 }
-					add_character_flag = {
-						flag = casted_dementation
-						years = 10
-					}
-				}
-				add_character_modifier = {
-					modifier = dementation_mod
-					years = 5
-				}
-			}
-			send_interface_toast = {
-				title = dementation_toast
-			}
+			increase_overwhelmation_from_moon_pull = yes
+			increase_progress_to_dead_magi_trait = yes
+			apply_spell_effect_with_backfire_chance_list = { TIER = 2dead SUCCESS_CHANCE = moon_standard_spell_difficulty_success_chance SPELL_EFFECT = petrify_effect FAILURE_CHANCE = moon_standard_spell_difficulty_failure_chance }
 
 		}
-		else = {
-			deduct_spell_cost_by_tier = { TIER = 2 }
-			add_character_flag = {
-				flag = casted_dementation
-				years = 10
+	}
+}
+
+find_minerals = {
+	scope = character
+	
+	effect = {
+		if = {
+			limit = {
+				root = {
+					has_variable_list = spell_l_targets
+				}
 			}
-			add_character_modifier = {
-				modifier = dementation_mod
-				years = 5
+			increase_overwhelmation_from_moon_pull = yes
+			increase_progress_to_dead_magi_trait = yes
+			apply_spell_effect_with_custom_backfire_chance_list_land = { TIER = 3dead SUCCESS_CHANCE = moon_difficult_spell_difficulty_success_chance_nonhostile SPELL_EFFECT = find_minerals_effect FAILURE_CHANCE = moon_difficult_spell_difficulty_failure_chance_nonhostile BACKFIRE_EFFECT = earth_magic_backfire_effect }
+		}
+	}
+}
+
+improve_soil = {
+	scope = character
+	
+	effect = {
+		if = {
+			limit = {
+				root = {
+					has_variable_list = spell_l_targets
+				}
 			}
-			send_interface_toast = {
-				title = dementation_toast
+			increase_overwhelmation_from_moon_pull = yes
+			increase_progress_to_dead_magi_trait = yes
+			apply_spell_effect_with_custom_backfire_chance_list_land = { TIER = 2dead SUCCESS_CHANCE = moon_standard_spell_difficulty_success_chance_nonhostile SPELL_EFFECT = improve_soil_effect FAILURE_CHANCE = moon_standard_spell_difficulty_failure_chance_nonhostile BACKFIRE_EFFECT = earth_magic_backfire_effect }
+		}
+	}
+}
+
+earth_fort = {
+	scope = character
+	
+	effect = {
+		if = {
+			limit = {
+				root = {
+					has_variable_list = spell_l_targets
+				}
+			}
+			increase_overwhelmation_from_moon_pull = yes
+			increase_progress_to_dead_magi_trait = yes
+			apply_spell_effect_with_custom_backfire_chance_list_land = { TIER = 1dead SUCCESS_CHANCE = moon_standard_spell_difficulty_success_chance_nonhostile SPELL_EFFECT = earth_fort_effect FAILURE_CHANCE = moon_standard_spell_difficulty_failure_chance_nonhostile BACKFIRE_EFFECT = earth_magic_backfire_effect }
+		}
+	}
+}
+
+raise_earth = {
+	scope = character
+
+	effect = {
+		increase_overwhelmation_from_moon_pull = yes
+		increase_progress_to_dead_magi_trait = yes
+		apply_spell_effect_with_custom_backfire_chance_list = {
+			TIER = 1dead
+			SPELL_EFFECT = raise_earth_effect
+			SUCCESS_CHANCE = moon_standard_spell_difficulty_success_chance_nonhostile
+			FAILURE_CHANCE = moon_standard_spell_difficulty_failure_chance_nonhostile
+			BACKFIRE_EFFECT = earth_magic_backfire_effect
+		}
+	}
+}
+
+moon_guidance = {
+	scope = character
+
+	effect = {
+		increase_overwhelmation_from_moon_pull = yes
+		increase_progress_to_dead_magi_trait = yes
+		apply_spell_effect_with_custom_backfire_chance_list_self_only = {
+			TIER = 1dead
+			SPELL_EFFECT = moon_guidance_effect
+			SUCCESS_CHANCE = moon_difficult_spell_difficulty_success_chance_nonhostile
+			FAILURE_CHANCE = moon_difficult_spell_difficulty_failure_chance_nonhostile
+			BACKFIRE_EFFECT = moon_guidance_backfire_effect
+		}
+	}
+}
+
+stoneskin = {
+	scope = character
+
+	effect = {
+		increase_overwhelmation_from_moon_pull = yes
+		increase_progress_to_dead_magi_trait = yes
+		apply_spell_effect_with_custom_backfire_chance_list = {
+			TIER = 2dead
+			SPELL_EFFECT = stoneskin_effect
+			SUCCESS_CHANCE = moon_standard_spell_difficulty_success_chance_nonhostile
+			FAILURE_CHANCE = moon_standard_spell_difficulty_failure_chance_nonhostile
+			BACKFIRE_EFFECT = petrify_effect
+		}
+	}
+}
+
+
+### MIXED MAGIC ###
+
+riftmark = {
+	scope = character
+
+	effect = {
+		if = {
+			limit = {
+				root = {
+					has_variable_list = spell_targets
+				}
+			}
+			send_interface_toast = { title = riftmark_toast }
+			#increase_progress_to_mixed_magi_trait = yes
+			personal_harmful_spell_apply_personality_effects = yes
+			apply_spell_effect_with_backfire_chance_list = {
+				TIER = 2 
+				SPELL_EFFECT = riftmark_effect 
+				SUCCESS_CHANCE = standard_spell_difficulty_success_chance
+				FAILURE_CHANCE = standard_spell_difficulty_failure_chance
+			}
+		}
+	}
+}
+
+unraveling = {
+	scope = character
+
+	effect = {
+		if = {
+			limit = {
+				root = {
+					has_variable_list = spell_targets
+				}
+			}
+			send_interface_toast = { title = unraveling_toast }
+			#increase_progress_to_mixed_magi_trait = yes
+			personal_deadly_spell_apply_personality_effects = yes
+			apply_spell_effect_with_backfire_chance_list = {
+				TIER = 2 
+				SPELL_EFFECT = unraveling_effect 
+				SUCCESS_CHANCE = standard_spell_difficulty_success_chance
+				FAILURE_CHANCE = standard_spell_difficulty_failure_chance
 			}
 		}
 	}
@@ -896,23 +802,23 @@ raise_lesser_fogbeasts = {
 			}
 			spawn_army = {
 				name = fogbeast_summoned_troops
-				location = scope:location
 				men_at_arms = {
 					type = fogbeasts
 					stacks = 10
 				}
+				location = scope:location
 				inheritable = no
 				uses_supply = no
 			}
-				deduct_spell_cost_by_tier = { TIER = 4 }
-
-				add_character_flag = {
-					flag = casted_raise_lesser_fogbeasts
-					years = 10
-				}
+			add_character_flag = {
+				flag = casted_raise_lesser_fogbeasts
+				years = 10
+			}
 			send_interface_toast = {
 				title = summon_fogbeasts_toast
 			}
+
+			deduct_spell_cost_by_tier = { TIER = 4 }
 		}
 	}
 }
@@ -1026,43 +932,19 @@ obliterate_memory = {
 rift_walk = {
 	scope = character
 	effect = {
-
 		if = {
 			limit = {
 				root = {
-					has_variable_list = spell_targets
+					has_variable_list = spell_l_targets
 				}
 			}
-			every_in_list = {
-				variable = spell_targets
-				root = {
-					deduct_spell_cost_by_tier = { TIER = 2 }
-					add_character_flag = {
-						flag = casted_rift_walk
-						years = 10
-					}
-				}
-				add_character_modifier = {
-					modifier = dementation_mod
-					years = 5
-				}
-			}
-			send_interface_toast = {
-				title = rift_walk_toast
-			}
-		}
-		else = {
-			deduct_spell_cost_by_tier = { TIER = 2 }
-			add_character_flag = {
-				flag = casted_rift_walk
-				years = 10
-			}
-			add_character_modifier = {
-				modifier = dementation_mod
-				years = 5
-			}
-			send_interface_toast = {
-				title = rift_walk_toast
+			send_interface_toast = { title = rift_walk_toast }
+			apply_spell_effect_with_custom_backfire_chance_list = {
+				TIER = 2
+				SPELL_EFFECT = rift_walk_effect
+				SUCCESS_CHANCE = difficult_spell_difficulty_success_chance_nonhostile
+				FAILURE_CHANCE = difficult_spell_difficulty_failure_chance_nonhostile
+				BACKFIRE_EFFECT = domination_backfire_effect
 			}
 		}
 	}
@@ -1111,5 +993,31 @@ haunting_power = {
 				title = haunting_power_toast
 			}
 		}
+	}
+}
+
+# Other magic
+
+kemsar_water_spell = {
+	scope = character
+
+	effect = {
+		if = {
+			limit = {
+				root = {
+					has_variable_list = spell_l_targets
+				}
+			}
+			increase_progress_to_living_magi_trait = yes
+			apply_spell_effect_with_custom_backfire_chance_list_land = { TIER = 2 SUCCESS_CHANCE = standard_spell_difficulty_success_chance_nonhostile SPELL_EFFECT = kemsar_water_spell_effect FAILURE_CHANCE = standard_spell_difficulty_failure_chance_nonhostile BACKFIRE_EFFECT = kemsar_water_spell_effect }
+		}
+	}
+}
+glimpse_reality = {
+	scope = character
+	
+	effect = {
+		increase_progress_to_living_mixed_trait = yes
+		apply_spell_effect_with_custom_backfire_chance_list = { TIER = 1 SUCCESS_CHANCE = standard_spell_difficulty_success_chance_nonhostile SPELL_EFFECT = glimpse_reality_effect FAILURE_CHANCE = standard_spell_difficulty_failure_chance_nonhostile BACKFIRE_EFFECT = unveiling_backfire_effect }
 	}
 }

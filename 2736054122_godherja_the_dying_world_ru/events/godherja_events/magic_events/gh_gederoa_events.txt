@@ -1,5 +1,16 @@
 ﻿namespace = gedeora
 
+##################################################
+# 0001 - 0010	A Gedeora Strikes (hidden global event)
+# 0011 - 0020	A Gedeora Strikes (childhood event)
+##################################################
+
+##################################################
+# A Gedeora Strikes (hidden global event)
+# by Hapchazzard
+# 0001 - 0010
+##################################################
+
 scripted_trigger is_in_gedeora_target_group = {
 	trigger_if = {
 		limit = { scope:gedeora_epicenter = { has_variable = gedeora_target_nobility } }
@@ -94,7 +105,8 @@ scripted_trigger is_in_gedeora_target_group = {
 	}
 }
 
-gedeora.0001 = {	# Initialization, picks a random epicenter
+# Initialization, picks a random epicenter
+gedeora.0001 = {
 	type = empty
 	hidden = yes
 	
@@ -111,10 +123,6 @@ gedeora.0001 = {	# Initialization, picks a random epicenter
 				name = recent_gedeora
 				value = scope:gedeora_epicenter
 				days = 90
-			}
-			add_to_global_variable_list = {
-				name = gedeora_spread_counties
-				target = this
 			}
 			pick_gedeora_primary_effect = yes
 			pick_gedeora_target_populace = yes
@@ -151,107 +159,26 @@ gedeora.0001 = {	# Initialization, picks a random epicenter
 					}
 				}
 			}
-			if = {
-				limit = { has_variable = global_gedeora }
-				every_county = {
-					every_in_de_facto_hierarchy = {
-						if = {
-							limit = { exists = this }
-							holder = {
-								if = {
-									limit = { 
-										exists = this
-										OR = { 
-											capital_county = prev 
-											highest_held_title_tier = tier_barony
-										}
-									}
-									trigger_event = gedeora.0010
-									every_courtier_or_guest = {
-										trigger_event = gedeora.0010
-									}
-									every_councillor = {
-										limit = { is_at_same_location = prev }
-										trigger_event = gedeora.0010
-									}
-									every_close_or_extended_family_member = {
-										limit = { is_at_same_location = prev }
-										trigger_event = gedeora.0010
-									}
-									every_spouse = {
-										limit = { is_at_same_location = prev }
-										trigger_event = gedeora.0010
-									}
-								}
-							}
-						}
-					}
-				}
+			# Since gedeora_distance_value is randomized, we want to save one instance so it doesn't fluctuate for the same Gedeora
+			set_local_variable = {
+				name = gedeora_distance
+				value = gedeora_distance_value
 			}
-			else = {
-				while = {
-					count = { gedeora_min_distance_value gedeora_max_distance_value }
-					every_in_global_list = {
-						variable = gedeora_spread_counties
-						remove_variable = next_gedeora_spread_target
-					}
-					every_in_global_list = {
-						variable = gedeora_spread_counties
-						limit = { NOT = { has_variable = next_gedeora_spread_target } }
-						set_variable = {
-							name = recently_hit_by_gedeora
-							days = 3
-						}
-						every_in_de_facto_hierarchy = {
-							limit = { exists = holder }
-							holder = {
-								if = {
-									limit = { 
-										OR = { 
-											capital_county = prev 
-											highest_held_title_tier = tier_barony
-										}
-									}
-									trigger_event = gedeora.0010
-									every_courtier_or_guest = {
-										trigger_event = gedeora.0010
-									}
-									every_councillor = {
-										limit = { is_at_same_location = prev }
-										trigger_event = gedeora.0010
-									}
-									every_close_or_extended_family_member = {
-										limit = { is_at_same_location = prev }
-										trigger_event = gedeora.0010
-									}
-									every_spouse = {
-										limit = { is_at_same_location = prev }
-										trigger_event = gedeora.0010
-									}
-								}
+			every_living_character = {
+				limit = {
+					exists = location
+					is_ruin = no
+					OR = {
+						has_variable = global_gedeora
+						location = {
+							squared_distance <= {
+								target = scope:gedeora_epicenter.title_province
+								value = local_var:gedeora_distance
 							}
-						}
-						every_title_to_title_neighboring_county = {
-							limit = { 
-								NOT = { 
-									has_variable = recently_hit_by_gedeora 
-								} 
-							}
-							set_variable = {
-								name = next_gedeora_spread_target	# To avoid adding to the list while reading through it at the same time and encompassing the entire world
-								days = 3
-							}
-							add_to_global_variable_list = {
-								name = gedeora_spread_counties
-								target = this
-							}
-						}
-						remove_list_global_variable = {
-							name = gedeora_spread_counties
-							target = this
 						}
 					}
 				}
+				trigger_event = gedeora.0010
 			}
 		}
 	}	
@@ -471,7 +398,14 @@ gedeora.0010 = {
 	}
 }
 
-gedeora.0020 = {	# Childhood event for children affected by a Gedeora during pregnancy
+##################################################
+# A Gedeora Strikes (childhood event)
+# by Hapchazzard
+# 0020 - 0030
+##################################################
+
+# Childhood event for children affected by a Gedeora during pregnancy
+gedeora.0020 = {
 	type = character_event
 	title = gedeora.0020.title
 	desc = gedeora.0020.desc

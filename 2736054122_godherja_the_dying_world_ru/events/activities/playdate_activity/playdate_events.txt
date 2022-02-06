@@ -3286,6 +3286,11 @@ playdate.3014 = {
 	trigger = {
 		NOT = { exists = local_var:had_playdate_event_3014 }
 		exists = cp:councillor_court_chaplain
+		scope:activity = {
+			any_participant = {
+				playdate_3014_paticipant_trigger = yes
+			}
+		}
 	}
 
 	weight_multiplier = { #Quite rare since it gives rare traits and secrets
@@ -3498,6 +3503,7 @@ playdate.9000 = {
 
 	trigger = {
 		exists = scope:activity
+		NOT = { exists = scope:activity.var:playdate_event_ended } 
 	}
 	
 	immediate = {
@@ -3549,6 +3555,11 @@ playdate.9000 = {
 				}
 				activity_owner = {
 					trigger_event = playdate.9001
+				}
+
+				set_variable = {
+					name = playdate_event_ended
+					value = 1
 				}
 			}
 		}

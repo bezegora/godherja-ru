@@ -1,0 +1,61 @@
+pdxmesh = {
+	name = "robes_sarradon_nobility_mesh"
+	file = "robes_sarradon_nobility.mesh"
+
+	blend_shape = { id = "robes_sarradon_nobility_muscular"				type = "robes_sarradon_nobility_muscular.mesh" }
+	blend_shape = { id = "robes_sarradon_nobility_gaunt"				type = "robes_sarradon_nobility_gaunt.mesh" }
+	blend_shape = { id = "robes_sarradon_nobility_old"					type = "robes_sarradon_nobility_old.mesh" }
+	blend_shape = { id = "robes_sarradon_nobility_fat"					type = "robes_sarradon_nobility_fat.mesh" }
+	blend_shape = { id = "robes_sarradon_nobility_infant"				type = "robes_sarradon_nobility_infant.mesh" }
+	blend_shape = { id = "robes_sarradon_nobility_child"				type = "robes_sarradon_nobility_child.mesh" }
+	blend_shape = { id = "robes_sarradon_nobility_dwarf"				type = "robes_sarradon_nobility_dwarf.mesh" }
+
+	meshsettings = {
+		name = "robes_sarradon_nobility"
+		index = 0
+		texture_diffuse = "robes_sarradon_nobility_color.dds"
+		texture_normal = "robes_sarradon_nobility_normal.dds"
+		texture_specular = "robes_sarradon_nobility_properties.dds"
+		shader = "portrait_attachment_pattern"
+		shader_file = "gfx/FX/jomini/portrait.shader"
+	}
+}
+
+entity = {
+	name = "robes_sarradon_nobility_entity"
+	pdxmesh = "robes_sarradon_nobility_mesh"
+	
+	attribute = { name = "bs_body_gaunt_1"								blend_shape = "robes_sarradon_nobility_gaunt" }
+	attribute = { name = "bs_body_muscular_1"							blend_shape = "robes_sarradon_nobility_muscular" }
+	attribute = { name = "bs_body_old_1"								blend_shape = "robes_sarradon_nobility_old" }
+	attribute = { name = "bs_body_fat_1"								blend_shape = "robes_sarradon_nobility_fat" }
+	attribute = { name = "bs_body_infant_1"								blend_shape = "robes_sarradon_nobility_infant" }
+	attribute = { name = "bs_body_child_1"								blend_shape = "robes_sarradon_nobility_child" }
+	attribute = { name = "bs_body_dwarf_1"								blend_shape = "robes_sarradon_nobility_dwarf" }
+
+	game_data = {
+		portrait_accessory = {
+			pattern_mask = "gfx/models/portraits/attachments/Non-Replacer/Godherja/male_clothes/secular/sarradonian/sarradon_nobility/robes_sarradon_nobility_mask.dds"	#Any 4-channel texture. Each channel will be used to mask a pattern from the variation object
+			variation = "pattern_sarradon_nobility_01"	#A "variation" object in gfx/portraits/accessory_variations/
+		}
+	}
+}
+entity = {
+	name = "robes_sarradon_high_nobility_entity"
+	pdxmesh = "robes_sarradon_nobility_mesh"
+	
+	attribute = { name = "bs_body_gaunt_1"								blend_shape = "robes_sarradon_nobility_gaunt" }
+	attribute = { name = "bs_body_muscular_1"							blend_shape = "robes_sarradon_nobility_muscular" }
+	attribute = { name = "bs_body_old_1"								blend_shape = "robes_sarradon_nobility_old" }
+	attribute = { name = "bs_body_fat_1"								blend_shape = "robes_sarradon_nobility_fat" }
+	attribute = { name = "bs_body_infant_1"								blend_shape = "robes_sarradon_nobility_infant" }
+	attribute = { name = "bs_body_child_1"								blend_shape = "robes_sarradon_nobility_child" }
+	attribute = { name = "bs_body_dwarf_1"								blend_shape = "robes_sarradon_nobility_dwarf" }
+
+	game_data = {
+		portrait_accessory = {
+			pattern_mask = "gfx/models/portraits/attachments/Non-Replacer/Godherja/male_clothes/secular/sarradonian/sarradon_nobility/robes_sarradon_high_nobility_mask.dds"
+			variation = "pattern_sarradon_nobility_02"
+		}
+	}
+}

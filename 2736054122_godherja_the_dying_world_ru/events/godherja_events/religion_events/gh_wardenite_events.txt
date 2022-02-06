@@ -1,0 +1,1859 @@
+﻿namespace = wardenite_yearly
+
+##################################################
+# #Standard Yearlies
+# 0001 - 0010	Dispute Between Two Tusuffna Lodges
+# 0011 - 0020	Child Falls in With Minbiri'a
+##################################################
+
+
+
+
+
+
+
+
+
+
+##################################################
+# STANDARD YEARLIES
+
+##################################################
+# Dispute Between Two Tusuffna Lodges
+# by Hapchazzard
+# 0001 - 0010
+##################################################
+
+scripted_trigger is_wardenite_county = {
+	tier = tier_county
+	religion = religion:sarradonian_religion
+}
+
+scripted_effect recruit_tusuffna_leader = {
+	$TUSUFFNA_LEADER$ = {
+		add_opinion = {
+			target = root
+			modifier = recruited_tusuffna_leader_opinion
+		}
+	}
+	add_hook = {
+		target = $TUSUFFNA_LEADER$
+		type = favor_hook
+	}
+	save_scope_value_as = {
+		name = sided_with_$TUSUFFNA_LEADER$
+		value = yes
+	}
+	add_courtier = $TUSUFFNA_LEADER$
+}
+
+#	A dispute between two Tusuffna escalates into violence, you're called in to intervene
+wardenite_yearly.0001 = {
+	type = character_event
+	title = wardenite_yearly.0001.t
+	desc = wardenite_yearly.0001.desc
+	theme = stewardship
+	left_portrait = {
+		character = scope:tusuffna_leader_one
+		animation = war_attacker
+	}
+	right_portrait = {
+		character = scope:tusuffna_leader_two
+		animation = war_defender
+	}
+	override_background = { event_background = throne_room }
+
+	trigger = {
+		#Standard checks.
+		is_available_even_at_war_adult = yes
+		NOT = { has_character_flag = had_event_wardenite_yearly_0001 }
+		is_landed = yes
+		#Needs to be Wardenite
+		has_religion = religion:sarradonian_religion
+		#Needs to have a Wardenite county for the event to take place in
+		any_held_title = {
+			is_wardenite_county = yes
+		}
+	}
+
+	weight_multiplier = {
+		base = 1
+		
+		#Weight up for realms that have counties with low control
+		modifier = {
+			add = 0.5
+			any_held_title = {
+				tier = tier_county
+				religion = religion:sarradonian_religion
+				county_control <= 75
+			}
+		}
+		modifier = {
+			add = 0.5
+			any_held_title = {
+				tier = tier_county
+				religion = religion:sarradonian_religion
+				county_control <= 50
+			}
+		}
+		modifier = {
+			add = 1
+			any_held_title = {
+				tier = tier_county
+				religion = religion:sarradonian_religion
+				county_control <= 25
+			}
+		}
+	}
+
+	immediate = {
+		add_character_flag = {
+			flag = had_event_wardenite_yearly_0001
+			days = 1825
+		}
+		save_scope_as = root_character
+		# Pick a county where the dispute breaks out.
+		random_held_title = {
+			limit = { is_wardenite_county = yes }
+			weight = {
+				# Every point of control below 100 increases chance rapidly
+				base = 10
+				modifier = {
+					add = {
+						value = 100
+						subtract = county_control
+					}
+				}
+			}
+			save_scope_as = tusuffna_dispute_county
+			add_county_modifier	= {
+				modifier = tusuffna_violence_modifier
+				days = 1850
+			}
+		}
+		# Generate the Tusuffna leaders
+		create_character = {
+			template = tusuffna_leader_template
+			location = root.capital_province
+			save_scope_as = tusuffna_leader_one
+		}
+		create_character = {
+			template = tusuffna_leader_template
+			location = root.capital_province
+			save_scope_as = tusuffna_leader_two
+		}
+	}
+
+	# Try and mediate between the two sides.
+	option = {
+		name = wardenite_yearly.0001.a
+		
+		skill = diplomacy
+		
+		duel = {
+			skill = diplomacy
+			value = decent_skill_rating
+			# A compromise is reached.
+			50 = {
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = 3.5
+					min = -49
+				}
+				# The less compatible the two leaders are, the harder it is to reconcile them
+				modifier = {
+					scope:tusuffna_leader_one = {
+						trait_compatibility = {
+							target = scope:tusuffna_leader_two
+							value >= high_positive_trait_compatibility
+						}
+					}
+					add = 30
+				}
+				modifier = {
+					scope:tusuffna_leader_one = {
+						trait_compatibility = {
+							target = scope:tusuffna_leader_two
+							value >= medium_positive_trait_compatibility
+						}
+					}
+					add = 15
+				}
+				modifier = {
+					scope:tusuffna_leader_one = {
+						trait_compatibility = {
+							target = scope:tusuffna_leader_two
+							value >= low_positive_trait_compatibility
+						}
+					}
+					add = 5
+				}
+				# More level-headed Tusuffna leaders are more likely to reach a compromise.
+				modifier = {
+					add = {
+						value = scope:tusuffna_leader_one.ai_rationality
+						multiply = 0.25
+					}
+				}
+				modifier = {
+					add = {
+						value = scope:tusuffna_leader_two.ai_rationality
+						multiply = 0.25
+					}
+				}
+				desc = wardenite_yearly.0001.a.tt_success
+				send_interface_toast = {
+					title = wardenite_yearly.0001.a.tt_success
+					left_icon = root
+					get_negotiation_prestige_reward_two_characters_effect = { 
+						CHARACTER_1 = scope:tusuffna_leader_one
+						CHARACTER_2 = scope:tusuffna_leader_two
+						DIFFICULTY = medium
+					}
+					add_piety = medium_piety_gain
+					add_diplomacy_lifestyle_xp = medium_lifestyle_xp
+					scope:tusuffna_dispute_county = { remove_county_modifier = tusuffna_violence_modifier }
+				}
+			}
+			# No compromise is reached.
+			50 = {
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = -3.5
+					min = -49
+				}
+				# If the leaders are spiteful, it becomes harder to get them to get along
+				modifier = {
+					add = {
+						value = scope:tusuffna_leader_one.ai_vengefulness
+						multiply = 0.25
+					}
+				}
+				modifier = {
+					add = {
+						value = scope:tusuffna_leader_two.ai_vengefulness
+						multiply = 0.25
+					}
+				}
+				desc = wardenite_yearly.0001.a.tt_failure
+				send_interface_toast = {	
+					title = wardenite_yearly.0001.a.tt_failure
+					left_icon = root
+					add_prestige = minor_prestige_loss
+				}
+			}
+		}
+		
+		stress_impact = {
+			just = medium_stress_impact_loss
+			diligent = minor_stress_impact_loss
+			lazy = medium_stress_impact_gain
+			shy = medium_stress_impact_gain
+		}
+		ai_chance = {
+			base = 100
+			ai_value_modifier = {
+				ai_compassion = 0.5
+				ai_rationality = 0.25
+			}
+			modifier = {	# Weight up for stress.
+				add = 20
+				has_trait = compassionate
+			}
+			modifier = {
+				add = 20
+				has_trait = forgiving
+			}
+			modifier = {
+				add = 20
+				has_trait = just
+			}
+			modifier = {
+				add = 10
+				has_trait = diligent
+			}
+			modifier = {	# Weight down for stress.
+				add = -10
+				has_trait = lazy
+			}
+			modifier = {
+				add = -20
+				has_trait = sadistic
+			}
+			modifier = {
+				add = -20
+				has_trait = callous
+			}
+			modifier = {
+				add = -20
+				has_trait = vengeful
+			}
+			modifier = {
+				add = -20
+				has_trait = arbitrary
+			}
+		}
+	}
+	
+	# Go the easy route and just make them promise not to do it again
+	option = {
+		name = wardenite_yearly.0001.b
+		
+		trait = lazy
+		trait = forgiving
+		trait = trusting
+		trait = calm
+		trait = shy
+		
+		trigger = {
+			OR = {
+				has_trait = lazy
+				has_trait = forgiving
+				has_trait = trusting
+				has_trait = calm
+				has_trait = shy
+			}
+		}
+		
+		add_prestige = miniscule_prestige_gain
+		
+		# Small chance of it actually resolving on its own, higher chance with more level headed and less spiteful Tusuffna leaders
+		random = {
+			chance = 10
+			modifier = {
+				add = {
+					value = scope:tusuffna_leader_one.ai_rationality
+					multiply = 0.1
+					min = -4
+					max = 20
+				}
+			}
+			modifier = {
+				add = {
+					value = scope:tusuffna_leader_two.ai_rationality
+					multiply = 0.1
+					min = -4
+					max = 20
+				}
+			}
+			modifier = {
+				add = {
+					value = scope:tusuffna_leader_one.ai_vengefulness
+					multiply = -0.1
+					min = -4
+					max = 20
+				}
+			}
+			modifier = {
+				add = {
+					value = scope:tusuffna_leader_two.ai_vengefulness
+					multiply = -0.1
+					min = -4
+					max = 20
+				}
+			}
+			
+			# If you have a glorious reputation, they're more likely to obey.
+			modifier = {
+				add = {
+					value = prestige_level
+					multiply = 5
+				}
+			}
+			# If you're terrifying, they're also more likely to take you seriously.
+			modifier = {
+				add = {
+					value = dread
+					multiply = 0.3
+				}
+			}
+			add_prestige = medium_prestige_gain
+			add_piety = minor_piety_gain
+			scope:tusuffna_dispute_county = { remove_county_modifier = tusuffna_violence_modifier }
+		}
+		
+		stress_impact = {
+			diligent = medium_stress_impact_gain
+			lazy = medium_stress_impact_loss
+			forgiving = medium_stress_impact_loss
+			trusting = minor_stress_impact_loss
+			shy = minor_stress_impact_loss
+			cynical = minor_stress_impact_loss
+		}
+		ai_chance = {
+			base = 50
+			ai_value_modifier = {
+				ai_energy = -0.25
+			}
+			modifier = {	# Weight up for stress.
+				add = 20
+				has_trait = arbitrary
+			}
+			modifier = {
+				add = 20
+				has_trait = lazy
+			}
+			modifier = {
+				add = 10
+				has_trait = forgiving
+			}
+			modifier = {
+				add = 10
+				has_trait = trusting
+			}
+			modifier = {
+				add = 10
+				has_trait = cynical
+			}
+			modifier = {
+				add = 10
+				has_trait = shy
+			}
+			modifier = {	# Weight down for stress.
+				add = -20
+				has_trait = just
+			}
+			modifier = {
+				add = -20
+				has_trait = diligent
+			}
+			modifier = {
+				add = -20
+				has_trait = zealous
+			}
+		}
+	}
+	
+	# I don't care about this at all
+	option = {
+		name = {
+			trigger = { has_trait = cynical }
+			text = wardenite_yearly.0001.b.cynical
+		}
+		name = {
+			text = wardenite_yearly.0001.b.arrogant
+		}
+		
+		trait = arrogant
+		trait = cynical
+		
+		trigger = {
+			OR = {
+				has_trait = arrogant
+				has_trait = cynical
+			}
+		}
+		
+		add_piety = minor_piety_loss
+		add_prestige = medium_prestige_gain
+		
+		stress_impact = {
+			diligent = medium_stress_impact_gain
+			lazy = medium_stress_impact_loss
+			arrogant = minor_stress_impact_loss
+			cynical = minor_stress_impact_loss
+		}
+		ai_chance = {
+			base = 50
+			ai_value_modifier = {
+				ai_energy = -0.25
+			}
+			modifier = {	# Weight up for stress.
+				add = 20
+				has_trait = arbitrary
+			}
+			modifier = {
+				add = 20
+				has_trait = lazy
+			}
+			modifier = {
+				add = 10
+				has_trait = forgiving
+			}
+			modifier = {
+				add = 10
+				has_trait = trusting
+			}
+			modifier = {
+				add = 10
+				has_trait = cynical
+			}
+			modifier = {	# Weight down for stress.
+				add = -20
+				has_trait = just
+			}
+			modifier = {
+				add = -20
+				has_trait = diligent
+			}
+			modifier = {
+				add = -20
+				has_trait = zealous
+			}
+		}
+	}
+	
+	# Threaten them into submission.
+	option = {
+		name = {
+			trigger = { has_trait = wrathful }
+			text = wardenite_yearly.0001.c.wrathful
+		}
+		name = {
+			text = wardenite_yearly.0001.c
+		} 
+		
+		trait = wrathful
+		trait = vengeful
+		trait = sadistic
+		trait = callous
+		skill = intrigue
+		
+		trigger = {
+			OR = {
+				has_trait = wrathful
+				has_trait = vengeful
+				has_trait = sadistic
+				has_trait = callous
+			}
+		}
+		
+		duel = {
+			skill = intrigue
+			value = decent_skill_rating
+			# The Tusuffna are cowed.
+			50 = {
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = 3.5
+					min = -49
+				}
+				modifier = {
+					add = {
+						value = dread
+						multiply = 0.3
+					}
+				}
+				modifier = {
+					add = 10
+					has_trait = sadistic
+				}
+				modifier = {
+					add = 10
+					has_trait = callous
+				}
+				modifier = {
+					add = 10
+					has_trait = vengeful
+				}
+				modifier = {
+					add = 10
+					has_trait = wrathful
+				}
+				desc = wardenite_yearly.0001.c.tt_success
+				send_interface_toast = {
+					title = wardenite_yearly.0001.c.tt_success
+					left_icon = root
+					add_prestige = medium_prestige_gain
+					scope:tusuffna_dispute_county = { remove_county_modifier = tusuffna_violence_modifier }
+				}
+			}
+			# The Tusuffna call your bluff.
+			50 = {
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = -3.5
+					min = -49
+				}
+				modifier = {
+					add = 10
+					has_trait = compassionate
+				}
+				modifier = {
+					add = 10
+					has_trait = forgiving
+				}
+				modifier = {
+					add = 10
+					has_trait = calm
+				}
+				modifier = {
+					add = 10
+					has_trait = lazy
+				}
+				desc = wardenite_yearly.0001.c.tt_failure
+				send_interface_toast = {	
+					title = wardenite_yearly.0001.c.tt_failure
+					left_icon = root
+					add_prestige = medium_prestige_loss
+				}
+			}
+		}
+		
+		stress_impact = {
+			compassionate = medium_stress_impact_gain
+			forgiving = medium_stress_impact_gain
+			sadistic = minor_stress_impact_loss
+			callous = minor_stress_impact_loss
+			vengeful = minor_stress_impact_loss
+			wrathful = medium_stress_impact_loss
+		}
+		ai_chance = {
+			base = 50
+			ai_value_modifier = {
+				ai_compassion = -0.5
+			}
+			modifier = {	# Weight up for stress.
+				add = 20
+				has_trait = wrathful
+			}
+			modifier = {
+				add = 10
+				has_trait = vengeful
+			}
+			modifier = {
+				add = 10
+				has_trait = callous
+			}
+			modifier = {
+				add = 10
+				has_trait = sadistic
+			}
+			modifier = {	# Weight down for stress.
+				add = -20
+				has_trait = compassionate
+			}
+			modifier = {
+				add = -20
+				has_trait = forgiving
+			}
+		}
+	}
+	
+	# Take sides (leader one)
+	option = {
+		name = wardenite_yearly.0001.d
+		highlight_portrait = scope:tusuffna_leader_one
+		
+		add_piety = minor_piety_loss
+		recruit_tusuffna_leader = { TUSUFFNA_LEADER = scope:tusuffna_leader_one }
+		
+		stress_impact = {
+			arbitrary = medium_stress_impact_loss
+			just = medium_stress_impact_gain
+			fickle = minor_stress_impact_gain
+		}
+		
+		ai_chance = {
+			base = 25
+			ai_value_modifier = {
+				ai_rationality = -0.25
+				ai_honor = -0.25
+			}
+			modifier = {	# Weight up for stress.
+				add = 20
+				has_trait = arbitrary
+			}
+			modifier = {	# Weight down for stress.
+				add = -20
+				has_trait = just
+			}
+		}
+	}
+	
+	# Take sides (leader two)
+	option = {
+		name = wardenite_yearly.0001.e
+		highlight_portrait = scope:tusuffna_leader_two
+		
+		add_piety = minor_piety_loss
+		recruit_tusuffna_leader = { TUSUFFNA_LEADER = scope:tusuffna_leader_two }
+		
+		stress_impact = {
+			arbitrary = medium_stress_impact_loss
+			just = medium_stress_impact_gain
+			fickle = minor_stress_impact_gain
+		}
+		
+		ai_chance = {
+			base = 25
+			ai_value_modifier = {
+				ai_rationality = -0.25
+				ai_honor = -0.25
+			}
+			modifier = {	# Weight up for stress.
+				add = 20
+				has_trait = arbitrary
+			}
+			modifier = {	# Weight down for stress.
+				add = -20
+				has_trait = just
+			}
+		}
+	}
+	
+	# Try and recruit both if gregarious, ambitious or shrewd
+	option = {
+		name = wardenite_yearly.0001.f
+		
+		skill = diplomacy
+		trait = gregarious
+		trait = ambitious
+		trait = shrewd
+		
+		trigger = {
+			OR = {
+				has_trait = gregarious
+				has_trait = ambitious
+				has_trait = shrewd
+			}
+		}
+		
+		duel = {
+			skill = diplomacy
+			value = very_high_skill_rating
+			# You successfully recruit both!
+			25 = {
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = 3.5
+					min = -24
+				}
+				# Check for compatibility between the first leader and ROOT
+				modifier = {
+					scope:tusuffna_leader_one = {
+						trait_compatibility = {
+							target = root
+							value >= high_positive_trait_compatibility
+						}
+					}
+					add = 20
+				}
+				modifier = {
+					scope:tusuffna_leader_one = {
+						trait_compatibility = {
+							target = root
+							value >= medium_positive_trait_compatibility
+						}
+					}
+					add = 10
+				}
+				modifier = {
+					scope:tusuffna_leader_one = {
+						trait_compatibility = {
+							target = root
+							value >= low_positive_trait_compatibility
+						}
+					}
+					add = 5
+				}
+				# Check for compatibility between the second leader and ROOT
+				modifier = {
+					scope:tusuffna_leader_two = {
+						trait_compatibility = {
+							target = root
+							value >= high_positive_trait_compatibility
+						}
+					}
+					add = 20
+				}
+				modifier = {
+					scope:tusuffna_leader_two = {
+						trait_compatibility = {
+							target = root
+							value >= medium_positive_trait_compatibility
+						}
+					}
+					add = 10
+				}
+				modifier = {
+					scope:tusuffna_leader_two = {
+						trait_compatibility = {
+							target = root
+							value >= low_positive_trait_compatibility
+						}
+					}
+					add = 5
+				}
+				desc = wardenite_yearly.0001.f.tt_success
+				send_interface_toast = {
+					title = wardenite_yearly.0001.f.tt_success
+					left_icon = root
+					get_negotiation_prestige_reward_three_characters_effect = {
+						CHARACTER_1 = scope:root_character
+						CHARACTER_2 = scope:tusuffna_leader_one
+						CHARACTER_3 = scope:tusuffna_leader_two
+						DIFFICULTY = medium
+					}
+					add_piety = medium_piety_gain
+					add_diplomacy_lifestyle_xp = medium_lifestyle_xp
+					recruit_tusuffna_leader = { TUSUFFNA_LEADER = scope:tusuffna_leader_one }
+					recruit_tusuffna_leader = { TUSUFFNA_LEADER = scope:tusuffna_leader_two }
+					scope:tusuffna_dispute_county = { remove_county_modifier = tusuffna_violence_modifier }
+				}
+			}
+			# Only the first leader likes the offer.
+			25 = {
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = 3.5
+					min = -24
+				}
+				# Check for compatibility between the first leader and ROOT
+				modifier = {
+					scope:tusuffna_leader_one = {
+						trait_compatibility = {
+							target = root
+							value >= high_positive_trait_compatibility
+						}
+					}
+					add = 20
+				}
+				modifier = {
+					scope:tusuffna_leader_one = {
+						trait_compatibility = {
+							target = root
+							value >= medium_positive_trait_compatibility
+						}
+					}
+					add = 10
+				}
+				modifier = {
+					scope:tusuffna_leader_one = {
+						trait_compatibility = {
+							target = root
+							value >= low_positive_trait_compatibility
+						}
+					}
+					add = 5
+				}
+				desc = wardenite_yearly.0001.f.tt_partial_success_one
+				send_interface_toast = {
+					title = wardenite_yearly.0001.f.tt_partial_success_one
+					left_icon = root
+					right_icon = scope:tusuffna_leader_one
+					get_negotiation_prestige_reward_two_characters_effect = { 
+						CHARACTER_1 = scope:root_character
+						CHARACTER_2 = scope:tusuffna_leader_one
+						DIFFICULTY = medium
+					}
+					add_piety = minor_piety_gain
+					add_diplomacy_lifestyle_xp = minor_lifestyle_xp
+					recruit_tusuffna_leader = { TUSUFFNA_LEADER = scope:tusuffna_leader_one }
+				}
+			}
+			# Only the second leader likes the offer.
+			25 = {
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = 3.5
+					min = -24
+				}
+				# Check for compatibility between the second leader and ROOT
+				modifier = {
+					scope:tusuffna_leader_two = {
+						trait_compatibility = {
+							target = root
+							value >= high_positive_trait_compatibility
+						}
+					}
+					add = 20
+				}
+				modifier = {
+					scope:tusuffna_leader_two = {
+						trait_compatibility = {
+							target = root
+							value >= medium_positive_trait_compatibility
+						}
+					}
+					add = 10
+				}
+				modifier = {
+					scope:tusuffna_leader_two = {
+						trait_compatibility = {
+							target = root
+							value >= low_positive_trait_compatibility
+						}
+					}
+					add = 5
+				}
+				desc = wardenite_yearly.0001.f.tt_partial_success_two
+				send_interface_toast = {
+					title = wardenite_yearly.0001.f.tt_partial_success_two
+					left_icon = root
+					right_icon = scope:tusuffna_leader_two
+					get_negotiation_prestige_reward_two_characters_effect = { 
+						CHARACTER_1 = scope:root_character
+						CHARACTER_2 = scope:tusuffna_leader_two
+						DIFFICULTY = medium
+					}
+					add_piety = minor_piety_gain
+					add_diplomacy_lifestyle_xp = minor_lifestyle_xp
+					recruit_tusuffna_leader = { TUSUFFNA_LEADER = scope:tusuffna_leader_two }
+				}
+			}
+			# Neither side likes the offer
+			75 = {
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = -3.5
+					min = -74
+				}
+				desc = wardenite_yearly.0001.f.tt_failure
+				send_interface_toast = {	
+					title = wardenite_yearly.0001.f.tt_failure
+					left_icon = root
+					add_prestige = minor_prestige_loss
+				}
+			}
+		}
+		
+		stress_impact = {
+			arbitrary = medium_stress_impact_loss
+			just = medium_stress_impact_gain
+			fickle = minor_stress_impact_gain
+		}
+		
+		ai_chance = {
+			base = 25
+			ai_value_modifier = {
+				ai_rationality = -0.25
+				ai_honor = -0.25
+			}
+			modifier = {	# Weight up for stress.
+				add = 20
+				has_trait = arbitrary
+			}
+			modifier = {	# Weight down for stress.
+				add = -20
+				has_trait = just
+			}
+		}
+	}
+	
+	# Have them pay a 'fine' to look the other way.
+	option = {
+		name = wardenite_yearly.0001.g
+		
+		trait = greedy
+		
+		trigger = {
+			OR = {
+				faith = { trait_is_virtue = greedy }
+				has_trait = greedy
+			}
+		}
+		
+		# Apply a hefty piety loss unless your faith values greed.
+		if = {
+			limit = { faith = { trait_is_virtue = greedy } }
+			add_piety = minor_piety_gain
+		}
+		else = {
+			add_piety = medium_piety_loss
+		}
+		
+		# Add the gold itself. Avaricious makes it so you get a bit more out of the deal.
+		if = {
+			limit = { has_trait = avaricious }
+			add_gold = medium_gold_value
+		}
+		else = {
+			add_gold = minor_gold_value
+		}
+		
+		stress_impact = {
+			greedy = medium_stress_impact_loss
+			avaricious = minor_stress_impact_loss
+			just = medium_stress_impact_gain
+		}
+		
+		ai_chance = {
+			base = 25
+			ai_value_modifier = {
+				ai_greed = 0.5
+				ai_honor = -0.25
+			}
+			modifier = {	# If desparate for money, weigh up significantly
+				add = 100
+				gold < 0
+			}
+			modifier = {	# Weight up for stress.
+				add = 20
+				has_trait = greedy
+			}
+			modifier = {
+				add = 10
+				has_trait = avaricious
+			}
+			modifier = {	# Weight down for stress.
+				add = -20
+				has_trait = just
+			}
+			modifier = {
+				add = -20
+				has_trait = zealous
+			}
+		}
+	}
+	
+	# Engage with them in a theological debate.
+	option = {
+		name = wardenite_yearly.0001.h
+		
+		skill = learning
+		
+		trait = zealous
+		trait = just
+		trait = theologian
+		
+		trigger = {
+			OR = {
+				has_trait = zealous
+				has_trait = just
+				has_trait = theologian
+			}
+		}
+		
+		duel = {
+			skill = learning
+			value = high_skill_rating
+			# The Tusuffna are swayed by your legalistic arguments.
+			50 = {
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = 3.5
+					min = -49
+				}
+				# If the Tusuffna leaders are not particularly zealous nor honorable, they're unlikely to care about these arguments
+				modifier = {
+					add = {
+						value = scope:tusuffna_leader_one.ai_zeal
+						multiply = 0.25
+					}
+				}
+				modifier = {
+					add = {
+						value = scope:tusuffna_leader_two.ai_zeal
+						multiply = 0.25
+					}
+				}
+				modifier = {
+					add = {
+						value = scope:tusuffna_leader_one.ai_honor
+						multiply = 0.25
+					}
+				}
+				modifier = {
+					add = {
+						value = scope:tusuffna_leader_two.ai_honor
+						multiply = 0.25
+					}
+				}
+				desc = wardenite_yearly.0001.h.tt_success
+				send_interface_toast = {
+					title = wardenite_yearly.0001.h.tt_success
+					left_icon = root
+					add_prestige = medium_prestige_gain
+					add_piety = major_piety_gain
+					add_learning_lifestyle_xp = medium_lifestyle_xp
+					scope:tusuffna_dispute_county = { remove_county_modifier = tusuffna_violence_modifier }
+				}
+			}
+			# No compromise is reached.
+			50 = {
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = -3.5
+					min = -49
+				}
+				# If the leaders are spiteful, it becomes harder to get them to get along, even when presented with legalistic arguments
+				modifier = {
+					add = {
+						value = scope:tusuffna_leader_one.ai_vengefulness
+						multiply = 0.25
+					}
+				}
+				modifier = {
+					add = {
+						value = scope:tusuffna_leader_two.ai_vengefulness
+						multiply = 0.25
+					}
+				}
+				desc = wardenite_yearly.0001.h.tt_failure
+				send_interface_toast = {	
+					title = wardenite_yearly.0001.h.tt_failure
+					left_icon = root
+					add_prestige = minor_prestige_loss
+				}
+			}
+		}
+		
+		stress_impact = {
+			zealous = medium_stress_impact_loss
+			just = medium_stress_impact_loss
+			theologian = minor_stress_impact_loss
+			lazy = medium_stress_impact_gain
+		}
+		
+		ai_chance = {
+			base = 25
+			ai_value_modifier = {
+				ai_zeal= 0.5
+				ai_rationality = 0.25
+			}
+			modifier = {	# Weight up for stress.
+				add = 20
+				has_trait = zealous
+			}
+			modifier = {
+				add = 20
+				has_trait = just
+			}
+			modifier = {
+				add = 10
+				has_trait = theologian
+			}
+			modifier = {	# Weight down for stress.
+				add = -20
+				has_trait = lazy
+			}
+		}
+	}
+	
+	after = {
+		# Standard cleanup
+		hidden_effect = {
+			if = {
+				limit = { NOT = { exists = scope:sided_with_tusuffna_leader_one } }
+				scope:tusuffna_leader_one = {
+					death = {
+						death_reason = death_vanished
+					}
+				}
+			}
+			if = {
+				limit = { NOT = { exists = scope:sided_with_tusuffna_leader_two } }
+				scope:tusuffna_leader_two = {
+					death = {
+						death_reason = death_vanished
+					}
+				}
+			}
+		}
+	}
+}
+
+##################################################
+# Child Falls in With Minbiri'a
+# by Hapchazzard
+# 0011 - 0020
+##################################################
+
+scripted_trigger child_with_rebellious_streak_trigger = {
+	age >= 16
+	age <= 25
+	OR = {
+		has_trait = lustful
+		has_trait = gluttonous
+		has_trait = cynical
+		has_trait = gregarious
+	}
+	NOT = { has_trait = zealous }
+	is_landed = no	# Landed children have enough autonomy for their parents not to have much say
+}
+
+scripted_trigger not_decadent_faith_trigger = {
+	NOR = {
+		trait_is_virtue = lustful
+		trait_is_virtue = gluttonous
+	}
+}
+
+scripted_effect apply_minbiria_lifestyle_effect = {
+	# Chance of levelling up the reveler trait
+	if = {
+		limit = {  
+			has_trait_rank = {
+				trait = lifestyle_reveler
+				rank < 3
+			}
+		}
+		random = {
+			chance = 10
+			modifier = {
+				add = 15
+				has_trait_rank = {
+					trait = lifestyle_reveler
+					rank < 2
+				}
+			}
+			modifier = {
+				add = 25
+				has_trait_rank = {
+					trait = lifestyle_reveler
+					rank < 1
+				}
+			}
+			# Better chances if gregarious
+			modifier = {
+				add = 10
+				has_trait = gregarious
+			}
+			# Better chances with a diplomacy education
+			modifier = {
+				add = 5
+				has_trait = education_diplomacy_1
+			}
+			modifier = {
+				add = 10
+				has_trait = education_diplomacy_2
+			}
+			modifier = {
+				add = 15
+				has_trait = education_diplomacy_3
+			}
+			modifier = {
+				add = 20
+				has_trait = education_diplomacy_4
+			}
+			# Better chances with higher diplo skill
+			modifier = {
+				add = {
+					value = diplomacy
+					multiply = 0.5
+				}
+			}
+			# Significantly worse chances if the parent prohibited this
+			modifier = {
+				factor = 0.5
+				exists = scope:parent_prohibited_minbiria
+			}
+			# Somewhat better chances if the parent encouraged it
+			modifier = {
+				factor = 1.33
+				exists = scope:parent_encouraged_minbiria
+			}
+			change_trait_rank = {
+				trait = lifestyle_reveler
+				rank = 1
+			}
+		}
+	}
+	# Chance of levelling up diplo skill.
+	random = {
+		chance = 60
+		# Higher chances of improving the skill if the child is bad at it, 0 at and above 30
+		modifier = {
+			add = {
+				value = diplomacy
+				multiply = -2
+			}
+		}
+		# Significantly worse chances if the parent prohibited this
+		modifier = {
+			factor = 0.5
+			exists = scope:parent_prohibited_minbiria
+		}
+		# Somewhat better chances if the parent encouraged it
+		modifier = {
+			factor = 1.33
+			exists = scope:parent_encouraged_minbiria
+		}
+		add_diplomacy_skill = 1
+	}
+}
+
+scripted_effect downgrade_relationship_over_friend_death_effect = {
+	if = {
+		limit = { can_set_relation_rival_trigger = { CHARACTER = root } }
+		random = {
+			chance = $BASE_CHANCE$
+			# Vengeful characters are more likely to remember this.
+			modifier = {
+				factor = 1.5
+				has_trait = vengeful
+			}
+			# Stubborn characters are more likely to hold onto a grudge.
+			modifier = {
+				factor = 1.25
+				has_trait = stubborn
+			}
+			# Compassionate characters hate seeing someone close get killed.
+			modifier = {
+				factor = 1.25
+				has_trait = compassionate
+			}
+			# Callous and sadistic are less likely to give a toss.
+			modifier = {
+				factor = 0.75
+				has_trait = forgiving
+			}
+			# Forgiving are more likely to let it go.
+			modifier = {
+				factor = 0.5
+				has_trait = forgiving
+			}
+			set_relation_rival = root
+		}
+	}
+	else_if = {
+		limit = { has_relation_friend = root }
+		random = {
+			chance = $BASE_CHANCE$
+			# Vengeful characters are more likely to remember this.
+			modifier = {
+				factor = 1.5
+				has_trait = vengeful
+			}
+			# Stubborn characters are more likely to hold onto a grudge.
+			modifier = {
+				factor = 1.25
+				has_trait = stubborn
+			}
+			# Compassionate characters hate seeing someone close get killed.
+			modifier = {
+				factor = 1.25
+				has_trait = compassionate
+			}
+			# Callous and sadistic are less likely to give a toss.
+			modifier = {
+				factor = 0.75
+				has_trait = forgiving
+			}
+			# Forgiving are more likely to let it go.
+			modifier = {
+				factor = 0.5
+				has_trait = forgiving
+			}
+			remove_relation_friend = root
+		}
+	}
+}
+
+#	Your child falls under the sway of a group of Minbiri'a radicals.
+wardenite_yearly.0011 = {
+	type = character_event
+	title = wardenite_yearly.0011.t
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					has_trait = zealous
+				}
+				desc = wardenite_yearly.0011.desc.zealous
+			}
+			triggered_desc = {
+				trigger = {
+					NOT = { has_trait = zealous }
+				}
+				desc = wardenite_yearly.0011.desc
+			}
+		}
+	}
+	theme = learning
+	left_portrait = {
+		character = scope:decadent_child
+		animation = admiration
+	}
+	right_portrait = {
+		character = scope:minbiria_friend
+		animation = personality_bold
+	}
+	override_background = { event_background = throne_room }
+	
+	trigger = {
+		# Standard checks.
+		is_available_even_at_war_adult = yes
+		NOT = { has_character_flag = had_event_wardenite_yearly_0011 }
+		is_landed = yes
+		# Needs to be Wardenite
+		has_religion = religion:sarradonian_religion
+		# Must have a child between 14 and 25 that is rebellious or proclitivies not generally accepted by the faith
+		any_child = {
+			child_with_rebellious_streak_trigger = yes
+		}
+		# Faith mustn't already be completely permissive, otherwise this isn't news
+		faith = {
+			not_decadent_faith_trigger = yes
+		}
+	}
+	
+	weight_multiplier = {
+		base = 1
+		
+		# More likely in generally permissive sects
+		modifier = {
+			add = 1
+			faith = {
+				has_doctrine = doctrine_pluralism_pluralistic
+			}
+		}
+		# Less likely in fundamentalist sects
+		modifier = {
+			add = -0.5
+			faith = {
+				has_doctrine = doctrine_pluralism_fundamentalist
+			}
+		}
+	}
+	
+	immediate = {
+		random_child = {
+			limit = { child_with_rebellious_streak_trigger = yes }
+			weight = {
+				base = 1
+				# Cynical, lustful, gluttonous and gregarious each increase the chance due to inherently being the targeted traits
+				modifier = {
+					add = 1
+					has_trait = cynical
+				}
+				modifier = {
+					add = 1
+					has_trait = lustful
+				}
+				modifier = {
+					add = 1
+					has_trait = gluttonous
+				}
+				modifier = {
+					add = 1
+					has_trait = gregarious
+				}
+				# Arbitrary, stubborn and brave, while not directly required, also increase the chance of the child being brazen
+				modifier = {
+					add = 2
+					has_trait = arbitrary
+				}
+				modifier = {
+					add = 1
+					has_trait = stubborn
+				}
+				modifier = {
+					add = 1
+					has_trait = brave
+				}
+				# Bachelors are more likely to be into the partying lifestyle
+				modifier = {
+					add = 2
+					is_married = no
+				}
+				# Finally, the child disliking you in general increases the chance
+				modifier = {
+					add = 1
+					opinion = {
+						target = root
+						value <= -50
+					}
+				}
+			}
+			save_scope_as = decadent_child
+			add_character_modifier = {
+				modifier = minbiria_member_modifier 
+				years = 5
+			}
+			set_variable = was_member_of_minbiria	# To later reference in loc if their own child ever has this event
+		}
+		# Create the main Minbiri'a friend
+		create_character = {
+			template = minbiria_character_template
+			location = root.capital_province
+			save_scope_as = minbiria_friend
+		}
+		scope:minbiria_friend = {
+			add_character_modifier = {
+				modifier = minbiria_member_modifier
+				years = 5
+			}
+		}
+		# Set the relation between the child and the Minbiri'a
+		scope:decadent_child = {
+			random_list = {
+				30 = {}	# Chance of them merely being acquaintances
+				50 = { set_relation_friend = scope:minbiria_friend }	# Chance of the two being good friends
+				20 = {	# Chance of a romantic relationship
+					trigger = {
+						can_set_relation_lover_trigger = { CHARACTER = scope:minbiria_friend }
+						scope:minbiria_friend = { can_set_relation_lover_trigger = { CHARACTER = scope:decadent_child } }
+					}
+					# Boost chances if one or both are lustful
+					modifier = {
+						add = 25
+						has_trait = lustful
+					}
+					modifier = {
+						add = 25
+						scope:minbiria_friend = { has_trait = lustful }
+					}
+					# Reduce chances if one or both are chaste
+					modifier = {
+						add = -25
+						has_trait = chaste
+					}
+					modifier = {
+						add = -25
+						scope:minbiria_friend = { has_trait = chaste }
+					}
+					# Reduce chances if the child is married and not lustful
+					modifier = {
+						add = -25
+						is_married = yes
+						NOT = { has_trait = lustful }
+					}
+					# Increase chances by attractiveness of the 'friend'
+					modifier = {
+						add = 10
+						scope:minbiria_friend = { attraction >= low_positive_attraction }
+					}
+					modifier = {
+						add = 20
+						scope:minbiria_friend = { attraction >= medium_positive_attraction }
+					}
+					modifier = {
+						add = 30
+						scope:minbiria_friend = { attraction >= high_positive_attraction }
+					}
+				}
+			}
+		}
+	}
+
+	# Forbid the behavior.
+	option = {
+		name = wardenite_yearly.0011.a
+		
+		skill = intrigue
+		
+		scope:decadent_child = {
+			add_opinion = {
+				target = root
+				modifier = resentment_opinion
+			}
+		}
+		save_scope_value_as = {
+			name = parent_prohibited_minbiria
+			value = yes
+		}
+		# Intrigue is used to simulate if they can hide it from you anyway
+		duel = {
+			skill = intrigue
+			target = scope:decadent_child
+			# You manage to get them to stop the behavior.
+			50 = {
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = 3.5
+					min = -49
+				}
+				desc = wardenite_yearly.0011.a.tt_success
+				send_interface_toast = {
+					title = wardenite_yearly.0011.a.tt_success
+					left_icon = root
+					right_icon = scope:decadent_child
+					add_piety = minor_piety_gain
+					scope:decadent_child = { remove_character_modifier = minbiria_member_modifier }
+				}
+			}
+			# The child continues seeing the Minbiri'a in secret.
+			50 = {
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = -3.5
+					min = -49
+				}
+				desc = wardenite_yearly.0011.a.tt_failure
+				hidden_effect = {
+					save_scope_value_as = {
+						name = minbiria_friend_stays
+						value = yes
+					}
+				}
+				send_interface_toast = {	
+					title = wardenite_yearly.0011.a.tt_failure
+					left_icon = root
+					right_icon = scope:decadent_child
+					add_prestige = minor_prestige_loss
+					scope:decadent_child = { add_piety = medium_piety_loss }
+				}
+			}
+		}
+		
+		stress_impact = {
+			zealous = medium_stress_impact_loss
+			chaste = minor_stress_impact_loss
+			temperate = minor_stress_impact_loss
+			lazy = minor_stress_impact_gain
+			cynical = medium_stress_impact_gain
+		}
+		ai_chance = {
+			base = 100
+			ai_value_modifier = {
+				ai_zeal = 0.5
+			}
+			modifier = {	# Weight up for stress.
+				add = 20
+				has_trait = zealous
+			}
+			modifier = {
+				add = 10
+				has_trait = chaste
+			}
+			modifier = {
+				add = 10
+				has_trait = temperate
+			}
+			modifier = {	# Weight down for stress.
+				add = -10
+				has_trait = lazy
+			}
+			modifier = {
+				add = -20
+				has_trait = zealous
+			}
+		}
+	}
+	
+	# Let it pass.
+	option = {
+		name = wardenite_yearly.0011.b
+		
+		add_piety = minor_piety_loss
+		scope:decadent_child = { 
+			add_piety = medium_piety_loss
+			apply_minbiria_lifestyle_effect = yes
+			add_stress = minor_stress_loss
+			add_opinion = {
+				target = root
+				modifier = permissive_parent_opinion
+			}
+		}
+		save_scope_value_as = {
+			name = minbiria_friend_stays
+			value = yes
+		}
+		
+		stress_impact = {
+			cynical = minor_stress_impact_loss
+			lazy = minor_stress_impact_loss
+			chaste = minor_stress_impact_gain
+			temperate = minor_stress_impact_gain
+			zealous = medium_stress_impact_gain
+		}
+		ai_chance = {
+			base = 100
+			ai_value_modifier = {
+				ai_zeal = -0.25
+			}
+			modifier = {	# Weight up for stress.
+				add = 10
+				has_trait = cynical
+			}
+			modifier = {
+				add = 10
+				has_trait = lazy
+			}
+			modifier = {	# Weight down for stress.
+				add = -10
+				has_trait = chaste
+			}
+			modifier = {
+				add = -10
+				has_trait = temperate
+			}
+			modifier = {
+				add = -20
+				has_trait = zealous
+			}
+		}
+	}
+	
+	# Encourage it!
+	option = {
+		name = {
+			trigger = { has_trait = cynical }
+			text = wardenite_yearly.0011.c.cynical
+		}
+		name = {
+			text = wardenite_yearly.0011.c
+		}
+		
+		trait = cynical
+		trait = lustful
+		trait = gluttonous
+		trait = gregarious
+		
+		trigger = {
+			OR = {
+				has_trait = cynical
+				has_trait = lustful
+				has_trait = gluttonous
+				has_trait = gregarious
+				has_character_modifier = minbiria_member_modifier
+			}
+		}
+		
+		save_scope_value_as = {
+			name = parent_encouraged_minbiria
+			value = yes
+		}
+		save_scope_value_as = {
+			name = minbiria_friend_stays
+			value = yes
+		}
+		
+		add_piety = medium_piety_loss
+		scope:decadent_child = { 
+			add_piety = medium_piety_loss
+			apply_minbiria_lifestyle_effect = yes
+			add_stress = medium_stress_loss
+			add_opinion = {
+				target = root
+				modifier = open_minded_parent_opinion
+			}
+		}
+		
+		stress_impact = {
+			cynical = medium_stress_impact_loss
+			lazy = minor_stress_impact_loss
+			chaste = minor_stress_impact_gain
+			temperate = minor_stress_impact_gain
+			zealous = medium_stress_impact_gain
+		}
+		ai_chance = {
+			base = 50
+			ai_value_modifier = {
+				ai_zeal = -0.25
+			}
+			# Far more likely if the AI is part of the school themselves
+			modifier = {
+				add = 200
+				has_character_modifier = minbiria_member_modifier
+			}
+			modifier = {	# Weight up for stress.
+				add = 20
+				has_trait = cynical
+			}
+			modifier = {
+				add = 10
+				has_trait = lazy
+			}
+			modifier = {	# Weight down for stress.
+				add = -10
+				has_trait = chaste
+			}
+			modifier = {
+				add = -10
+				has_trait = temperate
+			}
+			modifier = {
+				add = -20
+				has_trait = zealous
+			}
+		}
+	}
+	
+	# Wipe the Minbiri'a out.
+	option = {
+		name = wardenite_yearly.0011.d
+		
+		trait = sadistic
+		trait = callous
+		
+		trigger = {
+			OR = {
+				has_trait = sadistic
+				has_trait = callous
+			}
+		}
+		
+		add_dread = minor_dread_gain
+		add_tyranny = minor_tyranny_gain
+		scope:decadent_child = {
+			if = {
+				limit = { has_relation_lover = scope:minbiria_friend }
+				add_stress = major_stress_gain
+				downgrade_relationship_over_friend_death_effect = { BASE_CHANCE = 75 }
+			}
+			else_if = {
+				limit = { has_relation_friend = scope:minbiria_friend }
+				add_stress = medium_stress_gain
+				downgrade_relationship_over_friend_death_effect = { BASE_CHANCE = 50 }
+			}
+			else = {
+				add_stress = minor_stress_gain
+				downgrade_relationship_over_friend_death_effect = { BASE_CHANCE = 25 }
+			}
+			add_opinion = {
+				target = root
+				modifier = vicious_parent_opinion
+			}
+		}
+		scope:minbiria_friend = {
+			death = {
+				killer = root
+				death_reason = death_execution
+			}
+		}
+		
+		stress_impact = {
+			sadistic = medium_stress_impact_loss
+			zealous = medium_stress_impact_loss
+			callous = minor_stress_impact_loss
+			chaste = minor_stress_impact_loss
+			temperate = minor_stress_impact_loss
+			forgiving = medium_stress_impact_gain
+			compassionate = major_stress_impact_gain
+		}
+		ai_chance = {
+			base = 50
+			ai_value_modifier = {
+				ai_compassion = -0.5
+			}
+			modifier = {	# Weight up for stress.
+				add = 20
+				has_trait = sadistic
+			}
+			modifier = {
+				add = 20
+				has_trait = zealous
+			}
+			modifier = {
+				add = 10
+				has_trait = callous
+			}
+			modifier = {
+				add = 10
+				has_trait = chaste
+			}
+			modifier = {
+				add = 10
+				has_trait = temperate
+			}
+			modifier = {	# Weight down for stress.
+				add = -20
+				has_trait = forgiving
+			}
+			modifier = {
+				add = -30
+				has_trait = compassionate
+			}
+		}
+	}
+	
+	after = {
+		# Standard cleanup
+		hidden_effect = {
+			if = {
+				limit = { NOT = { exists = scope:minbiria_friend_stays } }
+				scope:minbiria_friend = {
+					death = {
+						death_reason = death_vanished
+					}
+				}
+			}
+			else = {
+				add_courtier = scope:minbiria_friend
+			}
+		}
+	}
+}

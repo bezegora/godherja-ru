@@ -1,0 +1,26 @@
+﻿# On actions for the sjalvolki_hunt activity
+
+#To send the start event
+sjalvolki_hunt_start_events = {
+	events = {
+		sjalvolki_hunt.0001
+	}
+}
+
+# RANDOM PULSE #
+# For events that can be used in any pulse.
+sjalvolki_hunt_random_pulse = {
+	random_events = {
+		100 = sjalvolki_hunt.7001
+		100 = sjalvolki_hunt.7002
+		100 = sjalvolki_hunt.7003
+		100 = sjalvolki_hunt.7004
+	}
+}
+
+
+sjalvolki_hunt_end_pulse = {
+	events = {
+		sjalvolki_hunt.9999
+	}
+}

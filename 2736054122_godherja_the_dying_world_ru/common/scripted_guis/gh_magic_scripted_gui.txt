@@ -2,27 +2,9 @@
 	scope = character
 	
 	is_shown = {
-		OR = {
-			has_trait_rank = {
-				trait = magic_good
-				rank > 0
-			}
-			has_trait_rank = {
-				trait = magic_good
-				rank > 1
-			}
-			has_trait_rank = {
-				trait = magic_good
-				rank > 2
-			}
-			has_trait_rank = {
-				trait = magic_good
-				rank > 3
-			}
-			has_trait_rank = {
-				trait = magic_good
-				rank > 4
-			}
+		has_trait_rank = {
+			trait = magic_good
+			rank > 0
 		}
 	}
 }
@@ -32,5 +14,53 @@ display_councillor_mage = {
 	
 	is_shown = {
 		can_have_court_magi_trigger = yes
+	}
+}
+
+reset_spells_scripted_gui = {
+	scope = character
+	
+	is_shown = {
+	
+	}
+	
+	effect = {
+		reset_spells = yes
+	}
+}
+
+add_tier_magic_scripted_gui = {
+	scope = character
+	
+	is_shown = { 
+	
+	}
+	
+	effect = {
+		add_tier_magic = yes
+	}
+}
+
+sub_tier_magic_scripted_gui = {
+	scope = character
+	
+	is_shown = { 
+	
+	}
+	
+	effect = {
+		sub_tier_magic = yes
+	}
+}
+
+clear_prev_menu_scripted_gui = {
+	scope = character
+	
+	is_shown = {
+	
+	}
+	
+	effect = {
+		clear_prev_menu = yes
 	}
 }

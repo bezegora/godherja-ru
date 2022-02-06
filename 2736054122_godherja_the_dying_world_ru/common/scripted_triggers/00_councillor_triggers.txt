@@ -14,6 +14,7 @@ can_be_councillor_basics_trigger = {
 	is_capable_adult = yes
 	is_imprisoned = no
 	is_at_war_with_liege = no	
+	NOT = { has_variable = blocked_from_being_councillor }
 }
 
 can_be_chancellor_trigger = {

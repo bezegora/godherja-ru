@@ -1,0 +1,73 @@
+pdxmesh = {
+	name = "sarradon_nobility_female_mesh"
+	file = "sarradon_nobility_female.mesh"
+
+	blend_shape = { id = "sf_muscular"		type = "sf_muscular.mesh" }
+	blend_shape = { id = "sf_breast_min"	type = "sf_breast_min.mesh" }
+	blend_shape = { id = "sf_breast_max"	type = "sf_breast_max.mesh" }
+	blend_shape = { id = "sf_fat"			type = "sf_fat.mesh" }
+	blend_shape = { id = "sf_dwarf"			type = "sf_dwarf.mesh" }
+	blend_shape = { id = "sf_infant"		type = "sf_infant.mesh" }
+	blend_shape = { id = "sf_gaunt"			type = "sf_gaunt.mesh" }
+	blend_shape = { id = "sf_old"			type = "sf_old.mesh" }
+	blend_shape = { id = "sf_pregnant"		type = "sf_pregnant.mesh" }
+
+	meshsettings = {
+		name = "sar_femShape"
+		index = 0
+		texture_diffuse = "robes_sarradon_nobility_color.dds"
+		texture_normal = "robes_sarradon_nobility_normal.dds"
+		texture_specular = "robes_sarradon_nobility_properties.dds"
+		shader = "portrait_attachment_pattern"
+		shader_file = "gfx/FX/jomini/portrait.shader"
+	}
+}
+
+entity = {
+	name = "sarradon_nobility_female_entity"
+	pdxmesh = "sarradon_nobility_female_mesh"
+
+	attribute = { name = "bs_body_muscular_1"					blend_shape = "sf_muscular" }
+	attribute = { name = "bs_body_breast_size_min"				blend_shape = "sf_breast_min" }
+	attribute = { name = "bs_body_breast_size_max"				blend_shape = "sf_breast_max" }
+	attribute = { name = "bs_body_fat_1"						blend_shape = "sf_fat" }
+	attribute = { name = "bs_body_dwarf_1"						blend_shape = "sf_dwarf" }
+	attribute = { name = "bs_body_infant_1"						blend_shape = "sf_infant" }
+	attribute = { name = "bs_body_gaunt_1"						blend_shape = "sf_gaunt" }
+	attribute = { name = "bs_body_old_1"						blend_shape = "sf_old" }
+	attribute = { name = "bs_body_pregnant_1"					blend_shape = "sf_pregnant" }
+
+	game_data = {
+		portrait_accessory = {
+			pattern_mask = "gfx/models/portraits/attachments/Non-Replacer/Godherja/female_clothes/secular/sarradonian/sarradon_nobility_female/sarradon_nobility_female_mask.dds"	#Any 4-channel texture. Each channel will be used to mask a pattern from the variation object
+			variation = "sarradon_nobility_01"	#A "variation" object in gfx/portraits/accessory_variations/
+		}
+	}
+}
+
+entity = {
+	name = "sarradon_nobility_high_female_entity"
+	pdxmesh = "sarradon_nobility_female_mesh"
+
+	attribute = { name = "bs_body_muscular_1"					blend_shape = "sf_muscular" }
+	attribute = { name = "bs_body_breast_size_min"				blend_shape = "sf_breast_min" }
+	attribute = { name = "bs_body_breast_size_max"				blend_shape = "sf_breast_max" }
+	attribute = { name = "bs_body_fat_1"						blend_shape = "sf_fat" }
+	attribute = { name = "bs_body_dwarf_1"						blend_shape = "sf_dwarf" }
+	attribute = { name = "bs_body_infant_1"						blend_shape = "sf_infant" }
+	attribute = { name = "bs_body_gaunt_1"						blend_shape = "sf_gaunt" }
+	attribute = { name = "bs_body_old_1"						blend_shape = "sf_old" }
+	attribute = { name = "bs_body_pregnant_1"					blend_shape = "sf_pregnant" }
+
+
+	game_data = {
+		portrait_accessory = {
+			pattern_mask = "gfx/models/portraits/attachments/Non-Replacer/Godherja/female_clothes/secular/sarradonian/sarradon_nobility_female/sarradon_high_nobility_female_mask.dds"	#Any 4-channel texture. Each channel will be used to mask a pattern from the variation object
+			variation = "sarradon_nobility_02"	#A "variation" object in gfx/portraits/accessory_variations/
+		}
+	}
+}
+
+
+
+

@@ -1,6 +1,7 @@
 ﻿on_opening_events = {
     effect = {
         every_player = { #Opening Events
+			trigger_event = world_story.1001
 			if { #give megistos third person
 				limit = {
 					has_title = title:k_kasmiene
@@ -76,7 +77,7 @@
 					has_game_rule = opening_events_enabled
 				}
 				trigger_event = {
-					id = opening_event.10 #Mamur
+					id = opening_event_sarradon.3 #Mamur
 				}
 			}
 			if {
@@ -180,7 +181,7 @@
 					has_game_rule = opening_events_enabled
 				}
 				trigger_event = {
-					id = opening_event.23 #Harthah
+					id = opening_event_sarradon.4 #Harthah
 				}
 			}
 			if {
@@ -196,7 +197,7 @@
 					has_game_rule = opening_events_enabled
 				}
 				trigger_event = {
-					id = opening_event.25 #Pejman
+					id = opening_event_sarradon.5 #Pejman
 				}
 			}
 			if {
@@ -271,35 +272,166 @@
 					id = opening_event.34 #Iordanes
 				}
 			}
-	
-			if = {
+			if {
 				limit = {
-					has_game_rule = default_adabyss_invasion
+					has_game_rule = opening_events_enabled
 				}
-				title:e_adabyss.holder = {
-					trigger_event = {
-						id = adabyss_opening.1
-					}
+				trigger_event = {
+					id = opening_event_sarradon.1 #Aarif
 				}
 			}
-			# title:k_varrdevet.holder = {
-			# 	trigger_event = {
-			# 		id = marcher_war.0001
-			# 	}
-			# }
-			
-			# title:k_de_porte_de_bastione.holder = {
-			# 	trigger_event = {
-			# 		id = marcher_war.0002
-			# 	}
-			# }
-			
-			# title:k_marroux.holder = {
-			# 	trigger_event = {
-			# 		id = marcher_war.0003
-			# 	}
-			# }		
-			generate_magi_list = yes
+			if {
+				limit = {
+					has_game_rule = opening_events_enabled
+				}
+				trigger_event = {
+					id = opening_event_sarradon.2 #opening event for amsari vassals
+				}
+			}
+			if {
+				limit = {
+					has_game_rule = opening_events_enabled
+				}
+				trigger_event = {
+					id = opening_event.36 #Aderi
+				}
+			}
+			if {
+				limit = {
+					has_game_rule = opening_events_enabled
+				}
+				trigger_event = {
+					id = opening_event.37 #Farwah
+				}
+			}
+			if {
+				limit = {
+					has_game_rule = opening_events_enabled
+				}
+				trigger_event = {
+					id = opening_event.38 #Rashali
+				}
+			}
+			if {
+				limit = {
+					has_game_rule = opening_events_enabled
+				}
+				trigger_event = {
+					id = opening_event.39 #Herizab
+				}
+			}
+			if {
+				limit = {
+					has_game_rule = opening_events_enabled
+				}
+				trigger_event = {
+					id = opening_event.40 #Runalem
+				}
+			}
+			if {
+				limit = {
+					has_game_rule = opening_events_enabled
+				}
+				trigger_event = {
+					id = opening_event.41 #Azhela
+				}
+			}
+			if {
+				limit = {
+					has_game_rule = opening_events_enabled
+				}
+				trigger_event = {
+					id = opening_event_sarradon.6 #opening event for marcher trading company
+				}
+			}
+			if {
+				limit = {
+					has_game_rule = opening_events_enabled
+				}
+				trigger_event = {
+					id = opening_event.42 #Krehejad Archex
+				}
+			}
+			if {
+				limit = {
+					has_game_rule = opening_events_enabled
+				}
+				trigger_event = {
+					id = opening_event.43 #FRIDGE
+				}
+			}
+			if {
+				limit = {
+					has_game_rule = opening_events_enabled
+				}
+				trigger_event = {
+					id = opening_event.44 #ACHAKE
+				}
+			}
+			if {
+				limit = {
+					has_game_rule = opening_events_enabled
+				}
+				trigger_event = {
+					id = opening_event.45 #Metal Mask
+				}
+			}
+			if {
+				limit = {
+					has_game_rule = opening_events_enabled
+				}
+				trigger_event = {
+					id = opening_event.46 #Puppet Draneti
+				}
+			}
+			if {
+				limit = {
+					has_game_rule = opening_events_enabled
+				}
+				trigger_event = {
+					id = opening_event.47 #Akakih the White Lion
+				}
+			}
+			if {
+				limit = {
+					has_game_rule = opening_events_enabled
+				}
+				trigger_event = {
+					id = opening_event.48 #Last Ertomaxist
+				}
+			}
+			if {
+				limit = {
+					has_game_rule = opening_events_enabled
+				}
+				trigger_event = {
+					id = opening_event.49 #Vakhtan Vampire Uncle
+				}
+			}
+			if {
+				limit = {
+					has_game_rule = opening_events_enabled
+				}
+				trigger_event = {
+					id = opening_event.50 #Tarnaz Hedonist Brother
+				}
+			}
+			if {
+				limit = {
+					has_game_rule = opening_events_enabled
+				}
+				trigger_event = {
+					id = opening_event.51 #Khvicha Barbarian Brother
+				}
+			}
+			if {
+				limit = {
+					has_game_rule = opening_events_enabled
+				}
+				trigger_event = {
+					id = opening_event.52 #Parnaz paranoid magi brother
+				}
+			}
 			initialize_metropoli_effect = yes
 		}
 	}
@@ -308,6 +440,7 @@
 # Like on_game_start, except it is called once the host (or player, in single player) exits the lobby. Good for anything where you need to know who the players are, or what the game rules are
 on_game_start_after_lobby = {
 	effect = {
+		trade_strait_table_effect = { MODE = initialize }
 		### GAME RULE: VIEW ON SAME-SEX RELATIONS
 		if = {
 			limit = { has_game_rule = accepted_same_sex_relations }
@@ -347,7 +480,78 @@ on_game_start_after_lobby = {
 			limit = { NOT = { has_game_rule = sexuality_distribution_default } }
 			game_rule_sexuality_distribution_effect = yes
 		}
-
+		
+		### GAME RULE: WASTELAND COLORS ###
+		if = {
+			limit = { has_game_rule = wasteland_color_black }
+			every_kingdom = {
+				limit = {
+					exists = holder
+					holder = { has_trait = gh_wasteland } 
+				}
+				set_color_from_title = title:k_wasteland_black
+			}
+		}
+		else_if = {
+			limit = { has_game_rule = wasteland_color_white }
+			every_kingdom = {
+				limit = { holder = { has_trait = gh_wasteland } }
+				set_color_from_title = title:k_wasteland_white
+			}
+		}
+		
+		### GAME RULE: UNIVERSAL BLOOD SENATE ###
+		if = {
+			limit = { has_game_rule = hammarts_wild_ride_enabled }
+			every_living_character = {
+				if = {
+					limit = {
+						OR = {
+							NOT = {
+								any_held_county = {
+									any_county_province = {
+										geographical_region = world_ga_marcher_kingdoms
+									}
+								}
+							}
+							has_title = title:d_callesc
+						}
+					}
+					remove_trait = magic_good_1
+					remove_trait = magic_good_2
+					remove_trait = magic_good_3
+					remove_trait = magic_good_4
+					remove_trait = magic_good_5
+					remove_trait = magic_good_6
+					remove_trait = magic_good_7
+					remove_trait = magic_good_8
+					remove_trait = magic_good_9
+					remove_trait = magic_good_10
+					remove_trait = magic_good_11
+					remove_trait = magic_good_12
+					remove_trait = magic_good_13
+					remove_trait = magic_good_14
+					remove_trait = magic_good_15
+					remove_trait = magic_good_16
+					remove_trait = magic_good_17
+					remove_trait = magic_good_18
+					remove_trait = magic_good_19
+					remove_trait = education_living_magic_1
+					remove_trait = education_living_magic_2
+					remove_trait = education_living_magic_3
+					remove_trait = education_dead_magic_1
+					remove_trait = education_dead_magic_2
+					remove_trait = education_dead_magic_3
+					remove_trait = education_mixed_magic_1
+					remove_trait = education_mixed_magic_2
+					remove_trait = education_mixed_magic_3
+					add_trait = magic_good_20
+					add_trait = education_living_magic_4
+					add_trait = education_dead_magic_4
+					add_trait = education_mixed_magic_4
+				}
+			}
+		}
 		### ACHIEVEMENT: FROM RAGS TO RICHES
 		every_player = {
 			limit = { highest_held_title_tier = tier_county }
@@ -361,9 +565,12 @@ on_game_start_after_lobby = {
 	events = {
 		game_rule.1000	#Autopopulate families.
 		fogeater_invasion.9000 #Decide when invasion happens
+		adabyss_event.9000 #decides when invasion happens
 	}
 	
 	on_actions = {
 		on_opening_events
+		delay = { years = 46 }
+		dissolve_aversarian_titles
 	}
 }

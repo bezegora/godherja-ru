@@ -1,0 +1,116 @@
+﻿namespace = opening_event_sarradon
+
+opening_event_sarradon.1 = { #Opener for aarif
+	title = opening_event_sarradon.1.t
+	desc = opening_event_sarradon.1.desc
+	theme = battle
+	left_portrait = { 
+		character = root
+		animation = marshal
+	}
+
+	trigger = {
+		is_ai = no
+		has_title = title:k_dhahidah
+		current_date = 1254
+	}
+
+	option = {
+		name = opening_event_sarradon.1.a
+	}
+}
+
+opening_event_sarradon.2 = { #Opener for Pejman's vassals
+	title = opening_event_sarradon.2.t
+	desc = opening_event_sarradon.2.desc
+	theme = realm
+	left_portrait = { 
+		character = root
+		animation = personality_vengeful
+	}
+
+	trigger = {
+		NOT = { this = character:canian_1 }
+		is_vassal_or_below_of = character:canian_1
+	}
+
+	option = {
+		name = opening_event_sarradon.2.a
+	}
+}
+
+opening_event_sarradon.3 = { #Opener for the Mamur
+	title = opening_event_sarradon.3.t
+	desc = opening_event_sarradon.3.desc
+	theme = learning_theology_focus
+	left_portrait = { 
+		character = root
+		animation = worry
+	}
+
+	trigger = {
+		is_ai = no
+		has_title = title:e_sihnamiyah
+	}
+
+	option = {
+		name = opening_event_sarradon.3.a
+	}
+}
+
+opening_event_sarradon.4 = { #Opener for Harthah
+	title = opening_event_sarradon.4.t
+	desc = opening_event_sarradon.4.desc
+	theme = battle
+	left_portrait = { 
+		character = root
+		animation = personality_vengeful
+	}
+
+	trigger = {
+		is_ai = no
+		has_title = title:k_khenemhat
+	}
+
+	option = {
+		name = opening_event_sarradon.4.a
+	}
+}
+
+opening_event_sarradon.5 = { #Opener for Pejman 
+	title = opening_event_sarradon.5.t
+	desc = opening_event_sarradon.5.desc
+	theme = realm
+	left_portrait = { 
+		character = root
+		animation = personality_forgiving
+	}
+
+	trigger = {
+		is_ai = no
+		has_title = title:e_amsari
+	}
+
+	option = {
+		name = opening_event_sarradon.5.a
+	}
+}
+
+opening_event_sarradon.6 = { #Opener for West Royal Trading Company
+	title = opening_event_sarradon.6.t
+	desc = opening_event_sarradon.6.desc
+	theme = realm
+	left_portrait = { 
+		character = root
+		animation = scheme
+	}
+
+	trigger = {
+		is_ai = no
+		has_title = title:d_marcher_amsari_republic
+	}
+
+	option = {
+		name = opening_event_sarradon.6.a
+	}
+}

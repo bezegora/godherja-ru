@@ -1,24 +1,38 @@
 ﻿clanlands_megos_1 = {
-        name = "Herberd"
-        dna = herberd
-        religion = "sjalvolki"
-        culture = "daukeni"
-        dynasty = dyn_sjalvolki_3
-        female = no
+	name = "Herberd"
+	dna = herberd
+	religion = "sjalvolki"
+	culture = "daukeni"
+	dynasty = dyn_sjalvolki_3
+	female = no
+	sexuality = heterosexual
+	trait = wrathful
+	trait = physique_good_3
+	trait = vengeful
+	trait = gregarious
+	trait = hunter_2
+	trait = education_martial_4
+	trait = poet
 
-        trait = wrathful
-        trait = vengeful
-        trait = gregarious
-		trait = hunter_2
-
-        trait = education_martial_4
-
-        1203.1.1 = {
-	        birth = yes
-                birth = yes
-	        effect = {
+	1203.1.1 = {
+		birth = yes
+		effect = {
 			add_character_flag = has_scripted_appearance
 		}
+	}
+	
+	1223.6.21 = {
+		add_spouse = clanlands_megos_139 
+	}
+	
+	1223.8.1 = {
+		effect = {
+			set_relation_soulmate = character:clanlands_megos_139 
+		}
+	}
+	
+	1252.1.1 = {
+		trait = gh_veteran_of_elysia_sjalvolki
 	}
 }
 
@@ -26,6 +40,7 @@ clanlands_megos_2 = {
 	name = "Arnold"
 	religion = "sjalvolki"
 	culture = "daukeni"
+
 	1220.4.12 = {
 		birth = yes
 	}
@@ -35,6 +50,7 @@ clanlands_megos_3 = {
 	name = "Merten"
 	religion = "sjalvolki"
 	culture = "irmionoth"
+
 	1220.4.12 = {
 		birth = yes
 	}
@@ -44,6 +60,7 @@ clanlands_megos_4 = {
 	name = "Thankmar"
 	religion = "sjalvolki"
 	culture = "irmionoth"
+
 	1220.4.12 = {
 		birth = yes
 	}
@@ -53,6 +70,7 @@ clanlands_megos_5 = {
 	name = "Gehrke"
 	religion = "sjalvolki"
 	culture = "irmionoth"
+
 	1220.4.12 = {
 		birth = yes
 	}
@@ -62,6 +80,7 @@ clanlands_megos_6 = {
 	name = "Gunzelin"
 	religion = "sjalvolki"
 	culture = "irmionoth"
+
 	1220.4.12 = {
 		birth = yes
 	}
@@ -71,6 +90,7 @@ clanlands_megos_7 = {
 	name = "Kersten"
 	religion = "partic"
 	culture = "auteonic"
+
 	1220.4.12 = {
 		birth = yes
 	}
@@ -80,6 +100,7 @@ clanlands_megos_8 = {
 	name = "Volkwin"
 	religion = "sjalvolki"
 	culture = "daukeni"
+
 	1220.4.12 = {
 		birth = yes
 	}
@@ -89,6 +110,7 @@ clanlands_megos_9 = {
 	name = "Viric"
 	religion = "sjalvolki"
 	culture = "irmionoth"
+
 	1220.4.12 = {
 		birth = yes
 	}
@@ -98,6 +120,7 @@ clanlands_megos_10 = {
 	name = "Floribert"
 	religion = "sjalvolki"
 	culture = "irmionoth"
+
 	1220.4.12 = {
 		birth = yes
 	}
@@ -107,6 +130,7 @@ clanlands_megos_11 = {
 	name = "Michael"
 	religion = "sjalvolki"
 	culture = "irmionoth"
+
 	1220.4.12 = {
 		birth = yes
 	}
@@ -116,6 +140,7 @@ clanlands_megos_12 = {
 	name = "Reinbern"
 	religion = "sjalvolki"
 	culture = "daukeni"
+
 	1220.4.12 = {
 		birth = yes
 	}
@@ -125,6 +150,7 @@ clanlands_megos_13 = {
 	name = "Freawine"
 	religion = "sjalvolki"
 	culture = "irmionoth"
+
 	1220.4.12 = {
 		birth = yes
 	}
@@ -134,6 +160,7 @@ clanlands_megos_14 = {
 	name = "Donar"
 	religion = "sjalvolki"
 	culture = "greulokin"
+
 	1220.4.12 = {
 		birth = yes
 	}
@@ -143,6 +170,7 @@ clanlands_megos_15 = {
 	name = "Cenware"
 	religion = "sjalvolki"
 	culture = "daukeni"
+
 	1220.4.12 = {
 		birth = yes
 	}
@@ -152,6 +180,7 @@ clanlands_megos_16 = {
 	name = "Detleff"
 	religion = "sjalvolki"
 	culture = "daukeni"
+
 	1220.4.12 = {
 		birth = yes
 	}
@@ -161,6 +190,7 @@ clanlands_megos_17 = {
 	name = "Marbold"
 	religion = "sjalvolki"
 	culture = "daukeni"
+
 	1220.4.12 = {
 		birth = yes
 	}
@@ -170,6 +200,7 @@ clanlands_megos_18 = {
 	name = "Albrecht"
 	religion = "sjalvolki"
 	culture = "daukeni"
+
 	1220.4.12 = {
 		birth = yes
 	}
@@ -179,6 +210,7 @@ clanlands_megos_19 = {
 	name = "Alebrand"
 	religion = "sjalvolki"
 	culture = "daukeni"
+
 	1220.4.12 = {
 		birth = yes
 	}
@@ -188,6 +220,7 @@ clanlands_megos_20 = {
 	name = "Adalgod"
 	religion = "sjalvolki"
 	culture = "greulokin"
+
 	1220.4.12 = {
 		birth = yes
 	}
@@ -197,6 +230,7 @@ clanlands_megos_21 = {
 	name = "Gelder"
 	religion = "sjalvolki"
 	culture = "greulokin"
+
 	1220.4.12 = {
 		birth = yes
 	}
@@ -206,6 +240,7 @@ clanlands_megos_22 = {
 	name = "Waldemar"
 	religion = "sjalvolki"
 	culture = "greulokin"
+
 	1220.4.12 = {
 		birth = yes
 	}
@@ -215,6 +250,7 @@ clanlands_megos_23 = {
 	name = "Wicho"
 	religion = "sjalvolki"
 	culture = "daukeni"
+
 	1220.4.12 = {
 		birth = yes
 	}
@@ -224,6 +260,7 @@ clanlands_megos_24 = {
 	name = "Wichmann"
 	religion = "partic"
 	culture = "auteonic"
+
 	1220.4.12 = {
 		birth = yes
 	}
@@ -233,6 +270,7 @@ clanlands_megos_25 = {
 	name = "Witta"
 	religion = "sjalvolki"
 	culture = "daukeni"
+
 	1220.4.12 = {
 		birth = yes
 	}
@@ -242,6 +280,7 @@ clanlands_megos_26 = {
 	name = "Marquard"
 	religion = "sjalvolki"
 	culture = "daukeni"
+
 	1220.4.12 = {
 		birth = yes
 	}
@@ -251,6 +290,7 @@ clanlands_megos_27 = {
 	name = "Everd"
 	religion = "sjalvolki"
 	culture = "daukeni"
+
 	1220.4.12 = {
 		birth = yes
 	}
@@ -260,6 +300,7 @@ clanlands_megos_28 = {
 	name = "Boddic"
 	religion = "sjalvolki"
 	culture = "daukeni"
+
 	1220.4.12 = {
 		birth = yes
 	}
@@ -269,6 +310,7 @@ clanlands_megos_29 = {
 	name = "Henneke"
 	religion = "sjalvolki"
 	culture = "vrodkin"
+
 	1220.4.12 = {
 		birth = yes
 	}
@@ -278,6 +320,7 @@ clanlands_megos_30 = {
 	name = "Theodoric"
 	religion = "sjalvolki"
 	culture = "vrodkin"
+
 	1220.4.12 = {
 		birth = yes
 	}
@@ -287,6 +330,7 @@ clanlands_megos_31 = {
 	name = "Alebrand"
 	religion = "sjalvolki"
 	culture = "vrodkin"
+
 	1220.4.12 = {
 		birth = yes
 	}
@@ -296,6 +340,7 @@ clanlands_megos_32 = {
 	name = "Simon"
 	religion = "sjalvolki"
 	culture = "vrodkin"
+
 	1220.4.12 = {
 		birth = yes
 	}
@@ -305,6 +350,7 @@ clanlands_megos_33 = {
 	name = "Bertram"
 	religion = "sjalvolki"
 	culture = "vrodkin"
+
 	1220.4.12 = {
 		birth = yes
 	}
@@ -314,6 +360,7 @@ clanlands_megos_34 = {
 	name = "Rudigar"
 	religion = "sjalvolki"
 	culture = "vrodkin"
+
 	1220.4.12 = {
 		birth = yes
 	}
@@ -323,6 +370,7 @@ clanlands_megos_35 = {
 	name = "Immed"
 	religion = "sjalvolki"
 	culture = "daukeni"
+
 	1220.4.12 = {
 		birth = yes
 	}
@@ -332,6 +380,7 @@ clanlands_megos_36 = {
 	name = "Isidor"
 	religion = "sjalvolki"
 	culture = "greulokin"
+
 	1220.4.12 = {
 		birth = yes
 	}
@@ -341,46 +390,51 @@ clanlands_megos_37 = {
 	name = "Jacob"
 	religion = "sjalvolki"
 	culture = "greulokin"
+
 	1220.4.12 = {
 		birth = yes
 	}
 }
 
 clanlands_megos_38 = {
-	# Lesser son of a Vrodkin clan of some repute
-	# Sibling rivalry with brother. Largely ignored and left idle during conquest, despite constantly begging for a chance to earn glory
-	# Finally given a small army to scout ahead in late 1248. Naturally, immediately ignored that and advanced straight into Schouweiler
-	# Tagged along with another similarly ambitious, but much more powerful Daukeni warlord and besieged the Mayikprolollan so Thalas in the summer of 1249
-	# Quickly had a falling out when he realized that his 'ally' wasn't planning on sharing the spoils or glory at all - managed to convince a significant contigent of his disgruntled
-	# host to instead join up with him and advance westward. Besieged Pathosopol in late 1249, but got shooed off by a much larger Aversarian force from the south. Rather than
-	# retreating back east like a sane person, instead pressed on westwards, literally just thinking up what to do next on the fly.
-	# Managed to sneak through Megos Kalathipsomi with only a few skirmishes which he won, but with significant losses. Arrived at the gates of Bastonport in late 1250
-	# By a combination of outrageous luck and guile, managed to hoodwink the warlord of Bastonport into leaving the city with a token garrison, and took it in 1250.12.27
-	# Said warlord was, naturally, fuming, and with a 10:1 advantage was prepared to storm the city back, but was intercepted and killed just in time by clanlands_megos_1
+ # Lesser son of a Vrodkin clan of some repute
+ # Sibling rivalry with brother. Largely ignored and left idle during conquest, despite constantly begging for a chance to earn glory
+ # Finally given a small army to scout ahead in late 1248. Naturally, immediately ignored that and advanced straight into Schouweiler
+ # Tagged along with another similarly ambitious, but much more powerful Daukeni warlord and besieged the Mayikprolollan so Thalas in the summer of 1249
+ # Quickly had a falling out when he realized that his 'ally' wasn't planning on sharing the spoils or glory at all - managed to convince a significant contigent of his disgruntled
+ # host to instead join up with him and advance westward. Besieged Pathosopol in late 1249, but got shooed off by a much larger Aversarian force from the south. Rather than
+ # retreating back east like a sane person, instead pressed on westwards, literally just thinking up what to do next on the fly.
+ # Managed to sneak through Megos Kalathipsomi with only a few skirmishes which he won, but with significant losses. Arrived at the gates of Bastonport in late 1250
+ # By a combination of outrageous luck and guile, managed to hoodwink the warlord of Bastonport into leaving the city with a token garrison, and took it in 1250.12.27
+ # Said warlord was, naturally, fuming, and with a 10:1 advantage was prepared to storm the city back, but was intercepted and killed just in time by clanlands_megos_1
 	name = "Laurentz"
 	religion = "sjalvolki"
 	culture = "vrodkin"
 	dynasty = dyn_sjalvolki_6
 	father = clanlands_megos_137
-	
+
 	1228.1.5 = {
 		birth = yes
 		trait = physique_bad_1
 		trait = intellect_good_2
 	}
+
 	1240.1.1 = {
 		trait = ambitious
 		trait = arrogant
 		trait = deceitful
 	}
+
 	1242.1.1 = {
 		effect = {
 			set_relation_rival = character:clanlands_megos_128
 		}
 	}
+
 	1244.1.5 = {
 		trait = education_intrigue_3
 	}
+
 	1250.12.27 = {
 		effect = {
 			give_nickname = nick_the_sly
@@ -392,25 +446,29 @@ clanlands_megos_39 = {
 	name = "Lembert"
 	religion = "sjalvolki"
 	culture = "daukeni"
+
 	1220.4.12 = {
 		birth = yes
 	}
 }
 
 clanlands_megos_40 = {
-	# Ambitious tagalong of clanlands_megos_38. Not from an important clan. Was assigned to basically babysit clanlands_megos_38, but figured that instead following along
-	# was more profitable.
+ # Ambitious tagalong of clanlands_megos_38. Not from an important clan. Was assigned to basically babysit clanlands_megos_38, but figured that instead following along
+ # was more profitable.
 	name = "Leuderic"
 	religion = "sjalvolki"
 	culture = "vrodkin"
+
 	1219.9.19 = {
 		birth = yes
 	}
+
 	1231.1.1 = {
 		trait = ambitious
-		trait = greedy
-		trait = brave
+	trait = greedy
+	trait = brave
 	}
+
 	1235.9.19 = {
 		trait = education_martial_3
 	}
@@ -420,6 +478,7 @@ clanlands_megos_41 = {
 	name = "Kersten"
 	religion = "sjalvolki"
 	culture = "daukeni"
+
 	1220.4.12 = {
 		birth = yes
 	}
@@ -429,6 +488,7 @@ clanlands_megos_42 = {
 	name = "Unwan"
 	religion = "sjalvolki"
 	culture = "greulokin"
+
 	1220.4.12 = {
 		birth = yes
 	}
@@ -438,6 +498,7 @@ clanlands_megos_43 = {
 	name = "Adalgod"
 	religion = "sjalvolki"
 	culture = "greulokin"
+
 	1220.4.12 = {
 		birth = yes
 	}
@@ -447,6 +508,7 @@ clanlands_megos_44 = {
 	name = "Adolf"
 	religion = "sjalvolki"
 	culture = "greulokin"
+
 	1220.4.12 = {
 		birth = yes
 	}
@@ -456,6 +518,7 @@ clanlands_megos_45 = {
 	name = "Aelle"
 	religion = "sjalvolki"
 	culture = "greulokin"
+
 	1220.4.12 = {
 		birth = yes
 	}
@@ -465,6 +528,7 @@ clanlands_megos_46 = {
 	name = "Alebrand"
 	religion = "sjalvolki"
 	culture = "greulokin"
+
 	1220.4.12 = {
 		birth = yes
 	}
@@ -474,6 +538,7 @@ clanlands_megos_47 = {
 	name = "Arnd"
 	religion = "sjalvolki"
 	culture = "greulokin"
+
 	1220.4.12 = {
 		birth = yes
 	}
@@ -483,6 +548,7 @@ clanlands_megos_48 = {
 	name = "Esiko"
 	religion = "sjalvolki"
 	culture = "greulokin"
+
 	1220.4.12 = {
 		birth = yes
 	}
@@ -492,6 +558,7 @@ clanlands_megos_49 = {
 	name = "Erp"
 	religion = "sjalvolki"
 	culture = "vrodkin"
+
 	1220.4.12 = {
 		birth = yes
 	}
@@ -501,6 +568,7 @@ clanlands_megos_50 = {
 	name = "Erik"
 	religion = "sjalvolki"
 	culture = "greulokin"
+
 	1220.4.12 = {
 		birth = yes
 	}
@@ -510,6 +578,7 @@ clanlands_megos_51 = {
 	name = "Engelhard"
 	religion = "sjalvolki"
 	culture = "vrodkin"
+
 	1220.4.12 = {
 		birth = yes
 	}
@@ -519,6 +588,7 @@ clanlands_megos_52 = {
 	name = "Cord"
 	religion = "partic"
 	culture = "auteonic"
+
 	1220.4.12 = {
 		birth = yes
 	}
@@ -528,6 +598,7 @@ clanlands_megos_53 = {
 	name = "Cobbo"
 	religion = "sjalvolki"
 	culture = "daukeni"
+
 	1220.4.12 = {
 		birth = yes
 	}
@@ -537,6 +608,7 @@ clanlands_megos_54 = {
 	name = "Cissa"
 	religion = "partic"
 	culture = "auteonic"
+
 	1220.4.12 = {
 		birth = yes
 	}
@@ -546,6 +618,7 @@ clanlands_megos_55 = {
 	name = "Jaspar"
 	religion = "sjalvolki"
 	culture = "irmionoth"
+
 	1220.4.12 = {
 		birth = yes
 	}
@@ -555,6 +628,7 @@ clanlands_megos_56 = {
 	name = "Mihailo"
 	religion = "sjalvolki"
 	culture = "daukeni"
+
 	1220.4.12 = {
 		birth = yes
 	}
@@ -564,6 +638,7 @@ clanlands_megos_57 = {
 	name = "Godimir"
 	religion = "sjalvolki"
 	culture = "daukeni"
+
 	1220.4.12 = {
 		birth = yes
 	}
@@ -573,6 +648,7 @@ clanlands_megos_58 = {
 	name = "Dragos"
 	religion = "sjalvolki"
 	culture = "daukeni"
+
 	1220.4.12 = {
 		birth = yes
 	}
@@ -582,6 +658,7 @@ clanlands_megos_59 = {
 	name = "Dobroslav"
 	religion = "sjalvolki"
 	culture = "daukeni"
+
 	1220.4.12 = {
 		birth = yes
 	}
@@ -591,6 +668,7 @@ clanlands_megos_60 = {
 	name = "Dmitar"
 	religion = "sjalvolki"
 	culture = "daukeni"
+
 	1220.4.12 = {
 		birth = yes
 	}
@@ -600,6 +678,7 @@ clanlands_megos_61 = {
 	name = "Sinisa"
 	religion = "sjalvolki"
 	culture = "daukeni"
+
 	1220.4.12 = {
 		birth = yes
 	}
@@ -609,6 +688,7 @@ clanlands_megos_62 = {
 	name = "Teodosije"
 	religion = "sjalvolki"
 	culture = "greulokin"
+
 	1220.4.12 = {
 		birth = yes
 	}
@@ -618,6 +698,7 @@ clanlands_megos_63 = {
 	name = "Tihomir"
 	religion = "sjalvolki"
 	culture = "daukeni"
+
 	1220.4.12 = {
 		birth = yes
 	}
@@ -627,6 +708,7 @@ clanlands_megos_64 = {
 	name = "Trajan"
 	religion = "sjalvolki"
 	culture = "daukeni"
+
 	1220.4.12 = {
 		birth = yes
 	}
@@ -636,6 +718,7 @@ clanlands_megos_65 = {
 	name = "Uros"
 	religion = "sjalvolki"
 	culture = "daukeni"
+
 	1220.4.12 = {
 		birth = yes
 	}
@@ -645,6 +728,7 @@ clanlands_megos_66 = {
 	name = "Visarion"
 	religion = "sjalvolki"
 	culture = "daukeni"
+
 	1220.4.12 = {
 		birth = yes
 	}
@@ -654,6 +738,7 @@ clanlands_megos_67 = {
 	name = "Vladimir"
 	religion = "sjalvolki"
 	culture = "daukeni"
+
 	1220.4.12 = {
 		birth = yes
 	}
@@ -663,6 +748,7 @@ clanlands_megos_68 = {
 	name = "Ljudevit"
 	religion = "sjalvolki"
 	culture = "greulokin"
+
 	1220.4.12 = {
 		birth = yes
 	}
@@ -672,6 +758,7 @@ clanlands_megos_69 = {
 	name = "Luka"
 	religion = "sjalvolki"
 	culture = "adrakamp"
+
 	1220.4.12 = {
 		birth = yes
 	}
@@ -681,6 +768,7 @@ clanlands_megos_70 = {
 	name = "Prvoslav"
 	religion = "sjalvolki"
 	culture = "greulokin"
+
 	1220.4.12 = {
 		birth = yes
 	}
@@ -690,6 +778,7 @@ clanlands_megos_71 = {
 	name = "Josif"
 	religion = "sjalvolki"
 	culture = "adrakamp"
+
 	1220.4.12 = {
 		birth = yes
 	}
@@ -697,11 +786,28 @@ clanlands_megos_71 = {
 
 clanlands_megos_72 = {
 	name = "Witikind"
+	dna = witikind
 	religion = "sjalvolki"
 	culture = "adrakamp"
-	add_trait = hunter_1
+		trait = brave
+		trait = wrathful
+		trait = impatient
+		trait = hunter_1
+		trait = education_martial_1
+		trait = giant
+		trait = reaver
+		trait = physique_good_3
+		trait = berserker
+			
+
 	1220.4.12 = {
 		birth = yes
+		effect = {
+			add_character_flag = has_scripted_appearance
+		}
+	}
+					1252.1.1 = {
+		trait = gh_veteran_of_elysia_sjalvolki
 	}
 }
 
@@ -709,6 +815,7 @@ clanlands_megos_73 = {
 	name = "Reinmar"
 	religion = "sjalvolki"
 	culture = "adrakamp"
+
 	1220.4.12 = {
 		birth = yes
 	}
@@ -718,6 +825,7 @@ clanlands_megos_74 = {
 	name = "Merten"
 	religion = "sjalvolki"
 	culture = "adrakamp"
+
 	1220.4.12 = {
 		birth = yes
 	}
@@ -727,6 +835,7 @@ clanlands_megos_75 = {
 	name = "Reginbern"
 	religion = "sjalvolki"
 	culture = "adrakamp"
+
 	1220.4.12 = {
 		birth = yes
 	}
@@ -736,6 +845,7 @@ clanlands_megos_76 = {
 	name = "Philipp"
 	religion = "sjalvolki"
 	culture = "adrakamp"
+
 	1220.4.12 = {
 		birth = yes
 	}
@@ -745,6 +855,7 @@ clanlands_megos_77 = {
 	name = "Peter"
 	religion = "sjalvolki"
 	culture = "adrakamp"
+
 	1220.4.12 = {
 		birth = yes
 	}
@@ -754,6 +865,7 @@ clanlands_megos_78 = {
 	name = "Ordulf"
 	religion = "sjalvolki"
 	culture = "adrakamp"
+
 	1220.4.12 = {
 		birth = yes
 	}
@@ -763,6 +875,7 @@ clanlands_megos_79 = {
 	name = "Odo"
 	religion = "sjalvolki"
 	culture = "adrakamp"
+
 	1220.4.12 = {
 		birth = yes
 	}
@@ -772,6 +885,7 @@ clanlands_megos_80 = {
 	name = "Hinrik"
 	religion = "sjalvolki"
 	culture = "adrakamp"
+
 	1220.4.12 = {
 		birth = yes
 	}
@@ -781,6 +895,7 @@ clanlands_megos_81 = {
 	name = "Gosschalk"
 	religion = "sjalvolki"
 	culture = "adrakamp"
+
 	1220.4.12 = {
 		birth = yes
 	}
@@ -790,6 +905,7 @@ clanlands_megos_82 = {
 	name = "Detleff"
 	religion = "sjalvolki"
 	culture = "adrakamp"
+
 	1220.4.12 = {
 		birth = yes
 	}
@@ -799,6 +915,7 @@ clanlands_megos_83 = {
 	name = "Bertram"
 	religion = "sjalvolki"
 	culture = "adrakamp"
+
 	1220.4.12 = {
 		birth = yes
 	}
@@ -808,6 +925,7 @@ clanlands_megos_84 = {
 	name = "Balthasar"
 	religion = "sjalvolki"
 	culture = "adrakamp"
+
 	1220.4.12 = {
 		birth = yes
 	}
@@ -817,6 +935,7 @@ clanlands_megos_85 = {
 	name = "Balduin"
 	religion = "sjalvolki"
 	culture = "caemansi"
+
 	1220.4.12 = {
 		birth = yes
 	}
@@ -826,6 +945,7 @@ clanlands_megos_86 = {
 	name = "Asig"
 	religion = "sjalvolki"
 	culture = "vrodkin"
+
 	1220.4.12 = {
 		birth = yes
 	}
@@ -835,6 +955,7 @@ clanlands_megos_87 = {
 	name = "Cobbo"
 	religion = "sjalvolki"
 	culture = "daukeni"
+
 	1220.4.12 = {
 		birth = yes
 	}
@@ -844,6 +965,7 @@ clanlands_megos_88 = {
 	name = "Rudigar"
 	religion = "sjalvolki"
 	culture = "vrodkin"
+
 	1220.4.12 = {
 		birth = yes
 	}
@@ -853,6 +975,7 @@ clanlands_megos_89 = {
 	name = "Michael"
 	religion = sjalvolki
 	culture = vrodkin
+
 	1220.4.12 = {
 		birth = yes
 	}
@@ -862,6 +985,7 @@ clanlands_megos_90 = {
 	name = "Henneke"
 	religion = "sjalvolki"
 	culture = "daukeni"
+
 	1220.4.12 = {
 		birth = yes
 	}
@@ -871,6 +995,7 @@ clanlands_megos_91 = {
 	name = "Burchard"
 	religion = "sjalvolki"
 	culture = "daukeni"
+
 	1220.4.12 = {
 		birth = yes
 	}
@@ -880,6 +1005,7 @@ clanlands_megos_92 = {
 	name = "Balthasar"
 	religion = "sjalvolki"
 	culture = "daukeni"
+
 	1220.4.12 = {
 		birth = yes
 	}
@@ -889,6 +1015,7 @@ clanlands_megos_93 = {
 	name = "Dethard"
 	religion = "sjalvolki"
 	culture = "vrodkin"
+
 	1220.4.12 = {
 		birth = yes
 	}
@@ -898,6 +1025,7 @@ clanlands_megos_94 = {
 	name = "Bertram"
 	religion = "sjalvolki"
 	culture = "daukeni"
+
 	1220.4.12 = {
 		birth = yes
 	}
@@ -907,6 +1035,7 @@ clanlands_megos_95 = {
 	name = "Johann"
 	religion = "sjalvolki"
 	culture = "vrodkin"
+
 	1220.4.12 = {
 		birth = yes
 	}
@@ -916,6 +1045,7 @@ clanlands_megos_96 = {
 	name = "Juries"
 	religion = "sjalvolki"
 	culture = "caemansi"
+
 	1220.4.12 = {
 		birth = yes
 	}
@@ -925,6 +1055,7 @@ clanlands_megos_97 = {
 	name = "Rudigar"
 	religion = "sjalvolki"
 	culture = "caemansi"
+
 	1220.4.12 = {
 		birth = yes
 	}
@@ -934,6 +1065,7 @@ clanlands_megos_98 = {
 	name = "Waltard"
 	religion = "sjalvolki"
 	culture = "caemansi"
+
 	1220.4.12 = {
 		birth = yes
 	}
@@ -943,6 +1075,7 @@ clanlands_megos_99 = {
 	name = "Gevert"
 	religion = "sjalvolki"
 	culture = "adrakamp"
+
 	1220.4.12 = {
 		birth = yes
 	}
@@ -952,6 +1085,7 @@ clanlands_megos_100 = {
 	name = "Gerold"
 	religion = "sjalvolki"
 	culture = "adrakamp"
+
 	1220.4.12 = {
 		birth = yes
 	}
@@ -961,6 +1095,7 @@ clanlands_megos_101 = {
 	name = "Hans"
 	religion = "sjalvolki"
 	culture = "caemansi"
+
 	1220.4.12 = {
 		birth = yes
 	}
@@ -970,6 +1105,7 @@ clanlands_megos_102 = {
 	name = "Gehrke"
 	religion = "sjalvolki"
 	culture = "caemansi"
+
 	1220.4.12 = {
 		birth = yes
 	}
@@ -979,6 +1115,7 @@ clanlands_megos_103 = {
 	name = "Porin"
 	religion = "sjalvolki"
 	culture = "daukeni"
+
 	1220.4.12 = {
 		birth = yes
 	}
@@ -988,6 +1125,7 @@ clanlands_megos_104 = {
 	name = "Krsto"
 	religion = "sjalvolki"
 	culture = "daukeni"
+
 	1220.4.12 = {
 		birth = yes
 	}
@@ -997,6 +1135,7 @@ clanlands_megos_105 = {
 	name = "Konstantin"
 	religion = "sjalvolki"
 	culture = "caemansi"
+
 	1220.4.12 = {
 		birth = yes
 	}
@@ -1006,6 +1145,7 @@ clanlands_megos_106 = {
 	name = "Kasjan"
 	religion = "sjalvolki"
 	culture = "daukeni"
+
 	1220.4.12 = {
 		birth = yes
 	}
@@ -1015,6 +1155,7 @@ clanlands_megos_107 = {
 	name = "Jovan"
 	religion = "sjalvolki"
 	culture = "vrodkin"
+
 	1220.4.12 = {
 		birth = yes
 	}
@@ -1024,6 +1165,7 @@ clanlands_megos_108 = {
 	name = "Josip"
 	religion = "sjalvolki"
 	culture = "vrodkin"
+
 	1220.4.12 = {
 		birth = yes
 	}
@@ -1033,6 +1175,7 @@ clanlands_megos_109 = {
 	name = "Danilo"
 	religion = "sjalvolki"
 	culture = "vrodkin"
+
 	1220.4.12 = {
 		birth = yes
 	}
@@ -1042,6 +1185,7 @@ clanlands_megos_110 = {
 	name = "Kosmin"
 	religion = sjalvolki
 	culture = vrodkin
+
 	1220.4.12 = {
 		birth = yes
 	}
@@ -1051,6 +1195,7 @@ clanlands_megos_111 = {
 	name = "Budimir"
 	religion = "sjalvolki"
 	culture = "vrodkin"
+
 	1220.4.12 = {
 		birth = yes
 	}
@@ -1060,6 +1205,7 @@ clanlands_megos_112 = {
 	name = "Branimir"
 	religion = sjalvolki
 	culture = vrodkin
+
 	1220.4.12 = {
 		birth = yes
 	}
@@ -1069,6 +1215,7 @@ clanlands_megos_113 = {
 	name = "Borna"
 	religion = sjalvolki
 	culture = vrodkin
+
 	1220.4.12 = {
 		birth = yes
 	}
@@ -1078,6 +1225,7 @@ clanlands_megos_114 = {
 	name = "Reineke"
 	religion = sjalvolki
 	culture = vrodkin
+
 	1220.4.12 = {
 		birth = yes
 	}
@@ -1087,6 +1235,7 @@ clanlands_megos_115 = {
 	name = "Boleslav"
 	religion = "sjalvolki"
 	culture = "daukeni"
+
 	1220.4.12 = {
 		birth = yes
 	}
@@ -1096,6 +1245,7 @@ clanlands_megos_116 = {
 	name = "Berbat"
 	religion = "sjalvolki"
 	culture = "daukeni"
+
 	1220.4.12 = {
 		birth = yes
 	}
@@ -1105,6 +1255,7 @@ clanlands_megos_117 = {
 	name = "Lazar"
 	religion = "sjalvolki"
 	culture = "daukeni"
+
 	1220.4.12 = {
 		birth = yes
 	}
@@ -1114,6 +1265,7 @@ clanlands_megos_118 = {
 	name = "Bernd"
 	religion = "sjalvolki"
 	culture = "daukeni"
+
 	1220.4.12 = {
 		birth = yes
 	}
@@ -1123,6 +1275,7 @@ clanlands_megos_119 = {
 	name = "Tymmeke"
 	religion = "sjalvolki"
 	culture = "daukeni"
+
 	1220.4.12 = {
 		birth = yes
 	}
@@ -1132,6 +1285,7 @@ clanlands_megos_120 = {
 	name = "Volkwin"
 	religion = "sjalvolki"
 	culture = "daukeni"
+
 	1220.4.12 = {
 		birth = yes
 	}
@@ -1141,6 +1295,7 @@ clanlands_megos_121 = {
 	name = "Adaldag"
 	religion = "sjalvolki"
 	culture = "daukeni"
+
 	1220.4.12 = {
 		birth = yes
 	}
@@ -1150,6 +1305,7 @@ clanlands_megos_122 = {
 	name = "Withgils"
 	religion = sjalvolki
 	culture = vrodkin
+
 	1220.4.12 = {
 		birth = yes
 	}
@@ -1159,6 +1315,7 @@ clanlands_megos_123 = {
 	name = "Norbert"
 	religion = sjalvolki
 	culture = vrodkin
+
 	1220.4.12 = {
 		birth = yes
 	}
@@ -1168,6 +1325,7 @@ clanlands_megos_124 = {
 	name = "Albrecht"
 	religion = sjalvolki
 	culture = vrodkin
+
 	1220.4.12 = {
 		birth = yes
 	}
@@ -1177,6 +1335,7 @@ clanlands_megos_125 = {
 	name = "Juries"
 	religion = "sjalvolki"
 	culture = "daukeni"
+
 	1220.4.12 = {
 		birth = yes
 	}
@@ -1186,6 +1345,7 @@ clanlands_megos_126 = {
 	name = "Gunzelin"
 	religion = sjalvolki
 	culture = vrodkin
+
 	1220.4.12 = {
 		birth = yes
 	}
@@ -1195,6 +1355,7 @@ clanlands_megos_127 = {
 	name = "Adaldag"
 	religion = sjalvolki
 	culture = vrodkin
+
 	1220.4.12 = {
 		birth = yes
 	}
@@ -1207,16 +1368,18 @@ clanlands_megos_128 = {
 	dynasty = dyn_sjalvolki_6
 	
 	father = clanlands_megos_137
-	
+
 	1226.9.1 = {
 		birth = yes
 		trait = physique_good_2
 	}
+
 	1238.1.1 = {
 		trait = brave
 		trait = honest
 		trait = arrogant
 	}
+
 	1242.9.1 = {
 		trait = education_martial_3
 		trait = scarred
@@ -1228,6 +1391,7 @@ clanlands_megos_129 = {
 	name = "Ewald"
 	religion = sjalvolki
 	culture = vrodkin
+
 	1220.4.12 = {
 		birth = yes
 	}
@@ -1237,6 +1401,7 @@ clanlands_megos_130 = {
 	name = "Rudigar"
 	religion = sjalvolki
 	culture = vrodkin
+
 	1220.4.12 = {
 		birth = yes
 	}
@@ -1246,6 +1411,7 @@ clanlands_megos_131 = {
 	name = "Cord"
 	religion = sjalvolki
 	culture = vrodkin
+
 	1220.4.12 = {
 		birth = yes
 	}
@@ -1255,6 +1421,7 @@ clanlands_megos_132 = {
 	name = "Wolter"
 	religion = sjalvolki
 	culture = vrodkin
+
 	1220.4.12 = {
 		birth = yes
 	}
@@ -1264,6 +1431,7 @@ clanlands_megos_133 = {
 	name = "Meinwerk"
 	religion = "sjalvolki"
 	culture = "daukeni"
+
 	1220.4.12 = {
 		birth = yes
 	}
@@ -1273,6 +1441,7 @@ clanlands_megos_134 = {
 	name = "Merten"
 	religion = "sjalvolki"
 	culture = "irmionoth"
+
 	1220.4.12 = {
 		birth = yes
 	}
@@ -1282,6 +1451,7 @@ clanlands_megos_135 = {
 	name = "Ewald"
 	religion = sjalvolki
 	culture = vrodkin
+
 	1220.4.12 = {
 		birth = yes
 	}
@@ -1291,6 +1461,7 @@ clanlands_megos_136 = {
 	name = "Engelbert"
 	religion = "sjalvolki"
 	culture = "vrodkin"
+
 	1220.4.12 = {
 		birth = yes
 	}
@@ -1301,18 +1472,21 @@ clanlands_megos_137 = {
 	religion = "sjalvolki"
 	culture = "vrodkin"
 	dynasty = dyn_sjalvolki_6
-	
+
 	1205.11.23 = {
 		birth = yes
 	}
+
 	1217.1.1 = {
 		trait = arbitrary
 		trait = wrathful
 		trait = fickle
 	}
+
 	1221.11.23 = {
 		trait = education_diplomacy_1
 	}
+
 	1239.8.12 = {
 		death = {
 			death_reason = death_fog
@@ -1324,6 +1498,7 @@ clanlands_megos_1000 = {
 	name = "Ukrman"
 	religion = "sjalvolki"
 	culture = "vrodkin"
+
 	1220.4.12 = {
 		birth = yes
 	}
@@ -1334,10 +1509,58 @@ clanlands_megos_1001 = {
 	religion = "sjalvolki"
 	culture = "vrodkin"
 	female = yes
+
 	1220.4.12 = {
 		birth = yes
 	}
+
 	1253.12.18 = {
 		employer = clanlands_sjalvolki_1
+	}
+}
+
+clanlands_megos_138 = { # Herberd daughter, same name as her mother
+	name = "Ulfrina"
+	dna = ulfrina 
+	religion = "sjalvolki"
+	culture = "daukeni"
+	dynasty = dyn_sjalvolki_3
+	female = yes
+	sexuality = heterosexual
+	father = clanlands_megos_1
+	mother = clanlands_megos_139
+	trait = wrathful
+	trait = physique_good_1
+	trait = content
+	trait = gregarious
+	trait = hunter_1
+	trait = education_martial_1
+	
+	1228.3.11 = {
+		birth = yes
+		effect = {
+			add_character_flag = has_scripted_appearance
+		}
+	}
+}
+
+clanlands_megos_139 = { # Herberd wife
+	name = "Ulfrina"
+	dna = ulfrina2
+	religion = "sjalvolki"
+	culture = "greulokin"
+	female = yes
+	sexuality = heterosexual
+	trait = stubborn
+	trait = diligent
+	trait = gregarious
+	trait = lifestyle_herbalist
+	trait = education_learning_3
+	
+	1205.3.11 = {
+		birth = yes
+		effect = {
+			add_character_flag = has_scripted_appearance
+		}
 	}
 }

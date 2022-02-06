@@ -1,125 +1,160 @@
 ﻿global_magic_calculations = {
 	every_in_global_list = {
 		variable = magi_list
-		limit = {
-			can_access_magic = yes
-		}
-		if
-		{
+		if = {
 			limit = { 
 				is_alive = no
 			}
 			remove_from_magi_list = yes
 		}
 		else = {
-			initialize_monthly_calculation_variables = { RESOURCE_NAME = magic }
-			
-			trait_magic_table_add = yes
-			trait_magic_table_multiply = yes
-			faith_magic_table_add = yes
-			faith_magic_table_multiply = yes
-			county_modifier_magic_table_add = yes
-			county_modifier_magic_table_multiply = yes
-			character_modifier_magic_table_add = yes
-			character_modifier_magic_table_multiply = yes
-			building_magic_table_add = yes
-			building_magic_table_multiply = yes
-			lifestyle_magic_table_add  = yes 
-			lifestyle_magic_table_multiply = yes 
-			lifestyle_focus_magic_table_add  = yes 
-			lifestyle_focus_magic_table_multiply = yes 
-			lifestyle_perk_magic_table_add  = yes 
-			lifestyle_perk_magic_table_multiply = yes
-			dynasty_legacy_magic_table_add = yes
-			dynasty_legacy_magic_table_multiply = yes
-			complex_magic_table_add = yes
-			
-			change_variable = {
-				name = monthly_magic
-				add = var:monthly_magic_add
-			}
-			change_variable = {
-				name = monthly_magic
-				multiply = var:monthly_magic_multiply
-			}
 			if = {
-				limit = { NOT = { has_variable = magic_counter }}
-				set_variable = { name = magic_counter value = 0}
-			}
-			if = {
-				limit = { var:monthly_magic < 0}
-				set_variable = {
-					name = monthly_magic
-					value = 0
+				limit = {
+					can_access_magic = yes
+				}
+				if = {
+					limit = {
+						OR = {
+							is_ai = no
+							NOT = { has_variable = monthly_magic }
+						}
+					}
+					calculate_monthly_magic = yes
+				}
+				else = {
+					if = {
+						limit = { NOT = { has_variable = magic_counter } }
+						set_variable = {
+							name = magic_counter
+							value = 0
+						}
+					}
+					change_variable = {
+						name = magic_counter
+						add = var:monthly_magic
+					}
 				}
 			}
-			set_variable = {
-				name = monthly_magic_no_transfer
-				value = var:monthly_magic
-			}
-			transfer_from_court_mage_magic = yes
-			transfer_to_liege_court_mage_magic = yes
-			
-			set_variable = {
-				name = monthly_magic_multiply_percentage
-				value = var:monthly_magic_multiply
-			}
-			calculate_multiply_percentage =  yes # For the tooltip
-			
-			change_variable = {
-				name = magic_counter
-				add = var:monthly_magic
-			}
-			
-		
-			#########################################
-			# CALCULATING EDUCATION OUTPUT IF VALID #
-			#########################################
-			calculate_magic_tutoring_outcomes = yes
-
-			###############################
-			# CALCULATING MAGICAL PROWESS #
-			###############################
-
-			#########################################
-			# REDUCING OVERWHELMATION IF APPLICABLE #
-			#########################################
 			reduce_overwhelmation = yes
 		}
 	}
 }
-yearly_magic_calculations = {
-	every_in_global_list = {
-		variable = magi_list
-		limit = {
-			can_access_magic = yes
-		}
-		if
-		{
-			limit = { 
-				is_alive = no
-			}
-			remove_from_magi_list = yes
-		}
-		else = {
-			calculate_magical_prowess = yes
-			combine_regular_and_magic_prowess = { DAYS = 365 }
+
+calculate_monthly_magic = {
+	initialize_monthly_calculation_variables = { RESOURCE_NAME = magic }
+	
+	trait_magic_table_add = yes
+	trait_magic_table_multiply = yes
+	education_magic_table_add = yes
+	faith_magic_table_add = yes
+	faith_magic_table_multiply = yes
+	county_modifier_magic_table_add = yes
+	county_modifier_magic_table_multiply = yes
+	character_modifier_magic_table_add = yes
+	character_modifier_magic_table_multiply = yes
+	building_magic_table_add = yes
+	building_magic_table_multiply = yes
+	lifestyle_magic_table_add  = yes 
+	lifestyle_magic_table_multiply = yes 
+	lifestyle_focus_magic_table_add  = yes 
+	lifestyle_focus_magic_table_multiply = yes 
+	lifestyle_perk_magic_table_add  = yes 
+	lifestyle_perk_magic_table_multiply = yes
+	dynasty_legacy_magic_table_add = yes
+	dynasty_legacy_magic_table_multiply = yes
+	
+	complex_magic_table_add = yes
+	
+	change_variable = {
+		name = monthly_magic
+		add = var:monthly_magic_add
+	}
+	change_variable = {
+		name = monthly_magic
+		multiply = var:monthly_magic_multiply
+	}
+	if = {
+		limit = { NOT = { has_variable = magic_counter }}
+		set_variable = { name = magic_counter value = 0}
+	}
+	if = {
+		limit = { var:monthly_magic < 0}
+		set_variable = {
+			name = monthly_magic
+			value = 0
 		}
 	}
+	set_variable = {
+		name = monthly_magic_no_transfer
+		value = var:monthly_magic
+	}
+	transfer_from_court_mage_magic = yes
+	transfer_to_liege_court_mage_magic = yes
+	
+	set_variable = {
+		name = monthly_magic_multiply_percentage
+		value = var:monthly_magic_multiply
+	}
+	calculate_multiply_percentage =  yes # For the tooltip
+	
+	change_variable = {
+		name = magic_counter
+		add = var:monthly_magic
+	}
+	set_variable = {
+		name = trait_total_magic_add
+		value = var:trait_magic_add
+	}
+	change_variable = {
+		name = trait_total_magic_add
+		add = var:education_magic_add
+	}
+	
+	if = {
+		limit = { is_ai = yes }
+		remove_temporary_magic_calculation_variables_effect = yes
+	}
+	
+	###############################
+	# CALCULATING MAGICAL PROWESS #
+	###############################
+	# Was causing extreme lag, so moved to a yearly check
+	#calculate_magical_prowess = yes
+	#combine_regular_and_magic_prowess = { DAYS = 31 }
 }
 
 initialize_monthly_calculation_variables = {
-	set_variable = {
-		name = monthly_$RESOURCE_NAME$
-		value = 0
+	if = {
+		limit = { is_ai = yes }
+		set_variable = {
+			name = monthly_$RESOURCE_NAME$
+			value = 0
+			years = 1
+		}
+		set_variable = {
+			name = monthly_$RESOURCE_NAME$_add
+			value = 0
+			years = 1
+		}
+		set_variable = {
+			name = monthly_$RESOURCE_NAME$_multiply
+			value = 1
+			years = 1
+		}
 	}
-	set_variable = {
-		name = monthly_$RESOURCE_NAME$_add
-		value = 0
-	}
-	set_variable = {
-		name = monthly_$RESOURCE_NAME$_multiply
-		value = 1
+	else = {
+		set_variable = {
+			name = monthly_$RESOURCE_NAME$
+			value = 0
+		}
+		set_variable = {
+			name = monthly_$RESOURCE_NAME$_add
+			value = 0
+		}
+		set_variable = {
+			name = monthly_$RESOURCE_NAME$_multiply
+			value = 1
+		}
 	}
 }
 
@@ -235,6 +270,56 @@ check_character_modifier_magic = {
 		}
 	}
 }
+
+check_character_modifier_magic_type_ranked = {
+	if = {
+		limit = { has_character_modifier = $MODIFIER_NAME$ }
+		set_variable = {
+			name = temporary_character_modifier_magic_type_ranked_value
+			value = $VALUE$
+		}
+		if = {
+			limit = { has_trait = education_$MAGIC_TYPE$_4 }
+			change_variable = {
+				name = temporary_character_modifier_magic_type_ranked_value
+				multiply = 4
+			}
+		}
+		else_if = {
+			limit = { has_trait = education_$MAGIC_TYPE$_3 }
+			change_variable = {
+				name = temporary_character_modifier_magic_type_ranked_value
+				multiply = 3
+			}
+		}
+		else_if = {
+			limit = { has_trait = education_$MAGIC_TYPE$_2 }
+			change_variable = {
+				name = temporary_character_modifier_magic_type_ranked_value
+				multiply = 2
+			}
+		}
+		else_if = {
+			limit = { has_trait = education_$MAGIC_TYPE$_1 }
+			change_variable = {
+				name = temporary_character_modifier_magic_type_ranked_value
+				multiply = 1
+			}
+		}
+		else = {
+			change_variable = {
+				name = temporary_character_modifier_magic_type_ranked_value
+				multiply = 0
+			}
+		}
+		change_variable = {
+			name = $TABLE_NAME$_$MODE$
+			add = var:temporary_character_modifier_magic_type_ranked_value
+		}
+		remove_variable = temporary_character_modifier_magic_type_ranked_value
+	}
+}
+
 
 check_building_magic = {
 	every_held_title = {
@@ -357,6 +442,20 @@ check_dynasty_legacy_magic = {
 	}
 }
 
+check_moon_phase_magic = {
+	if = {
+		limit = {
+			title:c_halium = {
+				has_variable = $MOON_PHASE$
+			}
+		}
+		change_variable = {
+			name = $TABLE_NAME$_$MODE$
+			add = $VALUE$
+		}
+	}
+}
+
 calculate_multiply_percentage = {	# For the tooltip
 	change_variable = {
 		name = monthly_magic_multiply_percentage
@@ -372,13 +471,24 @@ calculate_multiply_percentage = {	# For the tooltip
 # MAGICAL PROWESS #
 ###################
 
+magical_prowess_calculation = {
+	if = {
+		limit = {
+			is_alive = no
+		}
+		remove_from_magi_list = yes
+	}
+	else = {
+		calculate_magical_prowess = yes
+		combine_regular_and_magic_prowess = { DAYS = 364 }
+	}
+}
+
 calculate_magical_prowess = {
 	set_variable = {
 		name = magical_prowess
 		value = magical_prowess_value
 	}
-	
-	custom_tooltip = magical_prowess_pure_value
 }
 
 save_pure_prowess = {
@@ -399,6 +509,7 @@ combine_regular_and_magic_prowess = {
 	remove_all_character_modifier_instances = temporary_magic_prowess_to_combined_cast_modifier
 	remove_all_character_modifier_instances = temporary_combined_prowess_to_pure_magic_cast_modifier
 	save_pure_prowess = yes
+	ensure_no_prowess_loss_for_only_magical_prowess = yes
 	if = {
 		limit = { 
 			trigger_if = {
@@ -422,9 +533,19 @@ combine_regular_and_magic_prowess = {
 				subtract = 1
 			}
 		}
+		remove_variable = decrementor
+	}		
+}
+ensure_no_prowess_loss_for_only_magical_prowess = {
+	if = {
+		limit = {
+			has_variable = pure_prowess
+			var:pure_prowess = { compare_value < 1 }
+		}
+		add_character_modifier = { modifier = magic_no_prowess_loss_from_age years = 1 }
 	}
 }
-
+	
 convert_to_pure_prowess_only = {
 	remove_all_character_modifier_instances = temporary_magic_prowess_to_combined_cast_modifier
 }
@@ -435,26 +556,22 @@ convert_to_magical_prowess_only = {	# A wrapper function for convenience
 
 convert_to_pure_magic_prowess_only_with_days_argument = {
 	remove_all_character_modifier_instances = temporary_combined_prowess_to_pure_magic_cast_modifier
-	if = {
-		limit = { 
-			always = yes
+	set_variable = {
+		name = decrementor
+		value = prowess
+	}
+	while = {
+		limit = { var:decrementor > 0 }
+		add_character_modifier = {
+			modifier = temporary_combined_prowess_to_pure_magic_cast_modifier
+			days = $DAYS$
 		}
-		set_variable = {
+		change_variable = {
 			name = decrementor
-			value = prowess
-		}
-		while = {
-			limit = { var:decrementor > 0 }
-			add_character_modifier = {
-				modifier = temporary_combined_prowess_to_pure_magic_cast_modifier
-				days = $DAYS$
-			}
-			change_variable = {
-				name = decrementor
-				subtract = 1
-			}
+			subtract = 1
 		}
 	}
+	remove_variable = decrementor
 }
 
 ##############
@@ -502,6 +619,38 @@ transfer_to_liege_court_mage_magic = {
 		name = monthly_magic	# Should ignore all your multiplicative modifiers and just give you a flat boost
 		add = var:transferred_to_liege_magic
 	}
+}
+
+remove_temporary_magic_calculation_variables_effect = {
+	remove_variable = monthly_magic_add
+	remove_variable = monthly_magic_multiply
+	remove_variable = trait_magic_add
+	remove_variable = trait_magic_multiply
+	remove_variable = education_magic_add
+	remove_variable = education_magic_multiply
+	remove_variable = faith_magic_add
+	remove_variable = faith_magic_multiply
+	remove_variable = county_modifier_magic_add
+	remove_variable = county_modifier_magic_multiply
+	remove_variable = character_modifier_magic_add
+	remove_variable = character_modifier_magic_multiply
+	remove_variable = building_magic_add
+	remove_variable = building_magic_multiply
+	remove_variable = lifestyle_magic_add
+	remove_variable = lifestyle_magic_multiply
+	remove_variable = lifestyle_focus_magic_add
+	remove_variable = lifestyle_focus_magic_multiply
+	remove_variable = lifestyle_perk_magic_add
+	remove_variable = lifestyle_perk_magic_multiply
+	remove_variable = dynasty_legacy_magic_add
+	remove_variable = dynasty_legacy_magic_multiply
+	remove_variable = complex_magic_add
+	remove_variable = complex_magic_multiply
+	remove_variable = trait_total_magic_add
+	remove_variable = court_mage_magic
+	remove_variable = transferred_to_liege_magic
+	remove_variable = monthly_magic_multiply_percentage
+	remove_variable = monthly_magic_no_transfer
 }
 
 ###############

@@ -60,6 +60,15 @@ magic_ai.0001 = {
 				save_scope_as = potential_enemy
 			}
 		}
+		if = {
+			limit = { is_at_war = yes }
+			random_war_enemy = {
+				limit = { is_landed = yes }
+				capital_county = {
+					save_scope_as = potential_enemy_capital
+				}
+			}
+		}
 		set_variable = {
 			name = magic_lvl
 			value = 0
@@ -115,10 +124,74 @@ magic_ai.0001 = {
 					}
 				}
 			}
+			80 = {
+				trigger = {
+					NOT = { has_variable = ai_already_used_skeletal_crafting_cooldown }
+					has_trait = education_dead_magic
+					is_landed = yes
+					is_commanding_army = no
+				}
+				set_variable = {
+					name = ai_already_used_skeletal_crafting_cooldown
+					years = 5
+				}
+				random_list = {
+					0 = {
+						modifier = {
+						add = bonefinding_ai_bad_success_chance
+						}
+						ai_bonecrafting_magic = { TIER = 0}
+					}
+					0 = {
+						modifier = {
+						add = bonefinding_ai_good_success_chance
+						}
+						random_list = {
+							70 = { ai_bonecrafting_magic = { TIER = 2} }
+							30 = { ai_bonecrafting_artifact = { TIER = 2} }
+						}
+					}
+					0 = {
+						modifier = {
+						add = bonefinding_ai_great_success_chance
+						}
+						random_list = {
+							70 = { ai_bonecrafting_magic = { TIER = 3} }
+							30 = { ai_bonecrafting_artifact = { TIER = 3} }
+						}
+					}
+				}
+			}
 		}
 		random_list = {
-			50 = {}
-			1 = {
+			50 = { 
+				modifier = {
+					factor = 0.8
+					exists = var:magic_counter
+					var:magic_counter > 1600
+				}
+				modifier = {
+					factor = 0.8
+					exists = var:magic_counter
+					var:magic_counter > 1000
+				}
+				modifier = {
+					factor = 1.3
+					exists = var:magic_counter
+					var:magic_counter < 400
+				}
+				modifier = {
+					factor = 1.3
+					exists = var:magic_counter
+					var:magic_counter < 200
+				}
+				modifier = {
+					factor = 1.3
+					exists = var:magic_counter
+					var:magic_counter < 100
+				}
+			}
+			10 = {
 				trigger = {
 					has_trait = education_living_magic
 					NOT = { has_variable = ai_already_casted_healing_waters_cooldown }
@@ -141,16 +214,14 @@ magic_ai.0001 = {
 					name = ai_already_casted_healing_waters_cooldown
 					years = 2
 				}
-				debug_log = "AN AI CHARACTER CASTED HEALING"
-				debug_log_scopes = yes
 				increase_progress_to_living_magi_trait = yes
-				apply_spell_effect_with_custom_backfire_chance_list = { TIER = 2 SUCCESS_CHANCE = difficult_spell_difficulty_success_chance SPELL_EFFECT = healing_water_effect FAILURE_CHANCE = difficult_spell_difficulty_failure_chance BACKFIRE_EFFECT = poison_effect }
+				apply_spell_effect_with_custom_backfire_chance_list = { TIER = 1 SUCCESS_CHANCE = difficult_spell_difficulty_success_chance SPELL_EFFECT = healing_water_effect FAILURE_CHANCE = difficult_spell_difficulty_failure_chance BACKFIRE_EFFECT = poison_effect }
 				trigger_event = {
 					id = magic_ai.0001
 					years = 5
 				}
 			}
-			1 = {
+			10 = {
 				trigger = {
 					has_trait = education_living_magic
 					NOT = { has_variable = ai_already_casted_healing_waters_cooldown }
@@ -210,15 +281,13 @@ magic_ai.0001 = {
 						}
 					}
 				}
-				increase_ai_spell_tier_to_ideal_level = { SPELL_DIFFICULTY = difficult_spell TIER = 1 }
+				increase_ai_spell_tier_to_ideal_level = { SPELL_DIFFICULTY = nonhostile_difficult_spell TIER = 1 }
 				set_variable = {
 					name = ai_already_casted_healing_waters_cooldown
 					years = 2
 				}
-				debug_log = "AN AI CHARACTER CASTED HEALING"
-				debug_log_scopes = yes
 				increase_progress_to_living_magi_trait = yes
-				apply_spell_effect_with_custom_backfire_chance_list = { TIER = 2 SUCCESS_CHANCE = difficult_spell_difficulty_success_chance SPELL_EFFECT = healing_water_effect FAILURE_CHANCE = difficult_spell_difficulty_failure_chance BACKFIRE_EFFECT = poison_effect }
+				apply_spell_effect_with_custom_backfire_chance_list = { TIER = 1 SUCCESS_CHANCE = difficult_spell_difficulty_success_chance_nonhostile SPELL_EFFECT = healing_water_effect FAILURE_CHANCE = difficult_spell_difficulty_failure_chance_nonhostile BACKFIRE_EFFECT = poison_effect }
 			}
 			10 = {
 				trigger = {
@@ -256,8 +325,6 @@ magic_ai.0001 = {
 					name = ai_already_casted_poison_cooldown
 					years = 2
 				}
-				debug_log = "AN AI CHARACTER CASTED POISON"
-				debug_log_scopes = yes
 				increase_progress_to_living_magi_trait = yes
 				apply_spell_effect_with_backfire_chance_list = { TIER = 2 SUCCESS_CHANCE = standard_spell_difficulty_success_chance SPELL_EFFECT = poison_effect FAILURE_CHANCE = standard_spell_difficulty_failure_chance }
 			}
@@ -297,8 +364,6 @@ magic_ai.0001 = {
 					name = ai_already_casted_thinning_cooldown
 					years = 2
 				}
-				debug_log = "AN AI CHARACTER CASTED THINNING"
-				debug_log_scopes = yes
 				increase_progress_to_living_magi_trait = yes
 				apply_spell_effect_with_backfire_chance_list = { TIER = 2 SUCCESS_CHANCE = standard_spell_difficulty_success_chance SPELL_EFFECT = thinning_effect FAILURE_CHANCE = standard_spell_difficulty_failure_chance }
 			}
@@ -338,8 +403,6 @@ magic_ai.0001 = {
 					name = ai_already_casted_domination_cooldown
 					years = 2
 				}
-				debug_log = "AN AI CHARACTER CASTED DOMINATION"
-				debug_log_scopes = yes
 				increase_progress_to_living_magi_trait = yes
 				apply_spell_effect_with_custom_backfire_chance_list = { TIER = 3 SUCCESS_CHANCE = standard_spell_difficulty_success_chance SPELL_EFFECT = domination_effect FAILURE_CHANCE = standard_spell_difficulty_failure_chance BACKFIRE_EFFECT = domination_backfire_effect }
 			}
@@ -358,22 +421,29 @@ magic_ai.0001 = {
 					factor = 5
 					has_trait = ambitious
 				}
+				modifier = {
+					factor = 5
+					is_at_war = yes
+					is_landed = yes
+				}
 				increase_ai_spell_tier_to_ideal_level = { SPELL_DIFFICULTY = standard_spell TIER = 1 }
 				set_variable = {
 					name = ai_already_casted_fire_magick_cooldown
 					years = 2
 				}
-				debug_log = "AN AI CHARACTER CASTED FIRE MAGICK"
-				debug_log_scopes = yes
 				increase_progress_to_living_magi_trait = yes
 				apply_spell_effect_with_custom_backfire_chance_list = { TIER = 1 SUCCESS_CHANCE = standard_spell_difficulty_success_chance SPELL_EFFECT = fire_magick_effect FAILURE_CHANCE = standard_spell_difficulty_failure_chance BACKFIRE_EFFECT = fire_magick_backfire_effect }
 			}
-			10 = {
+			5 = {
 				trigger = {
 					has_trait = education_living_magic
 					#NOT = { has_variable = ai_already_casted_raise_bloodthralls_cooldown }
-					is_at_war = yes
 					spell_magic_cost_by_tier = { TIER = 4 }
+					is_landed = yes
+				}
+				modifier = {
+					factor = 4
+					is_at_war = yes
 				}
 				modifier = {
 					factor = 5
@@ -400,10 +470,608 @@ magic_ai.0001 = {
 				#	name = ai_already_casted_raise_bloodthralls_cooldown
 				#	years = 2
 				#}
-				debug_log = "AN AI CHARACTER CASTED RAISE BLOODTHRALLS"
-				debug_log_scopes = yes
 				increase_progress_to_living_magi_trait = yes
 				apply_spell_effect_with_custom_backfire_chance_list = { TIER = 4 SUCCESS_CHANCE = difficult_spell_difficulty_success_chance SPELL_EFFECT = raise_undead_effect FAILURE_CHANCE = difficult_spell_difficulty_failure_chance BACKFIRE_EFFECT = fire_magick_backfire_effect }
+			}
+			20 = {
+				trigger = {
+					has_trait = education_living_magic
+					NOT = { has_variable = ai_already_casted_annihilation_cooldown }
+					exists = scope:potential_enemy_capital
+					is_landed = yes
+					has_perk = livingmagic_perk9_tree2
+					spell_magic_cost_by_tier = { TIER = 5 }
+					is_at_war = yes
+					any_character_war = {
+						root = { is_defender = yes }
+						defender_war_score < -80
+					}
+					OR = {
+					has_trait = sadistic
+					has_trait = vengeful
+					has_trait = callous
+					has_trait = wrathful
+					}
+				}
+				modifier = {
+					factor = 5
+					has_trait = vengeful
+				}
+				modifier = {
+					factor = 5
+					has_trait = sadistic
+				}
+				modifier = {
+					factor = 5
+					has_trait = callous
+				}
+				modifier = {
+					factor = 5
+					has_trait = wrathful
+				}
+				scope:potential_enemy_capital = {
+					root = {
+						add_to_variable_list = {
+							name = spell_l_targets
+							target = prev
+						}
+					}
+				}
+				increase_ai_spell_tier_to_ideal_level = { SPELL_DIFFICULTY = difficult_spell TIER = 5 }
+				set_variable = {
+					name = ai_already_casted_annihilation_cooldown
+					years = 10
+				}
+				increase_progress_to_living_magi_trait = yes
+				apply_spell_effect_with_custom_backfire_chance_list_land = { TIER = 5 SUCCESS_CHANCE = difficult_spell_difficulty_success_chance SPELL_EFFECT = annihilation_effect FAILURE_CHANCE = difficult_spell_difficulty_failure_chance BACKFIRE_EFFECT = fire_magick_backfire_effect }
+			}
+			15 = {
+				trigger = {
+					has_trait = education_living_magic
+					NOT = { has_variable = ai_already_casted_verdant_growth_cooldown }
+					is_landed = yes
+					any_held_title = { tier = tier_county }
+					spell_magic_cost_by_tier = { TIER = 1 }
+				}
+				capital_county = {
+					root = {
+						add_to_variable_list = {
+							name = spell_l_targets
+							target = prev
+						}
+					}
+				}
+				increase_ai_spell_tier_to_ideal_level_conservative = { SPELL_DIFFICULTY = nonhostile_standard_spell TIER = 1 }
+				set_variable = {
+					name = ai_already_casted_verdant_growth_cooldown
+					years = 2
+				}
+				increase_progress_to_living_magi_trait = yes
+				apply_spell_effect_with_custom_backfire_chance_list_land = { TIER = 1 SUCCESS_CHANCE = standard_spell_difficulty_success_chance_nonhostile SPELL_EFFECT = plant_growth_effect FAILURE_CHANCE = standard_spell_difficulty_failure_chance_nonhostile BACKFIRE_EFFECT = plant_growth_backfire_effect }
+			}
+			10 = {
+				trigger = {
+					has_trait = education_dead_magic
+					NOT = { has_variable = ai_already_casted_crush_amor_cooldown }
+					exists = scope:potential_enemy
+					spell_magic_cost_by_tier = { TIER = 2dead }
+					is_new_moon_trigger = no
+				}
+				modifier = {
+					factor = 5
+					has_trait = vengeful
+				}
+				modifier = {
+					factor = 5
+					has_trait = sadistic
+				}
+				modifier = {
+					factor = 5
+					has_trait = callous
+				}
+				modifier = {
+					factor = 5
+					has_trait = deceitful
+				}
+				scope:potential_enemy = {
+					root = {
+						add_to_variable_list = {
+							name = spell_targets
+							target = prev
+						}
+					}
+				}
+				increase_ai_spell_tier_to_ideal_level = { SPELL_DIFFICULTY = moon_standard_spell TIER = 2dead }
+				decrease_ai_dead_magic_spell_tier_by_moon = yes
+				set_variable = {
+					name = ai_already_casted_crush_amor_cooldown
+					years = 2
+				}
+				increase_progress_to_dead_magi_trait = yes
+				apply_spell_effect_with_backfire_chance_list = { TIER = 2dead SUCCESS_CHANCE = moon_standard_spell_difficulty_success_chance SPELL_EFFECT = crush_armor_effect FAILURE_CHANCE = moon_standard_spell_difficulty_failure_chance }
+			}
+			10 = {
+				trigger = {
+					has_trait = education_dead_magic
+					NOT = { has_variable = ai_already_casted_petrify_cooldown }
+					exists = scope:potential_enemy
+					spell_magic_cost_by_tier = { TIER = 2dead }
+					is_new_moon_trigger = no
+				}
+				modifier = {
+					factor = 5
+					has_trait = vengeful
+				}
+				modifier = {
+					factor = 5
+					has_trait = sadistic
+				}
+				modifier = {
+					factor = 5
+					has_trait = callous
+				}
+				modifier = {
+					factor = 5
+					has_trait = deceitful
+				}
+				scope:potential_enemy = {
+					root = {
+						add_to_variable_list = {
+							name = spell_targets
+							target = prev
+						}
+					}
+				}
+				increase_ai_spell_tier_to_ideal_level = { SPELL_DIFFICULTY = moon_standard_spell TIER = 2dead }
+				decrease_ai_dead_magic_spell_tier_by_moon = yes
+				set_variable = {
+					name = ai_already_casted_petrify_cooldown
+					years = 2
+				}
+				increase_progress_to_dead_magi_trait = yes
+				apply_spell_effect_with_backfire_chance_list = { TIER = 2dead SUCCESS_CHANCE = moon_standard_spell_difficulty_success_chance SPELL_EFFECT = petrify_effect FAILURE_CHANCE = moon_standard_spell_difficulty_failure_chance }
+			}
+			10 = {
+				trigger = {
+					has_trait = education_dead_magic
+					NOT = { has_variable = ai_already_casted_stoneskin_cooldown }
+					spell_magic_cost_by_tier = { TIER = 2dead }
+				}
+				modifier = {
+					factor = 5
+					health < 1
+				}
+				modifier = {
+					factor = 20
+					health < 3
+				}
+				modifier = {
+					factor = 0
+					health >= 4
+				}
+				increase_ai_spell_tier_to_ideal_level = { SPELL_DIFFICULTY = moon_standard_spell TIER = 2dead }
+				decrease_ai_dead_magic_spell_tier_by_moon = yes
+				set_variable = {
+					name = ai_already_casted_stoneskin_cooldown
+					years = 2
+				}
+				increase_progress_to_dead_magi_trait = yes
+				apply_spell_effect_with_custom_backfire_chance_list = { TIER = 2dead SUCCESS_CHANCE = moon_standard_spell_difficulty_success_chance SPELL_EFFECT = stoneskin_effect FAILURE_CHANCE = moon_standard_spell_difficulty_failure_chance BACKFIRE_EFFECT = petrify_effect }
+			}
+			10 = {
+				trigger = {
+					has_trait = education_dead_magic
+					NOT = { has_variable = ai_already_casted_stoneskin_cooldown }
+					spell_magic_cost_by_tier = { TIER = 2dead }
+					any_child = {
+						health < 3
+						NOR = {
+							has_relation_rival = root
+							has_relation_nemesis = root
+						}
+					}
+				}
+				modifier = {
+					factor = 5
+					any_child = {
+						health < 1
+						NOR = {
+							has_relation_rival = root
+							has_relation_nemesis = root
+						}
+					}
+				}
+				modifier = {
+					factor = 20
+					any_child = {
+						health < 3
+						NOR = {
+							has_relation_rival = root
+							has_relation_nemesis = root
+						}
+					}
+				}
+				modifier = {
+					factor = 0
+					NOT = {
+						any_child = {
+							health <= 4
+							NOR = {
+								has_relation_rival = root
+								has_relation_nemesis = root
+							}
+						}
+					}
+				}
+				random_child = {
+					limit = {
+						health < 3
+						NOR = {
+							has_relation_rival = root
+							has_relation_nemesis = root
+						}
+					}
+					root = {
+						add_to_variable_list = {
+							name = spell_targets
+							target = prev
+						}
+					}
+				}
+				increase_ai_spell_tier_to_ideal_level = { SPELL_DIFFICULTY = nonhostile_moon_standard_spell TIER = 2dead }
+				decrease_ai_dead_magic_spell_tier_by_moon = yes
+				set_variable = {
+					name = ai_already_casted_stoneskin_cooldown
+					years = 2
+				}
+				increase_progress_to_dead_magi_trait = yes
+				apply_spell_effect_with_custom_backfire_chance_list = { TIER = 2dead SUCCESS_CHANCE = moon_standard_spell_difficulty_success_chance_nonhostile SPELL_EFFECT = stoneskin_effect FAILURE_CHANCE = moon_standard_spell_difficulty_failure_chance_nonhostile BACKFIRE_EFFECT = petrify_effect }
+			}
+			10 = {
+				trigger = {
+					has_trait = education_dead_magic
+					NOT = { has_variable = ai_already_casted_raise_earth_cooldown }
+					is_commanding_army = yes
+					spell_magic_cost_by_tier = { TIER = 1dead }
+				}
+				modifier = {
+					factor = 5
+					has_trait = wrathful
+				}
+				modifier = {
+					factor = 5
+					has_trait = ambitious
+				}
+				modifier = {
+					factor = 5
+					is_landed = yes
+					is_at_war = yes
+				}
+				increase_ai_spell_tier_to_ideal_level = { SPELL_DIFFICULTY = moon_standard_spell TIER = 1dead }
+				decrease_ai_dead_magic_spell_tier_by_moon = yes
+				set_variable = {
+					name = ai_already_casted_raise_earth_cooldown
+					years = 1
+				}
+				increase_progress_to_dead_magi_trait = yes
+				apply_spell_effect_with_custom_backfire_chance_list = { TIER = 1dead SUCCESS_CHANCE = moon_standard_spell_difficulty_success_chance SPELL_EFFECT = raise_earth_effect FAILURE_CHANCE = moon_standard_spell_difficulty_failure_chance BACKFIRE_EFFECT = fire_magick_backfire_effect }
+			}
+			25 = {
+				trigger = {
+					has_trait = education_dead_magic
+					NOT = { has_variable = ai_already_casted_enchant_arms_cooldown }
+					is_landed = yes
+					is_at_war = yes
+					spell_magic_cost_by_tier = { TIER = 1dead }
+				}
+				modifier = {
+					factor = 5
+					has_trait = wrathful
+				}
+				modifier = {
+					factor = 5
+					has_trait = ambitious
+				}
+				modifier = {
+					factor = 0
+					number_of_knights < 1
+				}
+				modifier = {
+					factor = 0.3
+					number_of_knights < 5
+				}
+				modifier = {
+					factor = 2
+					number_of_knights > 8
+				}
+				modifier = {
+					factor = 2
+					number_of_knights > 12
+				}
+				increase_ai_spell_tier_to_ideal_level = { SPELL_DIFFICULTY = moon_standard_spell TIER = 1dead }
+				decrease_ai_dead_magic_spell_tier_by_moon = yes
+				set_variable = {
+					name = ai_already_casted_enchant_arms_cooldown
+					years = 1
+				}
+				increase_progress_to_dead_magi_trait = yes
+				apply_spell_effect_with_custom_backfire_chance_list = { TIER = 1dead SUCCESS_CHANCE = moon_standard_spell_difficulty_success_chance SPELL_EFFECT = enchant_arms_effect FAILURE_CHANCE = moon_standard_spell_difficulty_failure_chance BACKFIRE_EFFECT = crush_armor_effect }
+			}
+			5 = {
+				trigger = {
+					has_trait = education_dead_magic
+					is_landed = yes
+					spell_magic_cost_by_tier = { TIER = 4dead }
+				}
+				modifier = {
+					factor = 4
+					is_at_war = yes
+				}
+				modifier = {
+					factor = 5
+					has_trait = callous
+				}
+				modifier = {
+					factor = 5
+					has_trait = sadistic
+				}
+				modifier = {
+					factor = 5
+					max_military_strength <= 500
+				}
+				modifier = {
+					factor = 2
+					max_military_strength <= 1000
+				}
+				modifier = {
+					factor = 2
+					max_military_strength <= 2000
+				}
+				increase_ai_spell_tier_to_ideal_level = { SPELL_DIFFICULTY = moon_difficult_spell TIER = 4dead }
+				decrease_ai_dead_magic_spell_tier_by_moon = yes
+				increase_progress_to_dead_magi_trait = yes
+				apply_spell_effect_with_custom_backfire_chance_list = { TIER = 4 SUCCESS_CHANCE = moon_difficult_spell_difficulty_success_chance SPELL_EFFECT = raise_undead2_effect FAILURE_CHANCE = moon_difficult_spell_difficulty_failure_chance BACKFIRE_EFFECT = fire_magick_backfire_effect }
+			}
+			5 = {
+				trigger = {
+					has_trait = education_dead_magic
+					NOT = { has_variable = ai_already_casted_lead_to_gold_cooldown }
+					spell_magic_cost_by_tier = { TIER = 2dead }
+				}
+				modifier = {
+					factor = 0.5
+					monthly_character_income > 30
+				}
+				modifier = {
+					factor = 0.5
+					gold > massive_gold_value
+					NOT = { gold < 200 } 
+				}
+				modifier = {
+					factor = 2
+					gold < 200
+				}
+				modifier = {
+					factor = 2
+					gold < 50
+				}
+				modifier = {
+					factor = 10
+					gold < 0
+				}
+				modifier = {
+					factor = 5
+					has_trait = greedy
+				}
+				modifier = {
+					factor = 2
+					has_trait = ambitious
+				}
+				increase_ai_spell_tier_to_ideal_level = { SPELL_DIFFICULTY = moon_difficult_spell TIER = 2dead }
+				decrease_ai_dead_magic_spell_tier_by_moon = yes
+				set_variable = {
+					name = ai_already_casted_lead_to_gold_cooldown
+					years = 1
+				}
+				increase_progress_to_dead_magi_trait = yes
+				apply_spell_effect_with_custom_backfire_chance_list = { TIER = 2dead SUCCESS_CHANCE = moon_difficult_spell_difficulty_success_chance SPELL_EFFECT = lead_to_gold_effect FAILURE_CHANCE = moon_difficult_spell_difficulty_failure_chance BACKFIRE_EFFECT = poison_effect }
+			}
+			10 = {
+				trigger = {
+					has_trait = education_dead_magic
+					NOT = { has_variable = ai_already_casted_moon_read_cooldown }
+					spell_magic_cost_by_tier = { TIER = 1dead }
+				}
+				modifier = {
+					factor = 4
+					is_any_good_moon_trigger = yes
+				}
+				modifier = {
+					factor = 0.25
+					is_any_bad_moon_trigger = yes
+				}
+				increase_ai_spell_tier_to_ideal_level_conservative = { SPELL_DIFFICULTY = moon_standard_spell TIER = 1dead }
+				decrease_ai_dead_magic_spell_tier_by_moon = yes
+				set_variable = {
+					name = ai_already_casted_moon_read_cooldown
+					years = 5
+				}
+				increase_progress_to_dead_magi_trait = yes
+				apply_spell_effect_with_custom_backfire_chance_list = { TIER = 1dead SUCCESS_CHANCE = moon_standard_spell_difficulty_success_chance SPELL_EFFECT = moon_read_effect FAILURE_CHANCE = moon_standard_spell_difficulty_failure_chance BACKFIRE_EFFECT = moon_read_backfire_effect }
+			}
+			10 = {
+				trigger = {
+					has_trait = education_dead_magic
+					NOT = { has_variable = ai_already_casted_craft_greater_golem_cooldown }
+					spell_magic_cost_by_tier = { TIER = 3dead }
+					has_perk = deadmagic_perk8_tree1
+				}
+				modifier = {
+					factor = 10
+					is_any_good_moon_trigger = yes
+				}
+				modifier = {
+					factor = 0.5
+					is_any_bad_moon_trigger = yes
+				}
+				increase_ai_spell_tier_to_ideal_level_conservative = { SPELL_DIFFICULTY = moon_difficult_spell TIER = 3dead }
+				decrease_ai_dead_magic_spell_tier_by_moon = yes
+				set_variable = {
+					name = ai_already_casted_craft_greater_golem_cooldown
+					years = 50
+				}
+				increase_progress_to_dead_magi_trait = yes
+				apply_spell_effect_with_custom_backfire_chance_list = { TIER = 3dead SUCCESS_CHANCE = moon_difficult_spell_difficulty_success_chance_nonhostile SPELL_EFFECT = craft_greater_golem_effect FAILURE_CHANCE = moon_difficult_spell_difficulty_failure_chance_nonhostile BACKFIRE_EFFECT = earth_magic_backfire_effect }
+			}
+			80 = {
+				trigger = {
+					has_trait = education_dead_magic
+					spell_magic_cost_by_tier = { TIER = 1dead }
+					is_full_moon_trigger = yes
+					NOT = { has_variable = ai_already_casted_moon_guidance_cooldown }
+					has_perk = deadmagic_perk5_tree2
+					is_landed = yes
+				}
+				increase_ai_spell_tier_to_ideal_level_conservative = { SPELL_DIFFICULTY = moon_standard_spell TIER = 1dead }
+				decrease_ai_dead_magic_spell_tier_by_moon = yes
+				set_variable = {
+					name = ai_already_casted_moon_guidance_cooldown
+					years = 3
+				}
+				increase_progress_to_dead_magi_trait = yes
+				apply_spell_effect_with_custom_backfire_chance_list = { TIER = 1dead SUCCESS_CHANCE = moon_difficult_spell_difficulty_success_chance SPELL_EFFECT = moon_guidance_effect FAILURE_CHANCE = moon_difficult_spell_difficulty_failure_chance BACKFIRE_EFFECT = moon_guidance_backfire_effect }
+			}
+			15 = {
+				trigger = {
+					has_trait = education_dead_magic
+					NOT = { has_variable = ai_already_casted_find_minerals_cooldown }
+					is_landed = yes
+					has_perk = deadmagic_perk8_tree3
+					any_held_title = { tier = tier_county }
+					spell_magic_cost_by_tier = { TIER = 3dead }
+				}
+				capital_county = {
+					root = {
+						add_to_variable_list = {
+							name = spell_l_targets
+							target = prev
+						}
+					}
+				}
+				increase_ai_spell_tier_to_ideal_level_conservative = { SPELL_DIFFICULTY = nonhostile_moon_difficult_spell TIER = 3dead }
+				decrease_ai_dead_magic_spell_tier_by_moon = yes
+				set_variable = {
+					name = ai_already_casted_find_minerals_cooldown
+					years = 6
+				}
+				increase_progress_to_dead_magi_trait = yes
+				apply_spell_effect_with_custom_backfire_chance_list_land = { TIER = 3dead SUCCESS_CHANCE = moon_difficult_spell_difficulty_success_chance_nonhostile SPELL_EFFECT = find_minerals_effect FAILURE_CHANCE = standard_spell_difficulty_failure_chance_nonhostile BACKFIRE_EFFECT = plant_growth_backfire_effect }
+			}
+			20 = {
+				trigger = {
+					has_trait = education_dead_magic
+					NOT = { has_variable = ai_already_casted_meteor_cooldown }
+					exists = scope:potential_enemy_capital
+					is_landed = yes
+					has_perk = deadmagic_perk7_tree2
+					spell_magic_cost_by_tier = { TIER = 4dead }
+					is_at_war = yes
+					any_character_war = {
+						root = { is_defender = yes }
+						defender_war_score < -80
+					}
+					OR = {
+					has_trait = sadistic
+					has_trait = vengeful
+					has_trait = callous
+					has_trait = wrathful
+					}
+				}
+				modifier = {
+					factor = 5
+					has_trait = vengeful
+				}
+				modifier = {
+					factor = 5
+					has_trait = sadistic
+				}
+				modifier = {
+					factor = 5
+					has_trait = callous
+				}
+				modifier = {
+					factor = 5
+					has_trait = wrathful
+				}
+				scope:potential_enemy_capital = {
+					root = {
+						add_to_variable_list = {
+							name = spell_l_targets
+							target = prev
+						}
+					}
+				}
+				increase_ai_spell_tier_to_ideal_level = { SPELL_DIFFICULTY = moon_difficult_spell TIER = 4dead }
+				decrease_ai_dead_magic_spell_tier_by_moon = yes
+				set_variable = {
+					name = ai_already_casted_meteor_cooldown
+					years = 10
+				}
+				increase_progress_to_dead_magi_trait = yes
+				apply_spell_effect_with_backfire_chance_list_land = { TIER = 4dead SUCCESS_CHANCE = moon_difficult_spell_difficulty_success_chance SPELL_EFFECT = pull_meteor_effect FAILURE_CHANCE = moon_difficult_spell_difficulty_failure_chance }
+			}
+			20 = {
+				trigger = {
+					has_trait = education_dead_magic
+					NOT = { has_variable = ai_already_casted_earthquake_cooldown }
+					exists = scope:potential_enemy_capital
+					is_landed = yes
+					has_perk = deadmagic_perk9_tree3
+					spell_magic_cost_by_tier = { TIER = 5dead }
+					is_at_war = yes
+					any_character_war = {
+						root = { is_defender = yes }
+						defender_war_score < -80
+					}
+					OR = {
+						has_trait = sadistic
+						has_trait = vengeful
+						has_trait = callous
+						has_trait = wrathful
+					}
+				}
+				modifier = {
+					factor = 5
+					has_trait = vengeful
+				}
+				modifier = {
+					factor = 5
+					has_trait = sadistic
+				}
+				modifier = {
+					factor = 5
+					has_trait = callous
+				}
+				modifier = {
+					factor = 5
+					has_trait = wrathful
+				}
+				scope:potential_enemy_capital = {
+					root = {
+						add_to_variable_list = {
+							name = spell_l_targets
+							target = prev
+						}
+					}
+				}
+				increase_ai_spell_tier_to_ideal_level = { SPELL_DIFFICULTY = moon_difficult_spell TIER = 5dead }
+				decrease_ai_dead_magic_spell_tier_by_moon = yes
+				set_variable = {
+					name = ai_already_casted_earthquake_cooldown
+					years = 10
+				}
+				increase_progress_to_dead_magi_trait = yes
+				apply_spell_effect_with_backfire_chance_list_land = { TIER = 5dead SUCCESS_CHANCE = moon_difficult_spell_difficulty_success_chance SPELL_EFFECT = earthquake_effect FAILURE_CHANCE = moon_difficult_spell_difficulty_failure_chance }
 			}
 		}
 	}

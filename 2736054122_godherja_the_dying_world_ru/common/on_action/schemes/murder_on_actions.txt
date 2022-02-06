@@ -177,11 +177,17 @@ murder_save_roll = {
 		# A Varangian saves them
 		300 = murder_save.0010
 
+		# A Shieldmaiden saves them
+		600 = fp1_shieldmaiden.0021
+
 		# Saved from poisoned food by cat
 		50 = murder_save.0011
 
 		# Saved from poisoned food by dog
 		50 = murder_save.0012
+
+		# Saved from poisoned food by gluttonous trait
+		500 = murder_save.0013
 	}
 }
 
@@ -199,6 +205,8 @@ murder_save_response = {
 		murder_save.1010
 		murder_save.1011
 		murder_save.1012
+		fp1_shieldmaiden.0022
+		murder_save.1013
 	}
 }
 
@@ -243,9 +251,9 @@ murder_succeeded = {
 		murder_outcome.2401 #Strangling incapable
 	}
 	effect = {
-
+ 
 		play_music_cue = "mx_cue_murder"
-
+ 
 		root = {
 			every_scheme = {
 				limit = { scheme_type = murder }
@@ -261,7 +269,7 @@ murder_succeeded = {
 						}
 					}
 					root = {
-						add_achievement_flag = { FLAG = achievement_the_things_we_do_for_love_flag }
+						add_achievement_flag_effect = { FLAG = achievement_the_things_we_do_for_love_flag }
 					}
 				}
 				if = {
@@ -272,7 +280,7 @@ murder_succeeded = {
 						}
 					}
 					root = {
-						add_achievement_flag = { FLAG = achievement_an_unfortunate_accident_flag }
+						add_achievement_flag_effect = { FLAG = achievement_an_unfortunate_accident_flag }
 					}
 				}
 				if = {
@@ -282,9 +290,55 @@ murder_succeeded = {
 						}
 					}
 					root = {
-						add_achievement_flag = { FLAG = achievement_death_did_us_part_flag }
+						add_achievement_flag_effect = { FLAG = achievement_death_did_us_part_flag }
 					}
 				}
+			}
+		}
+		root = {
+			every_scheme = {
+				limit = { scheme_type = murder }
+					scheme_target = {
+						save_scope_as = murdered_magi
+					}
+				}
+			if = {
+				limit = {
+					faith = {
+						has_doctrine_parameter = magi_hunters_active
+					}
+					scope:murdered_magi = { 
+						OR = {
+								has_trait = magic_good_1
+								has_trait = magic_good_2
+								has_trait = magic_good_3
+								has_trait = magic_good_4
+								has_trait = magic_good_5
+								has_trait = magic_good_6
+								has_trait = magic_good_7
+								has_trait = magic_good_8
+								has_trait = magic_good_9
+								has_trait = magic_good_10
+								has_trait = magic_good_11
+								has_trait = magic_good_12
+								has_trait = magic_good_13
+								has_trait = magic_good_14
+								has_trait = magic_good_15
+								has_trait = magic_good_16
+								has_trait = magic_good_17
+								has_trait = magic_good_18
+								has_trait = magic_good_19
+								has_trait = magic_good_20
+							}
+						}
+					}
+				root = {
+					save_scope_as = magi_killer
+					trigger_event = {
+						days = 5
+						id = haradar_flavor.1000
+						}
+					}
 			}
 		}
 	}

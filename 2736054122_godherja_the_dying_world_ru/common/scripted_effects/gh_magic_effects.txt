@@ -17,12 +17,12 @@
 				OR = {
 					has_religion = religion:partic_religion 
 					faith = {
-						has_doctrine = tenet_the_sjalvoki_bloodright
+						has_doctrine = tenet_the_sjalvolki_bloodright
 					}
 				}
 			} 	
 			random_list = {
-				60 = { # Partics and Sjalvoki Aagiokratians have chances dramatically skewed towards Mixed magi
+				60 = { # Partics and sjalvolki Aagiokratians have chances dramatically skewed towards Mixed magi
 					random_list = {
 						40 = {
 							add_trait = education_mixed_magic_1
@@ -147,13 +147,15 @@ generate_proficient_mage = {	# Generates a skilled mage at ROOT scope's court
 			OR = {
 				has_religion = religion:partic_religion 
 				faith = {
-					has_doctrine = tenet_the_sjalvoki_bloodright
+					has_doctrine = tenet_the_sjalvolki_bloodright
 				}
 			}
 		}
-		60 = { generate_proficient_mixed_magic_mage = yes }
-		20 = { generate_proficient_dead_magic_mage = yes }
-		20 = { generate_proficient_living_magic_mage = yes }
+		random_list = {
+			60 = { generate_proficient_mixed_magic_mage = yes }
+			20 = { generate_proficient_dead_magic_mage = yes }
+			20 = { generate_proficient_living_magic_mage = yes }
+		}
 	}
 	else = {
 		random_list = {
@@ -324,13 +326,15 @@ generate_legendary_mage = {	# Generates a skilled mage at ROOT scope's court
 			OR = {
 				has_religion = religion:partic_religion 
 				faith = {
-					has_doctrine = tenet_the_sjalvoki_bloodright
+					has_doctrine = tenet_the_sjalvolki_bloodright
 				}
 			}
-		} 
-		60 = { generate_legendary_mixed_magic_mage = yes }
-		20 = { generate_legendary_dead_magic_mage = yes }
-		20 = { generate_legendary_living_magic_mage = yes }
+		}
+		random_list = {
+			60 = { generate_legendary_mixed_magic_mage = yes }
+			20 = { generate_legendary_dead_magic_mage = yes }
+			20 = { generate_legendary_living_magic_mage = yes }
+		}
 	}
 	random_list = {
 		75 = { generate_legendary_living_magic_mage = yes }
@@ -925,219 +929,75 @@ mending_spell_effect = {
 mending_spell_minor_effect = {
 	if = {
     	limit = {
-            has_trait = wounded
+            has_trait_rank = {
+				trait = wounded
+				rank = 1
+			}
         }
         change_trait_rank = {
 			trait = wounded
 			rank = -1
 		}
     }
-    if = {
-    	limit = {
-    		has_trait = ill
-    	}
-    	remove_trait = ill
-    }
-    if = {
-    	limit = {
-    		has_trait = pneumonic
-    	}
-    	remove_trait = pneumonic
-    }
+	else_if = {
+		limit = {
+			has_trait_rank = {
+				trait = wounded
+				rank > 1
+			}
+        }
+		custom_tooltip = spell_too_weak_to_heal_this_wound.tt
+	}
 }
 
 mending_spell_mid_effect = {
 	if = {
     	limit = {
-            has_trait = wounded
+            has_trait_rank = {
+				trait = wounded
+				rank <= 2
+			}
+        }
+		change_trait_rank = {
+			trait = wounded
+			rank = -1
+		}
+    }
+	else_if = {
+		limit = {
+			has_trait_rank = {
+				trait = wounded
+				rank > 2
+			}
+        }
+		custom_tooltip = spell_too_weak_to_heal_this_wound.tt
+	}	
+}
+
+mending_spell_major_effect = {
+	if = {
+    	limit = {
+            has_trait_rank = {
+					trait = wounded
+					rank = 3
+				}
+			}
+		change_trait_rank = {
+			trait = wounded
+			rank = -1
+		}
+    }
+	else_if = {
+		limit = {
+            has_trait_rank = {
+				trait = wounded
+				rank < 3
+			}
         }
 		change_trait_rank = {
 			trait = wounded
 			rank = -2
 		}
-    }
-    if = {
-    	limit = {
-    		has_trait = consumption
-    	}
-    	remove_trait = consumption
-    }
-    if = {
-    	limit = {
-    		has_trait = typhus
-    	}
-    	remove_trait = typhus
-    }
-
-    if = {
-    	limit = {
-    		has_trait = bubonic_plague
-    	}
-    	remove_trait = bubonic_plague
-    }
-    if = {
-    	limit = {
-    		has_trait = smallpox
-    	}
-    	remove_trait = smallpox
-    }
-    if = {
-    	limit = {
-    		has_trait = ill
-    	}
-    	remove_trait = ill
-    }
-    if = {
-    	limit = {
-    		has_trait = pneumonic
-    	}
-    	remove_trait = pneumonic
-    }
-    if = {
-    	limit = {
-    		has_trait = great_pox
-    	}
-    	remove_trait = great_pox
-    }
-    if = {
-    	limit = {
-    		has_trait = early_great_pox
-    	}
-    	remove_trait = early_great_pox
-    }
-    if = {
-    	limit = {
-    		has_trait = lovers_pox
-    	}
-    	remove_trait = lovers_pox
-    }
-}
-mending_spell_major_effect = {
-	if = {
-    	limit = {
-            has_trait = wounded
-        }
-		change_trait_rank = {
-			trait = wounded
-			rank = -3
-		}
-    }
-	if = {
-    	limit = {
-            has_trait = maimed
-        }
-        remove_trait = maimed
-    }
-	if = {
-    	limit = {
-            has_trait = one_eyed
-        }
-        remove_trait = one_eyed
-    }
-
-	if = {
-    	limit = {
-            has_trait = one_legged
-        }
-        remove_trait = one_legged
-    }
-	if = {
-    	limit = {
-            has_trait = disfigured
-        }
-        remove_trait = disfigured
-    }
-	if = {
-    	limit = {
-            has_trait = infirm
-        }
-        remove_trait = infirm
-    }
-	if = {
-    	limit = {
-            has_trait = gout_ridden
-        }
-        remove_trait = gout_ridden
-    }
-    if = {
-    	limit = {
-    		has_trait = consumption
-    	}
-    	remove_trait = consumption
-    }
-    if = {
-    	limit = {
-    		has_trait = typhus
-    	}
-    	remove_trait = typhus
-    }
-
-    if = {
-    	limit = {
-    		has_trait = bubonic_plague
-    	}
-    	remove_trait = bubonic_plague
-    }
-    if = {
-    	limit = {
-    		has_trait = smallpox
-    	}
-    	remove_trait = smallpox
-    }
-    if = {
-    	limit = {
-    		has_trait = ill
-    	}
-    	remove_trait = ill
-    }
-    if = {
-    	limit = {
-    		has_trait = pneumonic
-    	}
-    	remove_trait = pneumonic
-    }
-    if = {
-    	limit = {
-    		has_trait = great_pox
-    	}
-    	remove_trait = great_pox
-    }
-    if = {
-    	limit = {
-    		has_trait = early_great_pox
-    	}
-    	remove_trait = early_great_pox
-    }
-    if = {
-    	limit = {
-    		has_trait = lovers_pox
-    	}
-    	remove_trait = lovers_pox
-    }
-	if = {
-    	limit = {
-    		has_trait = eunuch
-    	}
-    	remove_trait = eunuch
-    }
-    if = { 
-    	limit = {
-    		has_trait = blind
-			NOT = { has_trait = education_mixed_magic }
-    	}
-    	remove_trait = blind
-    }
-	if = {
-		limit = {
-			has_trait = gh_dehanded
-		}
-		remove_trait = gh_dehanded
-	}
-	if = {
-    	limit = {
-    		has_trait = leper
-    	}
-    	remove_trait = leper
     }
 }
 
@@ -1151,209 +1011,7 @@ mending_spell_huge_effect = {
 			rank = -3
 		}
     }
-	if = {
-    	limit = {
-            has_trait = maimed
-        }
-        remove_trait = maimed
-    }
-
-	if = {
-    	limit = {
-            has_trait = one_eyed
-        }
-        remove_trait = one_eyed
-    }
-
-	if = {
-    	limit = {
-            has_trait = one_legged
-        }
-        remove_trait = one_legged
-    }
-
-	if = {
-    	limit = {
-            has_trait = disfigured
-        }
-        remove_trait = disfigured
-    }
-
-	if = {
-    	limit = {
-        	root = {
-            	has_trait = infirm
-            }
-        }
-        remove_trait = infirm
-    }
-
-	if = {
-    	limit = {
-            has_trait = gout_ridden
-        }
-        remove_trait = gout_ridden
-    }
-
-    if = {
-    	limit = {
-    		has_trait = consumption
-    	}
-    	remove_trait = consumption
-    }
-
-    if = {
-    	limit = {
-    		has_trait = cancer
-    	}
-    	remove_trait = cancer
-    }
-
-    if = {
-    	limit = {
-    		has_trait = typhus
-    	}
-    	remove_trait = typhus
-    }
-
-    if = {
-    	limit = {
-    		has_trait = bubonic_plague
-    	}
-    	remove_trait = bubonic_plague
-    }
-
-    if = {
-    	limit = {
-    		has_trait = smallpox
-    	}
-    	remove_trait = smallpox
-    }
-    if = {
-    	limit = {
-    		has_trait = eunuch
-    	}
-    	remove_trait = eunuch
-    }
-
-    if = { 
-    	limit = {
-    		has_trait = blind
-			NOT = { has_trait = education_mixed_magic }
-    	}
-    	remove_trait = blind
-    }
-	if = {
-		limit = {
-			has_trait = gh_dehanded
-		}
-		remove_trait = gh_dehanded
-	}
-
-    if = { 
-    	limit = {
-    		has_trait = bleeder
-    	}
-    	remove_trait = bleeder
-    }
-
-    if = { 
-    	limit = {
-    		has_trait = wheezing
-    	}
-    	remove_trait = wheezing
-    }
-
-    if = { 
-    	limit = {
-    		has_trait = weak
-    	}
-    	remove_trait = weak
-    }
-
-    if = { 
-    	limit = {
-    		has_trait = scaly
-    	}
-    	remove_trait = scaly
-    }
-
-    if = {
-    	limit = {
-    		has_trait = impotent
-    	}
-    	remove_trait = impotent
-    }
-
-    if = {
-    	limit = {
-    		has_trait = infertile
-    	}
-    	remove_trait = infertile
-    }
-
-    if = {
-    	limit = {
-    		has_trait = ill
-    	}
-    	remove_trait = ill
-    }
-
-    if = {
-    	limit = {
-    		has_trait = pneumonic
-    	}
-    	remove_trait = pneumonic
-    }
-
-    if = {
-    	limit = {
-    		has_trait = great_pox
-    	}
-    	remove_trait = great_pox
-    }
-
-    if = {
-    	limit = {
-    		has_trait = early_great_pox
-    	}
-    	remove_trait = early_great_pox
-    }
-
-    if = {
-    	limit = {
-    		has_trait = lovers_pox
-    	}
-    	remove_trait = lovers_pox
-    }
-
-    if = {
-    	limit = {
-    		has_trait = leper
-    	}
-    	remove_trait = leper
-    }
-
-    if = {
-    	limit = {
-    		has_trait = clubfooted
-    	}
-    	remove_trait = clubfooted
-    }
-
-    if = {
-    	limit = {
-    		has_trait = hunchbacked
-    	}
-    	remove_trait = hunchbacked
-    }
-
-    if = {
-    	limit = {
-    		has_trait = lisping
-    	}
-    	remove_trait = lisping
-    }
+	
 }
 
 raise_undead_spell_effect = {
@@ -1609,6 +1267,33 @@ raise_undead2_spell_effect = {
     }
 }
 
+create_golems_spell_effect = {
+    change_variable = {
+        name = magic_counter
+        subtract = tier_3_spell
+    }
+    change_variable = { 
+        name = magic_lvl 
+        add = 1
+    }
+
+    if = {
+        limit = { exists = capital_province }
+        capital_province = { save_scope_as = location }
+    }
+
+    spawn_army = {
+        name = "Spirit Army"
+        location = scope:location
+        levies = 0
+        men_at_arms = {
+            type = spirit_regular
+            stacks = 1
+        }
+        inheritable = no
+        uses_supply = no
+    }
+}
 
 add_magic_generation_tt_backend = {
     save_temporary_scope_as = {
@@ -2124,48 +1809,51 @@ increase_ritual_scars_effect = {
 		}
 	}
 	if = {
-		limit = { 
-			var:ritual_scars_progress >= ritual_scars_progress_threshold_first
-			NOT = {
-				has_trait_rank = {
-					trait = ritual_scars
-					rank >= 1
+		limit = { exists = var:ritual_scars_progress }
+		if = {
+			limit = { 
+				var:ritual_scars_progress >= ritual_scars_progress_threshold_first
+				NOT = {
+					has_trait_rank = {
+						trait = ritual_scars
+						rank >= 1
+					}
 				}
 			}
-		}
-		change_trait_rank = {
-			trait = ritual_scars
-			rank = 1
-		}
-	}
-	if = {
-		limit = { 
-			var:ritual_scars_progress >= ritual_scars_progress_threshold_second
-			NOT = {
-				has_trait_rank = {
-					trait = ritual_scars
-					rank >= 2
-				}
+			change_trait_rank = {
+				trait = ritual_scars
+				rank = 1
 			}
 		}
-		change_trait_rank = {
-			trait = ritual_scars
-			rank = 1
-		}
-	}
-	if = {
-		limit = { 
-			var:ritual_scars_progress >= ritual_scars_progress_threshold_third
-			NOT = {
-				has_trait_rank = {
-					trait = ritual_scars
-					rank >= 3
+		if = {
+			limit = { 
+				var:ritual_scars_progress >= ritual_scars_progress_threshold_second
+				NOT = {
+					has_trait_rank = {
+						trait = ritual_scars
+						rank >= 2
+					}
 				}
 			}
+			change_trait_rank = {
+				trait = ritual_scars
+				rank = 1
+			}
 		}
-		change_trait_rank = {
-			trait = ritual_scars
-			rank = 1
+		if = {
+			limit = { 
+				var:ritual_scars_progress >= ritual_scars_progress_threshold_third
+				NOT = {
+					has_trait_rank = {
+						trait = ritual_scars
+						rank >= 3
+					}
+				}
+			}
+			change_trait_rank = {
+				trait = ritual_scars
+				rank = 1
+			}
 		}
 	}
 }
@@ -2346,6 +2034,173 @@ add_random_living_magi_trait = {
 				has_trait = gh_excessively_pale	# Characters that are already excessively pale have a much greater chance of their veins becoming prominent
 			}
 			trigger_event = magic.1108
+		}
+	}
+}
+
+# dead_magi_trait_progress_x_values can be found in gh_magic_values. Reason I use them is so that mutation gained can be increased by the pull moon trigger
+increase_progress_to_dead_magi_trait = {
+	hidden_effect = {
+		if = {
+			limit = { NOT = { has_variable = dead_magi_trait_progress } }
+			set_variable = {
+				name = dead_magi_trait_progress
+				value = 0
+			}
+		}
+		else = {
+			if = {
+				limit = { var:magic_lvl = 0 }
+				random_list = {
+					50 = {
+						change_variable = {
+							name = dead_magi_trait_progress
+							add = dead_magi_trait_progress_1_value
+						}
+					}
+					50 = {  }
+				}
+			}
+			else_if = {
+				limit = { var:magic_lvl = 1 }
+				change_variable = {
+					name = dead_magi_trait_progress
+					add = dead_magi_trait_progress_1_value
+				}
+				random_list = {
+					50 = {
+						change_variable = {
+							name = dead_magi_trait_progress
+							add = dead_magi_trait_progress_1_value
+						}
+					}
+					50 = {  }
+				}
+			}
+			else_if = {
+				limit = { var:magic_lvl = 2 }
+				change_variable = {
+					name = dead_magi_trait_progress
+					add = dead_magi_trait_progress_2_value
+				}
+				random_list = {
+					50 = {
+						change_variable = {
+							name = dead_magi_trait_progress
+							add = dead_magi_trait_progress_1_value
+						}
+					}
+					50 = {  }
+				}
+			}
+			else_if = {
+				limit = { var:magic_lvl = 3 }
+				change_variable = {
+					name = dead_magi_trait_progress
+					add = dead_magi_trait_progress_3_value
+				}
+				random_list = {
+					50 = {
+						change_variable = {
+							name = dead_magi_trait_progress
+							add = dead_magi_trait_progress_1_value
+						}
+					}
+					50 = {  }
+				}
+			}
+		}
+		if = {
+			limit = {
+				trigger_if = {
+					limit = { has_variable = dead_magi_trait_progress }
+					var:dead_magi_trait_progress >= dead_magi_trait_progress_threshold
+				}
+				trigger_else = { always = no }
+			}
+			set_variable = {
+				name = dead_magi_trait_progress
+				value = 0
+			}
+			if = {
+				limit = { has_variable = already_received_dead_magic_trait }
+				change_variable = {
+					name = already_received_dead_magic_trait
+					add = 5
+				}
+			}
+			else = {
+				set_variable = {
+					name = already_received_dead_magic_trait
+					value = 5
+				}
+			}
+			add_random_dead_magi_trait = yes
+		}
+	}
+}
+
+add_random_dead_magi_trait = {
+	random_list = {
+		2 = {
+			trigger = {
+				NOT = {
+					has_trait = gh_racked_by_voices
+				}
+			}
+			trigger_event = magic.1103
+		}
+		10 = {
+			trigger = {
+				NOT = {
+					has_trait = gh_ritual_tattoos
+				}
+			}
+			trigger_event = magic.1104
+		}
+		10 = {
+			trigger = {
+				NOT = {
+					has_trait = gh_beset_by_visions
+				}
+			}
+			trigger_event = magic.1105
+		}
+		10 = {
+			trigger = {
+				NOT = {
+					has_trait = gh_glowingeyes_green
+				}
+			}
+			trigger_event = magic.1109
+		}
+		10 = {
+			trigger = {
+				NOT = {
+					has_trait = gh_excessively_pale
+				}
+			}
+			modifier = {
+				factor = 4
+				has_trait = gh_glowing_veins
+			}
+			trigger_event = magic.1107
+		}
+		5 = {
+			trigger = {
+				NOT = {
+					has_trait = gh_necronic_skin
+				}
+			}
+			trigger_event = magic.1110
+		}
+		10 = {
+			trigger = {
+				NOT = {
+					has_trait = gh_aervalrian_curse
+				}
+			}
+			trigger_event = magic.1111
 		}
 	}
 }
@@ -2658,4 +2513,15 @@ sacrifice_prisoner_ritual_effect = {
 	}
 
 	execute_opinion_effect = { VICTIM = scope:victim EXECUTIONER = scope:executioner }
+}
+
+glimpse_reality_spell_effect = {
+	change_variable = {
+        name = magic_lvl
+        add = 1
+    }
+	change_variable = {
+        name = magic_counter
+        subtract = tier_1_spell
+    }
 }

@@ -611,7 +611,7 @@ character_location_exterior = {
 			has_government = tribal_government
 			exists = capital_province
 			capital_province = {
-				geographical_region = world_africa
+				geographical_region = world_sarradon
 			}
 		}
 	}
@@ -623,7 +623,7 @@ character_location_exterior = {
 			has_government = tribal_government
 			exists = capital_province
 			capital_province = {
-				geographical_region = world_steppe
+				geographical_region = world_ga_aironoi
 			}
 		}
 	}
@@ -635,30 +635,30 @@ character_location_exterior = {
 			has_government = tribal_government
 			exists = capital_province
 			capital_province = {
-				geographical_region = world_middle_east_arabia
+				geographical_region = world_es_desert
 			}
 		}
 	}
+
+#	texture = {
+#		reference = "event_scenes/market_east.dds"
+#
+#		trigger = {
+#			has_government = tribal_government
+#			exists = capital_province
+#			capital_province = {
+#				geographical_region = world_ga_amaghean_mountains
+#			}
+#		}
+#	}
 
 	texture = {
 		reference = "event_scenes/market_east.dds"
 
 		trigger = {
-			has_government = tribal_government
 			exists = capital_province
 			capital_province = {
-				geographical_region = world_tibet
-			}
-		}
-	}
-
-	texture = {
-		reference = "event_scenes/market_east.dds"
-
-		trigger = {
-			exists = capital_province
-			capital_province = {
-				geographical_region = world_steppe
+				geographical_region = world_ga_aironoi
 			}
 		}
 	}
@@ -879,7 +879,7 @@ title_holding = {
 					terrain = oasis
 					terrain = steppe
 					terrain = drylands
-					geographical_region = world_ga_eastern_aversaria
+					geographical_region = world_ga_aironoi
 					geographical_region = world_sarradon
 				}
 			}
@@ -961,10 +961,14 @@ title_holding = {
 			title_illustration_save_province_temporary = yes
 			scope:province = {
 				has_holding_type = church_holding
-				faith.religion = religion:christianity_religion
+				OR = {
+					faith.religion = religion:marcher_religion
+					faith.religion = religion:agionism_religion
+					faith.religion = religion:aversarinas_aautokrata_religion
+				}
 			}
-		}
 		reference = "holding_types/temple_christian.dds"
+		}
 	}
 	texture = {
 		trigger = {
@@ -1019,7 +1023,7 @@ title_holding = {
 					terrain = oasis
 					terrain = steppe
 					terrain = drylands
-					geographical_region = world_ga_eastern_aversaria
+					geographical_region = world_ga_aironoi
 					geographical_region = world_sarradon
 				}
 			}

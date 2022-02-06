@@ -73,24 +73,62 @@ entity = {
 	}
 }
 
-entity = {
-    name = "male_eyes_glowing_red_entity"
-	pdxmesh = "male_eyes_mesh"
+pdxmesh = {
+	name = "male_eyes_glowing_red_mesh"
+	file = "male_eyes.mesh"
 	
 	meshsettings = {
 	    name = "male_eyesShape"
 		index = 0
 		texture_diffuse = "gh_red_male_eyes_diffuse.dds"
+		texture_normal = "male_eyes_normal_emissive.dds"
+		texture_specular = "male_eyes_properties.dds"
+		shader = "portrait_eye"
+		shader_file = "gfx/FX/jomini/portrait.shader"
 	}
 }
 
 entity = {
-    name = "male_eyes_glowing_green_entity"
-	pdxmesh = "male_eyes_mesh"
+    name = "male_eyes_glowing_red_entity"
+	pdxmesh = "male_eyes_glowing_red_mesh"
+}
+
+pdxmesh = {
+	name = "male_eyes_glowing_green_mesh"
+	file = "male_eyes.mesh"
 	
 	meshsettings = {
 	    name = "male_eyesShape"
 		index = 0
 		texture_diffuse = "gh_green_male_eyes_diffuse.dds"
+		texture_normal = "male_eyes_normal_emissive.dds"
+		texture_specular = "male_eyes_properties.dds"
+		shader = "portrait_eye"
+		shader_file = "gfx/FX/jomini/portrait.shader"
 	}
+}
+
+entity = {
+    name = "male_eyes_glowing_green_entity"
+	pdxmesh = "male_eyes_glowing_green_mesh"
+}
+
+pdxmesh = {
+	name = "male_eyes_glowing_white_mesh"
+	file = "male_eyes.mesh"
+	
+	meshsettings = {
+	    name = "male_eyesShape"
+		index = 0
+		texture_diffuse = "gh_white_male_eyes_diffuse.dds"
+		texture_normal = "male_eyes_normal_emissive.dds"
+		texture_specular = "male_eyes_properties.dds"
+		shader = "portrait_eye"
+		shader_file = "gfx/FX/jomini/portrait.shader"
+	}
+}
+
+entity = {
+    name = "male_eyes_glowing_white_entity"
+	pdxmesh = "male_eyes_glowing_white_mesh"
 }

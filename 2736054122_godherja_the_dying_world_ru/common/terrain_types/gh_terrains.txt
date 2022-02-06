@@ -133,3 +133,60 @@ deadland = {
 	
 	audio_parameter = 1.0
 }
+
+antimagic_terrain = { #This is not a real terrain type and serves only to show magi stat changes in antimagic terrain
+	color = hsv { 1 1 1 }
+	
+	audio_parameter = 1.0
+}
+
+mayik_caverns = {
+	color = rgb { 10 20 30 }
+	
+	province_modifier = {
+		supply_limit_mult = -0.8
+		development_growth_factor = -0.8
+	}
+	
+	movement_speed = 0.25
+	
+	audio_parameter = 1.0
+}
+
+mayik_corridors = {
+	color = rgb { 50 60 70 }
+	
+	province_modifier = {
+		supply_limit_mult = -0.8
+		development_growth_factor = -0.8
+	}
+	
+	movement_speed = 0.25
+	
+	audio_parameter = 1.0
+}
+
+mayik_tunnels = {
+	color = rgb { 70 60 50 }
+	
+	province_modifier = {
+		supply_limit_mult = -0.8
+		development_growth_factor = -0.8
+	}
+	
+	movement_speed = 0.25
+	
+	audio_parameter = 1.0
+}
+
+mayik_chamber = {
+	color = rgb { 20 50 20 }
+	province_modifier = {
+		supply_limit_mult = -0.8
+		development_growth_factor = -0.8
+	}
+	
+	movement_speed = 0.25
+	
+	audio_parameter = 1.0
+}

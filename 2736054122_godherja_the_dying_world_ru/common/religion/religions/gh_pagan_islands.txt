@@ -1,0 +1,390 @@
+﻿islands_religion= {
+	family = rf_pagan
+	
+	graphical_faith = "pagan_gfx"
+
+
+	doctrine_background_icon = core_tenet_banner_pagan.dds
+	doctrine = standard_hostility_doctrine
+	#main group 
+	doctrine = doctrine_gender_equal
+	doctrine = doctrine_pluralism_righteous
+	doctrine = doctrine_theocracy_lay_clergy
+	doctrine = doctrine_no_head
+	
+	#Belief
+	doctrine = doctrine_sacred_scriptures
+	doctrine = doctrine_kathenotheistic
+	doctrine = doctrine_immortal
+	doctrine = doctrine_chaos_into_world
+	doctrine = doctrine_spirits
+	doctrine = doctrine_divine_guidance_none
+	doctrine = doctrine_judgement_day
+	doctrine = doctrine_underworld
+
+	#Practices
+	doctrine = doctrine_holy_mortals_none
+	doctrine = doctrine_obligatory
+	doctrine = doctrine_apostolic_poverty
+	doctrine = doctrine_monk_clergy_enforced
+	doctrine = doctrine_mandatory_atone
+	doctrine = doctrine_mandatory_alms
+	
+	#slavery
+	doctrine = doctrine_slavery_banned
+	
+	#marriage
+	doctrine = doctrine_monogamy
+	doctrine = doctrine_consanguinity_cousins
+	doctrine = doctrine_divorce_approval
+	doctrine = doctrine_bastardry_legitimization
+	doctrine = doctrine_worldly_marriage
+	doctrine = doctrine_paramourial
+
+
+	#crimes
+	doctrine = doctrine_homosexuality_shunned
+	doctrine = doctrine_adultery_men_shunned
+	doctrine = doctrine_adultery_women_shunned
+	doctrine = doctrine_kinslaying_extended_family_crime
+	doctrine = doctrine_deviancy_crime
+	doctrine = doctrine_magic_accepted
+	
+	#Clerical Functions
+	doctrine = doctrine_clerical_function_recruitment
+	doctrine = doctrine_clerical_gender_either
+	doctrine = doctrine_clerical_marriage_allowed
+	doctrine = doctrine_clerical_succession_temporal_appointment
+	doctrine = doctrine_celebration_coronation
+
+	traits = {
+		virtues = { just callous forgiving }
+		sins = { arbitrary compassionate vengeful }
+	}
+
+	reserved_male_names = {
+	}
+
+	custom_faith_icons = {
+		gallicader_custom_green_icon gallicader_custom_pink_icon gallicader_custom_purple_icon gallicader_custom_red_icon gallicader_custom_yellow_icon gallicader_icon
+	}
+
+	holy_order_names = {
+		{ name = "Aldordemah's OathSworn" }
+		{ name = "Hammer's of the Divinity" }
+		{ name = "The Kan'yaya" }
+	}
+
+	holy_order_maa = {  }
+
+	localization = {
+		#HighGod
+		HighGodName = islands_religion_high_god_name
+		HighGodNamePossessive = islands_religion_high_god_name_possessive
+		HighGodNameSheHe = CHARACTER_SHEHE_HE
+		HighGodHerselfHimself = CHARACTER_HIMSELF
+		HighGodHerHis = CHARACTER_HERHIS_HIS
+		HighGodNameAlternate = islands_religion_high_god_name_alternate
+		HighGodNameAlternatePossessive = islands_religion_high_god_name_alternate_possessive
+
+		#Creator
+		CreatorName = islands_religion_creator_god_name
+		CreatorNamePossessive = islands_religion_creator_god_name_possessive
+		CreatorSheHe = CHARACTER_SHEHE_HE
+		CreatorHerHis = CHARACTER_HERHIS_HIS
+		CreatorHerHim = CHARACTER_HERHIM_HIM
+
+		#HealthGod
+		HealthGodName = islands_religion_health_god_name
+		HealthGodNamePossessive = islands_religion_health_god_name_possessive
+		HealthGodSheHe = CHARACTER_SHEHE_HE
+		HealthGodHerHis = CHARACTER_HERHIS_HIS
+		HealthGodHerHim = CHARACTER_HERHIM_HIM
+		
+		#FertilityGod
+		FertilityGodName = islands_religion_fertility_god_name
+		FertilityGodNamePossessive = islands_religion_fertility_god_name_possessive
+		FertilityGodSheHe = CHARACTER_SHEHE_HE
+		FertilityGodHerHis = CHARACTER_HERHIS_HIS
+		FertilityGodHerHim = CHARACTER_HERHIM_HIM
+
+		#WealthGod
+		WealthGodName = islands_religion_wealth_god_name
+		WealthGodNamePossessive = islands_religion_wealth_god_name_possessive
+		WealthGodSheHe = CHARACTER_SHEHE_HE
+		WealthGodHerHis = CHARACTER_HERHIS_HIS
+		WealthGodHerHim = CHARACTER_HERHIM_HIM
+
+		#HouseholdGod
+		HouseholdGodName = islands_religion_household_god_name
+		HouseholdGodNamePossessive = islands_religion_household_god_name_possessive
+		HouseholdGodSheHe = CHARACTER_SHEHE_HE
+		HouseholdGodHerHis = CHARACTER_HERHIS_HIS
+		HouseholdGodHerHim = CHARACTER_HERHIM_HIM
+
+		#FateGod
+		FateGodName = islands_religion_fate_god_name
+		FateGodNamePossessive = islands_religion_fate_god_name_possessive
+		FateGodSheHe = CHARACTER_SHEHE_HE
+		FateGodHerHis = CHARACTER_HERHIS_HIS
+		FateGodHerHim = CHARACTER_HERHIM_HIM
+
+		#KnowledgeGod
+		KnowledgeGodName = islands_religion_knowledge_god_name
+		KnowledgeGodNamePossessive = islands_religion_knowledge_god_name_possessive
+		KnowledgeGodSheHe = CHARACTER_SHEHE_HE
+		KnowledgeGodHerHis = CHARACTER_HERHIS_HIS
+		KnowledgeGodHerHim = CHARACTER_HERHIM_HIM
+
+		#WarGod
+		WarGodName = islands_religion_war_god_name
+		WarGodNamePossessive = islands_religion_war_god_name_possessive
+		WarGodSheHe = CHARACTER_SHEHE_HE
+		WarGodHerHis = CHARACTER_HERHIS_HIS
+		WarGodHerHim = CHARACTER_HERHIM_HIM
+
+		#TricksterGod
+		TricksterGodName = islands_religion_trickster_god_name
+		TricksterGodNamePossessive = islands_religion_trickster_god_name_possessive
+		TricksterGodSheHe = CHARACTER_SHEHE_HE
+		TricksterGodHerHis = CHARACTER_HERHIS_HIS
+		TricksterGodHerHim = CHARACTER_HERHIM_HIM
+
+		#NightGod
+		NightGodName = islands_religion_night_god_name
+		NightGodNamePossessive = islands_religion_night_god_name_possessive
+		NightGodSheHe = CHARACTER_SHEHE_HE
+		NightGodHerHis = CHARACTER_HERHIS_HIS
+		NightGodHerHim = CHARACTER_HERHIM_HIM
+
+		#WaterGod
+		WaterGodName = islands_religion_water_god_name
+		WaterGodNamePossessive = islands_religion_water_god_name_possessive
+		WaterGodSheHe = CHARACTER_SHEHE_HE
+		WaterGodHerHis = CHARACTER_HERHIS_HIS
+		WaterGodHerHim = CHARACTER_HERHIM_HIM
+
+
+
+		PantheonTerm = islands_religion_high_god_name
+		PantheonTermHasHave = pantheon_term_has
+		GoodGodNames = {
+			islands_religion_high_god_name
+			HighGodNameAlternate
+			islands_religion_health_god_name
+			islands_religion_fertility_god_name
+			islands_religion_household_god_name
+			islands_religion_knowledge_god_name
+			islands_religion_night_god_name
+		}
+		DevilName = islands_religion_devil_name
+		DevilNamePossessive = islands_religion_devil_name_possessive
+		DevilSheHe = CHARACTER_SHEHE_HE
+		DevilHerHis = CHARACTER_HERHIS_HIS
+		DevilHerselfHimself = CHARACTER_HIMSELF
+		EvilGodNames = {
+			islands_religion_devil_name
+			islands_religion_night_god_name
+			islands_religion_wealth_god_name
+			islands_religion_trickster_god_name
+			islands_religion_witchgodname
+		}
+		HouseOfWorship = islands_religion_house_of_worship
+		HouseOfWorshipPlural = islands_religion_house_of_worship_plural
+		ReligiousSymbol = islands_religion_religious_symbol
+		ReligiousText = islands_religion_religious_text
+		ReligiousHeadName = islands_religion_religious_head_title
+		ReligiousHeadTitleName = islands_religion_religious_head_title_name
+		DevoteeMale = islands_religion_devotee_male
+		DevoteeMalePlural = islands_religion_devotee_male_plural
+		DevoteeFemale = islands_religion_devotee_female
+		DevoteeFemalePlural = islands_religion_devotee_female_plural
+		DevoteeNeuter = islands_religion_devotee_neuter
+		DevoteeNeuterPlural = islands_religion_devotee_neuter_plural
+		PriestMale = islands_religion_priest_male
+		PriestMalePlural = islands_religion_priest_male_plural
+		PriestFemale = islands_religion_priest_female
+		PriestFemalePlural = islands_religion_priest_female_plural
+		PriestNeuter = islands_religion_priest_male
+		PriestNeuterPlural = islands_religion_priest_male_plural
+		AltPriestTermPlural = islands_religion_priest_alternate_plural
+		BishopMale = islands_religion_bishop
+		BishopMalePlural = islands_religion_bishop_plural
+		BishopFemale = islands_religion_bishop
+		BishopFemalePlural = islands_religion_bishop_plural
+		BishopNeuter = islands_religion_bishop
+		BishopNeuterPlural = islands_religion_bishop_plural
+		DivineRealm = islands_religion_positive_afterlife
+		PositiveAfterLife = islands_religion_positive_afterlife
+		NegativeAfterLife = islands_religion_negative_afterlife
+		DeathDeityName = islands_religion_death_deity_name
+		DeathDeityNamePossessive = islands_religion_death_deity_name_possessive
+		DeathDeitySheHe = CHARACTER_SHEHE_HE
+		DeathDeityHerHis = CHARACTER_HERHIS_HIS
+		WitchGodName = christianity_witchgodname_iblis
+		WitchGodHerHis = CHARACTER_HERHIS_HIS
+		WitchGodSheHe = CHARACTER_SHEHE_HE
+		WitchGodHerHim = CHARACTER_HERHIM_HIM
+		WitchGodMistressMaster = master
+		WitchGodMotherFather = father
+
+
+		GHWName = ghw_great_holy_war
+		GHWNamePlural = ghw_great_holy_war
+	}
+	faiths = {
+	
+		the_dragon_cult = { #dragon worship
+			color = { 0.50 0.35 0.3 }
+			icon = the_dragon_cult_icon
+			religious_head = d_the_dragon_cult_rel
+			reformed_icon = waypath_icon
+			doctrine = unreformed_faith_doctrine
+
+			#Tenet:
+			doctrine = tenet_sanctity_of_nature
+			doctrine = tenet_reincarnation 
+			doctrine = tenet_ancestor_worship
+
+			holy_site = lekos
+			holy_site = oraispol
+			holy_site = mallilene
+			
+			doctrine = doctrine_clerical_succession_spiritual_fixed_appointment
+			doctrine = doctrine_spiritual_head
+			
+		}
+
+		biblosxar = { #Island Hero Cult
+			color = { 0.55 0.65 0.2 }
+			icon = mfi_ares
+			reformed_icon = mfi_ares
+			doctrine = unreformed_faith_doctrine
+
+			#Tenet:
+			doctrine = tenet_ancestor_worship
+			doctrine = tenet_pursuit_of_power
+			doctrine = tenet_ritual_celebrations
+
+
+			holy_site = home_bibloseia
+			holy_site = death_bibloseia
+			holy_site = death_polas
+			holy_site = sautono_home
+
+			doctrine = doctrine_no_head
+			doctrine = doctrine_gender_equal
+
+			
+			}
+		cult_of_the_bitter_wave = { #Angry Neptune/Quasi Cthulhu Not Cult
+			color = { 0.45 0.33 0.4 }
+			icon = mfi_ichthys_red
+			religious_head = d_cult_of_the_bitter_wave_rel
+			reformed_icon = mfi_ichthys_red
+			doctrine = unreformed_faith_doctrine
+
+			#Tenet:
+			doctrine = tenet_pursuit_of_power
+			doctrine = tenet_human_sacrifice						
+			doctrine = tenet_communal_identity
+
+
+			holy_site = lekos
+			holy_site = oraispol
+			holy_site = mallilene
+
+			doctrine = doctrine_spiritual_head
+			doctrine = doctrine_fundamentalist
+			doctrine = doctrine_theocracy_temporal						
+
+		}
+		seaborne_exalted = { #Worships Pillaging and Raiding, Seasalt Folk
+			color = { 0.43 0.23 0.12 }
+			icon = mfi_ichthys_blue
+			reformed_icon = mfi_ichthys_blue
+			doctrine = unreformed_faith_doctrine
+
+			#Tenet:
+			doctrine = tenet_pursuit_of_power
+			doctrine = tenet_unrelenting_faith			
+			doctrine = tenet_warmonger
+
+			holy_site = lekos
+			holy_site = oraispol
+			holy_site = mallilene
+
+			doctrine = doctrine_no_head
+			doctrine = doctrine_fundamentalist			
+		}
+		abathonic_cult = { #Worships Abathon
+			color = { 0.13 0.38 0.27 }
+			icon = mfi_murder_child
+			religious_head = d_abathonic_cult_rel
+			reformed_icon = mfi_murder_child
+			doctrine = unreformed_faith_doctrine
+
+			#Tenet:
+			doctrine = tenet_pursuit_of_power
+			doctrine = tenet_pastoral_isolation
+			doctrine = tenet_sanctity_of_nature									
+
+			doctrine = doctrine_temporal_head
+			doctrine = doctrine_fundamentalist
+			doctrine = doctrine_theocracy_temporal			
+		}
+		listeners_of_thoronis = { #Worships the Islands and Rivers of the Pathos River area
+			color = { 0.42 0.17 0.32 }
+			icon = mfi_custom_faith_10
+			reformed_icon = mfi_custom_faith_10
+			doctrine = unreformed_faith_doctrine
+
+			#Tenet:
+			doctrine = tenet_sanctity_of_nature	
+			doctrine = tenet_communal_identity
+			doctrine = tenet_ancestor_worship
+
+			doctrine = doctrine_temporal_head								
+		}
+		calystoanistism = {
+			color = { 0.85 0.9 0.85 }
+			graphical_faith = "catholic_gfx"
+			icon = agionist_calysto_icon
+			
+
+			holy_site = fakkugat
+			holy_site = semaion
+			holy_site = mallilene
+
+			#Tenets
+			doctrine = tenet_communal_identity
+			doctrine = tenet_ancestor_worship
+			doctrine = tenet_unrelenting_faith
+			
+			doctrine = doctrine_slavery_banned
+			doctrine = doctrine_no_head
+			doctrine = doctrine_fundamentalist
+		}
+		kidarian_dance = {
+			color = { 0.22 0.23 0.79 }
+			icon = mfi_earth_new_red
+			reformed_icon = mfi_ichthys_blue
+			doctrine = unreformed_faith_doctrine
+
+			#Tenet:
+			doctrine = tenet_communal_identity
+			doctrine = tenet_ritual_celebrations			
+			doctrine = tenet_ancestor_worship
+
+			holy_site = lekos
+			holy_site = oraispol
+			holy_site = fakkugat
+
+			doctrine = doctrine_no_head
+			doctrine = doctrine_fundamentalist
+
+
+		}	
+	}
+	
+}

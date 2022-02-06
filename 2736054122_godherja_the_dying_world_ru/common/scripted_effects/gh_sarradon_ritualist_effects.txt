@@ -1,0 +1,173 @@
+﻿# Pilgrimage distance calculation
+
+set_up_next_climb_event = {
+	if = { # Fallback, insert notification event here later.
+		limit = {
+			root = {
+				is_physically_able_adult = no
+			}
+		}
+		root = {
+			remove_variable = sophocos_tier
+		}
+	}
+	else_if = {
+		limit = {
+			has_variable = sophocos_tier
+			root.var:sophocos_tier = {
+				compare_value >= 5
+			}
+		}
+		custom_tooltip = sophocos_climb_continues.tt
+		duel = {
+			skill = prowess
+			value = medium_skill_rating
+			50 = {
+				desc = sophocos_climb_continues_success
+				compare_modifier = {
+					value = {
+						value = scope:duel_value
+						subtract = {
+							value = 25
+							multiply = root.var:sophocos_tier
+						}
+					}
+				}
+				trigger_event = {
+					on_action = set_up_random_climb_arrival
+				}
+			}
+			50 = {
+				desc = sophocos_climb_fails
+				abandon_climb = yes
+			}
+		}
+		remove_variable = sophocos_tier
+	}
+	else_if = {
+		limit = {
+			has_variable = sophocos_tier
+			root.var:sophocos_tier = {
+				compare_value < 5
+			}
+		}
+		custom_tooltip = sophocos_climb_continues.tt
+		root = {
+			duel = {
+				skill = prowess
+				value = medium_skill_rating
+				50 = {
+					desc = sophocos_climb_continues_success
+					compare_modifier = {
+						value = {
+							value = scope:duel_value
+							subtract = {
+								value = 25
+								multiply = root.var:sophocos_tier
+							}
+						}
+					}
+					change_variable = {
+						name = sophocos_tier
+						add = 1
+					}
+					trigger_event = {
+						on_action = set_up_random_climb_event
+						days = 1
+					}
+				}
+				50 = {
+					desc = sophocos_climb_fails
+					abandon_climb = yes
+				}
+			}
+		}
+	}
+	else = {
+		root = {
+			set_variable = {
+				name = sophocos_tier
+				value = 1
+			}
+			trigger_event = {
+				on_action = set_up_random_begin_climb_event
+				days = 1
+			}
+			custom_tooltip = sophocos_climb_continues.tt
+		}
+	}
+}
+
+abandon_climb = {
+	if = {
+		limit = {
+			root = {
+				has_variable = sophocos_tier
+			}
+		}
+		root = {
+			add_piety = {
+				value = minor_piety_value
+				multiply = root.var:sophocos_tier
+			}
+			remove_variable = sophocos_tier
+		}
+	}
+	custom_tooltip = sophocos_quest_abandon.tt
+	trigger_event = {
+		on_action = pilgrimage_return_events
+		days = 30
+	}
+}
+
+# Requires variable VAL. Negative number will result in physical health decrease, positive number in increase.
+# WARNING: Will cause death if character already has physique_bad_3!
+physical_health_change = {
+	if = {
+		limit = {
+			has_trait = physique_good
+		}
+		change_trait_rank = {
+			trait = physique_good
+			rank = $VAL$
+			max = 3
+		}
+	}
+	else_if = {
+		limit = {
+			has_trait_rank = {
+				trait = physique_bad
+				rank = 3
+			}
+		}
+		if = {
+			limit = {
+				$VAL$ > 0
+			}
+			change_trait_rank = {
+				trait = physique_bad
+				rank = -1
+			}
+		}
+		else = {
+			death = {
+				death_reason = death_physique_bad_3
+			}
+		}
+	}
+	else_if = {
+		limit = {
+			has_trait = physique_bad
+		}
+		change_trait_rank = {
+			trait = physique_bad
+			rank = {
+				value = $VAL$
+				multiply = -1
+			}
+		}
+	}
+	else = {
+		add_trait = physique_good_1
+	}
+}

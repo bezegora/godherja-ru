@@ -1,0 +1,118 @@
+﻿###Skeletal Crafting###
+
+destroy_artifact_bonecrafting = {
+		remove_artifact = {ARTIFACT = $ARTIFACT$}
+		remove_equipped_artifact = {ARTIFACT = $ARTIFACT$}
+		remove_artifact_selection = {ARTIFACT = $ARTIFACT$}
+}
+
+bonefinding_random_effect = {
+	random_list = {
+		1 = {
+			set_variable = { name = bonefinding_random value = 1 days = 30 }
+		}
+		1 = {
+			set_variable = { name = bonefinding_random value = 2 days = 30 }
+		}
+		1 = {
+			set_variable = { name = bonefinding_random value = 3 days = 30 }
+		}
+		1 = {
+			set_variable = { name = bonefinding_random value = 4 days = 30 }
+		}
+		1 = {
+			set_variable = { name = bonefinding_random value = 5 days = 30 }
+		}
+		1 = {
+			set_variable = { name = bonefinding_random value = 6 days = 30 }
+		}
+		1 = {
+			set_variable = { name = bonefinding_random value = 7 days = 30 }
+		}
+		1 = {
+			set_variable = { name = bonefinding_random value = 8 days = 30 }
+		}
+		1 = {
+			set_variable = { name = bonefinding_random value = 9 days = 30 }
+		}
+		1 = {
+			set_variable = { name = bonefinding_random value = 10 days = 30 }
+		}
+	}
+}
+
+bone_artifact_craft_effect = {
+	if = {
+		limit = {
+			scope:bone_level = 4
+			}
+		bone_artifact_craft_effect_backend = {ARTIFACT_TYPE = $ARTIFACT_TYPE$ ARTIFACT_RANK = 4}
+	}
+	else_if = {
+		limit = {
+			scope:bone_level = 3
+			}
+		bone_artifact_craft_effect_backend = {ARTIFACT_TYPE = $ARTIFACT_TYPE$ ARTIFACT_RANK = 3}
+	}
+	else_if = {
+		limit = {
+			scope:bone_level = 2
+			}
+		bone_artifact_craft_effect_backend = {ARTIFACT_TYPE = $ARTIFACT_TYPE$ ARTIFACT_RANK = 2}
+	}
+	else_if = {
+		limit = {
+			scope:bone_level = 1
+			}
+		bone_artifact_craft_effect_backend = {ARTIFACT_TYPE = $ARTIFACT_TYPE$ ARTIFACT_RANK = 1}
+	}
+}
+
+bone_artifact_craft_effect_backend = {
+	add_artifact = {ARTIFACT = $ARTIFACT_TYPE$_$ARTIFACT_RANK$}
+}
+
+ai_bonecrafting_magic = {
+	change_variable = {
+    		name = magic_counter
+    		add = tier_$TIER$_bone_gen
+    }
+}
+
+ai_bonecrafting_artifact = {
+	random_list = {
+		1 = {
+			add_artifact = {ARTIFACT = artifact_bone_crown_$TIER$}
+		}
+		1 = {
+			add_artifact = {ARTIFACT = artifact_bone_mask_$TIER$}
+		}
+		1 = {
+			add_artifact = {ARTIFACT = artifact_bone_helmet_$TIER$}
+		}
+		1 = {
+			add_artifact = {ARTIFACT = artifact_bone_dagger_$TIER$}
+		}
+		1 = {
+			add_artifact = {ARTIFACT = artifact_bone_spear_$TIER$}
+		}
+		1 = {
+			add_artifact = {ARTIFACT = artifact_bone_scepter_$TIER$}
+		}
+		1 = {
+			add_artifact = {ARTIFACT = artifact_bone_staff_$TIER$}
+		}
+		1 = {
+			add_artifact = {ARTIFACT = artifact_bone_amulet_magic_$TIER$}
+		}
+		1 = {
+			add_artifact = {ARTIFACT = artifact_bone_amulet_health_$TIER$}
+		}
+		1 = {
+			add_artifact = {ARTIFACT = artifact_bone_amulet_watchfulness_$TIER$}
+		}
+		1 = {
+			add_artifact = {ARTIFACT = artifact_bone_amulet_greed_$TIER$}
+		}
+	}
+}

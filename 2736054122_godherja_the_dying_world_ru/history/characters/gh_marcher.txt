@@ -1,12 +1,18 @@
 ﻿marcher_1 = {
 	name = "Lean" #Lean den va Calmensnon
-                      dna = lean
+	dna = lean
 	dynasty = dyn_marcher_3
 	religion = "lifepath"
 	culture = "voyagen"
+	diplomacy = 5
+	martial = 5
+	intrigue = 3
+	stewardship = 6
+	learning = 6
+
 	1221.11.4 = {
 		birth = yes
-	        effect = {
+		effect = {
 			add_character_flag = has_scripted_appearance
 		}
 	}
@@ -15,11 +21,6 @@
 	trait = trusting
 	trait = fickle
 	trait = content
-	diplomacy = 5
-	martial = 5
-	intrigue = 3
-	stewardship = 6
-	learning = 6
 }
 
 marcher_2 = {
@@ -28,9 +29,10 @@ marcher_2 = {
 	dynasty = dyn_marcher_4
 	religion = "lifepath"
 	culture = "oejeynica"
+
 	1211.3.13 = {
 		birth = yes
-	        effect = {
+		effect = {
 			add_character_flag = has_scripted_appearance
 		}
 	}
@@ -55,22 +57,24 @@ marcher_3 = {
 	stewardship = 5
 	religion = "lifepath"
 	culture = "voyagen"
+	
 	trait = brave
 	trait = honest
 	trait = impatient
 	trait = intellect_bad_3
 	trait = education_martial_1
 	trait = way_of_crowns_follower
-	trait = gh_political_puppet
+	trait = gh_puppet
 	father = marcher_1000 # Gardfrei den va Seignon
 	mother = marcher_1001 # Mathilde den va Seignon
+
 	1230.3.18 = {
 		birth = yes
-                effect = {
+		effect = {
 			add_character_flag = has_scripted_appearance
-                        add_pressed_claim = e_chevalie
-		}
-		add_artifact = { ARTIFACT = artifact_38 }
+			add_pressed_claim = e_chevalie
+	}
+	add_artifact = { ARTIFACT = artifact_38}
 		add_character_modifier = piece_of_the_broken_crown_modifier
 	}
 }
@@ -86,6 +90,7 @@ marcher_4 = {
 	sexuality = bisexual
 	religion = "lifepath"
 	culture = "voyagen"
+	
 	trait = brave
 	trait = ambitious
 	trait = stubborn
@@ -97,54 +102,58 @@ marcher_4 = {
 	trait = education_martial_4
 	trait = way_of_nullification_follower
 	father = marcher_1000 # Gardfrei den va Seignon
+
 	1224.1.12 = {
 		birth = yes
-                effect = {
+		effect = {
 			add_character_flag = has_scripted_appearance
-                        add_pressed_claim = e_chevalie
-                        give_nickname = nick_the_black_bastard
+			add_pressed_claim = e_chevalie
+						give_nickname = nick_the_black_bastard
 		}
 	}
+
 	1244.9.12 = {
-		add_artifact = { ARTIFACT = artifact_brokencrown1 }
-		add_artifact = { ARTIFACT = artifact_seignonsword }
+		add_artifact = { ARTIFACT = artifact_brokencrown1}
+		add_artifact = { ARTIFACT = artifact_seignonsword}
 		add_character_modifier = artifact_seignonsword_modifier
 		add_character_modifier = piece_of_the_broken_crown_modifier
 		effect = {
-			# Troops that goes away
+		 # Troops that goes away
 			spawn_army = {
 				name = band_of_bastards
 				levies = 600
 				men_at_arms = {
 					type = armored_footmen
 					stacks = 2
-				}
-				men_at_arms = {
+			}
+			men_at_arms = {
 					type = marcher_anti_mage
 					stacks = 1
-				}
-				men_at_arms = {
+			}
+			men_at_arms = {
 					type = konijkmener_pikes
 					stacks = 1
-				}
-				men_at_arms = {
-					type = sjalvoki_berserkers
+			}
+			men_at_arms = {
+					type = sjalvolki_berserkers
 					stacks = 1
-				}
-				men_at_arms = {
+			}
+			men_at_arms = {
 					type = armored_horsemen
 					stacks = 1
-				}
-				men_at_arms = {
+			}
+			men_at_arms = {
 					type = camel_rider
 					stacks = 1
-				}
+			}
+			
 				location = 2452
 				origin = 2452
 				inheritable = no
-			}
 		}
 	}
+	}
+
 	1252.1.1 = {
 		trait = gh_veteran_of_elysia_marcher
 	}
@@ -160,19 +169,22 @@ marcher_5 = {
 	stewardship = 3
 	religion = "lifepath"
 	culture = "voyagen"
+	
 	trait = pensive
 	father = marcher_1000 # Gardfrei den va Seignon
 	mother = marcher_1001 # Mathilde den va Seignon
+
 	1248.1.12 = {
 		birth = yes
-                effect = {
+		effect = {
 			add_character_flag = has_scripted_appearance
-                        add_pressed_claim = e_chevalie
+			add_pressed_claim = e_chevalie
 		}
 	}
+
 	1248.2.12 = {
-	#	guardian = marcher_1001 #Mathilde den va Seignon
-		add_artifact = { ARTIFACT = artifact_39 }
+ #	guardian = marcher_1001 #Mathilde den va Seignon
+		add_artifact = { ARTIFACT = artifact_39}
 		add_character_modifier = piece_of_the_broken_crown_modifier
 	}
 }
@@ -187,15 +199,17 @@ marcher_6 = {
 	stewardship = 4
 	religion = "lifepath"
 	culture = "voyagen"
+	
 	trait = ambitious
 	trait = vengeful
 	trait = arbitrary
 	trait = adventurer
 	trait = education_martial_2
 	trait = way_of_crows_follower
+
 	1218.6.11 = {
 		birth = yes
-	        effect = {
+		effect = {
 			add_character_flag = has_scripted_appearance
 		}
 	}
@@ -219,16 +233,18 @@ marcher_7 = {
 	trait = way_of_knowledge_follower
 	father = marcher_1000 # Gardfrei den va Seignon
 	mother = marcher_1001 # Mathilde den va Seignon
+
 	1231.4.12 = {
 		birth = yes
-                effect = {
+		effect = {
 			add_character_flag = has_scripted_appearance
-                        add_pressed_claim = e_chevalie
+			add_pressed_claim = e_chevalie
 		}
-	}		
+	}
+
 	1248.1.12 = {
 		trait = celibate
-		add_artifact = { ARTIFACT = artifact_40 }
+		add_artifact = { ARTIFACT = artifact_40}
 		add_character_modifier = piece_of_the_broken_crown_modifier
 	}
 }
@@ -246,14 +262,15 @@ marcher_8 = { #Marcher Republic with claim / Drogue den va Deschampoise
 	trait = greedy
 	trait = arrogant
 	trait = education_stewardship_3
+
 	1217.1.1 = {
 		birth = yes
 		effect = {
-                        add_character_flag = has_scripted_appearance
+						add_character_flag = has_scripted_appearance
 			add_character_modifier = {
 				modifier = piece_of_the_broken_crown_modifier
-			}
 		}
+	}
 	}
 }
 
@@ -261,6 +278,7 @@ marcher_9 = { #Random Marcher so that duchies are in varrdevet
 	name = "Oder"
 	religion = "lifepath"
 	culture = "carsavisians"
+
 	1230.1.1 = {
 		birth = yes
 	}
@@ -270,6 +288,7 @@ marcher_10 = { #Random Marcher so that the mercenary republic is free
 	name = "Guiles"
 	religion = "lifepath"
 	culture = "carsavisians"
+
 	1230.1.1 = {
 		birth = yes
 	}
@@ -293,12 +312,14 @@ marcher_11 = {
 	trait = ambitious
 	trait = education_intrigue_4
 	trait = way_of_crows_follower
+
 	1225.8.11 = {
 		birth = yes
-	        effect = {
+		effect = {
 			add_character_flag = has_scripted_appearance
 		}
 	}
+
 	1229.3.14 = {
 		add_spouse = marcher_584
 	}
@@ -308,6 +329,7 @@ marcher_12 = { #Random Marcher so that the peasant republic is free
 	name = "Remy"
 	religion = "lifepath"
 	culture = "carsavisians"
+
 	1230.1.1 = {
 		birth = yes
 	}
@@ -317,6 +339,7 @@ marcher_13 = {
 	name = "Andre"
 	religion = "lifepath"
 	culture = "carsavisians"
+
 	1230.1.1 = {
 		birth = yes
 	}
@@ -326,6 +349,7 @@ marcher_14 = {
 	name = "Olliers"
 	religion = "lifepath"
 	culture = "carsavisians"
+
 	1230.1.1 = {
 		birth = yes
 	}
@@ -337,12 +361,14 @@ marcher_15 = { #Badass Marcher duke Ogier den va Barrade
 	culture = "carsavisians"
 	dna = ogier_den_va_barrade_15
 	dynasty = dyn_marcher_8
+
 	1221.6.11 = {
 		birth = yes
-	        effect = {
+		effect = {
 			add_character_flag = has_scripted_appearance
 		}
 	}
+
 	1240.5.14 = {
 		give_nickname = nick_the_ogre
 	}
@@ -350,7 +376,6 @@ marcher_15 = { #Badass Marcher duke Ogier den va Barrade
 	diplomacy = 7
 	intrigue = 5
 	stewardship = 7
-
 	trait = brave
 	trait = honest
 	trait = cynical
@@ -367,6 +392,7 @@ marcher_16 = {
 	name = "Piette"
 	religion = "lifepath"
 	culture = "carsavisians"
+
 	1230.1.1 = {
 		birth = yes
 	}
@@ -376,6 +402,7 @@ marcher_17 = {
 	name = "Haeloc"
 	religion = "lifepath"
 	culture = "gallicads"
+
 	1230.1.1 = {
 		birth = yes
 	}
@@ -385,6 +412,7 @@ marcher_18 = {
 	name = "Michael"
 	religion = "lifepath"
 	culture = "carsavisians"
+
 	1230.1.1 = {
 		birth = yes
 	}
@@ -394,6 +422,7 @@ marcher_19 = {
 	name = "Valdare"
 	religion = "lifepath"
 	culture = "carsavisians"
+
 	1230.1.1 = {
 		birth = yes
 	}
@@ -401,9 +430,10 @@ marcher_19 = {
 
 marcher_20 = {
 	name = "Hammart"
-        dna = hammart
+	dna = hammart
 	religion = "lifepath"
 	culture = "voyagen"
+	
 	trait = way_of_crows_follower
 	trait = magic_good_2
 	trait = education_living_magic_1
@@ -414,12 +444,14 @@ marcher_20 = {
 	trait = lisping
 	trait = clubfooted
 	dynasty = dyn_marcher_7
+
 	1228.1.1 = {
 		birth = yes
-	        effect = {
+		effect = {
 			add_character_flag = has_scripted_appearance
 		}
 	}
+
 	1237.3.14 = {
 		give_nickname = nick_twisttongue
 	}
@@ -429,6 +461,7 @@ marcher_21 = {
 	name = "Makarios"
 	religion = "aversarinas_aautokrata"
 	culture = "northernimperial"
+
 	1225.1.1 = {
 		birth = yes
 	}
@@ -437,40 +470,44 @@ marcher_21 = {
 marcher_500 = {
 	name = "Harloman" #Retired mercenary who's had his fill of adventuring and slaughtering for big bux, now just wants to sit back and relax and feast and fuck; the liches to the north don't bother him much
 	dna = harloman 
-        martial = 7
+	martial = 7
 	diplomacy = 6
 	intrigue = 9
 	stewardship = 10
 	religion = "lifepath"
 	culture = "trustians"
+	
 	trait = gregarious
 	trait = greedy
 	trait = gluttonous
 	trait = lustful
+
 	1204.1.1 = {
 		birth = yes
-                effect = {
+		effect = {
 			add_character_flag = has_scripted_appearance
 		}
 	}
 }
 
 marcher_501 = {
-	name = "Gaultier" #Son of Harloman, assigned to guard the border with his brother, young and naive and wants to live up to his father
-        dna = gaultier 
+	name = "Gaultier" #Son of Harloman, assigned to guard the border with his brother, young and naive and wants to live up to his	father
+	dna = gaultier 
 	martial = 13
 	diplomacy = 5
 	intrigue = 4
 	stewardship = 7
 	religion = "lifepath"
 	culture = "trustians"
+	
 	trait = trusting
 	trait = brave
 	trait = honest
 	father = marcher_500
+
 	1235.1.1 = {
 		birth = yes
-                effect = {
+		effect = {
 			add_character_flag = has_scripted_appearance
 		}
 	}
@@ -478,20 +515,22 @@ marcher_501 = {
 
 marcher_502 = {
 	name = "Aubert" #Son of Harloman, assigned to guard the border with his brother, hates everything about this and wishes he were out doing something with his life
-        dna = aubert
+	dna = aubert
 	martial = 16
 	diplomacy = 6
 	intrigue = 5
 	stewardship = 8
 	religion = "lifepath"
 	culture = "trustians"
+	
 	trait = stubborn
 	trait = impatient
 	trait = cynical
 	father = marcher_500
+
 	1230.1.1 = {
 		birth = yes
-	        effect = {
+		effect = {
 			add_character_flag = has_scripted_appearance
 		}
 	}
@@ -499,20 +538,22 @@ marcher_502 = {
 
 marcher_503 = {
 	name = "Evrard" #Ambitious adventurer who *really* wants to stake a claim on some Aversarian land, but can't because he's too poor; really miffed by this 
-        dna = ervrard
+	dna = ervrard
 	martial = 15
 	diplomacy = 6
 	intrigue = 5
 	stewardship = 4
 	religion = "lifepath"
 	culture = "trustians"
+	
 	trait = ambitious
 	trait = impatient
 	trait = arrogant
 	trait = adventurer
+
 	1220.1.1 = {
 		birth = yes
-                effect = {
+		effect = {
 			add_character_flag = has_scripted_appearance
 		}
 	}
@@ -520,22 +561,25 @@ marcher_503 = {
 
 marcher_504 = {
 	name = "Ferrane" #Former lord of De Porte Den La Bastione and chancellor under Gardfrei, decent guy but schemey children
-        dna = ferrane
+	dna = ferrane
 	martial = 8
 	diplomacy = 11
 	intrigue = 5
 	stewardship = 10
 	religion = "lifepath"
 	culture = "trustians"
+	
 	trait = temperate
 	trait = just
 	trait = content
+
 	1203.1.1 = {
 		birth = yes
-	        effect = {
+		effect = {
 			add_character_flag = has_scripted_appearance
 		}
 	}
+
 	1252.1.1 = {
 		death = yes
 	}
@@ -543,21 +587,23 @@ marcher_504 = {
 
 marcher_505 = {
 	name = "Sauvaige" #Part of the 'tetrarchy' of brothers that make up Benouet's council; spymaster and sneaky bugger but mostly loyal to Benouet, whispers in his ear
-        dna = sauvaige
+	dna = sauvaige
 	martial = 5
 	diplomacy = 8
 	intrigue = 13
 	stewardship = 9
 	religion = "lifepath"
 	culture = "trustians"
+	
 	trait = deceitful
 	trait = greedy
 	trait = content
 	trait = education_intrigue_3
 	father = marcher_504
+
 	1225.1.1 = {
 		birth = yes
-	        effect = {
+		effect = {
 			add_character_flag = has_scripted_appearance
 		}
 	}
@@ -566,20 +612,22 @@ marcher_505 = {
 marcher_506 = {
 	name = "Hannequin" #Part of the 'tetrarchy' of brothers that make up Benouet's council; chancellor, eldest of the pack, despises his brothers, wants to rule Bastione for himself but willing to play the long game
 	dna = hannequin
-        martial = 5
+	martial = 5
 	diplomacy = 14
 	intrigue = 9
 	stewardship = 7
 	religion = "lifepath"
 	culture = "trustians"
+	
 	trait = ambitious
 	trait = arrogant
 	trait = patient
 	trait = education_diplomacy_2
 	father = marcher_504
+
 	1222.1.1 = {
 		birth = yes
-	        effect = {
+		effect = {
 			add_character_flag = has_scripted_appearance
 		}
 	}
@@ -588,20 +636,22 @@ marcher_506 = {
 marcher_507 = {
 	name = "Jaqaume" #Part of the 'tetrarchy' of brothers that make up Benouet's council; marshal, connections to Réné, willing to support his claim to Chevalie in return for lordship of Bastione
 	dna = jaqaume
-        martial = 15
+	martial = 15
 	diplomacy = 9
 	intrigue = 5
 	stewardship = 7
 	religion = "lifepath"
 	culture = "trustians"
+	
 	trait = deceitful
 	trait = diligent
 	trait = ambitious
 	trait = education_martial_3
 	father = marcher_504
+
 	1223.1.1 = {
 		birth = yes
-	        effect = {
+		effect = {
 			add_character_flag = has_scripted_appearance
 		}
 	}
@@ -609,21 +659,23 @@ marcher_507 = {
 
 marcher_508 = {
 	name = "Senesien" #Part of the 'tetrarchy' of brothers that make up Benouet's council; steward, just wants to do his job, guys please chill out
-        dna = senesien
+	dna = senesien
 	martial = 9
 	diplomacy = 10
 	intrigue = 4
 	stewardship = 11
 	religion = "lifepath"
 	culture = "trustians"
+	
 	trait = honest
 	trait = diligent
 	trait = content
 	trait = education_stewardship_2
 	father = marcher_504
+
 	1226.1.1 = {
 		birth = yes
-	        effect = {
+		effect = {
 			add_character_flag = has_scripted_appearance
 		}
 	}
@@ -631,20 +683,22 @@ marcher_508 = {
 
 marcher_509 = {
 	name = "Jourdain" #Fervently loyal to Benouet, suspicious of the tetrarchy, unfortunately Benouet in his infinite wisdom doesn't trust him
-        dna = jourdain
+	dna = jourdain
 	martial = 14
 	diplomacy = 10
 	intrigue = 7
 	stewardship = 6
 	religion = "lifepath"
 	culture = "voyagen"
+	
 	trait = paranoid
 	trait = diligent
 	trait = stubborn
 	trait = education_martial_2
+
 	1218.1.1 = {
 		birth = yes
-	        effect = {
+		effect = {
 			add_character_flag = has_scripted_appearance
 		}
 	}
@@ -654,6 +708,7 @@ marcher_510 = {
 	name = "Huchon"
 	religion = "lifepath"
 	culture = "trustians"
+
 	1228.1.1 = {
 		birth = yes
 	}
@@ -663,6 +718,7 @@ marcher_511 = {
 	name = "Quellere"
 	religion = "lifepath"
 	culture = "trustians"
+
 	1230.1.1 = {
 		birth = yes
 	}
@@ -672,6 +728,7 @@ marcher_512 = {
 	name = "Rolin"
 	religion = "lifepath"
 	culture = "trustians"
+
 	1217.1.1 = {
 		birth = yes
 	}
@@ -681,6 +738,7 @@ marcher_513 = {
 	name = "Gamlot"
 	religion = "lifepath"
 	culture = "trustians"
+
 	1224.1.1 = {
 		birth = yes
 	}
@@ -690,6 +748,7 @@ marcher_514 = {
 	name = "Baudrain"
 	religion = "lifepath"
 	culture = "carsavisians"
+
 	1234.1.1 = {
 		birth = yes
 	}
@@ -699,6 +758,7 @@ marcher_515 = {
 	name = "Menet"
 	religion = "lifepath"
 	culture = "trustians"
+
 	1227.1.1 = {
 		birth = yes
 	}
@@ -708,15 +768,17 @@ marcher_516 = {
 	name = "Guilon"
 	religion = "lifepath"
 	culture = "carsavisians"
+
 	1227.1.1 = {
 		birth = yes
 	}
 }
 
-marcher_517 = {
+marcher_517 = { #Marcher adventurer in the Mayik
 	name = "Climois"
 	religion = "lifepath"
 	culture = "trustians"
+
 	1222.1.1 = {
 		birth = yes
 	}
@@ -726,6 +788,7 @@ marcher_518 = {
 	name = "Jaccoud"
 	religion = "lifepath"
 	culture = "carsavisians"
+
 	1225.1.1 = {
 		birth = yes
 	}
@@ -735,6 +798,7 @@ marcher_519 = {
 	name = "Adenulphus"
 	religion = "lifepath"
 	culture = "carsavisians"
+
 	1219.1.1 = {
 		birth = yes
 	}
@@ -744,6 +808,7 @@ marcher_520 = {
 	name = "Luquin"
 	religion = "lifepath"
 	culture = "voyagen"
+
 	1207.1.1 = {
 		birth = yes
 	}
@@ -754,6 +819,7 @@ marcher_521 = {
 	female = yes
 	religion = "lifepath"
 	culture = "voyagen"
+
 	1226.1.1 = {
 		birth = yes
 	}
@@ -763,6 +829,7 @@ marcher_522 = {
 	name = "Ambroys"
 	religion = "lifepath"
 	culture = "carsavisians"
+
 	1221.1.1 = {
 		birth = yes
 	}
@@ -772,6 +839,7 @@ marcher_523 = {
 	name = "Aldrien"
 	religion = "lifepath"
 	culture = "gallicads"
+
 	1214.1.1 = {
 		birth = yes
 	}
@@ -781,6 +849,7 @@ marcher_524 = {
 	name = "Charlot"
 	religion = "lifepath"
 	culture = "trustians"
+
 	1228.1.1 = {
 		birth = yes
 	}
@@ -790,6 +859,7 @@ marcher_525 = {
 	name = "Guillemin"
 	religion = "lifepath"
 	culture = "trustians"
+
 	1228.1.1 = {
 		birth = yes
 	}
@@ -799,6 +869,7 @@ marcher_526 = {
 	name = "Marsueur"
 	religion = "lifepath"
 	culture = "voyagen"
+
 	1230.1.1 = {
 		birth = yes
 	}
@@ -808,6 +879,7 @@ marcher_527 = {
 	name = "Lagarde"
 	religion = "lifepath"
 	culture = "rivarisians"
+
 	1218.1.1 = {
 		birth = yes
 	}
@@ -818,6 +890,7 @@ marcher_528 = {
 	female = yes
 	religion = "lifepath"
 	culture = "rivarisians"
+
 	1211.1.1 = {
 		birth = yes
 	}
@@ -827,6 +900,7 @@ marcher_529 = {
 	name = "Gazonus"
 	religion = "lifepath"
 	culture = "carsavisians"
+
 	1219.1.1 = {
 		birth = yes
 	}
@@ -835,9 +909,10 @@ marcher_529 = {
 marcher_530 = {
 	name = "Teryn" #Teryn Valadec, Gardfrei's cousin and childhood friend - then enemy in the civil war of the Black-Gold League
 	dynasty = dyn_marcher_16
-                      dna = blackclaw
+	dna = blackclaw
 	religion = "lifepath"
 	culture = "salisians"
+	
 	trait = education_stewardship_4
 	trait = calm
 	trait = patient
@@ -852,22 +927,29 @@ marcher_530 = {
 	diplomacy = 5
 	stewardship = 6
 	intrigue = 6
-
+	
 	1205.7.22 = {
 		birth = yes
-	        effect = {
+		effect = {
 			add_character_flag = has_scripted_appearance
 		}
 	}
+
 	1223.11.15 = {
 		give_nickname = nick_blackclaw
 	}
 }
 
 marcher_531 = {
-	name = "Courbis"
+	name = "Courbis"  #Teryns half brother, attempted to capitalise on the Sjalvolki invasion by conquering parts of the south east
+	dynasty = dyn_marcher_16
 	religion = "lifepath"
 	culture = "salisians"
+
+	trait = sickly
+	trait = ambitious
+	trait = education_martial_2
+	father = marcher_10500
 	1234.1.1 = {
 		birth = yes
 	}
@@ -877,6 +959,7 @@ marcher_532 = {
 	name = "Lodewijk"
 	religion = "lifepath"
 	culture = "urdermantern"
+
 	1219.1.1 = {
 		birth = yes
 	}
@@ -886,6 +969,7 @@ marcher_533 = {
 	name = "Leuthar"
 	religion = "lifepath"
 	culture = "carsavisians"
+
 	1221.1.1 = {
 		birth = yes
 	}
@@ -896,6 +980,7 @@ marcher_534 = {
 	dynasty = dyn_marcher_17
 	religion = "lifepath"
 	culture = "carsavisians"
+
 	1223.1.1 = {
 		birth = yes
 	}
@@ -905,6 +990,7 @@ marcher_535 = {
 	name = "Brugiere"
 	religion = "lifepath"
 	culture = "salisians"
+
 	1231.1.1 = {
 		birth = yes
 	}
@@ -914,6 +1000,7 @@ marcher_536 = {
 	name = "Escoffier"
 	religion = "lifepath"
 	culture = "voyagen"
+
 	1221.1.1 = {
 		birth = yes
 	}
@@ -923,6 +1010,7 @@ marcher_537 = {
 	name = "Seyres"
 	religion = "lifepath"
 	culture = "leegenders"
+
 	1227.1.1 = {
 		birth = yes
 	}
@@ -932,6 +1020,7 @@ marcher_538 = {
 	name = "Thevenet"
 	religion = "lifepath"
 	culture = "salisians"
+
 	1211.1.1 = {
 		birth = yes
 	}
@@ -941,6 +1030,7 @@ marcher_539 = {
 	name = "Bittencourt"
 	religion = "lifepath"
 	culture = "carsavisians"
+
 	1193.1.1 = {
 		birth = yes
 	}
@@ -950,15 +1040,17 @@ marcher_540 = {
 	name = "Conrrat"
 	religion = "lifepath"
 	culture = "leegenders"
+
 	1210.1.1 = {
 		birth = yes
 	}
 }
 
-marcher_541 = {
+marcher_541 = { #Marcher adventurer in Sarradon
 	name = "Jaccoud"
 	religion = "lifepath"
 	culture = "salisians"
+
 	1213.1.1 = {
 		birth = yes
 	}
@@ -968,15 +1060,17 @@ marcher_542 = {
 	name = "Jaquinot"
 	religion = "lifepath"
 	culture = "salisians"
+
 	1236.1.1 = {
 		birth = yes
 	}
 }
 
-marcher_543 = {
+marcher_543 = { #Marcher adventurer in Sarradon
 	name = "Allemand"
 	religion = "lifepath"
 	culture = "salisians"
+
 	1231.1.1 = {
 		birth = yes
 	}
@@ -986,22 +1080,27 @@ marcher_544 = {
 	name = "Delafose"
 	religion = "lifepath"
 	culture = "salisians"
+
 	1226.1.1 = {
 		birth = yes
 	}
 }
+
 marcher_545 = {
 	name = "Catenhorst"
 	religion = "lifepath"
 	culture = "konijkmener"
+
 	1238.1.1 = {
 		birth = yes
 	}
 }
+
 marcher_546 = {
 	name = "Corneel"
 	religion = "gestanwoder"
 	culture = "konijkmener"
+
 	1231.1.1 = {
 		birth = yes
 	}
@@ -1011,6 +1110,7 @@ marcher_547 = {
 	name = "Mathijn"
 	religion = "lifepath"
 	culture = "konijkmener"
+
 	1225.1.1 = {
 		birth = yes
 	}
@@ -1020,6 +1120,7 @@ marcher_548 = {
 	name = "Jurrien"
 	religion = "lifepath"
 	culture = "konijkmener"
+
 	1215.1.1 = {
 		birth = yes
 	}
@@ -1029,14 +1130,17 @@ marcher_549 = {
 	name = "Bomhoffe"
 	religion = "lifepath"
 	culture = "konijkmener"
+
 	1218.1.1 = {
 		birth = yes
 	}
 }
+
 marcher_550 = {
 	name = "Driessens"
 	religion = "lifepath"
 	culture = "konijkmener"
+
 	1205.1.1 = {
 		birth = yes
 	}
@@ -1046,6 +1150,7 @@ marcher_551 = {
 	name = "Velde"
 	religion = "lifepath"
 	culture = "konijkmener"
+
 	1228.1.1 = {
 		birth = yes
 	}
@@ -1055,6 +1160,7 @@ marcher_552 = {
 	name = "Littink"
 	religion = "lifepath"
 	culture = "konijkmener"
+
 	1232.1.1 = {
 		birth = yes
 	}
@@ -1064,6 +1170,7 @@ marcher_553 = {
 	name = "Lasonder"
 	religion = "lifepath"
 	culture = "urdermantern"
+
 	1217.1.1 = {
 		birth = yes
 	}
@@ -1073,6 +1180,7 @@ marcher_554 = {
 	name = "Weggeman"
 	religion = "lifepath"
 	culture = "konijkmener"
+
 	1224.1.1 = {
 		birth = yes
 	}
@@ -1082,6 +1190,7 @@ marcher_555 = {
 	name = "Wathelet"
 	religion = "lifepath"
 	culture = "trustians"
+
 	1236.1.1 = {
 		birth = yes
 	}
@@ -1091,6 +1200,7 @@ marcher_556 = {
 	name = "Baillairge"
 	religion = "lifepath"
 	culture = "trustians"
+
 	1231.1.1 = {
 		birth = yes
 	}
@@ -1100,6 +1210,7 @@ marcher_557 = {
 	name = "Vaugeois"
 	religion = "lifepath"
 	culture = "trustians"
+
 	1211.1.1 = {
 		birth = yes
 	}
@@ -1109,6 +1220,7 @@ marcher_558 = {
 	name = "Maelgwyn"
 	religion = "partic"
 	culture = "voluntic"
+
 	1238.1.1 = {
 		birth = yes
 	}
@@ -1118,6 +1230,7 @@ marcher_559 = {
 	name = "Kyledyr"
 	religion = "partic"
 	culture = "voluntic"
+
 	1223.1.1 = {
 		birth = yes
 	}
@@ -1127,6 +1240,7 @@ marcher_560 = {
 	name = "Heddwyn"
 	religion = "partic"
 	culture = "voluntic"
+
 	1209.1.1 = {
 		birth = yes
 	}
@@ -1136,16 +1250,15 @@ marcher_561 = {
 	name = "Cennydd"
 	religion = "partic"
 	culture = "voluntic"
+
 	1202.1.1 = {
 		birth = yes
 	}
-}
-
-
-marcher_562 = {
+}marcher_562 = {
 	name = "Iorwlch"
 	religion = "partic"
 	culture = "voluntic"
+
 	1212.1.1 = {
 		birth = yes
 	}
@@ -1156,6 +1269,7 @@ marcher_563 = {
 	female = yes
 	religion = "partic"
 	culture = "voluntic"
+
 	1223.1.1 = {
 		birth = yes
 	}
@@ -1166,6 +1280,7 @@ marcher_564 = {
 	female = yes
 	religion = "partic"
 	culture = "voluntic"
+
 	1214.1.1 = {
 		birth = yes
 	}
@@ -1175,6 +1290,7 @@ marcher_565 = {
 	name = "Twrgadarn"
 	religion = "partic"
 	culture = "voluntic"
+
 	1217.1.1 = {
 		birth = yes
 	}
@@ -1184,6 +1300,7 @@ marcher_566 = {
 	name = "Llacheugaech"
 	religion = "partic"
 	culture = "voluntic"
+
 	1217.1.1 = {
 		birth = yes
 	}
@@ -1193,6 +1310,7 @@ marcher_567 = {
 	name = "Laframboise"
 	religion = "lifepath"
 	culture = "carsavisians"
+
 	1189.1.1 = {
 		birth = yes
 	}
@@ -1202,6 +1320,7 @@ marcher_568 = {
 	name = "Vallotton"
 	religion = "lifepath"
 	culture = "voyagen"
+
 	1228.1.1 = {
 		birth = yes
 	}
@@ -1211,6 +1330,7 @@ marcher_569 = {
 	name = "Huguelin"
 	religion = "lifepath"
 	culture = "carsavisians"
+
 	1225.1.1 = {
 		birth = yes
 	}
@@ -1221,9 +1341,11 @@ marcher_570 = {
 	religion = "lifepath"
 	culture = "voyagen"
 	female = yes
+
 	1222.1.1 = {
 		birth = yes
 	}
+
 	1253.10.14 = {
 		employer = marcher_509
 	}
@@ -1233,6 +1355,7 @@ marcher_571 = {
 	name = "Trenchad"
 	religion = "partic"
 	culture = "voluntic"
+
 	1231.3.14 = {
 		birth = yes
 	}
@@ -1242,6 +1365,7 @@ marcher_572 = {
 	name = "Dubhglais"
 	religion = "partic"
 	culture = "voluntic"
+
 	1220.2.1 = {
 		birth = yes
 	}
@@ -1251,6 +1375,7 @@ marcher_573 = {
 	name = "CoI_lboth"
 	religion = "partic"
 	culture = "voluntic"
+
 	1241.12.12 = {
 		birth = yes
 	}
@@ -1260,6 +1385,7 @@ marcher_574 = {
 	name = "Amalgaid"
 	religion = "partic"
 	culture = "voluntic"
+
 	1202.3.14 = {
 		birth = yes
 	}
@@ -1269,6 +1395,7 @@ marcher_575 = {
 	name = "Piette"
 	religion = "lifepath"
 	culture = "voyagen"
+
 	1178.6.7 = {
 		birth = yes
 	}
@@ -1279,6 +1406,7 @@ marcher_576 = {
 	religion = "lifepath"
 	culture = "carsavisians"
 	female = yes
+
 	1218.11.12 = {
 		birth = yes
 	}
@@ -1288,6 +1416,7 @@ marcher_577 = {
 	name = "Braton"
 	religion = "lifepath"
 	culture = "voyagen"
+
 	1206.6.6 = {
 		birth = yes
 	}
@@ -1297,6 +1426,7 @@ konijkmener_1 = { #Random Konijkmener so that Helverik is independent
 	name = "Ailmar"
 	religion = "lifepath"
 	culture = "konijkmener"
+
 	1227.2.8 = {
 		birth = yes
 	}
@@ -1304,7 +1434,7 @@ konijkmener_1 = { #Random Konijkmener so that Helverik is independent
 
 konijkmener_2 = { #Kanzeleren Ard var Haakethaar
 	name = "Ard"
-        dna = ard
+	dna = ard
 	dynasty = dyn_konijkmener_1
 	martial = 5
 	diplomacy = 12
@@ -1312,6 +1442,7 @@ konijkmener_2 = { #Kanzeleren Ard var Haakethaar
 	stewardship = 11
 	religion = "lifepath"
 	culture = "konijkmener"
+	
 	trait = deceitful
 	trait = schemer
 	trait = generous
@@ -1319,12 +1450,13 @@ konijkmener_2 = { #Kanzeleren Ard var Haakethaar
 	trait = murderer
 	trait = intellect_good_1
 	trait = education_stewardship_4
+
 	1207.2.2 = {
 		birth = yes
-                effect = {
+		effect = {
 			add_character_flag = has_scripted_appearance
-		        add_pressed_claim = k_de_kanzelerij
-                }
+			add_pressed_claim = k_de_kanzelerij
+		}
 	}
 }
 
@@ -1332,10 +1464,12 @@ konijkmener_1000 = { #Kanzeleren Gust, murdered by Ard
 	name = "Gust"
 	religion = "lifepath"
 	culture = "konijkmener"
+
 	1189.3.15 = {
 		birth = yes
 		add_pressed_claim = k_de_kanzelerij
 	}
+
 	1248.8.12 = {
 		death = {
 			death_reason = death_murder_known
@@ -1348,10 +1482,12 @@ konijkmener_1001 = { #Kanzeleren Rogier, murdered by Ard
 	name = "Rogier"
 	religion = "lifepath"
 	culture = "konijkmener"
+
 	1200.1.13 = {
 		birth = yes
 		add_pressed_claim = k_de_kanzelerij
 	}
+
 	1245.6.2 = {
 		death = {
 			death_reason = death_murder
@@ -1366,33 +1502,37 @@ partic_1 = {
 	dynasty = dyn_partic_1
 	religion = "partic"
 	culture = "voluntic"
-	1215.11.23 = {
-		birth = yes
-	        effect = {
-			add_character_flag = has_scripted_appearance
-		}
-	}
-	martial = 8
-	diplomacy = 6
-	stewardship = 6
-	intrigue = 4
-	learning = 8
+
 	trait = cynical
 	trait = compassionate
 	trait = stubborn
 	trait = education_martial_3
 	trait = depressed_1
 	trait = reclusive
+	
+	martial = 8
+	diplomacy = 6
+	stewardship = 6
+	intrigue = 4
+	learning = 8
+
+	1215.11.23 = {
+		birth = yes
+		effect = {
+			add_character_flag = has_scripted_appearance
+		}
+	}
 }
 
 oejeynica_1 = {
 	name = "Casimir"
-        dna = casimir
+	dna = casimir
 	religion = "graveright"
 	culture = "oejeynica"
+
 	1214.11.23 = {
 		birth = yes
-                effect = {
+		effect = {
 			add_character_flag = has_scripted_appearance
 		}
 	}
@@ -1402,6 +1542,7 @@ oejeynica_2 = {
 	name = "Szawel"
 	religion = "gravewatch"
 	culture = "oejeynica"
+
 	1220.11.23 = {
 		birth = yes
 	}
@@ -1409,27 +1550,50 @@ oejeynica_2 = {
 
 marcher_amsari_1 = {
 	name = "Hycancylin"
-        dna = hycancylin
+	dna = hycancylin
 	dynasty = dyn_marcher_5
 	religion = "lifepath"
 	culture = "voyagen"
+	martial = 5
+	intrigue = 10
+	stewardship = 12
+	learning = 8
+	
+	trait = education_stewardship_3
+	trait = greedy
+	trait = ambitious
+	trait = diligent
+	trait = intellect_good_1
+	trait = way_of_coins_follower
+
 	1212.11.4 = {
 		birth = yes
 	        effect = {
 			add_character_flag = has_scripted_appearance
 		}
 	}
-	trait = education_stewardship_3
-	trait = greedy
-	trait = ambitious
-	trait = diligent
-	trait = intellect_good_1
-        trait = way_of_coins_follower
-	diplomacy = 8
-	martial = 5
-	intrigue = 10
-	stewardship = 12
-	learning = 8
+
+	1240.1.1 = {
+		spawn_army = {
+			name = company_mercs
+			levies = 1000
+			men_at_arms = {
+				type = armored_footmen
+				stacks = 3
+			}
+			men_at_arms = {
+				type = marcher_anti_mage
+				stacks = 3
+			}
+			men_at_arms = {
+				type = camel_rider
+				stacks = 1
+			}
+			location = 290
+			origin = 2388
+			inheritable = no
+		}
+	}
 }
 
 # Ogier family
@@ -1438,15 +1602,19 @@ marcher_578 = {
 	dynasty = dyn_marcher_8
 	religion = "lifepath"
 	culture = "carsavisians"
+	
 	trait = ambitious
 	father = marcher_580
 	mother = marcher_581
+
 	1199.2.18 = {
 		birth = yes
 	}
+
 	1219.8.21 = {
 		add_spouse = marcher_579
 	}
+
 	1233.12.25 = {
 		death = {
 			death_reason = death_raid
@@ -1459,12 +1627,15 @@ marcher_579 = {
 	religion = "lifepath"
 	culture = "carsavisians"
 	female = yes
+
 	1200.10.1 = {
 		birth = yes
 	}
+
 	1219.8.21 = {
 		add_spouse = marcher_578
 	}
+
 	1233.12.25 = {
 		death = {
 			death_reason = death_raid
@@ -1476,12 +1647,15 @@ marcher_580 = {
 	name = "Tetbert"
 	religion = "lifepath"
 	culture = "carsavisians"
+
 	1175.2.18 = {
 		birth = yes
 	}
+
 	1192.8.21 = {
 		add_spouse = marcher_579
 	}
+
 	1231.1.4 = {
 		death = yes
 	}
@@ -1492,12 +1666,15 @@ marcher_581 = {
 	religion = "lifepath"
 	culture = "carsavisians"
 	female = yes
+
 	1174.8.14 = {
 		birth = yes
 	}
+
 	1192.8.21 = {
 		add_spouse = marcher_579
 	}
+
 	1233.12.25 = {
 		death = {
 			death_reason = death_raid
@@ -1510,12 +1687,15 @@ marcher_582 = {
 	name = "Otker"
 	religion = "lifepath"
 	culture = "trustians"
+
 	1206.5.4 = {
 		birth = yes
 	}
+
 	1224.4.11 = {
 		add_spouse = marcher_583
 	}
+
 	1231.9.9 = {
 		death = yes
 	}
@@ -1526,12 +1706,15 @@ marcher_583 = {
 	religion = "lifepath"
 	culture = "trustians"
 	female = yes
+
 	1205.10.21 = {
 		birth = yes
 	}
+
 	1224.4.11 = {
 		add_spouse = marcher_582
 	}
+
 	1253.1.26 = {
 		death = yes
 	}
@@ -1541,12 +1724,15 @@ marcher_584 = {
 	name = "Wilbert"
 	religion = "lifepath"
 	culture = "trustians"
+
 	1186.7.18 = {
 		birth = yes
 	}
+
 	1229.3.14 = {
 		add_spouse = marcher_11
 	}
+
 	1229.8.10 = {
 		death = {
 			death_reason = death_mysterious

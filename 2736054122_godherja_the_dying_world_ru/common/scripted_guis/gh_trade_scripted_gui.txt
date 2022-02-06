@@ -1,0 +1,21 @@
+﻿commerce_raiding_straits_income_scripted_gui = {
+	is_shown = { }
+	is_valid = { }
+	effect = {
+		if = {
+			limit = { exists = this }
+			trade_strait_table_effect = { MODE = income_tooltip }
+		}
+		if = {
+			limit = {
+				any_held_title = {
+					tier = tier_county
+					has_variable = strait_name
+				}
+			}
+		}
+		else = {
+			custom_tooltip = no_owned_straits
+		}
+	}
+}

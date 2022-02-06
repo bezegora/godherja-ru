@@ -1,0 +1,2449 @@
+﻿#####################
+# GLOBAL INFO SETUP #
+#####################
+
+# This is almost entirely for GUI information
+
+initialize_global_hunting_information = {
+	hunting_game_effect = { MODE = initialize_global }
+	biozone_effect = { MODE = initialize_global }
+	biozone_effect = { MODE = initialize_global_biozone_connections }
+}
+
+initialize_global_game_effect = {
+	random_province = {
+		limit = { NOT = { has_variable = hunting_info_storage_province } }
+		set_variable = {
+			name = game_name
+			value = flag:$NAME$
+		}
+		set_variable = {
+			name = game_tier
+			value = flag:$TIER$
+		}
+		set_variable = {
+			name = game_prowess
+			value = $PROWESS$
+		}
+		$NAME$_game_tags_effect = { MODE = store_encyclopedia_info }
+		save_temporary_scope_as = hunting_storage_province
+		add_to_global_variable_list = {
+			name = hunting_game_info_provinces
+			target = scope:hunting_storage_province
+		}
+		set_variable = hunting_info_storage_province
+	}
+}
+
+initialize_global_biozone_connections_biozone_effect = {
+	random_in_global_list = {
+		variable = hunting_biozone_info_provinces
+		limit = { var:biozone_name = flag:$NAME$ }
+		set_variable = {
+			name = biozone_tier
+			value = flag:$DANGER$
+		}
+		save_temporary_scope_as = province_to_connect_from
+		$NAME$_biozone_info = { MODE = set_game_connections }
+		sort_game_tiers_effect = yes
+		set_variable = tmp_$REGION$ # Error suppression
+		remove_variable = tmp_$REGION$
+	}
+}
+
+set_game_connections_biozone_game_effect = {
+	random_in_global_list = {
+		variable = hunting_game_info_provinces
+		limit = { var:game_name = flag:$NAME$ }
+		save_temporary_scope_as = province_to_connect
+		add_to_variable_list = {
+			name = game_contained_in_biozone_list
+			target = scope:province_to_connect_from
+		}
+		scope:province_to_connect_from = {
+			add_to_variable_list = {
+				name = biozone_contains_game_list
+				target = scope:province_to_connect
+			}
+		}
+		set_variable = tmp_$CHANCE$	# Error suppression
+		remove_variable = tmp_$CHANCE$
+	}
+}
+
+initialize_global_biozone_effect = {
+	random_province = {
+		limit = { NOT = { has_variable = hunting_info_storage_province } }
+		set_variable = {
+			name = biozone_name
+			value = flag:$NAME$
+		}
+		set_variable = {
+			name = biozone_danger
+			value = flag:$DANGER$
+		}
+		random_province = {
+			limit = { geographical_region = $REGION$ }
+			barony = { save_scope_as = biozone_activity_province_scope }
+		}
+		set_variable = {
+			name = biozone_activity_province
+			value = scope:biozone_activity_province_scope
+		}
+		$NAME$_environment_info = { MODE = store_encyclopedia_info }
+		save_temporary_scope_as = hunting_storage_province
+		add_to_global_variable_list = {
+			name = hunting_biozone_info_provinces
+			target = scope:hunting_storage_province
+		}
+		set_variable = hunting_info_storage_province
+		
+		set_variable = tmp_$REGION$	# Error suppression
+		remove_variable = tmp_$REGION$
+	}
+}
+
+sort_game_tiers_effect = {
+	every_in_list = {
+		variable = biozone_contains_game_list
+		add_to_list = temporary_game_list
+	}
+	clear_variable_list = biozone_contains_game_list
+	every_in_list = {
+		list = temporary_game_list
+		limit = { var:game_tier = flag:mundane }
+		save_temporary_scope_as = game_to_store_after_sorting
+		prev = {
+			add_to_variable_list = {
+				name = biozone_contains_game_list
+				target = scope:game_to_store_after_sorting
+			}
+		}
+	}
+	every_in_list = {
+		list = temporary_game_list
+		limit = { var:game_tier = flag:low }
+		save_temporary_scope_as = game_to_store_after_sorting
+		prev = {
+			add_to_variable_list = {
+				name = biozone_contains_game_list
+				target = scope:game_to_store_after_sorting
+			}
+		}
+	}
+	every_in_list = {
+		list = temporary_game_list
+		limit = { var:game_tier = flag:medium }
+		save_temporary_scope_as = game_to_store_after_sorting
+		prev = {
+			add_to_variable_list = {
+				name = biozone_contains_game_list
+				target = scope:game_to_store_after_sorting
+			}
+		}
+	}
+	every_in_list = {
+		list = temporary_game_list
+		limit = { var:game_tier = flag:high }
+		save_temporary_scope_as = game_to_store_after_sorting
+		prev = {
+			add_to_variable_list = {
+				name = biozone_contains_game_list
+				target = scope:game_to_store_after_sorting
+			}
+		}
+	}
+	every_in_list = {
+		list = temporary_game_list
+		limit = { var:game_tier = flag:legendary }
+		save_temporary_scope_as = game_to_store_after_sorting
+		prev = {
+			add_to_variable_list = {
+				name = biozone_contains_game_list
+				target = scope:game_to_store_after_sorting
+			}
+		}
+	}
+	every_in_list = {
+		list = temporary_game_list
+		remove_from_list = temporary_game_list
+	}
+}
+
+store_encyclopedia_info_game_tag = {
+	add_to_variable_list = {
+		name = game_tag_list
+		target = flag:$NAME$
+	}
+}
+
+store_encyclopedia_info_game_tag_with_category = {
+	set_variable = {
+		name = game_$CATEGORY$
+		value = flag:$NAME$
+	}
+}
+
+store_encyclopedia_info_environment_effect = {
+	add_to_variable_list = {
+		name = biozone_tag_list
+		target = flag:$NAME$
+	}
+}
+
+######################
+# MECHANICAL EFFECTS #
+######################
+
+combat_game_effect = {
+	if = {
+		limit = {
+			trigger_if = {
+				limit = { has_variable = fogbeast_of_mutation_original_animal }
+				var:fogbeast_of_mutation_original_animal = flag:$NAME$
+			}
+			trigger_else = { 
+				scope:hunt_target_game = flag:$NAME$
+			}
+		}
+		if = {
+			limit = {  
+				OR = {
+					exists = scope:soothing
+					any_in_list = {
+						list = already_picked_power
+						this = flag:soothing
+					}
+				}
+			}
+			duel = {
+				skill = intrigue
+				value = $PROWESS$
+				0 = {
+					modifier = {
+						add = intrigue
+					}
+					desc = sjalvolki_hunt.0201.charm_victory
+				}
+				$PROWESS$ = { # Charmed
+					modifier = {	# If intelligent and at an advantage, be aggressive
+						factor = 1.5
+						exists = scope:intelligent
+						prowess <= $PROWESS$
+					}
+					modifier = {
+						factor = 0.5
+						exists = scope:intelligent
+						prowess > $PROWESS$
+					}
+					custom_tooltip = charmed_hunting_tooltip
+					desc = sjalvolki_hunt.0201.charm_defeat
+				}
+			}
+		}
+		if = {
+			limit = { 
+				exists = scope:magic_sickness
+			}
+			random_list = {
+				40 = {}
+				30 = {
+					increase_overwhelmation = { VALUE = 1 }
+					custom_tooltip = exposure_increased_slightly_hunting_tooltip
+				}
+				20 = {
+					increase_overwhelmation = { VALUE = 3 }
+					custom_tooltip = exposure_increased_moderately_hunting_tooltip
+				}
+				10 = {
+					increase_overwhelmation = { VALUE = 5 }
+					custom_tooltip = exposure_increased_dangerously_hunting_tooltip
+				}
+			}
+		}
+		duel = {
+			skill = prowess
+			value = $PROWESS$
+			0 = { # Success
+				modifier = {
+					add = prowess
+				}
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = 0.5
+				}
+				modifier = {	# Ambushing the prey gives a pretty massive bonus
+					add = 20
+					exists = scope:successful_ambush
+				}
+				modifier = {	# As does smokebombing
+					add = 20
+					exists = scope:smokebombs_used
+				}
+				modifier = {	# As does shooting the thing
+					add = 20
+					exists = scope:firearbalest_used
+				}
+				modifier = {	# As does having the Bestiarium
+					add = 5
+					has_character_modifier = artifact_manswelbestiarium_modifier
+				}
+				modifier = {	# Scaled by proficiency
+					factor = 1.15
+					has_proficiency_against_flag = { NAME = $NAME$ PROFICIENCY = minor }
+				}
+				modifier = {
+					factor = 1.3
+					has_proficiency_against_flag = { NAME = $NAME$ PROFICIENCY = medium }
+				}
+				modifier = {
+					factor = 1.5
+					has_proficiency_against_flag = { NAME = $NAME$ PROFICIENCY = major }
+				}
+				modifier = {
+					factor = 2
+					has_expert_proficiency_against_flag = { NAME = $NAME$ }
+				}
+				modifier = {	# Scaled by home turf advantage
+					factor = 1.5
+					AND = {
+						exists = scope:hunting_in_home_biozone
+						has_perk = home_turf_perk
+					}
+				}
+				desc = sjalvolki_hunt.0201.victory
+				show_as_tooltip = {
+					hunting_game_effect = { MODE = get_reward }
+					hunting_game_effect = { MODE = increase_proficiency }
+				}
+				trigger_event = sjalvolki_hunt.0202
+			}
+			$PROWESS$ = { # Lose and get wounded
+				trigger = { 
+					NOT = { exists = scope:skittish } # Skittish prey will always just run away
+					NOT = { exists = scope:unyielding }	# Unyielding prey will always fight to the death
+				}
+				modifier = {	# Substitute for opponent's prowess if they actually exist as a character
+					factor = 0
+					exists = scope:vampire
+				}
+				modifier = {
+					add = scope:vampire.prowess
+					exists = scope:vampire
+				}
+				modifier = {	# Moon phase factor
+					factor = moon_phase_factor
+					exists = scope:moonbound
+				}
+				modifier = {	# If intelligent and at a disadvantage, favor GTFO-ing
+					factor = 4
+					exists = scope:intelligent
+					prowess > $PROWESS$
+				}
+				modifier = {
+					factor = 0.5
+					exists = scope:intelligent
+					prowess <= $PROWESS$
+				}
+				modifier = {	# If you used the fire arbalest, most sane creatures will GTFO
+					factor = 2
+					exists = scope:firearbalest_used
+				}
+				modifier = {
+					factor = 0.5
+				}
+				show_as_tooltip = {
+					change_trait_rank = {
+						trait = wounded
+						rank = 1
+						max = 3
+					}
+				}
+				if = {
+					limit = { exists = scope:poisonous }
+					custom_tooltip = poisonous_game_warning_tooltip
+					random = {
+						chance = $PROWESS$
+						modifier = {
+							add = $PROWESS$
+							always = yes
+						}
+						death = { death_reason = death_accident }
+					}
+				}
+				trigger_event = sjalvolki_hunt.0204
+			}
+			$PROWESS$ = { # Killed
+				trigger = { NOT = { exists = scope:skittish } }	# Skittish prey will always just run away
+				modifier = {	# Substitute for opponent's prowess if they actually exist as a character
+					factor = 0
+					exists = scope:vampire
+				}
+				modifier = {
+					add = scope:vampire.prowess
+					exists = scope:vampire
+				}
+				modifier = {	# Moon phase factor
+					factor = moon_phase_factor
+					exists = scope:moonbound
+				}
+				modifier = {	# If intelligent and at an advantage, be aggressive
+					factor = 2
+					exists = scope:intelligent
+					prowess <= $PROWESS$
+				}
+				modifier = {
+					factor = 0.5
+					exists = scope:intelligent
+					prowess > $PROWESS$
+				}
+				modifier = {	# If you used the fire arbalest, most sane creatures will GTFO
+					factor = 0.5
+					exists = scope:firearbalest_used
+					NOT = { exists = scope:unyielding }	# Unyielding creatures are not sane
+				}
+				modifier = {	# Large creatures are more dangerous
+					add = 5
+					exists = scope:large
+				}
+				modifier = {	# Huge even more
+					add = 10
+					exists = scope:large
+				}
+				modifier = {	# All fogbeasts of mutation get a base 10 bonus to combat, to make low-tier stuff like boars more dangerous
+					add = 10
+					has_variable = fogbeast_of_mutation_original_animal
+				}
+				modifier = {	# All fogbeasts are 50% more dangerous
+					add = 10
+					scope:hunt_target_game = flag:fogbeast
+				}
+				modifier = {
+					factor = 0.5
+					NOT = { exists = scope:unyielding }	# Unyielding creatures won't divide their dice pool
+				}
+				if = {
+					limit = { 
+						exists = scope:intelligent
+						prowess <= $PROWESS$
+					}
+					custom_tooltip = intelligent_advantage_hunting_tooltip
+				}
+				if = {
+					limit = { exists = scope:moonbound }
+					moon_phase_hunting_tooltip_effect = yes
+				}
+				show_as_tooltip = {
+					death = { death_reason = death_accident }
+				}
+				trigger_event = sjalvolki_hunt.0205
+			}
+			10 = {
+				trigger = { exists = scope:skittish }	# Skittish prey will always just run away
+				desc = sjalvolki_hunt.0201.escape
+				trigger_event = sjalvolki_hunt.0206
+			}
+		}
+		set_variable = tmp_$TIER$	# Error suppression
+		remove_variable = tmp_$TIER$
+	}
+}
+
+get_tags_game_effect = {
+	if = {
+		limit = {
+			trigger_if = {
+				limit = { exists = scope:fogbeast_of_mutation_original_animal }
+				scope:fogbeast_of_mutation_original_animal = flag:$NAME$
+			}
+			trigger_else = { 
+				scope:hunt_target_game = flag:$NAME$
+			}
+		}
+		custom_tooltip = $TIER$_tier_game_tooltip
+		$NAME$_game_tags_effect = { MODE = set }
+		set_variable = tmp_$PROWESS$	# Error suppression
+		remove_variable = tmp_$PROWESS$
+	}
+}
+
+get_reward_game_effect = {
+	if = {
+		limit = {
+			trigger_if = {
+				limit = { exists = scope:hunt_target_game }
+				scope:hunt_target_game = flag:$NAME$
+			}
+			trigger_else = { always = no }
+		}
+		if = {
+			limit = { NOT = { has_variable = $NAME$_kills } }
+			set_variable = {
+				name = $NAME$_kills
+				value = 1
+			}
+		}
+		else = {
+			change_variable = {
+				name = $NAME$_kills
+				add = 1
+			}
+		}
+		if = {
+			limit = {
+				is_lowborn = no
+			}
+			if = {
+				limit = { dynasty = { NOT = { has_variable = $NAME$_kills } } }
+				dynasty = {
+					set_variable = {
+						name = $NAME$_kills
+						value = 1
+					}
+				}
+			}
+			else = {
+				dynasty = {
+					change_variable = {
+						name = $NAME$_kills
+						add = 1
+					}
+				}
+			}
+		}
+		$NAME$_game_rewards_effect = yes
+		if = {
+			limit = {
+				any_in_list = {
+					list = hunting_quest_list
+					exists = this
+					has_variable = hunting_quest_target_game
+					var:hunting_quest_target_game = scope:hunt_target_game
+				}
+			}
+			random_in_list = {
+				list = hunting_quest_list
+				limit = { var:hunting_quest_target_game = scope:hunt_target_game }
+				save_scope_as = fulfilled_commission
+			}
+			custom_description = {
+				add_gold = scope:fulfilled_commission.var:hunting_quest_reward_gold
+				
+				text = fulfilled_commission
+				subject = root
+				value = scope:fulfilled_commission.var:hunting_quest_reward_gold
+			}
+		}
+		set_variable = tmp_$PROWESS$_$TIER$	# Error suppression
+		remove_variable = tmp_$PROWESS$_$TIER$
+	}
+}
+
+get_tier_game_effect = {
+	if = {
+		limit = {
+			trigger_if = {
+				limit = { exists = scope:hunt_target_game }
+				scope:hunt_target_game = flag:$NAME$
+			}
+			trigger_else = { always = no }
+		}
+		save_scope_value_as = {
+			name = hunt_tier
+			value = flag:$TIER$
+		}
+		set_variable = tmp_$PROWESS$	# Error suppression
+		remove_variable = tmp_$PROWESS$
+	}
+}
+
+get_allowed_game_effect = {
+	if = {
+		limit = {
+			can_access_game_level_trigger = { TIER = $TIER$ }
+		}
+		flag:$NAME$ = { add_to_list = allowed_game } 
+		set_variable = tmp_$PROWESS$	# Error suppression
+		remove_variable = tmp_$PROWESS$
+	}
+}
+
+add_to_hunted_list_game_effect = {
+	if = {
+		limit = {
+			trigger_if = {
+				limit = { exists = scope:hunt_target_game }
+				scope:hunt_target_game = flag:$NAME$
+			}
+			trigger_else = { always = no }
+		}
+		add_to_variable_list = {
+			name = successfully_hunted_$TIER$_game
+			target = flag:$NAME$
+		}
+		set_variable = tmp_$PROWESS$	# Error suppression
+		remove_variable = tmp_$PROWESS$
+	}
+}
+
+increase_proficiency_game_effect = {
+	if = {
+		limit = {
+			trigger_if = {
+				limit = { exists = scope:hunt_target_game }
+				scope:hunt_target_game = flag:$NAME$
+			}
+			trigger_else = { always = no }
+		}
+		if = {
+			limit = {
+				trigger_if = {
+					limit = { has_variable_list = minor_proficiency_game }
+					is_target_in_variable_list = {
+						name = minor_proficiency_game
+						target = flag:$NAME$
+					}
+				}
+				trigger_else = { always = no }
+			}
+			remove_list_variable = {
+				name = minor_proficiency_game
+				target = flag:$NAME$
+			}
+			add_to_variable_list = {
+				name = medium_proficiency_game
+				target = flag:$NAME$
+			}
+			custom_tooltip = gain_medium_proficiency_tooltip
+		}
+		else_if = {
+			limit = {
+				trigger_if = {
+					limit = { has_variable_list = medium_proficiency_game }
+					is_target_in_variable_list = {
+						name = medium_proficiency_game
+						target = flag:$NAME$
+					}
+				}
+				trigger_else = { always = no }
+				NOT = { has_variable = expert_proficiency_game }
+			}
+			remove_list_variable = {
+				name = medium_proficiency_game
+				target = flag:$NAME$
+			}
+			add_to_variable_list = {
+				name = major_proficiency_game
+				target = flag:$NAME$
+			}
+			custom_tooltip = gain_major_proficiency_tooltip
+		}
+		else_if = {
+			limit = {
+				trigger_if = {
+					limit = { has_variable_list = major_proficiency_game }
+					NOT = {
+						is_target_in_variable_list = {
+							name = major_proficiency_game
+							target = flag:$NAME$
+						}
+					}
+				}
+				trigger_else_if = { 
+					limit = { has_variable = expert_proficiency_game }
+					var:expert_proficiency_game = flag:$NAME$
+				}
+				trigger_else = { always = yes }
+			}
+			add_to_variable_list = {
+				name = minor_proficiency_game
+				target = flag:$NAME$
+			}
+			custom_tooltip = gain_minor_proficiency_tooltip
+		}
+		else_if = {
+			limit = {
+				trigger_if = {
+					limit = { has_variable_list = major_proficiency_game }
+					is_target_in_variable_list = {
+						name = major_proficiency_game
+						target = flag:$NAME$
+					}
+					NOR = { 
+						has_variable = expert_proficiency_game
+						exists = scope:mundane
+						exists = scope:low
+					}
+				}
+				trigger_else = { always = yes }
+			}
+			custom_tooltip = gain_expert_proficiency_tooltip
+			set_variable = {
+				name = game_gain_expert_proficiency_var
+				value = flag:$NAME$
+			}
+			trigger_event = {
+				id = sjalvolki_hunt.0221
+				days = 2
+			}
+		}
+		set_variable = tmp_$PROWESS$_$TIER$	# Error suppression
+		remove_variable = tmp_$PROWESS$_$TIER$
+	}
+}
+
+set_expert_proficiency_game_effect = {
+	if = {
+		limit = {
+			trigger_if = {
+				limit = { exists = scope:hunt_target_game }
+				scope:hunt_target_game = flag:$NAME$
+			}
+			trigger_else = { always = no }
+		}
+		set_variable = {
+			name = expert_proficiency_game
+			value = flag:$NAME$
+		}
+		remove_list_variable = {
+			name = major_proficiency_game
+			target = flag:$NAME$
+		}
+		custom_tooltip = gain_expert_proficiency_select_tooltip
+		custom_tooltip = all_major_proficiencies_will_be_downgraded_tooltip
+		hunting_game_effect = { MODE = downgrade_proficiencies }
+		set_variable = tmp_$PROWESS$_$TIER$	# Error suppression
+		remove_variable = tmp_$PROWESS$_$TIER$
+	}
+}
+
+downgrade_proficiencies_game_effect = {
+	if = {
+		limit = {
+			has_proficiency_against_flag_ignore_perk = { NAME = $NAME$ PROFICIENCY = major }
+		}
+		remove_list_variable = {
+			name = major_proficiency_game
+			target = flag:$NAME$
+		}
+		add_to_variable_list = {
+			name = medium_proficiency_game
+			target = flag:$NAME$
+		}
+		set_variable = tmp_$PROWESS$_$TIER$	# Error suppression
+		remove_variable = tmp_$PROWESS$_$TIER$
+	}
+}
+
+finalize_game_options_effect = {
+	if = {
+		limit = { has_variable_list = possible_game }
+		random_in_list = {
+			variable = possible_game
+			save_scope_as = first_game_option
+			root = {
+				set_variable = {
+					name = first_game_option_var
+					value = prev
+				}
+			}
+		}
+		if = {
+			limit = {
+				any_in_list = {
+					variable = possible_game
+					NOT = { this = scope:first_game_option }
+				}
+			}
+			random_in_list = {
+				variable = possible_game
+				limit = {
+					NOT = { this = scope:first_game_option }
+				}
+				save_scope_as = second_game_option
+				root = {
+					set_variable = {
+						name = second_game_option_var
+						value = prev
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				any_in_list = {
+					variable = possible_game
+					NOR = { 
+						this = scope:first_game_option
+						this = scope:second_game_option 
+					}
+				}
+			}
+			random_in_list = {
+				variable = possible_game
+				limit = {
+					NOR = { 
+						this = scope:first_game_option
+						this = scope:second_game_option 
+					}
+				}
+				save_scope_as = third_game_option
+				root = {
+					set_variable = {
+						name = third_game_option_var
+						value = prev
+					}
+				}
+			}
+		}
+		clear_variable_list = possible_game
+	}
+}
+
+finalize_special_game_option_effect = {
+	if = {
+		limit = { has_variable_list = possible_special_game }
+		random_in_list = {
+			variable = possible_special_game
+			save_scope_as = special_game_option
+			root = {
+				set_variable = {
+					name = special_game_option_var
+					value = prev
+				}
+			}
+		}
+		clear_variable_list = possible_special_game
+	}
+}
+
+set_game_tag = {
+	save_scope_value_as = {
+		name = $NAME$
+		value = yes
+	}
+	custom_tooltip = $NAME$_game_tag_tooltip
+}
+
+set_game_tag_with_category = {
+	save_scope_value_as = {
+		name = $NAME$
+		value = yes
+	}
+	custom_tooltip = $NAME$_game_tag_tooltip
+	set_variable = tmp_$CATEGORY$	# Error Suppression
+	remove_variable = tmp_$CATEGORY$
+}
+
+game_prestige_reward_effect = {
+	add_prestige = {
+		value = $AMOUNT$
+		if = {
+			limit = { has_perk = trophy_collector_perk }
+			multiply = 1.25
+		}
+		if = {
+			limit = { exists = scope:firearbalest_used }
+			multiply = 0.5
+		}
+	}
+	if = {	# If you're focusing on glory, give renown
+		limit = { 
+			has_focus = adventure_glory_focus
+			is_lowborn = no
+		}
+		dynasty = {
+			add_dynasty_prestige = {
+				value = $AMOUNT$
+				multiply = 0.1
+				if = {
+					limit = { exists = scope:firearbalest_used }
+					multiply = 0.5
+				}
+			}
+		}
+	}
+	if = {	# Sjalvolki get Piety from this
+		limit = { faith = { has_doctrine = tenet_sjalvolki_hunt } }
+		add_piety = {
+			value = $AMOUNT$
+			multiply = 0.5
+		}
+	}
+}
+
+game_fortune_reward_effect = {
+	# OBSOLETE - WILL REMOVE IN SHORT ORDER
+	#if = {	# Get a monetary reward if you have the Fortune focus
+	#	limit = { has_focus = adventure_fortune_focus }
+	#	custom_description = {
+	#		add_gold = $AMOUNT$
+	#		
+	#		text = add_gold_fortune_focus
+	#		subject = root
+	#		value = $AMOUNT$
+	#	}
+	#}
+	set_variable = tmp_$AMOUNT$
+	remove_variable = tmp_$AMOUNT$
+}
+
+game_stress_loss_home_turf_effect = {
+	if = {
+		limit = {
+			exists = scope:hunting_in_home_biozone
+			has_perk = home_turf_perk
+		}
+		custom_description = {
+			add_stress = $AMOUNT$
+			
+			text = add_stress_home_turf
+			value = $AMOUNT$
+			subject = root
+		}
+	}
+}
+
+game_level_up_hunting_skill_reward_effect = {
+	if = {
+		limit = { NOT = { exists = scope:hunting_level_up_mode } }
+		save_scope_value_as = {
+			name = hunting_level_up_mode
+			value = yes
+		}
+		show_as_tooltip = { 
+			#game_level_up_hunting_skill_reward_effect = yes 
+		}
+		trigger_event = sjalvolki_hunt.0231
+	}
+	else_if = {	# If you're not a hunter or monster slayer at all, give the first level trait
+		limit = {
+			NOR = {  
+				has_trait = lifestyle_hunter
+				has_trait = lifestyle_beasthunter
+			}
+		}
+		add_trait = hunter_1
+		if = {
+			limit = {
+				should_use_advanced_hunting_traits = yes
+			}
+			custom_tooltip = can_continue_advancing_sjalvolki_tooltip
+			custom_tooltip = hunter_2_requirements_tooltip
+		}
+		else_if = {
+			limit = {
+				has_perk = beasthunter_perk
+			}
+			custom_tooltip = can_continue_advancing_beasthunter_tooltip
+			custom_tooltip = beasthunter_1_requirements_tooltip
+		}
+		else = {
+			custom_tooltip = cannot_continue_advancing_tooltip
+		}
+	}
+	else_if = {	# If you're Sjalvolki, you have your own progression
+		limit = {
+			should_use_advanced_hunting_traits = yes
+		}
+		if = {	# Hunting down anything non-mundane is good enough to get hunter 2
+			limit = {
+				has_trait = hunter_1
+				NOT = { scope:hunt_tier = flag:mundane }
+			}
+			hunting_level_up_hunter_effect = yes
+		}
+		else_if = {
+			limit = {
+				has_trait_rank = {
+					trait = lifestyle_hunter
+					rank = 2
+				}
+				OR = {
+					trigger_if = {
+						limit = { has_variable_list = successfully_hunted_low_game }
+						variable_list_size = {
+							name = successfully_hunted_low_game
+							value >= 5
+						}
+					}
+					trigger_else = { always = no }
+					scope:hunt_tier = flag:medium
+					scope:hunt_tier = flag:high
+					scope:hunt_tier = flag:legendary
+				}
+			}
+			hunting_level_up_hunter_effect = yes
+		}
+		else_if = {
+			limit = {
+				has_trait_rank = {
+					trait = lifestyle_hunter
+					rank = 3
+				}
+				OR = {
+					trigger_if = {
+						limit = { has_variable_list = successfully_hunted_medium_game }
+						variable_list_size = {
+							name = successfully_hunted_medium_game
+							value >= 5
+						}
+					}
+					trigger_else = { always = no }
+					scope:hunt_tier = flag:high
+					scope:hunt_tier = flag:legendary
+				}
+			}
+			hunting_level_up_hunter_effect = yes
+		}
+		else_if = {
+			limit = {
+				has_trait_rank = {
+					trait = lifestyle_hunter
+					rank = 4
+				}
+				OR = {
+					trigger_if = {
+						limit = { has_variable_list = successfully_hunted_high_game }
+						variable_list_size = {
+							name = successfully_hunted_high_game
+							value >= 5
+						}
+					}
+					trigger_else = { always = no }
+					scope:hunt_tier = flag:legendary
+				}
+			}
+			hunting_level_up_hunter_effect = yes
+		}
+	}
+	else_if = {
+		limit = { has_perk = beasthunter_perk }
+		if = {	# Hunting down anything non-mundane is good enough to get beasthunter 2
+			limit = {
+				has_trait = hunter_1
+				NOT = { scope:hunt_tier = flag:mundane }
+			}
+			remove_trait = hunter_1
+			add_trait_force_tooltip = beasthunter_1
+			custom_tooltip = beasthunter_2_requirements_tooltip
+		}
+		else_if = {
+			limit = {
+				has_trait_rank = {
+					trait = lifestyle_beasthunter
+					rank = 2
+				}
+				OR = {
+					trigger_if = {
+						limit = { has_variable_list = successfully_hunted_low_game }
+						variable_list_size = {
+							name = successfully_hunted_low_game
+							value >= 5
+						}
+					}
+					trigger_else = { always = no }
+					scope:hunt_tier = flag:medium
+					scope:hunt_tier = flag:high
+					scope:hunt_tier = flag:legendary
+				}
+			}
+			hunting_level_up_beasthunter_effect = yes
+		}
+		else_if = {
+			limit = {
+				has_trait_rank = {
+					trait = lifestyle_beasthunter
+					rank = 3
+				}
+				OR = {
+					trigger_if = {
+						limit = { has_variable_list = successfully_hunted_medium_game }
+						variable_list_size = {
+							name = successfully_hunted_medium_game
+							value >= 5
+						}
+					}
+					trigger_else = { always = no }
+					scope:hunt_tier = flag:high
+					scope:hunt_tier = flag:legendary
+				}
+			}
+			hunting_level_up_beasthunter_effect = yes
+		}
+		else_if = {
+			limit = {
+				has_trait_rank = {
+					trait = lifestyle_beasthunter
+					rank = 3
+				}
+				OR = {
+					trigger_if = {
+						limit = { has_variable_list = successfully_hunted_high_game }
+						variable_list_size = {
+							name = successfully_hunted_high_game
+							value >= 5
+						}
+					}
+					trigger_else = { always = no }
+					scope:hunt_tier = flag:legendary
+				}
+			}
+			hunting_level_up_beasthunter_effect = yes
+		}
+	}
+}
+
+hunting_level_up_hunter_effect = {
+	if = {
+		limit = { has_trait = hunter_1 }
+		hidden_effect = { remove_trait = hunter_1 }
+		add_trait_force_tooltip = hunter_2
+		custom_tooltip = hunter_3_requirements_tooltip
+	}
+	else_if = {
+		limit = { has_trait = hunter_2 }
+		hidden_effect = { remove_trait = hunter_2 }
+		add_trait_force_tooltip = hunter_3
+		custom_tooltip = hunter_4_requirements_tooltip
+	}
+	else_if = {
+		limit = { has_trait = hunter_3 }
+		hidden_effect = { remove_trait = hunter_3 }
+		add_trait_force_tooltip = hunter_4
+		custom_tooltip = hunter_5_requirements_tooltip
+	}
+	else_if = {
+		limit = { has_trait = hunter_4 }
+		hidden_effect = { remove_trait = hunter_4 }
+		add_trait_force_tooltip = hunter_5
+	}
+	save_scope_value_as = {
+		name = levelled_up_hunt_skill
+		value = yes
+	}
+}
+
+hunting_level_up_beasthunter_effect = {
+	if = {
+		limit = { has_trait = beasthunter_1 }
+		hidden_effect = { remove_trait = beasthunter_1 }
+		add_trait_force_tooltip = beasthunter_2
+		custom_tooltip = beasthunter_3_requirements_tooltip
+	}
+	else_if = {
+		limit = { has_trait = beasthunter_2 }
+		hidden_effect = { remove_trait = beasthunter_2 }
+		add_trait_force_tooltip = beasthunter_3
+		custom_tooltip = beasthunter_4_requirements_tooltip
+	}
+	else_if = {
+		limit = { has_trait = beasthunter_3 }
+		hidden_effect = { remove_trait = beasthunter_3 }
+		add_trait_force_tooltip = beasthunter_4
+	}
+	save_scope_value_as = {
+		name = levelled_up_hunt_skill
+		value = yes
+	}
+}
+
+game_skill_reward_effect = {
+	if = {
+		limit = {
+			has_focus = adventure_enlightenment_focus
+			$SKILL$ < $CAP$ 
+		}
+		add_$SKILL$_skill = $AMOUNT$
+		save_scope_value_as = {
+			name = $SKILL$_upgraded
+			value = yes
+		}
+	}
+}
+
+set_game_reward_nickname_effect = {
+	if = {
+		limit = { has_any_nickname = no }
+		if = {
+			limit = { NOT = { has_variable = nickname_selection_mode } }
+			random = {
+				chance = 30
+				show_as_tooltip = {
+					give_nickname = $NICKNAME$
+				}
+				set_variable = {
+					name = nickname_selection_mode
+					value = flag:$NICKNAME$
+					days = 2
+				}
+				trigger_event = sjalvolki_hunt.0211
+			}
+		}
+		else = {
+			give_nickname = $NICKNAME$
+		}
+	}
+}
+
+home_biozone_effect = {
+	if = {
+		limit = { 
+			capital_province = {
+				geographical_region = $REGION$
+			}
+		}
+		save_scope_value_as = {
+			name = home_biozone
+			value = flag:$NAME$
+		}
+		save_scope_value_as = {
+			name = home_biozone_danger
+			value = flag:$DANGER$
+		}
+	}
+}
+
+select_biozone_effect = {
+	if = {
+		limit = {  
+			trigger_if = {
+				limit = { exists = scope:hunt_biozone }
+				scope:hunt_biozone = flag:$NAME$
+			}
+			trigger_else = { always = no }
+		}
+		hidden_effect = {
+			#custom_tooltip = biozone_info_$NAME$_header
+			custom_tooltip = biozone_info_danger_$DANGER$
+			$NAME$_environment_info = { MODE = set }
+			
+			set_variable = tmp_$REGION$	# For error suppression
+			remove_variable = tmp_$REGION$
+		}
+	}
+}
+
+display_home_info_biozone_effect = {
+	if = {
+		limit = { exists = scope:home_biozone }
+		if = {
+			limit = { scope:home_biozone = flag:$NAME$ }
+			custom_tooltip = biozone_info_danger_$DANGER$
+			$NAME$_environment_info = { MODE = set }
+			$NAME$_biozone_info = { MODE = display }
+			
+			set_variable = tmp_$REGION$	# For error suppression
+			remove_variable = tmp_$REGION$
+		}
+	}
+}
+
+display_selected_biozone_info_biozone_effect = {
+	if = {
+		limit = { exists = var:selected_biozone_var }
+		if = {
+			limit = { var:selected_biozone_var.var:biozone_name = flag:$NAME$ }
+			custom_tooltip = you_will_hunt_in_biozone_header
+			custom_tooltip = biozone_info_danger_$DANGER$
+			$NAME$_environment_info = { MODE = set }
+			custom_tooltip = biozone_game_header
+			$NAME$_biozone_info = { MODE = display }
+			
+			set_variable = tmp_$REGION$	# For error suppression
+			remove_variable = tmp_$REGION$
+		}
+	}
+}
+
+pick_all_game_biozone_effect = {
+	if = {
+		limit = {
+			trigger_if = {
+				limit = { exists = scope:hunt_biozone }
+				scope:hunt_biozone = flag:$NAME$
+			}
+			trigger_else = { always = no }
+		}
+		$NAME$_biozone_info = { MODE = pick }
+		
+		set_variable = tmp_$REGION$_$DANGER$	# For error suppression
+		remove_variable = tmp_$REGION$_$DANGER$
+	}
+}
+
+pick_biozone_game_effect = {
+	random = {
+		chance = $CHANCE$
+		if = {
+			limit = { exists = scope:choosing_special_game_option }
+			add_to_variable_list = {
+				name = possible_special_game
+				target = flag:$NAME$
+			}
+			clear_saved_scope = choosing_special_game_option
+		}
+		else = {
+			add_to_variable_list = {
+				name = possible_game
+				target = flag:$NAME$
+			}
+		}
+	}
+}
+
+get_valid_fogbeasts_of_mutation_biozone_game_effect = {
+	flag:$NAME$ = { add_to_list = possible_fogbeast_of_mutation_original_animal }
+	set_variable = tmp_$CHANCE$	# Error suppression
+}
+
+display_biozone_game_effect = {
+	set_variable = {
+		name = tmp_chance
+		value = $CHANCE$
+	}
+	random_in_global_list = {
+		variable = hunting_game_info_provinces
+		limit = { var:game_name = flag:$NAME$ }
+		save_scope_as = game_info_province
+		if = {
+			limit = { $CHANCE$ >= 50 }
+			custom_tooltip = biozone_game_list_item_abundant
+		}
+		else_if = {
+			limit = { $CHANCE$ >= 25 }
+			custom_tooltip = biozone_game_list_item_common
+		}
+		else_if = {
+			limit = { $CHANCE$ >= 10 }
+			custom_tooltip = biozone_game_list_item_uncommon
+		}
+		else_if = {
+			limit = { $CHANCE$ >= 5 }
+			custom_tooltip = biozone_game_list_item_rare
+		}
+		else = {
+			custom_tooltip = biozone_game_list_item_very_rare
+		}
+	}
+	remove_variable = tmp_chance
+}
+
+scroll_biozone_effect = {
+	if = {
+		limit = {
+			trigger_if = {
+				limit = { 
+					has_variable = biozone_scroll_iterator 
+					has_variable = first_displayed_biozone 
+				}
+				var:biozone_scroll_iterator.compare_value >= var:first_displayed_biozone.compare_value
+			}
+			trigger_else = { always = no }
+		}
+		if = {
+			limit = {
+				var:biozone_scroll_iterator.compare_value = var:first_displayed_biozone.compare_value	# Scroller logic
+				NOT = { scope:home_biozone = flag:$NAME$ }	# No reason to display the home biozone as a duplicate
+				# Make sure that there's at least one non fogswept or fog-bordering county in the region, unless its the Foglands themselves
+				not_fogswept_biozone_trigger = { NAME = $NAME$ REGION = $REGION$ }
+			}
+			set_variable = {
+				name = first_biozone_option
+				value = flag:$NAME$
+			}
+			random_county_in_region = {
+				region = $REGION$
+				title_province.barony = {
+					save_scope_as = hunting_target_1
+				}
+			}
+		}
+		else_if = {
+			limit = { 
+				var:biozone_scroll_iterator.compare_value = var:second_displayed_biozone.compare_value
+				NOT = { scope:home_biozone = flag:$NAME$ }
+				not_fogswept_biozone_trigger = { NAME = $NAME$ REGION = $REGION$ }
+			}
+			set_variable = {
+				name = second_biozone_option
+				value = flag:$NAME$
+			}
+			random_county_in_region = {
+				region = $REGION$
+				title_province.barony = {
+					save_scope_as = hunting_target_2
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				var:biozone_scroll_iterator.compare_value = var:third_displayed_biozone.compare_value
+				NOT = { scope:home_biozone = flag:$NAME$ }
+				not_fogswept_biozone_trigger = { NAME = $NAME$ REGION = $REGION$ }
+			}
+			set_variable = {
+				name = third_biozone_option
+				value = flag:$NAME$
+			}
+			random_county_in_region = {
+				region = $REGION$
+				title_province.barony = {
+					save_scope_as = hunting_target_3
+				}
+			}
+		}
+		set_variable = tmp_$REGION$_$DANGER$	# Error suppression
+		remove_variable = tmp_$REGION$_$DANGER$
+	}
+	change_variable = {
+		name = biozone_scroll_iterator
+		add = 1
+	}
+}
+
+get_valid_fogbeasts_of_mutation_biozone_effect = {
+	if = {
+		limit = {	# Ignore the Foglands themselves for this, obviously
+			save_temporary_scope_value_as = {
+				name = biozone_name
+				value = flag:$NAME$
+			}
+			NOT = { scope:biozone_name = flag:foglands }
+			any_county_in_region = {
+				region = $REGION$
+				has_county_modifier = fogswept_modifier
+			}
+		}
+		$NAME$_biozone_info = { MODE = get_valid_fogbeasts_of_mutation }
+		set_variable = tmp_$DANGER$	# Error suppression
+		remove_variable = tmp_$DANGER$
+	}
+}
+
+set_environment_effect = {
+	save_scope_value_as = {
+		name = $NAME$
+		value = yes
+	}
+	custom_tooltip = $NAME$_tooltip
+}
+
+calculate_hunt_distance_effect = {
+	# Requires HUNTING_TARGET = barony
+	if = {
+		limit = { 
+			exists = scope:start_barony
+			exists = $HUNTING_TARGET$
+		}
+		if = {
+			limit = {
+				scope:start_barony = {
+					squared_distance = {
+						target = $HUNTING_TARGET$
+						value > long_hunt_max_length
+					}
+				}
+			}
+			select_hunt_effect = {
+				HUNT_DISTANCE = very_long
+			}
+		}
+		else_if = {
+			limit = {
+				scope:start_barony = {
+					squared_distance = {
+						target = $HUNTING_TARGET$
+						value > medium_hunt_max_length
+					}
+				}
+			}
+			select_hunt_effect = {
+				HUNT_DISTANCE = long
+			}
+		}
+		else_if = {
+			limit = {
+				scope:start_barony = {
+					squared_distance = {
+						target = $HUNTING_TARGET$
+						value > short_hunt_max_length
+					}
+				}
+			}
+			select_hunt_effect = {
+				HUNT_DISTANCE = medium
+			}
+		}
+		else = {
+			select_hunt_effect = {
+				HUNT_DISTANCE = short
+			}
+		}
+		hidden_effect = {
+			$HUNTING_TARGET$.title_province = {
+				spawn_activity = {
+					type = activity_sjalvolki_hunt
+					owner = root
+				}
+			}
+		}
+	}
+}
+
+select_hunt_effect = {
+	# HUNT_DISTANCE
+	save_temporary_scope_value_as = {
+		name = distance
+		value = flag:$HUNT_DISTANCE$
+	}
+	switch = {
+		trigger = scope:distance
+		flag:short = {
+			remove_short_term_gold = pilgrimage_minimum_cost
+			set_local_variable = {
+				name = travel_costs
+				value = pilgrimage_minimum_cost
+			}
+		}
+		flag:medium = {
+			remove_short_term_gold = pilgrimage_medium_extra_cost
+			set_local_variable = {
+				name = travel_costs
+				value = pilgrimage_medium_extra_cost
+			}
+		}
+		flag:long = {
+			remove_short_term_gold = pilgrimage_long_extra_cost
+			set_local_variable = {
+				name = travel_costs
+				value = pilgrimage_long_extra_cost
+			}
+		}
+		flag:very_long = {
+			remove_short_term_gold = pilgrimage_very_long_extra_cost
+			set_local_variable = {
+				name = travel_costs
+				value = pilgrimage_very_long_extra_cost
+			}
+		}
+	}
+}
+
+set_tracker_noscope = {
+	save_scope_as = tracker
+	if = {
+		limit = { tracking_power <= 1 }
+		custom_tooltip = terrible_tracking_power_tooltip
+	}
+	else_if = {
+		limit = { tracking_power <= 2 }
+		custom_tooltip = bad_tracking_power_tooltip
+	}
+	else_if = {
+		limit = { tracking_power <= 4 }
+		custom_tooltip = decent_tracking_power_tooltip
+	}
+	else_if = {
+		limit = { tracking_power <= 8 }
+		custom_tooltip = good_tracking_power_tooltip
+	}
+	else = {
+		custom_tooltip = excellent_tracking_power_tooltip
+	}
+	
+	if = {
+		limit = { NOT = { has_trait = lifestyle_hunter } }
+		custom_tooltip = not_hunter_tracking_tooltip
+	}
+	if = {
+		limit = { has_trait = intellect_bad_1 }
+		custom_tooltip = intellect_bad_1_tracking_tooltip
+	}
+	if = {
+		limit = { has_trait = intellect_bad_2 }
+		custom_tooltip = intellect_bad_2_tracking_tooltip
+	}
+	if = {
+		limit = { has_trait = intellect_bad_3 }
+		custom_tooltip = intellect_bad_3_tracking_tooltip
+	}
+	if = {
+		limit = { has_trait = dull }
+		custom_tooltip = dull_tracking_tooltip
+	}
+	if = {
+		limit = { has_trait = fickle }
+		custom_tooltip = fickle_tracking_tooltip
+	}
+	if = {
+		limit = { has_trait = stubborn }
+		custom_tooltip = stubborn_tracking_tooltip
+	}
+	if = {
+		limit = { 
+			has_trait = arrogant
+			NOT = { has_trait = lifestyle_hunter }
+		}
+		custom_tooltip = arrogant_not_hunter_tracking_tooltip
+	}
+	if = {
+		limit = { has_trait = arrogant }
+		custom_tooltip = arrogant_tracking_tooltip
+	}
+	if = {
+		limit = { has_trait = impatient }
+		custom_tooltip = impatient_tracking_tooltip
+	}
+	if = {
+		limit = { has_trait = lunatic_1 }
+		custom_tooltip = lunatic_tracking_tooltip
+	}
+	if = {
+		limit = { has_trait = drunkard }
+		custom_tooltip = drunkard_tracking_tooltip
+	}
+	if = {
+		limit = { has_trait = brave }
+		custom_tooltip = brave_tracking_tooltip
+	}
+}
+
+set_tracker = {
+	$TRACKER$ = {
+		set_tracker_noscope = yes
+	}
+}
+
+apply_tracking_effects = {
+	random_list = {
+		0 = {
+			modifier = {
+				add = var:tracking_progress
+			}
+			modifier = {
+				factor = 1.5
+				exists = scope:large	# Larger creatures are easier to track
+			}
+			modifier = {
+				factor = 1.5
+				exists = scope:social	# Social creatures are easier to track
+			}
+			custom_tooltip = successfully_track_down_game_tooltip
+			trigger_event = {	# You track the thing down
+				id = sjalvolki_hunt.0201
+				days = 2
+			}
+		}
+		10 = {
+			custom_tooltip = gain_tracking_progress_tooltip
+			modifier = {
+				factor = 3
+				exists = scope:huge	# Huge creatures are trivial to track unless elusive
+			}
+			modifier = {
+				factor = 1.5
+				exists = scope:large	# Larger creatures are easier to track
+			}
+			modifier = {
+				factor = 0.1
+				OR = {
+					exists = scope:elusive	# Elusive and sedentary creatures are far more difficult to track
+					exists = scope:sedentary
+				}
+			}
+			change_variable = {
+				name = tracking_progress
+				add = scope:tracker.tracking_power
+			}
+			trigger_event = {	# You don't track it down, but increase tracking progress
+				id = sjalvolki_hunt.0101
+				days = 2
+			}
+		}
+		5 = {
+			custom_tooltip = lose_tracking_progress_tooltip
+			trigger = {
+				trigger_if = {
+					limit = { has_variable = tracking_progress }
+					var:tracking_progress >= 1
+				}
+				trigger_else = {
+					always = no
+				}
+			}
+			change_variable = {
+				name = tracking_progress
+				subtract = 1
+			}
+			trigger_event = {	# You don't track it down and lose tracking progress
+				id = sjalvolki_hunt.0101
+				days = 2
+			}
+		}
+	}
+}
+
+apply_ambush_effects = {
+	random_list = {
+		0 = {	# An ambush is difficult to pull off, and by default you need at least some tracking progress
+			modifier = {
+				add = var:tracking_progress
+			}
+			modifier = {	# Unintelligent game is easier to ambush
+				factor = 1.5
+				exists = scope:stupid
+			}
+			custom_tooltip = successfully_ambush_game_tooltip
+			save_scope_value_as = {
+				name = successful_ambush
+				value = yes
+			}
+			trigger_event = {	# You track the thing down
+				id = sjalvolki_hunt.0201
+				days = 2
+			}
+		}
+		40 = {
+			custom_tooltip = neither_gain_nor_lose_tracking_progress_tooltip
+			trigger_event = {	# You don't track it down
+				id = sjalvolki_hunt.0101
+				days = 2
+			}
+		}
+		10 = {	# Small chance to lose tracking progress
+			custom_tooltip = lose_tracking_progress_tooltip
+			trigger = {
+				trigger_if = {
+					limit = { has_variable = tracking_progress }
+					var:tracking_progress >= 2
+				}
+				trigger_else = {
+					always = no
+				}
+			}
+			change_variable = {
+				name = tracking_progress
+				subtract = 2
+			}
+			trigger_event = {	# You don't track it down and lose tracking progress
+				id = sjalvolki_hunt.0101
+				days = 2
+			}
+		}
+	}
+}
+
+apply_environmental_effects = {
+	random = {	# Hunger related stuff
+		chance = 50
+		modifier = {	# Idyllic and verdant biozones have plenty of stuff to forage, even casually
+			factor = 0.5
+			OR = {
+				exists = scope:idyllic
+				exists = scope:verdant
+			}
+		}
+		add_character_modifier = {
+			modifier = hunger_modifier
+			days = 60
+		}
+	}
+	if = {
+		limit = { exists = scope:hot }
+		random = {	# Heat
+			chance = 50
+			modifier = {
+				factor = 0.5
+				has_perk = grizzled_perk
+			}
+			add_character_modifier = {
+				modifier = hot_modifier
+				days = 60
+			}
+		}
+	}
+	if = {
+		limit = { exists = scope:cold }
+		random = {	# Heat
+			chance = 50
+			modifier = {
+				factor = 0.5
+				has_perk = grizzled_perk
+			}
+			add_character_modifier = {
+				modifier = cold_modifier
+				days = 60
+			}
+		}
+	}
+	apply_disorientation_effect = yes
+	apply_injury_effect = yes
+	random = {
+		chance = 0
+		modifier = {
+			add = hunting_death_chance
+		}
+		death = { death_reason = death_accident }
+	}
+}
+
+apply_forage_effects = {
+	random_list = {
+		0 = {	# Critical success, you get rid of 3 hunger modifiers
+			modifier = {
+				add = scope:tracker.hunting_forage_success_chance
+			}
+			remove_character_modifier = hunger_modifier
+			if = {
+				limit = { has_character_modifier = hunger_modifier }
+				remove_character_modifier = hunger_modifier
+			}
+			if = {
+				limit = { has_character_modifier = hunger_modifier }
+				remove_character_modifier = hunger_modifier
+			}
+		}
+		0 = {	# Normal success, you get rid of 2 hunger modifiers
+			modifier = {
+				add = {
+					value = scope:tracker.hunting_forage_success_chance
+					multiply = 1.5
+				}
+			}
+			remove_character_modifier = hunger_modifier
+			if = {
+				limit = { has_character_modifier = hunger_modifier }
+				remove_character_modifier = hunger_modifier
+			}
+		}
+		0 = {	# Lesser success, you get rid of 1 hunger modifier
+			modifier = {
+				add = {
+					value = scope:tracker.hunting_forage_success_chance
+					multiply = 2
+				}
+			}
+			remove_character_modifier = hunger_modifier
+		}
+		50 = {
+			# You find squat
+		}
+	}
+	if = {
+		limit = {
+			trigger_if = {
+				limit = { has_variable = tracking_progress }
+				var:tracking_progress >= 1
+			}
+			trigger_else = {
+				always = no
+			}
+		}
+		custom_tooltip = lose_tracking_progress_tooltip
+		change_variable = {
+			name = tracking_progress
+			subtract = 1
+		}
+	}
+	if = {
+		limit = {
+			trigger_if = {
+				limit = { has_variable = lost_level }
+				var:lost_level <= 0
+			}
+			trigger_else = { always = yes }
+		}
+		trigger_event = {	# You don't track it down and lose tracking progress
+			id = sjalvolki_hunt.0101
+			days = 2
+		}
+	}
+}
+
+apply_disorientation_effect = {
+	if = {
+		limit = { 
+			exists = scope:hunting_in_home_biozone
+			has_perk = home_turf_perk
+		}
+		custom_tooltip = cannot_get_lost_in_home_biozone_tooltip
+	}
+	if = {	# This is purely for aesthetic purposes - if you aren't lost at all, it will only display the chance of becoming lost
+		limit = {
+			trigger_if = {
+				limit = { has_variable = lost_level }
+				var:lost_level <= 0
+			}
+			trigger_else = { always = yes }
+		}
+		random = {
+			chance = 0
+			modifier = {
+				add = scope:tracker.hunting_chance_of_getting_lost
+				exists = scope:tracker
+			}
+			modifier = {
+				add = {
+					value = scope:tracker.hunting_chance_of_regaining_bearings
+					multiply = -0.25
+				}
+				exists = scope:tracker
+			}
+			modifier = {
+				factor = 0
+				AND = {
+					exists = scope:hunting_in_home_biozone
+					has_perk = home_turf_perk
+				}
+			}
+			if = {
+				limit = { 
+					trigger_if = {
+						limit = { has_variable = lost_level }
+						var:lost_level <= 0
+					}
+					trigger_else = { always = yes }
+				}
+				set_variable = {
+					name = lost_level
+					value = 1
+					days = 60
+				}
+				custom_tooltip = get_lost_hunting_tooltip
+			}
+			else_if = {
+				limit = { NOT = { var:lost_level >= 3 } }
+				change_variable = {
+					name = lost_level
+					add = 1
+				}
+				custom_tooltip = get_lost_more_hunting_tooltip
+			}
+			trigger_event = {
+				id = sjalvolki_hunt.0111
+				days = 1
+			}
+		}
+	}
+	else = {
+		random_list = {
+			0 = {
+				modifier = {
+					add = scope:tracker.hunting_chance_of_getting_lost
+				}
+				trigger = {  
+					NOT = {
+						exists = scope:hunting_in_home_biozone
+						has_perk = home_turf_perk
+					}
+				}
+				if = {
+					limit = { NOT = { has_variable = lost_level } }
+					set_variable = {
+						name = lost_level
+						value = 1
+						days = 60
+					}
+					custom_tooltip = get_lost_hunting_tooltip
+				}
+				else_if = {
+					limit = { NOT = { var:lost_level >= 3 } }
+					change_variable = {
+						name = lost_level
+						add = 1
+					}
+					custom_tooltip = get_lost_more_hunting_tooltip
+				}
+				trigger_event = {
+					id = sjalvolki_hunt.0111
+					days = 1
+				}
+			}
+			20 = {	# Always inherently some chance of recovering bearings
+				trigger = {
+					trigger_if = {
+						limit = { has_variable = lost_level }
+						var:lost_level >= 1
+					}
+					trigger_else = { always = no }
+				}
+				modifier = {
+					add = scope:tracker.hunting_chance_of_regaining_bearings
+				}
+				custom_tooltip = get_less_lost_hunting_tooltip
+				change_variable = {
+					name = lost_level
+					subtract = 1
+				}
+				if = {
+					limit = { 
+						trigger_if = {
+							limit = { has_variable = lost_level }
+							var:lost_level > 0
+						}
+						trigger_else = { always = no }
+					}
+					trigger_event = {
+						id = sjalvolki_hunt.0111
+						days = 1
+					}
+				}
+				else = {
+					trigger_event = {
+						id = sjalvolki_hunt.0101
+						days = 1
+					}
+				}
+			}
+			50 = {
+				trigger_event = {
+					id = sjalvolki_hunt.0111
+					days = 1
+				}
+			}
+		}
+	}
+}
+
+apply_injury_effect = {
+	random = {
+		chance = 0
+		modifier = {
+			add = scope:tracker.hunting_injury_chance
+			exists = scope:tracker
+		}
+		change_trait_rank = {
+			trait = wounded
+			rank = 1
+			max = 3
+		}
+	}
+}
+
+hunt_end_game_effect = {
+	if = {
+		limit = {
+			scope:hunt_target_game = flag:$NAME$
+		}
+		random_list = {
+			1 = {	# End the hunt
+				modifier = {
+					add = prowess
+				}
+				if = {
+					limit = {
+						exists = scope:activity
+					}
+					scope:activity = {
+						complete_activity = yes
+					}
+				}
+			}
+			$PROWESS$ = {	# If the creature is social and wasn't ambushed, have a chance to pursue
+				trigger = {
+					exists = scope:social
+					NOR = { # Must not be skittish, slow or ambushed
+						exists = scope:successful_ambush 
+						exists = scope:skittish
+						exists = scope:slow
+					}
+					trigger_if = {	# If cautious, needs to be intelligent and for the quarry to have been killed
+						limit = { exists = scope:cautious }
+						exists = scope:intelligent
+						exists = scope:killed_quarry
+					}
+				}
+				modifier = {	# Inherently less likely by default unless the game is fast
+					factor = 0.25
+					NOT = { exists = scope:fast }
+				}
+				custom_tooltip = pursued_by_social_tooltip
+				trigger_event = sjalvolki_hunt.0207
+			}
+			$PROWESS$ = { 	# If the creature is a mindrender and wasn't ambushed, have a chance to cause insanity
+				trigger = {
+					exists = scope:mindrender
+					NOR = { #Must not be skittish, or ambushed 
+						exists = scope:successful_ambush
+						exists = scope:skittish
+					}
+					trigger_if = { #If skittish, must be intelligent
+						limit = { exists = scope:skittish }
+						exists = scope:intelligent
+					}
+				}
+				modifier = {
+					factor = 0.40
+				}
+				custom_tooltip = mind_damage_by_mindrender_tooltip
+				trigger_event = sjalvolki_hunt.7008
+			}
+		}
+		set_variable = tmp_$TIER$	# Error suppression
+		remove_variable = tmp_$TIER$
+	}
+}
+
+display_all_possible_tags_effect = {
+	custom_tooltip = display_all_possible_tags_header_tooltip
+	game_tag_table_effect = { MODE = display }
+}
+
+display_tag_effect = {
+	if = {
+		limit = {
+			OR = {
+				exists = scope:$NAME$
+				any_in_list = {
+					list = already_picked_power
+					this = flag:$NAME$
+				}
+			}
+		}
+		custom_tooltip = $NAME$_game_tag_tooltip
+	}
+}
+
+copy_tag_effect = {
+	if = {
+		limit = {
+			NOT = { exists = scope:$NAME$ }
+			any_in_list = {
+				list = already_picked_power
+				this = flag:$NAME$
+			}
+		}
+		save_scope_value_as = {
+			name = $NAME$
+			value = yes
+		}
+	}
+}
+
+display_proficiency_info = {
+	$NAME$ = {
+		if = {
+			limit = {
+				has_proficiency_against = { NAME = $NAME$ PROFICIENCY = minor }
+			}
+			custom_tooltip = has_minor_proficiency_tooltip
+		}
+		else_if = {
+			limit = {
+				has_proficiency_against = { NAME = $NAME$ PROFICIENCY = medium }
+			}
+			custom_tooltip = has_medium_proficiency_tooltip
+		}
+		if = {
+			limit = {
+				has_proficiency_against = { NAME = $NAME$ PROFICIENCY = major }
+			}
+			custom_tooltip = has_major_proficiency_tooltip
+		}
+	}
+}
+
+convert_hunter_to_beasthunter_effect = {
+	if = {
+		limit = {
+			has_trait = lifestyle_beasthunter
+			should_use_advanced_hunting_traits = yes
+		}
+		if = {
+			limit = { has_trait = beasthunter_1 }
+			remove_trait = beasthunter_1
+			add_trait = hunter_2
+		}
+		else_if = {
+			limit = { has_trait = beasthunter_2 }
+			remove_trait = beasthunter_2
+			add_trait = hunter_3
+		}
+		else_if = {
+			limit = { has_trait = beasthunter_3 }
+			remove_trait = beasthunter_3
+			add_trait = hunter_4
+		}
+		else_if = {
+			limit = { has_trait = beasthunter_4 }
+			remove_trait = beasthunter_4
+			add_trait = hunter_5
+		}
+	}
+	else_if = {
+		limit = {
+			has_trait_rank = {
+				trait = lifestyle_hunter
+				rank > 1
+			}
+			should_use_advanced_hunting_traits = no
+		}
+		if = {
+			limit = { has_trait = hunter_2 }
+			remove_trait = hunter_2
+			add_trait = beasthunter_1
+		}
+		else_if = {
+			limit = { has_trait = hunter_3 }
+			remove_trait = hunter_3
+			add_trait = beasthunter_2
+		}
+		else_if = {
+			limit = { has_trait = hunter_4 }
+			remove_trait = hunter_4
+			add_trait = beasthunter_3
+		}
+		if = {
+			limit = { has_trait = hunter_5 }
+			remove_trait = hunter_5
+			add_trait = beasthunter_4
+		}
+	}
+}
+
+generate_vampire_effect = {
+	scope:activity.activity_province.county = { save_scope_as = vampire_county }
+	create_character = {
+		location = scope:vampire_county.title_province
+		template = vampire_template
+		dynasty = none
+		save_scope_as = vampire
+	}
+	random_list = {
+		1 = {
+			set_variable = {
+				name = lair
+				value = flag:hovel
+				days = 2
+			}
+		}
+		1 = {
+			set_variable = {
+				name = lair
+				value = flag:cave
+				days = 2
+			}
+		}
+		1 = {
+			set_variable = {
+				name = lair
+				value = flag:shack
+				days = 2
+			}
+		}
+		1 = {
+			set_variable = {
+				name = lair
+				value = flag:abandoned_mine
+				days = 2
+			}
+		}
+		1 = {
+			set_variable = {
+				name = lair
+				value = flag:abandoned_tower
+				days = 2
+			}
+		}
+		1 = {
+			set_variable = {
+				name = lair
+				value = flag:abandoned_mill
+				days = 2
+			}
+		}
+		1 = {
+			set_variable = {
+				name = lair
+				value = flag:ruin
+				days = 2
+			}
+		}
+	}
+	set_variable = {
+		name = enemy_vampire_var
+		value = scope:vampire
+		days = 3
+	}
+	scope:vampire = { save_scope_as = right_portrait_character }
+}
+
+##########
+# QUESTS #
+##########
+
+generate_biozone_hunting_quests_effect = {
+	if = {
+		limit = { exists = scope:hunt_biozone }
+		set_local_variable = {
+			name = iterator
+			value = 0
+		}
+		while = {
+			limit = {
+				exists = local_var:iterator
+				local_var:iterator < $COUNT$
+			}
+			biozone_effect = { MODE = generate_quest }
+			change_local_variable = {
+				name = iterator
+				add = 1
+			}
+		}
+	}
+}
+
+generate_quest_biozone_effect = {
+	if = {
+		limit = { scope:hunt_biozone = flag:$NAME$ }
+		$NAME$_biozone_info = { MODE = fetch_valid_quest_targets }
+		special_game_effect = { MODE = fetch_valid_quest_targets }
+		hunting_game_effect = { MODE = filter_valid_quest_targets }
+		random_in_list = {
+			list = potential_quest_game_targets
+			limit = { NOT = { is_in_list = already_picked_quest_game } }
+			add_to_list = already_picked_quest_game
+			save_temporary_scope_as = hunting_quest_game
+		}
+		if = {
+			limit = { exists = scope:hunting_quest_game }
+			random_province = {
+				limit = { NOT = { has_variable = hunting_quest_target_game } }
+				save_temporary_scope_as = hunting_quest_storage_province
+				set_variable = {
+					name = hunting_quest_target_game
+					value = scope:hunting_quest_game
+					days = 30	# No hunt will last longer than this
+				}
+				hunting_game_effect = { MODE = set_quest_tier }
+				set_variable = {
+					name = hunting_quest_reward_gold
+					value = hunting_quest_reward_gold_value
+					days = 30
+				}
+				add_to_list = hunting_quest_list
+			}
+		}
+		
+		
+		set_variable = tmp_$REGION$_$DANGER$	# Error suppression
+		remove_variable = tmp_$REGION$_$DANGER$
+	}
+}
+
+set_quest_tier_game_effect = {
+	if = {
+		limit = {  
+			exists = scope:hunting_quest_game
+			scope:hunting_quest_game = flag:$NAME$
+		}
+		set_variable = {
+			name = quest_tier
+			value = flag:$TIER$
+			days = 30
+		}
+		set_variable = tmp_$PROWESS$	# Error suppression
+		remove_variable = tmp_$PROWESS$
+	}
+}
+
+fetch_valid_quest_targets_biozone_game_effect = {
+	random = {
+		chance = $CHANCE$
+		flag:$NAME$ = { add_to_list = potential_quest_game_targets }
+	}
+}
+
+filter_valid_quest_targets_game_effect = {
+	if = {
+		limit = {
+			flag:$NAME$ = { is_in_list = potential_quest_game_targets }
+			OR = {
+				AND = {
+					flag:$TIER$ = flag:low
+					NOR = {
+						has_trait_rank = {
+							trait = lifestyle_hunter
+							rank >= 2
+						}
+						has_trait_rank = {
+							trait = lifestyle_beasthunter
+							rank >= 1
+						}
+						has_perk = beasthunter_perk
+					}
+				}
+				AND = {
+					flag:$TIER$ = flag:medium
+					NOR = {
+						has_trait_rank = {
+							trait = lifestyle_hunter
+							rank >= 3
+						}
+						has_trait_rank = {
+							trait = lifestyle_beasthunter
+							rank >= 2
+						}
+					}
+				}
+				AND = {
+					flag:$TIER$ = flag:high
+					NOR = {
+						has_trait_rank = {
+							trait = lifestyle_hunter
+							rank >= 4
+						}
+						has_trait_rank = {
+							trait = lifestyle_beasthunter
+							rank >= 3
+						}
+					}
+				}
+			}
+		}
+		flag:$NAME$ = { remove_from_list = potential_quest_game_targets }
+	}
+	
+	set_variable = tmp_$PROWESS$	# Error suppression
+	remove_variable = tmp_$PROWESS$
+}
+
+display_hunting_quests_effect = {
+	if = {
+		limit = {
+			any_in_list = {
+				list = hunting_quest_list
+				exists = this
+			}
+		}
+		custom_tooltip = hunting_quest_header_tooltip
+		every_in_list = {
+			list = hunting_quest_list
+			custom_tooltip = hunting_quest_tooltip
+		}
+	}
+}
+
+############
+# TOOLTIPS #
+############
+
+moon_phase_hunting_tooltip_effect = {
+	if = {
+		limit = { is_full_moon_trigger = yes }
+		custom_tooltip = full_moon_hunting_warning
+	}
+	if = {
+		limit = { is_gibbous_moon_trigger = yes }
+		custom_tooltip = gibbous_moon_hunting_warning
+	}
+	if = {
+		limit = { is_crescent_moon_trigger = yes }
+		custom_tooltip = crescent_moon_hunting_advice
+	}
+	if = {
+		limit = { is_new_moon_trigger = yes }
+		custom_tooltip = new_moon_hunting_advice
+	}
+}

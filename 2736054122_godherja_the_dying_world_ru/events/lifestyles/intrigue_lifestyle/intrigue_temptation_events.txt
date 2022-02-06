@@ -205,6 +205,11 @@ intrigue_temptation.2201 = {
 							reveal_to = root
 						}
 						add_intrigue_lifestyle_xp = major_lifestyle_xp
+						lifepath_impact = {
+							WAY = crows
+							NATURE = positive
+							AMOUNT = minor
+						}
 					}
 				}
 			}
@@ -222,6 +227,11 @@ intrigue_temptation.2201 = {
 						modifier = disappointed_opinion
 						target = scope:my_lover
 						opinion = -10
+					}
+					lifepath_impact = {
+						WAY = crows
+						NATURE = negative
+						AMOUNT = miniscule
 					}
 				}
 			}
@@ -453,6 +463,12 @@ intrigue_temptation.3000 = {
 		stress_impact = {
 			chaste = major_stress_impact_gain
 		}
+
+		lifepath_impact = {
+			WAY = crows
+			NATURE = positive
+			AMOUNT = miniscule
+		}
 	}
 	
 	option = { # Try to learn a secret, then they leave
@@ -524,6 +540,11 @@ intrigue_temptation.3000 = {
 					multiplier = low_positive_duel_skill_multiplier
 				}
 				custom_tooltip = yearly.3000.b.success.tt
+				lifepath_impact = {
+					WAY = crows
+					NATURE = positive
+					AMOUNT = minor
+				}
 				hidden_effect = {
 					send_interface_toast = {
 						title = intrigue_temptation.3000.b.success
@@ -548,6 +569,11 @@ intrigue_temptation.3000 = {
 				compare_modifier = {
 					value = scope:duel_value
 					multiplier = low_negative_duel_skill_multiplier
+				}
+				lifepath_impact = {
+					WAY = crows
+					NATURE = negative
+					AMOUNT = minor
 				}
 				hidden_effect = {
 					send_interface_toast = {

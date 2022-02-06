@@ -114,8 +114,14 @@ champion_of_the_fifth_ring = {
 
 legacy_of_elyssia = {
 	icon = family_negative
-	levy_size = -0.5
-	levy_reinforcement_rate = -0.3
+	levy_size = -0.70
+	levy_reinforcement_rate = -0.4
+}
+
+legacy_of_icww = {
+	icon = family_negative
+	levy_size = -0.45
+	levy_reinforcement_rate = -0.25
 }
 
 ruined_by_ulfrix = {
@@ -142,16 +148,17 @@ father_of_sarradon = {
 	icon = family_positive
 	monthly_prestige = 1
 	monthly_piety = 1
+	army_maintenance_mult = -0.5
+	embarkation_cost_mult = -1.0
+	hostile_county_attrition = -0.25
+	supply_duration = 0.1
+	health = major_health_bonus
 }
 
-agionist_stick_modifier = {
-	icon = dread_positive
-	dread_baseline_add = 60
-}
-
-agionist_carrot_modifier = {
-	icon = prestige_positive
-	county_opinion_add = 80
+sarradonian_rebel_desertions = {
+	icon = martial_negative
+	levy_size = -0.9
+	tax_mult = -0.5
 }
 
 extreme_devastation = {
@@ -237,4 +244,85 @@ gh_imperrech_debuff_modifier = {
 gh_sound_of_body = {
 	icon = health_positive
 	health = major_health_bonus
+}
+
+gh_succession_happy = {
+	icon = health_positive
+	
+}
+
+low_food = {
+	icon = food_negative
+	health = -0.5
+}
+
+shadow_port = {
+	icon = stewardship_negative
+	tax_mult = -0.3
+	development_growth_factor = -0.3
+	monthly_county_control_change_factor = -0.1
+}
+
+traderoute_modifier = {
+	icon = economy_positive
+	development_growth_factor = 0.1
+	tax_mult = 0.2
+}
+
+harbour_modifier = {
+	icon = economy_positive
+	development_growth_factor = 0.15
+	tax_mult = 0.3
+}
+
+entrepot_modifier = {
+	icon = economy_positive
+}
+kotserion_exiles = {
+	icon = martial_positive
+	levy_size = 0.20
+}
+survived_dovatkning = {
+	icon = health_positive
+	health = 2
+}
+
+#stapleport_modifier = {
+#	icon = economy_positive
+#	monthly_income = 5
+#}
+sianna_exiles = {
+	icon = martial_positive
+	levy_size = 0.15
+}
+gahzi_exiles = {
+	icon = martial_positive
+	levy_size = 0.20
+}
+skiadhadhes_exiles = {
+	icon = martial_positive
+	levy_size = 0.15
+}
+chegea_exiles = {
+	icon = martial_positive
+	levy_size = 0.10
+}
+almubid_exiles = {
+	icon = martial_positive
+	levy_size = 0.20
+}
+
+pirate_king = {
+	icon = prowess_positive
+	monthly_prestige = 1
+	army_maintenance_mult = -0.25
+	martial = 3
+	stewardship = 3
+	dread_baseline_add = 30
+}
+
+religious_turmoil = {
+	icon = piety_negative
+	monthly_county_control_change_add = -0.2
+	county_opinion_add = -10
 }

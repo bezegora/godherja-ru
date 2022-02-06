@@ -28,3 +28,16 @@
 @elephant = "gfx/interface/icons/culture_innovations/innovation_elephant.dds"
 @special_maa_01 = "gfx/interface/icons/culture_innovations/innovation_special_maa_01.dds"
 @special_maa_02 = "gfx/interface/icons/culture_innovations/innovation_special_maa_02.dds"
+
+innovation_sjalvolki_adventurers = {
+	group = culture_group_regional
+	culture_era = culture_era_tribal
+	icon = @maa_01
+
+	potential = {
+		OR = {
+			# sjalvolki
+			this.culture_group = culture_group:gh_sjalvolki_group
+		}
+	}
+}

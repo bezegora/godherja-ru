@@ -2331,6 +2331,9 @@ hunt.4003 = {
 	
 	option = { #Claim the animals and a legal right to their lives
 		name = hunt.4003.c
+		lifepath_adherence_impact_tooltip = {
+			LP_NAME = crowns
+		}
 		duel = {
 			skill = stewardship
 			value = average_skill_rating
@@ -2365,7 +2368,7 @@ hunt.4003 = {
 				send_interface_toast = {
 					title = hunt.4003.c.tt_failure
 					add_prestige = minor_prestige_loss
-					life_adherence_impact = {
+					lifepath_adherence_impact = {
 						LP_NAME = crowns
 						PIETY_AMOUNT = minor_piety_loss_lifepath
 						STRESS_AMOUNT = minor_stress_impact_gain
@@ -2381,9 +2384,6 @@ hunt.4003 = {
 					name = hunt_outcome
 					add = -2
 				}
-			}
-			lifepath_adherence_impact_tooltip = {
-				LP_NAME = crowns
 			}
 		}
 	}
@@ -3267,6 +3267,9 @@ hunt.4007 = {
 		}
 		trait = hunter_2
 		trait = hunter_3
+		lifepath_adherence_impact_tooltip = {
+			LP_NAME = swords
+		}
 		duel = {
 			skill = prowess
 			value = 8 #easier challenge if you're a cool hunter!
@@ -3321,9 +3324,6 @@ hunt.4007 = {
 					}
 				}
 			}
-			lifepath_adherence_impact_tooltip = {
-				LP_NAME = swords
-			}
 		}
 	}
 
@@ -3334,6 +3334,9 @@ hunt.4007 = {
 				trait = lifestyle_hunter
 				rank < 2
 			}
+		}
+		lifepath_adherence_impact_tooltip = {
+			LP_NAME = swords
 		}
 		duel = {
 			skill = prowess
@@ -3396,9 +3399,6 @@ hunt.4007 = {
 					}
 				}
 			}
-			lifepath_adherence_impact_tooltip = {
-				LP_NAME = swords
-			}
 		}
 	}
 	
@@ -3407,8 +3407,8 @@ hunt.4007 = {
 		add_prestige = medium_prestige_loss
 		lifepath_disadherence_impact = {
 			LP_NAME = swords
-			PIETY_AMOUNT = medium_piety_loss_lifepath
-			STRESS_AMOUNT = medium_stress_impact_gain
+			PIETY_AMOUNT = medium
+			STRESS_AMOUNT = medium
 		}
 		scope:similar_participant = {
 			if = {
@@ -3552,6 +3552,9 @@ hunt.4008 = {
 
 	option = { #Convince everyone that they tried to save the peasant
 		name = hunt.4008.a
+		lifepath_adherence_impact_tooltip = {
+			LP_NAME = crows
+		}
 		duel = {
 			skill = diplomacy
 			value = 12
@@ -3639,9 +3642,6 @@ hunt.4008 = {
 					}
 				}
 			}
-			lifepath_adherence_impact_tooltip = {
-				LP_NAME = crows
-			}
 		}
 		stress_impact = {
 			honest = medium_stress_impact_gain
@@ -3708,7 +3708,7 @@ hunt.4008 = {
 					}
 					crow_clandestine_impact = {
 						PIETY_AMOUNT = minor
-						STRESS_AMOUINT = minor
+						STRESS_AMOUNT = minor
 					}
 					root = {
 						change_variable = {
@@ -4028,11 +4028,11 @@ hunt.4009 = {
 							days = watchful_modifier_duration
 						}
 					}
-					lifepath_adherence_impact = {
-						LP_NAME = swords
-						PIETY_AMOUNT = medium_piety_loss_lifepath
-						STRESS_AMOUNT = medium_stress_impact_gain
-					}
+				}
+				lifepath_adherence_impact = {
+					LP_NAME = swords
+					PIETY_AMOUNT = medium
+					STRESS_AMOUNT = medium
 				}
 			}
 			2 = { #Their scheme succeeds
@@ -4067,6 +4067,9 @@ hunt.4009 = {
 			scope:scheme = {
 				scheme_type = abduct
 			}
+		}
+		lifepath_adherence_impact_tooltip = {
+			LP_NAME = swords
 		}
 		duel = {
 			skill = prowess
@@ -4128,8 +4131,8 @@ hunt.4009 = {
 					}
 					lifepath_adherence_impact = {
 						LP_NAME = swords
-						PIETY_AMOUNT = medium_piety_loss_lifepath
-						STRESS_AMOUNT = medium_stress_impact_gain
+						PIETY_AMOUNT = medium
+						STRESS_AMOUNT = medium
 					}
 				}
 			}
@@ -4148,9 +4151,6 @@ hunt.4009 = {
 					modifier = abducted_me_opinion
 				}
 			}
-		}
-		lifepath_adherence_impact_tooltip = {
-			LP_NAME = swords
 		}
 		ai_chance = {
 			base = 0
@@ -4714,6 +4714,9 @@ hunt.4010 = {
 				scheme_type = murder
 			}
 		}
+		lifepath_adherence_impact_tooltip = {
+			LP_NAME = swords
+		}
 		
 		duel = {
 			skill = prowess
@@ -4777,8 +4780,8 @@ hunt.4010 = {
 
 					lifepath_adherence_impact = {
 						LP_NAME = swords
-						PIETY_AMOUNT = medium_piety_loss_lifepath
-						STRESS_AMOUNT = medium_stress_impact_gain
+						PIETY_AMOUNT = medium
+						STRESS_AMOUNT = medium
 					}
 				}
 			}
@@ -4806,9 +4809,6 @@ hunt.4010 = {
 					}
 				}
 			}
-		}
-		lifepath_adherence_impact_tooltip = {
-			LP_NAME = swords
 		}
 		ai_chance = {
 			base = 0
@@ -6691,7 +6691,11 @@ hunt.9001 = {
 	}
 	left_portrait = root
 	theme = hunt_activity
-
+	
+	trigger = {
+		has_variable = hunt_outcome
+	}
+	
 	immediate = {
 		hidden_effect = {
 			#To give point towards hunter trait

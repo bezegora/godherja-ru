@@ -1,0 +1,346 @@
+﻿generate_fogbeast_of_thought_effect = {	# For Fogbeasts of thought
+	pick_feature_effect = 		{ NAME = body_layout }
+	pick_feature_effect = 		{ NAME = material }
+	pick_two_features_effect = 	{ NAME = power }
+	pick_feature_effect = 		{ NAME = poison_delivery_method }
+	pick_feature_effect = 		{ NAME = head_multiplicity }
+	pick_feature_effect = 		{ NAME = eye_multiplicity }
+	pick_feature_effect = 		{ NAME = eye_style }
+	pick_two_features_effect = 	{ NAME = disturbing_feature }
+}
+
+generate_fogbeast_of_mutation_effect = {	# For Fogbeasts of mutation
+	# First, pick a base creature
+	biozone_effect = { MODE = get_valid_fogbeasts_of_mutation }
+	choose_random_feature_effect = { NAME = fogbeast_of_mutation_original_animal }
+	hunting_game_effect = { MODE = get_tags }
+	if = {
+		limit = { exists = scope:skittish }
+		clear_saved_scope = skittish
+	}
+	if = {
+		limit = { exists = scope:cautious }
+		clear_saved_scope = cautious
+	}
+	if = {
+		limit = { exists = scope:aggressive }
+		clear_saved_scope = aggressive
+	}
+	if = {
+		limit = { NOT = { exists = scope:unyielding } }
+		save_scope_value_as = { 
+			name = unyielding
+			value = yes
+		}
+	}
+	# Give it some extra things in the arsenal
+	mutate_fogbeast_powers_effect = yes
+	pick_feature_effect = 		{ NAME = poison_delivery_method }
+	# Add in some spooky details
+	pick_two_features_effect = 	{ NAME = disturbing_feature }
+}
+
+body_layout_table_effect = {
+	$MODE$_feature_effect = { NAME = humanoid 			FEATURE_TYPE = body_layout	CHANCE = 100 }
+	$MODE$_feature_effect = { NAME = bipedal 			FEATURE_TYPE = body_layout	CHANCE = 100 }
+	$MODE$_feature_effect = { NAME = tripedal 			FEATURE_TYPE = body_layout	CHANCE = 100 }
+	$MODE$_feature_effect = { NAME = quadripedal		FEATURE_TYPE = body_layout 	CHANCE = 100 }
+	$MODE$_feature_effect = { NAME = spiderlike 		FEATURE_TYPE = body_layout	CHANCE = 100 }
+	$MODE$_feature_effect = { NAME = squidlike 			FEATURE_TYPE = body_layout	CHANCE = 100 }
+	$MODE$_feature_effect = { NAME = medusoid 			FEATURE_TYPE = body_layout	CHANCE = 100 }
+	$MODE$_feature_effect = { NAME = omnipedal 			FEATURE_TYPE = body_layout	CHANCE = 100 }
+	$MODE$_feature_effect = { NAME = serpentine 		FEATURE_TYPE = body_layout	CHANCE = 100 }
+	$MODE$_feature_effect = { NAME = eldritch_layout	FEATURE_TYPE = body_layout	CHANCE = 100 }
+	$MODE$_feature_effect = { NAME = ethereal_layout 	FEATURE_TYPE = body_layout	CHANCE = 100 }
+}
+
+body_layout_requirements_table_effect = {
+	# Intentionally empty
+}
+
+body_layout_exclusivity_table_effect = {
+	# Intentionally empty
+}
+
+material_table_effect = {
+	$MODE$_feature_effect = { NAME = flesh 			FEATURE_TYPE = material	CHANCE = 100 }
+	$MODE$_feature_effect = { NAME = hair 			FEATURE_TYPE = material	CHANCE = 100 }
+	$MODE$_feature_effect = { NAME = scales 		FEATURE_TYPE = material	CHANCE = 100 }
+	$MODE$_feature_effect = { NAME = leather		FEATURE_TYPE = material CHANCE = 100 }
+	$MODE$_feature_effect = { NAME = plant 			FEATURE_TYPE = material	CHANCE = 100 }
+	$MODE$_feature_effect = { NAME = eldritch 		FEATURE_TYPE = material	CHANCE = 100 }
+	$MODE$_feature_effect = { NAME = slimy 			FEATURE_TYPE = material	CHANCE = 100 }
+	$MODE$_feature_effect = { NAME = spiky 			FEATURE_TYPE = material	CHANCE = 100 }
+	$MODE$_feature_effect = { NAME = ethereal 		FEATURE_TYPE = material CHANCE = 100 }
+	$MODE$_feature_effect = { NAME = skinless 		FEATURE_TYPE = material	CHANCE = 100 }
+	$MODE$_feature_effect = { NAME = metal 			FEATURE_TYPE = material	CHANCE = 100 }
+	$MODE$_feature_effect = { NAME = feathery 		FEATURE_TYPE = material	CHANCE = 100 }
+}
+
+material_requirements_table_effect = {
+	required_feature_effect = { NAME = eldritch		FEATURE_TYPE = material 	REQUIRES_FEATURE_TYPE = body_layout		REQUIRES_FEATURE_NAME = eldritch_layout }
+	required_feature_effect = { NAME = ethereal		FEATURE_TYPE = material 	REQUIRES_FEATURE_TYPE = body_layout		REQUIRES_FEATURE_NAME = ethereal_layout }
+}
+
+material_exclusivity_table_effect = {
+	# Intentionally empty
+}
+
+power_table_effect = {
+	$MODE$_feature_effect = { NAME = poisonous 				FEATURE_TYPE = power	CHANCE = 70  }
+	$MODE$_feature_effect = { NAME = cunning 				FEATURE_TYPE = power	CHANCE = 50  }
+	$MODE$_feature_effect = { NAME = intelligent 			FEATURE_TYPE = power	CHANCE = 25  }
+	$MODE$_feature_effect = { NAME = fast 					FEATURE_TYPE = power	CHANCE = 100 }
+	$MODE$_feature_effect = { NAME = large 					FEATURE_TYPE = power	CHANCE = 100 }
+	$MODE$_feature_effect = { NAME = huge 					FEATURE_TYPE = power	CHANCE = 100 }
+	$MODE$_feature_effect = { NAME = ethereal_power 		FEATURE_TYPE = power	CHANCE = 100 }
+	$MODE$_feature_effect = { NAME = trickery 				FEATURE_TYPE = power	CHANCE = 100 }
+	$MODE$_feature_effect = { NAME = disturbing  			FEATURE_TYPE = power	CHANCE = 100 }
+	$MODE$_feature_effect = { NAME = soothing 				FEATURE_TYPE = power	CHANCE = 100 }
+	$MODE$_feature_effect = { NAME = mind_control 			FEATURE_TYPE = power	CHANCE = 20 }
+	$MODE$_feature_effect = { NAME = uses_magic 			FEATURE_TYPE = power	CHANCE = 100 }
+	$MODE$_feature_effect = { NAME = flies_above_ground 	FEATURE_TYPE = power	CHANCE = 100 }
+	$MODE$_feature_effect = { NAME = unbreaking_skin 		FEATURE_TYPE = power	CHANCE = 100 }
+	$MODE$_feature_effect = { NAME = disease_ridden  		FEATURE_TYPE = power	CHANCE = 100 }
+	$MODE$_feature_effect = { NAME = magical_sickness 		FEATURE_TYPE = power	CHANCE = 100 }
+	$MODE$_feature_effect = { NAME = streams_of_blood 		FEATURE_TYPE = power	CHANCE = 100 }
+	$MODE$_feature_effect = { NAME = streams_of_water 		FEATURE_TYPE = power	CHANCE = 100 }
+	$MODE$_feature_effect = { NAME = insect_companions 		FEATURE_TYPE = power	CHANCE = 100 }
+	$MODE$_feature_effect = { NAME = breaks_into_multiple	FEATURE_TYPE = power	CHANCE = 100 }
+	$MODE$_feature_effect = { NAME = hidden_limbs  			FEATURE_TYPE = power	CHANCE = 100 }
+	$MODE$_feature_effect = { NAME = hidden_tentacles 		FEATURE_TYPE = power	CHANCE = 100 }
+}
+
+power_requirements_table_effect = {
+	required_feature_effect = { NAME = ethereal_power	FEATURE_TYPE = power REQUIRES_FEATURE_TYPE = body_layout		REQUIRES_FEATURE_NAME = ethereal_layout }
+	
+	# Replication feels weird for things that aren't ethereal or eldritch
+	required_feature_effect = { NAME = breaks_into_multiple	FEATURE_TYPE = power REQUIRES_FEATURE_TYPE = body_layout	REQUIRES_FEATURE_NAME = ethereal_layout }
+	required_feature_effect = { NAME = breaks_into_multiple	FEATURE_TYPE = power REQUIRES_FEATURE_TYPE = body_layout	REQUIRES_FEATURE_NAME = eldritch_layout }
+	
+	# As does flight, though allow that for humanoids
+	required_feature_effect = { NAME = flies_above_ground	FEATURE_TYPE = power REQUIRES_FEATURE_TYPE = body_layout	REQUIRES_FEATURE_NAME = humanoid }
+	required_feature_effect = { NAME = flies_above_ground	FEATURE_TYPE = power REQUIRES_FEATURE_TYPE = body_layout	REQUIRES_FEATURE_NAME = ethereal_layout }
+	required_feature_effect = { NAME = flies_above_ground	FEATURE_TYPE = power REQUIRES_FEATURE_TYPE = body_layout	REQUIRES_FEATURE_NAME = eldritch_layout }
+}
+
+power_exclusivity_table_effect = {
+	exclusive_feature_effect = { NAME = cunning	FEATURE_TYPE = power 	EXCLUDES_FEATURE_TYPE = power	EXCLUDES_FEATURE_NAME = intelligent }
+	exclusive_feature_effect = { NAME = large	FEATURE_TYPE = power 	EXCLUDES_FEATURE_TYPE = power	EXCLUDES_FEATURE_NAME = huge }
+}
+
+head_multiplicity_table_effect = {
+	$MODE$_feature_effect = { NAME = one 				FEATURE_TYPE = head_multiplicity	CHANCE = 100 }
+	$MODE$_feature_effect = { NAME = zero 				FEATURE_TYPE = head_multiplicity	CHANCE = 20 }
+	$MODE$_feature_effect = { NAME = two 				FEATURE_TYPE = head_multiplicity	CHANCE = 20 }
+	$MODE$_feature_effect = { NAME = three				FEATURE_TYPE = head_multiplicity 	CHANCE = 20 }
+	$MODE$_feature_effect = { NAME = multiple 			FEATURE_TYPE = head_multiplicity	CHANCE = 20 }
+}
+
+head_multiplicity_requirements_table_effect = {
+	required_feature_effect = { NAME = zero		FEATURE_TYPE = head_multiplicity REQUIRES_FEATURE_TYPE = body_layout	REQUIRES_FEATURE_NAME = humanoid }
+	required_feature_effect = { NAME = two		FEATURE_TYPE = head_multiplicity REQUIRES_FEATURE_TYPE = body_layout	REQUIRES_FEATURE_NAME = humanoid }
+	required_feature_effect = { NAME = three	FEATURE_TYPE = head_multiplicity REQUIRES_FEATURE_TYPE = body_layout	REQUIRES_FEATURE_NAME = humanoid }
+	required_feature_effect = { NAME = multiple	FEATURE_TYPE = head_multiplicity REQUIRES_FEATURE_TYPE = body_layout	REQUIRES_FEATURE_NAME = humanoid }
+	required_feature_effect = { NAME = zero		FEATURE_TYPE = head_multiplicity REQUIRES_FEATURE_TYPE = body_layout	REQUIRES_FEATURE_NAME = bipedal }
+	required_feature_effect = { NAME = two		FEATURE_TYPE = head_multiplicity REQUIRES_FEATURE_TYPE = body_layout	REQUIRES_FEATURE_NAME = bipedal }
+	required_feature_effect = { NAME = three	FEATURE_TYPE = head_multiplicity REQUIRES_FEATURE_TYPE = body_layout	REQUIRES_FEATURE_NAME = bipedal }
+	required_feature_effect = { NAME = multiple	FEATURE_TYPE = head_multiplicity REQUIRES_FEATURE_TYPE = body_layout	REQUIRES_FEATURE_NAME = bipedal }
+	required_feature_effect = { NAME = zero		FEATURE_TYPE = head_multiplicity REQUIRES_FEATURE_TYPE = body_layout	REQUIRES_FEATURE_NAME = tripedal }
+	required_feature_effect = { NAME = two		FEATURE_TYPE = head_multiplicity REQUIRES_FEATURE_TYPE = body_layout	REQUIRES_FEATURE_NAME = tripedal }
+	required_feature_effect = { NAME = three	FEATURE_TYPE = head_multiplicity REQUIRES_FEATURE_TYPE = body_layout	REQUIRES_FEATURE_NAME = tripedal }
+	required_feature_effect = { NAME = multiple	FEATURE_TYPE = head_multiplicity REQUIRES_FEATURE_TYPE = body_layout	REQUIRES_FEATURE_NAME = tripedal }
+	required_feature_effect = { NAME = zero		FEATURE_TYPE = head_multiplicity REQUIRES_FEATURE_TYPE = body_layout	REQUIRES_FEATURE_NAME = quadripedal }
+	required_feature_effect = { NAME = two		FEATURE_TYPE = head_multiplicity REQUIRES_FEATURE_TYPE = body_layout	REQUIRES_FEATURE_NAME = quadripedal }
+	required_feature_effect = { NAME = three	FEATURE_TYPE = head_multiplicity REQUIRES_FEATURE_TYPE = body_layout	REQUIRES_FEATURE_NAME = quadripedal }
+	required_feature_effect = { NAME = multiple	FEATURE_TYPE = head_multiplicity REQUIRES_FEATURE_TYPE = body_layout	REQUIRES_FEATURE_NAME = quadripedal }
+}
+
+head_multiplicity_exclusivity_table_effect = {
+	# Intentionally empty
+}
+
+eye_multiplicity_table_effect = {
+	$MODE$_feature_effect = { NAME = zero 				FEATURE_TYPE = eye_multiplicity	CHANCE = 100 }
+	$MODE$_feature_effect = { NAME = one 				FEATURE_TYPE = eye_multiplicity	CHANCE = 100 }
+	$MODE$_feature_effect = { NAME = zero 				FEATURE_TYPE = eye_multiplicity	CHANCE = 100 }
+	$MODE$_feature_effect = { NAME = two 				FEATURE_TYPE = eye_multiplicity	CHANCE = 100 }
+	$MODE$_feature_effect = { NAME = three				FEATURE_TYPE = eye_multiplicity CHANCE = 100 }
+	$MODE$_feature_effect = { NAME = four				FEATURE_TYPE = eye_multiplicity CHANCE = 100 }
+	$MODE$_feature_effect = { NAME = multiple 			FEATURE_TYPE = eye_multiplicity	CHANCE = 100 }
+	$MODE$_feature_effect = { NAME = dozens				FEATURE_TYPE = eye_multiplicity CHANCE = 100 }
+}
+
+eye_multiplicity_requirements_table_effect = {
+	# Intentionally empty
+}
+
+eye_multiplicity_exclusivity_table_effect = {
+	# Intentionally empty
+}
+
+eye_style_table_effect = {
+	$MODE$_feature_effect = { NAME = wild_beast 		FEATURE_TYPE = eye_style	CHANCE = 100 }
+	$MODE$_feature_effect = { NAME = humanoid 			FEATURE_TYPE = eye_style	CHANCE = 100 }
+	$MODE$_feature_effect = { NAME = reptilian 			FEATURE_TYPE = eye_style	CHANCE = 100 }
+	$MODE$_feature_effect = { NAME = feline 			FEATURE_TYPE = eye_style	CHANCE = 100 }
+	$MODE$_feature_effect = { NAME = buglike			FEATURE_TYPE = eye_style 	CHANCE = 100 }
+	$MODE$_feature_effect = { NAME = hollowed			FEATURE_TYPE = eye_style 	CHANCE = 100 }
+	$MODE$_feature_effect = { NAME = ever_bleeding 		FEATURE_TYPE = eye_style	CHANCE = 100 }
+	$MODE$_feature_effect = { NAME = pulsing 			FEATURE_TYPE = eye_style	CHANCE = 100 }
+	$MODE$_feature_effect = { NAME = constantly_shifting	FEATURE_TYPE = eye_style	CHANCE = 100 }
+	$MODE$_feature_effect = { NAME = bulging 			FEATURE_TYPE = eye_style	CHANCE = 100 }
+	$MODE$_feature_effect = { NAME = distended 			FEATURE_TYPE = eye_style 	CHANCE = 100 }
+	$MODE$_feature_effect = { NAME = detached 			FEATURE_TYPE = eye_style 	CHANCE = 100 }
+	$MODE$_feature_effect = { NAME = hanging_out 		FEATURE_TYPE = eye_style	CHANCE = 100 }
+	$MODE$_feature_effect = { NAME = burning 			FEATURE_TYPE = eye_style	CHANCE = 100 }
+	$MODE$_feature_effect = { NAME = frozen 			FEATURE_TYPE = eye_style	CHANCE = 100 }
+	$MODE$_feature_effect = { NAME = fog_spewing 		FEATURE_TYPE = eye_style	CHANCE = 100 }
+	$MODE$_feature_effect = { NAME = ant_covered 		FEATURE_TYPE = eye_style 	CHANCE = 100 }
+	$MODE$_feature_effect = { NAME = spider_covered 	FEATURE_TYPE = eye_style 	CHANCE = 100 }
+	$MODE$_feature_effect = { NAME = beehive 			FEATURE_TYPE = eye_style	CHANCE = 100 }
+	$MODE$_feature_effect = { NAME = hive_covered 		FEATURE_TYPE = eye_style	CHANCE = 100 }
+	$MODE$_feature_effect = { NAME = massive 			FEATURE_TYPE = eye_style	CHANCE = 100 }
+	$MODE$_feature_effect = { NAME = miniscule 			FEATURE_TYPE = eye_style	CHANCE = 100 }
+	$MODE$_feature_effect = { NAME = mouth_like 		FEATURE_TYPE = eye_style 	CHANCE = 100 }
+	$MODE$_feature_effect = { NAME = dagger_pierced 	FEATURE_TYPE = eye_style 	CHANCE = 100 }
+	$MODE$_feature_effect = { NAME = metal_pierced 		FEATURE_TYPE = eye_style	CHANCE = 100 }
+	$MODE$_feature_effect = { NAME = voidlike 			FEATURE_TYPE = eye_style	CHANCE = 100 }
+	$MODE$_feature_effect = { NAME = reflective 		FEATURE_TYPE = eye_style	CHANCE = 100 }
+	$MODE$_feature_effect = { NAME = completely_dull 	FEATURE_TYPE = eye_style	CHANCE = 100 }
+	$MODE$_feature_effect = { NAME = screaming 			FEATURE_TYPE = eye_style 	CHANCE = 100 }
+}
+
+eye_style_requirements_table_effect = {
+	# Intentionally empty
+}
+
+eye_style_exclusivity_table_effect = {
+	# Intentionally empty
+}
+
+poison_delivery_method_table_effect = {
+	$MODE$_feature_effect = { NAME = fangs 				FEATURE_TYPE = poison_delivery_method	CHANCE = 100 }
+	$MODE$_feature_effect = { NAME = stinger 			FEATURE_TYPE = poison_delivery_method	CHANCE = 100 }
+	$MODE$_feature_effect = { NAME = corrosive_touch 	FEATURE_TYPE = poison_delivery_method	CHANCE = 100 }
+	$MODE$_feature_effect = { NAME = dripping			FEATURE_TYPE = poison_delivery_method 	CHANCE = 100 }
+	$MODE$_feature_effect = { NAME = spitting 			FEATURE_TYPE = poison_delivery_method	CHANCE = 100 }
+}
+
+poison_delivery_method_requirements_table_effect = {
+	# Intentionally empty
+}
+
+poison_delivery_method_exclusivity_table_effect = {
+	# Intentionally empty
+}
+
+disturbing_feature_table_effect = {
+	$MODE$_feature_effect = { NAME = pulsating_tumours 		FEATURE_TYPE = disturbing_feature	CHANCE = 100 }
+	$MODE$_feature_effect = { NAME = spikes 				FEATURE_TYPE = disturbing_feature	CHANCE = 100 }
+	$MODE$_feature_effect = { NAME = covered_with_mouths 	FEATURE_TYPE = disturbing_feature	CHANCE = 100 }
+	$MODE$_feature_effect = { NAME = no_mouth 				FEATURE_TYPE = disturbing_feature	CHANCE = 0 }	# Screw this, it requires way too many exclusions
+	$MODE$_feature_effect = { NAME = covered_with_faces 	FEATURE_TYPE = disturbing_feature	CHANCE = 100 }
+	$MODE$_feature_effect = { NAME = covered_in_scars 		FEATURE_TYPE = disturbing_feature	CHANCE = 100 }
+	$MODE$_feature_effect = { NAME = covered_in_pustules 	FEATURE_TYPE = disturbing_feature	CHANCE = 100 }
+	$MODE$_feature_effect = { NAME = covered_with_teeth 	FEATURE_TYPE = disturbing_feature	CHANCE = 100 }
+	$MODE$_feature_effect = { NAME = dripping_ooze 			FEATURE_TYPE = disturbing_feature	CHANCE = 100 }
+	$MODE$_feature_effect = { NAME = horrendous_grimace 	FEATURE_TYPE = disturbing_feature	CHANCE = 100 }
+	$MODE$_feature_effect = { NAME = monstrous_teeth 		FEATURE_TYPE = disturbing_feature	CHANCE = 100 }
+	$MODE$_feature_effect = { NAME = glowing_blood 			FEATURE_TYPE = disturbing_feature	CHANCE = 100 }
+	$MODE$_feature_effect = { NAME = abominable_sound 		FEATURE_TYPE = disturbing_feature	CHANCE = 100 }
+	$MODE$_feature_effect = { NAME = revolting_odor 		FEATURE_TYPE = disturbing_feature	CHANCE = 100 }
+	$MODE$_feature_effect = { NAME = sutured 				FEATURE_TYPE = disturbing_feature	CHANCE = 100 }
+	$MODE$_feature_effect = { NAME = unnaturally_bent_limbs FEATURE_TYPE = disturbing_feature	CHANCE = 100 }
+	$MODE$_feature_effect = { NAME = randomly_growing_limbs FEATURE_TYPE = disturbing_feature	CHANCE = 100 }
+	$MODE$_feature_effect = { NAME = backwards_head  		FEATURE_TYPE = disturbing_feature	CHANCE = 100 }
+	$MODE$_feature_effect = { NAME = flayed_head  			FEATURE_TYPE = disturbing_feature	CHANCE = 100 }
+	$MODE$_feature_effect = { NAME = translucent_skin  		FEATURE_TYPE = disturbing_feature	CHANCE = 100 }
+	$MODE$_feature_effect = { NAME = guts_on_surface  		FEATURE_TYPE = disturbing_feature	CHANCE = 100 }
+	$MODE$_feature_effect = { NAME = absurdly_long_legs  	FEATURE_TYPE = disturbing_feature	CHANCE = 100 }
+	$MODE$_feature_effect = { NAME = unnaturally_bent_limbs FEATURE_TYPE = disturbing_feature	CHANCE = 100 }
+	$MODE$_feature_effect = { NAME = blades_for_arms 		FEATURE_TYPE = disturbing_feature	CHANCE = 100 }
+	$MODE$_feature_effect = { NAME = blades_for_legs 		FEATURE_TYPE = disturbing_feature	CHANCE = 100 }
+	$MODE$_feature_effect = { NAME = blades_for_limbs 		FEATURE_TYPE = disturbing_feature	CHANCE = 100 }
+	$MODE$_feature_effect = { NAME = blade_out_of_mouth 	FEATURE_TYPE = disturbing_feature	CHANCE = 100 }
+	$MODE$_feature_effect = { NAME = huge_worm_like_mouth 	FEATURE_TYPE = disturbing_feature	CHANCE = 100 }
+	$MODE$_feature_effect = { NAME = lets_out_piercing_scream FEATURE_TYPE = disturbing_feature	CHANCE = 100 }
+	$MODE$_feature_effect = { NAME = ever_screaming 		FEATURE_TYPE = disturbing_feature	CHANCE = 100 }
+	$MODE$_feature_effect = { NAME = covered_with_spiders 	FEATURE_TYPE = disturbing_feature	CHANCE = 30 }
+	$MODE$_feature_effect = { NAME = covered_with_ants 		FEATURE_TYPE = disturbing_feature	CHANCE = 30 }
+	$MODE$_feature_effect = { NAME = covered_with_maggots 	FEATURE_TYPE = disturbing_feature	CHANCE = 30 }
+	$MODE$_feature_effect = { NAME = ever_rotting 			FEATURE_TYPE = disturbing_feature	CHANCE = 100 }
+	$MODE$_feature_effect = { NAME = growing_and_shrinking 	FEATURE_TYPE = disturbing_feature	CHANCE = 100 }
+	$MODE$_feature_effect = { NAME = floats_above_the_ground FEATURE_TYPE = disturbing_feature	CHANCE = 100 }
+	$MODE$_feature_effect = { NAME = covered_in_mouths 		FEATURE_TYPE = disturbing_feature	CHANCE = 100 }
+	$MODE$_feature_effect = { NAME = pukes_maggots 			FEATURE_TYPE = disturbing_feature	CHANCE = 10  }
+	$MODE$_feature_effect = { NAME = pukes_blood  			FEATURE_TYPE = disturbing_feature	CHANCE = 10  }
+	$MODE$_feature_effect = { NAME = pukes_fog  			FEATURE_TYPE = disturbing_feature	CHANCE = 10  }
+	$MODE$_feature_effect = { NAME = smiles_disturbingly 	FEATURE_TYPE = disturbing_feature	CHANCE = 100 }
+	$MODE$_feature_effect = { NAME = speaks_kindly 			FEATURE_TYPE = disturbing_feature	CHANCE = 30 }
+	$MODE$_feature_effect = { NAME = begs_for_mercy 		FEATURE_TYPE = disturbing_feature	CHANCE = 30 }
+	$MODE$_feature_effect = { NAME = whispers_to_itself 	FEATURE_TYPE = disturbing_feature	CHANCE = 30 }
+	$MODE$_feature_effect = { NAME = thousand_voices 		FEATURE_TYPE = disturbing_feature	CHANCE = 30 }
+	$MODE$_feature_effect = { NAME = covered_in_faces  		FEATURE_TYPE = disturbing_feature	CHANCE = 100 }
+	$MODE$_feature_effect = { NAME = covered_in_bodies 		FEATURE_TYPE = disturbing_feature	CHANCE = 100 }
+	$MODE$_feature_effect = { NAME = covered_in_bodies_stitched FEATURE_TYPE = disturbing_feature	CHANCE = 100 }
+	$MODE$_feature_effect = { NAME = speaks_childlike 		FEATURE_TYPE = disturbing_feature	CHANCE = 30 }
+	$MODE$_feature_effect = { NAME = speaks_fluently 		FEATURE_TYPE = disturbing_feature	CHANCE = 30 }
+	$MODE$_feature_effect = { NAME = thousands_of_cuts 		FEATURE_TYPE = disturbing_feature	CHANCE = 100 }
+	$MODE$_feature_effect = { NAME = second_mouth 			FEATURE_TYPE = disturbing_feature	CHANCE = 100 }
+	$MODE$_feature_effect = { NAME = arm_in_mouth 			FEATURE_TYPE = disturbing_feature	CHANCE = 100 }
+	$MODE$_feature_effect = { NAME = snake_mouth 			FEATURE_TYPE = disturbing_feature	CHANCE = 100 }
+}
+
+disturbing_feature_requirements_table_effect = {
+	required_feature_effect = { NAME = no_mouth			FEATURE_TYPE = disturbing_feature 	REQUIRES_FEATURE_TYPE = body_layout			REQUIRES_FEATURE_NAME = humanoid }
+	required_feature_effect = { NAME = no_mouth			FEATURE_TYPE = disturbing_feature	REQUIRES_FEATURE_TYPE = body_layout			REQUIRES_FEATURE_NAME = bipedal  }
+	
+	# Head must have an ostensibly right direction to be backwards
+	required_feature_effect = { NAME = backwards_head	FEATURE_TYPE = disturbing_feature 	REQUIRES_FEATURE_TYPE = body_layout			REQUIRES_FEATURE_NAME = humanoid }
+	required_feature_effect = { NAME = backwards_head	FEATURE_TYPE = disturbing_feature	REQUIRES_FEATURE_TYPE = body_layout			REQUIRES_FEATURE_NAME = bipedal  }
+	
+	# If it doesnt have a head or has too many, no reason for this
+	required_feature_effect = { NAME = flayed_head		FEATURE_TYPE = disturbing_feature	REQUIRES_FEATURE_TYPE = head_multiplicity	REQUIRES_FEATURE_NAME = one  }
+	required_feature_effect = { NAME = flayed_head		FEATURE_TYPE = disturbing_feature	REQUIRES_FEATURE_TYPE = head_multiplicity	REQUIRES_FEATURE_NAME = two  }
+	required_feature_effect = { NAME = flayed_head		FEATURE_TYPE = disturbing_feature	REQUIRES_FEATURE_TYPE = head_multiplicity	REQUIRES_FEATURE_NAME = three  }
+	
+	# Having blades as limbs requires being metallic, since it just feels a bit strange otherwise
+	required_feature_effect = { NAME = blades_for_arms		FEATURE_TYPE = disturbing_feature 	REQUIRES_FEATURE_TYPE = material			REQUIRES_FEATURE_NAME = metal }
+	required_feature_effect = { NAME = blades_for_legs		FEATURE_TYPE = disturbing_feature 	REQUIRES_FEATURE_TYPE = material			REQUIRES_FEATURE_NAME = metal }
+	required_feature_effect = { NAME = blades_for_limbs		FEATURE_TYPE = disturbing_feature 	REQUIRES_FEATURE_TYPE = material			REQUIRES_FEATURE_NAME = metal }
+	required_feature_effect = { NAME = blade_out_of_mouth	FEATURE_TYPE = disturbing_feature 	REQUIRES_FEATURE_TYPE = material			REQUIRES_FEATURE_NAME = metal }
+}
+
+disturbing_feature_exclusivity_table_effect = {
+	exclusive_feature_effect = { NAME = no_mouth			FEATURE_TYPE = disturbing_feature 	EXCLUDES_FEATURE_TYPE = disturbing_feature		EXCLUDES_FEATURE_NAME = covered_with_mouths }
+	exclusive_feature_effect = { NAME = no_mouth			FEATURE_TYPE = disturbing_feature 	EXCLUDES_FEATURE_TYPE = disturbing_feature		EXCLUDES_FEATURE_NAME = horrendous_grimace }
+	exclusive_feature_effect = { NAME = no_mouth			FEATURE_TYPE = disturbing_feature 	EXCLUDES_FEATURE_TYPE = disturbing_feature		EXCLUDES_FEATURE_NAME = monstrous_teeth }
+	exclusive_feature_effect = { NAME = covered_in_scars	FEATURE_TYPE = disturbing_feature 	EXCLUDES_FEATURE_TYPE = disturbing_feature		EXCLUDES_FEATURE_NAME = sutured }
+	
+	# Backwards head doesn't make sense for headless creatures
+	exclusive_feature_effect = { NAME = backwards_head		FEATURE_TYPE = disturbing_feature 	EXCLUDES_FEATURE_TYPE = head_multiplicity		EXCLUDES_FEATURE_NAME = zero }
+	
+	# Worms don't have limbs
+	exclusive_feature_effect = { NAME = absurdly_long_legs		FEATURE_TYPE = disturbing_feature 	EXCLUDES_FEATURE_TYPE = body_layout		EXCLUDES_FEATURE_NAME = serpentine }
+	exclusive_feature_effect = { NAME = unnaturally_bent_limbs	FEATURE_TYPE = disturbing_feature 	EXCLUDES_FEATURE_TYPE = body_layout		EXCLUDES_FEATURE_NAME = serpentine }
+	exclusive_feature_effect = { NAME = randomly_growing_limbs	FEATURE_TYPE = disturbing_feature 	EXCLUDES_FEATURE_TYPE = body_layout		EXCLUDES_FEATURE_NAME = serpentine }
+	exclusive_feature_effect = { NAME = blades_for_arms			FEATURE_TYPE = disturbing_feature 	EXCLUDES_FEATURE_TYPE = body_layout		EXCLUDES_FEATURE_NAME = serpentine }
+	exclusive_feature_effect = { NAME = blades_for_legs			FEATURE_TYPE = disturbing_feature 	EXCLUDES_FEATURE_TYPE = body_layout		EXCLUDES_FEATURE_NAME = serpentine }
+	exclusive_feature_effect = { NAME = blades_for_limbs		FEATURE_TYPE = disturbing_feature 	EXCLUDES_FEATURE_TYPE = body_layout		EXCLUDES_FEATURE_NAME = serpentine }
+	# A huge, worm-like mouth isn't exactly something to write home about on a... worm
+	exclusive_feature_effect = { NAME = huge_worm_like_mouth	FEATURE_TYPE = disturbing_feature 	EXCLUDES_FEATURE_TYPE = body_layout		EXCLUDES_FEATURE_NAME = serpentine }
+	
+	# It can only jabber on about one type of thing at a time
+	exclusive_feature_effect = { NAME = speaks_kindly		FEATURE_TYPE = disturbing_feature 	EXCLUDES_FEATURE_TYPE = disturbing_feature		EXCLUDES_FEATURE_NAME = begs_for_mercy }
+	exclusive_feature_effect = { NAME = speaks_kindly		FEATURE_TYPE = disturbing_feature 	EXCLUDES_FEATURE_TYPE = disturbing_feature		EXCLUDES_FEATURE_NAME = whispers_to_itself }
+	exclusive_feature_effect = { NAME = speaks_kindly		FEATURE_TYPE = disturbing_feature 	EXCLUDES_FEATURE_TYPE = disturbing_feature		EXCLUDES_FEATURE_NAME = thousand_voices }
+	exclusive_feature_effect = { NAME = speaks_kindly		FEATURE_TYPE = disturbing_feature 	EXCLUDES_FEATURE_TYPE = disturbing_feature		EXCLUDES_FEATURE_NAME = speaks_childlike }
+	exclusive_feature_effect = { NAME = speaks_kindly		FEATURE_TYPE = disturbing_feature 	EXCLUDES_FEATURE_TYPE = disturbing_feature		EXCLUDES_FEATURE_NAME = speaks_fluently }
+	exclusive_feature_effect = { NAME = whispers_to_itself	FEATURE_TYPE = disturbing_feature 	EXCLUDES_FEATURE_TYPE = disturbing_feature		EXCLUDES_FEATURE_NAME = thousand_voices }
+	exclusive_feature_effect = { NAME = whispers_to_itself	FEATURE_TYPE = disturbing_feature 	EXCLUDES_FEATURE_TYPE = disturbing_feature		EXCLUDES_FEATURE_NAME = speaks_childlike }
+	exclusive_feature_effect = { NAME = whispers_to_itself	FEATURE_TYPE = disturbing_feature 	EXCLUDES_FEATURE_TYPE = disturbing_feature		EXCLUDES_FEATURE_NAME = speaks_fluently }
+	exclusive_feature_effect = { NAME = thousand_voices		FEATURE_TYPE = disturbing_feature 	EXCLUDES_FEATURE_TYPE = disturbing_feature		EXCLUDES_FEATURE_NAME = speaks_childlike }
+	exclusive_feature_effect = { NAME = thousand_voices		FEATURE_TYPE = disturbing_feature 	EXCLUDES_FEATURE_TYPE = disturbing_feature		EXCLUDES_FEATURE_NAME = speaks_fluently }
+	exclusive_feature_effect = { NAME = speaks_childlike	FEATURE_TYPE = disturbing_feature 	EXCLUDES_FEATURE_TYPE = disturbing_feature		EXCLUDES_FEATURE_NAME = speaks_fluently }
+}

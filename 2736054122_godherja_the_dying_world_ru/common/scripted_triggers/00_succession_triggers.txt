@@ -13,11 +13,20 @@ special_succession_aversarian_trigger = {
 }
 
 special_succession_sjalvolki_trigger = {
-	culture_group = culture_group:gh_sjalvoki_group
+	culture_group = culture_group:gh_sjalvolki_group
 }
 
 historical_succession_access_single_heir_succession_law_trigger = {
-	culture_group = culture_group:gh_marcher_group
+	AND = {
+		OR = {
+			has_government = feudal_government
+			has_government = clan_government
+			has_government = landed_order_government
+		}
+		culture_group = culture_group:gh_marcher_group
+		has_government = landed_order_government
+	}
+	
 }
 
 eligible_for_aversarian_succession = {
