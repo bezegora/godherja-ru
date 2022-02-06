@@ -18,7 +18,7 @@
  
  
  MAD_DAD_CB_NAME:0 "Revenge for the Mad Dog"
- mad_dad_victory_desc_attacker:0 "You gain all de jure provinces in the the Kingdom of Kollos."
+ mad_dad_war_victory_desc_attacker:0 "You gain all de jure provinces in the the Kingdom of Kollos."
  mad_dad_war_victory_desc:0 "Gains all de jure provinces in the Kingdom of Kollos."
  
  mad_dad_white_peace_desc_defender:0 "This madman will not rule Kollos this day!"
@@ -40,14 +40,6 @@ monthly_magical_power_debug_desc:0 "+2 monthly magical power"
 msg_reclaim_the_east_invalidated_message:0 "War Goal Invalidated, either attacker is no longer [[aversarian|E]|E], holds the county of Asiupoli, or the Empire of Aironoi is created"
 reclaim_the_east_victory_desc_attacker:0 "All vassals under the defender and in de-jure Aironoi will become yours. All counties personally held by the defender will be yours."
 reclaim_the_east_victory_desc:0 "All vassals under the defender and in de-jure Aironoi will become the attacker's. All counties personally held by the defender will be taken by the attacker's."
-reclaim_the_east_war_victory_desc:0 "All vassals under the defender and in de-jure Aironoi will become the attacker's. All counties personally held by the defender will be taken by the attacker's."
-
-msg_iyrossi_slave_cb_invalidated_message:0 "War Goal Invalidated"
-msg_adabyss_invasion_war_invalidated_message:0 "War Goal Invalidated"
-msg_fogeater_invasion_war_invalidated_message:0 "War Goal Invalidated"
-msg_marcher_reunification_invalidated_message:0 "War Goal Invalidated"
-marcher_reunification_war_victory_desc:0 "[attacker.GetShortUIName|U] vassalises all titles within [defender.GetShortUINamePossessive] realm."
-marcher_reunification_defeat_desc_defender:0 "You will seize no territory and lose gold and prestige."
 
 reclaim_the_east_white_peace_desc_defender:0 "There will be no change in territory."
 reclaim_the_east_white_peace_desc:0 "There will be no change in territory."
@@ -56,6 +48,22 @@ reclaim_the_east_defeat_desc_defender:0 "The attacker will seize no territory an
 reclaim_the_east_defeat_desc:0 "You will seize no territory and lose gold and prestige."
 
 RECLAIM_THE_EAST_CB_NAME:0 "Reclaim the Eastern Empire"
+
+
+###game rules
+rule_fogeater_invasion:0 "[fogeater|E] Invasion"
+setting_default_fogeater_invasion:0 "Default"
+setting_default_fogeater_invasion_desc:0 "The [fogeaters|E] will invade in the late 14th century."
+setting_never_fogeater_invasion:1 "#high Never#!"
+setting_never_fogeater_invasion_desc:0 "The [fogeaters|E] will not invade."
+setting_random_fogeater_invasion:1 "#high Random#!"
+setting_random_fogeater_invasion_desc:0 "The [fogeaters|E] will invade at a random date."
+
+rule_adabyss_invasion:0 "Adabyss Invasion"
+setting_default_adabyss_invasion:0 "Default"
+setting_default_adabyss_invasion_desc:0 "The Adabyssians are given special events and troops to conquer the north."
+setting_never_adabyss_invasion:1 "#high Never#!"
+setting_never_adabyss_invasion_desc:0 "Adabyss gets no buffs."
 
 honored_of_cenware:0 "Honored of Cenware"
 parctic_regulars:0 "Partic Regulars"
@@ -77,14 +85,9 @@ black_sun.0001.title:0 "The Coronation"
 black_sun.0001.desc:0 "A glorious day, my legions cheer as I march through [capital.GetNameNoTier] ahead of a great procession. They cry the name [ROOT.GetCharacter.GetFirstNameNoTooltip] as they would sip a wine, drunk on glory and what was once lost hope.\n\nBut there is so much more to do, and even as my legions cheer and the people throw flowers before me in jubilation, my mind is trapped in the thoughts of our future. The Sjalvolki's nose has been bloodied, but our victories before now are nothing compared to the campaign ahead..."
 black_sun.0001.a:0 "For [aversaria|E], we march!"
 
-black_sun.0002.title:0 "Pronounce Myself an Incarnation of the Purest"
-black_sun.0002.desc:0 "The Omitiloi of the realm have convened to weigh my claims, sequestering themselves for the night in prayer and contemplation. At the crack of dawn, they emerged and made their proclamation; I am the Purest incarnate.\n\nAfter all, where else could my strategies have come from? Who else could have steered my sword as I slaughtered barbarian defilers? How else could I have been blessed with victory upon victory? No, there is no other explanation than divine inspiration—no, divine incarnation.\n\nLet the priests believe what they may, as long as they tell my soldiers to worship me by spilling heathen blood. Call me god-made-flesh, as long as you obey my every command. And kiss the banner of the Black Sun as much as you want, so long as it flies over every city of the Empire."
-black_sun.0002.a:0 "Worship or not, so long as you obey."
-
 AVERSARIA_VOREIAS:0 "Aversaria Voreias"
 
 AVERSARIAN_RECONQUEST_CB_NAME:0 "[aversarian|E] Reconquest"
-aversarian_reconquest_war_victory_desc:0 "Take all counties within the target kingdom"
 aversarian_reconquest_war_victory_desc_attacker:0 "Take all counties within the target kingdom"
 
 # Marcher Reforms
@@ -145,6 +148,56 @@ dedication_medium_decrease.tt:0 "#Y By publicly enforcing the [lifepath|E] we wi
 dedication_major_decrease.tt:0 "#Y By publicly enforcing the [lifepath|E] we will greatly decrease the Lifepath Dedication of our [faith|E].#!"
 dedication_massive_decrease.tt:0 "#Y By publicly enforcing the [lifepath|E] we will massively decrease the Lifepath Dedication of our [faith|E].#!"
 
+# Eastern Reforms
+
+eastern_reforms.0001.title:0 "The Investigation Begins"
+eastern_reforms.0001.desc:0 "[aversaria|E] bleeds, but I find my mind on other matters. Personal ones, but ones with great weight.\n\nValerix is dead, and the Legion knows not who killed him. The old man was a hero to us all, a living legend, and with his death we sit confused and lost. Who is our enemy? Who would see him dead? Truth be told, the list of suspects is great. Few [aversarian|E]s were fond of his message of peace with non-humans, or of the destruction of the [magi|E] caste, but to resort to such means? Who am I kidding, that's the most [aversarian|E] move of all.\n\nBut who? We must know, we need to know. Not only for Valerix's memory, but for our own guidance. We must find our enemy, and we must destroy them. There can be no other recourse.\n\nI have assembled a force to investigate this immediately. It's time we begin asking questions, and preparing our blades."
+eastern_reforms.0001.a:0 "For Aversaria!"
+
+eastern_reforms.0002.title:0 "A Governor's Word"
+eastern_reforms.0002.desc:0 "Governor Tetradia, effeminate as always, strides into my quarters smelling of a dozen different perfumes that no doubt cost more than an entire cohorts armor.\n\n"Legan," he starts, clearly doubting the worth of such a title, "Your investigators have been hounding me. I tire of it, I have information for you. Take it and kill your enemies, and then give me back my city."\n\nCommon words from him, but the scroll he drops before me has actually useful information. Movements from Öltenic tribesmen under secrecy, all towards the west. Several desertions from new recruits from eastern tribes shortly after the Valerix's death, and the report from the physicians who investigated Valerix's body reporting poison only created in the far east..."
+eastern_reforms.0002.a:0 "Damning evidence..."
+
+eastern_reforms.0003.title:0 "Masked Words"
+eastern_reforms.0003.desc:0 "Khatan Altan of the Kteumaxa tribe has sent me a rider, and a series of letters dictated by himself with notes added by several of my Öltenic vassals.\n\nThe letter describes a second narrative to the death of Legon Valerix. Attempts to bribe him and his clansmen by mysterious agents speaking in [aversarian|E] accents, Valerix's Öltenic guard of the night not deserting but disappearing shortly after, a woman who was otherwise renowned for her loyalty and honor. Finally, a similar accusation of eastern poison, but instead a note that the seller of which had been captured, and had given the information that the poison was shipped to our port by a third party before committing suicide...\n\nAltan states in the letter that he has no wish to make assumptions on my account, but tells me that the culprit is likely one within my own court..."
+eastern_reforms.0003.a:0 "Oh are they? Something to think about..."
+eastern_reforms.0003.a.tt:0 "With the evidence in our hands, we must now make a choice"
+
+eastern_reforms.0004.title:0 "Rebellion!"
+eastern_reforms.0004.desc:0 "Already, my men move east to bring justice to the Öltenic tribes. I feel doubt in my mind, but it is doubt that must be cast out. The traitors - those who I once considered kin - have proven themselves unworthy of their masks. I will take each one as I drive the dagger into their hearts, for the memory of Valerix must be avenged.\n\nTetradia has sent a token force and coin to assist in the endeavor, hardly any worth mentioning. A poor showing from my new 'ally'."
+eastern_reforms.0004.a:0 "Death to the foreigners!"
+
+eastern_reforms.0005.title:0 "Rebellion!"
+eastern_reforms.0005.desc:0 "Tetradia has, predictably, not taken the accusation well. He has declared me many things in a rather long call to arms against me - traitor, heretic, whore, bitch, lowborn, mongrel, thinblood, and four other pages of insults.\n\nHe does so because he is scared, he does so because he is a fool, he does so because he has no idea how soon he will face justice. Valerix's honored spirit stands with us, as do the Öltenic, and it is by my name and the honor of my Legion that neither will be done shame."
+eastern_reforms.0005.a:0 "Death to the traitor!"
+
+eastern_reforms.0006.title:0 "To Kill a Governor"
+eastern_reforms.0006.desc:0 "It is over.\n\nTetradia now sits before me in chains, sniveling for mercy one second and then cursing my name in the next. His personal guard - a force of Kikarsag mercenaries - lie dead or sit with swords to their back, having surrendered in the final moments of battle. Around us, his personal estate burns, and I watch as my men slowly escort his slaves out of the premises, the signs of long abuse and torture visible on their half-starved frames.\n\nThe sight of this... to say it fills me with anger would be underselling it, and I drive my blade into Tetradia's thigh as he lets out a high pitched scream.\n\n"Admit it, and I won't make this more painful than it has to be, Tetradia."\n\nThe man whimpers again, and I twist the blade as my men and his watch solemnly. Another scream, and then he nods through tears.\n\n"I did it, damn you! The fool was going to damn us all! Freed slaves? Ridding us of the [magi|E]? The man was an idiot! And so are you, you fucking lowborn whore!"\n\nThe blade is dragged from his thigh slowly, and I sigh.\n\n"My mother was the whore, Tetradia, I am the Legan." With one swift motion, Tetradia's head is lopped off his shoulders, and rolls down the ancient mosaic of his manor, blood filling the gaps.\n\nWith Tetradia dead, Valerix is avenged, and our bond with the Öltenic is forged. Now is the time to see Valerix's dream through, and prepare for the reconquest."
+eastern_reforms.0006.a:0 "For Aversaria, we avenge."
+eastern_reforms.0006.a.tt:0 "More decisions are now available"
+
+eastern_reforms.0007.title:0 "The Invasion Begins"
+eastern_reforms.0007.desc:0 "The time is now. The legion stands before me, just as they did for Valerix when the first march west began, with our new allies alongside them. Freed slaves, Öltenic tribesmen, volunteers from across the east. Before us stands the gates of Asiupoli, the great city glimmering in the wastes, even in its ruined post-Frodbrokna state.\n\nThe Fenvir are not to be discounted, and we will need bravery, skill, and cunning to defeat them. It wouldn't hurt to have more help as well, and the Öltenic have promised their aid in return for their claims in Ephesos. The southern region is now essentially wasteland, and while no doubt it will be a shame to give away rightful [aversarian|E] land, it would be a small price to pay for the entirety of the homeland."
+eastern_reforms.0007.a:0 "The Öltenic aided us before, let us prove the alliance true."
+eastern_reforms.0007.b:0 "[aversaria|E] will be united, all of it."
+
+eastern_reforms.0008.title:0 "The [aversarian|E]s Call for Aid"
+eastern_reforms.0008.desc:0 "Hecaeda, the woman-general of the west, has requested our aid once again. While she had already proven herself one of our people at heart, just as her mother was, she now proves herself a true Khatan of her people as well. She has vowed to retake the city of her people, and has requested her blood-bretheren in our clans join her. In return for aiding her in this war, she will give us the ancient lands of our people in Ephesos."
+eastern_reforms.0008.a:0 "We will aid our blood-sister as we should."
+eastern_reforms.0008.b:0 "Sister or not, she is on her own."
+
+eastern_reforms.0009.title:0 "The Eastern Union"
+eastern_reforms.0009.desc:0 "The Öltenic tribes of my mother have proven their loyalty, and have kept their offer. Already, Kteumaxan riders have joined our forces, with promises of the rest of their army coming soon. Surely united, no Fenvir scum could hope to face us?"
+eastern_reforms.0009.a:0 "For Aversaria! March!"
+
+eastern_reforms.0010.title:0 "The Eastern Union Shatters"
+eastern_reforms.0010.desc:0 "The Öltenic tribes have proven themselves without honor despite their fierce reputation. They have reneged on their promise to me, despite our shared blood, and have refused the call to arms."
+eastern_reforms.0010.a:0 "Then we will free our nation without them."
+
+eastern_reforms.0011.title:0 "The Invasion Begins"
+eastern_reforms.0011.desc:0 "Doubt still clouds my mind about Valerix and the truth of his death, but this is doubt that I must banish from my mind from the task ahead. Reform or no, Asiupoli can not be held by the Fenvir while [aversarian|E]s still live to take it back. With the pure-blooded sons of [aversaria|E] before me, my legion and the governor's personal forces both, the time is now to retake our city."
+eastern_reforms.0011.a:0 "Attack!"
+
 nick_the_uniter:0 "the Uniter"
 
 IYROSSI_SLAVE_WAR_NAME:0 "Iyrossi Slave Revolt"
@@ -158,7 +211,7 @@ marcher_reunification_defeat_desc:0 "[attacker.GetShortUIName|U] vassalises you 
 
 MARCHER_REUNIFICATION_CB_NAME:0 "Marcher Reunification"
 		
-migrate_to_kingdom_desc:0 "We have taken a large swath of land from the [aversarians|E], and my vassals are eager to move. Once these new migrants have arrived in their new territory, they will surely form new duchies and kingdoms."
+migrate_to_kingdom_desc:0 "We have taken a large swath of land from the [aversarian|E]s, and my vassals are eager to move. Once these new migrants have arrived in their new territory, they will surely form new duchies and kingdoms."
 migrate_to_kingdom_confirm:0 "Begin the migration"
 
 migrate_to_kingdom_berlisk:0 "Form the Kingdom of Berlisk"
@@ -246,7 +299,7 @@ jassi_opinion:0 "#E Jassi#! Opinion"
 iyronisti_opinion:0 "#E Iyronisti#! Opinion"
 oxalanti_opinion:0 "#E Oxalanti#! Opinion"
 scusstari_opinion:0 "#E Scusstari#! Opinion"
-kawoch_opinion:0 "#E Kawoch#! Opinion"
+amharian_opinion:0 "#E Amharian#! Opinion"
 doffore_opinion:0 "#E Doffore#! Opinion"
 fedagesh_opinion:0 "#E Fedagesh#! Opinion"
 kutma_opinion:0 "#E Kutma#! Opinion"
@@ -274,6 +327,10 @@ reform_aversarian_religion_bloodied_throne_destroyed:0 "The Bloody Throne has be
 tenet_citizenship_through_service_name:0 "Citizenship Through Service"
 tenet_citizenship_through_service_desc:0 "Purity is not something in one's blood, but rather something shown through one's actions. How is it our place to judge the sinner, when the sinner fights for us?"
 
+black_sun.0002.title:0 "Pronounce Myself an Incarnation of the Purest"
+black_sun.0002.desc:0 "The Omitiloi of the realm have convened to weigh my claims, sequestering themselves for the night in prayer and contemplation. At the crack of dawn, they emerged and made their proclamation; I am the Purest incarnate.\n\nAfter all, where else could my strategies have come from? Who else could have steered my sword as I slaughtered barbarian defilers? How else could I have been blessed with victory upon victory? No, there is no other explanation than divine inspiration—no, divine incartation.\n\nLet the priests believe what they may, as long as they tell my soldiers to worship me by spilling heathen blood. Call me god-made-flesh, as long as you obey my every command. And kiss the banner of the Black Sun as much as you want, as long as it flies over every city of the Empire once more."
+black_sun.0002.a:0 "Worship or not, as long as you obey."
+
 eastern_reforms.0013.title:0 "The Eastern Reforms"
 eastern_reforms.0013.desc:0 "Today marks a new day for [aversaria|E]. With the most controversial scholars dragged out of wherever they had once lived and plenty more writing the new scriptures at spearpoint, a new and better religion begins today. One which ends the magocracy, greatly pulls back our reliance on slavery, and greatly loosens the strict restrictions on who can be considered [aversarian|E].\n\nOur bretheren will no doubt fight this change with tooth and nail, but whether it takes a decade or a century, [aversaria|E] shall be born anew!"
 eastern_reforms.0013.a:0 "Our history begins now!"
@@ -290,7 +347,7 @@ free_the_slaves_decision_tooltip:0 "Free the Slaves"
 eastern_reforms_side_governor_decision_tooltip:0 "Side with the Governor"
 eastern_reforms_side_mongols_decision_tooltip:0 "Side with the Steppe"
 reform_aversarian_religion_tooltip:0 "Reform the Religion"
-iyrossi_kill_aversarians_decision_tooltip:0 "Kill [aversarians|E]"
+iyrossi_kill_aversarians_decision_tooltip:0 "Kill [aversarian|E]s"
 
 migrate_to_kingdom_berlisk_tooltip:0 "Migrate to Kingdom"
 migrate_to_kingdom_sjaklaki_tooltip:0 "Migrate to Kingdom"
@@ -402,17 +459,3 @@ migrate_to_kingdom_krassovce:0 "Form the Kingdom of Krassovce"
 migrate_to_kingdom_krassovce_tooltip:0 "Migrate to Kingdom"
 migrate_to_kingdom_maskav:0 "Form the Kingdom of Maskav"
 migrate_to_kingdom_maskav_tooltip:0 "Migrate to Kingdom"
-
-lost_shadow_port_notification:0 "Lost Shadow Port"
-lost_shadow_port_notification_control_increase.desc:0 "You have lost the Shadow Port in [county.GetNameNoTier] from increasing control."
-lost_shadow_port_notification_range.desc:0 "You have lost the Shadow Port in [county.GetNameNoTier] as it is no longer in your commerce raiding range"
-#Sarradon misc stuff
-amsari_loyalists:0 "Amsari Loyalists"
-company_mercs:0 "West Royal Trading Company Mercenaries"
-sarradon_reconquest_troops:0 "Sarradonian Reclaimers"
-sjalvolki_incursion_troops:0 "Sjalvolki Invaders"
-marcher_incursion_troops:0 "Marcher Companies"
-
-interaction_category_magic:0 "Magic"
-add_to_magic_list_interaction:0 "Add to Current Spell Targets"
-remove_from_magic_list_interaction:0 "Remove from Current Spell Targets"

@@ -714,16 +714,6 @@
  trait_berserker:0 "Berserker"
  trait_berserker_desc:0 "Once this character's blood starts to boil it will only be sated by the death of their enemies."
  trait_berserker_character_desc:0 "Once [ROOT.GetCharacter.GetFirstNamePossessiveNoTooltip] blood starts to boil it will only be sated by the death of [ROOT.GetCharacter.GetHerHis] enemies."
- trait_shieldmaiden_female:0 "Shieldmaiden"
- trait_shieldmaidens_female:0 "Shieldmaidens"
- trait_shieldmaiden_male:0 "Shieldswain"
- trait_shieldmaidens_male:0 "Shieldswains"
- trait_shieldmaiden_desc:0 "This character defies the normal structures of their society, fighting in the shield wall as any other warrior."
- trait_shieldmaiden_female_character_desc:0 "[ROOT.GetCharacter.GetFirstNameNoTooltip] defies the normal structures of [ROOT.GetCharacter.GetHerHis] society, fighting in the shield wall as though [ROOT.GetCharacter.GetSheHe] were a man."
- trait_shieldmaiden_male_character_desc:0 "[ROOT.GetCharacter.GetFirstNameNoTooltip] defies the normal structures of [ROOT.GetCharacter.GetHerHis] society, fighting in the shield wall as though [ROOT.GetCharacter.GetSheHe] were a woman."
- trait_poet:0 "Poet"
- trait_poet_desc:0 "This character enjoys spending their evenings giving rhyme and verse to their thoughts, feelings, and experiences."
- trait_poet_character_desc:0 "[ROOT.GetCharacter.GetFirstNameNoTooltip] enjoys spending [ROOT.GetCharacter.GetHerHis] evenings giving rhyme and verse to [ROOT.GetCharacter.GetHerHis] thoughts, feelings, and experiences."
  trait_varangian:0 "Varangian"
  trait_varangian_desc:0 "This character has served in the Byzantine Army as part of the Varangian Guard."
  trait_varangian_character_desc:0 "[ROOT.GetCharacter.GetFirstNameNoTooltip] has served in the Byzantine Army as part of the Varangian Guard."
@@ -732,7 +722,7 @@
  trait_viking_desc:0 "This character is a well-known plunderer of foreign settlements."
  trait_viking_character_desc:0 "[ROOT.GetCharacter.GetFirstNameNoTooltip] is a well-known plunderer of foreign settlements."
  trait_reincarnation:0 "Reincarnation"
- trait_reincarnation_desc:0 "This is not the first time this character walks upon Aeras."
+ trait_reincarnation_desc:0 "This is not the first time this character walks upon the earth."
  trait_reincarnation_desc_ancestor:0 "[ROOT.Char.GetSheHe|U] is said to be the reincarnation of [ROOT.Char.GetHerHis] [ROOT.Char.Custom2('RelationToMe', ROOT.Var('reincarnation_of').Char)], [ROOT.Var('reincarnation_of').Char.GetTitledFirstName]."
  trait_adventurer:0 "Adventurer"
  trait_adventurer_desc:0 "This character has lead a life of bravery and action as an adventurer."
@@ -940,97 +930,3 @@ trait_poet_character_desc:0 "[ROOT.GetCharacter.GetFirstNameNoTooltip] enjoys sp
  # Fame Groups
  trait_kinslayer:0 "Kinslayers"
  #trait_child_of_concubine: "trait_child_of_concubine"
- 
- #Lich traits
- trait_gh_divine:0 "Divine"
- trait_gh_divine_desc:0 "This [lich|E] knows there are indeed gods, and that they must be one of them."
- trait_gh_divine_character_desc:0 "[ROOT.GetCharacter.GetFirstNameNoTooltip] is a [lich|E] who knows there are indeed gods, and that [ROOT.GetCharacter.GetSheHe] must be one of them."
- 
- trait_gh_godhater:0 "God-Hater"
- trait_gh_godhater_desc:0 "This [lich|E] either believes the gods to be petty rivals they will destroy or rejects the existence of anything stronger than themselves whatsoever."
- trait_gh_godhater_character_desc:0 "[ROOT.GetCharacter.GetFirstNameNoTooltip] is a [lich|E] who either believes the gods to be petty rivals [ROOT.GetCharacter.GetSheHe] will destroy or rejects the existence of anything stronger than [ROOT.GetCharacter.GetHerHim] whatsoever."
- 
- trait_gh_destroyer:0 "Destroyer"
- trait_gh_destroyer_desc:0 "This [lich|E] knows that the living are weak fools whose very lives are insults to be answered. Naturally, this means that every living thing upon Aeras should be killed and turned into its far superior skeletal variety."
- trait_gh_destroyer_character_desc:0 "[ROOT.GetCharacter.GetFirstNameNoTooltip] is a [lich|E] who knows that the living are weak fools whose very lives are insults to be answered. Naturally, this means that every living thing upon Aeras should be killed and turned into its far superior skeletal variety."
-
- trait_gh_controller:0 "Controller"
- trait_gh_controller_desc:0 "This [lich|E] is more interested in making pathetic mortal beings bow than slaying them all. Risen skeletons are just so drab! Who wants to be worshipped by beings that can’t even beg you to stop torturing them?"
- trait_gh_controller_character_desc:0 "[ROOT.GetCharacter.GetFirstNameNoTooltip] is a [lich|E] more interested in making pathetic mortal beings bow than slaying them all. Risen skeletons are just so drab! Who wants to be worshipped by beings that can’t even beg you to stop torturing them?"
- 
- trait_gh_imperious:0 "Imperious"
- trait_gh_imperious_desc:0 "This [lich|E] finds themselves particularly angry that there may exist realms not worshipping them as a god yet, and considers ending this disgusting and flagrant disregard for their rightful rule an extremely high priority."
- trait_gh_imperious_character_desc:0 "[ROOT.GetCharacter.GetFirstNameNoTooltip] is a [lich|E] who finds [ROOT.GetCharacter.GetHerselfHimself] particularly angry that there may exist realms not worshipping [ROOT.GetCharacter.GetHerHim] as a god yet, and considers ending this disgusting and flagrant disregard for [ROOT.GetCharacter.GetHerHis] rightful rule an extremely high priority."
- 
- trait_gh_logical:0 "Logical"
- trait_gh_logical_desc:0 "This [lich|E] is slow and methodical, preferring to destroy their enemies with long-running plots and machinations (that often blow up in their own faces, but just as Scarlet-King Lich Avedexar ‘the Dreaded’ Avedexarax once said after his attempted raid into [chevalie|E] ended with his entire army being wiped out and his body destroyed by several Marcher [anti_magi|E], his head then rolling into a ravine where he found an ancient tomb containing the terrible ritual of voidrending, "Just as planned!”)."
- trait_gh_logical_character_desc:0 "[ROOT.GetCharacter.GetFirstNameNoTooltip] is a slow and methodical [lich|E], preferring to destroy [ROOT.GetCharacter.GetHerHis] enemies with long-running plots and machinations (that often blow up in [ROOT.GetCharacter.GetHerHis] face, but just as Scarlet-King Lich Avedexar ‘the Dreaded’ Avedexarax once said after his attempted raid into [chevalie|E] ended with his entire his body destroyed by several Marcher [anti_magi|E], his head then rolling into a ravine where he found an ancient tomb containing the terrible ritual of voidrending, "Just as planned!”)."
- 
- trait_gh_impulsive:0 "Impulsive"
- trait_gh_impulsive_desc:0 "This [lich|E] is one of action! They didn’t spend decades preparing their awful ritual or lifetimes after brutalizing anyone within eyesight to wait and be patient! If there is anyone not worshipping them as a god, then they’ll visit these fools personally until they learn their lesson!"
- trait_gh_impulsive_character_desc:0 "[ROOT.GetCharacter.GetFirstNameNoTooltip] is a [lich|E] of action! [ROOT.GetCharacter.GetSheHe] didn’t spend decades preparing [ROOT.GetCharacter.GetHerHis] awful ritual or lifetimes after brutalizing anyone within eyesight to wait and be patient! If there is anyone not worshipping [ROOT.GetCharacter.GetHerHim] as a god, then [ROOT.GetCharacter.GetSheHe] will visit these fools personally until they learn their lesson!"
- 
- trait_gh_perfectionist:0 "Perfectionist"
- trait_gh_perfectionist_desc:0 "This [lich|E] believes that stronger piles of angrily resurrected bones are greatly superior to really big piles of angrily resurrected bones."
- trait_gh_perfectionist_character_desc:0 "[ROOT.GetCharacter.GetFirstNameNoTooltip] is a [lich|E] who believes that stronger piles of angrily resurrected bones are greatly superior to really big piles of angrily resurrected bones."
-
- trait_gh_pragmatic:0 "Pragmatic"
- trait_gh_pragmatic_desc:0 "This [lich|E] doesn’t particularly care if their resurrected servants can hardly figure out which end to hold a sword as long as there are thousands to badly swing them."
- trait_gh_pragmatic_character_desc:0 "[ROOT.GetCharacter.GetFirstNameNoTooltip] is a [lich|E] who doesn’t particularly care if [ROOT.GetCharacter.GetHerHis] resurrected servants can hardly figure out which end to hold a sword as long as there are thousands to badly swing them."
- 
- trait_gh_luxurious:0 "Luxurious"
- trait_gh_luxurious_desc:0 "This [lich|E] knows that to live a life of undeath is to live a life of splendor. How would all of the other abominations against the gods know that this Lich is the greatest if they don’t dress like it?"
- trait_gh_luxurious_character_desc:0 "[ROOT.GetCharacter.GetFirstNameNoTooltip] is a [lich|E] who knows that to live a life of undeath is to live a life of splendor. How would all of the other abomination’s against the gods know that [ROOT.GetCharacter.GetSheHe] is the greatest if [ROOT.GetCharacter.GetSheHe] doesn't dress like it?"
-
- trait_gh_dour:0 "Dour"
- trait_gh_dour_desc:0 "This [lich|E], while still as flamboyant as one would expect, is far more austere than many of their kind. Some Liches just get tired of the century-long parties, especially when the neighboring necropolis never seems to be able to be quiet!"
- trait_gh_dour_character_desc:0 "[ROOT.GetCharacter.GetFirstNameNoTooltip] is a [lich|E] who, while still as flamboyant as one would expect, is far more austere than many of [ROOT.GetCharacter.GetHerHis] kind. Some Liches just get tired of the century-long parties, especially when the neighboring necropolis never seems to be able to be quiet!"
- 
- trait_gh_education_lich_1:0 "Young Lich"
- trait_gh_education_lich_1_desc:0 "The Young [lich|E] has only taken their baby steps at becoming a disgusting abomination against all laws that govern life, and has yet to gather the black knowledge of many more aged and learned Liches. Or perhaps they’re just terrible at the whole Lich thing, though they’d never admit it."
- trait_gh_education_lich_1_character_desc:0 "[ROOT.GetCharacter.GetFirstNameNoTooltip] has only taken [ROOT.GetCharacter.GetHerHis] baby steps at becoming a disgusting abomination against all laws that govern life, and has yet to gather the black knowledge of many more aged and learned [liches|E]. Or perhaps [ROOT.GetCharacter.GetSheHe] is just terrible at the whole Lich thing, though [ROOT.GetCharacter.GetSheHe] will never admit it."
- 
- trait_gh_education_lich_2:0 "Initiate Lich"
- trait_gh_education_lich_2_desc:0 "The Initiate [lich|E] is still considered on the lower end of power compared to many of their contemporaries, either because of still being newly turned or from incompetence, though you wouldn’t think so by listening to their ranting."
- trait_gh_education_lich_2_character_desc:0 "[ROOT.GetCharacter.GetFirstNameNoTooltip] is still considered on the lower end of power compared to many of [ROOT.GetCharacter.GetHerHis] contemporaneous [liches|E], either because of still being newly turned or from incompetence, though you wouldn’t think so by listening to [ROOT.GetCharacter.GetHerHis] ranting."
- 
- trait_gh_education_lich_3:0 "Lich"
- trait_gh_education_lich_3_desc:0 "The [lich|E] is the most average of their kind, with powers most would consider maddening and a demeanor most would call ‘uncomfortable to have to be around’."
- trait_gh_education_lich_3_character_desc:0 "[ROOT.GetCharacter.GetFirstNameNoTooltip] is still considered average for a [lich|E], with powers most would consider maddening and a demeanor most would call ‘uncomfortable to have to be around’."
- 
- trait_gh_education_lich_4:0 "Powerful Lich"
- trait_gh_education_lich_4_desc:0 "The Powerful [lich|E] has, through age or power, established themselves as a powerful example of their kind and a feared necromancer capable of causing much destruction and showing truly magical levels of narcissism."
- trait_gh_education_lich_4_character_desc:0 "[ROOT.GetCharacter.GetFirstNameNoTooltip] has, through age or power, established [ROOT.GetCharacter.GetHerselfHimself] as a powerful example of a [lich|E] and a feared necromancer capable of causing much destruction and showing truly magical levels of narcissism."
- 
- trait_gh_education_lich_5:0 "Elder Lich"
- trait_gh_education_lich_5_desc:0 "The Elder [lich|E] stands as one of the most powerful of their dark kind. Whether they have reached such terrifying heights through a disgustingly long mockery of life or from obscene levels of powers within their soul, they stand as a Lich more capable than any other at causing great destruction and delivering infamous multi-day rants not requiring petty human interruptions like ‘breathing’ or ‘giving others a chance to talk’. It normally helps that most Elder Liches are so old that their opinions on modern culture tend to be generously described as ‘outdated’."
- trait_gh_education_lich_5_character_desc:0 "[ROOT.GetCharacter.GetFirstNameNoTooltip] stands as one of the most powerful of [ROOT.GetCharacter.GetHerHis] dark kind. Whether [ROOT.GetCharacter.GetSheHe] have reached such terrifying heights through a disgustingly long mockery of life or from obscene levels of powers within [ROOT.GetCharacter.GetHerHis] soul, they stand as a [lich|E] more capable than any other at causing great destruction and delivering infamous multi-day rants not requiring petty human interruptions like ‘breathing’ or ‘giving others a chance to talk’. It normally helps that most Elder Liches are so old that their opinions on modern culture tend to be generously described as ‘outdated’."
- 
- trait_gh_cult_everlasting:0 "Kult Wiczośwoci"
- trait_gh_cult_everlasting_desc:0 "This [lich|E] was once a member of the Kult Wiczośwoci, or the ‘Cult of the Everlasting’ in ancient Ojyczaynz. This marks them as one of the original Liches and a disciple of the legendary [vilas_venslau|E]. One of the perpetrators of the horrific [sorrowing_of_oejeynica|E], they are considered by foreigners to be a horrible monster, but are also recognized as possibly one of the most dangerous individuals who has ever lived or unlived. A member of the Cult of Everlasting even enjoys one benefit almost impossible to earn for any other Lich, the begrudging respect of most Liches."
- trait_gh_cult_everlasting_character_desc:0 "[ROOT.GetCharacter.GetFirstNameNoTooltip] was once a member of the Kult Wiczośwoci, or the ‘Cult of the Everlasting’ in ancient Ojyczaynz. This marks [ROOT.GetCharacter.GetHerHis] as one of the original [liches|E] and a disciple of the legendary [vilas_venslau|E]. One of the perpetrators of the horrific [sorrowing_of_oejeynica|E], [ROOT.GetCharacter.GetSheHe] are considered by foreigners to be a horrible monster, but are also recognized as possibly one of the most dangerous individuals who has ever lived or unlived. [ROOT.GetCharacter.GetSheHe] even enjoys one benefit almost impossible to earn for any other Lich, the begrudging respect of most Liches."
- 
- trait_gh_master_cult_everlasting:0 "Mstrnz Kult Wiczośwoci"
- trait_gh_master_cult_everlasting_desc:0 "This [lich|E] was once the master of the Kult Wiczośwoci, or the ‘Cult of the Everlasting’ in ancient Ojyczaynz. This marks them as the progenitor of nearly every [lich|E] on [the_continent|E]. Possibly the most powerful Lich to ever live, even the infamously spiteful and infighting-minded Liches of the [lichdoms|E] are forced to give respect to they who began the [sorrowing_of_oejeynica|E]."
- trait_gh_master_cult_everlasting_character_desc:0 "[ROOT.GetCharacter.GetFirstNameNoTooltip] was once the master of the Kult Wiczośwoci, or the ‘Cult of the Everlasting’ in ancient Ojyczaynz. This marks [ROOT.GetCharacter.GetHerHim] as the progenitor of nearly every [lich|E] on [the_continent|E]. Possibly the most powerful Lich to ever live, even the infamously spiteful and infighting-minded Liches of the [lichdoms|E] are forced to give respect to [ROOT.GetCharacter.GetSheHe] who began the [sorrowing_of_oejeynica|E]."
- 
- trait_gh_arch_lich_1:0 "Arch Lich"
- trait_gh_arch_lich_1_desc:0 "A true [archlich|E], this [lich|E] has done the near impossible and temporarily subdued enough rival Liches of the [lichdoms|E] to be recognized as an Archlich, supreme ruler of all Liches. This means they likely lead a massive force of the undead and their peerage consists of a coven of some of the most powerful [magi|E] currently in existence. Whether or not they actually use any of this before one of their subordinates does the traditional political assassination remains yet to be seen..."
- trait_gh_arch_lich_character_desc:0 "[ROOT.GetCharacter.GetFirstNameNoTooltip] is a true [archlich|E], a [lich|E] that has done the near impossible and temporarily subdued enough rival Liches of the [lichdoms|E] to be recognized as an Archlich, supreme ruler of all Liches. This means [ROOT.GetCharacter.GetSheHe] likely leads a massive force of the undead and [ROOT.GetCharacter.GetHerHis] peerage consists of a coven of some of the most powerful [magi|E] currently in existence. Whether or not [ROOT.GetCharacter.GetSheHe] actually uses any of this before one of [ROOT.GetCharacter.GetHerHis] subordinates does the traditional political assassination remains yet to be seen..."
- 
- trait_gh_disconnected:0 "Disconnected"
- trait_gh_disconnected_desc:0 "This [lich|E] has become disconnected from the world, apparently having lost the ability to manipulate their body."
- trait_gh_disconnected_character_desc:0 "[ROOT.GetCharacter.GetFirstNameNoTooltip] has become disconnected from the world, apparently having lost the ability to manipulate [ROOT.GetCharacter.GetHerHis] body."
- 
- trait_gh_debodied:0 "Debodied"
- trait_gh_debodied_desc:0 "This [lich|E] has had their body destroyed, but their skull remains. They are likely quite angry about this fact, and have also lost almost all of their magic."
- trait_gh_debodied_character_desc:0 "[ROOT.GetCharacter.GetFirstNameNoTooltip] has had [ROOT.GetCharacter.GetHerHis] body destroyed, but [ROOT.GetCharacter.GetHerHis] skull remains. [ROOT.GetCharacter.GetHerHis] are likely quite angry about this fact, and have also lost almost all of [ROOT.GetCharacter.GetHerHis] magic."
- 
- trait_gh_overvain:0 "Overvain"
- trait_gh_overvain_desc:0 "This [lich|E] has become overvain, a type of Lich-based insanity. With their pretensions at ruling the universe unanswered and an eternity of life providing little actual change, they have gone mad with self-obsession, and now endlessly attempt to one-up themselves as they destroy themselves in attempts at ‘beautification’."
- trait_gh_overvain_character_desc:0 "[ROOT.GetCharacter.GetFirstNameNoTooltip] has become overvain, a type of [lich|E]-based insanity. With their pretensions at ruling the universe unanswered and an eternity of life providing little actual change, they have gone mad with self-obsession, and now endlessly attempt to one-up themselves as they destroy themselves in attempts at ‘beautification’."
- 
- trait_gh_soulshadowed:0 "Soulshadowed"
- trait_gh_soulshadowed_desc:0 "Soulshadowed is a polite description used by [liches|E] to describe the collapse of their undead mind. Those necromancers that experience the sickness tend to become increasingly distant and uncaring of the world around them, struggling to comprehend sentences and regularly appearing to be ‘lost’ in odd daydreams, visions or nightmares. It is unknown what exactly causes it, but different reasons have included a rediscovered trauma, magical damage to their binding, or that it's an inevitability of the lives of Liches is unknown. The last is most likely the most dreaded for Liches themselves, many having frantically attempted to find a way to stave off the madness for centuries."
- trait_gh_soulshadowed_character_desc:0 "[ROOT.GetCharacter.GetFirstNameNoTooltip] is soulshadowed, a polite description used by [liches|E] to describe the collapse of [ROOT.GetCharacter.GetHerHis] undead mind. [ROOT.GetCharacter.GetFirstNameNoTooltip] is increasingly distant and uncaring of the world around them, struggling to comprehend sentences and regularly appearing to be ‘lost’ in odd daydreams, visions or nightmares. It is unknown what exactly causes it, but different reasons that have been included are a rediscovered trauma, magical damage to their binding, or that it's an inevitability of the lives of Liches is unknown. The last is most likely the most dreaded for Liches themselves, many having frantically attempted to find a way to stave off the madness for centuries."
- 

@@ -23,25 +23,6 @@
  ACHIEVEMENT_FILTER_UNLOCKED_TOOLTIP:0 "Filter the list of Achievements to display unlocked Achievements"
  ACHIEVEMENT_FILTER_LOCKED_TOOLTIP:0 "Filter the list of Achievements to display locked Achievements"
  ACHIEVEMENT_FILTER_POSSIBLE_TOOLTIP:0 "Filter the list of Achievements to display all Achievements possible in the current playthrough"
-
- GAME_RULES_PRESET_DROPDOWN_NO_SELECTED_BODY:0 "You have no saved Presets"
- GAME_RULES_PRESET_DROPDOWN_NO_SELECTED:0 "Select a saved preset"
- SAVE_PRESET_HEADER:0 "Save Preset"
-
- SAVE_PRESET_SAVE_AS_LABEL:0 "Save preset as:"
- DELETE_SELECTED_PRESET_BUTTON_TOOLTIP:0 "Delete selected preset"
- DELETE_PRESET_WITH_NAME_BUTTON_TOOLTIP:0 "Delete preset [JominiGameRules.GetPresetSaveName|i]"
- SAVE_PRESET_BUTTON_TOOLTIP:0 "Save preset"
- OVERWRITE_PRESET_BUTTON_TOOLTIP:0 "Overwrite preset [JominiGameRules.GetPresetSaveName|i]"
-
- OVERWRITE_GAME_RULES_PRESET_TITLE:0 "Overwrite Rules Preset"
- OVERWRITE_GAME_RULES_PRESET_BODY:0 "Are you sure you want to overwrite the preset $PRESET_NAME|i$ ?"
- OVERWRITE_GAME_RULES_PRESET_ACCEPT:0 "Overwrite"
- DELETE_GAME_RULES_PRESET_TITLE:0 "Delete Rules Preset"
- DELETE_GAME_RULES_PRESET_BODY:0 "Are you sure you want to delete the preset $PRESET_NAME|i$ ?"
- DELETE_GAME_RULES_PRESET_ACCEPT:0 "Delete"
-
- GAME_RULES_PRESET_DIFFICULTY:0 "Difficulty: [GameRuleSetting.GetName]"
  
  ACHIEVEMENT_FILTER_BUTTON_ALL:0 "All"
  ACHIEVEMENT_FILTER_BUTTON_UNLOCKED:0 "Unlocked"
@@ -190,6 +171,14 @@
  setting_on_generate_families_ai_only:1 "#high On (AI Only)#!"
  setting_on_generate_families_ai_only_desc:0 "Most landed historical AI characters with no recorded family will have a spouse and up to three children generated for them. This increases the risk of an early game over."
  
+ rule_mongol_invasion:0 "Mongol Invasion"
+ setting_default_mongol_invasion:0 "Default"
+ setting_default_mongol_invasion_desc:0 "The Mongols will invade around the year 1200."
+ setting_never_mongol_invasion:1 "#high Never#!"
+ setting_never_mongol_invasion_desc:0 "The Mongols will not invade."
+ setting_random_mongol_invasion:1 "#high Random#!"
+ setting_random_mongol_invasion_desc:0 "The Mongols will invade at a random date."
+ 
  rule_exclave_independence:0 "Exclave Independence"
  setting_off_exclave_independence:1 "#high Off#!"
  setting_off_exclave_independence_desc:0 "Independent Rulers can have exclaves (disconnected land) anywhere in the world."
@@ -241,40 +230,14 @@
  setting_matrilineal_marriages_female_and_equal_desc:0 "AI characters will only arrange [matrilineal|E] marriages if part of a [GetFaithDoctrine('doctrine_gender_female_dominated').GetBaseName] or [GetLaw('equal_law').GetName] realm. Like with #high $setting_default_matrilineal_marriages$#! rules, [patrilineal|E] marriages still happen if deemed favorable enough."
  setting_matrilineal_marriages_never:0 "#high Never#!"
  setting_matrilineal_marriages_never_desc:0 "AI characters will never arrange [matrilineal|E] marriages, unless part of a [GetFaithDoctrine('doctrine_gender_female_dominated').GetBaseName] realm."
-
- rule_dlc_fp1_scandinavian_adventurers:0 "Adventure System"
- setting_fp1_scandi_adventurers_rare:0 "Rare"
- setting_fp1_scandi_adventurers_rare_desc:0 "Adventurers will try to target things every 15 years."
- setting_fp1_scandi_adventurers_occasional:0 "Occasional"
- setting_fp1_scandi_adventurers_occasional_desc:0 "Adventurers will try to target things every 10 years."
- setting_fp1_scandi_adventurers_frequent:0 "Frequent"
- setting_fp1_scandi_adventurers_frequent_desc:0 "Adventurers will try to target things every 5 years."
- setting_fp1_scandi_adventurers_apocalyptic:0 "Apocalyptic"
- setting_fp1_scandi_adventurers_apocalyptic_desc:1 "Adventurers will try to target things every year, AI characters do not require specific traits to launch [varangian_adventures|E]."
- setting_fp1_scandi_adventurers_off:0 "Off"
- setting_fp1_scandi_adventurers_off_desc:0 "Adventurers will never try to target things."
  
- rule_gedeora:0 "[gedeora|E]"
+ rule_gedeora_rule:0 "[gedeora|E]"
  setting_gedeora_enabled:0 "Enabled"
  setting_gedeora_enabled_desc:0 "[gedeora|E] will randomly shake the world, inflicting a variety of unpredictable effects around once every 5 years."
  setting_gedeora_rare:0 "Rare"
  setting_gedeora_rare_desc:0 "[gedeora|E] will only rarely appear - about once every 20 years."
  setting_gedeora_disabled:0 "Disabled"
  setting_gedeora_disabled_desc:0 "[gedeora|E] will not appear."
-
- rule_fogeater_invasion:0 "[fogeater|E] Invasion"
- setting_default_fogeater_invasion:0 "Default"
- setting_default_fogeater_invasion_desc:0 "The [fogeaters|E] will invade in the late 14th century."
- setting_never_fogeater_invasion:1 "#high Never#!"
- setting_never_fogeater_invasion_desc:0 "The [fogeaters|E] will not invade."
- setting_random_fogeater_invasion:1 "#high Random#!"
- setting_random_fogeater_invasion_desc:0 "The [fogeaters|E] will invade at a random date."
-
- rule_adabyss_invasion:0 "Adabyss Invasion"
- setting_default_adabyss_invasion:0 "Default"
- setting_default_adabyss_invasion_desc:0 "The Adabyssian Invasion will begin from 50-80 years after game start."
- setting_never_adabyss_invasion:1 "#high Never#!"
- setting_never_adabyss_invasion_desc:0 "Adabyss will not invade the north."
  
  rule_cenware_conquest_extent:0 "Cenware's Conquest: Extent"
  setting_cenware_conquest_mainland_etepezea:0 "Mainland Etepezea"
@@ -310,7 +273,7 @@
  setting_story_content_disabled:0 "#high Disabled#!"
  setting_story_content_disabled_desc:0 "For players who feel that opening events disrupt their head canon, roleplaying, or etc., story content is disabled."
  
- rule_fog_speed:0 "Fog Spread Speed"
+ rule_fog_speed:0 "[fog|E] Spread Speed"
  setting_fog_speed_disabled:0 "Disabled"
  setting_fog_speed_disabled_desc:0 "The [fog|E] will not spread."
  setting_fog_speed_glacial:0 "Glacial"
@@ -335,25 +298,3 @@
  setting_fog_spread_sarradon_enabled_desc:0 "The [fog|E] can and will cross the sea and arrive on the shores of [sarradon|E]."
  setting_fog_spread_sarradon_disabled:0 "Disabled"
  setting_fog_spread_sarradon_disabled_desc:0 "The [fog|E] will be unable to cross into [sarradon|E]."
- 
- rule_hammarts_wild_ride:0 "Hammart's Wild Ride"
- setting_hammarts_wild_ride_enabled:0 "Enabled"
- setting_hammarts_wild_ride_enabled_desc:0 "Every living character outside of Chevalie, and also Hammart, will become a level 20 Magi with education in all forms of magic. This is just a for-fun setting, performace not guaranteed."
- setting_hammarts_wild_ride_disabled:0 "Disabled"
- setting_hammarts_wild_ride_disabled_desc:0 "Magical trait distribution will be as in a normal game."
- 
- rule_wasteland_color:0 "Wasteland Color"
- setting_wasteland_color_gray:0 "Gray"
- setting_wasteland_color_gray_desc:0 "Empty counties will be gray on the map."
- setting_wasteland_color_white:0 "White"
- setting_wasteland_color_white_desc:0 "Empty counties will be white on the map."
- setting_wasteland_color_black:0 "Black"
- setting_wasteland_color_black_desc:0 "Empty counties will be black on the map."
- 
- ##############
- # CATEGORIES #
- ##############
- general_category_name:0 "General"
- borders_category_name:0 "Borders"
- magic_category_name:0 "Magic"
- story_content_category_name:0 "Story Content #X (MAY CONTAIN SPOILERS)#!"
