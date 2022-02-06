@@ -27,10 +27,10 @@
  pryonism_negative_dreams_desc:0 "Influence their dreams with horrible nightmares."
  pryonism_positive_dreams_desc:0 "Influence their dreams with glimpses of paradise."
  
- khmet_towers_decision:0 "Reactivate The Tak'han"
- khmet_towers_decision_tooltip:1 "Attain ownership of all Holy Sites of our religion and begin the process of reactivating these ancient safeguards!"
- khmet_towers_decision_desc:0 "Long ago we were entrusted with a sacred task by He Who Was, and we have failed him! We will return to the zenith of our power and retake the mantle of service we have forsaken for far too many years. \n\n The path ahead is long, ardous, and full of suffering; but we shall bare it for the sake of all."
- khmet_towers_decision_confirm:0 "Our Duty Done, His Will Shall Be Done."
+ kemsar_towers_decision:0 "Reactivate The Tak'han"
+ kemsar_towers_decision_tooltip:1 "Attain ownership of all Holy Sites of our religion and begin the process of reactivating these ancient safeguards!"
+ kemsar_towers_decision_desc:0 "Long ago we were entrusted with a sacred task by He Who Was, and we have failed him! We will return to the zenith of our power and retake the mantle of service we have forsaken for far too many years. \n\n The path ahead is long, ardous, and full of suffering; but we shall bare it for the sake of all."
+ kemsar_towers_decision_confirm:0 "Our Duty Done, His Will Shall Be Done."
 
  announce_aversaria_voreias_decision:1 "Announce Aversaria Voreias"
  announce_aversaria_voreias_decision_desc:0 "The first step to the recovery of our sacred home is done. A foothold has been established in the north to stand firm against the Sjalvolki horde. It is time I crowned myself Aautokratir of a new [aversaria|E], and prepared for the march south..."
@@ -125,7 +125,7 @@
  gh_debase_currency_decision_2:0 "Debase Currency"
  gh_debase_currency_decision_2_desc:0 "There is a time in the life of every ruler, no matter how big or small, no matter where they may be where they must make a decision. Is money really more important than how their people, how history itself, may view them?\n\nFor those who decide, yes, yes it is, the option to debase their precious currency for profit is an easy choice."
  gh_debase_currency_decision_2_confirm:0 "Let the gold flow."
- gh_debase_currency_decision_2_tooltip:0 "Sacrifice a large amount of [prestige|E] in return for an instant influx of gold."
+ gh_debase_currency_2_decision_tooltip:0 "Sacrifice a large amount of [prestige|E] in return for an instant influx of gold."
  
  gh_debase_currency_decision_3:0 "Debase Currency"
  gh_debase_currency_decision_3_desc:0 "There is a time in the life of every ruler, no matter how big or small, no matter where they may be where they must make a decision. Is money really more important than how their people, how history itself, may view them?\n\nFor those who decide, yes, yes it is, the option to debase their precious currency for profit is an easy choice."
@@ -199,17 +199,30 @@
  restore_aironoi_requirement:0 "All non-fogswept duchies with changed de jure lieges in #E Aironoi#! are controlled by us"
  restore_aironoi_decision_tooltip:0 "#E Aironoi's#! de jure hierarchy will be restored."
  
-restore_gurdurbok_decision:0 "Restore Gurdurbok"
-restore_gurdurbok_decision_desc:0 "Though once cut off from [aversaria|E] by Cenware, the Province of Gurdurbok has been brought back under our righteous control, from the Chevalien border to the [mayiprolollan|E]. Already, recontruction efforts are beginning in Dethiclos, and all the world shall know that [aversaria|E] will never allow its territories to be sundered."
-restore_gurdurbok_decision_confirm:0 "Redraw Gurdurbok's old borders"
-restore_gurdurbok_decision_tooltip:0 "The old [aversarian|E] de jure kingdoms of Gudurbok will be restored in place of any petty Sjalvolki kingdoms drawn up following Cenware's Conquest."
+ restore_gurdurbok_decision:0 "Restore Gurdurbok"
+ restore_gurdurbok_decision_desc:0 "Though once cut off from [aversaria|E] by Cenware, the Province of Gurdurbok has been brought back under our righteous control, from the Chevalien border to the [mayiprolollan|E]. Already, recontruction efforts are beginning in Dethiclos, and all the world shall know that [aversaria|E] will never allow its territories to be sundered."
+ restore_gurdurbok_decision_confirm:0 "Redraw Gurdurbok's old borders"
+ restore_gurdurbok_decision_tooltip:0 "The old [aversarian|E] de jure kingdoms of Gudurbok will be restored in place of any petty Sjalvolki kingdoms drawn up following Cenware's Conquest."
 restore_gurdurbok_requirement:0 "All non-fogswept duchies with changed de jure lieges in #E Gurdurbok#! are controlled by us"
 restore_gurdurbok_decision_tooltip:0 "#E Gurdurbok's#! de jure hierarchy will be restored."
 
 kikarsagi_kill_aversarians_decision:0 "Slaughter Aversarians"
-kikarsagi_kill_aversarians_decision_desc:0 "The [aversarian|E]s have shown themselves to be weak, and the weak get beaten. Bereft of the Mandate of Purity and dogs in the eyes of the Purest, we must massacre their weak race to become the Chosen Men and save the empire. No mercy for the weak! No retreat for the strong!"
+kikarsagi_kill_aversarians_decision_desc:0 "The [aversarians|E] have shown themselves to be weak, and the weak get beaten. Bereft of the Mandate of Purity and dogs in the eyes of the Purest, we must massacre their weak race to become the Chosen Men and save the empire. No mercy for the weak! No retreat for the strong!"
 kikarsagi_kill_aversarians_decision_confirm:0 "Today we become Chosen Men!"
-kikarsagi_kill_aversarians_decision_tooltip:0 "Slaughter the [aversarian|E]s and become one of the Chosen Men."
+kikarsagi_kill_aversarians_decision_tooltip:0 "Slaughter the [aversarians|E] and become one of the Chosen Men."
+
+bonefinding_decision:0 "Search for Magically Potent Bones"
+bonefinding_decision_desc:0 "In order to empower my Dead Magic, it would be useful to acquire the bones of powerful magi. I shall attempt to locate bones magically potent enough to fulfill my purposes."
+bonefinding_decision_tooltip:0 "You will be given the choice of how you wish to locate magically potent bones."
+bonefinding_decision_effect_tooltip:0 "You will look search for the bones of powerful magi"
+bonefinding_decision_confirm:0 "Begin the Search!"
+bonefinding_decision_desc_tooltip:0 "You will search for magically potent bones"
+
+craft_bone_artifact_decision:0 "Craft Bone Artifact"
+craft_bone_artifact_decision_desc:0 "In order to empower my Dead Magic, I shall craft magically potent bones into a powerful artifact."
+craft_bone_artifact_decision_tooltip:0 "In order to craft a bone artifact, you will need to have magically potent bones found through the Search for Magically Potent Bones decision."
+craft_bone_artifact_decision_effect_tooltip:0 "You will attempt to craft some of your magical bones into an artifact"
+craft_bone_artifact_decision_confirm:0 "I shall craft an arcane masterpiece!"
 
 ####################
 # STORYLINE - COIS #
@@ -281,7 +294,7 @@ aeschraes_killed:0 "Aeschraes has been killed through my own actions."
 
 new_iyrossi_capital_decision:0 "Construct a New Iyrossi Capital"
 new_iyrossi_capital_decision_tooltip:0 "A new capital for a new age."
-new_iyrossi_capital_decision_tt:0 "Your capital will be transformed into a your choice of either a palace or temple metropolis holding and gain a special building. This will take a year of work."
+new_iyrossi_capital_decision_tt:0 "Your capital will be transformed into a your choice of either a palace or temple metropolis holding and gain a special building. This will take a year of work.\n\n#W You must have your capital in a province without any special buildings. This decision will mean effectively abandoning any attempts at placing the new capital at the Palat to Mytidon.#!"
 new_iyrossi_capital_decision_desc:0 "At long last the Iyrossi are free from the Aversarian yoke. Alas, so much of our history has been sullied by their hands. Our historic capital at To Pedíthípsi is an uninhabitable wasteland - more a mocking exhibit of Imperial arrogance than a viable foundation for the center of our new state, and Palát to Mytidon is out of the question for obvious reasons. Though we may hold our past dear, we must establish a new capital from which to rule fair Mytidon. Be advised, the costs will be high and construction will take a full year to complete."
 new_iyrossi_capital_decision_confirm:0 "Being constructing a new capital."
 
@@ -291,7 +304,34 @@ new_mountain_home_decision_tt:0 "Your capital county is the capital of one of th
 new_mountain_home_decision_desc:0 "Our old homeland, nestled in the highest peaks, is now lost to us forever. For so long we have wandered in unfamiliar lands, searching desperately for a new home. That ends today! \n\nWe have found a suitable location, and already Goans have begun to gather. Here, in this New Mountain Home, we will rebuild our society, and surely stand until the end of time."
 new_mountain_home_decision_confirm:0 "Proclaim our new homeland."
 
- fogeater_consume_decision:0 "Consume"
- fogeater_consume_decision_desc:0 "New lands have not listeners not good Mistmother say consume them yes feed on them they will join mist join us need food need it yes Mistmother commands it we obey we listen we are listeners we feed on them we spread we consume they will join us they will be us we will be them all will be them all will be us we will grow we will feed we will expand we must we must we feed."
- fogeater_consume_decision_tooltip:0 "We will purify our lands."
- fogeater_consume_decision_confirm:0 "Eat them."
+fogeater_consume_decision:0 "Consume"
+fogeater_consume_decision_desc:0 "New lands have not listeners not good Mistmother say consume them yes feed on them they will join mist join us need food need it yes Mistmother commands it we obey we listen we are listeners we feed on them we spread we consume they will join us they will be us we will be them all will be them all will be us we will grow we will feed we will expand we must we must we feed."
+fogeater_consume_decision_tooltip:0 "We will purify our lands."
+fogeater_consume_decision_confirm:0 "Eat them."
+
+kingdom_of_the_clouds_decision:0 "Kingdom in the Clouds"
+kingdom_of_the_clouds_decision_tooltip:0 "Declare a new home for the Sarminians"
+kingdom_of_the_clouds_desc:0 "Much has changed since our migration west but our great mother's dedication to her children has not. It is time to proclaim a new homeland for the Daughters of the Sky, one which will be the cradle from which a new golden age of the Sarminians will spring!"
+kingdom_of_the_clouds_decision_confirm:0 "Declare Samazonas"
+kingdom_of_the_clouds_decision_tt:0 "Become the ruler of Samazonas"
+
+renovate_palat_to_mytidon_decision:0 "Renovate the Palat to Mytidon"
+renovate_palat_to_mytidon_decision_tooltip:0 "Transform this stain on our landscape into a new capital."
+renovate_palat_to_mytidon_decision_tt:0 "Your capital will be transformed into a your choice of either a palace or temple metropolis holding and gain a special building. This will take a year of work and replace the Palat to Mytidon with a new building.\n\n#W This decision will mean effectively abandoning any attempts at building a new capital altogether.#!"
+renovate_palat_to_mytidon_decision_desc:0 "We are free once more, and have established a strong new kingdom. There yet remains a nagging question: from whence shall we rule Mytidon? To Pedithipsi is a haunted ruin unfit for a king. And founding a new capital altogether may be outside of our reach. Thankfully the Aversarians left behind an administrative building in our territory that we could simply renovate to serve our own purposes."
+
+hubarite_codex_decision:0 "Write a Codex"
+hubarite_codex_decision_desc:0 "As others have throughout the history of our people, I will ensure that my name and practices shall live forever by writing a legal codex to guide future generations."
+hubarite_codex_decision_tooltip:0 "You will write a legal codex"
+hubarite_codex_decision_confirm:0 "Bring me a pen!"
+
+create_filosi_school_decision:0 "Legally Harmonize with the Sjalvolki"
+create_filosi_school_decision_desc:0 "Our new Sjalvolki friends and neighbors have a legal and religious tradition that dates back centuries, and which they certainly feel is equal in respect and legitimacy to our own. While we obviously disagree, especially in regards to the worship of their strange foreign Hunt God "Filos" there are many principles they hold which may be worth further consideration."
+create_filosi_school_decision_confirm:0 "Create the Filosi School!"
+create_filosi_school_tt:0 "Creates a new Legal School for your Faith, called the Filosi School."
+create_filosi_school_decision_tooltip:0 "Create a New Legal School"
+
+hubarite_empire_decision:0 "Elevate a Hubarite Empire"
+hubarite_empire_decision_desc:0 "The oldest tales of our faith tell of a time when the [magi|E]-Judges reigned over a golden age of prosperity, when grand swathes of [sarradon|E] and perhaps even pieces of [the_continent|E], were ruled over by benevolent emperors, ruling close to the Great Sun itself. Though the people of this empire have so long been crushed beneath the alternating boots of Wardenites and Ritualists, and though even the exact borders of our ancient realm have been lost to the mists of history, it has finally been restored."
+hubarite_empire_decision_valid_desc:0 "You completely control at least 3 kingdoms that are either in Kharadamat excluding the mountain kingdom, in Uhtash not including Felayayla, or are the kingdoms of Korkanadadd or Kerkonia"
+hubarite_empire_decision_confirm:0 "Praise the Great Sun!"
