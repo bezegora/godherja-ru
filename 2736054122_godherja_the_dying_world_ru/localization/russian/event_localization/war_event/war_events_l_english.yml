@@ -23,24 +23,24 @@
  war_event.2001.b:0 "This is no longer the best course of action."
 
  war_event.2002.t:0 "[invalidator.Custom2('AppropriateGreeting', ROOT.Char)]"
- war_event.2002.desc:0 "We have regrettably found ourselves on opposing sides in this conflict. It was never my intention, and thus I will withdraw my troops."
+ war_event.2002.desc:0 "We have regrettably found ourselves on opposing sides in this conflict. It was never my intention, and thus [ROOT.GetCharacter.Custom('GetFirstThirdPerson')] will withdraw my troops."
  war_event.2002.a:0 "A wise choice."
 
  war_event.3001.t:0 "[war_owner.Custom2('AppropriateGreeting', ROOT.Char)]"
  war_event.3001.desc:0 "Two years ago you promised to aid me in the [war.GetName], yet so far you have done nothing to support me in this endeavor.\n\nWhat is the point of our alliance if you never to even lift a finger to help me?"
- war_event.3001.a:0 "I will send my troops to your aid immediately!"
- war_event.3001.a.tt:0 "If I do not earn any [war_contribution|E] within 12 months I will lose a [prestige_level|E] and place my alliance with [war_owner.GetTitledFirstNameNoTooltip] at risk!"
+ war_event.3001.a:0 "[ROOT.GetCharacter.Custom('GetFirstThirdPerson')] will send my troops to your aid immediately!"
+ war_event.3001.a.tt:0 "If [ROOT.GetCharacter.Custom('GetFirstThirdPerson')] do not earn any [war_contribution|E] within 12 months [ROOT.GetCharacter.Custom('GetFirstThirdPerson')] will lose a [prestige_level|E] and place my alliance with [war_owner.GetTitledFirstNameNoTooltip] at risk!"
  war_event.3001.b:0 "This chest of gold should make up for my absence..."
- war_event.3001.b.tt:0 "I will no longer be expected to send soldiers to fight in [war.GetName]."
- war_event.3001.c:0 "I apologize, I should not have claimed that I would help."
+ war_event.3001.b.tt:0 "[ROOT.GetCharacter.Custom('GetFirstThirdPerson')] will no longer be expected to send soldiers to fight in [war.GetName]."
+ war_event.3001.c:0 "[ROOT.GetCharacter.Custom('GetFirstThirdPerson')] apologize, [ROOT.GetCharacter.Custom('GetFirstThirdPerson')] should not have claimed that [ROOT.GetCharacter.Custom('GetFirstThirdPerson')] would help."
 
  war_event.3002.t:0 "[war_owner.Custom2('AppropriateGreeting', ROOT.Char)]"
- war_event.3002.desc.start:0 "Despite your promise to send troops to my aid, I still have yet to see a single one of your soldiers on the battlefield."
+ war_event.3002.desc.start:0 "Despite your promise to send troops to my aid, [ROOT.GetCharacter.Custom('GetFirstThirdPerson')] still have yet to see a single one of your soldiers on the battlefield."
  war_event.3002.desc.end.1:0 "By breaking your oath this way you have brought dishonor upon yourself and your family."
  war_event.3003.desc.end.2:0 "Your failure in this regard has severely damaged my trust in you, [ROOT.Char.GetTitledFirstName]."
  war_event.3002.1.a:0 "Very well."
- war_event.3003.2.a:0 "I will do better next time."
- war_event.3003.2.b:0 "Maybe I should just end our alliance...?"
+ war_event.3003.2.a:0 "[ROOT.GetCharacter.Custom('GetFirstThirdPerson')] will do better next time."
+ war_event.3003.2.b:0 "Maybe [ROOT.GetCharacter.Custom('GetFirstThirdPerson')] should just end our alliance...?"
 
  war_event.neighbor_war.both_neighbors.t:0 "Neighbors' War Resolved"
  war_event.neighbor_war.both_neighbors.desc:1 "Your neighbor [winner.GetTitledFirstName] won against your other neighbor [loser.GetTitledFirstName] in the [war.GetName]!"
@@ -53,7 +53,7 @@
 
  #Holy wars "soft invalidated" by faith change
  war_event.3101.t:0 "Newfound Faith"
- war_event.3101.desc:0 "News have reached me of [defender.GetTitledFirstNamePossessive] conversion to [defender.GetFaith.GetNameNoTooltip]. I no longer have a [ROOT.Char.GetFaith.HighGodName]-given right to wage war on [defender.GetPrimaryTitle.GetNameNoTierNoTooltip]."
+ war_event.3101.desc:0 "News have reached me of [defender.GetTitledFirstNamePossessive] conversion to [defender.GetFaith.GetNameNoTooltip]. [ROOT.GetCharacter.Custom('GetFirstThirdPerson')] no longer have a [ROOT.Char.GetFaith.HighGodName]-given right to wage war on [defender.GetPrimaryTitle.GetNameNoTierNoTooltip]."
  war_event.3101.a:0 "The time has come to put down our swords."
  war_event.3101.b.tt:0 "[war.GetName] continues"
  war_event.3101.b:0 "[defender.GetSheHe|U] thinks this will stop me? Ha!"

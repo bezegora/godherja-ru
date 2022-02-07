@@ -1,15 +1,15 @@
 ﻿l_english:
  #[Faith] Traders in [County]
  yearly_saharan.0001.t:0 "[source_county.GetProvince.GetCounty.GetFaith.GetAdherentNameNoTooltip] Traders in [target_county.GetNameNoTierNoTooltip]"
- yearly_saharan.0001.desc:0 "Trans-Saharan trade has always passed through these lands, bringing wealth, ideas, and ideologies. Typically, a ruler such as I simply has to take their fair share, and otherwise the routes run themselves.\n\nRecently, however, more and more [source_county.GetProvince.GetCounty.GetFaith.GetAdherentNameNoTooltip] merchants have been passing through [target_county.GetNameNoTier], bringing their faith and coin with them.\n\nOne consortium is asking my permission to settle and buy property, and have gathered a hefty gift to acquire my good graces."
- yearly_saharan.0001.a:0 "I graciously accept this tribute."
+ yearly_saharan.0001.desc:0 "Trans-Saharan trade has always passed through these lands, bringing wealth, ideas, and ideologies. Typically, a ruler such as [ROOT.GetCharacter.Custom('GetFirstThirdPerson')] simply has to take their fair share, and otherwise the routes run themselves.\n\nRecently, however, more and more [source_county.GetProvince.GetCounty.GetFaith.GetAdherentNameNoTooltip] merchants have been passing through [target_county.GetNameNoTier], bringing their faith and coin with them.\n\nOne consortium is asking my permission to settle and buy property, and have gathered a hefty gift to acquire my good graces."
+ yearly_saharan.0001.a:0 "[ROOT.GetCharacter.Custom('GetFirstThirdPerson')] graciously accept this tribute."
  yearly_saharan.0001.a.tt:0 "#WEAK This may influence the locals later...#!"
  yearly_saharan.0001.b:0 "You may continue to pass through, but that is all."
  yearly_saharan.0001.c:0 "[source_county.GetProvince.GetCounty.GetFaith.GetAdherentNamePluralNoTooltip] are barred from [target_county.GetNameNoTierNoTooltip], their goods #EMP forfeit#!!"
  yearly_saharan.0001.c.list:0 "All same-[realm|E] [counties|E] next to [target_county.GetNameNoTierNoTooltip]"
  
  yearly_saharan.0003.t:0 "$yearly_saharan.0001.t$: Integration"
- yearly_saharan.0003.desc_initial:0 "The [source_county.GetProvince.GetCounty.GetFaith.GetAdherentNameNoTooltip] merchants that I allowed to settle in [target_county.GetNameNoTier] have been there for some years now,"
+ yearly_saharan.0003.desc_initial:0 "The [source_county.GetProvince.GetCounty.GetFaith.GetAdherentNameNoTooltip] merchants that [ROOT.GetCharacter.Custom('GetFirstThirdPerson')] allowed to settle in [target_county.GetNameNoTier] have been there for some years now,"
  yearly_saharan.0003.desc_current:0 "For some years, [source_county.GetProvince.GetCounty.GetFaith.GetAdherentNamePluralNoTooltip] from [source_county.GetNameNoTier] have been living in [target_county.GetNameNoTier],"
  yearly_saharan.0003.desc:0 "and it seems that they have integrated fairly well into the existing community.\n\nAs a result, trade is flooding through the area, revenues are at an all-time high, and even the peasants are familiar with the sound of clinking gold!"
  yearly_saharan.0003.a:0 "A lovely windfall!"
@@ -20,11 +20,11 @@
  yearly_saharan.0004.desc_current:0 "$yearly_saharan.0003.desc_current$"
  yearly_saharan.0004.desc:0 "and the trade and dynamism they have brought to the area seems limitless!\n\nPeople flock to the markets: carts laden with gold trek north, wagons filled with salt flood south, and all pay taxes coming and going! Truly, this is a prosperous corner of the realm!"
  yearly_saharan.0004.a.tt:0 "You attempt to improve your [stewardship|E]"
- yearly_saharan.0004.a:0 "Methinks I could learn a thing or two from these merchants!"
+ yearly_saharan.0004.a:0 "Methinks [ROOT.GetCharacter.Custom('GetFirstThirdPerson')] could learn a thing or two from these merchants!"
  yearly_saharan.0004.a.tt.outcome_1:0 "Stewardship Increased"
  yearly_saharan.0004.a.tt.outcome_2:0 "$yearly_saharan.0004.a.tt.outcome_1$"
  yearly_saharan.0004.a.tt.outcome_3:0 "$yearly_saharan.0004.a.tt.outcome_1$"
- yearly_saharan.0004.b:0 "Do I hear the sound of the tax rate going up?"
+ yearly_saharan.0004.b:0 "Do [ROOT.GetCharacter.Custom('GetFirstThirdPerson')] hear the sound of the tax rate going up?"
  yearly_saharan.0004.c:0 "Of course, we'll have to charge some back-taxes..."
  
  yearly_saharan.0005.t:0 "$yearly_saharan.0001.t$: Faith Change"
@@ -33,12 +33,12 @@
  yearly_saharan.0005.desc:0 "and their faith has taken a firm root in the hearts of the locals. So much so that many more now follow [target_county.GetProvince.GetCounty.GetFaith.HighGodName] than pray to [target_county_old_faith.HighGodName]!\n\nThe conversion has been peaceful, and the people seem docile and content with their new beliefs, but the old ways have all but disappeared already."
  yearly_saharan.0005.a:0 "Welcome to the light of [ROOT.GetCharacter.GetFaith.HighGodName]!"
  yearly_saharan.0005.b:0 "Huh. At least they're happy about it."
- yearly_saharan.0005.c:0 "Not while I'm the [ROOT.GetCharacter.GetTitleAsNameNoTooltip]!"
+ yearly_saharan.0005.c:0 "Not while [ROOT.GetCharacter.Custom('GetFirstThirdPerson')][ROOT.GetCharacter.Custom('GetFirstThirdPersonIsNot')] the [ROOT.GetCharacter.GetTitleAsNameNoTooltip]!"
 
  #[Culture] Nomads Flock to [County]
  yearly_saharan.0021.t:0 "[nomad_leader.GetCulture.GetNameNoTooltip] Nomads Flock to [target_county.GetNameNoTierNoTooltip]"
- yearly_saharan.0021.desc:0 "Although I am a noble [ROOT.GetCharacter.GetTitleAsNameNoTooltip], there are places too remote for even my name to hold much sway. Places I can never truly hope to rule.\n\nEmerging from such places deep in the Sahara, nomadic tribes of [nomad_leader.GetCulture.GetCollectiveNounNoTooltip] have been pushing into [target_county.GetNameNoTier] of late, effortlessly occupying the gaps and territories that the local [target_county.GetProvince.GetCounty.GetCulture.GetNameNoTooltip] settlers leave.\n\nOne of their leaders has even come to me requesting permission to bring [nomad_leader.GetHerHis] wider confederation in to hold the area in my name."
- yearly_saharan.0021.a:0 "I'll even let you govern it!"
+ yearly_saharan.0021.desc:0 "Although [ROOT.GetCharacter.Custom('GetFirstThirdPerson')] [ROOT.GetCharacter.Custom('GetFirstThirdPersonIsAm')] a noble [ROOT.GetCharacter.GetTitleAsNameNoTooltip], there are places too remote for even my name to hold much sway. Places [ROOT.GetCharacter.Custom('GetFirstThirdPerson')] can never truly hope to rule.\n\nEmerging from such places deep in the Sahara, nomadic tribes of [nomad_leader.GetCulture.GetCollectiveNounNoTooltip] have been pushing into [target_county.GetNameNoTier] of late, effortlessly occupying the gaps and territories that the local [target_county.GetProvince.GetCounty.GetCulture.GetNameNoTooltip] settlers leave.\n\nOne of their leaders has even come to me requesting permission to bring [nomad_leader.GetHerHis] wider confederation in to hold the area in my name."
+ yearly_saharan.0021.a:0 "[ROOT.GetCharacter.Custom('GetFirstThirdPerson')]'ll even let you govern it!"
  yearly_saharan.0021.b:0 "[nomad_leader.GetCulture.GetNameNoTooltip] people are always welcome in my realm."
  yearly_saharan.0021.c:0 "Perhaps you would join me as a retainer instead?"
  yearly_saharan.0021.d:0 "Preposterous! Be gone!"
@@ -61,7 +61,7 @@
  yearly_saharan.0032.a.tt_success:0 "You defeat and loot the slavers"
  yearly_saharan.0032.a.tt_fail:0 "[slave_raider_county.GetHolder.GetFirstNamePossessiveNoTooltip] raiders savage [raided_county.GetNameNoTierNoTooltip]"
  yearly_saharan.0032.b:0 "You know, they should really pay tax on this..."
- yearly_saharan.0032.c:0 "I couldn't care less."
+ yearly_saharan.0032.c:0 "[ROOT.GetCharacter.Custom('GetFirstThirdPerson')] couldn't care less."
 
  #Modifiers
  foreign_trader_enclaves_saharan_modifier:0 "Heathen Trader Enclaves"

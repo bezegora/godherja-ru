@@ -23,15 +23,15 @@
  councillor_spouse_stewardship.2001.d:0 "Let's save it for now."
 
  councillor_spouse_stewardship.2002.t:1 "Spouse: Glittering Opportunity"
- councillor_spouse_stewardship.2002.desc:0 ""My [ROOT.Char.GetLadyLord]." [courtier_lender.GetTitledFirstName] shuffles up to me and smiles [courtier_lender.Custom('quirk_pos_adverb')]. "I was approached by [councillor.GetTitledFirstName] who in [councillor.GetHerHis] wisdom suggested an arrangement between the two of us. Since you could use some financial aid, and I could use some social assistance...""
- councillor_spouse_stewardship.2002.a:0 "I will repay you, I promise."
- councillor_spouse_stewardship.2002.money_loan_tooltip:0 "I will borrow [gold_i] #bold [THIS.Var('amount_to_loan').GetValue]#! gold from [courtier_lender.GetFirstNameNoTooltip]."
+ councillor_spouse_stewardship.2002.desc:0 ""My [ROOT.Char.GetLadyLord]." [courtier_lender.GetTitledFirstName] shuffles up to me and smiles [courtier_lender.Custom('quirk_pos_adverb')]. "[ROOT.GetCharacter.Custom('GetFirstThirdPerson')] was approached by [councillor.GetTitledFirstName] who in [councillor.GetHerHis] wisdom suggested an arrangement between the two of us. Since you could use some financial aid, and [ROOT.GetCharacter.Custom('GetFirstThirdPerson')] could use some social assistance...""
+ councillor_spouse_stewardship.2002.a:0 "[ROOT.GetCharacter.Custom('GetFirstThirdPerson')] will repay you, [ROOT.GetCharacter.Custom('GetFirstThirdPerson')] promise."
+ councillor_spouse_stewardship.2002.money_loan_tooltip:0 "[ROOT.GetCharacter.Custom('GetFirstThirdPerson')] will borrow [gold_i] #bold [THIS.Var('amount_to_loan').GetValue]#! gold from [courtier_lender.GetFirstNameNoTooltip]."
  councillor_spouse_stewardship.2002.b:0 "Why don't you donate it to the [ROOT.Char.GetFaith.HouseOfWorship] instead?"
  councillor_spouse_stewardship.2002.c:0 "You should donate it to the poor."
- councillor_spouse_stewardship.2002.d:0 "I will gladly accept this tribute!"
+ councillor_spouse_stewardship.2002.d:0 "[ROOT.GetCharacter.Custom('GetFirstThirdPerson')] will gladly accept this tribute!"
 
  councillor_spouse_stewardship.2003.t:1 "Spouse: Opportunity for Trade"
- councillor_spouse_stewardship.2003.desc:0 "[councillor.GetTitledFirstName] approaches me with three scrolls of parchment in [councillor.GetHerHis] arms.\n\n"My [ROOT.Char.GetLadyLord], I have drafted trade proposals for neighboring rulers. I am certain that a deal can be struck that will benefit both parties!""
+ councillor_spouse_stewardship.2003.desc:0 "[councillor.GetTitledFirstName] approaches me with three scrolls of parchment in [councillor.GetHerHis] arms.\n\n"My [ROOT.Char.GetLadyLord], [ROOT.GetCharacter.Custom('GetFirstThirdPerson')] have drafted trade proposals for neighboring rulers. [ROOT.GetCharacter.Custom('GetFirstThirdPerson')] [ROOT.GetCharacter.Custom('GetFirstThirdPersonIsAm')] certain that a deal can be struck that will benefit both parties!""
  councillor_spouse_stewardship.2003.a:0 "[ruler_1.GetTitledFirstNameNoTooltip] seems reasonable."
  councillor_spouse_stewardship.2003.b:0 "Enter in an agreement with [ruler_2.GetTitledFirstNameNoTooltip]."
  councillor_spouse_stewardship.2003.c:0 "Make a deal with [ruler_3.GetTitledFirstNameNoTooltip]."
@@ -40,7 +40,7 @@
  councillor_spouse_stewardship.2003.d:0 "None of them present a tempting enough opportunity..."
 
  councillor_spouse_stewardship.2004.t:1 "Spouse: A Helping Hand"
- councillor_spouse_stewardship.2004.desc:0 ""Your [ROOT.Char.Custom2('RelationToMe', SCOPE.sC('on_my_hook'))], [on_my_hook.GetTitledFirstName], recently found [on_my_hook.GetHerselfHimself] in a bit of trouble."\n\n[councillor.GetTitledFirstName] smiles [councillor.Custom('quirk_pos_adverb')] as [councillor.GetSheHe] continues, "I made sure the situation resolved itself, and to mention you as the benefactor.""
+ councillor_spouse_stewardship.2004.desc:0 ""Your [ROOT.Char.Custom2('RelationToMe', SCOPE.sC('on_my_hook'))], [on_my_hook.GetTitledFirstName], recently found [on_my_hook.GetHerselfHimself] in a bit of trouble."\n\n[councillor.GetTitledFirstName] smiles [councillor.Custom('quirk_pos_adverb')] as [councillor.GetSheHe] continues, "[ROOT.GetCharacter.Custom('GetFirstThirdPerson')] made sure the situation resolved itself, and to mention you as the benefactor.""
  councillor_spouse_stewardship.2004.a:0 "Excellent work!"
  councillor_spouse_stewardship.2004.b:0 "A good deed needs no repayment."
 

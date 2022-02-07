@@ -10,7 +10,7 @@
  hostile_scheme_discovery.1001.desc_no_spymaster_other_target:0 "Grave news have reached me. It has been discovered that my [ROOT.Char.Custom2('RelationToMe', SCOPE.sC('agent'))], [agent.GetTitledFirstName], is scheming against my [ROOT.Char.Custom2('RelationToMe', SCOPE.sC('targeted_courtier'))] [targeted_courtier.GetTitledFirstName]!"
  hostile_scheme_discovery.1001.a:0 "Let the traitor be known to all."
  hostile_scheme_discovery.1001.b:0 "Throw [agent.GetHerHim] in jail!"
- hostile_scheme_discovery.1001.c:0 "Whether true or not, I will not accuse [agent.GetFirstNameNoTooltip]."
+ hostile_scheme_discovery.1001.c:0 "Whether true or not, [ROOT.GetCharacter.Custom('GetFirstThirdPerson')] will not accuse [agent.GetFirstNameNoTooltip]."
  hostile_scheme_discovery.1001.c.tt:0 "[agent.GetFirstNameNoTooltip] goes free."
 
  hostile_scheme_discovery.1002.t:0 "Schemer Discovered!"
@@ -43,7 +43,7 @@
  hostile_scheme_discovery.3002.a:0 "Curses!"
 
  hostile_scheme_discovery.3003.t:0 "Involvement Discovered"
- hostile_scheme_discovery.3003.desc:0 "[target.Custom2('MyCharacterIntroduction', ROOT.Char)|U] has discovered that I am the mastermind behind the plot"
+ hostile_scheme_discovery.3003.desc:0 "[target.Custom2('MyCharacterIntroduction', ROOT.Char)|U] has discovered that [ROOT.GetCharacter.Custom('GetFirstThirdPerson')] [ROOT.GetCharacter.Custom('GetFirstThirdPersonIsAm')] the mastermind behind the plot"
  hostile_scheme_discovery.3003.murder:0 "to murder [target.GetHerHim]!"
  hostile_scheme_discovery.3003.abduction:0 "to abduct [target.GetHerHim]!"
  hostile_scheme_discovery.3003.elope:0 "to elope with [target.GetHerHim]!"
@@ -52,8 +52,8 @@
 
  hostile_scheme_discovery.4001.t:0 "Scheme Discovered!"
  hostile_scheme_discovery.4001.opening:0 "My plot against my [ROOT.Char.Custom2('RelationToMe', SCOPE.sC('target'))], [target.GetTitledFirstName], has been discovered!"
- hostile_scheme_discovery.4001.end:0 "\n\nMy servants now whisper that I have to resort to underhandedness to rule even my home."
+ hostile_scheme_discovery.4001.end:0 "\n\nMy servants now whisper that [ROOT.GetCharacter.Custom('GetFirstThirdPerson')] have to resort to underhandedness to rule even my home."
  hostile_scheme_discovery.4002.opening:0 "My scheme to see my [ROOT.Char.Custom2('RelationToMe', SCOPE.sC('target'))] dead has been discovered! Now everyone knows of my plan to kill [target.GetTitledFirstName]."
  hostile_scheme_discovery.4001.a:0 "This is all a big misunderstanding!"
- hostile_scheme_discovery.4001.b:0 "Oh, I will show them how far I can go."
+ hostile_scheme_discovery.4001.b:0 "Oh, [ROOT.GetCharacter.Custom('GetFirstThirdPerson')] will show them how far [ROOT.GetCharacter.Custom('GetFirstThirdPerson')] can go."
  

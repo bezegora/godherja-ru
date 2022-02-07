@@ -1,14 +1,15 @@
 ﻿l_english:
  childhood_education.0004.t:0 "The Fickleness of Youth"
  childhood_education.0004.opening:0 "My ward, [ward.GetTitledFirstName], has changed [ward.GetHerHis] focus of study.\n\n"
- childhood_education.0004.desc1:0 "To think that [ward.GetSheHe] now aspires to delve into the art of [ward.Custom('education_focus_child')], a field of study which I excel at... It warms my heart!"
+ childhood_education.0004.desc1:0 "To think that [ward.GetSheHe] now aspire to delve into the art of [ward.Custom('education_focus_child')], a field of study which [ROOT.GetCharacter.Custom('GetFirstThirdPerson')] excel at... It warms my heart!"
  childhood_education.0004.desc2:0 "To think that [ward.GetSheHe] would abandon our joint interest for the art of [ROOT.Char.Custom('education_focus')]!"
  childhood_education.0004.desc_fallback:0 "[ward.GetSheHe|U] now pursues knowledge in the art of [ward.Custom('education_focus_child')]."
  childhood_education.0004.a:0 "[ward.GetTitledFirstNameNoTooltip] is now studying [ward.Custom('education_focus_child')]!"
+ childhood_education.0004.b:0 "[ward.GetTitledFirstNameNoTooltip] is now studying [ward.Custom('education_focus_child')]..."
 
- childhood_education.1011.t:0 "It Is Who I Am"
- childhood_education.1011.desc:0 "[guardian.GetTitledFirstName] has taught me so much about the ways of [guardian.GetHerHis] people— of #EMP our#! people, for not only do I profess to the [guardian.GetFaith.GetAdjective] faith, I see myself as fully [guardian.GetCulture.GetName]."
- childhood_education.1011.a:0 "It is the only way I wish to live."
+ childhood_education.1011.t:0 "It Is Who [ROOT.GetCharacter.Custom('GetFirstThirdPerson')] [ROOT.GetCharacter.Custom('GetFirstThirdPersonIsAm')]"
+ childhood_education.1011.desc:0 "[guardian.GetTitledFirstName] has taught me so much about the ways of [guardian.GetHerHis] people— of #EMP our#! people, for not only do [ROOT.GetCharacter.Custom('GetFirstThirdPerson')] profess to the [guardian.GetFaith.GetAdjective] faith, [ROOT.GetCharacter.Custom('GetFirstThirdPerson')] see myself as fully [guardian.GetCulture.GetName]."
+ childhood_education.1011.a:0 "It is the only way [ROOT.GetCharacter.Custom('GetFirstThirdPerson')] wish to live."
 
  childhood_education.1012.t:0 "A Blessed Day"
  childhood_education.1012.desc:0 "With [ward.GetHerHis] ongoing education in the faith and practices of my people, [ward.GetTitledFirstName] has told me that [ward.GetSheHe] feels like a good, [guardian.GetFaith.GetAdjective] [guardian.GetCulture.GetName]."
@@ -17,8 +18,8 @@
  child_culture_and_faith_converted.parent.message:1 "Your [ward.Custom('GetDaughterSon')] [ward.GetTitledFirstNamePossessive] beliefs and culture have changed under the tutelage of [guardian.GetTitledFirstName]"
 
  childhood_education.1021.t:0 "In Faith, Truth"
- childhood_education.1021.desc:0 "[guardian.GetTitledFirstNamePossessive] tutelage has taught me much, and I feel I understand the true nature of the world.\n\nHow did I ever doubt that [guardian.GetFaith.GetName] had all the answers?"
- childhood_education.1021.a:0 "I have found my true faith."
+ childhood_education.1021.desc:0 "[guardian.GetTitledFirstNamePossessive] tutelage has taught me much, and [ROOT.GetCharacter.Custom('GetFirstThirdPerson')] feel [ROOT.GetCharacter.Custom('GetFirstThirdPerson')] understand the true nature of the world.\n\nHow did [ROOT.GetCharacter.Custom('GetFirstThirdPerson')] ever doubt that [guardian.GetFaith.GetName] had all the answers?"
+ childhood_education.1021.a:0 "[ROOT.GetCharacter.Custom('GetFirstThirdPerson')] have found my true faith."
 
  childhood_education.1022.t:0 "In Faith, Truth"
  childhood_education.1022.desc:0 "After all my lectures and all my shared wisdom, my [ROOT.Char.Custom2('RelationToMe', SCOPE.sC('ward'))], [ward.GetTitledFirstName], has finally embraced the true faith.\n\nI always knew [ward.GetSheHe] would make a good little [ROOT.Char.GetFaith.GetAdjective] one day."
@@ -27,14 +28,39 @@
  child_faith_converted.parent.message:1 "Your [ward.Custom('GetDaughterSon')] [ward.GetTitledFirstNamePossessive] beliefs have changed under the tutelage of [guardian.GetTitledFirstName]"
 
  childhood_education.1031.t:0 "Nature and Nurture"
- childhood_education.1031.desc:0 "I may have been born [ward.GetCulture.GetName], but I cannot deny that I no longer know what that even means. After [guardian.GetTitledFirstNamePossessive] tutelage, I feel [guardian.GetCulture.GetName] through and through."
- childhood_education.1031.a:0 "It is who I am."
+ childhood_education.1031.desc:0 "[ROOT.GetCharacter.Custom('GetFirstThirdPerson')] may have been born [ward.GetCulture.GetName], but [ROOT.GetCharacter.Custom('GetFirstThirdPerson')] cannot deny that [ROOT.GetCharacter.Custom('GetFirstThirdPerson')] no longer know what that even means. After [guardian.GetTitledFirstNamePossessive] tutelage, [ROOT.GetCharacter.Custom('GetFirstThirdPerson')] feel [guardian.GetCulture.GetName] through and through."
+ childhood_education.1031.a:0 "It is who [ROOT.GetCharacter.Custom('GetFirstThirdPerson')] [ROOT.GetCharacter.Custom('GetFirstThirdPersonIsAm')]."
 
  childhood_education.1032.t:0 "Nature and Nurture"
- childhood_education.1032.desc:0 "After my long tutelage of young [ward.GetTitledFirstName], I was pleased to no end when [ward.GetSheHe] told me that [ward.GetSheHe] considers [ward.GetHerselfHimself] [guardian.GetCulture.GetName]!"
+ childhood_education.1032.desc:0 "After my long tutelage of young [ward.GetTitledFirstName], [ROOT.GetCharacter.Custom('GetFirstThirdPerson')] was pleased to no end when [ward.GetSheHe] told me that [ward.GetSheHe] considers [ward.GetHerselfHimself] [guardian.GetCulture.GetName]!"
  childhood_education.1032.a:0 "And indeed [ward.GetSheHe] is!"
 
  child_culture_converted.parent.message:1 "Your [ward.Custom('GetDaughterSon')] [ward.GetTitledFirstNamePossessive] culture has changed under the tutelage of [guardian.GetTitledFirstName]"
 
  childhood_education.9004.child_message:0 "[guardian.GetTitledFirstNamePossessiveNoTooltip] [GetPerk( 'pedagogy_perk' ).GetName( GetPlayer )]"
  childhood_education.9004.guardian_message:1 "[GetPerk( 'pedagogy_perk' ).GetName( GetPlayer )]"
+ 
+ #####################
+ # MAGICAL EDUCATION #
+ #####################
+ 
+ court_mage_task.0010.t:0 "To Play with Fire"
+ court_mage_task.0010.desc:0 "After so much studying, month after month of reading the same tomes and repeating the same rituals, it actually feels like I'm getting somewhere! Theories that once seemed impossible to comprehend are now easily understood. Tasks that may have once left me totally drained can now be done without breaking a sweat. And the spells, it's like a whole new world opened up to me!\n\nI'm becoming a more skilled [magi|E] by the day. And everyone, not just flatterers and those who know nothing about magic, is finally starting to acknowledge it."
+ court_mage_task.0010.a:0 "Who's to say how far I'll go?"
+ court_mage_task.0011.t:0 "To Play with Fire"
+ court_mage_task.0011.desc:0 "My young [magic_tutored_child.GetTitledFirstName] has been hard at work studying to improve [magic_tutored_child.GetHerHis] skills in the arcane. And while the kind of effort it entails would be enough to drive any child mad with boredom, [magic_tutored_child.GetSheHe] has persevered enough for [magic_tutored_child.GetHerHis] efforts to bear fruit.\n\nJust this morning, [magic_tutored_child.GetSheHe] performed a demonstration of [magic_tutored_child.GetHerHis] latest skills for me, and the amount of progress is commendable. In fact, it seems that [magic_tutored_child.GetSheHe] may soon move on to more complex magic lessons; [magic_tutored_child.GetSheHe]'s nearly exhausted every children's primer on magic for [magic_tutored_child.GetHerHis] level in the library!"
+ court_mage_task.0011.a:0 "Let's see how much further you can go..."
+                   
+ court_mage_task.0020.t:0 "To Play with Fire"
+ court_mage_task.0020.desc:0 "After so much studying, month after month of reading the same tomes and repeating the same rituals, it actually feels like I'm getting somewhere! Theories that once seemed impossible to comprehend are now easily understood. Tasks that may have once left me totally drained can now be done without breaking a sweat. And the spells, it's like a whole new world opened up to me!\n\nI'm becoming a more skilled [magi|E] by the day. And everyone, not just flatterers and those who know nothing about magic, is finally starting to acknowledge it."
+ court_mage_task.0020.a:0 "Who's to say how far I'll go?"
+ court_mage_task.0021.t:0 "To Play with Fire"
+ court_mage_task.0021.desc:0 "My young [magic_tutored_child.GetTitledFirstName] has been hard at work studying to improve [magic_tutored_child.GetHerHis] skills in the arcane. And while the kind of effort it entails would be enough to drive any child mad with boredom, [magic_tutored_child.GetSheHe] has persevered enough for [magic_tutored_child.GetHerHis] efforts to bear fruit.\n\nJust this morning, [magic_tutored_child.GetSheHe] performed a demonstration of [magic_tutored_child.GetHerHis] latest skills for me, and the amount of progress is commendable. In fact, it seems that [magic_tutored_child.GetSheHe] may soon move on to more complex magic lessons; [magic_tutored_child.GetSheHe]'s nearly exhausted every children's primer on magic for [magic_tutored_child.GetHerHis] level in the library!"
+ court_mage_task.0021.a:0 "Let's see how much further you can go..."
+
+ court_mage_task.0030.t:0 "To Play with Fire"
+ court_mage_task.0030.desc:0 "After so much studying, month after month of reading the same tomes and repeating the same rituals, it actually feels like I'm getting somewhere! Theories that once seemed impossible to comprehend are now easily understood. Tasks that may have once left me totally drained can now be done without breaking a sweat. And the spells, it's like a whole new world opened up to me!\n\nI'm becoming a more skilled [magi|E] by the day. And everyone, not just flatterers and those who know nothing about magic, is finally starting to acknowledge it."
+ court_mage_task.0030.a:0 "Who's to say how far I'll go?"
+ court_mage_task.0031.t:0 "To Play with Fire"
+ court_mage_task.0031.desc:0 "My young [magic_tutored_child.GetTitledFirstName] has been hard at work studying to improve [magic_tutored_child.GetHerHis] skills in the arcane. And while the kind of effort it entails would be enough to drive any child mad with boredom, [magic_tutored_child.GetSheHe] has persevered enough for [magic_tutored_child.GetHerHis] efforts to be fruit.\n\nJust this morning, [magic_tutored_child.GetSheHe] performed a demonstration of [magic_tutored_child.GetHerHis] latest skills for me, and the amount of progress is commendable. In fact, it seems that [magic_tutored_child.GetSheHe] may soon move on to more complex magic lessons; [magic_tutored_child.GetSheHe]'s nearly exhausted every children's primer on magic for [magic_tutored_child.GetHerHis] level in the library!"
+ court_mage_task.0031.a:0 "Let's see how much further you can go..."
