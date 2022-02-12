@@ -1,0 +1,62 @@
+﻿l_english:
+ ###########
+ # ETHOSES #
+ ###########
+ ethos_magical_name:0 "Magic-Focused"
+ ethos_magical_desc:1 "This culture has chosen to vest its utter trust in the power of [magic|E] and its practitioners, and is organized to accomodate the maximal growth of arcane knowledge and bloodlines."
+ 
+ ##############
+ # TRADITIONS #
+ ##############
+ 
+ tradition_lodge_dominance_name:0 "Lodge Dominance"
+ tradition_lodge_dominance_desc:1 "Powerful lodges permeate all aspects of this culture's society, and membership in one is almost integral to daily life."
+ tradition_traders_name:0 "Traders"
+ tradition_traders_desc:0 "Either due to an optimal geographic position or simply inherent cultural values, this culture has a long and storied history of commercial activity with its neighbors."
+ tradition_sarradonian_desert_nomads_name:0 "Sarradonian Desert Nomads"
+ tradition_sarradonian_desert_nomads_desc:0 "This culture is intimately accustomed with the Sarradonian desert, which it has traversed for centuries, connecting the Imperial Sea with the realms of central and southern Sarradon."
+ tradition_mubaaizun_name:0 "Mubaaizun"
+ tradition_mubaaizun_desc:0 "A mubaaizun is a champion of a [sarradonian|E] army; often the best warriors of a lord will participate in a ritual duel before the battle commences, fighting to the death. These duels are often accompanied with each army chanting or insulting one another, and there have been instances - such as the Battle of the Mubaaizun - where multiple duels happen before battle commences, often to avenge a dead mubaaizun."
+ tradition_botai_name:0 "Bötai"
+ tradition_ardara_name:0 "Ardara"
+ tradition_bloodhounds_of_aversaria_name:0 "Bloodhounds of Aversaria"
+ tradition_bloodhounds_of_aversaria_desc:0 "The Kikarsag could count themselves among the most feared of [aversaria|E]'s enforcers, their culture gradually transformed to hone and magnify the most ruthless aspects of their warrior society. A rebellious area visited by the Kikarsagi is usually brought back to peace quickly and decisively - the peace of the grave, at least."
+ tradition_blood_magi_name:0 "Blood Magi"
+ tradition_blood_magi_desc:0 "This culture has great reverence for practitioners of [blood_magic|E], and has developed a skill in the field that places their [blood_magi|E] above those of most other cultures."
+ tradition_otachedian_law_name:0 "Otachedian Law"
+ tradition_otachedian_law_desc:0 "Though centuries have passed since its fall, the rules and guidelines of the [otachedian_empire|E] still hold strong in this culture's society."
+ tradition_literary_divergence_name:0 "Literary Divergence"
+
+ ###############
+ # MAA UNLOCKS #
+ ###############
+ culture_parameter_unlock_maa_mubaaizun:0 "Can recruit [GetMaA('mubaaizun').GetName] as [men_at_arms|E]"
+ 
+ #############
+ # TRAIT LOC #
+ #############
+ 
+ culture_parameter_ardara_positive_trait_modifiers:0 "The [GetTrait('brave').GetName( GetNullCharacter )] and [GetTrait('generous').GetName( GetNullCharacter )] [traits|E] are seen as [prestige_i][prestigious|E] and give [county_opinion|E]"
+ culture_parameter_ardara_negative_trait_modifiers:0 "The [GetTrait('craven').GetName( GetNullCharacter )] and [GetTrait('greedy').GetName( GetNullCharacter )] [traits|E] are looked down upon"
+ culture_parameter_can_raid_even_if_feudal:1 "Unlocks the ability to [raid|E]"
+ culture_parameter_can_distribute_raid_loot_for_prestige_and_development:1 "Can choose to distribute part of (or all) the loot at the conclusion of a [raid|E], receiving [prestige_i][prestige|E] in return and boosting [county|E] [development|E]"
+ culture_parameter_has_access_to_familial_extermination:0 "[characters|E] that you have an [execute_reason|E] against can have the #E Familial Extermination#! interaction used against them, with [prestige_i][prestige|E] and [tyranny|E] costs rising with how closely related they are to you"
+ 
+ culture_parameter_free_old_ruler_abdication:1 "Old rulers can voluntarily abdicate at no cost"
+ culture_parameter_enables_alatans:1 "Rulers that have voluntarily abdicated become Alatans, who perform [councillor_tasks|E] better"
+ culture_parameter_enables_khatan_succession:1 "Enables access to the #underline Khatan Succession#! [law|E]"
+ 
+ culture_parameter_bloodhounds_of_aversaria_positive_trait_modifiers:0 "The [GetTrait('sadistic').GetName( GetNullCharacter )], [GetTrait('callous').GetName( GetNullCharacter )] and [GetTrait('vengeful').GetName( GetNullCharacter )] [traits|E] are seen as [prestige_i][prestigious|E]"
+ culture_parameter_bloodhounds_of_aversaria_negative_trait_modifiers:0 "The [GetTrait('compassionate').GetName( GetNullCharacter )] and [GetTrait('forgiving').GetName( GetNullCharacter )] [traits|E] are looked down upon"
+ culture_parameter_can_purge_counties:0 "Enables the #E Purge County#! interaction on [counties|E] with a low [cultural_acceptance|E]"
+ culture_parameter_executing_different_culture_characters_gives_prestige:0 "[executing|E] characters of a different [culture|E] gives [prestige_i][prestige|E]"
+ 
+ culture_parameter_blood_magi_positive_trait_modifiers:0 "The [GetTrait('education_magic_1').GetName( GetNullCharacter )], [GetTrait('education_magic_2').GetName( GetNullCharacter )], [GetTrait('education_magic_3').GetName( GetNullCharacter )] and [GetTrait('education_magic_4').GetName( GetNullCharacter )] [traits|E] are seen as [prestige_i][prestigious|E]"
+ 
+ culture_parameter_unlocks_lodge_mechanics:0 "Unlocks access to [lodges|E]"
+ #############
+ # MODIFIERS #
+ #############
+ 
+ not_tribal_desc:0 "Not [tribal|E]"
+ otached_lawbreaker_desc:0 "[culture|E] [counties|E] in your [realm|E] must not border any Culture that they have less than #V 50%#! or more [cultural_acceptance|E] with"
