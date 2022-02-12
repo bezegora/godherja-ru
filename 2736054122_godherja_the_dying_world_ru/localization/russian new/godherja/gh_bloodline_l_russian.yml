@@ -1,0 +1,252 @@
+﻿l_russian:
+ bloodline_no:0 "родословная" #need to subtract bloodline trait count from model size for icon size use trigger
+ bloodline_show:0 "Да"
+
+ BLOODLINE_LIST:0 "Родословные"
+ OPEN_BLOODLINE_LIST_TOOLTIP:0 "#T Смотреть родословные#!"
+
+ bloodline_founder_name:0 "[CHARACTER.GetUINameNotMeNoFormat]" #need on death to reorder bloodline traits
+
+ bloodline_inherit_all:0 ""#T Наследование: Все#!\Родословные передаётся по мужской и женской линиям"
+ bloodline_inherit_matri:0 "#T Наследование: Matrilineal#!\nРодословные передаётся только по женской линии"
+ bloodline_inherit_patri:0 "#T Наследование: Patrilineal#!\nРодословные передаётся только по мужской линии"
+ bloodline_allow_bastards:0 "#T Бастарды:#! #T;P Allowed#!\nBastards may inherit the Bloodline"
+ bloodline_allow_bastards_not:0 "#T Бастарды:#! #T;N Disallowed#!\nBastards may #N;bold not#! inherit the Bloodline"
+ bloodline_matri_override:0 "#T Матрилинейная передача:#! #T;P Active#!\nPatrilineal Bloodlines may be passed by the mother in a matrilineal marriage, and Matrilineal by the father in a normal marriage"
+ bloodline_matri_override_not:0 "#T Матриленейная передача:#! #T;N Inctive#!\nPatrilineal Bloodlines may #N;bold not#! be passed by the mother, and Matrilineal Bloodlines may #N;bold not#! be passes by the father"
+ bloodline_special_condition:0 "#T Особые условия:#! #T;P Fulfilled#! \nThe Bloodline has extra conditions that must be met for it to be inherited.\nAll conditions are met"
+ bloodline_special_condition_not:0 "#T Особые условия:#! #T;N Unfulfilled#! \nThe Bloodline has extra conditions that must be met for it to be inherited.\nThese conditions are #N;bold not#! met:\n[GetScriptedGui(Concatenate( Trait.GetKey, '_founder' )).IsValidTooltip(GuiScope.SetRoot(Character.MakeScope).End)]"
+
+ bloodline_desc_blank:0 ""
+
+ trait_bloodline_cenware:0 "Кровь Сокрушителя Ведьм"
+ bloodline_cenware_inherit:0 "патри" # inheritance all, matri, patri
+ bloodline_cenware_matri_override:0 "да" # does the bloodline pass in opposite dominant marriages, ie woman pass patri in matri marriage? yes/no
+ bloodline_cenware_bastards:0 "нет" # do bastards inherit? yes/no
+ bloodline_cenware_special:0 "да" # are there an extra conditions for inheritance? yes/no
+ bloodline_cenware_desc:0 "Кенвар Сокрушитель Ведьм был первым правителем, объединившим племена Сьяволки, десятки религий и культур северо-востока, чтобы разграбить Майикпрололлан, и после уничтожить Империю."
+
+ trait_bloodline_nikaryin:0 "Кровь Последнего Никарина"
+ bloodline_nikaryin_inherit:0 "патри" # inheritance all, matri, patri
+ bloodline_nikaryin_matri_override:0 "да" # does the bloodline pass in opposite dominant marriages, ie woman pass patri in matri marriage? yes/no
+ bloodline_nikaryin_bastards:0 "да" # do bastards inherit? yes/no
+ bloodline_nikaryin_special:0 "да" # are there an extra conditions for inheritance? yes/no
+ bloodline_nikaryin_desc:0 "Последний Никарин превратил маленький прибрежный город-государство в Империю, и с мощными заклинаниями сделал первый шаг к объединению Аверсарии."
+
+ trait_bloodline_phanagorax:0 "Кровь Фанаго’ракса Святого'"
+ bloodline_phanagorax_inherit:0 "патри" # inheritance all, matri, patri
+ bloodline_phanagorax_matri_override:0 "да" # does the bloodline pass in opposite dominant marriages, ie woman pass patri in matri marriage? yes/no
+ bloodline_phanagorax_bastards:0 "да" # do bastards inherit? yes/no
+ bloodline_phanagorax_special:0 "да" # are there an extra conditions for inheritance? yes/no
+ bloodline_phanagorax_desc:0 "Будучи очень противоречивым при жизни, Фанаго`ракс был обожествлён в поздних аверсарианских писаниях как основатель современной Аагократии."
+
+ trait_bloodline_dhacixen:0 "Кровь Даци'ксена'"
+ bloodline_dhacixen_inherit:0 "Патри" # inheritance all, matri, patri
+ bloodline_dhacixen_matri_override:0 "да" # does the bloodline pass in opposite dominant marriages, ie woman pass patri in matri marriage? yes/no
+ bloodline_dhacixen_bastards:0 "да" # do bastards inherit? yes/no
+ bloodline_dhacixen_special:0 "да" # are there an extra conditions for inheritance? yes/no
+ bloodline_dhacixen_desc:0 "Даци’ксен пытался противостоять возвышению Аагократии, и стал последним эрсодиаксинским аавтократиром. Он и его родословная были практически истреблены после Войны Тысячи Драконов."
+
+ trait_bloodline_aexionarax:0 "Кровь Эксионаракса"
+ bloodline_aexionarax_inherit:0 "патри" # inheritance all, matri, patri
+ bloodline_aexionarax_matri_override:0 "да" # does the bloodline pass in opposite dominant marriages, ie woman pass patri in matri marriage? yes/no
+ bloodline_aexionarax_bastards:0 "да" # do bastards inherit? yes/no
+ bloodline_aexionarax_special:0 "да" # are there an extra conditions for inheritance? yes/no
+ bloodline_aexionarax_desc:0 " Эксионаракс начал Войну Тысячи Драконов от имени Имперской фракции, убил Даци’ксена, захватил трон, и его правление укрепило Аагиократию."
+
+ trait_bloodline_maklea:0 "Кровь Маклеи"
+ bloodline_maklea_inherit:0 "матри" # inheritance all, matri, patri
+ bloodline_maklea_matri_override:0 "да" # does the bloodline pass in opposite dominant marriages, ie woman pass patri in matri marriage? yes/no
+ bloodline_maklea_bastards:0 "да" # do bastards inherit? yes/no
+ bloodline_maklea_special:0 "да" # are there an extra conditions for inheritance? yes/no
+ bloodline_maklea_desc:0 "Маклея начала традицию Кровавого Сената, убив своей отца, Акалионикса, в поединке. Её правление прошло под тенью восстания, так как она выслеживала и убивала своих братьев, и приструняла знать."
+
+ trait_bloodline_nothyx:0 "Кровь Нотикса"
+ bloodline_nothyx_inherit:0 "все" # inheritance all, matri, patri
+ bloodline_nothyx_matri_override:0 "да" # does the bloodline pass in opposite dominant marriages, ie woman pass patri in matri marriage? yes/no
+ bloodline_nothyx_bastards:0 "да" # do bastards inherit? yes/no
+ bloodline_nothyx_special:0 "да" # are there an extra conditions for inheritance? yes/no
+ bloodline_nothyx_desc:0 "Нотикс был первым Аавтократиром, кому удалось победить в Кровавом Сенате, не владея магией. Тренируясь с антимагами из Шевалье, его династия правила несколько поколений, и привела Аверсарию к её последней золотому веку."
+
+ trait_bloodline_axiaothea:0 "Кровь Аксиотеи"
+ bloodline_axiaothea_inherit:0 "все" # inheritance all, matri, patri
+ bloodline_axiaothea_matri_override:0 "да" # does the bloodline pass in opposite dominant marriages, ie woman pass patri in matri marriage? yes/no
+ bloodline_axiaothea_bastards:0 "да" # do bastards inherit? yes/no
+ bloodline_axiaothea_special:0 "да" # are there an extra conditions for inheritance? yes/no
+ bloodline_axiaothea_desc:0 "Аксиотея была признана самым могущественным магом поколения. Соперница Эшрея, она разорвала Аверсарию пополам в аверсарианской гражданской войне, которая закончилась с Фродброкной и смертью Аксиотеи. Несмотря на противоречивую жизнь, она была обожествлена вскоре после смерти."
+
+ trait_bloodline_aeschraes:0 "Кровь Разрушителя Мира"
+ bloodline_aeschraes_inherit:0 "патри" # inheritance all, matri, patri
+ bloodline_aeschraes_matri_override:0 "да" # does the bloodline pass in opposite dominant marriages, ie woman pass patri in matri marriage? yes/no
+ bloodline_aeschraes_bastards:0 "да" # do bastards inherit? yes/no
+ bloodline_aeschraes_special:0 "да" # are there an extra conditions for inheritance? yes/no
+ bloodline_aeschraes_desc:0 "Эшрей был одним из самых молодых легатов в истории после трагического воспитания, и заработал статус самого сильного мага Аверсарии после уничтожения мира во время имперской гражданской войны."
+
+ trait_bloodline_pothacleas:0 "Кровь Последнего Ийросси"
+ bloodline_pothacleas_inherit:0 "все" # inheritance all, matri, patri
+ bloodline_pothacleas_matri_override:0 "да" # does the bloodline pass in opposite dominant marriages, ie woman pass patri in matri marriage? yes/no
+ bloodline_pothacleas_bastards:0 "да" # do bastards inherit? yes/no
+ bloodline_pothacleas_special:0 "да" # are there an extra conditions for inheritance? yes/no
+ bloodline_pothacleas_desc:0 "Потаклеас был последним независимым правителем ийросси, который сопротивлялся аверсарианскому правлению. После жестокой партизанской войны, он сдался Аавтократиру и умолял о милости для своего народа, которую аверсарианцы даровали – поработили ийросси навсегда перед тем, как убить Потаклеаса."
+
+ trait_bloodline_the_skull_taker:0 "Кровь Собирателя Черепов"
+ bloodline_the_skull_taker_inherit:0 "патри" # inheritance all, matri, patri
+ bloodline_the_skull_taker_matri_override:0 "да" # does the bloodline pass in opposite dominant marriages, ie woman pass patri in matri marriage? yes/no
+ bloodline_the_skull_taker_bastards:0 "да" # do bastards inherit? yes/no
+ bloodline_the_skull_taker_special:0 "да" # are there an extra conditions for inheritance? yes/no
+ bloodline_the_skull_taker_desc:0 "Бесстрашный воевода, Горассос Собиратель Черепов, прорубил свой путь через Аверсарию во имя Эшрея, прежде чем начать убивать во имя себя."
+
+ trait_bloodline_gardfrei:0 "Кровь Кристоффа ден ва Сейгнона"
+ bloodline_gardfrei_inherit:0 "патри" # inheritance all, matri, patri
+ bloodline_gardfrei_matri_override:0 "да" # does the bloodline pass in opposite dominant marriages, ie woman pass patri in matri marriage? yes/no
+ bloodline_gardfrei_bastards:0 "да" # do bastards inherit? yes/no
+ bloodline_gardfrei_special:0 "да" # are there an extra conditions for inheritance? yes/no
+ bloodline_gardfrei_desc:0 "Жестокий воин, Кристофф рубил своих врагов и ужасал Шевальянское общество, подчиняя его своими безжалостными методами. Он объединил разбитое Высокое Королевство впервые за почти сотню лет."
+
+ trait_bloodline_huegons:0 "Кровь Хвегонса ден ва Деавгти"
+ bloodline_huegons_inherit:0 "патри" # inheritance all, matri, patri
+ bloodline_huegons_matri_override:0 "да" # does the bloodline pass in opposite dominant marriages, ie woman pass patri in matri marriage? yes/no
+ bloodline_huegons_bastards:0 "да" # do bastards inherit? yes/no
+ bloodline_huegons_special:0 "да" # are there an extra conditions for inheritance? yes/no
+ bloodline_huegons_desc:0 " Лучший государственник поколения, Хвегонс объединил Марки с помощью смеси из дипломатии, интриг и войны. Он бы никогда не смог носить корону, умерев от болезни во время последних этапов объединения. Его безумный сын Агьерс был корован во имя отца."
+
+ trait_bloodline_the_good_king:0 "Кровь Хорошего Короля"
+ bloodline_the_good_king_inherit:0 "все" # inheritance all, matri, patri
+ bloodline_the_good_king_matri_override:0 "да" # does the bloodline pass in opposite dominant marriages, ie woman pass patri in matri marriage? yes/no
+ bloodline_the_good_king_bastards:0 "да" # do bastards inherit? yes/no
+ bloodline_the_good_king_special:0 "да" # are there an extra conditions for inheritance? yes/no
+ bloodline_the_good_king_desc:0 " Хороший король Бастион объединил ранних марчеров и повёл их на запад, в Шевалье. Известный за свою справедливость, Бастион никогда не имел детей, но усыновил бесчисленное количество сирот во время своего правления."
+
+ trait_bloodline_the_prophet:0 "Кровь Пророка"
+ bloodline_the_prophet_inherit:0 "все" # inheritance all, matri, patri
+ bloodline_the_prophet_matri_override:0 "да" # does the bloodline pass in opposite dominant marriages, ie woman pass patri in matri marriage? yes/no
+ bloodline_the_prophet_bastards:0 "нет" # do bastards inherit? yes/no
+ bloodline_the_prophet_special:0 "да" # are there an extra conditions for inheritance? yes/no
+ bloodline_the_prophet_desc:0 "Пророк видели всю историю мира, от его рождения до окончания в 1254, и все Амсарийские правители несут в себе его кровь и следуют его мудрости."
+
+ trait_bloodline_the_black_sun:0 "Кровь Чёрного Солнца"
+ bloodline_the_black_sun_inherit:0 "патри" # inheritance all, matri, patri
+ bloodline_the_black_sun_matri_override:0 "да" # does the bloodline pass in opposite dominant marriages, ie woman pass patri in matri marriage? yes/no
+ bloodline_the_black_sun_bastards:0 "нет" # do bastards inherit? yes/no
+ bloodline_the_black_sun_special:0 "да" # are there an extra conditions for inheritance? yes/no
+ bloodline_the_black_sun_desc:0 "Никаноней Чёрное Солнце доказал, что он равный Сьяволкам и выковал новую Аверсарию на севере, с мечтами о возвращении былого."
+
+ trait_bloodline_kathanouxa:0 "Кровь Короля-Чародея"
+ bloodline_kathanouxa_inherit:0 "все" # inheritance all, matri, patri
+ bloodline_kathanouxa_matri_override:0 "да" # does the bloodline pass in opposite dominant marriages, ie woman pass patri in matri marriage? yes/no
+ bloodline_kathanouxa_bastards:0 "да" # do bastards inherit? yes/no
+ bloodline_kathanouxa_special:0 "да" # are there an extra conditions for inheritance? yes/no
+ bloodline_kathanouxa_desc:0 "Хоть никто не знает что такое Чародей, Катаноукса стала известна как самый могущественный маг поколения, и пыталась претендовать на завоевание целого мира."
+
+ trait_bloodline_odyr_then:0 "Кровь Одира Тена"
+ bloodline_odyr_then_inherit:0 "патри" # inheritance all, matri, patri
+ bloodline_odyr_then_matri_override:0 "да" # does the bloodline pass in opposite dominant marriages, ie woman pass patri in matri marriage? yes/no
+ bloodline_odyr_then_bastards:0 "нет" # do bastards inherit? yes/no
+ bloodline_odyr_then_special:0 "да" # are there an extra conditions for inheritance? yes/no
+ bloodline_odyr_then_desc:0 "Одир Тен восстал против Храма Горы-Солнца, пытаясь сбросить монашеские ордена и передать власть своим светским военачальникам. После он продолжил своё восстание против вторгнувшихся аверсарианцев."
+
+ trait_bloodline_odyr_lleth:0 "Кровь Одира Ллета"
+ bloodline_odyr_lleth_inherit:0 "патри" # inheritance all, matri, patri
+ bloodline_odyr_lleth_matri_override:0 "да" # does the bloodline pass in opposite dominant marriages, ie woman pass patri in matri marriage? yes/no
+ bloodline_odyr_lleth_bastards:0 "нет" # do bastards inherit? yes/no
+ bloodline_odyr_lleth_special:0 "да" # are there an extra conditions for inheritance? yes/no
+ bloodline_odyr_lleth_desc:0 "Одир Ллет восстал против Аверсарии в горах Опахасии, сжёг губернаторский дворец и почти расколол регион."
+
+ trait_bloodline_odyr_hune:0 "Кровь Одира Гуна"
+ bloodline_odyr_hune_inherit:0 "патри" # inheritance all, matri, patri
+ bloodline_odyr_hune_matri_override:0 "да" # does the bloodline pass in opposite dominant marriages, ie woman pass patri in matri marriage? yes/no
+ bloodline_odyr_hune_bastards:0 "нет" # do bastards inherit? yes/no
+ bloodline_odyr_hune_special:0 "да" # are there an extra conditions for inheritance? yes/no
+ bloodline_odyr_hune_desc:0 "Одир Гун начал последнее восстание одиров, почти захватил Асиуполь, прежде чем был уничтожен объединёнными силами аверсарианских легионов."
+
+ trait_bloodline_vercigex:0 "Кровь Верцигекса"
+ bloodline_vercigex_inherit:0 "патри" # inheritance all, matri, patri
+ bloodline_vercigex_matri_override:0 "да" # does the bloodline pass in opposite dominant marriages, ie woman pass patri in matri marriage? yes/no
+ bloodline_vercigex_bastards:0 "да" # do bastards inherit? yes/no
+ bloodline_vercigex_special:0 "да" # are there an extra conditions for inheritance? yes/no
+ bloodline_vercigex_desc:0 "Искалеченный разум, Верцигекс был единственным магом, который правил Шевалье, и был близким другом Бастиона. Пока он пытался спасти рассыпающуюся вотчину, его видение умирающего будущего и недоверие вассалов привели к его смерти от рук убийц."
+
+ trait_bloodline_diplomacy_skill:0 "Кровь Политика"
+ bloodline_diplomacy_skill_inherit:0 "да" # inheritance all, matri, patri
+ bloodline_diplomacy_skill_matri_override:0 "да" # does the bloodline pass in opposite dominant marriages, ie woman pass patri in matri marriage? yes/no
+ bloodline_diplomacy_skill_bastards:0 "да" # do bastards inherit? yes/no
+ bloodline_diplomacy_skill_special:0 "нет" # are there an extra conditions for inheritance? yes/no
+ bloodline_diplomacy_skill_desc:0 "Великий политик и дипломат, похоже, что его потомки унаследовали часть его таланта."
+
+ trait_bloodline_martial_skill:0 "Кровь Воина"
+ bloodline_martial_skill_inherit:0 "да" # inheritance all, matri, patri
+ bloodline_martial_skill_matri_override:0 "да" # does the bloodline pass in opposite dominant marriages, ie woman pass patri in matri marriage? yes/no
+ bloodline_martial_skill_bastards:0 "да" # do bastards inherit? yes/no
+ bloodline_martial_skill_special:0 "нет" # are there an extra conditions for inheritance? yes/no
+ bloodline_martial_skill_desc:0 "Блестящий командир и боец, похоже, что его потомки унаследовали часть его таланта."
+
+ trait_bloodline_stewardship_skill:0 "Кровь Управляющего"
+ bloodline_stewardship_skill_inherit:0 "все" # inheritance all, matri, patri
+ bloodline_stewardship_skill_matri_override:0 "да" # does the bloodline pass in opposite dominant marriages, ie woman pass patri in matri marriage? yes/no
+ bloodline_stewardship_skill_bastards:0 "да" # do bastards inherit? yes/no
+ bloodline_stewardship_skill_special:0 "нет" # are there an extra conditions for inheritance? yes/no
+ bloodline_stewardship_skill_desc:0 "Умевший производить золото как будто бы из ничего, похоже, что его потомки унаследовали часть его таланта."
+
+ trait_bloodline_intrigue_skill:0 "Кровь Паука"
+ bloodline_intrigue_skill_inherit:0 "все" # inheritance all, matri, patri
+ bloodline_intrigue_skill_matri_override:0 "да" # does the bloodline pass in opposite dominant marriages, ie woman pass patri in matri marriage? yes/no
+ bloodline_intrigue_skill_bastards:0 "да" # do bastards inherit? yes/no
+ bloodline_intrigue_skill_special:0 "нет" # are there an extra conditions for inheritance? yes/no
+ bloodline_intrigue_skill_desc:0 "Всегда плетущий сеть из заговоров, похоже, что его потомки унаследовали часть его таланта."
+
+ trait_bloodline_learning_skill:0 "Кровь Мудреца"
+ bloodline_learning_skill_inherit:0 "все" # inheritance all, matri, patri
+ bloodline_learning_skill_matri_override:0 "да" # does the bloodline pass in opposite dominant marriages, ie woman pass patri in matri marriage? yes/no
+ bloodline_learning_skill_bastards:0 "да" # do bastards inherit? yes/no
+ bloodline_learning_skill_special:0 "нет" # are there an extra conditions for inheritance? yes/no
+ bloodline_learning_skill_desc:0 "Один из самых просвещенных людей своего времени, похоже, что его потомки унаследовали часть его таланта."
+
+ trait_bloodline_cois_defeated:0 "Кровь последнего Аавтократира"
+ bloodline_cois_defeated_inherit:0 "все" # inheritance all, matri, patri
+ bloodline_cois_defeated_matri_override:0 "да" # does the bloodline pass in opposite dominant marriages, ie woman pass patri in matri marriage? yes/no
+ bloodline_cois_defeated_bastards:0 "да" # do bastards inherit? yes/no
+ bloodline_cois_defeated_special:0 "нет" # are there an extra conditions for inheritance? yes/no
+ bloodline_cois_defeated_desc:0 "Всеобще признанный как последний Аавтократир, Коис был одним из тех немногих, кто сумел победить Кенвара в открытом бою."
+
+ trait_bloodline_cois_victorious:0 "Кровь Коиса"
+ bloodline_cois_victorious_inherit:0 "все" # inheritance all, matri, patri
+ bloodline_cois_victorious_matri_override:0 "да" # does the bloodline pass in opposite dominant marriages, ie woman pass patri in matri marriage? yes/no
+ bloodline_cois_victorious_bastards:0 "да" # do bastards inherit? yes/no
+ bloodline_cois_victorious_special:0 "нет" # are there an extra conditions for inheritance? yes/no
+ bloodline_cois_victorious_desc:0 "Когда всякая надежда для Аверсарии казалась потерянной, Коис пришёл из ниоткуда, чтобы разбить кенварские орды и спасти империю."
+
+
+ trait_bloodline_salacad:0 "Кровь Короннованого небом"
+ bloodline_salacad_inherit:0 "все" # inheritance all, matri, patri
+ bloodline_salacad_patri_override:0 "да" # does the bloodline pass in opposite dominant marriages, ie woman pass patri in matri marriage? yes/no
+ bloodline_salacad_bastards:0 "да" # do bastards inherit? yes/no
+ bloodline_salacad_special:0 "нет" # are there an extra conditions for inheritance? yes/no
+ bloodline_salacad_desc:0 "Короннованый небом и его последователи ведут за собой Дочерей неба в новый золотой век своего народа."
+
+ trait_bloodline_gatecrasher:0 "Кровь Разрушителя Ворот"
+ bloodline_gatecrasher_inherit:0 "все" # inheritance all, matri, patri
+ bloodline_gatecrasher_matri_override:0 "да" # does the bloodline pass in opposite dominant marriages, ie woman pass patri in matri marriage? yes/no
+ bloodline_gatecrasher_bastards:0 "нет" # do bastards inherit? yes/no
+ bloodline_gatecrasher_special:0 "да" # are there an extra conditions for inheritance? yes/no
+ bloodline_gatecrasher_desc:0 "Разрушитель Ворот разбил могучих адабассийцев не один раз, а целых два - достижение, с которым почти ничто не может сравниться."
+
+ found_diplomacy_bloodline_decision:0 "Основать родословную Дипломатии"
+ found_diplomacy_bloodline_decision_desc:0 "Вы и ваши потомки будут известны за свои навыки дипломатии"
+ found_diplomacy_bloodline_decision_tooltip:0 "Вы и ваши потомки будут известны за свои навыки дипломатии"
+ found_diplomacy_bloodline_decision_confirm:0 "Основать родословную"
+ found_martial_bloodline_decision:0 "Основать родословную Военного дела"
+ found_martial_bloodline_decision_desc:0 "Вы и ваши потомки будут известны за свои навыки военного дела"
+ found_martial_bloodline_decision_tooltip:0 "Вы и ваши потомки будут известны за свои навыки военного дела"
+ found_martial_bloodline_decision_confirm:0 "Основать родословную"
+ found_stewardship_bloodline_decision:0 "Основать родословную Управления"
+ found_stewardship_bloodline_decision_desc:0 "Вы и ваши потомки будут известны за свои навыки управления"
+ found_stewardship_bloodline_decision_tooltip:0 "Вы и ваши потомки будут известны за свои навыки управления"
+ found_stewardship_bloodline_decision_confirm:0 "Основать родословную"
+ found_intrigue_bloodline_decision:0 "Основать родословную Интриги"
+ found_intrigue_bloodline_decision_desc:0 "Вы и ваши потомки будут известны за свои навыки интриги"
+ found_intrigue_bloodline_decision_tooltip:0 "Вы и ваши потомки будут известны за свои навыки интриги"
+ found_intrigue_bloodline_decision_confirm:0 "Основать родословную"
+ found_learning_bloodline_decision:0 "Основать родословную Учёности"
+ found_learning_bloodline_decision_desc:0 "Вы и ваши потомки будут известны за свои навыки учёности"
+ found_learning_bloodline_decision_tooltip:0 "Вы и ваши потомки будут известны за свои навыки учёности"
+ found_learning_bloodline_decision_confirm:0 "Основать родословную"
