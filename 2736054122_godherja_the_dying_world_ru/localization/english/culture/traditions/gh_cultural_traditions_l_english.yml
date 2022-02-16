@@ -53,7 +53,10 @@
  
  culture_parameter_blood_magi_positive_trait_modifiers:0 "The [GetTrait('education_magic_1').GetName( GetNullCharacter )], [GetTrait('education_magic_2').GetName( GetNullCharacter )], [GetTrait('education_magic_3').GetName( GetNullCharacter )] and [GetTrait('education_magic_4').GetName( GetNullCharacter )] [traits|E] are seen as [prestige_i][prestigious|E]"
  
- culture_parameter_unlocks_lodge_mechanics:0 "Unlocks access to [lodges|E]"
+ culture_parameter_unlocks_lodge_mechanics:0 "Unlocks access to [lodges_mechanical|E]"
+
+ culture_parameter_not_tribal_pirate_raiding_malus:2 "When returning from a successful [raid|E], non-[tribal|E] or non-[pirates|E] characters #EMP lose#! [EmptyScope.ScriptValue('not_tribal_raid_prestige_multiplier')|1] [prestige_i][prestige|E] per 1 [raid_loot|E] delivered"
+
  #############
  # MODIFIERS #
  #############

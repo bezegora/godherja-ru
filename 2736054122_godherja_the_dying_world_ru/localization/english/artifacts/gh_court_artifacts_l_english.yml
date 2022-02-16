@@ -5,15 +5,84 @@
 
  # Animals (used in ArtifactAnimalType)
  animal_type_dire_stag:0 "dire stag"
+ animal_type_hyena:0 "hyena"
+ animal_type_jackal:0 "jackal"
+ animal_type_kursha:0 "kursha"
+ animal_type_ibex:0 "ibex"
+ animal_type_kursha:0 "kursha"
+ animal_type_camel:0 "camel"
+ animal_type_bison:0 "bison"
+ animal_type_fogbeast:0 "fogbeast"
+ animal_type_tinessian:0 "tinessian lion"
 
  # Hides
  artifact_hide_type_dire_stag:0 "a majestic dire stag"
+ artifact_hide_type_hyena:0 "a hyena"
+ artifact_hide_type_jackal:0 "a jackal"
+ artifact_hide_type_kursha:0 "a kursha"
+ artifact_hide_type_ibex:0 "a ibex"
+ artifact_hide_type_camel:0 "a camel"
+ artifact_hide_type_bison:0 "a bison"
+ artifact_hide_type_fogbeast:0 "a fogbeast"
+ artifact_hide_type_tinessian:0 "a tinessian lion"
+
+ feature_animal_hide_type_hyena:0 "a hyena"
+ feature_animal_hide_type_jackal:0 "a jackal"
+ feature_animal_hide_type_kursha:0 "a kursha"
+ feature_animal_hide_type_ibex:0 "a ibex"
+ feature_animal_hide_type_camel:0 "a camel"
+ feature_animal_hide_type_bison:0 "a bison"
+ feature_animal_hide_type_fogbeast:0 "a fogbeast"
+ feature_animal_hide_type_dire_stag:0 "a dire stag"
+ feature_animal_hide_type_tinessian:0 "a tinessian lion"
+
+ may_gain_artifact_hide_tooltip:0 "Hunters are likely to gain an artifact"
+
 
  # Skull
  artifact_wall_animal_skull_stag:0 "a dire stag, boasting a truly colossal rack"
- feature_animal_hide_type_dire_stag:0 "Dire Stag"
  
  artifact_monster_hide_big_name:3 "Hide of a [newly_created_artifact.GetFeatureText( 'animal_hide_type' )]"
  artifact_monster_hide_big_description:2 "The tanned hide of a [newly_created_artifact.GetFeatureText( 'animal_hide_type' )]. The hide is massive in size and of [SCOPE.Custom('ArtifactQuality')] quality."
- 
+ artifact_hunt_animal_hide_big_description:2 "The tanned hide of [newly_created_artifact.GetFeatureText( 'animal_hide_type' )], hunted in [Localize(Concatenate(GetPlayer.MakeScope.Var('temporary_hunt_biozone_variable').GetFlagName,'_name'))]. The hide is massive in size and of [SCOPE.Custom('ArtifactQuality')] quality."
+ artifact_hunt_animal_hide_medium_description:2 "The tanned hide of [newly_created_artifact.GetFeatureText( 'animal_hide_type' )], hunted in [Localize(Concatenate(GetPlayer.MakeScope.Var('temporary_hunt_biozone_variable').GetFlagName,'_name'))]. The hide is of [SCOPE.Custom('ArtifactQuality')] quality."
+ artifact_hunt_animal_hide_medium_name:3 "Hide of the [newly_created_artifact.Custom('ArtifactAnimalAdjective')|U] [newly_created_artifact.Custom('ArtifactAnimalType')|U] of [Localize(Concatenate(GetPlayer.MakeScope.Var('temporary_hunt_biozone_variable').GetFlagName,'_name'))]"
+ artifact_hunt_animal_hide_big_name:3 "Hide of the [newly_created_artifact.Custom('ArtifactAnimalAdjective')|U] [newly_created_artifact.Custom('ArtifactAnimalType')|U] of [Localize(Concatenate(GetPlayer.MakeScope.Var('temporary_hunt_biozone_variable').GetFlagName,'_name'))]"
+ artifact_hunt_animal_hide_small_name:2 "Hide of the [newly_created_artifact.Custom('ArtifactAnimalAdjective')|U] [newly_created_artifact.Custom('ArtifactAnimalType')|U] of [Localize(Concatenate(GetPlayer.MakeScope.Var('temporary_hunt_biozone_variable').GetFlagName,'_name'))]"
+ artifact_hunt_wall_skull_name:2 "Skull of the [newly_created_artifact.Custom('ArtifactAnimalAdjective')|U] [newly_created_artifact.Custom('ArtifactAnimalType')|U] of [Localize(Concatenate(GetPlayer.MakeScope.Var('temporary_hunt_biozone_variable').GetFlagName,'_name'))]"
+ artifact_hunt_wall_skull_description:2 "The impressive skull of [newly_created_artifact.GetFeatureText( 'animal_skull_type' )], hunted in the [Localize(Concatenate(GetPlayer.MakeScope.Var('temporary_hunt_biozone_variable').GetFlagName,'_name'))]. The skull is [SCOPE.Custom('ArtifactAdverbQuality')] preserved and attached to a [SCOPE.Custom('ArtifactAdverbWealth')] decorated [newly_created_artifact.GetFeatureText( 'generic_material_wood' )] mount."
 
+ # Goblets
+ 
+ artifact_aversarian_goblet_name:0 "$artifact_name_prefix$ Aversarian Goblet"
+ artifact_aversarian_goblet_description:1 "An Aversarian goblet of [SCOPE.Custom('ArtifactQuality')] craftsmanship. It is made of [newly_created_artifact.GetFeatureText( 'goblet_material' )] with [newly_created_artifact.GetFeatureText( 'decoration_material_gem' )] inserts.\n\n$artifact_aversarian_goblet_explanation$ $artifact_aversarian_goblet_age$"
+ 
+ artifact_aversarian_goblet_explanation:0 "A common utility in [living_magic|E] rituals, well crafted Aversarian goblets are prized for both their exquisite beauty and use in [magic|E]."
+ artifact_aversarian_goblet_age:0 "This [newly_created_artifact.GetFeatureText( 'goblet_characteristic' )] sample is [newly_created_artifact.GetFeatureText( 'goblet_decoration' )] and was likely made around the year [owner.MakeScope.Var('goblet_age').GetValue|0]."
+ 
+ feature_decoration_material_gem_bloodcrystal:0 "bloodcrystal"
+ 
+ feature_goblet_characteristic_large:0 "rather large"
+ feature_goblet_characteristic_huge:0 "huge and heavy"
+ feature_goblet_characteristic_wide_topped:0 "exceptionally wide-topped"
+ feature_goblet_characteristic_narrow:0 "exceptionally narrow"
+ feature_goblet_characteristic_elaborate_stem:0 "elaborately-stemmed"
+ feature_goblet_characteristic_unremarkable:0 "rather unremarkable"
+ 
+ feature_goblet_decoration_magical_runes:0 "engraved with magical runes on all sides"
+ feature_goblet_decoration_magical_geometric_shapes:0 "engraved with magically-attuned geometric shapes"
+ feature_goblet_decoration_the_purest:0 "engraved with an elaborate rendition of the Purest and First Men"
+ feature_goblet_decoration_the_sea_tower:0 "engraved with an elaborate rendition of the Sea Tower"
+ feature_goblet_decoration_mountain_sun_iconography:0 "engraved with iconography of the old Mountain-Sun Temple"
+ feature_goblet_decoration_cups:0 "engraved with images of cups"
+ feature_goblet_decoration_moons:0 "engraved with images of [aervalr|E]"
+ feature_goblet_decoration_dragons:0 "engraved with dragon motifs"
+ feature_goblet_decoration_battle:0 "engraved with scenes of battle"
+ feature_goblet_decoration_blood_drops:0 "engraved with blood drops"
+ feature_goblet_decoration_flowers:0 "engraved with floral motifs"
+ feature_goblet_decoration_rivers:0 "engraved with intertwining rivers"
+ feature_goblet_decoration_lions:0 "engraved with lion motifs"
+ feature_goblet_decoration_chimerae:0 "engraved with chimera motifs"
+ feature_goblet_decoration_mayikprolollan:0 "engraved with the symbols of the Mayikprolollan, marking it out as its property"
+ feature_goblet_decoration_heraldry:0 "engraved with the heraldry of a likely long-dead noble house"
+ feature_goblet_decoration_undecorated:0 "plain and undecorated"

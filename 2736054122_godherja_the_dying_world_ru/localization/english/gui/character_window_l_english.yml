@@ -173,7 +173,7 @@
  AI_PERSONALITY_TT:0 "#T Personality: [Character.GetAIPersonality]#!\n[Character.GetShortUINameNoTooltip] will act against you and others according to [Character.GetHerHis] Personality, which is primarily determined by [Character.GetHerHis] Personality [traits|E]"
  CHARACTER_RELATION_COMBINE:0 "$FIRST$ • $SECOND$"
 
- FAITH_CHARACTER_WINDOW:0 "[Faith.GetAdjectiveNoTooltip] [SelectLocalization(Character.MakeScope.Var('character_legal_tradition').IsSet,Concatenate('(',Concatenate(Character.MakeScope.Var('character_legal_tradition').Var('legal_tradition_name').Char.GetFirstNameNoTooltip,')')),'')]"
+ FAITH_CHARACTER_WINDOW:0 "[Faith.GetAdjectiveNoTooltip] [SelectLocalization(Character.MakeScope.Var('character_legal_tradition').IsSet,Concatenate('(',Concatenate(Localize(Concatenate(Character.MakeScope.Var('character_legal_tradition').Var('legal_tradition_name').GetFlagName,'_name')),')')),'')]"
  CULTURE_CHARACTER_WINDOW:0 "[Culture.GetNameNoTooltip]"
  VASSAL_SORT_POWER:0 "$CLAIMANT_SORT_STRENGTH$"
 
