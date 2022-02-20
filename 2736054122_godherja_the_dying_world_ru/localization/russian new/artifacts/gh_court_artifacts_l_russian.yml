@@ -1,0 +1,88 @@
+﻿l_russian:
+ ##############################
+ # Procedural court artifacts #
+ ##############################
+
+ # Animals (used in ArtifactAnimalType)
+ animal_type_dire_stag:0 "Зловещий Олень"
+ animal_type_hyena:0 "гиена"
+ animal_type_jackal:0 "шакал"
+ animal_type_kursha:0 "Курша"
+ animal_type_ibex:0 "горный козел"
+ animal_type_kursha:0 "курша"
+ animal_type_camel:0 "верблюд"
+ animal_type_bison:0 "бизон"
+ animal_type_fogbeast:0 "туманный зверь"
+ animal_type_tinessian:0 "тинессианский лев"
+
+ # Hides
+ artifact_hide_type_dire_stag:0 "величественный страшный олень"
+ artifact_hide_type_hyena:0 "гиена"
+ artifact_hide_type_jackal:0 "шакал"
+ artifact_hide_type_kursha:0 "карша"
+ artifact_hide_type_ibex:0 "горный козел"
+ artifact_hide_type_camel:0 "верблюд"
+ artifact_hide_type_bison:0 "бизон"
+ artifact_hide_type_fogbeast:0 "туманный зверь"
+ artifact_hide_type_tinessian:0 "тинессианский лев"
+
+ feature_animal_hide_type_hyena:0 "гиена"
+ feature_animal_hide_type_jackal:0 "шакал"
+ feature_animal_hide_type_kursha:0 "курша"
+ feature_animal_hide_type_ibex:0 "горный козёл"
+ feature_animal_hide_type_camel:0 "верблюд"
+ feature_animal_hide_type_bison:0 "бизон"
+ feature_animal_hide_type_fogbeast:0 "туманнный зверь"
+ feature_animal_hide_type_dire_stag:0 "зловещий олень"
+ feature_animal_hide_type_tinessian:0 "тинессианский лев"
+
+ may_gain_artifact_hide_tooltip:0 "Охотники, скорее всего, получат артефакт"
+
+
+ # Skull
+ artifact_wall_animal_skull_stag:0 "зловещий олень, обладающий поистине колоссальной стойкой"
+
+ artifact_monster_hide_big_name:3 "Шкура из [newly_created_artifact.GetFeatureText( 'animal_hide_type' )]"
+ artifact_monster_hide_big_description:2 "Загорелая шкура [newly_created_artifact.GetFeatureText( 'animal_hide_type' )]. Шкура массивна по размеру и [SCOPE.Custom('ArtifactQuality')] качества."
+ artifact_hunt_animal_hide_big_description:2 "Дубленая шкура [newly_created_artifact.GetFeatureText( 'animal_hide_type' )], охотились в [Localize(Concatenate(GetPlayer.MakeScope.Var('temporary_hunt_biozone_variable').GetFlagName,'_name'))].Шкура массивна по размеру и [SCOPE.Custom('ArtifactQuality')] качества."
+ artifact_hunt_animal_hide_medium_description:2 "Дубленая шкура [newly_created_artifact.GetFeatureText( 'animal_hide_type' )], охотились в [Localize(Concatenate(GetPlayer.MakeScope.Var('temporary_hunt_biozone_variable').GetFlagName,'_name'))]. The hide is of [SCOPE.Custom('ArtifactQuality')] quality."
+ artifact_hunt_animal_hide_medium_name:3 "Шкура [newly_created_artifact.Custom('ArtifactAnimalAdjective')|U] [newly_created_artifact.Custom('ArtifactAnimalType')|U] от [Localize(Concatenate(GetPlayer.MakeScope.Var('temporary_hunt_biozone_variable').GetFlagName,'_name'))]"
+ artifact_hunt_animal_hide_big_name:3 "Шкура из [newly_created_artifact.Custom('ArtifactAnimalAdjective')|U] [newly_created_artifact.Custom('ArtifactAnimalType')|U] от [Localize(Concatenate(GetPlayer.MakeScope.Var('temporary_hunt_biozone_variable').GetFlagName,'_name'))]"
+ artifact_hunt_animal_hide_small_name:2 "Шкура [newly_created_artifact.Custom('ArtifactAnimalAdjective')|U] [newly_created_artifact.Custom('ArtifactAnimalType')|U] of [Localize(Concatenate(GetPlayer.MakeScope.Var('temporary_hunt_biozone_variable').GetFlagName,'_name'))]"
+ artifact_hunt_wall_skull_name:2 "Череп из [newly_created_artifact.Custom('ArtifactAnimalAdjective')|U] [newly_created_artifact.Custom('ArtifactAnimalType')|U] от [Localize(Concatenate(GetPlayer.MakeScope.Var('temporary_hunt_biozone_variable').GetFlagName,'_name'))]"
+ artifact_hunt_wall_skull_description:2 "Впечатляющий череп [newly_created_artifact.GetFeatureText( 'animal_skull_type' )],охотились в [Localize(Concatenate(GetPlayer.MakeScope.Var('temporary_hunt_biozone_variable').GetFlagName,'_name'))]. Череп [SCOPE.Custom('ArtifactAdverbQuality')] сохраненный и прикрепленный к [SCOPE.Custom('ArtifactAdverbWealth')] украшенный [newly_created_artifact.GetFeatureText( 'generic_material_wood' )] mount."
+
+ # Goblets
+
+ artifact_aversarian_goblet_name:0 "$artifact_name_prefix$ Аверсарианский кубок"
+ artifact_aversarian_goblet_description:1 "Аверсарианский кубок [SCOPE.Custom('ArtifactQuality')] мастерство. Он сделан из [newly_created_artifact.GetFeatureText( 'goblet_material' )] с [newly_created_artifact.GetFeatureText( 'decoration_material_gem' )] вставки.\n\n$artifact_aversarian_goblet_explanation$ $artifact_aversarian_goblet_age$"
+
+ artifact_aversarian_goblet_explanation:0 "Обычный предмет в [Concept('living_magic', 'магических')|E] ритуалах, хорошо изготовленные аверсарианские кубки ценятся как за их изысканную красоту, так и за использование в [Concept('magic', 'магии')|E]."
+ artifact_aversarian_goblet_age:0 "Это [newly_created_artifact.GetFeatureText( 'goblet_characteristic' )] образец это [newly_created_artifact.GetFeatureText( 'goblet_decoration' )] и, скорее всего, был сделан примерно в этом году [owner.MakeScope.Var('goblet_age').GetValue|0]."
+
+ feature_decoration_material_gem_bloodcrystal:0 "кровавый кристалл"
+
+ feature_goblet_characteristic_large:0 "довольно большой"
+ feature_goblet_characteristic_huge:0 "огромный и тяжелый"
+ feature_goblet_characteristic_wide_topped:0 "исключительно широкий верх"
+ feature_goblet_characteristic_narrow:0 "исключительно узкий"
+ feature_goblet_characteristic_elaborate_stem:0 "тщательно продуманный ствол"
+ feature_goblet_characteristic_unremarkable:0 "ничем не примечательный"
+
+ feature_goblet_decoration_magical_runes:0 "со всех сторон выгравированы магические руны"
+ feature_goblet_decoration_magical_geometric_shapes:0 "выгравированные магически настроенные геометрические фигуры"
+ feature_goblet_decoration_the_purest:0 "выгравированный с тщательно продуманным изображением Чистейшего и Первых людей"
+ feature_goblet_decoration_the_sea_tower:0 "выгравировано тщательно продуманное изображение Морской башни"
+ feature_goblet_decoration_mountain_sun_iconography:0 "выгравированная иконография старого храма Горного Солнца"
+ feature_goblet_decoration_cups:0 "выгравированные изображения чашек"
+ feature_goblet_decoration_moons:0 "выгравированно изображение [Concept('aervalr', 'Аэлвалр')|E]"
+ feature_goblet_decoration_dragons:0 "выгравированные мотивы дракона"
+ feature_goblet_decoration_battle:0 "выгравированные сцены сражений"
+ feature_goblet_decoration_blood_drops:0 "выгравированный каплями крови"
+ feature_goblet_decoration_flowers:0 "гравировка с цветочными мотивами"
+ feature_goblet_decoration_rivers:0 "выгравированы переплетающиеся реки"
+ feature_goblet_decoration_lions:0 "выгравированные львиные мотивы"
+ feature_goblet_decoration_chimerae:0 "гравировка с мотивами химеры"
+ feature_goblet_decoration_mayikprolollan:0 "выгравированы символы Майикпрололлана, обозначающие его как свою собственность"
+ feature_goblet_decoration_heraldry:0 "выгравированная геральдика, вероятно, давно умершего благородного дома"
+ feature_goblet_decoration_undecorated:0 "простой и ничем не украшенный"
