@@ -1,0 +1,65 @@
+l_russian:
+ ###########
+ # ETHOSES #
+ ###########
+ ethos_magical_name:0 "Магический фокус"
+ ethos_magical_desc:1 "Эта культура решила полностью довериться силе [Concept('magic', 'магии')|E] и ее практикам, и это организовано таким образом, чтобы обеспечить максимальный рост тайных знаний и родословных."
+
+ ##############
+ # TRADITIONS #
+ ##############
+
+ tradition_lodge_dominance_name:0 "Доминирование ложи"
+ tradition_lodge_dominance_desc:1 "Могущественные ложи пронизывают все аспекты общества этой культуры, и членство в одном из них является почти неотъемлемой частью повседневной жизни."
+ tradition_traders_name:0 "Торговцы"
+ tradition_traders_desc:0 "Либо благодаря оптимальному географическому положению, либо просто присущим культурным ценностям, эта культура имеет долгую и легендарную историю коммерческой деятельности со своими соседями."
+ tradition_sarradonian_desert_nomads_name:0 "Кочевники Саррадонской пустыни"
+ tradition_sarradonian_desert_nomads_desc:0 "Эта культура тесно связана с Саррадонской пустыней, которую она пересекала на протяжении веков, соединяя Имперское море с королевствами центрального и южного Саррадона."
+ tradition_mubaaizun_name:0 "Мубааизун"
+ tradition_mubaaizun_desc:0 "Мубайзун - чемпион [Concept('sarradonian', 'саррадонской')|E] армии; often the best warriors of a lord will participate in a ritual duel before the battle commences, fighting to the death. These duels are often accompanied with each army chanting or insulting one another, and there have been instances - such as the Battle of the Mubaaizun - where multiple duels happen before battle commences, often to avenge a dead mubaaizun."
+ tradition_botai_name:0 "Ботай"
+ tradition_ardara_name:0 "Ардара"
+ tradition_bloodhounds_of_aversaria_name:0 "Ищейки Аверсарии"
+ tradition_bloodhounds_of_aversaria_desc:0 "Кикарсаги могли считать себя одними из самых страшных войнов [Concept('aversaria', 'аверсарии')|E], их культура постепенно трансформировалась, чтобы отточить и усилить самые безжалостные аспекты их воинского общества. Мятежный район, посещаемый кикарсаги, обычно быстро и решительно возвращается к миру - по крайней мере, к миру могилы."
+ tradition_blood_magi_name:0 "Маги Крови"
+ tradition_blood_magi_desc:0 "Эта культура с большим почтением относится к практикующим [Concept('blood_magic', 'магию крови') и развила навыки в этой области, которые ставят их [Concept('blood_magic', 'маги крови') выше, чем у большинства других культур."
+ tradition_otachedian_law_name:0 "Отачедийский закон
+ tradition_otachedian_law_desc:0 "Хотя с момента его падения прошли столетия, правила и руководящие принципы [Concept('otachedian_empire', 'отачедийской империи')|E] все еще сильны в обществе этой культуры."
+ tradition_literary_divergence_name:0 "Литературное расхождение"
+
+ ###############
+ # MAA UNLOCKS #
+ ###############
+ culture_parameter_unlock_maa_mubaaizun:0 "Может набирать [GetMaA('mubaaizun').GetName] как [Concept('men_at_arms', 'наемников')|E]"
+
+ #############
+ # TRAIT LOC #
+ #############
+
+ culture_parameter_ardara_positive_trait_modifiers:0 "[GetTrait('brave').GetName( GetNullCharacter )] и [GetTrait('generous').GetName( GetNullCharacter )] [Concept('traits', 'свойства')|E] рассматриваются как [prestige_i][Concept('prestigious', 'престижные')|E] и улучшает [Concept('county_opinion', 'мнение народа')|E]"
+ culture_parameter_ardara_negative_trait_modifiers:0 "[GetTrait('craven').GetName( GetNullCharacter )] и [GetTrait('greedy').GetName( GetNullCharacter )] [Concept('traits', 'свойства')|E] смотрят на них свысока"
+ culture_parameter_can_raid_even_if_feudal:1 "Открывает возможность совершать [Concept('raid', 'налеты')|E]"
+ culture_parameter_can_distribute_raid_loot_for_prestige_and_development:1 "Можете выбрать распределение части (или всей) добычи по завершении [Concept('raid', 'налета')|E], получая за это [prestige_i][Concept('prestige', 'престиж')|E] и повышая [Concept('development', 'развитие')|E] [Concept('county', 'округа')|E]"
+ culture_parameter_has_access_to_familial_extermination:0 "[Concept('characters', 'персонажи')|E] которых у вас есть [Concept('execute_reason', 'причина казнить')|E] могут иметь #E Семейное истребление#! взаимодействие с ними, при этом затраты [prestige_i] [Concept('prestige', 'престиж')|E] и [Concept('tyranny', 'тирания')|E] растут в зависимости от того, насколько тесно они связаны с вами"
+
+ culture_parameter_free_old_ruler_abdication:1 "Старые правители могут добровольно отречься от престола без каких-либо затрат"
+ culture_parameter_enables_alatans:1 "Правители, добровольно отрекшиеся от престола, становятся алатанами, которые лучше выполняют [Concept('councillor_tasks', 'задания советника')|E]"
+ culture_parameter_enables_khatan_succession:1 "Enables access to the #underline Khatan Succession#! [law|E]"
+
+ culture_parameter_bloodhounds_of_aversaria_positive_trait_modifiers:0 "[GetTrait('sadistic').GetName( GetNullCharacter )], [GetTrait('callous').GetName( GetNullCharacter )] и [GetTrait('vengeful').GetName( GetNullCharacter )] [Concept('traits', 'свойства')|E] рассматриваются как [prestige_i][Concept('prestigious', 'престижные')|E]"
+ culture_parameter_bloodhounds_of_aversaria_negative_trait_modifiers:0 "[GetTrait('compassionate').GetName( GetNullCharacter )] и [GetTrait('forgiving').GetName( GetNullCharacter )] [Concept('traits', 'свойство')|E] смотрят на них свысока"
+ culture_parameter_can_purge_counties:0 "Enables the #E Purge County#! interaction on [counties|E] with a low [cultural_acceptance|E]"
+ culture_parameter_executing_different_culture_characters_gives_prestige:0 "[Concept('executing', 'казнь')|E] персонажей с другой [Concept('culture', 'культурой')|E] дают [prestige_i][Concept('prestige', 'престиж')|E]"
+
+ culture_parameter_blood_magi_positive_trait_modifiers:0 "[GetTrait('education_magic_1').GetName( GetNullCharacter )], [GetTrait('education_magic_2').GetName( GetNullCharacter )], [GetTrait('education_magic_3').GetName( GetNullCharacter )] и [GetTrait('education_magic_4').GetName( GetNullCharacter )] [traits|E] рассматриваются как [prestige_i][Concept('prestigious', 'престижные')|E]"
+
+ culture_parameter_unlocks_lodge_mechanics:0 "Открывает доступ к [Concept('lodges_mechanical', 'ложе')|E]"
+
+ culture_parameter_not_tribal_pirate_raiding_malus:2 "При возвращении с успешного [Concept('raid', 'налеты')|E], не-[Concept('tribal', 'племенные')|E] или не-[Concept('pirates', 'пиратские')|E] персонажи #EMP lose#! [EmptyScope.ScriptValue('not_tribal_raid_prestige_multiplier')|1] [prestige_i][Concept('prestige', 'престиж')|E] за 1 [Concept('raid_loot', 'добычу с налета')|E]"
+
+ #############
+ # MODIFIERS #
+ #############
+
+ not_tribal_desc:0 "Не [Concept('tribal', 'племенной')|E]"
+ otached_lawbreaker_desc:0 "[Concept('culture', 'культура')|E] [Concept('counties', 'графов')|E] в вашем [Concept('realm', 'королевстве')|E] не должны граничить с какой-либо культурой, которая у них меньше, чем #V 50%#! или больше [Concept('cultural_acceptance', 'культурной терпимости')|E]"
